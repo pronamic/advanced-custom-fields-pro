@@ -29,12 +29,8 @@ extract($args);
 				<!-- Main -->
 				<div id="post-body-content">
 					
-					<div id="normal-sortables" class="meta-box-sortables ui-sortable">
-						
-						<?php do_meta_boxes('acf_options_page', 'normal', null); ?>
+					<?php do_meta_boxes('acf_options_page', 'normal', null); ?>
 					
-					</div>
-				
 				</div>
 				
 				<!-- Sidebar -->

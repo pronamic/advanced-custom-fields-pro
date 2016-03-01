@@ -346,7 +346,7 @@ class acf_field_select extends acf_field {
 		
 		// encode choices (convert from array)
 		$field['choices'] = acf_encode_choices($field['choices']);
-		$field['default_value'] = acf_encode_choices($field['default_value']);
+		$field['default_value'] = acf_encode_choices($field['default_value'], false);
 		
 		
 		// choices
@@ -551,10 +551,15 @@ class acf_field_select extends acf_field {
 	
 	function enqueue_assets() {
 		
+		// globals
+		global $wp_scripts, $wp_styles;
+		
+		
 		// vars
 		$version = '3.5.2';
 		$lang = get_locale();
 		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+		//$lang = 'fr';
 		
 		
 		// v4
@@ -564,43 +569,62 @@ class acf_field_select extends acf_field {
 		return;
 */
 		
-		// scripts
-		wp_enqueue_script('select2', acf_get_dir("assets/inc/select2/select2{$min}.js"), array('jquery'), $version, true );
-		
-		
-		// styles
-		wp_enqueue_style('select2', acf_get_dir('assets/inc/select2/select2.css'), '', $version );
-		
-		
-		// bail early if no language
-		if( !$lang ) return;
-		
-		
-		// vars
-		$lang = str_replace('_', '-', $lang);
-		$lang_code = substr($lang, 0, 2);
-		$src = '';
-		
-		
-		// attempt 1
-		if( file_exists(acf_get_path("assets/inc/select2/select2_locale_{$lang_code}.js")) ) {
+
+		// register script
+		if( !isset($wp_scripts->registered['select2']) ) {
 			
-			$src = acf_get_dir("assets/inc/select2/select2_locale_{$lang_code}.js");
+			// scripts
+			wp_register_script('select2', acf_get_dir("assets/inc/select2/select2{$min}.js"), array('jquery'), $version );
+		
 			
-		} elseif( file_exists(acf_get_path("assets/inc/select2/select2_locale_{$lang}.js")) ) {
-			
-			$src = acf_get_dir("assets/inc/select2/select2_locale_{$lang}.js");
+			// translation
+			if( $lang ) {
+				
+				// vars
+				$lang = str_replace('_', '-', $lang);
+				$lang_code = substr($lang, 0, 2);
+				$lang_src = '';
+				
+				
+				// attempt 1
+				if( file_exists(acf_get_path("assets/inc/select2/select2_locale_{$lang_code}.js")) ) {
+					
+					$lang_src = acf_get_dir("assets/inc/select2/select2_locale_{$lang_code}.js");
+				
+				// attempt 2
+				} elseif( file_exists(acf_get_path("assets/inc/select2/select2_locale_{$lang}.js")) ) {
+					
+					$lang_src = acf_get_dir("assets/inc/select2/select2_locale_{$lang}.js");
+					
+				}
+				
+				
+				// enqueue
+				if( $lang_src ) {
+					
+					wp_enqueue_script('select2-l10n', $lang_src, array('select2'), $version );
+					
+				}
+				
+			}
+			// end translation
 			
 		}
 		
 		
-		// bail early if no language
-		if( !$src ) return;
+		// register style
+		if( !isset($wp_styles->registered['select2']) ) {
+			
+			wp_register_style('select2', acf_get_dir('assets/inc/select2/select2.css'), '', $version );
+			
+		}
 		
 		
-		// scripts
-		wp_enqueue_script('select2-l10n', $src, '', $version, true );
-		
+		// enqueue
+		wp_enqueue_script('select2');
+		wp_enqueue_style('select2');
+	   
+	    
 	}
 	
 }
