@@ -106,6 +106,14 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.3.5 =
+* User field: Fixed pagination bug causing missing results
+* Core: Added new filter 'acf/location/screen' to customize location rules matching args
+* Core: Minor fixes and improvements
+* Language: Updated Dutch translation - thanks to Derk Oosterveld
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Added Swiss German translation - thanks to Raphael Hüni
+
 = 5.3.4 =
 * User field: Added pagination for Select2 results
 * Tab field: Fixed issue where no tab was active within a widget

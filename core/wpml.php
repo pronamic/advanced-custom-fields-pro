@@ -40,11 +40,7 @@ class acf_wpml_compatibility {
 		
 		
 		// bail early if not transaltable
-		if( !$this->is_translatable() ) {
-			
-			return;
-			
-		}
+		if( !$this->is_translatable() ) return;
 		
 		
 		// actions

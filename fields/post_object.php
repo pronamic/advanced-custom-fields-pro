@@ -93,11 +93,9 @@ class acf_field_post_object extends acf_field {
 		// load field
 		$field = acf_get_field( $options['field_key'] );
 		
-		if( !$field ) {
 		
-			return false;
-			
-		}
+		// bail early if no field
+		if( !$field ) return false;
 		
 		
 		// update $args
