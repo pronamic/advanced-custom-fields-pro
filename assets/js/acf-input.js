@@ -2949,32 +2949,38 @@ var acf;
 	acf.add_action('before_duplicate', function( $orig ){
 		
 		// save select values
-		$orig.find('select').each(function(){
-			
-			$(this).find(':selected').addClass('selected');
-			
-		});
+		$orig.find('select option:selected').addClass('selected');
 		
 	});
 	
 	acf.add_action('after_duplicate', function( $orig, $duplicate ){
 		
 		// restore select values
-		$orig.find('select').each(function(){
-			
-			$(this).find('.selected').removeClass('selected');
-			
-		});
+		$orig.find('select option.selected').removeClass('selected');
 		
 		
 		// set select values
 		$duplicate.find('select').each(function(){
 			
-			var $selected = $(this).find('.selected');
+			// vars
+			var val = [];
 			
-			$(this).val( $selected.attr('value') );
 			
-			$selected.removeClass('selected');
+			// loop
+			$(this).find('option.selected').each(function(){
+				
+				// append
+				val.push( $(this).val() );
+				
+				
+				// remove class
+				$(this).removeClass('selected');
+				
+		    });
+		    
+		    
+		    // set val
+			$(this).val( val );
 			
 		});
 		
@@ -7306,6 +7312,8 @@ var acf;
 			}
 			
 			
+			
+			
 			// remove the blank option as we have a clear all button!
 			if( args.allow_null ) {
 				
@@ -7453,7 +7461,7 @@ var acf;
 			
 			
 			// disbale select
-			$select.attr('disabled', 'disabled').addClass('acf-disabled acf-hidden');
+			$select.prop('disabled', true).addClass('acf-disabled acf-hidden');
 			
 		},
 		
@@ -7694,6 +7702,10 @@ var acf;
 			
 			// show input so that select2 can correctly render visible select2 container
 			$select.siblings('input').show();
+			
+			
+			// enable select
+			$select.prop('disabled', false).removeClass('acf-disabled acf-hidden');
 			
 		}
 		

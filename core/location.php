@@ -465,7 +465,7 @@ class acf_location {
 	    
 	    
 	    // find post format
-		if( !$post_format ) {	
+		if( !$post_status ) {	
 			
 			// bail early if not a post
 			if( !$options['post_id'] ) return false;
@@ -1196,21 +1196,17 @@ function acf_get_field_group_visibility( $field_group, $args = array() ) {
 		'attachment'	=> 0,
 		'comment'		=> 0,
 		'widget'		=> 0,
-		'lang'			=> 0,
+		'lang'			=> acf_get_setting('current_language'),
 		'ajax'			=> false
 	));
 	
 	
+	// filter for 3rd party customization
+	$args = apply_filters('acf/location/screen', $args, $field_group);
+	
+	
 	// bail early if not active
 	if( !$field_group['active'] ) return false;
-	
-	
-	// WPML
-	if( defined('ICL_LANGUAGE_CODE') ) {
-		
-		$args['lang'] = ICL_LANGUAGE_CODE;
-		
-	}
 	
 	
 	// vars

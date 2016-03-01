@@ -70,10 +70,10 @@ class acf_field_user extends acf_field {
 		
    		// defaults
    		$options = acf_parse_args($options, array(
-			'post_id'		=>	0,
-			's'				=>	'',
-			'field_key'		=>	'',
-			'paged'			=> 1
+			'post_id'		=> 0,
+			's'				=> '',
+			'field_key'		=> '',
+			'paged'			=> 1,
 		));
 		
 				
@@ -83,8 +83,8 @@ class acf_field_user extends acf_field {
    		
 		
 		// paged
-   		$args['offset'] = 20 * ($options['paged'] - 1);
-		$args['number'] = 20;
+   		$args['users_per_page'] = 20;
+   		$args['paged'] = $options['paged'];
    		
    		
 		// load field
@@ -95,24 +95,14 @@ class acf_field_user extends acf_field {
 		if( !$field ) return false;
 		
 		
-		// editable roles
-		$editable_roles = get_editable_roles();
-		
+		// update $args
 		if( !empty($field['role']) ) {
-			
-			foreach( $editable_roles as $role => $role_info ) {
-				
-				if( !in_array($role, $field['role']) ) {
-				
-					unset( $editable_roles[ $role ] );
-					
-				}
-				
-			}
+		
+			$args['role'] = acf_get_array( $field['role'] );
 			
 		}
 		
-				
+		
 		// search
 		if( $options['s'] ) {
 			
@@ -137,77 +127,61 @@ class acf_field_user extends acf_field {
 		
 		
 		// get users
-		$users = get_users( $args );
+		$groups = acf_get_grouped_users( $args );
 		
-		if( !empty($users) && !empty($editable_roles) ) {
+		
+		// bail early if no groups
+		if( empty($groups) ) return false;
+		
+		
+		// loop
+		foreach( array_keys($groups) as $group_title ) {
 			
-			foreach( $editable_roles as $role => $role_info ) {
+			// vars
+			$users = acf_extract_var( $groups, $group_title );
+			$data = array(
+				'text'		=> $group_title,
+				'children'	=> array()
+			);
+			
+			
+			// append users
+			foreach( array_keys($users) as $user_id ) {
 				
-				// vars
-				$this_users = array();
-				$this_json = array();
+				$users[ $user_id ] = $this->get_result( $users[ $user_id ], $field, $options['post_id'] );
 				
+			};
+			
+			
+			// order by search
+			if( !empty($args['s']) ) {
 				
-				// loop over users
-				foreach( array_keys($users) as $key ) {
-					
-					if( in_array($role, $users[ $key ]->roles) ) {
-						
-						// extract user
-						$user = acf_extract_var( $users, $key );
-						
-						
-						// append to $this_users
-						$this_users[ $user->ID ] = $this->get_result( $user, $field, $options['post_id'] );
-						
-					}
-					
-				}
-				
-				
-				// bail early if no users for this role
-				if( empty($this_users) ) {
-				
-					continue;
-					
-				}
-				
-								
-				// order by search
-				if( !empty($args['s']) ) {
-					
-					$this_users = acf_order_by_search( $this_users, $args['s'] );
-					
-				}
-				
-				
-				// append to json
-				foreach( array_keys($this_users) as $user_id ) {
-					
-					// add to json
-					$this_json[] = array(
-						'id'	=> $user_id,
-						'text'	=> $this_users[ $user_id ]
-					);
-	
-				}
-				
-				
-				// add as optgroup or results
-				if( count($editable_roles) == 1 ) {
-				
-					$r = $this_json;
-					
-				} else {
-					
-					$r[] = array(
-						'text'		=> translate_user_role( $role_info['name'] ),
-						'children'	=> $this_json
-					);
-					
-				}
+				$users = acf_order_by_search( $users, $args['s'] );
 				
 			}
+			
+			
+			// append to $data
+			foreach( $users as $id => $title ) {
+				
+				$data['children'][] = array(
+					'id'	=> $id,
+					'text'	=> $title
+				);
+				
+			}
+			
+			
+			// append to $r
+			$r[] = $data;
+			
+		}
+		
+		
+		// optgroup or single
+		if( !empty($args['role']) && count($args['role']) == 1 ) {
+			
+			$r = $r[0]['children'];
 			
 		}
 		
@@ -234,11 +208,7 @@ class acf_field_user extends acf_field {
 	function ajax_query() {
 		
 		// validate
-		if( !acf_verify_ajax() ) {
-		
-			die();
-			
-		}
+		if( !acf_verify_ajax() ) die();
 		
 		
 		// get choices
@@ -246,11 +216,7 @@ class acf_field_user extends acf_field {
 		
 		
 		// validate
-		if( !$choices ) {
-			
-			die();
-			
-		}
+		if( !$choices ) die();
 		
 		
 		// return JSON
@@ -426,23 +392,12 @@ class acf_field_user extends acf_field {
 	
 	function render_field_settings( $field ) {
 		
-		// role
-		$choices = array();
-		$editable_roles = get_editable_roles();
-
-		foreach( $editable_roles as $role => $details ) {	
-				
-			// only translate the output not the value
-			$choices[ $role ] = translate_user_role( $details['name'] );
-			
-		}
-		
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Filter by role','acf'),
 			'instructions'	=> '',
 			'type'			=> 'select',
 			'name'			=> 'role',
-			'choices'		=> $choices,
+			'choices'		=> acf_get_pretty_user_roles(),
 			'multiple'		=> 1,
 			'ui'			=> 1,
 			'allow_null'	=> 1,
