@@ -218,15 +218,7 @@ class acf_field_repeater extends acf_field {
 		
 		
 		// collapsed
-		$collapsed = array();
-		
 		if( $field['collapsed'] ) {
-			
-			// get user setting
-			$collapsed = acf_get_user_setting('collapsed_' . $field['key'], '');
-			$collapsed = explode(',', $collapsed);
-			$collapsed = array_filter($collapsed, 'is_numeric');
-			
 			
 			// add target class
 			foreach( array_keys($field['sub_fields']) as $i ) {
@@ -297,7 +289,7 @@ class acf_field_repeater extends acf_field {
 				
 				$row_class .= ' acf-clone';
 				
-			} elseif( in_array($i, $collapsed) ) {
+			} elseif( acf_is_row_collapsed($field['key'], $i) ) {
 				
 				$row_class .= ' -collapsed';
 				

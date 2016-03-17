@@ -70,13 +70,52 @@ function acf_get_valid_field_group( $field_group = false ) {
 	));
 	
 	
-	// translate
-	$field_group = acf_translate_keys( $field_group, acf_get_setting('l10n_field_group') );
-		
-	
 	// filter
 	$field_group = apply_filters('acf/get_valid_field_group', $field_group);
 
+	
+	// translate
+	$field_group = acf_translate_field_group( $field_group );
+	
+	
+	// return
+	return $field_group;
+	
+}
+
+
+/*
+*  acf_translate_field_group
+*
+*  This function will translate field group's settings
+*
+*  @type	function
+*  @date	8/03/2016
+*  @since	5.3.2
+*
+*  @param	$field_group (array)
+*  @return	$field_group
+*/
+
+function acf_translate_field_group( $field_group ) {
+	
+	// vars
+	$l10n = acf_get_setting('l10n');
+	$l10n_textdomain = acf_get_setting('l10n_textdomain');
+	
+	
+	// if
+	if( $l10n && $l10n_textdomain ) {
+		
+		// translate
+		$field_group['title'] = acf_translate( $field_group['title'] );
+		
+		
+		// filters
+		$field_group = apply_filters( "acf/translate_field_group", $field_group );
+		
+	}
+	
 	
 	// return
 	return $field_group;

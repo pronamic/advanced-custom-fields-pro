@@ -15,7 +15,8 @@
 			addFilter : addFilter,
 			removeAction : removeAction,
 			doAction : doAction,
-			addAction : addAction
+			addAction : addAction,
+			storage : getStorage
 		};
 
 		/**
@@ -26,7 +27,13 @@
 			actions : {},
 			filters : {}
 		};
-
+		
+		function getStorage() {
+			
+			return STORAGE;
+			
+		};
+		
 		/**
 		 * Adds an action to the event manager.
 		 *
@@ -397,17 +404,38 @@ var acf;
 		
 		add_action: function() {
 			
-			// allow multiple action parameters such as 'ready append'
-			var actions = arguments[0].split(' ');
+			// vars
+			var a = arguments[0].split(' '),
+				l = a.length;
 			
-			for( k in actions ) {
 			
-				// prefix action
-				arguments[0] = 'acf.' + actions[ k ];
+			// loop
+			for( var i = 0; i < l; i++) {
 				
+/*
+				// allow for special actions
+				if( a[i].indexOf('initialize') !== -1 ) {
+					
+					a.push( a[i].replace('initialize', 'ready') );
+					a.push( a[i].replace('initialize', 'append') );
+					l = a.length;
+					
+					continue;
+				}
+*/
+				
+				
+				// prefix action
+				arguments[0] = 'acf/' + a[i];
+			
+			
+				// add
 				wp.hooks.addAction.apply(this, arguments);
+					
 			}
 			
+			
+			// return
 			return this;
 			
 		},
@@ -429,7 +457,7 @@ var acf;
 		remove_action: function() {
 			
 			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
+			arguments[0] = 'acf/' + arguments[0];
 			
 			wp.hooks.removeAction.apply(this, arguments);
 			
@@ -451,10 +479,10 @@ var acf;
 		*  @return
 		*/
 		
-		do_action: function() {
+		do_action: function() { //console.log('acf.do_action(%o)', arguments);
 			
 			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
+			arguments[0] = 'acf/' + arguments[0];
 			
 			wp.hooks.doAction.apply(this, arguments);
 			
@@ -479,7 +507,7 @@ var acf;
 		add_filter: function() {
 			
 			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
+			arguments[0] = 'acf/' + arguments[0];
 			
 			wp.hooks.addFilter.apply(this, arguments);
 			
@@ -504,7 +532,7 @@ var acf;
 		remove_filter: function() {
 			
 			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
+			arguments[0] = 'acf/' + arguments[0];
 			
 			wp.hooks.removeFilter.apply(this, arguments);
 			
@@ -526,10 +554,10 @@ var acf;
 		*  @return
 		*/
 		
-		apply_filters: function() {
+		apply_filters: function() { //console.log('acf.apply_filters(%o)', arguments);
 			
 			// prefix action
-			arguments[0] = 'acf.' + arguments[0];
+			arguments[0] = 'acf/' + arguments[0];
 			
 			return wp.hooks.applyFilters.apply(this, arguments);
 			
@@ -770,7 +798,7 @@ var acf;
 		
 		get_field_key: function( $field ){
 		
-			return this.get_data( $field, 'key' );
+			return $field.data('key');
 			
 		},
 		
@@ -790,7 +818,7 @@ var acf;
 		
 		get_field_type: function( $field ){
 		
-			return this.get_data( $field, 'type' );
+			return $field.data('type');
 			
 		},
 		
@@ -902,22 +930,14 @@ var acf;
 		*  @since	5.0.0
 		*
 		*  @param	$el (jQuery selection)
-		*  @param	prefix (string)
 		*  @return	$post_id (int)
 		*/
 		
-		serialize_form : function( $el, prefix ){
-			
-			// defaults
-			prefix = prefix || '';
-			
+		serialize_form : function( $el ){
 			
 			// vars
 			var data = {},
-				names = {},
-				prelen = prefix.length,
-				_prefix = '_' + prefix,
-				_prelen = _prefix.length;
+				names = {};
 			
 			
 			// selector
@@ -926,14 +946,6 @@ var acf;
 			
 			// populate data
 			$.each( $selector.serializeArray(), function( i, pair ) {
-				
-				// bail early if name does not start with acf or _acf
-				if( prefix && pair.name.substring(0, prelen) != prefix && pair.name.substring(0, _prelen) != _prefix ) {
-					
-					return;
-					
-				}
-				
 				
 				// initiate name
 				if( pair.name.slice(-2) === '[]' ) {
@@ -966,6 +978,13 @@ var acf;
 			
 			// return
 			return data;
+			
+		},
+		
+		serialize: function( $el ){
+			
+			return this.serialize_form( $el );
+			
 		},
 		
 		
@@ -1507,40 +1526,6 @@ var acf;
 			
 			// return
 			return message;
-			
-		},
-		
-		update_cookie : function( name, value, days ) {
-			
-			// defaults
-			days = days || 31;
-			
-			if (days) {
-				var date = new Date();
-				date.setTime(date.getTime()+(days*24*60*60*1000));
-				var expires = "; expires="+date.toGMTString();
-			}
-			else var expires = "";
-			document.cookie = name+"="+value+expires+"; path=/";
-			
-		},
-		
-		get_cookie : function( name ) {
-			
-			var nameEQ = name + "=";
-			var ca = document.cookie.split(';');
-			for(var i=0;i < ca.length;i++) {
-				var c = ca[i];
-				while (c.charAt(0)==' ') c = c.substring(1,c.length);
-				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-			}
-			return null;
-			
-		},
-		
-		delete_cookie : function( name ) {
-			
-			this.update_cookie(name,"",-1);
 			
 		},
 		
@@ -2243,8 +2228,8 @@ var acf;
 		},
 		
 		_prepare_field: function( $el ){
-		
-			acf.do_action('prepare_field/type=' + acf.get_field_type($el), $el);
+			
+			acf.do_action('prepare_field/type=' + $el.data('type'), $el);
 			
 		},
 		
@@ -2260,8 +2245,8 @@ var acf;
 		},
 		
 		_ready_field: function( $el ){
-		
-			acf.do_action('ready_field/type=' + acf.get_field_type($el), $el);
+			
+			acf.do_action('ready_field/type=' + $el.data('type'), $el);
 			
 		},
 		
@@ -2278,7 +2263,7 @@ var acf;
 		
 		_append_field: function( $el ){
 		
-			acf.do_action('append_field/type=' + acf.get_field_type($el), $el);
+			acf.do_action('append_field/type=' + $el.data('type'), $el);
 			
 		},
 		
@@ -2295,7 +2280,7 @@ var acf;
 		
 		_load_field: function( $el ){
 		
-			acf.do_action('load_field/type=' + acf.get_field_type($el), $el);
+			acf.do_action('load_field/type=' + $el.data('type'), $el);
 			
 		},
 		
@@ -2312,7 +2297,7 @@ var acf;
 		
 		_remove_field: function( $el ){
 		
-			acf.do_action('remove_field/type=' + acf.get_field_type($el), $el);
+			acf.do_action('remove_field/type=' + $el.data('type'), $el);
 			
 		},
 		
@@ -2329,7 +2314,7 @@ var acf;
 		
 		_sortstart_field: function( $el, $placeholder ){
 		
-			acf.do_action('sortstart_field/type=' + acf.get_field_type($el), $el, $placeholder);
+			acf.do_action('sortstart_field/type=' + $el.data('type'), $el, $placeholder);
 			
 		},
 		
@@ -2346,7 +2331,7 @@ var acf;
 		
 		_sortstop_field: function( $el, $placeholder ){
 		
-			acf.do_action('sortstop_field/type=' + acf.get_field_type($el), $el, $placeholder);
+			acf.do_action('sortstop_field/type=' + $el.data('type'), $el, $placeholder);
 			
 		},
 		
@@ -2364,7 +2349,7 @@ var acf;
 		
 		_hide_field: function( $el, context ){
 		
-			acf.do_action('hide_field/type=' + acf.get_field_type($el), $el, context);
+			acf.do_action('hide_field/type=' + $el.data('type'), $el, context);
 			
 		},
 		
@@ -2381,7 +2366,7 @@ var acf;
 		
 		_show_field: function( $el, context ){
 		
-			acf.do_action('show_field/type=' + acf.get_field_type($el), $el, context);
+			acf.do_action('show_field/type=' + $el.data('type'), $el, context);
 			
 		}
 		
@@ -2986,24 +2971,24 @@ var acf;
 		
 	});
 	
+/*
 	
-	/*
-	//console.time("acf_test_ready");
-	//console.time("acf_test_load");
+	
+	console.time("acf_test_ready");
+	console.time("acf_test_load");
 	
 	acf.add_action('ready', function(){
 		
-		//console.timeEnd("acf_test_ready");
+		console.timeEnd("acf_test_ready");
 		
 	}, 999);
 	
 	acf.add_action('load', function(){
 		
-		//console.timeEnd("acf_test_load");
+		console.timeEnd("acf_test_load");
 		
 	}, 999);
 */
-	
 	
 })(jQuery);
 
@@ -3429,7 +3414,8 @@ var acf;
 	acf.fields.color_picker = acf.field.extend({
 		
 		type: 'color_picker',
-		timeout: null,
+		$input: null,
+		$hidden: null,
 		
 		actions: {
 			'ready':	'initialize',
@@ -3439,59 +3425,53 @@ var acf;
 		focus: function(){
 			
 			this.$input = this.$field.find('input[type="text"]');
+			this.$hidden = this.$field.find('input[type="hidden"]');
 			
 		},
 		
 		initialize: function(){
 			
 			// reference
-			var self = this;
+			var $input = this.$input,
+				$hidden = this.$hidden;
 			
 			
-			// vars
-			var $hidden = this.$input.clone();
+			// trigger change function
+			var change_hidden = function(){
+				
+				// timeout is required to ensure the $input val is correct
+				setTimeout(function(){ 
+					
+					acf.val( $hidden, $input.val() );
+					
+				}, 1);
+				
+			}
 			
 			
-			// modify hidden
-			$hidden.attr({
-				'type'	: 'hidden',
-				'class' : '',
-				'id'	: '',
-				'value'	: ''
- 			});
+			// args
+			var args = {
+				
+				defaultColor: false,
+				palettes: true,
+				hide: true,
+				change: change_hidden,
+				clear: change_hidden
+				
+			}
  			
  			
- 			// append hidden
- 			this.$input.before( $hidden );
- 			
- 			
+ 			// filter
+ 			var args = acf.apply_filters('color_picker_args', args, this.$field);
+        	
+        	
  			// iris
-			this.$input.wpColorPicker({
-				
-				change: function( event, ui ){
-			
-					if( self.timeout ) {
-				
-						clearTimeout( self.timeout );
-						
-					}
-					
-					
-					self.timeout = setTimeout(function(){
-						
-						$hidden.trigger('change');
-						
-					}, 1000);
-					
-				}
-				
-			});
+			this.$input.wpColorPicker(args);
 			
 		}
 		
 	});
 	
-
 })(jQuery);
 
 (function($){
@@ -4198,7 +4178,7 @@ var acf;
 				title:		acf._e('file', 'select'),
 				mode:		'select',
 				type:		'',
-				field:		acf.get_field_key($field),
+				field:		$field.data('key'),
 				multiple:	$repeater.exists(),
 				library:	this.o.library,
 				mime_types: this.o.mime_types,
@@ -4210,7 +4190,7 @@ var acf;
 			    	if( i > 0 ) {
 			    		
 						// vars
-						var key = acf.get_field_key( $field ),
+						var key = $field.data('key'),
 							$tr = $field.closest('.acf-row');
 						
 						
@@ -5198,7 +5178,7 @@ var acf;
 				title:		acf._e('image', 'select'),
 				mode:		'select',
 				type:		'image',
-				field:		acf.get_field_key($field),
+				field:		$field.data('key'),
 				multiple:	$repeater.exists(),
 				library:	this.o.library,
 				mime_types: this.o.mime_types,
@@ -5209,7 +5189,7 @@ var acf;
 			    	if( i > 0 ) {
 			    		
 			    		// vars
-						var key = acf.get_field_key( $field ),
+						var key = $field.data('key'),
 							$tr = $field.closest('.acf-row');
 						
 						
@@ -5580,7 +5560,9 @@ var acf;
 				// populate above vars making sure to allow for failure
 				try {
 					
-					var filters = frame.content.get().toolbar.get('filters');
+					var toolbar = frame.content.get().toolbar,
+						filters = toolbar.get('filters'),
+						search = toolbar.get('search');
 				
 				} catch(e) {
 				
@@ -5690,6 +5672,10 @@ var acf;
 					filter.props._acfuploader = args.field;
 					
 				});
+				
+				
+				// add _acfuplaoder to search
+				search.model.attributes._acfuploader = args.field;
 				
 				
 				// render
@@ -8763,7 +8749,7 @@ var acf;
 		
 		events: {
 			'click #save-post':				'click_ignore',
-			'click input[type="submit"]':	'click_publish',
+			'click [type="submit"]':		'click_publish',
 			'submit form':					'submit_form',
 			'click .acf-error-message a':	'click_message'
 		},
@@ -9093,11 +9079,7 @@ var acf;
 		fetch: function( $form ){
 			
 			// bail aelry if already busy
-			if( this.busy ) {
-				
-				return false;
-				
-			}
+			if( this.busy ) return false;
 			
 			
 			// reference
@@ -9105,7 +9087,7 @@ var acf;
 			
 			
 			// vars
-			var data = acf.serialize_form( $form, 'acf' );
+			var data = acf.serialize_form($form);
 				
 			
 			// append AJAX action		
@@ -9189,7 +9171,7 @@ var acf;
 			
 			if( $message.exists() ) {
 				
-				$message.removeClass('error');
+				$message.addClass('-success');
 				$message.children('p').html( acf._e('validation_successful') );
 				
 			}
@@ -9650,7 +9632,7 @@ var acf;
 		toolbars: {},
 		
 		actions: {
-			'ready':		'initialize',
+			'load':			'initialize',
 			'append':		'initialize',
 			'remove':		'disable',
 			'sortstart':	'disable',

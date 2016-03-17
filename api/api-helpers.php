@@ -575,6 +575,34 @@ function acf_extract_vars( &$array, $keys ) {
 
 
 /*
+*  acf_get_sub_array
+*
+*  This function will return a sub array of data
+*
+*  @type	function
+*  @date	15/03/2016
+*  @since	5.3.2
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_get_sub_array( $array, $keys ) {
+	
+	$r = array();
+	
+	foreach( $keys as $key ) {
+		
+		$r[ $key ] = $array[ $key ];
+		
+	}
+	
+	return $r;
+	
+}
+
+
+/*
 *  acf_get_post_types
 *
 *  This function will return an array of available post types
@@ -2325,7 +2353,7 @@ function acf_encode_choices( $array = array(), $show_keys = true ) {
 	
 }
 
-function acf_decode_choices( $string = '' ) {
+function acf_decode_choices( $string = '', $array_keys = false ) {
 	
 	// bail early if already array
 	if( is_array($string) ) {
@@ -2379,6 +2407,14 @@ function acf_decode_choices( $string = '' ) {
 		
 		// append
 		$array[ $k ] = $v;
+		
+	}
+	
+	
+	// return only array keys? (good for checkbox default_value)
+	if( $array_keys ) {
+		
+		return array_keys($array);
 		
 	}
 	
@@ -2649,18 +2685,19 @@ function acf_in_array( $value, $array ) {
 
 function acf_get_valid_post_id( $post_id = 0 ) {
 	
-	// set post_id to global
+	// if not $post_id, load queried object
 	if( !$post_id ) {
-	
+		
+		// try for global post (needed for setup_postdata)
 		$post_id = (int) get_the_ID();
 		
-	}
-	
-	
-	// allow for option == options
-	if( $post_id == 'option' ) {
-	
-		$post_id = 'options';
+		
+		// try for current screen
+		if( !$post_id ) {
+			
+			$post_id = get_queried_object();
+				
+		}
 		
 	}
 	
@@ -2668,23 +2705,40 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 	// $post_id may be an object
 	if( is_object($post_id) ) {
 		
+		// user
 		if( isset($post_id->roles, $post_id->ID) ) {
 		
 			$post_id = 'user_' . $post_id->ID;
-			
+		
+		// term
 		} elseif( isset($post_id->taxonomy, $post_id->term_id) ) {
 		
 			$post_id = $post_id->taxonomy . '_' . $post_id->term_id;
-			
+		
+		// comment
 		} elseif( isset($post_id->comment_ID) ) {
 		
 			$post_id = 'comment_' . $post_id->comment_ID;
-			
+		
+		// post
 		} elseif( isset($post_id->ID) ) {
 		
 			$post_id = $post_id->ID;
+		
+		// default
+		} else {
+			
+			$post_id = 0;
 			
 		}
+		
+	}
+	
+	
+	// allow for option == options
+	if( $post_id === 'option' ) {
+	
+		$post_id = 'options';
 		
 	}
 	
@@ -3658,6 +3712,7 @@ function _acf_settings_uploader( $uploader ) {
 *  @return	$post_id (int)
 */
 
+/*
 function acf_translate_keys( $array, $keys ) {
 	
 	// bail early if no keys
@@ -3681,6 +3736,7 @@ function acf_translate_keys( $array, $keys ) {
 	return $array;
 	
 }
+*/
 
 
 /*
@@ -3763,6 +3819,49 @@ function acf_maybe_add_action( $tag, $function_to_add, $priority = 10, $accepted
 		add_action( $tag, $function_to_add, $priority, $accepted_args );
 		
 	}
+	
+}
+
+
+/*
+*  acf_is_row_collapsed
+*
+*  This function will return true if the field's row is collapsed
+*
+*  @type	function
+*  @date	2/03/2016
+*  @since	5.3.2
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_is_row_collapsed( $field_key = '', $row_index = 0 ) {
+	
+	// collapsed
+	$collapsed = acf_get_user_setting('collapsed_' . $field_key, '');
+	
+	
+	// cookie fallback ( version < 5.3.2 )
+	if( $collapsed === '' ) {
+		
+		$collapsed = acf_extract_var($_COOKIE, "acf_collapsed_{$field_key}", '');
+		$collapsed = str_replace('|', ',', $collapsed);
+		
+		
+		// update
+		acf_update_user_setting( 'collapsed_' . $field_key, $collapsed );
+			
+	}
+	
+	
+	// explode
+	$collapsed = explode(',', $collapsed);
+	$collapsed = array_filter($collapsed, 'is_numeric');
+	
+	
+	// collapsed class
+	return in_array($row_index, $collapsed);
 	
 }
 

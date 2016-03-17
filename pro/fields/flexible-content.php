@@ -54,6 +54,11 @@ class acf_field_flexible_content extends acf_field {
 		);		
 		
 		
+		// ajax
+		add_action('wp_ajax_acf/fields/flexible_content/layout_title',			array($this, 'ajax_layout_title'));
+		add_action('wp_ajax_nopriv_acf/fields/flexible_content/layout_title',	array($this, 'ajax_layout_title'));
+		
+		
 		// do not delete!
     	parent::__construct();
 		
@@ -195,7 +200,7 @@ class acf_field_flexible_content extends acf_field {
 		
 		foreach( $field['layouts'] as $k => $layout ) {
 		
-			$layouts[ $layout['name'] ] = acf_extract_var( $field['layouts'], $k );
+			$layouts[ $layout['name'] ] = $layout;
 			
 		}
 		
@@ -300,29 +305,9 @@ class acf_field_flexible_content extends acf_field {
 			'data-layout'	=> $layout['name']
 		);
 		
-	
-		// collapsed
-		$collapsed = acf_get_user_setting('collapsed_' . $field['key'], '');
-		
-		
-		// cookie fallback ( version < 5.3.2 )
-		if( $collapsed === '' ) {
-			
-			$collapsed = acf_extract_var($_COOKIE, "acf_collapsed_{$field['key']}", '');
-			$collapsed = str_replace('|', ',', $collapsed);
-			
-			acf_update_user_setting( 'collapsed_' . $field['key'], $collapsed );
 				
-		}
-		
-		
-		// explode
-		$collapsed = explode(',', $collapsed);
-		$collapsed = array_filter($collapsed, 'is_numeric');
-			
-		
 		// collapsed class
-		if( in_array($i, $collapsed) ) {
+		if( acf_is_row_collapsed($field['key'], $i) ) {
 			
 			$div['class'] .= ' -collapsed';
 			
@@ -341,6 +326,12 @@ class acf_field_flexible_content extends acf_field {
 		}
 		
 		
+		// title
+		$title = $this->get_layout_title( $field, $layout, $i, $value );
+		
+		
+		// remove row
+		reset_rows();
 ?>
 <div <?php acf_esc_attr_e($div); ?>>
 			
@@ -348,9 +339,7 @@ class acf_field_flexible_content extends acf_field {
 		<?php acf_hidden_input(array( 'name' => "{$field['name']}[{$i}][acf_fc_layout]", 'value' => $layout['name'] )); ?>
 	</div>
 	
-	<div class="acf-fc-layout-handle">
-		<span class="fc-layout-order"><?php echo $order; ?></span> <?php echo $layout['label']; ?>
-	</div>
+	<div class="acf-fc-layout-handle"><?php echo $title; ?></div>
 	
 	<ul class="acf-fc-layout-controlls acf-hl">
 		<li class="acf-fc-show-on-hover">
@@ -479,8 +468,9 @@ class acf_field_flexible_content extends acf_field {
 		// load default layout
 		if( empty($field['layouts']) ) {
 		
-			$field['layouts'] = array();
-			$field['layouts'][] = $this->get_valid_layout();
+			$field['layouts'] = array(
+				array()
+			);
 			
 		}
 		
@@ -1220,6 +1210,121 @@ class acf_field_flexible_content extends acf_field {
 		
 		// return		
 		return $field;
+		
+	}
+	
+	
+	/*
+	*  ajax_layout_title
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	2/03/2016
+	*  @since	5.3.2
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function ajax_layout_title() {
+		
+		// options
+   		$options = acf_parse_args( $_POST, array(
+			'post_id'		=>	0,
+			'i'				=>	0,
+			'field_key'		=>	'',
+			'nonce'			=>	'',
+			'layout'		=> '',
+			'acf'			=> array()
+		));
+		
+		
+		// load field
+		$field = acf_get_field( $options['field_key'] );
+		
+		if( !$field ) die();
+		
+		
+		// vars
+		$layout = false;
+		
+		foreach( $field['layouts'] as $k => $layout ) {
+		
+			if( $layout['name'] === $options['layout'] ) break;
+			
+		}
+		
+		
+		// bail ealry if no layout
+		if( !$layout ) die();
+		
+		
+		// value
+		// this flexible content field may be a sub field so it is important to
+		// loop though all $_POST data to find thi's field's row value
+		$value = $options['acf'];
+		
+		while( is_array($value) ) {
+			
+			// get first key
+			$k = key($value);
+			
+			
+			// update value
+			$value = array_pop( $value[ $k ] );
+			
+			
+			// stop looking if we have found the correct field's value
+			if( $k === $options['field_key'] ) break;
+			
+		}
+		
+		
+		// title
+		$title = $this->get_layout_title( $field, $layout, $options['i'], $value );
+		
+		
+		// echo
+		echo $title;
+		die;
+		
+	}
+	
+	
+	function get_layout_title( $field, $layout, $i, $value ) {
+
+		// add loop
+		acf_add_loop(array(
+			'selector'	=> $field['name'],
+			'name'		=> $field['name'],
+			'value'		=> array( $value ),
+			'field'		=> $field,
+			'i'			=> 0,
+			'post_id'	=> 0,
+		));
+		
+		
+		// vars
+		$title = $layout['label'];
+		
+		
+		// filters
+		$title = apply_filters('acf/fields/flexible_content/layout_title', 							$title, $field, $layout, $i);
+		$title = apply_filters('acf/fields/flexible_content/layout_title/name='.$field['_name'],	$title, $field, $layout, $i);
+		$title = apply_filters('acf/fields/flexible_content/layout_title/key='.$field['key'],		$title, $field, $layout, $i);
+		
+		
+		// remove loop
+		acf_remove_loop();
+		
+		
+		// prepend order
+		$title = '<span class="acf-fc-layout-order">' . ($i+1) . '</span> ' . $title;
+		
+		
+		// return
+		return $title;
 		
 	}
 	
