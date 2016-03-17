@@ -23,35 +23,6 @@ function acf_get_field_reference( $field_name, $post_id ) {
 
 
 /*
-*  the_field()
-*
-*  This function is the same as echo get_field().
-*
-*  @type	function
-*  @since	1.0.3
-*  @date	29/01/13
-*
-*  @param	$selector (string) the field name or key
-*  @param	$post_id (mixed) the post_id of which the value is saved against
-*  @return	n/a
-*/
-
-function the_field( $selector, $post_id = false, $format_value = true ) {
-	
-	$value = get_field($selector, $post_id, $format_value);
-	
-	if( is_array($value) ) {
-		
-		$value = @implode( ', ', $value );
-		
-	}
-	
-	echo $value;
-	
-}
-
-
-/*
 *  get_field()
 *
 *  This function will return a custom field value for a specific field name/key + post_id.
@@ -114,6 +85,35 @@ function get_field( $selector, $post_id = false, $format_value = true ) {
 
 
 /*
+*  the_field()
+*
+*  This function is the same as echo get_field().
+*
+*  @type	function
+*  @since	1.0.3
+*  @date	29/01/13
+*
+*  @param	$selector (string) the field name or key
+*  @param	$post_id (mixed) the post_id of which the value is saved against
+*  @return	n/a
+*/
+
+function the_field( $selector, $post_id = false, $format_value = true ) {
+	
+	$value = get_field($selector, $post_id, $format_value);
+	
+	if( is_array($value) ) {
+		
+		$value = @implode( ', ', $value );
+		
+	}
+	
+	echo $value;
+	
+}
+
+
+/*
 *  get_field_object()
 *
 *  This function will return an array containing all the field data for a given field_name
@@ -132,11 +132,7 @@ function get_field( $selector, $post_id = false, $format_value = true ) {
 function get_field_object( $selector, $post_id = false, $format_value = true, $load_value = true ) {
 	
 	// compatibilty
-	if( is_array($format_value) ) {
-		
-		extract( $format_value );
-		
-	}
+	if( is_array($format_value) ) extract( $format_value );
 	
 	
 	// get valid post_id
@@ -148,11 +144,7 @@ function get_field_object( $selector, $post_id = false, $format_value = true, $l
 	
 	
 	// bail early if no field found
-	if( !$field ) {
-		
-		return false;
-		
-	}
+	if( !$field ) return false;
 	
 	
 	// load value
@@ -197,23 +189,24 @@ function get_fields( $post_id = false, $format_value = true ) {
 	
 	// vars
 	$fields = get_field_objects( $post_id, $format_value );
-	$return = array();
+	$meta = array();
+	
+	
+	// bail early
+	if( !$fields ) return false;
 	
 	
 	// populate
-	if( is_array($fields) ) {
+	foreach( $fields as $k => $field ) {
 		
-		foreach( $fields as $k => $field ) {
-		
-			$return[ $k ] = $field['value'];
-			
-		}
+		$meta[ $k ] = $field['value'];
 		
 	}
 	
 	
 	// return
-	return $return;	
+	return $meta;	
+	
 }
 
 
@@ -287,30 +280,18 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 	
 	
 	// bail early if no meta
-	if( empty($meta) ) {
-		
-		return false;
-		
-	}
+	if( empty($meta) ) return false;
 	
 	
 	// populate vars
 	foreach( $meta as $k => $v ) {
 		
 		// Hopefuly improve efficiency: bail early if $k does start with an '_'
-		if( $k[0] === '_' ) {
-			
-			continue;
-			
-		}
+		if( $k[0] === '_' ) continue;
 		
 		
 		// does a field key exist for this value?
-		if( !array_key_exists("_{$k}", $meta) ) {
-			
-			continue;
-			
-		}
+		if( !array_key_exists("_{$k}", $meta) ) continue;
 		
 		
 		// get field
@@ -319,11 +300,7 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 		
 		
 		// bail early if not a parent field
-		if( !$field || acf_is_sub_field($field) ) {
-			
-			continue;
-			
-		}
+		if( !$field || acf_is_sub_field($field) ) continue;
 		
 		
 		// load value
@@ -350,11 +327,7 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
  	
  	 	
 	// no value
-	if( empty($fields) ) {
-	
-		return false;
-	
-	}
+	if( empty($fields) ) return false;
 	
 	
 	// return
@@ -380,11 +353,13 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 function have_rows( $selector, $post_id = false ) {
 	
 	// vars
-	$row = array();
+	$active_loop = acf_get_loop('active');
+	$previous_loop = acf_get_loop('previous');
 	$new_parent_loop = false;
 	$new_child_loop = false;
 	$sub_field = false;
 	$sub_exists = false;
+	$change = false;
 	
 	
 	// reference
@@ -396,29 +371,19 @@ function have_rows( $selector, $post_id = false ) {
 	
 	
 	// empty?
-	if( empty($GLOBALS['acf_field']) ) {
-		
-		// reset
-		reset_rows( true );
-		
+	if( !$active_loop ) {
 		
 		// create a new loop
 		$new_parent_loop = true;
 	
 	} else {
 		
-		// vars
-		$row = end( $GLOBALS['acf_field'] );
-		$prev = prev( $GLOBALS['acf_field'] );
-		$change = false;
-		
-		
 		// detect change
-		if( $post_id != $row['post_id'] ) {
+		if( $post_id != $active_loop['post_id'] ) {
 			
 			$change = 'post_id';
 				
-		} elseif( $selector != $row['selector'] ) {
+		} elseif( $selector != $active_loop['selector'] ) {
 			
 			$change = 'selector';
 				
@@ -428,11 +393,11 @@ function have_rows( $selector, $post_id = false ) {
 		// attempt to find sub field
 		if( $change ) {
 			
-			$sub_field = acf_get_sub_field($selector, $row['field']);
+			$sub_field = acf_get_sub_field($selector, $active_loop['field']);
 			
 			if( $sub_field ) {
 				
-				$sub_exists = isset($row['value'][ $row['i'] ][ $sub_field['key'] ]);
+				$sub_exists = isset( $active_loop['value'][ $active_loop['i'] ][ $sub_field['key'] ] );
 				
 			}
 			
@@ -448,11 +413,11 @@ function have_rows( $selector, $post_id = false ) {
 				// action: move down one level into a new loop
 				$new_child_loop = true;
 			
-			} elseif( $prev && $prev['post_id'] == $post_id ) {
+			} elseif( $previous_loop && $previous_loop['post_id'] == $post_id ) {
 				
 				// case: Change in $post_id was due to a nested loop ending
 				// action: move up one level through the loops
-				reset_rows();
+				acf_remove_loop('active');
 			
 			} else {
 				
@@ -464,11 +429,11 @@ function have_rows( $selector, $post_id = false ) {
 			
 		} elseif( $change == 'selector' ) {
 			
-			if( $prev && $prev['selector'] == $selector && $prev['post_id'] == $post_id ) {
+			if( $previous_loop && $previous_loop['selector'] == $selector && $previous_loop['post_id'] == $post_id ) {
 				
 				// case: Change in $field_name was due to a nested loop ending
 				// action: move up one level through the loops
-				reset_rows();
+				acf_remove_loop('active');
 				
 			} elseif( $sub_exists ) {
 				
@@ -489,6 +454,7 @@ function have_rows( $selector, $post_id = false ) {
 	}
 	
 	
+	// add parent loop
 	if( $new_parent_loop ) {
 		
 		// vars
@@ -496,40 +462,42 @@ function have_rows( $selector, $post_id = false ) {
 		$value = acf_extract_var( $field, 'value' );
 		
 		
-		// add row
-		$GLOBALS['acf_field'][] = array(
+		// add loop
+		acf_add_loop(array(
 			'selector'	=> $selector,
 			'name'		=> $field['name'], // used by update_sub_field
 			'value'		=> $value,
 			'field'		=> $field,
 			'i'			=> -1,
 			'post_id'	=> $post_id,
-		);
-		
+		));
+	
+	// add child loop
 	} elseif( $new_child_loop ) {
 		
 		// vars
-		$value = $row['value'][ $row['i'] ][ $sub_field['key'] ];
+		$value = $active_loop['value'][ $active_loop['i'] ][ $sub_field['key'] ];
 		
-		$GLOBALS['acf_field'][] = array(
+		
+		// add loop
+		acf_add_loop(array(
 			'selector'	=> $selector,
-			'name'		=> $row['name'] . '_' . $row['i'], // used by update_sub_field
+			'name'		=> $active_loop['name'] . '_' . $active_loop['i'], // used by update_sub_field
 			'value'		=> $value,
 			'field'		=> $sub_field,
 			'i'			=> -1,
 			'post_id'	=> $post_id,
-		);
+		));
 		
 	}	
 	
 	
 	// update vars
-	$row = end( $GLOBALS['acf_field'] );
-	
+	$active_loop = acf_get_loop('active');
 	
 	
 	// return true if next row exists
-	if( is_array($row['value']) && array_key_exists($row['i']+1, $row['value']) ) {
+	if( $active_loop && is_array($active_loop['value']) && isset($active_loop['value'][ $active_loop['i']+1 ]) ) {
 		
 		return true;
 		
@@ -537,7 +505,7 @@ function have_rows( $selector, $post_id = false ) {
 	
 	
 	// no next row!
-	reset_rows();
+	acf_remove_loop('active');
 	
 	
 	// return
@@ -562,11 +530,15 @@ function have_rows( $selector, $post_id = false ) {
 function the_row( $format = false ) {
 	
 	// vars
-	$depth = count($GLOBALS['acf_field']) - 1;
-
+	$i = acf_get_loop('active', 'i');
 	
-	// increase i of current row
-	$GLOBALS['acf_field'][ $depth ]['i']++;
+	
+	// increase
+	$i++;
+	
+	
+	// update
+	acf_update_loop('active', 'i', $i);
 	
 	
 	// return
@@ -577,19 +549,15 @@ function the_row( $format = false ) {
 function get_row( $format = false ) {
 	
 	// vars
-	$row = acf_get_row();
+	$loop = acf_get_loop('active');
 	
 	
-	// bail early if no row
-	if( !$row ) {
-		
-		return false;
-		
-	}
+	// bail early if no loop
+	if( !$loop ) return false;
 	
 	
 	// get value
-	$value = $row['value'][ $row['i'] ];
+	$value = $loop['value'][ $loop['i'] ];
 	
 	
 	// format
@@ -598,8 +566,10 @@ function get_row( $format = false ) {
 		// temp wrap value in array
 		$value = array( $value );
 		
+		
 		// format the value (1 row of data)
-		$value = acf_format_value( $value, $row['post_id'], $row['field'] );
+		$value = acf_format_value( $value, $loop['post_id'], $loop['field'] );
+		
 		
 		// extract value from array
 		$value = $value[0];
@@ -612,33 +582,14 @@ function get_row( $format = false ) {
 	
 }
 
-function acf_get_row() {
-	
-	// check and return row
-	if( !empty($GLOBALS['acf_field']) ) {
-		
-		return end( $GLOBALS['acf_field'] );
-		
-	}
-	
-	
-	// return
-	return false;
-	
-}
-
 function get_row_index() {
 	
 	// vars
-	$row = acf_get_row();
-	
-	
-	// bail early if no row
-	if( !$row ) return 0;
+	$i = acf_get_loop('active', 'i');
 	
 	
 	// return
-	return $row['i'] + 1;
+	return $i + 1;
 	
 }
 
@@ -657,33 +608,14 @@ function get_row_index() {
 *  @return	(boolean)
 */
 
-function reset_rows( $hard_reset = false ) {
+function reset_rows() {
 	
-	// completely destroy?
-	if( $hard_reset ) {
-		
-		$GLOBALS['acf_field'] = array();
-	
-	
-	// reset current row	
-	} else {
-		
-		// vars
-		$depth = count( $GLOBALS['acf_field'] ) - 1;
-		
-		
-		// remove
-		unset( $GLOBALS['acf_field'][$depth] );
-		
-		
-		// refresh index
-		$GLOBALS['acf_field'] = array_values($GLOBALS['acf_field']);
-	}
+	// remove last loop
+	acf_remove_loop('active');
 	
 	
 	// return
 	return true;
-	
 	
 }
 
@@ -746,7 +678,7 @@ function has_sub_fields( $field_name, $post_id = false ) {
 function get_sub_field( $selector, $format_value = true ) {
 	
 	// vars
-	$row = acf_get_row();
+	$row = acf_get_loop('active');
 	
 	
 	// bail early if no row
@@ -842,7 +774,7 @@ function the_sub_field( $field_name, $format_value = true ) {
 function get_sub_field_object( $selector, $format_value = true, $load_value = true ) {
 	
 	// vars
-	$row = acf_get_row();
+	$row = acf_get_loop('active');
 	
 	
 	// bail early if no row
@@ -975,6 +907,11 @@ function acf_form_head() {
 	// verify nonce
 	if( acf_verify_nonce('acf_form') ) {
 		
+		// add actions
+		add_action('acf/validate_save_post', '_validate_save_post');
+		add_filter('acf/pre_save_post', '_acf_pre_save_post', 5, 2);
+		
+		
 		// validate data
 	    if( acf_validate_save_post(true) ) {
 	    	
@@ -1041,8 +978,6 @@ function acf_form_head() {
 *  @return	$post_id (int)
 */
 
-add_action('acf/validate_save_post', '_validate_save_post');
-
 function _validate_save_post() {
 	
 	// save post_title
@@ -1085,8 +1020,6 @@ function _validate_save_post() {
 *  @param	$post_id (int)
 *  @return	$post_id (int)
 */
-
-add_filter('acf/pre_save_post', '_acf_pre_save_post', 5, 2);
 
 function _acf_pre_save_post( $post_id, $form ) {
 	
@@ -1491,7 +1424,7 @@ function update_sub_field( $selector, $value, $post_id = false ) {
 	if( is_string($selector) ) {
 		
 		// get current row
-		$row = acf_get_row();
+		$row = acf_get_loop('active');
 		
 		
 		// override $post_id
@@ -1829,139 +1762,6 @@ function delete_row( $selector, $row = 1, $post_id = false ) {
 
 
 /*
-*  create_field()
-*
-*  This function will creat the HTML for a field
-*
-*  @type	function
-*  @since	4.0.0
-*  @date	17/03/13
-*
-*  @param	array	$field - an array containing all the field attributes
-*
-*  @return	N/A
-*/
-
-function create_field( $field ) {
-
-	acf_render_field( $field );
-}
-
-function render_field( $field ) {
-
-	acf_render_field( $field );
-}
-
-
-/*
-*  acf_convert_field_names_to_keys()
-*
-*  Helper for the update_field function
-*
-*  @type	function
-*  @since	4.0.0
-*  @date	17/03/13
-*
-*  @param	array	$value: the value returned via get_field
-*  @param	array	$field: the field or layout to find sub fields from
-*
-*  @return	N/A
-*/
-
-function acf_convert_field_names_to_keys( $value, $field ) {
-	
-	// only if $field has sub fields
-	if( !isset($field['sub_fields']) ) {
-		
-		return $value;
-		
-	}
-	
-
-	// define sub field keys
-	$sub_fields = array();
-	if( $field['sub_fields'] ) {
-		
-		foreach( $field['sub_fields'] as $sub_field ) {
-			
-			$sub_fields[ $sub_field['name'] ] = $sub_field;
-			
-		}
-		
-	}
-	
-	
-	// loop through the values and format the array to use sub field keys
-	if( is_array($value) ) {
-		
-		foreach( $value as $row_i => $row) {
-			
-			if( $row ) {
-				
-				foreach( $row as $sub_field_name => $sub_field_value ) {
-					
-					// sub field must exist!
-					if( !isset($sub_fields[ $sub_field_name ]) ) {
-						
-						continue;
-						
-					}
-					
-					
-					// vars
-					$sub_field = $sub_fields[ $sub_field_name ];
-					$sub_field_value = acf_convert_field_names_to_keys( $sub_field_value, $sub_field );
-					
-					
-					// set new value
-					$value[$row_i][ $sub_field['key'] ] = $sub_field_value;
-					
-					
-					// unset old value
-					unset( $value[$row_i][$sub_field_name] );
-						
-					
-				}
-				// foreach( $row as $sub_field_name => $sub_field_value )
-				
-			}
-			// if( $row )
-			
-		}
-		// foreach( $value as $row_i => $row)
-		
-	}
-	// if( $value )
-	
-	
-	// return
-	return $value;
-
-}
-
-
-/*
-*  register_field_group
-*
-*  description
-*
-*  @type	function
-*  @date	11/03/2014
-*  @since	5.0.0
-*
-*  @param	$post_id (int)
-*  @return	$post_id (int)
-*/
-
-function register_field_group( $field_group ) {
-	
-	// add local
-	acf_add_local_field_group( $field_group );
-	
-}
-
-
-/*
 *  Depreceated Functions
 *
 *  These functions are outdated
@@ -1973,6 +1773,24 @@ function register_field_group( $field_group ) {
 *  @param	n/a
 *  @return	n/a
 */
+
+function register_field_group( $field_group ) {
+	
+	acf_add_local_field_group( $field_group );
+	
+}
+
+function create_field( $field ) {
+
+	acf_render_field( $field );
+	
+}
+
+function render_field( $field ) {
+
+	acf_render_field( $field );
+	
+}
 
 function reset_the_repeater_field() {
 	

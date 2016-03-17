@@ -48,37 +48,6 @@ class acf_field_tab extends acf_field {
 	
 	
 	/*
-	*  prepare_field
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	9/07/2015
-	*  @since	5.2.3
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-/*
-	function prepare_field( $field ) {
-		
-		// append class
-		if( $field['endpoint'] ) {
-			
-			$field['wrapper']['class'] .= ' acf-field-tab-endpoint';
-			
-		}
-		
-		
-		// return
-		return $field;
-		
-	}
-*/
-	
-	
-	/*
 	*  render_field()
 	*
 	*  Create the HTML interface for your field

@@ -149,6 +149,31 @@ class acf_field_message extends acf_field {
 		
 	}
 	
+	
+	/*
+	*  translate_field
+	*
+	*  This function will translate field settings
+	*
+	*  @type	function
+	*  @date	8/03/2016
+	*  @since	5.3.2
+	*
+	*  @param	$field (array)
+	*  @return	$field
+	*/
+	
+	function translate_field( $field ) {
+		
+		// translate
+		$field['message'] = acf_translate( $field['message'] );
+		
+		
+		// return
+		return $field;
+		
+	}
+	
 }
 
 new acf_field_message();

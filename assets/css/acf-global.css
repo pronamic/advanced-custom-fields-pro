@@ -575,31 +575,43 @@ a.acf-icon.-cancel.grey:hover {
   position: relative;
   display: block;
   background: #F55E4F;
-  border-radius: 3px;
   margin: 5px 0 15px;
-  padding: 1px 10px;
+  padding: 1px 12px;
   min-height: 0px;
+  border-left: #dd4232 solid 4px;
 }
 .acf-error-message p {
   font-size: 13px !important;
-  line-height: 1.4;
-  margin: 8px 0;
-  padding: 0;
+  line-height: 1.5;
+  margin: 0.5em 0;
+  padding: 2px;
   text-shadow: none;
   color: #fff;
-  text-shadow: 0 1px 0 #DD4232;
 }
 .acf-error-message .acf-icon {
   position: absolute;
-  top: 8px;
-  right: 10px;
+  top: 9px;
+  right: 12px;
   background-color: #dd4232;
   border-color: transparent;
   color: #fff;
 }
-.acf-error-message .acf-icon:hover {
-  background-color: #F1F1F1;
+/* important to include .-cancel to override .acf-icon.-cancel class */
+.acf-error-message .acf-icon.-cancel:hover {
+  background-color: #191e23;
   color: #F55E4F;
+}
+/* success */
+.acf-error-message.-success {
+  background-color: #46b450;
+  border-color: #32973b;
+}
+.acf-error-message.-success .acf-icon {
+  background-color: #32973b;
+}
+.acf-error-message.-success .acf-icon.-cancel:hover {
+  background-color: #191e23;
+  color: #46b450;
 }
 /*--------------------------------------------------------------------------------------------
 *
