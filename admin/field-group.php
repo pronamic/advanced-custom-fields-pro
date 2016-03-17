@@ -638,14 +638,18 @@ if( typeof acf !== 'undefined' ) {
 			*/
 			
 			case "post_type" :
+			
+				// get post types
+				$choices = acf_get_pretty_post_types();
 				
-				// all post types except attachment
-				$exclude = array('attachment');
-				$choices = acf_get_post_types( $exclude );
-				$choices = acf_get_pretty_post_types( $choices );
-
+				
+				// remove attachments
+				unset( $choices['attachment'] );
+				
+				
+				// end
 				break;
-				
+
 				
 			case "post" :
 				
@@ -802,8 +806,9 @@ if( typeof acf !== 'undefined' ) {
 			case "page_template" :
 				
 				$choices = array(
-					'default'	=>	__("Default Template",'acf'),
+					'default' => apply_filters( 'default_page_template_title',  __('Default Template', 'acf') ),
 				);
+				
 				
 				$templates = get_page_templates();
 				
@@ -900,8 +905,17 @@ if( typeof acf !== 'undefined' ) {
 				
 			case "comment" :
 				
-				$choices = array('all' => __('All', 'acf'));
-			
+				// vars
+				$choices = array(
+					'all'	=> __('All', 'acf')
+				);
+				
+				
+				// append post types
+				$choices = array_merge( $choices, acf_get_pretty_post_types() );
+				
+				
+				// end
 				break;
 			
 			

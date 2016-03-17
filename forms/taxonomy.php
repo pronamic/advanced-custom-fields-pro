@@ -67,7 +67,7 @@ class acf_form_taxonomy {
 		
 		
 		// validate page
-		if( $pagenow == 'edit-tags.php' ) {
+		if( $pagenow === 'edit-tags.php' || $pagenow === 'term.php' ) {
 			
 			return true;
 			

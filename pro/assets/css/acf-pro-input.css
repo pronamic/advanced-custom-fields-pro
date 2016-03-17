@@ -146,16 +146,16 @@ th.acf-row-handle span {
   font-size: 14px;
   line-height: 1.4em;
 }
-.acf-flexible-content .layout .fc-layout-order {
+.acf-flexible-content .layout .acf-fc-layout-order {
   display: block;
   width: 20px;
   height: 20px;
   border-radius: 10px;
+  display: inline-block;
   text-align: center;
   line-height: 20px;
-  margin: 0 5px 0 0;
+  margin: 0 2px 0 0;
   background: #F1F1F1;
-  float: left;
   font-size: 12px;
   color: #666;
 }
@@ -186,7 +186,7 @@ th.acf-row-handle span {
 }
 .acf-flexible-content > .values > .ui-sortable-placeholder {
   visibility: visible !important;
-  border: #ccc dashed 2px;
+  border: 1px dashed #b4b9be;
   box-shadow: none;
   background: transparent;
 }
@@ -311,7 +311,7 @@ th.acf-row-handle span {
   opacity: 0;
 }
 /* rtl */
-html[dir="rtl"] .acf-flexible-content .layout .fc-layout-order {
+html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-order {
   float: right;
   margin-right: 0;
   margin-left: 5px;
@@ -422,7 +422,6 @@ html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-controlls {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 28px;
   padding: 10px;
   border-top: #DFDFDF solid 1px;
 }

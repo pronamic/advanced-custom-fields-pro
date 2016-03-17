@@ -112,26 +112,18 @@ class acf_field_color_picker extends acf_field {
 	function render_field( $field ) {
 		
 		// vars
-		$atts = array();
+		$text = acf_get_sub_array( $field, array('id', 'class', 'name', 'value') );
+		$hidden = acf_get_sub_array( $field, array('name', 'value') );
 		$e = '';
 		
 		
-		// populate atts
-		foreach( array( 'id', 'class', 'name', 'value' ) as $k ) {
-		
-			$atts[ $k ] = $field[ $k ];
-			
-		}
-		
-		
 		// render
-		$e .= '<div class="acf-color_picker">';
-		$e .= '<input type="text" ' . acf_esc_attr($atts) . ' />';
-		$e .= '</div>';
-		
-		
-		// return
-		echo $e;
+		?>
+		<div class="acf-color_picker">
+			<?php acf_hidden_input($hidden); ?>
+			<input type="text" <?php echo acf_esc_attr($text); ?> />
+		</div>
+		<?php
 	}
 	
 	

@@ -131,10 +131,10 @@ class acf_form_comment {
 		// vars
 		$post_id = "comment_{$comment->comment_ID}";
 
-
+		
 		// get field groups
 		$field_groups = acf_get_field_groups(array(
-			'comment' => $comment->comment_ID
+			'comment' => get_post_type( $comment->comment_post_ID )
 		));
 		
 		
@@ -199,13 +199,17 @@ class acf_form_comment {
 	
 	function add_comment() {
 		
+		// global
+		global $post;
+		
+		
 		// vars
 		$post_id = "comment_0";
 
 		
 		// get field groups
 		$field_groups = acf_get_field_groups(array(
-			'comment' => 'new'
+			'comment' => $post->post_type
 		));
 		
 		
