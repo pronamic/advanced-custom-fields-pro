@@ -963,7 +963,7 @@ class acf_field_taxonomy extends acf_field {
 		?><form method="post"><?php
 		
 		acf_render_field_wrap(array(
-			'label'			=> 'Name',
+			'label'			=> __('Name', 'acf'),
 			'name'			=> 'term_name',
 			'type'			=> 'text'
 		));
@@ -985,7 +985,7 @@ class acf_field_taxonomy extends acf_field {
 			}
 			
 			acf_render_field_wrap(array(
-				'label'			=> 'Parent',
+				'label'			=> __('Parent', 'acf'),
 				'name'			=> 'term_parent',
 				'type'			=> 'select',
 				'allow_null'	=> 1,

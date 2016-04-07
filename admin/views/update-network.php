@@ -158,7 +158,7 @@ extract($args);
 				
 				
 				// add loading
-				$tr.find('.response').html('<i class="acf-loading"></i></span> <?php _e('Upgrading data to', 'acf'); ?> <?php echo $plugin_version; ?>');
+				$tr.find('.response').html('<i class="acf-loading"></i></span> <?php printf(__('Upgrading data to version %s', 'acf'), $plugin_version); ?>');
 				
 				
 				// get results

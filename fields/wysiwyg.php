@@ -69,7 +69,7 @@ class acf_field_wysiwyg extends acf_field {
 		
 
 		// actions
-		add_action('acf/input/admin_footer_js', 	array($this, 'input_admin_footer_js'));
+		add_action('acf/input/admin_footer', 	array($this, 'input_admin_footer'));
 		
 		
 		// do not delete!
@@ -162,7 +162,7 @@ class acf_field_wysiwyg extends acf_field {
    	
    	
    	/*
-   	*  input_admin_footer_js
+   	*  input_admin_footer
    	*
    	*  description
    	*
@@ -174,7 +174,7 @@ class acf_field_wysiwyg extends acf_field {
    	*  @return	$post_id (int)
    	*/
    	
-   	function input_admin_footer_js() {
+   	function input_admin_footer() {
 	   	
 	   	// vars
 		$json = array();
@@ -214,9 +214,12 @@ class acf_field_wysiwyg extends acf_field {
 			
 		}
 		
-		
-		?>acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
-	<?php
+
+?>
+<script type="text/javascript">
+acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
+</script>
+<?php
 	
    	}
    	

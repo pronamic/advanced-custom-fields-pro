@@ -239,25 +239,25 @@ class acf_admin_field_group {
 		);
 		
 		
-?>
-<script type="text/javascript">
-/* <![CDATA[ */
-if( typeof acf !== 'undefined' ) {
-
-	acf.o = <?php echo json_encode($o); ?>;
-	acf.l10n = <?php echo json_encode($l10n); ?>;
-	<?php do_action('acf/field_group/admin_footer_js'); ?>
-	
-	acf.do_action('prepare');
-	
-}
-/* ]]> */
-</script>
-<?php
+		?>
+		<script type="text/javascript">
+			acf = acf || {};
+			acf.o = <?php echo json_encode($o); ?>;
+			acf.l10n = <?php echo json_encode($l10n); ?>;
+			<?php do_action('acf/field_group/admin_footer_js'); ?>
+		</script>
+		<?php
 		
 		
-		// action for 3rd party customisation
+		// action
 		do_action('acf/field_group/admin_footer');
+		
+		
+		?>
+		<script type="text/javascript">
+			acf.do_action('prepare');
+		</script>
+		<?php
 		
 	}
 	

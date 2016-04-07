@@ -52,7 +52,7 @@ class acf_field_gallery extends acf_field {
 			'select'		=> __("Add Image to Gallery",'acf'),
 			'edit'			=> __("Edit Image",'acf'),
 			'update'		=> __("Update Image",'acf'),
-			'uploadedTo'	=> __("uploaded to this post",'acf'),
+			'uploadedTo'	=> __("Uploaded to this post",'acf'),
 			'max'			=> __("Maximum selection reached",'acf')
 		);
 		

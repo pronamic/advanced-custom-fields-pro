@@ -613,7 +613,7 @@ class acf_admin_field_groups {
 	function admin_footer() {
 		
 		// vars
-		$www = 'http://www.advancedcustomfields.com/resources/';
+		$www = 'https://www.advancedcustomfields.com/resources/';
 		
 ?><script type="text/html" id="tmpl-acf-column-2">
 <div class="acf-column-2">
@@ -634,6 +634,7 @@ class acf_admin_field_groups {
 				<li><a href="<?php echo $www; ?>#filters" target="_blank"><?php _e("Filters",'acf'); ?></a></li>
 				<li><a href="<?php echo $www; ?>#how-to" target="_blank"><?php _e("'How to' guides",'acf'); ?></a></li>
 				<li><a href="<?php echo $www; ?>#tutorials" target="_blank"><?php _e("Tutorials",'acf'); ?></a></li>
+				<li><a href="<?php echo $www; ?>#faq" target="_blank"><?php _e("FAQ",'acf'); ?></a></li>
 			</ul>
 		</div>
 		<div class="footer footer-blue">

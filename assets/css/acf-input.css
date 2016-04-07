@@ -277,16 +277,6 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
   border: 0 none;
   padding: 8px 0;
 }
-/* widget */
-.widget .widget-inside .acf-error-message p {
-  margin: 10px 0;
-}
-.widget .widget-inside div.acf-field.error {
-  border: 0 none;
-  background: transparent;
-  margin: 0 0 20px;
-  padding: 0;
-}
 /* width */
 .acf-field[data-width] {
   float: left;
@@ -1825,6 +1815,17 @@ p.submit .acf-spinner {
 }
 .widget .acf-field .acf-label label {
   font-weight: normal;
+}
+.widget .widget-inside > form > .acf-error-message {
+  margin-top: 15px;
+}
+/*--------------------------------------------------------------------------------------------
+*
+*	Customizer
+*
+*--------------------------------------------------------------------------------------------*/
+.customize-control .acf-field {
+  margin: 1em 0;
 }
 /*--------------------------------------------------------------------------
 *
