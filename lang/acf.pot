@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
-"POT-Creation-Date: 2016-03-15 10:53+1000\n"
+"POT-Creation-Date: 2016-04-07 10:31+1000\n"
 "PO-Revision-Date: 2015-06-11 13:00+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Elliot Condon <e@elliotcondon.com>\n"
@@ -181,7 +181,7 @@ msgstr ""
 #: admin/views/field-group-field-conditional-logic.php:62
 #: admin/views/field-group-field-conditional-logic.php:162
 #: admin/views/field-group-locations.php:59
-#: admin/views/field-group-locations.php:135 api/api-helpers.php:3639
+#: admin/views/field-group-locations.php:135 api/api-helpers.php:3649
 msgid "or"
 msgstr ""
 
@@ -332,7 +332,8 @@ msgstr[1] ""
 msgid "Sync available"
 msgstr ""
 
-#: admin/field-groups.php:525 pro/fields/gallery.php:374
+#: admin/field-groups.php:525 api/api-template.php:989
+#: api/api-template.php:1202 pro/fields/gallery.php:374
 msgid "Title"
 msgstr ""
 
@@ -396,29 +397,33 @@ msgstr ""
 msgid "Tutorials"
 msgstr ""
 
-#: admin/field-groups.php:641
+#: admin/field-groups.php:637
+msgid "FAQ"
+msgstr ""
+
+#: admin/field-groups.php:642
 msgid "Created by"
 msgstr ""
 
-#: admin/field-groups.php:684
+#: admin/field-groups.php:685
 msgid "Duplicate this item"
 msgstr ""
 
-#: admin/field-groups.php:684 admin/field-groups.php:700
+#: admin/field-groups.php:685 admin/field-groups.php:701
 #: admin/views/field-group-field.php:58 pro/fields/flexible-content.php:495
 msgid "Duplicate"
 msgstr ""
 
-#: admin/field-groups.php:746
+#: admin/field-groups.php:747
 #, php-format
 msgid "Select %s"
 msgstr ""
 
-#: admin/field-groups.php:754
+#: admin/field-groups.php:755
 msgid "Synchronise field group"
 msgstr ""
 
-#: admin/field-groups.php:754 admin/field-groups.php:771
+#: admin/field-groups.php:755 admin/field-groups.php:772
 msgid "Sync"
 msgstr ""
 
@@ -447,7 +452,7 @@ msgstr ""
 msgid "No field groups selected"
 msgstr ""
 
-#: admin/settings-tools.php:188
+#: admin/settings-tools.php:188 fields/file.php:169
 msgid "No file selected"
 msgstr ""
 
@@ -502,7 +507,7 @@ msgstr ""
 #: fields/select.php:391 fields/select.php:405 fields/select.php:419
 #: fields/tab.php:130 fields/taxonomy.php:784 fields/taxonomy.php:798
 #: fields/taxonomy.php:812 fields/taxonomy.php:826 fields/user.php:416
-#: fields/user.php:430 fields/wysiwyg.php:415
+#: fields/user.php:430 fields/wysiwyg.php:418
 #: pro/admin/views/settings-updates.php:93
 msgid "Yes"
 msgstr ""
@@ -514,7 +519,7 @@ msgstr ""
 #: fields/select.php:392 fields/select.php:406 fields/select.php:420
 #: fields/tab.php:131 fields/taxonomy.php:699 fields/taxonomy.php:785
 #: fields/taxonomy.php:799 fields/taxonomy.php:813 fields/taxonomy.php:827
-#: fields/user.php:417 fields/user.php:431 fields/wysiwyg.php:416
+#: fields/user.php:417 fields/user.php:431 fields/wysiwyg.php:419
 #: pro/admin/views/settings-updates.php:103
 msgid "No"
 msgstr ""
@@ -640,7 +645,8 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: admin/views/field-group-fields.php:31 pro/fields/flexible-content.php:534
+#: admin/views/field-group-fields.php:31 fields/taxonomy.php:966
+#: pro/fields/flexible-content.php:534
 msgid "Name"
 msgstr ""
 
@@ -720,7 +726,7 @@ msgstr ""
 msgid "User Role"
 msgstr ""
 
-#: admin/views/field-group-locations.php:25 pro/admin/options-page.php:48
+#: admin/views/field-group-locations.php:25 pro/admin/options-page.php:49
 msgid "Forms"
 msgstr ""
 
@@ -1282,41 +1288,41 @@ msgstr ""
 msgid "Full Size"
 msgstr ""
 
-#: api/api-helpers.php:1177 api/api-helpers.php:1739
+#: api/api-helpers.php:1177 api/api-helpers.php:1740
 msgid "(no title)"
 msgstr ""
 
-#: api/api-helpers.php:3560
+#: api/api-helpers.php:3570
 #, php-format
 msgid "Image width must be at least %dpx."
 msgstr ""
 
-#: api/api-helpers.php:3565
+#: api/api-helpers.php:3575
 #, php-format
 msgid "Image width must not exceed %dpx."
 msgstr ""
 
-#: api/api-helpers.php:3581
+#: api/api-helpers.php:3591
 #, php-format
 msgid "Image height must be at least %dpx."
 msgstr ""
 
-#: api/api-helpers.php:3586
+#: api/api-helpers.php:3596
 #, php-format
 msgid "Image height must not exceed %dpx."
 msgstr ""
 
-#: api/api-helpers.php:3604
+#: api/api-helpers.php:3614
 #, php-format
 msgid "File size must be at least %s."
 msgstr ""
 
-#: api/api-helpers.php:3609
+#: api/api-helpers.php:3619
 #, php-format
 msgid "File size must must not exceed %s."
 msgstr ""
 
-#: api/api-helpers.php:3643
+#: api/api-helpers.php:3653
 #, php-format
 msgid "File type must be %s."
 msgstr ""
@@ -1325,7 +1331,8 @@ msgstr ""
 msgid "Spam Detected"
 msgstr ""
 
-#: api/api-template.php:1147 pro/fields/gallery.php:572
+#: api/api-template.php:1147 pro/api/api-options-page.php:50
+#: pro/fields/gallery.php:572
 msgid "Update"
 msgstr ""
 
@@ -1333,12 +1340,16 @@ msgstr ""
 msgid "Post updated"
 msgstr ""
 
-#: core/field.php:132
-msgid "Basic"
+#: api/api-template.php:1216 core/field.php:133
+msgid "Content"
 msgstr ""
 
-#: core/field.php:133
-msgid "Content"
+#: api/api-template.php:1281
+msgid "Validate Email"
+msgstr ""
+
+#: core/field.php:132
+msgid "Basic"
 msgstr ""
 
 #: core/field.php:134
@@ -1371,7 +1382,7 @@ msgstr ""
 msgid "Validation successful"
 msgstr ""
 
-#: core/input.php:258
+#: core/input.php:258 core/validation.php:306 forms/widget.php:238
 msgid "Validation failed"
 msgstr ""
 
@@ -1420,7 +1431,7 @@ msgstr ""
 #: fields/checkbox.php:217 fields/color_picker.php:147 fields/email.php:124
 #: fields/number.php:150 fields/radio.php:222 fields/select.php:363
 #: fields/text.php:148 fields/textarea.php:145 fields/true_false.php:115
-#: fields/url.php:117 fields/wysiwyg.php:376
+#: fields/url.php:117 fields/wysiwyg.php:379
 msgid "Default Value"
 msgstr ""
 
@@ -1481,15 +1492,16 @@ msgid "Show a different month"
 msgstr ""
 
 #: fields/date_picker.php:174
-msgid "Display format"
+msgid "Display Format"
 msgstr ""
 
 #: fields/date_picker.php:175
 msgid "The format displayed when editing a post"
 msgstr ""
 
-#: fields/date_picker.php:189
-msgid "Return format"
+#: fields/date_picker.php:189 fields/post_object.php:426
+#: fields/relationship.php:763
+msgid "Return Format"
 msgstr ""
 
 #: fields/date_picker.php:190
@@ -1506,7 +1518,7 @@ msgstr ""
 
 #: fields/email.php:125 fields/number.php:151 fields/radio.php:223
 #: fields/text.php:149 fields/textarea.php:146 fields/url.php:118
-#: fields/wysiwyg.php:377
+#: fields/wysiwyg.php:380
 msgid "Appears when creating a new post"
 msgstr ""
 
@@ -1552,20 +1564,18 @@ msgstr ""
 msgid "Update File"
 msgstr ""
 
-#: fields/file.php:49 pro/fields/gallery.php:55
-msgid "uploaded to this post"
+#: fields/file.php:49 fields/image.php:54 pro/fields/gallery.php:55
+msgid "Uploaded to this post"
 msgstr ""
 
 #: fields/file.php:142
-msgid "File Name"
+msgid "File name"
 msgstr ""
 
-#: fields/file.php:146
-msgid "File Size"
-msgstr ""
-
-#: fields/file.php:169
-msgid "No File selected"
+#: fields/file.php:146 fields/file.php:247 fields/file.php:258
+#: fields/image.php:262 fields/image.php:295 pro/fields/gallery.php:692
+#: pro/fields/gallery.php:725
+msgid "File size"
 msgstr ""
 
 #: fields/file.php:169
@@ -1610,11 +1620,6 @@ msgstr ""
 
 #: fields/file.php:244 fields/file.php:255
 msgid "Restrict which files can be uploaded"
-msgstr ""
-
-#: fields/file.php:247 fields/file.php:258 fields/image.php:262
-#: fields/image.php:295 pro/fields/gallery.php:692 pro/fields/gallery.php:725
-msgid "File size"
 msgstr ""
 
 #: fields/file.php:254 fields/image.php:272 pro/fields/gallery.php:702
@@ -1696,10 +1701,6 @@ msgstr ""
 
 #: fields/image.php:53 pro/fields/gallery.php:54
 msgid "Update Image"
-msgstr ""
-
-#: fields/image.php:54
-msgid "Uploaded to this post"
 msgstr ""
 
 #: fields/image.php:55
@@ -1863,10 +1864,6 @@ msgstr ""
 #: fields/post_object.php:36 fields/post_object.php:431
 #: fields/relationship.php:768
 msgid "Post Object"
-msgstr ""
-
-#: fields/post_object.php:426 fields/relationship.php:763
-msgid "Return Format"
 msgstr ""
 
 #: fields/post_object.php:432 fields/relationship.php:769
@@ -2078,6 +2075,10 @@ msgstr ""
 msgid "%s added"
 msgstr ""
 
+#: fields/taxonomy.php:988
+msgid "Parent"
+msgstr ""
+
 #: fields/taxonomy.php:999
 msgid "Add"
 msgstr ""
@@ -2134,43 +2135,51 @@ msgstr ""
 msgid "Wysiwyg Editor"
 msgstr ""
 
-#: fields/wysiwyg.php:328
+#: fields/wysiwyg.php:331
 msgid "Visual"
 msgstr ""
 
-#: fields/wysiwyg.php:329
+#: fields/wysiwyg.php:332
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr ""
 
-#: fields/wysiwyg.php:385
+#: fields/wysiwyg.php:388
 msgid "Tabs"
 msgstr ""
 
-#: fields/wysiwyg.php:390
+#: fields/wysiwyg.php:393
 msgid "Visual & Text"
 msgstr ""
 
-#: fields/wysiwyg.php:391
+#: fields/wysiwyg.php:394
 msgid "Visual Only"
 msgstr ""
 
-#: fields/wysiwyg.php:392
+#: fields/wysiwyg.php:395
 msgid "Text Only"
 msgstr ""
 
-#: fields/wysiwyg.php:399
+#: fields/wysiwyg.php:402
 msgid "Toolbar"
 msgstr ""
 
-#: fields/wysiwyg.php:409
+#: fields/wysiwyg.php:412
 msgid "Show Media Upload Buttons?"
 msgstr ""
 
-#: forms/post.php:294 pro/admin/options-page.php:352
+#: forms/post.php:294 pro/admin/options-page.php:416
 msgid "Edit field group"
 msgstr ""
 
+#: forms/widget.php:239
+#, php-format
+msgid "1 field requires attention."
+msgid_plural "%d fields require attention."
+msgstr[0] ""
+msgstr[1] ""
+
+#. Plugin Name of the plugin/theme
 #: pro/acf-pro.php:24
 msgid "Advanced Custom Fields PRO"
 msgstr ""
@@ -2179,23 +2188,27 @@ msgstr ""
 msgid "Flexible Content requires at least 1 layout"
 msgstr ""
 
-#: pro/admin/options-page.php:48
+#: pro/admin/options-page.php:49
 msgid "Options Page"
 msgstr ""
 
-#: pro/admin/options-page.php:83
+#: pro/admin/options-page.php:85
 msgid "No options pages exist"
 msgstr ""
 
-#: pro/admin/options-page.php:276
+#: pro/admin/options-page.php:303
 msgid "Options Updated"
 msgstr ""
 
-#: pro/admin/options-page.php:282
+#: pro/admin/options-page.php:309
+msgid "Publish"
+msgstr ""
+
+#: pro/admin/options-page.php:315
 msgid "No Custom Field Groups found for this options page"
 msgstr ""
 
-#: pro/admin/options-page.php:282
+#: pro/admin/options-page.php:315
 msgid "Create a Custom Field Group"
 msgstr ""
 
@@ -2207,14 +2220,6 @@ msgstr ""
 msgid "<b>Connection Error</b>. Sorry, please try again"
 msgstr ""
 
-#: pro/admin/views/options-page.php:44
-msgid "Publish"
-msgstr ""
-
-#: pro/admin/views/options-page.php:50
-msgid "Save Options"
-msgstr ""
-
 #: pro/admin/views/settings-updates.php:11
 msgid "Deactivate License"
 msgstr ""
@@ -2224,7 +2229,7 @@ msgid "Activate License"
 msgstr ""
 
 #: pro/admin/views/settings-updates.php:21
-msgid "License"
+msgid "License Information"
 msgstr ""
 
 #: pro/admin/views/settings-updates.php:24
@@ -2506,10 +2511,6 @@ msgstr ""
 msgid "Maximum Rows"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Advanced Custom Fields Pro"
-msgstr ""
-
 #. Plugin URI of the plugin/theme
 msgid "http://www.advancedcustomfields.com/"
 msgstr ""
@@ -2519,7 +2520,7 @@ msgid "Customise WordPress with powerful, professional and intuitive fields"
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "elliot condon"
+msgid "Elliot Condon"
 msgstr ""
 
 #. Author URI of the plugin/theme

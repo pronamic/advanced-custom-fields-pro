@@ -1623,10 +1623,6 @@ function acf_get_grouped_posts( $args ) {
 			$parent = acf_maybe_get( $args, 'post_parent', 0 );
 			
 			
-			// reset $this_posts
-			$this_posts = array();
-			
-			
 			// get all posts
 			$all_args = array_merge($args, array(
 				'posts_per_page'	=> -1,
@@ -1640,29 +1636,34 @@ function acf_get_grouped_posts( $args ) {
 			// loop over posts and update $offset
 			foreach( $all_posts as $offset => $p ) {
 				
-				if( $p->ID == $match_id ) {
-					
-					break;
-					
-				}
+				if( $p->ID == $match_id ) break;
 				
 			}
 			
 			
 			// order posts
-			$all_posts = get_page_children( $parent, $all_posts );
+			$ordered_posts = get_page_children( $parent, $all_posts );
 			
 			
-			// append
-			for( $i = $offset; $i < ($offset + $length); $i++ ) {
+			// if has ordered posts
+			if( !empty($ordered_posts) ) {
 				
-				$this_posts[] = acf_extract_var( $all_posts, $i );
+				// reset $this_posts
+				$this_posts = array();
+				
+				
+				// append
+				for( $i = $offset; $i < ($offset + $length); $i++ ) {
+					
+					$this_posts[] = acf_extract_var( $ordered_posts, $i );
+					
+				}
+				
+				
+				// clean up null values
+				$this_posts = array_filter($this_posts);
 				
 			}
-			
-			
-			// clean up null values
-			$this_posts = array_filter($this_posts);
 			
 		}
 		

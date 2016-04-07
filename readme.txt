@@ -106,6 +106,14 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.3.7 =
+* Options page: Added new 'update_button' setting to modify update button text
+* Options page: Added columns support (Screen Options)
+* Core: Added widget preview / save compatibility with the customizer
+* Core: Minor fixes and improvements
+* Language: Updated German translation - thanks to Ralf Koller
+* Language: Updated French Translation - thanks to Maxime Bernard-Jacquet
+
 = 5.3.6.1 =
 * Flexible Content field: Fixed PHP error in 'acf/fields/flexible_content/layout_title' filter (when used as a sub field)
 * Core: Fixed bug causing `get_field()` to load from the incorrect post (when within a custom WP_Query loop)
@@ -992,7 +1000,7 @@ http://support.advancedcustomfields.com/
 = 3.3.8 =
 * [Added] Gallery field { auto add image on upload, new style to show already added images
 * [Fixed] Fix saving value issue with WP e-commerce http://support.advancedcustomfields.com/discussion/comment/7026#Comment_7026
-* [Updated] Date picker field { new display format option (different from save format), UI overhaul
+* [Updated] Date picker field { new Display Format option (different from save format), UI overhaul
 * [Added] Add new field - Number
 * [Fixed] Test post object / select based fields for saving empty value - http://support.advancedcustomfields.com/discussion/2759/post-object-and-conditional-statement
 

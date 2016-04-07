@@ -171,7 +171,7 @@ class acf_field_date_picker extends acf_field {
 		
 		// display_format
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Display format','acf'),
+			'label'			=> __('Display Format','acf'),
 			'instructions'	=> __('The format displayed when editing a post','acf'),
 			'type'			=> 'radio',
 			'name'			=> 'display_format',
@@ -186,7 +186,7 @@ class acf_field_date_picker extends acf_field {
 		
 		// return_format
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Return format','acf'),
+			'label'			=> __('Return Format','acf'),
 			'instructions'	=> __('The format returned via template functions','acf'),
 			'type'			=> 'radio',
 			'name'			=> 'return_format',

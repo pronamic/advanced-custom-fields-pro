@@ -303,7 +303,7 @@ class acf_validation {
 		// show errors
 		if( $show_errors ) {
 				
-			$message = '<h2>Validation failed</h2>';
+			$message = '<h2>' . __('Validation failed', 'acf') . '</h2>';
 			$message .= '<ul>';
 			foreach( $errors as $error ) {
 				

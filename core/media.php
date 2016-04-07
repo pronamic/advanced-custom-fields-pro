@@ -20,7 +20,7 @@ class acf_media {
 		
 		// actions
 		add_action('acf/save_post', 				array($this, 'save_files'), 5, 1);
-		add_action('acf/input/admin_footer_js', 	array($this, 'admin_footer_js'));
+		add_action('acf/input/admin_footer', 		array($this, 'admin_footer'));
 		
 		
 		// filters
@@ -121,7 +121,7 @@ class acf_media {
 	
 	
 	/*
-	*  admin_footer_js
+	*  admin_footer
 	*
 	*  description
 	*
@@ -133,10 +133,13 @@ class acf_media {
 	*  @return	$post_id (int)
 	*/
 	
-	function admin_footer_js() {
+	function admin_footer() {
 		
-		?>acf.media.mime_types = <?php echo json_encode( get_allowed_mime_types() ); ?>;
-	<?php
+?>
+<script type="text/javascript">
+acf.media.mime_types = <?php echo json_encode( get_allowed_mime_types() ); ?>;
+</script>
+<?php
 		
 	}
 	

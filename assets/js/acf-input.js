@@ -5285,7 +5285,16 @@ var acf;
 			
 			
 			// set div class
-		 	this.$el.addClass('has-value');
+			if( image.id ) {
+				
+				this.$el.addClass('has-value');
+				
+			} else {
+				
+				this.$el.removeClass('has-value');
+				
+			}
+		 	
 	
 		},
 		
@@ -5332,14 +5341,11 @@ var acf;
 		    	url: ''
 	    	};
 	    	
+	    	this.$input.attr('value', '');
 	    	
 	    	// add file to field
 	        this.render( attachment );
 	        
-	        
-			// remove class
-			this.$el.removeClass('has-value');
-			
 		},
 		
 		change: function( e ){
@@ -9174,6 +9180,14 @@ var acf;
 				$message.addClass('-success');
 				$message.children('p').html( acf._e('validation_successful') );
 				
+				
+				// remove message
+				setTimeout(function(){
+					
+					acf.remove_el( $message );
+					
+				}, 2000);
+				
 			}
 			
 		
@@ -9788,6 +9802,17 @@ var acf;
 						
 					});
 					
+					ed.on('change', function(e) {
+						
+						// save to textarea	
+						ed.save();
+						
+						
+						$field.find('textarea').trigger('change');
+						
+					});
+					
+/*
 					ed.on('blur', function(e) {
 						
 						// update the hidden textarea
@@ -9801,6 +9826,7 @@ var acf;
 						$field.find('textarea').trigger('change');
 						
 					});
+*/
 					
 					/*
 ed.on('ResizeEditor', function(e) {
