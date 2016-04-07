@@ -264,23 +264,23 @@ class acf_input {
 		
 		?>
 		<script type="text/javascript">
-		/* <![CDATA[ */
-		if( typeof acf !== 'undefined' ) {
-		
+			acf = acf || {};
 			acf.o = <?php echo json_encode($o); ?>;
 			acf.l10n = <?php echo json_encode($l10n); ?>;
 			<?php do_action('acf/input/admin_footer_js'); ?>
-			
-			acf.do_action('prepare');
-			
-		}
-		/* ]]> */
 		</script>
 		<?php
 
 		
-		// do action
+		// action
 		do_action('acf/input/admin_footer');
+		
+		
+		?>
+		<script type="text/javascript">
+			acf.do_action('prepare');
+		</script>
+		<?php
 		
 	}
 	

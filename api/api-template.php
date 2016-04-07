@@ -986,7 +986,7 @@ function _validate_save_post() {
 		// get field
 		$field = acf_get_valid_field(array(
 			'name'		=> '_post_title',
-			'label'		=> 'Title',
+			'label'		=> __('Title', 'acf'),
 			'type'		=> 'text',
 			'required'	=> true
 		));
@@ -1199,7 +1199,7 @@ function acf_form( $args = array() ) {
 		
 		$fields[] = acf_get_valid_field(array(
 			'name'		=> '_post_title',
-			'label'		=> 'Title',
+			'label'		=> __('Title', 'acf'),
 			'type'		=> 'text',
 			'value'		=> $post_id ? get_post_field('post_title', $post_id) : '',
 			'required'	=> true
@@ -1213,7 +1213,7 @@ function acf_form( $args = array() ) {
 		
 		$fields[] = acf_get_valid_field(array(
 			'name'		=> '_post_content',
-			'label'		=> 'Content',
+			'label'		=> __('Content', 'acf'),
 			'type'		=> 'wysiwyg',
 			'value'		=> $post_id ? get_post_field('post_content', $post_id) : ''
 		));
@@ -1278,7 +1278,7 @@ function acf_form( $args = array() ) {
 		
 		$fields[] = acf_get_valid_field(array(
 			'name'		=> '_validate_email',
-			'label'		=> 'Validate Email',
+			'label'		=> __('Validate Email', 'acf'),
 			'type'		=> 'text',
 			'value'		=> '',
 			'wrapper'	=> array(

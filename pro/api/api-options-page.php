@@ -46,7 +46,8 @@ function acf_get_valid_options_page( $page = '' ) {
 		'icon_url'		=> false,
 		'redirect'		=> true,
 		'post_id'		=> 'options',
-		'autoload'		=> false
+		'autoload'		=> false,
+		'update_button'	=> __('Update', 'acf')
 	));
 	
 	
