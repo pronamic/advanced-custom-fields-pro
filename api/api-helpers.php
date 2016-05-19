@@ -928,10 +928,6 @@ function acf_get_admin_notices()
 
 function acf_get_image_sizes() {
 	
-	// global
-	global $_wp_additional_image_sizes;
-	
-	
 	// vars
 	$sizes = array(
 		'thumbnail'	=>	__("Thumbnail",'acf'),
@@ -971,12 +967,13 @@ function acf_get_image_sizes() {
 	foreach( array_keys($sizes) as $s ) {
 		
 		// vars
-		$w = isset($_wp_additional_image_sizes[$s]['width']) ? $_wp_additional_image_sizes[$s]['width'] : get_option( "{$s}_size_w" );
-		$h = isset($_wp_additional_image_sizes[$s]['height']) ? $_wp_additional_image_sizes[$s]['height'] : get_option( "{$s}_size_h" );
+		$data = acf_get_image_size($s);
 		
-		if( $w && $h ) {
+		
+		// append
+		if( $data['width'] && $data['height'] ) {
 			
-			$sizes[ $s ] .= " ({$w} x {$h})";
+			$sizes[ $s ] .= ' (' . $data['width'] . ' x ' . $data['height'] . ')';
 			
 		}
 		
@@ -994,6 +991,28 @@ function acf_get_image_sizes() {
 	// return
 	return $sizes;
 	
+}
+
+function acf_get_image_size( $s = '' ) {
+	
+	// global
+	global $_wp_additional_image_sizes;
+	
+	
+	// rename for nicer code
+	$_sizes = $_wp_additional_image_sizes;
+	
+	
+	// vars
+	$data = array(
+		'width' 	=> isset($_sizes[$s]['width']) ? $_sizes[$s]['width'] : get_option("{$s}_size_w"),
+		'height'	=> isset($_sizes[$s]['height']) ? $_sizes[$s]['height'] : get_option("{$s}_size_h")
+	);
+	
+	
+	// return
+	return $data;
+		
 }
 
 
@@ -2894,6 +2913,7 @@ function acf_upload_file( $uploaded_file ) {
 	
 	// required
 	require_once( ABSPATH . "/wp-load.php" );
+	require_once( ABSPATH . "/wp-admin/includes/media.php" ); // video functions
 	require_once( ABSPATH . "/wp-admin/includes/file.php" );
 	require_once( ABSPATH . "/wp-admin/includes/image.php" );
 	 
@@ -3008,6 +3028,10 @@ function acf_is_screen( $id = '' ) {
 	$current_screen = get_current_screen();
 	
 	
+	// bail early if no screen
+	if( !$current_screen ) return false;
+	
+	
 	// return
 	return ($id === $current_screen->id);
 	
@@ -3073,12 +3097,12 @@ function acf_maybe_get( $array, $key, $default = null ) {
 
 function acf_get_attachment( $post ) {
 	
-	// get post
-	if ( !$post = get_post( $post ) ) {
-		
-		return false;
-		
-	}
+	// post
+	$post = get_post($post);
+	
+    
+	// bail early if no post
+	if( !$post ) return false;
 	
 	
 	// vars
@@ -3863,6 +3887,85 @@ function acf_is_row_collapsed( $field_key = '', $row_index = 0 ) {
 	
 	// collapsed class
 	return in_array($row_index, $collapsed);
+	
+}
+
+
+/*
+*  acf_get_post_thumbnail
+*
+*  This function will return a thumbail image url for a given post
+*
+*  @type	function
+*  @date	3/05/2016
+*  @since	5.3.8
+*
+*  @param	$post (obj)
+*  @param	$size (mixed)
+*  @return	(string)
+*/
+
+function acf_get_post_thumbnail( $post = null, $size = 'thumbnail' ) {
+	
+	// vars
+	$data = array(
+		'url'	=> '',
+		'type'	=> '',
+		'html'	=> ''
+	);
+	
+	
+	// post
+	$post = get_post($post);
+	
+    
+	// bail early if no post
+	if( !$post ) return $data;
+	
+	
+	// vars
+	$thumb_id = $post->ID;
+	$mime_type = acf_maybe_get(explode('/', $post->post_mime_type), 0);
+	
+	
+	// attachment
+	if( $post->post_type === 'attachment' ) {
+		
+		// change $thumb_id
+		if( $mime_type === 'audio' || $mime_type === 'video' ) {
+			
+			$thumb_id = get_post_thumbnail_id($post->ID);
+			
+		}
+	
+	// post
+	} else {
+		
+		$thumb_id = get_post_thumbnail_id($post->ID);
+			
+	}
+	
+	
+	// try url
+	$data['url'] = wp_get_attachment_image_src($thumb_id, $size);
+	$data['url'] = acf_maybe_get($data['url'], 0);
+	
+	
+	// default icon
+	if( !$data['url'] && $post->post_type === 'attachment' ) {
+		
+		$data['url'] = wp_mime_type_icon($post->ID);
+		$data['type'] = 'icon';
+		
+	}
+	
+	
+	// html
+	$data['html'] = '<img src="' . $data['url'] . '" alt="" />';
+	
+	
+	// return
+	return $data;
 	
 }
 

@@ -138,6 +138,16 @@ class acf_form_attachment {
 			'ajax'		=> 1
 		));
 		
+		
+?>
+<script type="text/javascript">
+	
+// WP saves attachment on any input change, so unload is not needed
+acf.unload.active = 0;
+
+</script>
+<?php
+		
 	}
 	
 	
@@ -160,7 +170,7 @@ class acf_form_attachment {
 		$el = 'tr';
 		$post_id = $post->ID;
 		$args = array(
-			'attachment' => 'All'
+			'attachment' => $post_id
 		);
 		
 		

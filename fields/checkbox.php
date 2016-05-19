@@ -70,10 +70,7 @@ class acf_field_checkbox extends acf_field {
 		
 		
 		// hiden input
-		acf_hidden_input(array(
-			'type'	=> 'hidden',
-			'name'	=> $field['name'],
-		));
+		acf_hidden_input( array('name' => $field['name']) );
 		
 		
 		// vars

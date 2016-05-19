@@ -252,7 +252,7 @@ class acf_form_user {
 			// title
 			if( $show_title && $field_group['style'] === 'default' ) {
 				
-				echo '<h3>' . $field_group['title'] . '</h3>';
+				echo '<h2>' . $field_group['title'] . '</h2>';
 					
 			}
 			

@@ -50,7 +50,7 @@ function acf_pro_get_remote_url( $action = '', $args = array() ) {
 	
 	
 	// vars
-	$url = "http://connect.advancedcustomfields.com/index.php?" . build_query($args);
+	$url = "https://connect.advancedcustomfields.com/index.php?" . build_query($args);
 	
 	
 	// return

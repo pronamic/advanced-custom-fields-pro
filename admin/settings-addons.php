@@ -79,7 +79,7 @@ class acf_settings_addons {
 
 
 		// load json
-        $request = wp_remote_post( 'http://assets.advancedcustomfields.com/add-ons/add-ons.json' );
+        $request = wp_remote_post( 'https://assets.advancedcustomfields.com/add-ons/add-ons.json' );
 
         // validate
         if( is_wp_error($request) || wp_remote_retrieve_response_code($request) != 200)
