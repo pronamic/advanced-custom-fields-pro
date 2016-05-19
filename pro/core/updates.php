@@ -110,27 +110,23 @@ class acf_pro_updates {
 		
 		
 		// bail early if no show_updates
-		if( !acf_get_setting('show_updates') ) {
+		if( !acf_get_setting('show_updates') ) return $transient;
+		
+		
+		// ensure is_plugin_active() exists (not on frontend)
+		if( !function_exists('is_plugin_active') ) {
 			
-			return $transient;
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			
 		}
 		
 		
 		// bail early if not a plugin (included in theme)
-		if( !is_plugin_active($basename) ) {
-			
-			return $transient;
-			
-		}
+		if( !is_plugin_active($basename) ) return $transient;
 		
 				
 		// bail early if no update available
-		if( !acf_pro_is_update_available() ) {
-			
-			return $transient;
-			
-		}
+		if( !acf_pro_is_update_available() ) return $transient;
 		
 		 
         // vars
@@ -195,11 +191,11 @@ class acf_pro_updates {
 		
 		
 		// vars
-		$m = __('To enable updates, please enter your license key on the <a href="%s">Updates</a> page. If you don\'t have a licence key, please see <a href="%s">details & pricing</a>', 'acf');
+		$m = __('To enable updates, please enter your license key on the <a href="%s">Updates</a> page. If you don\'t have a licence key, please see <a href="%s">details & pricing</a>.', 'acf');
 		
 		
 		// show message
-		echo '<br />' . sprintf( $m, admin_url('edit.php?post_type=acf-field-group&page=acf-settings-updates'), 'http://www.advancedcustomfields.com/pro');
+		echo '<br />' . sprintf( $m, admin_url('edit.php?post_type=acf-field-group&page=acf-settings-updates'), 'https://www.advancedcustomfields.com/pro');
 	
 	}
 	

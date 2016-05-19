@@ -164,7 +164,7 @@ img.acf-fw {
   color: #fff;
   padding: 5px 15px;
   position: absolute;
-  z-index: 9999;
+  z-index: 999999;
   font-size: 12px;
 }
 .acf-tooltip.top {
@@ -757,15 +757,31 @@ a.acf-icon.-cancel.grey:hover {
 /* columns (replicate post edit layout) */
 .acf-columns-2 {
   margin-right: 300px;
+  clear: both;
+  /* rtl */
+}
+html[dir="rtl"] .acf-columns-2 {
+  margin-right: 0;
+  margin-left: 300px;
 }
 .acf-columns-2 .acf-column-1 {
   float: left;
   width: 100%;
+  /* rtl */
+}
+html[dir="rtl"] .acf-columns-2 .acf-column-1 {
+  float: right;
 }
 .acf-columns-2 .acf-column-2 {
   float: right;
   margin-right: -300px;
   width: 280px;
+  /* rtl */
+}
+html[dir="rtl"] .acf-columns-2 .acf-column-2 {
+  float: left;
+  margin-right: 0;
+  margin-left: -300px;
 }
 .acf-clear {
   clear: both;
@@ -1111,7 +1127,7 @@ html[dir="rtl"] .acf-table > tbody > tr > td.order + td {
   [class^="acf-sprite-"],
   [class*=" acf-sprite-"] {
     background-image: url(../images/sprite@2x.png);
-    background-size: 500px 500px;
+    background-size: 250px 250px;
   }
   .acf-loading,
   .acf-spinner {
