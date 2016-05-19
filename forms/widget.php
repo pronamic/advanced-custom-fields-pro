@@ -32,6 +32,7 @@ class acf_form_widget {
 		
 		// vars
 		$this->preview_values = array();
+		$this->preview_reference = array();
 		$this->preview_errors = array();
 		
 		
@@ -173,11 +174,15 @@ class acf_form_widget {
 	
 	function widget_update_callback( $instance, $new_instance, $old_instance, $widget ) {
 		
+		// bail early if empty
+		if( empty($_POST['acf']) ) return $instance;
+		
+		
 		// bail early if no nonce
 		if( !acf_verify_nonce('widget') ) return $instance;
 		
 		
-		// customizer
+		// customizer autosave preview
 		if( !empty($_POST['wp_customize']) ) {
 			
 			return $this->customizer_widget_update_callback($instance, $new_instance, $old_instance, $widget);
@@ -217,15 +222,6 @@ class acf_form_widget {
 	
 	function customizer_widget_update_callback( $instance, $new_instance, $old_instance, $widget ) {
 		
-		// add preview_values reference for later use in load_value filter
-		// WP will re-generate the widget form HTML, and we need to load the $_POST data, not the DB data
-		$this->preview_values[ "widget_{$widget->id}" ] = $_POST['acf'];
-		
-		
-		// add filter
-		add_filter('acf/load_value', array($this, 'load_value'), 10, 3);
-		
-		
 		// bail early if not valid
 		if( !acf_validate_save_post() ) {
 			
@@ -256,9 +252,34 @@ class acf_form_widget {
 			
 		} else {
 			
+			$instance['acf'] = array(
+				'ID'		=> 'widget_' . $widget->id,
+				'values'	=> false,
+				'reference'	=> array()
+			);
+			
+			
 			// append acf $_POST data to instance
 			// this allows preview JS data to contain acf values
-			$instance['acf'] = $_POST['acf'];
+			$instance['acf']['values'] = $_POST['acf'];
+			
+			
+			// backup name => key reference
+			// this will allow the customizer preview to correctly load the field when attempting to run acf_load_value and acf_format_value functions on newly added widgets 
+			foreach( $_POST['acf'] as $k => $v ) {
+				
+				// get field
+				$field = acf_get_field( $k );
+				
+				
+				// continue if no field
+				if( !$field ) continue;
+				
+				
+				// update
+				$instance['acf']['reference'][ $field['name'] ] = $field['key'];
+				
+			}
 			
 		}
 		
@@ -305,15 +326,11 @@ class acf_form_widget {
 			
 			
 			// get value
-			$value = $setting->post_value();
+			$value = $setting->post_value();	
 			
 			
-			// get id from widget_text[2] to widget_text-2
-			$setting->acf_id = str_replace(array('[', ']'), array('-', ''), $setting->id);
-			
-			
-			// get acf value
-			$setting->acf_value = acf_maybe_get($value, 'acf');
+			// set data	
+			$setting->acf = acf_maybe_get($value, 'acf');
 			
 			
 			// append
@@ -358,12 +375,13 @@ class acf_form_widget {
 		// append values
 		foreach( $widgets as $widget ) {
 			
-			// bail early if no acf_value
-			if( !$widget->acf_value ) continue;
+			// bail early if no acf
+			if( empty($widget->acf) ) continue;
 			
 			
 			// append acf_value to preview_values
-			$this->preview_values[ $widget->acf_id ] = $widget->acf_value;
+			$this->preview_values[ $widget->acf['ID'] ] = $widget->acf['values'];
+			$this->preview_reference[ $widget->acf['ID'] ] = $widget->acf['reference'];
 			
 		}
 		
@@ -373,7 +391,40 @@ class acf_form_widget {
 		
 		
 		// add filter
-		add_filter('acf/load_value', array($this, 'load_value'), 10, 3);
+		add_filter('acf/load_value', 			array($this, 'load_value'), 10, 3);
+		add_filter('acf/get_field_reference', 	array($this, 'get_field_reference'), 10, 3);
+		
+	}
+	
+	
+	/*
+	*  get_field_reference
+	*
+	*  This function will return a field_key for a given field name + post_id
+	*  Normally, ACF would lookup the DB fro this connection, but a new preview widget has not yet saved anything to the DB
+	*
+	*  @type	function
+	*  @date	12/05/2016
+	*  @since	5.3.8
+	*
+	*  @param	$field_key (string)
+	*  @param	$field_name (string)
+	*  @param	$post_id (mixed)
+	*  @return	$field_key
+	*/
+	
+	function get_field_reference( $field_key, $field_name, $post_id ) {
+		
+		// look for reference
+		if( isset($this->preview_reference[ $post_id ][ $field_name ]) ) {
+			
+			$field_key = $this->preview_reference[ $post_id ][ $field_name ];
+			
+		}
+		
+		
+		// return
+		return $field_key;
 		
 	}
 	
@@ -393,10 +444,21 @@ class acf_form_widget {
 	
 	function load_value( $value, $post_id, $field ) {
 		
+		// acf/load_value filter is run first (before type, name, key)
+		// use this filter to append to the key filter and ensure this is run last
+		// could use set_cache in the future to remove this load_filter completley
+		// but don't want to clog up cache with multiple widget's values
+		
+		
 		// look for value
 		if( isset($this->preview_values[ $post_id ][ $field['key'] ]) ) {
 			
-			$value = $this->preview_values[ $post_id ][ $field['key'] ];
+			// add filter to override the $value
+			add_filter('acf/load_value/key='.$field['key'], array($this, 'load_value_2'), 99, 3);
+			
+			
+			// return null and prevent any DB logic from field type functions
+			return null;
 			
 		}
 		
@@ -405,6 +467,23 @@ class acf_form_widget {
 		return $value;
 		
 	}
+	
+	
+	function load_value_2( $value, $post_id, $field ) {
+		
+		// look for value
+		$value = $this->preview_values[ $post_id ][ $field['key'] ];
+			
+		
+		// remove this filter (only run once)
+		remove_filter('acf/load_value/key='.$field['key'], array($this, 'load_value_2'), 99, 3);
+		
+		
+		// return
+		return $value;
+		
+	}
+	
 	
 	
 	/*
@@ -436,14 +515,14 @@ class acf_form_widget {
 		foreach( $widgets as $widget ) {
 			
 			// bail early if no acf_value
-			if( !$widget->acf_value ) continue;
+			if( !$widget->acf ) continue;
 			
 			// fake post data
-			$_POST['acf'] = $widget->acf_value;
+			$_POST['acf'] = $widget->acf['values'];
 			
 			
 			// save
-			acf_save_post( $widget->acf_id );
+			acf_save_post( $widget->acf['ID'] );
 			
 			
 			// get widget base

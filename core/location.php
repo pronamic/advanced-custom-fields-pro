@@ -999,38 +999,24 @@ class acf_location {
 		
 		
 		// validate
-		if( ! $attachment ) {
-			
-			return false;
-			
-		}
+		if( !$attachment ) return false;
 		
 		
-		// compare
-		if( $rule['operator'] == "==" ) {
-			
-        	$match = ( $attachment == $rule['value'] );
-        	
-        	// override for "all"
-	        if( $rule['value'] == "all" ) {
-	        
-				$match = true;
-				
-			}
-			
-        } elseif( $rule['operator'] == "!=" ) {
-        	
-        	$match = ( $attachment != $rule['value'] );
-        		
-        	// override for "all"
-	        if( $rule['value'] == "all" ) {
-	        
-				$match = false;
-				
-			}
-			
-        }
+		// match
+		$match = ( $attachment === $rule['value'] );
+		
+		
+		// override for "all"
+        if( $rule['value'] == "all" ) $match = true;
+		
+		
+		// reverse if 'not equal to'
+        if( $rule['operator'] === '!=' ) {
+	        	
+        	$match = !$match;
         
+        }
+                
         
         // return
         return $match;
@@ -1106,36 +1092,22 @@ class acf_location {
 		
 		
 		// validate
-		if( ! $widget ) {
-			
-			return false;
-			
-		}
+		if( !$widget ) return false;
 		
 		
-		// compare
-		if( $rule['operator'] == "==" ) {
-			
-        	$match = ( $widget == $rule['value'] );
-        	
-        	// override for "all"
-	        if( $rule['value'] == "all" ) {
-	        
-				$match = true;
-				
-			}
-			
-        } elseif( $rule['operator'] == "!=" ) {
-        	
-        	$match = ( $widget != $rule['value'] );
-        		
-        	// override for "all"
-	        if( $rule['value'] == "all" ) {
-	        
-				$match = false;
-				
-			}
-			
+		// match
+		$match = ( $widget === $rule['value'] );
+		
+		
+		// override for "all"
+        if( $rule['value'] == "all" ) $match = true;
+		
+		
+		// reverse if 'not equal to'
+        if( $rule['operator'] === '!=' ) {
+	        	
+        	$match = !$match;
+        
         }
         
                 

@@ -24,17 +24,17 @@ extract( $args );
 	
 	<div class="feature-section acf-three-col">
 		<div>
-			<img src="http://assets.advancedcustomfields.com/info/5.0.0/select2.png">
+			<img src="https://assets.advancedcustomfields.com/info/5.0.0/select2.png">
 			<h3><?php _e("Improved Usability", 'acf'); ?></h3>
 			<p><?php _e("Including the popular Select2 library has improved both usability and speed across a number of field types including post object, page link, taxonomy and select.", 'acf'); ?></p>
 		</div>
 		<div>
-			<img src="http://assets.advancedcustomfields.com/info/5.0.0/design.png">
+			<img src="https://assets.advancedcustomfields.com/info/5.0.0/design.png">
 			<h3><?php _e("Improved Design", 'acf'); ?></h3>
 			<p><?php _e("Many fields have undergone a visual refresh to make ACF look better than ever! Noticeable changes are seen on the gallery, relationship and oEmbed (new) fields!", 'acf'); ?></p>
 		</div>
 		<div>
-			<img src="http://assets.advancedcustomfields.com/info/5.0.0/sub-fields.png">
+			<img src="https://assets.advancedcustomfields.com/info/5.0.0/sub-fields.png">
 			<h3><?php _e("Improved Data", 'acf'); ?></h3>
 			<p><?php _e("Redesigning the data architecture has allowed sub fields to live independently from their parents. This allows you to drag and drop fields in and out of parent fields!", 'acf'); ?></p>
 		</div>
@@ -49,19 +49,19 @@ extract( $args );
 		<div>
 			<h3><?php _e("Introducing ACF PRO", 'acf'); ?></h3>
 			<p><?php _e("We're changing the way premium functionality is delivered in an exciting way!", 'acf'); ?></p>
-			<p><?php printf(__('All 4 premium add-ons have been combined into a new <a href="%s">Pro version of ACF</a>. With both personal and developer licenses available, premium functionality is more affordable and accessible than ever before!', 'acf'), esc_url('http://www.advancedcustomfields.com/pro')); ?></p>
+			<p><?php printf(__('All 4 premium add-ons have been combined into a new <a href="%s">Pro version of ACF</a>. With both personal and developer licenses available, premium functionality is more affordable and accessible than ever before!', 'acf'), esc_url('https://www.advancedcustomfields.com/pro')); ?></p>
 		</div>
 		
 		<div>
 			<h3><?php _e("Powerful Features", 'acf'); ?></h3>
 			<p><?php _e("ACF PRO contains powerful features such as repeatable data, flexible content layouts, a beautiful gallery field and the ability to create extra admin options pages!", 'acf'); ?></p>
-			<p><?php printf(__('Read more about <a href="%s">ACF PRO features</a>.', 'acf'), esc_url('http://www.advancedcustomfields.com/pro')); ?></p>
+			<p><?php printf(__('Read more about <a href="%s">ACF PRO features</a>.', 'acf'), esc_url('https://www.advancedcustomfields.com/pro')); ?></p>
 		</div>
 		
 		<div>
 			<h3><?php _e("Easy Upgrading", 'acf'); ?></h3>
-			<p><?php printf(__('To help make upgrading easy, <a href="%s">login to your store account</a> and claim a free copy of ACF PRO!', 'acf'), esc_url('http://www.advancedcustomfields.com/my-account/')); ?></p>
-			<p><?php printf(__('We also wrote an <a href="%s">upgrade guide</a> to answer any questions, but if you do have one, please contact our support team via the <a href="%s">help desk</a>', 'acf'), esc_url('http://www.advancedcustomfields.com/resources/updates/upgrading-v4-v5/'), esc_url('http://support.advancedcustomfields.com')); ?>
+			<p><?php printf(__('To help make upgrading easy, <a href="%s">login to your store account</a> and claim a free copy of ACF PRO!', 'acf'), esc_url('https://www.advancedcustomfields.com/my-account/')); ?></p>
+			<p><?php printf(__('We also wrote an <a href="%s">upgrade guide</a> to answer any questions, but if you do have one, please contact our support team via the <a href="%s">help desk</a>', 'acf'), esc_url('https://www.advancedcustomfields.com/resources/updates/upgrading-v4-v5/'), esc_url('https://support.advancedcustomfields.com')); ?>
 			
 		</div>
 					

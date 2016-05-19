@@ -215,7 +215,7 @@ class acf_form_taxonomy {
 				
 				?>
 				<?php if( $field_group['style'] == 'default' ): ?>
-					<h3><?php echo $field_group['title']; ?></h3>
+					<h2><?php echo $field_group['title']; ?></h2>
 				<?php endif; ?>
 				<table class="form-table">
 					<tbody>

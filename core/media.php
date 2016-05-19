@@ -25,6 +25,7 @@ class acf_media {
 		
 		// filters
 		add_filter('wp_handle_upload_prefilter', 	array($this, 'handle_upload_prefilter'), 10, 1);
+		add_filter('acf/input/admin_l10n',			array($this, 'acf_input_admin_l10n'), 10, 1);
 		
 		
 		// ajax
@@ -33,6 +34,37 @@ class acf_media {
 	}
 	
 	
+	/*
+	*  acf_input_admin_l10n
+	*
+	*  This function will append l10n strings for JS use
+	*
+	*  @type	function
+	*  @date	11/04/2016
+	*  @since	5.3.8
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function acf_input_admin_l10n( $l10n ) {
+		
+		// append
+		$l10n['media'] = array(
+			'select'		=> __("Select",'acf'),
+			'edit'			=> __("Edit",'acf'),
+			'update'		=> __("Update",'acf'),
+			'uploadedTo'	=> __("Uploaded to this post",'acf'),
+			'default_icon'	=> wp_mime_type_icon()
+		);
+		
+		
+		// return
+		return $l10n;
+		
+	}
+	
+		
 	/*
 	*  handle_upload_prefilter
 	*

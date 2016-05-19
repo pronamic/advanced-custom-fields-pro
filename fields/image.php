@@ -106,7 +106,7 @@ class acf_field_image extends acf_field {
 		
 		
 		// has value?
-		if( $field['value'] && is_numeric($field['value']) ) {
+		if( $field['value'] ) {
 			
 			// update vars
 			$url = wp_get_attachment_image_src($field['value'], $field['preview_size']);
@@ -114,28 +114,34 @@ class acf_field_image extends acf_field {
 			
 			
 			// url exists
+			if( $url ) $url = $url[0];
+			
+			
+			// url exists
 			if( $url ) {
 				
-				$url = $url[0];
-			
 				$div['class'] .= ' has-value';
 			
 			}
 						
 		}
 		
+		
+		// get size of preview value
+		$size = acf_get_image_size($field['preview_size']);
+		
 ?>
 <div <?php acf_esc_attr_e( $div ); ?>>
 	<div class="acf-hidden">
-		<?php acf_hidden_input(array( 'name' => $field['name'], 'value' => $field['value'], 'data-name' => 'id' )); ?>
+		<?php acf_hidden_input(array( 'name' => $field['name'], 'value' => $field['value'] )); ?>
 	</div>
-	<div class="view show-if-value acf-soh">
+	<div class="view show-if-value acf-soh" <?php if( $size['width'] ) echo 'style="max-width: '.$size['width'].'px"'; ?>>
 		<img data-name="image" src="<?php echo $url; ?>" alt="<?php echo $alt; ?>"/>
 		<ul class="acf-hl acf-soh-target">
 			<?php if( $uploader != 'basic' ): ?>
-				<li><a class="acf-icon -pencil dark" data-name="edit" href="#"></a></li>
+				<li><a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php _e('Edit', 'acf'); ?>"></a></li>
 			<?php endif; ?>
-			<li><a class="acf-icon -cancel dark" data-name="remove" href="#"></a></li>
+			<li><a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php _e('Remove', 'acf'); ?>"></a></li>
 		</ul>
 	</div>
 	<div class="view hide-if-value">
@@ -330,19 +336,11 @@ class acf_field_image extends acf_field {
 	function format_value( $value, $post_id, $field ) {
 		
 		// bail early if no value
-		if( empty($value) ) {
-		
-			return false;
-			
-		}
+		if( empty($value) ) return false;
 		
 		
 		// bail early if not numeric (error message)
-		if( !is_numeric($value) ) {
-			
-			return false;
-				
-		}
+		if( !is_numeric($value) ) return false;
 		
 		
 		// convert to int
@@ -386,39 +384,7 @@ class acf_field_image extends acf_field {
 	    return($vars);
 	    
 	}
-	
-	
-	/*
-	*  image_size_names_choose
-	*
-	*  @description: 
-	*  @since: 3.5.7
-	*  @created: 13/01/13
-	*/
-	
-	/*
-function image_size_names_choose( $sizes )
-	{
-		global $_wp_additional_image_sizes;
-			
-		if( $_wp_additional_image_sizes )
-		{
-			foreach( $_wp_additional_image_sizes as $k => $v )
-			{
-				$title = $k;
-				$title = str_replace('-', ' ', $title);
-				$title = str_replace('_', ' ', $title);
-				$title = ucwords( $title );
-				
-				$sizes[ $k ] = $title;
-			}
-			// foreach( $image_sizes as $image_size )
-		}
 		
-        return $sizes;
-	}
-*/
-	
 	
 	/*
 	*  wp_prepare_attachment_for_js
@@ -497,26 +463,22 @@ function image_size_names_choose( $sizes )
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// array?
-		if( is_array($value) && isset($value['ID']) ) {
+		// numeric
+		if( is_numeric($value) ) return $value;
 		
-			return $value['ID'];	
-			
-		}
+		
+		// array?
+		if( is_array($value) && isset($value['ID']) ) return $value['ID'];
 		
 		
 		// object?
-		if( is_object($value) && isset($value->ID) ) {
-		
-			return $value->ID;
-			
-		}
+		if( is_object($value) && isset($value->ID) ) return $value->ID;
 		
 		
 		// return
 		return $value;
+		
 	}
-	
 	
 }
 
