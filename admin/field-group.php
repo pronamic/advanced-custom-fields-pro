@@ -99,21 +99,27 @@ class acf_admin_field_group {
 	function current_screen() {
 		
 		// validate screen
-		if( !acf_is_screen('acf-field-group') ) {
-		
-			return;
-			
-		}
+		if( !acf_is_screen('acf-field-group') ) return;
 		
 		
 		// disable JSON to avoid conflicts between DB and JSON
 		acf_disable_local();
 		
 		
+		// enqueue scripts
+		acf_enqueue_scripts();
+		
+		
 		// actions
-		add_action('admin_enqueue_scripts',		array($this,'admin_enqueue_scripts'), 20);
-		add_action('admin_head', 				array($this,'admin_head'), 20);
-		add_action('admin_footer', 				array($this,'admin_footer'), 20);
+		add_action('acf/input/admin_enqueue_scripts',		array($this, 'admin_enqueue_scripts'));
+		add_action('acf/input/admin_head', 					array($this, 'admin_head'));
+		add_action('acf/input/form_data', 					array($this, 'form_data'));
+		add_action('acf/input/admin_footer', 				array($this, 'admin_footer'));
+		add_action('acf/input/admin_footer_js',				array($this, 'admin_footer_js'));
+		
+		
+		// filters
+		add_filter('acf/input/admin_l10n',					array($this, 'admin_l10n'));
 		
 	}
 	
@@ -187,10 +193,110 @@ class acf_admin_field_group {
 		add_filter('screen_settings',				array($this, 'screen_settings'), 10, 1);
 		
 		
-		// action for 3rd party customisation
+		// 3rd party hook
 		do_action('acf/field_group/admin_head');
 		
 	}
+	
+	
+	/*
+	*  edit_form_after_title
+	*
+	*  This action will allow ACF to render metaboxes after the title
+	*
+	*  @type	action
+	*  @date	17/08/13
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function edit_form_after_title() {
+		
+		// globals
+		global $post;
+		
+		
+		// render post data
+		acf_form_data(array( 
+			'post_id'	=> $post->post_id, 
+			'nonce'		=> 'field_group',
+			'ajax'		=> 0
+		));
+
+	}
+	
+	
+	/*
+	*  form_data
+	*
+	*  This function will add extra HTML to the acf form data element
+	*
+	*  @type	function
+	*  @date	31/05/2016
+	*  @since	5.3.8
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function form_data( $args ) {
+		
+		// add extra inputs
+		?>
+		<input type="hidden" name="_acf_delete_fields" value="0" id="input-delete-fields" />
+		<?php
+		
+		
+		// do action	
+		do_action('acf/field_group/form_data', $args);
+		
+	}
+	
+	
+	/*
+	*  admin_l10n
+	*
+	*  This function will append extra l10n strings to the acf JS object
+	*
+	*  @type	function
+	*  @date	31/05/2016
+	*  @since	5.3.8
+	*
+	*  @param	$l10n (array)
+	*  @return	$l10n
+	*/
+	
+	function admin_l10n( $l10n ) {
+		
+		// merge in new strings
+		$l10n = array_merge($l10n, array(
+			'move_to_trash'			=> __("Move to trash. Are you sure?",'acf'),
+			'checked'				=> __("checked",'acf'),
+			'no_fields'				=> __("No toggle fields available",'acf'),
+			'title_is_required'		=> __("Field group title is required",'acf'),
+			'copy'					=> __("copy",'acf'),
+			'or'					=> __("or",'acf'),
+			'fields'				=> __("Fields",'acf'),
+			'parent_fields'			=> __("Parent fields",'acf'),
+			'sibling_fields'		=> __("Sibling fields",'acf'),
+			'move_field'			=> __("Move Custom Field",'acf'),
+			'move_field_warning'	=> __("This field cannot be moved until its changes have been saved",'acf'),
+			'null'					=> __("Null",'acf'),
+			'unload'				=> __('The changes you made will be lost if you navigate away from this page','acf'),
+			'field_name_start'		=> __('The string "field_" may not be used at the start of a field name','acf'),
+		));
+		
+		
+		// 3rd party hook
+		$l10n = apply_filters('acf/field_group/admin_l10n', $l10n);
+		
+		
+		// return
+		return $l10n;
+		
+	}
+	
 	
 	
 	/*
@@ -208,56 +314,29 @@ class acf_admin_field_group {
 	
 	function admin_footer() {
 		
-		// global
-		global $post;
-		
-		
-		// vars
-		$l10n = apply_filters('acf/field_group/admin_l10n', array(
-			'move_to_trash'			=> __("Move to trash. Are you sure?",'acf'),
-			'checked'				=> __("checked",'acf'),
-			'no_fields'				=> __("No toggle fields available",'acf'),
-			'title_is_required'		=> __("Field group title is required",'acf'),
-			'copy'					=> __("copy",'acf'),
-			'or'					=> __("or",'acf'),
-			'fields'				=> __("Fields",'acf'),
-			'parent_fields'			=> __("Parent fields",'acf'),
-			'sibling_fields'		=> __("Sibling fields",'acf'),
-			'move_field'			=> __("Move Custom Field",'acf'),
-			'move_field_warning'	=> __("This field cannot be moved until its changes have been saved",'acf'),
-			'null'					=> __("Null",'acf'),
-			'unload'				=> __('The changes you made will be lost if you navigate away from this page','acf'),
-			'field_name_start'		=> __('The string "field_" may not be used at the start of a field name','acf'),
-		));
-		
-		$o = array(
-			'post_id'				=> $post->ID,
-			'nonce'					=> wp_create_nonce( 'acf_nonce' ),
-			'admin_url'				=> admin_url(),
-			'ajaxurl'				=> admin_url( 'admin-ajax.php' ),
-			'validation'			=> 0,
-		);
-		
-		
-		?>
-		<script type="text/javascript">
-			acf = acf || {};
-			acf.o = <?php echo json_encode($o); ?>;
-			acf.l10n = <?php echo json_encode($l10n); ?>;
-			<?php do_action('acf/field_group/admin_footer_js'); ?>
-		</script>
-		<?php
-		
-		
-		// action
+		// 3rd party hook
 		do_action('acf/field_group/admin_footer');
 		
+	}
+	
+	
+	/*
+	*  admin_footer_js
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	31/05/2016
+	*  @since	5.3.8
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function admin_footer_js() {
 		
-		?>
-		<script type="text/javascript">
-			acf.do_action('prepare');
-		</script>
-		<?php
+		// 3rd party hook
+		do_action('acf/field_group/admin_footer_js');
 		
 	}
 	
@@ -334,31 +413,6 @@ class acf_admin_field_group {
 </script>
 <?php	
 		
-	}
-	
-	
-	/*
-	*  edit_form_after_title
-	*
-	*  This action will allow ACF to render metaboxes after the title
-	*
-	*  @type	action
-	*  @date	17/08/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function edit_form_after_title() {
-		
-		?>
-		<div id="acf-form-data" class="acf-hidden">
-			<input type="hidden" name="_acfnonce" value="<?php echo wp_create_nonce( 'field_group' ); ?>" />
-			<input type="hidden" name="_acf_delete_fields" value="0" id="input-delete-fields" />
-			<?php do_action('acf/field_group/form_data'); ?>
-		</div>
-		<?php
-
 	}
 	
 	

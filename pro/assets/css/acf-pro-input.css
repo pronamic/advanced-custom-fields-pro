@@ -3,68 +3,89 @@
 *  Repeater
 *
 *---------------------------------------------------------------------------------------------*/
-.acf-repeater .acf-row.acf-clone {
-  display: none !important;
+.acf-repeater {
+  /* table */
+  /* row handle (add/remove) */
+  /* add in spacer to th (force correct width) */
+  /* row */
+  /* sortable */
+  /* layouts */
+  /*
+	&.-row > table > tbody > tr:before,
+	&.-block > table > tbody > tr:before {
+		content: "";
+		display: table-row;
+		height: 2px;
+		background: #f00;
+	}
+*/
+  /* empty */
+  /* collapsed */
+  /* collapsed (block layout) */
+  /* collapsed (table layout) */
 }
 .acf-repeater > table {
   margin: 0 0 8px;
   background: #F9F9F9;
 }
-/* handle */
-.acf-row-handle {
+.acf-repeater .acf-row-handle {
   width: 16px;
   text-align: center !important;
   vertical-align: middle !important;
   position: relative;
+  /* icons */
+  /* .order */
+  /* remove */
 }
-th.acf-row-handle span {
-  width: 16px;
-  display: block;
-  height: 1px;
-}
-/* handle icons */
-.acf-row-handle .acf-icon {
-  display: block;
+.acf-repeater .acf-row-handle .acf-icon {
+  display: none;
   position: absolute;
-  -webkit-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
-  -moz-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
-  -o-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
-  transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
-  visibility: hidden;
-  opacity: 0;
   top: 0;
   margin: -8px 0 0 -2px;
+  /* minus icon */
 }
-.acf-row-handle .acf-icon.-minus {
+.acf-repeater .acf-row-handle .acf-icon.-minus {
   top: 50%;
+  /* ie fix */
 }
-.acf-row:hover > .acf-row-handle .acf-icon {
-  -webkit-transition-delay: 0s;
-  -moz-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-  visibility: visible;
-  opacity: 1;
+body.browser-msie .acf-repeater .acf-row-handle .acf-icon.-minus {
+  top: 25px;
 }
-/* order */
-.acf-row-handle.order {
+.acf-repeater .acf-row-handle.order {
   background: #f4f4f4;
   cursor: move;
   color: #aaa;
   text-shadow: #fff 0 1px 0;
 }
-.acf-row-handle.order:hover {
+.acf-repeater .acf-row-handle.order:hover {
   color: #666;
 }
-.acf-row-handle.order + td {
+.acf-repeater .acf-row-handle.order + td {
   border-left-color: #DFDFDF;
 }
-/* remove */
-.acf-row-handle.remove {
+.acf-repeater .acf-row-handle.remove {
   background: #F9F9F9;
   border-left-color: #DFDFDF;
 }
-/* sortable */
+.acf-repeater th.acf-row-handle:before {
+  content: "";
+  width: 16px;
+  display: block;
+  height: 1px;
+}
+.acf-repeater .acf-row {
+  /* hide clone */
+  /* hover */
+}
+.acf-repeater .acf-row.acf-clone {
+  display: none !important;
+}
+.acf-repeater .acf-row:hover {
+  /* icons */
+}
+.acf-repeater .acf-row:hover > .acf-row-handle .acf-icon {
+  display: block;
+}
 .acf-repeater > table > tbody > tr.ui-sortable-helper {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
@@ -74,12 +95,10 @@ th.acf-row-handle span {
 .acf-repeater > table > tbody > tr.ui-sortable-placeholder td {
   background: #F9F9F9;
 }
-/* layouts */
 .acf-repeater.-row > table > tbody > tr > td,
 .acf-repeater.-block > table > tbody > tr > td {
   border-top-color: #E1E1E1;
 }
-/* empty */
 .acf-repeater.-empty > table {
   border-bottom: 0 none;
 }
@@ -87,21 +106,18 @@ th.acf-row-handle span {
 .acf-repeater.-empty.-block > table {
   display: none;
 }
-/* collapsed */
 .acf-repeater .acf-row.-collapsed > .acf-field {
   display: none !important;
 }
 .acf-repeater .acf-row.-collapsed > td.acf-field.-collapsed-target {
   display: table-cell !important;
 }
-/* collapsed (block layout) */
 .acf-repeater .acf-row.-collapsed > .acf-fields > * {
   display: none !important;
 }
 .acf-repeater .acf-row.-collapsed > .acf-fields > .acf-field.-collapsed-target {
   display: block !important;
 }
-/* collapsed (table layout) */
 .acf-repeater.-table .acf-row.-collapsed .acf-field.-collapsed-target {
   border-left-color: #dfdfdf;
 }

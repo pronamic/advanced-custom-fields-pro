@@ -128,6 +128,7 @@ class acf_loop {
 			'field'		=> false,
 			'i'			=> -1,
 			'post_id'	=> 0,
+			'key'		=> ''
 		));
 		
 		

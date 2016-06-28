@@ -106,6 +106,35 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.3.9.2 =
+* Time Picker field: Added compatibility with previous 3rd party field settings
+* Core: Fixed JS error setting l10n for Select2 with 3rd party libraries
+
+= 5.3.9.1 =
+* Time Picker field: Fixed bug causing value to appear as current time
+* API: Fixed bug causing `have_rows()` to fail when using an object as $post_id parameter
+
+= 5.3.9 =
+* Date Time Picker field: Added new field
+* Time Picker field: Added new field
+* Taxonomy field: Fixed bug preventing saved terms from being loaded during save/update actions
+* API: Added new function `the_row_index()` to output the current row number (1,2,3)
+* Core: Improved import tool to update existing field groups
+* Core: Added upgrade_notice message to plugins page for future announcements
+* Core: Fixed bug where updating value did not clear persistent cache
+* Core: Added Select2 JS strings to .pot for translation
+* Core: Added Date and Time picker JS strings to .pot for translation
+* Core: Improved compatibility with WPML during AJAX calls
+* Core: Fixed bug preventing access to network database upgrade page
+* Core: Minor fixes and improvements
+* Language: Updated Swedish translation - thanks to Jonathan de Jong
+* Language: Updated Russian translation - thanks to Andy Toniyevych 
+* Language: Updated Portuguese translation - thanks to Pedro Mendonca
+* Language: Updated Polish translation - thanks to Michal Lepiarz
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Updated German translation - thanks to Ralf Koller
+* Language: Added Arabic translation - thanks to Adil el hallaoui
+
 = 5.3.8.1 =
 * Image field: Fixed JS bug causing errors when 'Uploaded to post' library setting is checked
 * File field: Same as above

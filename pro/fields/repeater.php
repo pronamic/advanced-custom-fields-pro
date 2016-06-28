@@ -241,7 +241,7 @@ class acf_field_repeater extends acf_field {
 		<thead>
 			<tr>
 				<?php if( $show_order ): ?>
-					<th class="acf-row-handle"><span></span></th>
+					<th class="acf-row-handle"></th>
 				<?php endif; ?>
 				
 				<?php foreach( $field['sub_fields'] as $sub_field ): 
@@ -274,7 +274,7 @@ class acf_field_repeater extends acf_field {
 				<?php endforeach; ?>
 
 				<?php if( $show_remove ): ?>
-					<th class="acf-row-handle"><span></span></th>
+					<th class="acf-row-handle"></th>
 				<?php endif; ?>
 			</tr>
 		</thead>

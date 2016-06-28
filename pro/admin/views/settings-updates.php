@@ -16,7 +16,7 @@ $readonly = $active ? 1 : 0;
 	
 	<h1><?php _e('Updates', 'acf'); ?></h1>
 	
-	<div class="acf-box">
+	<div class="acf-box" id="acf-license-information">
 		<div class="title">
 			<h3><?php _e('License Information', 'acf'); ?></h3>
 		</div>
@@ -60,7 +60,7 @@ $readonly = $active ? 1 : 0;
 		
 	</div>
 	
-	<div class="acf-box">
+	<div class="acf-box" id="acf-update-information">
 		<div class="title">
 			<h3><?php _e('Update Information', 'acf'); ?></h3>
 		</div>
@@ -138,5 +138,9 @@ $readonly = $active ? 1 : 0;
 <style type="text/css">
 	#acf_pro_licence {
 		width: 75%;
+	}
+	
+	#acf-update-information td h4 {
+		display: none;
 	}
 </style>

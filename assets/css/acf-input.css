@@ -343,11 +343,10 @@ html[dir="rtl"] .acf-c0 {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 14px;
-  line-height: 15px;
+  line-height: 1.4;
 }
 .acf-field textarea {
   resize: vertical;
-  line-height: 1.4em;
 }
 /*---------------------------------------------------------------------------------------------
 *
@@ -1407,6 +1406,23 @@ html[dir="rtl"] .acf-file-uploader .file-info ul {
 .acf-ui-datepicker .ui-datepicker {
   z-index: 999999999 !important;
 }
+.acf-ui-datepicker .ui-datepicker .ui-widget-header a {
+  cursor: pointer;
+  transition: none;
+}
+/* fix highlight state overriding hover / active */
+.acf-ui-datepicker .ui-state-highlight.ui-state-hover {
+  border: 1px solid #98b7e8 !important;
+  background: #98b7e8 !important;
+  font-weight: normal !important;
+  color: #ffffff !important;
+}
+.acf-ui-datepicker .ui-state-highlight.ui-state-active {
+  border: 1px solid #3875d7 !important;
+  background: #3875d7 !important;
+  font-weight: normal !important;
+  color: #ffffff !important;
+}
 /*---------------------------------------------------------------------------------------------
 *
 *	Taxonomy
@@ -1766,7 +1782,7 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
 .acf-media-modal.-edit .media-frame-content {
   top: 56px;
 }
-body.acf-wp-4 .acf-media-modal.-edit .media-frame-content {
+body.major-4 .acf-media-modal.-edit .media-frame-content {
   top: 50px;
 }
 .acf-media-modal.-edit .media-frame-title {

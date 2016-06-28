@@ -35,8 +35,7 @@ class acf_wpml_compatibility {
 		
 		// actions
 		add_action('acf/verify_ajax',					array($this, 'verify_ajax'));
-		add_action('acf/field_group/admin_head',		array($this, 'admin_head'));
-		add_action('acf/input/admin_head',				array($this, 'admin_head'));
+		add_action('acf/input/admin_footer',			array($this, 'admin_footer'));
 		
 		
 		// bail early if not transaltable
@@ -405,7 +404,7 @@ class acf_wpml_compatibility {
 	
 	
 	/*
-	*  admin_head
+	*  admin_footer
 	*
 	*  description
 	*
@@ -417,23 +416,29 @@ class acf_wpml_compatibility {
 	*  @return	$post_id (int)
 	*/
 	
-	function admin_head() {
+	function admin_footer() {
 		
 		?>
 		<script type="text/javascript">
+		(function($) {
+			
+			// bail ealry if no lang
+			if( typeof icl_this_lang == 'undefined' ) return;
+			
+			
+			// add filter
+			acf.add_filter('prepare_for_ajax', function( args ){
 				
-		acf.add_filter('prepare_for_ajax', function( args ){
-			
-			if( typeof icl_this_lang != 'undefined' ) {
-			
-				args.lang = icl_this_lang;
+				// append
+				args.lang = '<?php echo $this->lang; ?>';
 				
-			}
+				
+				// return
+				return args;
+				
+			});
 			
-			return args;
-			
-		});
-		
+		})(jQuery);	
 		</script>
 		<?php
 		
@@ -443,14 +448,14 @@ class acf_wpml_compatibility {
 	/*
 	*  verify_ajax
 	*
-	*  description
+	*  This function will help avoid WPML conflicts when performing an ACF ajax request
 	*
 	*  @type	function
 	*  @date	7/08/2015
 	*  @since	5.2.3
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	n/a
+	*  @return	n/a
 	*/
 	
 	function verify_ajax() {
@@ -459,21 +464,23 @@ class acf_wpml_compatibility {
 		global $sitepress;
 		
 		
-		// switch lang
-		if( isset($_REQUEST['lang']) ) {
-			
-			$sitepress->switch_lang( $_REQUEST['lang'] );
-			
-		}
+		// vars
+		$lang = acf_maybe_get($_POST, 'lang');
 		
+		
+		// bail early if no lang
+		if( !$lang ) return;
+		
+		
+		// switch lang
+		// this will allow get_posts to work as expected (load posts from the correct language)
+		$sitepress->switch_lang( $_REQUEST['lang'] );
+			
 		
 		// remove post_id
-		// WPML is getting confused when this is not a numeric value ('options')
-		if( isset($_REQUEST['post_id']) && !is_numeric($_REQUEST['post_id']) ) {
-			
-			unset( $_REQUEST['post_id'] );
-				
-		}
+		// this will prevent WPML from setting the current language based on the current post being edited
+		// in theory, WPML is correct, however, when adding a new post, the post's lang is not found and will default to 'en'
+		unset( $_REQUEST['post_id'] );
 		
 	}
 	
