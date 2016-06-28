@@ -489,6 +489,10 @@
 			var $tr = e.$el.closest('.acf-row');
 			
 			
+			// reference
+			var $field = this.$field;
+			
+			
 			// open row
 			if( $tr.hasClass('-collapsed') ) {
 				
@@ -506,7 +510,7 @@
 			
 			
 			// sync
-			this.sync();
+			this.set('$field', $field).sync();
 			
 			
 			// refersh field (hide/show columns)

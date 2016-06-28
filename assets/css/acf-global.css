@@ -704,7 +704,6 @@ a.acf-icon.-cancel.grey:hover {
 *
 *---------------------------------------------------------------------------------------------*/
 /* Menu */
-#adminmenu a[href="edit.php?post_type=acf-field-group&page=acf-upgrade"],
 #adminmenu a[href="edit.php?post_type=acf-field-group&page=acf-settings-info"] {
   display: none;
 }
@@ -733,9 +732,6 @@ a.acf-icon.-cancel.grey:hover {
 }
 #acf-field-group-wrap .tablenav.bottom {
   display: block;
-}
-#acf-field-group-wrap .wp-list-table {
-  border-radius: 0;
 }
 #acf-field-group-wrap .acf-description {
   font-weight: normal;
@@ -1079,6 +1075,41 @@ html[dir="rtl"] #acf-popup .title .acf-icon {
 .acf-actions li {
   float: right;
   margin-left: 5px;
+}
+/*--------------------------------------------------------------------------------------------
+*
+*	Plugins
+*
+*--------------------------------------------------------------------------------------------*/
+.acf-plugin-upgrade-notice {
+  font-weight: normal;
+  color: #fff;
+  background: #d54d21;
+  padding: 1em;
+  margin: 9px 0;
+}
+.acf-plugin-upgrade-notice:before {
+  content: "\f348";
+  display: inline-block;
+  font: 400 18px/1 dashicons;
+  speak: none;
+  margin: 0 8px 0 -2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: top;
+}
+.acf-plugin-upgrade-notice h4 {
+  display: none;
+}
+.acf-plugin-upgrade-notice ul,
+.acf-plugin-upgrade-notice li {
+  display: inline;
+  color: inherit;
+  list-style: none;
+}
+.acf-plugin-upgrade-notice li:after {
+  content: '. ';
+  display: inline;
 }
 /*--------------------------------------------------------------------------------------------
 *

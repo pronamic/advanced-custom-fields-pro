@@ -1739,22 +1739,22 @@ function acf_prepare_fields_for_import( $fields = false ) {
 		$field = acf_prepare_field_for_import( $fields[ $i ] );
 		
 		
-		// $field may be an array of multiple fields (including sub fields)
-		if( !isset($field['key']) ) {
+		// ensure $field is an array of fields
+		// this allows for multiepl sub fields to be returned
+		if( !isset($field[0]) ) {
 			
-			$extra = $field;
-			
-			$field = array_shift($extra);
-			$fields = array_merge($fields, $extra);
+			$field = array( $field );
 			
 		}
 		
-		// prepare
-		$fields[ $i ] = $field;
+		
+		// merge in $field (1 or more fields)
+		array_splice($fields, $i, 1, $field);
 		
 		
 		// $i
-		$i++;	
+		$i++;
+		
 	}
 	
 	
@@ -1895,6 +1895,40 @@ function acf_get_sub_field( $selector, $field ) {
 	
 	// return
 	return false;
+	
+}
+
+
+/*
+*  acf_get_field_ancestors
+*
+*  This function will return an array of all ancestor fields
+*
+*  @type	function
+*  @date	22/06/2016
+*  @since	5.3.8
+*
+*  @param	$field (array)
+*  @return	(array)
+*/
+
+function acf_get_field_ancestors( $field ) {
+	
+	// get field
+	$ancestors = array();
+	
+	
+	// loop
+	while( $field && acf_is_field_key($field['parent']) ) {
+		
+		$ancestors[] = $field['parent'];
+		$field = acf_get_field($field['parent']);
+		
+	}
+	
+	
+	// return
+	return $ancestors;
 	
 }
 

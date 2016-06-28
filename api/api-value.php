@@ -430,6 +430,7 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 	
 	// clear cache
 	wp_cache_delete( "load_value/post_id={$post_id}/name={$field['name']}", 'acf' );
+	wp_cache_delete( "format_value/post_id={$post_id}/name={$field['name']}", 'acf' );
 
 	
 	// return
@@ -471,6 +472,7 @@ function acf_delete_value( $post_id = 0, $field ) {
 	
 	// clear cache
 	wp_cache_delete( "load_value/post_id={$post_id}/name={$field['name']}", 'acf' );
+	wp_cache_delete( "format_value/post_id={$post_id}/name={$field['name']}", 'acf' );
 	
 	
 	// return

@@ -46,27 +46,15 @@ class acf_settings_updates {
 		
 		
 		// bail early if no show_admin
-		if( !acf_get_setting('show_admin') ) {
-			
-			return;
-			
-		}
+		if( !acf_get_setting('show_admin') ) return;
 		
 		
 		// bail early if no show_updates
-		if( !acf_get_setting('show_updates') ) {
-			
-			return;
-			
-		}
+		if( !acf_get_setting('show_updates') ) return;
 		
 		
 		// bail early if not a plugin (included in theme)
-		if( !is_plugin_active($basename) ) {
-			
-			return;
-			
-		}
+		if( !is_plugin_active($basename) ) return;
 				
 		
 		// add page
@@ -128,7 +116,7 @@ class acf_settings_updates {
 		
 		
 		// vars
-		$info = acf_pro_get_remote_info();
+		$info = acf_get_remote_plugin_info();
 		
 		
 		// validate
@@ -145,65 +133,13 @@ class acf_settings_updates {
         
         
         // add changelog if the remote version is '>' than the current version
-		if( acf_pro_is_update_available() )
-        {
+		if( acf_pro_is_update_available() ) {
+			
         	$this->view['update_available'] = true;
-        	 
-        	 
-        	// changelog
-        	$changelogs = explode('<h4>', $info['changelog']);
+        	$this->view['changelog'] = acf_maybe_get($info, 'changelog');
+        	$this->view['upgrade_notice'] = acf_maybe_get($info, 'upgrade_notice');
         	
-        	foreach( $changelogs as $changelog )
-        	{
-        		// validate (first segment is always empty due to explode)
-	        	if( empty($changelog) )
-	        	{
-		        	continue;
-	        	}
-	        	
-	        	
-        	 	// explode
-	        	$changelog = explode('</h4>', $changelog);
-	        	$changelog_version = trim($changelog[0]);
-	        	$changelog_text = trim($changelog[1]);
-	        	$changelog_text = str_replace('<ul>', '<ul class="ul-disc">', $changelog_text);
-	        	
-	        	if( version_compare($this->view['remote_version'], $changelog_version, '==') )
-	        	{
-		        	$this->view['changelog'] = $changelog_text;
-		        	break;
-	        	}
-	        	
-        	}
-        	 
-        	 
-        	// upgrade_notice
-        	$upgrade_notices = explode('<h4>', $info['upgrade_notice']);
-        	
-        	foreach( $upgrade_notices as $upgrade_notice )
-        	{
-        		// validate (first segment is always empty due to explode)
-	        	if( empty($upgrade_notice) )
-	        	{
-		        	continue;
-	        	}
-	        	
-	        	
-        	 	// explode
-	        	$upgrade_notice = explode('</h4>', $upgrade_notice);
-	        	$upgrade_version = trim($upgrade_notice[0]);
-	        	$upgrade_text = trim($upgrade_notice[1]);
-	        	$upgrade_text = str_replace('<ul>', '<ul class="ul-disc">', $upgrade_text);
-	        	
-	        	if( version_compare($this->view['current_version'], $upgrade_version, '<') )
-	        	{
-		        	$this->view['upgrade_notice'] = $upgrade_text;
-		        	break;
-	        	}
-	        	
-        	 }
         }
-		
 		
 	}
 	

@@ -103,11 +103,7 @@ class acf_field_relationship extends acf_field {
 		// load field
 		$field = acf_get_field( $options['field_key'] );
 		
-		if( !$field ) {
-		
-			return false;
-			
-		}
+		if( !$field ) return false;
 		
 		
 		// update $args
@@ -180,66 +176,74 @@ class acf_field_relationship extends acf_field {
 		$args = apply_filters('acf/fields/relationship/query/key=' . $field['key'], $args, $field, $options['post_id'] );
 		
 		
+		// is search
+		$is_search = !empty( $args['s'] );
+		
+		
 		// get posts grouped by post type
 		$groups = acf_get_grouped_posts( $args );
 		
-		if( !empty($groups) ) {
+		
+		// bail early if no posts
+		if( empty($groups) ) return false;
+		
+		
+		// loop
+		foreach( array_keys($groups) as $group_title ) {
 			
-			foreach( array_keys($groups) as $group_title ) {
+			// vars
+			$posts = acf_extract_var( $groups, $group_title );
+			$titles = array();
+			
+			
+			// data
+			$data = array(
+				'text'		=> $group_title,
+				'children'	=> array()
+			);
+			
+			
+			foreach( array_keys($posts) as $post_id ) {
 				
-				// vars
-				$posts = acf_extract_var( $groups, $group_title );
-				$titles = array();
+				// override data
+				$posts[ $post_id ] = $this->get_post_title( $posts[ $post_id ], $field, $options['post_id'] );
 				
+			};
+			
+			
+			// order by search
+			if( $is_search ) {
 				
-				// data
-				$data = array(
-					'text'		=> $group_title,
-					'children'	=> array()
+				$posts = acf_order_by_search( $posts, $args['s'] );
+				
+			}
+			
+			
+			// append to $data
+			foreach( array_keys($posts) as $post_id ) {
+				
+				$data['children'][] = array(
+					'id'	=> $post_id,
+					'text'	=> $posts[ $post_id ]
 				);
 				
-				
-				foreach( array_keys($posts) as $post_id ) {
-					
-					// override data
-					$posts[ $post_id ] = $this->get_post_title( $posts[ $post_id ], $field, $options['post_id'] );
-					
-				};
-				
-				
-				// order by search
-				if( !empty($args['s']) ) {
-					
-					$posts = acf_order_by_search( $posts, $args['s'] );
-					
-				}
-				
-				
-				// append to $data
-				foreach( array_keys($posts) as $post_id ) {
-					
-					$data['children'][] = array(
-						'id'	=> $post_id,
-						'text'	=> $posts[ $post_id ]
-					);
-					
-				}
-				
-				
-				// append to $r
-				$r[] = $data;
-				
 			}
 			
 			
-			// add as optgroup or results
-			if( count($args['post_type']) == 1 ) {
-				
-				$r = $r[0]['children'];
-				
-			}
+			// append to $r
+			$r[] = $data;
 			
 		}
+		
+		
+		// add as optgroup or results
+		if( count($args['post_type']) == 1 ) {
+			
+			$r = $r[0]['children'];
+			
+		}
+			
+		
 		
 		
 		// return
@@ -305,43 +309,34 @@ class acf_field_relationship extends acf_field {
 	*  @return	(string)
 	*/
 	
-	function get_post_title( $post, $field, $post_id = 0 ) {
+	function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
 		
 		// get post_id
-		if( !$post_id ) {
-			
-			$post_id = acf_get_setting('form_data/post_id', get_the_ID());
-			
-		}
+		if( !$post_id ) $post_id = acf_get_form_data('post_id');
 		
 		
 		// vars
-		$title = acf_get_post_title( $post );
+		$title = acf_get_post_title( $post, $is_search );
 		
 		
-		// elements
-		if( !empty($field['elements']) ) {
+		// featured_image
+		if( acf_in_array('featured_image', $field['elements']) ) {
 			
-			// featured_image
-			if( in_array('featured_image', $field['elements']) ) {
+			// vars
+			$class = 'thumbnail';
+			$thumbnail = acf_get_post_thumbnail($post->ID, array(17, 17));
+			
+			
+			// icon
+			if( $thumbnail['type'] == 'icon' ) {
 				
-				// vars
-				$class = 'thumbnail';
-				$thumbnail = acf_get_post_thumbnail($post->ID, array(17, 17));
-				
-				
-				// icon
-				if( $thumbnail['type'] == 'icon' ) {
-					
-					$class .= ' -' . $thumbnail['type'];
-					
-				}
-				
-				
-				// append
-				$title = '<div class="' . $class . '">' . $thumbnail['html'] . '</div>' . $title;
+				$class .= ' -' . $thumbnail['type'];
 				
 			}
+			
+			
+			// append
+			$title = '<div class="' . $class . '">' . $thumbnail['html'] . '</div>' . $title;
 			
 		}
 		
