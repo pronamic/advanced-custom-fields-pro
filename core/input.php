@@ -245,7 +245,10 @@ class acf_input {
 			'ajax'			=> acf_get_form_data('ajax'),
 			'validation'	=> acf_get_form_data('validation'),
 			'wp_version'	=> $wp_version,
-			'acf_version'	=> acf_get_setting('version')
+			'acf_version'	=> acf_get_setting('version'),
+			'browser'		=> acf_get_browser(),
+			'locale'		=> get_locale(),
+			'rtl'			=> is_rtl()
 		);
 		
 		
@@ -262,25 +265,25 @@ class acf_input {
 		));
 		
 		
-		?>
-		<script type="text/javascript">
-			acf = acf || {};
-			acf.o = <?php echo json_encode($o); ?>;
-			acf.l10n = <?php echo json_encode($l10n); ?>;
-			<?php do_action('acf/input/admin_footer_js'); ?>
-		</script>
-		<?php
+?>
+<script type="text/javascript">
+	acf = acf || {};
+	acf.o = <?php echo json_encode($o); ?>;
+	acf.l10n = <?php echo json_encode($l10n); ?>;
+	<?php do_action('acf/input/admin_footer_js'); ?>
+</script>
+<?php
 
 		
 		// action
 		do_action('acf/input/admin_footer');
 		
 		
-		?>
-		<script type="text/javascript">
-			acf.do_action('prepare');
-		</script>
-		<?php
+?>
+<script type="text/javascript">
+	acf.do_action('prepare');
+</script>
+<?php
 		
 	}
 	
@@ -407,7 +410,7 @@ function acf_set_form_data( $data = array() ) {
 function acf_enqueue_uploader() {
 	
 	// bail early if doing ajax
-	if( defined('DOING_AJAX') && DOING_AJAX ) return;
+	if( acf_is_ajax() ) return;
 	
 	
 	// bail ealry if already run

@@ -526,7 +526,6 @@ class acf_admin_field_groups {
 			'acf-fg-description'	=> __('Description', 'acf'),
 			'acf-fg-status' 		=> '<i class="acf-icon -dot-3 small acf-js-tooltip" title="' . __('Status', 'acf') . '"></i>',
 			'acf-fg-count' 			=> __('Fields', 'acf'),
-			
 		);
 		
 	}
@@ -708,6 +707,11 @@ class acf_admin_field_groups {
 	// mobile compatibility
 	var status = $('.acf-icon.-dot-3').first().attr('title');
 	$('td.column-acf-fg-status').attr('data-colname', status);
+	
+	
+	// no field groups found
+	$('#the-list tr.no-items td').attr('colspan', 4);
+	
 	
 })(jQuery);
 </script>

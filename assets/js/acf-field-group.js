@@ -2379,6 +2379,124 @@
 	
 	
 	/*
+	*  Date Time Picker
+	*
+	*  This field type requires some extra logic for its settings
+	*
+	*  @type	function
+	*  @date	24/10/13
+	*  @since	5.0.0
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var acf_settings_date_time_picker = acf.model.extend({
+		
+		actions: {
+			'open_field':			'render',
+			'change_field_type':	'render'
+		},
+		
+		events: {
+			'change .acf-field-object-date-time-picker input[type="radio"]':	'render',
+		},
+		
+		event: function( e ){
+			
+			// override
+			return e.$el.closest('.acf-field-object');
+			
+		},
+		
+		render: function( $el ){
+			
+			// bail early if not correct field type
+			if( $el.attr('data-type') != 'date_time_picker' ) return;
+			
+			
+			// loop
+			$el.find('.acf-radio-list[data-other_choice="1"]').each(function(){
+				
+				// vars
+				var $ul = $(this),
+					$radio = $ul.find('input[type="radio"]:checked'),
+					$other = $ul.find('input[type="text"]');
+				
+				
+				// display val
+				if( $radio.val() != 'other' ) {
+				
+					$other.val( $radio.val() );
+					
+				}
+				
+			});
+		}		
+		
+	});
+	
+	
+	/*
+	*  Time Picker
+	*
+	*  This field type requires some extra logic for its settings
+	*
+	*  @type	function
+	*  @date	24/10/13
+	*  @since	5.0.0
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var acf_settings_time_picker = acf.model.extend({
+		
+		actions: {
+			'open_field':			'render',
+			'change_field_type':	'render'
+		},
+		
+		events: {
+			'change .acf-field-object-time-picker input[type="radio"]':	'render',
+		},
+		
+		event: function( e ){
+			
+			// override
+			return e.$el.closest('.acf-field-object');
+			
+		},
+		
+		render: function( $el ){
+			
+			// bail early if not correct field type
+			if( $el.attr('data-type') != 'time_picker' ) return;
+			
+			
+			// loop
+			$el.find('.acf-radio-list[data-other_choice="1"]').each(function(){
+				
+				// vars
+				var $ul = $(this),
+					$radio = $ul.find('input[type="radio"]:checked'),
+					$other = $ul.find('input[type="text"]');
+				
+				
+				// display val
+				if( $radio.val() != 'other' ) {
+				
+					$other.val( $radio.val() );
+					
+				}
+				
+			});
+		}		
+		
+	});
+	
+	
+	/*
 	*  tab
 	*
 	*  description

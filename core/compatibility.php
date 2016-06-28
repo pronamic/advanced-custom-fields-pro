@@ -28,6 +28,7 @@ class acf_compatibility {
 		add_filter('acf/get_valid_field/type=wysiwyg',		array($this, 'get_valid_wysiwyg_field'), 20, 1);
 		add_filter('acf/get_valid_field/type=date_picker',	array($this, 'get_valid_date_picker_field'), 20, 1);
 		add_filter('acf/get_valid_field/type=taxonomy',		array($this, 'get_valid_taxonomy_field'), 20, 1);
+		add_filter('acf/get_valid_field/type=date_time_picker',	array($this, 'get_valid_date_time_picker_field'), 20, 1);
 		
 		
 		// field groups
@@ -372,6 +373,57 @@ class acf_compatibility {
 		}
 		
 		
+		// return
+		return $field;
+		
+	}
+	
+	
+	/*
+	*  get_valid_date_time_picker_field
+	*
+	*  This function will provide compatibility with existing 3rd party fields
+	*
+	*  @type	function
+	*  @date	23/04/2014
+	*  @since	5.0.0
+	*
+	*  @param	$field (array)
+	*  @return	$field
+	*/
+	
+	function get_valid_date_time_picker_field( $field ) {
+		
+		// 3rd party date time picker
+		// https://github.com/soderlind/acf-field-date-time-picker
+		if( !empty($field['time_format']) ) {
+			
+			// extract vars
+			$time_format = acf_extract_var( $field, 'time_format' );
+			$date_format = acf_extract_var( $field, 'date_format' );
+			$get_as_timestamp = acf_extract_var( $field, 'get_as_timestamp' );
+			
+			
+			// convert from js to php
+			$time_format = acf_convert_time_to_php( $time_format );
+			$date_format = acf_convert_date_to_php( $date_format );
+			
+			
+			// append settings
+			$field['return_format'] = $date_format . ' ' . $time_format;
+			$field['display_format'] = $date_format . ' ' . $time_format;
+			
+			
+			// timestamp
+			if( $get_as_timestamp === 'true' ) {
+				
+				$field['return_format'] = 'U';
+				
+			}
+			
+		}
+		
+
 		// return
 		return $field;
 		

@@ -386,6 +386,29 @@ function acf_enable_local() {
 
 
 /*
+*  acf_reset_local
+*
+*  This function will remove (reset) all field group and fields
+*
+*  @type	function
+*  @date	2/06/2016
+*  @since	5.3.8
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_reset_local() {
+	
+	// vars
+	acf_local()->groups = array();
+	acf_local()->fields = array();
+	acf_local()->parents = array();
+	
+}
+
+
+/*
 *  acf_is_local_enabled
 *
 *  This function will return true|false if the local functionality is enabled

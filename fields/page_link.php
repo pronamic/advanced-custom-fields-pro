@@ -92,11 +92,7 @@ class acf_field_page_link extends acf_field {
 		// load field
 		$field = acf_get_field( $options['field_key'] );
 		
-		if( !$field ) {
-		
-			return false;
-			
-		}
+		if( !$field ) return false;
 		
 		
 		// update $args
@@ -148,6 +144,10 @@ class acf_field_page_link extends acf_field {
 		$args = apply_filters('acf/fields/page_link/query/key=' . $field['key'], $args, $field, $options['post_id'] );
 		
 		
+		// is search
+		$is_search = !empty( $args['s'] );
+		
+		
 		// add archives to $r
 		if( $args['paged'] == 1 ) {
 			
@@ -174,7 +174,7 @@ class acf_field_page_link extends acf_field {
 			
 			
 			// search
-			if( !empty($args['s']) ) {
+			if( $is_search ) {
 				
 				foreach( array_keys($archives) as $i ) {
 					
@@ -231,7 +231,7 @@ class acf_field_page_link extends acf_field {
 				
 				
 				// order by search
-				if( !empty($args['s']) ) {
+				if( $is_search ) {
 					
 					$posts = acf_order_by_search( $posts, $args['s'] );
 					
@@ -320,14 +320,14 @@ class acf_field_page_link extends acf_field {
 	*  @return	(string)
 	*/
 	
-	function get_post_title( $post, $field, $post_id = 0 ) {
+	function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
 		
 		// get post_id
 		if( !$post_id ) $post_id = acf_get_form_data('post_id');
 		
 		
 		// vars
-		$title = acf_get_post_title( $post );
+		$title = acf_get_post_title( $post, $is_search );
 			
 		
 		// filters
