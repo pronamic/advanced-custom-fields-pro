@@ -4793,6 +4793,10 @@ var acf;
 	acf.fields.google_map = acf.field.extend({
 		
 		type: 'google_map',
+		api: {
+			sensor:		false,
+			libraries:	'places'
+		},
 		$el: null,
 		$search: null,
 		
@@ -4888,7 +4892,7 @@ var acf;
 				$.getScript('https://www.google.com/jsapi', function(){
 					
 					// load maps
-				    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
+				    google.load('maps', '3', { other_params: $.param(self.api), callback: function(){
 				    	
 				    	// set status
 				    	self.status = 'ready';
@@ -4914,7 +4918,7 @@ var acf;
 				
 				
 				// load maps
-			    google.load('maps', '3', { other_params: 'sensor=false&libraries=places', callback: function(){
+			    google.load('maps', '3', { other_params: $.param(self.api), callback: function(){
 			    	
 			    	// set status
 			    	self.status = 'ready';
