@@ -106,6 +106,10 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.3.10 =
+* Core: Added new 'google_api_key' and 'google_api_client' global settings
+* Google Map: Added new 'acf/fields/google_map/api' filter
+
 = 5.3.9.2 =
 * Time Picker field: Added compatibility with previous 3rd party field settings
 * Core: Fixed JS error setting l10n for Select2 with 3rd party libraries
