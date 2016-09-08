@@ -102,8 +102,8 @@ class acf_admin_field_group {
 		if( !acf_is_screen('acf-field-group') ) return;
 		
 		
-		// disable JSON to avoid conflicts between DB and JSON
-		acf_disable_local();
+		// disable filters to ensure ACF loads raw data from DB
+		acf_disable_filters();
 		
 		
 		// enqueue scripts
@@ -219,7 +219,7 @@ class acf_admin_field_group {
 		
 		// render post data
 		acf_form_data(array( 
-			'post_id'	=> $post->post_id, 
+			'post_id'	=> $post->ID, 
 			'nonce'		=> 'field_group',
 			'ajax'		=> 0
 		));
@@ -463,13 +463,11 @@ class acf_admin_field_group {
 		}
         
         
-        // disable local to avoid conflicts between DB and local
-		acf_disable_local();
+        // disable filters to ensure ACF loads raw data from DB
+		acf_disable_filters();
 		
-        
+		
         // save fields
-		unset( $_POST['acf_fields']['acfcloneindex'] );
-		
 		if( !empty($_POST['acf_fields']) ) {
 			
 			foreach( $_POST['acf_fields'] as $field ) {
@@ -509,16 +507,20 @@ class acf_admin_field_group {
 		// delete fields
         if( $_POST['_acf_delete_fields'] ) {
         	
+        	// clean
 	    	$ids = explode('|', $_POST['_acf_delete_fields']);
 	    	$ids = array_map( 'intval', $ids );
 	    	
+	    	
+	    	// loop
 			foreach( $ids as $id ) {
-			
-				if( $id != 0 ) {
 				
-					acf_delete_field( $id );
-					
-				}
+				// bai early if no id
+				if( !$id ) continue;
+				
+				
+				// delete
+				acf_delete_field( $id );
 				
 			}
 			
@@ -560,7 +562,8 @@ class acf_admin_field_group {
 		
 		// get fields
 		$view = array(
-			'fields' => acf_get_fields_by_id( $field_group['ID'] )
+			'fields'	=> acf_get_fields_by_id( $field_group['ID'] ),
+			'parent'	=> 0
 		);
 		
 		
@@ -1124,8 +1127,8 @@ class acf_admin_field_group {
 	
 	function ajax_move_field() {
 		
-		// disable JSON to avoid conflicts between DB and JSON
-		acf_disable_local();
+		// disable filters to ensure ACF loads raw data from DB
+		acf_disable_filters();
 		
 		
 		$args = acf_parse_args($_POST, array(

@@ -53,7 +53,7 @@ class acf_ajax {
 	function update_user_setting() {
 		
 		// options
-		$options = acf_parse_args( $_POST, array(
+		$options = wp_parse_args( $_POST, array(
 			'name'		=> '',
 			'value'		=> '',
 			'nonce'		=> '',

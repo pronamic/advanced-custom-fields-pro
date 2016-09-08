@@ -51,6 +51,7 @@ class acf_field_date_and_time_picker extends acf_field {
 	        'timezoneText'		=> _x('Time Zone',		'Date Time Picker JS timezoneText', 	'acf'),
 	        'currentText'		=> _x('Now',			'Date Time Picker JS currentText', 		'acf'),
 	        'closeText'			=> _x('Done',			'Date Time Picker JS closeText', 		'acf'),
+	        'selectText'		=> _x('Select',			'Date Time Picker JS selectText', 		'acf'),
 	        'amNames'			=> array(
 		        					_x('AM',			'Date Time Picker JS amText', 			'acf'),
 									_x('A',				'Date Time Picker JS amTextShort', 		'acf'),
@@ -97,63 +98,6 @@ class acf_field_date_and_time_picker extends acf_field {
 	
 	
 	/*
-	*  _split_date_time
-	*
-	*  This function will split a format string into seperate date and time
-	*
-	*  @type	function
-	*  @date	26/05/2016
-	*  @since	5.3.8
-	*
-	*  @param	$format (string)
-	*  @return	$formats (array)
-	*/
-	
-	function _split_date_time( $date_time = '' ) {
-		
-		// vars
-		$time = array( 'a', 'A', 'h', 'g', 'H', 'G', 'i', 's' );
-		$chars = str_split($date_time);
-		$index = false;
-		
-		
-		// default
-		$data = array(
-			'date' => $date_time,
-			'time' => ''
-		);
-		
-		
-		// loop
-		foreach( $chars as $i => $c ) {
-			
-			// i is set, break loop
-			if( in_array($c, $time) ) {
-				
-				$index = $i;
-				break;
-				
-			}
-			
-		}
-		
-		
-		// if index found
-		if( $index !== false ) {
-			
-			$data['date'] = trim(substr($date_time, 0, $i));
-			$data['time'] = trim(substr($date_time, $i));
-			
-		}
-	
-		
-		// return
-		return $data;	
-		
-	}
-	
-	
-	/*
 	*  render_field()
 	*
 	*  Create the HTML interface for your field
@@ -179,7 +123,7 @@ class acf_field_date_and_time_picker extends acf_field {
 		
 		// convert display_format to date and time
 		// the letter 'm' is used for date and minute in JS, so this must be done here in PHP
-		$formats = $this->_split_date_time($field['display_format']);
+		$formats = acf_split_date_time($field['display_format']);
 		
 		
 		// vars
@@ -303,8 +247,10 @@ class acf_field_date_and_time_picker extends acf_field {
 	
 }
 
-new acf_field_date_and_time_picker();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_date_and_time_picker() );
+
+endif; // class_exists check
 
 ?>
