@@ -1191,6 +1191,7 @@
 		$main: null,
 		$side: null,
 		$attachments: null,
+		$input: null,
 		//$attachment: null,
 		
 		actions: {
@@ -1235,6 +1236,7 @@
 			this.$main = this.$el.children('.acf-gallery-main');
 			this.$side = this.$el.children('.acf-gallery-side');
 			this.$attachments = this.$main.children('.acf-gallery-attachments');
+			this.$input = this.$el.find('input:first');
 			
 			
 			// get options
@@ -1610,14 +1612,14 @@
 		*  @return	$post_id (int)
 		*/
 		
-		render_attachment: function( id, data ){
+		render_attachment: function( data ){
 			
 			// prepare
 			data = this.prepare(data);
 			
 			
 			// vars
-			var $attachment = this.get_attachment(id),
+			var $attachment = this.get_attachment(data.id),
 				$margin = $attachment.find('.margin'),
 				$img = $attachment.find('img'),
 				$filename = $attachment.find('.filename'),
@@ -1628,11 +1630,29 @@
 			var thumbnail = data.url;
 			
 			
-			// icon
-			if( data.type !== 'image' ) {
+			// image
+			if( data.type == 'image' ) {
+				
+				// remove filename	
+				$filename.remove();
+			
+			// other (video)	
+			} else {	
+				
+				// attempt to find attachment thumbnail
+				thumbnail = acf.maybe_get(data, 'thumb.src');
+				
+				
+				// update filenmae text
+				$filename.text( data.filename );
+				
+			}
+			
+			
+			// default icon
+			if( !thumbnail ) {
 				
 				thumbnail = acf._e('media', 'default_icon');
-				
 				$attachment.addClass('-icon');
 				
 			}
@@ -1644,23 +1664,10 @@
 			 	'alt': data.alt,
 			 	'title': data.title
 			});
-		 	$filename.text(data.filename);
 		 	
 		 	
-			// vars
-			var val = '';
-			
-			
-			// WP attachment
-			if( data.id ) {
-				
-				val = data.id;
-			
-			}
-			
-			
 			// update val
-		 	acf.val( $input, val );
+		 	acf.val( $input, data.id );
 		 				
 		},
 		
@@ -1792,11 +1799,15 @@
 						
 			
 			// render data
-			this.render_attachment( data.id, data );
+			this.render_attachment( data );
 			
 			
 			// render
 			this.render();	
+			
+			
+			// trigger change
+			this.$input.trigger('change');
 			
 		},
 		
@@ -1910,7 +1921,7 @@
 				
 				
 				// maybe get preview size
-				data.url = acf.maybe_get(data, 'sizes.'+this.o.preview_size+'.url', data.url);
+				data.url = acf.maybe_get(data, 'sizes.medium.url', data.url);
 				
 			}
 			
@@ -2226,6 +2237,10 @@
 			// render (update classes)
 			this.render();
 			
+			
+			// trigger change
+			this.$input.trigger('change');
+			
 		},
 		
 		
@@ -2274,21 +2289,16 @@
 				$field = this.$field;
 			
 			
-			// vars
-			var attachment = id,
-				$attachment = this.get_attachment(id);
-			
-			
 			// popup
 			var frame = acf.media.popup({
 				mode:		'edit',
 				title:		acf._e('image', 'edit'),
 				button:		acf._e('image', 'update'),
-				attachment:	attachment,
+				attachment:	id,
 				select:		function( attachment ){
 					
 					// render attachment
-					self.set('$field', $field).render_attachment( id, attachment );
+					self.set('$field', $field).render_attachment( attachment );
 					
 				 	
 				 	// render sidebar

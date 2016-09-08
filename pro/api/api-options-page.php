@@ -36,7 +36,7 @@ function acf_get_valid_options_page( $page = '' ) {
 	
 	
 	// defaults
-	$page = acf_parse_args($page, array(
+	$page = wp_parse_args($page, array(
 		'page_title' 	=> '',
 		'menu_title'	=> '',
 		'menu_slug' 	=> '',

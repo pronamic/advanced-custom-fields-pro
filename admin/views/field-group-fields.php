@@ -1,26 +1,14 @@
 <?php 
 
 // vars
-// Note: $args is always passed to this view from above
-$fields = array();
+$fields = false;
 $layout = false;
 $parent = 0;
+$clone = false;
 
 
 // use fields if passed in
 extract( $args );
-
-
-// add clone
-$fields[] = acf_get_valid_field(array(
-	'ID'		=> 'acfcloneindex',
-	'key'		=> 'acfcloneindex',
-	'label'		=> __('New Field','acf'),
-	'name'		=> 'new_field',
-	'type'		=> 'text',
-	'parent'	=> $parent
-));
-
 
 ?>
 <div class="acf-field-list-wrap">
@@ -32,18 +20,23 @@ $fields[] = acf_get_valid_field(array(
 		<li class="li-field-type"><?php _e('Type','acf'); ?></li>
 	</ul>
 	
-	<div class="acf-field-list<?php if( $layout ){ echo " layout-{$layout}"; } ?>">
+	<div class="acf-field-list<?php if( $layout ){ echo " layout-{$layout}"; } ?>">	
+		<?php
 		
-		<?php foreach( $fields as $i => $field ): ?>
+		if( $fields ) {
 			
-			<?php acf_get_view('field-group-field', array( 'field' => $field, 'i' => $i )); ?>
-			
-		<?php endforeach; ?>
+			foreach( $fields as $i => $field ) {
+				
+				acf_get_view('field-group-field', array( 'field' => $field, 'i' => $i ));
+				
+			}
 		
-		<div class="no-fields-message" <?php if(count($fields) > 1){ echo 'style="display:none;"'; } ?>>
+		}
+		
+		?>
+		<div class="no-fields-message" <?php if( $fields ){ echo 'style="display:none;"'; } ?>>
 			<?php _e("No fields. Click the <strong>+ Add Field</strong> button to create your first field.",'acf'); ?>
 		</div>
-		
 	</div>
 	
 	<ul class="acf-hl acf-tfoot">
@@ -51,5 +44,22 @@ $fields[] = acf_get_valid_field(array(
 			<a href="#" class="button button-primary button-large add-field"><?php _e('+ Add Field','acf'); ?></a>
 		</li>
 	</ul>
-
+	
+<?php if( !$parent ):
+	
+	// get clone
+	$clone = acf_get_valid_field(array(
+		'ID'		=> 'acfcloneindex',
+		'key'		=> 'acfcloneindex',
+		'label'		=> __('New Field','acf'),
+		'name'		=> 'new_field',
+		'type'		=> 'text'
+	));
+	
+	?>
+	<script type="text/html" id="tmpl-acf-field">
+	<?php acf_get_view('field-group-field', array( 'field' => $clone )); ?>
+	</script>
+<?php endif;?>
+	
 </div>

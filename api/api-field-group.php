@@ -53,7 +53,7 @@ function acf_is_field_group_key( $key = '' ) {
 function acf_get_valid_field_group( $field_group = false ) {
 	
 	// parse in defaults
-	$field_group = acf_parse_args( $field_group, array(
+	$field_group = wp_parse_args( $field_group, array(
 		'ID'					=> 0,
 		'key'					=> '',
 		'title'					=> '',
@@ -140,54 +140,71 @@ function acf_get_field_groups( $args = false ) {
 	
 	// vars
 	$field_groups = array();
+	$post_ids = array();
+	$cache_key = "get_field_groups";
 	
 	
-	// cache
-	$found = false;
-	$cache = wp_cache_get( 'get_field_groups', 'acf', false, $found );
-	
-	if( $found ) {
+	// check cache for ids
+	if( acf_isset_cache($cache_key) ) {
 		
-		return acf_filter_field_groups( $cache, $args );
+		$post_ids = acf_get_cache($cache_key);
+	
+	// query DB for child ids
+	} else {
+		
+		// query
+		$posts = get_posts(array(
+			'post_type'					=> 'acf-field-group',
+			'posts_per_page'			=> -1,
+			'orderby' 					=> 'menu_order title',
+			'order' 					=> 'asc',
+			'suppress_filters'			=> false, // allow WPML to modify the query
+			'post_status'				=> array('publish', 'acf-disabled'),
+			'update_post_meta_cache'	=> false
+		));
+		
+		
+		// loop
+		if( $posts ) {
+			
+			foreach( $posts as $post ) {
+				
+				$post_ids[] = $post->ID;
+				
+			}
+				
+		}
+		
+		
+		// update cache
+		acf_set_cache($cache_key, $post_ids);
 		
 	}
 	
 	
-	// load from DB
-	$posts = get_posts(array(
-		'post_type'					=> 'acf-field-group',
-		'posts_per_page'			=> -1,
-		'orderby' 					=> 'menu_order title',
-		'order' 					=> 'asc',
-		'suppress_filters'			=> false, // allow WPML to modify the query
-		'post_status'				=> array('publish', 'acf-disabled'),
-		'update_post_meta_cache'	=> false
-	));
-	
-	
-	// loop through and load field groups
-	if( $posts ) {
+	// load field groups
+	foreach( $post_ids as $post_id ) {
 		
-		foreach( $posts as $post ) {
-			
-			// add to return array
-			$field_groups[] = acf_get_field_group( $post );
-			
-		}
+		$field_groups[] = acf_get_field_group( $post_id );
 		
 	}
 	
 	
 	// filter
+	// - allows local field groups to be appended
 	$field_groups = apply_filters('acf/get_field_groups', $field_groups);
 	
 	
-	// set cache
-	wp_cache_set( 'get_field_groups', $field_groups, 'acf' );
-			
+	// filter via args
+	if( $args ) {
+		
+		$field_groups = acf_filter_field_groups( $field_groups, $args );
+		
+	}
+	
 	
 	// return		
-	return acf_filter_field_groups( $field_groups, $args );
+	return $field_groups;
 	
 }
 
@@ -261,28 +278,29 @@ function acf_filter_field_groups( $field_groups, $args = false ) {
 *  @return	$field_group (array)
 */
 
-function acf_get_field_group( $selector = false ) {
+function acf_get_field_group( $selector = null ) {
 	
 	// vars
 	$field_group = false;
-	$k = 'ID';
-	$v = 0;
+	$type = 'ID';
 	
 	
-	// $post_id or $key
+	// ID
 	if( is_numeric($selector) ) {
 		
-		$v = $selector;
-		
-	} elseif( is_string($selector) ) {
-		
-		$k = 'key';
-		$v = $selector;
-		
+		// do nothing
+	
+	// object
 	} elseif( is_object($selector) ) {
 		
-		$v = $selector->ID;
+		$selector = $selector->ID;
+	
+	// string
+	} elseif( is_string($selector) ) {
 		
+		$type = 'key';
+	
+	// other
 	} else {
 		
 		return false;
@@ -290,39 +308,50 @@ function acf_get_field_group( $selector = false ) {
 	}
 	
 	
-	// get cache key
-	$cache_key = "get_field_group/{$k}={$v}";
+	// return early if cache is found
+	$cache_key = "get_field_group/{$type}={$selector}";
 	
-	
-	// get cache
-	$found = false;
-	$cache = wp_cache_get( $cache_key, 'acf', false, $found );
-	
-	if( $found ) return $cache;
-	
-	
-	// get field group from ID or key
-	if( $k == 'ID' ) {
+	if( acf_isset_cache($cache_key) ) {
 		
-		$field_group = _acf_get_field_group_by_id( $v );
-		
-	} else {
-		
-		$field_group = _acf_get_field_group_by_key( $v );
+		return acf_get_cache($cache_key);
 		
 	}
+	
+	
+	// ID
+	if( $type == 'ID' ) {
+		
+		$field_group = _acf_get_field_group_by_id( $selector );
+	
+	// key	
+	} else {
+		
+		$field_group = _acf_get_field_group_by_key( $selector );
+	
+	}
+	
+	
+	// bail early if no field
+	if( !$field_group ) return false;
 	
 	
 	// filter for 3rd party customization
 	$field_group = apply_filters('acf/get_field_group', $field_group);
 	
 	
-	// set cache
-	wp_cache_set( $cache_key, $field_group, 'acf' );
+	// update cache
+	// - Use key instead of ID for best compatibility (not all field groups exist in the DB)
+	$cache_key = acf_set_cache("get_field_group/key={$field_group['key']}", $field_group);
+	
+	
+	// update cache reference
+	// - allow cache to return if using an ID selector
+	acf_set_cache_reference("get_field_group/ID={$field_group['ID']}", $cache_key);
 	
 	
 	// return
 	return $field_group;
+	
 }
 
 
@@ -487,6 +516,10 @@ function acf_update_field_group( $field_group = array() ) {
 	$field_group = wp_unslash( $field_group );
 	
 	
+	// parse types (converts string '0' to int 0)
+	$field_group = acf_parse_types( $field_group );
+	
+	
 	// locations may contain 'uniquid' array keys
 	$field_group['location'] = array_values( $field_group['location'] );
 	
@@ -551,9 +584,7 @@ function acf_update_field_group( $field_group = array() ) {
 	
 	
 	// clear cache
-	wp_cache_delete("get_field_group/ID={$field_group['ID']}", 'acf');
-	wp_cache_delete("get_field_group/key={$field_group['key']}", 'acf');
-	wp_cache_delete("get_field_groups", 'acf');
+	acf_delete_cache("get_field_group/key={$field_group['key']}");
 	
 	
     // return
@@ -589,8 +620,8 @@ function acf_update_field_group_wp_unique_post_slug( $slug, $post_ID, $post_stat
 
 function acf_duplicate_field_group( $selector = 0, $new_post_id = 0 ) {
 	
-	// disable JSON to avoid conflicts between DB and JSON
-	acf_disable_local();
+	// disable filters to ensure ACF loads raw data from DB
+	acf_disable_filters();
 	
 	
 	// load the origional field gorup
@@ -713,8 +744,8 @@ function acf_get_field_count( $field_group ) {
 
 function acf_delete_field_group( $selector = 0 ) {
 	
-	// disable JSON to avoid conflicts between DB and JSON
-	acf_disable_local();
+	// disable filters to ensure ACF loads raw data from DB
+	acf_disable_filters();
 	
 	
 	// load the origional field gorup
@@ -768,8 +799,8 @@ function acf_delete_field_group( $selector = 0 ) {
 
 function acf_trash_field_group( $selector = 0 ) {
 	
-	// disable JSON to avoid conflicts between DB and JSON
-	acf_disable_local();
+	// disable filters to ensure ACF loads raw data from DB
+	acf_disable_filters();
 	
 	
 	// load the origional field gorup
@@ -823,8 +854,8 @@ function acf_trash_field_group( $selector = 0 ) {
 
 function acf_untrash_field_group( $selector = 0 ) {
 	
-	// disable JSON to avoid conflicts between DB and JSON
-	acf_disable_local();
+	// disable filters to ensure ACF loads raw data from DB
+	acf_disable_filters();
 	
 	
 	// load the origional field gorup
@@ -987,6 +1018,10 @@ function acf_get_field_group_style( $field_group ) {
 
 function acf_import_field_group( $field_group ) {
 	
+	// disable filters to ensure ACF loads raw data from DB
+	acf_disable_filters();
+	
+	
 	// vars
 	$ref = array();
 	$order = array();
@@ -1002,10 +1037,6 @@ function acf_import_field_group( $field_group ) {
 	
 	// remove old fields
 	if( $field_group['ID'] ) {
-		
-		// disable local - important as to avoid 'acf_get_fields_by_id' returning fields with ID = 0
-		acf_disable_local();
-	
 		
 		// load fields
 		$db_fields = acf_get_fields_by_id( $field_group['ID'] );
@@ -1036,11 +1067,11 @@ function acf_import_field_group( $field_group ) {
 			
 		}
 		
-		
-		// enable local - important as to allow local to find new fields and save json file
-		acf_enable_local();
-		
 	}
+	
+	
+	// enable local filter for JSON to be created
+	acf_enable_filter('local');
 	
 			
 	// save field group

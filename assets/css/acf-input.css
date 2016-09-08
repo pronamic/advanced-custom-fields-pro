@@ -348,6 +348,16 @@ html[dir="rtl"] .acf-c0 {
 .acf-field textarea {
   resize: vertical;
 }
+/* disabled */
+.acf-field input:disabled,
+.acf-field select:disabled,
+.acf-field textarea:disabled {
+  background: #f8f8f8;
+}
+.acf-field input[readonly],
+.acf-field textarea[readonly] {
+  background: #f8f8f8;
+}
 /*---------------------------------------------------------------------------------------------
 *
 *  Text
@@ -458,6 +468,10 @@ html[dir="rtl"] input.acf-is-prepended.acf-is-appended {
 *  Select2 (v3)
 *
 *---------------------------------------------------------------------------------------------*/
+.select2-container.-acf {
+  /* open */
+  /* single open */
+}
 .select2-container.-acf .select2-choices {
   background: #fff;
   border-color: #ddd;
@@ -483,13 +497,6 @@ html[dir="rtl"] input.acf-is-prepended.acf-is-appended {
 .select2-container.-acf .select2-search-choice-close {
   margin-top: -1px;
 }
-/* open */
-.select2-container.-acf.select2-container-active .select2-choices,
-.select2-container.-acf.select2-dropdown-open .select2-choices {
-  border-color: #5B9DD9;
-  border-radius: 3px 3px 0 0;
-}
-/* single */
 .select2-container.-acf .select2-choice {
   border-color: #BBBBBB;
 }
@@ -498,10 +505,37 @@ html[dir="rtl"] input.acf-is-prepended.acf-is-appended {
   border-left-color: #DFDFDF;
   padding-left: 1px;
 }
-/* single open */
+.select2-container.-acf .select2-choice .select2-result-description {
+  display: none;
+}
+.select2-container.-acf.select2-container-active .select2-choices,
+.select2-container.-acf.select2-dropdown-open .select2-choices {
+  border-color: #5B9DD9;
+  border-radius: 3px 3px 0 0;
+}
 .select2-container.-acf.select2-dropdown-open .select2-choice {
   background: #fff;
   border-color: #5B9DD9;
+}
+/* description */
+.select2-drop {
+  /* search*/
+  /* result */
+}
+.select2-drop .select2-search {
+  padding: 4px 4px 0;
+}
+.select2-drop .select2-result {
+  /* hover*/
+}
+.select2-drop .select2-result .select2-result-description {
+  color: #999;
+  font-size: 12px;
+  margin-left: 5px;
+}
+.select2-drop .select2-result.select2-highlighted .select2-result-description {
+  color: #fff;
+  opacity: 0.75;
 }
 /*---------------------------------------------------------------------------------------------
 *
@@ -1422,6 +1456,14 @@ html[dir="rtl"] .acf-file-uploader .file-info ul {
   background: #3875d7 !important;
   font-weight: normal !important;
   color: #ffffff !important;
+}
+/*---------------------------------------------------------------------------------------------
+*
+*	Clone field
+*
+*---------------------------------------------------------------------------------------------*/
+.acf-clone-fields {
+  border: #dfdfdf solid 1px;
 }
 /*---------------------------------------------------------------------------------------------
 *

@@ -36,11 +36,7 @@ class acf_json {
 	function update_field_group( $field_group ) {
 		
 		// validate
-		if( !acf_get_setting('json') ) {
-		
-			return;
-			
-		}
+		if( !acf_get_setting('json') ) return;
 		
 		
 		// get fields

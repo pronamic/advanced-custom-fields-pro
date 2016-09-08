@@ -79,6 +79,7 @@ class acf_pro {
 		acf_include('pro/fields/repeater.php');
 		acf_include('pro/fields/flexible-content.php');
 		acf_include('pro/fields/gallery.php');
+		acf_include('pro/fields/clone.php');
 		
 	}
 	
