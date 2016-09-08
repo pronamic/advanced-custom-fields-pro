@@ -426,7 +426,7 @@ function acf_enqueue_uploader() {
 	
 	
 	// create dummy editor
-	?><div class="acf-hidden"><?php wp_editor( '', 'acf_content' ); ?></div><?php
+	?><div id="acf-hidden-wp-editor" class="acf-hidden"><?php wp_editor( '', 'acf_content' ); ?></div><?php
 	
 }
 

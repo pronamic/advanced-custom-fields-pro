@@ -36,7 +36,7 @@ class acf_field_message extends acf_field {
 		$this->label = __("Message",'acf');
 		$this->category = 'layout';
 		$this->defaults = array(
-			'value'			=> false, // prevents acf_render_fields() from attempting to load value
+			'value'			=> false, // prevents ACF from attempting to load value
 			'message'		=> '',
 			'esc_html'		=> 0,
 			'new_lines'		=> 'wpautop',
@@ -151,6 +151,33 @@ class acf_field_message extends acf_field {
 	
 	
 	/*
+	*  update_field()
+	*
+	*  This filter is appied to the $field before it is saved to the database
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$field - the field array holding all the field options
+	*  @param	$post_id - the field group ID (post_type = acf)
+	*
+	*  @return	$field - the modified field
+	*/
+
+	function update_field( $field ) {
+		
+		// remove name
+		$field['name'] = '';
+		$field['required'] = 0;
+		
+		
+		// return
+		return $field;
+	}
+	
+	
+	/*
 	*  translate_field
 	*
 	*  This function will translate field settings
@@ -176,8 +203,10 @@ class acf_field_message extends acf_field {
 	
 }
 
-new acf_field_message();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_message() );
+
+endif; // class_exists check
 
 ?>

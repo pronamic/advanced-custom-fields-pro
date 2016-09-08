@@ -1137,7 +1137,12 @@ new acf_location();
 
 function acf_get_field_group_visibility( $field_group, $args = array() ) {
 	
+	// bail early if not active
+	if( !$field_group['active'] ) return false;
+	
+	
 	// vars
+	$visibility = false;
 	$args = acf_parse_args($args, array(
 		'post_id'		=> 0,
 		'post_type'		=> 0,
@@ -1161,14 +1166,6 @@ function acf_get_field_group_visibility( $field_group, $args = array() ) {
 	
 	// filter for 3rd party customization
 	$args = apply_filters('acf/location/screen', $args, $field_group);
-	
-	
-	// bail early if not active
-	if( !$field_group['active'] ) return false;
-	
-	
-	// vars
-	$visibility = false;
 	
 	
 	// loop through location rules

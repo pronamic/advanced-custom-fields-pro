@@ -259,7 +259,11 @@ acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
 		
 		
 		// detect mode
-		if( $field['tabs'] == 'visual' ) {
+		if( !user_can_richedit() ) {
+			
+			$show_tabs = false;
+			
+		} elseif( $field['tabs'] == 'visual' ) {
 			
 			// case: visual tab only
 			$default_editor = 'tinymce';
@@ -462,8 +466,10 @@ acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
 	
 }
 
-new acf_field_wysiwyg();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_wysiwyg() );
+
+endif; // class_exists check
 
 ?>

@@ -234,6 +234,41 @@ class acf_field_date_picker extends acf_field {
 	
 	
 	/*
+	*  load_value()
+	*
+	*  This filter is applied to the $value after it is loaded from the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value (mixed) the value found in the database
+	*  @param	$post_id (mixed) the $post_id from which the value was loaded
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	$value
+	*/
+	
+	function load_value( $value, $post_id, $field ) {
+		
+		// bail ealry if no $value
+		if( !$value ) return $value;
+		
+		
+		// date field is currently saved as Ymd (not Y-m-d). Convert it
+		if( strlen($value) == 8 ) {
+			
+			$value = substr($value, 0, 4) . '-' . substr($value, 4, 2) . '-' . substr($value, 6, 2);
+			
+		}
+		
+		
+		// return
+		return $value;
+		
+	}
+	
+	
+	/*
 	*  format_value()
 	*
 	*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
@@ -255,10 +290,44 @@ class acf_field_date_picker extends acf_field {
 		
 	}
 	
+	
+	/*
+	*  update_value()
+	*
+	*  This filter is appied to the $value before it is updated in the db
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$value - the value which will be saved in the database
+	*  @param	$post_id - the $post_id of which the value will be saved
+	*  @param	$field - the field array holding all the field options
+	*
+	*  @return	$value - the modified value
+	*/
+	
+	function update_value( $value, $post_id, $field ) {
+	
+		// bail ealry if no $value
+		if( !$value ) return $value;
+		
+		
+		// remove '-'
+		$value = str_replace('-', '', $value);
+		
+		
+		// return
+		return $value;
+		
+	}
+	
 }
 
-new acf_field_date_picker();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_date_picker() );
+
+endif; // class_exists check
 
 ?>

@@ -54,7 +54,7 @@ class acf_admin_update_network {
 		
 		
 		// loop through sites and find updates
-		$sites = wp_get_sites();
+		$sites = acf_get_sites();
 		
 		if( $sites ) {
 			
@@ -177,7 +177,7 @@ class acf_admin_update_network {
 		
 		
 		// loop through sites and find updates
-		$sites = wp_get_sites();
+		$sites = acf_get_sites();
 		
 		if( $sites ) {
 			
@@ -238,5 +238,50 @@ class acf_admin_update_network {
 new acf_admin_update_network();
 
 endif;
+
+
+/*
+*  acf_get_sites
+*
+*  This function will return an array of site data
+*
+*  @type	function
+*  @date	29/08/2016
+*  @since	5.4.0
+*
+*  @param	n/a
+*  @return	(array)
+*/
+
+function acf_get_sites() {
+	
+	// vars
+	$sites = array();
+	
+	
+	// WP >= 4.6
+	if( function_exists('get_sites') ) {
+		
+		$_sites = get_sites();
+		
+		foreach( $_sites as $_site ) {
+			
+	        $_site = get_site( $_site );
+	        $sites[] = $_site->to_array();
+	        
+	    }
+		
+	// WP < 4.6	
+	} else {
+		
+		$sites = wp_get_sites();
+		
+	}
+	
+	
+	// return
+	return $sites;
+	
+}
 
 ?>

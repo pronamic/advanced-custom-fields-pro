@@ -59,7 +59,7 @@ class acf_updates {
         
 		
 		// validate
-    	if( isset($args->slug) && $args->slug == $slug ) {
+    	if( isset($args->slug) && $args->slug === $slug && acf_is_plugin_active() ) {
 	    	
 	    	// filter
 	    	$result = apply_filters('acf/updates/plugin_details', $result, $action, $args);
@@ -89,7 +89,7 @@ class acf_updates {
 	function modify_plugin_update( $transient ) {
 		
 		// bail early if no response (dashboard showed an error)
-		if( empty($transient->response) ) return $transient;
+		if( !isset($transient->response) ) return $transient;
 		
 		
 		// vars
@@ -97,16 +97,8 @@ class acf_updates {
 		$show_updates = acf_get_setting('show_updates');
 		
 		
-		// ensure is_plugin_active() exists (not on frontend)
-		if( !function_exists('is_plugin_active') ) {
-			
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			
-		}
-		
-		
 		// bail early if not a plugin (included in theme)
-		if( !is_plugin_active($basename) ) $show_updates = false;
+		if( !acf_is_plugin_active() ) $show_updates = false;
 		
 		
 		// bail early if no show_updates
@@ -380,5 +372,39 @@ function acf_get_wporg_remote_plugin_info() {
 	return $info;
 	
 }
+
+
+/*
+*  acf_refresh_plugin_updates_transient
+*
+*  This function will refresh teh WP transient containing plugin update data
+*
+*  @type	function
+*  @date	11/08/2016
+*  @since	5.4.0
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_refresh_plugin_updates_transient() {
+	
+	// vars
+	$transient = get_site_transient('update_plugins');
+	
+	
+	// bail early if no transient
+	if( empty($transient) ) return;
+	
+	
+	// update transient
+	$transient = acf()->updates->modify_plugin_update( $transient );
+	
+	
+	// update
+	set_site_transient( 'update_plugins', $transient );
+		
+}
+
 
 ?>

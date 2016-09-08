@@ -348,13 +348,11 @@ html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-controlls {
   /* main */
   /* attachments */
   /* attachment */
-  /* hide attachment actions when sidebar is open */
   /* toolbar */
   /* sidebar */
   /* side info */
   /* side data */
   /* column widths */
-  /* column widths clear */
   /* resizable */
 }
 .acf-gallery .acf-gallery-main {
@@ -374,16 +372,15 @@ html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-controlls {
   left: 0;
   padding: 5px;
   overflow: auto;
+  overflow-x: hidden;
 }
 .acf-gallery .acf-gallery-attachment {
   width: 25%;
   float: left;
   cursor: pointer;
   position: relative;
-  background: #fff;
   /* sortable */
   /* active */
-  /* audio, video */
   /* icon */
   /* rtl */
 }
@@ -392,16 +389,27 @@ html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-controlls {
   border: #DFDFDF solid 1px;
   position: relative;
   overflow: hidden;
+  background: #eee;
 }
-.acf-gallery .acf-gallery-attachment img {
+.acf-gallery .acf-gallery-attachment .margin:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.acf-gallery .acf-gallery-attachment .thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate(50%, 50%);
+}
+.acf-gallery .acf-gallery-attachment .thumbnail img {
   display: block;
   height: auto;
+  max-height: 100%;
   width: auto;
-  max-width: 100%;
-  margin: 0 auto;
-}
-.acf-gallery .acf-gallery-attachment img[src$="svg"] {
-  background: #f9f9f9;
+  transform: translate(-50%, -50%);
 }
 .acf-gallery .acf-gallery-attachment .filename {
   position: absolute;
@@ -417,49 +425,41 @@ html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-controlls {
   word-wrap: break-word;
   max-height: 90%;
   overflow: hidden;
-  display: none;
 }
 .acf-gallery .acf-gallery-attachment .actions {
   position: absolute;
   top: 0;
   right: 0;
 }
-.acf-gallery .acf-gallery-attachment.ui-sortable-placeholder {
-  visibility: visible !important;
-  background: #F1F1F1;
+.acf-gallery .acf-gallery-attachment.ui-sortable-helper .margin {
+  border: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 .acf-gallery .acf-gallery-attachment.ui-sortable-placeholder .margin {
-  visibility: hidden !important;
+  background: #F1F1F1;
+  border: none;
+}
+.acf-gallery .acf-gallery-attachment.ui-sortable-placeholder .margin * {
+  display: none !important;
 }
 .acf-gallery .acf-gallery-attachment.active .margin {
   box-shadow: 0 0 0 1px #FFFFFF, 0 0 0 5px #1E8CBE;
 }
-.acf-gallery .acf-gallery-attachment.-audio .filename,
-.acf-gallery .acf-gallery-attachment.-video .filename {
-  display: block;
-}
-.acf-gallery .acf-gallery-attachment.-icon .margin:before {
-  content: "";
-  display: block;
-  padding-top: 100%;
-}
-.acf-gallery .acf-gallery-attachment.-icon .thumbnail {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  max-width: 40%;
-}
-.acf-gallery .acf-gallery-attachment.-icon img {
-  margin: -50% 0 0 -50%;
-}
-.acf-gallery .acf-gallery-attachment.-icon .filename {
-  display: block;
+.acf-gallery .acf-gallery-attachment.-icon .thumbnail img {
+  transform: translate(-50%, -70%);
 }
 html[dir="rtl"] .acf-gallery .acf-gallery-attachment {
   float: right;
 }
+.acf-gallery.sidebar-open {
+  /* hide attachment actions when sidebar is open */
+  /* allow sidebar to move over main for small widths (widget edit box) */
+}
 .acf-gallery.sidebar-open .acf-gallery-attachment .actions {
   display: none;
+}
+.acf-gallery.sidebar-open .acf-gallery-side {
+  z-index: 2;
 }
 .acf-gallery .acf-gallery-toolbar {
   position: absolute;
@@ -607,15 +607,6 @@ html[dir="rtl"] .acf-gallery .acf-gallery-side-data th.label {
 }
 .acf-gallery[data-columns="8"] .acf-gallery-attachment {
   width: 12.5%;
-}
-.acf-gallery[data-columns="2"] .acf-gallery-attachment:nth-child(2n+1),
-.acf-gallery[data-columns="3"] .acf-gallery-attachment:nth-child(3n+1),
-.acf-gallery[data-columns="4"] .acf-gallery-attachment:nth-child(4n+1),
-.acf-gallery[data-columns="5"] .acf-gallery-attachment:nth-child(5n+1),
-.acf-gallery[data-columns="6"] .acf-gallery-attachment:nth-child(6n+1),
-.acf-gallery[data-columns="7"] .acf-gallery-attachment:nth-child(7n+1),
-.acf-gallery[data-columns="8"] .acf-gallery-attachment:nth-child(8n+1) {
-  clear: both;
 }
 .acf-gallery .ui-resizable-handle {
   display: block;

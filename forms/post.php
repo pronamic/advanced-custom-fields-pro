@@ -484,6 +484,49 @@ if( typeof acf !== 'undefined' ) {
 	
 	
 	/*
+	*  allow_save_post
+	*
+	*  This function will return true if the post is allowed to be saved
+	*
+	*  @type	function
+	*  @date	26/06/2016
+	*  @since	5.3.8
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function allow_save_post( $post ) {
+		
+		// vars
+		$allow = true;
+		$reject = array( 'auto-draft', 'revision', 'acf-field', 'acf-field-group' );
+		$wp_preview = acf_maybe_get($_POST, 'wp-preview');
+		
+		
+		// check post type
+		if( in_array($post->post_type, $reject) ) {
+			
+			$allow = false;
+			
+		}
+		
+		
+		// allow preview
+		if( $post->post_type == 'revision' && $wp_preview === 'dopreview' ) {
+			
+			$allow = true;
+			
+		}
+		
+		
+		// return
+		return $allow;
+		
+	}
+	
+	
+	/*
 	*  save_post
 	*
 	*  This function will validate and save the $_POST data
@@ -498,50 +541,30 @@ if( typeof acf !== 'undefined' ) {
 	
 	function save_post( $post_id, $post ) {
 		
-		// do not save if this is an auto save routine
-		if( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
-			
-			return $post_id;
-			
-		}
+		// bail ealry if no allowed to save this post type
+		if( !$this->allow_save_post($post) ) return $post_id;
 		
 		
-		// bail early if is acf-field-group or acf-field
-		if( in_array($post->post_type, array('acf-field', 'acf-field-group'))) {
-			
-			return $post_id;
-			
-		}
+		// ensure saving to the correct post
+		if( !acf_verify_nonce('post', $post_id) ) return $post_id;
 		
 		
-		// verify and remove nonce
-		if( !acf_verify_nonce('post', $post_id) ) {
-			
-			return $post_id;
-			
-		}
-		
-		
-		// validate and save
+		// validate for published post (allow draft to save without validation)
 		if( get_post_status($post_id) == 'publish' ) {
 			
-			if( acf_validate_save_post(true) ) {
+			// show errors
+			acf_validate_save_post( true );
 				
-				acf_save_post( $post_id );
-				
-			}
-			
-		} else {
-			
-			acf_save_post( $post_id );
-			
 		}
 		
+		
+		// save
+		acf_save_post( $post_id );
+				
 		
 		// return
 		return $post_id;
 		
-        
 	}
 	
 	

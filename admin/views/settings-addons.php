@@ -14,7 +14,7 @@ $json = acf_extract_var( $args, 'json');
 			
 			<?php foreach( $json as $addon ): 
 				
-				$addon = acf_parse_args($addon, array(
+				$addon = wp_parse_args($addon, array(
 					"title"			=> "",
 			        "slug"			=> "",
 			        "description"	=> "",

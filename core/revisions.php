@@ -14,16 +14,80 @@ class acf_revisions {
 	*  @return	N/A
 	*/
 	
-	function __construct()
-	{
-		// actions		
+	function __construct() {
+		
+		// actions	
+		add_action('save_post', array($this, 'save_post'), 99, 3);
 		add_action('wp_restore_post_revision', array($this, 'wp_restore_post_revision'), 10, 2 );
 		
 		
 		// filters
-		add_filter('_wp_post_revision_fields', array($this, 'wp_preview_post_fields') );
-		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields') );
-		add_filter('wp_save_post_revision_check_for_changes', array($this, 'force_save_revision'), 10, 3);
+		add_filter('wp_save_post_revision_check_for_changes', array($this, 'wp_save_post_revision_check_for_changes'), 10, 3);
+		add_filter('_wp_post_revision_fields', array($this, 'wp_preview_post_fields'), 10, 2 );
+		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields'), 10, 2 );
+		
+	}
+	
+	
+	/*
+	*  get_post_latest_revision
+	*
+	*  This function will return the latest revision for a given post
+	*
+	*  @type	function
+	*  @date	25/06/2016
+	*  @since	5.3.8
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function get_post_latest_revision( $post_id ) {
+		
+		// vars
+		$revisions = wp_get_post_revisions( $post_id );
+		
+		
+		// shift off and return first revision (will return null if no revisions)
+		$revision = array_shift($revisions);
+		
+		
+		// return
+		return $revision;		
+		
+	}
+	
+	
+	/*
+	*  save_post
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	25/06/2016
+	*  @since	5.3.8
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function save_post( $post_id, $post, $update ) {
+		
+		// bail ealry if post type does not support revision
+		if( !post_type_supports($post->post_type, 'revisions') ) return $post_id;
+		
+		
+		// get latest revision
+		$revision = $this->get_post_latest_revision( $post_id );
+		
+		
+		// save
+		if( $revision ) {
+			
+			acf_copy_postmeta( $post_id, $revision->ID );
+			
+		}
+		
 	}
 	
 	
@@ -44,12 +108,12 @@ class acf_revisions {
 	
 	function wp_preview_post_fields( $fields ) {
 		
+		// vars
+		$wp_preview = acf_maybe_get($_POST, 'wp-preview');
+		
+		
 		// bail early if not previewing a post
-		if( empty($_POST['wp-preview']) || $_POST['wp-preview'] != 'dopreview') {
-			
-			return $fields;
-			
-		}
+		if( $wp_preview !== 'dopreview' ) return $fields;
 		
 		
 		// add to fields if ACF has changed
@@ -67,7 +131,7 @@ class acf_revisions {
 	
 	
 	/*
-	*  force_save_revision
+	*  wp_save_post_revision_check_for_changes
 	*
 	*  This filter will return false and force WP to save a revision. This is required due to
 	*  WP checking only post_title, post_excerpt and post_content values, not custom fields.
@@ -81,17 +145,20 @@ class acf_revisions {
 	*  @return	$return (boolean)
 	*/
 	
-	function force_save_revision( $return, $last_revision, $post )
-	{
-		// preview hack
-		if( isset($_POST['_acfchanged']) && $_POST['_acfchanged'] == '1' )
-		{
+	function wp_save_post_revision_check_for_changes( $return, $last_revision, $post ) {
+		
+		
+		// look for _acfchanged
+		if( acf_maybe_get($_POST, '_acfchanged') === '1' ) {
+			
 			$return = false;
+			
 		}
 		
 		
 		// return
 		return $return;
+		
 	}
 	
 	
@@ -109,112 +176,112 @@ class acf_revisions {
 	*  @return	$post_id (int)
 	*/
 		
-	function wp_post_revision_fields( $return ) {
+	function wp_post_revision_fields( $fields, $post = null ) {
 		
-		
-		//globals
-		global $post, $pagenow;
-		
-
-		// validate
-		$allowed = false;
-		
-		
-		// Normal revisions page
-		if( $pagenow == 'revision.php' )
-		{
-			$allowed = true;
-		}
-		
-		
-		// WP 3.6 AJAX revision
-		if( $pagenow == 'admin-ajax.php' && isset($_POST['action']) && $_POST['action'] == 'get-revision-diffs' )
-		{
-			$allowed = true;
-		}
-		
-		
-		// bail
-		if( !$allowed ) 
-		{
-			return $return;
+		// validate page
+		if( acf_is_screen('revision') || acf_is_ajax('get-revision-diffs') ) {
+			
+			// allow
+			
+		} else {
+			
+			// bail early (most likely saving a post)
+			return $fields;
+			
 		}
 		
 		
 		// vars
-		$post_id = 0;
+		$append = array();
+		$order = array();
+		$post_id = acf_maybe_get($post, 'ID');
 		
 		
-		// determine $post_id
-		if( isset($_POST['post_id']) )
-		{
-			$post_id = $_POST['post_id'];
-		}
-		elseif( isset($post->ID) )
-		{
+		// compatibility with WP < 4.5 (test)
+		if( !$post_id ) {
+			
+			global $post;
 			$post_id = $post->ID;
-		}
-		else
-		{
-			return $return;
+			
 		}
 		
 		
-		// setup global array
-		$GLOBALS['acf_revisions_fields'] = array();
+		// get all postmeta
+		$meta = get_post_meta( $post_id );
 		
 		
-		// get field objects
-		$custom_fields = get_post_custom( $post_id );
+		// bail early if no meta
+		if( !$meta ) return $fields;
 		
 		
-		// populate vars
-		if( !empty($custom_fields) )
-		{
-			foreach( $custom_fields as $k => $v )
-			{
-				// value is always an array
-				$v = $v[0];
-				
-				
-				// bail early if $value is not is a field_key
-				if( !acf_is_field_key($v) )
-				{
-					continue;
-				}
-				
-				
-				// remove prefix '_' field from reference
-				$field_name = substr($k, 1);
-				
-				
-				// get field
-				//$field = acf_get_field($v);
-				
-				
-				// append to return
-				$return[ $field_name ] = $field_name;
-				
-				
-				// load value
-				add_filter("_wp_post_revision_field_{$field_name}", array($this, 'wp_post_revision_field'), 10, 4);
-				
-				
-				// WP 3.5: left vs right
-				// Add a value of the revision ID (as there is no way to determine this within the '_wp_post_revision_field_' filter!)
-				if( isset($_GET['action'], $_GET['left'], $_GET['right']) && $_GET['action'] == 'diff' )
-				{
-					global $left_revision, $right_revision;
+		// loop
+		foreach( $meta as $name => $value ) {
+			
+			// attempt to find key value
+			$key = acf_maybe_get( $meta, '_'.$name );
+			
+			
+			// bail ealry if no key
+			if( !$key ) continue;
+			
+			
+			// update vars
+			$value = $value[0];
+			$key = $key[0];
+			
 					
-					$left_revision->$field_name = 'revision_id=' . $_GET['left'];
-					$right_revision->$field_name = 'revision_id=' . $_GET['right'];
-				}
+			// bail early if $key is a not a field_key
+			if( !acf_is_field_key($key) ) continue;
+			
+			
+			// get field
+			$field = acf_get_field( $key );
+			$field_title = $field['label'] . ' (' . $name . ')';
+			$field_order = $field['menu_order'];
+			$ancestors = acf_get_field_ancestors( $field );
+			
+			
+			// ancestors
+			if( !empty($ancestors) ) {
+				
+				// vars
+				$count = count($ancestors);
+				$oldest = acf_get_field( $ancestors[$count-1] );
+				
+				
+				// update vars
+				$field_title = str_repeat('- ', $count) . $field_title;
+				$field_order = $oldest['menu_order'] . '.1';
 				
 			}
+			
+			
+			// append
+			$append[ $name ] = $field_title;
+			$order[ $name ] = $field_order;
+			
+			
+			// hook into specific revision field filter and return local value
+			add_filter("_wp_post_revision_field_{$name}", array($this, 'wp_post_revision_field'), 10, 4);
+			
 		}
-				
 		
-		return $return;
+		
+		// append 
+		if( !empty($append) ) {
+			
+			// sort by name (orders sub field values correctly)
+			array_multisort($order, $append);
+			
+			
+			// append
+			$fields = array_merge($fields, $append);
+			
+		}
+		
+		
+		// return
+		return $fields;
 	
 	}
 	
@@ -234,36 +301,22 @@ class acf_revisions {
 	*  @return	$value (string)
 	*/
 	
-	function wp_post_revision_field( $value, $field_name, $post = null, $direction = false)
-	{
+	function wp_post_revision_field( $value, $field_name, $post = null, $direction = false) {
+		
+		// bail ealry if is empty
+		if( empty($value) ) return $value;
+		
+		
+		// value has not yet been 'maybe_unserialize'
+		$value = maybe_unserialize( $value );
+		
+		
 		// vars
-		$post_id = 0;
-		
-		
-		// determine $post_id
-		if( isset($post->ID) )
-		{
-			// WP 3.6
-			$post_id = $post->ID;
-		}
-		elseif( isset($_GET['revision']) )
-		{
-			// WP 3.5
-			$post_id = (int) $_GET['revision'];
-		}
-		elseif( strpos($value, 'revision_id=') !== false )
-		{
-			// WP 3.5 (left vs right)
-			$post_id = (int) str_replace('revision_id=', '', $value);
-		}
+		$post_id = $post->ID;
 		
 		
 		// load field
 		$field = acf_maybe_get_field( $field_name, $post_id );
-		
-		
-		// update value
-		//$value = $field['value'];
 		
 		
 		// default formatting
@@ -271,23 +324,25 @@ class acf_revisions {
 			
 			$value = implode(', ', $value);
 			
+		} elseif( is_object($value) ) {
+			
+			$value = serialize($value);
+			
 		}
 		
 		
-		// format
-		if( !empty($value) )
-		{
-			// image || file?
-			if( $field['type'] == 'image' || $field['type'] == 'file' )
-			{
-				$url = wp_get_attachment_url($value);
-				$value = $value . ' (' . $url . ')';
-			}
+		// image
+		if( $field['type'] == 'image' || $field['type'] == 'file' ) {
+			
+			$url = wp_get_attachment_url($value);
+			$value = $value . ' (' . $url . ')';
+			
 		}
 		
 		
 		// return
 		return $value;
+		
 	}
 	
 	
@@ -304,49 +359,23 @@ class acf_revisions {
 	*/
 	
 	function wp_restore_post_revision( $post_id, $revision_id ) {
-	
-		// global
-		global $wpdb;
+		
+		// copy postmeta from revision to post (restore from revision)
+		acf_copy_postmeta( $revision_id, $post_id );
 		
 		
-		// get field objects
-		$custom_fields = get_post_custom( $revision_id );
+		// Make sure the latest revision is also updated to match the new $post data
+		// get latest revision
+		$revision = $this->get_post_latest_revision( $post_id );
 		
 		
-		// populate vars
-		if( !empty($custom_fields) )
-		{
-			foreach( $custom_fields as $k => $v )
-			{
-				// value is always an array
-				$v = $v[0];
-				
-				
-				// bail early if $value is not is a field_key
-				if( !acf_is_field_key($v) )
-				{
-					continue;
-				}
-				
-				
-				// remove prefix '_' field from reference
-				$field_name = substr($k, 1);
-				
-				
-				// bail early if value could not be found
-				if( !isset($custom_fields[ $field_name ][0]) )
-				{
-					continue;
-				}
-				
-				
-				update_post_meta( $post_id, $field_name, $custom_fields[ $field_name ][0] );
-				
-				
-			}
+		// save
+		if( $revision ) {
+			
+			// copy postmeta from revision to latest revision (potentialy may be the same, but most likely are different)
+			acf_copy_postmeta( $revision_id, $revision->ID );
+			
 		}
-		
-		
 			
 	}
 	
