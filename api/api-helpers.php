@@ -2980,6 +2980,17 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 			
 		}
 		
+	} elseif( isset($_GET['p']) && isset($_GET['preview']) ) {
+		
+		$revision = acf_get_post_latest_revision( $_GET['p'] );
+		
+		// save
+		if( $revision && $revision->post_parent == $post_id) {
+			
+			$post_id = (int) $revision->ID;
+			
+		}
+		
 	}
 	
 	
@@ -4757,8 +4768,78 @@ function acf_send_ajax_results( $response ) {
 	// return
 	wp_send_json( $response );
 	
-}		
+}
+
+
+/*
+*  acf_is_sequential_array
+*
+*  This function will return true if the array contains only numeric keys
+*
+*  @source	http://stackoverflow.com/questions/173400/how-to-check-if-php-array-is-associative-or-sequential
+*  @type	function
+*  @date	9/09/2016
+*  @since	5.4.0
+*
+*  @param	$array (array)
+*  @return	(boolean)
+*/
+
+function acf_is_sequential_array( $array ) {
+	
+	// bail ealry if not array
+	if( !is_array($array) ) return false;
+	
+	
+	// loop
+	foreach( $array as $key => $value ) {
 		
+		// bail ealry if is string
+		if( is_string($key) ) return false;
+	
+	}
+	
+	
+	// return
+	return true;
+	
+}
+
+
+/*
+*  acf_is_associative_array
+*
+*  This function will return true if the array contains one or more string keys
+*
+*  @source	http://stackoverflow.com/questions/173400/how-to-check-if-php-array-is-associative-or-sequential
+*  @type	function
+*  @date	9/09/2016
+*  @since	5.4.0
+*
+*  @param	$array (array)
+*  @return	(boolean)
+*/
+
+function acf_is_associative_array( $array ) {
+	
+	// bail ealry if not array
+	if( !is_array($array) ) return false;
+	
+	
+	// loop
+	foreach( $array as $key => $value ) {
+		
+		// bail ealry if is string
+		if( is_string($key) ) return true;
+	
+	}
+	
+	
+	// return
+	return false;
+	
+}
+	
 
 add_filter("acf/settings/slug", '_acf_settings_slug');
 

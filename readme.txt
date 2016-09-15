@@ -106,6 +106,15 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.4.6-RC1 =
+* Flexible content field: Fixed bug where radio input values were lost when adding/duplicating a layout
+
+= 5.4.5 =
+* API: Fixed bug in `acf_form()` where AJAX validation ignored 'post_title'
+* API: Improved `update_field()` when saving a new value (when reference value does not yet exist)
+* Core: Added search input & toggle to admin field groups list
+* Core: Fixed bug where preview values did not load for a draft post
+
 = 5.4.4 =
 * WYSIWYG field: Fixed JS error when 'Disable the visual editor when writing' is checked
 

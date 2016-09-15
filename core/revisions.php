@@ -1,5 +1,9 @@
 <?php 
 
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+if( ! class_exists('acf_revisions') ) :
+
 class acf_revisions {
 
 	/*
@@ -30,35 +34,6 @@ class acf_revisions {
 	
 	
 	/*
-	*  get_post_latest_revision
-	*
-	*  This function will return the latest revision for a given post
-	*
-	*  @type	function
-	*  @date	25/06/2016
-	*  @since	5.3.8
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	function get_post_latest_revision( $post_id ) {
-		
-		// vars
-		$revisions = wp_get_post_revisions( $post_id );
-		
-		
-		// shift off and return first revision (will return null if no revisions)
-		$revision = array_shift($revisions);
-		
-		
-		// return
-		return $revision;		
-		
-	}
-	
-	
-	/*
 	*  save_post
 	*
 	*  description
@@ -77,8 +52,12 @@ class acf_revisions {
 		if( !post_type_supports($post->post_type, 'revisions') ) return $post_id;
 		
 		
+		// bail early if not published (no need to save revision)
+		if( $post->post_status != 'publish' ) return $post_id;
+		
+		
 		// get latest revision
-		$revision = $this->get_post_latest_revision( $post_id );
+		$revision = acf_get_post_latest_revision( $post_id );
 		
 		
 		// save
@@ -366,7 +345,7 @@ class acf_revisions {
 		
 		// Make sure the latest revision is also updated to match the new $post data
 		// get latest revision
-		$revision = $this->get_post_latest_revision( $post_id );
+		$revision = acf_get_post_latest_revision( $post_id );
 		
 		
 		// save
@@ -382,6 +361,39 @@ class acf_revisions {
 			
 }
 
-new acf_revisions();
+// initialize
+acf()->revisions = new acf_revisions();
+
+endif; // class_exists check
+
+
+/*
+*  acf_get_post_latest_revision
+*
+*  This function will return the latest revision for a given post
+*
+*  @type	function
+*  @date	25/06/2016
+*  @since	5.3.8
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_get_post_latest_revision( $post_id ) {
+	
+	// vars
+	$revisions = wp_get_post_revisions( $post_id );
+	
+	
+	// shift off and return first revision (will return null if no revisions)
+	$revision = array_shift($revisions);
+	
+	
+	// return
+	return $revision;		
+	
+}
+
 
 ?>

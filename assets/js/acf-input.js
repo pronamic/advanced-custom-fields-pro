@@ -1903,7 +1903,7 @@ var acf;
 		
 		decode: function( string ){
 			
-			return $('<div/>').html( string ).text();
+			return $('<textarea/>').html( string ).text();
 			
 		},
 		
