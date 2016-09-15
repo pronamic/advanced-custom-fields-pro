@@ -1778,7 +1778,7 @@ function acf_prepare_fields_for_import( $fields = false ) {
 		
 		// ensure $field is an array of fields
 		// this allows for multiepl sub fields to be returned
-		if( !isset($field[0]) ) {
+		if( acf_is_associative_array($field) ) {
 			
 			$field = array( $field );
 			

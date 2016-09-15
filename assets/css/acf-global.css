@@ -740,15 +740,20 @@ a.acf-icon.-cancel.grey:hover {
   margin-left: 7px;
   font-style: italic;
 }
-/* WPML fix */
+/* subsubsub */
 #acf-field-group-wrap .subsubsub {
+  /* WPML */
   margin-bottom: 3px;
+  /* search */
 }
 #acf-field-group-wrap .subsubsub ul {
   margin: 0;
 }
 #acf-field-group-wrap .subsubsub + .subsubsub {
   margin-top: 0;
+}
+#acf-field-group-wrap .subsubsub a:focus {
+  box-shadow: none;
 }
 /* columns (replicate post edit layout) */
 .acf-columns-2 {
@@ -778,6 +783,12 @@ html[dir="rtl"] .acf-columns-2 .acf-column-2 {
   float: left;
   margin-right: 0;
   margin-left: -300px;
+}
+/* search */
+#acf-field-group-wrap .search-box:after {
+  display: block;
+  content: "";
+  height: 5px;
 }
 .acf-clear {
   clear: both;

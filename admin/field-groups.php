@@ -713,6 +713,22 @@ class acf_admin_field_groups {
 	$('#the-list tr.no-items td').attr('colspan', 4);
 	
 	
+	// search
+	$('.subsubsub').append(' | <li><a href="#" class="acf-toggle-search"><?php _e('Search', 'acf'); ?></a></li>');
+	
+	
+	// events
+	$(document).on('click', '.acf-toggle-search', function( e ){
+		
+		// prevent default
+		e.preventDefault();
+		
+		
+		// toggle
+		$('.search-box').slideToggle();
+		
+	});
+	
 })(jQuery);
 </script>
 <?php
