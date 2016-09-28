@@ -223,6 +223,10 @@ class acf_field_clone extends acf_field {
 				$field_group_fields = acf_get_fields($field_group);
 				
 				
+				// bail early if no field
+				if( empty($field_group_fields) ) continue;
+				
+				
 				// append
 				$fields = array_merge($fields, $field_group_fields);
 				
@@ -867,6 +871,10 @@ class acf_field_clone extends acf_field {
 	
 	function get_clone_setting_field_choice( $field ) {
 		
+		// bail early if no field
+		if( !$field ) return __('Unknown field', 'acf');
+		
+		
 		// title
 		$title = $field['label'] ? $field['label'] : __('(no title)', 'acf');
 					
@@ -902,6 +910,11 @@ class acf_field_clone extends acf_field {
 	
 	function get_clone_setting_group_choice( $field_group ) {
 		
+		// bail early if no field group
+		if( !$field_group ) return __('Unknown field group', 'acf');
+		
+		
+		// return
 		return sprintf( __('All fields from %s field group', 'acf'), $field_group['title'] );
 		
 	}

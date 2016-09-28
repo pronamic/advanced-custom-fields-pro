@@ -21,7 +21,6 @@ class acf_revisions {
 	function __construct() {
 		
 		// actions	
-		add_action('save_post', array($this, 'save_post'), 99, 3);
 		add_action('wp_restore_post_revision', array($this, 'wp_restore_post_revision'), 10, 2 );
 		
 		
@@ -29,43 +28,6 @@ class acf_revisions {
 		add_filter('wp_save_post_revision_check_for_changes', array($this, 'wp_save_post_revision_check_for_changes'), 10, 3);
 		add_filter('_wp_post_revision_fields', array($this, 'wp_preview_post_fields'), 10, 2 );
 		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields'), 10, 2 );
-		
-	}
-	
-	
-	/*
-	*  save_post
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	25/06/2016
-	*  @since	5.3.8
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	function save_post( $post_id, $post, $update ) {
-		
-		// bail ealry if post type does not support revision
-		if( !post_type_supports($post->post_type, 'revisions') ) return $post_id;
-		
-		
-		// bail early if not published (no need to save revision)
-		if( $post->post_status != 'publish' ) return $post_id;
-		
-		
-		// get latest revision
-		$revision = acf_get_post_latest_revision( $post_id );
-		
-		
-		// save
-		if( $revision ) {
-			
-			acf_copy_postmeta( $post_id, $revision->ID );
-			
-		}
 		
 	}
 	
@@ -249,12 +211,25 @@ class acf_revisions {
 		// append 
 		if( !empty($append) ) {
 			
+			// vars
+			$prefix = '_';
+			
+			
+			// add prefix
+			$append = acf_add_array_key_prefix($append, $prefix);
+			$order = acf_add_array_key_prefix($order, $prefix);
+			
+			
 			// sort by name (orders sub field values correctly)
 			array_multisort($order, $append);
 			
 			
+			// remove prefix
+			$append = acf_remove_array_key_prefix($append, $prefix);
+			
+			
 			// append
-			$fields = array_merge($fields, $append);
+			$fields = $fields + $append;
 			
 		}
 		
@@ -365,6 +340,35 @@ class acf_revisions {
 acf()->revisions = new acf_revisions();
 
 endif; // class_exists check
+
+
+/*
+*  acf_save_post_revision
+*
+*  This function will copy meta from a post to it's latest revision
+*
+*  @type	function
+*  @date	26/09/2016
+*  @since	5.4.0
+*
+*  @param	$post_id (int)
+*  @return	n/a
+*/
+
+function acf_save_post_revision( $post_id = 0 ) {
+	
+	// get latest revision
+	$revision = acf_get_post_latest_revision( $post_id );
+	
+	
+	// save
+	if( $revision ) {
+		
+		acf_copy_postmeta( $post_id, $revision->ID );
+		
+	}
+	
+}
 
 
 /*

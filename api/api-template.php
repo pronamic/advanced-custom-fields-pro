@@ -602,16 +602,14 @@ function get_row( $format = false ) {
 	// format
 	if( $format ) {
 		
-		// temp wrap value in array
-		$value = array( $value );
+		// format entire value
+		// - solves problem where cached value is incomplete
+		// - no performance issues here thanks to cache
+		$value = acf_format_value( $loop['value'], $loop['post_id'], $loop['field'] );
 		
 		
-		// format the value (1 row of data)
-		$value = acf_format_value( $value, $loop['post_id'], $loop['field'] );
-		
-		
-		// extract value from array
-		$value = $value[0];
+		// get value
+		$value = acf_maybe_get( $value, $loop['i'] );
 		
 	}
 	

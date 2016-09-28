@@ -505,19 +505,11 @@ if( typeof acf !== 'undefined' ) {
 		
 		
 		// check post type
-		if( in_array($post->post_type, $reject) ) {
-			
-			$allow = false;
-			
-		}
+		if( in_array($post->post_type, $reject) ) $allow = false;
 		
 		
 		// allow preview
-		if( $post->post_type == 'revision' && $wp_preview === 'dopreview' ) {
-			
-			$allow = true;
-			
-		}
+		if( $post->post_type == 'revision' && $wp_preview == 'dopreview' ) $allow = true;
 		
 		
 		// return
@@ -550,7 +542,7 @@ if( typeof acf !== 'undefined' ) {
 		
 		
 		// validate for published post (allow draft to save without validation)
-		if( get_post_status($post_id) == 'publish' ) {
+		if( $post->post_status == 'publish' ) {
 			
 			// show errors
 			acf_validate_save_post( true );
@@ -560,6 +552,14 @@ if( typeof acf !== 'undefined' ) {
 		
 		// save
 		acf_save_post( $post_id );
+		
+		
+		// save revision
+		if( post_type_supports($post->post_type, 'revisions') ) {
+			
+			acf_save_post_revision( $post_id );
+			
+		}
 				
 		
 		// return
