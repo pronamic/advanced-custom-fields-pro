@@ -15,7 +15,6 @@ if( ! class_exists('acf_field_wysiwyg') ) :
 
 class acf_field_wysiwyg extends acf_field {
 	
-	var $exists = 0;
 	
 	/*
 	*  __construct
@@ -44,30 +43,10 @@ class acf_field_wysiwyg extends acf_field {
 		);
     	
     	
-    	// Create an acf version of the_content filter (acf_the_content)
-		if(	!empty($GLOBALS['wp_embed']) ) {
-		
-			add_filter( 'acf_the_content', array( $GLOBALS['wp_embed'], 'run_shortcode' ), 8 );
-			add_filter( 'acf_the_content', array( $GLOBALS['wp_embed'], 'autoembed' ), 8 );
-			
-		}
-		
-		add_filter( 'acf_the_content', 'capital_P_dangit', 11 );
-		add_filter( 'acf_the_content', 'wptexturize' );
-		add_filter( 'acf_the_content', 'convert_smilies' );
-		add_filter( 'acf_the_content', 'convert_chars' ); // not found in WP 4.4
-		add_filter( 'acf_the_content', 'wpautop' );
-		add_filter( 'acf_the_content', 'shortcode_unautop' );
-		//add_filter( 'acf_the_content', 'prepend_attachment' ); should only be for the_content (causes double image on attachment page)
-		if( function_exists('wp_make_content_images_responsive') ) {
-			
-			add_filter( 'acf_the_content', 'wp_make_content_images_responsive' ); // added in WP 4.4
-			
-		}
-		
-		add_filter( 'acf_the_content', 'do_shortcode', 11);
-		
-
+    	// add acf_the_content filters
+    	$this->add_filters();
+    	
+    	
 		// actions
 		add_action('acf/input/admin_footer', 	array($this, 'input_admin_footer'));
 		
@@ -75,6 +54,69 @@ class acf_field_wysiwyg extends acf_field {
 		// do not delete!
     	parent::__construct();
     	
+	}
+	
+	
+	/*
+	*  add_filters
+	*
+	*  This function will add filters to 'acf_the_content'
+	*
+	*  @type	function
+	*  @date	20/09/2016
+	*  @since	5.4.0
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function add_filters() {
+		
+		// globals
+   		global $wp_version;
+   		
+   		
+		// wp-includes/class-wp-embed.php
+		if(	!empty($GLOBALS['wp_embed']) ) {
+		
+			add_filter( 'acf_the_content', array( $GLOBALS['wp_embed'], 'run_shortcode' ), 8 );
+			add_filter( 'acf_the_content', array( $GLOBALS['wp_embed'], 'autoembed' ), 8 );
+			
+		}
+		
+		
+		// wp-includes/default-filters.php
+		add_filter( 'acf_the_content', 'capital_P_dangit', 11 );
+		add_filter( 'acf_the_content', 'wptexturize' );
+		add_filter( 'acf_the_content', 'convert_smilies', 20 );
+		
+		
+		// Removed in 4.4
+		if( version_compare($wp_version, '4.4', '<' ) ) {
+			
+			add_filter( 'acf_the_content', 'convert_chars' );
+			
+		}
+		
+		
+		add_filter( 'acf_the_content', 'wpautop' );
+		add_filter( 'acf_the_content', 'shortcode_unautop' );
+		
+		
+		// should only be for the_content (causes double image on attachment page)
+		//add_filter( 'acf_the_content', 'prepend_attachment' ); 
+		
+		
+		// Added in 4.4
+		if( function_exists('wp_make_content_images_responsive') ) {
+			
+			add_filter( 'acf_the_content', 'wp_make_content_images_responsive' );
+			
+		}
+		
+		
+		add_filter( 'acf_the_content', 'do_shortcode', 11);
+		
 	}
 	
 	

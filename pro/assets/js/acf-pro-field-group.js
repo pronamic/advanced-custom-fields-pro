@@ -137,7 +137,7 @@
     	duplicate_field: function( $el ) {
 	    	
 	    	// vars
-			var $fields = $el.find('.acf-field-object').not('[data-id="acfcloneindex"]');
+			var $fields = $el.find('.acf-field-object');
 				
 			
 			// bail early if $fields are empty
@@ -302,7 +302,7 @@
 			});
 			
 			
-			$fields.children('.acf-field-object').not('[data-id="acfcloneindex"]').each(function(){
+			$fields.children('.acf-field-object').each(function(){
 				
 				// vars
 				var $field = $(this);
@@ -527,23 +527,23 @@
 		_add: function( $el ){
 			
 			// duplicate
-			$el2 = acf.duplicate( $el );
-			
-			
-			// remove sub fields
-			$el2.find('.acf-field-object').not('[data-id="acfcloneindex"]').remove();
-	
-			
-			// show add new message
-			$el2.find('.no-fields-message').show();
-			
-			
-			// reset layout meta values
-			$el2.find('.acf-fc-meta input').val('');
-			
-			
-			// add new tr
-			$el.after( $el2 );
+			var $el2 = acf.duplicate({
+				$el: $el,
+				after: function( $el, $el2 ){
+					
+					// remove sub fields
+					$el2.find('.acf-field-object').remove();
+					
+					
+					// show add new message
+					$el2.find('.no-fields-message').show();
+					
+					
+					// reset layout meta values
+					$el2.find('.acf-fc-meta input').val('');
+					
+				}
+			});
 			
 			
 			// render layout
@@ -561,13 +561,9 @@
 			$el2 = acf.duplicate( $el );
 			
 			
-			// add new tr
-			$el.after( $el2 );
-			
-			
 			// fire action 'duplicate_field' and allow acf.pro logic to clean sub fields
 			acf.do_action('duplicate_field', $el2);
-			
+					
 			
 			// render layout
 			this.render_layout( $el2 );
@@ -591,7 +587,7 @@
 			
 			
 			// delete fields
-			$el.find('.acf-field-object').not('[data-id="acfcloneindex"]').each(function(){
+			$el.find('.acf-field-object').each(function(){
 				
 				// delete without animation
 				acf.field_group.delete_field( $(this), false );

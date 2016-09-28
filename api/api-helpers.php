@@ -2775,19 +2775,11 @@ function acf_update_user_setting( $name, $value ) {
 	
 	
 	// get user settings
-	$settings = get_user_meta( $user_id, 'acf_user_settings', false );
+	$settings = get_user_meta( $user_id, 'acf_user_settings', true );
 	
 	
-	// find settings
-	if( isset($settings[0]) ) {
-	
-		$settings = $settings[0];
-	
-	} else {
-		
-		$settings = array();
-		
-	}
+	// ensure array
+	$settings = acf_get_array($settings);
 	
 	
 	// delete setting (allow 0 to save)
@@ -2829,19 +2821,19 @@ function acf_get_user_setting( $name = '', $default = false ) {
 	
 	
 	// get user settings
-	$settings = get_user_meta( $user_id, 'acf_user_settings', false );
+	$settings = get_user_meta( $user_id, 'acf_user_settings', true );
+	
+	
+	// ensure array
+	$settings = acf_get_array($settings);
 	
 	
 	// bail arly if no settings
-	if( !isset($settings[0][$name]) ) {
-		
-		return $default;
-		
-	}
+	if( !isset($settings[$name]) ) return $default;
 	
 	
 	// return
-	return $settings[0][$name];
+	return $settings[$name];
 	
 }
 
@@ -4839,6 +4831,81 @@ function acf_is_associative_array( $array ) {
 	return false;
 	
 }
+
+
+/*
+*  acf_add_array_key_prefix
+*
+*  This function will add a prefix to all array keys
+*  Useful to preserve numeric keys when performing array_multisort
+*
+*  @type	function
+*  @date	15/09/2016
+*  @since	5.4.0
+*
+*  @param	$array (array)
+*  @param	$prefix (string)
+*  @return	(array)
+*/
+
+function acf_add_array_key_prefix( $array, $prefix ) {
+	
+	// vars
+	$array2 = array();
+	
+	
+	// loop
+	foreach( $array as $k => $v ) {
+		
+		$k2 = $prefix . $k;
+	    $array2[ $k2 ] = $v;
+	    
+	}
+	
+	
+	// return
+	return $array2;
+	
+}
+
+
+/*
+*  acf_remove_array_key_prefix
+*
+*  This function will remove a prefix to all array keys
+*  Useful to preserve numeric keys when performing array_multisort
+*
+*  @type	function
+*  @date	15/09/2016
+*  @since	5.4.0
+*
+*  @param	$array (array)
+*  @param	$prefix (string)
+*  @return	(array)
+*/
+
+function acf_remove_array_key_prefix( $array, $prefix ) {
+	
+	// vars
+	$array2 = array();
+	$l = strlen($prefix);
+	
+	
+	// loop
+	foreach( $array as $k => $v ) {
+		
+		$k2 = (substr($k, 0, $l) === $prefix) ? substr($k, $l) : $k;
+	    $array2[ $k2 ] = $v;
+	    
+	}
+	
+	
+	// return
+	return $array2;
+	
+}
+
+
 	
 
 add_filter("acf/settings/slug", '_acf_settings_slug');
