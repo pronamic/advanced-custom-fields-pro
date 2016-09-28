@@ -633,19 +633,40 @@
 			
 		},
 		
-		render_layout: function( $layout ){
+		render_layout_title: function( $layout ){
 			
-			// update order number
+			// vars
+			var data = acf.serialize( $layout );
 			
 			
+			// append
+			$.extend(data, {
+				action: 	'acf/fields/flexible_content/layout_title',
+				field_key: 	this.$field.data('key'),
+				post_id: 	acf.get('post_id'),
+				i: 			$layout.index(),
+				layout:		$layout.data('layout'),
+			});
 			
-			// update text
-/*
-			var data = acf.serialize_form($layout);
 			
-			console.log( data );
-*/
-			
+			// ajax get title HTML
+			$.ajax({
+		    	url			: acf.get('ajaxurl'),
+				dataType	: 'html',
+				type		: 'post',
+				data		: data,
+				success: function( html ){
+					
+					// bail early if no html
+					if( !html ) return;
+					
+					
+					// update html
+					$layout.find('> .acf-fc-layout-handle').html( html );
+					
+				}
+			});
+				
 		},
 			
 		validate_add: function( layout ){
@@ -1128,12 +1149,14 @@
 			
 				$layout.removeClass('-collapsed');
 				
-				acf.do_action('refresh', $layout);
+				acf.do_action('show', $layout, 'collapse');
 			
 			// close
 			} else {
 				
 				$layout.addClass('-collapsed');
+				
+				acf.do_action('hide', $layout, 'collapse');
 				
 			}
 			
@@ -1142,38 +1165,8 @@
 			this.sync();
 			
 			
-			// vars
-			var data = acf.serialize( $layout );
-			
-			
-			// append
-			$.extend(data, {
-				action: 	'acf/fields/flexible_content/layout_title',
-				field_key: 	this.$field.data('key'),
-				post_id: 	acf.get('post_id'),
-				i: 			$layout.index(),
-				layout:		$layout.data('layout'),
-			});
-			
-			
-			// ajax get title HTML
-			$.ajax({
-		    	url			: acf.get('ajaxurl'),
-				dataType	: 'html',
-				type		: 'post',
-				data		: data,
-				success: function( html ){
-					
-					// bail early if no html
-					if( !html ) return;
-					
-					
-					// update html
-					$layout.find('> .acf-fc-layout-handle').html( html );
-					
-				}
-			});
-
+			// render
+			this.render_layout_title( $layout );
 			
 		}
 		
@@ -1197,7 +1190,6 @@
 		actions: {
 			'ready':	'initialize',
 			'append':	'initialize',
-			'submit':	'close_sidebar',
 			'show': 	'resize'
 		},
 		
@@ -2356,6 +2348,52 @@
 		}
 		
 	});
+	
+	
+	/*
+	*  acf_gallery_manager
+	*
+	*  Priveds some global functionality for the gallery field
+	*
+	*  @type	function
+	*  @date	25/11/2015
+	*  @since	5.3.2
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var acf_gallery_manager = acf.model.extend({
+		
+		actions: {
+			'validation_begin': 	'validation_begin',
+			'validation_failure': 	'validation_failure'
+		},
+		
+		validation_begin: function(){
+			
+			// lock all gallery forms
+			$('.acf-gallery-side-data').each(function(){
+				
+				acf.disable_form( $(this), 'gallery' );
+				
+			});
+			
+		},
+		
+		validation_failure: function(){
+			
+			// lock all gallery forms
+			$('.acf-gallery-side-data').each(function(){
+				
+				acf.enable_form( $(this), 'gallery' );
+				
+			});
+			
+		}
+		
+	});
+	
 	
 })(jQuery);
 

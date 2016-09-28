@@ -123,6 +123,10 @@ class acf_field_taxonomy extends acf_field {
 		if( !$field ) return false;
 		
 		
+		// bail early if taxonomy does not exist
+		if( !taxonomy_exists($field['taxonomy']) ) return false;
+		
+		
 		// vars
    		$results = array();
 		$args = array();

@@ -165,7 +165,7 @@ class acf_pro_updates {
 		if( acf_pro_is_license_active() ) {
 			
 			$obj->package = acf_pro_get_remote_url('download', array(
-				'k'				=> acf_pro_get_license(),
+				'k'				=> acf_pro_get_license_key(),
 				'wp_url'		=> home_url(),
 				'acf_version'	=> acf_get_setting('version'),
 				'wp_version'	=> get_bloginfo('version'),

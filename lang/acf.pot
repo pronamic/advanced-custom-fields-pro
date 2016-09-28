@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
-"POT-Creation-Date: 2016-09-13 12:28+1000\n"
+"POT-Creation-Date: 2016-09-22 11:30+1000\n"
 "PO-Revision-Date: 2015-06-11 13:00+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Elliot Condon <e@elliotcondon.com>\n"
@@ -68,7 +68,7 @@ msgid "No Field Groups found in Trash"
 msgstr ""
 
 #: acf.php:305 admin/field-group.php:182 admin/field-group.php:280
-#: admin/field-groups.php:528 pro/fields/clone.php:684
+#: admin/field-groups.php:528 pro/fields/clone.php:688
 msgid "Fields"
 msgstr ""
 
@@ -332,7 +332,7 @@ msgstr[1] ""
 msgid "Sync available"
 msgstr ""
 
-#: admin/field-groups.php:525 api/api-template.php:1041
+#: admin/field-groups.php:525 api/api-template.php:1039
 #: pro/fields/gallery.php:370
 msgid "Title"
 msgstr ""
@@ -509,9 +509,9 @@ msgstr ""
 #: fields/select.php:483 fields/select.php:497 fields/select.php:511
 #: fields/tab.php:130 fields/taxonomy.php:785 fields/taxonomy.php:799
 #: fields/taxonomy.php:813 fields/taxonomy.php:827 fields/user.php:399
-#: fields/user.php:413 fields/wysiwyg.php:422
-#: pro/admin/views/settings-updates.php:93 pro/fields/clone.php:738
-#: pro/fields/clone.php:756
+#: fields/user.php:413 fields/wysiwyg.php:464
+#: pro/admin/views/settings-updates.php:93 pro/fields/clone.php:742
+#: pro/fields/clone.php:760
 msgid "Yes"
 msgstr ""
 
@@ -523,9 +523,9 @@ msgstr ""
 #: fields/select.php:484 fields/select.php:498 fields/select.php:512
 #: fields/tab.php:131 fields/taxonomy.php:700 fields/taxonomy.php:786
 #: fields/taxonomy.php:800 fields/taxonomy.php:814 fields/taxonomy.php:828
-#: fields/user.php:400 fields/user.php:414 fields/wysiwyg.php:423
-#: pro/admin/views/settings-updates.php:103 pro/fields/clone.php:739
-#: pro/fields/clone.php:757
+#: fields/user.php:400 fields/user.php:414 fields/wysiwyg.php:465
+#: pro/admin/views/settings-updates.php:103 pro/fields/clone.php:743
+#: pro/fields/clone.php:761
 msgid "No"
 msgstr ""
 
@@ -1298,7 +1298,7 @@ msgstr ""
 msgid "Full Size"
 msgstr ""
 
-#: api/api-helpers.php:1213 api/api-helpers.php:1776 pro/fields/clone.php:871
+#: api/api-helpers.php:1213 api/api-helpers.php:1776 pro/fields/clone.php:879
 msgid "(no title)"
 msgstr ""
 
@@ -1342,24 +1342,24 @@ msgstr ""
 msgid "File type must be %s."
 msgstr ""
 
-#: api/api-template.php:1050 core/field.php:133
+#: api/api-template.php:1048 core/field.php:133
 msgid "Content"
 msgstr ""
 
-#: api/api-template.php:1058
+#: api/api-template.php:1056
 msgid "Validate Email"
 msgstr ""
 
-#: api/api-template.php:1108
+#: api/api-template.php:1106
 msgid "Spam Detected"
 msgstr ""
 
-#: api/api-template.php:1311 pro/api/api-options-page.php:50
+#: api/api-template.php:1309 pro/api/api-options-page.php:50
 #: pro/fields/gallery.php:588
 msgid "Update"
 msgstr ""
 
-#: api/api-template.php:1312
+#: api/api-template.php:1310
 msgid "Post updated"
 msgstr ""
 
@@ -1380,7 +1380,7 @@ msgid "jQuery"
 msgstr ""
 
 #: core/field.php:137 fields/checkbox.php:224 fields/radio.php:293
-#: pro/fields/clone.php:714 pro/fields/flexible-content.php:495
+#: pro/fields/clone.php:718 pro/fields/flexible-content.php:495
 #: pro/fields/flexible-content.php:544 pro/fields/repeater.php:468
 msgid "Layout"
 msgstr ""
@@ -1466,7 +1466,7 @@ msgstr ""
 #: fields/checkbox.php:215 fields/color_picker.php:147 fields/email.php:133
 #: fields/number.php:145 fields/radio.php:284 fields/select.php:455
 #: fields/text.php:142 fields/textarea.php:139 fields/true_false.php:115
-#: fields/url.php:114 fields/wysiwyg.php:383
+#: fields/url.php:114 fields/wysiwyg.php:425
 msgid "Default Value"
 msgstr ""
 
@@ -1667,7 +1667,7 @@ msgstr ""
 
 #: fields/email.php:134 fields/number.php:146 fields/radio.php:285
 #: fields/text.php:143 fields/textarea.php:140 fields/url.php:115
-#: fields/wysiwyg.php:384
+#: fields/wysiwyg.php:426
 msgid "Appears when creating a new post"
 msgstr ""
 
@@ -2341,40 +2341,40 @@ msgstr ""
 msgid "All user roles"
 msgstr ""
 
-#: fields/wysiwyg.php:37
+#: fields/wysiwyg.php:36
 msgid "Wysiwyg Editor"
 msgstr ""
 
-#: fields/wysiwyg.php:335
+#: fields/wysiwyg.php:377
 msgid "Visual"
 msgstr ""
 
-#: fields/wysiwyg.php:336
+#: fields/wysiwyg.php:378
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr ""
 
-#: fields/wysiwyg.php:392
+#: fields/wysiwyg.php:434
 msgid "Tabs"
 msgstr ""
 
-#: fields/wysiwyg.php:397
+#: fields/wysiwyg.php:439
 msgid "Visual & Text"
 msgstr ""
 
-#: fields/wysiwyg.php:398
+#: fields/wysiwyg.php:440
 msgid "Visual Only"
 msgstr ""
 
-#: fields/wysiwyg.php:399
+#: fields/wysiwyg.php:441
 msgid "Text Only"
 msgstr ""
 
-#: fields/wysiwyg.php:406
+#: fields/wysiwyg.php:448
 msgid "Toolbar"
 msgstr ""
 
-#: fields/wysiwyg.php:416
+#: fields/wysiwyg.php:458
 msgid "Show Media Upload Buttons?"
 msgstr ""
 
@@ -2486,6 +2486,12 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
+#: pro/api/api-pro.php:328
+msgid ""
+"Error validating license URL (website does not match). Please re-activate "
+"your license"
+msgstr ""
+
 #: pro/core/updates.php:206
 #, php-format
 msgid ""
@@ -2499,64 +2505,72 @@ msgctxt "noun"
 msgid "Clone"
 msgstr ""
 
-#: pro/fields/clone.php:685
+#: pro/fields/clone.php:689
 msgid "Select one or more fields you wish to clone"
 msgstr ""
 
-#: pro/fields/clone.php:700
+#: pro/fields/clone.php:704
 msgid "Display"
 msgstr ""
 
-#: pro/fields/clone.php:701
+#: pro/fields/clone.php:705
 msgid "Specify the style used to render the clone field"
 msgstr ""
 
-#: pro/fields/clone.php:706
+#: pro/fields/clone.php:710
 msgid "Group (displays selected fields in a group within this field)"
 msgstr ""
 
-#: pro/fields/clone.php:707
+#: pro/fields/clone.php:711
 msgid "Seamless (replaces this field with selected fields)"
 msgstr ""
 
-#: pro/fields/clone.php:715
+#: pro/fields/clone.php:719
 msgid "Specify the style used to render the selected fields"
 msgstr ""
 
-#: pro/fields/clone.php:720 pro/fields/flexible-content.php:555
+#: pro/fields/clone.php:724 pro/fields/flexible-content.php:555
 #: pro/fields/repeater.php:476
 msgid "Block"
 msgstr ""
 
-#: pro/fields/clone.php:721 pro/fields/flexible-content.php:554
+#: pro/fields/clone.php:725 pro/fields/flexible-content.php:554
 #: pro/fields/repeater.php:475
 msgid "Table"
 msgstr ""
 
-#: pro/fields/clone.php:722 pro/fields/flexible-content.php:556
+#: pro/fields/clone.php:726 pro/fields/flexible-content.php:556
 #: pro/fields/repeater.php:477
 msgid "Row"
 msgstr ""
 
-#: pro/fields/clone.php:728
+#: pro/fields/clone.php:732
 #, php-format
 msgid "Labels will be displayed as %s"
 msgstr ""
 
-#: pro/fields/clone.php:731
+#: pro/fields/clone.php:735
 msgid "Prefix Field Labels"
 msgstr ""
 
-#: pro/fields/clone.php:746
+#: pro/fields/clone.php:750
 #, php-format
 msgid "Values will be saved as %s"
 msgstr ""
 
-#: pro/fields/clone.php:749
+#: pro/fields/clone.php:753
 msgid "Prefix Field Names"
 msgstr ""
 
-#: pro/fields/clone.php:905
+#: pro/fields/clone.php:875
+msgid "Unknown field"
+msgstr ""
+
+#: pro/fields/clone.php:914
+msgid "Unknown field group"
+msgstr ""
+
+#: pro/fields/clone.php:918
 #, php-format
 msgid "All fields from %s field group"
 msgstr ""

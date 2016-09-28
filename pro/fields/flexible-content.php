@@ -1065,7 +1065,7 @@ class acf_field_flexible_content extends acf_field {
 			}
 			
 		}
-
+		
 		
 		// save false for empty value
 		if( empty($order) ) {
