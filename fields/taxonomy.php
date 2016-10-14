@@ -129,7 +129,6 @@ class acf_field_taxonomy extends acf_field {
 		
 		// vars
    		$results = array();
-		$args = array();
 		$is_hierarchical = is_taxonomy_hierarchical( $field['taxonomy'] );
 		$is_pagination = ($options['paged'] > 0);
 		$is_search = false;
@@ -137,8 +136,11 @@ class acf_field_taxonomy extends acf_field {
 		$offset = 20 * ($options['paged'] - 1);
 		
 		
-		// hide empty
-		$args['hide_empty'] = false;
+		// args
+		$args = array(
+			'taxonomy'		=> $field['taxonomy'],
+			'hide_empty'	=> false
+		);
 		
 		
 		// pagination
@@ -172,7 +174,7 @@ class acf_field_taxonomy extends acf_field {
 		
 		
 		// get terms
-		$terms = get_terms( $field['taxonomy'], $args );
+		$terms = acf_get_terms( $args );
 		
 		
 		// sort into hierachial order!
@@ -299,9 +301,10 @@ class acf_field_taxonomy extends acf_field {
 		// load terms in 1 query to save multiple DB calls from following code
 		if( count($value) > 1 ) {
 			
-			$terms = get_terms($taxonomy, array(
-				'hide_empty'	=> false,
+			$terms = acf_get_terms(array(
+				'taxonomy'		=> $taxonomy,
 				'include'		=> $value,
+				'hide_empty'	=> false
 			));
 			
 		}

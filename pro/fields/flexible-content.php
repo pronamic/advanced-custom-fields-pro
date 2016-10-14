@@ -63,6 +63,10 @@ class acf_field_flexible_content extends acf_field {
 		add_filter('acf/clone_field', array($this, 'acf_clone_field'), 10, 2);
 		
 		
+		// field filters
+		$this->add_field_filter('acf/get_sub_field', array($this, 'get_sub_field'), 10, 3);
+		
+		
 		// do not delete!
     	parent::__construct();
 		
@@ -174,6 +178,64 @@ class acf_field_flexible_content extends acf_field {
 		
 		// return
 		return $field;
+	}
+	
+	
+	/*
+	*  get_sub_field
+	*
+	*  This function will return a specific sub field
+	*
+	*  @type	function
+	*  @date	29/09/2016
+	*  @since	5.4.0
+	*
+	*  @param	$sub_field 
+	*  @param	$selector (string)
+	*  @param	$field (array)
+	*  @return	$post_id (int)
+	*/
+
+	function get_sub_field( $sub_field, $selector, $field ) {
+		
+		// bail early if no layouts
+		if( empty($field['layouts']) ) return false;
+		
+		
+		// vars
+		$active = get_row_layout();
+		
+		
+		// loop
+		foreach( $field['layouts'] as $layout ) {
+			
+			// bail early if active layout does not match
+			if( $active && $active !== $layout['name'] ) continue;
+			
+			
+			// bail early if no sub fields
+			if( empty($layout['sub_fields']) ) continue;
+			
+			
+			// loop
+			foreach( $layout['sub_fields'] as $sub_field ) {
+				
+				// check name and key
+				if( $sub_field['name'] == $selector || $sub_field['key'] == $selector ) {
+					
+					// return
+					return $sub_field;
+					
+				}
+				
+			}
+			
+		}
+		
+		
+		// return
+		return false;
+		
 	}
 	
 	
@@ -1339,16 +1401,18 @@ class acf_field_flexible_content extends acf_field {
 		
 		while( is_array($value) ) {
 			
-			// get first key
-			$k = key($value);
+			// move to end of array
+			// - avoids 'acf_fc_layout' value
+			end( $value );
 			
 			
-			// update value
-			$value = array_pop( $value[ $k ] );
+			// vars
+			$key = key($value);
+			$value = current($value);
 			
 			
 			// stop looking if we have found the correct field's value
-			if( $k === $options['field_key'] ) break;
+			if( $key === $options['field_key'] ) break;
 			
 		}
 		

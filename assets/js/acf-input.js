@@ -1592,8 +1592,9 @@ var acf;
 		
 		prepare_for_ajax : function( args ) {
 			
-			// nonce
+			// vars
 			args.nonce = acf.get('nonce');
+			args.post_id = acf.get('post_id');
 			
 			
 			// filter for 3rd party customization
@@ -4527,11 +4528,6 @@ var acf;
 			'ready 1': 'ready',
 		},
 		
-		filters: {
-			'date_time_picker_args':	'customize_onClose',
-			'time_picker_args':			'customize_onClose'
-		},
-		
 		ready: function(){
 			
 			// vars
@@ -4607,58 +4603,6 @@ var acf;
 			// do nothing
 			
 		},
-		
-		
-		/*
-		*  customize_onClose
-		*
-		*  This function will add a custom onClose function to the datetime and time picker args
-		*
-		*  @type	function
-		*  @date	5/07/2016
-		*  @since	5.4.0
-		*
-		*  @param	$post_id (int)
-		*  @return	$post_id (int)
-		*/
-		
-		customize_onClose: function( args ){
-			
-			// change button text
-			args.closeText = acf._e('date_time_picker', 'selectText');
-			
-			
-			// add custom 'Close = Select' functionality
-			args.onClose = function( value, instance ){
-					
-				// vars
-				var $div = instance.dpDiv,
-					$close = $div.find('.ui-datepicker-close');
-				
-				
-				// if clicking close button
-				if( !value && $close.is(':hover') ) {
-					
-					// attempt to find new value
-					value = acf.maybe_get(instance, 'settings.timepicker.formattedTime');
-					
-					
-					// bail early if no value
-					if( !value ) return;
-					
-					
-					// update value
-					acf.val( instance.input, value );
-					
-				}
-									
-			}
-			
-			
-			// return
-			return args;
-			
-		}
 		
 	});
 	
@@ -5168,6 +5112,7 @@ var acf;
 			
 			// get options
 			this.o = acf.get_data( this.$el );
+			this.o.id = this.$el.attr('id');
 			
 			
 			// get map
@@ -7155,7 +7100,30 @@ var acf;
 					
 				},
 				
+				
+				/*
+				*  toggleSelection
+				*
+				*  This function is called before an attachment is selected
+				*  A good place to check for errors and prevent the 'select' function from being fired
+				*
+				*  @type	function
+				*  @date	29/09/2016
+				*  @since	5.4.0
+				*
+				*  @param	options (object)
+				*  @return	n/a
+				*/
+				
 				toggleSelection: function( options ) {
+					
+					// vars
+					// source: wp-includes/js/media-views.js:2880
+					var collection = this.collection,
+						selection = this.options.selection,
+						model = this.model,
+						single = selection.single();
+					
 					
 					// vars
 					var frame = acf.media.frame(),
@@ -7192,36 +7160,25 @@ var acf;
 							'</div>'
 						].join(''));
 						
+						
+						// reset selection (unselects all attachments)
+						selection.reset();
+						
+						
+						// set single (attachment displayed in sidebar)
+						selection.single( model );
+						
+						
+						// return and prevent 'select' form being fired
+						return;
+						
 					}
 									
 					
 					// return					
 					AttachmentLibrary.prototype.toggleSelection.apply( this, arguments );
 					
-				},
-							
-				select: function( model, collection ) {
-					
-					// vars
-					var frame = acf.media.frame(),
-						state = this.controller.state(),
-						selection = state.get('selection'),
-						errors = acf.maybe_get(this, 'model.attributes.acf_errors');
-					
-					
-					// prevent selection
-					if( frame && errors ) {
-						
-						return selection.remove( model );
-						
-					}
-					
-					
-					//return 
-					return AttachmentLibrary.prototype.select.apply( this, arguments );
-					
 				}
-
 				
 			});
 			
@@ -7254,9 +7211,6 @@ var acf;
 			wp.media.view.AttachmentCompat = AttachmentCompat.extend({
 				
 				render: function() {
-					
-					//console.log('AttachmentCompat.render', this);
-					
 					
 					// reference
 					var self = this;
@@ -7333,8 +7287,6 @@ var acf;
 				
 				dispose: function() {
 					
-					//console.log('AttachmentCompat.dispose', this);
-					
 					// remove
 					acf.do_action('remove', this.$el);
 					
@@ -7346,8 +7298,6 @@ var acf;
 				
 				
 				save: function( e ) {
-				
-					//console.log('AttachmentCompat.save', this);
 				
 					if( e ) {
 						
@@ -7402,13 +7352,12 @@ var acf;
 			
 			
 			// AJAX data
-			var ajax_data = {
+			var ajax_data = acf.prepare_for_ajax({
 				'action'	: 'acf/fields/oembed/search',
-				'nonce'		: acf.get('nonce'),
 				's'			: s,
 				'width'		: acf.get_data($el, 'width'),
 				'height'	: acf.get_data($el, 'height')
-			};
+			});
 			
 			
 			// abort XHR if this field is already loading AJAX data
@@ -8573,7 +8522,6 @@ var acf;
 			var data = acf.prepare_for_ajax({
 				action: 	args.ajax_action,
 				field_key: 	args.key,
-				post_id: 	acf.get('post_id'),
 				s: 			params.term,
 				paged: 		params.page
 			});
@@ -8764,8 +8712,12 @@ var acf;
 				// add hidden input to each multiple selection
 				select2_args.formatSelection = function( object, $div ){
 					
+					// vars
+					var html = '<input type="hidden" class="select2-search-choice-hidden" name="' + name + '" value="' + object.id + '"' + ($input.prop('disabled') ? 'disabled="disabled"' : '') + ' />';
+					
+					
 					// append input
-					$div.parent().append('<input type="hidden" class="select2-search-choice-hidden" name="' + name + '" value="' + object.id + '" />');
+					$div.parent().append(html);
 					
 					
 					// return
@@ -9829,6 +9781,34 @@ var acf;
 				showButtonPanel:	true,
 				controlType: 		'select',
 				oneLine:			true,
+				closeText:			acf._e('date_time_picker', 'selectText')
+			};
+			
+			
+			// add custom 'Close = Select' functionality
+			args.onClose = function( value, instance ){
+				
+				// vars
+				var $div = instance.dpDiv,
+					$close = $div.find('.ui-datepicker-close');
+				
+				
+				// if clicking close button
+				if( !value && $close.is(':hover') ) {
+					
+					// attempt to find new value
+					value = acf.maybe_get(instance, 'settings.timepicker.formattedTime');
+					
+					
+					// bail early if no value
+					if( !value ) return;
+					
+					
+					// update value
+					$.datepicker._setTime(instance);
+					
+				}
+									
 			};
 			
 			
@@ -10716,6 +10696,10 @@ var acf;
 			
 			// append AJAX action		
 			data.action = 'acf/validate_save_post';
+			
+			
+			// prepare
+			data = acf.prepare_for_ajax(data);
 			
 			
 			// set busy
@@ -11662,7 +11646,7 @@ ed.on('ResizeEditor', function(e) {
 		},
 		
 		ready: function(){
-			
+
 			// vars
 			this.$div = $('#acf-hidden-wp-editor');
 			
@@ -11686,17 +11670,17 @@ ed.on('ResizeEditor', function(e) {
 				var editor = data.editor;
 				
 				
-				// update WP var to match tinymce
+				// bail early if not 'acf'
+				if( editor.id.substr(0, 3) !== 'acf' ) return;
+				
+				
+				// override if 'content' exists
+				editor = tinymce.editors.content || editor;
+				
+				
+				// update vars
+				tinymce.activeEditor = editor;
 				wpActiveEditor = editor.id;
-				
-				
-				// bail early if not acf_content
-				if( editor.id !== 'acf_content' ) return;
-				
-				
-				// update global vars
-				tinymce.activeEditor = tinymce.editors.content || null;
-				wpActiveEditor = tinymce.editors.content ? 'content' : null;
 				
 			});
 			
