@@ -1856,82 +1856,17 @@ function acf_prepare_field_for_import( $field ) {
 
 function acf_get_sub_field( $selector, $field ) {
 	
-	// sub fields
-	if( $field['type'] == 'repeater' ) {
-		
-		// extract sub fields
-		$sub_fields = acf_extract_var( $field, 'sub_fields');
-		
-		if( !empty($sub_fields) ) {
-		
-			foreach( $sub_fields as $sub_field ) {
-				
-				if( $sub_field['name'] == $selector || $sub_field['key'] == $selector ) {
-					
-					// return
-					return $sub_field;
-					
-				}
-				// if
-				
-			}
-			// foreach
-			
-		}
-		// if
-		
-	} elseif( $field['type'] == 'flexible_content' ) {
-		
-		// vars
-		$layouts = acf_extract_var( $field, 'layouts');
-		$current = get_row_layout();
-		
-		
-		if( !empty($layouts) ) {
-			
-			foreach( $layouts as $layout ) {
-				
-				// skip layout if the current layout key does not match
-				if( $current && $current !== $layout['name'] ) {
-					
-					continue;
-					
-				} 
-				
-				
-				// extract sub fields
-				$sub_fields = acf_extract_var( $layout, 'sub_fields');
-				
-				if( !empty($sub_fields) ) {
-					
-					foreach( $sub_fields as $sub_field ) {
-						
-						if( $sub_field['name'] == $selector || $sub_field['key'] == $selector ) {
-							
-							// return
-							return $sub_field;
-							
-						}
-						// if
-						
-					}
-					// foreach
-					
-				}
-				// if
-				
-			}
-			// foreach
-			
-		}
-		// if
-
-	}
-	// if
+	// vars
+	$sub_field = false;
+	
+	
+	// filter for 3rd party customization
+	$sub_field = apply_filters( "acf/get_sub_field", $sub_field, $selector, $field );
+	$sub_field = apply_filters( "acf/get_sub_field/type={$field['type']}", $sub_field, $selector, $field );
 	
 	
 	// return
-	return false;
+	return $sub_field;
 	
 }
 
@@ -1966,6 +1901,68 @@ function acf_get_field_ancestors( $field ) {
 	
 	// return
 	return $ancestors;
+	
+}
+
+
+/*
+*  acf_maybe_get_sub_field
+*
+*  This function will attempt to find a sub field
+*
+*  @type	function
+*  @date	3/10/2016
+*  @since	5.4.0
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_maybe_get_sub_field( $selectors, $post_id = false, $strict = true ) {
+	
+	// bail ealry if not enough selectors
+	if( !is_array($selectors) || count($selectors) < 3 ) return false;
+	
+	
+	// vars
+	$selector = acf_extract_var( $selectors, 0 );
+	$selectors = array_values( $selectors ); // reset keys
+	
+	
+	// attempt get field
+	$field = acf_maybe_get_field( $selector, $post_id, $strict );
+	
+	
+	// bail early if no field
+	if( !$field ) return false;
+	
+	
+	// loop
+	for( $j = 0; $j < count($selectors); $j+=2 ) {
+		
+		// vars
+		$sub_i = $selectors[ $j ];
+		$sub_s = $selectors[ $j+1 ];
+		$field_name = $field['name'];
+
+		
+		// find sub field
+		$field = acf_get_sub_field( $sub_s, $field );
+		
+		
+		// bail early if no sub field
+		if( !$field ) return false;
+					
+		
+		// add to name
+		$field['name'] = $field_name . '_' . ($sub_i-1) . '_' . $field['name'];
+		
+	}
+	
+	
+	// return
+	return $field;
+	
 	
 }
 

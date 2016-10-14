@@ -868,8 +868,8 @@
 			
 			// AJAX data
 			var ajax_data = acf.prepare_for_ajax({
-				'action':	'acf/field_group/move_field',
-				'field_id':	this.get_field_meta( $field, 'ID' )
+				action:		'acf/field_group/move_field',
+				field_id:	this.get_field_meta( $field, 'ID' )
 			});
 			
 			
@@ -970,12 +970,11 @@
 			
 			
 			// AJAX data
-			var ajax_data = {
+			var ajax_data = acf.prepare_for_ajax({
 				'action'			: 'acf/field_group/move_field',
-				'nonce'				: acf.get('nonce'),
 				'field_id'			: this.get_field_meta($field, 'ID'),
 				'field_group_id'	: 0
-			};
+			});
 			
 			
 			// submit form

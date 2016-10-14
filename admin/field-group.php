@@ -1133,17 +1133,14 @@ class acf_admin_field_group {
 		
 		$args = acf_parse_args($_POST, array(
 			'nonce'				=> '',
+			'post_id'			=> 0,
 			'field_id'			=> 0,
 			'field_group_id'	=> 0
 		));
 		
 		
 		// verify nonce
-		if( ! wp_verify_nonce($args['nonce'], 'acf_nonce') ) {
-		
-			die();
-			
-		}
+		if( !wp_verify_nonce($args['nonce'], 'acf_nonce') ) die();
 		
 		
 		// confirm?
@@ -1183,15 +1180,22 @@ class acf_admin_field_group {
 		$choices = array();
 		
 		
+		// check
 		if( !empty($field_groups) ) {
 			
+			// loop
 			foreach( $field_groups as $field_group ) {
 				
-				if( $field_group['ID'] ) {
-					
-					$choices[ $field_group['ID'] ] = $field_group['title'];
-					
-				}
+				// bail early if no ID
+				if( !$field_group['ID'] ) continue;
+				
+				
+				// bail ealry if is current
+				if( $field_group['ID'] == $args['post_id'] ) continue;
+				
+				
+				// append
+				$choices[ $field_group['ID'] ] = $field_group['title'];
 				
 			}
 			

@@ -636,17 +636,20 @@
 		render_layout_title: function( $layout ){
 			
 			// vars
-			var data = acf.serialize( $layout );
+			var ajax_data = acf.serialize( $layout );
 			
 			
 			// append
-			$.extend(data, {
+			ajax_data = acf.parse_args( ajax_data, {
 				action: 	'acf/fields/flexible_content/layout_title',
 				field_key: 	this.$field.data('key'),
-				post_id: 	acf.get('post_id'),
 				i: 			$layout.index(),
 				layout:		$layout.data('layout'),
 			});
+			
+			
+			// prepare
+			ajax_data = acf.prepare_for_ajax(ajax_data);
 			
 			
 			// ajax get title HTML
@@ -654,7 +657,7 @@
 		    	url			: acf.get('ajaxurl'),
 				dataType	: 'html',
 				type		: 'post',
-				data		: data,
+				data		: ajax_data,
 				success: function( html ){
 					
 					// bail early if no html
@@ -1144,6 +1147,11 @@
 			var $layout	= e.$el.closest('.layout');
 			
 			
+			// render
+			// - do this before calling actions to avoif focusing on the wrong field
+			this.render_layout_title( $layout );
+			
+			
 			// open
 			if( $layout.hasClass('-collapsed') ) {
 			
@@ -1163,10 +1171,6 @@
 			
 			// sync collapsed order
 			this.sync();
-			
-			
-			// render
-			this.render_layout_title( $layout );
 			
 		}
 		
@@ -1947,8 +1951,6 @@
 			var data = acf.prepare_for_ajax({
 				action		: 'acf/fields/gallery/get_attachment',
 				field_key	: this.$field.data('key'),
-				nonce		: acf.get('nonce'),
-				post_id		: acf.get('post_id'),
 				id			: id
 			});
 			
@@ -2058,7 +2060,6 @@
 			var data = acf.prepare_for_ajax({
 				action		: 'acf/fields/gallery/get_sort_order',
 				field_key	: this.$field.data('key'),
-				post_id		: acf.get('post_id'),
 				ids			: [],
 				sort		: sort
 			});

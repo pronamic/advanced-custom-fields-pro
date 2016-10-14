@@ -1034,6 +1034,48 @@ function acf_get_image_size( $s = '' ) {
 
 
 /*
+*  acf_get_terms
+*
+*  This function is a wrapper for the get_terms() function
+*
+*  @type	function
+*  @date	28/09/2016
+*  @since	5.4.0
+*
+*  @param	$args (array)
+*  @return	(array)
+*/
+
+function acf_get_terms( $args ) {
+	
+	// global
+	global $wp_version;
+	
+	
+	// vars
+	$terms = array();
+	
+		
+	// WP 4.5+
+	if( version_compare($wp_version, '4.5', '>=' ) ) {
+		
+		$terms = get_terms( $args );
+
+	// WP < 4.5
+	} else {
+		
+		$terms = get_terms( $args['taxonomy'], $args );
+	
+	}
+	
+	
+	// return
+	return $terms;
+	
+}
+
+
+/*
 *  acf_get_taxonomies
 *
 *  This function will return an array of available taxonomies
@@ -1164,8 +1206,11 @@ function acf_get_taxonomy_terms( $taxonomies = array() ) {
 		
 		// vars
 		$label = $taxonomies[ $taxonomy ];
-		$terms = get_terms( $taxonomy, array( 'hide_empty' => false ) );
 		$is_hierarchical = is_taxonomy_hierarchical( $taxonomy );
+		$terms = acf_get_terms(array(
+			'taxonomy'		=> $taxonomy,
+			'hide_empty' 	=> false
+		));
 		
 		
 		// bail early i no terms
@@ -3200,7 +3245,7 @@ function acf_upload_files( $ancestors = array() ) {
 function acf_upload_file( $uploaded_file ) {
 	
 	// required
-	require_once( ABSPATH . "/wp-load.php" );
+	//require_once( ABSPATH . "/wp-load.php" ); // WP should already be loaded
 	require_once( ABSPATH . "/wp-admin/includes/media.php" ); // video functions
 	require_once( ABSPATH . "/wp-admin/includes/file.php" );
 	require_once( ABSPATH . "/wp-admin/includes/image.php" );
@@ -4368,29 +4413,18 @@ function acf_format_date( $value, $format ) {
 	if( !$value ) return $value;
 	
 	
-	// attempt strtotime for standard date value
-	$unixtimestamp = strtotime($value);
+	// vars
+	$unixtimestamp = 0;
 	
 	
-	// check strtotime
-	if( !$unixtimestamp ) {
+	// numeric (either unix or YYYYMMDD)
+	if( is_numeric($value) && strlen($value) !== 8 ) {
 		
-		// $value may already be a timestamp 
-		if( is_numeric($value) ) {
-			
-			$unixtimestamp = $value;
+		$unixtimestamp = $value;
 		
-		// $value may be Unix epoch (1970-01-01)
-		} elseif( $value === '1970-01-01' ) {
-			
-			$unixtimestamp = 0;
-			
-		// error	
-		} else {
-			
-			return $value;
-			
-		}
+	} else {
+		
+		$unixtimestamp = strtotime($value);
 		
 	}
 	
