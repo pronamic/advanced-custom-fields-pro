@@ -150,52 +150,51 @@ class acf_admin_field_groups {
 		}
 		
 		
-		// import field group
+		// vars
+		$ids = array();
+		
+		
+		// check single
 		if( $id = acf_maybe_get($_GET, 'acfduplicate') ) {
+			
+			$ids[] = $id;
+		
+		// check multiple
+		} elseif( acf_maybe_get($_GET, 'action2') === 'acfduplicate' ) {
+			
+			$ids = acf_maybe_get($_GET, 'post');
+			
+		}
+		
+		
+		// sync
+		if( !empty($ids) ) {
 			
 			// validate
 			check_admin_referer('bulk-posts');
 			
 			
-			// duplicate
-			$field_group = acf_duplicate_field_group( $id );
+			// vars
+			$new_ids = array();
+			
+			
+			// loop
+			foreach( $ids as $id ) {
+				
+				// duplicate
+				$field_group = acf_duplicate_field_group( $id );
+				
+				
+				// increase counter
+				$new_ids[] = $field_group['ID'];
+				
+			}
 			
 			
 			// redirect
-			wp_redirect( admin_url( $this->url . '&acfduplicatecomplete=' . $field_group['ID'] ) );
+			wp_redirect( admin_url( $this->url . '&acfduplicatecomplete=' . implode(',', $new_ids)) );
 			exit;
-			
-		} elseif( acf_maybe_get($_GET, 'action2') === 'acfduplicate' ) {
-		
-			// validate
-			check_admin_referer('bulk-posts');
 				
-			
-			// get ids
-			$ids = acf_maybe_get($_GET, 'post');
-			
-			if( !empty($ids) ) {
-				
-				// vars
-				$new_ids = array();
-				
-				foreach( $ids as $id ) {
-					
-					// duplicate
-					$field_group = acf_duplicate_field_group( $id );
-					
-					
-					// increase counter
-					$new_ids[] = $field_group['ID'];
-					
-				}
-				
-				
-				// redirect
-				wp_redirect( admin_url( $this->url . '&acfduplicatecomplete=' . implode(',', $new_ids)) );
-				exit;
-			}
-		
 		}
 		
 	}
@@ -241,11 +240,7 @@ class acf_admin_field_groups {
 		
 		
 		// bail early if no field groups
-		if( empty($groups) ) {
-			
-			return;
-			
-		}
+		if( empty($groups) ) return;
 		
 		
 		// find JSON field groups which have not yet been imported
@@ -276,85 +271,72 @@ class acf_admin_field_groups {
 		
 		
 		// bail if no sync needed
-		if( empty($this->sync) ) {
+		if( empty($this->sync) ) return;
+		
+		
+		// maybe sync
+		$sync_keys = array();
+		
+		
+		// check single
+		if( $key = acf_maybe_get($_GET, 'acfsync') ) {
 			
-			return;
+			$sync_keys[] = $key;
+		
+		// check multiple
+		} elseif( acf_maybe_get($_GET, 'action2') === 'acfsync' ) {
+			
+			$sync_keys = acf_maybe_get($_GET, 'post');
 			
 		}
-	
 		
-		// import field group
-		if( $key = acf_maybe_get($_GET, 'acfsync') ) {
+		
+		// sync
+		if( !empty($sync_keys) ) {
+			
+			// validate
+			check_admin_referer('bulk-posts');
+			
+			
+			// disable filters to ensure ACF loads raw data from DB
+			acf_disable_filters();
+			acf_enable_filter('local');
+			
 			
 			// disable JSON
 			// - this prevents a new JSON file being created and causing a 'change' to theme files - solves git anoyance
 			acf_update_setting('json', false);
 			
 			
-			// validate
-			check_admin_referer('bulk-posts');
-			
-			
-			// append fields
-			if( acf_have_local_fields( $key ) ) {
-				
-				$this->sync[ $key ]['fields'] = acf_get_local_fields( $key );
-				
-			}
-			
-			
-			// import
-			$field_group = acf_import_field_group( $this->sync[ $key ] );
-			
-			
-			// redirect
-			wp_redirect( admin_url( $this->url . '&acfsynccomplete=' . $field_group['ID'] ) );
-			exit;
-			
-		} elseif( acf_maybe_get($_GET, 'action2') === 'acfsync' ) {
-			
-			// validate
-			check_admin_referer('bulk-posts');
+			// vars
+			$new_ids = array();
 				
 			
-			// get ids
-			$keys = acf_maybe_get($_GET, 'post');
-			
-			if( !empty($keys) ) {
+			// loop
+			foreach( $sync_keys as $key ) {
 				
-				// disable JSON
-				// - this prevents a new JSON file being created and causing a 'change' to theme files - solves git anoyance
-				acf_update_setting('json', false);
-				
-				// vars
-				$new_ids = array();
-				
-				foreach( $keys as $key ) {
+				// append fields
+				if( acf_have_local_fields($key) ) {
 					
-					// append fields
-					if( acf_have_local_fields( $key ) ) {
-						
-						$this->sync[ $key ]['fields'] = acf_get_local_fields( $key );
-						
-					}
-					
-					
-					// import
-					$field_group = acf_import_field_group( $this->sync[ $key ] );
-										
-					
-					// append
-					$new_ids[] = $field_group['ID'];
+					$this->sync[ $key ]['fields'] = acf_get_local_fields( $key );
 					
 				}
 				
 				
-				// redirect
-				wp_redirect( admin_url( $this->url . '&acfsynccomplete=' . implode(',', $new_ids)) );
-				exit;
+				// import
+				$field_group = acf_import_field_group( $this->sync[ $key ] );
+									
+				
+				// append
+				$new_ids[] = $field_group['ID'];
 				
 			}
-		
+			
+			
+			// redirect
+			wp_redirect( admin_url( $this->url . '&acfsynccomplete=' . implode(',', $new_ids)) );
+			exit;
+			
 		}
 		
 		

@@ -882,11 +882,15 @@
 				else {
 					this.$timeObj.val($.datepicker.formatTime(pickerTimeFormat, this, o) + pickerTimeSuffix);
 				}
+				/*
+				// Input loses focus when typing with picker open
+				// https://github.com/trentrichardson/jQuery-Timepicker-Addon/issues/848
 				if (this.$timeObj[0].setSelectionRange) {
 					var sPos = this.$timeObj[0].selectionStart;
 					var ePos = this.$timeObj[0].selectionEnd;
 					this.$timeObj[0].setSelectionRange(sPos, ePos);
 				}
+				*/
 			}
 
 			this.timeDefined = true;

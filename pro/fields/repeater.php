@@ -49,6 +49,10 @@ class acf_field_repeater extends acf_field {
 		);
 		
 		
+		// field filters
+		$this->add_field_filter('acf/get_sub_field', array($this, 'get_sub_field'), 10, 3);
+		
+		
 		// do not delete!
     	parent::__construct();
 	}
@@ -85,7 +89,47 @@ class acf_field_repeater extends acf_field {
 		// return
 		return $field;
 	}
+	
+	
+	/*
+	*  get_sub_field
+	*
+	*  This function will return a specific sub field
+	*
+	*  @type	function
+	*  @date	29/09/2016
+	*  @since	5.4.0
+	*
+	*  @param	$sub_field 
+	*  @param	$selector (string)
+	*  @param	$field (array)
+	*  @return	$post_id (int)
+	*/
 
+	function get_sub_field( $sub_field, $selector, $field ) {
+		
+		// bail early if no sub fields
+		if( empty($field['sub_fields']) ) return false;
+		
+		
+		// loop
+		foreach( $field['sub_fields'] as $sub_field ) {
+			
+			// check name and key
+			if( $sub_field['name'] == $selector || $sub_field['key'] == $selector ) {
+				
+				// return
+				return $sub_field;
+				
+			}
+			
+		}
+		
+		
+		// return
+		return false;
+		
+	}
 	
 	
 	/*
