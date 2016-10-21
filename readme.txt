@@ -106,6 +106,9 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.4.8 =
+* Flexible Content field: Fixed bug in 'layout_title' filter preventing values being loaded correctly
+
 = 5.4.7 =
 * Time Picker field: Fixed bug preventing default time from being selected
 * Date Picker field: Improved compatibility with unix timestamp values

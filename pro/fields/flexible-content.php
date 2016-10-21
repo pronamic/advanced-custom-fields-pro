@@ -1406,13 +1406,19 @@ class acf_field_flexible_content extends acf_field {
 			end( $value );
 			
 			
-			// vars
+			// vars (step through array)
 			$key = key($value);
 			$value = current($value);
 			
 			
 			// stop looking if we have found the correct field's value
-			if( $key === $options['field_key'] ) break;
+			if( $key === $options['field_key'] ) {
+				
+				// get row
+				$value = current($value);
+				break;
+				
+			}
 			
 		}
 		
