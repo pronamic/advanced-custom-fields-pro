@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2016-09-24 00:01+0300\n"
-"PO-Revision-Date: 2016-09-24 00:03+0300\n"
-"Last-Translator: Sauli Rajala <sauli.rajala@valu.fi>\n"
+"PO-Revision-Date: 2016-11-03 17:09+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.2\n"
+"X-Generator: Poedit 1.8.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -490,8 +490,8 @@ msgid "Error validating request"
 msgstr "Virhe pyynnön käsittelyssä"
 
 #: admin/update.php:243 admin/views/update.php:110
-msgid "No updates available"
-msgstr "Päivityksiä ei ole saatavilla"
+msgid "No updates available."
+msgstr "Päivityksiä ei ole saatavilla."
 
 #: admin/update.php:260
 msgid "Error loading update"
@@ -591,6 +591,10 @@ msgstr "Poista"
 #: fields/taxonomy.php:901
 msgid "Error"
 msgstr "Virhe"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "Virhe."
 
 #: admin/views/field-group-field.php:69
 msgid "Field type does not exist"
@@ -1293,12 +1297,8 @@ msgid "Site is up to date"
 msgstr "Sivusto on ajan tasalla"
 
 #: admin/views/update-network.php:67 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr "Tietokanta on päivitetty"
-
-#: admin/views/update-network.php:67
-msgid "Return to network dashboard"
-msgstr "Palaa verkon hallinnan ohjausnäkymään"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
+msgstr "Tietokanta on päivitetty. <a href=\"%s\">Palaa verkon hallinnan ohjausnäkymään</a>"
 
 #: admin/views/update-network.php:106 admin/views/update-notice.php:35
 msgid ""
@@ -2015,8 +2015,8 @@ msgid "Enter URL"
 msgstr "Syötä URL"
 
 #: fields/oembed.php:225
-msgid "No embed found for the given URL"
-msgstr "Upotettavaa ei löytynyt annetusta URL-osoitteesta"
+msgid "No embed found for the given URL."
+msgstr "Upotettavaa ei löytynyt annetusta URL-osoitteesta."
 
 #: fields/oembed.php:261 fields/oembed.php:272
 msgid "Embed Size"
@@ -2486,12 +2486,8 @@ msgid "Publish"
 msgstr "Julkaistu"
 
 #: pro/admin/options-page.php:315
-msgid "No Custom Field Groups found for this options page"
-msgstr "Yhtään lisäkenttäryhmää ei löytynyt tälle asetussivulle"
-
-#: pro/admin/options-page.php:315
-msgid "Create a Custom Field Group"
-msgstr "Luo lisäkenttäryhmä"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "Yhtään lisäkenttäryhmää ei löytynyt tälle asetussivulle. <a href=\"%s\">Luo lisäkenttäryhmä</a>"
 
 #: pro/admin/settings-updates.php:87
 msgid "<b>Error</b>. Could not connect to update server"

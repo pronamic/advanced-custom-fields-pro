@@ -3,15 +3,15 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2016-06-17 13:45+0200\n"
-"PO-Revision-Date: 2016-06-17 14:36+0200\n"
-"Last-Translator: Maxime BERNARD-JACQUET <maxime@smoothie-creative.com>\n"
+"PO-Revision-Date: 2016-11-03 17:09+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Dysign <maxime@dysign.fr>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -541,8 +541,8 @@ msgstr "Erreur : la requête n’a pas pu être validée"
 
 # @ acf
 #: admin/update.php:243 admin/views/update.php:110
-msgid "No updates available"
-msgstr "Aucune mise à jour disponible"
+msgid "No updates available."
+msgstr "Aucune mise à jour disponible."
 
 #: admin/update.php:260
 msgid "Error loading update"
@@ -644,6 +644,10 @@ msgstr "Supprimer"
 #: fields/taxonomy.php:888
 msgid "Error"
 msgstr "Erreur"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "Erreur."
 
 # @ acf
 #: admin/views/field-group-field.php:68
@@ -1416,12 +1420,8 @@ msgid "Site is up to date"
 msgstr "Site à jour"
 
 #: admin/views/update-network.php:67 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr "Mise à niveau de la base de données effectuée"
-
-#: admin/views/update-network.php:67
-msgid "Return to network dashboard"
-msgstr "Retourner au panneau d'administration du réseau"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
+msgstr "Mise à niveau de la base de données effectuée. <a href=\"%s\">Retourner au panneau d'administration du réseau</a>"
 
 #: admin/views/update-network.php:106 admin/views/update-notice.php:35
 msgid ""
@@ -2178,8 +2178,8 @@ msgid "Enter URL"
 msgstr "Entrez l'URL"
 
 #: fields/oembed.php:225
-msgid "No embed found for the given URL"
-msgstr "Aucune instruction d'intégration trouvée à cette adresse"
+msgid "No embed found for the given URL."
+msgstr "Aucune instruction d'intégration trouvée à cette adresse."
 
 #: fields/oembed.php:261 fields/oembed.php:272
 msgid "Embed Size"
@@ -2674,13 +2674,8 @@ msgstr "Publier"
 
 # @ default
 #: pro/admin/options-page.php:315
-msgid "No Custom Field Groups found for this options page"
-msgstr "Aucun groupe de champs trouvé pour cette page options"
-
-# @ acf
-#: pro/admin/options-page.php:315
-msgid "Create a Custom Field Group"
-msgstr "Créer un groupe de champs"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "Aucun groupe de champs trouvé pour cette page options. <a href=\"%s\">Créer un groupe de champs</a>"
 
 #: pro/admin/settings-updates.php:125
 msgid "<b>Error</b>. Could not connect to update server"

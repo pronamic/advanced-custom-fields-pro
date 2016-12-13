@@ -151,7 +151,9 @@ class acf_field_image extends acf_field {
 				<div class="acf-error-message"><p><?php echo $field['value']; ?></p></div>
 			<?php endif; ?>
 			
-			<input type="file" name="<?php echo $field['name']; ?>" id="<?php echo $field['id']; ?>" />
+			<label class="acf-basic-uploader">
+				<input type="file" name="<?php echo $field['name']; ?>" id="<?php echo $field['id']; ?>" />
+			</label>
 			
 		<?php else: ?>
 			
@@ -256,9 +258,7 @@ class acf_field_image extends acf_field {
 			'name'			=> 'min_height',
 			'prepend'		=> __('Height', 'acf'),
 			'append'		=> 'px',
-			'wrapper'		=> array(
-				'data-append' => 'min_width'
-			)
+			'_append' 		=> 'min_width'
 		));
 		
 		acf_render_field_setting( $field, array(
@@ -267,9 +267,7 @@ class acf_field_image extends acf_field {
 			'name'			=> 'min_size',
 			'prepend'		=> __('File size', 'acf'),
 			'append'		=> 'MB',
-			'wrapper'		=> array(
-				'data-append' => 'min_width'
-			)
+			'_append' 		=> 'min_width'
 		));	
 		
 		
@@ -289,9 +287,7 @@ class acf_field_image extends acf_field {
 			'name'			=> 'max_height',
 			'prepend'		=> __('Height', 'acf'),
 			'append'		=> 'px',
-			'wrapper'		=> array(
-				'data-append' => 'max_width'
-			)
+			'_append' 		=> 'max_width'
 		));
 		
 		acf_render_field_setting( $field, array(
@@ -300,9 +296,7 @@ class acf_field_image extends acf_field {
 			'name'			=> 'max_size',
 			'prepend'		=> __('File size', 'acf'),
 			'append'		=> 'MB',
-			'wrapper'		=> array(
-				'data-append' => 'max_width'
-			)
+			'_append' 		=> 'max_width'
 		));	
 		
 		

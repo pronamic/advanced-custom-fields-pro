@@ -106,6 +106,42 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.5.2 =
+* Tab field: Fixed bug causing value loading issues for field's with the same name
+* Repeater field: Fixed bug in 'collapsed' setting where field key was shown instead of field label
+
+= 5.5.1 =
+* Select field: Fixed bug preventing some field settings from being selected
+* Date picker field: Improved compatibility with customised values
+* Core: Added new 'enqueue_datepicker' setting which can be used to prevent the library from being enqueued
+* Core: Added new 'enqueue_datetimepicker' setting which can be used to prevent the library from being enqueued
+* Core: Minor fixes and improvements
+
+= 5.5.0 =
+* True False field: Added new 'ui' setting which renders as a toggle switch
+* WYSIWYG field: Added new 'delay' setting which delays tinymce initialization until the field is clicked
+* WYSIWYG field: Added compatibility for WP 4.7 toolbar buttons order
+* Checkbox field: Added new 'allow_custom' and 'save_custom' settings allowing you to add custom choices
+* Select field: Fixed bug where Select2 fields did not correctly use the ‘allow null’ setting
+* Clone field: Fixed bug causing save/load issues found when 2 sub fields clone in the same field/group.
+* Flexible Content field: Improved popup style and validation messages
+* Google Map field: Prevent scroll zoom
+* Date picker field: Added better compatibility logic for custom 'date_format' setting found in version < 5.0.0
+* API: acf_form() 'id' setting is now used as 'id' attribute in <form> element
+* Options page: Fixed incorrect redirect URL from a sub options page
+* Field group: Added new 'post_template' location rule (requires WP 4.7)
+* Core: Added support for the wp_termmeta table (includes DB upgrade)
+* Core: Added new 'select_2_version' setting which can be changed between 3 and 4
+* Core: Added new 'enqueue_select2' setting which can be used to prevent the library from being enqueued
+* Core: Added new 'enqueue_google_maps' setting which can be used to prevent the library from being enqueued
+* Core: Minor fixes and improvements
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+* Language: Updated Norwegian translation - thanks to Havard Grimelid
+* Language: Updated Swedish translation - thanks to Jonathan de Jong
+* Language: Updated German translation - thanks to Ralf Koller
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Updated Swiss German translation - thanks to Raphael Hüni
+
 = 5.4.8 =
 * Flexible Content field: Fixed bug in 'layout_title' filter preventing values being loaded correctly
 
@@ -165,7 +201,7 @@ http://support.advancedcustomfields.com/
 * Core: Fixed bug when editing field settings in Chrome causing required setting to self toggle
 * Core: Improved speed and fixed bugs when creating and restoring revisions
 * Core: Minor fixes and improvements
-* Language: Updated Portuguese translation - thanks to Pedro Mendonca
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
 * Language: Updated Brazilian Portuguese translation - thanks to Augusto Simão
 * Language: Updated Dutch translation - thanks to Derk Oosterveld
 * Language: Updated Persian translation - thanks to Kamel
@@ -199,7 +235,7 @@ http://support.advancedcustomfields.com/
 * Core: Minor fixes and improvements
 * Language: Updated Swedish translation - thanks to Jonathan de Jong
 * Language: Updated Russian translation - thanks to Andy Toniyevych 
-* Language: Updated Portuguese translation - thanks to Pedro Mendonca
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
 * Language: Updated Polish translation - thanks to Michal Lepiarz
 * Language: Updated Italian translation - thanks to Davide Pantè
 * Language: Updated German translation - thanks to Ralf Koller
@@ -225,7 +261,7 @@ http://support.advancedcustomfields.com/
 * Core: Fixed bug where comment fields appeared in different locations for logged in/out users
 * Language: Updated Polish translation - thanks to Michal Lepiarz
 * Language: Updated Italian translation - thanks to Davide Pantè
-* Language: Updated Portuguese translation - thanks to Pedro Mendonca
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
 * Language: Updated Swiss German translation - thanks to Raphael Hüni
 * Language: Updated French Translation - thanks to Maxime Bernard-Jacquet
 

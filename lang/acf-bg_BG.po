@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2016-02-05 11:05+1000\n"
-"PO-Revision-Date: 2016-04-07 10:29+1000\n"
+"PO-Revision-Date: 2016-11-03 17:07+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Elliot Condon <e@elliotcondon.com>\n"
 "MIME-Version: 1.0\n"
@@ -577,6 +577,10 @@ msgstr "Изтриване"
 #: fields/taxonomy.php:924
 msgid "Error"
 msgstr "Грешка"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "Грешка."
 
 #: admin/views/field-group-field.php:68
 msgid "Field type does not exist"
@@ -1272,12 +1276,8 @@ msgid "Site is up to date"
 msgstr "Сайтът няма нужда от обновяване"
 
 #: admin/views/update-network.php:62 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr "Обновяването на базата данни бе завършено"
-
-#: admin/views/update-network.php:62
-msgid "Return to network dashboard"
-msgstr "Връщане към мрежовото табло"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
+msgstr "Обновяването на базата данни бе завършено. <a href=\"%s\">Връщане към мрежовото табло</a>"
 
 #: admin/views/update-network.php:101 admin/views/update-notice.php:35
 msgid ""
@@ -1326,8 +1326,8 @@ msgid "See what's new"
 msgstr "Вижте какво е новото"
 
 #: admin/views/update.php:110
-msgid "No updates available"
-msgstr "Няма налични актуализации"
+msgid "No updates available."
+msgstr "Няма налични актуализации."
 
 #: api/api-helpers.php:909
 msgid "Thumbnail"
@@ -1878,8 +1878,8 @@ msgid "Enter URL"
 msgstr "Въведете URL адрес"
 
 #: fields/oembed.php:225
-msgid "No embed found for the given URL"
-msgstr "Няма открито вграждане за посочения URL адрес"
+msgid "No embed found for the given URL."
+msgstr "Няма открито вграждане за посочения URL адрес."
 
 #: fields/oembed.php:261 fields/oembed.php:272
 msgid "Embed Size"
@@ -2262,12 +2262,8 @@ msgid "Options Updated"
 msgstr "Опциите бяха актуализирани"
 
 #: pro/admin/options-page.php:282
-msgid "No Custom Field Groups found for this options page"
-msgstr "Няма намерени групи полета за тази страница с опции"
-
-#: pro/admin/options-page.php:282
-msgid "Create a Custom Field Group"
-msgstr "Създаване на група полета"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "Няма намерени групи полета за тази страница с опции. <a href=\"%s\">Създаване на група полета</a>"
 
 #: pro/admin/settings-updates.php:137
 msgid "<b>Error</b>. Could not connect to update server"

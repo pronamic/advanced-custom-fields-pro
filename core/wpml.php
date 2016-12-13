@@ -43,8 +43,8 @@ class acf_wpml_compatibility {
 		
 		
 		// actions
-		add_action('acf/upgrade_start/5.0.0',			array($this, 'upgrade_start_5'));
-		add_action('acf/upgrade_finish/5.0.0',			array($this, 'upgrade_finish_5'));
+		add_action('acf/update_500',					array($this, 'update_500'), 10);
+		add_action('acf/update_500_field_group',		array($this, 'update_500_field_group'), 10, 2);
 		add_action('acf/update_field_group',			array($this, 'update_field_group'), 2, 1);
 		add_action('icl_make_duplicate',				array($this, 'icl_make_duplicate'), 10, 4);
 		
@@ -102,9 +102,9 @@ class acf_wpml_compatibility {
 	
 	
 	/*
-	*  upgrade_start_5
+	*  update_500
 	*
-	*  description
+	*  This function will update the WPML settings to allow 'acf-field-group' to be translatable
 	*
 	*  @type	function
 	*  @date	10/04/2015
@@ -114,11 +114,7 @@ class acf_wpml_compatibility {
 	*  @return	$post_id (int)
 	*/
 	
-	function upgrade_start_5() {
-		
-		// actions
-		add_action('acf/update_field_group', array($this, 'update_field_group_5'), 1, 1);
-		
+	function update_500() {
 		
 		// global
 		global $sitepress, $sitepress_settings;
@@ -148,28 +144,7 @@ class acf_wpml_compatibility {
 	
 	
 	/*
-	*  upgrade_finish
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	10/04/2015
-	*  @since	5.2.3
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	function upgrade_finish_5() {
-		
-		// actions
-		remove_action('acf/update_field_group', array($this, 'update_field_group_5'), 1, 1);
-		
-	}
-	
-	
-	/*
-	*  update_field_group_5
+	*  update_500_field_group
 	*
 	*  This function will update the icl_translations table data when creating the fiedl groups
 	*
@@ -181,24 +156,16 @@ class acf_wpml_compatibility {
 	*  @return	n/a
 	*/
 	
-	function update_field_group_5( $field_group ) {
+	function update_500_field_group($field_group, $ofg) {
 		
 		// global
 		global $wpdb, $sitepress;
 		
 		
-		// bail early if no old_ID (added to $field_group by upgrade 5.0.0)
-		if( empty($field_group['old_ID']) ) {
-			
-			return;
-			
-		}
-		
-		
 		// get translation rows (old acf4 and new acf5)
 		$old_row = $wpdb->get_row($wpdb->prepare(
 			"SELECT * FROM {$wpdb->prefix}icl_translations WHERE element_type=%s AND element_id=%d", 
-			'post_acf', $field_group['old_ID']
+			'post_acf', $ofg->ID
 		), ARRAY_A);
 		
 		$new_row = $wpdb->get_row($wpdb->prepare(
@@ -421,10 +388,6 @@ class acf_wpml_compatibility {
 		?>
 		<script type="text/javascript">
 		(function($) {
-			
-			// bail ealry if no lang
-			if( typeof icl_this_lang == 'undefined' ) return;
-			
 			
 			// add filter
 			acf.add_filter('prepare_for_ajax', function( args ){

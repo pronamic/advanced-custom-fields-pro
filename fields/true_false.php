@@ -33,11 +33,14 @@ class acf_field_true_false extends acf_field {
 		
 		// vars
 		$this->name = 'true_false';
-		$this->label = __("True / False",'acf');
+		$this->label = __('True / False','acf');
 		$this->category = 'choice';
 		$this->defaults = array(
 			'default_value'	=> 0,
 			'message'		=> '',
+			'ui'			=> 0,
+			'ui_on_text'	=> '',
+			'ui_off_text'	=> '',
 		);
 		
 		
@@ -62,27 +65,59 @@ class acf_field_true_false extends acf_field {
 	function render_field( $field ) {
 		
 		// vars
-		$atts = array(
+		$input = array(
 			'type'		=> 'checkbox',
-			'id'		=> "{$field['id']}-1",
+			'id'		=> $field['id'],
 			'name'		=> $field['name'],
 			'value'		=> '1',
+			'class'		=> $field['class'],
+			'autocomplete'	=> 'off'
 		);
+		
+		$hidden = array(
+			'name' 		=> $field['name'],
+			'value'		=> 0
+		);
+		
+		$active = $field['value'] ? true : false;
+		$switch = '';
 		
 		
 		// checked
-		if( !empty($field['value']) ) {
+		if( $active ) $input['checked'] = 'checked';
 		
-			$atts['checked'] = 'checked';
+		
+		// ui
+		if( $field['ui'] ) {
+			
+			// vars
+			if( $field['ui_on_text'] === '' ) $field['ui_on_text'] = __('Yes', 'acf');
+			if( $field['ui_off_text'] === '' ) $field['ui_off_text'] = __('No', 'acf');
+			
+			
+			// update input
+			$input['class'] .= ' acf-switch-input';
+			$input['style'] = 'display:none;';
+			
+			$switch .= '<div class="acf-switch' . ($active ? ' -on' : '') . '">';
+				$switch .= '<span class="acf-switch-on">'.$field['ui_on_text'].'</span>';
+				$switch .= '<span class="acf-switch-off">'.$field['ui_off_text'].'</span>';
+				$switch .= '<div class="acf-switch-slider"></div>';
+			$switch .= '</div>';
 			
 		}
 		
+?>
+<div class="acf-true-false">
+	<?php acf_hidden_input($hidden); ?>
+	<label>
+		<input <?php echo acf_esc_attr($input); ?>/>
+		<?php if( $switch ) echo $switch; ?>
+		<?php if( $field['message'] ): ?><span><?php echo $field['message']; ?></span><?php endif; ?>
+	</label>
+</div>
+<?php
 		
-		// html
-		echo '<ul class="acf-checkbox-list acf-bl ' . acf_esc_attr($field['class']) . '">';
-			echo '<input type="hidden" name="' . acf_esc_attr($field['name']) . '" value="0" />';
-			echo '<li><label><input ' . acf_esc_attr($atts) . '/>' . $field['message'] . '</label></li>';
-		echo '</ul>';
 	}
 	
 	
@@ -104,7 +139,7 @@ class acf_field_true_false extends acf_field {
 		// message
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Message','acf'),
-			'instructions'	=> __('eg. Show extra content','acf'),
+			'instructions'	=> __('Displays text alongside the checkbox','acf'),
 			'type'			=> 'text',
 			'name'			=> 'message',
 		));
@@ -116,6 +151,37 @@ class acf_field_true_false extends acf_field {
 			'instructions'	=> '',
 			'type'			=> 'true_false',
 			'name'			=> 'default_value',
+		));
+		
+		
+		// ui
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Stylised UI','acf'),
+			'instructions'	=> '',
+			'type'			=> 'true_false',
+			'name'			=> 'ui',
+			'ui'			=> 1,
+			'class'			=> 'acf-field-object-true-false-ui'
+		));
+		
+		
+		// on_text
+		acf_render_field_setting( $field, array(
+			'label'			=> __('On Text','acf'),
+			'instructions'	=> __('Text shown when active','acf'),
+			'type'			=> 'text',
+			'name'			=> 'ui_on_text',
+			'placeholder'	=> __('Yes', 'acf')
+		));
+		
+		
+		// on_text
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Off Text','acf'),
+			'instructions'	=> __('Text shown when inactive','acf'),
+			'type'			=> 'text',
+			'name'			=> 'ui_off_text',
+			'placeholder'	=> __('No', 'acf')
 		));
 		
 	}
@@ -198,6 +264,8 @@ class acf_field_true_false extends acf_field {
 		
 		// translate
 		$field['message'] = acf_translate( $field['message'] );
+		$field['ui_on_text'] = acf_translate( $field['ui_on_text'] );
+		$field['ui_off_text'] = acf_translate( $field['ui_off_text'] );
 		
 		
 		// return

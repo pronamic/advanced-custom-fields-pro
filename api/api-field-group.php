@@ -914,11 +914,8 @@ function acf_get_field_group_style( $field_group ) {
 	$e = '';
 	
 	
-	// validate
-	if( !is_array($field_group['hide_on_screen']) )
-	{
-		return $e;
-	}
+	// bail early if no array or is empty
+	if( !acf_is_array($field_group['hide_on_screen']) ) return $e;
 	
 	
 	// add style to html
@@ -1000,6 +997,7 @@ function acf_get_field_group_style( $field_group ) {
 	
 	// return	
 	return apply_filters('acf/get_field_group_style', $e, $field_group);
+	
 }
 
 

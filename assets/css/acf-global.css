@@ -1,5 +1,13 @@
 /*--------------------------------------------------------------------------------------------
 *
+*	vars
+*
+*--------------------------------------------------------------------------------------------*/
+/* colors */
+/* acf-field */
+/* responsive */
+/*--------------------------------------------------------------------------------------------
+*
 *	General
 *
 *--------------------------------------------------------------------------------------------*/
@@ -519,6 +527,8 @@ a.acf-icon.-cancel.grey:hover {
   border: 1px solid #E5E5E5;
   position: relative;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  /* title */
+  /* footer */
 }
 .acf-box .title {
   border-bottom: 1px solid #EEEEEE;
@@ -555,20 +565,18 @@ a.acf-icon.-cancel.grey:hover {
   padding: 15px;
   position: relative;
 }
-.acf-box .footer-blue {
+.acf-box .footer.-blue {
   border-top: 0 none;
-  background-color: #52ACCC;
+  background-color: #2a9bd9;
   color: #FFFFFF;
 }
-.acf-box .footer-blue a {
+.acf-box .footer.-blue p {
+  margin: 0;
+}
+.acf-box .footer.-blue a {
   text-decoration: none;
   text-shadow: none;
-}
-.acf-box .footer .acf-hl > li {
-  margin: 0 10px 0 0;
-}
-.acf-box .footer .acf-hl > li.acf-fr {
-  margin: 0 0 0 10px;
+  color: inherit;
 }
 /* error */
 .acf-error-message {
@@ -1032,13 +1040,14 @@ html[dir="rtl"] #acf-popup .title .acf-icon {
 }
 .acf-three-col > div {
   float: left;
-  margin: 0 0 10px 5%;
+  margin: 0 0 15px 5%;
   position: relative;
   width: 30%;
 }
 .acf-three-col > div:first-child,
 .acf-three-col > br + div {
   margin-left: 0;
+  clear: left;
 }
 .acf-three-col > br {
   display: none;

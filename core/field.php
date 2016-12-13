@@ -1,12 +1,16 @@
 <?php
 
+if( ! class_exists('acf_field') ) :
+
 class acf_field {
 	
-	var $name,
-		$title,
-		$category,
-		$defaults,
-		$l10n;
+	// vars
+	var $name = '',
+		$label = '',
+		$category = 'basic',
+		$defaults = array(),
+		$l10n = array(),
+		$public = true;
 	
 	
 	/*
@@ -24,42 +28,43 @@ class acf_field {
 	
 	function __construct() {
 		
-		// register field
-		add_filter("acf/get_field_types",								array($this, 'get_field_types'), 10, 1);
-		add_filter("acf/get_valid_field/type={$this->name}",			array($this, 'get_valid_field'), 10, 1);
+		// info
+		$this->add_filter('acf/get_field_types',					array($this, 'get_field_types'), 10, 1);
 		
 		
 		// value
-		$this->add_filter("acf/load_value/type={$this->name}",			array($this, 'load_value'), 10, 3);
-		$this->add_filter("acf/update_value/type={$this->name}",		array($this, 'update_value'), 10, 3);
-		$this->add_filter("acf/format_value/type={$this->name}",		array($this, 'format_value'), 10, 3);
-		$this->add_filter("acf/validate_value/type={$this->name}",		array($this, 'validate_value'), 10, 4);
-		$this->add_action("acf/delete_value/type={$this->name}",		array($this, 'delete_value'), 10, 3);
+		$this->add_field_filter('acf/load_value',					array($this, 'load_value'), 10, 3);
+		$this->add_field_filter('acf/update_value',					array($this, 'update_value'), 10, 3);
+		$this->add_field_filter('acf/format_value',					array($this, 'format_value'), 10, 3);
+		$this->add_field_filter('acf/validate_value',				array($this, 'validate_value'), 10, 4);
+		$this->add_field_action('acf/delete_value',					array($this, 'delete_value'), 10, 3);
 		
 		
 		// field
-		$this->add_filter("acf/load_field/type={$this->name}",				array($this, 'load_field'), 10, 1);
-		$this->add_filter("acf/update_field/type={$this->name}",			array($this, 'update_field'), 10, 1);
-		$this->add_filter("acf/duplicate_field/type={$this->name}",			array($this, 'duplicate_field'), 10, 1);
-		$this->add_action("acf/delete_field/type={$this->name}",			array($this, 'delete_field'), 10, 1);
-		$this->add_action("acf/render_field/type={$this->name}",			array($this, 'render_field'), 10, 1);
-		$this->add_action("acf/render_field_settings/type={$this->name}",	array($this, 'render_field_settings'), 10, 1);
-		$this->add_action("acf/prepare_field/type={$this->name}",			array($this, 'prepare_field'), 10, 1);
-		$this->add_action("acf/translate_field/type={$this->name}",			array($this, 'translate_field'), 10, 1);
+		$this->add_field_filter('acf/get_valid_field',				array($this, 'get_valid_field'), 10, 1);
+		$this->add_field_filter('acf/load_field',					array($this, 'load_field'), 10, 1);
+		$this->add_field_filter('acf/update_field',					array($this, 'update_field'), 10, 1);
+		$this->add_field_filter('acf/duplicate_field',				array($this, 'duplicate_field'), 10, 1);
+		$this->add_field_action('acf/delete_field',					array($this, 'delete_field'), 10, 1);
+		$this->add_field_action('acf/render_field',					array($this, 'render_field'), 9, 1);
+		$this->add_field_action('acf/render_field_settings',		array($this, 'render_field_settings'), 9, 1);
+		$this->add_field_filter('acf/prepare_field',				array($this, 'prepare_field'), 10, 1);
+		$this->add_field_filter('acf/translate_field',				array($this, 'translate_field'), 10, 1);
 		
 		
 		// input actions
-		$this->add_action("acf/input/admin_enqueue_scripts",			array($this, 'input_admin_enqueue_scripts'), 10, 0);
-		$this->add_action("acf/input/admin_head",						array($this, 'input_admin_head'), 10, 0);
-		$this->add_action("acf/input/form_data",						array($this, 'input_form_data'), 10, 1);
-		$this->add_filter("acf/input/admin_l10n",						array($this, 'input_admin_l10n'), 10, 1);
-		$this->add_action("acf/input/admin_footer",						array($this, 'input_admin_footer'), 10, 1);
+		$this->add_action("acf/input/admin_enqueue_scripts",		array($this, 'input_admin_enqueue_scripts'), 10, 0);
+		$this->add_action("acf/input/admin_head",					array($this, 'input_admin_head'), 10, 0);
+		$this->add_action("acf/input/form_data",					array($this, 'input_form_data'), 10, 1);
+		$this->add_filter("acf/input/admin_l10n",					array($this, 'input_admin_l10n'), 10, 1);
+		$this->add_action("acf/input/admin_footer",					array($this, 'input_admin_footer'), 10, 1);
 		
 		
 		// field group actions
-		$this->add_action("acf/field_group/admin_enqueue_scripts", 		array($this, 'field_group_admin_enqueue_scripts'), 10, 0);
-		$this->add_action("acf/field_group/admin_head",					array($this, 'field_group_admin_head'), 10, 0);
-		$this->add_action("acf/field_group/admin_footer",				array($this, 'field_group_admin_footer'), 10, 0);
+		$this->add_action("acf/field_group/admin_enqueue_scripts", 	array($this, 'field_group_admin_enqueue_scripts'), 10, 0);
+		$this->add_action("acf/field_group/admin_head",				array($this, 'field_group_admin_head'), 10, 0);
+		$this->add_action("acf/field_group/admin_footer",			array($this, 'field_group_admin_footer'), 10, 0);
+		
 	}
 	
 	
@@ -188,42 +193,20 @@ class acf_field {
 	*  @return	$fields
 	*/
 	
-	function get_field_types( $fields ) {
+	function get_field_types( $types ) {
 		
-		$l10n = array(
-			'basic'			=> __('Basic', 'acf'),
-			'content'		=> __('Content', 'acf'),
-			'choice'		=> __('Choice', 'acf'),
-			'relational'	=> __('Relational', 'acf'),
-			'jquery'		=> __('jQuery', 'acf'),
-			'layout'		=> __('Layout', 'acf'),
+		// append
+		$types[ $this->name ] = array(
+			'label'		=> $this->label,
+			'name'		=> $this->name,
+			'category'	=> $this->category,
+			'public'	=> $this->public
 		);
 		
 		
-		// defaults
-		if( !$this->category )
-		{
-			$this->category = 'basic';
-		}
+		// return
+		return $types;
 		
-		
-		// cat
-		if( isset($l10n[ $this->category ]) )
-		{
-			$cat = $l10n[ $this->category ];
-		}
-		else
-		{
-			$cat = $this->category;
-		}
-		
-		
-		// add to array
-		$fields[ $cat ][ $this->name ] = $this->label;
-		
-		
-		// return array
-		return $fields;
 	}
 	
 	
@@ -242,18 +225,13 @@ class acf_field {
 	
 	function get_valid_field( $field ) {
 		
-		if( !empty($this->defaults) )
-		{
-			foreach( $this->defaults as $k => $v )
-			{
-				if( !isset($field[ $k ]) )
-				{
-					$field[ $k ] = $v;
-				}
-			}
-		}
+		// bail early if no defaults
+		if( !is_array($this->defaults) ) return $field;
 		
-		return $field;
+		
+		// merge in defaults
+		return array_merge($this->defaults, $field);
+		
 	}
 	
 	
@@ -272,14 +250,173 @@ class acf_field {
 	
 	function input_admin_l10n( $l10n ) {
 		
-		if( !empty($this->l10n) )
-		{
-			$l10n[ $this->name ] = $this->l10n;
-		}
+		// bail early if no defaults
+		if( empty($this->l10n) ) return $l10n;
 		
+		
+		// append
+		$l10n[ $this->name ] = $this->l10n;
+		
+		
+		// return		
 		return $l10n;
+		
 	}
 	
+}
+
+endif; // class_exists check
+
+
+/*
+*  acf_get_field_types
+*
+*  This function will return an array containing info about all field types
+*
+*  @type	function
+*  @date	22/10/16
+*  @since	5.5.0
+*
+*  @param	n/a
+*  @return	(array)
+*/
+
+function acf_get_field_types() {
+	
+	// vars
+	$cache_key = 'acf_get_field_types';
+	
+	
+	// check cache
+	if( acf_isset_cache($cache_key) ) return acf_get_cache($cache_key);
+	
+		
+	// get types
+	$types = apply_filters('acf/get_field_types', array());
+	
+	
+	// update cache
+	acf_set_cache($cache_key, $types);
+	
+	
+	// return
+	return $types;
+	
+}
+
+
+/*
+*  acf_get_grouped_field_types
+*
+*  This function will return a grouped array of fields types (category => name)
+*
+*  @type	function
+*  @date	1/10/13
+*  @since	5.0.0
+*
+*  @param	n/a
+*  @return	(array)
+*/
+
+function acf_get_grouped_field_types() {
+	
+	// vars
+	$types = array();
+	$l10n = array(
+		'basic'			=> __('Basic', 'acf'),
+		'content'		=> __('Content', 'acf'),
+		'choice'		=> __('Choice', 'acf'),
+		'relational'	=> __('Relational', 'acf'),
+		'jquery'		=> __('jQuery', 'acf'),
+		'layout'		=> __('Layout', 'acf'),
+	);
+	
+	
+	// get field type information
+	$types_info = acf_get_field_types();
+	
+	
+	// loop
+	foreach( $types_info as $info ) {
+		
+		// bail early if not public
+		if( !$info['public'] ) continue;
+		
+		
+		// vars
+		$cat = $info['category'];
+		
+		
+		// default to basic
+		if( !$cat ) $cat = 'basic';
+		
+		
+		// translate
+		$cat = isset($l10n[ $cat ]) ? $l10n[ $cat ] : $cat;
+		
+		
+		// append
+		$types[ $cat ][ $info['name'] ] = $info['label'];
+		
+	}
+	
+	
+	// return
+	return $types;
+	
+}
+
+
+/*
+*  acf_get_field_type_label
+*
+*  This function will return the label of a field type
+*
+*  @type	function
+*  @date	1/10/13
+*  @since	5.0.0
+*
+*  @param	n/a
+*  @return	(array)
+*/
+
+function acf_get_field_type_label( $type = '' ) {
+
+	// vars
+	$types = acf_get_field_types();
+	
+	
+	// bail early if doesn't exist
+	if( !isset($types[ $type ]) ) return '';
+	
+	
+	// return
+	return $types[ $type ]['label'];
+	
+}
+
+
+/*
+*  acf_field_type_exists
+*
+*  This function will check if the field_type exists
+*
+*  @type	function
+*  @date	1/10/13
+*  @since	5.0.0
+*
+*  @param	$type (string)
+*  @return	(boolean)
+*/
+
+function acf_field_type_exists( $type = '' ) {
+
+	// vars
+	$types = acf_get_field_types();
+	
+	
+	// return
+	return isset($types[ $type ]);
 	
 }
 

@@ -40,6 +40,7 @@ class acf_field_wysiwyg extends acf_field {
 			'toolbar'		=> 'full',
 			'media_upload' 	=> 1,
 			'default_value'	=> '',
+			'delay'			=> 0
 		);
     	
     	
@@ -140,57 +141,52 @@ class acf_field_wysiwyg extends acf_field {
    		
    		
    		// vars
-   		$toolbars = array();
    		$editor_id = 'acf_content';
    		
    		
-   		if( version_compare($wp_version, '3.9', '>=' ) ) {
+   		// toolbars
+   		$toolbars = array();
+   		$mce_buttons = 'formatselect, bold, italic, bullist, numlist, blockquote, alignleft, aligncenter, alignright, link, unlink, wp_more, spellchecker, fullscreen, wp_adv';
+   		$mce_buttons_2 = 'strikethrough, hr, forecolor, pastetext, removeformat, charmap, outdent, indent, undo, redo, wp_help';
+   		$teeny_mce_buttons = 'bold, italic, underline, blockquote, strikethrough, bullist, numlist, alignleft, aligncenter, alignright, undo, redo, link, unlink, fullscreen';
    		
-   			// Full
-	   		$toolbars['Full'] = array(
-	   			
-	   			1 => apply_filters('mce_buttons', array('bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'hr', 'alignleft', 'aligncenter', 'alignright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv' ), $editor_id),
-	   			
-	   			2 => apply_filters('mce_buttons_2', array( 'formatselect', 'underline', 'alignjustify', 'forecolor', 'pastetext', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help' ), $editor_id),
-	   			
-	   			3 => apply_filters('mce_buttons_3', array(), $editor_id),
-	   			
-	   			4 => apply_filters('mce_buttons_4', array(), $editor_id),
-	   			
-	   		);
+   		
+   		// WP < 3.9
+   		if( acf_version_compare('wp', '<', '3.9') ) {
 	   		
-	   		
-	   		// Basic
-	   		$toolbars['Basic'] = array(
-	   			
-	   			1 => apply_filters('teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'alignleft', 'aligncenter', 'alignright', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id),
-	   			
-	   		);
-	   		  		
-   		} else {
-	   		
-	   		// Full
-	   		$toolbars['Full'] = array(
-	   			
-	   			1 => apply_filters('mce_buttons', array('bold', 'italic', 'strikethrough', 'bullist', 'numlist', 'blockquote', 'justifyleft', 'justifycenter', 'justifyright', 'link', 'unlink', 'wp_more', 'spellchecker', 'fullscreen', 'wp_adv' ), $editor_id),
-	   			
-	   			2 => apply_filters('mce_buttons_2', array( 'formatselect', 'underline', 'justifyfull', 'forecolor', 'pastetext', 'pasteword', 'removeformat', 'charmap', 'outdent', 'indent', 'undo', 'redo', 'wp_help' ), $editor_id),
-	   			
-	   			3 => apply_filters('mce_buttons_3', array(), $editor_id),
-	   			
-	   			4 => apply_filters('mce_buttons_4', array(), $editor_id),
-	   			
-	   		);
-
-	   		
-	   		// Basic
-	   		$toolbars['Basic'] = array(
-	   			
-	   			1 => apply_filters( 'teeny_mce_buttons', array('bold', 'italic', 'underline', 'blockquote', 'strikethrough', 'bullist', 'numlist', 'justifyleft', 'justifycenter', 'justifyright', 'undo', 'redo', 'link', 'unlink', 'fullscreen'), $editor_id ),
-	   			
-	   		);
-	   		
-   		}
+	   		$mce_buttons = 'bold, italic, strikethrough, bullist, numlist, blockquote, justifyleft, justifycenter, justifyright, link, unlink, wp_more, spellchecker, fullscreen, wp_adv';
+	   		$mce_buttons_2 = 'formatselect, underline, justifyfull, forecolor, pastetext, pasteword, removeformat, charmap, outdent, indent, undo, redo, wp_help';
+	   		$teeny_mce_buttons = 'bold, italic, underline, blockquote, strikethrough, bullist, numlist, justifyleft, justifycenter, justifyright, undo, redo, link, unlink, fullscreen';
+	   	
+	   	// WP < 4.7	
+	   	} elseif( acf_version_compare('wp', '<', '4.7') ) {
+			
+			$mce_buttons = 'bold, italic, strikethrough, bullist, numlist, blockquote, hr, alignleft, aligncenter, alignright, link, unlink, wp_more, spellchecker, fullscreen, wp_adv';
+	   		$mce_buttons_2 = 'formatselect, underline, alignjustify, forecolor, pastetext, removeformat, charmap, outdent, indent, undo, redo, wp_help';
+	   		//$teeny_mce_buttons = 'bold, italic, underline, blockquote, strikethrough, bullist, numlist, alignleft, aligncenter, alignright, undo, redo, link, unlink, fullscreen';
+			
+		}
+	   	
+	   	
+	   	// explode
+	   	$mce_buttons = explode(', ', $mce_buttons);
+	   	$mce_buttons_2 = explode(', ', $mce_buttons_2);
+   		$teeny_mce_buttons = explode(', ', $teeny_mce_buttons);
+   			
+   		
+		// Full
+   		$toolbars['Full'] = array(
+   			1 => apply_filters('mce_buttons',	$mce_buttons,	$editor_id),
+   			2 => apply_filters('mce_buttons_2', $mce_buttons_2,	$editor_id),
+   			3 => apply_filters('mce_buttons_3', array(),		$editor_id),
+   			4 => apply_filters('mce_buttons_4', array(),		$editor_id)
+   		);
+	   	
+	   	
+   		// Basic
+   		$toolbars['Basic'] = array(
+   			1 => apply_filters('teeny_mce_buttons', $teeny_mce_buttons, $editor_id)
+   		);
    		
    		
    		// Filter for 3rd party
@@ -364,8 +360,24 @@ acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
 		// filter
 		$field['value'] = apply_filters( 'acf_the_editor_content', $field['value'], $default_editor );
 		
+		
+		// attr
+		$wrap = array(
+			'id'			=> 'wp-' . $id . '-wrap',
+			'class'			=> 'acf-editor-wrap wp-core-ui wp-editor-wrap ' . $switch_class,
+			'data-toolbar'	=> $field['toolbar']
+		);
+		
+		
+		// delay
+		if( $field['delay'] ) {
+			
+			$wrap['class'] .= ' delay';
+			
+		}
+		
 		?>
-		<div id="wp-<?php echo $id; ?>-wrap" class="acf-editor-wrap wp-core-ui wp-editor-wrap <?php echo $switch_class; ?>" data-toolbar="<?php echo $field['toolbar']; ?>" data-upload="<?php echo $field['media_upload']; ?>">
+		<div <?php echo acf_esc_attr($wrap); ?>>
 			<div id="wp-<?php echo $id; ?>-editor-tools" class="wp-editor-tools hide-if-no-js">
 				<?php if( $field['media_upload'] ): ?>
 				<div id="wp-<?php echo $id; ?>-media-buttons" class="wp-media-buttons">
@@ -374,12 +386,15 @@ acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
 				<?php endif; ?>
 				<?php if( user_can_richedit() && $show_tabs ): ?>
 					<div class="wp-editor-tabs">
-						<button id="<?php echo $id; ?>-tmce" class="wp-switch-editor switch-tmce" <?php echo  $button; ?> type="button"><?php echo __('Visual', 'acf'); ?></button>
-						<button id="<?php echo $id; ?>-html" class="wp-switch-editor switch-html" <?php echo  $button; ?> type="button"><?php echo _x( 'Text', 'Name for the Text editor tab (formerly HTML)', 'acf' ); ?></button>
+						<button id="<?php echo $id; ?>-tmce" class="wp-switch-editor switch-tmce" <?php echo $button; ?> type="button"><?php echo __('Visual', 'acf'); ?></button>
+						<button id="<?php echo $id; ?>-html" class="wp-switch-editor switch-html" <?php echo $button; ?> type="button"><?php echo _x( 'Text', 'Name for the Text editor tab (formerly HTML)', 'acf' ); ?></button>
 					</div>
 				<?php endif; ?>
 			</div>
 			<div id="wp-<?php echo $id; ?>-editor-container" class="wp-editor-container">
+				<?php if( $field['delay'] ): ?>
+					<div class="acf-editor-toolbar"><?php _e('Click to initialize TinyMCE', 'acf'); ?></div>
+				<?php endif; ?>
 				<textarea id="<?php echo $id; ?>" class="wp-editor-area" name="<?php echo $field['name']; ?>" <?php if($height): ?>style="height:<?php echo $height; ?>px;"<?php endif; ?>><?php echo $field['value']; ?></textarea>
 			</div>
 		</div>
@@ -457,13 +472,19 @@ acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Show Media Upload Buttons?','acf'),
 			'instructions'	=> '',
-			'type'			=> 'radio',
 			'name'			=> 'media_upload',
-			'layout'		=> 'horizontal',
-			'choices'		=> array(
-				1				=>	__("Yes",'acf'),
-				0				=>	__("No",'acf'),
-			)
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+		));
+		
+		
+		// delay
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Delay initialization?','acf'),
+			'instructions'	=> __('TinyMCE will not be initalized until field is clicked','acf'),
+			'name'			=> 'delay',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 
 	}

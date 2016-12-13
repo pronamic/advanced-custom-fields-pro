@@ -215,7 +215,7 @@ class acf_form_user {
 		
 		
 		// show title
-		if( $user_form === 'register' ) $show_title = false;
+		//if( $user_form === 'register' ) $show_title = false;
 		
 		
 		// args
@@ -323,6 +323,19 @@ class acf_form_user {
 }
 
 <?php else: ?>
+
+#registerform h2 {
+	margin: 1em 0;
+}
+
+#registerform .acf-field .acf-label {
+	margin-bottom: 0;
+}
+
+#registerform .acf-field .acf-label label {
+	font-weight: normal;
+	font-size: 14px;
+}
 
 #registerform p.submit {
 	text-align: right;
