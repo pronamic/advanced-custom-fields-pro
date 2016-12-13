@@ -39,6 +39,8 @@ class acf_field_checkbox extends acf_field {
 			'layout'			=> 'vertical',
 			'choices'			=> array(),
 			'default_value'		=> '',
+			'allow_custom'		=> 0,
+			'save_custom'		=> 0,
 			'toggle'			=> 0,
 			'return_format'		=> 'value'
 		);
@@ -66,8 +68,9 @@ class acf_field_checkbox extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// decode value (convert to array)
+		// ensure array
 		$field['value'] = acf_get_array($field['value'], false);
+		$field['choices'] = acf_get_array($field['choices']);
 		
 		
 		// hiden input
@@ -170,6 +173,37 @@ class acf_field_checkbox extends acf_field {
 		}
 		
 		
+		// allow_custom
+		if( $field['allow_custom'] ) {
+			
+			
+			// loop
+			foreach( $field['value'] as $value ) {
+				
+				// ignore if already eixsts
+				if( isset($field['choices'][ $value ]) ) continue;
+				
+				
+				// vars
+				$atts = array(
+					'type'	=> 'text',
+					'name'	=> $field['name'],
+					'value'	=> $value,
+				);
+				
+				
+				// append
+				$li .= '<li><input class="acf-checkbox-custom" type="checkbox" checked="checked" /><input ' . acf_esc_attr( $atts ) . '/></li>';
+				
+			}
+			
+			
+			// append button
+			$li .= '<li><a href="#" class="button acf-add-checkbox">' . __('Add new choice', 'acf') . '</a></li>';
+			
+		}
+		
+		
 		// class
 		$field['class'] .= ' acf-checkbox-list';
 		$field['class'] .= ($field['layout'] == 'horizontal') ? ' acf-hl' : ' acf-bl';
@@ -177,6 +211,7 @@ class acf_field_checkbox extends acf_field {
 		
 		// return
 		echo '<ul ' . acf_esc_attr(array( 'class' => $field['class'] )) . '>' . $li . '</ul>';
+		
 		
 	}
 	
@@ -210,6 +245,28 @@ class acf_field_checkbox extends acf_field {
 		));	
 		
 		
+		// other_choice
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Allow Custom','acf'),
+			'instructions'	=> '',
+			'name'			=> 'allow_custom',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+			'message'		=> __("Allow 'custom' values to be added", 'acf'),
+		));
+		
+		
+		// save_other_choice
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Save Custom','acf'),
+			'instructions'	=> '',
+			'name'			=> 'save_custom',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+			'message'		=> __("Save 'custom' values to the field's choices", 'acf')
+		));
+		
+		
 		// default_value
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Default Value','acf'),
@@ -237,13 +294,9 @@ class acf_field_checkbox extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Toggle','acf'),
 			'instructions'	=> __('Prepend an extra checkbox to toggle all choices','acf'),
-			'type'			=> 'radio',
 			'name'			=> 'toggle',
-			'layout'		=> 'horizontal', 
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			)
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		
@@ -304,7 +357,49 @@ class acf_field_checkbox extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		return acf_get_field_type('select')->update_value( $value, $post_id, $field );
+		// bail early if is empty
+		if( empty($value) ) return $value;
+		
+		
+		// select -> update_value()
+		$value = acf_get_field_type('select')->update_value( $value, $post_id, $field );
+		
+		
+		// save_other_choice
+		if( $field['save_custom'] ) {
+			
+			// get raw $field (may have been changed via repeater field)
+			// if field is local, it won't have an ID
+			$selector = $field['ID'] ? $field['ID'] : $field['key'];
+			$field = acf_get_field( $selector, true );
+			
+			
+			// bail early if no ID (JSON only)
+			if( !$field['ID'] ) return $value;
+			
+			
+			// loop
+			foreach( $value as $v ) {
+				
+				// ignore if already eixsts
+				if( isset($field['choices'][ $v ]) ) continue;
+				
+				
+				// append
+				$field['choices'][ $v ] = $v;
+				
+			}
+			
+			
+			// save
+			acf_update_field( $field );
+			
+		}		
+		
+		
+		// return
+		return $value;
+		
 	}
 	
 	
@@ -352,8 +447,10 @@ class acf_field_checkbox extends acf_field {
 	
 }
 
-new acf_field_checkbox();
 
-endif;
+// initialize
+acf_register_field_type( new acf_field_checkbox() );
+
+endif; // class_exists check
 
 ?>

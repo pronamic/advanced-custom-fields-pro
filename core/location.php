@@ -18,8 +18,9 @@ class acf_location {
 	function __construct() {
 		
 		// Post
-		add_filter( 'acf/location/rule_match/post_type',		array($this, 'rule_match_post_type'), 10, 3 );
 		add_filter( 'acf/location/rule_match/post',				array($this, 'rule_match_post'), 10, 3 );
+		add_filter( 'acf/location/rule_match/post_type',		array($this, 'rule_match_post_type'), 10, 3 );
+		add_filter( 'acf/location/rule_match/post_template',	array($this, 'rule_match_post_template'), 10, 3 );
 		add_filter( 'acf/location/rule_match/post_category',	array($this, 'rule_match_post_taxonomy'), 10, 3 );
 		add_filter( 'acf/location/rule_match/post_format',		array($this, 'rule_match_post_format'), 10, 3 );
 		add_filter( 'acf/location/rule_match/post_status',		array($this, 'rule_match_post_status'), 10, 3 );
@@ -47,7 +48,83 @@ class acf_location {
 		add_filter( 'acf/location/rule_match/widget',			array($this, 'rule_match_widget'), 10, 3 );
 		
 	}
+	
+	
+	/*
+	*  get_post_type
+	*
+	*  This function will return the current post_type
+	*
+	*  @type	function
+	*  @date	25/11/16
+	*  @since	5.5.0
+	*
+	*  @param	$options (int)
+	*  @return	(mixed)
+	*/
+	
+	function get_post_type( $options ) {
 		
+		// check options
+		// - allow acf_form() to exclude the post_id param and still work as expected
+		if( $options['post_type'] ) {
+			
+			return $options['post_type'];
+			
+		}
+		
+		
+		// get post type from post
+		if( $options['post_id'] ) {
+			
+			return get_post_type( $options['post_id'] );
+			
+		}
+		
+		
+		// return
+		return false;
+		
+	}
+	
+	
+	/*
+	*  compare_value_to_rule
+	*
+	*  This function will compare a value to a location rule and return a boolean result
+	*
+	*  @type	function
+	*  @date	25/11/16
+	*  @since	5.5.0
+	*
+	*  @param	$value (mixed)
+	*  @param	rule (array)
+	*  @return	(boolean)
+	*/
+	
+	function compare_value_to_rule( $value, $rule ) {
+		
+		// match
+		$match = ( $value === $rule['value'] );
+		
+		
+		// override for "all"
+        if( $rule['value'] == 'all' ) $match = true;
+		
+		
+		// reverse if 'not equal to'
+        if( $rule['operator'] === '!=' ) {
+	        	
+        	$match = !$match;
+        
+        }
+        
+		
+		// return
+		return $match;
+		
+	}
+	
 	
 	/*
 	*  rule_match_post_type
@@ -66,37 +143,81 @@ class acf_location {
 	function rule_match_post_type( $match, $rule, $options ) {
 		
 		// vars
-		// - allow acf_form to exclude the post_id param and still work as expected
-		$post_type = $options['post_type'];
+		$post_type = $this->get_post_type($options);
 		
 		
-		// find post type for current post
-		if( !$post_type ) {
+		// bail early if no post_type found (not a post)
+		if( !$post_type ) return false;
+		
+		
+		// match
+		return $this->compare_value_to_rule($post_type, $rule);
+				
+	}
+	
+	
+	/*
+	*  rule_match_post_template
+	*
+	*  This function will match a location rule and return true or false
+	*
+	*  @type	function
+	*  @date	25/11/16
+	*  @since	5.5.0
+	*
+	*  @param	$match (boolean) 
+	*  @param	$rule (array)
+	*  @return	$options (array)t)
+	*/
+		
+	function rule_match_post_template( $match, $rule, $options ) {
+		
+		// bail early if not a post
+		if( !$options['post_id'] ) return false;
+		
+		
+		// vars
+		$templates = array();
+		$post_type = get_post_type( $options['post_id'] );
+		$page_template = $options['page_template'];
+		
+		
+		// get templates (WP 4.7)
+		if( acf_version_compare('wp', '>=', '4.7') ) {
 			
-			// bail early if not a post
-			if( !$options['post_id'] ) return false;
-			
-			
-			// get post type
-			$post_type = get_post_type( $options['post_id'] );
+			$templates = wp_get_theme()->get_post_templates();
 			
 		}
 		
 		
-		// compare
-        if( $rule['operator'] == "==" ) {
-        	
-        	$match = ( $post_type === $rule['value'] );
-        	
-        } elseif( $rule['operator'] == "!=" ) {
-        	
-        	$match = ( $post_type !== $rule['value'] );
-        	
-        }
-        
+		// 'page' is always a valid pt even if no templates exist in the theme
+		// allows scenario where page_template = 'default' and no templates exist
+		if( !isset($templates['page']) ) {
+			
+			$templates['page'] = array();
+			
+		}
 		
-		// return
-		return $match;
+		
+		// bail early if this post type does not allow for templates
+		if( !isset($templates[ $post_type ]) ) return false;
+		
+		
+		// get page template
+		if( !$page_template ) {
+		
+			$page_template = get_post_meta( $options['post_id'], '_wp_page_template', true );
+			
+		}
+		
+		
+		// new post - no page template
+		if( !$page_template ) $page_template = "default";
+		
+		
+		// match
+		return $this->compare_value_to_rule($page_template, $rule);
+
 	}
 	
 	
@@ -688,51 +809,21 @@ class acf_location {
 		
 		
 		// vars
-		$page_template = $options['page_template'];
+		$post_type = get_post_type( $options['post_id'] );
 		
 		
-		// get page template
-		if( !$page_template ) {
-		
-			$page_template = get_post_meta( $options['post_id'], '_wp_page_template', true );
+		// page template 'default' rule is only for 'page' post type
+		// prevents 'Default Template' field groups appearing on all post types that allow for post templates (WP 4.7)
+		if( $rule['value'] === 'default' ) {
+			
+			// bail ealry if not page
+			if( $post_type !== 'page' ) return false;
 			
 		}
 		
 		
-		// get page template again
-		if( !$page_template ) {
-			
-			$post_type = $options['post_type'];
-
-			if( !$post_type ) {
-			
-				$post_type = get_post_type( $options['post_id'] );
-				
-			}
-			
-			if( $post_type === 'page' ) {
-			
-				$page_template = "default";
-				
-			}
-			
-		}
-		
-		
-		// compare
-        if( $rule['operator'] == "==" ) {
-        
-        	$match = ( $page_template === $rule['value'] );
-        
-        } elseif( $rule['operator'] == "!=" ) {
-        	
-        	$match = ( $page_template !== $rule['value'] );
-        	
-        }
-        
-        
-        // return
-        return $match;
+		// return
+		return $this->rule_match_post_template( $match, $rule, $options );
 
 	}
 	

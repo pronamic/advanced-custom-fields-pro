@@ -564,7 +564,7 @@ class acf_admin_field_groups {
 				
 			} else {
 				
-				echo '<i class="acf-icon -minus yellow small acf-js-tooltip" title="' . __('Disabled', 'acf') . '"></i> ';
+				echo '<i class="acf-icon -minus yellow small acf-js-tooltip" title="' . __('Inactive', 'acf') . '"></i> ';
 				
 			}
 	    
@@ -594,9 +594,13 @@ class acf_admin_field_groups {
 	function admin_footer() {
 		
 		// vars
-		$www = 'https://www.advancedcustomfields.com/resources/';
+		$url_home = 'https://www.advancedcustomfields.com';
+		$url_support = 'https://support.advancedcustomfields.com';
+		$url_docs = $url_home . '/resources/';
 		
-?><script type="text/html" id="tmpl-acf-column-2">
+		
+?>
+<script type="text/html" id="tmpl-acf-column-2">
 <div class="acf-column-2">
 	<div class="acf-box">
 		<div class="inner">
@@ -607,21 +611,22 @@ class acf_admin_field_groups {
 			
 			<h3><?php _e("Resources",'acf'); ?></h3>
 			<ul>
-				<li><a href="<?php echo $www; ?>#getting-started" target="_blank"><?php _e("Getting Started",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#updates" target="_blank"><?php _e("Updates",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#field-types" target="_blank"><?php _e("Field Types",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#functions" target="_blank"><?php _e("Functions",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#actions" target="_blank"><?php _e("Actions",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#filters" target="_blank"><?php _e("Filters",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#how-to" target="_blank"><?php _e("'How to' guides",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#tutorials" target="_blank"><?php _e("Tutorials",'acf'); ?></a></li>
-				<li><a href="<?php echo $www; ?>#faq" target="_blank"><?php _e("FAQ",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>" target="_blank"><?php _e("Documentation",'acf'); ?></a></li>
+
+				<li><a href="<?php echo $url_docs; ?>#getting-started" target="_blank"><?php _e("Getting Started",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#field-types" target="_blank"><?php _e("Field Types",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#functions" target="_blank"><?php _e("Functions",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#actions" target="_blank"><?php _e("Actions",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#filters" target="_blank"><?php _e("Filters",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#features" target="_blank"><?php _e("Features",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#how-to" target="_blank"><?php _e("How to",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#tutorials" target="_blank"><?php _e("Tutorials",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_docs; ?>#faq" target="_blank"><?php _e("FAQ",'acf'); ?></a></li>
+				<li><a href="<?php echo $url_support; ?>" target="_blank"><?php _e("Support",'acf'); ?></a></li>
 			</ul>
 		</div>
-		<div class="footer footer-blue">
-			<ul class="acf-hl">
-				<li><?php _e("Created by",'acf'); ?> Elliot Condon</li>
-			</ul>
+		<div class="footer -blue">
+			<p><?php echo sprintf( __('Thank you for creating with <a href="%s">ACF</a>.','acf'), $url_home ); ?></p>
 		</div>
 	</div>
 </div>

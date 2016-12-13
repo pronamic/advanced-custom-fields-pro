@@ -480,4 +480,34 @@ function acf_copy_postmeta( $from_post_id, $to_post_id ) {
 
 }
 
+
+/*
+*  acf_preview_value
+*
+*  This function will return a human freindly 'preview' for a given field value
+*
+*  @type	function
+*  @date	24/10/16
+*  @since	5.5.0
+*
+*  @param	$value (mixed)
+*  @param	$post_id (mixed)
+*  @param	$field (array)
+*  @return	(string)
+*/
+
+function acf_preview_value( $value, $post_id, $field ) {
+	
+	// apply filters
+	$value = apply_filters( "acf/preview_value", $value, $post_id, $field );
+	$value = apply_filters( "acf/preview_value/type={$field['type']}", $value, $post_id, $field );
+	$value = apply_filters( "acf/preview_value/name={$field['_name']}", $value, $post_id, $field );
+	$value = apply_filters( "acf/preview_value/key={$field['key']}", $value, $post_id, $field );
+	
+	
+	// return
+	return $value;
+	
+} 
+
 ?>

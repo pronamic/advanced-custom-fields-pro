@@ -577,6 +577,10 @@ msgstr "מחיקה"
 msgid "Error"
 msgstr "שגיאה"
 
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "שגיאה."
+
 #: admin/views/field-group-field.php:68
 msgid "Field type does not exist"
 msgstr "סוג השדה לא נמצא"
@@ -1245,11 +1249,7 @@ msgid "Site is up to date"
 msgstr ""
 
 #: admin/views/update-network.php:62 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr ""
-
-#: admin/views/update-network.php:62
-msgid "Return to network dashboard"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
 msgstr ""
 
 #: admin/views/update-network.php:101 admin/views/update-notice.php:35
@@ -1299,7 +1299,7 @@ msgid "See what's new"
 msgstr "בואו לראות מה חדש"
 
 #: admin/views/update.php:110
-msgid "No updates available"
+msgid "No updates available."
 msgstr ""
 
 #: api/api-helpers.php:821
@@ -1822,8 +1822,8 @@ msgid "Enter URL"
 msgstr "הקלד כתובת URL"
 
 #: fields/oembed.php:212
-msgid "No embed found for the given URL"
-msgstr "לא נמצא קוד הטמעה לכתובת ה-URL הנתונה"
+msgid "No embed found for the given URL."
+msgstr "לא נמצא קוד הטמעה לכתובת ה-URL הנתונה."
 
 #: fields/oembed.php:248 fields/oembed.php:259
 msgid "Embed Size"
@@ -2229,12 +2229,8 @@ msgid "Options Updated"
 msgstr "האפשרויות עודכנו"
 
 #: pro/admin/options-page.php:304
-msgid "No Custom Field Groups found for this options page"
-msgstr "אף קבוצת שדות לא נמצאה בפח"
-
-#: pro/admin/options-page.php:304
-msgid "Create a Custom Field Group"
-msgstr "יצירת קבוצת שדות מיוחדים"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "אף קבוצת שדות לא נמצאה בפח. <a href=\"%s\">יצירת קבוצת שדות מיוחדים</a>"
 
 #: pro/admin/settings-updates.php:137
 msgid "<b>Error</b>. Could not connect to update server"

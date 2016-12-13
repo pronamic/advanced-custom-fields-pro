@@ -7,13 +7,13 @@ extract($args);
 	
 	<h1><?php _e("Advanced Custom Fields Database Upgrade",'acf'); ?></h1>
 	
-<?php if( !empty($updates) ): ?>
+<?php if( $updates ): ?>
 	
 	<p><?php _e('Reading upgrade tasks...', 'acf'); ?></p>
 	
 	<p class="show-on-ajax"><i class="acf-loading"></i> <?php printf(__('Upgrading data to version %s', 'acf'), $plugin_version); ?></p>
 	
-	<p class="show-on-complete"><?php _e('Database Upgrade complete', 'acf'); ?>. <a href="<?php echo admin_url('edit.php?post_type=acf-field-group&page=acf-settings-info'); ?>"><?php _e("See what's new",'acf'); ?></a>.</p>
+	<p class="show-on-complete"><?php echo sprintf( __('Database Upgrade complete. <a href="%s">See what\'s new</a>', 'acf' ), admin_url('edit.php?post_type=acf-field-group&page=acf-settings-info') ); ?></p>
 
 	<style type="text/css">
 		
@@ -64,8 +64,8 @@ extract($args);
 					dataType: 'json',
 					type: 'post',
 					data: {
-						action:	'acf/admin/data_upgrade',
-						nonce: '<?php echo wp_create_nonce('acf_upgrade'); ?>'
+						action:	'acf/admin/db_update',
+						nonce: '<?php echo wp_create_nonce('acf_db_update'); ?>'
 					},
 					success: function( json ){
 						
@@ -107,7 +107,7 @@ extract($args);
 	
 <?php else: ?>
 
-	<p><?php _e('No updates available', 'acf'); ?>.</p>
+	<p><?php _e('No updates available.', 'acf'); ?></p>
 	
 <?php endif; ?>
 

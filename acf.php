@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields
-Version: 5.4.8
+Version: 5.5.2
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -58,7 +58,7 @@ class acf {
 			
 			// basic
 			'name'				=> __('Advanced Custom Fields', 'acf'),
-			'version'			=> '5.4.8',
+			'version'			=> '5.5.2',
 						
 			// urls
 			'basename'			=> plugin_basename( __FILE__ ),
@@ -83,7 +83,10 @@ class acf {
 			'google_api_key'	=> '',
 			'google_api_client'	=> '',
 			'enqueue_google_maps'	=> true,
-			'enqueue_select2'		=> true,
+			'enqueue_select2'			=> true,
+			'enqueue_datepicker'		=> true,
+			'enqueue_datetimepicker'	=> true,
+			'select2_version'			=> 3
 		);
 		
 		
@@ -131,11 +134,17 @@ class acf {
 			acf_include('admin/admin.php');
 			acf_include('admin/field-group.php');
 			acf_include('admin/field-groups.php');
-			acf_include('admin/update.php');
-			acf_include('admin/update-network.php');
+			acf_include('admin/install.php');
 			acf_include('admin/settings-tools.php');
-			//acf_include('admin/settings-addons.php');
 			acf_include('admin/settings-info.php');
+			
+			
+			// network
+			if( is_network_admin() ) {
+				
+				acf_include('admin/install-network.php');
+				
+			}
 		}
 		
 		
@@ -214,6 +223,7 @@ class acf {
 		acf_include('fields/password.php');
 		acf_include('fields/wysiwyg.php');
 		acf_include('fields/oembed.php');
+		//acf_include('fields/output.php');
 		acf_include('fields/image.php');
 		acf_include('fields/file.php');
 		acf_include('fields/select.php');
@@ -350,12 +360,12 @@ class acf {
 		
 		// acf-disabled
 		register_post_status('acf-disabled', array(
-			'label'                     => __( 'Disabled', 'acf' ),
+			'label'                     => __( 'Inactive', 'acf' ),
 			'public'                    => true,
 			'exclude_from_search'       => false,
 			'show_in_admin_all_list'    => true,
 			'show_in_admin_status_list' => true,
-			'label_count'               => _n_noop( 'Disabled <span class="count">(%s)</span>', 'Disabled <span class="count">(%s)</span>', 'acf' ),
+			'label_count'               => _n_noop( 'Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>', 'acf' ),
 		));
 		
 	}

@@ -483,11 +483,6 @@ class acf_field_relationship extends acf_field {
 			if( !empty($field['post_type']) ) {
 			
 				$post_types = $field['post_type'];
-	
-	
-			} else {
-				
-				$post_types = acf_get_post_types();
 				
 			}
 			

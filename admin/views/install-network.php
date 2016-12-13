@@ -64,7 +64,7 @@ extract($args);
 	
 	<p><input type="submit" name="upgrade" value="<?php echo $button; ?>" class="button" id="upgrade-sites-2"></p>
 	
-	<p class="show-on-complete"><?php _e('Database Upgrade complete', 'acf'); ?>. <a href="<?php echo network_admin_url(); ?>"><?php _e("Return to network dashboard",'acf'); ?></a>.</p>
+	<p class="show-on-complete"><?php echo sprintf( __('Database Upgrade complete. <a href="%s">Return to network dashboard</a>', 'acf'), network_admin_url() ); ?></p>
 	
 	<style type="text/css">
 		
@@ -172,8 +172,8 @@ extract($args);
 					dataType:	'json',
 					type:		'post',
 					data:		{
-						action:		'acf/admin/data_upgrade',
-						nonce:		'<?php echo wp_create_nonce('acf_upgrade'); ?>',
+						action:		'acf/admin/db_update',
+						nonce:		'<?php echo wp_create_nonce('acf_db_update'); ?>',
 						blog_id:	$input.val(),
 					},
 					success: function( json ){
