@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2015-08-11 23:12+0200\n"
-"PO-Revision-Date: 2016-04-07 10:30+1000\n"
+"PO-Revision-Date: 2016-11-03 17:09+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Héctor Garrofé <info@hectorgarrofe.com>\n"
 "Language: es_ES\n"
@@ -578,6 +578,10 @@ msgstr "Borrar"
 #: fields/taxonomy.php:886
 msgid "Error"
 msgstr "Error"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "Error."
 
 #: admin/views/field-group-field.php:68
 msgid "Field type does not exist"
@@ -1286,12 +1290,8 @@ msgid "Site is up to date"
 msgstr "El sitio está actualizado"
 
 #: admin/views/update-network.php:62 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr "Actualización de base de datos completa"
-
-#: admin/views/update-network.php:62
-msgid "Return to network dashboard"
-msgstr "Regresar al Escritorio de Red"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
+msgstr "Actualización de base de datos completa. <a href=\"%s\">Regresar al Escritorio de Red</a>"
 
 #: admin/views/update-network.php:101 admin/views/update-notice.php:35
 msgid ""
@@ -1340,8 +1340,8 @@ msgid "See what's new"
 msgstr "Mira qué hay de nuevo"
 
 #: admin/views/update.php:110
-msgid "No updates available"
-msgstr "No hay actualizaciones disponibles"
+msgid "No updates available."
+msgstr "No hay actualizaciones disponibles."
 
 #: api/api-helpers.php:821
 msgid "Thumbnail"
@@ -1868,8 +1868,8 @@ msgid "Enter URL"
 msgstr "Ingresa URL"
 
 #: fields/oembed.php:212
-msgid "No embed found for the given URL"
-msgstr "No se encontró embed para la URL proporcionada"
+msgid "No embed found for the given URL."
+msgstr "No se encontró embed para la URL proporcionada."
 
 #: fields/oembed.php:248 fields/oembed.php:259
 msgid "Embed Size"
@@ -2280,14 +2280,8 @@ msgid "Options Updated"
 msgstr "Opciones Actualizadas"
 
 #: pro/admin/options-page.php:304
-msgid "No Custom Field Groups found for this options page"
-msgstr ""
-"No se encontraron grupos de campos personalizados para esta página de "
-"opciones"
-
-#: pro/admin/options-page.php:304
-msgid "Create a Custom Field Group"
-msgstr "Crear Grupo de Campos Personalizados"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "No se encontraron grupos de campos personalizados para esta página de opciones. <a href=\"%s\">Crear Grupo de Campos Personalizados</a>"
 
 #: pro/admin/settings-updates.php:137
 msgid "<b>Error</b>. Could not connect to update server"

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2015-08-11 23:42+0200\n"
-"PO-Revision-Date: 2016-04-07 10:30+1000\n"
+"PO-Revision-Date: 2016-11-03 17:12+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Elliot Condon <e@elliotcondon.com>\n"
 "Language: ro_RO\n"
@@ -581,6 +581,10 @@ msgstr "Șterge"
 #: fields/taxonomy.php:886
 msgid "Error"
 msgstr "Eroare"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "Eroare."
 
 #: admin/views/field-group-field.php:68
 msgid "Field type does not exist"
@@ -1288,11 +1292,7 @@ msgid "Site is up to date"
 msgstr ""
 
 #: admin/views/update-network.php:62 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr ""
-
-#: admin/views/update-network.php:62
-msgid "Return to network dashboard"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
 msgstr ""
 
 #: admin/views/update-network.php:101 admin/views/update-notice.php:35
@@ -1343,7 +1343,7 @@ msgid "See what's new"
 msgstr "Află ce este nou"
 
 #: admin/views/update.php:110
-msgid "No updates available"
+msgid "No updates available."
 msgstr ""
 
 #: api/api-helpers.php:821
@@ -1872,8 +1872,8 @@ msgid "Enter URL"
 msgstr "Introduceți URL"
 
 #: fields/oembed.php:212
-msgid "No embed found for the given URL"
-msgstr "Nu a fost găsit nici un oembed pentru URL introdus"
+msgid "No embed found for the given URL."
+msgstr "Nu a fost găsit nici un oembed pentru URL introdus."
 
 #: fields/oembed.php:248 fields/oembed.php:259
 msgid "Embed Size"
@@ -2282,12 +2282,8 @@ msgid "Options Updated"
 msgstr "Opțiunile au fost actualizate"
 
 #: pro/admin/options-page.php:304
-msgid "No Custom Field Groups found for this options page"
-msgstr "Nu a fost găsit nici un grup de câmpuri personalizate"
-
-#: pro/admin/options-page.php:304
-msgid "Create a Custom Field Group"
-msgstr "Creează un Grup de Câmpuri Personalizat"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "Nu a fost găsit nici un grup de câmpuri personalizate. <a href=\"%s\">Creează un Grup de Câmpuri Personalizat</a>"
 
 #: pro/admin/settings-updates.php:137
 msgid "<b>Error</b>. Could not connect to update server"

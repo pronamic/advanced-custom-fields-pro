@@ -393,13 +393,9 @@ class acf_field_user extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Allow Null?','acf'),
 			'instructions'	=> '',
-			'type'			=> 'radio',
 			'name'			=> 'allow_null',
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			),
-			'layout'	=>	'horizontal',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		
@@ -407,13 +403,9 @@ class acf_field_user extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Select multiple values?','acf'),
 			'instructions'	=> '',
-			'type'			=> 'radio',
 			'name'			=> 'multiple',
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			),
-			'layout'	=>	'horizontal',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		

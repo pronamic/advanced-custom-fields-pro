@@ -387,20 +387,15 @@ class acf_form_taxonomy {
 	function save_term( $term_id, $tt_id, $taxonomy ) {
 		
 		// verify and remove nonce
-		if( ! acf_verify_nonce('taxonomy') ) {
+		if( !acf_verify_nonce('taxonomy') ) return $term_id;
+		
+	    
+	    // valied and show errors
+		acf_validate_save_post( true );
 			
-			return $term_id;
-		
-		}
-		
-		
-	    
-	    // save data
-	    if( acf_validate_save_post(true) ) {
-	    
-			acf_save_post("{$taxonomy}_{$term_id}");
-		
-		}
+			
+	    // save
+		acf_save_post('term_' . $term_id);
 			
 	}
 	
@@ -420,11 +415,30 @@ class acf_form_taxonomy {
 	
 	function delete_term( $term, $tt_id, $taxonomy, $deleted_term ) {
 		
+		// bail early if termmeta table exists
+		if( acf_isset_termmeta() ) return $term;
+		
+		
+		// globals
 		global $wpdb;
 		
-		$values = $wpdb->query($wpdb->prepare(
-			"DELETE FROM $wpdb->options WHERE option_name LIKE %s",
-			'%' . $taxonomy . '_' . $term . '%'
+		
+		// vars
+		$search = $taxonomy . '_' . $term . '_%';
+		$_search = '_' . $search;
+		
+		
+		// escape '_'
+		// http://stackoverflow.com/questions/2300285/how-do-i-escape-in-sql-server
+		$search = str_replace('_', '\_', $search);
+		$_search = str_replace('_', '\_', $_search);
+		
+		
+		// delete
+		$result = $wpdb->query($wpdb->prepare(
+			"DELETE FROM $wpdb->options WHERE option_name LIKE %s OR option_name LIKE %s",
+			$search,
+			$_search 
 		));
 		
 	}

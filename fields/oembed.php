@@ -116,10 +116,13 @@ class acf_field_oembed extends acf_field {
 	
 	function ajax_search() {
 		
+		// validate
+		if( !acf_verify_ajax() ) die();
+		
+		
    		// options
    		$args = acf_parse_args( $_POST, array(
 			's'			=> '',
-			'nonce'		=> '',
 			'width'		=> 0,
 			'height'	=> 0,
 		));
@@ -135,14 +138,6 @@ class acf_field_oembed extends acf_field {
 		if( !$args['height'] ) {
 		
 			$args['height'] = $this->default_values['height'];
-			
-		}
-		
-		
-		// validate
-		if( ! wp_verify_nonce($args['nonce'], 'acf_nonce') ) {
-		
-			die();
 			
 		}
 		
@@ -222,7 +217,7 @@ class acf_field_oembed extends acf_field {
 		</div>
 		
 		<div class="canvas-error">
-			<p><strong><?php _e("Error", 'acf'); ?></strong>. <?php _e("No embed found for the given URL", 'acf'); ?></p>
+			<p><strong><?php _e("Error.", 'acf'); ?></strong> <?php _e("No embed found for the given URL.", 'acf'); ?></p>
 		</div>
 		
 		<div class="canvas-media" data-name="value-embed">
@@ -275,9 +270,7 @@ class acf_field_oembed extends acf_field {
 			'prepend'		=> __('Height', 'acf'),
 			'append'		=> 'px',
 			'placeholder'	=> $this->default_values['height'],
-			'wrapper'		=> array(
-				'data-append' => 'width'
-			)
+			'_append' 		=> 'width'
 		));
 		
 	}

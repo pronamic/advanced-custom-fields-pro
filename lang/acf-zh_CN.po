@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2015-08-11 23:50+0200\n"
-"PO-Revision-Date: 2016-04-07 10:31+1000\n"
+"PO-Revision-Date: 2016-11-03 17:13+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Amos Lee <470266798@qq.com>\n"
 "Language: zh_CN\n"
@@ -599,6 +599,10 @@ msgstr "删除"
 #: fields/taxonomy.php:886
 msgid "Error"
 msgstr "错误"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "错误."
 
 #: admin/views/field-group-field.php:68
 msgid "Field type does not exist"
@@ -1267,11 +1271,7 @@ msgid "Site is up to date"
 msgstr ""
 
 #: admin/views/update-network.php:62 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr ""
-
-#: admin/views/update-network.php:62
-msgid "Return to network dashboard"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
 msgstr ""
 
 #: admin/views/update-network.php:101 admin/views/update-notice.php:35
@@ -1318,7 +1318,7 @@ msgid "See what's new"
 msgstr "查看更新内容于"
 
 #: admin/views/update.php:110
-msgid "No updates available"
+msgid "No updates available."
 msgstr ""
 
 #: api/api-helpers.php:821
@@ -1863,8 +1863,8 @@ msgstr ""
 
 #: fields/oembed.php:212
 #, fuzzy
-msgid "No embed found for the given URL"
-msgstr "没有为选项页找到自定义字段组。"
+msgid "No embed found for the given URL."
+msgstr "没有为选项页找到自定义字段组。."
 
 #: fields/oembed.php:248 fields/oembed.php:259
 msgid "Embed Size"
@@ -2289,12 +2289,8 @@ msgstr "选项已更新"
 
 #: pro/admin/options-page.php:304
 #, fuzzy
-msgid "No Custom Field Groups found for this options page"
-msgstr "没有为选项页找到自定义字段组。"
-
-#: pro/admin/options-page.php:304
-msgid "Create a Custom Field Group"
-msgstr "创建自定义字段组"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "没有为选项页找到自定义字段组。. <a href=\"%s\">创建自定义字段组</a>"
 
 #: pro/admin/settings-updates.php:137
 msgid "<b>Error</b>. Could not connect to update server"

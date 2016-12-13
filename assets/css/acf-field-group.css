@@ -1,3 +1,11 @@
+/*--------------------------------------------------------------------------------------------
+*
+*	vars
+*
+*--------------------------------------------------------------------------------------------*/
+/* colors */
+/* acf-field */
+/* responsive */
 /*---------------------------------------------------------------------------------------------
 *
 *  Global
@@ -45,6 +53,7 @@
 }
 .no-fields-message {
   padding: 15px 15px;
+  background: #fff;
 }
 .acf-field-list-wrap {
   border: #DFDFDF solid 1px;
@@ -66,7 +75,6 @@
 /* field list */
 .acf-field-list {
   background: #F9F9F9;
-  border-top: #E1E1E1 solid 1px;
   margin-top: -1px;
 }
 .acf-field-list a {
@@ -81,9 +89,6 @@
 .acf-field-object {
   border-top: #F0F0F0 solid 1px;
   background: #fff;
-}
-.acf-field-object:first-child {
-  border-top: 0 none;
 }
 .acf-field-object.ui-sortable-helper {
   border-top-color: #fff;
@@ -149,8 +154,8 @@
 }
 /* field object handle (open) */
 .acf-field-object.open > .handle {
-  background: #00a0d2;
-  border: #0092bf solid 1px;
+  background: #2a9bd9;
+  border: #2696d3 solid 1px;
   text-shadow: #268FBB 0 1px 0;
   color: #fff;
   position: relative;
@@ -180,7 +185,7 @@
 }
 /* conditional logic */
 .acf-field-object .rule-groups {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 /* field object keys */
 .acf-field-object .handle .pre-field-key {

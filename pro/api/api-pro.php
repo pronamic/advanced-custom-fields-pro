@@ -324,8 +324,13 @@ function acf_pro_is_license_active() {
 	// bail early if url does not match
 	if( $license['url'] !== $url ) {
 		
-		// add notice
-		acf_add_admin_notice( __('Error validating license URL (website does not match). Please re-activate your license','acf'), 'error' );
+		// add notice (only once)
+		if( !acf_has_done('acf_pro_is_license_active_notice') ) {
+			
+			acf_add_admin_notice( __('Error validating ACF PRO license URL (website does not match). Please re-activate your license','acf'), 'error' );
+			
+		}
+		
 		return false;
 		
 	}

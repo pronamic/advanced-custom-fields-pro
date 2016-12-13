@@ -29,6 +29,7 @@ class acf_compatibility {
 		add_filter('acf/get_valid_field/type=date_picker',	array($this, 'get_valid_date_picker_field'), 20, 1);
 		add_filter('acf/get_valid_field/type=taxonomy',		array($this, 'get_valid_taxonomy_field'), 20, 1);
 		add_filter('acf/get_valid_field/type=date_time_picker',	array($this, 'get_valid_date_time_picker_field'), 20, 1);
+		add_filter('acf/get_valid_field/type=user',			array($this, 'get_valid_user_field'), 20, 1);
 		
 		
 		// field groups
@@ -333,13 +334,17 @@ class acf_compatibility {
 			
 			
 			// convert from js to php
-			$date_format = acf_convert_date_to_php( $date_format );
+			//$date_format = acf_convert_date_to_php( $date_format );
 			$display_format = acf_convert_date_to_php( $display_format );
 			
 			
+			// bail early if already matches 'Ymd'
+			if( $date_format === 'yymmdd' ) return $field;
+			
+			
 			// append settings
-			$field['return_format'] = $date_format;
 			$field['display_format'] = $display_format;
+			$field['save_format'] = $date_format;
 			
 		}
 		
@@ -427,6 +432,51 @@ class acf_compatibility {
 		// return
 		return $field;
 		
+	}
+	
+	
+	/*
+	*  get_valid_user_field
+	*
+	*  This function will provide compatibility with ACF4 fields
+	*
+	*  @type	function
+	*  @date	23/04/2014
+	*  @since	5.0.0
+	*
+	*  @param	$field (array)
+	*  @return	$field
+	*/
+	
+	function get_valid_user_field( $field ) {
+		
+		// remove 'all' from roles
+		if( acf_in_array('all', $field['role']) ) {
+			
+			$field['role'] = '';
+			
+		}
+		
+		
+		// field_type removed in favour of multiple
+		if( !empty($field['field_type']) ) {
+			
+			// extract vars
+			$field_type = acf_extract_var( $field, 'field_type' );
+			
+			
+			// multiple
+			if( $field_type === 'multi_select' ) {
+				
+				$field['multiple'] = true;
+				
+			}
+			
+		}
+		
+		
+		// return
+		return $field;
 	}
 	
 	

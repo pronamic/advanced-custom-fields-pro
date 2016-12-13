@@ -233,7 +233,7 @@ class acf_pro_options_page {
 				
 				
 				// redirect
-				wp_redirect( admin_url("admin.php?page={$plugin_page}&message=1") );
+				wp_redirect( add_query_arg(array('message' => '1')) );
 				exit;
 				
 			}
@@ -312,7 +312,7 @@ class acf_pro_options_page {
 		
 		if( empty($field_groups) ) {
 		
-			acf_add_admin_notice(__("No Custom Field Groups found for this options page",'acf') . '. <a href="' . admin_url() . 'post-new.php?post_type=acf-field-group">' . __("Create a Custom Field Group",'acf') . '</a>', 'error');
+			acf_add_admin_notice( sprintf( __('No Custom Field Groups found for this options page. <a href="%s">Create a Custom Field Group</a>', 'acf'), admin_url() . 'post-new.php?post_type=acf-field-group' ), 'error');
 		
 		} else {
 			

@@ -192,9 +192,17 @@ class acf_field_taxonomy extends acf_field {
 			
 			// this will fail if a search has taken place because parents wont exist
 			if( !$is_search ) {
-			
-				$terms = _get_term_children( $parent, $terms, $field['taxonomy'] );
 				
+				// order terms
+				$ordered_terms = _get_term_children( $parent, $terms, $field['taxonomy'] );
+				
+				
+				// check for empty array (possible if parent did not exist within original data)
+				if( !empty($ordered_terms) ) {
+					
+					$terms = $ordered_terms;
+					
+				}
 			}
 			
 			
@@ -786,13 +794,9 @@ class acf_field_taxonomy extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Allow Null?','acf'),
 			'instructions'	=> '',
-			'type'			=> 'radio',
 			'name'			=> 'allow_null',
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			),
-			'layout'	=>	'horizontal',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		
@@ -800,13 +804,9 @@ class acf_field_taxonomy extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Create Terms','acf'),
 			'instructions'	=> __('Allow new terms to be created whilst editing','acf'),
-			'type'			=> 'radio',
 			'name'			=> 'add_term',
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			),
-			'layout'	=>	'horizontal',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		
@@ -814,13 +814,9 @@ class acf_field_taxonomy extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Save Terms','acf'),
 			'instructions'	=> __('Connect selected terms to the post','acf'),
-			'type'			=> 'radio',
 			'name'			=> 'save_terms',
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			),
-			'layout'	=>	'horizontal',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		
@@ -828,13 +824,9 @@ class acf_field_taxonomy extends acf_field {
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Load Terms','acf'),
 			'instructions'	=> __('Load value from posts terms','acf'),
-			'type'			=> 'radio',
 			'name'			=> 'load_terms',
-			'choices'		=> array(
-				1				=> __("Yes",'acf'),
-				0				=> __("No",'acf'),
-			),
-			'layout'	=>	'horizontal',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
 		));
 		
 		
@@ -905,7 +897,7 @@ class acf_field_taxonomy extends acf_field {
 		// note: this situation should never occur due to condition of the add new button
 		if( !current_user_can( $taxonomy_obj->cap->manage_terms) ) {
 			
-			echo '<p><strong>' . __("Error", 'acf') . '.</strong> ' . sprintf( __('User unable to add new %s', 'acf'), $taxonomy_label ) . '</p>';
+			echo '<p><strong>' . __("Error.", 'acf') . '</strong> ' . sprintf( __('User unable to add new %s', 'acf'), $taxonomy_label ) . '</p>';
 			die;
 			
 		}

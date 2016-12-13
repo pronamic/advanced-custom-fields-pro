@@ -392,7 +392,7 @@ class acf_admin_field_group {
 		
 		
 		// vars
-		$status = $field_group['active'] ? __("Active",'acf') : __("Disabled",'acf');
+		$status = $field_group['active'] ? __("Active",'acf') : __("Inactive",'acf');
 		
 ?>
 <script type="text/javascript">
@@ -697,11 +697,14 @@ class acf_admin_field_group {
 			case "post_type" :
 			
 				// get post types
-				$choices = acf_get_pretty_post_types();
+				$post_types = acf_get_post_types(array(
+					'show_ui'	=> 1,
+					'exclude'	=> array('attachment')
+				));
 				
 				
-				// remove attachments
-				unset( $choices['attachment'] );
+				// get choices
+				$choices = acf_get_pretty_post_types( $post_types );
 				
 				
 				// end
@@ -711,10 +714,11 @@ class acf_admin_field_group {
 			case "post" :
 				
 				// get post types
-				$exclude = array('page', 'attachment');
-				$post_types = acf_get_post_types( $exclude );
+				$post_types = acf_get_post_types(array(
+					'exclude'	=> array('page', 'attachment')
+				));
 				
-						
+				
 				// get posts grouped by post type
 				$groups = acf_get_grouped_posts(array(
 					'post_type' => $post_types
@@ -747,7 +751,32 @@ class acf_admin_field_group {
 				
 				break;
 			
-			
+			case "post_template" :
+				
+				// vars
+				$templates = wp_get_theme()->get_post_templates();
+				$default = apply_filters( 'default_page_template_title',  __('Default Template', 'acf') );
+				
+				
+				// choices
+				$choices = array('default' => $default);
+				
+				
+				// templates
+				if( !empty($templates) ) {
+					
+					foreach( $templates as $post_type => $post_type_templates ) {
+						
+						$choices = array_merge($choices, $post_type_templates);
+						
+					}
+					
+				}
+				
+				
+				// break
+				break;
+				
 			case "post_category" :
 				
 				$terms = acf_get_taxonomy_terms( 'category' );
@@ -862,18 +891,13 @@ class acf_admin_field_group {
 			
 			case "page_template" :
 				
-				$choices = array(
-					'default' => apply_filters( 'default_page_template_title',  __('Default Template', 'acf') ),
-				);
+				// vars
+				$templates = wp_get_theme()->get_page_templates();
+				$default = apply_filters( 'default_page_template_title',  __('Default Template', 'acf') );
 				
 				
-				$templates = get_page_templates();
-				
-				foreach( $templates as $k => $v ) {
-				
-					$choices[ $v ] = $k;
-					
-				}
+				// merge
+				$choices = array_merge(array('default' => $default), $templates);
 				
 				break;
 				

@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2016-09-27 15:11+0300\n"
-"PO-Revision-Date: 2016-09-27 16:59+0300\n"
-"Last-Translator: Андрей <toniyevych@gmail.com>\n"
+"PO-Revision-Date: 2016-11-03 17:12+1000\n"
+"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 1.8.1\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -497,8 +497,8 @@ msgid "Error validating request"
 msgstr "Возникла ошибка при обработке запроса"
 
 #: admin/update.php:243 admin/views/update.php:110
-msgid "No updates available"
-msgstr "На данный момент обновлений нет"
+msgid "No updates available."
+msgstr "На данный момент обновлений нет."
 
 #: admin/update.php:260
 msgid "Error loading update"
@@ -598,6 +598,10 @@ msgstr "Удалить"
 #: fields/taxonomy.php:905
 msgid "Error"
 msgstr "Ошибка"
+
+#: fields/oembed.php:220 fields/taxonomy.php:900
+msgid "Error."
+msgstr "Ошибка."
 
 #: admin/views/field-group-field.php:69
 msgid "Field type does not exist"
@@ -1299,12 +1303,8 @@ msgid "Site is up to date"
 msgstr "Сайт обновлен"
 
 #: admin/views/update-network.php:67 admin/views/update.php:16
-msgid "Database Upgrade complete"
-msgstr "Обновление базы данных закончено"
-
-#: admin/views/update-network.php:67
-msgid "Return to network dashboard"
-msgstr "Вернуться к панели управления сетью"
+msgid "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
+msgstr "Обновление базы данных закончено. <a href=\"%s\">Вернуться к панели управления сетью</a>"
 
 #: admin/views/update-network.php:106 admin/views/update-notice.php:35
 msgid ""
@@ -1368,8 +1368,8 @@ msgstr "Полный"
 msgid "(no title)"
 msgstr "(нет заголовка)"
 
-#: api/api-helpers.php:1813 fields/page_link.php:284 fields/post_object.php:283
-#: fields/taxonomy.php:993
+#: api/api-helpers.php:1813 fields/page_link.php:284
+#: fields/post_object.php:283 fields/taxonomy.php:993
 msgid "Parent"
 msgstr "Родитель"
 
@@ -1636,8 +1636,8 @@ msgid "The format displayed when editing a post"
 msgstr "Формат во время редактирования поля"
 
 #: fields/date_picker.php:210 fields/date_time_picker.php:200
-#: fields/post_object.php:455 fields/relationship.php:783 fields/select.php:520
-#: fields/time_picker.php:140
+#: fields/post_object.php:455 fields/relationship.php:783
+#: fields/select.php:520 fields/time_picker.php:140
 msgid "Return Format"
 msgstr "Возвращаемый формат"
 
@@ -2025,8 +2025,8 @@ msgid "Enter URL"
 msgstr "Введите адрес ссылки"
 
 #: fields/oembed.php:225
-msgid "No embed found for the given URL"
-msgstr "По указанной вами ссылке медиаконтент не обнаружен"
+msgid "No embed found for the given URL."
+msgstr "По указанной вами ссылке медиаконтент не обнаружен."
 
 #: fields/oembed.php:261 fields/oembed.php:272
 msgid "Embed Size"
@@ -2494,12 +2494,8 @@ msgid "Publish"
 msgstr "Опубликовано"
 
 #: pro/admin/options-page.php:315
-msgid "No Custom Field Groups found for this options page"
-msgstr "С этой страницей настроек не связаны группы полей"
-
-#: pro/admin/options-page.php:315
-msgid "Create a Custom Field Group"
-msgstr "Создать группу полей"
+msgid "No Custom Field Groups found for this options page. <a href=\"%s\">Create a Custom Field Group</a>"
+msgstr "С этой страницей настроек не связаны группы полей. <a href=\"%s\">Создать группу полей</a>"
 
 #: pro/admin/settings-updates.php:87
 msgid "<b>Error</b>. Could not connect to update server"

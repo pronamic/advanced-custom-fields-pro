@@ -118,6 +118,48 @@
 		
 		
 		/*
+		*  get_selector
+		*
+		*  This function will return a valid selector for finding a field object
+		*
+		*  @type	function
+		*  @date	15/01/2015
+		*  @since	5.1.5
+		*
+		*  @param	s (string)
+		*  @return	(string)
+		*/
+		
+		get_selector: function( s ) {
+			
+			// defaults
+			s = s || '';
+			
+			
+			// vars
+			var selector = '.acf-field-object';
+			
+
+			// search
+			if( s ) {
+				
+				// append
+				selector += '-' + s;
+				
+				
+				// replace underscores (split/join replaces all and is faster than regex!)
+				selector = selector.split('_').join('-');
+			
+			}
+			
+			
+			// return
+			return selector;
+			
+		},
+		
+		
+		/*
 		*  render_fields
 		*
 		*  This function is triggered by a change in field order, and will update the field icon number
@@ -504,7 +546,7 @@
 			var label = $el.find('.field-label:first').val(),
 				name = $el.find('.field-name:first').val(),
 				type = $el.find('.field-type:first option:selected').text(),
-				required = $el.find('.field-required:first input:checked').val();
+				required = $el.find('.field-required:first').prop('checked');
 			
 			
 			// update label
@@ -514,7 +556,7 @@
 			// update required
 			$el.find('> .handle .li-field-label .acf-required').remove();
 			
-			if( required == '1' ) {
+			if( required ) {
 				
 				$el.find('> .handle .li-field-label strong').append('<span class="acf-required">*</span>');
 				
@@ -825,8 +867,32 @@
 			
 			
 			// update new_field label / name
-			$label.val( $label.val() + ' (' + acf._e('copy') + ')' );
-			$name.val( $name.val() + '_' + acf._e('copy') );
+			var label = $label.val(),
+				name = $name.val(),
+				end = name.split('_').pop(),
+				copy = acf._e('copy');
+			
+			
+			// look at last word
+			if( end.indexOf(copy) === 0 ) {
+				
+				var i = end.replace(copy, '') * 1;
+					i = i ? i+1 : 2;
+				
+				// replace
+				label = label.replace( end, copy + i );
+				name = name.replace( end, copy + i );
+				
+			} else {
+				
+				label += ' (' + copy + ')';
+				name += '_' + copy;
+				
+			}
+			
+			
+			$label.val( label );
+			$name.val( name );
 			
 			
 			// save field
@@ -1100,7 +1166,7 @@
 				$show = false;
 			
 			
-			if( $field_list.children('.acf-field-object').length == 1 ) {
+			if( !$field_list.children('.acf-field-object').length ) {
 			
 				$show = $field_list.children('.no-fields-message');
 				end_height = $show.outerHeight();
@@ -1159,12 +1225,13 @@
 				
 			
 			// update class
-			$el.removeClass('acf-field-object-' + old_type.replace('_', '-'));
-			$el.addClass('acf-field-object-' + new_type.replace('_', '-'));
+			$el.removeClass( 'acf-field-object-' + acf.str_replace('_', '-', old_type) );
+			$el.addClass( 'acf-field-object-' + acf.str_replace('_', '-', new_type) );
 			
 			
 			// update atts
 			$el.attr('data-type', new_type);
+			$el.data('type', new_type);
 			
 			
 			// abort XHR if this field is already loading AJAX data
@@ -1402,7 +1469,7 @@
 			
 			'keyup .field-label':				'render',
 			'keyup .field-name':				'render',
-			'change .field-required input':		'render',
+			'change .field-required':			'render',
 			
 			'change .acf-field-object input':		'save',
 			'change .acf-field-object textarea':	'save',
@@ -1524,7 +1591,7 @@
 			'click .add-conditional-rule':			'add_rule',
 			'click .add-conditional-group':			'add_group',
 			'click .remove-conditional-rule':		'remove_rule',
-			'change .conditional-toggle input':		'change_toggle',
+			'change .conditional-toggle':			'change_toggle',
 			'change .conditional-rule-param':		'change_param'
 		},
 		
@@ -1755,19 +1822,19 @@
 			
 			// vars
 			var $input = e.$el,
-				val = $input.val(),
+				checked = e.$el.prop('checked'),
 				$td = $input.closest('.acf-input');
 				
 			
-			if( val == "1" ) {
+			if( checked ) {
 				
 				$td.find('.rule-groups').show();
-				$td.find('.rule-groups').find('[name]').removeAttr('disabled');
+				$td.find('.rule-groups').find('[name]').prop('disabled', false);
 			
 			} else {
 				
 				$td.find('.rule-groups').hide();
-				$td.find('.rule-groups').find('[name]').attr('disabled', 'disabled');
+				$td.find('.rule-groups').find('[name]').prop('disabled', true);
 			
 			}
 			
@@ -2078,39 +2145,272 @@
 	});
 	
 	
+	/*
+	*  field
+	*
+	*  This model sets up many of the field's interactions
+	*
+	*  @type	function
+	*  @date	21/02/2014
+	*  @since	3.5.1
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	acf.field_group.field_object = acf.model.extend({
+		
+		// vars
+		type:		'',
+		o:			{},
+		$field:		null,
+		$settings:	null,
+		
+		_add_action: function( name, callback ) {
+			
+			// vars
+			var model = this;
+			
+			
+			// name
+			// - open 			=> open_field/type=x
+			// - change_type	=> change_field_type/type=x
+			var names = name.split('_');
+			names.splice(1, 0, 'field');
+			name = names.join('_') + '/type=' + model.type;
+			
+			
+			// add action
+			acf.add_action(name, function( $field ){
+				
+				// focus
+				model.set('$field', $field);
+				
+				
+				// callback
+				model[ callback ].apply(model, arguments);
+				
+			});
+			
+		},
+		
+		_add_filter: function( name, callback ) {
+			
+			// vars
+			var model = this;
+			
+			
+			// name
+			// - open 			=> open_field/type=x
+			// - change_type	=> change_field_type/type=x
+			var names = name.split('_');
+			names.splice(1, 0, 'field');
+			name = names.join('_') + '/type=' + model.type;
+			
+			
+			// add action
+			acf.add_filter(name, function( $field ){
+				
+				// focus
+				model.set('$field', $field);
+				
+				
+				// callback
+				model[ callback ].apply(model, arguments);
+				
+			});
+			
+		},
+		
+		_add_event: function( name, callback ) {
+			
+			// vars
+			var model = this,
+				event = name.substr(0,name.indexOf(' ')),
+				selector = name.substr(name.indexOf(' ')+1),
+				context = acf.field_group.get_selector(model.type);
+			
+			
+			// add event
+			$(document).on(event, context + ' ' + selector, function( e ){
+				
+				// append $el to event object
+				e.$el = $(this);
+				e.$field = e.$el.closest('.acf-field-object');
+				
+				
+				// focus
+				model.set('$field', e.$field);
+				
+				
+				// callback
+				model[ callback ].apply(model, [e]);
+				
+			});
+			
+		},
+		
+		_set_$field: function(){
+			
+			// vars
+			this.o = this.$field.data();
+			
+			
+			// els
+			this.$settings = this.$field.find('> .settings > table > tbody');
+			
+			
+			// focus
+			this.focus();
+			
+		},
+		
+		focus: function(){
+			
+			// do nothing
+			
+		},
+		
+		setting: function( name ) {
+			
+			return this.$settings.find('> .acf-field-setting-' + name);
+			
+		}
+		
+	});
+	
+	
+	/*
+	*  field
+	*
+	*  This model fires actions and filters for registered fields
+	*
+	*  @type	function
+	*  @date	21/02/2014
+	*  @since	3.5.1
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	acf.field_group.field_objects = acf.model.extend({
+		
+		actions: {
+			'save_field'				: '_save_field',
+			'open_field'				: '_open_field',
+			'close_field'				: '_close_field',
+			'wipe_field'				: '_wipe_field',
+			'add_field'					: '_add_field',
+			'duplicate_field'			: '_duplicate_field',
+			'delete_field'				: '_delete_field',
+			'change_field_type'			: '_change_field_type',
+			'change_field_label'		: '_change_field_label',
+			'change_field_name'			: '_change_field_name',
+			'render_field_settings'		: '_render_field_settings',
+		},
+		
+		_save_field: function( $el ){
+			
+			acf.do_action('save_field/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_open_field: function( $el ){
+			
+			acf.do_action('open_field/type=' + $el.data('type'), $el);
+			acf.do_action('render_field_settings', $el);
+			
+		},
+		
+		_close_field: function( $el ){
+			
+			acf.do_action('close_field/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_wipe_field: function( $el ){
+			
+			acf.do_action('wipe_field/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_add_field: function( $el ){
+			
+			acf.do_action('add_field/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_duplicate_field: function( $el ){
+			
+			acf.do_action('duplicate_field/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_delete_field: function( $el ){
+			
+			acf.do_action('delete_field/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_change_field_type: function( $el ){
+			
+			acf.do_action('change_field_type/type=' + $el.data('type'), $el);
+			acf.do_action('render_field_settings', $el);
+		},
+		
+		_change_field_label: function( $el ){
+			
+			acf.do_action('change_field_label/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_change_field_name: function( $el ){
+			
+			acf.do_action('change_field_name/type=' + $el.data('type'), $el);
+			
+		},
+		
+		_render_field_settings: function( $el ){
+			
+			acf.do_action('render_field_settings/type=' + $el.data('type'), $el);
+			
+		}
+		
+	});
+	
+	
 	
 	/*
 	*  Append
 	*
-	*  description
+	*  This model handles all logic to append fields together
 	*
 	*  @type	function
 	*  @date	12/02/2015
-	*  @since	5.1.5
+	*  @since	5.5.0
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	n/a
+	*  @return	n/a
 	*/
 	
-	acf.add_action('open_field change_field_type', function( $el ){
+	acf.field_group.append = acf.model.extend({
 		
-		// clear name
-		$el.find('.acf-field[data-append]').each(function(){
+		actions: {
+			'render_field_settings' : '_render_field_settings',
+		},
+		
+		render: function( $el ){
 			
 			// vars
-			var append = $(this).data('append');
+			var append = $el.data('append');
 			
 			
 			// find sibling
-			$sibling = $(this).siblings('[data-name="' + append + '"]');
+			$sibling = $el.siblings('[data-name="' + append + '"]');
 			
 			
-			// bail early if no $sibling
-			if( !$sibling.exists() ) {
-				
-				return;
-				
-			}
+			// bail early if no sibling
+			if( !$sibling.exists() ) return;
 			
 			
 			// vars
@@ -2118,16 +2418,18 @@
 				$ul = $wrap.children('.acf-hl');
 			
 			
+			// append ul if doesn't exist
 			if( !$ul.exists() ) {
 				
 				$wrap.wrapInner('<ul class="acf-hl"><li></li></ul>');
 				
 				$ul = $wrap.children('.acf-hl');
+				
 			}
 			
 			
 			// create $li
-			var $li = $('<li></li>').append( $(this).children('.acf-input').children() );
+			var $li = $('<li></li>').append( $el.children('.acf-input').children() );
 			
 			
 			// append $li
@@ -2139,11 +2441,27 @@
 			
 			
 			// remove
-			$(this).remove();
+			$el.remove();
 			
-		});
+		},
+		
+		_render_field_settings: function( $el ){
 			
+			// reference
+			var self = this;
+			
+			
+			// loop
+			$el.find('.acf-field[data-append]').each(function(){
+				
+				self.render( $(this) );
+					
+			});
+			
+		}
+	
 	});
+	
 	
 	
 	/*
@@ -2159,46 +2477,30 @@
 	*  @return	n/a
 	*/
 	
-	var acf_settings_select = acf.model.extend({
+	var acf_settings_select = acf.field_group.field_object.extend({
+		
+		type: 'select',
 		
 		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
+			'render_settings': 'render',
 		},
 		
 		events: {
-			'change .acf-field[data-name="ui"] input': 'render'
-		},
-		
-		event: function( e ){
-			
-			// override
-			return e.$el.closest('.acf-field-object');
-			
+			'change .acf-field-setting-ui input': 'render'
 		},
 		
 		render: function( $el ){
 			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'select' ) {
-				
-				return;
-				
-			}
+			// ui checked
+			if( this.setting('ui input[type="checkbox"]').prop('checked') ) {
 			
+				this.setting('ajax').show();
 			
-			// vars
-			var val = $el.find('.acf-field[data-name="ui"] input:checked').val();
-			
-			
-			// show / hide
-			if( val == '1' ) {
-			
-				$el.find('.acf-field[data-name="ajax"]').show();
-				
+			// ui not checked
 			} else {
 			
-				$el.find('.acf-field[data-name="ajax"]').hide();
+				this.setting('ajax').hide();
+				this.setting('ajax input[type="checkbox"]').prop('checked', false).trigger('change');
 				
 			}
 			
@@ -2220,49 +2522,80 @@
 	*  @return	n/a
 	*/
 	
-	var acf_settings_radio = acf.model.extend({
+	var acf_settings_radio = acf.field_group.field_object.extend({
+		
+		type: 'radio',
 		
 		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
+			'render_settings': 'render',
 		},
 		
 		events: {
-			'change .acf-field[data-name="other_choice"] input': 'render'
-		},
-		
-		event: function( e ){
-			
-			// override
-			return e.$el.closest('.acf-field-object');
-			
+			'change .acf-field-setting-other_choice input': 'render'
 		},
 		
 		render: function( $el ){
 			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'radio' ) {
-				
-				return;
-				
-			}
+			// other_choice checked
+			if( this.setting('other_choice input[type="checkbox"]').prop('checked') ) {
 			
+				this.setting('save_other_choice').show();
 			
-			// vars
-			var val = $el.find('.acf-field[data-name="other_choice"] input:checked').val();
-			
-			if( val == '1' ) {
-				
-				$el.find('.acf-field[data-name="save_other_choice"]').show();
-				
+			// other_choice not checked
 			} else {
-				
-				$el.find('.acf-field[data-name="save_other_choice"]').hide();
-				$el.find('.acf-field[data-name="save_other_choice"] input').prop('checked', false);
+			
+				this.setting('save_other_choice').hide();
+				this.setting('save_other_choice input[type="checkbox"]').prop('checked', false).trigger('change');
 				
 			}
 			
 		}		
+		
+	});
+	
+	
+	/*
+	*  True false
+	*
+	*  This field type requires some extra logic for its settings
+	*
+	*  @type	function
+	*  @date	24/10/13
+	*  @since	5.0.0
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var acf_settings_true_false = acf.field_group.field_object.extend({
+		
+		type: 'true_false',
+		
+		actions: {
+			'render_settings': 'render',
+		},
+		
+		events: {
+			'change .acf-field-setting-ui input': 'render'
+		},
+		
+		render: function( $el ){
+			
+			// ui checked
+			if( this.setting('ui input[type="checkbox"]').prop('checked') ) {
+			
+				this.setting('ui_on_text').show();
+				this.setting('ui_off_text').show();
+			
+			// ui not checked
+			} else {
+			
+				this.setting('ui_on_text').hide();
+				this.setting('ui_off_text').hide();
+				
+			}
+						
+		}
 		
 	});
 		
@@ -2280,50 +2613,40 @@
 	*  @return	n/a
 	*/
 	
-	var acf_settings_date_picker = acf.model.extend({
+	var acf_settings_date_picker = acf.field_group.field_object.extend({
+		
+		type: 'date_picker',
 		
 		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
+			'render_settings': 'render',
 		},
 		
 		events: {
-			'change .acf-field[data-name="display_format"] input':	'render',
-			'change .acf-field[data-name="return_format"] input':	'render'
-		},
-		
-		event: function( e ){
-			
-			// override
-			return e.$el.closest('.acf-field-object');
-			
+			'change .acf-field-setting-display_format input':	'render',
+			'change .acf-field-setting-return_format input':	'render'
 		},
 		
 		render: function( $el ){
 			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'date_picker' ) {
-				
-				return;
+			this.render_list( this.setting('display_format') );
+			this.render_list( this.setting('return_format') );
+			
+		},
+		
+		render_list: function( $setting ){
+			
+			// vars
+			var $ul = $setting.find('ul'),
+				$radio = $ul.find('input[type="radio"]:checked'),
+				$other = $ul.find('input[type="text"]');
+			
+			
+			// display val
+			if( $radio.val() != 'other' ) {
+			
+				$other.val( $radio.val() );
 				
 			}
-			
-			
-			$.each(['display_format', 'return_format'], function(k,v){
-				
-				// vars
-				var $radio = $el.find('.acf-field[data-name="' + v + '"] input[type="radio"]:checked'),
-					$other = $el.find('.acf-field[data-name="' + v + '"] input[type="text"]');
-				
-				
-				// display val
-				if( $radio.val() != 'other' ) {
-				
-					$other.val( $radio.val() );
-					
-				}
-				
-			});
 			
 		}		
 		
@@ -2343,48 +2666,9 @@
 	*  @return	n/a
 	*/
 	
-	var acf_settings_date_time_picker = acf.model.extend({
+	var acf_settings_date_time_picker = acf_settings_date_picker.extend({
 		
-		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
-		},
-		
-		events: {
-			'change .acf-field-object-date-time-picker input[type="radio"]':	'render',
-		},
-		
-		event: function( e ){
-			
-			// override
-			return e.$el.closest('.acf-field-object');
-			
-		},
-		
-		render: function( $el ){
-			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'date_time_picker' ) return;
-			
-			
-			// loop
-			$el.find('.acf-radio-list[data-other_choice="1"]').each(function(){
-				
-				// vars
-				var $ul = $(this),
-					$radio = $ul.find('input[type="radio"]:checked'),
-					$other = $ul.find('input[type="text"]');
-				
-				
-				// display val
-				if( $radio.val() != 'other' ) {
-				
-					$other.val( $radio.val() );
-					
-				}
-				
-			});
-		}		
+		type: 'date_time_picker'		
 		
 	});
 	
@@ -2402,48 +2686,9 @@
 	*  @return	n/a
 	*/
 	
-	var acf_settings_time_picker = acf.model.extend({
+	var acf_settings_date_time_picker = acf_settings_date_picker.extend({
 		
-		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
-		},
-		
-		events: {
-			'change .acf-field-object-time-picker input[type="radio"]':	'render',
-		},
-		
-		event: function( e ){
-			
-			// override
-			return e.$el.closest('.acf-field-object');
-			
-		},
-		
-		render: function( $el ){
-			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'time_picker' ) return;
-			
-			
-			// loop
-			$el.find('.acf-radio-list[data-other_choice="1"]').each(function(){
-				
-				// vars
-				var $ul = $(this),
-					$radio = $ul.find('input[type="radio"]:checked'),
-					$other = $ul.find('input[type="text"]');
-				
-				
-				// display val
-				if( $radio.val() != 'other' ) {
-				
-					$other.val( $radio.val() );
-					
-				}
-				
-			});
-		}		
+		type: 'time_picker'		
 		
 	});
 	
@@ -2461,31 +2706,24 @@
 	*  @return	$post_id (int)
 	*/
 	
-	var acf_settings_tab = acf.model.extend({
+	var acf_settings_tab = acf.field_group.field_object.extend({
+		
+		type: 'tab',
 		
 		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
+			'render_settings': 'render',
 		},
-				
+		
 		render: function( $el ){
 			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'tab' ) return;
-			
-			
-			// vars 
-			var id = $el.data('id');
-			
-			
 			// clear name
-			$('#acf_fields-' + id + '-name').val('').trigger('change');
+			this.setting('name input').val('').trigger('change');
 			
 			
 			// clear required
-			$('#acf_fields-' + id + '-required-0').trigger('click');
+			this.setting('required input[type="checkbox"]').prop('checked', false).trigger('change');
 			
-		}		
+		}
 		
 	});
 	
@@ -2503,217 +2741,9 @@
 	*  @return	$post_id (int)
 	*/
 	
-	var acf_settings_message = acf.model.extend({
+	var acf_settings_message = acf_settings_tab.extend({
 		
-		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
-		},
-				
-		render: function( $el ){
-			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'message' ) return;
-			
-			
-			// vars 
-			var id = $el.data('id');
-			
-			
-			// clear name
-			$('#acf_fields-' + id + '-name').val('').trigger('change');
-			
-			
-			// clear required
-			$('#acf_fields-' + id + '-required-0').trigger('click');
-			
-		}		
-		
-	});
-	
-	
-	/*
-	*  clone
-	*
-	*  This field type requires some extra logic for its settings
-	*
-	*  @type	function
-	*  @date	24/10/13
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	var acf_settings_clone = acf.model.extend({
-		
-		actions: {
-			'open_field':			'render',
-			'change_field_type':	'render'
-		},
-		
-		filters: {
-			'select2_args':			'select2_args',
-			'select2_ajax_data':	'select2_ajax_data'
-		},
-		
-		events: {
-			'change .acf-field-object-clone .setting-display':				'render_display',
-			'change .acf-field-object-clone .setting-prefix-label input':	'render_prefix_label',
-			'change .acf-field-object-clone .setting-prefix-name input':	'render_prefix_name',
-		},
-		
-		event: function( e ){
-			
-			// override
-			return e.$el.closest('.acf-field-object');
-			
-		},
-				
-		render: function( $el ){
-			
-			// bail early if not correct field type
-			if( $el.attr('data-type') != 'clone' ) return;
-			
-			
-			// render
-			this.render_display( $el );
-			this.render_prefix_label( $el );
-			this.render_prefix_name( $el );
-			
-		},
-		
-		render_display: function( $el ){
-			
-			// vars
-			var $layout = $el.find('.acf-field[data-name="layout"]'),
-				$display = $el.find('.acf-field[data-name="display"] select'),
-				$conditional = $el.find('.acf-field[data-name="conditional_logic"]'),
-				$wrapper = $el.find('.acf-field[data-name="wrapper"]');
-				
-			
-			// hide conditional logic
-			if( $display.val() == 'seamless' ) {
-				
-				$conditional.hide();
-				$wrapper.hide();
-				$layout.hide();
-				
-			} else {
-				
-				$conditional.show();
-				$wrapper.show();
-				$layout.show();
-				
-			}	
-			
-		},
-		
-		render_prefix_label: function( $el ){
-			
-			// vars
-			var $prefix_label = $el.find('.setting-prefix-label input:checked'),
-				$field_label = $el.find('.field-label'),
-				$code = $el.find('.prefix-label-code-1');
-			
-			
-			// html
-			var html = '%field_label%';
-			
-			if( $prefix_label.val() === '1' ) {
-				
-				html = $field_label.val() + ' ' + html;
-				
-			}
-			
-			
-			// update code
-			$code.html( html );	
-			
-		},
-		
-		render_prefix_name: function( $el ){
-			
-			// vars
-			var $prefix_name = $el.find('.setting-prefix-name input:checked'),
-				$field_name = $el.find('.field-name'),
-				$code = $el.find('.prefix-name-code-1');
-			
-			
-			// html
-			var label = '%field_name%';
-			
-			if( $prefix_name.val() === '1' ) {
-				
-				label = $field_name.val() + '_' + label;
-				
-			}
-			
-			
-			// html
-			$code.html( label );
-			
-		},
-		
-		select2_args: function( select2_args, $select, args ){
-			
-			// bail early if not clone
-			if( args.ajax_action !== 'acf/fields/clone/query' ) return select2_args;
-			
-			
-			// remain open on select
-			select2_args.closeOnSelect = false;
-			
-			
-			// return
-			return select2_args;
-		},
-		
-		select2_ajax_data: function( data, args, params ){
-			
-			// bail early if not clone
-			if( args.ajax_action !== 'acf/fields/clone/query' ) return select2_args;
-			
-			
-			// find current fields
-			var fields = {};
-			
-			
-			// loop
-			$('.acf-field-object').each(function(){
-				
-				// vars
-				var $el = $(this),
-					key = $el.data('key'),
-					type = $el.data('type'),
-					label = $el.find('.field-label:first').val(),
-					$ancestors = $el.parents('.acf-field-object');
-				
-				
-				// label
-				fields[ key ] = {
-					'key': key,
-					'type': type,
-					'label': label,
-					'ancestors': $ancestors.length
-				};
-				
-			});
-			
-			
-			// append fields
-			data.fields = fields;
-			
-			
-			// append title
-			data.title = $('#title').val();
-			
-			
-			// return
-			return data;
-			
-		}
-			
+		type: 'message'	
 		
 	});
 	

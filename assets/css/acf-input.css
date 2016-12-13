@@ -3,6 +3,9 @@
 *	vars
 *
 *--------------------------------------------------------------------------------------------*/
+/* colors */
+/* acf-field */
+/* responsive */
 /*--------------------------------------------------------------------------------------------
 *
 *	acf-field
@@ -559,6 +562,8 @@ ul.acf-checkbox-list {
   position: relative;
   padding: 1px;
   margin: 0;
+  /* hl */
+  /* rtl */
 }
 ul.acf-radio-list li,
 ul.acf-checkbox-list li {
@@ -567,38 +572,150 @@ ul.acf-checkbox-list li {
   margin: 0;
   position: relative;
   word-wrap: break-word;
-}
-ul.acf-hl.acf-radio-list li,
-ul.acf-hl.acf-checkbox-list li {
-  margin-right: 20px;
-  clear: none;
-}
-ul.acf-radio-list li input,
-ul.acf-checkbox-list li input {
-  margin: -1px 4px 0 0;
-  vertical-align: middle;
+  /* attachment sidebar fix*/
 }
 ul.acf-radio-list li label,
 ul.acf-checkbox-list li label {
   display: inline;
+}
+ul.acf-radio-list li input[type="checkbox"],
+ul.acf-checkbox-list li input[type="checkbox"],
+ul.acf-radio-list li input[type="radio"],
+ul.acf-checkbox-list li input[type="radio"] {
+  margin: -1px 4px 0 0;
+  vertical-align: middle;
+}
+ul.acf-radio-list li input[type="text"],
+ul.acf-checkbox-list li input[type="text"] {
+  width: auto;
+  vertical-align: middle;
   margin: 2px 0;
 }
-ul.acf-radio-list li input[type="text"] {
-  width: auto;
-}
-/* attachment sidebar fix*/
 ul.acf-radio-list li span,
 ul.acf-checkbox-list li span {
   float: none;
 }
-/* rtl */
-html[dir="rtl"] ul.acf-radio-list li input,
-html[dir="rtl"] ul.acf-checkbox-list li input {
+ul.acf-radio-list.acf-hl li,
+ul.acf-checkbox-list.acf-hl li {
+  margin-right: 20px;
+  clear: none;
+}
+html[dir="rtl"] ul.acf-radio-list input[type="checkbox"],
+html[dir="rtl"] ul.acf-checkbox-list input[type="checkbox"],
+html[dir="rtl"] ul.acf-radio-list input[type="radio"],
+html[dir="rtl"] ul.acf-checkbox-list input[type="radio"] {
   margin-left: 4px;
   margin-right: 0;
   padding: 0;
   margin: 0;
 }
+/*---------------------------------------------------------------------------------------------
+*
+*  Checkbox
+*
+*---------------------------------------------------------------------------------------------*/
+.acf-checkbox-list .button {
+  margin: 10px 0 0;
+}
+/*---------------------------------------------------------------------------------------------
+*
+*  True / False
+*
+*---------------------------------------------------------------------------------------------*/
+.acf-switch {
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  background: #f1f1f1;
+  height: 30px;
+  vertical-align: middle;
+  box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
+  -webkit-transition: background 0.25s ease;
+  -moz-transition: background 0.25s ease;
+  -o-transition: background 0.25s ease;
+  transition: background 0.25s ease;
+  /* hover */
+  /* active */
+  /* message */
+}
+.acf-switch span {
+  display: inline-block;
+  float: left;
+  text-align: center;
+  font-size: 13px;
+  line-height: 22px;
+  padding: 4px 10px;
+  min-width: 15px;
+}
+.acf-switch span i {
+  vertical-align: middle;
+}
+.acf-switch .acf-switch-on {
+  color: #fff;
+  text-shadow: #1f7db1 0 1px 0;
+}
+.acf-switch .acf-switch-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  bottom: 3px;
+  right: 50%;
+  z-index: 1;
+  background: #fff;
+  border-radius: 3px;
+  border: #ccc solid 1px;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.acf-switch:hover {
+  background: #eeeeee;
+}
+.acf-switch.-on {
+  background: #2a9bd9;
+}
+.acf-switch.-on .acf-switch-slider {
+  left: 50%;
+  right: 3px;
+  border-color: #1f7db1;
+}
+.acf-switch + span {
+  margin-left: 6px;
+}
+/*
+.acf-field[data-name="alt"] .acf-switch {
+	background: #fff;
+	border: #dddddd solid 1px;
+	height: 30px;
+	
+	span {
+		padding: 3px 10px;
+	}
+	
+	.acf-switch-slider { 
+		background: #f9f9f9;
+		border: #bbbbbb solid 1px;
+		box-shadow: none;
+		margin: 3px;
+	}
+	
+	
+	&.-on {
+		border-color: #2c91fc;
+		background: @acf_blue_input2;
+		
+		.acf-switch-slider {
+			background: #fff;
+			border-color: darken(@acf_blue_input2, 20%);
+			margin-left: -4px;
+		}
+	}
+
+	
+}
+*/
 /*--------------------------------------------------------------------------
 *
 *	Google Map
@@ -870,6 +987,20 @@ html[dir="rtl"] .acf-relationship .selection .values .acf-icon {
 *	WYSIWYG
 *	
 *-------------------------------------------------------------------------*/
+.acf-editor-wrap {
+  /* delay */
+}
+.acf-editor-wrap.delay .acf-editor-toolbar {
+  content: "";
+  display: block;
+  background: #f5f5f5;
+  border-bottom: #dddddd solid 1px;
+  color: #555d66;
+  padding: 10px;
+}
+.acf-editor-wrap.delay textarea {
+  padding: 10px;
+}
 .acf-editor-wrap iframe {
   min-height: 200px;
 }
