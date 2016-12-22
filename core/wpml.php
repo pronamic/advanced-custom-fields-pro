@@ -28,6 +28,10 @@ class acf_wpml_compatibility {
 		$this->lang = ICL_LANGUAGE_CODE;
 		
 		
+		// check for custom lang
+		if( isset($_POST['_acflang']) ) $this->lang = $_POST['_acflang'];
+		
+		
 		// update settings
 		acf_update_setting('default_language', $sitepress->get_default_language());
 		acf_update_setting('current_language', $this->lang);
@@ -47,6 +51,7 @@ class acf_wpml_compatibility {
 		add_action('acf/update_500_field_group',		array($this, 'update_500_field_group'), 10, 2);
 		add_action('acf/update_field_group',			array($this, 'update_field_group'), 2, 1);
 		add_action('icl_make_duplicate',				array($this, 'icl_make_duplicate'), 10, 4);
+		add_action('acf/input/form_data',				array($this, 'acf_input_form_data'), 10, 1);
 		
 		
 		// filters
@@ -444,6 +449,31 @@ class acf_wpml_compatibility {
 		// this will prevent WPML from setting the current language based on the current post being edited
 		// in theory, WPML is correct, however, when adding a new post, the post's lang is not found and will default to 'en'
 		unset( $_REQUEST['post_id'] );
+		
+	}
+	
+	
+	/*
+	*  acf_input_form_data
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	16/12/16
+	*  @since	5.5.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function acf_input_form_data( $data ) {
+		
+		// bail early if not options
+		if( $data['nonce'] !== 'options' ) return;
+		
+		
+		// add hidden input
+		acf_hidden_input(array('name' => '_acflang', 'value' => $this->lang));
 		
 	}
 	

@@ -267,21 +267,22 @@ class acf_input {
 		
 ?>
 <script type="text/javascript">
-	acf = acf || {};
+var acf = acf || null;
+if( acf ) {
+	
 	acf.o = <?php echo json_encode($o); ?>;
 	acf.l10n = <?php echo json_encode($l10n); ?>;
 	<?php do_action('acf/input/admin_footer_js'); ?>
+
+}
 </script>
 <?php
 
-		
-		// action
-		do_action('acf/input/admin_footer');
-		
-		
+do_action('acf/input/admin_footer');
+	
 ?>
 <script type="text/javascript">
-	acf.do_action('prepare');
+	if( acf ) acf.do_action('prepare');
 </script>
 <?php
 		
