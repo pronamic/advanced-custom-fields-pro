@@ -546,29 +546,34 @@
 			var label = $el.find('.field-label:first').val(),
 				name = $el.find('.field-name:first').val(),
 				type = $el.find('.field-type:first option:selected').text(),
-				required = $el.find('.field-required:first').prop('checked');
+				required = $el.find('.field-required:first').prop('checked'),
+				$handle = $el.children('.handle');
 			
 			
 			// update label
-			$el.find('> .handle .li-field-label strong a').text( label );
+			$handle.find('.li-field-label strong a').text( label );
 			
 			
 			// update required
-			$el.find('> .handle .li-field-label .acf-required').remove();
+			$handle.find('.li-field-label .acf-required').remove();
 			
 			if( required ) {
 				
-				$el.find('> .handle .li-field-label strong').append('<span class="acf-required">*</span>');
+				$handle.find('.li-field-label strong').append('<span class="acf-required">*</span>');
 				
 			}
 			
 			
 			// update name
-			$el.find('> .handle .li-field-name').text( name );
+			$handle.find('.li-field-name').text( name );
 			
 			
 			// update type
-			$el.find('> .handle .li-field-type').text( type );
+			$handle.find('.li-field-type').text( type );
+			
+			
+			// action for 3rd party customization
+			acf.do_action('render_field_handle', $el, $handle);
 			
 		},
 		
@@ -1435,6 +1440,10 @@
 				}, 1);
 				
 			}
+			
+			
+			// action for 3rd party customization
+			acf.do_action('change_field_name', $el);
 			
 		}
 		

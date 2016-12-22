@@ -3320,6 +3320,7 @@ var acf;
 			'change #parent_id':									'_change_parent',
 			'change #post-formats-select input':					'_change_format',
 			'change .categorychecklist input':						'_change_term',
+			'change .categorychecklist select':						'_change_term',
 			'change .acf-taxonomy-field[data-save="1"] input':		'_change_term',
 			'change .acf-taxonomy-field[data-save="1"] select':		'_change_term'
 		},

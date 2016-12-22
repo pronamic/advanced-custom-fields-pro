@@ -394,7 +394,7 @@ function acf_update_550_termmeta() { //acf_log('acf_update_550_termmeta');
 	// loop
 	foreach( $taxonomies as $taxonomy ) {
 		
-		acf_update_550_taxonomy( $taxonomy );
+		acf_update_550_taxonomy( $taxonomy->name );
 		
 	}
 	
@@ -424,54 +424,13 @@ function acf_update_550_termmeta() { //acf_log('acf_update_550_termmeta');
 
 function acf_update_550_taxonomy( $taxonomy ) { //acf_log('acf_update_550_taxonomy', $taxonomy);
 	
-	// vars
-	$terms = get_terms($taxonomy->name, array( 'hide_empty' => false ));
-	
-	
-	// bail early if no terms
-	if( !$terms ) return;
-	
-	
-	// loop
-	foreach( $terms as $term ) {
-		
-		acf_update_550_term( $term );
-		
-	}
-	
-	
-	// action for 3rd party
-	do_action('acf/update_550_taxonomy', $taxonomy);
-	
-}
-
-
-/*
-*  acf_update_550_term
-*
-*  This function will migrate term meta for a specific term
-*
-*  @type	function
-*  @date	3/09/2016
-*  @since	5.4.0
-*
-*  @param	$term (object)
-*  @return	n/a
-*/
-
-function acf_update_550_term( $term ) { //acf_log('acf_update_550_term', $term);
-	
 	// global
 	global $wpdb;
 	
 	
 	// vars
 	$meta = array();
-	$post_id = $term->taxonomy . '_' . $term->term_id;
-	
-	
-	// vars
-	$search = $post_id . '_%';
+	$search = $taxonomy . '_%';
 	$_search = '_' . $search;
 	
 	
@@ -482,6 +441,7 @@ function acf_update_550_term( $term ) { //acf_log('acf_update_550_term', $term);
 	
 	
 	// search
+	// results show faster query times using 2 LIKE vs 2 wildcards
 	$rows = $wpdb->get_results($wpdb->prepare(
 		"SELECT * 
 		FROM $wpdb->options 
@@ -492,61 +452,52 @@ function acf_update_550_term( $term ) { //acf_log('acf_update_550_term', $term);
 	), ARRAY_A);
 	
 	
-	// bail early if no row
+	// bail early if no rows
 	if( empty($rows) ) return;
 	
 	
 	// vars
-	$search = $post_id . '_';
+	$search = $taxonomy . '_';
 	$_search = '_' . $search;
-		
-		
+	
+	
 	// loop
 	foreach( $rows as $row ) {
 		
+		// use regex to find (_)taxonomy_(term_id)_(field_name)
+		$matches = null;
+		$regexp = '/^(_?)' . $taxonomy . '_(\d+)_(.+)/';
+		
+		
+		// bail early if no match
+		if( !preg_match($regexp, $row['option_name'], $matches) ) continue;
+		
+		
+		/*
+		Array
+		(
+		    [0] => category_3_color
+		    [1] => 
+		    [2] => 3
+		    [3] => color
+		)
+		*/
+		
+		
 		// vars
-		$name = $row['option_name'];
+		$term_id = $matches[2];
+		$name = $matches[1] . $matches[3];
+		$value = $row['option_value'];
 		
-		
-		// extract $post_id from options name
-		if( strpos($name, $search) === 0 ) {
-			
-			$name = substr($name, strlen($search));
-		
-		// extract _$post_id from options name
-		} elseif( strpos($name, $_search) === 0 ) {
-			
-			$name = '_' . substr($name, strlen($_search));
-		
-		// $post_id not found at begining of name (false result)
-		} else {
-			
-			continue;
-			
-		}
-		
-		
-		// append
-		$meta[ $name ] = $row['option_value'];
-		
-	}
-	
-	
-	// bail ealry if no meta
-	if( empty($meta) ) return;
-	
-	
-	// loop
-	foreach( $meta as $name => $value ) {
 		
 		// update
-		update_metadata( 'term', $term->term_id, $name, $value );
+		update_metadata( 'term', $term_id, $name, $value );
 		
 	}
 	
 	
 	// action for 3rd party
-	do_action('acf/update_550_term', $term);
+	do_action('acf/update_550_taxonomy', $taxonomy);
 	
 }
 

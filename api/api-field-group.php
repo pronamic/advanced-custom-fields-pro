@@ -394,6 +394,10 @@ function _acf_get_field_group_by_id( $post_id = 0 ) {
 	$field_group = maybe_unserialize( $post->post_content );
 	
 	
+	// new field group does not contain any post_content
+	if( empty($field_group) ) $field_group = array();
+	
+	
 	// update attributes
 	$field_group['ID'] = $post->ID;
 	$field_group['title'] = $post->post_title;
