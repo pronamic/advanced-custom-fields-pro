@@ -101,8 +101,8 @@ class acf_pro_options_page {
 	*  @date	24/02/2014
 	*  @since	5.0.0
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	
+	*  @return	
 	*/
 	
 	function rule_match( $match, $rule, $options ) {
@@ -155,8 +155,8 @@ class acf_pro_options_page {
 	*  @date	24/02/2014
 	*  @since	5.0.0
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	
+	*  @return	
 	*/
 	
 	function admin_menu() {
@@ -212,24 +212,24 @@ class acf_pro_options_page {
 		
 		// vars
 		$this->page = acf_get_options_page($plugin_page);
-		    	
-		    	
+		
+		
+		// get post_id (allow lang modification)
+		$this->page['post_id'] = acf_get_valid_post_id($this->page['post_id']);
+		
+		
 		// verify and remove nonce
 		if( acf_verify_nonce('options') ) {
 		
 			// save data
 		    if( acf_validate_save_post(true) ) {
 		    	
-		    	// get post_id (allow lang modification)
-		    	$post_id = acf_get_valid_post_id($this->page['post_id']);
-		    	
-		    	
 		    	// set autoload
 		    	acf_update_setting('autoload', $this->page['autoload']);
 		    	
 		    	
 		    	// save
-				acf_save_post( $post_id );
+				acf_save_post( $this->page['post_id'] );
 				
 				
 				// redirect
@@ -247,7 +247,7 @@ class acf_pro_options_page {
 		
 		// actions
 		add_action( 'acf/input/admin_enqueue_scripts',		array($this,'admin_enqueue_scripts') );
-		add_action( 'acf/input/admin_head',		array($this,'admin_head') );
+		add_action( 'acf/input/admin_head',					array($this,'admin_head') );
 		
 		
 		// add columns support
@@ -265,8 +265,8 @@ class acf_pro_options_page {
 	*  @date	23/03/2016
 	*  @since	5.3.2
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	
+	*  @return	
 	*/
 	
 	function admin_enqueue_scripts() {
@@ -364,8 +364,8 @@ class acf_pro_options_page {
 	*  @date	23/03/2016
 	*  @since	5.3.2
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	n/a
+	*  @return	n/a
 	*/
 	
 	function postbox_submitdiv( $post, $args ) {
@@ -395,8 +395,9 @@ class acf_pro_options_page {
 	*  @date	24/02/2014
 	*  @since	5.0.0
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	$post (object)
+	*  @param	$args (array)
+	*  @return	n/a
 	*/
 	
 	function postbox_acf( $post, $args ) {
@@ -418,11 +419,6 @@ class acf_pro_options_page {
 		);
 		
 		
-		// get post_id (allow lang modification)
-		$post_id = acf_get_valid_post_id($this->page['post_id']);
-		
-		
-		
 		// edit_url
 		if( $field_group['ID'] && acf_current_user_can_admin() ) {
 			
@@ -436,7 +432,7 @@ class acf_pro_options_page {
 		
 		
 		// render
-		acf_render_fields( $post_id, $fields, 'div', $field_group['instruction_placement'] );
+		acf_render_fields( $this->page['post_id'], $fields, 'div', $field_group['instruction_placement'] );
 		
 		
 		

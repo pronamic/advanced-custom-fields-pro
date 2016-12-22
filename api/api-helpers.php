@@ -1022,6 +1022,26 @@ function acf_get_full_version( $version = '1' ) {
 
 
 /*
+*  acf_get_locale
+*
+*  This function is a wrapper for the get_locale() function
+*
+*  @type	function
+*  @date	16/12/16
+*  @since	5.5.0
+*
+*  @param	n/a
+*  @return	(string)
+*/
+
+function acf_get_locale() {
+	
+	return function_exists('get_user_locale') ? get_user_locale() : get_locale();
+	
+}
+
+
+/*
 *  acf_get_terms
 *
 *  This function is a wrapper for the get_terms() function
@@ -2886,7 +2906,7 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 			$post_id .= '_' . $cl;
 			
 		}
-		
+			
 	}
 	
 	
@@ -2923,6 +2943,10 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 		}
 		
 	}
+	
+	
+	// filter for 3rd party
+	$post_id = apply_filters('acf/get_valid_post_id', $post_id);
 	
 	
 	// return

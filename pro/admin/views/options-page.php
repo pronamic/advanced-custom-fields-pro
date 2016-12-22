@@ -14,7 +14,7 @@ extract($args);
 		
 		// render post data
 		acf_form_data(array( 
-			'post_id'	=> 'options', 
+			'post_id'	=> $page['post_id'], 
 			'nonce'		=> 'options',
 		));
 		
