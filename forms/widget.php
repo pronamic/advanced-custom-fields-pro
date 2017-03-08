@@ -136,11 +136,13 @@ class acf_form_widget {
 				
 				$fields = acf_get_fields( $field_group );
 				
-				acf_render_fields( $post_id, $fields, 'div', 'field' );
+				acf_render_fields( $post_id, $fields, 'div', $field_group['instruction_placement'] );
 				
 			}
 			
 			
+			// jQuery selector looks odd, but is necessary due to WP adding an incremental number into the ID
+			// - not possible to find number via PHP parameters
 			if( $widget->updated ): ?>
 			<script type="text/javascript">
 			(function($) {

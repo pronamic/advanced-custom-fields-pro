@@ -1,5 +1,9 @@
 <?php 
 
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+if( ! class_exists('acf_json') ) :
+
 class acf_json {
 	
 	function __construct() {
@@ -10,12 +14,12 @@ class acf_json {
 		
 		
 		// actions
-		add_action('acf/update_field_group',		array($this, 'update_field_group'), 10, 5);
-		add_action('acf/duplicate_field_group',		array($this, 'update_field_group'), 10, 5);
-		add_action('acf/untrash_field_group',		array($this, 'update_field_group'), 10, 5);
-		add_action('acf/trash_field_group',			array($this, 'delete_field_group'), 10, 5);
-		add_action('acf/delete_field_group',		array($this, 'delete_field_group'), 10, 5);
-		add_action('acf/include_fields', 			array($this, 'include_fields'), 10, 5);
+		add_action('acf/update_field_group',		array($this, 'update_field_group'), 10, 1);
+		add_action('acf/duplicate_field_group',		array($this, 'update_field_group'), 10, 1);
+		add_action('acf/untrash_field_group',		array($this, 'update_field_group'), 10, 1);
+		add_action('acf/trash_field_group',			array($this, 'delete_field_group'), 10, 1);
+		add_action('acf/delete_field_group',		array($this, 'delete_field_group'), 10, 1);
+		add_action('acf/include_fields', 			array($this, 'include_fields'), 10, 0);
 		
 	}
 	
@@ -94,11 +98,7 @@ class acf_json {
 	function include_fields() {
 		
 		// validate
-		if( !acf_get_setting('json') ) {
-		
-			return;
-			
-		}
+		if( !acf_get_setting('json') ) return;
 		
 		
 		// vars
@@ -123,13 +123,9 @@ class acf_json {
 			$dir = opendir( $path );
 	    
 		    while(false !== ( $file = readdir($dir)) ) {
-		    
-		    	// only json files
-		    	if( strpos($file, '.json') === false ) {
 		    	
-			    	continue;
-			    	
-		    	}
+		    	// validate type
+				if( pathinfo($file, PATHINFO_EXTENSION) !== 'json' ) continue;
 		    	
 		    	
 		    	// read json
@@ -137,11 +133,7 @@ class acf_json {
 		    	
 		    	
 		    	// validate json
-		    	if( empty($json) ) {
-			    	
-			    	continue;
-			    	
-		    	}
+		    	if( empty($json) ) continue;
 		    	
 		    	
 		    	// decode
@@ -163,7 +155,11 @@ class acf_json {
 	
 }
 
-new acf_json();
+
+// initialize
+acf()->json = new acf_json();
+
+endif; // class_exists check
 
 
 /*

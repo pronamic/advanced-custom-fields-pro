@@ -849,6 +849,9 @@ class acf_field_clone extends acf_field {
 	
 	function render_field_settings( $field ) {
 		
+		// temp enable 'local' to allow .json fields to be displayed
+		acf_enable_filter('local');
+		
 		// default_value
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Fields', 'acf'),
@@ -863,6 +866,8 @@ class acf_field_clone extends acf_field {
 			'ajax_action'	=> 'acf/fields/clone/query',
 			'placeholder'	=> '',
 		));
+		
+		acf_disable_filter('local');
 		
 		
 		// display

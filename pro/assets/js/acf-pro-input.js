@@ -1,179 +1,4 @@
 (function($){
-	
-	// comon
-	acf.pro = acf.model.extend({
-		
-		actions: {
-			'refresh': 	'refresh',
-		},
-		
-		filters: {
-			'get_fields' : 'get_fields',
-		},
-		
-		get_fields: function( $fields ){
-			
-			// remove clone fields
-			$fields = $fields.not('.acf-clone .acf-field');
-			
-			// return
-			return $fields;
-		
-		},
-		
-		
-		/*
-		*  refresh
-		*
-		*  This function will run when acf detects a refresh is needed on the UI
-		*  Most commonly after ready / conditional logic change
-		*
-		*  @type	function
-		*  @date	10/11/2014
-		*  @since	5.0.9
-		*
-		*  @param	n/a
-		*  @return	n/a
-		*/
-		
-		refresh: function( $el ){
-			
-			// reference
-			var self = this;
-			
-			
-			// defaults
-			$el = $el || false;
-			
-			
-			// if is row
-			if( $el && $el.is('tr') ) {
-				
-				self.render_table( $el.closest('table') );
-				
-				return;
-				
-			}
-			
-			
-			// find and rener all tables
-			$('.acf-table', $el).each(function(){
-				
-				self.render_table( $(this) );
-				
-			});
-			
-		},
-		
-		render_table: function( $table ){
-			
-			// vars
-			var $ths = $table.find('> thead th.acf-th'),
-				colspan = 1,
-				available_width = 100;
-			
-			
-			// bail early if no $ths
-			if( !$ths.exists() ) {
-				
-				return;
-				
-			}
-			
-			
-			// render th/td visibility
-			$ths.each(function(){
-				
-				// vars
-				var $th = $(this),
-					key = $th.attr('data-key'),
-					$td = $table.find('td[data-key="' + key + '"]');
-				
-				
-				// clear class
-				$td.removeClass('appear-empty');
-				$th.removeClass('hidden-by-conditional-logic');
-				
-				
-				// no td
-				if( !$td.exists() ) {
-					
-					// do nothing
-				
-				// if all td are hidden
-				} else if( $td.not('.hidden-by-conditional-logic').length == 0 ) {
-					
-					$th.addClass('hidden-by-conditional-logic');
-				
-				// if 1 or more td are visible
-				} else {
-					
-					$td.filter('.hidden-by-conditional-logic').addClass('appear-empty');
-					
-				}
-				
-			});
-			
-			
-			
-			// clear widths
-			$ths.css('width', 'auto');
-			
-			
-			// update $ths
-			$ths = $ths.not('.hidden-by-conditional-logic');
-			
-			
-			// set colspan
-			colspan = $ths.length;
-			
-			
-			// set custom widths first
-			$ths.filter('[data-width]').each(function(){
-				
-				// vars
-				var width = parseInt( $(this).attr('data-width') );
-				
-				
-				// remove from available
-				available_width -= width;
-				
-				
-				// set width
-				$(this).css('width', width + '%');
-				
-			});
-			
-			
-			// update $ths
-			$ths = $ths.not('[data-width]');
-			
-			
-			// set custom widths first
-			$ths.each(function(){
-				
-				// cal width
-				var width = available_width / $ths.length;
-				
-				
-				// set width
-				$(this).css('width', width + '%');
-				
-			});
-			
-			
-			// update colspan
-			$table.find('.acf-row .acf-field.-collapsed-target').removeAttr('colspan');
-			$table.find('.acf-row.-collapsed .acf-field.-collapsed-target').attr('colspan', colspan);
-			
-		},
-		
-		
-	});
-
-})(jQuery);
-
-(function($){
 		
 	acf.fields.repeater = acf.field.extend({
 		
@@ -644,7 +469,7 @@
 				action: 	'acf/fields/flexible_content/layout_title',
 				field_key: 	this.$field.data('key'),
 				i: 			$layout.index(),
-				layout:		$layout.data('layout'),
+				layout:		$layout.data('layout')
 			});
 			
 			
@@ -1036,7 +861,7 @@
 			// vars
 			$popup.css({
 				'margin-top' : 0 - $popup.height() - e.$el.outerHeight() - 15,
-				'margin-left' : ( e.$el.outerWidth() - $popup.width() ) / 2,
+				'margin-left' : ( e.$el.outerWidth() - $popup.width() ) / 2
 			});
 			
 			
@@ -1866,6 +1691,10 @@
 			if( $attachment.hasClass('active') ) return;
 			
 			
+			// save any changes in sidebar
+			this.$side.find(':focus').trigger('blur');
+			
+			
 			// clear selection
 			this.get_attachment('active').removeClass('active');
 			
@@ -2408,7 +2237,6 @@
 	
 })(jQuery);
 
-// @codekit-prepend "../js/acf-pro.js";
 // @codekit-prepend "../js/acf-repeater.js";
 // @codekit-prepend "../js/acf-flexible-content.js";
 // @codekit-prepend "../js/acf-gallery.js";

@@ -1308,7 +1308,7 @@
 				parent		: acf.o.post_id,
 				field_group	: acf.o.post_id,
 				prefix		: $select.attr('name').replace('[type]', ''),
-				type		: new_type,
+				type		: new_type
 			};
 			
 			
@@ -2315,7 +2315,7 @@
 			'change_field_type'			: '_change_field_type',
 			'change_field_label'		: '_change_field_label',
 			'change_field_name'			: '_change_field_name',
-			'render_field_settings'		: '_render_field_settings',
+			'render_field_settings'		: '_render_field_settings'
 		},
 		
 		_save_field: function( $el ){
@@ -2405,7 +2405,7 @@
 	acf.field_group.append = acf.model.extend({
 		
 		actions: {
-			'render_field_settings' : '_render_field_settings',
+			'render_field_settings' : '_render_field_settings'
 		},
 		
 		render: function( $el ){
@@ -2491,7 +2491,7 @@
 		type: 'select',
 		
 		actions: {
-			'render_settings': 'render',
+			'render_settings': 'render'
 		},
 		
 		events: {
@@ -2536,7 +2536,7 @@
 		type: 'radio',
 		
 		actions: {
-			'render_settings': 'render',
+			'render_settings': 'render'
 		},
 		
 		events: {
@@ -2581,7 +2581,7 @@
 		type: 'true_false',
 		
 		actions: {
-			'render_settings': 'render',
+			'render_settings': 'render'
 		},
 		
 		events: {
@@ -2627,7 +2627,7 @@
 		type: 'date_picker',
 		
 		actions: {
-			'render_settings': 'render',
+			'render_settings': 'render'
 		},
 		
 		events: {
@@ -2720,7 +2720,7 @@
 		type: 'tab',
 		
 		actions: {
-			'render_settings': 'render',
+			'render_settings': 'render'
 		},
 		
 		render: function( $el ){
@@ -2844,7 +2844,243 @@
 				
 			}
 			
+		}
+		
+	});
+	
+	
+	/*
+	*  sub fields
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	31/1/17
+	*  @since	5.5.6
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	acf.field_group.sub_fields = acf.model.extend({
+		
+		actions: {
+			'open_field':			'update_field_parent',
+			'sortstop':				'update_field_parent',
+			'duplicate_field':		'duplicate_field',
+			'delete_field':			'delete_field',
+			'change_field_type':	'change_field_type'
 		},
+		
+		
+    	/*
+    	*  fix_conditional_logic
+    	*
+    	*  This function will update sub field conditional logic rules after duplication
+    	*
+    	*  @type	function
+    	*  @date	10/06/2014
+    	*  @since	5.0.0
+    	*
+    	*  @param	$fields (jquery selection)
+    	*  @return	n/a
+    	*/
+    	
+    	fix_conditional_logic : function( $fields ){
+	    	
+	    	// build refernce
+			var ref = {};
+			
+			$fields.each(function(){
+				
+				ref[ $(this).attr('data-orig') ] = $(this).attr('data-key');
+				
+			});
+			
+			
+	    	$fields.find('.conditional-rule-param').each(function(){
+		    	
+		    	// vars
+		    	var key = $(this).val();
+		    	
+		    	
+		    	// bail early if val is not a ref key
+		    	if( !(key in ref) ) {
+			    	
+			    	return;
+			    	
+		    	}
+		    	
+		    	
+		    	// add option if doesn't yet exist
+		    	if( ! $(this).find('option[value="' + ref[key] + '"]').exists() ) {
+			    	
+			    	$(this).append('<option value="' + ref[key] + '">' + ref[key] + '</option>');
+			    	
+		    	}
+		    	
+		    	
+		    	// set new val
+		    	$(this).val( ref[key] );
+		    	
+	    	});
+	    	
+    	},
+    	
+    	
+    	/*
+    	*  update_field_parent
+    	*
+    	*  This function will update field meta such as parent
+    	*
+    	*  @type	function
+    	*  @date	8/04/2014
+    	*  @since	5.0.0
+    	*
+    	*  @param	$el
+    	*  @return	n/a
+    	*/
+    	
+    	update_field_parent: function( $el ){
+	    	
+	    	// bail early if not div.field (flexible content tr)
+	    	if( !$el.hasClass('acf-field-object') ) return;
+	    	
+	    	
+	    	// vars
+	    	var $parent = $el.parent().closest('.acf-field-object'),
+		    	val = acf.get('post_id');
+		    
+		    
+		    // find parent
+			if( $parent.exists() ) {
+				
+				// set as parent ID
+				val = acf.field_group.get_field_meta( $parent, 'ID' );
+				
+				
+				// if parent is new, no ID exists
+				if( !val ) {
+					
+					val = acf.field_group.get_field_meta( $parent, 'key' );
+					
+				}
+				
+			}
+			
+			
+			// update parent
+			acf.field_group.update_field_meta( $el, 'parent', val );
+	    	
+	    	
+	    	// action for 3rd party customization
+			acf.do_action('update_field_parent', $el, $parent);
+			
+    	},
+    	
+    	
+    	/*
+    	*  duplicate_field
+    	*
+    	*  This function is triggered when duplicating a field
+    	*
+    	*  @type	function
+    	*  @date	8/04/2014
+    	*  @since	5.0.0
+    	*
+    	*  @param	$el
+    	*  @return	n/a
+    	*/
+    	
+    	duplicate_field: function( $el ) {
+	    	
+	    	// vars
+			var $fields = $el.find('.acf-field-object');
+				
+			
+			// bail early if $fields are empty
+			if( !$fields.exists() ) {
+				
+				return;
+				
+			}
+			
+			
+			// loop over sub fields
+	    	$fields.each(function(){
+		    	
+		    	// vars
+		    	var $parent = $(this).parent().closest('.acf-field-object'),
+		    		key = acf.field_group.get_field_meta( $parent, 'key');
+		    		
+		    	
+		    	// wipe field
+		    	acf.field_group.wipe_field( $(this) );
+		    	
+		    	
+		    	// update parent
+		    	acf.field_group.update_field_meta( $(this), 'parent', key );
+		    	
+		    	
+		    	// save field
+		    	acf.field_group.save_field( $(this) );
+		    	
+		    	
+	    	});
+	    	
+	    	
+	    	// fix conditional logic rules
+	    	this.fix_conditional_logic( $fields );
+	    	
+    	},
+    	
+    	
+    	/*
+    	*  delete_field
+    	*
+    	*  This function is triggered when deleting a field
+    	*
+    	*  @type	function
+    	*  @date	8/04/2014
+    	*  @since	5.0.0
+    	*
+    	*  @param	$el
+    	*  @return	n/a
+    	*/
+    	
+    	delete_field : function( $el ){
+	    	
+	    	$el.find('.acf-field-object').each(function(){
+		    	
+		    	acf.field_group.delete_field( $(this), false );
+		    	
+	    	});
+	    	
+    	},
+    	
+    	
+    	/*
+    	*  change_field_type
+    	*
+    	*  This function is triggered when changing a field type
+    	*
+    	*  @type	function
+    	*  @date	7/06/2014
+    	*  @since	5.0.0
+    	*
+    	*  @param	$post_id (int)
+    	*  @return	$post_id (int)
+    	*/
+		
+		change_field_type : function( $el ) {
+			
+			$el.find('.acf-field-object').each(function(){
+		    	
+		    	acf.field_group.delete_field( $(this), false );
+		    	
+	    	});
+			
+		}
 		
 	});
 	

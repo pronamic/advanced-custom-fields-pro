@@ -288,8 +288,13 @@ class acf_admin_install {
 	
 	function wp_upgrade( $wp_db_version, $wp_current_db_version ) {
 		
-		// termmeta was added in 34370
-		if( $wp_db_version >= 34370 && $wp_current_db_version < 34370 && get_option('acf_update_550_termmeta') ) {
+		// vars
+		$acf_db_version = acf_get_db_version();
+		
+		
+		// termmeta was added in WP 4.4 (34370)
+		// if website has already updated to ACF 5.5.0, termmeta will not have yet been migrated
+		if( $wp_db_version >= 34370 && $wp_current_db_version < 34370 && acf_version_compare($acf_db_version, '>=', '5.5.0') ) {
 			
 			$this->run_update('acf_update_550_termmeta');
 							

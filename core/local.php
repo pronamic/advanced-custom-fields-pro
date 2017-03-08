@@ -7,8 +7,10 @@ if( ! class_exists('acf_local') ) :
 class acf_local {
 	
 	// vars
-	var $groups = array(),
+	var $temp = array(),
+		$groups = array(),
 		$fields = array(),
+		$reference = array(),
 		$parents = array();
 		
 		
@@ -32,11 +34,40 @@ class acf_local {
 		
 		
 		// actions
-		add_action('acf/delete_field',		array($this, 'acf_delete_field'), 20, 1);
+		add_action('acf/include_fields', 	array($this, 'acf_include_fields'), 5, 0);
 		
 		
 		// filters
 		add_filter('acf/get_field_groups',	array($this, 'acf_get_field_groups'), 20, 1);
+		
+	}
+	
+	
+	/*
+	*  get_key
+	*
+	*  This function will check for references and modify the key
+	*
+	*  @type	function
+	*  @date	30/06/2016
+	*  @since	5.4.0
+	*
+	*  @param	$key (string)
+	*  @return	$key
+	*/
+	
+	function get_key( $key = '' ) {
+		
+		// check for reference
+		if( isset($this->reference[ $key ]) ) {
+			
+			$key = $this->reference[ $key ];
+				
+		}
+		
+		
+		// return
+		return $key;
 		
 	}
 	
@@ -57,8 +88,10 @@ class acf_local {
 	function reset() {
 		
 		// vars
+		$this->temp = array();
 		$this->groups = array();
 		$this->fields = array();
+		$this->reference = array();
 		$this->parents = array();
 		
 	}
@@ -160,21 +193,28 @@ class acf_local {
 	
 	function add_field( $field ) {
 		
-		// vars
-		$key = acf_maybe_get($field, 'key', '');
-		$parent = acf_maybe_get($field, 'parent', '');
+		// defaults
+		$field = wp_parse_args($field, array(
+			'key'		=> '',
+			'name'		=> '',
+			'parent'	=> 0
+		));
 		
 		
 		// add parent reference
-		$this->add_parent_reference( $parent, $key );
+		$this->add_parent_reference( $field['parent'], $field['key'] );
 		
 		
 		// add in menu order
-		$field['menu_order'] = count( $this->parents[ $parent ] ) - 1;
+		$field['menu_order'] = $this->count_fields( $field['parent'] ) - 1;
 		
 		
 		// add field
-		$this->fields[ $key ] = $field;
+		$this->fields[ $field['key'] ] = $field;
+		
+		
+		// add reference for field name
+		$this->reference[ $field['name'] ] = $field['key'];
 		
 	}
 	
@@ -194,6 +234,10 @@ class acf_local {
 	
 	function is_field( $key = '' ) {
 		
+		// vars
+		$key = $this->get_key($key);
+		
+		
 		// bail early if not enabled
 		if( !$this->is_enabled() ) return false;
 		
@@ -201,6 +245,28 @@ class acf_local {
 		// return
 		return isset( $this->fields[ $key ] );
 				
+	}
+	
+	function is_field_key( $key ) {
+		
+		// bail early if not enabled
+		if( !$this->is_enabled() ) return false;
+		
+		
+		// return
+		return isset( $this->fields[ $key ] );
+		
+	}
+	
+	function is_field_name( $name ) {
+		
+		// bail early if not enabled
+		if( !$this->is_enabled() ) return false;
+		
+		
+		// return
+		return isset( $this->reference[ $name ] );
+		
 	}
 	
 	
@@ -218,6 +284,10 @@ class acf_local {
 	*/
 	
 	function get_field( $key = '' ) {
+		
+		// vars
+		$key = $this->get_key($key);
+		
 		
 		// bail early if no group
 		if( !$this->is_field($key) ) return false;
@@ -257,15 +327,91 @@ class acf_local {
 		
 		
 		// remove field
-		unset( $this->fields[ $key ] );
+		unset( $this->fields[ $field['key'] ] );
+		
+		
+		// remove reference for field name
+		unset( $this->reference[ $field['name'] ] );
 		
 		
 		// remove children
-		if( acf_have_local_fields( $key) ) {
+		if( $this->have_fields($key) ) {
 			
-			acf_remove_local_fields( $key );
+			$this->remove_fields( $key );
 			
 		}
+		
+	}
+	
+	
+	/*
+	*  acf_include_fields
+	*
+	*  This function include any $temp field groups during the 'acf/include_fields' action
+	*
+	*  @type	function
+	*  @date	8/2/17
+	*  @since	5.5.6
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function acf_include_fields() {
+		
+		// bail ealry if no temp
+		if( empty($this->temp) ) return;
+		
+		
+		// loop
+		foreach( $this->temp as $i => $temp ) {
+			
+			// add
+			$this->add_field_group($temp);
+			
+			
+			// unset
+			unset($this->temp[ $i ]);
+			
+		}
+		
+	}
+	
+	
+	/*
+	*  maybe_add_field_group
+	*
+	*  This function will determine if it is too early to 'add' a field group and if so will add to $temp
+	*  Field groups added to $temp will be included during the 'acf/include_fields' action which ensures all field types exist
+	*
+	*  @type	function
+	*  @date	9/2/17
+	*  @since	5.5.6
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function maybe_add_field_group( $field_group ) {
+		
+		// add to temp if too early
+		if( !did_action('acf/include_fields') ) {
+			
+			// append
+			$this->temp[] = $field_group;
+			
+			
+			// return
+			return false;
+		}
+		
+		
+		// add
+		$this->add_field_group( $field_group );
+		
+		
+		// return
+		return true;
 		
 	}
 	
@@ -285,6 +431,10 @@ class acf_local {
 	
 	function add_field_group( $field_group ) {
 		
+		// vars
+		$fields = acf_extract_var($field_group, 'fields');
+		
+		
 		// validate
 		$field_group = acf_get_valid_field_group($field_group);
 		
@@ -293,35 +443,27 @@ class acf_local {
 		if( $this->is_field_group($field_group['key']) ) return;
 		
 		
-		// add local
-		if( empty($field_group['local']) ) {
-			
-			$field_group['local'] = 'php';
-			
-		}
-		
-		
-		// remove fields
-		$fields = acf_extract_var($field_group, 'fields');
-		
-		
-		// format fields
-		$fields = acf_prepare_fields_for_import( $fields );
+		// add local (may be set to json)
+		if( empty($field_group['local']) ) $field_group['local'] = 'php';
 		
 		
 		// add field group
 		$this->groups[ $field_group['key'] ] = $field_group;
 		
 		
+		// bail ealry if no fields
+		if( !$fields ) return;
+		
+		
+		// format fields
+		$fields = acf_prepare_fields_for_import( $fields );
+		
+		
 		// add fields
 		foreach( $fields as $field ) {
 			
 			// add parent
-			if( empty($field['parent']) ) {
-				
-				$field['parent'] = $field_group['key'];
-				
-			}
+			if( empty($field['parent']) ) $field['parent'] = $field_group['key'];
 			
 			
 			// add field
@@ -444,7 +586,24 @@ class acf_local {
 	
 	function get_field_groups() {
 		
-		return array_values($this->groups);
+		// bail early if no parent
+		if( !$this->have_field_groups() ) return false;
+		
+		
+		// vars
+		$field_groups = array();
+		
+		
+		// append
+		foreach( array_keys($this->groups) as $field_group_key ) {
+			
+			$field_groups[] = acf_get_field_group( $field_group_key );
+			
+		}
+		
+		
+		// return
+		return $field_groups;
 		
 	}
 	
@@ -650,26 +809,6 @@ class acf_local {
 		
 	}
 	
-	
-	/*
-	*  acf_delete_field
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	10/12/2014
-	*  @since	5.1.5
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	function acf_delete_field( $field ) {
-		
-		$this->remove_field( $field['key'] );
-		
-	}
-	
 }
 
 
@@ -720,7 +859,7 @@ function acf_reset_local() {
 // field group
 function acf_add_local_field_group( $field_group ) {
 	
-	return acf_local()->add_field_group( $field_group );
+	return acf_local()->maybe_add_field_group( $field_group );
 	
 }
 
@@ -782,6 +921,18 @@ function acf_is_local_field( $key = '' ) {
 	
 }
 
+function acf_is_local_field_key( $key = '' ) {
+	
+	return acf_local()->is_field_key( $key );
+	
+}
+
+function acf_is_local_field_name( $name = '' ) {
+	
+	return acf_local()->is_field_name( $name );
+	
+}
+
 function acf_get_local_field( $key = '' ) {
 	
 	return acf_local()->get_field( $key );
@@ -811,6 +962,14 @@ function acf_get_local_fields( $key = '' ) {
 function acf_remove_local_fields( $key = '' ) {
 	
 	return acf_local()->remove_fields( $key );
+	
+}
+
+
+// deprecated
+function register_field_group( $field_group ) {
+	
+	acf_add_local_field_group( $field_group );
 	
 }
 

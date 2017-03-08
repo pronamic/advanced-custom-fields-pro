@@ -51,6 +51,7 @@ function acf_pro_get_remote_url( $action = '', $args = array() ) {
 	
 	// vars
 	$url = "https://connect.advancedcustomfields.com/index.php?" . build_query($args);
+	//$url = "http://connect/index.php?" . build_query($args);
 	
 	
 	// return
@@ -255,7 +256,7 @@ function acf_pro_get_license() {
 	
 	
 	// bail early if corrupt
-	if( !$license ) return false;
+	if( !acf_is_array( $license )) return false;
 	
 	
 	// return
@@ -312,7 +313,6 @@ function acf_pro_is_license_active() {
 	$license = acf_pro_get_license();
 	$url = home_url();
 	
-	
 	// bail early if empty
 	if( !$license ) return false;
 	
@@ -320,16 +320,21 @@ function acf_pro_is_license_active() {
 	// bail early if no key
 	if( !$license['key'] ) return false;
 	
-	
+
+	// strip proticol from urls
+	$license['url'] = acf_strip_protocol( $license['url'] );
+	$url = acf_strip_protocol( $url );
+
+
 	// bail early if url does not match
 	if( $license['url'] !== $url ) {
 		
-		// add notice (only once)
-		if( !acf_has_done('acf_pro_is_license_active_notice') ) {
-			
-			acf_add_admin_notice( __('Error validating ACF PRO license URL (website does not match). Please re-activate your license','acf'), 'error' );
-			
-		}
+		// add notice (only once) - removed due to feedback 
+		// if( !acf_has_done('acf_pro_is_license_active_notice') ) {
+		// 	
+		// 	acf_add_admin_notice( __('Error validating ACF PRO license URL (website does not match). Please re-activate your license','acf'), 'error' );
+		// 	
+		// }
 		
 		return false;
 		
@@ -358,18 +363,27 @@ function acf_pro_is_license_active() {
 function acf_pro_update_license( $key = '' ) {
 	
 	// vars
-	$save = array(
-		'key'	=> $key,
-		'url'	=> home_url()
-	);
+	$value = '';
 	
 	
-	// encode
-	$save = base64_encode(maybe_serialize($save));
+	// key
+	if( $key ) {
+		
+		// vars
+		$data = array(
+			'key'	=> $key,
+			'url'	=> home_url()
+		);
+		
+		
+		// encode
+		$value = base64_encode(maybe_serialize($data));
+		
+	}
 	
 	
 	// update
-	return update_option('acf_pro_license', $save);
+	return update_option('acf_pro_license', $value);
 	
 }
 

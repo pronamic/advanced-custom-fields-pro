@@ -768,6 +768,11 @@ class acf_admin_field_groups {
 	</tr>
 <?php endforeach; ?>
 </script>
+<script type="text/html" id="tmpl-acf-bulk-actions">
+	<?php // source: bulk_actions() wp-admin/includes/class-wp-list-table.php ?>
+	<select name="action2" id="bulk-action-selector-bottom"></select>
+	<?php submit_button( __( 'Apply' ), 'action', '', false, array( 'id' => "doaction2" ) ); ?>
+</script>
 <script type="text/javascript">
 (function($){
 	
@@ -775,9 +780,16 @@ class acf_admin_field_groups {
 	$('#the-list').html( $('#tmpl-acf-json-tbody').html() );
 	
 	
-	// modify bulk actions
-	$('#bulk-action-selector-bottom option[value="edit"]').attr('value','acfsync').text('<?php _e('Sync', 'acf'); ?>');
-	$('#bulk-action-selector-bottom option[value="trash"]').remove();
+	// bulk may not exist if no field groups in DB
+	if( !$('#bulk-action-selector-bottom').exists() ) {
+		
+		$('.tablenav.bottom .actions.alignleft').html( $('#tmpl-acf-bulk-actions').html() );
+		
+	}
+	
+	
+	// set only options
+	$('#bulk-action-selector-bottom').html('<option value="-1"><?php _e('Bulk Actions'); ?></option><option value="acfsync"><?php _e('Sync', 'acf'); ?></option>');
 		
 })(jQuery);
 </script>
