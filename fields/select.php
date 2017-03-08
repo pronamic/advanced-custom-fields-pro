@@ -103,6 +103,15 @@ class acf_field_select extends acf_field {
 		$style = '';
 		
 		
+		// attempt to find 3rd party Select2 version
+		// - avoid including v3 CSS when v4 JS is already enququed
+		if( isset($wp_scripts->registered['select2']) ) {
+			
+			$major = (int) $wp_scripts->registered['select2']->ver;
+		
+		}
+		
+		
 		// v4
 		if( $major == 4 ) {
 			

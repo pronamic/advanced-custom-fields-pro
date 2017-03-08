@@ -351,7 +351,15 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 	$value = apply_filters( "acf/update_value/name={$field['name']}", $value, $post_id, $field );
 	$value = apply_filters( "acf/update_value/key={$field['key']}", $value, $post_id, $field );
 	
-
+	
+	// allow null to delete
+	if( $value === null ) {
+		
+		return acf_delete_value( $post_id, $field );
+		
+	}
+	
+	
 	// update value
 	$return = acf_update_metadata( $post_id, $field['name'], $value );
 	

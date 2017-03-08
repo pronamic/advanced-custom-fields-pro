@@ -6,7 +6,11 @@ if( ! class_exists('acf_cache') ) :
 
 class acf_cache {
 	
-	
+	// vars
+	var $cache = array(),
+		$reference = array();
+		
+		
 	/*
 	*  __construct
 	*
@@ -21,11 +25,6 @@ class acf_cache {
 	*/
 	
 	function __construct() {
-		
-		// vars
-		$this->cache = array();
-		$this->reference = array();
-		
 		
 		// prevent ACF from persistent cache
 		wp_cache_add_non_persistent_groups('acf');

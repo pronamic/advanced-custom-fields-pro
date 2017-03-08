@@ -585,7 +585,7 @@ class acf_field_gallery extends acf_field {
 					<a href="#" class="acf-button button acf-gallery-close"><?php _e('Close', 'acf'); ?></a>
 				</li>
 				<li class="acf-fr">
-					<a class="acf-button button button-primary acf-gallery-update"><?php _e('Update', 'acf'); ?></a>
+					<a class="acf-button button button-primary acf-gallery-update" href="#"><?php _e('Update', 'acf'); ?></a>
 				</li>
 			</ul>
 			

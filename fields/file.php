@@ -52,7 +52,6 @@ class acf_field_file extends acf_field {
 		
 		// filters
 		add_filter('get_media_item_args',			array($this, 'get_media_item_args'));
-		add_filter('wp_prepare_attachment_for_js',	array($this, 'wp_prepare_attachment_for_js'), 10, 3);
 		
 		
 		// do not delete!
@@ -133,9 +132,7 @@ class acf_field_file extends acf_field {
 				
 ?>
 <div <?php acf_esc_attr_e($div); ?>>
-	<div class="acf-hidden">
-		<?php acf_hidden_input(array( 'name' => $field['name'], 'value' => $field['value'], 'data-name' => 'id' )); ?>
-	</div>
+	<?php acf_hidden_input(array( 'name' => $field['name'], 'value' => $field['value'], 'data-name' => 'id' )); ?>
 	<div class="show-if-value file-wrap acf-soh">
 		<div class="file-icon">
 			<img data-name="icon" src="<?php echo $o['icon']; ?>" alt=""/>
@@ -364,16 +361,32 @@ class acf_field_file extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// numeric
-		if( is_numeric($value) ) return $value;
+		// bail early if is empty
+		if( empty($value) ) return false;
 		
 		
-		// array?
-		if( is_array($value) && isset($value['ID']) ) return $value['ID'];
+		// validate
+		if( is_array($value) && isset($value['ID']) ) { 
+			
+			$value = $value['ID'];
+			
+		} elseif( is_object($value) && isset($value->ID) ) { 
+			
+			$value = $value->ID;
+			
+		}
 		
 		
-		// object?
-		if( is_object($value) && isset($value->ID) ) return $value->ID;
+		// bail early if not attachment ID
+		if( !$value || !is_numeric($value) ) return false;
+		
+		
+		// confirm type
+		$value = (int) $value;
+		
+		
+		// maybe connect attacment to post 
+		acf_connect_attachment_to_post( $value, $post_id );
 		
 		
 		// return
@@ -382,38 +395,57 @@ class acf_field_file extends acf_field {
 	}
 		
 	
+	
 	/*
-	*  wp_prepare_attachment_for_js
+	*  validate_value
 	*
-	*  this filter allows ACF to add in extra data to an attachment JS object
+	*  This function will validate a basic file input
 	*
 	*  @type	function
-	*  @date	1/06/13
+	*  @date	11/02/2014
+	*  @since	5.0.0
 	*
-	*  @param	{int}	$post_id
-	*  @return	{int}	$post_id
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
 	*/
 	
-	function wp_prepare_attachment_for_js( $response, $attachment, $meta ) {
+	function validate_value( $valid, $value, $field, $input ){
 		
-		// default
-		$fs = '0 kb';
+		// bail early if empty		
+		if( empty($value) ) return $valid;
 		
 		
-		// supress PHP warnings caused by corrupt images
-		if( $i = @filesize( get_attached_file( $attachment->ID ) ) ) {
+		// bail ealry if is numeric
+		if( is_numeric($value) ) return $valid;
 		
-			$fs = size_format( $i );
+		
+		// bail ealry if not basic string
+		if( !is_string($value) ) return $valid;
+		
+		
+		// decode value
+		$file = null;
+		parse_str($value, $file);
+		
+		
+		// bail early if no attachment
+		if( empty($file) ) return $valid;
+		
+		
+		// get errors
+		$errors = acf_validate_attachment( $file, $field, 'basic_upload' );
+		
+		
+		// append error
+		if( !empty($errors) ) {
+			
+			$valid = implode("\n", $errors);
 			
 		}
 		
 		
-		// update JSON
-		$response['filesize'] = $fs;
-		
-		
-		// return
-		return $response;
+		// return		
+		return $valid;
 		
 	}
 	

@@ -97,7 +97,7 @@ class acf_field_true_false extends acf_field {
 			
 			// update input
 			$input['class'] .= ' acf-switch-input';
-			$input['style'] = 'display:none;';
+			//$input['style'] = 'display:none;';
 			
 			$switch .= '<div class="acf-switch' . ($active ? ' -on' : '') . '">';
 				$switch .= '<span class="acf-switch-on">'.$field['ui_on_text'].'</span>';

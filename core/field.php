@@ -41,7 +41,7 @@ class acf_field {
 		
 		
 		// field
-		$this->add_field_filter('acf/get_valid_field',				array($this, 'get_valid_field'), 10, 1);
+		$this->add_field_filter('acf/validate_field',				array($this, 'validate_field'), 10, 1);
 		$this->add_field_filter('acf/load_field',					array($this, 'load_field'), 10, 1);
 		$this->add_field_filter('acf/update_field',					array($this, 'update_field'), 10, 1);
 		$this->add_field_filter('acf/duplicate_field',				array($this, 'duplicate_field'), 10, 1);
@@ -211,11 +211,11 @@ class acf_field {
 	
 	
 	/*
-	*  get_valid_field
+	*  validate_field
 	*
 	*  This function will append default settings to a field
 	*
-	*  @type	filter ("acf/get_valid_field/type={$this->name}")
+	*  @type	filter ("acf/validate_field/type={$this->name}")
 	*  @since	3.6
 	*  @date	23/01/13
 	*
@@ -223,14 +223,22 @@ class acf_field {
 	*  @return	$field (array)
 	*/
 	
-	function get_valid_field( $field ) {
+	function validate_field( $field ) {
 		
 		// bail early if no defaults
 		if( !is_array($this->defaults) ) return $field;
 		
 		
-		// merge in defaults
-		return array_merge($this->defaults, $field);
+		// merge in defaults but keep order of $field keys
+		foreach( $this->defaults as $k => $v ) {
+			
+			if( !isset($field[ $k ]) ) $field[ $k ] = $v;
+			
+		}
+		
+		
+		// return
+		return $field;
 		
 	}
 	

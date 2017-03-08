@@ -5,7 +5,11 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if( ! class_exists('acf_revisions') ) :
 
 class acf_revisions {
-
+	
+	// vars
+	var $cache = array();
+	
+	
 	/*
 	*  __construct
 	*
@@ -28,6 +32,7 @@ class acf_revisions {
 		add_filter('wp_save_post_revision_check_for_changes', array($this, 'wp_save_post_revision_check_for_changes'), 10, 3);
 		add_filter('_wp_post_revision_fields', array($this, 'wp_preview_post_fields'), 10, 2 );
 		add_filter('_wp_post_revision_fields', array($this, 'wp_post_revision_fields'), 10, 2 );
+		add_filter('acf/validate_post_id', array($this, 'acf_validate_post_id'), 10, 2 );
 		
 	}
 	
@@ -333,6 +338,80 @@ class acf_revisions {
 			
 	}
 	
+	
+	/*
+	*  acf_validate_post_id
+	*
+	*  This function will modify the $post_id and allow loading values from a revision
+	*
+	*  @type	function
+	*  @date	6/3/17
+	*  @since	5.5.10
+	*
+	*  @param	$post_id (int)
+	*  @param	$_post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function acf_validate_post_id( $post_id, $_post_id ) {
+		
+		// bail early if no preview in URL
+		if( !isset($_GET['preview']) ) return $post_id;
+		
+		
+		// bail early if $post_id is not numeric
+		if( !is_numeric($post_id) ) return $post_id;
+		
+		
+		// vars
+		$k = $post_id;
+		$preview_id = 0;
+		
+		
+		// check cache
+		if( isset($this->cache[$k]) ) return $this->cache[$k];
+		
+		
+		// validate
+		if( isset($_GET['preview_id']) ) {
+		
+			$preview_id = (int) $_GET['preview_id'];
+			
+		} elseif( isset($_GET['p']) ) {
+			
+			$preview_id = (int) $_GET['p'];
+			
+		} elseif( isset($_GET['page_id']) ) {
+			
+			$preview_id = (int) $_GET['page_id'];
+			
+		}
+		
+		
+		// bail early id $preview_id does not match $post_id
+		if( $preview_id != $post_id ) return $post_id;
+		
+		
+		// attempt find revision
+		$revision = acf_get_post_latest_revision( $post_id );
+		
+		
+		// save
+		if( $revision && $revision->post_parent == $post_id) {
+			
+			$post_id = (int) $revision->ID;
+			
+		}
+		
+		
+		// set cache
+		$this->cache[$k] = $post_id;
+		
+		
+		// return
+		return $post_id;
+		
+	}
 			
 }
 

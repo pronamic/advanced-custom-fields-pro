@@ -24,6 +24,11 @@
   /* input */
   /* error */
 }
+.acf-field p.description {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
 .acf-field .acf-label {
   vertical-align: top;
   margin: 0 0 10px;
@@ -31,21 +36,14 @@
 .acf-field .acf-label label {
   display: block;
   font-weight: bold;
-  font-size: 13px;
-  line-height: 1.4em;
   margin: 0 0 3px;
-}
-.acf-field .acf-label p {
-  color: #777777;
-  display: block;
-  font-size: 12px;
-  line-height: 1.4em;
-  font-style: normal;
-  margin: 3px 0 0 !important;
-  padding: 0 !important;
+  padding: 0;
 }
 .acf-field .acf-input {
   vertical-align: top;
+}
+.acf-field .acf-input > p.description {
+  margin-top: 5px;
 }
 .acf-field .acf-error-message {
   background: #F55E4F;
@@ -497,9 +495,6 @@ html[dir="rtl"] input.acf-is-prepended.acf-is-appended {
   margin: 0;
   padding: 5px 5px 5px 7px;
 }
-.select2-container.-acf .select2-search-choice-close {
-  margin-top: -1px;
-}
 .select2-container.-acf .select2-choice {
   border-color: #BBBBBB;
 }
@@ -519,6 +514,17 @@ html[dir="rtl"] input.acf-is-prepended.acf-is-appended {
 .select2-container.-acf.select2-dropdown-open .select2-choice {
   background: #fff;
   border-color: #5B9DD9;
+}
+/* rtl */
+html[dir="rtl"] .select2-container.-acf .select2-search-choice-close {
+  left: 24px;
+}
+html[dir="rtl"] .select2-container.-acf .select2-choice > .select2-chosen {
+  margin-left: 42px;
+}
+html[dir="rtl"] .select2-container.-acf .select2-choice .select2-arrow {
+  padding-left: 0;
+  padding-right: 1px;
 }
 /* description */
 .select2-drop {
@@ -637,6 +643,7 @@ html[dir="rtl"] ul.acf-checkbox-list input[type="radio"] {
   transition: background 0.25s ease;
   /* hover */
   /* active */
+  /* focus */
   /* message */
 }
 .acf-switch span {
@@ -681,8 +688,22 @@ html[dir="rtl"] ul.acf-checkbox-list input[type="radio"] {
   right: 3px;
   border-color: #1f7db1;
 }
+.acf-switch.-focus .acf-switch-slider {
+  border-color: #5b9dd9;
+  box-shadow: 0 0 2px rgba(30, 140, 190, 0.5);
+}
+.acf-switch.-focus.-on .acf-switch-slider {
+  border-color: #185e85;
+  box-shadow: 0 0 2px #1f7db1;
+}
 .acf-switch + span {
   margin-left: 6px;
+}
+/* checkbox */
+.acf-switch-input {
+  opacity: 0;
+  position: absolute;
+  margin: 0;
 }
 /*
 .acf-field[data-name="alt"] .acf-switch {
@@ -1020,6 +1041,10 @@ html[dir="rtl"] .acf-relationship .selection .values .acf-icon {
 }
 .acf-editor-wrap.tmce-active .wp-editor-area {
   color: #333 !important;
+}
+/* fix z-index behind media modal */
+div.mce-toolbar-grp.mce-inline-toolbar-grp {
+  z-index: 170000;
 }
 /*---------------------------------------------------------------------------------------------
 *
@@ -1667,18 +1692,21 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
   float: left;
 }
 .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-label > label {
-  padding-top: 7px;
-  margin: 5px 0 0;
+  padding-top: 6px;
+  margin: 0;
   color: #666666;
   font-weight: 400;
   line-height: 16px;
 }
 .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input {
   width: 65%;
-  margin: 5px 0 0;
+  margin: 0;
   padding: 0;
   float: right;
   display: block;
+}
+.media-modal .compat-attachment-fields > tbody > .acf-field p.description {
+  margin: 0;
 }
 /* restricted selection (copy of WP .upload-errors)*/
 .acf-selection-error {
@@ -1718,8 +1746,7 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
   /* fix % margin which causes .acf-uploadedTo to drop down below select */
   /* allow line breaks in upload error */
   /* fix required span */
-  /* Sidebar: Collapse */
-  /* Create gallery fix */
+  /* sidebar */
   /* mobile md */
 }
 .media-modal .compat-field-acf-form-data,
@@ -1747,28 +1774,8 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
   float: none !important;
   color: #f00 !important;
 }
-.media-modal .compat-item .label {
-  margin: 0;
-}
-.media-modal .media-sidebar .setting span,
-.media-modal .compat-item label span,
-.media-modal .media-sidebar .setting input,
-.media-modal .media-sidebar .setting textarea,
-.media-modal .compat-item .field {
-  min-height: 0;
-  margin: 5px 0 0;
-}
-.media-modal .media-sidebar .setting span,
-.media-modal .compat-item label span {
-  padding-top: 7px;
-}
-.media-modal .attachment-display-settings .setting span {
-  margin-top: 0;
-  margin-right: 3%;
-}
-.media-modal .media-modal .media-sidebar .collection-settings .setting span {
-  padding-top: 8px;
-  margin: 0 10px 0 0;
+.media-modal .media-sidebar .compat-item {
+  padding-bottom: 20px;
 }
 @media (max-width: 900px) {
   .media-modal {
@@ -1844,14 +1851,12 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
 .media-modal.acf-expanded .acf-expand-details .is-closed {
   display: none;
 }
-.media-modal.acf-expanded .attachments-browser .media-toolbar {
-  right: 700px;
-}
+.media-modal.acf-expanded .media-toolbar,
 .media-modal.acf-expanded .attachments {
-  right: 700px;
+  right: 740px;
 }
 .media-modal.acf-expanded .media-sidebar {
-  width: 667px;
+  width: 708px;
 }
 .media-modal.acf-expanded .media-sidebar {
   /* label */
@@ -1868,6 +1873,9 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
 .media-modal.acf-expanded .media-sidebar .setting textarea,
 .media-modal.acf-expanded .media-sidebar .compat-attachment-fields > tbody > .acf-field > .acf-input {
   min-width: 77%;
+}
+.media-modal.acf-expanded .media-sidebar .setting span {
+  margin-right: 2%;
 }
 .media-modal.acf-expanded .media-sidebar .attachment-info .thumbnail {
   max-height: none;
@@ -1964,8 +1972,8 @@ body.major-4 .acf-media-modal.-edit .media-frame-content {
 }
 .acf-media-modal.-edit .media-sidebar {
   padding: 0 16px;
-  /* reposition thumbnail */
-  /* add missing padding below fields */
+  /* WP details */
+  /* ACF fields */
 }
 .acf-media-modal.-edit .media-sidebar .attachment-details {
   overflow: visible;
@@ -1986,14 +1994,21 @@ body.major-4 .acf-media-modal.-edit .media-frame-content {
 .acf-media-modal.-edit .media-sidebar .attachment-details .thumbnail {
   margin: 0 16px 0 0;
 }
-.acf-media-modal.-edit .media-sidebar .attachment-details label {
+.acf-media-modal.-edit .media-sidebar .attachment-details .setting {
   display: block;
   overflow: hidden;
   float: none;
   width: auto;
+  margin: 0 0 5px;
 }
-.acf-media-modal.-edit .media-sidebar .compat-item {
-  padding-bottom: 16px;
+.acf-media-modal.-edit .media-sidebar .attachment-details .setting span {
+  margin: 0;
+}
+.acf-media-modal.-edit .media-sidebar .compat-attachment-fields > tbody > .acf-field {
+  margin: 0 0 5px;
+}
+.acf-media-modal.-edit .media-sidebar .compat-attachment-fields > tbody > .acf-field p.description {
+  margin-top: 3px;
 }
 @media (max-width: 900px) {
   .acf-media-modal.-edit {
@@ -2092,11 +2107,19 @@ p.submit .acf-spinner {
 *	Widget
 *
 *--------------------------------------------------------------------------------------------*/
+#widgets-right .widget .acf-field .description {
+  padding-left: 0;
+  padding-right: 0;
+}
+.widget .acf-field {
+  margin: 1em 0;
+}
 .widget .acf-field .acf-label {
-  margin: 0;
+  margin-bottom: 5px;
 }
 .widget .acf-field .acf-label label {
   font-weight: normal;
+  margin: 0;
 }
 .widget .widget-inside > form > .acf-error-message {
   margin-top: 15px;
