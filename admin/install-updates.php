@@ -347,16 +347,6 @@ function acf_update_550() { //acf_log('acf_update_550');
 	do_action('acf/update_550');
 	
 	
-	// bail early if no table
-	if( !acf_isset_termmeta() ) {
-		
-		update_option('acf_update_550_termmeta', 1);
-		echo __('Term meta upgrade not possible (termmeta table does not exist)', 'acf');
-		return;
-		
-	}
-	
-	
 	// termmeta
 	acf_update_550_termmeta();
 	
@@ -382,6 +372,16 @@ function acf_update_550() { //acf_log('acf_update_550');
 
 
 function acf_update_550_termmeta() { //acf_log('acf_update_550_termmeta');
+	
+	// bail early if no table
+	if( !acf_isset_termmeta() ) {
+		
+		update_option('acf_update_550_termmeta', 1); // no longer used
+		//echo __('Term meta upgrade not possible (termmeta table does not exist)', 'acf');
+		return;
+		
+	}
+	
 	
 	// vars
 	$taxonomies = get_taxonomies(false, 'objects');

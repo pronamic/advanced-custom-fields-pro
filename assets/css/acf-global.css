@@ -636,48 +636,53 @@ a.acf-icon.-cancel.grey:hover {
   margin: 0;
   width: 100%;
   clear: both;
+  /* defaults */
+  /* thead */
+  /* tbody */
+  /* -clear */
 }
-.acf-table > tbody > tr {
-  z-index: 1;
-}
+.acf-table > tbody > tr > th,
 .acf-table > thead > tr > th,
-.acf-table > tbody > tr > td {
+.acf-table > tbody > tr > td,
+.acf-table > thead > tr > td {
   padding: 8px;
   vertical-align: top;
   background: #fff;
   text-align: left;
-  font-size: 14px;
-  line-height: 1.4em;
   border-style: solid;
-  border-color: #EDEDED;
-  border-width: 1px 0 0 1px;
+  font-weight: normal;
 }
-/* th */
+.acf-table > tbody > tr > th,
 .acf-table > thead > tr > th {
   position: relative;
   color: #333333;
-  font-weight: normal;
+}
+.acf-table > thead > tr > th {
   border-color: #E1E1E1;
   border-width: 0 0 1px 1px;
 }
 .acf-table > thead > tr > th:first-child {
   border-left-width: 0;
 }
-/* td */
-.acf-table > tbody > tr > td {
-  font-size: 13px;
+.acf-table > tbody > tr {
+  z-index: 1;
 }
-.acf-table > tbody > tr:first-child > td {
-  border-top-width: 0;
+.acf-table > tbody > tr > td {
+  border-color: #EDEDED;
+  border-width: 1px 0 0 1px;
 }
 .acf-table > tbody > tr > td:first-child {
   border-left-width: 0;
 }
-/* clear table */
+.acf-table > tbody > tr:first-child > td {
+  border-top-width: 0;
+}
 .acf-table.-clear {
   border: 0 none;
 }
 .acf-table.-clear > tbody > tr > td,
+.acf-table.-clear > thead > tr > td,
+.acf-table.-clear > tbody > tr > th,
 .acf-table.-clear > thead > tr > th {
   border: 0 none;
   padding: 4px;

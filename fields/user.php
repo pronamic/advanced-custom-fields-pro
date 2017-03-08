@@ -72,13 +72,43 @@ class acf_field_user extends acf_field {
 		if( !acf_verify_ajax() ) die();
 		
 		
+		// get choices
+		$response = $this->get_ajax_query( $_POST );
+		
+		
+		// return
+		acf_send_ajax_results($response);
+			
+	}
+	
+	
+	/*
+	*  get_ajax_query
+	*
+	*  This function will return an array of data formatted for use in a select2 AJAX response
+	*
+	*  @type	function
+	*  @date	15/10/2014
+	*  @since	5.0.9
+	*
+	*  @param	$options (array)
+	*  @return	(array)
+	*/
+	
+	function get_ajax_query( $options = array() ) {
+		
 		// defaults
-   		$options = acf_parse_args($_POST, array(
+   		$options = acf_parse_args($options, array(
 			'post_id'		=> 0,
 			's'				=> '',
 			'field_key'		=> '',
 			'paged'			=> 1
 		));
+		
+		
+		// load field
+		$field = acf_get_field( $options['field_key'] );
+		if( !$field ) return false;
 		
 		
    		// vars
@@ -105,11 +135,6 @@ class acf_field_user extends acf_field {
 			$is_search = true;
 			
 		}
-		
-		
-		// load field
-		$field = acf_get_field( $options['field_key'] );
-		if( !$field ) die();
 		
 		
 		// role
@@ -203,11 +228,15 @@ class acf_field_user extends acf_field {
 		}
 		
 		
-		// return
-		acf_send_ajax_results(array(
+		// vars
+		$response = array(
 			'results'	=> $results,
 			'limit'		=> $args['users_per_page']
-		));
+		);
+		
+		
+		// return
+		return $response;
 		
 	}
 	

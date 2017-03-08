@@ -71,7 +71,7 @@ function acf_get_valid_field_group( $field_group = false ) {
 	
 	
 	// filter
-	$field_group = apply_filters('acf/get_valid_field_group', $field_group);
+	$field_group = apply_filters('acf/validate_field_group', $field_group);
 
 	
 	// translate
@@ -335,6 +335,10 @@ function acf_get_field_group( $selector = null ) {
 	if( !$field_group ) return false;
 	
 	
+	// validate
+	$field_group = acf_get_valid_field_group( $field_group );
+	
+	
 	// filter for 3rd party customization
 	$field_group = apply_filters('acf/get_field_group', $field_group);
 	
@@ -375,11 +379,7 @@ function _acf_get_field_group_by_id( $post_id = 0 ) {
 	
 	
 	// bail early if no post, or is not a field group
-	if( empty($post) || $post->post_type != 'acf-field-group' ) {
-	
-		return false;
-		
-	}
+	if( empty($post) || $post->post_type != 'acf-field-group' ) return false;
 	
 	
 	// modify post_status (new field-group starts as auto-draft)
@@ -406,22 +406,22 @@ function _acf_get_field_group_by_id( $post_id = 0 ) {
 	$field_group['active'] = ($post->post_status === 'publish') ? 1 : 0;
 	
 	
-	// is JSON
+	// override with JSON
 	if( acf_is_local_field_group( $field_group['key'] ) ) {
 		
-		// override
-		$field_group = acf_get_local_field_group( $field_group['key'] );
+		// load JSON field
+		$local = acf_get_local_field_group( $field_group['key'] );
 		
 		
 		// restore ID
-		$field_group['ID'] = $post->ID;
+		$local['ID'] = $post->ID;
+		
+		
+		// return
+		return $local;
 		
 	}
 	
-		
-	// validate
-	$field_group = acf_get_valid_field_group( $field_group );
-
 	
 	// return
 	return $field_group;
@@ -444,23 +444,43 @@ function _acf_get_field_group_by_id( $post_id = 0 ) {
 
 function _acf_get_field_group_by_key( $key = '' ) {
 	
-	// vars
-	$field_group = false;
-		
-	
 	// try JSON before DB to save query time
 	if( acf_is_local_field_group( $key ) ) {
 		
-		$field_group = acf_get_local_field_group( $key );
-		
-		// validate
-		$field_group = acf_get_valid_field_group( $field_group );
-	
-		// return
-		return $field_group;
+		return acf_get_local_field_group( $key );
 		
 	}
+	
+	
+	// vars
+	$post_id = acf_get_field_group_id( $key );
+	
+	
+	// bail early if no post_id
+	if( !$post_id ) return false;
+		
+	
+	// return
+	return _acf_get_field_group_by_id( $post_id );
+	
+}
 
+
+/*
+*  acf_get_field_group_id
+*
+*  This function will lookup a field group's ID from the DB
+*  Useful for local fields to find DB sibling
+*
+*  @type	function
+*  @date	25/06/2015
+*  @since	5.5.8
+*
+*  @param	$key (string)
+*  @return	$post_id (int)
+*/
+
+function acf_get_field_group_id( $key = '' ) {
 	
 	// vars
 	$args = array(
@@ -479,19 +499,11 @@ function _acf_get_field_group_by_key( $key = '' ) {
 	
 	
 	// validate
-	if( empty($posts[0]) ) {
-	
-		return $field_group;
-			
-	}
-	
-	
-	// load from ID
-	$field_group = _acf_get_field_group_by_id( $posts[0]->ID );
+	if( empty($posts) ) return 0;
 	
 	
 	// return
-	return $field_group;
+	return $posts[0]->ID;
 	
 }
 
@@ -1153,8 +1165,11 @@ function acf_import_field_group( $field_group ) {
 
 function acf_prepare_field_group_for_export( $field_group ) {
 	
-	// extract field group ID
-	$id = acf_extract_var( $field_group, 'ID' );
+	// extract some args
+	$extract = acf_extract_vars($field_group, array(
+		'ID',
+		'local'	// local may have added 'php' or 'json'
+	));
 	
 	
 	// prepare fields

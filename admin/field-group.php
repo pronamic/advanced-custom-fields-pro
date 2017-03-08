@@ -697,8 +697,9 @@ class acf_admin_field_group {
 			case "post_type" :
 			
 				// get post types
+				// - removed show_ui to allow 3rd party code to register a post type using a custom admin edit page
 				$post_types = acf_get_post_types(array(
-					'show_ui'	=> 1,
+					//'show_ui'	=> 1, 
 					'exclude'	=> array('attachment')
 				));
 				
