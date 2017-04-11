@@ -385,6 +385,10 @@ class acf_field_checkbox extends acf_field {
 				if( isset($field['choices'][ $v ]) ) continue;
 				
 				
+				// unslash (fixes serialize single quote issue)
+				$v = wp_unslash($v);
+				
+				
 				// append
 				$field['choices'][ $v ] = $v;
 				

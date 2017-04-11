@@ -45,7 +45,7 @@
 		initialize: function(){
 			
 			// disable clone
-			acf.disable_form( this.$clone );
+			acf.disable_form( this.$clone, 'repeater' );
 						
 			
 			// render
@@ -132,7 +132,7 @@
 			
 			
 			// enable 
-			acf.enable_form( $el );
+			acf.enable_form( $el, 'repeater' );
 			
 			
 			// move row
@@ -400,8 +400,8 @@
 		
 		initialize: function(){
 			
-			// disable clone inputs
-			this.$clones.find('input, textarea, select').attr('disabled', 'disabled');
+			// disable clone
+			acf.disable_form( this.$clones, 'flexible_content' );
 						
 			
 			// render
@@ -688,8 +688,8 @@
 			$el = acf.duplicate( $clone );
 			
 			
-			// enable inputs (ignore inputs disabled for life)
-			$el.find('input, textarea, select').not('.acf-disabled').removeAttr('disabled');
+			// enable 
+			acf.enable_form( $el, 'flexible_content' );
 			
 				
 			// hide no values message

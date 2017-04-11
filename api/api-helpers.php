@@ -82,6 +82,26 @@ function acf_update_setting( $name, $value ) {
 
 
 /*
+*  acf_init
+*
+*  alias of acf()->init()
+*
+*  @type	function
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	n/a
+*  @return	n/a
+*/
+
+function acf_init() {
+	
+	acf()->init();
+	
+}
+
+
+/*
 *  acf_append_setting
 *
 *  This function will add a value into the settings array found in the acf object
@@ -4159,12 +4179,17 @@ function acf_translate_keys( $array, $keys ) {
 
 function acf_translate( $string ) {
 	
+	// vars
+	$l10n = acf_get_setting('l10n');
+	$textdomain = acf_get_setting('l10n_textdomain');
+	
+	
 	// bail early if not enabled
-	if( !acf_get_setting('l10n') ) return $string;
+	if( !$l10n ) return $string;
 	
 	
 	// bail early if no textdomain
-	if( !acf_get_setting('l10n_textdomain') ) return $string;
+	if( !$textdomain ) return $string;
 	
 	
 	// is array
@@ -4186,13 +4211,18 @@ function acf_translate( $string ) {
 	// allow for var_export export
 	if( acf_get_setting('l10n_var_export') ){
 		
-		return "!!__(!!'" .  $string . "!!', !!'" . acf_get_setting('l10n_textdomain') . "!!')!!";
+		// bail early if already translated
+		if( substr($string, 0, 7) === '!!__(!!' ) return $string;
+		
+		
+		// return
+		return "!!__(!!'" .  $string . "!!', !!'" . $textdomain . "!!')!!";
 			
 	}
 	
 	
 	// vars
-	return __( $string, acf_get_setting('l10n_textdomain') );
+	return __( $string, $textdomain );
 	
 }
 

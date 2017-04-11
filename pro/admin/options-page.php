@@ -1,6 +1,10 @@
 <?php
 
-class acf_pro_options_page {
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+if( ! class_exists('acf_admin_options_page') ) :
+
+class acf_admin_options_page {
 	
 	var $page;
 	
@@ -473,6 +477,9 @@ if( typeof acf !== 'undefined' ) {
 	
 }
 
-new acf_pro_options_page();
+// initialize
+new acf_admin_options_page();
+
+endif; // class_exists check
 
 ?>
