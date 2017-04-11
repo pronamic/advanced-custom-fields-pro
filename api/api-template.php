@@ -323,7 +323,7 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 		
 		// get field
 		$field_key = $meta["_{$k}"][0];
-		$field = acf_get_field( $field_key );
+		$field = acf_maybe_get_field( $field_key );
 		
 		
 		// bail early if no field, or if the field's name is different to $k

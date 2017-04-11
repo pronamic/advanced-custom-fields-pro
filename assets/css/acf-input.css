@@ -1851,8 +1851,8 @@ html[dir="rtl"] .acf-taxonomy-field[data-type="select"] .acf-icon {
 .media-modal.acf-expanded .acf-expand-details .is-closed {
   display: none;
 }
-.media-modal.acf-expanded .media-toolbar,
-.media-modal.acf-expanded .attachments {
+.media-modal.acf-expanded .attachments-browser .media-toolbar,
+.media-modal.acf-expanded .attachments-browser .attachments {
   right: 740px;
 }
 .media-modal.acf-expanded .media-sidebar {
@@ -1974,6 +1974,7 @@ body.major-4 .acf-media-modal.-edit .media-frame-content {
   padding: 0 16px;
   /* WP details */
   /* ACF fields */
+  /* WP required message */
 }
 .acf-media-modal.-edit .media-sidebar .attachment-details {
   overflow: visible;
@@ -2009,6 +2010,9 @@ body.major-4 .acf-media-modal.-edit .media-frame-content {
 }
 .acf-media-modal.-edit .media-sidebar .compat-attachment-fields > tbody > .acf-field p.description {
   margin-top: 3px;
+}
+.acf-media-modal.-edit .media-sidebar .media-types-required-info {
+  display: none;
 }
 @media (max-width: 900px) {
   .acf-media-modal.-edit {

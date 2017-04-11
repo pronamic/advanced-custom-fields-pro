@@ -6,6 +6,8 @@ if( ! class_exists('acf_fields') ) :
 
 class acf_fields {
 	
+	var $types = array();
+	
 	
 	/*
 	*  __construct
@@ -21,9 +23,8 @@ class acf_fields {
 	*/
 	
 	function __construct() {
+
 		
-		// vars
-		$this->types = array();
 		
 	}
 	

@@ -254,7 +254,9 @@ function acf_get_sites() {
 	// WP >= 4.6
 	if( function_exists('get_sites') ) {
 		
-		$_sites = get_sites();
+		$_sites = get_sites(array(
+			'number' => 0
+		));
 		
 		foreach( $_sites as $_site ) {
 			
@@ -266,7 +268,9 @@ function acf_get_sites() {
 	// WP < 4.6	
 	} else {
 		
-		$sites = wp_get_sites();
+		$sites = wp_get_sites(array(
+			'limit' => 0
+		));
 		
 	}
 	

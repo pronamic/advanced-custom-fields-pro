@@ -104,7 +104,7 @@ class acf_admin_install {
 	/*
 	*  admin_notices
 	*
-	*  This function will render any admin notices
+	*  This function will render the DB Upgrade notice
 	*
 	*  @type	function
 	*  @date	17/10/13

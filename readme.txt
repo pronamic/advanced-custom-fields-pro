@@ -2,7 +2,7 @@
 Contributors: elliotcondon
 Tags: acf, advanced, custom, field, fields, custom field, custom fields, simple fields, magic fields, more fields, repeater, edit
 Requires at least: 3.6.0
-Tested up to: 4.7.0
+Tested up to: 4.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,12 @@ http://support.advancedcustomfields.com/
 
 
 == Changelog ==
+
+= 5.5.11 =
+* Google Map field: Added new 'google_map_init' JS action
+* Core: Minor fixes and improvements
+* Language: Updated Swiss German translation - thanks to Raphael Hüni
+* Language: Updated French translation - thanks to Maxime Bernard-Jacquet
 
 = 5.5.10 =
 * API: Added new functionality to the `acf_form()` function:
