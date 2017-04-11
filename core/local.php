@@ -7,7 +7,8 @@ if( ! class_exists('acf_local') ) :
 class acf_local {
 	
 	// vars
-	var $temp = array(),
+	var $temp_groups = array(),
+		$temp_fields = array(),
 		$groups = array(),
 		$fields = array(),
 		$reference = array(),
@@ -88,7 +89,8 @@ class acf_local {
 	function reset() {
 		
 		// vars
-		$this->temp = array();
+		$this->temp_groups = array();
+		$this->temp_fields = array();
 		$this->groups = array();
 		$this->fields = array();
 		$this->reference = array();
@@ -118,6 +120,84 @@ class acf_local {
 		
 		// return
 		return acf_is_filter_enabled('local');
+		
+	}
+	
+	
+	/*
+	*  is_ready
+	*
+	*  This function will return true when ACF has included all field types and is ready to import
+	*  Importing fields too early will cause issues where sub fields have not been extracted correctly
+	*
+	*  @type	function
+	*  @date	13/3/17
+	*  @since	5.5.10
+	*
+	*  @param	n/a
+	*  @return	(boolean)
+	*/
+	
+	function is_ready() {
+		
+		return did_action('acf/include_fields');
+		
+	}
+	
+	
+	/*
+	*  acf_include_fields
+	*
+	*  This function include any $temp data
+	*
+	*  @type	function
+	*  @date	8/2/17
+	*  @since	5.5.6
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function acf_include_fields() {
+		
+		// field groups
+		if( !empty($this->temp_groups) ) {
+			
+			// loop
+			foreach( $this->temp_groups as $i => $temp ) {
+				
+				// add
+				$this->add_field_group($temp);
+				
+				
+				// unset
+				unset($this->temp_groups[ $i ]);
+				
+			}
+			
+		}
+		
+		
+		// fields
+		if( !empty($this->temp_fields) ) {
+			
+			// prepare
+			$this->temp_fields = acf_prepare_fields_for_import( $this->temp_fields );
+			
+			
+			// loop
+			foreach( $this->temp_fields as $i => $temp ) {
+				
+				// add
+				$this->add_field($temp);
+				
+				
+				// unset
+				unset($this->temp_fields[ $i ]);
+				
+			}
+			
+		}
 		
 	}
 	
@@ -174,6 +254,36 @@ class acf_local {
 		
 		// remove
 		unset( $this->parents[ $parent_key ][ $field_key ] );
+		
+	}
+	
+	
+	/*
+	*  maybe_add_field
+	*
+	*  This function will either import or add to temp
+	*
+	*  @type	function
+	*  @date	9/2/17
+	*  @since	5.5.6
+	*
+	*  @param	$field (array)
+	*  @return	n/a
+	*/
+	
+	function maybe_add_field( $field ) {
+		
+		// add
+		if( $this->is_ready() ) {
+			
+			$this->add_field( $field );
+		
+		// add to temp
+		} else {
+			
+			$this->temp_fields[] = $field;
+			
+		}
 		
 	}
 	
@@ -345,73 +455,31 @@ class acf_local {
 	
 	
 	/*
-	*  acf_include_fields
-	*
-	*  This function include any $temp field groups during the 'acf/include_fields' action
-	*
-	*  @type	function
-	*  @date	8/2/17
-	*  @since	5.5.6
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function acf_include_fields() {
-		
-		// bail ealry if no temp
-		if( empty($this->temp) ) return;
-		
-		
-		// loop
-		foreach( $this->temp as $i => $temp ) {
-			
-			// add
-			$this->add_field_group($temp);
-			
-			
-			// unset
-			unset($this->temp[ $i ]);
-			
-		}
-		
-	}
-	
-	
-	/*
 	*  maybe_add_field_group
 	*
-	*  This function will determine if it is too early to 'add' a field group and if so will add to $temp
-	*  Field groups added to $temp will be included during the 'acf/include_fields' action which ensures all field types exist
+	*  This function will either import or add to temp
 	*
 	*  @type	function
 	*  @date	9/2/17
 	*  @since	5.5.6
 	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
+	*  @param	$field_group (array)
+	*  @return	n/a
 	*/
 	
 	function maybe_add_field_group( $field_group ) {
 		
-		// add to temp if too early
-		if( !did_action('acf/include_fields') ) {
-			
-			// append
-			$this->temp[] = $field_group;
-			
-			
-			// return
-			return false;
-		}
-		
-		
 		// add
-		$this->add_field_group( $field_group );
+		if( $this->is_ready() ) {
+			
+			$this->add_field_group( $field_group );
 		
-		
-		// return
-		return true;
+		// add to temp
+		} else {
+			
+			$this->temp_groups[] = $field_group;
+			
+		}
 		
 	}
 	
@@ -865,7 +933,7 @@ function acf_add_local_field_group( $field_group ) {
 
 function acf_remove_local_field_group( $key = '' ) {
 	
-	// missing
+	return false;
 	
 }
 
@@ -905,7 +973,7 @@ function acf_get_local_field_groups() {
 // field
 function acf_add_local_field( $field ) {
 	
-	return acf_local()->add_field( $field );
+	return acf_local()->maybe_add_field( $field );
 	
 }
 

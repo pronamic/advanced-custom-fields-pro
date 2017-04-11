@@ -348,7 +348,7 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 	// filter for 3rd party customization
 	$value = apply_filters( "acf/update_value", $value, $post_id, $field );
 	$value = apply_filters( "acf/update_value/type={$field['type']}", $value, $post_id, $field );
-	$value = apply_filters( "acf/update_value/name={$field['name']}", $value, $post_id, $field );
+	$value = apply_filters( "acf/update_value/name={$field['_name']}", $value, $post_id, $field );
 	$value = apply_filters( "acf/update_value/key={$field['key']}", $value, $post_id, $field );
 	
 	

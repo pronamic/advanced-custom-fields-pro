@@ -383,6 +383,10 @@ class acf_field_radio extends acf_field {
 				if( !$field['ID'] ) return $value;
 				
 				
+				// unslash (fixes serialize single quote issue)
+				$value = wp_unslash($value);
+				
+				
 				// update $field
 				$field['choices'][ $value ] = $value;
 				
