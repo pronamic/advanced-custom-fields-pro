@@ -6,6 +6,12 @@ if( ! class_exists('acf_updates') ) :
 
 class acf_updates {
 	
+	// vars
+	var $version = '2.0',
+		$plugins = array(),
+		$updates = false,
+		$dev = 0;
+	
 	
 	/*
 	*  __construct
@@ -22,23 +28,273 @@ class acf_updates {
 	
 	function __construct() {
 		
-		// append plugin information
-		// Note: is_admin() was used previously, however this prevents jetpack manage & ManageWP from working
-	    add_filter('plugins_api', array($this, 'modify_plugin_details'), 20, 3);
-	    
-	    
-		// append update information
-		add_filter('pre_set_site_transient_update_plugins', array($this, 'modify_plugin_update'));
+		// append update information to transient
+		add_filter('pre_set_site_transient_update_plugins', array($this, 'modify_plugins_transient'), 10, 1);
 		
 		
-		// add custom message when PRO not activated but update available
-		add_action('in_plugin_update_message-' . acf_get_setting('basename'), array($this, 'modify_plugin_update_message'), 10, 2 );
+		// modify plugin data visible in the 'View details' popup
+	    add_filter('plugins_api', array($this, 'modify_plugin_details'), 10, 3);
+	    
+	}
+	
+	
+	/*
+	*  add_plugin
+	*
+	*  This function will register a plugin
+	*
+	*  @type	function
+	*  @date	8/4/17
+	*  @since	5.5.10
+	*
+	*  @param	$plugin (array)
+	*  @return	n/a
+	*/
+	
+	function add_plugin( $plugin ) {
+		
+		// validate
+		$plugin = wp_parse_args($plugin, array(
+			'id'		=> '',
+			'key'		=> '',
+			'slug'		=> '',
+			'basename'	=> '',
+			'version'	=> '',
+		));
+		
+		
+		// Check if is_plugin_active() function exists. This is required on the front end of the
+		// site, since it is in a file that is normally only loaded in the admin.
+		if( !function_exists( 'is_plugin_active' ) ) {
+			
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			
+		}
+		
+		
+		// bail early if not active plugin (included in theme)
+		if( !is_plugin_active($plugin['basename']) ) return;
+		
+		
+		// add custom message in plugin update row
+		// removed: decided this message will have a negative impact on user
+		// if( is_admin() ) {
+		//	
+		//	 add_action('in_plugin_update_message-' . $plugin['basename'], array($this, 'modify_plugin_update_message'), 10, 2 );
+		//	
+		// }
+		
+			
+		// append
+		$this->plugins[ $plugin['basename'] ] = $plugin;
+		
+	}
+		
+	
+	/*
+	*  request
+	*
+	*  This function will make a request to the ACF update server
+	*
+	*  @type	function
+	*  @date	8/4/17
+	*  @since	5.5.10
+	*
+	*  @param	$query (string)
+	*  @param	$body (array)
+	*  @return	(mixed)
+	*/
+	
+	function request( $query = 'index.php', $body = array() ) {
+		
+		// vars
+		$url = 'https://connect.advancedcustomfields.com/' . $query;
+		
+		
+		// test
+		if( $this->dev ) $url = 'http://connect/' . $query;
+		
+		
+		// log
+		//acf_log('acf connect: '. $url);
+		
+		
+		// post
+		$raw_response = wp_remote_post( $url, array(
+			'timeout'	=> 10,
+			'body'		=> $body
+		));
+		
+		
+		// wp error
+		if( is_wp_error($raw_response) ) {
+			
+			return $raw_response;
+		
+		// http error
+		} elseif( wp_remote_retrieve_response_code($raw_response) != 200 ) {
+			
+			return new WP_Error( 'server_error', wp_remote_retrieve_response_message($raw_response) );
+			
+		}
+		
+		
+		// decode response
+		$json = json_decode( wp_remote_retrieve_body($raw_response), true );
+		
+		
+		// allow non json value
+		if( $json === null ) {
+			
+			return wp_remote_retrieve_body($raw_response);
+			
+		}
+		
+		
+		// return
+		return $json;
 		
 	}
 	
 	
 	/*
-	*  modify_plugin_information
+	*  get_plugin_info
+	*
+	*  This function will get plugin info and save as transient
+	*
+	*  @type	function
+	*  @date	9/4/17
+	*  @since	5.5.10
+	*
+	*  @param	$id (string)
+	*  @return	(mixed)
+	*/
+	
+	function get_plugin_info( $id = '' ) {
+		
+		// var
+		$transient_name = 'acf_plugin_info_'.$id;
+		
+		
+		// delete transient (force-check is used to refresh)
+		if( !empty($_GET['force-check']) ) {
+		
+			delete_transient($transient_name);
+			
+		}
+	
+	
+		// try transient
+		$transient = get_transient($transient_name);
+		if( $transient !== false ) return $transient;
+		
+		
+		// connect
+		$response = $this->request('v2/plugins/get-info?p='.$id);
+		
+		
+		// update transient
+		set_transient($transient_name, $response, HOUR_IN_SECONDS );
+		
+		
+		// return
+		return $response;
+		
+	}
+	
+	
+	/*
+	*  refresh_plugins_transient
+	*
+	*  This function will refresh plugin update info to the transient
+	*
+	*  @type	function
+	*  @date	11/4/17
+	*  @since	5.5.10
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function refresh_plugins_transient() {
+		
+		// vars
+		$transient = get_site_transient('update_plugins');
+		
+		
+		// bail early if no transient
+		if( empty($transient) ) return;
+		
+		
+		// update (will trigger modify function)
+		set_site_transient( 'update_plugins', $transient );
+		
+	}
+	
+	
+	/*
+	*  modify_plugins_transient
+	*
+	*  This function will connect to the ACF website and find update information
+	*
+	*  @type	function
+	*  @date	16/01/2014
+	*  @since	5.0.0
+	*
+	*  @param	$transient (object)
+	*  @return	$transient
+	*/
+	
+	function modify_plugins_transient( $transient ) {
+		
+		// bail early if no response (error)
+		if( !isset($transient->response) ) return $transient;
+		
+		
+		// fetch updates once (this filter is called multiple times during a single page load)
+		if( !$this->updates ) {
+			
+			// vars
+			$plugins = $this->plugins;
+			$wp = array(
+				'wp_name'		=> get_bloginfo('name'),
+				'wp_url'		=> home_url(),
+				'wp_version'	=> get_bloginfo('version'),
+				'wp_language'	=> get_bloginfo('language'),
+				'wp_timezone'	=> get_option('timezone_string'),
+			);
+			$post = array(
+				'plugins'		=> wp_json_encode($plugins),
+				'wp'			=> wp_json_encode($wp),
+			);
+					
+			
+			// connect
+			$this->updates = $this->request('v2/plugins/update-check', $post);
+			
+		}
+		
+		
+		// append
+		if( is_array($this->updates) ) {
+			
+			foreach( $this->updates['plugins'] as $basename => $update ) {
+				
+				$transient->response[ $basename ] = (object) $update;
+				
+			}
+			
+		}
+		
+		
+		// return 
+        return $transient;
+        
+	}
+	
+	
+	/*
+	*  modify_plugin_details
 	*
 	*  This function will populate the plugin data visible in the 'View details' popup
 	*
@@ -55,88 +311,60 @@ class acf_updates {
 	function modify_plugin_details( $result, $action = null, $args = null ) {
 		
 		// vars
-		$slug = acf_get_setting('slug');
-        
+		$plugin = false;
 		
-		// validate
-    	if( isset($args->slug) && $args->slug === $slug && acf_is_plugin_active() ) {
-	    	
-	    	// filter
-	    	$result = apply_filters('acf/updates/plugin_details', $result, $action, $args);
-		    
-    	}
+		
+		// only for 'plugin_information' action
+		if( $action !== 'plugin_information' ) return $result;
+		
+		
+		// find plugin via slug
+		foreach( $this->plugins as $p ) {
+			
+			if( $args->slug == $p['slug'] ) $plugin = $p;
+			
+		}
+		
+		
+		// bail early if plugin not found
+		if( !$plugin ) return $result;
+		
+		
+		// connect
+		$response = $this->get_plugin_info($plugin['id']);
+		
+		
+		// bail early if no response
+		if( !is_array($response) ) return $result;
+		
+		
+		// remove tags (different context)
+    	unset($response['tags']);
+    	
+    	
+		// convert to object
+    	$response = (object) $response;
+    	
+    	
+		// sections
+        $sections = array(
+        	'description'		=> '',
+        	'installation'		=> '',
+        	'changelog'			=> '',
+        	'upgrade_notice'	=> ''
+        );
+        
+        foreach( $sections as $k => $v ) {
+	        
+	        $sections[ $k ] = $response->$k;
+	        
+        }
+        
+        $response->sections = $sections;
     	
     	
     	// return        
-        return $result;
-        
-	}
-	
-	
-	/*
-	*  modify_plugin_update_information
-	*
-	*  This function will connect to the ACF website and find release details
-	*
-	*  @type	function
-	*  @date	16/01/2014
-	*  @since	5.0.0
-	*
-	*  @param	$transient (object)
-	*  @return	$transient
-	*/
-	
-	function modify_plugin_update( $transient ) {
-		
-		// bail early if no response (dashboard showed an error)
-		if( !isset($transient->response) ) return $transient;
-		
-		
-		// vars
-		$basename = acf_get_setting('basename');
-		$show_updates = acf_get_setting('show_updates');
-		
-		
-		// bail early if not a plugin (included in theme)
-		if( !acf_is_plugin_active() ) $show_updates = false;
-		
-		
-		// bail early if no show_updates
-		if( !$show_updates ) {
-			
-			// remove from transient
-			unset( $transient->response[ $basename ] );
-			
-			
-			// return
-			return $transient;
-			
-		}
-		
-		
-		// get update
-		$update = acf_maybe_get( $transient->response, $basename );
-		
-		
-		// filter
-		$update = apply_filters('acf/updates/plugin_update', $update, $transient);
-		
-		
-		// update
-		if( $update ) {
-			
-			$transient->response[ $basename ] = $update;
-			
-		} else {
-			
-			unset($transient->response[ $basename ]);
-			
-		}
-		
-		
-		
-		// return 
-        return $transient;
+        return $response;
         
 	}
 	
@@ -156,255 +384,73 @@ class acf_updates {
 	*  @return	n/a
 	*/
 
-	function modify_plugin_update_message( $plugin_data, $r ) {
+/*
+	function modify_plugin_update_message( $plugin_data, $response ) {
 		
-		// vars
-		$message = '';
-		$info = acf_get_remote_plugin_info();
-		
-		
-		// check for upgrade notice
-		if( $info['upgrade_notice'] ) {
+		// show notice if exists in transient data
+		if( isset($response->notice) ) {
 			
-			$message = '<div class="acf-plugin-upgrade-notice">' . $info['upgrade_notice'] . '</div>';
+			echo '<div class="acf-plugin-upgrade-notice">' . $response->notice . '</div>';
 			
 		}
-		
-		
-		// filter
-		$message = apply_filters('acf/updates/plugin_update_message', $message, $plugin_data, $r );
-		
-		
-		// return
-		echo $message;
 	
 	}
+*/
 		
 }
 
-// initialize
-acf()->updates = new acf_updates();
-
-endif; // class_exists check
-
-
 
 /*
-*  acf_get_remote_plugin_info
+*  acf_updates
 *
-*  This function will return an array of data from the plugin's readme.txt file (remote)
+*  The main function responsible for returning the one true acf_updates instance to functions everywhere.
+*  Use this function like you would a global variable, except without needing to declare the global.
+*
+*  Example: <?php $acf_updates = acf_updates(); ?>
 *
 *  @type	function
-*  @date	8/06/2016
-*  @since	5.3.9
+*  @date	9/4/17
+*  @since	5.5.12
 *
 *  @param	n/a
-*  @return	(array)
+*  @return	(object)
 */
 
-function acf_get_remote_plugin_info() {
-	
-	// vars
-	$transient_name = 'acf_get_remote_plugin_info';
-		
-	
-	// clear transient if force check is enabled
-	if( !empty($_GET['force-check']) ) {
-		
-		// only allow transient to be deleted once per page load
-		if( empty($_GET['acf-ignore-force-check']) ) {
-			
-			delete_transient( 'acf_get_remote_plugin_info' );
-			
-		}
-		
-		
-		// update $_GET
-		$_GET['acf-ignore-force-check'] = true;
-		
-	}
-	
-	
-	// get transient
-	$transient = get_transient( $transient_name );
-	
-	// fake
-/*
-	if( $transient ) {
-		
-		$transient['upgrade_notice'] .= '<h4>5.3.8.1</h4><ul><li>This update will do this</li><li>and that</li></ul>';
-		
-	}
-*/
-	
-	
-	// bail early if transiente exists
-	if( $transient !== false ) return $transient;
-	
-	
-	// allow bypass
-	$info = apply_filters( 'acf/get_remote_plugin_info', false );
+function acf_updates() {
 
-	if( $info === false ) {
-		
-		$info = acf_get_wporg_remote_plugin_info();
-			
-	}
+	global $acf_updates;
 	
+	if( !isset($acf_updates) ) {
 	
-	// store only relevant changelog / upgrade notice
-	foreach( array('changelog', 'upgrade_notice') as $k ) {
-		
-		// bail early if not set
-		if( empty($info[ $k ]) ) continue;
-		
-		
-		// vars
-		$new = '';
-		$orig = $info[ $k ];
-		
-		
-		// explode
-		$bits = array_filter( explode('<h4>', $orig) );
-		
-		
-		// loop
-		foreach( $bits as $bit ) {
-			
-			// vars
-			$bit = explode('</h4>', $bit);
-			$version = trim($bit[0]);
-	    	$text = trim($bit[1]);
-			
-			
-			// is relevant?
-	    	if( version_compare($info['version'], $version, '==') ) {
-	        	
-	        	$new = '<h4>' . $version . '</h4>' . $text;
-	        	break;
-	        	
-	    	}
-	    	
-		}
-		
-		
-		// update
-		$info[ $k ] = $new;
+		$acf_updates = new acf_updates();
 		
 	}
 	
-	
-	// allow transient to save empty
-	if( empty($info) ) $info = 0;
-	
-	
-	// update transient
-	set_transient( $transient_name, $info, DAY_IN_SECONDS );
-	
-	
-	// return
-	return $info;
+	return $acf_updates;
 	
 }
 
 
 /*
-*  acf_get_wporg_remote_plugin_info
+*  acf_register_plugin_update
 *
-*  This function will return an array of data from the wordpress.org plugin's readme.txt file (remote)
-*
-*  @type	function
-*  @date	8/06/2016
-*  @since	5.3.9
-*
-*  @param	n/a
-*  @return	(array)
-*/
-
-
-function acf_get_wporg_remote_plugin_info() {
-	
-	// create basic version of plugin info.
-	// this should replicate the data available via plugin_api()
-	// doing so allows ACF PRO to load data from external source
-	$info = array(
-		'name'				=> acf_get_setting('name'),
-		'slug'				=> acf_get_setting('slug'),
-		'version'			=> acf_get_setting('version'),
-		'changelog'			=> '',
-		'upgrade_notice'	=> ''
-	);
-	
-	
-	// get readme
-	$response = wp_safe_remote_get('https://plugins.svn.wordpress.org/advanced-custom-fields/trunk/readme.txt');
-	
-	
-	// bail early if no response
-	if( is_wp_error($response) || empty($response['body']) ) return $info;
-	
-		
-	// use regex to find upgrade notice
-	$matches = null;
-	$regexp = '/(== Upgrade Notice ==)([\s\S]+?)(==|$)/';
-	
-	
-	// bail early if no match
-	if( !preg_match($regexp, $response['body'], $matches) ) return $info;
-	
-	
-	// convert to html
-	$text = wp_kses_post( trim($matches[2]) );
-	
-	
-	// pretify
-	$text = preg_replace('/^= (.*?) =/m', '<h4>$1</h4>', $text);
-	$text = preg_replace('/^[\*] (.*?)(\n|$)/m', '<li>$1</li>', $text);
-	$text = preg_replace('/\n<li>(.*?)/', "\n" . '<ul><li>$1', $text);
-	$text = preg_replace('/(<\/li>)(?!<li>)/', '$1</ul>' . "\n", $text);
-	
-	
-	// update
-	$info['upgrade_notice'] = $text;
-	
-	
-	// return
-	return $info;
-	
-}
-
-
-/*
-*  acf_refresh_plugin_updates_transient
-*
-*  This function will refresh teh WP transient containing plugin update data
+*  alias of acf_updates()->add_plugin()
 *
 *  @type	function
-*  @date	11/08/2016
-*  @since	5.4.0
+*  @date	12/4/17
+*  @since	5.5.10
 *
 *  @param	$post_id (int)
 *  @return	$post_id (int)
 */
 
-function acf_refresh_plugin_updates_transient() {
+function acf_register_plugin_update( $plugin ) {
 	
-	// vars
-	$transient = get_site_transient('update_plugins');
+	acf_updates()->add_plugin( $plugin );
 	
-	
-	// bail early if no transient
-	if( empty($transient) ) return;
-	
-	
-	// update transient
-	$transient = acf()->updates->modify_plugin_update( $transient );
-	
-	
-	// update
-	set_site_transient( 'update_plugins', $transient );
-		
 }
 
+
+endif; // class_exists check
 
 ?>

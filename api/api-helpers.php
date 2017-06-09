@@ -427,11 +427,17 @@ function acf_parse_type( $v ) {
 *  @return	n/a
 */
 
-function acf_get_view( $view_name = '', $args = array() ) {
-
-	// vars
-	$path = acf_get_path("admin/views/{$view_name}.php");
+function acf_get_view( $path = '', $args = array() ) {
 	
+	// allow view file name shortcut
+	if( substr($path, -4) !== '.php' ) {
+		
+		$path = acf_get_path("admin/views/{$path}.php");
+		
+	}
+	
+	
+	// include
 	if( file_exists($path) ) {
 		
 		include( $path );
@@ -1123,7 +1129,7 @@ function acf_get_full_version( $version = '1' ) {
 
 function acf_get_locale() {
 	
-	return function_exists('get_user_locale') ? get_user_locale() : get_locale();
+	return is_admin() && function_exists('get_user_locale') ? get_user_locale() : get_locale();
 	
 }
 

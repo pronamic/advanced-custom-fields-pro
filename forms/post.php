@@ -223,7 +223,15 @@ class acf_form_post {
 		add_action('edit_form_after_title', array($this, 'edit_form_after_title'));
 		
 		
-		// remove ACF from meta postbox
+		// remove postcustom metabox (removes expensive SQL query)
+		if( acf_get_setting('remove_wp_meta_box') ) {
+			
+			remove_meta_box( 'postcustom', false, 'normal' ); 
+			
+		}
+		
+		
+		// remove ACF values from meta postbox ()
 		add_filter('is_protected_meta', array($this, 'is_protected_meta'), 10, 3);
 		
 	}

@@ -6,7 +6,7 @@ extract($args);
 ?>
 <div class="wrap acf-settings-wrap">
 	
-	<h1><?php echo $page['page_title']; ?></h1>
+	<h1><?php echo $page_title; ?></h1>
 	
 	<form id="post" method="post" name="post">
 		
@@ -14,7 +14,7 @@ extract($args);
 		
 		// render post data
 		acf_form_data(array( 
-			'post_id'	=> $page['post_id'], 
+			'post_id'	=> $post_id, 
 			'nonce'		=> 'options',
 		));
 		

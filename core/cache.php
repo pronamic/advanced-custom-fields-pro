@@ -7,8 +7,7 @@ if( ! class_exists('acf_cache') ) :
 class acf_cache {
 	
 	// vars
-	var $cache = array(),
-		$reference = array();
+	var $reference = array();
 		
 		
 	/*
