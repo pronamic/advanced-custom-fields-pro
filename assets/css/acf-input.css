@@ -485,6 +485,22 @@ html[dir="rtl"] input.acf-is-prepended.acf-is-appended {
   border-color: #bbb;
   background: #f9f9f9;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset;
+  /* sortable item*/
+  /* sortable shadow */
+}
+.select2-container.-acf .select2-choices .select2-search-choice.ui-sortable-helper {
+  background: #5897fb;
+  border-color: #3f87fa;
+  color: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.select2-container.-acf .select2-choices .select2-search-choice.ui-sortable-helper a {
+  visibility: hidden;
+}
+.select2-container.-acf .select2-choices .select2-search-choice.ui-sortable-placeholder {
+  background-color: #f7f7f7;
+  border-color: #f7f7f7;
+  visibility: visible !important;
 }
 .select2-container.-acf .select2-choices .select2-search-choice-focus {
   border-color: #999;
@@ -551,11 +567,31 @@ html[dir="rtl"] .select2-container.-acf .select2-choice .select2-arrow {
 *  Select2 (v4)
 *
 *---------------------------------------------------------------------------------------------*/
-.select2-selection.-acf li {
+.select2-container.-acf li {
   margin-bottom: 0;
 }
-.select2-selection.-acf input {
-  box-shadow: none;
+.select2-container--default.-acf .select2-selection--multiple {
+  /* multiple choice item */
+}
+.select2-container--default.-acf .select2-selection--multiple .select2-selection__choice {
+  background-color: #f7f7f7;
+  border-color: #cccccc;
+  /* sortable item*/
+  /* sortable shadow */
+}
+.select2-container--default.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-helper {
+  background: #5897fb;
+  border-color: #3f87fa;
+  color: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.select2-container--default.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-helper span {
+  visibility: hidden;
+}
+.select2-container--default.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-placeholder {
+  background-color: #f7f7f7;
+  border-color: #f7f7f7;
+  visibility: visible !important;
 }
 /*---------------------------------------------------------------------------------------------
 *
@@ -1041,10 +1077,6 @@ html[dir="rtl"] .acf-relationship .selection .values .acf-icon {
 }
 .acf-editor-wrap.tmce-active .wp-editor-area {
   color: #333 !important;
-}
-/* fix z-index behind media modal */
-div.mce-toolbar-grp.mce-inline-toolbar-grp {
-  z-index: 170000;
 }
 /*---------------------------------------------------------------------------------------------
 *

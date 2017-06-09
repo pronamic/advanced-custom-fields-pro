@@ -138,8 +138,16 @@ class acf_field_radio extends acf_field {
 			}
 			
 			
+			// allow custom 'other' choice to be defined
+			if( !isset($field['choices']['other']) ) {
+				
+				$field['choices']['other'] = '';
+				
+			}
+			
+			
 			// append other choice
-			$field['choices']['other'] = '</label><input type="text" ' . acf_esc_attr($input) . ' /><label>';
+			$field['choices']['other'] .= '</label><input type="text" ' . acf_esc_attr($input) . ' /><label>';
 		
 		}
 		
