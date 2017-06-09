@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields
-Version: 5.5.11
+Version: 5.5.14
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -16,6 +16,9 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if( ! class_exists('acf') ) :
 
 class acf {
+	
+	// vars
+	var $version = '5.5.14';
 	
 	
 	/*
@@ -58,41 +61,49 @@ class acf {
 			
 			// basic
 			'name'				=> __('Advanced Custom Fields', 'acf'),
-			'version'			=> '5.5.11',
+			'version'			=> $this->version,
 						
 			// urls
+			'file'				=> __FILE__,
 			'basename'			=> plugin_basename( __FILE__ ),
 			'path'				=> plugin_dir_path( __FILE__ ),
 			'dir'				=> plugin_dir_url( __FILE__ ),
 			
 			// options
-			'show_admin'		=> true,
-			'show_updates'		=> true,
-			'stripslashes'		=> false,
-			'local'				=> true,
-			'json'				=> true,
-			'save_json'			=> '',
-			'load_json'			=> array(),
-			'default_language'	=> '',
-			'current_language'	=> '',
-			'capability'		=> 'manage_options',
-			'uploader'			=> 'wp',
-			'autoload'			=> false,
-			'l10n'				=> true,
-			'l10n_textdomain'	=> '',
-			'google_api_key'	=> '',
-			'google_api_client'	=> '',
-			'enqueue_google_maps'	=> true,
+			'show_admin'				=> true,
+			'show_updates'				=> true,
+			'stripslashes'				=> false,
+			'local'						=> true,
+			'json'						=> true,
+			'save_json'					=> '',
+			'load_json'					=> array(),
+			'default_language'			=> '',
+			'current_language'			=> '',
+			'capability'				=> 'manage_options',
+			'uploader'					=> 'wp',
+			'autoload'					=> false,
+			'l10n'						=> true,
+			'l10n_textdomain'			=> '',
+			'google_api_key'			=> '',
+			'google_api_client'			=> '',
+			'enqueue_google_maps'		=> true,
 			'enqueue_select2'			=> true,
 			'enqueue_datepicker'		=> true,
 			'enqueue_datetimepicker'	=> true,
 			'select2_version'			=> 3,
-			'row_index_offset'			=> 1
+			'row_index_offset'			=> 1,
+			'remove_wp_meta_box'		=> false // todo: set to true in 5.6.0
 		);
 		
 		
+		// constants
+		$this->define( 'ACF', 			true );
+		$this->define( 'ACF_VERSION', 	$this->settings['version'] );
+		$this->define( 'ACF_PATH', 		$this->settings['path'] );
+		
+		
 		// include helpers
-		include_once('api/api-helpers.php');
+		include_once( ACF_PATH . 'api/api-helpers.php');
 		
 		
 		// api
@@ -202,16 +213,12 @@ class acf {
 		acf_update_setting('dir', plugin_dir_url( __FILE__ ));
 		
 		
-		// set text domain
-		load_textdomain( 'acf', acf_get_path( 'lang/acf-' . acf_get_locale() . '.mo' ) );
+		// textdomain
+		$this->load_plugin_textdomain();
 		
 		
 		// include wpml support
-		if( defined('ICL_SITEPRESS_VERSION') ) {
-		
-			acf_include('core/wpml.php');
-			
-		}
+		if( defined('ICL_SITEPRESS_VERSION') ) acf_include('core/wpml.php');
 		
 		
 		// field types
@@ -223,7 +230,6 @@ class acf {
 		acf_include('fields/password.php');
 		acf_include('fields/wysiwyg.php');
 		acf_include('fields/oembed.php');
-		//acf_include('fields/output.php');
 		acf_include('fields/image.php');
 		acf_include('fields/file.php');
 		acf_include('fields/select.php');
@@ -255,6 +261,37 @@ class acf {
 		// action for 3rd party
 		do_action('acf/init');
 			
+	}
+	
+	
+	/*
+	*  load_plugin_textdomain
+	*
+	*  This function will load the textdomain file
+	*
+	*  @type	function
+	*  @date	3/5/17
+	*  @since	5.5.13
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function load_plugin_textdomain() {
+		
+		// vars
+		$domain = 'acf';
+		$locale = apply_filters( 'plugin_locale', acf_get_locale(), $domain );
+		$mofile = $domain . '-' . $locale . '.mo';
+		
+		
+		// load from the languages directory first
+		load_textdomain( $domain, WP_LANG_DIR . '/plugins/' . $mofile );
+		
+		
+		// load from plugin lang folder
+		load_textdomain( $domain, acf_get_path( 'lang/' . $mofile ) );
+		
 	}
 	
 	
@@ -451,6 +488,27 @@ class acf {
 	    // return
 	    return $where;
 	    
+	}
+	
+	
+	/*
+	*  define
+	*
+	*  This function will safely define a constant
+	*
+	*  @type	function
+	*  @date	3/5/17
+	*  @since	5.5.13
+	*
+	*  @param	$name (string)
+	*  @param	$value (mixed)
+	*  @return	n/a
+	*/
+	
+	function define( $name, $value = true ) {
+		
+		if( !defined($name) ) define( $name, $value );
+		
 	}
 	
 	

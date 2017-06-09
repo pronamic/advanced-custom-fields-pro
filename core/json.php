@@ -19,7 +19,7 @@ class acf_json {
 		add_action('acf/untrash_field_group',		array($this, 'update_field_group'), 10, 1);
 		add_action('acf/trash_field_group',			array($this, 'delete_field_group'), 10, 1);
 		add_action('acf/delete_field_group',		array($this, 'delete_field_group'), 10, 1);
-		add_action('acf/include_fields', 			array($this, 'include_fields'), 10, 0);
+		add_action('acf/include_fields', 			array($this, 'include_json_folders'), 10, 0);
 		
 	}
 	
@@ -83,19 +83,19 @@ class acf_json {
 		
 	
 	/*
-	*  include_fields
+	*  include_json_folders
 	*
-	*  This function will include any JSON files found in the active theme
+	*  This function will include all registered .json files
 	*
 	*  @type	function
 	*  @date	10/03/2014
 	*  @since	5.0.0
 	*
-	*  @param	$version (int)
+	*  @param	n/a
 	*  @return	n/a
 	*/
 	
-	function include_fields() {
+	function include_json_folders() {
 		
 		// validate
 		if( !acf_get_setting('json') ) return;
@@ -108,49 +108,72 @@ class acf_json {
 		// loop through and add to cache
 		foreach( $paths as $path ) {
 			
-			// remove trailing slash
-			$path = untrailingslashit( $path );
-		
-		
-			// check that path exists
-			if( !file_exists( $path ) ) {
-			
-				continue;
-				
-			}
-			
-			
-			$dir = opendir( $path );
-	    
-		    while(false !== ( $file = readdir($dir)) ) {
-		    	
-		    	// validate type
-				if( pathinfo($file, PATHINFO_EXTENSION) !== 'json' ) continue;
-		    	
-		    	
-		    	// read json
-		    	$json = file_get_contents("{$path}/{$file}");
-		    	
-		    	
-		    	// validate json
-		    	if( empty($json) ) continue;
-		    	
-		    	
-		    	// decode
-		    	$json = json_decode($json, true);
-		    	
-		    	
-		    	// add local
-		    	$json['local'] = 'json';
-		    	
-		    	
-		    	// add field group
-		    	acf_add_local_field_group( $json );
-		        
-		    }
+			$this->include_json_folder( $path );
 		    
 		}
 		
+	}
+	
+	
+	/*
+	*  include_json_folder
+	*
+	*  This function will include all .json files within a folder
+	*
+	*  @type	function
+	*  @date	1/5/17
+	*  @since	5.5.13
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	function include_json_folder( $path = '' ) {
+		
+		// remove trailing slash
+		$path = untrailingslashit( $path );
+		
+		
+		// bail early if path does not exist
+		if( !is_dir($path) ) return false;
+		
+		
+		// open
+		$dir = opendir( $path );
+    
+		
+		// loop over files
+	    while(false !== ( $file = readdir($dir)) ) {
+	    	
+	    	// validate type
+			if( pathinfo($file, PATHINFO_EXTENSION) !== 'json' ) continue;
+	    	
+	    	
+	    	// read json
+	    	$json = file_get_contents("{$path}/{$file}");
+	    	
+	    	
+	    	// validate json
+	    	if( empty($json) ) continue;
+	    	
+	    	
+	    	// decode
+	    	$json = json_decode($json, true);
+	    	
+	    	
+	    	// add local
+	    	$json['local'] = 'json';
+	    	
+	    	
+	    	// add field group
+	    	acf_add_local_field_group( $json );
+	        
+	    }
+	    
+	    
+	    // return
+	    return true;
+	    
 	}
 	
 }

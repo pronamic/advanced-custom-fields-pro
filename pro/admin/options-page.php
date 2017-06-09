@@ -463,14 +463,8 @@ if( typeof acf !== 'undefined' ) {
 	
 	function html() {
 		
-		// vars
-		$view = array(
-			'page'	=> $this->page
-		);
-		
-		
 		// load view
-		acf_pro_get_view('options-page', $view);
+		acf_get_view(dirname(__FILE__) . '/views/options-page.php', $this->page);
 				
 	}
 	

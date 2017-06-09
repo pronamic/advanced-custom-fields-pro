@@ -377,7 +377,7 @@
 			
 			// vars
 			this.$el = this.$field.find('.acf-flexible-content:first');
-			this.$input = this.$el.siblings('input');
+			this.$input = this.$el.children('input');
 			this.$values = this.$el.children('.values');
 			this.$clones = this.$el.children('.clones');
 			
@@ -461,28 +461,26 @@
 		render_layout_title: function( $layout ){
 			
 			// vars
-			var ajax_data = acf.serialize( $layout );
+			var $input = $layout.children('input');
+			var prefix = $input.attr('name').replace('[acf_fc_layout]', '');
 			
 			
-			// append
-			ajax_data = acf.parse_args( ajax_data, {
+			// ajax data
+			var ajax_data = acf.prepare_for_ajax({
 				action: 	'acf/fields/flexible_content/layout_title',
 				field_key: 	this.$field.data('key'),
 				i: 			$layout.index(),
-				layout:		$layout.data('layout')
+				layout:		$input.val(),
+				value:		acf.serialize( $layout, prefix )
 			});
-			
-			
-			// prepare
-			ajax_data = acf.prepare_for_ajax(ajax_data);
 			
 			
 			// ajax get title HTML
 			$.ajax({
-		    	url			: acf.get('ajaxurl'),
-				dataType	: 'html',
-				type		: 'post',
-				data		: ajax_data,
+		    	url: acf.get('ajaxurl'),
+				dataType: 'html',
+				type: 'post',
+				data: ajax_data,
 				success: function( html ){
 					
 					// bail early if no html

@@ -938,45 +938,74 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		serialize_form : function( $el ){
+		serialize_form: function( $el, prefix ){
+			
+			// defaults
+			prefix = prefix || '';
+			
 			
 			// vars
-			var data = {},
-				names = {};
-			
-			
-			// selector
-			$selector = $el.find('select, textarea, input');
+			var data = {};
+			var names = {};
+			var values = $el.find('select, textarea, input').serializeArray();
 			
 			
 			// populate data
-			$.each( $selector.serializeArray(), function( i, pair ) {
+			$.each( values, function( i, pair ) {
+				
+				// vars
+				var name = pair.name;
+				var value = pair.value;
+				
+				
+				// prefix
+				if( prefix ) {
+					
+					// bail early if does not contain
+					if( name.indexOf(prefix) !== 0 ) return;
+					
+					
+					// remove prefix
+					name = name.substr(prefix.length);
+					
+					
+					// name must not start as array piece
+					if( name.slice(0, 1) == '[' ) {
+						
+						name = name.replace('[', '');
+						name = name.replace(']', '');
+						
+					}
+					
+				}
+				
 				
 				// initiate name
-				if( pair.name.slice(-2) === '[]' ) {
+				if( name.slice(-2) === '[]' ) {
 					
 					// remove []
-					pair.name = pair.name.replace('[]', '');
+					name = name.slice(0, -2);
 					
 					
 					// initiate counter
-					if( typeof names[ pair.name ] === 'undefined'){
+					if( typeof names[ name ] === 'undefined'){
 						
-						names[ pair.name ] = -1;
+						names[ name ] = -1;
+						
 					}
 					
 					
 					// increase counter
-					names[ pair.name ]++;
+					names[ name ]++;
 					
 					
 					// add key
-					pair.name += '[' + names[ pair.name ] +']';
+					name += '[' + names[ name ] +']';
 				}
 				
 				
 				// append to data
-				data[ pair.name ] = pair.value;
+				data[ name ] = value;
 				
 			});
 			
@@ -986,9 +1015,9 @@ var acf;
 			
 		},
 		
-		serialize: function( $el ){
+		serialize: function( $el, prefix ){
 			
-			return this.serialize_form( $el );
+			return this.serialize_form.apply( this, arguments );
 			
 		},
 		
@@ -2083,6 +2112,7 @@ var acf;
 			
 			// lower case
 			string = string.toLowerCase();
+			
 			
 			// return
 			return string;
@@ -8820,6 +8850,12 @@ var acf;
 
 (function($){
 	
+	// globals
+	var _select2,
+		_select23,
+		_select24;
+	
+	
 	/*
 	*  acf.select2
 	*
@@ -8833,10 +8869,12 @@ var acf;
 	*  @return	n/a
 	*/
 	
-	acf.select2 = acf.model.extend({
+	_select2 = acf.select2 = acf.model.extend({
 		
 		// vars
 		version: 0,
+		version3: null,
+		version4: null,
 		
 		
 		// actions
@@ -8848,7 +8886,7 @@ var acf;
 		/*
 		*  ready
 		*
-		*  This function will setup vars
+		*  This function will run on document ready
 		*
 		*  @type	function
 		*  @date	21/06/2016
@@ -8861,161 +8899,71 @@ var acf;
 		ready: function(){
 			
 			// determine Select2 version
-			if( acf.maybe_get(window, 'Select2') ) {
-				
-				this.version = 3;
-				
-				this.l10n_v3();
-				
-			} else if( acf.maybe_get(window, 'jQuery.fn.select2.amd') ) {
-				
-				this.version = 4;
-				
-			}
+			this.version = this.get_version();
+			
+			
+			// ready
+			this.do_function('ready');
 			
 		},
 		
 		
 		/*
-		*  l10n_v3
+		*  get_version
 		*
-		*  This function will set l10n for Select2 v3
+		*  This function will return the Select2 version
 		*
 		*  @type	function
-		*  @date	21/06/2016
-		*  @since	5.3.8
+		*  @date	29/4/17
+		*  @since	5.5.13
 		*
 		*  @param	n/a
 		*  @return	n/a
 		*/
 		
-		l10n_v3: function(){
+		get_version: function(){
 			
-			// vars
-			var locale = acf.get('locale'),
-				rtl = acf.get('rtl')
-				l10n = acf._e('select');
-			
-			
-			// bail ealry if no l10n
-			if( !l10n ) return;
-			
-			
-			// vars
-			var l10n_functions = {
-				formatMatches: function( matches ) {
-					
-					if ( 1 === matches ) {
-						return l10n.matches_1;
-					}
-	
-					return l10n.matches_n.replace('%d', matches);
-				},
-				formatNoMatches: function() {
-					return l10n.matches_0;
-				},
-				formatAjaxError: function() {
-					return l10n.load_fail;
-				},
-				formatInputTooShort: function( input, min ) {
-					var number = min - input.length;
-	
-					if ( 1 === number ) {
-						return l10n.input_too_short_1;
-					}
-	
-					return l10n.input_too_short_n.replace( '%d', number );
-				},
-				formatInputTooLong: function( input, max ) {
-					var number = input.length - max;
-	
-					if ( 1 === number ) {
-						return l10n.input_too_long_1;
-					}
-	
-					return l10n.input_too_long_n.replace( '%d', number );
-				},
-				formatSelectionTooBig: function( limit ) {
-					if ( 1 === limit ) {
-						return l10n.selection_too_long_1;
-					}
-	
-					return l10n.selection_too_long_n.replace( '%d', limit );
-				},
-				formatLoadMore: function() {
-					return l10n.load_more;
-				},
-				formatSearching: function() {
-					return l10n.searching;
-				}
-		    };
-			
-			
-			// ensure locales exists
-			// older versions of Select2 did not have a locale storage
-			$.fn.select2.locales = acf.maybe_get(window, 'jQuery.fn.select2.locales', {});
-			
-			
-			// append
-			$.fn.select2.locales[ locale ] = l10n_functions;
-			$.extend($.fn.select2.defaults, l10n_functions);
+			if( acf.maybe_get(window, 'Select2') ) return 3;
+			if( acf.maybe_get(window, 'jQuery.fn.select2.amd') ) return 4;
+			return 0;
 			
 		},
 		
 		
 		/*
-		*  init
+		*  do_function
 		*
-		*  This function will initialize a Select2 instance
+		*  This function will call the v3 or v4 equivelant function
 		*
 		*  @type	function
-		*  @date	21/06/2016
-		*  @since	5.3.8
+		*  @date	28/4/17
+		*  @since	5.5.13
 		*
-		*  @param	$select (jQuery object)
-		*  @param	args (object)
+		*  @param	name (string)
+		*  @param	args (array)
 		*  @return	(mixed)
 		*/
 		
-		init: function( $select, args, $field ){
-			
-			// bail early if no version found
-			if( !this.version ) return;
-			
+		do_function: function( name, args ){
 			
 			// defaults
-			args = args || {};
-			$field = $field || null;
+			args = args || [];
 			
 			
-			// merge
-			args = $.extend({
-				allow_null:		false,
-				placeholder:	'',
-				multiple:		false,
-				ajax:			false,
-				ajax_action:	''
-			}, args);
+			// vars
+			var model = 'version'+this.version;
 			
 			
-			// v3
-			if( this.version == 3 ) {
-				
-				return this.init_v3( $select, args, $field );
-			
-			// v4
-			} else if( this.version == 4 ) {
-				
-				return this.init_v4( $select, args, $field );
-				
-			}
+			// bail early if not set
+			if( typeof this[model] === 'undefined' ||
+				typeof this[model][name] === 'undefined' ) return false;
 			
 			
-			// return
-			return false;
-					
+			// run
+			return this[model][name].apply( this, args );
+			
 		},
-		
+				
 		
 		/*
 		*  get_data
@@ -9073,7 +9021,7 @@ var acf;
 			
 		},
 		
-		
+				
 		/*
 		*  decode_data
 		*
@@ -9104,7 +9052,7 @@ var acf;
 				// children
 				if( typeof v.children !== 'undefined' ) {
 					
-					data[ k ].children = acf.select2.decode_data(v.children);
+					data[ k ].children = _select2.decode_data(v.children);
 					
 				}
 				
@@ -9292,7 +9240,8 @@ var acf;
 				// append
 				val.push({
 					'id':	$el.attr('value'),
-					'text':	$el.text()
+					'text':	$el.text(),
+					'$el':	$el
 				});
 				
 			});
@@ -9302,8 +9251,293 @@ var acf;
 			return val;
 			
 		},
-		    
-    
+		
+		
+		/*
+		*  get_input_value
+		*
+		*  This function will return an array of values as per the hidden input
+		*
+		*  @type	function
+		*  @date	29/4/17
+		*  @since	5.5.13
+		*
+		*  @param	$input (jQuery)
+		*  @return	(array)
+		*/
+		
+		get_input_value: function( $input ) {
+			
+			return $input.val().split('||');
+			
+		},
+		
+		
+		/*
+		*  sync_input_value
+		*
+		*  This function will save the current selected values into the hidden input
+		*
+		*  @type	function
+		*  @date	29/4/17
+		*  @since	5.5.13
+		*
+		*  @param	$input (jQuery)
+		*  @param	$select (jQuery)
+		*  @return	n/a
+		*/
+		
+		sync_input_value: function( $input, $select ) {
+			
+			$input.val( $select.val().join('||') );
+			
+		},
+		
+		
+		/*
+		*  add_option
+		*
+		*  This function will add an <option> element to a select (if it doesn't already exist)
+		*
+		*  @type	function
+		*  @date	29/4/17
+		*  @since	5.5.13
+		*
+		*  @param	$select (jQuery)
+		*  @param	value (string)
+		*  @param	label (string)
+		*  @return	n/a
+		*/
+		
+		add_option: function( $select, value, label ){
+			
+			if( !$select.find('option[value="'+value+'"]').length ) {
+				
+				$select.append('<option value="'+value+'">'+label+'</option>');
+				
+			}
+			
+		},
+		
+		
+		/*
+		*  select_option
+		*
+		*  This function will select an option
+		*
+		*  @type	function
+		*  @date	29/4/17
+		*  @since	5.5.13
+		*
+		*  @param	$select (jQuery)
+		*  @param	value (string)
+		*  @return	n/a
+		*/
+		
+		select_option: function( $select, value ){
+			
+			$select.find('option[value="'+value+'"]').prop('selected', true);
+			$select.trigger('change');
+			
+		},
+		
+		
+		/*
+		*  unselect_option
+		*
+		*  This function will unselect an option
+		*
+		*  @type	function
+		*  @date	29/4/17
+		*  @since	5.5.13
+		*
+		*  @param	$select (jQuery)
+		*  @param	value (string)
+		*  @return	n/a
+		*/
+		
+		unselect_option: function( $select, value ){
+			
+			$select.find('option[value="'+value+'"]').prop('selected', false);
+			$select.trigger('change');
+			
+		},
+		
+		
+		/*
+		*  Select2 v3 or v4 functions
+		*
+		*  description
+		*
+		*  @type	function
+		*  @date	29/4/17
+		*  @since	5.5.10
+		*
+		*  @param	$post_id (int)
+		*  @return	$post_id (int)
+		*/
+		
+		init: function( $select, args, $field ){
+			
+			this.do_function( 'init', arguments );
+					
+		},
+		
+		destroy: function( $select ){
+			
+			this.do_function( 'destroy', arguments );
+			
+		},
+		
+		add_value: function( $select, value, label ){
+			
+			this.do_function( 'add_value', arguments );
+			
+		},
+		
+		remove_value: function( $select, value ){
+			
+			this.do_function( 'remove_value', arguments );
+			
+		},
+		
+		remove_value: function( $select, value ){
+			
+			this.do_function( 'remove_value', arguments );
+			
+		}
+		
+	});
+	
+	
+	/*
+	*  Select2 v3
+	*
+	*  This model contains the Select2 v3 functions
+	*
+	*  @type	function
+	*  @date	28/4/17
+	*  @since	5.5.10
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	_select23 = _select2.version3 = {
+		
+		ready: function(){
+			
+			// vars
+			var locale = acf.get('locale'),
+				rtl = acf.get('rtl')
+				l10n = acf._e('select');
+			
+			
+			// bail ealry if no l10n
+			if( !l10n ) return;
+			
+			
+			// vars
+			var l10n_functions = {
+				formatMatches: function( matches ) {
+					
+					if ( 1 === matches ) {
+						return l10n.matches_1;
+					}
+	
+					return l10n.matches_n.replace('%d', matches);
+				},
+				formatNoMatches: function() {
+					return l10n.matches_0;
+				},
+				formatAjaxError: function() {
+					return l10n.load_fail;
+				},
+				formatInputTooShort: function( input, min ) {
+					var number = min - input.length;
+	
+					if ( 1 === number ) {
+						return l10n.input_too_short_1;
+					}
+	
+					return l10n.input_too_short_n.replace( '%d', number );
+				},
+				formatInputTooLong: function( input, max ) {
+					var number = input.length - max;
+	
+					if ( 1 === number ) {
+						return l10n.input_too_long_1;
+					}
+	
+					return l10n.input_too_long_n.replace( '%d', number );
+				},
+				formatSelectionTooBig: function( limit ) {
+					if ( 1 === limit ) {
+						return l10n.selection_too_long_1;
+					}
+	
+					return l10n.selection_too_long_n.replace( '%d', limit );
+				},
+				formatLoadMore: function() {
+					return l10n.load_more;
+				},
+				formatSearching: function() {
+					return l10n.searching;
+				}
+		    };
+			
+			
+			// ensure locales exists
+			// older versions of Select2 did not have a locale storage
+			$.fn.select2.locales = acf.maybe_get(window, 'jQuery.fn.select2.locales', {});
+			
+			
+			// append
+			$.fn.select2.locales[ locale ] = l10n_functions;
+			$.extend($.fn.select2.defaults, l10n_functions);
+			
+		},
+		
+		set_data: function( $select, data ){
+			
+			// v3
+			if( this.version == 3 ) {
+				
+				$select = $select.siblings('input');
+				
+			}
+			
+			
+			// set data
+			$select.select2('data', data);
+			
+		},
+		
+		append_data: function( $select, data ){
+			
+			// v3
+			if( this.version == 3 ) {
+				
+				$select = $select.siblings('input');
+				
+			}
+			
+			
+			
+			// vars
+			var current = $select.select2('data') || [];
+			
+			
+			// append
+			current.push( data );
+			
+			
+			// set data
+			$select.select2('data', current);
+			
+		},
+		
+		
 		/*
 		*  init_v3
 		*
@@ -9317,8 +9551,23 @@ var acf;
 		*  @return	args (object)
 		*/
 		
-		init_v3: function( $select, args, $field ){
-					
+		init: function( $select, args, $field ){
+			
+			// defaults
+			args = args || {};
+			$field = $field || null;
+			
+			
+			// merge
+			args = $.extend({
+				allow_null:		false,
+				placeholder:	'',
+				multiple:		false,
+				ajax:			false,
+				ajax_action:	''
+			}, args);
+			
+				
 			// vars
 			var $input = $select.siblings('input');
 			
@@ -9436,7 +9685,7 @@ var acf;
 						
 						
 						// return
-						return acf.select2.get_ajax_data(args, params, $input, $field);
+						return _select2.get_ajax_data(args, params, $input, $field);
 						
 					},
 					results: function( data, page ){
@@ -9448,13 +9697,13 @@ var acf;
 						// merge together groups
 						setTimeout(function(){
 							
-							acf.select2.merge_results_v3();
+							_select23.merge_results();
 							
 						}, 1);
 						
 						
 						// return
-						return acf.select2.get_ajax_results(data, params);
+						return _select2.get_ajax_results(data, params);
 						
 					}
 				};
@@ -9521,13 +9770,14 @@ var acf;
 				// add new data
 				if( e.added ) {
 					
-					$select.append('<option value="' + e.added.id + '">' + e.added.text + '</option>');
+					// add item
+					_select2.add_option($select, e.added.id, e.added.text);
 					
 				}
 				
 				
-				// update val
-				$select.val( e.val );
+				// select
+				_select2.select_option($select, e.val);
 				
 			});
 			
@@ -9551,7 +9801,7 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		merge_results_v3: function(){
+		merge_results: function(){
 			
 			// vars
 			var label = '',
@@ -9587,8 +9837,149 @@ var acf;
 		},
 		
 		
-		init_v4: function( $select, args, $field ){
+		/*
+		*  destroy
+		*
+		*  This function will destroy a Select2
+		*
+		*  @type	function
+		*  @date	24/12/2015
+		*  @since	5.3.2
+		*
+		*  @param	$post_id (int)
+		*  @return	$post_id (int)
+		*/
+		
+		destroy: function( $select ){
+			
+			// vars
+			var $input = $select.siblings('input');
+			
+			
+			// bail early if no select2
+			if( !$input.data('select2') ) return;
+			
+			
+			// destroy
+			$input.select2('destroy');
+			
+			
+			// enable select
+			$select.prop('disabled', false).removeClass('acf-disabled acf-hidden');
 					
+		},
+		
+		add_value: function( $select, value, label ){
+			
+			// add and select item
+			_select2.add_option($select, value, label);
+			_select2.select_option($select, value);
+			
+			
+			// vars
+			var $input = $select.siblings('input');
+			
+			
+			// new item
+			var item = {
+				'id':	value,
+				'text':	label
+			};
+			
+			
+			// single
+			if( !$select.data('multiple') ) {
+				
+				return $input.select2('data', item);
+				
+			}
+			
+			
+			// get existing value
+			var values = $input.select2('data') || [];
+			
+			
+			// append
+			values.push(item);
+			
+			
+			// set data
+			return $input.select2('data', values);
+			
+		},
+		
+		remove_value: function( $select, value ){
+			
+			// unselect option
+			_select2.unselect_option($select, value);
+			
+			
+			// vars
+			var $input = $select.siblings('input'),
+				current = $input.select2('data');
+			
+			
+			// single
+			if( !$select.data('multiple') ) {
+				
+				if( current && current.id == value ) {
+					
+					$input.select2('data', null);
+					
+				}
+			
+			// multiple	
+			} else {
+				
+				// filter
+				current = $.grep(current, function( item ) {
+				    return item.id != value;
+				});
+				
+				
+				// set data
+				$input.select2('data', current);
+				
+			}
+			
+		}
+		
+		
+	};
+	
+	
+	/*
+	*  Select2 v4
+	*
+	*  This model contains the Select2 v4 functions
+	*
+	*  @type	function
+	*  @date	28/4/17
+	*  @since	5.5.10
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	_select24 = _select2.version4 = {
+		
+		init: function( $select, args, $field ){
+			
+			// defaults
+			args = args || {};
+			$field = $field || null;
+			
+			
+			// merge
+			args = $.extend({
+				allow_null:		false,
+				placeholder:	'',
+				multiple:		false,
+				ajax:			false,
+				ajax_action:	''
+			}, args);
+			
+			
 			// vars
 			var $input = $select.siblings('input');
 			
@@ -9606,11 +9997,6 @@ var acf;
 				separator:			'||',
 				data:				[],
 				escapeMarkup:		function( m ){ return m; }
-/*
-				sorter: function (data) { console.log('sorter %o', data);
-			        return data;
-			      },
-*/
 			};
 			
 			
@@ -9621,18 +10007,13 @@ var acf;
 			// multiple
 			if( args.multiple ) {
 				
-/*
-				// vars
-				var name = $select.attr('name');
-				
-				
-				// add hidden input to each multiple selection
-				select2_args.templateSelection = function( selection ){
+				// reorder opts
+				$.each(value, function( k, item ){
 					
-					return selection.text + '<input type="hidden" class="select2-search-choice-hidden" name="' + name + '" value="' + selection.id + '" />';
-										
-				}
-*/
+					// detach and re-append to end
+					item.$el.detach().appendTo( $select );
+						
+				});
 				
 			} else {
 				
@@ -9649,20 +10030,6 @@ var acf;
 				
 			}
 			
-			
-			// get data
-			select2_args.data = this.get_data( $select );
-			
-		    
-		    // initial selection
-/*
-		    select2_args.initSelection = function( element, callback ) {
-				
-				callback( value );
-		        
-		    };
-*/
-		    
 		    
 		    // remove conflicting atts
 			if( !args.ajax ) {
@@ -9681,13 +10048,13 @@ var acf;
 					data: function( params ) {
 						
 						// return
-						return acf.select2.get_ajax_data(args, params, $select, $field);
+						return _select2.get_ajax_data(args, params, $select, $field);
 						
 					},
 					processResults: function( data, params ){
 						
 						// vars
-						var results = acf.select2.get_ajax_results(data, params);
+						var results = _select2.get_ajax_results(data, params);
 						
 						
 						// change to more
@@ -9701,7 +10068,7 @@ var acf;
 						// merge together groups
 						setTimeout(function(){
 							
-							acf.select2.merge_results_v4();
+							_select24.merge_results();
 							
 						}, 1);
 						
@@ -9713,47 +10080,94 @@ var acf;
 					
 				};
 				
-				
-				
 			}
 		    
-		
-			
-			// multiple
-/*
-			if( args.multiple ) {
-				
-
-				
-				$select.on('select2:select', function( e ){
-					
-					console.log( 'select2:select %o &o', $(this), e );
-					
-					// vars
-					var $option = $(e.params.data.element);
-					
-					
-					// move option to begining of select
-					//$(this).prepend( $option );
-					
-				});
-				
-			}
-			
-*/
-			
-
-			
-			// reorder DOM
-			// - no need to reorder, the select field is needed to $_POST values
-
 			
 			// filter for 3rd party customization
 			select2_args = acf.apply_filters( 'select2_args', select2_args, $select, args, $field );
 			
 			
 			// add select2
-			var $container = $select.select2( select2_args );
+			$select.select2( select2_args );
+			
+			
+			// get container (Select2 v4 deos not return this from constructor)
+			var $container = $select.next('.select2-container');
+			
+			
+			// reorder DOM
+			// - no need to reorder, the select field is needed to $_POST values
+			
+			
+			// multiple
+			if( args.multiple ) {
+				
+				// vars
+				var $ul = $container.find('ul');
+				
+				
+				// sortable
+				$ul.sortable({
+					
+		            stop: function( e ) {
+			            
+			            $ul.find('.select2-selection__choice').each(function() {
+				            
+				            // vars
+							var $option = $( $(this).data('data').element );
+							
+							
+							// detach and re-append to end
+							$option.detach().appendTo( $select );
+		                    
+		                    
+		                    // trigger change on input (JS error if trigger on select)
+		                    $input.trigger('change');
+		                    // update input
+		                    //_select2.sync_input_value( $input, $select );
+		                    
+		                });
+		                
+		            }
+
+				});
+				
+				
+				// on select, move to end
+				$select.on('select2:select', function( e ){
+					
+					// vars
+					var $option = $(e.params.data.element);
+					
+					
+					// detach and re-append to end
+					$option.detach().appendTo( $select );
+					
+					 
+					// trigger change
+					//$select.trigger('change');
+					
+				});
+				
+			}
+			
+			
+/*
+			// update input
+			$select.on('select2:select', function( e ){
+				
+				// update input
+	            _select2.sync_input_value( $input, $select );
+				
+			});
+			
+			$select.on('select2:unselect', function( e ){
+				
+				// update input
+	            _select2.sync_input_value( $input, $select );
+				
+			});
+*/
 			
 			
 			// clear value (allows null to be saved)
@@ -9783,7 +10197,7 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		merge_results_v4: function(){
+		merge_results: function(){
 			
 			// vars
 			var $prev_options = null,
@@ -9818,36 +10232,33 @@ var acf;
 			
 		},
 		
+		add_value: function( $select, value, label ){
+			
+			// add and select item
+			_select2.add_option($select, value, label);
+			_select2.select_option($select, value);
+			
+		},
 		
-		/*
-		*  destroy
-		*
-		*  This function will destroy a Select2
-		*
-		*  @type	function
-		*  @date	24/12/2015
-		*  @since	5.3.2
-		*
-		*  @param	$post_id (int)
-		*  @return	$post_id (int)
-		*/
+		remove_value: function( $select, value ){
+			
+			// unselect
+			_select2.unselect_option($select, value);
+			
+		},
 		
 		destroy: function( $select ){
 			
-			// remove select2 container
-			$select.siblings('.select2-container').remove();
+			// bail early if no select2
+			if( !$select.data('select2') ) return;
 			
 			
-			// show input so that select2 can correctly render visible select2 container
-			$select.siblings('input').show();
-			
-			
-			// enable select
-			$select.prop('disabled', false).removeClass('acf-disabled acf-hidden');
-			
+			// destroy
+			$select.select2('destroy');
+					
 		}
 		
-	});
+	};
 	
 	
 	/*
@@ -9865,16 +10276,19 @@ var acf;
 	
 	acf.add_select2 = function( $select, args ) {
 		
-		acf.select2.init( $select, args );
+		_select2.init( $select, args );
 
 	}
 	
 	acf.remove_select2 = function( $select ) {
 		
-		acf.select2.destroy( $select );
+		_select2.destroy( $select );
 		
 	}
-	
+
+})(jQuery);
+
+(function($){
 	
 	// select
 	acf.fields.select = acf.field.extend({
@@ -9993,7 +10407,7 @@ var acf;
 			// get options
 			this.o = this.$el.data();
 			this.o.key = this.$field.data('key');
-			this.o.text = this.$el.text();
+			this.o.text = this.$el.html();
 			
 		},
 		
@@ -11104,11 +11518,19 @@ var acf;
 				// select
 				case 'select':
 					
-					this.$el.children('input').select2('data', item);
+					//this.$el.children('input').select2('data', item);
+					
+					
+					// vars
+					var $select = this.$el.children('select');
+					acf.select2.add_value($select, term.term_id, term.term_label);
+					
+					
 					break;
 				
 				case 'multi_select':
 					
+/*
 					// vars
 					var $input = this.$el.children('input'),
 						value = $input.select2('data') || [];
@@ -11120,6 +11542,14 @@ var acf;
 					
 					// update
 					$input.select2('data', value);
+					
+					
+*/
+					// vars
+					var $select = this.$el.children('select');
+					acf.select2.add_value($select, term.term_id, term.term_label);
+					
+					
 					break;
 				
 				case 'checkbox':
@@ -12245,6 +12675,10 @@ var acf;
 			if( typeof tinymce === 'undefined' ) return;
 			
 			
+			// bail early if no tinyMCEPreInit.mceInit
+			if( typeof tinyMCEPreInit.mceInit === 'undefined' ) return;
+			
+			
 			// vars
 			var mceInit = this.get_mceInit();
 			
@@ -12279,6 +12713,10 @@ var acf;
 			
 			// bail early if no quicktags
 			if( typeof quicktags === 'undefined' ) return;
+			
+			
+			// bail early if no tinyMCEPreInit.qtInit
+			if( typeof tinyMCEPreInit.qtInit === 'undefined' ) return;
 			
 			
 			// vars
@@ -12620,7 +13058,7 @@ ed.on('ResizeEditor', function(e) {
 			
 			
 			// bail early if no tinymce
-			if( typeof tinymce === 'undefined' ) return;
+			if( !acf.isset(window,'tinymce','on') ) return;
 			
 			
 			// restore default activeEditor
@@ -12665,6 +13103,7 @@ ed.on('ResizeEditor', function(e) {
 // @codekit-prepend "../js/acf-oembed.js";
 // @codekit-prepend "../js/acf-radio.js";
 // @codekit-prepend "../js/acf-relationship.js";
+// @codekit-prepend "../js/acf-select2.js";
 // @codekit-prepend "../js/acf-select.js";
 // @codekit-prepend "../js/acf-tab.js";
 // @codekit-prepend "../js/acf-time-picker.js";

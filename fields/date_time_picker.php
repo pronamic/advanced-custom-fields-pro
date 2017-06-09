@@ -185,6 +185,13 @@ class acf_field_date_and_time_picker extends acf_field {
 		global $wp_locale;
 		
 		
+		// vars
+		$d_m_Y = date_i18n('d/m/Y g:i a');
+		$m_d_Y = date_i18n('m/d/Y g:i a');
+		$F_j_Y = date_i18n('F j, Y g:i a');
+		$Ymd = date_i18n('Y-m-d H:i:s');
+		
+		
 		// display_format
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Display Format','acf'),
@@ -193,10 +200,11 @@ class acf_field_date_and_time_picker extends acf_field {
 			'name'			=> 'display_format',
 			'other_choice'	=> 1,
 			'choices'		=> array(
-				'd/m/Y g:i a'	=> date_i18n('d/m/Y g:i a'),
-				'm/d/Y g:i a'	=> date_i18n('m/d/Y g:i a'),
-				'F j, Y g:i a'	=> date_i18n('F j, Y g:i a'),
-				'Y-m-d H:i:s'	=> date_i18n('Y-m-d H:i:s'),
+				'd/m/Y g:i a'	=> '<span>' . $d_m_Y . '</span><code>d/m/Y g:i a</code>',
+				'm/d/Y g:i a'	=> '<span>' . $m_d_Y . '</span><code>m/d/Y g:i a</code>',
+				'F j, Y g:i a'	=> '<span>' . $F_j_Y . '</span><code>F j, Y g:i a</code>',
+				'Y-m-d H:i:s'	=> '<span>' . $Ymd . '</span><code>Y-m-d H:i:s</code>',
+				'other'			=> '<span>' . __('Custom:','acf') . '</span>'
 			)
 		));
 				
@@ -209,10 +217,11 @@ class acf_field_date_and_time_picker extends acf_field {
 			'name'			=> 'return_format',
 			'other_choice'	=> 1,
 			'choices'		=> array(
-				'd/m/Y g:i a'	=> date_i18n('d/m/Y g:i a'),
-				'm/d/Y g:i a'	=> date_i18n('m/d/Y g:i a'),
-				'F j, Y g:i a'	=> date_i18n('F j, Y g:i a'),
-				'Y-m-d H:i:s'	=> date_i18n('Y-m-d H:i:s'),
+				'd/m/Y g:i a'	=> '<span>' . $d_m_Y . '</span><code>d/m/Y g:i a</code>',
+				'm/d/Y g:i a'	=> '<span>' . $m_d_Y . '</span><code>m/d/Y g:i a</code>',
+				'F j, Y g:i a'	=> '<span>' . $F_j_Y . '</span><code>F j, Y g:i a</code>',
+				'Y-m-d H:i:s'	=> '<span>' . $Ymd . '</span><code>Y-m-d H:i:s</code>',
+				'other'			=> '<span>' . __('Custom:','acf') . '</span>'
 			)
 		));
 				
