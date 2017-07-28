@@ -6,7 +6,7 @@ Tested up to: 4.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Customise WordPress with powerful, professional and intuitive fields
+Customise WordPress with powerful, professional and intuitive fields.
 
 == Description ==
 
@@ -105,6 +105,17 @@ http://support.advancedcustomfields.com/
 
 
 == Changelog ==
+
+= 5.6.0 =
+* Link field: Added new field type
+* Group field: Added new field type
+* API: Improved `have_rows()` function to work with clone and group field values
+* Core: Added new location for Menus
+* Core: Added new location for Menu Items
+* Core: Added types to Attachment location rule
+* Core: Added "Confirm Remove" tooltips
+* Core: Updated Select2 JS library to v4
+* Core: Minor fixes and improvements
 
 = 5.5.14 =
 * Core: Minor bug fixes
