@@ -29,13 +29,13 @@ class acf_pro {
 		
 
 		// includes
-		acf_include('pro/api/api-options-page.php');
-		acf_include('pro/core/updates.php');
+		acf_include('pro/options-page.php');
+		acf_include('pro/updates.php');
 		
 		if( is_admin() ) {
 			
-			acf_include('pro/admin/options-page.php');
-			acf_include('pro/admin/settings-updates.php');
+			acf_include('pro/admin/admin-options-page.php');
+			acf_include('pro/admin/admin-settings-updates.php');
 			
 		}
 		
@@ -43,6 +43,7 @@ class acf_pro {
 		// actions
 		add_action('init',										array($this, 'register_assets'));
 		add_action('acf/include_field_types',					array($this, 'include_field_types'), 5);
+		add_action('acf/include_location_rules',				array($this, 'include_location_rules'), 5);
 		add_action('acf/input/admin_enqueue_scripts',			array($this, 'input_admin_enqueue_scripts'));
 		add_action('acf/field_group/admin_enqueue_scripts',		array($this, 'field_group_admin_enqueue_scripts'));
 		
@@ -64,10 +65,30 @@ class acf_pro {
 	
 	function include_field_types() {
 		
-		acf_include('pro/fields/repeater.php');
-		acf_include('pro/fields/flexible-content.php');
-		acf_include('pro/fields/gallery.php');
-		acf_include('pro/fields/clone.php');
+		acf_include('pro/fields/class-acf-field-repeater.php');
+		acf_include('pro/fields/class-acf-field-flexible-content.php');
+		acf_include('pro/fields/class-acf-field-gallery.php');
+		acf_include('pro/fields/class-acf-field-clone.php');
+		
+	}
+	
+	
+	/*
+	*  include_location_rules
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	10/6/17
+	*  @since	5.6.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function include_location_rules() {
+		
+		acf_include('pro/locations/class-acf-location-options-page.php');
 		
 	}
 	
