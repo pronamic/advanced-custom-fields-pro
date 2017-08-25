@@ -1915,11 +1915,11 @@
 		fetch: function( id ){
 			
 			// vars
-			var data = acf.prepare_for_ajax({
+			var ajaxdata = {
 				action		: 'acf/fields/gallery/get_attachment',
 				field_key	: this.$field.data('key'),
 				id			: id
-			});
+			};
 			
 			
 			// abort XHR if this field is already loading AJAX data
@@ -1942,7 +1942,7 @@
 				
 				
 				// append
-				data.attachment = val;
+				ajaxdata.attachment = val;
 				
 			}
 			
@@ -1953,7 +1953,7 @@
 				dataType	: 'html',
 				type		: 'post',
 				cache		: false,
-				data		: data,
+				data		: acf.prepare_for_ajax(ajaxdata),
 				context		: this,
 				success		: this.fetch_success
 			});
@@ -2024,12 +2024,12 @@
 			
 			
 			// vars
-			var data = acf.prepare_for_ajax({
+			var ajaxdata = {
 				action		: 'acf/fields/gallery/get_sort_order',
 				field_key	: this.$field.data('key'),
 				ids			: [],
 				sort		: sort
-			});
+			};
 			
 			
 			// find and add attachment ids
@@ -2044,7 +2044,7 @@
 				
 				
 				// append
-				data.ids.push(id);
+				ajaxdata.ids.push(id);
 				
 			});
 			
@@ -2055,7 +2055,7 @@
 				dataType:	'json',
 				type:		'post',
 				cache:		false,
-				data:		data,
+				data:		acf.prepare_for_ajax(ajaxdata),
 				context:	this,
 				success:	this._sort_success
 			});
@@ -2105,7 +2105,7 @@
 				$edit = this.$side.find('.acf-gallery-edit'),
 				$form = this.$side.find('.acf-gallery-side-data'),
 				id = $edit.data('id'),
-				data = acf.serialize( $form );
+				ajaxdata = acf.serialize( $form );
 			
 			
 			// validate
@@ -2118,13 +2118,13 @@
 			
 			
 			// append AJAX action		
-			data.action = 'acf/fields/gallery/update_attachment';
+			ajaxdata.action = 'acf/fields/gallery/update_attachment';
 			
 			
 			// ajax
 			$.ajax({
 				url			: acf.get('ajaxurl'),
-				data		: acf.prepare_for_ajax(data),
+				data		: acf.prepare_for_ajax(ajaxdata),
 				type		: 'post',
 				dataType	: 'json',
 				complete	: function( json ){
