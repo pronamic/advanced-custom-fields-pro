@@ -420,12 +420,18 @@ html[dir="rtl"] .acf-flexible-content .layout .acf-fc-layout-controlls {
   height: 100%;
   transform: translate(50%, 50%);
 }
+html[dir="rtl"] .acf-gallery .acf-gallery-attachment .thumbnail {
+  transform: translate(-50%, 50%);
+}
 .acf-gallery .acf-gallery-attachment .thumbnail img {
   display: block;
   height: auto;
   max-height: 100%;
   width: auto;
   transform: translate(-50%, -50%);
+}
+html[dir="rtl"] .acf-gallery .acf-gallery-attachment .thumbnail img {
+  transform: translate(50%, -50%);
 }
 .acf-gallery .acf-gallery-attachment .filename {
   position: absolute;
@@ -529,6 +535,10 @@ html[dir="rtl"] .acf-gallery .acf-gallery-attachment {
   content: "";
   display: table;
 }
+html[dir="rtl"] .acf-gallery .acf-gallery-side-info {
+  margin-left: 0;
+  margin-right: -10px;
+}
 .acf-gallery .acf-gallery-side-info img {
   float: left;
   width: auto;
@@ -585,15 +595,14 @@ html[dir="rtl"] .acf-gallery .acf-gallery-side-info img {
   padding: 0 4px 8px 0 !important;
   width: auto !important;
   vertical-align: top;
-  /* rtl */
+}
+html[dir="rtl"] .acf-gallery .acf-gallery-side-data .acf-label,
+html[dir="rtl"] .acf-gallery .acf-gallery-side-data th.label {
+  padding: 0 0 8px 4px !important;
 }
 .acf-gallery .acf-gallery-side-data .acf-label label,
 .acf-gallery .acf-gallery-side-data th.label label {
   font-weight: normal;
-}
-html[dir="rtl"] .acf-gallery .acf-gallery-side-data .acf-label,
-html[dir="rtl"] .acf-gallery .acf-gallery-side-data th.label {
-  text-align: left;
 }
 .acf-gallery .acf-gallery-side-data .acf-input,
 .acf-gallery .acf-gallery-side-data td.field {

@@ -83,10 +83,6 @@ class acf_options_page {
 		));
 		
 		
-		// filter post_id
-		$page['post_id'] = acf_get_valid_post_id( $page['post_id'] );
-		
-		
 		// ACF4 compatibility
 		$migrate = array(
 			'title' 	=> 'page_title',

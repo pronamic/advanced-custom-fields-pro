@@ -1746,7 +1746,7 @@ var acf;
 			$.each(args, function(k,v){
 				
 				// object
-				if( typeof v === 'object' ) {
+				if( $.isPlainObject(v) && !$.isEmptyObject(v) ) {
 					
 					// loop
 					$.each(v, function(k2,v2){
@@ -3636,7 +3636,7 @@ var acf;
 		confirm: function( $el, callback, text, button_y, button_n ){
 			
 			// defaults
-			text = text || 'Are you sure?';
+			text = text || acf._e('are_you_sure');
 			button_y = button_y || '<a href="#" class="acf-confirm-y">'+acf._e('yes')+'</a>';
 			button_n = button_n || '<a href="#" class="acf-confirm-n">'+acf._e('No')+'</a>';
 			
