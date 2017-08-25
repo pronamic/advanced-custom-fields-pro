@@ -50,6 +50,10 @@ class acf_location_post extends acf_location {
 		$post_id = acf_maybe_get( $screen, 'post_id' );
 		
 		
+		// bail early if not post
+		if( !$post_id ) return false;
+		
+		
 		// compare
 		return $this->compare( $post_id, $rule );
 		

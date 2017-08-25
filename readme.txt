@@ -106,6 +106,9 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.6.1 =
+* Fixed an assortment of bugs found in 5.6.0
+
 = 5.6.0 =
 * Link field: Added new field type
 * Group field: Added new field type

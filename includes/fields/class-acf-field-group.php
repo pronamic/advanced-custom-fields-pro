@@ -30,6 +30,11 @@ class acf_field__group extends acf_field {
 		);
 		$this->have_rows = 'single';
 		
+		
+		// field filters
+		$this->add_field_filter('acf/prepare_field_for_export', array($this, 'prepare_field_for_export'));
+		$this->add_field_filter('acf/prepare_field_for_import', array($this, 'prepare_field_for_import'));
+		
 	}
 		
 	
@@ -532,6 +537,80 @@ class acf_field__group extends acf_field {
 		
 		// return
 		return $valid;
+		
+	}
+	
+	
+	/*
+	*  prepare_field_for_export
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	11/03/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function prepare_field_for_export( $field ) {
+		
+		// bail early if no sub fields
+		if( empty($field['sub_fields']) ) return $field;
+		
+		
+		// prepare
+		$field['sub_fields'] = acf_prepare_fields_for_export( $field['sub_fields'] );
+		
+		
+		// return
+		return $field;
+		
+	}
+	
+	
+	/*
+	*  prepare_field_for_import
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	11/03/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function prepare_field_for_import( $field ) {
+		
+		// bail early if no sub fields
+		if( empty($field['sub_fields']) ) return $field;
+		
+		
+		// vars
+		$sub_fields = $field['sub_fields'];
+		
+		
+		// reset field setting
+		$field['sub_fields'] = array();
+		
+		
+		// loop
+		foreach( $sub_fields as &$sub_field ) {
+			
+			$sub_field['parent'] = $field['key'];
+			
+		}
+		
+		
+		// merge
+		array_unshift($sub_fields, $field);
+		
+		
+		// return
+		return $sub_fields;
 		
 	}
 		

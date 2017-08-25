@@ -101,7 +101,7 @@ class acf_form_widget {
 	
 	function acf_validate_save_post() {
 		
-		// bai lealry if not widget
+		// bail ealry if not widget
 		if( !isset($_POST['_acf_widget_id']) ) return;
 		
 		

@@ -31,7 +31,7 @@ class acf_input {
 		
 		
 		// actions
-		add_action('acf/save_post', array($this, 'save_post'), 10, 2);
+		add_action('acf/save_post', array($this, 'save_post'), 10, 1);
 		
 	}
 	
@@ -263,6 +263,7 @@ class acf_input {
 			'validation_failed_1'	=> __('1 field requires attention', 'acf'),
 			'validation_failed_2'	=> __('%d fields require attention', 'acf'),
 			'restricted'			=> __('Restricted','acf'),
+			'are_you_sure'			=> __('Are you sure?','acf'),
 			'yes'					=> __('Yes','acf'),
 			'no'					=> __('No','acf'),
 			'remove'				=> __('Remove','acf'),
@@ -307,10 +308,15 @@ do_action('acf/input/admin_footer');
 	*  @return	n/a
 	*/
 	
-	function save_post( $post_id, $values ) {
+	function save_post( $post_id ) {
+		
+		// bail early if empty
+		// - post data may have be modified
+		if( empty($_POST['acf']) ) return;
+		
 		
 		// loop
-		foreach( $values as $k => $v ) {
+		foreach( $_POST['acf'] as $k => $v ) {
 			
 			// get field
 			$field = acf_get_field( $k );
@@ -488,13 +494,14 @@ function acf_form_data( $args = array() ) {
 
 function acf_save_post( $post_id = 0, $values = null ) {
 	
-	// default
-	if( $values === null )
-		$values = acf_maybe_get_POST('acf');
+	// override $_POST
+	if( $values !== null ) {
+		$_POST['acf'] = $values;
+	}
 	
-	
+		
 	// bail early if no values
-	if( empty($values) ) return false;
+	if( empty($_POST['acf']) ) return false;
 	
 	
 	// set form data
@@ -504,7 +511,7 @@ function acf_save_post( $post_id = 0, $values = null ) {
 	
 	
 	// hook for 3rd party customization
-	do_action('acf/save_post', $post_id, $values);
+	do_action('acf/save_post', $post_id);
 	
 	
 	// return
