@@ -19,7 +19,7 @@ if( $field_groups ) {
 	
 	foreach( $field_groups as $field_group ) {
 		
-		$field['choices'][ $field_group['key'] ] = $field_group['title'];
+		$field['choices'][ $field_group['key'] ] = esc_html( $field_group['title'] );
 		
 	}
 	

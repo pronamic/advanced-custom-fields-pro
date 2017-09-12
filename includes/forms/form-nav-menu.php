@@ -149,7 +149,7 @@ class acf_form_nav_menu {
 		
 		
 		// set var
-		$acf_menu = $menu_id;
+		$acf_menu = (int) $menu_id;
 		
 		
 		// include walker

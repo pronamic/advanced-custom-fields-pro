@@ -460,6 +460,46 @@ function acf_test_esc_html( $string = '' ) {
 */
 
 
+/*
+*  acf_get_file_input
+*
+*  This function will return HTML for a file input
+*
+*  @type	function
+*  @date	3/02/2014
+*  @since	5.0.0
+*
+*  @param	$atts
+*  @return	(string)
+*/
+
+function acf_get_file_input( $atts = array() ) {
+	
+	$atts['type'] = 'file';
+	return acf_get_text_input( $atts );
+	
+}
+
+
+/*
+*  acf_file_input
+*
+*  This function will output HTML for a file input
+*
+*  @type	function
+*  @date	3/02/2014
+*  @since	5.0.0
+*
+*  @param	$atts
+*  @return	n/a
+*/
+
+function acf_file_input( $atts = array() ) {
+	
+	echo acf_get_file_input( $atts );
+	
+}
+
 
 /*
 *  acf_esc_attr

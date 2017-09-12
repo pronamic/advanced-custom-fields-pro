@@ -566,7 +566,7 @@ class acf_field_taxonomy extends acf_field {
 		
 		// vars
 		$div = array(
-			'class'				=> 'acf-taxonomy-field acf-soh',
+			'class'				=> 'acf-taxonomy-field',
 			'data-save'			=> $field['save_terms'],
 			'data-type'			=> $field['field_type'],
 			'data-taxonomy'		=> $field['taxonomy']
@@ -579,7 +579,9 @@ class acf_field_taxonomy extends acf_field {
 		?>
 <div <?php acf_esc_attr_e($div); ?>>
 	<?php if( $field['add_term'] && current_user_can( $taxonomy->cap->manage_terms) ): ?>
-	<a href="#" class="acf-icon -plus acf-js-tooltip small acf-soh-target" data-name="add" title="<?php echo esc_attr($taxonomy->labels->add_new_item); ?>"></a>
+	<div class="acf-actions -hover">
+		<a href="#" class="acf-icon -plus acf-js-tooltip small" data-name="add" title="<?php echo esc_attr($taxonomy->labels->add_new_item); ?>"></a>
+	</div>
 	<?php endif;
 
 	if( $field['field_type'] == 'select' ) {
