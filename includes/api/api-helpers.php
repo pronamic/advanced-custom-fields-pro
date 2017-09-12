@@ -2476,7 +2476,7 @@ function acf_decode_choices( $string = '', $array_keys = false ) {
 *  @return	$post_id (int)
 */
 
-function acf_str_replace( $string, $search_replace ) {
+function acf_str_replace( $string = '', $search_replace = array() ) {
 	
 	// vars
 	$ignore = array();
@@ -3973,10 +3973,10 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 	
 	
 	// filter for 3rd party customization
-	$errors = apply_filters("acf/validate_attachment", $errors, $file, $attachment, $field);
-	$errors = apply_filters("acf/validate_attachment/type={$field['type']}", $errors, $file, $attachment, $field );
-	$errors = apply_filters("acf/validate_attachment/name={$field['name']}", $errors, $file, $attachment, $field );
-	$errors = apply_filters("acf/validate_attachment/key={$field['key']}", $errors, $file, $attachment, $field );
+	$errors = apply_filters("acf/validate_attachment", $errors, $file, $attachment, $field, $context);
+	$errors = apply_filters("acf/validate_attachment/type={$field['type']}", $errors, $file, $attachment, $field, $context );
+	$errors = apply_filters("acf/validate_attachment/name={$field['name']}", $errors, $file, $attachment, $field, $context );
+	$errors = apply_filters("acf/validate_attachment/key={$field['key']}", $errors, $file, $attachment, $field, $context );
 	
 	
 	// return
@@ -5090,5 +5090,40 @@ function acf_decrypt( $data = '' ) {
 	
 }
 
+
+/*
+*  acf_get_post_templates
+*
+*  This function will return an array of all post templates (including parent theme templates)
+*
+*  @type	function
+*  @date	29/8/17
+*  @since	5.6.2
+*
+*  @param	n/a
+*  @return	(array)
+*/
+
+function acf_get_post_templates() {
+	
+	// vars
+	$post_types = acf_get_post_types();
+	$post_templates = array();
+	
+	
+	// loop
+	foreach( $post_types as $post_type ) {
+		$post_templates[ $post_type ] = wp_get_theme()->get_page_templates(null, $post_type);
+	}
+	
+	
+	// remove empty templates
+	$post_templates = array_filter( $post_templates );
+	
+	
+	// return
+	return $post_templates;
+	
+}
 
 ?>

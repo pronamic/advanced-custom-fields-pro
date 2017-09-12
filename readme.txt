@@ -106,6 +106,20 @@ http://support.advancedcustomfields.com/
 
 == Changelog ==
 
+= 5.6.2 =
+* Range field: Added new field type
+* Clone field: Fixed bug causing value update issues for 'seamless' + widgets / nave menu items
+* Location: Added parent theme's post templates to 'post template' location rule
+* Location: Fixed bug causing 'nav menu' location rule to fail during AJAX (add new item)
+* Core: Fixed PHP errors in customizer when editing non ACF panels
+* Core: Fixed bug casing backslash character to break fields / field groups
+* Core: Many minor bug fixes
+* Language: Updated Romanian translation - thanks to Ionut Staicu
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Update Turkish translation - thanks to Emre Erkan
+* Language: Updated Russian translation - Thanks to Алекс Яровиков
+* Language: Updated French translation - Thanks to Julie Arrigoni
+
 = 5.6.1 =
 * Fixed an assortment of bugs found in 5.6.0
 

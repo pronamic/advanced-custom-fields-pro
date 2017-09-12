@@ -305,11 +305,9 @@ class acf_field_flexible_content extends acf_field {
 		endif; ?>
 	</div>
 	
-	<ul class="acf-actions acf-hl">
-		<li>
-			<a class="acf-button button button-primary" href="#" data-name="add-layout"><?php echo $field['button_label']; ?></a>
-		</li>
-	</ul>
+	<div class="acf-actions">
+		<a class="acf-button button button-primary" href="#" data-name="add-layout"><?php echo $field['button_label']; ?></a>
+	</div>
 	
 	<script type="text-html" class="tmpl-popup"><?php 
 		?><div class="acf-fc-popup"><ul><?php foreach( $layouts as $layout ): 
@@ -1770,7 +1768,7 @@ class acf_field_flexible_content extends acf_field {
 
 
 // initialize
-acf_register_field_type( new acf_field_flexible_content() );
+acf_register_field_type( 'acf_field_flexible_content' );
 
 endif; // class_exists check
 

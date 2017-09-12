@@ -1213,69 +1213,62 @@ function acf_update_field( $field = false, $specific = false ) {
 	
 	// serialize for DB
 	$data = maybe_serialize( $data );
-    
-    
-    // save
-    $save = array(
-    	'ID'			=> $extract['ID'],
-    	'post_status'	=> 'publish',
-    	'post_type'		=> 'acf-field',
-    	'post_title'	=> $extract['label'],
-    	'post_name'		=> $extract['key'],
-    	'post_excerpt'	=> $extract['name'],
-    	'post_content'	=> $data,
-    	'post_parent'	=> $extract['parent'],
-    	'menu_order'	=> $extract['menu_order'],
-    );
-    
-    
-    // $specific
-    if( !empty($specific) ) {
-	    
-	    // prepend ID
-    	array_unshift( $specific, 'ID' );
-    	
-    	
-	    // vars
-	    $_save = $save;
-	    
-	    
-	    // reset
-	    $save = array();
-	    
-    	
-    	// appen data
-    	foreach( $specific as $key ) {
-	    	
-	    	$save[ $key ] = $_save[ $key ];
-	    	
-    	}
-    	
-    }
-    
-    
-    // allow fields to contain the same name
+	
+	
+	// save
+	$save = array(
+		'ID'			=> $extract['ID'],
+		'post_status'	=> 'publish',
+		'post_type'		=> 'acf-field',
+		'post_title'	=> $extract['label'],
+		'post_name'		=> $extract['key'],
+		'post_excerpt'	=> $extract['name'],
+		'post_content'	=> $data,
+		'post_parent'	=> $extract['parent'],
+		'menu_order'	=> $extract['menu_order'],
+	);
+	
+	
+	// specific
+	if( acf_is_array($specific) ) {
+		 
+		// append ID
+		$specific[] = 'ID';
+		 
+		 
+		// get sub array
+		$save = acf_get_sub_array( $save, $specific );
+		
+	}
+	
+	
+	// allow fields to contain the same name
 	add_filter( 'wp_unique_post_slug', 'acf_update_field_wp_unique_post_slug', 100, 6 ); 
 	
 	
-    // update the field and update the ID
-    if( $field['ID'] ) {
-	    
-	    wp_update_post( $save );
-	    
-    } else  {
-	    
-	    $field['ID'] = wp_insert_post( $save );
-	    
-    }
-	
-    
-    // clear cache
-    acf_delete_cache("get_field/key={$field['key']}");
+	// slash data
+	// - WP expects all data to be slashed and will unslash it (fixes '\' character issues)
+	$save = wp_slash( $save );
 	
 	
-    // return
-    return $field;
+	// update the field and update the ID
+	if( $field['ID'] ) {
+		 
+		wp_update_post( $save );
+		 
+	} else	{
+		 
+		$field['ID'] = wp_insert_post( $save );
+		 
+	}
+	
+	
+	// clear cache
+	acf_delete_cache("get_field/key={$field['key']}");
+	
+	
+	// return
+	return $field;
 	
 }
 
@@ -1942,6 +1935,38 @@ function acf_maybe_get_sub_field( $selectors, $post_id = false, $strict = true )
 	
 	
 }
+
+
+/*
+*  acf_prefix_fields
+*
+*  This funtion will safely change the prefix for an array of fields
+*  Needed to allow clone field to continue working on nave menu item and widget forms
+*
+*  @type	function
+*  @date	5/9/17
+*  @since	5.6.0
+*
+*  @param	$post_id (int)
+*  @return	$post_id (int)
+*/
+
+function acf_prefix_fields( &$fields, $prefix = 'acf' ) {
+	
+	// loop
+	foreach( $fields as &$field ) {
+		
+		// replace 'acf' with $prefix
+		$field['prefix'] = substr_replace($field['prefix'], $prefix, 0, 3);
+		
+	}
+	
+	
+	// return
+	return $fields;
+	
+}
+
 
 
 ?>

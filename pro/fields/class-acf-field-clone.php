@@ -291,29 +291,11 @@ class acf_field_clone extends acf_field {
 			// - only used for parent seamless fields. Block or sub field's prefix will be overriden which also works
 			$field['prefix'] = $clone_field['prefix'] . '[' . $clone_field['key'] . ']';
 			
-				
-/*			
-			// old (removed)
-			// a seamless clone field replaces itself with it's sub fields. Because of this, the clone field doesn't exist during the 'update_value' function
-			// - because of this, the field prefix does not need to reference all clone fields, only the last one that exists (this one)
-			// modify prefix allowing clone field to save sub fields
-			// - only used for parent seamless fields. Block or sub field's prefix will be overriden which also works
-			// - allways add prefix to beginning (allows cloned clone fields to work correctly - seamless)
-
-			$pos = strpos($field['prefix'], '[');
-			$new = '[' . $clone_field['key'] . ']';
 			
+			// modify parent
+			$field['parent'] = $clone_field['parent'];
 			
-			// inject
-			if( $pos !== false ) {
-				$field['prefix'] = substr_replace($field['prefix'], $new, $pos, 0);
-			// append	
-			} else {
-				$field['prefix'] .= $new;
-			}
-			
-*/
-			
+						
 			// label_format
 			if( $clone_field['prefix_label'] ) {
 				
@@ -351,11 +333,13 @@ class acf_field_clone extends acf_field {
 		
 		// type specific
 		// note: seamless clone fields will not be triggered
+/*
 		if( $field['type'] == 'clone' ) {
 			
 			$field = $this->acf_clone_clone_field( $field, $clone_field );
 			
 		}
+*/
 		
 		
 		// return
@@ -386,8 +370,8 @@ class acf_field_clone extends acf_field {
 		// - commented out. This may not be neccessary due to new line 315
 		if( $field['prefix_name'] ) {
 			
-			$clone_field['name'] = $field['_name'];
-			$clone_field['_name'] = $field['_name'];
+			//$field['name'] = $clone_field['_name'];
+			//$field['_name'] = $clone_field['_name'];
 			
 		}
 		
@@ -400,7 +384,7 @@ class acf_field_clone extends acf_field {
 		foreach( $field['sub_fields'] as &$sub_field ) {
 			
 			// clone
-			$sub_field = acf_clone_field( $sub_field, $clone_field );
+			$sub_field = acf_clone_field( $sub_field, $field );
 			
 		}
 		
@@ -456,7 +440,6 @@ class acf_field_clone extends acf_field {
 			$sub_field['name'] = $prefix . $sub_field['name'];
 			
 		}
-		
 		
 		// return
 		return $field;
@@ -1272,11 +1255,13 @@ class acf_field_clone extends acf_field {
 	function acf_prepare_field( $field ) {
 		
 		// bail ealry if not cloned
-		if( empty($field['__key']) ) return $field;
+		if( empty($field['_clone']) ) return $field;
 		
 		
-		// restore
-		$field['key'] = $field['__key'];
+		// restore key
+		if( isset($field['__key']) ) {
+			$field['key'] = $field['__key'];
+		}
 		
 		
 		// return
