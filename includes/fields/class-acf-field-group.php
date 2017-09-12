@@ -102,7 +102,7 @@ class acf_field__group extends acf_field {
 		
 		
 		// loop
-		foreach( $field['sub_fields'] as &$sub_field ) {
+		foreach( $field['sub_fields'] as $sub_field ) {
 			
 			// load
 			$value[ $sub_field['key'] ] = acf_get_value( $post_id, $sub_field );
@@ -196,7 +196,7 @@ class acf_field__group extends acf_field {
 		
 		
 		// loop
-		foreach( $field['sub_fields'] as &$sub_field ) {
+		foreach( $field['sub_fields'] as $sub_field ) {
 			
 			// vars
 			$v = false;

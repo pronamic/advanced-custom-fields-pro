@@ -7,7 +7,7 @@ if( ! class_exists('acf_updates') ) :
 class acf_updates {
 	
 	// vars
-	var $version = '2.0',
+	var $version = '2.1',
 		$plugins = array(),
 		$updates = false,
 		$dev = 0;
@@ -191,6 +191,12 @@ class acf_updates {
 		
 		// connect
 		$response = $this->request('v2/plugins/get-info?p='.$id);
+		
+		
+		// ensure response is expected JSON array (not string)
+		if( is_string($response) ) {
+			$response = new WP_Error( 'server_error', esc_html($response) );
+		}
 		
 		
 		// update transient

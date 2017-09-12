@@ -236,7 +236,7 @@ class acf_field_wysiwyg extends acf_field {
 
 ?>
 <script type="text/javascript">
-	if( acf ) acf.fields.wysiwyg.toolbars = <?php echo json_encode($json); ?>;
+	if( acf ) acf.tinymce.toolbars = <?php echo json_encode($json); ?>;
 </script>
 <?php
 	

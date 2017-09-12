@@ -177,9 +177,8 @@ img.acf-fw {
   color: #fff;
   padding: 5px 10px;
   position: absolute;
-  z-index: 999999;
   font-size: 12px;
-  z-index: 998;
+  z-index: 900000;
   /* tip */
   /* positions */
 }
@@ -232,7 +231,7 @@ img.acf-fw {
 }
 /* confirm */
 .acf-tooltip.-confirm {
-  z-index: 999;
+  z-index: 900001;
 }
 .acf-tooltip.-confirm a {
   text-decoration: none;
@@ -937,7 +936,7 @@ html[dir="rtl"] .acf-columns-2 .acf-column-2 {
 *--------------------------------------------------------------------------------------------*/
 #acf-popup {
   position: fixed;
-  z-index: 999999;
+  z-index: 900000;
   top: 0;
   left: 0;
   right: 0;
@@ -1096,15 +1095,16 @@ html[dir="rtl"] #acf-popup .title .acf-icon {
 *
 *--------------------------------------------------------------------------------------------*/
 .acf-hl[data-cols] {
-  margin-left: -8px;
-  margin-right: -8px;
+  margin-left: -10px;
+  margin-right: -10px;
 }
 .acf-hl[data-cols] > li {
-  padding: 0 8px;
+  padding: 0 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+/* sizes */
 .acf-hl[data-cols="2"] > li {
   width: 50%;
 }
@@ -1114,14 +1114,51 @@ html[dir="rtl"] #acf-popup .title .acf-icon {
 .acf-hl[data-cols="4"] > li {
   width: 25%;
 }
+/* mobile */
+@media screen and (max-width: 782px) {
+  .acf-hl[data-cols] {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: -10px;
+  }
+  .acf-hl[data-cols] > li {
+    width: 100% !important;
+    padding: 10px 0 0;
+  }
+}
 /*--------------------------------------------------------------------------------------------
 *
 *	misc
 *
 *--------------------------------------------------------------------------------------------*/
-.acf-actions li {
+.acf-actions {
+  text-align: right;
+  z-index: 1;
+  /* hover */
+  /* rtl */
+}
+.acf-actions a {
+  margin-left: 4px;
+}
+.acf-actions.-hover {
+  position: absolute;
+  display: none;
+  top: 0;
+  right: 0;
+  padding: 5px;
+}
+html[dir="rtl"] .acf-actions a {
+  margin-left: 0;
+  margin-right: 4px;
+}
+html[dir="rtl"] .acf-actions.-hover {
+  right: auto;
+  left: 0;
+}
+/* ul compatibility */
+ul.acf-actions li {
   float: right;
-  margin-left: 5px;
+  margin-left: 4px;
 }
 /*--------------------------------------------------------------------------------------------
 *
