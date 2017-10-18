@@ -538,7 +538,7 @@ function acf_nonce_input( $nonce = '' ) {
 function acf_extract_var( &$array, $key, $default = null ) {
 	
 	// check if exists
-	if( is_array($array) && array_key_exists($key, $array) ) {
+	if( is_array($array) && isset($array[ $key ]) ) {
 		
 		// store value
 		$v = $array[ $key ];

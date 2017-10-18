@@ -1,8 +1,8 @@
 === Advanced Custom Fields Pro ===
 Contributors: elliotcondon
-Tags: acf, advanced, custom, field, fields, custom field, custom fields, simple fields, magic fields, more fields, repeater, edit
+Tags: acf, advanced, custom, field, fields, form, repeater, content
 Requires at least: 3.6.0
-Tested up to: 4.8.0
+Tested up to: 4.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -10,101 +10,74 @@ Customise WordPress with powerful, professional and intuitive fields.
 
 == Description ==
 
-Advanced Custom Fields is the perfect solution for any WordPress website which needs more flexible data like other Content Management Systems. 
+Use the Advanced Custom Fields plugin to take full control of your WordPress edit screens & custom field data.
 
-* Visually create your Fields
-* Select from multiple input types (text, textarea, wysiwyg, image, file, page link, post object, relationship, select, checkbox, radio buttons, date picker, true / false, repeater, flexible content, gallery and more to come!)
-* Assign your fields to multiple edit pages (via custom location rules)
-* Easily load data through a simple and friendly API
-* Uses the native WordPress custom post type for ease of use and fast processing
-* Uses the native WordPress metadata for ease of use and fast processing
+**Add fields on demand.** Our field builder allows you to quickly and easily add fields to WP edit screens with only the click of a few buttons!
 
-= Field Types =
-* Text (type text, api returns text)
-* Text Area (type text, api returns text)
-* Number (type number, api returns integer)
-* Email (type email, api returns text)
-* Password (type password, api returns text)
-* WYSIWYG (a WordPress wysiwyg editor, api returns html)
-* Image (upload an image, api returns the url)
-* File (upload a file, api returns the url)
-* Select (drop down list of choices, api returns chosen item)
-* Checkbox (tickbox list of choices, api returns array of choices)
-* Radio Buttons ( radio button list of choices, api returns chosen item)
-* True / False (tick box with message, api returns true or false)
-* Page Link (select 1 or more page, post or custom post types, api returns the selected url)
-* Post Object (select 1 or more page, post or custom post types, api returns the selected post objects)
-* Relationship (search, select and order post objects with a tidy interface, api returns the selected post objects)
-* Taxonomy (select taxonomy terms with options to load, display and save, api returns the selected term objects)
-* User (select 1 or more WP users, api returns the selected user objects)
-* Google Maps (interactive map, api returns lat,lng,address data)
-* Date Picker (jquery date picker, options for format, api returns string)
-* Color Picker (WP color swatch picker)
-* Tab (Group fields into tabs)
-* Message (Render custom messages into the fields)
-* Repeater (ability to create repeatable blocks of fields!)
-* Flexible Content (ability to create flexible blocks of fields!)
-* Gallery (Add, edit and order multiple images in 1 simple field)
-* [Custom](https://www.advancedcustomfields.com/resources/tutorials/creating-a-new-field-type/) (Create your own field type!)
+**Add them anywhere.** Fields can be added all over WP including posts, users, taxonomy terms, media, comments and even custom options pages!
 
-= Tested on =
-* Mac Firefox 	:)
-* Mac Safari 	:)
-* Mac Chrome	:)
-* PC Safari 	:)
-* PC Chrome		:)
-* PC Firefox	:)
-* iPhone Safari :)
-* iPad Safari 	:)
-* PC ie7		:S
+**Show them everywhere.** Load and display your custom field values in any theme template file with our hassle free developer friendly functions!
 
-= Website =
-https://www.advancedcustomfields.com/
+= Features =
+* Simple & Intuitive
+* Powerful Functions
+* Over 30 Field Types
+* Extensive Documentation
+* Millions of Users
 
-= Documentation =
-* [Getting Started](https://www.advancedcustomfields.com/resources/#getting-started)
-* [Field Types](https://www.advancedcustomfields.com/resources/#field-types)
-* [Functions](https://www.advancedcustomfields.com/resources/#functions)
-* [Actions](https://www.advancedcustomfields.com/resources/#actions)
-* [Filters](https://www.advancedcustomfields.com/resources/#filters)
-* [How to guides](https://www.advancedcustomfields.com/resources/#how-to)
-* [Tutorials](https://www.advancedcustomfields.com/resources/#tutorials)
+= Links =
+* [Website](https://www.advancedcustomfields.com)
+* [Documentation](https://www.advancedcustomfields.com/resources/)
+* [Support](https://support.advancedcustomfields.com)
+* [ACF PRO](https://www.advancedcustomfields.com/resources/pro/)
 
-= Bug Submission and Forum Support =
-http://support.advancedcustomfields.com/
-
-= Please Vote and Enjoy =
-Your votes really make a difference! Thanks.
+= PRO =
+The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility! [Learn more](https://www.advancedcustomfields.com/resources/pro/)
 
 
 == Installation ==
 
-1. Upload 'advanced-custom-fields' to the '/wp-content/plugins/' directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Click on the new menu item "Custom Fields" and create your first Custom Field Group!
-4. Your custom field group will now appear on the page / post / template you specified in the field group's location rules!
-5. Read the documentation to display your data: 
+From your WordPress dashboard
+
+1. **Visit** Plugins > Add New
+2. **Search** for "Advanced Custom Fields"
+3. **Activate** Advanced Custom Fields from your Plugins page
+4. **Click** on the new menu item "Custom Fields" and create your first Custom Field Group!
+5. **Read** the documentation to [get started](https://www.advancedcustomfields.com/resources/getting-started-with-acf/)
 
 
 == Frequently Asked Questions ==
 
-= Q. I have a question =
-A. Chances are, someone else has asked it. Check out the support forum at: 
-http://support.advancedcustomfields.com/
+= What kind of support do you provide? =
+
+**Help Desk.** Support is currently provided via our email help desk. Questions are generally answered within 24 hours, with the exception of weekends and holidays. We answer questions related to ACF, it’s usage and provide minor customization guidance. We cannot guarantee support for questions which include custom theme code, or 3rd party plugin conflicts & compatibility. [Open a Support Ticket](http://support.advancedcustomfields.com/new-ticket/)
+
+**Support Forums.** Our Community Forums provide a great resource for searching and finding previously answered and asked support questions. You may create a new thread on these forums, however, it is not guaranteed that you will receive an answer from our support team. This is more of an area for developers to talk to one another, post ideas, plugins and provide basic help. [View the Support Forum](http://support.advancedcustomfields.com)
 
 
 == Screenshots ==
 
-1. Creating the Advanced Custom Fields
+1. Simple & Intuitive
 
-2. Adding the Custom Fields to a page and hiding the default meta boxes
+2. Made for developers
 
-3. The Page edit screen after creating the Advanced Custom Fields
-
-4. Simple and intuitive API. Read the documentation at: https://www.advancedcustomfields.com/resources/
+3. All about fields
 
 
 == Changelog ==
+
+= 5.6.3 =
+* Button Group field: Added new field type
+* Range field: Added missing 'step' attribute to number input
+* Range field: Added width to number input based on max setting
+* Basic fields: Added missing 'required' attribute to inputs
+* Basic fields: Removed empty attributes from inputs
+* API: Fixed `get_fields()` bug ignoring fields starting with an underscore
+* Core: Minor fixes and improvements
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+* Language: Updated French translation - thanks to Maxime Bernard-Jacquet
+* Language: Updated Finnish translation - thanks to Sauli Rajala
+* Language: Updated German translation - thanks to Ralf Koller
 
 = 5.6.2 =
 * Range field: Added new field type

@@ -2288,6 +2288,39 @@ var acf;
 		},
 		
 		
+		/**
+		*  esc_html
+		*
+		*  This function will escape HTML characters for safe use
+		*
+		*  @source	https://stackoverflow.com/questions/24816/escaping-html-strings-with-jquery
+		*  @date	20/9/17
+		*  @since	5.6.3
+		*
+		*  @param	n/a
+		*  @return	n/a
+		*/
+		
+		esc_html: function( string ){
+			
+			var entityMap = {
+			  '&': '&amp;',
+			  '<': '&lt;',
+			  '>': '&gt;',
+			  '"': '&quot;',
+			  "'": '&#39;',
+			  '/': '&#x2F;',
+			  '`': '&#x60;',
+			  '=': '&#x3D;'
+			};
+			
+			return String(string).replace(/[&<>"'`=\/]/g, function (s) {
+				return entityMap[s];
+			});
+
+		},
+		
+		
 		/*
 		*  render_select
 		*
@@ -2344,7 +2377,7 @@ var acf;
 				
 				
 				// append select
-				$optgroup.append( '<option value="' + item.value + '">' + item.label + '</option>' );
+				$optgroup.append( '<option value="' + item.value + '">' + acf.esc_html(item.label) + '</option>' );
 				
 				
 				// selectedIndex
@@ -4388,6 +4421,65 @@ var acf;
 
 (function($){
 	
+	acf.fields.button_group = acf.field.extend({
+		
+		type: 'button_group',
+		$div: null,
+		
+		events: {
+			'click input[type="radio"]': 'click'
+		},
+		
+		focus: function(){
+			
+			// focus on $select
+			this.$div = this.$field.find('.acf-button-group');
+			
+			
+			// get options
+			this.o = acf.get_data(this.$div, {
+				allow_null: 0
+			});
+			
+		},
+		
+		click: function( e ){
+			
+			// vars
+			var $radio = e.$el;
+			var $label = $radio.parent('label');
+			var selected = $label.hasClass('selected');
+				
+				
+			// remove previous selected
+			this.$div.find('.selected').removeClass('selected');
+				
+			
+			// add active class
+			$label.addClass('selected');
+			
+			
+			// allow null
+			if( this.o.allow_null && selected ) {
+				
+				// unselect
+				e.$el.prop('checked', false);
+				$label.removeClass('selected');
+				
+				
+				// trigger change
+				e.$el.trigger('change');
+				
+			}
+			
+		}
+		
+	});	
+
+})(jQuery);
+
+(function($){
+	
 	acf.fields.checkbox = acf.field.extend({
 		
 		type: 'checkbox',
@@ -5023,7 +5115,7 @@ var acf;
 			
 			
 			// input with :checked
-			if( type == 'true_false' || type == 'checkbox' || type == 'radio' ) {
+			if( type == 'true_false' || type == 'checkbox' || type == 'radio' || type == 'button_group' ) {
 				
 				match = this.calculate_checkbox( rule, $trigger );
 	        
@@ -11826,7 +11918,11 @@ var acf;
 			
 			
 			// get options
-			this.o = acf.get_data( this.$el );
+			this.o = acf.get_data(this.$el, {
+				save: '',
+				type: '',
+				taxonomy: ''
+			});
 			
 			
 			// extra
@@ -12331,7 +12427,7 @@ var acf;
 		ready: function( $el ){
 			
 			// reference
-			$el.find('.acf-field input').filter('[type="number"], [type="email"], [type="url"]').on('invalid', function( e ){
+			$el.find('.acf-field input').on('invalid', function( e ){
 				
 				// prvent defual
 				// fixes chrome bug where 'hidden-by-tab' field throws focus error
@@ -13767,6 +13863,7 @@ var acf;
 // @codekit-prepend "../js/event-manager.js";
 // @codekit-prepend "../js/acf.js";
 // @codekit-prepend "../js/acf-ajax.js";
+// @codekit-prepend "../js/acf-button-group.js";
 // @codekit-prepend "../js/acf-checkbox.js";
 // @codekit-prepend "../js/acf-color-picker.js";
 // @codekit-prepend "../js/acf-conditional-logic.js";

@@ -333,13 +333,11 @@ class acf_field_clone extends acf_field {
 		
 		// type specific
 		// note: seamless clone fields will not be triggered
-/*
 		if( $field['type'] == 'clone' ) {
 			
 			$field = $this->acf_clone_clone_field( $field, $clone_field );
 			
 		}
-*/
 		
 		
 		// return
@@ -352,7 +350,8 @@ class acf_field_clone extends acf_field {
 	*  acf_clone_clone_field
 	*
 	*  This function is run when cloning a clone field
-	*  Important to run the acf_clone_field function on sub fields to pass on settings such as 'parent_layout' 
+	*  Important to run the acf_clone_field function on sub fields to pass on settings such as 'parent_layout'
+	*  Do not delete! Removing this logic causes major issues with cloned clone fields within a flexible content layout.
 	*
 	*  @type	function
 	*  @date	28/06/2016
@@ -365,13 +364,15 @@ class acf_field_clone extends acf_field {
 	
 	function acf_clone_clone_field( $field, $clone_field ) {
 		
+		// modify the $clone_field name
+		// This seems odd, however, the $clone_field is later passed into the acf_clone_field() function
+		// Do not delete! 
 		// when cloning a clone field, it is important to also change the _name too
 		// this allows sub clone fields to appear correctly in get_row() row array
-		// - commented out. This may not be neccessary due to new line 315
 		if( $field['prefix_name'] ) {
 			
-			//$field['name'] = $clone_field['_name'];
-			//$field['_name'] = $clone_field['_name'];
+			$clone_field['name'] = $field['_name'];
+			$clone_field['_name'] = $field['_name'];
 			
 		}
 		
@@ -384,7 +385,7 @@ class acf_field_clone extends acf_field {
 		foreach( $field['sub_fields'] as &$sub_field ) {
 			
 			// clone
-			$sub_field = acf_clone_field( $sub_field, $field );
+			$sub_field = acf_clone_field( $sub_field, $clone_field );
 			
 		}
 		
