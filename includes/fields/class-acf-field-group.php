@@ -342,11 +342,11 @@ class acf_field__group extends acf_field {
 	function render_field_block( $field ) {
 		
 		// vars
-		$label_placement = $field['layout'] == 'block' ? 'top' : 'left';
+		$label_placement = ($field['layout'] == 'block') ? 'top' : 'left';
 		
 		
 		// html
-		echo '<div class="acf-fields -'.$label_placement.' -border">';
+		echo '<div class="acf-fields -' . $label_placement . ' -border">';
 			
 		foreach( $field['sub_fields'] as $sub_field ) {
 			
@@ -407,10 +407,8 @@ class acf_field__group extends acf_field {
 				
 			?>
 			<th <?php acf_esc_attr_e( $atts ); ?>>
-				<?php echo acf_get_field_label( $sub_field ); ?>
-				<?php if( $sub_field['instructions'] ): ?>
-					<p class="description"><?php echo $sub_field['instructions']; ?></p>
-				<?php endif; ?>
+				<?php acf_the_field_wrap_label( $sub_field ); ?>
+				<?php acf_the_field_wrap_instructions( $sub_field ); ?>
 			</th>
 		<?php endforeach; ?>
 		</tr>
@@ -458,8 +456,7 @@ class acf_field__group extends acf_field {
 		
 		?><tr class="acf-field acf-field-setting-sub_fields" data-setting="group" data-name="sub_fields">
 			<td class="acf-label">
-				<label><?php _e("Sub Fields",'acf'); ?></label>
-				<p class="description"></p>		
+				<label><?php _e("Sub Fields",'acf'); ?></label>	
 			</td>
 			<td class="acf-input">
 				<?php 

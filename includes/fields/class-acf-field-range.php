@@ -52,7 +52,7 @@ class acf_field_range extends acf_field_number {
 		// vars
 		$atts = array();
 		$keys = array( 'type', 'id', 'class', 'name', 'value', 'min', 'max', 'step' );
-		$keys2 = array( 'readonly', 'disabled' );
+		$keys2 = array( 'readonly', 'disabled', 'required' );
 		$html = '';
 		
 		
@@ -71,16 +71,20 @@ class acf_field_range extends acf_field_number {
 		}
 		
 		
-		// atts
+		// atts (value="123")
 		foreach( $keys as $k ) {
 			if( isset($field[ $k ]) ) $atts[ $k ] = $field[ $k ];
 		}
 		
 		
-		// atts2
+		// atts2 (disabled="disabled")
 		foreach( $keys2 as $k ) {
 			if( !empty($field[ $k ]) ) $atts[ $k ] = $k;
 		}
+		
+		
+		// remove empty atts
+		$atts = acf_clean_atts( $atts );
 		
 		
 		// open
@@ -98,10 +102,13 @@ class acf_field_range extends acf_field_number {
 			
 			
 			// input
+			$len = strlen( (string) $field['max'] );
 			$html .= acf_get_text_input(array(
 				'type'	=> 'number', 
 				'id'	=> $atts['id'] . '-alt', 
-				'value'	=> $atts['value']
+				'value'	=> $atts['value'],
+				'step'	=> $atts['step'],
+				'style'	=> 'width: ' . (1.8 + $len*0.7) . 'em;'
 			));
 			
 			
