@@ -510,14 +510,17 @@ function acf_render_field_wrap( $field, $el = 'div', $instruction = 'label' ) {
 	?>
 <<?php echo $el; ?> <?php acf_esc_attr_e($wrapper); ?>>
 	<?php if( $show_label ): ?>
-	<<?php echo $el2; ?> class="acf-label">
-		<?php acf_the_field_wrap_label( $field ); ?>
-		<?php if( $instruction == 'label' ) acf_the_field_wrap_instructions( $field ); ?>
-	</<?php echo $el2; ?>>
+	<<?php echo $el2; ?> class="acf-label"><?php
+		
+		acf_render_field_label( $field );
+		
+		if( $instruction == 'label' ) acf_render_field_instructions( $field );
+	
+	?></<?php echo $el2; ?>>
 	<?php endif; ?>
 	<<?php echo $el2; ?> class="acf-input">
 		<?php acf_render_field( $field ); ?>
-		<?php if( $instruction == 'field' ) acf_the_field_wrap_instructions( $field ); ?>
+		<?php if( $instruction == 'field' ) acf_render_field_instructions( $field ); ?>
 		<?php if( !empty($field['conditional_logic']) ): ?>
 		<script type="text/javascript">
 			if( typeof acf !== 'undefined' ) { 
@@ -533,7 +536,7 @@ function acf_render_field_wrap( $field, $el = 'div', $instruction = 'label' ) {
 
 
 /**
-*  acf_render_field_wrap_label
+*  acf_render_field_label
 *
 *  This function will maybe output the field's label
 *
@@ -544,7 +547,7 @@ function acf_render_field_wrap( $field, $el = 'div', $instruction = 'label' ) {
 *  @return	n/a
 */
 
-function acf_the_field_wrap_label( $field ) {
+function acf_render_field_label( $field ) {
 	
 	// vars
 	$label = acf_get_field_label( $field );
@@ -552,16 +555,20 @@ function acf_the_field_wrap_label( $field ) {
 	
 	// check
 	if( $label ) {
-		
 		echo '<label' . ($field['id'] ? ' for="' . esc_attr($field['id']) . '"' : '' ) . '>' . acf_esc_html($label) . '</label>';
-		
 	}
 	
 }
 
 
+/* depreciated since 5.6.5 */
+function acf_render_field_wrap_label( $field ) {
+	acf_render_field_label( $field );
+}
+
+
 /**
-*  acf_render_field_wrap_description
+*  acf_render_field_instructions
 *
 *  This function will maybe output the field's instructions
 *
@@ -572,7 +579,7 @@ function acf_the_field_wrap_label( $field ) {
 *  @return	n/a
 */
 
-function acf_the_field_wrap_instructions( $field ) {
+function acf_render_field_instructions( $field ) {
 	
 	// vars
 	$instructions = $field['instructions'];
@@ -580,11 +587,15 @@ function acf_the_field_wrap_instructions( $field ) {
 	
 	// check
 	if( $instructions ) {
-		
 		echo '<p class="description">' . acf_esc_html($instructions) . '</p>';
-		
 	}
 	
+}
+
+
+/* depreciated since 5.6.5 */
+function acf_render_field_wrap_description( $field ) {
+	acf_render_field_instructions( $field );
 }
 
 
@@ -2009,7 +2020,5 @@ function acf_prefix_fields( &$fields, $prefix = 'acf' ) {
 	return $fields;
 	
 }
-
-
 
 ?>

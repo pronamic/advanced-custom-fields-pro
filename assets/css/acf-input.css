@@ -45,6 +45,9 @@
   margin: 0 0 3px;
   padding: 0;
 }
+.acf-field .acf-label:empty {
+  margin-bottom: 0;
+}
 .acf-field .acf-input {
   vertical-align: top;
 }
@@ -219,7 +222,7 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
 }
 /* left */
 .acf-fields.-clear.-left > .acf-field > .acf-label {
-  padding-right: 24px;
+  padding-right: 12px * 2;
 }
 /*--------------------------------------------------------------------------------------------
 *
@@ -280,8 +283,7 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
 .acf-postbox.seamless > .inside {
   display: block !important;
   /* stop metabox from hiding when closed */
-  margin-left: -12px !important;
-  margin-right: -12px !important;
+  margin: -12px !important;
 }
 .acf-postbox.seamless > .acf-fields > .acf-field {
   border: 0 none !important;
@@ -700,7 +702,7 @@ html[dir="rtl"] .select2-container.-acf .select2-choice .select2-arrow {
 *---------------------------------------------------------------------------------------------*/
 ul.acf-radio-list,
 ul.acf-checkbox-list {
-  background: transparent !important;
+  background: transparent;
   position: relative;
   padding: 1px;
   margin: 0;
@@ -1208,6 +1210,13 @@ html[dir="rtl"] .acf-relationship .selection .values .acf-icon {
 }
 .acf-relationship .selection .values .acf-rel-item b {
   text-decoration: none;
+}
+/* menu item fix */
+.menu-item .acf-relationship ul {
+  width: auto;
+}
+.menu-item .acf-relationship li {
+  display: block;
 }
 /*--------------------------------------------------------------------------
 *

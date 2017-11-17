@@ -3675,6 +3675,38 @@ var acf;
 			
 		},
 		
+		temp: function( text, $el ){
+			
+			// tooltip
+			var $el = this.tooltip( text, $el );
+			var time = 0;
+			
+			
+			// wait 250
+			time += 250;
+			
+			
+			// add class
+			setTimeout(function(){
+				
+				$el.addClass('acf-fade-up');
+				
+			}, time);
+			
+			
+			// wait 250
+			time += 250;
+			
+			
+			// remove
+			setTimeout(function(){
+				
+				$el.remove();
+				
+			}, time);
+			
+		},
+		
 		confirm: function( $el, callback, text, button_y, button_n ){
 			
 			// defaults
@@ -3876,6 +3908,118 @@ var acf;
 			
 		}
 		
+	});
+	
+	
+	/**
+	*  panel
+	*
+	*  This model handles .acf-panel JS
+	*
+	*  @date	21/10/17
+	*  @since	5.6.3
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var acf_panel = acf.model.extend({
+		
+		events: {
+			'click .acf-panel-title': '_click',
+		},
+		
+		_click: function( e ){
+			
+			// prevent Defailt
+			e.preventDefault();
+			
+			
+			// open close
+			this.toggle( e.$el.parent() );
+			
+		},
+		
+		is_open: function( $el ) {
+			return $el.hasClass('-open');
+		},
+		
+		toggle: function( $el ){
+			
+			// is open
+			if( this.is_open($el) ) {
+				this.close( $el );
+			} else {
+				this.open( $el );
+			}
+			
+		},
+		
+		open: function( $el ){
+			$el.addClass('-open');
+			$el.find('.acf-panel-title i').attr('class', 'dashicons dashicons-arrow-down');
+		},
+		
+		close: function( $el ){
+			$el.removeClass('-open');
+			$el.find('.acf-panel-title i').attr('class', 'dashicons dashicons-arrow-right');
+		}
+				 
+	});
+	
+	
+	/**
+	*  acf_h2_notice
+	*
+	*  This model will move the .acf-notice element quickly without the WP flicker
+	*
+	*  @date	21/10/17
+	*  @since	5.6.3
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	acf.notice = acf.model.extend({
+		
+		actions: {
+			'prepare': 'prepare',
+		},
+		
+		prepare: function(){
+			
+			// vars
+			var $notice = $('.acf-notice');
+			
+			
+			// move
+			if( $notice.length ) {
+				$('h1:first').after( $notice );
+			}
+			
+		},
+		
+		html: function( text, type ){
+			
+		},
+		
+		success: function( text ){
+			
+			
+		},
+		
+		error: function( text ){
+			
+		},
+		
+		warning: function( text ){
+			
+		},
+		
+		information: function( text ){
+			
+		}
+				 
 	});
 			
 	
@@ -11498,24 +11642,20 @@ var acf;
 		active: 1,
 		
 		actions: {
-			'add_field_error': 'add_field_error'
+			'invalid_field': 'invalid_field',
 		},
 		
-		add_field_error: function( $field ){
+		invalid_field: function( $field ){
 			
 			// bail early if already focused
 			if( !this.active ) {
-				
 				return;
-				
 			}
 			
 			
 			// bail early if not hidden by tab
 			if( !$field.hasClass('hidden-by-tab') ) {
-				
 				return;
-				
 			}
 			
 			
@@ -12426,23 +12566,51 @@ var acf;
 		
 		ready: function( $el ){
 			
+			// vars
+			var $inputs = $('.acf-field input, .acf-field textarea, .acf-field select');
+			
+			
+			// bail early if no inputs
+			if( !$inputs.length ) return;
+			
+			
 			// reference
-			$el.find('.acf-field input').on('invalid', function( e ){
+			var self = this;
+			
+			
+			// event
+			$inputs.on('invalid', function( e ){
 				
-				// prvent defual
-				// fixes chrome bug where 'hidden-by-tab' field throws focus error
+				// vars
+				var $input = $(this);
+				var $field = acf.get_field_wrap( $input );
+				
+				
+				// action
+				acf.do_action('invalid', $input);
+				acf.do_action('invalid_field', $field);
+				
+				
+				// save draft (ignore validation)
+				if( acf.validation.ignore ) return;
+				
+				
+				// prevent default
+				// - prevents browser error message
+				// - also fixes chrome bug where 'hidden-by-tab' field throws focus error
 				e.preventDefault();
 				
 				
 				// append to errors
 				acf.validation.errors.push({
-					input: $(this).attr('name'),
+					input: $input.attr('name'),
 					message: e.target.validationMessage
 				});
 				
 				
-				// run validation
-				acf.validation.fetch( $(this).closest('form') );
+				// invalid event has prevented the form from submitting
+				// trigger acf validation fetch (safe to call multiple times)
+				acf.validation.fetch( $input.closest('form') );
 			
 			});
 			
@@ -12560,9 +12728,65 @@ var acf;
 		
 		click_ignore: function( e ) {
 			
+			// reference
+			var self = this;
+			
+			
+			// vars
 			this.ignore = 1;
 			this.$trigger = e.$el;
+			this.$form = e.$el.closest('form');
 			
+			
+			// remove error message
+			$('.'+this.message_class).each(function(){
+				acf.remove_el( $(this) );
+			});
+			
+			
+			// ignore required inputs
+			this.ignore_required_inputs();
+			
+			
+			// maybe show errors
+			setTimeout(function(){
+				self.ignore = 0;
+			}, 100);
+			
+		},
+		
+		
+		/**
+		*  ignore_required_inputs
+		*
+		*  This function will temporarily remove the 'required' attribute from all ACF inputs
+		*
+		*  @date	23/10/17
+		*  @since	5.6.3
+		*
+		*  @param	n/a
+		*  @return	n/a
+		*/
+		
+		ignore_required_inputs: function(){
+			
+			// vars
+			var $inputs = $('.acf-field input[required], .acf-field textarea[required], .acf-field select[required]');
+			
+			
+			// bail early if no inputs
+			if( !$inputs.length ) return;
+			
+			
+			// remove required
+			$inputs.prop('required', false);
+			
+			
+			// timeout
+			setTimeout(function(){
+				$inputs.prop('required', true);
+			}, 100);
+				
 		},
 		
 		
@@ -12837,8 +13061,6 @@ var acf;
 			if( !this.valid ) return;
 			
 			
-			
-			
 			// update ignore (allow form submit to not run validation)
 			this.ignore = 1;
 				
@@ -12936,95 +13158,97 @@ var acf;
 			this.$trigger = null;
 			
 			
+			// display errors
+			this.display_errors( json.errors, $form );
+			
+		},
+		
+		
+		/**
+		*  display_errors
+		*
+		*  This function will display errors
+		*
+		*  @date	23/10/17
+		*  @since	5.6.3
+		*
+		*  @param	array errors
+		*  @return	n/a
+		*/
+		
+		display_errors: function( errors, $form ){
+			
+			// bail early if no errors
+			if( !errors || !errors.length ) return;
+			
+			
 			// vars
-			var $scrollTo = null,
-				count = 0,
-				message = acf._e('validation_failed');
+			var $message = $form.children('.acf-error-message');
+			var message = acf._e('validation_failed');
+			var count = 0;
+			var $scrollTo = null;
 			
 			
-			// show field error messages
-			if( json.errors && json.errors.length > 0 ) {
+			// loop
+			for( i = 0; i < errors.length; i++ ) {
 				
-				for( var i in json.errors ) {
-					
-					// get error
-					var error = json.errors[ i ];
-					
-					
-					// is error for a specific field?
-					if( !error.input ) {
-						
-						// update message
-						message += '. ' + error.message;
-						
-						
-						// ignore following functionality
-						continue;
-						
-					}
-					
-					
-					// get input
-					var $input = $form.find('[name="' + error.input + '"]').first();
-					
-					
-					// if $_POST value was an array, this $input may not exist
-					if( !$input.exists() ) {
-						
-						$input = $form.find('[name^="' + error.input + '"]').first();
-						
-					}
-					
-					
-					// bail early if input doesn't exist
-					if( !$input.exists() ) continue;
-					
-					
-					// increase
-					count++;
-					
-					
-					// now get field
-					var $field = acf.get_field_wrap( $input );
-					
-					
-					// add error
-					this.add_error( $field, error.message );
-					
-					
-					// set $scrollTo
-					if( $scrollTo === null ) {
-						
-						$scrollTo = $field;
-						
-					}
-					
+				// vars
+				var error = errors[ i ];
+				
+				
+				// general error
+				if( !error.input ) {
+					message += '. ' + error.message;
+					continue;
 				}
 				
 				
-				// message
-				if( count == 1 ) {
-					
-					message += '. ' + acf._e('validation_failed_1');
-					
-				} else if( count > 1 ) {
-					
-					message += '. ' + acf._e('validation_failed_2').replace('%d', count);
-					
+				// get input
+				var $input = $form.find('[name="' + error.input + '"]').first();
+				
+				
+				// if $_POST value was an array, this $input may not exist
+				if( !$input.exists() ) {
+					$input = $form.find('[name^="' + error.input + '"]').first();
 				}
-			
+				
+				
+				// bail early if input doesn't exist
+				if( !$input.exists() ) continue;
+				
+				
+				// increase
+				count++;
+				
+				
+				// now get field
+				var $field = acf.get_field_wrap( $input );
+				
+				
+				// add error
+				this.add_error( $field, error.message );
+				
+				
+				// set $scrollTo
+				if( $scrollTo === null ) {
+					$scrollTo = $field;
+				}
+				
 			}
 			
-				
-			// get $message
-			var $message = $form.children('.acf-error-message');
 			
+			// message
+			if( count == 1 ) {
+				message += '. ' + acf._e('validation_failed_1');
+			} else if( count > 1 ) {
+				message += '. ' + acf._e('validation_failed_2').replace('%d', count);
+			}
+			
+			
+			// maybe create $message
 			if( !$message.exists() ) {
-				
 				$message = $('<div class="acf-error-message"><p></p><a href="#" class="acf-icon -cancel small"></a></div>');
-				
 				$form.prepend( $message );
-				
 			}
 			
 			
@@ -13034,18 +13258,14 @@ var acf;
 			
 			// if no $scrollTo, set to message
 			if( $scrollTo === null ) {
-				
 				$scrollTo = $message;
-				
 			}
 			
 			
-			// timeout avoids flicker jump
+			// timeout
 			setTimeout(function(){
-				
 				$("html, body").animate({ scrollTop: $scrollTo.offset().top - ( $(window).height() / 2 ) }, 500);
-				
-			}, 1);
+			}, 10);
 			
 		},
 		
@@ -13100,6 +13320,7 @@ var acf;
 			
 			// hook for 3rd party customization
 			acf.do_action('add_field_error', $field);
+			acf.do_action('invalid_field', $field);
 			
 		},
 		
@@ -13137,6 +13358,7 @@ var acf;
 			
 			// hook for 3rd party customization
 			acf.do_action('remove_field_error', $field);
+			acf.do_action('valid_field', $field);
 			
 		},
 		
@@ -13647,10 +13869,10 @@ var acf;
 			init = acf.apply_filters('wysiwyg_tinymce_settings', init, id, $field);
 			
 			
-			// z-index fix
-			if( acf.isset(tinymce,'ui','FloatPanel') ) {
-				tinymce.ui.FloatPanel.zIndex = 900000;
-			}
+			// z-index fix (caused too many conflicts)
+			//if( acf.isset(tinymce,'ui','FloatPanel') ) {
+			//	tinymce.ui.FloatPanel.zIndex = 900000;
+			//}
 			
 			
 			// store settings
@@ -13844,6 +14066,10 @@ var acf;
 			
 			// bail early
 			if( typeof switchEditors === 'undefined' ) return false;
+			
+			
+			// bail ealry if not initialized
+			if( typeof tinyMCEPreInit.mceInit[ id ] === 'undefined' ) return false;
 			
 						
 			// toggle			
