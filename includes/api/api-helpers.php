@@ -538,7 +538,8 @@ function acf_nonce_input( $nonce = '' ) {
 function acf_extract_var( &$array, $key, $default = null ) {
 	
 	// check if exists
-	if( is_array($array) && isset($array[ $key ]) ) {
+	// - uses array_key_exists to extract NULL values (isset will fail)
+	if( is_array($array) && array_key_exists($key, $array) ) {
 		
 		// store value
 		$v = $array[ $key ];
@@ -1648,7 +1649,7 @@ function _acf_query_remove_post_type( $sql ) {
 function acf_get_grouped_posts( $args ) {
 	
 	// vars
-	$r = array();
+	$data = array();
 	
 	
 	// defaults
@@ -1667,18 +1668,19 @@ function acf_get_grouped_posts( $args ) {
 	// find array of post_type
 	$post_types = acf_get_array( $args['post_type'] );
 	$post_types_labels = acf_get_pretty_post_types($post_types);
+	$is_single_post_type = ( count($post_types) == 1 );
 	
 	
 	// attachment doesn't work if it is the only item in an array
-	if( count($post_types) == 1 ) {
-	
+	if( $is_single_post_type) {
 		$args['post_type'] = current($post_types);
-		
 	}
 	
 	
 	// add filter to orderby post type
-	add_filter('posts_orderby', '_acf_orderby_post_type', 10, 2);
+	if( !$is_single_post_type ) {
+		add_filter('posts_orderby', '_acf_orderby_post_type', 10, 2);
+	}
 	
 	
 	// get posts
@@ -1686,7 +1688,9 @@ function acf_get_grouped_posts( $args ) {
 	
 	
 	// remove this filter (only once)
-	remove_filter('posts_orderby', '_acf_orderby_post_type');
+	if( !$is_single_post_type ) {
+		remove_filter('posts_orderby', '_acf_orderby_post_type', 10, 2);
+	}
 	
 	
 	// loop
@@ -1698,90 +1702,77 @@ function acf_get_grouped_posts( $args ) {
 		
 		
 		// populate $this_posts
-		foreach( array_keys($posts) as $key ) {
-		
-			if( $posts[ $key ]->post_type == $post_type ) {
-				
-				$this_posts[] = acf_extract_var( $posts, $key );
-				
+		foreach( $posts as $post ) {
+			if( $post->post_type == $post_type ) {
+				$this_posts[] = $post;
 			}
-			
 		}
 		
 		
 		// bail early if no posts for this post type
 		if( empty($this_posts) ) continue;
-	
+		
 		
 		// sort into hierachial order!
 		// this will fail if a search has taken place because parents wont exist
 		if( is_post_type_hierarchical($post_type) && empty($args['s'])) {
 			
 			// vars
-			$match_id = $this_posts[ 0 ]->ID;
+			$post_id = $this_posts[0]->ID;
+			$parent_id = acf_maybe_get($args, 'post_parent', 0);
 			$offset = 0;
 			$length = count($this_posts);
-			$parent = acf_maybe_get( $args, 'post_parent', 0 );
 			
 			
-			// get all posts
-			$all_args = array_merge($args, array(
+			// get all posts from this post type
+			$all_posts = get_posts(array_merge($args, array(
 				'posts_per_page'	=> -1,
 				'paged'				=> 0,
 				'post_type'			=> $post_type
-			));
-			
-			$all_posts = get_posts( $all_args );
+			)));
 			
 			
-			// loop over posts and update $offset
-			foreach( $all_posts as $offset => $p ) {
-				
-				if( $p->ID == $match_id ) break;
-				
+			// find starting point (offset)
+			foreach( $all_posts as $i => $post ) {
+				if( $post->ID == $post_id ) {
+					$offset = $i;
+					break;
+				}
 			}
 			
 			
 			// order posts
-			$ordered_posts = get_page_children( $parent, $all_posts );
+			$ordered_posts = get_page_children($parent_id, $all_posts);
 			
 			
-			// check for empty array (possible if parent did not exist within original data)
-			if( !empty($ordered_posts) ) {
-				
+			// compare aray lengths
+			// if $ordered_posts is smaller than $all_posts, WP has lost posts during the get_page_children() function
+			// this is possible when get_post( $args ) filter out parents (via taxonomy, meta and other search parameters) 
+			if( count($ordered_posts) == count($all_posts) ) {
 				$this_posts = array_slice($ordered_posts, $offset, $length);
-				
 			}
 			
 		}
 		
 		
 		// populate $this_posts
-		foreach( array_keys($this_posts) as $key ) {
-			
-			// extract post
-			$post = acf_extract_var( $this_posts, $key );
-			
-			
-			
-			// add to group
+		foreach( $this_posts as $post ) {
 			$this_group[ $post->ID ] = $post;
-			
 		}
 		
 		
 		// group by post type
-		$post_type_name = $post_types_labels[ $post_type ];
-		
-		$r[ $post_type_name ] = $this_group;
+		$label = $post_types_labels[ $post_type ];
+		$data[ $label ] = $this_group;
 					
 	}
 	
 	
 	// return
-	return $r;
+	return $data;
 	
 }
+
 
 function _acf_orderby_post_type( $ordeby, $wp_query ) {
 	
@@ -1850,6 +1841,8 @@ function acf_get_post_title( $post = 0, $is_search = false ) {
 		
 		
 		// add parent
+/*
+		removed in 5.6.5 as not used by the UI
 		if( $is_search && !empty($ancestors) ) {
 			
 			// reverse
@@ -1868,6 +1861,7 @@ function acf_get_post_title( $post = 0, $is_search = false ) {
 			$append .= ' | ' . __('Parent', 'acf') . ': ' . implode(' / ', $ancestors);
 			
 		}
+*/
 		
 	}
 	

@@ -407,8 +407,8 @@ class acf_field__group extends acf_field {
 				
 			?>
 			<th <?php acf_esc_attr_e( $atts ); ?>>
-				<?php acf_the_field_wrap_label( $sub_field ); ?>
-				<?php acf_the_field_wrap_instructions( $sub_field ); ?>
+				<?php acf_render_field_label( $sub_field ); ?>
+				<?php acf_render_field_instructions( $sub_field ); ?>
 			</th>
 		<?php endforeach; ?>
 		</tr>
@@ -534,6 +534,40 @@ class acf_field__group extends acf_field {
 		
 		// return
 		return $valid;
+		
+	}
+	
+	
+	/*
+	*  duplicate_field()
+	*
+	*  This filter is appied to the $field before it is duplicated and saved to the database
+	*
+	*  @type	filter
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	$field - the field array holding all the field options
+	*
+	*  @return	$field - the modified field
+	*/
+
+	function duplicate_field( $field ) {
+		
+		// get sub fields
+		$sub_fields = acf_extract_var( $field, 'sub_fields' );
+		
+		
+		// save field to get ID
+		$field = acf_update_field( $field );
+		
+		
+		// duplicate sub fields
+		acf_duplicate_fields( $sub_fields, $field['ID'] );
+		
+						
+		// return		
+		return $field;
 		
 	}
 	

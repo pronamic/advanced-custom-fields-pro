@@ -629,7 +629,6 @@ class acf_admin_field_groups {
 		</div>
 	</div>
 </div>
-<div class="acf-clear"></div>
 </script>
 <script type="text/javascript">
 (function($){
