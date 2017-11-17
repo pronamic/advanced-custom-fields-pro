@@ -29,10 +29,10 @@ Use the Advanced Custom Fields plugin to take full control of your WordPress edi
 * [Website](https://www.advancedcustomfields.com)
 * [Documentation](https://www.advancedcustomfields.com/resources/)
 * [Support](https://support.advancedcustomfields.com)
-* [ACF PRO](https://www.advancedcustomfields.com/resources/pro/)
+* [ACF PRO](https://www.advancedcustomfields.com/pro/)
 
 = PRO =
-The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility! [Learn more](https://www.advancedcustomfields.com/resources/pro/)
+The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility! [Learn more](https://www.advancedcustomfields.com/pro/)
 
 
 == Installation ==
@@ -65,6 +65,25 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.6.5 =
+* API: Added new 'kses' setting to the `acf_form()` function
+* Core: Added new 'Admin Tools' framework (includes design refresh)
+* Core: Minor fixes and improvements
+* Language: Update Ukrainian translation - thanks to Jurko Chervony
+* Language: Update Russian translation - thanks to Andriy Toniyevych
+* Language: Update Hebrew translation - thanks to Itamar Megged
+
+= 5.6.4 =
+* Google Map field: Fixed bug causing invalid url to JavaScript library
+* WYSIWYG field: Fixed minor z-index and drag/drop bugs
+* Group field: Fixed bug causing incorrect export settings
+* Core: Fixed bug in 'Post Taxonomy' location rule ignoring selected terms during AJAX callback
+* Core: Fixed bug preventing a draft to validate with required fields
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Update Turkish translation - thanks to Emre Erkan
+* Language: Updated Chinese translation - thanks to Wang Hao
+* Language: Update Hebrew translation - thanks to Itamar Megged
 
 = 5.6.3 =
 * Button Group field: Added new field type
@@ -102,7 +121,7 @@ From your WordPress dashboard
 * API: Improved `have_rows()` function to work with clone and group field values
 * Core: Added new location for Menus
 * Core: Added new location for Menu Items
-* Core: Added types to Attachment location rule
+* Core: Added types to Attachment location rule - thanks to Jan Thomas
 * Core: Added "Confirm Remove" tooltips
 * Core: Updated Select2 JS library to v4
 * Core: Minor fixes and improvements

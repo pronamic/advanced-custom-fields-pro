@@ -713,7 +713,7 @@ class acf_field_taxonomy extends acf_field {
 			'show_option_none'	=> sprintf( _x('No %s', 'No terms', 'acf'), strtolower($taxonomy_obj->labels->name) ),
 			'hide_empty'   		=> false,
 			'style'        		=> 'none',
-			'walker'       		=> new acf_taxonomy_field_walker( $field ),
+			'walker'       		=> new ACF_Taxonomy_Field_Walker( $field ),
 		);
 		
 		

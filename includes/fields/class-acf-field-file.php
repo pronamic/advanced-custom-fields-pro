@@ -63,6 +63,10 @@ class acf_field_file extends acf_field {
 		$uploader = acf_get_setting('uploader');
 		
 		
+		// allow custom uploader
+		$uploader = acf_maybe_get($field, 'uploader', $uploader);
+		
+		
 		// enqueue
 		if( $uploader == 'wp' ) {
 			acf_enqueue_uploader();
