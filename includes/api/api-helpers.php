@@ -205,9 +205,34 @@ function acf_has_done( $name ) {
 *  @return	(string)
 */
 
-function acf_get_path( $path ) {
+function acf_get_path( $path = '' ) {
 	
 	return ACF_PATH . $path;
+	
+}
+
+
+/**
+*  acf_get_url
+*
+*  This function will return the url to a file within the ACF plugin folder
+*
+*  @date	12/12/17
+*  @since	5.6.8
+*
+*  @param	string $path The relative path from the root of the ACF plugin folder
+*  @return	string
+*/
+
+function acf_get_url( $path = '' ) {
+	
+	// define ACF_URL to optimise performance
+	if( !defined('ACF_URL') ) {
+		define( 'ACF_URL', acf_get_setting('url') );
+	}
+	
+	// return
+	return ACF_URL . $path;
 	
 }
 
@@ -215,20 +240,17 @@ function acf_get_path( $path ) {
 /*
 *  acf_get_dir
 *
-*  This function will return the url to a file within the ACF plugin folder
+*  Deprecated in 5.6.8. Use acf_get_url() instead.
 *
-*  @type	function
 *  @date	28/09/13
 *  @since	5.0.0
 *
-*  @param	$path (string) the relative path from the root of the ACF plugin folder
-*  @return	(string)
+*  @param	string
+*  @return	string
 */
 
-function acf_get_dir( $path ) {
-	
-	return acf_get_setting('dir') . $path;
-	
+function acf_get_dir( $path = '' ) {
+	return acf_get_url( $path );
 }
 
 
@@ -274,7 +296,7 @@ function acf_include( $file ) {
 
 function acf_get_external_path( $file, $path = '' ) {
     
-    return trailingslashit( dirname( $file ) ) . $path;
+    return plugin_dir_path( $file ) . $path;
     
 }
 
@@ -295,33 +317,53 @@ function acf_get_external_path( $file, $path = '' ) {
 
 function acf_get_external_dir( $file, $path = '' ) {
     
-    // vars
-    $external_url = '';
-    $external_path = acf_get_external_path( $file, $path );
-    $wp_plugin_path = wp_normalize_path(WP_PLUGIN_DIR);
-    $wp_content_path = wp_normalize_path(WP_CONTENT_DIR);
-    $wp_path = wp_normalize_path(ABSPATH);
-    
-    
-    // wp-content/plugins
-    if( strpos($external_path, $wp_plugin_path) === 0 ) {
-	    
-	    return str_replace($wp_plugin_path, plugins_url(), $external_path);
-	  
-    }
-    
-    
-    // wp-content
-    if( strpos($external_path, $wp_content_path) === 0 ) {
-	    
-	    return str_replace($wp_content_path, content_url(), $external_path);
+    return acf_plugin_dir_url( $file ) . $path;
 	
+}
+
+
+/**
+*  acf_plugin_dir_url
+*
+*  This function will calculate the url to a plugin folder.
+*  Different to the WP plugin_dir_url(), this function can calculate for urls outside of the plugins folder (theme include).
+*
+*  @date	13/12/17
+*  @since	5.6.8
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_plugin_dir_url( $file ) {
+	
+	// vars
+	$path = plugin_dir_path( $file );
+	$path = wp_normalize_path( $path );
+	
+	
+	// check plugins
+	$check_path = wp_normalize_path( realpath(WP_PLUGIN_DIR) );
+	if( strpos($path, $check_path) === 0 ) {
+		return str_replace( $check_path, plugins_url(), $path );
 	}
 	
+	// check wp-content
+	$check_path = wp_normalize_path( realpath(WP_CONTENT_DIR) );
+	if( strpos($path, $check_path) === 0 ) {
+		return str_replace( $check_path, content_url(), $path );
+	}
 	
-	// return
-	return str_replace($wp_path, home_url(), $external_path);
-	
+	// check root
+	$check_path = wp_normalize_path( realpath(ABSPATH) );
+	if( strpos($path, $check_path) === 0 ) {
+		return str_replace( $check_path, site_url('/'), $path );
+	}
+	                
+    
+    // return
+    return plugin_dir_url( $file );
+    
 }
 
 
@@ -811,19 +853,20 @@ function acf_verify_nonce( $value) {
 
 function acf_verify_ajax() {
 	
+	// vars
+	$action = acf_maybe_get_POST('action');
+	$nonce = acf_maybe_get_POST('nonce');
+	
+	
 	// bail early if not acf action
-	if( empty($_POST['action']) || substr($_POST['action'], 0, 3) !== 'acf' ) {
-		
+	if( !$action || substr($action, 0, 3) !== 'acf' ) {
 		return false;
-		
 	}
 	
 	
 	// bail early if not acf nonce
-	if( empty($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'acf_nonce') ) {
-	
+	if( !$nonce || !wp_verify_nonce($nonce, 'acf_nonce') ) {
 		return false;
-		
 	}
 	
 	

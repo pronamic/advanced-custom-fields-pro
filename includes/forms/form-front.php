@@ -407,6 +407,10 @@ class acf_form_front {
 	
 	function submit_form( $form ) {
 		
+		// filter
+    	$form = apply_filters('acf/pre_submit_form', $form);
+    	
+    	
     	// vars
     	$post_id = acf_maybe_get($form, 'post_id', 0);
 		

@@ -26,6 +26,7 @@ class acf_deprecated {
 		add_filter('acf/settings/l10n_textdomain',		array($this, 'acf_settings_l10n_textdomain'), 5, 1);		// 5.3.3
 		add_filter('acf/settings/l10n_field',			array($this, 'acf_settings_l10n_field'), 5, 1);				// 5.3.3
 		add_filter('acf/settings/l10n_field_group',		array($this, 'acf_settings_l10n_field'), 5, 1);				// 5.3.3
+		add_filter('acf/settings/url',					array($this, 'acf_settings_url'), 5, 1);					// 5.6.8
 		
 		
 		// filters
@@ -95,6 +96,26 @@ class acf_deprecated {
 		
 		// 5.3.3 - changed filter name
 		return acf_get_setting( 'export_translate', $setting );
+		
+	}
+	
+	
+	/**
+	*  acf_settings_url
+	*
+	*  This function will add compatibility for previously named hooks
+	*
+	*  @date	12/12/17
+	*  @since	5.6.8
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+		
+	function acf_settings_url( $setting ) {
+		
+		// 5.6.8 - changed filter name
+		return acf_get_setting( 'dir', $setting );
 		
 	}
 	

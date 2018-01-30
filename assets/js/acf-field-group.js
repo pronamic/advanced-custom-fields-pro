@@ -78,6 +78,9 @@
 			e.$el.sortable({
 				handle: '.acf-sortable-handle',
 				connectWith: '.acf-field-list',
+				start: function(e, ui){
+			        ui.placeholder.height( ui.item.height() );
+			    },
 				update: function(event, ui){
 					
 					// vars
@@ -551,7 +554,7 @@
 			
 			
 			// update label
-			$handle.find('.li-field-label strong a').text( label );
+			$handle.find('.li-field-label strong a').html( label );
 			
 			
 			// update required

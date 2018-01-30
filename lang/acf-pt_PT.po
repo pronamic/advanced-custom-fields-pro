@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Custom Fields PRO\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
-"POT-Creation-Date: 2017-10-04 08:32+0100\n"
-"PO-Revision-Date: 2017-10-04 08:32+0100\n"
+"POT-Creation-Date: 2017-12-05 08:48+0000\n"
+"PO-Revision-Date: 2017-12-05 08:48+0000\n"
 "Last-Translator: Pedro Mendonça <ped.gaspar@gmail.com>\n"
 "Language-Team: Pedro Mendonça <ped.gaspar@gmail.com>\n"
 "Language: pt_PT\n"
@@ -37,7 +37,7 @@ msgid "Field Group"
 msgstr "Grupo de campos"
 
 #: acf.php:371 acf.php:403 includes/admin/admin.php:118
-#: pro/fields/class-acf-field-flexible-content.php:557
+#: pro/fields/class-acf-field-flexible-content.php:559
 msgid "Add New"
 msgstr "Adicionar novo"
 
@@ -118,8 +118,8 @@ msgstr "Inactivo"
 #, php-format
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
-msgstr[0] "Inativo <span class=\"count\">(%s)</span>"
-msgstr[1] "Inativos <span class=\"count\">(%s)</span>"
+msgstr[0] "Inactivo <span class=\"count\">(%s)</span>"
+msgstr[1] "Inactivos <span class=\"count\">(%s)</span>"
 
 #: includes/admin/admin-field-group.php:68
 #: includes/admin/admin-field-group.php:69
@@ -156,6 +156,7 @@ msgid "Location"
 msgstr "Localização"
 
 #: includes/admin/admin-field-group.php:184
+#: includes/admin/tools/class-acf-admin-tool-export.php:295
 msgid "Settings"
 msgstr "Definições"
 
@@ -185,7 +186,7 @@ msgstr "cópia"
 #: includes/admin/views/field-group-field-conditional-logic.php:154
 #: includes/admin/views/field-group-locations.php:29
 #: includes/admin/views/html-location-group.php:3
-#: includes/api/api-helpers.php:3964
+#: includes/api/api-helpers.php:3959
 msgid "or"
 msgstr "ou"
 
@@ -345,44 +346,49 @@ msgstr "Pro"
 msgid "Thank you for creating with <a href=\"%s\">ACF</a>."
 msgstr "Obrigado por criar com o <a href=\"%s\">ACF</a>."
 
-#: includes/admin/admin-field-groups.php:668
+#: includes/admin/admin-field-groups.php:667
 msgid "Duplicate this item"
 msgstr "Duplicar este item"
 
-#: includes/admin/admin-field-groups.php:668
-#: includes/admin/admin-field-groups.php:684
+#: includes/admin/admin-field-groups.php:667
+#: includes/admin/admin-field-groups.php:683
 #: includes/admin/views/field-group-field.php:49
-#: pro/fields/class-acf-field-flexible-content.php:556
+#: pro/fields/class-acf-field-flexible-content.php:558
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: includes/admin/admin-field-groups.php:701
+#: includes/admin/admin-field-groups.php:700
 #: includes/fields/class-acf-field-google-map.php:112
 #: includes/fields/class-acf-field-relationship.php:656
 msgid "Search"
 msgstr "Pesquisa"
 
-#: includes/admin/admin-field-groups.php:760
+#: includes/admin/admin-field-groups.php:759
 #, php-format
 msgid "Select %s"
 msgstr "Seleccionar %s"
 
-#: includes/admin/admin-field-groups.php:768
+#: includes/admin/admin-field-groups.php:767
 msgid "Synchronise field group"
 msgstr "Sincronizar grupo de campos"
 
-#: includes/admin/admin-field-groups.php:768
-#: includes/admin/admin-field-groups.php:798
+#: includes/admin/admin-field-groups.php:767
+#: includes/admin/admin-field-groups.php:797
 msgid "Sync"
 msgstr "Sincronizar"
 
-#: includes/admin/admin-field-groups.php:780
+#: includes/admin/admin-field-groups.php:779
 msgid "Apply"
 msgstr "Aplicar"
 
-#: includes/admin/admin-field-groups.php:798
+#: includes/admin/admin-field-groups.php:797
 msgid "Bulk Actions"
 msgstr "Acções por lotes"
+
+#: includes/admin/admin-tools.php:116
+#: includes/admin/views/html-admin-tools.php:21
+msgid "Tools"
+msgstr "Ferramentas"
 
 #: includes/admin/admin.php:113
 #: includes/admin/views/field-group-options.php:118
@@ -423,39 +429,111 @@ msgstr "Informações"
 msgid "What's New"
 msgstr "O que há de novo"
 
-#: includes/admin/settings-tools.php:50
-#: includes/admin/views/settings-tools-export.php:19
-#: includes/admin/views/settings-tools.php:31
-msgid "Tools"
-msgstr "Ferramentas"
+#: includes/admin/tools/class-acf-admin-tool-export.php:33
+msgid "Export Field Groups"
+msgstr "Exportar grupos de campos"
 
-#: includes/admin/settings-tools.php:147 includes/admin/settings-tools.php:380
+#: includes/admin/tools/class-acf-admin-tool-export.php:38
+#: includes/admin/tools/class-acf-admin-tool-export.php:342
+#: includes/admin/tools/class-acf-admin-tool-export.php:371
+msgid "Generate PHP"
+msgstr "Gerar PHP"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:97
+#: includes/admin/tools/class-acf-admin-tool-export.php:135
 msgid "No field groups selected"
 msgstr "Nenhum grupo de campos seleccionado"
 
-#: includes/admin/settings-tools.php:184
-#: includes/fields/class-acf-field-file.php:155
+#: includes/admin/tools/class-acf-admin-tool-export.php:174
+#, php-format
+msgid "Exported 1 field group."
+msgid_plural "Exported %s field groups."
+msgstr[0] "Foi exportado 1 grupo de campos."
+msgstr[1] "Foram exportados %s grupos de campos."
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:241
+#: includes/admin/tools/class-acf-admin-tool-export.php:269
+msgid "Select Field Groups"
+msgstr "Seleccione os grupos de campos"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:336
+msgid ""
+"Select the field groups you would like to export and then select your export "
+"method. Use the download button to export to a .json file which you can then "
+"import to another ACF installation. Use the generate button to export to PHP "
+"code which you can place in your theme."
+msgstr ""
+"Seleccione os grupos de campos que deseja exportar e seleccione o método de "
+"exportação. Utilize o botão Descarregar para exportar um ficheiro .json que "
+"poderá depois importar para outra instalação do ACF. Utilize o botão Gerar "
+"para exportar o código PHP que poderá incorporar no seu tema."
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:341
+msgid "Export File"
+msgstr "Exportar ficheiro"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:414
+msgid ""
+"The following code can be used to register a local version of the selected "
+"field group(s). A local field group can provide many benefits such as faster "
+"load times, version control & dynamic fields/settings. Simply copy and paste "
+"the following code to your theme's functions.php file or include it within "
+"an external file."
+msgstr ""
+"O código abaixo pode ser usado para registar uma versão local do(s) grupo(s) "
+"de campos seleccionado(s). Um grupo de campos local tem alguns benefícios, "
+"tais como maior velocidade de carregamento, controlo de versão, definições e "
+"campos dinâmicos. Copie e cole o código abaixo no ficheiro functions.php do "
+"seu tema, ou inclua-o num ficheiro externo."
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:446
+msgid "Copy to clipboard"
+msgstr "Copiar para a área de transferência"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:26
+msgid "Import Field Groups"
+msgstr "Importar grupos de campos"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Select the Advanced Custom Fields JSON file you would like to import. When "
+"you click the import button below, ACF will import the field groups."
+msgstr ""
+"Seleccione o ficheiro JSON do Advanced Custom Fields que deseja importar. Ao "
+"clicar no botão Importar abaixo, o ACF irá importar os grupos de campos."
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:66
+#: includes/fields/class-acf-field-file.php:35
+msgid "Select File"
+msgstr "Seleccionar ficheiro"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:76
+msgid "Import File"
+msgstr "Importar ficheiro"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:100
+#: includes/fields/class-acf-field-file.php:159
 msgid "No file selected"
 msgstr "Nenhum ficheiro seleccionado"
 
-#: includes/admin/settings-tools.php:197
+#: includes/admin/tools/class-acf-admin-tool-import.php:113
 msgid "Error uploading file. Please try again"
 msgstr "Erro ao carregar ficheiro. Por favor tente de novo."
 
-#: includes/admin/settings-tools.php:206
+#: includes/admin/tools/class-acf-admin-tool-import.php:122
 msgid "Incorrect file type"
 msgstr "Tipo de ficheiro incorrecto"
 
-#: includes/admin/settings-tools.php:223
+#: includes/admin/tools/class-acf-admin-tool-import.php:139
 msgid "Import file empty"
 msgstr "Ficheiro de importação vazio"
 
-#: includes/admin/settings-tools.php:331
+#: includes/admin/tools/class-acf-admin-tool-import.php:247
 #, php-format
 msgid "Imported 1 field group"
 msgid_plural "Imported %s field groups"
-msgstr[0] "Importado 1 grupo de campos"
-msgstr[1] "Importados %s grupos de campos"
+msgstr[0] "Foi importado 1 grupo de campos."
+msgstr[1] "Foram importados %s grupos de campos."
 
 #: includes/admin/views/field-group-field-conditional-logic.php:28
 msgid "Conditional Logic"
@@ -497,7 +575,7 @@ msgid "Edit field"
 msgstr "Editar campo"
 
 #: includes/admin/views/field-group-field.php:48
-#: includes/fields/class-acf-field-file.php:137
+#: includes/fields/class-acf-field-file.php:141
 #: includes/fields/class-acf-field-image.php:122
 #: includes/fields/class-acf-field-link.php:139
 #: pro/fields/class-acf-field-gallery.php:342
@@ -521,7 +599,7 @@ msgid "Delete field"
 msgstr "Eliminar campo"
 
 #: includes/admin/views/field-group-field.php:51
-#: pro/fields/class-acf-field-flexible-content.php:555
+#: pro/fields/class-acf-field-flexible-content.php:557
 msgid "Delete"
 msgstr "Eliminar"
 
@@ -531,7 +609,7 @@ msgstr "Legenda do campo"
 
 #: includes/admin/views/field-group-field.php:68
 msgid "This is the name which will appear on the EDIT page"
-msgstr "Este é o nome que irá aparecer na página EDITAR."
+msgstr "Este é o nome que será mostrado na página EDITAR."
 
 #: includes/admin/views/field-group-field.php:77
 msgid "Field Name"
@@ -547,13 +625,13 @@ msgid "Field Type"
 msgstr "Tipo de campo"
 
 #: includes/admin/views/field-group-field.php:98
-#: includes/fields/class-acf-field-tab.php:88
 msgid "Instructions"
 msgstr "Instruções"
 
 #: includes/admin/views/field-group-field.php:99
 msgid "Instructions for authors. Shown when submitting data"
-msgstr "Instruções para os autores. São mostradas quando submeter dados."
+msgstr ""
+"Instruções para os autores. São mostradas ao preencher e submeter dados."
 
 #: includes/admin/views/field-group-field.php:108
 msgid "Required?"
@@ -588,13 +666,13 @@ msgstr "Ordem"
 #: includes/fields/class-acf-field-checkbox.php:415
 #: includes/fields/class-acf-field-radio.php:306
 #: includes/fields/class-acf-field-select.php:432
-#: pro/fields/class-acf-field-flexible-content.php:582
+#: pro/fields/class-acf-field-flexible-content.php:584
 msgid "Label"
 msgstr "Legenda"
 
 #: includes/admin/views/field-group-fields.php:6
 #: includes/fields/class-acf-field-taxonomy.php:964
-#: pro/fields/class-acf-field-flexible-content.php:595
+#: pro/fields/class-acf-field-flexible-content.php:597
 msgid "Name"
 msgstr "Nome"
 
@@ -663,12 +741,12 @@ msgid "Label placement"
 msgstr "Posição da legenda"
 
 #: includes/admin/views/field-group-options.php:62
-#: includes/fields/class-acf-field-tab.php:102
+#: includes/fields/class-acf-field-tab.php:106
 msgid "Top aligned"
 msgstr "Alinhado acima"
 
 #: includes/admin/views/field-group-options.php:63
-#: includes/fields/class-acf-field-tab.php:103
+#: includes/fields/class-acf-field-tab.php:107
 msgid "Left Aligned"
 msgstr "Alinhado à esquerda"
 
@@ -710,8 +788,9 @@ msgid ""
 "If multiple field groups appear on an edit screen, the first field group's "
 "options will be used (the one with the lowest order number)"
 msgstr ""
-"Se aparecerem vários grupos de campos num ecrã de edição, serão utilizadas "
-"as opções do primeiro grupo de campos. (o que tiver menor número de ordem)"
+"Se forem mostrados vários grupos de campos num ecrã de edição, serão "
+"utilizadas as opções do primeiro grupo de campos. (o que tiver menor número "
+"de ordem)"
 
 #: includes/admin/views/field-group-options.php:115
 msgid "Permalink"
@@ -900,7 +979,7 @@ msgstr "Instalado"
 
 #: includes/admin/views/settings-info.php:3
 msgid "Welcome to Advanced Custom Fields"
-msgstr "Bem vindo ao Advanced Custom Fields"
+msgstr "Bem-vindo ao Advanced Custom Fields"
 
 #: includes/admin/views/settings-info.php:4
 #, php-format
@@ -1090,7 +1169,7 @@ msgstr ""
 
 #: includes/admin/views/settings-info.php:106
 msgid "A new field for embedding content has been added"
-msgstr "Foi adicionado um novo campo para incorporar conteúdos."
+msgstr "Foi adicionado um novo campo para incorporar conteúdos"
 
 #: includes/admin/views/settings-info.php:110
 msgid "New Gallery"
@@ -1137,7 +1216,7 @@ msgstr "Campo de relação"
 msgid ""
 "New Relationship field setting for 'Filters' (Search, Post Type, Taxonomy)"
 msgstr ""
-"Nova definição 'Filtros' do campo Relação (Pesquisar, Tipo de conteúdo, "
+"Nova definição 'Filtros' do campo Relação (Pesquisa, Tipo de conteúdo, "
 "Taxonomia)."
 
 #: includes/admin/views/settings-info.php:139
@@ -1178,132 +1257,58 @@ msgstr ""
 msgid "We think you'll love the changes in %s."
 msgstr "Pensamos que vai gostar das alterações na versão %s."
 
-#: includes/admin/views/settings-tools-export.php:23
-msgid "Export Field Groups to PHP"
-msgstr "Exportar grupos de campos para PHP"
-
-#: includes/admin/views/settings-tools-export.php:27
-msgid ""
-"The following code can be used to register a local version of the selected "
-"field group(s). A local field group can provide many benefits such as faster "
-"load times, version control & dynamic fields/settings. Simply copy and paste "
-"the following code to your theme's functions.php file or include it within "
-"an external file."
-msgstr ""
-"O código abaixo pode ser usado para registar uma versão local do(s) grupo(s) "
-"de campos seleccionado(s). Um grupo de campos local tem alguns benefícios, "
-"tais como maior velocidade de carregamento, controlo de versão, definições e "
-"campos dinâmicos. Copie e cole o código abaixo no ficheiro functions.php do "
-"seu tema, ou inclua-o num ficheiro externo."
-
-#: includes/admin/views/settings-tools.php:5
-msgid "Select Field Groups"
-msgstr "Seleccione os grupos de campos"
-
-#: includes/admin/views/settings-tools.php:35
-msgid "Export Field Groups"
-msgstr "Exportar grupos de campos"
-
-#: includes/admin/views/settings-tools.php:38
-msgid ""
-"Select the field groups you would like to export and then select your export "
-"method. Use the download button to export to a .json file which you can then "
-"import to another ACF installation. Use the generate button to export to PHP "
-"code which you can place in your theme."
-msgstr ""
-"Seleccione os grupos de campos que deseja exportar e seleccione o método de "
-"exportação. Utilize o botão Descarregar para exportar um ficheiro .json que "
-"poderá depois importar para outra instalação do ACF. Utilize o botão Gerar "
-"para exportar o código PHP que poderá incorporar no seu tema."
-
-#: includes/admin/views/settings-tools.php:50
-msgid "Download export file"
-msgstr "Descarregar ficheiro de exportação"
-
-#: includes/admin/views/settings-tools.php:51
-msgid "Generate export code"
-msgstr "Gerar código de exportação"
-
-#: includes/admin/views/settings-tools.php:64
-msgid "Import Field Groups"
-msgstr "Importar grupos de campos"
-
-#: includes/admin/views/settings-tools.php:67
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the field groups."
-msgstr ""
-"Seleccione o ficheiro JSON do Advanced Custom Fields que deseja importar. "
-"Quando clicar no botão Importar abaixo, o ACF importará os grupos de campos."
-
-#: includes/admin/views/settings-tools.php:77
-#: includes/fields/class-acf-field-file.php:35
-msgid "Select File"
-msgstr "Seleccionar ficheiro"
-
-#: includes/admin/views/settings-tools.php:86
-msgid "Import"
-msgstr "Importar"
-
-#: includes/api/api-helpers.php:856
+#: includes/api/api-helpers.php:858
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: includes/api/api-helpers.php:857
+#: includes/api/api-helpers.php:859
 msgid "Medium"
 msgstr "Média"
 
-#: includes/api/api-helpers.php:858
+#: includes/api/api-helpers.php:860
 msgid "Large"
 msgstr "Grande"
 
-#: includes/api/api-helpers.php:907
+#: includes/api/api-helpers.php:909
 msgid "Full Size"
 msgstr "Tamanho original"
 
-#: includes/api/api-helpers.php:1248 includes/api/api-helpers.php:1831
+#: includes/api/api-helpers.php:1250 includes/api/api-helpers.php:1823
 #: pro/fields/class-acf-field-clone.php:992
 msgid "(no title)"
 msgstr "(sem título)"
 
-#: includes/api/api-helpers.php:1868
-#: includes/fields/class-acf-field-page_link.php:269
-#: includes/fields/class-acf-field-post_object.php:268
-#: includes/fields/class-acf-field-taxonomy.php:986
-msgid "Parent"
-msgstr "Superior"
-
-#: includes/api/api-helpers.php:3885
+#: includes/api/api-helpers.php:3880
 #, php-format
 msgid "Image width must be at least %dpx."
 msgstr "A largura da imagem deve ser pelo menos de %dpx."
 
-#: includes/api/api-helpers.php:3890
+#: includes/api/api-helpers.php:3885
 #, php-format
 msgid "Image width must not exceed %dpx."
 msgstr "A largura da imagem não deve exceder os %dpx."
 
-#: includes/api/api-helpers.php:3906
+#: includes/api/api-helpers.php:3901
 #, php-format
 msgid "Image height must be at least %dpx."
 msgstr "A altura da imagem deve ser pelo menos de %dpx."
 
-#: includes/api/api-helpers.php:3911
+#: includes/api/api-helpers.php:3906
 #, php-format
 msgid "Image height must not exceed %dpx."
 msgstr "A altura da imagem não deve exceder os %dpx."
 
-#: includes/api/api-helpers.php:3929
+#: includes/api/api-helpers.php:3924
 #, php-format
 msgid "File size must be at least %s."
 msgstr "O tamanho do ficheiro deve ser pelo menos de %s."
 
-#: includes/api/api-helpers.php:3934
+#: includes/api/api-helpers.php:3929
 #, php-format
 msgid "File size must must not exceed %s."
 msgstr "O tamanho do ficheiro não deve exceder %s."
 
-#: includes/api/api-helpers.php:3968
+#: includes/api/api-helpers.php:3963
 #, php-format
 msgid "File type must be %s."
 msgstr "O tipo de ficheiro deve ser %s."
@@ -1333,8 +1338,8 @@ msgstr "jQuery"
 #: includes/fields/class-acf-field-group.php:474
 #: includes/fields/class-acf-field-radio.php:285
 #: pro/fields/class-acf-field-clone.php:839
-#: pro/fields/class-acf-field-flexible-content.php:552
-#: pro/fields/class-acf-field-flexible-content.php:601
+#: pro/fields/class-acf-field-flexible-content.php:554
+#: pro/fields/class-acf-field-flexible-content.php:603
 #: pro/fields/class-acf-field-repeater.php:450
 msgid "Layout"
 msgstr "Layout"
@@ -1346,6 +1351,38 @@ msgstr "Tipo de campo não existe"
 #: includes/fields.php:326
 msgid "Unknown"
 msgstr "Desconhecido"
+
+#: includes/fields/class-acf-field-accordion.php:24
+msgid "Accordion"
+msgstr "Acordeão"
+
+#: includes/fields/class-acf-field-accordion.php:99
+msgid "Open"
+msgstr "Aberto"
+
+#: includes/fields/class-acf-field-accordion.php:100
+msgid "Display this accordion as open on page load."
+msgstr "Mostrar este item de acordeão aberto ao carregar a página."
+
+#: includes/fields/class-acf-field-accordion.php:109
+msgid "Multi-expand"
+msgstr "Expandir múltiplos"
+
+#: includes/fields/class-acf-field-accordion.php:110
+msgid "Allow this accordion to open without closing others."
+msgstr "Permite abrir este item de acordeão sem fechar os restantes."
+
+#: includes/fields/class-acf-field-accordion.php:119
+#: includes/fields/class-acf-field-tab.php:114
+msgid "Endpoint"
+msgstr "Fim"
+
+#: includes/fields/class-acf-field-accordion.php:120
+msgid ""
+"Define an endpoint for the previous accordion to stop. This accordion will "
+"not be visible."
+msgstr ""
+"Define o fim do acordeão anterior. Este item de acordeão não será visível."
 
 #: includes/fields/class-acf-field-button-group.php:24
 msgid "Button Group"
@@ -1416,7 +1453,7 @@ msgstr "Valor por omissão"
 #: includes/fields/class-acf-field-url.php:101
 #: includes/fields/class-acf-field-wysiwyg.php:411
 msgid "Appears when creating a new post"
-msgstr "Aparece quando é criado um novo conteúdo."
+msgstr "Mostrado ao criar um novo conteúdo"
 
 #: includes/fields/class-acf-field-button-group.php:183
 #: includes/fields/class-acf-field-checkbox.php:391
@@ -1432,7 +1469,7 @@ msgstr "Vertical"
 
 #: includes/fields/class-acf-field-button-group.php:191
 #: includes/fields/class-acf-field-checkbox.php:408
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-image.php:188
 #: includes/fields/class-acf-field-link.php:166
 #: includes/fields/class-acf-field-radio.php:299
@@ -1442,7 +1479,7 @@ msgstr "Valor devolvido"
 
 #: includes/fields/class-acf-field-button-group.php:192
 #: includes/fields/class-acf-field-checkbox.php:409
-#: includes/fields/class-acf-field-file.php:201
+#: includes/fields/class-acf-field-file.php:205
 #: includes/fields/class-acf-field-image.php:189
 #: includes/fields/class-acf-field-link.php:167
 #: includes/fields/class-acf-field-radio.php:300
@@ -1703,7 +1740,7 @@ msgstr "Texto predefinido"
 #: includes/fields/class-acf-field-textarea.php:112
 #: includes/fields/class-acf-field-url.php:110
 msgid "Appears within the input"
-msgstr "Aparece dentro do campo"
+msgstr "Mostrado dentro do campo"
 
 #: includes/fields/class-acf-field-email.php:136
 #: includes/fields/class-acf-field-number.php:145
@@ -1719,7 +1756,7 @@ msgstr "Preceder"
 #: includes/fields/class-acf-field-range.php:188
 #: includes/fields/class-acf-field-text.php:138
 msgid "Appears before the input"
-msgstr "Aparece antes do campo"
+msgstr "Mostrado antes do campo"
 
 #: includes/fields/class-acf-field-email.php:145
 #: includes/fields/class-acf-field-number.php:154
@@ -1735,7 +1772,7 @@ msgstr "Suceder"
 #: includes/fields/class-acf-field-range.php:197
 #: includes/fields/class-acf-field-text.php:147
 msgid "Appears after the input"
-msgstr "Aparece depois do campo"
+msgstr "Mostrado depois do campo"
 
 #: includes/fields/class-acf-field-file.php:25
 msgid "File"
@@ -1755,13 +1792,13 @@ msgstr "Actualizar ficheiro"
 msgid "Uploaded to this post"
 msgstr "Carregados neste artigo"
 
-#: includes/fields/class-acf-field-file.php:126
+#: includes/fields/class-acf-field-file.php:130
 msgid "File name"
 msgstr "Nome do ficheiro"
 
-#: includes/fields/class-acf-field-file.php:130
-#: includes/fields/class-acf-field-file.php:233
-#: includes/fields/class-acf-field-file.php:244
+#: includes/fields/class-acf-field-file.php:134
+#: includes/fields/class-acf-field-file.php:237
+#: includes/fields/class-acf-field-file.php:248
 #: includes/fields/class-acf-field-image.php:248
 #: includes/fields/class-acf-field-image.php:277
 #: pro/fields/class-acf-field-gallery.php:690
@@ -1769,7 +1806,7 @@ msgstr "Nome do ficheiro"
 msgid "File size"
 msgstr "Tamanho do ficheiro"
 
-#: includes/fields/class-acf-field-file.php:139
+#: includes/fields/class-acf-field-file.php:143
 #: includes/fields/class-acf-field-image.php:124
 #: includes/fields/class-acf-field-link.php:140 includes/input.php:269
 #: pro/fields/class-acf-field-gallery.php:343
@@ -1777,35 +1814,35 @@ msgstr "Tamanho do ficheiro"
 msgid "Remove"
 msgstr "Remover"
 
-#: includes/fields/class-acf-field-file.php:155
+#: includes/fields/class-acf-field-file.php:159
 msgid "Add File"
 msgstr "Adicionar ficheiro"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File Array"
 msgstr "Array do ficheiro"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File URL"
 msgstr "URL do ficheiro"
 
-#: includes/fields/class-acf-field-file.php:208
+#: includes/fields/class-acf-field-file.php:212
 msgid "File ID"
 msgstr "ID do ficheiro"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:213
 #: pro/fields/class-acf-field-gallery.php:655
 msgid "Library"
 msgstr "Biblioteca"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:214
 #: pro/fields/class-acf-field-gallery.php:656
 msgid "Limit the media library choice"
 msgstr "Limita a escolha da biblioteca de media."
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:219
 #: includes/locations/class-acf-location-attachment.php:101
 #: includes/locations/class-acf-location-comment.php:79
@@ -1818,36 +1855,36 @@ msgstr "Limita a escolha da biblioteca de media."
 msgid "All"
 msgstr "Todos"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:220
 #: pro/fields/class-acf-field-gallery.php:662
 msgid "Uploaded to post"
 msgstr "Carregados no artigo"
 
-#: includes/fields/class-acf-field-file.php:229
+#: includes/fields/class-acf-field-file.php:233
 #: includes/fields/class-acf-field-image.php:227
 #: pro/fields/class-acf-field-gallery.php:669
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: includes/fields/class-acf-field-file.php:230
-#: includes/fields/class-acf-field-file.php:241
+#: includes/fields/class-acf-field-file.php:234
+#: includes/fields/class-acf-field-file.php:245
 msgid "Restrict which files can be uploaded"
 msgstr "Restringe que ficheiros podem ser carregados."
 
-#: includes/fields/class-acf-field-file.php:240
+#: includes/fields/class-acf-field-file.php:244
 #: includes/fields/class-acf-field-image.php:256
 #: pro/fields/class-acf-field-gallery.php:698
 msgid "Maximum"
 msgstr "Máximo"
 
-#: includes/fields/class-acf-field-file.php:251
+#: includes/fields/class-acf-field-file.php:255
 #: includes/fields/class-acf-field-image.php:285
 #: pro/fields/class-acf-field-gallery.php:727
 msgid "Allowed file types"
 msgstr "Tipos de ficheiros permitidos"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:286
 #: pro/fields/class-acf-field-gallery.php:728
 msgid "Comma separated list. Leave blank for all types"
@@ -1925,21 +1962,21 @@ msgstr "Especifica o estilo usado para mostrar os campos seleccionados."
 
 #: includes/fields/class-acf-field-group.php:480
 #: pro/fields/class-acf-field-clone.php:845
-#: pro/fields/class-acf-field-flexible-content.php:612
+#: pro/fields/class-acf-field-flexible-content.php:614
 #: pro/fields/class-acf-field-repeater.php:458
 msgid "Block"
 msgstr "Bloco"
 
 #: includes/fields/class-acf-field-group.php:481
 #: pro/fields/class-acf-field-clone.php:846
-#: pro/fields/class-acf-field-flexible-content.php:611
+#: pro/fields/class-acf-field-flexible-content.php:613
 #: pro/fields/class-acf-field-repeater.php:457
 msgid "Table"
 msgstr "Tabela"
 
 #: includes/fields/class-acf-field-group.php:482
 #: pro/fields/class-acf-field-clone.php:847
-#: pro/fields/class-acf-field-flexible-content.php:613
+#: pro/fields/class-acf-field-flexible-content.php:615
 #: pro/fields/class-acf-field-repeater.php:459
 msgid "Row"
 msgstr "Linha"
@@ -2127,6 +2164,12 @@ msgstr "Tamanho da incorporação"
 #: includes/fields/class-acf-field-page_link.php:177
 msgid "Archives"
 msgstr "Arquivo"
+
+#: includes/fields/class-acf-field-page_link.php:269
+#: includes/fields/class-acf-field-post_object.php:268
+#: includes/fields/class-acf-field-taxonomy.php:986
+msgid "Parent"
+msgstr "Superior"
 
 #: includes/fields/class-acf-field-page_link.php:485
 #: includes/fields/class-acf-field-post_object.php:384
@@ -2338,7 +2381,7 @@ msgstr "A carregar mais resultados&hellip;"
 #: includes/fields/class-acf-field-select.php:48
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
-msgstr "A procurar&hellip;"
+msgstr "A pesquisar&hellip;"
 
 #: includes/fields/class-acf-field-select.php:49
 msgctxt "Select2 JS load_fail"
@@ -2371,44 +2414,17 @@ msgstr "Divisória"
 msgid "Tab"
 msgstr "Separador"
 
-#: includes/fields/class-acf-field-tab.php:82
-msgid ""
-"The tab field will display incorrectly when added to a Table style repeater "
-"field or flexible content field layout"
-msgstr ""
-"O campo separador será mostrado incorrectamente quando adicionado a um campo "
-"repetidor ou layout de conteúdo flexível, com estilo de tabela."
-
-#: includes/fields/class-acf-field-tab.php:83
-msgid ""
-"Use \"Tab Fields\" to better organize your edit screen by grouping fields "
-"together."
-msgstr ""
-"Utilize \"campos separadores\" para melhor organizar o ecrã de edição, "
-"através de agrupar campos em conjuntos."
-
-#: includes/fields/class-acf-field-tab.php:84
-msgid ""
-"All fields following this \"tab field\" (or until another \"tab field\" is "
-"defined) will be grouped together using this field's label as the tab "
-"heading."
-msgstr ""
-"Todos os campos a seguir a este \"campo separador\" (ou até que esteja "
-"definido outro \"campo separador\") serão agrupados em conjunto utilizando a "
-"legenda deste campo como título do separador."
-
-#: includes/fields/class-acf-field-tab.php:98
+#: includes/fields/class-acf-field-tab.php:102
 msgid "Placement"
 msgstr "Posição"
 
-#: includes/fields/class-acf-field-tab.php:110
-msgid "End-point"
-msgstr "Interrupção"
-
-#: includes/fields/class-acf-field-tab.php:111
-msgid "Use this field as an end-point and start a new group of tabs"
+#: includes/fields/class-acf-field-tab.php:115
+msgid ""
+"Define an endpoint for the previous tabs to stop. This will start a new "
+"group of tabs."
 msgstr ""
-"Utilize este campo para interromper e começar um novo grupo de separadores."
+"Define o fim dos separadores anteriores. Isto será o início de um novo grupo "
+"de separadores."
 
 #: includes/fields/class-acf-field-taxonomy.php:713
 #, php-format
@@ -2511,7 +2527,7 @@ msgstr "Limite de caracteres"
 #: includes/fields/class-acf-field-text.php:156
 #: includes/fields/class-acf-field-textarea.php:121
 msgid "Leave blank for no limit"
-msgstr "Deixe em branco para nenhum limite"
+msgstr "Deixe em branco para não limitar"
 
 #: includes/fields/class-acf-field-textarea.php:25
 msgid "Text Area"
@@ -2652,7 +2668,7 @@ msgstr "Actualizar"
 msgid "Post updated"
 msgstr "Artigo actualizado"
 
-#: includes/forms/form-front.php:229
+#: includes/forms/form-front.php:230
 msgid "Spam Detected"
 msgstr "Spam detectado"
 
@@ -2675,12 +2691,12 @@ msgstr "A validação falhou"
 
 #: includes/input.php:263
 msgid "1 field requires attention"
-msgstr "1 campo requer a sua atenção."
+msgstr "1 campo requer a sua atenção"
 
 #: includes/input.php:264
 #, php-format
 msgid "%d fields require attention"
-msgstr "%d campos requerem a sua atenção."
+msgstr "%d campos requerem a sua atenção"
 
 #: includes/input.php:265
 msgid "Restricted"
@@ -3063,44 +3079,44 @@ msgstr "Remover layout"
 msgid "Click to toggle"
 msgstr "Clique para alternar"
 
-#: pro/fields/class-acf-field-flexible-content.php:554
+#: pro/fields/class-acf-field-flexible-content.php:556
 msgid "Reorder Layout"
 msgstr "Reordenar layout"
 
-#: pro/fields/class-acf-field-flexible-content.php:554
+#: pro/fields/class-acf-field-flexible-content.php:556
 msgid "Reorder"
 msgstr "Reordenar"
 
-#: pro/fields/class-acf-field-flexible-content.php:555
+#: pro/fields/class-acf-field-flexible-content.php:557
 msgid "Delete Layout"
 msgstr "Eliminar layout"
 
-#: pro/fields/class-acf-field-flexible-content.php:556
+#: pro/fields/class-acf-field-flexible-content.php:558
 msgid "Duplicate Layout"
 msgstr "Duplicar layout"
 
-#: pro/fields/class-acf-field-flexible-content.php:557
+#: pro/fields/class-acf-field-flexible-content.php:559
 msgid "Add New Layout"
 msgstr "Adicionar novo layout"
 
-#: pro/fields/class-acf-field-flexible-content.php:628
+#: pro/fields/class-acf-field-flexible-content.php:630
 msgid "Min"
 msgstr "Mín"
 
-#: pro/fields/class-acf-field-flexible-content.php:641
+#: pro/fields/class-acf-field-flexible-content.php:643
 msgid "Max"
 msgstr "Máx"
 
-#: pro/fields/class-acf-field-flexible-content.php:668
+#: pro/fields/class-acf-field-flexible-content.php:670
 #: pro/fields/class-acf-field-repeater.php:466
 msgid "Button Label"
 msgstr "Legenda do botão"
 
-#: pro/fields/class-acf-field-flexible-content.php:677
+#: pro/fields/class-acf-field-flexible-content.php:679
 msgid "Minimum Layouts"
 msgstr "Mínimo de layouts"
 
-#: pro/fields/class-acf-field-flexible-content.php:686
+#: pro/fields/class-acf-field-flexible-content.php:688
 msgid "Maximum Layouts"
 msgstr "Máximo de layouts"
 

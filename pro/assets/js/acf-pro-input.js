@@ -266,17 +266,10 @@
 				forceHelperSize: true,
 				forcePlaceholderSize: true,
 				scroll: true,
-				start: function(event, ui) {
-					
-					acf.do_action('sortstart', ui.item, ui.placeholder);
-					
-	   			},
 	   			stop: function(event, ui) {
 					
 					// render
 					self.render();
-					
-					acf.do_action('sortstop', ui.item, ui.placeholder);
 					
 	   			},
 	   			update: function(event, ui) {
@@ -786,17 +779,10 @@
 				forceHelperSize: true,
 				forcePlaceholderSize: true,
 				scroll: true,
-				start: function(event, ui) {
-					
-					acf.do_action('sortstart', ui.item, ui.placeholder);
-					
-	   			},
 	   			stop: function(event, ui) {
 					
 					// render
 					self.render();
-					
-					acf.do_action('sortstop', ui.item, ui.placeholder);
 					
 	   			},
 	   			update: function(event, ui) {
@@ -1211,25 +1197,17 @@
 			// sortable
 			this.$attachments.unbind('sortable').sortable({
 				
-				items					: '.acf-gallery-attachment',
-				forceHelperSize			: true,
-				forcePlaceholderSize	: true,
-				scroll					: true,
-				
+				items: '.acf-gallery-attachment',
+				forceHelperSize: true,
+				forcePlaceholderSize: true,
+				scroll: true,
 				start: function (event, ui) {
 					
 					ui.placeholder.html( ui.item.html() );
 					ui.placeholder.removeAttr('style');
-								
-					acf.do_action('sortstart', ui.item, ui.placeholder);
-					
-	   			},
-	   			
-	   			stop: function (event, ui) {
-				
-					acf.do_action('sortstop', ui.item, ui.placeholder);
 					
 	   			}
+	   			
 			});
 			
 			

@@ -1736,10 +1736,7 @@ var acf;
 		prepare_for_ajax : function( args ) {
 			
 			// vars
-			var data = {
-				nonce	: acf.get('nonce'),
-				post_id	: acf.get('post_id')
-			};
+			var data = {};
 			
 			
 			// $.ajax() expects all args to be 'non-nested'
@@ -1792,11 +1789,13 @@ var acf;
 			});
 			
 			
+			// required
+			data.nonce = acf.get('nonce');
+			data.post_id = acf.get('post_id');
+			
+			
 			// filter for 3rd party customization
 			data = acf.apply_filters('prepare_for_ajax', data);	
-			
-			
-			//console.log( 'prepare_for_ajax', data );
 			
 			
 			// return
@@ -3160,36 +3159,14 @@ var acf;
 		
 	acf.layout = acf.model.extend({
 		
-		active: 0,
-		
 		actions: {
-			'prepare 99': 	'prepare',
-			'refresh': 		'refresh'
-		},
-		
-		prepare: function(){
-			
-			// vars
-			this.active = 1;
-			
-			
-			// render
-			this.refresh();
-			
+			'refresh 99': 	'refresh'
 		},
 		
 		refresh: function( $el ){ 
 			
-			// bail early if not yet active
-			if( !this.active ) return;
-			
-			
 			// defaults
 			$el = $el || $('body');
-			
-			
-			// reference
-			var self = this;
 			
 			
 			// render
@@ -3208,11 +3185,11 @@ var acf;
 			var $tables = $el.find('.acf-table:visible');
 			
 			
-			// appent self if is tr
-			if( $el.is('tr') ) {
-				
-				$tables = $el.parent().parent();
-				
+			// appent self
+			if( $el.is('table') ) {
+				$tables = $tables.add( $el );
+			} else if( $el.is('tr') ) {
+				$tables = $tables.add( $el.closest('table') );
 			}
 			
 			
@@ -3391,7 +3368,7 @@ var acf;
 			
 			
 			// reset fields
-			$fields.removeClass('acf-r0 acf-c0').css({'min-height': 0});
+			$fields.removeClass('-r0 -c0').css({'min-height': 0});
 			
 			
 			// loop
@@ -3436,11 +3413,11 @@ var acf;
 				// add classes
 				if( this_top == 0 ) {
 					
-					$el.addClass('acf-r0');
+					$el.addClass('-r0');
 					
 				} else if( cell == 0 ) {
 					
-					$el.addClass('acf-c0');
+					$el.addClass('-c0');
 					
 				}
 				
@@ -4021,7 +3998,93 @@ var acf;
 		}
 				 
 	});
-			
+	
+	
+	// Preferences
+	var preferences = localStorage.getItem('acf');
+	preferences = preferences ? JSON.parse(preferences) : {};
+	
+	
+	/**
+	*  getPreferenceName
+	*
+	*  Gets the true preference name. 
+	*  Converts "this.thing" to "thing-123" if editing post 123.
+	*
+	*  @date	11/11/17
+	*  @since	5.6.5
+	*
+	*  @param	string name
+	*  @return	string
+	*/
+	
+	var getPreferenceName = function( name ){
+		if( name.substr(0, 5) === 'this.' ) {
+			name = name.substr(5) + '-' + acf.get('post_id');
+		}
+		return name;
+	};
+	
+	
+	/**
+	*  acf.getPreference
+	*
+	*  Gets a preference setting or null if not set.
+	*
+	*  @date	11/11/17
+	*  @since	5.6.5
+	*
+	*  @param	string name
+	*  @return	mixed
+	*/
+	
+	acf.getPreference = function( name ){
+		name = getPreferenceName( name );
+		return preferences[ name ] || null;
+	}
+	
+	
+	/**
+	*  acf.setPreference
+	*
+	*  Sets a preference setting.
+	*
+	*  @date	11/11/17
+	*  @since	5.6.5
+	*
+	*  @param	string name
+	*  @param	mixed value
+	*  @return	n/a
+	*/
+	
+	acf.setPreference = function( name, value ){
+		name = getPreferenceName( name );
+		if( value === null ) {
+			delete preferences[ name ];
+		} else {
+			preferences[ name ] = value;
+		}
+		localStorage.setItem('acf', JSON.stringify(preferences));
+	}
+	
+	
+	/**
+	*  acf.removePreference
+	*
+	*  Removes a preference setting.
+	*
+	*  @date	11/11/17
+	*  @since	5.6.5
+	*
+	*  @param	string name
+	*  @return	n/a
+	*/
+	
+	acf.removePreference = function( name ){ 
+		acf.setPreference(name, null);
+	};
+	
+	
 	
 	/*
 	*  Sortable
@@ -4035,6 +4098,14 @@ var acf;
 	*  @param	$post_id (int)
 	*  @return	$post_id (int)
 	*/
+	
+	$(document).on('sortstart', function( event, ui ) {
+		acf.do_action('sortstart', ui.item, ui.placeholder);
+	});
+	
+	$(document).on('sortstop', function( event, ui ) {
+		acf.do_action('sortstop', ui.item, ui.placeholder);
+	});
 	
 	acf.add_action('sortstart', function( $item, $placeholder ){
 		
@@ -4804,23 +4875,29 @@ var acf;
 	
 })(jQuery);
 
-(function($){
+(function($, undefined){
 	
-	acf.conditional_logic = acf.model.extend({
-			
+	// vars
+	var hidden = 'hidden-by-conditional-logic';
+	
+	// model
+	var conditionalLogic = acf.conditional_logic = acf.model.extend({
+		
+		// storage of fields that have conditions
+		conditions: {},
+		
+		// storage of fields that trigger a condition
+		triggers: {},
+		
+		// reference to parent element of both the trigger and target
+		$parent: false,
+		
+		// actions
 		actions: {
 			'prepare 20': 	'render',
-			'append 20': 	'render'
+			'append 20': 	'render',
+			'change':		'change'
 		},
-		
-		events: {
-			'change .acf-field input': 		'change',
-			'change .acf-field textarea': 	'change',
-			'change .acf-field select': 	'change'
-		},
-		
-		items: {},
-		triggers: {},
 		
 		
 		/*
@@ -4832,46 +4909,139 @@ var acf;
 		*  @date	22/05/2015
 		*  @since	5.2.3
 		*
-		*  @param	target (string) target field key
-		*  @param	groups (array) rule groups
+		*  @param	string	target		field key
+		*  @param	array	conditions	array of conditional logic groups
 		*  @return	$post_id (int)
 		*/
 		
-		add: function( target, groups ){
+		add: function( target, conditions ){
 			
-			// debug
-			//console.log( 'conditional_logic.add(%o, %o)', target, groups );
-			
-			
-			// populate triggers
-			for( var i in groups ) {
-				
-				// vars
-				var group = groups[i];
+			// add triggers
+			for( var i in conditions ) {
+				var group = conditions[i];
 				
 				for( var k in group ) {
+					var rule = group[k];
 					
-					// vars
-					var rule = group[k],
-						trigger = rule.field,
-						triggers = this.triggers[ trigger ] || {};
-					
-					
-					// append trigger (sub field will simply override)
-					triggers[ target ] = target;
-					
-					
-					// update
-					this.triggers[ trigger ] = triggers;
-										
+					this.addTrigger( rule.field, target );
 				}
-				
 			}
 			
 			
-			// append items
-			this.items[ target ] = groups;
+			// add condition
+			this.setCondition( target, conditions );
 			
+		},
+		
+		
+		/**
+		*  getTrigger
+		*
+		*  This function will return the fields that are triggered by this key.
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	string key The trigger's key.
+		*  @return	mixed
+		*/
+		
+		getTrigger: function( key ){
+			return this.triggers[ key ] || null;
+		},
+		
+		
+		/**
+		*  setTrigger
+		*
+		*  This function will set the fields that are triggered by this key.
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	string key The trigger's key.
+		*  @return	mixed
+		*/
+		
+		setTrigger: function( key, value ){
+			this.triggers[ key ] = value;
+		},
+		
+		
+		/**
+		*  addTrigger
+		*
+		*  This function will add a reference for a field that triggers another field's visibility
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	n/a
+		*  @return	n/a
+		*/
+		
+		addTrigger: function( trigger, target ){
+			
+			// vars
+			var triggers = this.getTrigger( trigger ) || {};
+			
+			// append
+			triggers[ target ] = 1;
+			
+			// set
+			this.setTrigger(trigger, triggers);
+				
+		},
+		
+		
+		/**
+		*  getConditions
+		*
+		*  This function will return the conditions for all targets.
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	string key The trigger's key.
+		*  @return	mixed
+		*/
+		
+		getConditions: function(){
+			return this.conditions;
+		},
+		
+		
+		/**
+		*  getCondition
+		*
+		*  This function will return the conditions for a target.
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	string key The trigger's key.
+		*  @return	mixed
+		*/
+		
+		getCondition: function( key ){
+			return this.conditions[ key ] || null;
+		},
+		
+		
+		/**
+		*  setCondition
+		*
+		*  This function will set the conditions for a target.
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	string key The trigger's key.
+		*  @return	mixed
+		*/
+		
+		setCondition: function( key, value ){
+			this.conditions[ key ] = value;
 		},
 		
 		
@@ -4890,24 +5060,79 @@ var acf;
 		
 		render: function( $el ){
 			
-			// debug
-			//console.log('conditional_logic.render(%o)', $el);
-			
-			
-			// defaults
+			// vars
 			$el = $el || false;
-			
 			
 			// get targets
 			var $targets = acf.get_fields( '', $el, true );
 			
-			
 			// render fields
-			this.render_fields( $targets );
-			
+			this.renderFields( $targets );
 			
 			// action for 3rd party customization
 			acf.do_action('refresh', $el);
+			
+		},
+		
+		
+		/**
+		*  findParent
+		*
+		*  This function will find a parent that contains both the trigger and target
+		*
+		*  @date	15/11/17
+		*  @since	5.6.5
+		*
+		*  @param	n/a
+		*  @return	n/a
+		*/
+		
+		findTarget: function( $trigger, target ){
+			
+			// vars
+			var self = this;
+			
+			// reset scope
+			this.$parent = false;
+			
+			
+			// find siblings
+			var selector = acf.get_selector( target );
+			var $targets = $trigger.siblings( selector );
+			
+			// return if found
+			if( $targets.length ) {
+				this.$parent = $trigger.parent();
+				return $targets;
+			}
+			
+			
+			// find all targets
+			var $targets = acf.get_fields(target, false, true);
+			
+			// refine scope if more than 1 found
+			if( $targets.length > 1 ) {
+				
+				// loop
+				$trigger.parents('.acf-row, .acf-table, .acf-fields').each(function(){
+					
+					// vars
+					var $parent = $(this);
+					var $child = $parent.find( $targets );
+					
+					// found
+					if( $child.length ) {
+						$targets = $child;
+						self.$parent = $parent;
+						return false;
+					}
+					
+				});
+				
+			}
+			
+			// return
+			return $targets;
 			
 		},
 		
@@ -4925,55 +5150,35 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		change: function( e ){
-			
-			// debug
-			//console.log( 'conditional_logic.change(%o)', $input );
-			
+		change: function( $input ){
 			
 			// vars
-			var $input = e.$el,
-				$field = acf.get_field_wrap( $input ),
-				key = $field.data('key');
+			var $trigger = acf.get_field_wrap($input);
+			var key = $trigger.data('key');
+			var trigger = this.getTrigger(key);
 			
+			// bail early if this field is not a trigger
+			if( !trigger ) return false;
 			
-			// bail early if this field does not trigger any actions
-			if( typeof this.triggers[key] === 'undefined' ) {
+			// loop
+			for( var target in trigger ) {
 				
-				return false;
-				
-			}
-			
-			
-			// vars
-			$parent = $field.parent();
-			
-			
-			// update visibility
-			for( var i in this.triggers[ key ] ) {
-				
-				// get the target key
-				var target_key = this.triggers[ key ][ i ];
-				
-				
-				// get targets
-				var $targets = acf.get_fields(target_key, $parent, true);
-				
+				// get target(s)
+				var $targets = this.findTarget( $trigger, target );
 				
 				// render
-				this.render_fields( $targets );
+				this.renderFields( $targets );
 				
 			}
 			
-			
 			// action for 3rd party customization
-			acf.do_action('refresh', $parent);
+			acf.do_action('refresh', this.$parent);
 			
 		},
 		
 		
 		/*
-		*  render_fields
+		*  renderFields
 		*
 		*  This function will render a selection of fields
 		*
@@ -4985,17 +5190,14 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		render_fields: function( $targets ) {
+		renderFields: function( $targets ) {
 		
 			// reference
 			var self = this;
 			
-			
-			// loop over targets and render them			
+			// loop		
 			$targets.each(function(){
-					
-				self.render_field( $(this) );
-				
+				self.renderField( $(this) );
 			});
 			
 		},
@@ -5014,80 +5216,51 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		render_field : function( $target ){
-			
-			// vars
-			var key = $target.data('key');
-			
-			
-			// bail early if this field does not contain any conditional logic
-			if( typeof this.items[ key ] === 'undefined' ) {
-				
-				return false;
-				
-			}
-			
+		renderField : function( $target ){
 			
 			// vars
 			var visibility = false;
+			var key = $target.data('key');
+			var condition = this.getCondition( key );
 			
+			// bail early if this field does not contain any conditional logic
+			if( !condition ) return false;
 			
-			// debug
-			//console.log( 'conditional_logic.render_field(%o)', $field );
-			
-			
-			// get conditional logic
-			var groups = this.items[ key ];
-			
-			
-			// calculate visibility
-			for( var i = 0; i < groups.length; i++ ) {
+			// loop
+			for( var i = 0; i < condition.length; i++ ) {
 				
 				// vars
-				var group = groups[i],
+				var group = condition[i],
 					match_group	= true;
 				
+				// loop
 				for( var k = 0; k < group.length; k++ ) {
 					
 					// vars
 					var rule = group[k];
 					
-					
 					// get trigger for rule
-					var $trigger = this.get_trigger( $target, rule.field );
-					
+					var $trigger = this.findTarget( $target, rule.field );
 					
 					// break if rule did not validate
 					if( !this.calculate(rule, $trigger, $target) ) {
-						
 						match_group = false;
 						break;
-						
-					}
-										
+					}					
 				}
-				
 				
 				// set visibility if rule group did validate
 				if( match_group ) {
-					
 					visibility = true;
 					break;
-					
 				}
-				
 			}
 			
-			
-			// hide / show field
+			// hide / show
 			if( visibility ) {
-				
-				this.show_field( $target );					
-			
+				this.showField( $target );					
 			} else {
-				
-				this.hide_field( $target );
-			
+				this.hideField( $target );
 			}
 			
 		},
@@ -5106,24 +5279,20 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		show_field: function( $field ){
+		showField: function( $field ){
 			
-			// debug
-			//console.log('show_field(%o)', $field);
-			
+			// bail ealry if not hidden
+			//if( !$field.hasClass(hidden) ) return;
 			
 			// vars
 			var key = $field.data('key');
 			
-			
 			// remove class
-			$field.removeClass( 'hidden-by-conditional-logic' );
-			
+			$field.removeClass(hidden);
 			
 			// enable
-			acf.enable_form( $field, 'condition_'+key );
+			acf.enable_form( $field, 'condition-'+key );
 			
-						
 			// action for 3rd party customization
 			acf.do_action('show_field', $field, 'conditional_logic' );
 			
@@ -5143,92 +5312,25 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		hide_field : function( $field ){
+		hideField : function( $field ){
 			
-			// debug
-			//console.log('hide_field(%o)', $field);
-			
+			// bail ealry if hidden
+			//if( $field.hasClass(hidden) ) return;
 			
 			// vars
 			var key = $field.data('key');
 			
-			
 			// add class
-			$field.addClass( 'hidden-by-conditional-logic' );
-			
+			$field.addClass( hidden );
 			
 			// disable
-			acf.disable_form( $field, 'condition_'+key );
+			acf.disable_form( $field, 'condition-'+key );
 						
-			
 			// action for 3rd party customization
 			acf.do_action('hide_field', $field, 'conditional_logic' );
 			
 		},
-		
-		
-		/*
-		*  get_trigger
-		*
-		*  This function will return the relevant $trigger for a $target
-		*
-		*  @type	function
-		*  @date	22/05/2015
-		*  @since	5.2.3
-		*
-		*  @param	$post_id (int)
-		*  @return	$post_id (int)
-		*/
-		
-		get_trigger: function( $target, key ){
-			
-			// vars
-			var selector = acf.get_selector( key );
-			
-			
-			// find sibling $trigger
-			var $trigger = $target.siblings( selector );
-			
-			
-			// parent trigger
-			if( !$trigger.exists() ) {
 				
-				// vars
-				var parent = acf.get_selector();
-				
-				
-				// loop through parent fields and review their siblings too
-				$target.parents( parent ).each(function(){
-					
-					// find sibling $trigger
-					$trigger = $(this).siblings( selector );
-					
-					
-					// bail early if $trigger is found
-					if( $trigger.exists() ) {
-						
-						return false;
-						
-					}
-	
-				});
-				
-			}
-			
-			
-			// bail early if no $trigger is found
-			if( !$trigger.exists() ) {
-				
-				return false;
-				
-			}
-			
-			
-			// return
-			return $trigger;
-			
-		},
-		
 		
 		/*
 		*  calculate
@@ -5243,7 +5345,7 @@ var acf;
 		*  @return	$post_id (int)
 		*/
 		
-		calculate : function( rule, $trigger, $target ){
+		calculate: function( rule, $trigger, $target ){
 			
 			// bail early if $trigger could not be found
 			if( !$trigger || !$target ) return false;
@@ -5337,6 +5439,12 @@ var acf;
 		}
 		
 	});
+	
+	
+	// compatibility
+	conditionalLogic.show_field = conditionalLogic.showField;
+	conditionalLogic.hide_field = conditionalLogic.hideField;
+	
 
 })(jQuery);
 
@@ -11248,7 +11356,563 @@ var acf;
 
 })(jQuery);
 
+(function($, undefined){
+	
+	var i = 0;
+
+	acf.fields.accordion = acf.field.extend({
+		
+		type: 'accordion',
+		$el: null,
+		$wrap: null,
+		
+		actions: {
+			'prepare':	'initialize',
+			'append':	'initialize',
+		},
+		
+		focus: function(){
+			
+			
+		},
+		
+		initialize: function(){
+			
+			// vars
+			var $field = this.$field;
+			var $label = $field.children('.acf-label');
+			var $input = $field.children('.acf-input');
+			var $wrap = $input.children('.acf-fields');
+			var settings = $wrap.data();			
+			
+			
+			// bail early if is cell
+			if( $field.is('td') ) return;
+			
+			
+			// enpoint
+			if( settings.endpoint ) {
+				$field.remove();
+				return;
+			}
+			
+			
+			// force description into label
+			var $instructions = $input.children('.description')
+			if( $instructions.length ) {
+				$label.append( $instructions );
+			}
+			
+			
+			// table
+			if( $field.is('tr') ) {
+				
+				// vars
+				var $table = $field.closest('table');
+				var $newLabel = $('<div class="acf-accordion-title"/>');
+				var $newInput = $('<div class="acf-accordion-content"/>');
+				var $newTable = $('<table class="' + $table.attr('class') + '"/>');
+				var $newWrap = $('<tbody/>');
+				
+				// dom
+				$newLabel.append( $label.html() );
+				$newTable.append( $newWrap );
+				$newInput.append( $newTable );
+				$input.append( $newLabel );
+				$input.append( $newInput );
+				
+				// modify
+				$label.remove();
+				$wrap.remove();
+				$input.attr('colspan', 2);
+				
+				// update vars
+				$label = $newLabel;
+				$input = $newInput;
+				$wrap = $newWrap;
+				
+			}
+			
+			
+			// add classes
+			$field.addClass('acf-accordion');
+			$label.addClass('acf-accordion-title');
+			$input.addClass('acf-accordion-content');
+			
+			
+			// index
+			i++;
+			
+			
+			// multi-expand
+			if( settings.multi_expand ) {
+				$field.data('multi-expand', 1);
+			}
+			
+			
+			// open
+			var order = acf.getPreference('this.accordions') || [];
+			if( order[i-1] !== undefined ) {
+				settings.open = order[i-1];
+			}
+			if( settings.open ) {
+				$field.addClass('-open');
+				$input.css('display', 'block'); // needed for accordion to close smoothly
+			}
+			
+			
+			// add icon
+			$label.prepend('<i class="acf-accordion-icon dashicons dashicons-arrow-' + (settings.open ? 'down' : 'right') + '"></i>');
+			
+			
+			// classes
+			// - remove 'inside' which is a #poststuff WP class
+			var $parent = $field.parent();
+			$wrap.addClass( $parent.hasClass('-left') ? '-left' : '' );
+			$wrap.addClass( $parent.hasClass('-clear') ? '-clear' : '' );
+			
+			
+			// append
+			$wrap.append( $field.nextUntil('.acf-field-accordion', '.acf-field') );
+			
+			
+			// clean up
+			$wrap.removeAttr('data-open data-multi_expand data-endpoint');
+		}
+		
+	});
+	
+	
+	/*
+	*  accordionManager
+	*
+	*  This model will handle adding accordions
+	*
+	*  @type	function
+	*  @date	25/11/2015
+	*  @since	5.3.2
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	var accordionManager = acf.model.extend({
+		
+		events: {
+			'click .acf-accordion-title': '_click',
+		},
+		
+		_click: function( e ){
+			
+			// prevent Defailt
+			e.preventDefault();
+			
+			// open close
+			this.toggle( e.$el.closest('.acf-accordion') );
+			
+		},
+		
+		isOpen: function( $el ) {
+			return $el.hasClass('-open');
+		},
+		
+		toggle: function( $el ){
+			
+			// is open
+			if( this.isOpen($el) ) {
+				this.close( $el );
+			} else {
+				this.open( $el );
+			}
+			
+		},
+		
+		open: function( $el ){
+			
+			// open
+			$el.find('.acf-accordion-content:first').slideDown().css('display', 'block');
+			$el.find('.acf-accordion-icon:first').removeClass('dashicons-arrow-right').addClass('dashicons-arrow-down');
+			$el.addClass('-open');
+			
+			// action
+			acf.do_action('show', $el);
+			
+			// close siblings
+			if( !$el.data('multi-expand') ) {
+				$el.siblings('.acf-accordion.-open').each(function(){
+					accordionManager.close( $(this) );
+				});
+			}
+			
+			// action
+			acf.do_action('refresh', $el);
+		},
+		
+		close: function( $el ){
+			
+			// close
+			$el.find('.acf-accordion-content:first').slideUp();
+			$el.find('.acf-accordion-icon:first').removeClass('dashicons-arrow-down').addClass('dashicons-arrow-right');
+			$el.removeClass('-open');
+			
+			// action
+			acf.do_action('hide', $el);
+			
+		}
+		
+	});
+	
+	$(window).on('unload', function(){
+		
+		var order = [];
+		$('.acf-accordion').each(function(){
+			var open = $(this).hasClass('-open') ? 1 : 0;
+			order.push(open);
+		});
+		if( !order.length ) return;
+		acf.setPreference('this.accordions', order);
+		
+	});
+	
+	
+	/**
+	*  accordionValidation
+	*
+	*  This model will handle validation of fields within an accordion
+	*
+	*  @date	20/11/17
+	*  @since	5.6.5
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var accordionValidation = acf.model.extend({
+		
+		active: 1,
+		
+		events: {
+			'invalidField .acf-accordion':	'invalidField'
+		},
+		
+		invalidField: function( e ){
+			
+			// bail early if already focused
+			if( !this.active ) return;
+			
+			// block
+			this.block();
+			
+			// open
+			accordionManager.open( e.$el );
+			
+		},
+		
+		block: function(){
+			
+			// reference
+			var self = this;
+			
+			// disable functionality for 1sec (allow next validation to work)
+			this.active = 0;
+			
+			// timeout
+			setTimeout(function(){
+				self.active = 1;
+			}, 1000);
+			
+		}
+		
+	});
+
+})(jQuery);
+
 (function($){
+	
+	// vars
+	var hidden = 'hidden-by-conditional-logic';
+	var groupIndex = 0;
+	var tabIndex = 0;
+	
+	
+	/*
+	*  tabs
+	*
+	*  This model will handle adding tabs and groups
+	*
+	*  @type	function
+	*  @date	25/11/2015
+	*  @since	5.3.2
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
+	
+	var tabs = acf.model.extend({
+		
+		$fields: [],
+		
+		actions: {
+			'prepare 15': 	'initialize',
+			'append 15': 	'initialize',
+			'refresh 15': 	'refresh'
+		},
+		
+		events: {
+			'click .acf-tab-button': '_click'
+		},
+		
+		_click: function( e ){
+			
+			// prevent Defailt
+			e.preventDefault();
+			
+			// toggle
+			this.toggle( e.$el );
+			
+		},
+		
+		isOpen: function( $el ) {
+			return $el.hasClass('-open');
+		},
+		
+		toggle: function( $a ){
+			
+			// vars
+			var key = $a.data('key');
+			var $li = $a.parent();
+			var $wrap = $a.closest('.acf-tab-wrap');
+			var $active = $wrap.find('.active a');
+			var $field = $wrap.siblings('.acf-field[data-key="' + key + '"]');
+			
+			
+			// bail early if already open
+			if( this.isOpen($field) ) return;
+			
+			
+			// close
+			if( $active.length ) {
+				
+				// vars
+				var activeKey = $active.data('key');
+				var $activeli = $active.parent();
+				var $activeField = $wrap.siblings('.acf-field[data-key="' + activeKey + '"]');
+				
+				// hide
+				$activeli.removeClass('active');
+				this.close( $activeField );
+				
+			}
+			
+			
+			// open
+			$li.addClass('active');
+			this.open( $field );
+			
+			
+			// action
+			// - allows acf.layout to fix floating field's min-height
+			acf.do_action('refresh', $wrap.parent() );
+			
+		},
+		
+		getFields: function( $field ){
+			return $field.nextUntil('.acf-field-tab', '.acf-field');
+		},
+		
+		getWrap: function( $field ){
+			return $field.prevAll('.acf-tab-wrap:first');
+		},
+		
+		getTab: function( $wrap, key ){
+			return $wrap.find('a[data-key="' + key + '"]');
+		},
+		
+		open: function( $field ){
+			
+			// show
+			this.getFields( $field ).each(function(){
+				
+				$(this).removeClass('hidden-by-tab');
+				acf.do_action('show_field', $(this), 'tab');
+				
+			});
+			
+		},
+		
+		close: function( $field ){
+			
+			// show
+			this.getFields( $field ).each(function(){
+				
+				$(this).addClass('hidden-by-tab');
+				acf.do_action('hide_field', $(this), 'tab');
+				
+			});
+			
+		},
+		
+		addTab: function( $field ){
+			this.$fields.push( $field );
+		},
+		
+		initialize: function(){
+			
+			// bail ealry if no fields
+			if( !this.$fields.length ) return;	
+			
+			// loop
+			for( var i = 0; i < this.$fields.length; i++) {
+				this.createTab( this.$fields[ i ] );
+			}
+			
+			// reset
+			this.$fields = [];
+			
+		},
+			
+		createTab: function( $field ){
+			
+			// bail early if is cell
+			if( $field.is('td') ) return false;
+			
+			
+			// vars
+			var $label = $field.children('.acf-label');
+			var $input = $field.children('.acf-input');	
+			var $wrap = this.getWrap( $field );
+			var $button = $field.find('.acf-tab-button');
+			var settings = $button.data();
+			var open = false;
+			
+			
+			// remove
+			$field.hide();
+			$label.remove();
+			$input.remove();
+			
+			
+			// create wrap
+			if( !$wrap.exists() || settings.endpoint ) {
+				$wrap = this.createTabWrap( $field, settings );
+				open = true;
+			}
+			
+			
+			// create tab
+			var $tab = $('<li></li>').append( $button );
+			
+			
+			// open
+			if( open ) {
+				$tab.addClass('active');
+				this.open( $field );
+			} else {
+				this.close( $field );
+			}
+			
+			
+			// hide li
+			if( $button.html() == '' ) $tab.hide();
+			
+			
+			// append
+			$wrap.find('ul').append( $tab );
+			
+			
+			// toggle active tab
+			// previous attempts to integrate with above 'open' variable were uncessefull
+			// this separate toggle logic ensures the tab exists
+			tabIndex++;
+			var order = acf.getPreference('this.tabs') || [];
+			var index = order[ groupIndex-1 ] || 0;
+			if( index == tabIndex-1 && !open ) {
+				this.toggle( $button );
+			}
+			
+			
+			// return
+			return $tab;
+		},
+		
+		createTabWrap: function( $field, settings ){
+			
+			// vars
+			var $parent = $field.parent();
+			var $wrap = false;
+			
+			
+			// add sidebar for left placement
+			if( $parent.hasClass('acf-fields') && settings.placement == 'left' ) {
+				$parent.addClass('-sidebar');
+			}
+			
+			
+			// create wrap
+			if( $field.is('tr') ) {
+				$wrap = $('<tr class="acf-tab-wrap"><td colspan="2"><ul class="acf-hl acf-tab-group"></ul></td></tr>');
+			} else {
+				$wrap = $('<div class="acf-tab-wrap -' + settings.placement + '"><ul class="acf-hl acf-tab-group"></ul></div>');
+			}
+			
+			
+			// append
+			$field.before( $wrap );
+			
+			
+			// index
+			groupIndex++;
+			tabIndex = 0;
+			
+			
+			// return
+			return $wrap;
+			
+		},
+		
+		refresh: function( $el ){
+			
+			// loop
+			$('.acf-tab-wrap', $el).each(function(){
+				
+				// vars
+				var $wrap = $(this);
+				
+				
+				// fix left aligned min-height
+				if( $wrap.hasClass('-left') ) {
+					
+					// vars
+					var $parent = $wrap.parent();
+					var attribute = $parent.is('td') ? 'height' : 'min-height';
+					
+					// find height (minus 1 for border-bottom)
+					var height = $wrap.position().top + $wrap.children('ul').outerHeight(true) - 1;
+					
+					// add css
+					$parent.css(attribute, height);
+					
+				}
+						
+			});
+			
+		}
+		
+	});
+	
+	
+	
+	/**
+	*  acf.fields.tab
+	*
+	*  description
+	*
+	*  @date	17/11/17
+	*  @since	5.6.5
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
 	
 	acf.fields.tab = acf.field.extend({
 		
@@ -11265,25 +11929,12 @@ var acf;
 		
 		focus: function(){
 			
-			// get elements
-			this.$el = this.$field.find('.acf-tab');
-			
-			
-			// get options
-			this.o = this.$el.data();
-			this.o.key = this.$field.data('key');
-			this.o.text = this.$el.html();
-			
 		},
 		
 		initialize: function(){
 			
-			// bail early if is td
-			if( this.$field.is('td') ) return;
-			
-			
 			// add tab
-			tab_manager.add_tab( this.$field, this.o );
+			tabs.addTab( this.$field );
 			
 		},
 		
@@ -11294,49 +11945,29 @@ var acf;
 			
 			
 			// vars
-			var key = $field.data('key'),
-				$group = $field.prevAll('.acf-tab-wrap'),
-				$a = $group.find('a[data-key="' + key + '"]'),
-				$li = $a.parent();
-			
+			var key = $field.data('key');
+			var $wrap = tabs.getWrap( $field );
+			var $tab = tabs.getTab( $wrap, key );
+			var $li = $tab.parent();
 			
 			// bail early if $group does not exist (clone field)
-			if( !$group.exists() ) return;
+			if( !$wrap.exists() ) return;
 			
 			
 			// hide li
-			$li.addClass('hidden-by-conditional-logic');
+			$li.addClass(hidden);
 			
-			
-			// set timout to allow proceeding fields to hide first
-			// without this, the tab field will hide all fields, regarless of if that field has it's own conditional logic rules
-			setTimeout(function(){
 				
-			// if this tab field was hidden by conditional_logic, disable it's children to prevent validation
-			$field.nextUntil('.acf-field-tab', '.acf-field').each(function(){
-				
-				// bail ealry if already hidden
-				if( $(this).hasClass('hidden-by-conditional-logic') ) return;
-				
-				
-				// hide field
+			// hide fields
+			tabs.getFields( $field ).each(function(){
 				acf.conditional_logic.hide_field( $(this) );
-				
-				
-				// add parent reference
-				$(this).addClass('-hbcl-' + key);
-				
 			});
 			
 			
 			// select other tab if active
 			if( $li.hasClass('active') ) {
-				
-				$group.find('li:not(.hidden-by-conditional-logic):first a').trigger('click');
-				
+				$wrap.find('li:not(.'+hidden+'):first a').trigger('click');
 			}
-			
-			}, 0);
 			
 		},
 		
@@ -11345,282 +11976,49 @@ var acf;
 			// bail early if not conditional logic
 			if( context != 'conditional_logic' ) return;
 			
+			
 			// vars
-			var key = $field.data('key'),
-				$group = $field.prevAll('.acf-tab-wrap'),
-				$a = $group.find('a[data-key="' + key + '"]'),
-				$li = $a.parent();
+			var key = $field.data('key');
+			var $wrap = tabs.getWrap( $field );
+			var $tab = tabs.getTab( $wrap, key );
+			var $li = $tab.parent();
 			
 			
 			// bail early if $group does not exist (clone field)
-			if( !$group.exists() ) return;
+			if( !$wrap.exists() ) return;
 			
 			
 			// show li
-			$li.removeClass('hidden-by-conditional-logic');
+			$li.removeClass(hidden);
 			
 			
-			// set timout to allow proceeding fields to hide first
-			// without this, the tab field will hide all fields, regarless of if that field has it's own conditional logic rules
-			setTimeout(function(){
-				
-			// if this tab field was shown by conditional_logic, enable it's children to allow validation
-			$field.siblings('.acf-field.-hbcl-' + key).each(function(){
-				
-				// show field
+			// hide fields
+			tabs.getFields( $field ).each(function(){
 				acf.conditional_logic.show_field( $(this) );
-				
-				
-				// remove parent reference
-				$(this).removeClass('-hbcl-' + key);
-				
 			});
 			
 			
 			// select tab if no other active
 			var $active = $li.siblings('.active');
-			if( !$active.exists() || $active.hasClass('hidden-by-conditional-logic') ) {
-				
-				$a.trigger('click');
-				
+			if( !$active.exists() || $active.hasClass(hidden) ) {
+				tabs.toggle( $tab );
 			}
-			
-			}, 0);
 			
 		}
 		
 	});
 	
 	
-	/*
-	*  tab_manager
-	*
-	*  This model will handle adding tabs and groups
-	*
-	*  @type	function
-	*  @date	25/11/2015
-	*  @since	5.3.2
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	var tab_manager = acf.model.extend({
+	$(window).on('unload', function(){
 		
-		actions: {
-			'prepare 15':	'render',
-			'append 15':	'render',
-			'refresh 15': 	'render'
-		},
+		var order = [];
+		$('.acf-tab-wrap').each(function(){
+			var active = $(this).find('.active').index() || 0;
+			order.push(active);
+		});
+		if( !order.length ) return;
+		acf.setPreference('this.tabs', order);
 		
-		events: {
-			'click .acf-tab-button': '_click'
-		},
-		
-		
-		render: function( $el ){
-			
-			// find visible tab wraps
-			$('.acf-tab-wrap', $el).each(function(){
-				
-				// vars
-				var $group = $(this),
-					$wrap = $group.parent();
-				
-				
-				// trigger click
-				if( !$group.find('li.active').exists() ) {
-					
-					$group.find('li:not(.hidden-by-conditional-logic):first a').trigger('click');
-					
-				}
-				
-				
-				if( $wrap.hasClass('-sidebar') ) {
-					
-					// vars
-					var attribute = $wrap.is('td') ? 'height' : 'min-height';
-					
-					
-					// find height (minus 1 for border-bottom)
-					var height = $group.position().top + $group.children('ul').outerHeight(true) - 1;
-					
-					
-					// add css
-					$wrap.css(attribute, height);
-					
-				}
-						
-			});
-			
-		},
-		
-		add_group: function( $field, settings ){
-			
-			// vars
-			var $wrap = $field.parent(),
-				html = '';
-			
-			
-			// add sidebar to wrap
-			if( $wrap.hasClass('acf-fields') && settings.placement == 'left' ) {
-				
-				$wrap.addClass('-sidebar');
-			
-			// can't have side tab without sidebar	
-			} else {
-				
-				settings.placement = 'top';
-				
-			}
-			
-			
-			// generate html
-			if( $wrap.is('tbody') ) {
-				
-				html = '<tr class="acf-tab-wrap"><td colspan="2"><ul class="acf-hl acf-tab-group"></ul></td></tr>';
-			
-			} else {
-			
-				html = '<div class="acf-tab-wrap -' + settings.placement + '"><ul class="acf-hl acf-tab-group"></ul></div>';
-				
-			}
-			
-			
-			// save
-			$group = $(html);
-			
-			
-			// append
-			$field.before( $group );
-			
-			
-			// return
-			return $group;
-		},
-		
-		add_tab: function( $field, settings ){ //console.log('add_tab(%o, %o)', $field, settings);
-			
-			// vars
-			var $group = $field.siblings('.acf-tab-wrap').last();
-			
-			
-			// add tab group if no group exists
-			if( !$group.exists() ) {
-			
-				$group = this.add_group( $field, settings );
-			
-			// add tab group if is endpoint	
-			} else if( settings.endpoint ) {
-				
-				$group = this.add_group( $field, settings );
-				
-			}
-			
-			
-			// vars
-			var $li = $('<li><a class="acf-tab-button" href="#" data-key="' + settings.key + '">' + settings.text + '</a></li>');
-			
-			
-			// hide li
-			if( settings.text === '' ) $li.hide();
-			
-			
-			// add tab
-			$group.find('ul').append( $li );
-			
-			
-			// conditional logic
-			if( $field.hasClass('hidden-by-conditional-logic') ) {
-				
-				$li.addClass('hidden-by-conditional-logic');
-				
-			}
-			
-		},
-		
-		_click: function( e ){
-			
-			// prevent default
-			e.preventDefault();
-			
-			
-			// reference
-			var self = this;
-			
-			
-			// vars
-			var $a = e.$el,
-				$group = $a.closest('.acf-tab-wrap'),
-				show = $a.data('key'),
-				current = '';
-			
-			
-			// add and remove classes
-			$a.parent().addClass('active').siblings().removeClass('active');
-			
-			
-			// loop over all fields until you hit another group
-			$group.nextUntil('.acf-tab-wrap', '.acf-field').each(function(){
-				
-				// vars
-				var $field = $(this);
-				
-				
-				// set current
-				if( $field.data('type') == 'tab' ) {
-					
-					current = $field.data('key');
-					
-					// bail early if endpoint is found
-					if( $field.hasClass('endpoint') ) {
-						
-						// stop loop - current tab group is complete
-						return false;
-						
-					}
-					
-				}
-				
-				
-				// show
-				if( current === show ) {
-					
-					// only show if hidden
-					if( $field.hasClass('hidden-by-tab') ) {
-						
-						$field.removeClass('hidden-by-tab');
-						
-						acf.do_action('show_field', $(this), 'tab');
-						
-					}
-				
-				// hide
-				} else {
-					
-					// only hide if not hidden
-					if( !$field.hasClass('hidden-by-tab') ) {
-						
-						$field.addClass('hidden-by-tab');
-						
-						acf.do_action('hide_field', $(this), 'tab');
-						
-					}
-					
-				}
-				
-			});
-			
-			
-			// action for 3rd party customization
-			acf.do_action('refresh', $group.parent() );
-			
-			
-			// blur
-			$a.trigger('blur');
-			
-		}
-	
 	});
 	
 	
@@ -12586,6 +12984,10 @@ var acf;
 				var $field = acf.get_field_wrap( $input );
 				
 				
+				// event
+				$field.trigger('invalidField');
+				
+				
 				// action
 				acf.do_action('invalid', $input);
 				acf.do_action('invalid_field', $field);
@@ -13318,6 +13720,10 @@ var acf;
 			$field.on('focus change', 'input, textarea, select', event);
 			
 			
+			// event
+			$field.trigger('invalidField');
+				
+				
 			// hook for 3rd party customization
 			acf.do_action('add_field_error', $field);
 			acf.do_action('invalid_field', $field);
@@ -13964,16 +14370,17 @@ var acf;
 		
 		build_quicktags: function( ed ){
 			
-			var canvas, name, settings, theButtons, html, ed, id, i, use,
+			var canvas, name, settings, theButtons, html, ed, id, i, use, instanceId,
 				defaults = ',strong,em,link,block,del,ins,img,ul,ol,li,code,more,close,';
-
+			
 			canvas = ed.canvas;
 			name = ed.name;
 			settings = ed.settings;
 			html = '';
 			theButtons = {};
 			use = '';
-
+			instanceId = ed.id;
+			
 			// set buttons
 			if ( settings.buttons ) {
 				use = ','+settings.buttons+',';
@@ -14106,6 +14513,7 @@ var acf;
 // @codekit-prepend "../js/acf-relationship.js";
 // @codekit-prepend "../js/acf-select2.js";
 // @codekit-prepend "../js/acf-select.js";
+// @codekit-prepend "../js/acf-accordion.js";
 // @codekit-prepend "../js/acf-tab.js";
 // @codekit-prepend "../js/acf-time-picker.js";
 // @codekit-prepend "../js/acf-true-false.js";

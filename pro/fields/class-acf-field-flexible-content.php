@@ -454,6 +454,7 @@ class acf_field_flexible_content extends acf_field {
 		</thead>
 		
 		<tbody>
+			<tr class="acf-row">
 	<?php else: ?>
 	<div class="acf-fields <?php if($layout['display'] == 'row'): ?>-left<?php endif; ?>">
 	<?php endif; ?>
@@ -497,6 +498,7 @@ class acf_field_flexible_content extends acf_field {
 		?>
 			
 	<?php if( $layout['display'] == 'table' ): ?>
+			</tr>
 		</tbody>
 	</table>
 	<?php else: ?>
