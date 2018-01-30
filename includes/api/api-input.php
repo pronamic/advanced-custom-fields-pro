@@ -124,7 +124,8 @@ function acf_esc_atts( $atts = array() ) {
 		// string
 		if( is_string($v) ) {
 			
-			$v = trim($v);
+			// don't trim value
+			if( $k !== 'value') $v = trim($v);
 			
 		// boolean	
 		} elseif( is_bool($v) ) {

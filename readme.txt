@@ -66,6 +66,25 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.6.7 =
+* Fixed an assortment of bugs found in 5.6.6
+
+= 5.6.6 =
+* Accordion field: Added new field type
+* Tab field: Added logic to remember active tabs
+* WYSIWYG field: Fixed JS error in quicktags initialization
+* Core: Fixed issue preventing conditional logic for menu item fields
+* Core: Fixed issue preventing JS initialization for newly added menu items.
+* Core: Allow whitespace in input value (previously trimmed)
+* Core: Minor fixes and improvements
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Updated Brazilian Portuguese translation - thanks to Rafael Ribeiro
+* Language: Updated Dutch translation - thanks to Derk Oosterveld
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+* Language: Updated Persian translation - thanks to Kamel Kimiaei
+* Language: Updated Swiss German translation - thanks to Raphael Hüni
+* Language: Updated Arabic translation - thanks to Karim Ramadan
+
 = 5.6.5 =
 * API: Added new 'kses' setting to the `acf_form()` function
 * Core: Added new 'Admin Tools' framework (includes design refresh)
