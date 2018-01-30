@@ -60,7 +60,7 @@ acf_render_field_wrap(array(
 	'value'			=> $field_group['label_placement'],
 	'choices' 		=> array(
 		'top'			=>	__("Top aligned",'acf'),
-		'left'			=>	__("Left Aligned",'acf'),
+		'left'			=>	__("Left aligned",'acf'),
 	)
 ));
 
