@@ -788,8 +788,14 @@ html[dir="rtl"] ul.acf-checkbox-list input[type="radio"] {
 .acf-button-group label:first-child {
   border-radius: 3px 0 0 3px;
 }
+html[dir="rtl"] .acf-button-group label:first-child {
+  border-radius: 0 3px 3px 0;
+}
 .acf-button-group label:last-child {
   border-radius: 0 3px 3px 0;
+}
+html[dir="rtl"] .acf-button-group label:last-child {
+  border-radius: 3px 0 0 3px;
 }
 .acf-button-group label:only-child {
   border-radius: 3px;
@@ -2658,4 +2664,20 @@ p.submit .acf-spinner {
 /* Tabify shows hidden postboxes */
 .acf-postbox.acf-hidden {
   display: none !important;
+}
+/*--------------------------------------------------------------------------------------------
+*
+*	Gutenberg
+*
+*--------------------------------------------------------------------------------------------*/
+#editor .editor-meta-boxes-area {
+  max-width: 80%;
+}
+#editor .editor-meta-boxes-area .postbox {
+  border: #e2e4e7 solid 1px;
+  border-bottom: none;
+  margin: 20px 0;
+}
+#editor .editor-meta-boxes-area input {
+  max-width: none;
 }

@@ -51,9 +51,10 @@ $atts['class'] = str_replace('_', '-', $atts['class']);
 					<a class="delete-field" title="<?php _e("Delete field",'acf'); ?>" href="#"><?php _e("Delete",'acf'); ?></a>
 				</div>
 			</li>
-			<li class="li-field-name"><?php echo $field['name']; ?></li>
-			<li class="li-field-key"><?php echo $field['key']; ?></li>
-			<li class="li-field-type"><?php echo acf_get_field_type_label($field['type']); ?></li>
+			<?php // whitespace before field name looks odd but fixes chrome bug selecting all text in row ?>
+			<li class="li-field-name"> <?php echo $field['name']; ?></li>
+			<li class="li-field-key"> <?php echo $field['key']; ?></li>
+			<li class="li-field-type"> <?php echo acf_get_field_type_label($field['type']); ?></li>
 		</ul>
 	</div>
 	

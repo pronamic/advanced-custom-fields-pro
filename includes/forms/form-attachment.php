@@ -133,11 +133,10 @@ class acf_form_attachment {
 		
 		// render post data
 		acf_form_data(array( 
-			'post_id'	=> 0, 
-			'nonce'		=> 'attachment',
+			'screen'	=> 'attachment',
+			'post_id'	=> 0,
 			'ajax'		=> 1
 		));
-		
 		
 ?>
 <script type="text/javascript">
@@ -187,8 +186,8 @@ acf.unload.active = 0;
 			
 			
 			acf_form_data(array( 
-				'post_id'	=> $post_id, 
-				'nonce'		=> 'attachment',
+				'screen'	=> 'attachment',
+				'post_id'	=> $post_id,
 			));
 			
 			
@@ -211,7 +210,7 @@ acf.unload.active = 0;
 				
 				
 				// render			
-				acf_render_fields( $post_id, $fields, $el, $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $post_id, $el, $field_group['instruction_placement'] );
 				
 			}
 			
