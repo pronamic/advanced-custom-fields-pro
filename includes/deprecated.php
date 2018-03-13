@@ -27,8 +27,9 @@ class acf_deprecated {
 		add_filter('acf/settings/l10n_field',			array($this, 'acf_settings_l10n_field'), 5, 1);				// 5.3.3
 		add_filter('acf/settings/l10n_field_group',		array($this, 'acf_settings_l10n_field'), 5, 1);				// 5.3.3
 		add_filter('acf/settings/url',					array($this, 'acf_settings_url'), 5, 1);					// 5.6.8
+		add_filter('acf/validate_setting',				array($this, 'acf_validate_setting'), 5, 1);				// 5.6.8
 		
-		
+
 		// filters
 		add_filter('acf/validate_field', 				array($this, 'acf_validate_field'), 10, 1); 				// 5.5.6
 		add_filter('acf/validate_field_group', 			array($this, 'acf_validate_field_group'), 10, 1); 			// 5.5.6
@@ -112,11 +113,36 @@ class acf_deprecated {
 	*  @return	n/a
 	*/
 		
-	function acf_settings_url( $setting ) {
+	function acf_settings_url( $value ) {
+		return apply_filters( "acf/settings/dir", $value );
+	}
+	
+	/**
+	*  acf_validate_setting
+	*
+	*  description
+	*
+	*  @date	2/2/18
+	*  @since	5.6.5
+	*
+	*  @param	type $var Description. Default.
+	*  @return	type Description.
+	*/
+	
+	function acf_validate_setting( $name ) {
 		
-		// 5.6.8 - changed filter name
-		return acf_get_setting( 'dir', $setting );
+		// vars
+		$changed = array(
+			'dir' => 'url'	// 5.6.8
+		);
 		
+		// check
+		if( isset($changed[ $name ]) ) {
+			return $changed[ $name ];
+		}
+		
+		//return
+		return $name;
 	}
 	
 	

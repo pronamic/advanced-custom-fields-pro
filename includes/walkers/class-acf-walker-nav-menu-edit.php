@@ -115,7 +115,7 @@ class ACF_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 				
 				
 				// render
-				acf_render_fields( $post_id, $fields, 'div', $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'] );
 				
 			}
 			
