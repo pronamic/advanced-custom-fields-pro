@@ -232,9 +232,9 @@ class acf_form_user {
 		
 		
 		// form data
-		acf_form_data(array( 
-			'post_id'	=> $post_id, 
-			'nonce'		=> 'user' 
+		acf_form_data(array(
+			'screen'	=> 'user',
+			'post_id'	=> $post_id,
 		));
 		
 		
@@ -260,7 +260,7 @@ class acf_form_user {
 			
 			
 			// render fields
-			acf_render_fields( $post_id, $fields, $el, $field_group['instruction_placement'] );
+			acf_render_fields( $fields, $post_id, $el, $field_group['instruction_placement'] );
 			
 			
 			// table end

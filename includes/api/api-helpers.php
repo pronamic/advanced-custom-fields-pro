@@ -40,23 +40,37 @@ function acf_is_empty( $value ) {
 }
 
 
-/*
-*  acf_get_setting
+/**
+*  acf_has_setting
 *
-*  alias of acf()->get_setting()
+*  alias of acf()->has_setting()
 *
-*  @type	function
-*  @date	28/09/13
-*  @since	5.0.0
+*  @date	2/2/18
+*  @since	5.6.5
 *
 *  @param	n/a
 *  @return	n/a
 */
 
-function acf_get_setting( $name, $value = null ) {
-	
-	return acf()->get_setting( $name, $value );
-	
+function acf_has_setting( $name = '' ) {
+	return acf()->has_setting( $name );
+}
+
+
+/**
+*  acf_raw_setting
+*
+*  alias of acf()->get_setting()
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	n/a
+*  @return	n/a
+*/
+
+function acf_raw_setting( $name = '' ) {
+	return acf()->get_setting( $name );
 }
 
 
@@ -76,15 +90,35 @@ function acf_get_setting( $name, $value = null ) {
 
 function acf_update_setting( $name, $value ) {
 	
-	return acf()->update_setting( $name, $value );
+	// validate name
+	$name = acf_validate_setting( $name );
 	
+	// update
+	return acf()->update_setting( $name, $value );
+}
+
+
+/**
+*  acf_validate_setting
+*
+*  Returns the changed setting name if available.
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	n/a
+*  @return	n/a
+*/
+
+function acf_validate_setting( $name = '' ) {
+	return apply_filters( "acf/validate_setting", $name );
 }
 
 
 /*
-*  acf_init
+*  acf_get_setting
 *
-*  alias of acf()->init()
+*  alias of acf()->get_setting()
 *
 *  @type	function
 *  @date	28/09/13
@@ -94,10 +128,21 @@ function acf_update_setting( $name, $value ) {
 *  @return	n/a
 */
 
-function acf_init() {
+function acf_get_setting( $name, $value = null ) {
 	
-	acf()->init();
+	// validate name
+	$name = acf_validate_setting( $name );
 	
+	// check settings
+	if( acf_has_setting($name) ) {
+		$value = acf_raw_setting( $name );
+	}
+	
+	// filter
+	$value = apply_filters( "acf/settings/{$name}", $value );
+	
+	// return
+	return $value;
 }
 
 
@@ -118,23 +163,106 @@ function acf_init() {
 function acf_append_setting( $name, $value ) {
 	
 	// vars
-	$setting = acf_get_setting( $name, array() );
-	
+	$setting = acf_raw_setting( $name );
 	
 	// bail ealry if not array
-	if( !is_array($setting) ) return false;
-	
+	if( !is_array($setting) ) {
+		$setting = array();
+	}
 	
 	// append
 	$setting[] = $value;
 	
-	
 	// update
-	acf_update_setting( $name, $setting );
+	return acf_update_setting( $name, $setting );
+}
+
+
+/**
+*  acf_get_data
+*
+*  Returns data.
+*
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	string $name
+*  @return	mixed
+*/
+
+function acf_get_data( $name ) {
+	return acf()->get_data( $name );
+}
+
+
+/**
+*  acf_set_data
+*
+*  Sets data.
+*
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	string $name
+*  @param	mixed $value
+*  @return	n/a
+*/
+
+function acf_set_data( $name, $value ) {
+	return acf()->set_data( $name, $value );
+}
+
+
+/**
+*  acf_new_instance
+*
+*  description
+*
+*  @date	13/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_new_instance( $class ) {
+	return acf()->new_instance( $class );
+}
+
+
+/**
+*  acf_get_instance
+*
+*  description
+*
+*  @date	13/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_get_instance( $class ) {
+	return acf()->get_instance( $class );
+}
+
+
+/*
+*  acf_init
+*
+*  alias of acf()->init()
+*
+*  @type	function
+*  @date	28/09/13
+*  @since	5.0.0
+*
+*  @param	n/a
+*  @return	n/a
+*/
+
+function acf_init() {
 	
-	
-	// return
-	return true;
+	acf()->init();
 	
 }
 
@@ -174,21 +302,14 @@ function acf_get_compatibility( $name ) {
 
 function acf_has_done( $name ) {
 	
-	// vars
-	$setting = "_has_done_{$name}";
-	
-	
 	// return true if already done
-	if( acf_get_setting($setting) ) return true;
+	if( acf_raw_setting("has_done_{$name}") ) {
+		return true;
+	}
 	
-	
-	// update setting
-	acf_update_setting($setting, true);
-	
-	
-	// return
+	// update setting and return
+	acf_update_setting("has_done_{$name}", true);
 	return false;
-	
 }
 
 
@@ -538,11 +659,6 @@ function acf_merge_atts( $atts, $extra = array() ) {
 }
 
 
-
-
-
-
-
 /*
 *  acf_nonce_input
 *
@@ -657,59 +773,51 @@ function acf_get_sub_array( $array, $keys ) {
 }
 
 
-/*
+/**
 *  acf_get_post_types
 *
-*  This function will return an array of available post types
+*  Returns an array of post type names.
 *
-*  @type	function
 *  @date	7/10/13
 *  @since	5.0.0
 *
-*  @param	$exclude (array)
-*  @param	$include (array)
-*  @return	(array)
+*  @param	array $args Optional. An array of key => value arguments to match against the post type objects. Default empty array.
+*  @return	array A list of post type names.
 */
 
 function acf_get_post_types( $args = array() ) {
 	
 	// vars
+	$post_types = array();
+	
+	// extract special arg
 	$exclude = acf_extract_var( $args, 'exclude', array() );
-	$return = array();
-	
-	
-	// get post types
-	$post_types = get_post_types( $args, 'objects' );
-	
-	
-	// remove ACF post types
 	$exclude[] = 'acf-field';
 	$exclude[] = 'acf-field-group';
 	
-		
+	// get post type objects
+	$objects = get_post_types( $args, 'objects' );
+	
 	// loop
-	foreach( $post_types as $i => $post_type ) {
+	foreach( $objects as $i => $object ) {
 		
 		// bail early if is exclude
 		if( in_array($i, $exclude) ) continue;
 		
-		
 		// bail early if is builtin (WP) private post type
 		// - nav_menu_item, revision, customize_changeset, etc
-		if( $post_type->_builtin && !$post_type->public ) continue;
-		
+		if( $object->_builtin && !$object->public ) continue;
 		
 		// append
-		$return[] = $i;
-		
+		$post_types[] = $i;
 	}
 	
+	// filter
+	$post_types = apply_filters('acf/get_post_types', $post_types, $args);
 	
 	// return
-	return $return;
-	
+	return $post_types;
 }
-
 
 function acf_get_pretty_post_types( $post_types = array() ) {
 	
@@ -4612,6 +4720,48 @@ function acf_is_plugin_active() {
 }
 
 
+/**
+*  acf_get_filters
+*
+*  Returns the registered filters
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_get_filters() {
+	
+	// get
+	$filters = acf_raw_setting('filters');
+	
+	// array
+	$filters = is_array($filters) ? $filters : array();
+	
+	// return
+	return $filters;
+}
+
+
+/**
+*  acf_update_filters
+*
+*  Updates the registered filters
+*
+*  @date	2/2/18
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_update_filters( $filters ) {
+	return acf_update_setting('filters', $filters);
+}
+
+
 /*
 *  acf_enable_filter
 *
@@ -4627,17 +4777,14 @@ function acf_is_plugin_active() {
 
 function acf_enable_filter( $filter = '' ) {
 	
-	// get filters
-	$filters = acf_get_setting('_filters', array());
-	
+	// get 
+	$filters = acf_get_filters();
 	
 	// append
 	$filters[ $filter ] = true;
 	
-	
 	// update
-	acf_update_setting('_filters', $filters);
-	
+	acf_update_filters( $filters );
 }
 
 
@@ -4656,17 +4803,14 @@ function acf_enable_filter( $filter = '' ) {
 
 function acf_disable_filter( $filter = '' ) {
 	
-	// get filters
-	$filters = acf_get_setting('_filters', array());
-	
+	// get 
+	$filters = acf_get_filters();
 	
 	// append
 	$filters[ $filter ] = false;
 	
-	
 	// update
-	acf_update_setting('_filters', $filters);
-	
+	acf_update_filters( $filters );
 }
 
 
@@ -4686,21 +4830,16 @@ function acf_disable_filter( $filter = '' ) {
 
 function acf_enable_filters() {
 	
-	// get filters
-	$filters = acf_get_setting('_filters', array());
-	
+	// get 
+	$filters = acf_get_filters();
 	
 	// loop
 	foreach( array_keys($filters) as $k ) {
-		
 		$filters[ $k ] = true;
-		
 	}
 	
-	
 	// update
-	acf_update_setting('_filters', $filters);
-	
+	acf_update_filters( $filters );	
 }
 
 
@@ -4720,21 +4859,16 @@ function acf_enable_filters() {
 
 function acf_disable_filters() {
 	
-	// get filters
-	$filters = acf_get_setting('_filters', array());
-	
+	// get 
+	$filters = acf_get_filters();
 	
 	// loop
 	foreach( array_keys($filters) as $k ) {
-		
 		$filters[ $k ] = false;
-		
 	}
 	
-	
 	// update
-	acf_update_setting('_filters', $filters);
-	
+	acf_update_filters( $filters );	
 }
 
 
@@ -4754,13 +4888,11 @@ function acf_disable_filters() {
 
 function acf_is_filter_enabled( $filter = '' ) {
 	
-	// get filters
-	$filters = acf_get_setting('_filters', array());
+	// get 
+	$filters = acf_get_filters();
 	
-	
-	// bail early if not set
-	return empty( $filters[ $filter ] ) ? false : true;
-	
+	// return
+	return !empty($filters[ $filter ]);
 }
 
 

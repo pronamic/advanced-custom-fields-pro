@@ -154,8 +154,8 @@ class acf_form_taxonomy {
 			
 			// data
 			acf_form_data(array( 
+				'screen'	=> 'taxonomy',
 				'post_id'	=> $post_id, 
-				'nonce'		=> 'taxonomy',
 			));
 			
 			// wrap
@@ -164,7 +164,7 @@ class acf_form_taxonomy {
 			// loop
 			foreach( $field_groups as $field_group ) {
 				$fields = acf_get_fields( $field_group );
-				acf_render_fields( $post_id, $fields, 'div', 'field' );
+				acf_render_fields( $fields, $post_id, 'div', 'field' );
 			}
 			
 			// wrap
@@ -208,8 +208,8 @@ class acf_form_taxonomy {
 		if( !empty($field_groups) ) {
 			
 			acf_form_data(array( 
-				'post_id'	=> $post_id, 
-				'nonce'		=> 'taxonomy' 
+				'screen'	=> 'taxonomy',
+				'post_id'	=> $post_id,
 			));
 			
 			foreach( $field_groups as $field_group ) {
@@ -222,7 +222,7 @@ class acf_form_taxonomy {
 				// fields
 				echo '<table class="form-table">';
 					$fields = acf_get_fields( $field_group );
-					acf_render_fields( $post_id, $fields, 'tr', 'field' );
+					acf_render_fields( $fields, $post_id, 'tr', 'field' );
 				echo '</table>';
 				
 			}
