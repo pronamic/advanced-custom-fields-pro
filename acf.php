@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields.
-Version: 5.6.9
+Version: 5.6.10
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -18,7 +18,7 @@ if( ! class_exists('ACF') ) :
 class ACF {
 	
 	/** @var string The plugin version number */
-	var $version = '5.6.9';
+	var $version = '5.6.10';
 	
 	/** @var array The plugin settings array */
 	var $settings = array();
@@ -66,17 +66,26 @@ class ACF {
 	function initialize() {
 		
 		// vars
+		$version = $this->version;
+		$basename = plugin_basename( __FILE__ );
+		$path = plugin_dir_path( __FILE__ );
+		$url = plugin_dir_url( __FILE__ );
+		$slug = dirname($basename);
+		
+		
+		// settings
 		$this->settings = array(
 			
 			// basic
 			'name'				=> __('Advanced Custom Fields', 'acf'),
-			'version'			=> $this->version,
+			'version'			=> $version,
 						
 			// urls
 			'file'				=> __FILE__,
-			'basename'			=> plugin_basename( __FILE__ ),
-			'path'				=> plugin_dir_path( __FILE__ ),
-			'url'				=> plugin_dir_url( __FILE__ ),
+			'basename'			=> $basename,
+			'path'				=> $path,
+			'url'				=> $url,
+			'slug'				=> $slug,
 			
 			// options
 			'show_admin'				=> true,
@@ -107,8 +116,8 @@ class ACF {
 		
 		// constants
 		$this->define( 'ACF', 			true );
-		$this->define( 'ACF_VERSION', 	$this->settings['version'] );
-		$this->define( 'ACF_PATH', 		$this->settings['path'] );
+		$this->define( 'ACF_VERSION', 	$version );
+		$this->define( 'ACF_PATH', 		$path );
 		
 		
 		// api
@@ -191,7 +200,6 @@ class ACF {
 		// filters
 		add_filter('posts_where',		array($this, 'posts_where'), 10, 2 );
 		//add_filter('posts_request',	array($this, 'posts_request'), 10, 1 );
-		
 	}
 	
 	
