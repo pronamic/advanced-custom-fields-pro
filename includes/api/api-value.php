@@ -386,9 +386,9 @@ function acf_update_value( $value = null, $post_id = 0, $field ) {
 	
 	
 	// allow filter to short-circuit update_value logic
-	$value = apply_filters( "acf/pre_update_value", $value, $post_id, $field );
-	if( $value === null ) {
-		 return false;
+	$check = apply_filters( "acf/pre_update_value", null, $value, $post_id, $field );
+	if( $check !== null ) {
+		 return $check;
 	}
 	
 	

@@ -66,6 +66,9 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.6.10 =
+* Core: Minor fixes and improvements
+
 = 5.6.9 =
 * User field: Added new 'Return Format' setting (Array, Object, ID)
 * Core: Added basic compatibility with Gutenberg - values now save
