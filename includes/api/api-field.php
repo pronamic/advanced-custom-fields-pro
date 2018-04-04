@@ -769,7 +769,8 @@ function acf_get_fields_by_id( $parent_id = 0 ) {
 			'suppress_filters'			=> true, // DO NOT allow WPML to modify the query
 			'post_parent'				=> $parent_id,
 			'post_status'				=> 'publish, trash', // 'any' won't get trashed fields
-			'update_post_meta_cache'	=> false
+			'update_post_meta_cache'	=> false,
+			'update_post_term_cache'	=> false
 		));
 		
 		
@@ -1047,7 +1048,9 @@ function _acf_get_field_by_name( $name = '', $db_only = false ) {
 		'orderby' 			=> 'menu_order title',
 		'order'				=> 'ASC',
 		'suppress_filters'	=> false,
-		'acf_field_name'	=> $name
+		'acf_field_name'	=> $name,
+		'update_post_meta_cache'	=> false,
+		'update_post_term_cache'	=> false
 	);
 	
 	
@@ -1157,7 +1160,9 @@ function acf_get_field_id( $key = '' ) {
 		'orderby' 			=> 'menu_order title',
 		'order'				=> 'ASC',
 		'suppress_filters'	=> false,
-		'acf_field_key'		=> $key
+		'acf_field_key'		=> $key,
+		'update_post_meta_cache'	=> false,
+		'update_post_term_cache'	=> false
 	);
 	
 	

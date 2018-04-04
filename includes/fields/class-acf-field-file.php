@@ -78,8 +78,8 @@ class acf_field_file extends acf_field {
 			'icon'		=> '',
 			'title'		=> '',
 			'url'		=> '',
-			'filesize'	=> '',
 			'filename'	=> '',
+			'filesize'	=> ''
 		);
 		
 		$div = array(
@@ -93,26 +93,21 @@ class acf_field_file extends acf_field {
 		// has value?
 		if( $field['value'] ) {
 			
-			$file = get_post( $field['value'] );
-			
-			if( $file ) {
+			$attachment = acf_get_attachment($field['value']);
+			if( $attachment ) {
 				
-				$o['icon'] = wp_mime_type_icon( $file->ID );
-				$o['title']	= $file->post_title;
-				$o['filesize'] = @size_format(filesize( get_attached_file( $file->ID ) ));
-				$o['url'] = wp_get_attachment_url( $file->ID );
-				
-				$explode = explode('/', $o['url']);
-				$o['filename'] = end( $explode );	
-							
-			}
-			
-			
-			// url exists
-			if( $o['url'] ) {
+				// has value
 				$div['class'] .= ' has-value';
-			}
-						
+				
+				// update
+				$o['icon'] = $attachment['icon'];
+				$o['title']	= $attachment['title'];
+				$o['url'] = $attachment['url'];
+				$o['filename'] = $attachment['filename'];
+				if( $attachment['filesize'] ) {
+					$o['filesize'] = size_format($attachment['filesize']);
+				}
+			}		
 		}
 				
 ?>
