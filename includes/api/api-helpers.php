@@ -3131,7 +3131,7 @@ function acf_get_post_id_info( $post_id = 0 ) {
 		$type = explode($glue, $post_id);
 		$id = array_pop($type);
 		$type = implode($glue, $type);
-		$meta = array('post', 'user', 'comment', 'term');
+		$meta = apply_filters('acf/metadata_type/', array('post', 'user', 'comment', 'term'));
 		
 		
 		// check if is taxonomy (ACF < 5.5)
