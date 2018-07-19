@@ -14,7 +14,7 @@ if( ! class_exists('acf_form_taxonomy') ) :
 
 class acf_form_taxonomy {
 	
-	var $form = '#addtag';
+	var $view = 'add';
 	
 	
 	/*
@@ -140,7 +140,7 @@ class acf_form_taxonomy {
 		
 		
 		// update vars
-		$this->form = '#addtag';
+		$this->view = 'add';
 		
 		
 		// get field groups
@@ -195,7 +195,7 @@ class acf_form_taxonomy {
 		
 		
 		// update vars
-		$this->form = '#edittag';
+		$this->view = 'edit';
 		
 		
 		// get field groups
@@ -252,66 +252,42 @@ class acf_form_taxonomy {
 (function($) {
 	
 	// vars
-	var $spinner = $('<?php echo $this->form; ?> p.submit .spinner');
+	var view = '<?php echo $this->view; ?>';
 	
-	
-	// create spinner if not exists (may exist in future WP versions)
-	if( !$spinner.exists() ) {
-		
-		// create spinner
-		$spinner = $('<span class="spinner"></span>');
-		
-		
-		// append
-		$('<?php echo $this->form; ?> p.submit').append( $spinner );
-		
+	// add missing spinners
+	var $submit = $('input.button-primary');
+	if( !$submit.next('.spinner').length ) {
+		$submit.after('<span class="spinner"></span>');
 	}
 	
+<?php 
 	
-	// update acf validation class
-	acf.validation.error_class = 'form-invalid';
-		
-		
-<?php if( $this->form == '#addtag' ): ?>
-
-	// store origional HTML
-	var $el = $('#acf-term-fields');
-	var html = $el.html();
+// add view
+if( $this->view == 'add' ): ?>
 	
-	// events
-	$('#submit').on('click', function( e ){
+	// vars
+	var $form = $('#addtag');
+	var $fields = $('#acf-term-fields');
+	var html = $fields.html();
 		
-		// bail early if not active
-		if( !acf.validation.active ) {
-			return true;
+	// WP triggers click as primary action
+	$submit.on('click', function( e ){
+		
+		// validate
+		var valid = acf.validateForm({
+			form: $form,
+			event: e,
+			lock: false
+		});
+		
+		// if not valid, stop event and allow validation to continue
+		if( !valid ) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
 		}
-		
-		// ignore validation (only ignore once)
-		if( acf.validation.ignore ) {
-			acf.validation.ignore = 0;
-			return true;
-		}
-		
-		// bail early if this form does not contain ACF data
-		if( !$('#acf-form-data').exists() ) {
-			return true;
-		}
-		
-		// stop WP JS validation
-		e.stopImmediatePropagation();
-		
-		// store submit trigger so it will be clicked if validation is passed
-		acf.validation.$trigger = $(this);
-				
-		// run validation
-		acf.validation.fetch( $('#addtag') );
-		
-		// stop all other click events on this input
-		return false;
-		
 	});
 	
-
+	// listen to AJAX add-tag complete
 	$(document).ajaxComplete(function(event, xhr, settings) {
 		
 		// bail early if is other ajax call
@@ -319,26 +295,22 @@ class acf_form_taxonomy {
 			return;
 		}
 		
-		// unlock form
-		acf.validation.toggle( $('#addtag'), 'unlock' );
-		
 		// bail early if response contains error
 		if( xhr.responseText.indexOf('wp_error') !== -1 ) {
 			return;
 		}
 		
 		// action for 3rd party customization
-		acf.do_action('remove', $el);
+		acf.doAction('remove', $fields);
 		
-		// restore html
-		$el.html( html );
-				
-		// reset unload
-		acf.unload.off();
+		// reset HTML
+		$fields.html( html );
 		
 		// action for 3rd party customization
-		acf.do_action('append', $el);
+		acf.doAction('append', $fields);
 		
+		// reset unload
+		acf.unload.reset();
 	});
 	
 <?php endif; ?>

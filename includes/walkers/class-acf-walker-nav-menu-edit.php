@@ -126,7 +126,7 @@ class ACF_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 			if( acf_is_ajax('add-menu-item') ): ?>
 			<script type="text/javascript">
 			(function($) {
-				acf.do_action('append', jQuery('#menu-item-settings-<?php echo $post_id; ?>') );
+				acf.doAction('append', jQuery('#menu-item-settings-<?php echo $post_id; ?>') );
 			})(jQuery);
 			</script>
 			<?php endif;

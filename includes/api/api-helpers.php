@@ -39,6 +39,37 @@ function acf_is_empty( $value ) {
 	
 }
 
+/**
+*  acf_idify
+*
+*  Returns an id friendly string
+*
+*  @date	24/12/17
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_idify( $str = '' ) {
+	return str_replace(array('][', '[', ']'), array('-', '-', ''), strtolower($str));
+}
+
+/**
+*  acf_slugify
+*
+*  Returns a slug friendly string
+*
+*  @date	24/12/17
+*  @since	5.6.5
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+
+function acf_slugify( $str = '' ) {
+	return str_replace('_', '-', strtolower($str));
+}
 
 /**
 *  acf_has_setting
@@ -3160,6 +3191,9 @@ function acf_get_post_id_info( $post_id = 0 ) {
 	//acf_set_cache($cache_key, $info);
 	
 	
+	// filter
+	$info = apply_filters("acf/get_post_id_info", $info, $post_id);
+	
 	// return
 	return $info;
 	
@@ -3386,8 +3420,7 @@ function acf_upload_file( $uploaded_file ) {
 	$object = array(
 		'post_title' => $filename,
 		'post_mime_type' => $type,
-		'guid' => $url,
-		'context' => 'acf-upload'
+		'guid' => $url
 	);
 
 	// Save the data
@@ -3466,20 +3499,25 @@ function acf_update_nested_array( &$array, $ancestors, $value ) {
 function acf_is_screen( $id = '' ) {
 	
 	// bail early if not defined
-	if( !function_exists('get_current_screen') ) return false;
-	
+	if( !function_exists('get_current_screen') ) {
+		return false;
+	}
 	
 	// vars
 	$current_screen = get_current_screen();
 	
+	// no screen
+	if( !$current_screen ) {
+		return false;
 	
-	// bail early if no screen
-	if( !$current_screen ) return false;
+	// array
+	} elseif( is_array($id) ) {
+		return in_array($current_screen->id, $id);
 	
-	
-	// return
-	return ($id === $current_screen->id);
-	
+	// string
+	} else {
+		return ($id === $current_screen->id);
+	}
 }
 
 

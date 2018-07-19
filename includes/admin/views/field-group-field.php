@@ -1,12 +1,15 @@
 <?php 
 
-// add prefix
-$field['prefix'] = "acf_fields[{$field['ID']}]";
-
-
 // vars
-$atts = array(
-	'class' => "acf-field-object acf-field-object-{$field['type']}",
+$prefix = 'acf_fields[' . $field['ID'] . ']';
+$id = acf_idify( $prefix );
+
+// add prefix
+$field['prefix'] = $prefix;
+
+// div
+$div = array(
+	'class' 	=> 'acf-field-object acf-field-object-' . acf_slugify($field['type']),
 	'data-id'	=> $field['ID'],
 	'data-key'	=> $field['key'],
 	'data-type'	=> $field['type'],
@@ -16,22 +19,16 @@ $meta = array(
 	'ID'			=> $field['ID'],
 	'key'			=> $field['key'],
 	'parent'		=> $field['parent'],
-	'menu_order'	=> $field['menu_order'],
-	'save'			=> '',
+	'menu_order'	=> $i,
+	'save'			=> ''
 );
 
-
-// class
-$atts['class'] = str_replace('_', '-', $atts['class']);
-
 ?>
-<div <?php echo acf_esc_attr( $atts ); ?>>
+<div <?php echo acf_esc_attr( $div ); ?>>
 	
 	<div class="meta">
 		<?php foreach( $meta as $k => $v ):
-			
-			acf_hidden_input(array( 'class' => "input-{$k}", 'name' => "{$field['prefix']}[{$k}]", 'value' => $v ));
-				
+			acf_hidden_input(array( 'name' => $prefix . '[' . $k . ']', 'value' => $v, 'id' => $id . '-' . $k ));
 		endforeach; ?>
 	</div>
 	
@@ -42,7 +39,7 @@ $atts['class'] = str_replace('_', '-', $atts['class']);
 			</li>
 			<li class="li-field-label">
 				<strong>
-					<a class="edit-field" title="<?php _e("Edit field",'acf'); ?>" href="#"><?php echo acf_get_field_label($field); ?></a>
+					<a class="edit-field" title="<?php _e("Edit field",'acf'); ?>" href="#"><?php echo acf_get_field_label($field, 'admin'); ?></a>
 				</strong>
 				<div class="row-options">
 					<a class="edit-field" title="<?php _e("Edit field",'acf'); ?>" href="#"><?php _e("Edit",'acf'); ?></a>
@@ -60,7 +57,7 @@ $atts['class'] = str_replace('_', '-', $atts['class']);
 	
 	<div class="settings">			
 		<table class="acf-table">
-			<tbody>
+			<tbody class="acf-field-settings">
 				<?php 
 				
 				// label
@@ -89,7 +86,7 @@ $atts['class'] = str_replace('_', '-', $atts['class']);
 					'instructions'	=> '',
 					'type'			=> 'select',
 					'name'			=> 'type',
-					'choices' 		=> acf_get_field_types(),
+					'choices' 		=> acf_get_grouped_field_types(),
 					'class'			=> 'field-type'
 				), true);
 				
