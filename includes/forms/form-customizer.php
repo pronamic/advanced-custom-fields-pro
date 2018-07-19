@@ -29,7 +29,7 @@ class acf_form_customizer {
 		
 		
 		// actions
-		add_action('admin_enqueue_scripts',		array($this, 'admin_enqueue_scripts'));
+		add_action('customize_controls_init',	array($this, 'customize_controls_init'));
 		add_action('customize_preview_init',	array($this, 'customize_preview_init'), 1, 1);
 		add_action('customize_save', 			array($this, 'customize_save'), 1, 1);
 		
@@ -54,14 +54,12 @@ class acf_form_customizer {
 	*  @return	N/A
 	*/
 	
-	function admin_enqueue_scripts() {
-		
-		// validate screen
-		if( !acf_is_screen('customize') ) return;
-		
+	function customize_controls_init() {
 		
 		// load acf scripts
-		acf_enqueue_scripts();
+		acf_enqueue_scripts(array(
+			'context'	=> 'customize_controls'
+		));
 		
 		
 		// actions
