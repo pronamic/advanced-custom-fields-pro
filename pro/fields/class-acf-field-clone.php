@@ -1325,7 +1325,7 @@ class acf_field_clone extends acf_field {
 
 
 // initialize
-acf_register_field_type( new acf_field_clone() );
+acf_register_field_type( 'acf_field_clone' );
 
 endif; // class_exists check
 

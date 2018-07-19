@@ -66,6 +66,20 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.7.0 =
+* Core: Major JavaScript updates
+* Core: Improved conditional logic with new types and more supported fields
+* Core: Improved localization and internationalization
+* Repeater field: Improved logic that remembers collapsed row states
+* Repeater field: Added support to collapse multiple rows (hold shift)
+* API: Improved lookup to find fields without a reference value
+* Language: Added Croatian translation - Thanks to Vlado Bosnjak
+* Language: Updated Italian translation - thanks to Davide Pantè
+* Language: Updated Romanian translation - thanks to Ionut Staicu
+* Language: Updated German translation - thanks to Ralf Koller
+* Language: Updated Arabic translation - thanks to Karim Ramadan
+* Language: Updated Portuguese translation - thanks to Pedro Mendonça
+
 = 5.6.10 =
 * Core: Minor fixes and improvements
 

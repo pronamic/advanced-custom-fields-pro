@@ -83,7 +83,7 @@ class ACF_Form_Post {
 		// update vars
 		if( !empty($post) ) {
 		
-			$this->post_id = $post->ID;
+			$this->post_id = (int) $post->ID;
 			$this->typenow = $typenow;
 			
 		}
@@ -134,7 +134,9 @@ class ACF_Form_Post {
 
 		
 		// load acf scripts
-		acf_enqueue_scripts();
+		acf_enqueue_scripts(array(
+			'uploader'	=> true,
+		));
 		
 		
 		// actions
@@ -299,8 +301,8 @@ class ACF_Form_Post {
 			'key'			=> $field_group['key'],
 			'style'			=> $field_group['style'],
 			'label'			=> $field_group['label_placement'],
-			'edit_url'		=> '',
-			'edit_title'	=> __('Edit field group', 'acf'),
+			'editLink'		=> '',
+			'editTitle'		=> __('Edit field group', 'acf'),
 			'visibility'	=> $visibility
 		);
 		
@@ -308,7 +310,7 @@ class ACF_Form_Post {
 		// edit_url
 		if( $field_group['ID'] && acf_current_user_can_admin() ) {
 			
-			$o['edit_url'] = admin_url('post.php?post=' . $field_group['ID'] . '&action=edit');
+			$o['editLink'] = admin_url('post.php?post=' . $field_group['ID'] . '&action=edit');
 				
 		}
 		
@@ -334,7 +336,7 @@ class ACF_Form_Post {
 <script type="text/javascript">
 if( typeof acf !== 'undefined' ) {
 		
-	acf.postbox.render(<?php echo json_encode($o); ?>);	
+	acf.newPostbox(<?php echo json_encode($o); ?>);	
 
 }
 </script>

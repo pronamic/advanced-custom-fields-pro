@@ -227,7 +227,7 @@ function acf_prepare_field( $field ) {
 	
 	
 	// id attr is generated from name
-	$field['id'] = str_replace(array('][', '[', ']'), array('-', '-', ''), $field['name']);
+	$field['id'] = acf_idify( $field['name'] );
 	
 	
 	// return
@@ -278,10 +278,16 @@ function acf_is_sub_field( $field ) {
 *  @return	$label (string)
 */
 
-function acf_get_field_label( $field ) {
+function acf_get_field_label( $field, $context = '' ) {
 	
 	// vars
 	$label = $field['label'];
+	
+	
+	// show (no label) when editing field
+	if( $context == 'admin' && $label === '' ) {
+		$label = __('(no label)', 'acf');
+	}
 	
 	
 	// required
@@ -512,6 +518,17 @@ function acf_render_field_wrap( $field, $el = 'div', $instruction = 'label' ) {
 	$wrapper = array_filter($wrapper);
 	
 	
+	// conditional logic
+	if( !empty($field['conditional_logic']) ) {
+		$field['conditions'] = $field['conditional_logic'];
+	}
+	
+	// conditions
+	if( !empty($field['conditions']) ) {
+		$wrapper['data-conditions'] = $field['conditions'];
+	}
+	
+	
 	// html
 	?>
 <<?php echo $el; ?> <?php acf_esc_attr_e($wrapper); ?>>
@@ -527,13 +544,6 @@ function acf_render_field_wrap( $field, $el = 'div', $instruction = 'label' ) {
 	<<?php echo $el2; ?> class="acf-input">
 		<?php acf_render_field( $field ); ?>
 		<?php if( $instruction == 'field' ) acf_render_field_instructions( $field ); ?>
-		<?php if( !empty($field['conditional_logic']) ): ?>
-		<script type="text/javascript">
-			if( typeof acf !== 'undefined' ) { 
-				acf.conditional_logic.add( '<?php echo esc_js($field['key']); ?>', <?php echo wp_json_encode( $field['conditional_logic'] ); ?> ); 
-			}
-		</script>
-		<?php endif; ?>
 	</<?php echo $el2; ?>>
 </<?php echo $el; ?>>
 <?php
@@ -624,52 +634,38 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
 	// validate
 	$setting = acf_get_valid_field( $setting );
 	
-	
-	// specific
-	if( !$global ) {
-		
-		$setting['wrapper']['data-setting'] = $field['type'];
-		
-	}
-	
-	
-	// class
+	// custom key and class
+	$setting['wrapper']['data-key'] = $setting['name'];
 	$setting['wrapper']['class'] .= ' acf-field-setting-' . $setting['name'];
 	
+	// context
+	if( !$global ) {
+		$setting['wrapper']['data-setting'] = $field['type'];
+	}
 	
 	// copy across prefix
 	$setting['prefix'] = $field['prefix'];
 		
-	
 	// attempt find value
 	if( $setting['value'] === null ) {
 		
 		// name
 		if( isset($field[ $setting['name'] ]) ) {
-			
 			$setting['value'] = $field[ $setting['name'] ];
 		
 		// default
 		} elseif( isset($setting['default_value']) ) {
-			
 			$setting['value'] = $setting['default_value'];
-			
 		}
-		
 	}
-	
 	
 	// append (used by JS to join settings)
 	if( isset($setting['_append']) ) {
-		
 		$setting['wrapper']['data-append'] = $setting['_append'];
-		
 	}
-	
 	
 	// render
 	acf_render_field_wrap( $setting, 'tr', 'label' );
-	
 }
 
 

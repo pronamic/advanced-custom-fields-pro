@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields.
-Version: 5.6.10
+Version: 5.7.0
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -18,7 +18,7 @@ if( ! class_exists('ACF') ) :
 class ACF {
 	
 	/** @var string The plugin version number */
-	var $version = '5.6.10';
+	var $version = '5.7.0';
 	
 	/** @var array The plugin settings array */
 	var $settings = array();
@@ -140,11 +140,12 @@ class ACF {
 		
 		
 		// core
+		acf_include('includes/assets.php');
 		acf_include('includes/ajax.php');
 		acf_include('includes/cache.php');
 		acf_include('includes/compatibility.php');
 		acf_include('includes/deprecated.php');
-		acf_include('includes/input.php');
+		acf_include('includes/form.php');
 		acf_include('includes/json.php');
 		acf_include('includes/local.php');
 		acf_include('includes/loop.php');
@@ -194,7 +195,6 @@ class ACF {
 		add_action('init',	array($this, 'init'), 5);
 		add_action('init',	array($this, 'register_post_types'), 5);
 		add_action('init',	array($this, 'register_post_status'), 5);
-		add_action('init',	array($this, 'register_assets'), 5);
 		
 		
 		// filters
@@ -471,39 +471,6 @@ class ACF {
 			'show_in_admin_status_list' => true,
 			'label_count'               => _n_noop( 'Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>', 'acf' ),
 		));
-		
-	}
-	
-	
-	/*
-	*  register_assets
-	*
-	*  This function will register scripts and styles
-	*
-	*  @type	function
-	*  @date	22/10/2015
-	*  @since	5.3.2
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function register_assets() {
-		
-		// vars
-		$version = acf_get_setting('version');
-		$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
-		
-		
-		// scripts
-		wp_register_script('acf-input', acf_get_url("assets/js/acf-input{$min}.js"), array('jquery', 'jquery-ui-core', 'jquery-ui-sortable', 'jquery-ui-resizable'), $version );
-		wp_register_script('acf-field-group', acf_get_url("assets/js/acf-field-group{$min}.js"), array('acf-input'), $version );
-		
-		
-		// styles
-		wp_register_style('acf-global', acf_get_url('assets/css/acf-global.css'), array(), $version );
-		wp_register_style('acf-input', acf_get_url('assets/css/acf-input.css'), array('acf-global'), $version );
-		wp_register_style('acf-field-group', acf_get_url('assets/css/acf-field-group.css'), array('acf-input'), $version );
 		
 	}
 	
