@@ -711,49 +711,62 @@
 			return false;
 		},
 		
-		onClickAdd: function( e, $el ){
-			
-			// validate
-			if( !this.validateAdd() ) {
-				return false;
-			}
-			
-			// within layout
-			var $layout = null;
-			if( $el.hasClass('acf-icon') ) {
-				$layout = $el.closest('.layout');
-				$layout.addClass('-hover');
-			}
-			
+		onClickAdd: function( e, $el ) {
+
+		    // validate
+		    if( !this.validateAdd() ) {
+			return false;
+		    }
+
+		    // within layout
+		    var $layout = null;
+		    if( $el.hasClass('acf-icon') ) {
+			$layout = $el.closest('.layout');
+			$layout.addClass('-hover');
+		    }
+
+		    // get the layouts in the flexible content
+		    var html = this.$popup().html();
+		    var $html = $(html);
+		    var $layouts = [];
+		    $html.find('[data-layout]').each(function(){
+			var layout = $(this).data('layout');
+			$layouts.push(layout);
+		    });
+
+		    // if the count is one add it automatically else show the popup
+		    if ($layouts.length == 1) {
+			this.add({
+			    layout: $layouts,
+			    before: $layout
+			});
+		    } else {
 			// new popup
 			var popup = new Popup({
-				target: $el,
-				targetConfirm: false,
-				text: this.getPopupHTML(),
-				context: this,
-				confirm: function( e, $el ){
-					
-					// check disabled
-					if( $el.hasClass('disabled') ) {
-						return;
-					}
-					
-					// add
-					this.add({
-						layout: $el.data('layout'),
-						before: $layout
-					});
-				},
-				cancel: function(){
-					if( $layout ) {
-						$layout.removeClass('-hover');
-					}
-					
+			    target: $el,
+			    targetConfirm: false,
+			    text: this.getPopupHTML(),
+			    context: this,
+			    confirm: function( e, $el ) {
+				// check disabled
+				if( $el.hasClass('disabled') ) {
+				    return;
 				}
+				// add
+				this.add({
+				    layout: $el.data('layout'),
+				    before: $layout
+				});
+			    },
+			    cancel: function(){
+				if( $layout ) {
+				    $layout.removeClass('-hover');
+				}
+			    }
 			});
-			
 			// add extra event
 			popup.on('click', '[data-layout]', 'onConfirm');
+		    }
 		},
 		
 		add: function( args ){
