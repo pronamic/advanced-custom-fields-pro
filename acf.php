@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customise WordPress with powerful, professional and intuitive fields.
-Version: 5.7.0
+Version: 5.7.2
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -18,7 +18,7 @@ if( ! class_exists('ACF') ) :
 class ACF {
 	
 	/** @var string The plugin version number */
-	var $version = '5.7.0';
+	var $version = '5.7.2';
 	
 	/** @var array The plugin settings array */
 	var $settings = array();
@@ -127,7 +127,7 @@ class ACF {
 		acf_include('includes/api/api-field.php');
 		acf_include('includes/api/api-field-group.php');
 		acf_include('includes/api/api-template.php');
-		
+		acf_include('includes/api/api-term.php');
 		
 		// fields
 		acf_include('includes/fields.php');
@@ -141,7 +141,6 @@ class ACF {
 		
 		// core
 		acf_include('includes/assets.php');
-		acf_include('includes/ajax.php');
 		acf_include('includes/cache.php');
 		acf_include('includes/compatibility.php');
 		acf_include('includes/deprecated.php');
@@ -154,6 +153,11 @@ class ACF {
 		acf_include('includes/updates.php');
 		acf_include('includes/validation.php');
 		
+		// ajax
+		acf_include('includes/ajax/class-acf-ajax.php');
+		acf_include('includes/ajax/class-acf-ajax-user-setting.php');
+		acf_include('includes/ajax/class-acf-ajax-query.php');
+		acf_include('includes/ajax/class-acf-ajax-query-terms.php');
 		
 		// forms
 		acf_include('includes/forms/form-attachment.php');

@@ -157,7 +157,7 @@ class ACF_Form_User {
 		// render
 		$this->render(array(
 			'user_id'	=> 0,
-			'view'		=> 'new',
+			'view'		=> 'add',
 			'el'		=> 'tr'
 		));
 	}
