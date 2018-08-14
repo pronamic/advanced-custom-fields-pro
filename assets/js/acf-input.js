@@ -52,7 +52,7 @@
 	*/
 	
 	acf.has = function( name ){
-		return this.get(data) !== null;
+		return this.get(name) !== null;
 	};
 	
 	
@@ -983,10 +983,13 @@
 	};
 */
 	
-	
 	// Preferences
-	var preferences = localStorage.getItem('acf');
-	preferences = preferences ? JSON.parse(preferences) : {};
+	// - use try/catch to avoid JS error if cookies are disabled on front-end form
+	try {
+		var preferences = JSON.parse(localStorage.getItem('acf')) || {};
+	} catch(e) {
+		var preferences = {};
+	}
 	
 	
 	/**
@@ -1485,13 +1488,14 @@
 			return false
 		}
 		
-		// bail if select option does not exist
-		if( $input.is('select') && !$input.find('option[value="'+value+'"]').length ) {
-			return false;
-		}
-		
 		// update value
 		$input.val( value );
+		
+		// prevent select elements displaying blank value if option doesn't exist
+		if( $input.is('select') && $input.val() === null ) {
+			$input.val( prevValue );
+			return false;
+		}
 		
 		// update with trigger
 		if( silent !== true ) {
@@ -2092,7 +2096,7 @@
 		acf.doAction('load');
 	});
 	
-	$(window).on('unload', function(){
+	$(window).on('beforeunload', function(){
 		acf.doAction('unload');
 	});
 	
@@ -2762,12 +2766,19 @@
 		
 		proxyEvent: function( callback ){
 			return this.proxy(function(e){
+				
+				// validate
 				if( !this.validateEvent(e) ) {
 					return;
 				}
-				var args = acf.arrayArgs(arguments);
-				args.push( $(e.currentTarget) );
-				callback.apply(this, args);
+				
+				// construct args
+				var args = acf.arrayArgs( arguments );
+				var extraArgs = args.slice(1);
+				var eventArgs = [ e, $(e.currentTarget) ].concat( extraArgs );
+				
+				// callback
+				callback.apply(this, eventArgs);
 			});
 		},
 		
@@ -4892,10 +4903,18 @@
 	var fieldsEventManager = new acf.Model({
 		id: 'fieldsEventManager',
 		events: {
-			'click .acf-field a[href="#"]': 'onClick'
+			'click .acf-field a[href="#"]':	'onClick',
+			'change .acf-field':			'onChange'
 		},
 		onClick: function( e ){
+			
+			// prevent default of any link with an href of #
 			e.preventDefault();
+		},
+		onChange: function(){
+			
+			// preview hack allows post to save with no title or content
+			$('#_acf_changed').val(1);
 		}
 	});
 	
@@ -5612,6 +5631,10 @@
 			return this.$('.search');
 		},
 		
+		$canvas: function(){
+			return this.$('.canvas');
+		},
+		
 		addClass: function( name ){
 			this.$control().addClass( name );
 		},
@@ -5729,10 +5752,6 @@
 			return this.$search().val();
 		},
 		
-		getCanvas: function(){
-			return this.$('.canvas');
-		},
-		
 		initialize: function(){
 			
 			// bail early if too early
@@ -5770,7 +5789,7 @@
 		    	autocomplete: {}
         	};
         	mapArgs = acf.applyFilters('google_map_args', mapArgs, this);       	
-        	var map = new google.maps.Map( this.getCanvas()[0], mapArgs );
+        	var map = new google.maps.Map( this.$canvas()[0], mapArgs );
         	this.addMapEvents( map, this );
         	
         	
@@ -5810,15 +5829,17 @@
 				// bind
 				autocomplete.bindTo('bounds', map);
 				
-				// event
+				// autocomplete event place_changed is triggered each time the input changes
+				// customize the place object with the current "search value" to allow users controll over the address text
 				google.maps.event.addListener(autocomplete, 'place_changed', function() {
-				    field.setPlace( this.getPlace() );
+					var place = this.getPlace();
+					place.address = field.getSearchVal();
+				    field.setPlace( place );
 				});
 	        }
 	        
 	        // click
 	        google.maps.event.addListener( map, 'click', function( e ) {
-				
 				// vars
 				var lat = e.latLng.lat();
 				var lng = e.latLng.lng();
@@ -5832,7 +5853,6 @@
 			
 			// dragend
 		    google.maps.event.addListener( marker, 'dragend', function(){
-		    	
 		    	// vars
 				var position = this.getPosition();
 				var lat = position.lat();
@@ -5901,7 +5921,7 @@
 			// vars
 			var lat = place.geometry.location.lat();
 			var lng = place.geometry.location.lng();
-			var address = place.formatted_address;
+			var address = place.address || place.formatted_address;
 			
 			// update
 			this.setValue({
@@ -5937,7 +5957,7 @@
 		    $wrap.addClass('-loading');
 		    
 		    // callback
-		    var callback = $.proxy(function( results, status ){
+		    var callback = this.proxy(function( results, status ){
 			    
 			    // remove class
 			    $wrap.removeClass('-loading');
@@ -5954,7 +5974,7 @@
 				} else {
 					lat = results[0].geometry.location.lat();
 					lng = results[0].geometry.location.lng();
-					address = results[0].formatted_address;
+					//address = results[0].formatted_address;
 				}
 				
 				// update val
@@ -5966,7 +5986,7 @@
 				
 				//acf.doAction('google_map_geocode_results', results, status, this.$el, this);
 				
-		    }, this);
+		    });
 		    
 		    // query
 		    api.geocoder.geocode({ 'address' : address }, callback);
@@ -6848,8 +6868,8 @@
 		
 		getValue: function(){
 			var val = this.$input().val();
-			if( val === 'other' ) {
-				val = this.inputText().val();
+			if( val === 'other' && this.get('other_choice') ) {
+				val = this.$inputText().val();
 			}
 			return val;
 		},
@@ -9734,7 +9754,7 @@
 		
 		remove: function(){
 			this.frame.detach();
-			this.frame.dispose();
+			this.frame.remove();
 		},
 		
 		getFrameOptions: function(){
@@ -10105,8 +10125,14 @@
 		initialize: function(){
 			
 			// bail early if no media views
-			if( !acf.isset(wp, 'media', 'view') ) {
+			if( !acf.isset(window, 'wp', 'media', 'view') ) {
 				return;
+			}
+			
+			// fix bug where CPT without "editor" does not set post.id setting which then prevents uploadedTo from working
+			var postID = getPostID();
+			if( postID && acf.isset(wp, 'media', 'view', 'settings', 'post') ) {
+				wp.media.view.settings.post.id = postID;
 			}
 			
 			// customize
@@ -10215,46 +10241,30 @@
 					// Each instance will attempt to render when a new modal is created.
 					// Use a property to avoid this and only render once per instance.
 					if( this.rendered ) {
-						//console.log('ignore render', this.cid);
 						return this;
 					}
-					this.rendered = true;
 					
-					// render
-					//console.log('render', this.cid);
+					// render HTML
 					AttachmentCompat.prototype.render.apply( this, arguments );
+					
+					// when uploading, render is called twice.
+					// ignore first render by checking for #acf-form-data element
+					if( !this.$('#acf-form-data').length ) {
+						return this;
+					}
 					
 					// clear timeout
 					clearTimeout( timeout );
 					
 					// setTimeout
 					timeout = setTimeout($.proxy(function(){
-						
-						// check if element is visible to avoid logic on previous instances (which are hidden)
-						if( this.$el.is(':visible') ) {
-							//console.log('append', this.cid);
-							acf.doAction('append', this.$el);
-						}
-						
+						this.rendered = true;
+						acf.doAction('append', this.$el);
 					}, this), 50);
 					
 					// return
 					return this;
-				},
-				
-				// commented out function causing JS errors when navigating through media grid
-				// dispose (and remove) are called after the element has been detached, so this only causes extra JS initialization
-				dispose: function(){
-						
-					// remove
-					if( this.$el.is(':visible') ) {
-						//acf.doAction('remove', this.$el);
-						console.log('removed visible');
-					}
-					// dispose
-					return AttachmentCompat.prototype.dispose.apply( this, arguments );
 				}
-			
 			});
 
 		},
@@ -11296,6 +11306,7 @@
 			var locale = acf.get('locale');
 			var rtl = acf.get('rtl');
 			var l10n = acf.get('select2L10n');
+			var version = getVersion();
 			
 			// bail ealry if no l10n
 			if( !l10n ) {
@@ -11308,9 +11319,9 @@
 			}
 			
 			// initialize
-			if( getVersion() == 4 ) {
+			if( version == 4 ) {
 				this.addTranslations4();
-			} else {
+			} else if( version == 3 ) {
 				this.addTranslations3();
 			}
 		},
@@ -11848,10 +11859,10 @@
 		},
 		
 		events: {
-			'click #publish':	'onClickPublish',
-			'click #submit':	'onClickPublish',
-			'click #save-post':	'onClickSave',
-			'submit form':		'onSubmit',
+			'click input[type="submit"]':	'onClickSubmit',
+			'click button[type="submit"]':	'onClickSubmit',
+			'click #save-post':				'onClickSave',
+			'submit form':					'onSubmit',
 		},
 		
 		initialize: function(){
@@ -12075,6 +12086,8 @@
 			
 			// create event specific success callback
 			if( args.event ) {
+				
+				// create new event to avoid conflicts with prevenDefault (as used in taxonomy form)
 				var event = $.Event(null, args.event);
 				args.success = function(){
 					$(event.target).trigger( event );
@@ -12083,7 +12096,7 @@
 			
 			// action for 3rd party
 			acf.doAction('validation_begin', $form);
-				
+			
 			// data
 			var data = acf.serialize( $form );	
 			data.action = 'acf/validate_save_post';
@@ -12182,7 +12195,7 @@
 		addInputEvents: function( $el ){
 			
 			// vars
-			var $inputs = $('.acf-field [name]');
+			var $inputs = $('.acf-field [name]', $el);
 			
 			// check
 			if( $inputs.length ) {
@@ -12211,19 +12224,15 @@
 			$form.submit();
 		},
 		
-		// fixes bug on User Profile edit form
-		// - WP prevents $form.submit() events for unknown reason
-		// - temp store 'click event' and use later in onSubmit
-		onClickPublish: function( e, $el ){
+		onClickSubmit: function( e, $el ){
+			
+			// store the "click event" for later use in this.onSubmit()
 			this.set('originalEvent', e);
-			this.setTimeout(function(){
-				this.set('originalEvent', null);
-			}, 100);
 		},
 		
 		onClickSave: function( e, $el ) {
 			
-			// ignore errors
+			// ignore errors when saving
 			this.pass();
 		},
 		
@@ -12232,7 +12241,7 @@
 			// validate
 			var valid = acf.validateForm({
 				form: $form,
-				event: this.get('originalEvent') || e
+				event: this.get('originalEvent')
 			});
 			
 			// if not valid, stop event and allow validation to continue
@@ -12293,7 +12302,7 @@
 			
 			// vars
 			var $wrap = this.findSubmitWrap( $form );
-			var $submit = $wrap.find('.button, .acf-button');
+			var $submit = $wrap.find('.button, [type="submit"]');
 			var $spinner = $wrap.find('.spinner, .acf-spinner');
 			
 			// hide all spinners (hides the preview spinner)
@@ -12308,7 +12317,7 @@
 			
 			// vars
 			var $wrap = this.findSubmitWrap( $form );
-			var $submit = $wrap.find('.button, .acf-button');
+			var $submit = $wrap.find('.button, [type="submit"]');
 			var $spinner = $wrap.find('.spinner, .acf-spinner');
 			
 			// unlock

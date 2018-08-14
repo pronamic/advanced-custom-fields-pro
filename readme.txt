@@ -1,7 +1,7 @@
 === Advanced Custom Fields Pro ===
 Contributors: elliotcondon
 Tags: acf, advanced, custom, field, fields, form, repeater, content
-Requires at least: 3.6.0
+Requires at least: 4.4.0
 Tested up to: 4.9.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -65,6 +65,23 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.7.2 =
+*Release Date - 6 August 2018*
+
+* Fix - Fixed bug preventing the Google Maps Field address from being customised.
+* Fix - Improved logic to request and cache plugin update information.
+* Fix - Fixed bug preventing JS initialization when editing widgets in accessibility mode.
+* Fix - Added missing $parent argument to term_exists() function when adding a new term via taxonomy field popup.
+* Fix - Fixed bug where nested Group Fields did not delete their values.
+* Fix - Fixed JS error thrown by localStorage if cookies are not enabled.
+* Dev - Bumped minimum WP version requirement to 4.4.
+* Dev - Added action 'wp_nav_menu_item_custom_fields' for compatibility with other plugins modifying the menu walker class.
+* Dev - Added 'multiple' to the allowed attributes for an email field.
+* Dev - Added new ACF_Ajax class for upcoming features.
+
+= 5.7.1 =
+* Core: Minor fixes and improvements
 
 = 5.7.0 =
 * Core: Major JavaScript updates
