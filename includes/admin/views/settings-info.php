@@ -152,32 +152,20 @@
 					
 	</div>
 		
-	
-	
 <?php elseif( $active == 'changelog' ): ?>
 	
 	<p class="about-description"><?php printf(__("We think you'll love the changes in %s.", 'acf'), $version); ?></p>
 	
 	<?php
-		
-	$items = file_get_contents( acf_get_path('readme.txt') );
-	$items = explode('= ' . $version . ' =', $items);
 	
-	$items = end( $items );
-	$items = current( explode("\n\n", $items) );
-	$items = array_filter( array_map('trim', explode("*", $items)) );
+	// extract changelog and parse markdown
+	$readme = file_get_contents( acf_get_path('readme.txt') );
+	$changelog = '';
+	if( preg_match( '/(= '.$version.' =)(.+?)(=|$)/s', $readme, $match ) && $match[2] ) {
+		$changelog = acf_parse_markdown( $match[2] );
+	}
+	echo acf_parse_markdown($changelog);
 	
-	?>
-	<ul class="changelog">
-	<?php foreach( $items as $item ): 
-		
-		$item = explode('http', $item);
-			
-		?>
-		<li><?php echo $item[0]; ?><?php if( isset($item[1]) ): ?><a href="http<?php echo $item[1]; ?>" target="_blank">[...]</a><?php endif; ?></li>
-	<?php endforeach; ?>
-	</ul>
-
-<?php endif; ?>
+endif; ?>
 		
 </div>

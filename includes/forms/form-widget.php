@@ -256,7 +256,6 @@ class acf_form_widget {
 	*/
 	
 	function admin_footer() {
-		
 ?>
 <script type="text/javascript">
 (function($) {
@@ -264,11 +263,12 @@ class acf_form_widget {
 	// vars
 	acf.set('post_id', 'widgets');
 	
-	// restrict get fields
+	// Only initialize visible fields.
+	// - check for #widgets-right as this does not exist in accessibility mode
 	acf.addFilter('find_fields_args', function( args ){
 		
 		// add parent
-		if( !args.parent ) {
+		if( !args.parent && $('#widgets-right').length ) {
 			args.parent = $('#widgets-right');
 		}
 		

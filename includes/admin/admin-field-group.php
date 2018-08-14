@@ -444,7 +444,7 @@ class acf_admin_field_group {
 		acf_disable_filters();
 		
         // save fields
-       if( !empty($_POST['acf_fields']) ) {
+        if( !empty($_POST['acf_fields']) ) {
 			
 			// loop
 			foreach( $_POST['acf_fields'] as $field ) {

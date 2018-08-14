@@ -185,16 +185,12 @@ class acf_admin_settings_updates {
 		
 		// activate
 		if( acf_verify_nonce('activate_pro_licence') ) {
-		
 			$this->activate_pro_licence();
 		
 		// deactivate	
 		} elseif( acf_verify_nonce('deactivate_pro_licence') ) {
-		
 			$this->deactivate_pro_licence();
-			
 		}
-		
 		
 		// vars
 		$license = acf_pro_get_license_key();
@@ -208,22 +204,17 @@ class acf_admin_settings_updates {
 			'upgrade_notice'	=> ''
 		);
 		
-		
-		// vars
-		$info = acf_updates()->get_plugin_info('pro');
-		
+		// get plugin updates
+		$force_check = !empty( $_GET['force-check'] );
+		$info = acf_updates()->get_plugin_info('pro', $force_check);
 		
 		// error
 		if( is_wp_error($info) ) {
-			
 			return $this->show_error( $info );
-			
 		}
-        
-        
+		
         // add info to view
         $this->view['remote_version'] = $info['version'];
-        
         
         // add changelog if the remote version is '>' than the current version
         $version = acf_get_setting('version');
@@ -236,49 +227,18 @@ class acf_admin_settings_updates {
         	$this->view['changelog'] = $this->get_changelog_section($info['changelog'], $info['version']);
         	$this->view['upgrade_notice'] = $this->get_changelog_section($info['upgrade_notice'], $info['version']);
         	
-        	
-        	// refresh transient
-        	// - avoids new version not available in plugin update list
-        	// - only request if license is active
+        	// refresh transient if:
+        	// a) A license is active (can get update)
+        	// b) No update exists, or the update version is stale
+        	$basename = acf_get_setting('basename');
+        	$update = acf_updates()->get_plugin_update( $basename );
         	if( $license ) {
-	        	$this->refresh_plugins_transient();
+	        	if( !$update || $update['new_version'] !== $info['version'] ) {
+		        	acf_updates()->refresh_plugins_transient();
+	        	}
         	}
         }
 	}
-	
-	
-	/**
-	*  refresh_plugins_transient
-	*
-	*  Checks the site transient 'update_plugins' and compares the cached new_version against the plugin-info version.
-	*  If the cached version is older, a new version is available, and the transient is refreshed.
-	*
-	*  @date	12/7/18
-	*  @since	5.6.9
-	*
-	*  @param	void
-	*  @return	void
-	*/
-	
-	function refresh_plugins_transient() {
-		
-		// vars
-		$remote_version = $this->view['remote_version'];
-		$basename = acf_get_setting('basename');
-		$transient = get_site_transient('update_plugins');
-		$transient_version = 0;
-		
-		// get transient version
-		if( isset($transient->response[ $basename ]->new_version) ) {
-			$transient_version = $transient->response[ $basename ]->new_version;
-		}
-		
-		// return true if a newer $remote_version exists
-		if( acf_version_compare($remote_version, '>', $transient_version) ) {
-			acf_updates()->refresh_plugins_transient();
-		}
-	}
-	
 	
 	/*
 	*  activate_pro_licence
