@@ -4859,7 +4859,7 @@ function acf_send_ajax_results( $response ) {
 	
 	// validate
 	$response = wp_parse_args($response, array(
-		'results'	=> false,
+		'results'	=> array(),
 		'more'		=> false,
 		'limit'		=> 0
 	));

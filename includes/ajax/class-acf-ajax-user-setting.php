@@ -4,10 +4,10 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 if( ! class_exists('ACF_Ajax_User_Setting') ) :
 
-class ACF_Ajax_User_Setting extends ACF_Ajax{
+class ACF_Ajax_User_Setting extends ACF_Ajax {
 	
 	/** @var string The AJAX action name */
-	var $action = 'acf/update_user_setting';
+	var $action = 'acf/ajax/user_setting';
 	
 	/** @var bool Prevents access for non-logged in users */
 	var $public = true;
