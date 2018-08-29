@@ -396,6 +396,9 @@ acf.doAction('prepare');
 			<?php wp_editor( '', 'acf_content' ); ?>
 		</div>
 		<?php
+			
+		// action
+		do_action('acf/enqueue_uploader');
 	}
 }
 

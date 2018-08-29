@@ -42,10 +42,6 @@ class ACF_Form_Post {
 		add_filter('wp_insert_post_empty_content',		array($this, 'wp_insert_post_empty_content'), 10, 2);
 		add_action('save_post', 						array($this, 'save_post'), 10, 2);
 		
-		
-		// ajax
-		add_action('wp_ajax_acf/post/get_field_groups',	array($this, 'get_field_groups'));
-		
 	}
 	
 	
@@ -364,106 +360,7 @@ if( typeof acf !== 'undefined' ) {
 		echo '<style type="text/css" id="acf-style">' . $this->style . '</style>';
 		
 	}
-	
-	
-	/*
-	*  get_field_groups
-	*
-	*  This function will return all the JSON data needed to render new metaboxes
-	*
-	*  @type	function
-	*  @date	21/10/13
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	function get_field_groups() {
 		
-		// options
-		$options = acf_parse_args($_POST, array(
-			'nonce'		=> '',
-			'post_id'	=> 0,
-			'ajax'		=> 1,
-			'exists'	=> array()
-		));
-		
-		
-		// vars
-		$json = array();
-		$exists = acf_extract_var( $options, 'exists' );
-		
-		
-		// verify nonce
-		if( !acf_verify_ajax() ) die();
-		
-		
-		// get field groups
-		$field_groups = acf_get_field_groups( $options );
-		
-		
-		// bail early if no field groups
-		if( empty($field_groups) ) {
-			
-			wp_send_json_success( $json );
-			
-		}
-		
-		
-		// loop through field groups
-		foreach( $field_groups as $i => $field_group ) {
-			
-			// vars
-			$item = array(
-				//'ID'	=> $field_group['ID'], - JSON does not have ID (not used by JS anyway)
-				'key'	=> $field_group['key'],
-				'title'	=> $field_group['title'],
-				'html'	=> '',
-				'style' => ''
-			);
-			
-			
-			// style
-			if( $i == 0 ) {
-				
-				$item['style'] = acf_get_field_group_style( $field_group );
-				
-			}
-			
-			
-			// html
-			if( !in_array($field_group['key'], $exists) ) {
-				
-				// load fields
-				$fields = acf_get_fields( $field_group );
-
-	
-				// get field HTML
-				ob_start();
-				
-				
-				// render
-				acf_render_fields( $fields, $options['post_id'], 'div', $field_group['instruction_placement'] );
-				
-				
-				$item['html'] = ob_get_clean();
-				
-				
-			}
-			
-			
-			// append
-			$json[] = $item;
-			
-		}
-		
-		
-		// return
-		wp_send_json_success( $json );
-		
-	}
-	
 	
 	/*
 	*  wp_insert_post_empty_content
