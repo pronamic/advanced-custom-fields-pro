@@ -66,6 +66,33 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.7.6 =
+*Release Date - 12 September 2018*
+
+* Fix - Fixed unload prompt not working.
+* Dev - Reduced number of queries needed to populate the relationship field taxonomy filter.
+* Dev - Added 'nav_menu_item_id' and 'nav_menu_item_depth' to get_field_groups() query.
+* Dev - Reordered various actions and filters for more usefulness.
+* i18n - Updated Polish language thanks to Dariusz Zielonka
+
+= 5.7.5 =
+*Release Date - 6 September 2018*
+
+* Fix - Fixed bug causing multisite login redirect issues.
+* Fix - Fixed bug causing validation issues in older versions of Firefox.
+* Fix - Fixed bug causing duplicate Select2 instances when adding a widget via drag/drop.
+* Dev - Improved WPML compatibility by using `$sitepress->get_current_language()` instead of `ICL_LANGUAGE_CODE`.
+* Dev - Improved validation JS with new Validator model and logic.
+
+= 5.7.4 =
+*Release Date - 30 August 2018*
+
+* Fix - Fixed bug causing field groups to disappear when selecting a taxonomy term with WPML active.
+* Tweak - Added more Dark Mode styles.
+* Tweak - Improved DB upgrade prompt, functions and AJAX logic.
+* Tweak - Improved the "What's New" admin page seen after DB Upgrade.
+* Dev - Added new location rules filters.
+
 = 5.7.3 =
 *Release Date - 20 August 2018*
 

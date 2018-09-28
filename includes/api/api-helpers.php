@@ -431,6 +431,24 @@ function acf_include( $file ) {
 	
 }
 
+/**
+*  acf_include_once
+*
+*  Includes a file one time only.
+*
+*  @date	24/8/18
+*  @since	5.7.4
+*
+*  @param	string $file The relative file path.
+*  @return	void
+*/
+
+function acf_include_once( $file = '' ) {
+	$path = acf_get_path( $file );
+	if( file_exists($path) ) {
+		include_once( $path );
+	}
+}
 
 /*
 *  acf_get_external_path
@@ -1210,30 +1228,20 @@ function acf_get_locale() {
 
 function acf_get_terms( $args ) {
 	
-	// global
-	global $wp_version;
+	// defaults
+	$args = wp_parse_args($args, array(
+		'taxonomy'					=> null,
+		'hide_empty'				=> false,
+		'update_term_meta_cache'	=> false,
+	));
 	
-	
-	// vars
-	$terms = array();
-	
-		
-	// WP 4.5+
-	if( version_compare($wp_version, '4.5', '>=' ) ) {
-		
-		$terms = get_terms( $args );
-
-	// WP < 4.5
-	} else {
-		
-		$terms = get_terms( $args['taxonomy'], $args );
-	
+	// parameters changed in version 4.5
+	if( acf_version_compare('wp', '<', '4.5') ) {
+		return get_terms( $args['taxonomy'], $args );
 	}
 	
-	
 	// return
-	return $terms;
-	
+	return get_terms( $args );
 }
 
 
@@ -1305,36 +1313,6 @@ function acf_get_taxonomy_terms( $taxonomies = array() ) {
 	
 	// return
 	return $r;
-	
-}
-
-
-function acf_get_term_title( $term ) {
-	
-	// title
-	$title = $term->name;
-	
-	
-	// empty
-	if( $title === '' ) {
-		
-		$title = __('(no title)', 'acf');
-		
-	}
-	
-	
-	// ancestors
-	if( is_taxonomy_hierarchical($term->taxonomy) ) {
-		
-		$ancestors = get_ancestors( $term->term_id, $term->taxonomy );
-		
-		$title = str_repeat('- ', count($ancestors)) . $title;
-		
-	}
-	
-	
-	// return
-	return $title;
 	
 }
 
@@ -4063,11 +4041,22 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 	}
 	
 	
-	// filter for 3rd party customization
-	$errors = apply_filters("acf/validate_attachment", $errors, $file, $attachment, $field, $context);
-	$errors = apply_filters("acf/validate_attachment/type={$field['type']}", $errors, $file, $attachment, $field, $context );
-	$errors = apply_filters("acf/validate_attachment/name={$field['name']}", $errors, $file, $attachment, $field, $context );
-	$errors = apply_filters("acf/validate_attachment/key={$field['key']}", $errors, $file, $attachment, $field, $context );
+	/**
+	*  Filters the errors for a file before it is uploaded or displayed in the media modal.
+	*
+	*  @date	3/07/2015
+	*  @since	5.2.3
+	*
+	*  @param	array $errors An array of errors.
+	*  @param	array $file An array of data for a single file.
+	*  @param	array $attachment An array of attachment data which differs based on the context.
+	*  @param	array $field The field array.
+	*  @param	string $context The curent context (uploading, preparing)
+	*/
+	$errors = apply_filters( "acf/validate_attachment/type={$field['type']}",	$errors, $file, $attachment, $field, $context );
+	$errors = apply_filters( "acf/validate_attachment/name={$field['_name']}", 	$errors, $file, $attachment, $field, $context );
+	$errors = apply_filters( "acf/validate_attachment/key={$field['key']}", 	$errors, $file, $attachment, $field, $context );
+	$errors = apply_filters( "acf/validate_attachment", 						$errors, $file, $attachment, $field, $context );
 	
 	
 	// return
@@ -4537,33 +4526,43 @@ function acf_format_date( $value, $format ) {
 function acf_log() {
 	
 	// vars
-	$log = '';
 	$args = func_get_args();
-	
 	
 	// loop
 	foreach( $args as $i => $arg ) {
 		
+		// array | object
 		if( is_array($arg) || is_object($arg) ) {
-			
 			$arg = print_r($arg, true);
-			
-		} elseif( is_bool($arg) ) {
-			
-			$arg = ( $arg ? 'true' : 'false' ) . ' (bool)';
-			
-		}
 		
+		// bool	
+		} elseif( is_bool($arg) ) {
+			$arg = 'bool(' . ( $arg ? 'true' : 'false' ) . ')';
+		}
 		
 		// update
 		$args[ $i ] = $arg;
-		
 	}
-	
 	
 	// log
 	error_log( implode(' ', $args) );
-	
+}
+
+/**
+*  acf_dev_log
+*
+*  Used to log variables only if ACF_DEV is defined
+*
+*  @date	25/8/18
+*  @since	5.7.4
+*
+*  @param	mixed
+*  @return	void
+*/
+function acf_dev_log() {
+	if( defined('ACF_DEV') && ACF_DEV ) {
+		call_user_func_array('acf_log', func_get_args());
+	}
 }
 
 
@@ -5265,6 +5264,100 @@ function acf_parse_markdown( $text = '' ) {
 	
 	// return
 	return $text;
+}
+
+/**
+*  acf_get_sites
+*
+*  Returns an array of sites for a network.
+*
+*  @date	29/08/2016
+*  @since	5.4.0
+*
+*  @param	void
+*  @return	array
+*/
+function acf_get_sites() {
+	
+	// vars
+	$results = array();
+	
+	// function get_sites() was added in WP 4.6
+	if( function_exists('get_sites') ) {
+		
+		$_sites = get_sites(array(
+			'number' => 0
+		));
+		
+		if( $_sites ) {
+		foreach( $_sites as $_site ) {
+			$_site = get_site( $_site );
+	        $results[] = $_site->to_array();
+	    }}
+		
+	// function wp_get_sites() returns in the desired output
+	} else {
+		$results = wp_get_sites(array(
+			'limit' => 0
+		));
+	}
+	
+	// return
+	return $results;
+}
+
+/**
+*  acf_convert_rules_to_groups
+*
+*  Converts an array of rules from ACF4 to an array of groups for ACF5
+*
+*  @date	25/8/18
+*  @since	5.7.4
+*
+*  @param	array $rules An array of rules.
+*  @param	string $anyorall The anyorall setting used in ACF4. Defaults to 'any'.
+*  @return	array
+*/
+function acf_convert_rules_to_groups( $rules, $anyorall = 'any' ) {
+	
+	// vars
+	$groups = array();
+	$index = 0;
+	
+	// loop
+	foreach( $rules as $rule ) {
+		
+		// extract vars
+		$group = acf_extract_var( $rule, 'group_no' );
+		$order = acf_extract_var( $rule, 'order_no' );
+		
+		// calculate group if not defined
+		if( $group === null ) {
+			$group = $index;
+			
+			// use $anyorall to determine if a new group is needed
+			if( $anyorall == 'any' ) {
+				$index++;
+			}
+		}
+		
+		// calculate order if not defined
+		if( $order === null ) {
+			$order = isset($groups[ $group ]) ? count($groups[ $group ]) : 0;
+		}
+		
+		// append to group
+		$groups[ $group ][ $order ] = $rule;
+		
+		// sort groups
+		ksort( $groups[ $group ] );
+	}
+	
+	// sort groups
+	ksort( $groups );
+	
+	// return
+	return $groups;
 }
 
 ?>

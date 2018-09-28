@@ -83,7 +83,9 @@ class acf_form_nav_menu {
 		
 		// get field groups
 		$field_groups = acf_get_field_groups(array(
-			'nav_menu_item' => $item->type
+			'nav_menu_item' 		=> $item->type,
+			'nav_menu_item_id'		=> $item_id,
+			'nav_menu_item_depth'	=> $depth
 		));
 		
 		// render
