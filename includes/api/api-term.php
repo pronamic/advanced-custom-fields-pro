@@ -31,8 +31,44 @@ function acf_get_taxonomies( $args = array() ) {
 		$taxonomies[] = $i;
 	}
 	
+	// custom post_type arg which does not yet exist in core
+	if( isset($args['post_type']) ) {
+		$taxonomies = acf_get_taxonomies_for_post_type($args['post_type']);
+	}
+	
 	// filter
 	$taxonomies = apply_filters('acf/get_taxonomies', $taxonomies, $args);
+	
+	// return
+	return $taxonomies;
+}
+
+/**
+*  acf_get_taxonomies_for_post_type
+*
+*  Returns an array of taxonomies for a given post type(s)
+*
+*  @date	7/9/18
+*  @since	5.7.5
+*
+*  @param	string|array $post_types The post types to compare against.
+*  @return	array
+*/
+function acf_get_taxonomies_for_post_type( $post_types = 'post' ) {
+	
+	// vars
+	$taxonomies = array();
+	
+	// loop
+	foreach( (array) $post_types as $post_type ) {
+		$object_taxonomies = get_object_taxonomies( $post_type );
+		foreach( (array) $object_taxonomies as $taxonomy ) {
+			$taxonomies[] = $taxonomy;						
+		}
+	}
+	
+	// remove duplicates
+	$taxonomies = array_unique($taxonomies);
 	
 	// return
 	return $taxonomies;
@@ -90,6 +126,38 @@ function acf_get_taxonomy_labels( $taxonomies = array() ) {
 }
 
 /**
+*  acf_get_term_title
+*
+*  Returns the title for this term object.
+*
+*  @date	10/9/18
+*  @since	5.0.0
+*
+*  @param	object $term The WP_Term object.
+*  @return	string
+*/
+
+function acf_get_term_title( $term ) {
+	
+	// set to term name
+	$title = $term->name;
+	
+	// allow for empty name
+	if( $title === '' ) {
+		$title = __('(no title)', 'acf');
+	}
+	
+	// prepent ancestors indentation
+	if( is_taxonomy_hierarchical($term->taxonomy) ) {
+		$ancestors = get_ancestors( $term->term_id, $term->taxonomy );
+		$title = str_repeat('- ', count($ancestors)) . $title;
+	}
+	
+	// return
+	return $title;
+}
+
+/**
 *  acf_get_grouped_terms
 *
 *  Returns an array of terms for the given query $args and groups by taxonomy name.
@@ -108,7 +176,7 @@ function acf_get_grouped_terms( $args ) {
 	
 	// defaults
 	$args = wp_parse_args($args, array(
-		'taxonomy'					=> 'category',
+		'taxonomy'					=> null,
 		'hide_empty'				=> false,
 		'update_term_meta_cache'	=> false,
 	));
@@ -116,6 +184,9 @@ function acf_get_grouped_terms( $args ) {
 	// vars
 	$taxonomies = acf_get_taxonomy_labels( acf_get_array($args['taxonomy']) );
 	$is_single = (count($taxonomies) == 1);
+	
+	// specify exact taxonomies required for _acf_terms_clauses() to work.
+	$args['taxonomy'] = array_keys($taxonomies);
 	
 	// add filter to group results by taxonomy
 	if( !$is_single ) {
@@ -241,14 +312,14 @@ function acf_get_pretty_taxonomies( $taxonomies = array() ) {
 *  @date	19/8/18
 *  @since	5.7.3
 *
-*  @param	mixed $term_id The term ID or a string of "slug:taxonomy".
+*  @param	mixed $term_id The term ID or a string of "taxonomy:slug".
 *  @param	string $taxonomy The taxonomyname.
 *  @return	WP_Term
 */
 
 function acf_get_term( $term_id, $taxonomy = '' ) {
 	
-	// allow $term_id parameter to be a string of "slug:taxonomy" of "slug:id"
+	// allow $term_id parameter to be a string of "taxonomy:slug" or "taxonomy:id"
 	if( is_string($term_id) && strpos($term_id, ':') ) {
 		list( $taxonomy, $term_id ) = explode(':', $term_id);
 		$term = get_term_by( 'slug', $term_id, $taxonomy );
@@ -258,6 +329,173 @@ function acf_get_term( $term_id, $taxonomy = '' ) {
 	// return
 	return get_term( $term_id, $taxonomy );
 }
+
+/**
+*  acf_encode_term
+*
+*  Returns a "taxonomy:slug" string for a given WP_Term.
+*
+*  @date	27/8/18
+*  @since	5.7.4
+*
+*  @param	WP_Term $term The term object.
+*  @return	string
+*/
+function acf_encode_term( $term ) {
+	return "{$term->taxonomy}:{$term->slug}";
+}
+
+/**
+*  acf_decode_term
+*
+*  Decodes a "taxonomy:slug" string into an array of taxonomy and slug.
+*
+*  @date	27/8/18
+*  @since	5.7.4
+*
+*  @param	WP_Term $term The term object.
+*  @return	string
+*/
+function acf_decode_term( $string ) {
+	if( is_string($string) && strpos($string, ':') ) {
+		list( $taxonomy, $slug ) = explode(':', $string);
+		return array(
+			'taxonomy'	=> $taxonomy,
+			'slug'		=> $slug
+		);
+	}
+	return false;
+}
+
+/**
+*  acf_get_encoded_terms
+*
+*  Returns an array of WP_Term objects from an array of encoded strings
+*
+*  @date	9/9/18
+*  @since	5.7.5
+*
+*  @param	array $values The array of encoded strings.
+*  @return	array
+*/
+function acf_get_encoded_terms( $values ) {
+	
+	// vars
+	$terms = array();
+	
+	// loop over values
+	foreach( (array) $values as $value ) {
+		
+		// find term from string
+		$term = acf_get_term( $value );
+		
+		// append
+		if( $term instanceof WP_Term ) {
+			$terms[] = $term;
+		}
+	}
+	
+	// return
+	return $terms;
+}
+
+/**
+*  acf_get_choices_from_terms
+*
+*  Returns an array of choices from the terms provided.
+*
+*  @date	8/9/18
+*  @since	5.7.5
+*
+*  @param	array $values and array of WP_Terms objects or encoded strings.
+*  @param	string $format The value format (term_id, slug).
+*  @return	array
+*/
+function acf_get_choices_from_terms( $terms, $format = 'term_id' ) {
+	
+	// vars
+	$groups = array();
+	
+	// get taxonomy lables
+	$labels = acf_get_taxonomy_labels();
+	
+	// convert array of encoded strings to terms
+	$term = reset($terms);
+	if( !$term instanceof WP_Term ) {
+		$terms = acf_get_encoded_terms( $terms );
+	}
+	
+	// loop over terms
+	foreach( $terms as $term ) {
+		$group = $labels[ $term->taxonomy ];
+		$choice = acf_get_choice_from_term( $term, $format );
+		$groups[ $group ][ $choice['id'] ] = $choice['text'];
+	}
+	
+	// return
+	return $groups;
+}
+
+/**
+*  acf_get_choices_from_grouped_terms
+*
+*  Returns an array of choices from the grouped terms provided.
+*
+*  @date	8/9/18
+*  @since	5.7.5
+*
+*  @param	array $value A grouped array of WP_Terms objects.
+*  @param	string $format The value format (term_id, slug).
+*  @return	array
+*/
+function acf_get_choices_from_grouped_terms( $value, $format = 'term_id' ) {
+	
+	// vars
+	$groups = array();
+	
+	// loop over values
+	foreach( $value as $group => $terms ) {
+		$groups[ $group ] = array();
+		foreach( $terms as $term_id => $term ) {
+			$choice = acf_get_choice_from_term( $term, $format );
+			$groups[ $group ][ $choice['id'] ] = $choice['text'];
+		}
+	}
+	
+	// return
+	return $groups;
+}
+
+/**
+*  acf_get_choice_from_term
+*
+*  Returns an array containing the id and text for this item.
+*
+*  @date	10/9/18
+*  @since	5.7.6
+*
+*  @param	object $item The item object such as WP_Post or WP_Term.
+*  @param	string $format The value format (term_id, slug)
+*  @return	array
+*/
+function acf_get_choice_from_term( $term, $format = 'term_id' ) {
+	
+	// vars
+	$id = $term->term_id;
+	$text = acf_get_term_title( $term );
+	
+	// return format
+	if( $format == 'slug' ) {
+		$id = acf_encode_term($term);
+	}
+	
+	// return
+	return array(
+		'id'	=> $id,
+		'text'	=> $text
+	);
+}
+
 
 
 ?>

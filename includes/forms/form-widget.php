@@ -264,16 +264,16 @@ class acf_form_widget {
 	acf.set('post_id', 'widgets');
 	
 	// Only initialize visible fields.
-	// - check for #widgets-right as this does not exist in accessibility mode
-	acf.addFilter('find_fields_args', function( args ){
+	acf.addFilter('find_fields', function( $fields ){
 		
-		// add parent
-		if( !args.parent && $('#widgets-right').length ) {
-			args.parent = $('#widgets-right');
-		}
+		// not templates
+		$fields = $fields.not('#available-widgets .acf-field');
+		
+		// not widget dragging in
+		$fields = $fields.not('.widget.ui-draggable-dragging .acf-field');
 		
 		// return
-		return args;
+		return $fields;
 	});
 	
 	// on publish
@@ -287,7 +287,7 @@ class acf_form_widget {
 		var valid = acf.validateForm({
 			form: $form,
 			event: e,
-			lock: false
+			reset: true
 		});
 		
 		// if not valid, stop event and allow validation to continue
