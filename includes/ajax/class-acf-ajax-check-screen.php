@@ -28,13 +28,17 @@ class ACF_Ajax_Check_Screen extends ACF_Ajax {
 		
 		// vars
 		$args = acf_parse_args($this->request, array(
+			'screen'	=> '',
 			'post_id'	=> 0,
 			'ajax'		=> 1,
-			'exclude'	=> array()
+			'exists'	=> array()
 		));
 		
 		// vars
-		$json = array();
+		$json = array(
+			'results'	=> array(),
+			'style'		=> ''
+		);
 		
 		// get field groups
 		$field_groups = acf_get_field_groups( $args );
@@ -47,17 +51,16 @@ class ACF_Ajax_Check_Screen extends ACF_Ajax {
 			$item = array(
 				'key'	=> $field_group['key'],
 				'title'	=> $field_group['title'],
-				'html'	=> '',
-				'style' => ''
+				'html'	=> ''
 			);
 			
-			// style
+			// append first field group's style
 			if( $i == 0 ) {
-				$item['style'] = acf_get_field_group_style( $field_group );
+				$json['style'] = acf_get_field_group_style( $field_group );
 			}
 			
-			// html
-			if( !in_array($field_group['key'], $args['exclude']) ) {
+			// append html if doesnt already exist on page
+			if( !in_array($field_group['key'], $args['exists']) ) {
 				
 				// load fields
 				$fields = acf_get_fields( $field_group );
@@ -72,8 +75,9 @@ class ACF_Ajax_Check_Screen extends ACF_Ajax {
 			}
 			
 			// append
-			$json[] = $item;
-		}}	
+			$json['results'][] = $item;
+		}}
+		
 		
 		// return
 		return $json;

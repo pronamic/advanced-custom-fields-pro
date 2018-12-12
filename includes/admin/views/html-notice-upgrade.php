@@ -21,7 +21,7 @@ if( !acf_get_setting('pro') ) {
 		<h2><?php _e("Database Upgrade Required",'acf'); ?></h2>
 		<p><?php printf(__("Thank you for updating to %s v%s!", 'acf'), acf_get_setting('name'), acf_get_setting('version') ); ?><br /><?php _e("This version contains improvements to your database and requires an upgrade.", 'acf'); ?></p>
 		<?php if( !empty($plugins) ): ?>
-			<p><?php printf(__("Please also ensure any premium add-ons (%s) have first been updated to the latest version.", 'acf'), implode(', ', $plugins) ); ?></p>
+			<p><?php printf(__("Please also check all premium add-ons (%s) are updated to the latest version.", 'acf'), implode(', ', $plugins) ); ?></p>
 		<?php endif; ?>
 	</div>
 	

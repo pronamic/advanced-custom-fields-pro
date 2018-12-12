@@ -80,8 +80,8 @@
   background: #fff3e6;
   color: #d16226;
 }
-.acf-fieldtd,
-.acf-fieldtr {
+td.acf-field,
+tr.acf-field {
   margin: 0;
 }
 .acf-field[data-width] {
@@ -106,8 +106,8 @@ html[dir="rtl"] .acf-field[data-width] + .acf-field[data-width] {
   border-left: none;
   border-right: 1px solid #eeeeee;
 }
-.acf-field[data-width]td,
-.acf-field[data-width]tr {
+td.acf-field[data-width],
+tr.acf-field[data-width] {
   float: none;
 }
 .acf-field.-c0 {
@@ -267,6 +267,10 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
   margin: 0;
   border-left-color: #E1E1E1;
 }
+.acf-sortable-tr-helper {
+  position: relative !important;
+  display: table-row !important;
+}
 /*--------------------------------------------------------------------------------------------
 *
 *	acf-postbox
@@ -343,10 +347,6 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
   .acf-postbox.seamless > .acf-fields.-left > .acf-field > .acf-input {
     padding: 0;
   }
-}
-/* override WP CSS */
-.metabox-prefs label.acf-hidden {
-  display: none;
 }
 /*---------------------------------------------------------------------------------------------
 *
@@ -2678,31 +2678,3 @@ p.submit .acf-spinner {
 .acf-postbox.acf-hidden {
   display: none !important;
 }
-/*--------------------------------------------------------------------------------------------
-*
-*	Gutenberg
-*
-*--------------------------------------------------------------------------------------------*/
-/*
-#editor {
-	
-	.edit-post-layout__metaboxes {
-		//border-top: none;
-	}
-	
-	.edit-post-meta-boxes-area {
-		max-width: 80%;
-		
-		.postbox {
-			border: #e2e4e7 solid 1px;
-			border-bottom: none;
-			margin: 20px 0;
-		}
-		
-		input {
-			max-width: none;
-		}
-	}
-
-}
-*/

@@ -91,37 +91,38 @@ class acf_field_date_picker extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// format value
+		// vars
 		$hidden_value = '';
 		$display_value = '';
 		
+		// format value
 		if( $field['value'] ) {
-			
 			$hidden_value = acf_format_date( $field['value'], 'Ymd' );
 			$display_value = acf_format_date( $field['value'], $field['display_format'] );
-			
 		}
 		
-		
-		// vars
+		// elements
 		$div = array(
 			'class'					=> 'acf-date-picker acf-input-wrap',
 			'data-date_format'		=> acf_convert_date_to_js($field['display_format']),
 			'data-first_day'		=> $field['first_day'],
 		);
-		
 		$hidden_input = array(
 			'id'					=> $field['id'],
-			'class' 				=> 'input-alt',
 			'name'					=> $field['name'],
 			'value'					=> $hidden_value,
 		);
-		
 		$text_input = array(
 			'class' 				=> 'input',
 			'value'					=> $display_value,
 		);
 		
+		// special attributes
+		foreach( array( 'readonly', 'disabled', 'required' ) as $k ) {
+			if( !empty($field[ $k ]) ) {
+				$hidden_input[ $k ] = $text_input[ $k ] = $k;
+			}
+		}
 		
 		// save_format - compatibility with ACF < 5.0.0
 		if( !empty($field['save_format']) ) {
@@ -134,9 +135,7 @@ class acf_field_date_picker extends acf_field {
 			
 			// remove formatted value (will do this via JS)
 			$text_input['value'] = '';
-			
 		}
-		
 		
 		// html
 		?>
@@ -145,7 +144,6 @@ class acf_field_date_picker extends acf_field {
 			<?php acf_text_input( $text_input ); ?>
 		</div>
 		<?php
-		
 	}
 	
 	
