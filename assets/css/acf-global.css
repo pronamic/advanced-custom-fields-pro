@@ -1052,7 +1052,8 @@ html[dir="rtl"] #acf-popup .acf-popup-box .title .acf-icon {
 }
 #acf-upgrade-notice .col-content {
   float: left;
-  width: 65%;
+  width: 55%;
+  padding-left: 90px;
 }
 #acf-upgrade-notice .col-actions {
   float: right;
@@ -1063,18 +1064,27 @@ html[dir="rtl"] #acf-popup .acf-popup-box .title .acf-icon {
   float: left;
   width: 70px;
   height: 70px;
-  margin: 0 20px 0 0;
+  margin: 0 0 0 -90px;
 }
 #acf-upgrade-notice h2 {
   font-size: 16px;
-  margin: 0;
+  margin: 2px 0 6.5px;
 }
 #acf-upgrade-notice p {
   padding: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
 #acf-upgrade-notice .button:before {
   margin-top: 11px;
+}
+@media screen and (max-width: 640px) {
+  #acf-upgrade-notice .col-content,
+  #acf-upgrade-notice .col-actions {
+    float: none;
+    padding-left: 90px;
+    width: auto;
+    text-align: left;
+  }
 }
 /*--------------------------------------------------------------------------------------------
 *

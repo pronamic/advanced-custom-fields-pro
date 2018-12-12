@@ -2506,4 +2506,3 @@
 // @codekit-prepend "../js/field-group-fields.js";
 // @codekit-prepend "../js/field-group-locations.js";
 // @codekit-prepend "../js/field-group-compatibility.js";
-

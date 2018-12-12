@@ -3718,70 +3718,220 @@
 
 (function($, undefined){
 	
+	/**
+	*  acf.getPostbox
+	*
+	*  Returns a postbox instance.
+	*
+	*  @date	23/9/18
+	*  @since	5.7.7
+	*
+	*  @param	mixed $el Either a jQuery element or the postbox id.
+	*  @return	object
+	*/
+	acf.getPostbox = function( $el ){
+		
+		// allow string parameter
+		if( typeof arguments[0] == 'string' ) {
+			$el = $('#' + arguments[0]);
+		}
+		
+		// return instance
+		return acf.getInstance( $el );
+	};
+	
+	/**
+	*  acf.getPostboxes
+	*
+	*  Returns an array of postbox instances.
+	*
+	*  @date	23/9/18
+	*  @since	5.7.7
+	*
+	*  @param	void
+	*  @return	array
+	*/
+	acf.getPostboxes = function(){
+		
+		// find all postboxes
+		var $postboxes = $('.acf-postbox');
+		
+		// return instances
+		return acf.getInstances( $postboxes );
+	};
+	
+	/**
+	*  acf.newPostbox
+	*
+	*  Returns a new postbox instance for the given props.
+	*
+	*  @date	20/9/18
+	*  @since	5.7.6
+	*
+	*  @param	object props The postbox properties.
+	*  @return	object
+	*/
+	acf.newPostbox = function( props ){
+		return new acf.models.Postbox( props );
+	};
+	
+	/**
+	*  acf.models.Postbox
+	*
+	*  The postbox model.
+	*
+	*  @date	20/9/18
+	*  @since	5.7.6
+	*
+	*  @param	void
+	*  @return	void
+	*/
 	acf.models.Postbox = acf.Model.extend({
 		
 		data: {
-			id: 		'',
+			id:			'',
 			key:		'',
 			style: 		'default',
 			label: 		'top',
-			editLink:	'',
-			editTitle:	'',
-			visibility:	true
+			visible: 	true,
+			edit:		'',
+			html: 		true,
 		},
 		
 		setup: function( props ){
+			
+			// compatibilty
+			if( props.editLink ) {
+				props.edit = props.editLink;
+			}
+			
+			// extend data
 			$.extend(this.data, props);
+			
+			// set $el
+			this.$el = this.$postbox();
+		},
+		
+		$postbox: function(){
+			return $('#' + this.get('id'));
+		},
+		
+		$placeholder: function(){
+			return $('#' + this.get('id') + '-placeholder');
+		},
+		
+		$hide: function(){
+			return $('#' + this.get('id') + '-hide');
+		},
+		
+		$hideLabel: function(){
+			return this.$hide().parent();
+		},
+		
+		$hndle: function(){
+			return this.$('> .hndle');
+		},
+		
+		$inside: function(){
+			return this.$('> .inside');
+		},
+		
+		isVisible: function(){
+			return this.get('visible');
+		},
+		
+		hasHTML: function(){
+			return this.get('html');
 		},
 		
 		initialize: function(){
 			
-			// vars
-			var id = this.get('id');
-			var $postbox = $('#' + id);
-			var $toggle = $('#' + id + '-hide');
-			var $label = $toggle.parent();
+			// Add default class.
+			this.$el.addClass('acf-postbox');
 			
-			// add class
-			$postbox.addClass('acf-postbox');
-			$label.addClass('acf-postbox-toggle');
+			// Remove 'hide-if-js class.
+			// This class is added by WP to postboxes that are hidden via the "Screen Options" tab.
+			this.$el.removeClass('hide-if-js');
 			
-			// remove class
-			$postbox.removeClass('hide-if-js');
-			$label.removeClass('hide-if-js');
-			
-			// field group style
+			// Add field group style class.
 			var style = this.get('style');
 			if( style !== 'default' ) {
-				$postbox.addClass( style );
+				this.$el.addClass( style );
 			}
 			
-			// .inside class
-			$postbox.children('.inside').addClass('acf-fields').addClass('-' + this.get('label'));
+			// Add .inside class.
+			this.$inside().addClass('acf-fields').addClass('-' + this.get('label'));
 			
-				
-			// visibility
-			if( this.get('visibility') ) {
-				$toggle.prop('checked', true);
+			// Append edit link.
+			var edit = this.get('edit');
+			if( edit ) {
+				this.$hndle().append('<a href="' + edit + '" class="dashicons dashicons-admin-generic acf-hndle-cog acf-js-tooltip" title="' + acf.__('Edit field group') + '"></a>');
+			}
+			
+			// Show postbox.
+			if( this.isVisible() ) {
+				this.show();
+			
+			// Hide postbox.
+			// Hidden postboxes do not contain HTML and are used as placeholders.
 			} else {
-				$postbox.addClass('acf-hidden');
-				$label.addClass('acf-hidden');
+				this.set('html', false);
+				this.hide();
 			}
+		},
+		
+		show: function(){
 			
-			// edit link
-			var editLink = this.get('editLink');
-			var editTitle = this.get('editTitle');
-			if( editLink ) {
-				
-				$postbox.children('.hndle').append('<a href="' + editLink + '" class="dashicons dashicons-admin-generic acf-hndle-cog acf-js-tooltip" title="' + editTitle + '"></a>');
-			}
+			// Show label.
+			this.$hideLabel().show();
+			
+			// toggle on checkbox
+			this.$hide().prop('checked', true);
+			
+			// Show postbox
+			this.$el.show().removeClass('acf-hidden');
+		},
+		
+		enable: function(){
+			acf.enable( this.$el, 'postbox' );
+		},
+		
+		showEnable: function(){
+			this.show();
+			this.enable();
+		},
+		
+		hide: function(){
+			
+			// Hide label.
+			this.$hideLabel().hide();
+			
+			// Hide postbox
+			this.$el.hide().addClass('acf-hidden');
+		},
+		
+		disable: function(){
+			acf.disable( this.$el, 'postbox' );
+		},
+		
+		hideDisable: function(){
+			this.hide();
+			this.disable();
+		},
+		
+		html: function( html ){
+			
+			// Update HTML.
+			this.$inside().html( html );
+			
+			// Keep a record that this postbox has HTML.
+			this.set('html', true);
+			
+			// Do action.
+			acf.doAction('append', this.$el);
 		}
 	});
-	
-	acf.newPostbox = function( props ){
-		return new acf.models.Postbox( props );
-	};
-			
+		
 })(jQuery);
 
 (function($, undefined){
@@ -8626,6 +8776,9 @@
 			var oldId = $textarea.attr('id');
 			var newId = acf.uniqueId('acf-editor-');
 			
+			// store copy of textarea data
+			var data = $textarea.data();
+			
 			// rename
 			acf.rename({
 				target: $wrap,
@@ -8639,6 +8792,10 @@
 			
 			// initialize
 			acf.tinymce.initialize( newId, args );
+			
+			// apply data to new textarea (acf.rename creates a new textarea element due to destructive mode)
+			// fixes bug where conditional logic "disabled" is lost during "screen_check"
+			this.$input().data(data);
 		},
 		
 		onMousedown: function( e ){
@@ -10494,22 +10651,6 @@
 		
 		initialize: function(){
 			
-/*
-			// disable if not active
-			if( !this.active ) {
-				this.events = {};
-			}
-			
-			// bail early if not for post
-			if( acf.get('screen') !== 'post' ) {
-				return;
-			}
-			
-			'check_screen_data'
-			
-			'check_screen_events'
-				
-*/
 		},
 /*
 		
@@ -10670,7 +10811,7 @@
 			var ajaxData = acf.parseArgs(this.data, {
 				action:	'acf/ajax/check_screen',
 				screen: acf.get('screen'),
-				exclude: []
+				exists: []
 			});
 			
 			// post id
@@ -10703,10 +10844,15 @@
 				ajaxData.post_terms = postTerms;
 			}
 			
-			// exclude existing postboxes
-			$('.acf-postbox').not('.acf-hidden').each(function(){
-				ajaxData.exclude.push( $(this).attr('id').substr(4) );
+			// add array of existing postboxes to increase performance and reduce JSON HTML
+			acf.getPostboxes().map(function( postbox ){
+				if( postbox.hasHTML() ) {
+					ajaxData.exists.push( postbox.get('key') );
+				}
 			});
+			
+			// filter
+			ajaxData = acf.applyFilters('check_screen_args', ajaxData);
 			
 			// success
 			var onSuccess = function( json ){
@@ -10716,51 +10862,40 @@
 					return;
 				}
 				
-				// hide
-				$('.acf-postbox').addClass('acf-hidden');
-				$('.acf-postbox-toggle').addClass('acf-hidden');
-				
-				// reset style
-				$('#acf-style').html('');
+				// vars
+				var visible = [];
 				
 				// loop
-				json.data.map(function( fieldGroup, i ){
+				json.data.results.map(function( fieldGroup, i ){
 					
 					// vars
-					var $postbox = $('#acf-' + fieldGroup.key);
-					var $toggle = $('#acf-' + fieldGroup.key + '-hide');
-					var $label = $toggle.parent();
-						
-					// show
-					// use show() to force display when postbox has been hidden by 'Show on screen' toggle
-					$postbox.removeClass('acf-hidden hide-if-js').show();
-					$label.removeClass('acf-hidden hide-if-js').show();
-					$toggle.prop('checked', true);
+					var id = 'acf-' + fieldGroup.key;
+					var postbox = acf.getPostbox( id );
 					
-					// replace HTML if needed
-					var $replace = $postbox.find('.acf-replace-with-fields');
-					if( $replace.exists() ) {
-						$replace.replaceWith( fieldGroup.html );
-						acf.doAction('append', $postbox);
+					// show postbox
+					postbox.showEnable();
+					
+					// append
+					visible.push( id );
+					
+					// update HTML
+					if( !postbox.hasHTML() && fieldGroup.html ) {
+						postbox.html( fieldGroup.html );
 					}
-					
-					// update style if needed
-					if( i === 0 ) {
-						$('#acf-style').html( fieldGroup.style );
-					}
-					
-					// enable inputs
-					acf.enable( $postbox, 'postbox' );
 				});
-			};
-			
-			// complete
-			var onComplete = function( json ){
 				
-				// disable inputs
-				$('.acf-postbox.acf-hidden').each(function(){
-					acf.disable( $(this), 'postbox' );
+				// hide other postboxes
+				acf.getPostboxes().map(function( postbox ){
+					if( visible.indexOf( postbox.get('id') ) === -1 ) {
+						postbox.hideDisable();
+					}
 				});
+				
+				// reset style
+				$('#acf-style').html( json.data.style );
+				
+				// action
+				acf.doAction('check_screen_complete', json.data, ajaxData);
 			};
 			
 			// ajax
@@ -10770,8 +10905,7 @@
 				type: 'post',
 				dataType: 'json',
 				context: this,
-				success: onSuccess,
-				complete: onComplete
+				success: onSuccess
 			});
 		},
 		
@@ -12991,19 +13125,23 @@
 			// if $item is a tr, apply some css to the elements
 			if( $item.is('tr') ) {
 				
-				// temp set as relative to find widths
-				$item.css('position', 'relative');
+				// replace $placeholder children with a single td
+				// fixes "width calculation issues" due to conditional logic hiding some children
+				$placeholder.html('<td style="padding:0;" colspan="100"></td>');
 				
-				// set widths for td children		
+				// add helper class to remove absolute positioning
+				$item.addClass('acf-sortable-tr-helper');
+				
+				// set fixed widths for children		
 				$item.children().each(function(){
-					$(this).width($(this).width());
+					$(this).width( $(this).width() );
 				});
 				
-				// revert position css
-				$item.css('position', 'absolute');
+				// mimic height
+				$placeholder.height( $item.height() + 'px' );
 				
-				// add markup to the placeholder
-				$placeholder.html('<td style="height:' + $item.height() + 'px; padding:0;" colspan="' + $item.children('td').length + '"></td>');
+				// remove class 
+				$item.removeClass('acf-sortable-tr-helper');
 			}
 		}
 	});
@@ -14079,5 +14217,3 @@
 // @codekit-prepend "../js/acf-validation.js";
 // @codekit-prepend "../js/acf-helpers.js";
 // @codekit-prepend "../js/acf-compatibility";
-
-
