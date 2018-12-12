@@ -137,7 +137,6 @@ class ACF_Form {
 	*  @return	boolean Returns true on success.
 	*/
 	
-	
 	function save_post( $post_id = 0, $values = null ) {
 		
 		// override $_POST
@@ -154,6 +153,11 @@ class ACF_Form {
 		$this->set_data(array(
 			'post_id' => $post_id
 		));
+		
+		// Filter $_POST data for users without the 'unfiltered_html' capability.
+		if( !current_user_can('unfiltered_html') ) {
+			$_POST['acf'] = wp_kses_post_deep( $_POST['acf'] );
+		}
 		
 		// action
 		do_action('acf/save_post', $post_id);

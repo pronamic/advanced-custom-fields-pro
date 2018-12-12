@@ -43,8 +43,14 @@ function acf_has_upgrade() {
 */
 function acf_upgrade_all() {
 	
+	// increase time limit
+	@set_time_limit(600);
+	
+	// start timer
+	timer_start();
+	
 	// log
-	acf_dev_log('acf_upgrade_all');
+	acf_dev_log('ACF Upgrade Begin.');
 	
 	// vars
 	$db_version = acf_get_db_version();
@@ -61,6 +67,10 @@ function acf_upgrade_all() {
 	
 	// upgrade DB version once all updates are complete
 	acf_update_db_version( ACF_VERSION );
+	
+	// log
+	global $wpdb;
+	acf_dev_log('ACF Upgrade Complete.', $wpdb->num_queries, timer_stop(0));
 }
 
 /**
@@ -107,7 +117,7 @@ function acf_update_db_version( $version = '' ) {
 function acf_upgrade_500() {
 	
 	// log
-	acf_dev_log('acf_upgrade_500');
+	acf_dev_log('ACF Upgrade 5.0.0.');
 	
 	// action
 	do_action('acf/upgrade_500');
@@ -133,7 +143,7 @@ function acf_upgrade_500() {
 function acf_upgrade_500_field_groups() {
 	
 	// log
-	acf_dev_log('acf_upgrade_500_field_groups');
+	acf_dev_log('ACF Upgrade 5.0.0 Field Groups.');
 	
 	// get old field groups
 	$ofgs = get_posts(array(
@@ -164,6 +174,9 @@ function acf_upgrade_500_field_groups() {
 *  @return	array $nfg	The new field group array.
 */
 function acf_upgrade_500_field_group( $ofg ) {
+	
+	// log
+	acf_dev_log('ACF Upgrade 5.0.0 Field Group.', $ofg);
 	
 	// vars
 	$nfg = array(
@@ -201,11 +214,11 @@ function acf_upgrade_500_field_group( $ofg ) {
 	// acf_upgrade_field_group will call the acf_get_valid_field_group function and apply 'compatibility' changes
 	$nfg = acf_update_field_group( $nfg );
 	
+	// log
+	acf_dev_log('> Complete.', $nfg);
+	
 	// action for 3rd party
 	do_action('acf/upgrade_500_field_group', $nfg, $ofg);
-	
-	// log
-	acf_dev_log('acf_upgrade_500_field_group', $ofg, $nfg);
 	
 	// upgrade fields
 	acf_upgrade_500_fields( $ofg, $nfg );
@@ -232,6 +245,9 @@ function acf_upgrade_500_field_group( $ofg ) {
 *  @return	void
 */
 function acf_upgrade_500_fields( $ofg, $nfg ) {
+	
+	// log
+	acf_dev_log('ACF Upgrade 5.0.0 Fields.');
 	
 	// global
 	global $wpdb;
@@ -278,6 +294,9 @@ function acf_upgrade_500_fields( $ofg, $nfg ) {
 *  @return	array $field The new field.
 */
 function acf_upgrade_500_field( $field ) {
+	
+	// log
+	acf_dev_log('ACF Upgrade 5.0.0 Field.', $field);
 	
 	// order_no is now menu_order
 	$field['menu_order'] = acf_extract_var( $field, 'order_no', 0 );
@@ -332,7 +351,7 @@ function acf_upgrade_500_field( $field ) {
 	$field = acf_update_field( $field );
 	
 	// log
-	acf_dev_log('acf_upgrade_500_field', $field);
+	acf_dev_log('> Complete.', $field);
 	
 	// sub fields
 	if( $sub_fields ) {
@@ -363,7 +382,7 @@ function acf_upgrade_500_field( $field ) {
 function acf_upgrade_550() {
 	
 	// log
-	acf_dev_log('acf_upgrade_550');
+	acf_dev_log('ACF Upgrade 5.5.0.');
 	
 	// action
 	do_action('acf/upgrade_550');
@@ -389,7 +408,7 @@ function acf_upgrade_550() {
 function acf_upgrade_550_termmeta() {
 	
 	// log
-	acf_dev_log('acf_upgrade_550_termmeta');
+	acf_dev_log('ACF Upgrade 5.5.0 Termmeta.');
 	
 	// bail early if no wp_termmeta table
 	if( get_option('db_version') < 34370 ) {
@@ -444,7 +463,7 @@ add_action( 'wp_upgrade', 'acf_wp_upgrade_550_termmeta', 10, 2 );
 function acf_upgrade_550_taxonomy( $taxonomy ) {
 	
 	// log
-	acf_dev_log('acf_upgrade_550_taxonomy', $taxonomy);
+	acf_dev_log('ACF Upgrade 5.5.0 Taxonomy.', $taxonomy);
 	
 	// global
 	global $wpdb;
@@ -489,19 +508,27 @@ function acf_upgrade_550_taxonomy( $taxonomy ) {
 		
 		// vars
 		$term_id = $matches[2];
-		$meta_name = $matches[1] . $matches[3];
+		$meta_key = $matches[1] . $matches[3];
 		$meta_value = $row['option_value'];
 		
-		// log
-		acf_dev_log('acf_upgrade_550_term', $term_id, $meta_name, $meta_value);
-		
 		// update
-		update_metadata( 'term', $term_id, $meta_name, $meta_value );
+		// memory usage reduced by 50% by using a manual insert vs update_metadata() function. 
+		//update_metadata( 'term', $term_id, $meta_name, $meta_value );
+		$wpdb->insert( $wpdb->termmeta, array(
+	        'term_id'		=> $term_id,
+	        'meta_key'		=> $meta_key,
+	        'meta_value'	=> $meta_value
+	    ));
+	    
+	    // log
+		acf_dev_log('ACF Upgrade 5.5.0 Term.', $term_id, $meta_key);
+		
+		// action
+		do_action('acf/upgrade_550_taxonomy_term', $term_id);
 	}}
 	
 	// action for 3rd party
 	do_action('acf/upgrade_550_taxonomy', $taxonomy);
 }
-
 
 ?>

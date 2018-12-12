@@ -1216,5 +1216,23 @@ function acf_prepare_field_group_for_export( $field_group ) {
 	return $field_group;
 }
 
+/**
+*  acf_get_field_group_edit_link
+*
+*  Checks if the current user can edit the field group and returns the edit url.
+*
+*  @date	23/9/18
+*  @since	5.7.7
+*
+*  @param	int $post_id The field group ID.
+*  @return	string
+*/
+function acf_get_field_group_edit_link( $post_id ) {
+	if( $post_id && acf_current_user_can_admin() ) {
+		return admin_url('post.php?post=' . $post_id . '&action=edit');
+	}
+	return '';
+}
+
 
 ?>

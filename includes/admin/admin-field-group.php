@@ -43,9 +43,27 @@ class acf_admin_field_group {
 		
 		// filters
 		add_filter('post_updated_messages',								array($this, 'post_updated_messages'));
-		
+		add_filter('use_block_editor_for_post_type',					array($this, 'use_block_editor_for_post_type'), 10, 2);
 	}
 	
+	/**
+	*  use_block_editor_for_post_type
+	*
+	*  Prevents the block editor from loading when editing an ACF field group.
+	*
+	*  @date	7/12/18
+	*  @since	5.8.0
+	*
+	*  @param	bool $use_block_editor Whether the post type can be edited or not. Default true.
+	*  @param	string $post_type The post type being checked.
+	*  @return	bool
+	*/
+	function use_block_editor_for_post_type( $use_block_editor, $post_type ) {
+		if( $post_type === 'acf-field-group' ) {
+			return false;
+		}
+		return $use_block_editor;
+	}
 	
 	/*
 	*  post_updated_messages
@@ -440,8 +458,15 @@ class acf_admin_field_group {
 			return $post_id;
 		}
         
+        // Bail early if request came from an unauthorised user.
+		if( !current_user_can(acf_get_setting('capability')) ) {
+			return $post_id;
+		}
+		
+		
         // disable filters to ensure ACF loads raw data from DB
 		acf_disable_filters();
+		
 		
         // save fields
         if( !empty($_POST['acf_fields']) ) {
