@@ -3604,50 +3604,62 @@ function acf_get_truncated( $text, $length = 64 ) {
 
 function acf_get_current_url() {
 	
-	// vars
-	$home = home_url();
+	// Get url to current request.
 	$url = home_url($_SERVER['REQUEST_URI']);
 	
-	
-	// test
-	//$home = 'http://acf5/dev/wp-admin';
-	//$url = $home . '/dev/wp-admin/api-template/acf_form';
-	
-	
-	// explode url (4th bit is the sub folder)
-	$bits = explode('/', $home, 4);
-	
-	
-	/*
-	Array (
-	    [0] => http:
-	    [1] => 
-	    [2] => acf5
-	    [3] => dev
-	)
-	*/
-	
-	
-	// handle sub folder
-	if( !empty($bits[3]) ) {
-		
-		$find = '/' . $bits[3];
-		$pos = strpos($url, $find);
-		$length = strlen($find);
-		
-		if( $pos !== false ) {
-			
-		    $url = substr_replace($url, '', $pos, $length);
-		    
-		}
-				
+	// Fix bug where multisite sub-directory path segment is repeated.
+	// Eg. http://multisite.local/sub1/sub1/sample-page/
+	if( is_multisite() ) {
+		$url = acf_str_join( home_url(), $_SERVER['REQUEST_URI'] );
 	}
 	
-	
-	// return
+	// Return url.
 	return $url;
-	
 }
+
+/**
+*  acf_str_join
+*
+*  Joins together 2 strings removing any overlapping characters.
+*  Useful for urls. Eg: 'test.local/foo/' + '/foo/bar/' = 'test.local/foo/bar/'
+*
+*  @date	19/11/18
+*  @since	5.8.0
+*
+*  @param	string $s1 The first string.
+*  @param	string $s2 The seccond string.
+*  @return	string
+*/
+function acf_str_join( $s1 = '', $s2 = '' ) {
+	
+	// Remember number of chars that overlap.
+	$overlap = 0;
+	
+	// Find shortest word length.
+	$length = min( strlen($s1), strlen($s2) );
+	
+	// Find number of chars that overlap.
+	for( $i = 0; $i < $length; $i++ ) {
+		if( substr($s1, -$i) === substr($s2, 0, $i) ) {
+			$overlap = $i;
+		}
+	}
+	
+	// shorten $s2 based on overlap
+	if( $overlap ) {
+		$s2 = substr($s2, $overlap);
+	}
+	
+	// Return joined string.
+	return $s1 . $s2;
+}
+
+// Tests.
+//acf_test( acf_str_join('http://multisite.local/sub1/', '/sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+//acf_test( acf_str_join('http://multisite.local/sub1/', 'sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+//acf_test( acf_str_join('http://multisite.local/sub1/', '/sub1'), 'http://multisite.local/sub1/sub1' );
+//acf_test( acf_str_join('http://multisite.local/sub1/', '/sub1/sample-page/'), 'http://multisite.local/sub1/sample-page/' );
+//acf_test( acf_str_join('http://multisite.local/', '/sub1/sample-page/'), 'http://multisite.local/sub1/sample-page/' );
 
 
 /*
@@ -5076,43 +5088,54 @@ function acf_strip_protocol( $url ) {
 *
 *  @type	function
 *  @date	11/01/2017
+*  @since	5.8.0 Added filter to prevent connection.
 *  @since	5.5.4
 *
-*  @param	$attachment_id (int)
-*  @param	$post_id (int)
-*  @return	(boolean) 
+*  @param	int $attachment_id The attachment ID.
+*  @param	int $post_id The post ID.
+*  @return	bool True if attachment was connected.
 */
-
 function acf_connect_attachment_to_post( $attachment_id = 0, $post_id = 0 ) {
 	
-	// bail ealry if $attachment_id is not valid
-	if( !$attachment_id || !is_numeric($attachment_id) ) return false;
+	// Bail ealry if $attachment_id is not valid.
+	if( !$attachment_id || !is_numeric($attachment_id) ) {
+		return false;
+	}
 	
+	// Bail ealry if $post_id is not valid.
+	if( !$post_id || !is_numeric($post_id) ) {
+		return false;
+	}
 	
-	// bail ealry if $post_id is not valid
-	if( !$post_id || !is_numeric($post_id) ) return false;
-	
+	/**
+	*  Filters whether or not to connect the attachment.
+	*
+	*  @date	8/11/18
+	*  @since	5.8.0
+	*
+	*  @param	bool $bool Returning false will prevent the connection. Default true.
+	*  @param	int $attachment_id The attachment ID.
+	*  @param	int $post_id The post ID.
+	*/
+	if( !apply_filters('acf/connect_attachment_to_post', true, $attachment_id, $post_id) ) {
+		return false;
+	}
 	
 	// vars 
 	$post = get_post( $attachment_id );
 	
-	
-	// check if valid post
+	// Check if is valid post.
 	if( $post && $post->post_type == 'attachment' && $post->post_parent == 0 ) {
 		
 		// update
 		wp_update_post( array('ID' => $post->ID, 'post_parent' => $post_id) );
 		
-		
 		// return
 		return true;
-		
 	}
-	
 	
 	// return
 	return true;
-
 }
 
 
