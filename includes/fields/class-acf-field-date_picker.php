@@ -118,9 +118,9 @@ class acf_field_date_picker extends acf_field {
 		);
 		
 		// special attributes
-		foreach( array( 'readonly', 'disabled', 'required' ) as $k ) {
+		foreach( array( 'readonly', 'disabled' ) as $k ) {
 			if( !empty($field[ $k ]) ) {
-				$hidden_input[ $k ] = $text_input[ $k ] = $k;
+				$text_input[ $k ] = $k;
 			}
 		}
 		

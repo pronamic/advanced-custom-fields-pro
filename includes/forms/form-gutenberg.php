@@ -1,6 +1,6 @@
 <?php
 
-if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
 if( ! class_exists('ACF_Form_Gutenberg') ) :
 
@@ -11,79 +11,108 @@ class ACF_Form_Gutenberg {
 	*
 	*  Setup for class functionality.
 	*
-	*  @date	13/2/18
-	*  @since	5.6.9
+	*  @date	13/12/18
+	*  @since	5.8.0
 	*
-	*  @param	n/a
-	*  @return	n/a
+	*  @param	void
+	*  @return	void
 	*/
 		
 	function __construct() {
 		
-		// filters
-		add_filter( 'replace_editor', array($this, 'replace_editor'), 99, 2 );
-	}
-	
-	
-	/**
-	*  replace_editor
-	*
-	*  Check if Gutenberg is replacing the editor.
-	*
-	*  @date	13/2/18
-	*  @since	5.6.9
-	*
-	*  @param	boolean $replace True if the editor is being replaced by Gutenberg.
-	*  @param	object $post The WP_Post being edited.
-	*  @return	boolean
-	*/
-	
-	function replace_editor( $replace, $post ) {
+		// Add actions.
+		add_action('enqueue_block_editor_assets', array($this, 'enqueue_block_editor_assets'));
 		
-		// check if Gutenberg is replacing
-		if( $replace ) {
-			
-			// actions
-			add_action('admin_footer', array($this, 'admin_footer'));
-		}
-		
-		// return
-		return $replace;
+		// Ignore validation during meta-box-loader AJAX request.
+		add_action('acf/validate_save_post', array($this, 'acf_validate_save_post'), 999);
 	}
 	
 	/**
-	*  admin_footer
+	*  enqueue_block_editor_assets
 	*
-	*  Append missing HTML to Gutenberg editor.
+	*  Allows a safe way to customize Guten-only functionality.
 	*
-	*  @date	13/2/18
-	*  @since	5.6.9
+	*  @date	14/12/18
+	*  @since	5.8.0
 	*
-	*  @param	n/a
-	*  @return	n/a
+	*  @param	void
+	*  @return	void
 	*/
+	function enqueue_block_editor_assets() {
+		
+		// Remove edit_form_after_title.
+		add_action( 'add_meta_boxes', array($this, 'add_meta_boxes'), 20, 0 );
+		
+		// Call edit_form_after_title manually.
+		add_action( 'block_editor_meta_box_hidden_fields', array($this, 'block_editor_meta_box_hidden_fields') );
+	}
 	
-	function admin_footer() {
+	/**
+	*  add_meta_boxes
+	*
+	*  Modify screen for Gutenberg.
+	*
+	*  @date	13/12/18
+	*  @since	5.8.0
+	*
+	*  @param	void
+	*  @return	void
+	*/
+	function add_meta_boxes() {
 		
-		// edit_form_after_title is not run due to missing action, call this manually
-		?>
-		<div id="acf-form-after-title">
-			<?php acf_get_instance('ACF_Form_Post')->edit_form_after_title(); ?>
-		</div>
-		<?php
+		// Remove 'edit_form_after_title' action.
+		remove_action('edit_form_after_title', array(acf_get_instance('ACF_Form_Post'), 'edit_form_after_title'));
+	}
+	
+	/**
+	*  block_editor_meta_box_hidden_fields
+	*
+	*  Modify screen for Gutenberg.
+	*
+	*  @date	13/12/18
+	*  @since	5.8.0
+	*
+	*  @param	void
+	*  @return	void
+	*/
+	function block_editor_meta_box_hidden_fields() {
+	
+		// Manually call 'edit_form_after_title' function.
+		acf_get_instance('ACF_Form_Post')->edit_form_after_title();
 		
-		
-		// move #acf-form-after-title
+		// Move elements around screen.
 		?>
 		<script type="text/javascript">
-			$('#normal-sortables').before( $('#acf-form-after-title') );
+		(function($) {
+			acf.addAction('prepare', function(){
+				$('#normal-sortables').before( $('#acf_after_title-sortables') );
+			}, 1);
+		})(jQuery);	
 		</script>
 		<?php
-	}		
+	}	
+	
+	/**
+	*  acf_validate_save_post
+	*
+	*  Ignore errors during the Gutenberg "save metaboxes" AJAX request.
+	*  Allows data to save and prevent UX issues.
+	*
+	*  @date	16/12/18
+	*  @since	5.8.0
+	*
+	*  @param	void
+	*  @return	void
+	*/
+	function acf_validate_save_post() {
+		
+		// Check if current request came from Gutenberg.
+		if( isset($_GET['meta-box-loader']) ) {
+			acf_reset_validation_errors();
+		}
+	}
 }
 
 acf_new_instance('ACF_Form_Gutenberg');
 
 endif;
-
-?>

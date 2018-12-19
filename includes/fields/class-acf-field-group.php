@@ -673,8 +673,28 @@ class acf_field__group extends acf_field {
 			acf_delete_value( $post_id, $sub_field );
 		}
 	}
-
+	
+	/**
+	*  delete_field
+	*
+	*  Called when deleting a field of this type.
+	*
+	*  @date	8/11/18
+	*  @since	5.8.0
+	*
+	*  @param	arra $field The field settings.
+	*  @return	void
+	*/
+	function delete_field( $field ) {
 		
+		// loop over sub fields and delete them
+		if( $field['sub_fields'] ) {
+			foreach( $field['sub_fields'] as $sub_field ) {
+				acf_delete_field( $sub_field['ID'] );
+			}
+		}
+	}
+	
 }
 
 

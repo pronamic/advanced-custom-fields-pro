@@ -305,6 +305,11 @@ class acf_field_select extends acf_field {
 			$select['multiple'] = 'multiple';
 			$select['size'] = 5;
 			$select['name'] .= '[]';
+			
+			// Reduce size to single line if UI.
+			if( $field['ui'] ) {
+				$select['size'] = 1;
+			}
 		}
 		
 		
