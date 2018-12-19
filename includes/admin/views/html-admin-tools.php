@@ -18,7 +18,7 @@ $class = $active ? 'single' : 'grid';
 ?>
 <div class="wrap" id="acf-admin-tools">
 	
-	<h1><?php _e('Tools', 'acf'); ?> <?php if( $active ): ?><a class="page-title-action" href="<?php echo acf_get_admin_tools_url(); ?>">Back to all tools</a><?php endif; ?></h1>
+	<h1><?php _e('Tools', 'acf'); ?> <?php if( $active ): ?><a class="page-title-action" href="<?php echo acf_get_admin_tools_url(); ?>"><?php _e('Back to all tools', 'acf'); ?></a><?php endif; ?></h1>
 	
 	<div class="acf-meta-box-wrap -<?php echo $class; ?>">
 		<?php do_meta_boxes( $screen_id, 'normal', '' ); ?>	

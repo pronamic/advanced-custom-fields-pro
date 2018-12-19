@@ -169,24 +169,22 @@ class acf_field_message extends acf_field {
 	*
 	*  @return	$field - the field array holding all the field options
 	*/
-	
 	function load_field( $field ) {
 		
 		// remove name to avoid caching issue
 		$field['name'] = '';
 		
+		// remove instructions
+		$field['instructions'] = '';
 		
 		// remove required to avoid JS issues
 		$field['required'] = 0;
 		
-		
 		// set value other than 'null' to avoid ACF loading / caching issue
 		$field['value'] = false;
 		
-		
 		// return
 		return $field;
-		
 	}
 	
 }

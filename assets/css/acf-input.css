@@ -279,9 +279,6 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
 .acf-postbox {
   position: relative;
 }
-#acf_after_title-sortables .acf-postbox {
-  margin: 20px 0 0;
-}
 .acf-postbox > .inside {
   margin: 0 !important;
   /* override WP style - do not delete - you have tried this before */
@@ -309,6 +306,9 @@ html[dir="rtl"] .acf-fields.-left > .acf-field > .acf-input {
 .acf-postbox .acf-replace-with-fields {
   padding: 15px;
   text-align: center;
+}
+#post-body-content #acf_after_title-sortables {
+  margin: 20px 0 -20px;
 }
 /* seamless */
 .acf-postbox.seamless {

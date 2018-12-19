@@ -66,6 +66,18 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.7.9 =
+*Release Date - 17 December 2018*
+
+* Fix - Added custom metabox location (acf_after_title) compatibility with Gutenberg.
+* Fix - Added dynamic metabox check compatibility with Gutenberg.
+* Fix - Fixed bug causing required date picker fields to prevent form submit.
+* Fix - Fixed bug preventing multi-input values from saving correctly within media modals.
+* Fix - Fixed bug where `acf_form()` redirects to an incorrect URL for sub-sites.
+* Fix - Fixed bug where breaking out of a sub `have_rows()` loop could produce undesired results.
+* Dev - Added filter 'acf/connect_attachment_to_post' to prevent connecting attachments to posts.
+* Dev - Added JS filter 'google_map_autocomplete_args' to customize Google Maps autocomplete settings.
+
 = 5.7.8 =
 *Release Date - 7 December 2018*
 

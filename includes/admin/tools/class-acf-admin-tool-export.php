@@ -304,8 +304,8 @@ class ACF_Admin_Tool_Export extends ACF_Admin_Tool {
 					'prefix'	=> false,
 					'value'		=> '',
 					'choices'	=> array(
-						'all'		=> 'Include all settings',
-						'minimal'	=> 'Ignore empty settings'
+						'all'		=> __('Include all settings', 'acf'),
+						'minimal'	=> __('Ignore empty settings', 'acf'),
 					)
 				));
 */
