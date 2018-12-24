@@ -275,7 +275,7 @@ class acf_admin_tools {
 		
 		
 		?>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<?php $tool->html(); ?>
 			<?php acf_nonce_input( $tool->name ); ?>
 		</form>
