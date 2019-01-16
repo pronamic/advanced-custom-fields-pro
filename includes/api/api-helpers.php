@@ -243,41 +243,6 @@ function acf_set_data( $name, $value ) {
 	return acf()->set_data( $name, $value );
 }
 
-
-/**
-*  acf_new_instance
-*
-*  description
-*
-*  @date	13/2/18
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-
-function acf_new_instance( $class ) {
-	return acf()->new_instance( $class );
-}
-
-
-/**
-*  acf_get_instance
-*
-*  description
-*
-*  @date	13/2/18
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-
-function acf_get_instance( $class ) {
-	return acf()->get_instance( $class );
-}
-
-
 /*
 *  acf_init
 *
@@ -1194,26 +1159,6 @@ function acf_get_full_version( $version = '1' ) {
 
 
 /*
-*  acf_get_locale
-*
-*  This function is a wrapper for the get_locale() function
-*
-*  @type	function
-*  @date	16/12/16
-*  @since	5.5.0
-*
-*  @param	n/a
-*  @return	(string)
-*/
-
-function acf_get_locale() {
-	
-	return is_admin() && function_exists('get_user_locale') ? get_user_locale() : get_locale();
-	
-}
-
-
-/*
 *  acf_get_terms
 *
 *  This function is a wrapper for the get_terms() function
@@ -1450,6 +1395,20 @@ function acf_decode_taxonomy_term( $value ) {
 	
 }
 
+/**
+ * acf_array
+ *
+ * Casts the value into an array.
+ *
+ * @date	9/1/19
+ * @since	5.7.10
+ *
+ * @param	mixed $val The value to cast.
+ * @return	array
+ */
+function acf_array( $val = array() ) {
+	return (array) $val;
+}
 
 /*
 *  acf_get_array
@@ -2896,6 +2855,12 @@ function acf_in_array( $value = '', $array = false ) {
 
 function acf_get_valid_post_id( $post_id = 0 ) {
 	
+	// allow filter to short-circuit load_value logic
+	$preload = apply_filters( "acf/pre_load_post_id", null, $post_id );
+    if( $preload !== null ) {
+	    return $preload;
+    }
+    
 	// vars
 	$_post_id = $post_id;
 	
@@ -3592,29 +3557,17 @@ function acf_get_truncated( $text, $length = 64 ) {
 /*
 *  acf_get_current_url
 *
-*  This function will return the current URL
+*  This function will return the current URL.
 *
-*  @type	function
 *  @date	23/01/2015
 *  @since	5.1.5
 *
-*  @param	n/a
-*  @return	(string)
+*  @param	void
+*  @return	string
 */
 
 function acf_get_current_url() {
-	
-	// Get url to current request.
-	$url = home_url($_SERVER['REQUEST_URI']);
-	
-	// Fix bug where multisite sub-directory path segment is repeated.
-	// Eg. http://multisite.local/sub1/sub1/sample-page/
-	if( is_multisite() ) {
-		$url = acf_str_join( home_url(), $_SERVER['REQUEST_URI'] );
-	}
-	
-	// Return url.
-	return $url;
+	return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 }
 
 /**
@@ -4577,6 +4530,22 @@ function acf_dev_log() {
 	}
 }
 
+/**
+*  acf_test
+*
+*  Tests a function against an expected result and logs the pass/fail.
+*
+*  @date	19/11/18
+*  @since	5.8.0
+*
+*  @param	type $var Description. Default.
+*  @return	type Description.
+*/
+function acf_test( $result, $expected_result ) {
+	$success = ($result === $expected_result);
+	acf_log('ACF Test', $success ? '(Pass)' : '(Fail)', $result, $expected_result);
+}
+
 
 /*
 *  acf_doing
@@ -5381,6 +5350,82 @@ function acf_convert_rules_to_groups( $rules, $anyorall = 'any' ) {
 	
 	// return
 	return $groups;
+}
+
+/**
+*  acf_register_ajax
+*
+*  Regsiters an ajax callback.
+*
+*  @date	5/10/18
+*  @since	5.7.7
+*
+*  @param	string $name The ajax action name.
+*  @param	array $callback The callback function or array.
+*  @param	bool $public Whether to allow access to non logged in users.
+*  @return	void
+*/
+function acf_register_ajax( $name = '', $callback = false, $public = false ) {
+	
+	// vars
+	$action = "acf/ajax/$name";
+	
+	// add action for logged-in users
+	add_action( "wp_ajax_$action", $callback );
+	
+	// add action for non logged-in users
+	if( $public ) {
+		add_action( "wp_ajax_nopriv_$action", $callback );
+	}
+}
+
+/**
+*  acf_str_camel_case
+*
+*  Converts a string into camelCase.
+*  Thanks to https://stackoverflow.com/questions/31274782/convert-array-keys-from-underscore-case-to-camelcase-recursively
+*
+*  @date	24/10/18
+*  @since	5.8.0
+*
+*  @param	string $string The string ot convert.
+*  @return	string
+*/
+function acf_str_camel_case( $string = '' ) {
+	return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $string))));
+}
+
+/**
+*  acf_array_camel_case
+*
+*  Converts all aray keys to camelCase.
+*
+*  @date	24/10/18
+*  @since	5.8.0
+*
+*  @param	array $array The array to convert.
+*  @return	array
+*/
+function acf_array_camel_case( $array = array() ) {
+	$array2 = array();
+	foreach( $array as $k => $v ) {
+		$array2[ acf_str_camel_case($k) ] = $v;
+	}
+	return $array2;
+}
+
+/**
+*  acf_is_block_editor
+*
+*  Returns true if the current screen uses the block editor.
+*
+*  @date	13/12/18
+*  @since	5.8.0
+*
+*  @return	bool
+*/
+function acf_is_block_editor() {
+	return get_current_screen()->is_block_editor();
 }
 
 ?>

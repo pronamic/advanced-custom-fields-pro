@@ -329,45 +329,33 @@ class acf_field_user extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// Change Field into a select
+		// Change Field into a select.
 		$field['type'] = 'select';
 		$field['ui'] = 1;
 		$field['ajax'] = 1;
 		$field['choices'] = array();
 		
-		
-		// populate choices
-		if( !empty($field['value']) ) {
+		// Populate choices.
+		if( $field['value'] ) {
 			
-			// force value to array
-			$field['value'] = acf_get_array( $field['value'] );
+			// Clean value into an array of IDs.
+			$user_ids = array_map('intval', acf_array($field['value']));
 			
-			
-			// convert values to int
-			$field['value'] = array_map('intval', $field['value']);
-			
-			
-			$users = get_users(array(
-				'include' => $field['value']
+			// Find users in database (ensures all results are real).
+			$users = acf_get_users(array(
+				'include' => $user_ids
 			));
 			
-			
-			if( !empty($users) ) {
-			
+			// Append.
+			if( $users ) {
 				foreach( $users as $user ) {
-				
 					$field['choices'][ $user->ID ] = $this->get_result( $user, $field );
-					
 				}
-				
-			}
-			
+			}			
 		}
 		
-		
-		// render
+		// Render.
 		acf_render_field( $field );
-		
 	}
 	
 	
@@ -523,65 +511,65 @@ class acf_field_user extends acf_field {
 	
 	function format_value( $value, $post_id, $field ) {
 		
-		// bail early if no value
-		if( empty($value) ) {
+		// Bail early if no value.
+		if( !$value ) {
 			return false;
 		}
 		
-		// ensure array
-		$value = acf_get_array( $value );
+		// Clean value into an array of IDs.
+		$user_ids = array_map('intval', acf_array($value));
 		
-		// update value
-		foreach( array_keys($value) as $i ) {
-			$value[ $i ] = $this->format_value_single( $value[ $i ], $post_id, $field );
+		// Find users in database (ensures all results are real).
+		$users = acf_get_users(array(
+			'include' => $user_ids
+		));
+		
+		// Bail early if no users found.
+		if( !$users ) {
+			return false;
 		}
 		
-		// convert to single
-		if( !$field['multiple'] ) {
-			$value = array_shift($value);
-		}
-		
-		// return value
-		return $value;
-		
-	}
-	
-	function format_value_single( $value, $post_id, $field ) {
-		
-		// vars
-		$user_id = (int) $value;
-		
-		// object
-		if( $field['return_format'] == 'object' ) {
-			$value = get_userdata( $user_id );
-		
-		// array	
-		} elseif( $field['return_format'] == 'array' ) {
-			$wp_user = get_userdata( $user_id );
-			$value = array(
-				'ID'				=> $user_id,
-				'user_firstname'	=> $wp_user->user_firstname,
-				'user_lastname'		=> $wp_user->user_lastname,
-				'nickname'			=> $wp_user->nickname,
-				'user_nicename'		=> $wp_user->user_nicename,
-				'display_name'		=> $wp_user->display_name,
-				'user_email'		=> $wp_user->user_email,
-				'user_url'			=> $wp_user->user_url,
-				'user_registered'	=> $wp_user->user_registered,
-				'user_description'	=> $wp_user->user_description,
-				'user_avatar'		=> get_avatar( $user_id ),
-			);
+		// Format values using field settings.
+		$value = array();
+		foreach( $users as $user ) {
 			
-		// id		
-		} else {
-			$value = $user_id;
+			// Return object.
+			if( $field['return_format'] == 'object' ) {
+				$item = $user;
+				
+			// Return array.		
+			} elseif( $field['return_format'] == 'array' ) {
+				$item = array(
+					'ID'				=> $user->ID,
+					'user_firstname'	=> $user->user_firstname,
+					'user_lastname'		=> $user->user_lastname,
+					'nickname'			=> $user->nickname,
+					'user_nicename'		=> $user->user_nicename,
+					'display_name'		=> $user->display_name,
+					'user_email'		=> $user->user_email,
+					'user_url'			=> $user->user_url,
+					'user_registered'	=> $user->user_registered,
+					'user_description'	=> $user->user_description,
+					'user_avatar'		=> get_avatar( $user->ID ),
+				);
+				
+			// Return ID.		
+			} else {
+				$item = $user->ID;
+			}
+			
+			// Append item
+			$value[] = $item;
 		}
 		
-		// return
+		// Convert to single.
+		if( !$field['multiple'] ) {
+			$value = array_shift( $value );
+		}
+		
+		// Return.
 		return $value;
-		
-	}
-		
+	}	
 }
 
 

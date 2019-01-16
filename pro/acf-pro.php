@@ -35,7 +35,7 @@ class acf_pro {
 		if( is_admin() ) {
 			
 			acf_include('pro/admin/admin-options-page.php');
-			acf_include('pro/admin/admin-settings-updates.php');
+			acf_include('pro/admin/admin-updates.php');
 			
 		}
 		
