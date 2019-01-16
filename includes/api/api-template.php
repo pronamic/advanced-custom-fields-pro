@@ -206,122 +206,45 @@ function get_fields( $post_id = false, $format_value = true ) {
 
 function get_field_objects( $post_id = false, $format_value = true, $load_value = true ) {
 	
-	// global
-	global $wpdb;
-	
-	
-	// filter post_id
+	// validate post_id
 	$post_id = acf_get_valid_post_id( $post_id );
-	$info = acf_get_post_id_info( $post_id );
 	
-	
-	// vars
-	$meta = array();
-	$fields = array();
-	
-				
-	// get field_names
-	if( $info['type'] == 'post' ) {
-		
-		$meta = get_post_meta( $info['id'] );
-	
-	} elseif( $info['type'] == 'user' ) {
-		
-		$meta = get_user_meta( $info['id'] );
-		
-	} elseif( $info['type'] == 'comment' ) {
-		
-		$meta = get_comment_meta( $info['id'] );
-		
-	} elseif( $info['type'] == 'term' ) {
-		
-		$meta = get_term_meta( $info['id'] );
-		
-	} else {
-		
-		$rows = $wpdb->get_results($wpdb->prepare(
-			"SELECT option_name, option_value FROM $wpdb->options WHERE option_name LIKE %s OR option_name LIKE %s",
-			$post_id . '_%' ,
-			'_' . $post_id . '_%' 
-		), ARRAY_A);
-		
-		if( !empty($rows) ) {
-			
-			foreach( $rows as $row ) {
-				
-				// vars
-				$name = $row['option_name'];
-				$prefix = $post_id . '_';
-				$_prefix = '_' . $prefix;
-				
-				
-				// remove prefix from name
-				if( strpos($name, $prefix) === 0 ) {
-					
-					$name = substr($name, strlen($prefix));
-					
-				} elseif( strpos($name, $_prefix) === 0 ) {
-					
-					$name = '_' . substr($name, strlen($_prefix));
-					
-				}
-				
-				$meta[ $name ][] = $row['option_value'];
-				
-			}
-			
-		}
-		
-	}
-	
+	// get meta
+	$meta = acf_get_meta( $post_id );
 	
 	// bail early if no meta
 	if( empty($meta) ) return false;
 	
-	
 	// populate vars
-	foreach( $meta as $k => $v ) {
+	$fields = array();
+	foreach( $meta as $key => $value ) {
 		
-		// does a field key exist for this value?
-		if( !isset($meta["_{$k}"]) ) continue;
-		
+		// bail if reference key does not exist
+		if( !isset($meta["_$key"]) ) continue;
 		
 		// get field
-		$field_key = $meta["_{$k}"][0];
-		$field = acf_maybe_get_field( $field_key );
+		$field = acf_get_field($meta["_$key"]);
 		
-		
-		// bail early if no field, or if the field's name is different to $k
+		// bail early if no field, or if the field's name is different to $key
 		// - solves problem where sub fields (and clone fields) are incorrectly allowed
-		if( !$field || $field['name'] !== $k ) continue;
-		
+		if( !$field || $field['name'] !== $key ) continue;
 		
 		// load value
 		if( $load_value ) {
-		
 			$field['value'] = acf_get_value( $post_id, $field );
-			
 		}
-		
 		
 		// format value
 		if( $format_value ) {
-			
-			// get value for field
 			$field['value'] = acf_format_value( $field['value'], $post_id, $field );
-			
 		}
 		
-					
 		// append to $value
-		$fields[ $field['name'] ] = $field;
-		
+		$fields[ $key ] = $field;
 	}
  	
- 	 	
 	// no value
 	if( empty($fields) ) return false;
-	
 	
 	// return
 	return $fields;
