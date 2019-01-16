@@ -9,9 +9,6 @@ class ACF_Form_Post {
 	/** @var string The first field groups style CSS. */
 	var $style = '';
 	
-	/** @var array An arry of postbox data. */
-	var $postboxes = array();
-	
 	/**
 	*  __construct
 	*
@@ -63,9 +60,7 @@ class ACF_Form_Post {
 		));
 		
 		// actions
-		add_action('add_meta_boxes',		array($this, 'add_meta_boxes'), 10, 2);
-		add_action('edit_form_after_title', array($this, 'edit_form_after_title'));
-		add_filter('hidden_meta_boxes', 	array($this, 'hidden_meta_boxes'), 10, 3);
+		add_action('add_meta_boxes', array($this, 'add_meta_boxes'), 10, 2);
 	}
 	
 	/**
@@ -82,73 +77,65 @@ class ACF_Form_Post {
 	*/
 	function add_meta_boxes( $post_type, $post ) {
 		
-		// vars
-		$postboxes = array();
-		$count = 0;
+		// Get field groups for this screen.
+		$field_groups = acf_get_field_groups(array(
+			'post_id'	=> $post->ID, 
+			'post_type'	=> $post_type
+		));
 		
-		// get all field groups
-		$field_groups = acf_get_field_groups();
-		
-		// loop
+		// Loop over field groups.
 		if( $field_groups ) {
-		foreach( $field_groups as $field_group ) {
+			foreach( $field_groups as $field_group ) {
+					
+				// vars
+				$id = "acf-{$field_group['key']}";			// acf-group_123
+				$title = $field_group['title'];				// Group 1
+				$context = $field_group['position'];		// normal, side, acf_after_title
+				$priority = 'high';							// high, core, default, low
 				
-			// vars
-			$id = "acf-{$field_group['key']}";			// acf-group_123
-			$title = $field_group['title'];				// Group 1
-			$context = $field_group['position'];		// normal, side, acf_after_title
-			$priority = 'high';							// high, core, default, low
-			
-			// change priority for sidebar metaboxes
-			if( $context == 'side' ) {
-				$priority = 'core';
-			}
-			
-			/**
-			*  Filters the metabox priority.
-			*
-			*  @date	23/06/12
-			*  @since	3.1.8
-			*
-			*  @param	string $priority The metabox priority (high, core, default, low).
-			*  @param	array $field_group The field group array.
-			*/
-			$priority = apply_filters('acf/input/meta_box_priority', $priority, $field_group);
-			
-			// set the visibility for this field group
-			$visible = acf_get_field_group_visibility($field_group, array(
-				'post_id'	=> $post->ID, 
-				'post_type'	=> $post_type
-			));
-			
-			// add meta box
-			add_meta_box( $id, $title, array($this, 'render_meta_box'), $post_type, $context, $priority, array('field_group' => $field_group) );
-			
-			// append to $postboxes
-			$this->postboxes[ $id ] = array(
-				'id'		=> $id,
-				'key'		=> $field_group['key'],
-				'style'		=> $field_group['style'],
-				'label'		=> $field_group['label_placement'],
-				'visible'	=> $visible,
-				'edit'		=> acf_get_field_group_edit_link( $field_group['ID'] )
-			);
-			
-			// increase count for visible
-			if( $visible ) {
-				$count++;
-				
-				// find first field group's style
-				if( $count == 1 ) {
-					$this->style = acf_get_field_group_style( $field_group );
+				// Reduce priority for sidebar metaboxes for best position.
+				if( $context == 'side' ) {
+					$priority = 'core';
 				}
+				
+				/**
+				*  Filters the metabox priority.
+				*
+				*  @date	23/06/12
+				*  @since	3.1.8
+				*
+				*  @param	string $priority The metabox priority (high, core, default, low).
+				*  @param	array $field_group The field group array.
+				*/
+				$priority = apply_filters('acf/input/meta_box_priority', $priority, $field_group);
+				
+				// Add the meta box.
+				add_meta_box( $id, $title, array($this, 'render_meta_box'), $post_type, $context, $priority, array('field_group' => $field_group) );
 			}
-		}}
+			
+			// Get style from first field group.
+			$this->style = acf_get_field_group_style( $field_groups[0] );
+		}
 		
 		// remove postcustom metabox (removes expensive SQL query)
 		if( acf_get_setting('remove_wp_meta_box') ) {
 			remove_meta_box( 'postcustom', false, 'normal' ); 
 		}
+		
+		// Add hidden input fields.
+		add_action('edit_form_after_title', array($this, 'edit_form_after_title'));
+		
+		/**
+		*  Fires after metaboxes have been added. 
+		*
+		*  @date	13/12/18
+		*  @since	5.8.0
+		*
+		*  @param	string $post_type The post type.
+		*  @param	WP_Post $post The post being edited.
+		*  @param	array $field_groups The field groups added.
+		*/
+		do_action('acf/add_meta_boxes', $post_type, $post, $field_groups);
 	}
 	
 	/**
@@ -175,38 +162,9 @@ class ACF_Form_Post {
 		
 		// render 'acf_after_title' metaboxes
 		do_meta_boxes( get_current_screen(), 'acf_after_title', $post );
-			
-		// clean up $wp_meta_boxes
-		unset( $wp_meta_boxes['post']['acf_after_title'] );
 		
 		// render dynamic field group style
 		echo '<style type="text/css" id="acf-style">' . $this->style . '</style>';
-	}
-	
-	/**
-	*  hidden_meta_boxes
-	*
-	*  Appends the id of all metaboxes that are not visible for WP to hide.
-	*
-	*  @date	21/9/18
-	*  @since	5.7.6
-	*
-	*  @param	array     $hidden       An array of hidden meta boxes.
-    *  @param 	WP_Screen $screen       WP_Screen object of the current screen.
-    *  @param 	bool      $use_defaults Whether to show the default meta boxes.
-    *  @return	array
-	*/
-	function hidden_meta_boxes( $hidden, $screen, $use_defaults ) {
-		
-		// loop over visiblity array
-		foreach( $this->postboxes as $id => $postbox ) {
-			if( !$postbox['visible'] ) {
-				$hidden[] = $id;
-			}
-		}
-		
-		// return
-		return $hidden;
 	}
 	
 	/**
@@ -226,19 +184,24 @@ class ACF_Form_Post {
 		// vars
 		$id = $metabox['id'];
 		$field_group = $metabox['args']['field_group'];
-		$postbox = $this->postboxes[ $id ];
 		
-		// render fields if visible
-		if( $postbox['visible'] ) {
-			$fields = acf_get_fields( $field_group );
-			acf_render_fields( $fields, $post->ID, 'div', $field_group['instruction_placement'] );
-		}
+		// Render fields.
+		$fields = acf_get_fields( $field_group );
+		acf_render_fields( $fields, $post->ID, 'div', $field_group['instruction_placement'] );
 		
-		// inline javascript
+		// Create metabox localized data.
+		$data = array(
+			'id'		=> $id,
+			'key'		=> $field_group['key'],
+			'style'		=> $field_group['style'],
+			'label'		=> $field_group['label_placement'],
+			'edit'		=> acf_get_field_group_edit_link( $field_group['ID'] )
+		);
+		
 		?>
 		<script type="text/javascript">
 		if( typeof acf !== 'undefined' ) {
-			acf.newPostbox(<?php echo wp_json_encode($postbox); ?>);
+			acf.newPostbox(<?php echo wp_json_encode($data); ?>);
 		}	
 		</script>
 		<?php
@@ -336,10 +299,13 @@ class ACF_Form_Post {
 			return $post_id;
 		}
 		
-		// Validate and display errors for published post.
-		// - Allows draft to save without validation.
+		// validate for published post (allow draft to save without validation)
 		if( $post->post_status == 'publish' ) {
-			acf_validate_save_post( true );
+			
+			// bail early if validation fails
+			if( !acf_validate_save_post() ) {
+				return;
+			}
 		}
 		
 		// save

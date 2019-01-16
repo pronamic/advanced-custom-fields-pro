@@ -80,13 +80,19 @@ class ACF_Form_Gutenberg {
 		// Manually call 'edit_form_after_title' function.
 		acf_get_instance('ACF_Form_Post')->edit_form_after_title();
 		
-		// Move elements around screen.
+		// Add inline script.
 		?>
 		<script type="text/javascript">
 		(function($) {
+			
+			// Move elements around screen.
 			acf.addAction('prepare', function(){
 				$('#normal-sortables').before( $('#acf_after_title-sortables') );
 			}, 1);
+			
+			// Disable unload
+			acf.unload.disable();
+			
 		})(jQuery);	
 		</script>
 		<?php

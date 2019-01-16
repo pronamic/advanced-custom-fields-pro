@@ -6,10 +6,6 @@ if( ! class_exists('acf_admin') ) :
 
 class acf_admin {
 	
-	// vars
-	var $notices = array();
-	
-	
 	/*
 	*  __construct
 	*
@@ -28,62 +24,7 @@ class acf_admin {
 		// actions
 		add_action('admin_menu', 			array($this, 'admin_menu'));
 		add_action('admin_enqueue_scripts',	array($this, 'admin_enqueue_scripts'), 0);
-		add_action('admin_notices', 		array($this, 'admin_notices'));
-		
 	}
-	
-	
-	/*
-	*  add_notice
-	*
-	*  This function will add the notice data to a setting in the acf object for the admin_notices action to use
-	*
-	*  @type	function
-	*  @date	17/10/13
-	*  @since	5.0.0
-	*
-	*  @param	$text (string)
-	*  @param	$class (string)
-	*  @param	wrap (string)
-	*  @return	n/a
-	*/
-	
-	function add_notice( $text = '', $class = '', $wrap = 'p' ) {
-		
-		// append
-		$this->notices[] = array(
-			'text'	=> $text,
-			'class'	=> 'updated ' . $class,
-			'wrap'	=> $wrap
-		);
-		
-	}
-	
-	
-	/*
-	*  get_notices
-	*
-	*  This function will return an array of admin notices
-	*
-	*  @type	function
-	*  @date	17/10/13
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	(array)
-	*/
-	
-	function get_notices() {
-		
-		// bail early if no notices
-		if( empty($this->notices) ) return false;
-		
-		
-		// return
-		return $this->notices;
-		
-	}
-	
 	
 	/*
 	*  admin_menu
@@ -138,98 +79,11 @@ class acf_admin {
 		wp_enqueue_style( 'acf-global' );
 		
 	}
-	
-	
-	/*
-	*  admin_notices
-	*
-	*  This function will render any admin notices
-	*
-	*  @type	function
-	*  @date	17/10/13
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function admin_notices() {
-		
-		// vars
-		$notices = $this->get_notices();
-		
-		
-		// bail early if no notices
-		if( !$notices ) return;
-		
-		
-		// loop
-		foreach( $notices as $notice ) {
-			
-			$open = '';
-			$close = '';
-				
-			if( $notice['wrap'] ) {
-				
-				$open = "<{$notice['wrap']}>";
-				$close = "</{$notice['wrap']}>";
-				
-			}
-				
-			?>
-			<div class="acf-admin-notice notice is-dismissible <?php echo esc_attr($notice['class']); ?>"><?php echo $open . $notice['text'] . $close; ?></div>
-			<?php
-				
-		}
-		
-	}
-	
 }
 
 // initialize
 acf()->admin = new acf_admin();
 
 endif; // class_exists check
-
-
-/*
-*  acf_add_admin_notice
-*
-*  This function will add the notice data to a setting in the acf object for the admin_notices action to use
-*
-*  @type	function
-*  @date	17/10/13
-*  @since	5.0.0
-*
-*  @param	$text (string)
-*  @param	$class (string)
-*  @return	(int) message ID (array position)
-*/
-
-function acf_add_admin_notice( $text, $class = '', $wrap = 'p' ) {
-	
-	return acf()->admin->add_notice($text, $class, $wrap);
-	
-}
-
-
-/*
-*  acf_get_admin_notices
-*
-*  This function will return an array containing any admin notices
-*
-*  @type	function
-*  @date	17/10/13
-*  @since	5.0.0
-*
-*  @param	n/a
-*  @return	(array)
-*/
-
-function acf_get_admin_notices() {
-	
-	return acf()->admin->get_notices();
-	
-}
 
 ?>
