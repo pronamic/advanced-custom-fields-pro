@@ -192,6 +192,30 @@ class acf_field_textarea extends acf_field {
 		return $value;
 	}
 	
+	/**
+	 * validate_value
+	 *
+	 * Validates a field's value.
+	 *
+	 * @date	29/1/19
+	 * @since	5.7.11
+	 *
+	 * @param	(bool|string) Whether the value is vaid or not.
+	 * @param	mixed $value The field value.
+	 * @param	array $field The field array.
+	 * @param	string $input The HTML input name.
+	 * @return	(bool|string)
+	 */
+	function validate_value( $valid, $value, $field, $input ){
+		
+		// Check maxlength
+		if( $field['maxlength'] && mb_strlen(wp_unslash($value)) > $field['maxlength'] ) {
+			return sprintf( __('Value must not exceed %d characters', 'acf'), $field['maxlength'] );
+		}
+		
+		// Return.
+		return $valid;
+	}
 }
 
 

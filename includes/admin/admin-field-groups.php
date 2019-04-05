@@ -270,22 +270,22 @@ class acf_admin_field_groups {
 			$modified = acf_maybe_get($group, 'modified', 0);
 			$private = acf_maybe_get($group, 'private', false);
 			
+			// Ignore if is private.
+			if( $private ) {
+				continue;
 			
-			// ignore DB / PHP / private field groups
-			if( $local !== 'json' || $private ) {
-				
-				// do nothing
-				
+			// Ignore not local "json".
+			} elseif( $local !== 'json' ) {
+				continue;
+			
+			// Append to sync if not yet in database.	
 			} elseif( !$group['ID'] ) {
-				
 				$this->sync[ $group['key'] ] = $group;
-				
+			
+			// Append to sync if "json" modified time is newer than database.
 			} elseif( $modified && $modified > get_post_modified_time('U', true, $group['ID'], true) ) {
-				
 				$this->sync[ $group['key'] ]  = $group;
-				
 			}
-						
 		}
 		
 		
@@ -334,21 +334,22 @@ class acf_admin_field_groups {
 			// loop
 			foreach( $sync_keys as $key ) {
 				
-				// append fields
-				if( acf_have_local_fields($key) ) {
-					
-					$this->sync[ $key ]['fields'] = acf_get_local_fields( $key );
-					
+				// Bail early if not found.
+				if( !isset($this->sync[ $key ]) ) {
+					continue;
 				}
 				
+				// Get field group.
+				$field_group = $this->sync[ $key ];
 				
-				// import
-				$field_group = acf_import_field_group( $this->sync[ $key ] );
+				// Append fields.
+				$field_group['fields'] = acf_get_fields( $field_group );
+				
+				// Import field group.
+				$field_group = acf_import_field_group( $field_group );
 									
-				
-				// append
+				// Append imported ID.
 				$new_ids[] = $field_group['ID'];
-				
 			}
 			
 			
@@ -614,7 +615,6 @@ class acf_admin_field_groups {
 		
 		// vars
 		$url_home = 'https://www.advancedcustomfields.com';
-		$url_support = 'https://support.advancedcustomfields.com';
 		$icon = '<i aria-hidden="true" class="dashicons dashicons-external"></i>';
 		
 ?>
@@ -637,7 +637,7 @@ class acf_admin_field_groups {
 			<ul>
 				<li><a href="<?php echo esc_url( $url_home ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Website",'acf'); ?></a></li>
 				<li><a href="<?php echo esc_url( $url_home . '/resources/' ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Documentation",'acf'); ?></a></li>
-				<li><a href="<?php echo esc_url( $url_support ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Support",'acf'); ?></a></li>
+				<li><a href="<?php echo esc_url( $url_home . '/support/' ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Support",'acf'); ?></a></li>
 				<?php if( !acf_get_setting('pro') ): ?>
 				<li><a href="<?php echo esc_url( $url_home . '/pro/' ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Pro",'acf'); ?></a></li>
 				<?php endif; ?>

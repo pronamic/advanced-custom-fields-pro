@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
-"POT-Creation-Date: 2019-01-15 11:15+1000\n"
+"POT-Creation-Date: 2019-01-31 12:36+0100\n"
 "PO-Revision-Date: 2015-06-11 13:00+1000\n"
 "Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
 "Language-Team: Elliot Condon <e@elliotcondon.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.1\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
@@ -26,96 +26,106 @@ msgstr ""
 msgid "Advanced Custom Fields"
 msgstr ""
 
-#: acf.php:362 includes/admin/admin.php:58
+#: acf.php:363 includes/admin/admin.php:58
 msgid "Field Groups"
 msgstr ""
 
-#: acf.php:363
+#: acf.php:364
 msgid "Field Group"
 msgstr ""
 
-#: acf.php:364 acf.php:396 includes/admin/admin.php:59
+#: acf.php:365 acf.php:397 includes/admin/admin.php:59
 #: pro/fields/class-acf-field-flexible-content.php:572
 msgid "Add New"
 msgstr ""
 
-#: acf.php:365
+#: acf.php:366
 msgid "Add New Field Group"
 msgstr ""
 
-#: acf.php:366
+#: acf.php:367
 msgid "Edit Field Group"
 msgstr ""
 
-#: acf.php:367
+#: acf.php:368
 msgid "New Field Group"
 msgstr ""
 
-#: acf.php:368
+#: acf.php:369
 msgid "View Field Group"
 msgstr ""
 
-#: acf.php:369
+#: acf.php:370
 msgid "Search Field Groups"
 msgstr ""
 
-#: acf.php:370
+#: acf.php:371
 msgid "No Field Groups found"
 msgstr ""
 
-#: acf.php:371
+#: acf.php:372
 msgid "No Field Groups found in Trash"
 msgstr ""
 
-#: acf.php:394 includes/admin/admin-field-group.php:220
+#: acf.php:395 includes/admin/admin-field-group.php:220
 #: includes/admin/admin-field-groups.php:529
 #: pro/fields/class-acf-field-clone.php:811
 msgid "Fields"
 msgstr ""
 
-#: acf.php:395
+#: acf.php:396
 msgid "Field"
 msgstr ""
 
-#: acf.php:397
+#: acf.php:398
 msgid "Add New Field"
 msgstr ""
 
-#: acf.php:398
+#: acf.php:399
 msgid "Edit Field"
 msgstr ""
 
-#: acf.php:399 includes/admin/views/field-group-fields.php:41
+#: acf.php:400 includes/admin/views/field-group-fields.php:41
 msgid "New Field"
 msgstr ""
 
-#: acf.php:400
+#: acf.php:401
 msgid "View Field"
 msgstr ""
 
-#: acf.php:401
+#: acf.php:402
 msgid "Search Fields"
 msgstr ""
 
-#: acf.php:402
+#: acf.php:403
 msgid "No Fields found"
 msgstr ""
 
-#: acf.php:403
+#: acf.php:404
 msgid "No Fields found in Trash"
 msgstr ""
 
-#: acf.php:442 includes/admin/admin-field-group.php:402
+#: acf.php:443 includes/admin/admin-field-group.php:402
 #: includes/admin/admin-field-groups.php:586
 msgid "Inactive"
 msgstr ""
 
-#: acf.php:447
+#: acf.php:448
 #, php-format
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
+
+#: includes/acf-field-functions.php:823
+#: includes/admin/admin-field-group.php:178
+msgid "(no label)"
+msgstr ""
+
+#: includes/acf-field-group-functions.php:816
+#: includes/admin/admin-field-group.php:180
+msgid "copy"
+msgstr ""
 
 #: includes/admin/admin-field-group.php:86
 #: includes/admin/admin-field-group.php:87
@@ -175,17 +185,8 @@ msgstr ""
 msgid "Checked"
 msgstr ""
 
-#: includes/admin/admin-field-group.php:178 includes/api/api-field.php:320
-msgid "(no label)"
-msgstr ""
-
 #: includes/admin/admin-field-group.php:179
 msgid "(this field)"
-msgstr ""
-
-#: includes/admin/admin-field-group.php:180
-#: includes/api/api-field-group.php:751
-msgid "copy"
 msgstr ""
 
 #: includes/admin/admin-field-group.php:181
@@ -193,7 +194,7 @@ msgstr ""
 #: includes/admin/views/field-group-field-conditional-logic.php:151
 #: includes/admin/views/field-group-locations.php:29
 #: includes/admin/views/html-location-group.php:3
-#: includes/api/api-helpers.php:3998
+#: includes/api/api-helpers.php:3990
 msgid "or"
 msgstr ""
 
@@ -380,8 +381,7 @@ msgstr ""
 msgid "Review sites & upgrade"
 msgstr ""
 
-#: includes/admin/admin.php:54
-#: includes/admin/views/field-group-options.php:110
+#: includes/admin/admin.php:54 includes/admin/views/field-group-options.php:110
 msgid "Custom Fields"
 msgstr ""
 
@@ -453,39 +453,39 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:61
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
 msgid ""
 "Select the Advanced Custom Fields JSON file you would like to import. When "
 "you click the import button below, ACF will import the field groups."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:66
+#: includes/admin/tools/class-acf-admin-tool-import.php:52
 #: includes/fields/class-acf-field-file.php:57
 msgid "Select File"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:76
+#: includes/admin/tools/class-acf-admin-tool-import.php:62
 msgid "Import File"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:99
+#: includes/admin/tools/class-acf-admin-tool-import.php:85
 #: includes/fields/class-acf-field-file.php:170
 msgid "No file selected"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:109
+#: includes/admin/tools/class-acf-admin-tool-import.php:93
 msgid "Error uploading file. Please try again"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:115
+#: includes/admin/tools/class-acf-admin-tool-import.php:98
 msgid "Incorrect file type"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:129
+#: includes/admin/tools/class-acf-admin-tool-import.php:107
 msgid "Import file empty"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:235
+#: includes/admin/tools/class-acf-admin-tool-import.php:138
 #, php-format
 msgid "Imported 1 field group"
 msgid_plural "Imported %s field groups"
@@ -1182,37 +1182,37 @@ msgstr ""
 msgid "(no title)"
 msgstr ""
 
-#: includes/api/api-helpers.php:3919
+#: includes/api/api-helpers.php:3911
 #, php-format
 msgid "Image width must be at least %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3924
+#: includes/api/api-helpers.php:3916
 #, php-format
 msgid "Image width must not exceed %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3940
+#: includes/api/api-helpers.php:3932
 #, php-format
 msgid "Image height must be at least %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3945
+#: includes/api/api-helpers.php:3937
 #, php-format
 msgid "Image height must not exceed %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3963
+#: includes/api/api-helpers.php:3955
 #, php-format
 msgid "File size must be at least %s."
 msgstr ""
 
-#: includes/api/api-helpers.php:3968
+#: includes/api/api-helpers.php:3960
 #, php-format
 msgid "File size must must not exceed %s."
 msgstr ""
 
-#: includes/api/api-helpers.php:4002
+#: includes/api/api-helpers.php:3994
 #, php-format
 msgid "File type must be %s."
 msgstr ""
@@ -1375,8 +1375,7 @@ msgstr ""
 msgid "jQuery"
 msgstr ""
 
-#: includes/fields.php:354
-#: includes/fields/class-acf-field-button-group.php:177
+#: includes/fields.php:354 includes/fields/class-acf-field-button-group.php:177
 #: includes/fields/class-acf-field-checkbox.php:389
 #: includes/fields/class-acf-field-group.php:474
 #: includes/fields/class-acf-field-radio.php:290
@@ -2515,6 +2514,12 @@ msgstr ""
 msgid "Leave blank for no limit"
 msgstr ""
 
+#: includes/fields/class-acf-field-text.php:181
+#: includes/fields/class-acf-field-textarea.php:213
+#, php-format
+msgid "Value must not exceed %d characters"
+msgstr ""
+
 #: includes/fields/class-acf-field-textarea.php:25
 msgid "Text Area"
 msgstr ""
@@ -2640,8 +2645,8 @@ msgstr ""
 msgid "Validate Email"
 msgstr ""
 
-#: includes/forms/form-front.php:103
-#: pro/fields/class-acf-field-gallery.php:591 pro/options-page.php:81
+#: includes/forms/form-front.php:103 pro/fields/class-acf-field-gallery.php:591
+#: pro/options-page.php:81
 msgid "Update"
 msgstr ""
 
@@ -2734,8 +2739,8 @@ msgstr ""
 msgid "Page Template"
 msgstr ""
 
-#: includes/locations/class-acf-location-page-template.php:98
-#: includes/locations/class-acf-location-post-template.php:151
+#: includes/locations/class-acf-location-page-template.php:87
+#: includes/locations/class-acf-location-post-template.php:134
 msgid "Default Template"
 msgstr ""
 
@@ -2828,8 +2833,7 @@ msgstr ""
 msgid "<b>Error</b>. Could not connect to update server"
 msgstr ""
 
-#: pro/admin/admin-updates.php:118
-#: pro/admin/views/html-settings-updates.php:13
+#: pro/admin/admin-updates.php:118 pro/admin/views/html-settings-updates.php:13
 msgid "Updates"
 msgstr ""
 

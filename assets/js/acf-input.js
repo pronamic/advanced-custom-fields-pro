@@ -1991,7 +1991,7 @@
 				
 				// option
 				} else {
-					itemsHtml += '<option value="' + id + '"' + (item.disabled ? ' disabled="disabled"' : '') + '>' + acf.strEscape(text) + '</option>';
+					itemsHtml += '<option value="' + id + '"' + (item.disabled ? ' disabled="disabled"' : '') + '>' + text + '</option>';
 				}
 			});
 			
@@ -2097,7 +2097,7 @@
 	*  @return	bool
 	*/
 	acf.isGutenberg = function(){
-		return ( window.wp && wp.blocks );
+		return ( window.wp && wp.data && wp.data.select && wp.data.select( 'core/editor' ) );
 	};
 	
 	/**
@@ -5934,6 +5934,10 @@
 			
 			// render
 			this.renderVal( val );
+			
+			// action
+			var latLng = this.newLatLng( val.lat, val.lng );
+			acf.doAction('google_map_change', latLng, this.map, this);
 		},
 		
 		renderVal: function( val ){
@@ -5964,9 +5968,6 @@
 			
 			// show marker
 			this.map.marker.setVisible( true );
-			
-			// action
-			acf.doAction('google_map_change', latLng, this.map, this);
 			
 			// center
 			this.center();
@@ -11037,15 +11038,19 @@
 						copyEvents( $submitdiv.children('.hndle'), $postbox.children('.hndle') );
 					}
 					
+					// Initalize it (modifies HTML).
+					postbox = acf.newPostbox( result );
+					
 					// Trigger action.
 					acf.doAction('append', $postbox);
-					
-					// Initalize it.
-					postbox = acf.newPostbox( result );
+					acf.doAction('append_postbox', postbox);
 				}
 				
 				// show postbox
 				postbox.showEnable();
+				
+				// Do action.
+				acf.doAction('show_postbox', postbox);
 				
 				// append
 				visible.push( result.id );
@@ -11055,6 +11060,9 @@
 			acf.getPostboxes().map(function( postbox ){
 				if( visible.indexOf( postbox.get('id') ) === -1 ) {
 					postbox.hideDisable();
+					
+					// Do action.
+					acf.doAction('hide_postbox', postbox);
 				}
 			});
 			
@@ -11099,6 +11107,9 @@
 			acf.screen.getPostType = this.getPostType;
 			acf.screen.getPostFormat = this.getPostFormat;
 			acf.screen.getPostCoreTerms = this.getPostCoreTerms;
+			
+			// Add actions.
+			this.addAction( 'append_postbox', acf.screen.refreshAvailableMetaBoxesPerLocation );
 		},
 		
 		onChange: function(){
@@ -11121,7 +11132,7 @@
 			
 			// Filter out attributes that have not changed.
 			attributes = attributes.filter(this.proxy(function( attr ){
-				return ( edits[attr] && edits[attr] !== this.get(attr) );
+				return ( edits[attr] !== undefined && edits[attr] !== this.get(attr) );
 			}));
 			
 			// Trigger change if has attributes.
@@ -11175,8 +11186,62 @@
 			
 			// return
 			return terms;
-		},
+		}
 	});
+	
+	/**
+	 * acf.screen.refreshAvailableMetaBoxesPerLocation
+	 *
+	 * Refreshes the WP data state based on metaboxes found in the DOM.
+	 *
+	 * @date	6/3/19
+	 * @since	5.7.13
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	acf.screen.refreshAvailableMetaBoxesPerLocation = function() {
+		
+		// Extract vars.
+		var select = wp.data.select( 'core/edit-post' );
+		var dispatch = wp.data.dispatch( 'core/edit-post' );
+		
+		// Load current metabox locations and data.
+		var data = {};
+		select.getActiveMetaBoxLocations().map(function( location ){
+			data[ location ] = select.getMetaBoxesPerLocation( location );
+		});
+		
+		// Generate flat array of existing ids.
+		var ids = [];
+		for( var k in data ) {
+			ids = ids.concat( data[k].map(function(m){ return m.id; }) );
+		}
+		
+		// Append ACF metaboxes.
+		acf.getPostboxes().map(function( postbox ){
+			
+			// Ignore if already exists in data.
+			if( ids.indexOf( postbox.get('id') ) !== -1 ) {
+				return;
+			}
+			
+			// Get metabox location looking at parent form.
+			var location = postbox.$el.closest('form').attr('class').replace('metabox-location-', '');
+			
+			// Ensure location exists.
+			data[ location ] = data[ location ] || [];
+			
+			// Append.
+			data[ location ].push({
+				id: postbox.get('id'),
+				title: postbox.get('title')
+			});
+		});
+		
+		// Update state.
+		dispatch.setAvailableMetaBoxesPerLocation(data);	
+	};
 
 })(jQuery);
 
@@ -13074,7 +13139,7 @@
 			'click button[type="submit"]':	'onClickSubmit',
 			//'click #editor .editor-post-publish-button': 'onClickSubmitGutenberg',
 			'click #save-post':				'onClickSave',
-			'mousedown #post-preview':		'onClickPreview', // use mousedown to hook in before WP click event
+			'submit form#post':				'onSubmitPost',
 			'submit form':					'onSubmit',
 		},
 		
@@ -13238,27 +13303,6 @@
 		},
 		
 		/**
-		*  onClickPreview
-		*
-		*  Set ignore to true when previewing a post.
-		*
-		*  @date	4/9/18
-		*  @since	5.7.5
-		*
-		*  @param	object e The event object.
-		*  @param	jQuery $el The input element.
-		*  @return	void
-		*/
-		onClickPreview: function( e, $el ) {
-			this.set('ignore', true);
-			
-			// if post has previously been published but prevented by an error, WP core has
-			// added a custom 'submit.edit-post' event which causes the input buttons to become disabled.
-			// remove this event to prevent UX issues.
-			$('form#post').off('submit.edit-post');
-		},
-		
-		/**
 		*  onClickSubmitGutenberg
 		*
 		*  Custom validation event for the gutenberg editor.
@@ -13292,6 +13336,31 @@
 		},
 		
 		/**
+		 * onSubmitPost
+		 *
+		 * Callback when the 'post' form is submit.
+		 *
+		 * @date	5/3/19
+		 * @since	5.7.13
+		 *
+		 * @param	object e The event object.
+		 * @param	jQuery $el The input element.
+		 * @return	void
+		 */
+		onSubmitPost: function( e, $el ) {
+			
+			// Check if is preview.
+			if( $('input#wp-preview').val() === 'dopreview' ) {
+				
+				// Ignore validation.
+				this.set('ignore', true);
+				
+				// Unlock form to fix conflict with core "submit.edit-post" event causing all submit buttons to be disabled.
+				acf.unlockForm( $el )
+			}
+		},
+		
+		/**
 		*  onSubmit
 		*
 		*  Callback when the form is submit.
@@ -13305,27 +13374,51 @@
 		*/
 		onSubmit: function( e, $el ){
 			
-			// bail early if is disabled
-			if( !this.active ) {
-				return;
+			// Allow form to submit if...
+			if(
+				// Validation has been disabled.
+				!this.active	
+				
+				// Or this event is to be ignored.		
+				|| this.get('ignore')
+				
+				// Or this event has already been prevented.
+				|| e.isDefaultPrevented()
+			) {
+				// Return early and call reset function.
+				return this.allowSubmit();
 			}
 			
-			// bail early if is ignore
-			if( this.get('ignore') ) {
-				this.set('ignore', false);
-				return;
-			}
-			
-			// validate
+			// Validate form.
 			var valid = acf.validateForm({
 				form: $el,
 				event: this.get('originalEvent')
 			});
 			
-			// if not valid, stop event and allow validation to continue
+			// If not valid, stop event to prevent form submit.
 			if( !valid ) {
 				e.preventDefault();
 			}
+		},
+		
+		/**
+		 * allowSubmit
+		 *
+		 * Resets data during onSubmit when the form is allowed to submit.
+		 *
+		 * @date	5/3/19
+		 * @since	5.7.13
+		 *
+		 * @param	void
+		 * @return	void
+		 */
+		allowSubmit: function(){
+			
+			// Reset "ignore" state.
+			this.set('ignore', false);
+			
+			// Reset "originalEvent" object.
+			this.set('originalEvent', false)
 		}
 	});
 	

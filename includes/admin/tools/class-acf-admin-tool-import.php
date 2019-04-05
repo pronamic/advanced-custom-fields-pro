@@ -43,20 +43,6 @@ class ACF_Admin_Tool_Import extends ACF_Admin_Tool {
 	
 	function html() {
 		
-		// vars
-		$choices = array();
-		$field_groups = acf_get_field_groups();
-		
-		
-		// loop
-		if( $field_groups ) {
-			foreach( $field_groups as $field_group ) {
-				$choices[ $field_group['key'] ] = esc_html( $field_group['title'] );
-			}	
-		}
-		
-		
-		// html
 		?>
 		<p><?php _e('Select the Advanced Custom Fields JSON file you would like to import. When you click the import button below, ACF will import the field groups.', 'acf'); ?></p>
 		<div class="acf-fields">
@@ -94,166 +80,73 @@ class ACF_Admin_Tool_Import extends ACF_Admin_Tool {
 	
 	function submit() {
 		
-		// validate
+		// Check file size.
 		if( empty($_FILES['acf_import_file']['size']) ) {
 			return acf_add_admin_notice( __("No file selected", 'acf'), 'warning' );
 		}
 		
-		
-		// vars
+		// Get file data.
 		$file = $_FILES['acf_import_file'];
 		
-		
-		// validate error
+		// Check errors.
 		if( $file['error'] ) {
 			return acf_add_admin_notice( __("Error uploading file. Please try again", 'acf'), 'warning' );
 		}
 		
-		
-		// validate type
+		// Check file type.
 		if( pathinfo($file['name'], PATHINFO_EXTENSION) !== 'json' ) {
 			return acf_add_admin_notice( __("Incorrect file type", 'acf'), 'warning' );
 		}
 		
-		
-		// read file
+		// Read JSON.
 		$json = file_get_contents( $file['tmp_name'] );
-		
-		
-		// decode json
 		$json = json_decode($json, true);
 		
-		
-		// validate json
-    	if( empty($json) ) {
+		// Check if empty.
+    	if( !$json || !is_array($json) ) {
     		return acf_add_admin_notice( __("Import file empty", 'acf'), 'warning' );
     	}
     	
-    	
-    	// if importing an auto-json, wrap field group in array
+    	// Ensure $json is an array of groups.
     	if( isset($json['key']) ) {
-	    	
-	    	$json = array( $json );
-	    	
+	    	$json = array( $json );	    	
     	}
     	
-    	
-    	// vars
+    	// Remeber imported field group ids.
     	$ids = array();
-    	$keys = array();
-    	$imported = array();
     	
-    	
-    	// populate keys
+    	// Loop over json
     	foreach( $json as $field_group ) {
 	    	
-	    	// append key
-	    	$keys[] = $field_group['key'];
-	    	
-	    }
-	    
-	    
-    	// look for existing ids
-    	foreach( $keys as $key ) {
-	    	
-	    	// attempt find ID
-	    	$field_group = _acf_get_field_group_by_key( $key );
-	    	
-	    	
-	    	// bail early if no field group
-	    	if( !$field_group ) continue;
-	    	
-	    	
-	    	// append
-	    	$ids[ $key ] = $field_group['ID'];
-	    	
-	    }
-	    
-    	
-    	// enable local
-		acf_enable_local();
-		
-		
-		// reset local (JSON class has already included .json field groups which may conflict)
-		acf_reset_local();
-		
-    	
-    	// add local field groups
-    	foreach( $json as $field_group ) {
-	    	
-	    	// add field group
-	    	acf_add_local_field_group( $field_group );
-	    	
-	    }
-	    
-	    
-    	// loop over keys
-    	foreach( $keys as $key ) {
-	    	
-	    	// vars
-	    	$field_group = acf_get_local_field_group( $key );
-	    	
-	    	
-	    	// attempt get id
-	    	$id = acf_maybe_get( $ids, $key );
-	    	
-	    	if( $id ) {
-		    	
-		    	$field_group['ID'] = $id;
-		    	
+	    	// Search database for existing field group.
+	    	$post = acf_get_field_group_post( $field_group['key'] );
+	    	if( $post ) {
+		    	$field_group['ID'] = $post->ID;
 	    	}
 	    	
+	    	// Import field group.
+	    	$field_group = acf_import_field_group( $field_group );
 	    	
-	    	// append fields
-			if( acf_have_local_fields($key) ) {
-				
-				$field_group['fields'] = acf_get_local_fields( $key );
-				
-			}
-			
-			
-			// import
-			$field_group = acf_import_field_group( $field_group );
-			
-			
-			// append message
-			$imported[] = array(
-				'ID'		=> $field_group['ID'],
-				'title'		=> $field_group['title'],
-				'updated'	=> $id ? 1 : 0
-			);
-			
+	    	// append message
+	    	$ids[] = $field_group['ID'];
     	}
     	
-    	
-    	// messages
-    	if( !empty($imported) ) {
-    		
-    		// vars
-    		$links = array();
-    		$count = count($imported);
-    		$message = sprintf(_n( 'Imported 1 field group', 'Imported %s field groups', $count, 'acf' ), $count) . '.';
-    		
-    		
-    		// populate links
-    		foreach( $imported as $import ) {
-	    		
-	    		$links[] = '<a href="' . admin_url("post.php?post={$import['ID']}&action=edit") . '" target="_blank">' . $import['title'] . '</a>';
-	    			
-	    	}
-	    	
-	    	
-	    	// append links
-	    	$message .= ' ' . implode(', ', $links);
-	    	
-	    	
-	    	// add notice
-	    	acf_add_admin_notice( $message, 'success' );
-    	}
+    	// Count number of imported field groups.
+		$total = count($ids);
 		
+		// Generate text.
+		$text = sprintf( _n( 'Imported 1 field group', 'Imported %s field groups', $total, 'acf' ), $total );		
+		
+		// Add links to text.
+		$links = array();
+		foreach( $ids as $id ) {
+			$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+		}
+		$text .= ' ' . implode( ', ', $links );
+		
+		// Add notice
+		acf_add_admin_notice( $text, 'success' );
 	}
-	
-	
 }
 
 // initialize
