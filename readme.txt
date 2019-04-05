@@ -66,6 +66,49 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.7.13 =
+*Release Date - 6 March 2019*
+
+* Fix - Fixed bug causing issues with registered fields during `switch_to_blog()`.
+* Fix - Fixed bug preventing sub fields from being reused across multiple parents.
+* Fix - Fixed bug causing the `get_sub_field()` function to fail if a tab field exists with the same name as the selected field.
+* Fix - Fixed bug corrupting field settings since WP 5.1 when instructions contain `< a target="" >`.
+* Fix - Fixed bug in Gutenberg where custom metabox location (acf_after_title) did not show on initial page load.
+* Fix - Fixed bug causing issues when importing/syncing multiple field groups which contain a clone field.
+* Fix - Fixed bug preventing the AMP plugin preview from working.
+* Dev - Added new 'pre' filters to get, update and delete meta functions.
+* i18n - Update Turkish translation thanks to Emre Erkan.
+
+= 5.7.12 =
+*Release Date - 15 February 2019*
+
+* Fix - Added missing function `register_field_group()`.
+* Fix - Fixed PHP 5.4 error "Can't use function return value in write context".
+* Fix - Fixed bug causing wp_options values to be slashed incorrectly.
+* Fix - Fixed bug where "sync" feature imported field groups without fields.
+* Fix - Fixed bug preventing `get_field_object()` working with a field key.
+* Fix - Fixed bug causing incorrect results in `get_sub_field()`.
+* Fix - Fixed bug causing draft and preview issues with serialized values.
+* Fix - Fixed bug causing reversed field group metabox order.
+* Fix - Fixed bug causing incorrect character count when validating values.
+* Fix - Fixed bug showing incorrect choices for post_template location rule.
+* Fix - Fixed bug causing incorrect value retrieval after `switch_to_blog()`.
+* i18n - Updated Persian translation thanks to Majix.
+
+= 5.7.11 =
+*Release Date - 11 February 2019*
+
+* New - Added support for persistent object caching.
+* Fix - Fixed PHP error in `determine_locale()` affecting AJAX requests.
+* Fix - Fixed bug affecting dynamic metabox check when selecting "default" page template.
+* Fix - Fixed bug where tab fields did not render correctly within a dynamic metabox.
+* Tweak - Removed language fallback from "zh_TW" to "zh_CN".
+* Dev - Refactored various core functions.
+* Dev - Added new hook variation functions `acf_add_filter_variations()` and `acf_add_action_variations()`.
+* i18n - Updated Portuguese language thanks to Pedro Mendonça.
+* i18n - Updated German translation thanks to Ralf Koller.
+* i18n - Updated Swiss German translation thanks to Raphael Hüni.
+
 = 5.7.10 =
 *Release Date - 16 January 2019*
 

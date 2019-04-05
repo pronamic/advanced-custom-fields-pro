@@ -27,11 +27,11 @@ function determine_locale() {
 
 	$determined_locale = get_locale();
 
-	if ( is_admin() ) {
+	if ( function_exists('get_user_locale') && is_admin() ) {
 		$determined_locale = get_user_locale();
 	}
-
-	if ( isset( $_GET['_locale'] ) && 'user' === $_GET['_locale'] && wp_is_json_request() ) {
+	
+	if ( function_exists('get_user_locale') && isset( $_GET['_locale'] ) && 'user' === $_GET['_locale'] ) {
 		$determined_locale = get_user_locale();
 	}
 
@@ -71,7 +71,7 @@ function acf_get_locale() {
 	$langs = array(
 		'az_TR'	=> 'az',		// Azerbaijani (Turkey)
 		'zh_HK'	=> 'zh_CN',		// Chinese (Hong Kong)
-		'zh_TW'	=> 'zh_CN',		// Chinese (Taiwan)
+		//'zh_TW'	=> 'zh_CN',		// Chinese (Taiwan)
 		'nl_BE'	=> 'nl_NL',		// Dutch (Belgium)
 		'fr_BE'	=> 'fr_FR',		// French (Belgium)
 		'nn_NO'	=> 'nb_NO',		// Norwegian (Nynorsk)
@@ -126,3 +126,32 @@ function acf_load_textdomain( $domain = 'acf' ) {
 	// Load from plugin lang folder.
 	return load_textdomain( $domain, acf_get_path( 'lang/' . $mofile ) );
 }
+
+ /**
+ * _acf_apply_language_cache_key
+ *
+ * Applies the current language to the cache key.
+ *
+ * @date	23/1/19
+ * @since	5.7.11
+ *
+ * @param	string $key The cache key.
+ * @return	string
+ */
+function _acf_apply_language_cache_key( $key ) {
+	
+	// Get current language.
+	$current_language = acf_get_setting('current_language');
+	if( $current_language ) {
+		$key = "{$key}:{$current_language}";
+	}
+	
+	// Return key.
+	return $key;
+}
+
+// Hook into filter.
+add_filter( 'acf/get_cache_key', '_acf_apply_language_cache_key' );
+
+
+
