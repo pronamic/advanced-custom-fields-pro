@@ -46,35 +46,24 @@ class acf_location_page_template extends acf_location {
 	
 	function rule_match( $result, $rule, $screen ) {
 		
-		// vars
-		$post_type = acf_maybe_get( $screen, 'post_type' );
-		
-		
-		// lookup post_type
-		if( !$post_type ) {
-			
-			$post_id = acf_maybe_get( $screen, 'post_id' );
-			
-			if( !$post_id ) return false;
-			
-			$post_type = get_post_type( $post_id );
-			
+		// Check if this rule is relevant to the current screen.
+		// Find $post_id in the process.
+		if( isset($screen['post_type']) ) {
+			$post_type = $screen['post_type'];
+		} elseif( isset($screen['post_id']) ) {
+			$post_type = get_post_type( $screen['post_id'] );
+		} else {
+			return false;
 		}
 		
-		
-		// page template 'default' rule is only for 'page' post type
-		// prevents 'Default Template' field groups appearing on all post types that allow for post templates (WP 4.7)
-		if( $rule['value'] === 'default' ) {
-			
-			// bail ealry if not page
-			if( $post_type !== 'page' ) return false;
-			
+		// If this rule is set to "default" template, avoid matching on non "page" post types.
+		// Fixes issue where post templates were added in WP 4.7 and field groups appeared on all post type edit screens.
+		if( $rule['value'] === 'default' && $post_type !== 'page' ) {
+			return false;
 		}
 		
-		
-		// return
+		// Return.
 		return acf_get_location_rule('post_template')->rule_match( $result, $rule, $screen );
-		
 	}
 	
 	
@@ -93,20 +82,19 @@ class acf_location_page_template extends acf_location {
 	
 	function rule_values( $choices, $rule ) {
 		
-		// vars
+		// Default choices.
 		$choices = array(
 			'default' => apply_filters( 'default_page_template_title',  __('Default Template', 'acf') )
 		);
 		
+		// Load all templates, and merge in 'page' templates.
+		$post_templates = acf_get_post_templates();
+		if( isset($post_templates['page']) ) {
+			$choices = array_merge($choices, $post_templates['page']);
+		}
 		
-		// get templates and merge them in
-		$templates = wp_get_theme()->get_page_templates();
-		$choices = array_merge($choices, $templates);
-		
-		
-		// return choices
+		// Return choices.
 		return $choices;
-		
 	}
 	
 }

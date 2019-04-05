@@ -1187,7 +1187,10 @@
 				start: function (event, ui) {
 					ui.placeholder.html( ui.item.html() );
 					ui.placeholder.removeAttr('style');
-	   			}
+	   			},
+	   			update: function(event, ui) {
+					self.$input().trigger('change');
+		   		}
 			});
 			
 			// resizable

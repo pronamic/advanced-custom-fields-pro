@@ -85,9 +85,20 @@ class ACF_Form_Gutenberg {
 		<script type="text/javascript">
 		(function($) {
 			
-			// Move elements around screen.
+			// Wait until prepare.
 			acf.addAction('prepare', function(){
+				
+				// Append custom sortables before normal sortables (within the normal metabox)
 				$('#normal-sortables').before( $('#acf_after_title-sortables') );
+				
+			}, 1);
+			
+			// Wait until load.
+			acf.addAction('load', function(){
+				
+				// Refresh metaboxes to show 'acf_after_title' area.
+				acf.screen.refreshAvailableMetaBoxesPerLocation();
+				
 			}, 1);
 			
 			// Disable unload
