@@ -335,7 +335,7 @@ function acf_match_location_rule( $rule, $screen ) {
 *  @return	(array)
 */
 
-function acf_get_location_screen( $screen, $field_group ) {
+function acf_get_location_screen( $screen = array(), $field_group = false ) {
 	
 	// vars
 	$screen = wp_parse_args($screen, array(

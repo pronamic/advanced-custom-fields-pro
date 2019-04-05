@@ -15,7 +15,6 @@ class acf_json {
 		
 		// actions
 		add_action('acf/update_field_group',		array($this, 'update_field_group'), 10, 1);
-		add_action('acf/duplicate_field_group',		array($this, 'update_field_group'), 10, 1);
 		add_action('acf/untrash_field_group',		array($this, 'update_field_group'), 10, 1);
 		add_action('acf/trash_field_group',			array($this, 'delete_field_group'), 10, 1);
 		add_action('acf/delete_field_group',		array($this, 'delete_field_group'), 10, 1);

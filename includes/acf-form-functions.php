@@ -153,20 +153,9 @@ function acf_save_post( $post_id = 0, $values = null ) {
  */
 function _acf_do_save_post( $post_id = 0 ) {
 	
-	// Check $_POST data.
+	// Check and update $_POST data.
 	if( $_POST['acf'] ) {
-		
-		// Loop over posted values.
-		foreach( $_POST['acf'] as $key => $value ) {
-			
-			// Get field.
-			$field = acf_get_field( $key );
-			
-			// Update value.
-			if( $field ) {
-				acf_update_value( $value, $post_id, $field );
-			}
-		}
+		acf_update_values( $_POST['acf'], $post_id );
 	}	
 }
 

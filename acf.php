@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com/
 Description: Customize WordPress with powerful, professional and intuitive fields.
-Version: 5.7.10
+Version: 5.7.13
 Author: Elliot Condon
 Author URI: http://www.elliotcondon.com/
 Copyright: Elliot Condon
@@ -18,7 +18,7 @@ if( ! class_exists('ACF') ) :
 class ACF {
 	
 	/** @var string The plugin version number */
-	var $version = '5.7.10';
+	var $version = '5.7.13';
 	
 	/** @var array The plugin settings array */
 	var $settings = array();
@@ -118,27 +118,31 @@ class ACF {
 		$this->define( 'ACF', 			true );
 		$this->define( 'ACF_VERSION', 	$version );
 		$this->define( 'ACF_PATH', 		$path );
-		//$this->define( 'ACF_DEV', 		true );
 		
 		
 		// api
 		include_once( ACF_PATH . 'includes/api/api-helpers.php');
 		acf_include('includes/api/api-input.php');
-		acf_include('includes/api/api-value.php');
-		acf_include('includes/api/api-field.php');
-		acf_include('includes/api/api-field-group.php');
 		acf_include('includes/api/api-template.php');
 		acf_include('includes/api/api-term.php');
 		
 		// Include models.
 		acf_include('includes/class-acf-data.php');
 		
-		// Include functions.
-		acf_include('includes/acf-helper-functions.php');
+		// Include core functions.
 		acf_include('includes/acf-data-functions.php');
-		acf_include('includes/acf-form-functions.php');
-		acf_include('includes/acf-user-functions.php');
+		acf_include('includes/acf-helper-functions.php');
+		acf_include('includes/acf-hook-functions.php');
 		
+		// Include functions.
+		acf_include('includes/acf-deprecated-functions.php');
+		acf_include('includes/acf-field-functions.php');
+		acf_include('includes/acf-field-group-functions.php');
+		acf_include('includes/acf-form-functions.php');
+		acf_include('includes/acf-meta-functions.php');
+		acf_include('includes/acf-post-functions.php');
+		acf_include('includes/acf-user-functions.php');
+		acf_include('includes/acf-value-functions.php');
 		
 		// fields
 		acf_include('includes/fields.php');
@@ -152,12 +156,11 @@ class ACF {
 		
 		// core
 		acf_include('includes/assets.php');
-		acf_include('includes/cache.php');
 		acf_include('includes/compatibility.php');
 		acf_include('includes/deprecated.php');
 		acf_include('includes/json.php');
 		acf_include('includes/l10n.php');
-		acf_include('includes/local.php');
+		acf_include('includes/local-fields.php');
 		acf_include('includes/loop.php');
 		acf_include('includes/media.php');
 		acf_include('includes/revisions.php');
