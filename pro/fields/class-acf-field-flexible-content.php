@@ -363,13 +363,14 @@ class acf_field_flexible_content extends acf_field {
 		$order = 0;
 		$el = 'div';
 		$sub_fields = $layout['sub_fields'];
-		$prefix = $field['name'] . '[' . $i .  ']';
+		$id = ( $i === 'acfcloneindex' ) ? 'acfcloneindex' : "row-$i";
+		$prefix = $field['name'] . '[' . $id .  ']';
 		
 		
 		// div
 		$div = array(
 			'class'			=> 'layout',
-			'data-id'		=> $i,
+			'data-id'		=> $id,
 			'data-layout'	=> $layout['name']
 		);
 		

@@ -287,8 +287,13 @@ class acf_field_repeater extends acf_field {
 	<?php endif; ?>
 	
 	<tbody>
-		<?php foreach( $value as $i => $row ): ?>
-			<tr class="acf-row<?php if( $i === 'acfcloneindex' ){ echo ' acf-clone'; } ?>" data-id="<?php echo $i; ?>">
+		<?php foreach( $value as $i => $row ): 
+			
+			// Generate row id.
+			$id = ( $i === 'acfcloneindex' ) ? 'acfcloneindex' : "row-$i";
+			
+			?>
+			<tr class="acf-row<?php if( $i === 'acfcloneindex' ){ echo ' acf-clone'; } ?>" data-id="<?php echo $id; ?>">
 				
 				<?php if( $show_order ): ?>
 					<td class="acf-row-handle order" title="<?php _e('Drag to reorder','acf'); ?>">
@@ -318,7 +323,7 @@ class acf_field_repeater extends acf_field {
 					
 					
 					// update prefix to allow for nested values
-					$sub_field['prefix'] = $field['name'] . '[' . $i . ']';
+					$sub_field['prefix'] = $field['name'] . '[' . $id . ']';
 					
 					
 					// render input
