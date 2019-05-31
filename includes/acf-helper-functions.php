@@ -223,3 +223,66 @@ function acf_enable_filters( $filters = array() ) {
 	// Return prev state.
 	return $prev_state;
 }
+
+/**
+ * acf_idval
+ *
+ * Parses the provided value for an ID.
+ *
+ * @date	29/3/19
+ * @since	5.7.14
+ *
+ * @param	mixed $value A value to parse.
+ * @return	int
+ */
+function acf_idval( $value ) {
+	
+	// Check if value is numeric.
+	if( is_numeric($value) ) {
+		return (int) $value;
+	
+	// Check if value is array.	
+	} elseif( is_array($value) ) {
+		return (int) isset($value['ID']) ? $value['ID'] : 0;
+	
+	// Check if value is object.	
+	} elseif( is_object($value) ) {
+		return (int) isset($value->ID) ? $value->ID : 0;
+	}
+	
+	// Return default.
+	return 0;
+}
+
+/**
+ * acf_maybe_idval
+ *
+ * Checks value for potential id value.
+ *
+ * @date	6/4/19
+ * @since	5.7.14
+ *
+ * @param	mixed $value A value to parse.
+ * @return	mixed
+ */
+function acf_maybe_idval( $value ) {
+	if( $id = acf_idval( $value ) ) {
+		return $id;
+	}
+	return $value;
+}
+
+/**
+ * acf_numericval
+ *
+ * Casts the provided value as eiter an int or float using a simple hack.
+ *
+ * @date	11/4/19
+ * @since	5.7.14
+ *
+ * @param	mixed $value A value to parse.
+ * @return	(int|float)
+ */
+function acf_numval( $value ) {
+	return ( intval($value) == floatval($value) ) ? intval($value) : floatval($value);
+}

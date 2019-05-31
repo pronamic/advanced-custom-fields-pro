@@ -267,20 +267,15 @@ class acf_field_link extends acf_field {
 	*/
 	
 	function update_value( $value, $post_id, $field ) {
-	
-		// URL is required
-		if( empty($value) || empty($value['url']) ) {
-			
-			return false;
-			
-		}
 		
+		// Check if value is an empty array and convert to empty string.
+		if( empty($value) || empty($value['url']) ) {
+			$value = "";
+		}
 		
 		// return
 		return $value;
-		
 	}
-	
 }
 
 

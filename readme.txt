@@ -1,8 +1,9 @@
 === Advanced Custom Fields Pro ===
 Contributors: elliotcondon
 Tags: acf, advanced, custom, field, fields, form, repeater, content
-Requires at least: 4.4.0
-Tested up to: 4.9.9
+Requires at least: 4.7.0
+Tested up to: 5.2
+Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +66,19 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.8.0 =
+*Release Date - 8 May 2019*
+
+* New - Added ACF Blocks feature for ACF PRO.
+* Fix - Fixed bug causing duplicate "save metabox" AJAX requests in the Gutenberg editor.
+* Fix - Fixed bug causing incorrect Repeater field value order in AJAX requests.
+* Dev - Added JS filter `'relationship_ajax_data'` to customize Relationship field AJAX data.
+* Dev - Added `$field_group` parameter to `'acf/location/match_rule'` filter.
+* Dev - Bumped minimum supported PHP version to 5.4.0.
+* Dev - Bumped minimum supported WP version to 4.7.0.
+* i18n - Updated German translation thanks to Ralf Koller.
+* i18n - Updated Portuguese language thanks to Pedro Mendonça.
 
 = 5.7.13 =
 *Release Date - 6 March 2019*
