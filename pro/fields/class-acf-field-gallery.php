@@ -844,60 +844,24 @@ class acf_field_gallery extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// bail early if no value
-		if( empty($value) || !is_array($value) ) return false;
-		
-		
-		// loop
-		foreach( $value as $i => $v ) {
-			
-			$value[ $i ] = $this->update_single_value( $v );
-			
+		// Bail early if no value.
+		if( empty($value) ) {
+			return $value;
 		}
-				
 		
-		// return
+		// Convert to array.
+		$value = acf_array( $value );
+		
+		// Format array of values.
+		// - ensure each value is an id.
+		// - Parse each id as string for SQL LIKE queries.
+		$value = array_map('acf_idval', $value);
+		$value = array_map('strval', $value);
+		
+		// Return value.
 		return $value;
 		
-	}
-	
-	
-	/*
-	*  update_single_value()
-	*
-	*  This filter is appied to the $value before it is updated in the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value - the value which will be saved in the database
-	*  @param	$post_id - the $post_id of which the value will be saved
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$value - the modified value
-	*/
-	
-	function update_single_value( $value ) {
-		
-		// numeric
-		if( is_numeric($value) ) return $value;
-		
-		
-		// array?
-		if( is_array($value) && isset($value['ID']) ) return $value['ID'];
-		
-		
-		// object?
-		if( is_object($value) && isset($value->ID) ) return $value->ID;
-		
-		
-		// return
-		return $value;
-		
-	}
-
-	
+	}	
 }
 
 

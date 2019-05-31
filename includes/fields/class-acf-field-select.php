@@ -509,22 +509,16 @@ class acf_field_select extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// validate
+		// Bail early if no value.
 		if( empty($value) ) {
-		
 			return $value;
-			
 		}
 		
-		
-		// array
+		// Format array of values.
+		// - Parse each value as string for SQL LIKE queries.
 		if( is_array($value) ) {
-			
-			// save value as strings, so we can clearly search for them in SQL LIKE statements
 			$value = array_map('strval', $value);
-			
 		}
-		
 		
 		// return
 		return $value;

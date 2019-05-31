@@ -357,37 +357,19 @@ class acf_field_file extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// bail early if is empty
-		if( empty($value) ) return false;
-		
-		
-		// validate
-		if( is_array($value) && isset($value['ID']) ) { 
-			
-			$value = $value['ID'];
-			
-		} elseif( is_object($value) && isset($value->ID) ) { 
-			
-			$value = $value->ID;
-			
+		// Bail early if no value.
+		if( empty($value) ) {
+			return $value;
 		}
 		
+		// Parse value for id.
+		$attachment_id = acf_idval( $value );
 		
-		// bail early if not attachment ID
-		if( !$value || !is_numeric($value) ) return false;
+		// Connect attacment to post.
+		acf_connect_attachment_to_post( $attachment_id, $post_id );
 		
-		
-		// confirm type
-		$value = (int) $value;
-		
-		
-		// maybe connect attacment to post 
-		acf_connect_attachment_to_post( $value, $post_id );
-		
-		
-		// return
-		return $value;
-		
+		// Return id.
+		return $attachment_id;
 	}
 		
 	
