@@ -455,7 +455,7 @@ function acf_get_field_group_visibility( $field_group, $args = array() ) {
 			// Loop over rules and determine if all rules match.
 			$match_group = true;
 			foreach( $group as $rule ) {
-				if( !acf_match_location_rule( $rule, $screen ) ) {
+				if( !acf_match_location_rule( $rule, $screen, $field_group ) ) {
 					$match_group = false;
 					break;
 				}

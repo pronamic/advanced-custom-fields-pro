@@ -302,17 +302,17 @@ function acf_get_location_rule_values( $rule ) {
 *  @return	(boolean)
 */
 
-function acf_match_location_rule( $rule, $screen ) {
+function acf_match_location_rule( $rule, $screen, $field_group ) {
 	
 	// vars
 	$result = false;
 	
 	
 	// filter
-	$result = apply_filters( "acf/location/match_rule/type={$rule['param']}", $result, $rule, $screen );
-	$result = apply_filters( "acf/location/match_rule", $result, $rule, $screen );
-	$result = apply_filters( "acf/location/rule_match/{$rule['param']}", $result, $rule, $screen );
-	$result = apply_filters( "acf/location/rule_match", $result, $rule, $screen );
+	$result = apply_filters( "acf/location/match_rule/type={$rule['param']}", $result, $rule, $screen, $field_group );
+	$result = apply_filters( "acf/location/match_rule", $result, $rule, $screen, $field_group );
+	$result = apply_filters( "acf/location/rule_match/{$rule['param']}", $result, $rule, $screen, $field_group );
+	$result = apply_filters( "acf/location/rule_match", $result, $rule, $screen, $field_group );
 	
 	
 	// return
