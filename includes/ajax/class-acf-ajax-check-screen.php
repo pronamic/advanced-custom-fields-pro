@@ -6,31 +6,30 @@ if( ! class_exists('ACF_Ajax_Check_Screen') ) :
 
 class ACF_Ajax_Check_Screen extends ACF_Ajax {
 	
-	/** @var string The AJAX action name */
+	/** @var string The AJAX action name. */
 	var $action = 'acf/ajax/check_screen';
 	
-	/** @var bool Prevents access for non-logged in users */
+	/** @var bool Prevents access for non-logged in users. */
 	var $public = false;
 	
 	/**
-	*  get_response
-	*
-	*  The actual logic for this AJAX request.
-	*
-	*  @date	31/7/18
-	*  @since	5.7.2
-	*
-	*  @param	void
-	*  @return	mixed The response data to send back or WP_Error.
-	*/
-	
-	function response() {
+	 * get_response
+	 *
+	 * Returns the response data to sent back.
+	 *
+	 * @date	31/7/18
+	 * @since	5.7.2
+	 *
+	 * @param	array $request The request args.
+	 * @return	mixed The response data or WP_Error.
+	 */
+	function get_response( $request ) {
 		
 		// vars
-		$args = acf_parse_args($this->request, array(
+		$args = wp_parse_args($this->request, array(
 			'screen'	=> '',
 			'post_id'	=> 0,
-			'ajax'		=> 1,
+			'ajax'		=> true,
 			'exists'	=> array()
 		));
 		

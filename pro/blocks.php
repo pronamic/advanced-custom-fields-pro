@@ -575,6 +575,7 @@ function acf_parse_save_blocks_callback( $matches ) {
 	// Prevent wp_targeted_link_rel from corrupting JSON.
 	remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
 	remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );
+	remove_filter( 'content_save_pre', 'balanceTags', 50 );
 	
 	/**
 	 * Filteres the block attributes before saving.
