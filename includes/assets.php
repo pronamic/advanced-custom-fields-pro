@@ -314,7 +314,8 @@ class ACF_Assets {
 			'acf_version'	=> acf_get_setting('version'),
 			'browser'		=> acf_get_browser(),
 			'locale'		=> acf_get_locale(),
-			'rtl'			=> is_rtl()
+			'rtl'			=> is_rtl(),
+			'editor'		=> acf_is_block_editor() ? 'block' : 'classic'
 		));
 		
 		// get l10n (old)

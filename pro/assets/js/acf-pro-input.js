@@ -1389,7 +1389,7 @@
 				attachment = attachment.attributes;
 				
 				// preview size
-				var url = acf.isget(attachment, 'sizes', 'medium', 'url');
+				var url = acf.isget(attachment, 'sizes', this.get('preview_size'), 'url');
 				if( url !== null ) {
 					attachment.url = url;
 				}
