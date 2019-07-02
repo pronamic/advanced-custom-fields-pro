@@ -25,6 +25,9 @@ class acf_field_gallery extends acf_field {
 		$this->label = __("Gallery",'acf');
 		$this->category = 'content';
 		$this->defaults = array(
+			'return_format'	=> 'array',
+			'preview_size'	=> 'medium',
+			'insert'		=> 'append',
 			'library'		=> 'all',
 			'min'			=> 0,
 			'max'			=> 0,
@@ -35,7 +38,6 @@ class acf_field_gallery extends acf_field {
 			'max_height'	=> 0,
 			'max_size'		=> 0,
 			'mime_types'	=> '',
-			'insert'		=> 'append'
 		);
 		
 		
@@ -409,44 +411,6 @@ class acf_field_gallery extends acf_field {
 		
 	}
 	
-	
-	/*
-	*  get_attachments
-	*
-	*  This function will return an array of attachments for a given field value
-	*
-	*  @type	function
-	*  @date	13/06/2014
-	*  @since	5.0.0
-	*
-	*  @param	$value (array)
-	*  @return	$value
-	*/
-	
-	function get_attachments( $value ) {
-		
-		// bail early if no value
-		if( empty($value) ) return false;
-		
-		
-		// force value to array
-		$post__in = acf_get_array( $value );
-		
-		
-		// get posts
-		$posts = acf_get_posts(array(
-			'post_type'	=> 'attachment',
-			'post__in'	=> $post__in,
-			'update_post_meta_cache' => true
-		));
-		
-		
-		// return
-		return $posts;
-				
-	}
-	
-	
 	/*
 	*  render_field()
 	*
@@ -461,15 +425,15 @@ class acf_field_gallery extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// enqueue
+		// Enqueue uploader assets.
 		acf_enqueue_uploader();
 		
-		
-		// vars
-		$atts = array(
+		// Control attributes.
+		$attrs = array(
 			'id'				=> $field['id'],
 			'class'				=> "acf-gallery {$field['class']}",
 			'data-library'		=> $field['library'],
+			'data-preview_size'	=> $field['preview_size'],
 			'data-min'			=> $field['min'],
 			'data-max'			=> $field['max'],
 			'data-mime_types'	=> $field['mime_types'],
@@ -477,86 +441,68 @@ class acf_field_gallery extends acf_field {
 			'data-columns'		=> 4
 		);
 		
-		
-		// set gallery height
+		// Set gallery height with deafult of 400px and minimum of 200px.
 		$height = acf_get_user_setting('gallery_height', 400);
-		$height = max( $height, 200 ); // minimum height is 200
-		$atts['style'] = "height:{$height}px";
+		$height = max( $height, 200 );
+		$attrs['style'] = "height:{$height}px";
 		
-		
-		// get posts
-		$value = $this->get_attachments( $field['value'] );
+		// Load attachments.
+		$attachments = array();
+		if( $field['value'] ) {
+			
+			// Clean value into an array of IDs.
+			$attachment_ids = array_map('intval', acf_array($field['value']));
+			
+			// Find posts in database (ensures all results are real).
+			$posts = acf_get_posts(array(
+				'post_type'					=> 'attachment',
+				'post__in'					=> $attachment_ids,
+				'update_post_meta_cache' 	=> true,
+				'update_post_term_cache' 	=> false
+			));
+			
+			// Load attatchment data for each post.
+			$attachments = array_map('acf_get_attachment', $posts);
+		}
 		
 		?>
-<div <?php acf_esc_attr_e($atts); ?>>
-	
-	<div class="acf-hidden">
-		<?php acf_hidden_input(array( 'name' => $field['name'], 'value' => '' )); ?>
-	</div>
-	
+<div <?php acf_esc_attr_e($attrs); ?>>
+	<input type="hidden" name="<?php echo esc_attr($field['name']); ?>" value="" />
 	<div class="acf-gallery-main">
-		
 		<div class="acf-gallery-attachments">
-			
-			<?php if( $value ): ?>
-			
-				<?php foreach( $value as $i => $v ): 
+			<?php if( $attachments ): ?>
+				<?php foreach( $attachments as $i => $attachment ): 
 					
-					// bail early if no value
-					if( !$v ) continue;
+					// Vars
+					$a_id = $attachment['ID'];
+					$a_title = $attachment['title'];
+					$a_type = $attachment['type'];
+					$a_filename = $attachment['filename'];
+					$a_class = "acf-gallery-attachment -{$a_type}";
 					
-					
-					// vars
-					$a = array(
-						'ID' 		=> $v->ID,
-						'title'		=> $v->post_title,
-						'filename'	=> wp_basename($v->guid),
-						'type'		=> acf_maybe_get(explode('/', $v->post_mime_type), 0),
-						'class'		=> 'acf-gallery-attachment'
-					);
-					
-					
-					// thumbnail
-					$thumbnail = acf_get_post_thumbnail($a['ID'], 'medium');
-					
-					
-					// remove filename if is image
-					if( $a['type'] == 'image' ) $a['filename'] = '';
-					
-					
-					// class
-					$a['class'] .= ' -' . $a['type'];
-					
-					if( $thumbnail['type'] == 'icon' ) {
-						
-						$a['class'] .= ' -icon';
-						
-					}
-					
+					// Get thumbnail.
+					$a_thumbnail = acf_get_post_thumbnail($a_id, $field['preview_size']);
+					$a_class .= ($a_thumbnail['type'] === 'icon') ? ' -icon' : '';
 					
 					?>
-					<div class="<?php echo $a['class']; ?>" data-id="<?php echo $a['ID']; ?>">
-						<?php acf_hidden_input(array( 'name' => $field['name'].'[]', 'value' => $a['ID'] )); ?>
+					<div class="<?php echo esc_attr($a_class); ?>" data-id="<?php echo esc_attr($a_id); ?>">
+						<input type="hidden" name="<?php echo esc_attr($field['name']); ?>[]" value="<?php echo esc_attr($a_id); ?>" />
 						<div class="margin">
 							<div class="thumbnail">
-								<img src="<?php echo $thumbnail['url']; ?>" alt="" title="<?php echo $a['title']; ?>"/>
+								<img src="<?php echo esc_url($a_thumbnail['url']); ?>" alt="" />
 							</div>
-							<?php if( $a['filename'] ): ?>
-							<div class="filename"><?php echo acf_get_truncated($a['filename'], 30); ?></div>	
+							<?php if( $a_type !== 'image' ): ?>
+								<div class="filename"><?php echo acf_get_truncated( $a_filename, 30 ); ?></div>	
 							<?php endif; ?>
 						</div>
 						<div class="actions">
-							<a class="acf-icon -cancel dark acf-gallery-remove" href="#" data-id="<?php echo $a['ID']; ?>" title="<?php _e('Remove', 'acf'); ?>"></a>
+							<a class="acf-icon -cancel dark acf-gallery-remove" href="#" data-id="<?php echo esc_attr($a_id); ?>" title="<?php _e('Remove', 'acf'); ?>"></a>
 						</div>
 					</div>
 				<?php endforeach; ?>
-				
 			<?php endif; ?>
-			
 		</div>
-		
 		<div class="acf-gallery-toolbar">
-			
 			<ul class="acf-hl">
 				<li>
 					<a href="#" class="acf-button button button-primary acf-gallery-add"><?php _e('Add to gallery', 'acf'); ?></a>
@@ -571,32 +517,23 @@ class acf_field_gallery extends acf_field {
 					</select>
 				</li>
 			</ul>
-			
 		</div>
-		
 	</div>
-	
 	<div class="acf-gallery-side">
-	<div class="acf-gallery-side-inner">
-			
-		<div class="acf-gallery-side-data"></div>
-						
-		<div class="acf-gallery-toolbar">
-			
-			<ul class="acf-hl">
-				<li>
-					<a href="#" class="acf-button button acf-gallery-close"><?php _e('Close', 'acf'); ?></a>
-				</li>
-				<li class="acf-fr">
-					<a class="acf-button button button-primary acf-gallery-update" href="#"><?php _e('Update', 'acf'); ?></a>
-				</li>
-			</ul>
-			
-		</div>
-		
-	</div>	
+		<div class="acf-gallery-side-inner">
+			<div class="acf-gallery-side-data"></div>
+			<div class="acf-gallery-toolbar">
+				<ul class="acf-hl">
+					<li>
+						<a href="#" class="acf-button button acf-gallery-close"><?php _e('Close', 'acf'); ?></a>
+					</li>
+					<li class="acf-fr">
+						<a class="acf-button button button-primary acf-gallery-update" href="#"><?php _e('Update', 'acf'); ?></a>
+					</li>
+				</ul>
+			</div>
+		</div>	
 	</div>
-	
 </div>
 		<?php
 		
@@ -636,24 +573,28 @@ class acf_field_gallery extends acf_field {
 			
 		}
 		
-		
-		// min
+		// return_format
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Minimum Selection','acf'),
+			'label'			=> __('Return Format','acf'),
 			'instructions'	=> '',
-			'type'			=> 'number',
-			'name'			=> 'min'
+			'type'			=> 'radio',
+			'name'			=> 'return_format',
+			'layout'		=> 'horizontal',
+			'choices'		=> array(
+				'array'			=> __("Image Array",'acf'),
+				'url'			=> __("Image URL",'acf'),
+				'id'			=> __("Image ID",'acf')
+			)
 		));
 		
-		
-		// max
+		// preview_size
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Maximum Selection','acf'),
+			'label'			=> __('Preview Size','acf'),
 			'instructions'	=> '',
-			'type'			=> 'number',
-			'name'			=> 'max'
+			'type'			=> 'select',
+			'name'			=> 'preview_size',
+			'choices'		=> acf_get_image_sizes()
 		));
-		
 		
 		// insert
 		acf_render_field_setting( $field, array(
@@ -666,7 +607,6 @@ class acf_field_gallery extends acf_field {
 				'prepend'		=> __('Prepend to the beginning', 'acf')
 			)
 		));
-		
 		
 		// library
 		acf_render_field_setting( $field, array(
@@ -681,6 +621,21 @@ class acf_field_gallery extends acf_field {
 			)
 		));
 		
+		// min
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Minimum Selection','acf'),
+			'instructions'	=> '',
+			'type'			=> 'number',
+			'name'			=> 'min'
+		));
+		
+		// max
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Maximum Selection','acf'),
+			'instructions'	=> '',
+			'type'			=> 'number',
+			'name'			=> 'max'
+		));
 		
 		// min
 		acf_render_field_setting( $field, array(
@@ -739,7 +694,6 @@ class acf_field_gallery extends acf_field {
 			'_append' 		=> 'max_width'
 		));	
 		
-		
 		// allowed type
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Allowed file types','acf'),
@@ -747,7 +701,6 @@ class acf_field_gallery extends acf_field {
 			'type'			=> 'text',
 			'name'			=> 'mime_types',
 		));
-		
 	}
 	
 	
@@ -769,25 +722,54 @@ class acf_field_gallery extends acf_field {
 	
 	function format_value( $value, $post_id, $field ) {
 		
-		// bail early if no value
-		if( empty($value) ) return false;
-		
-		
-		// get posts
-		$posts = $this->get_attachments($value);
-		
-		
-		// update value to include $post
-		foreach( array_keys($posts) as $i ) {
-			
-			$posts[ $i ] = acf_get_attachment( $posts[ $i ] );
-			
+		// Bail early if no value.
+		if( !$value ) {
+			return false;
 		}
+		
+		// Clean value into an array of IDs.
+		$attachment_ids = array_map('intval', acf_array($value));
+		
+		// Find posts in database (ensures all results are real).
+		$posts = acf_get_posts(array(
+			'post_type'					=> 'attachment',
+			'post__in'					=> $attachment_ids,
+			'update_post_meta_cache' 	=> true,
+			'update_post_term_cache' 	=> false
+		));
+		
+		// Bail early if no posts found.
+		if( !$posts ) {
+			return false;
+		}
+		
+		// Format values using field settings.
+		$value = array();
+		foreach( $posts as $post ) {
+			
+			// Return object.
+			if( $field['return_format'] == 'object' ) {
+				$item = $post;
 				
+			// Return array.		
+			} elseif( $field['return_format'] == 'array' ) {
+				$item = acf_get_attachment( $post );
+				
+			// Return URL.		
+			} elseif( $field['return_format'] == 'url' ) {
+				$item = wp_get_attachment_url( $post->ID );
+			
+			// Return ID.		
+			} else {
+				$item = $post->ID;
+			}
+			
+			// Append item.
+			$value[] = $item;
+		}
 		
-		// return
-		return $posts;
-		
+		// Return.
+		return $value;
 	}
 	
 	
