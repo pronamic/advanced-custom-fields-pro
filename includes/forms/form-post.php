@@ -77,6 +77,9 @@ class ACF_Form_Post {
 	*/
 	function add_meta_boxes( $post_type, $post ) {
 		
+		// Storage for localized postboxes.
+		$postboxes = array();
+		
 		// Get field groups for this screen.
 		$field_groups = acf_get_field_groups(array(
 			'post_id'	=> $post->ID, 
@@ -99,22 +102,37 @@ class ACF_Form_Post {
 				}
 				
 				/**
-				*  Filters the metabox priority.
-				*
-				*  @date	23/06/12
-				*  @since	3.1.8
-				*
-				*  @param	string $priority The metabox priority (high, core, default, low).
-				*  @param	array $field_group The field group array.
-				*/
+				 * Filters the metabox priority.
+				 *
+				 * @date	23/06/12
+				 * @since	3.1.8
+				 *
+				 * @param	string $priority The metabox priority (high, core, default, low).
+				 * @param	array $field_group The field group array.
+				 */
 				$priority = apply_filters('acf/input/meta_box_priority', $priority, $field_group);
+				
+				// Localize data
+				$postboxes[] = array(
+					'id'		=> $id,
+					'key'		=> $field_group['key'],
+					'style'		=> $field_group['style'],
+					'label'		=> $field_group['label_placement'],
+					'edit'		=> acf_get_field_group_edit_link( $field_group['ID'] )
+				);
 				
 				// Add the meta box.
 				add_meta_box( $id, $title, array($this, 'render_meta_box'), $post_type, $context, $priority, array('field_group' => $field_group) );
+				
 			}
 			
-			// Get style from first field group.
+			// Set style from first field group.
 			$this->style = acf_get_field_group_style( $field_groups[0] );
+			
+			// Localize postboxes.
+			acf_localize_data(array(
+				'postboxes'	=> $postboxes
+			));
 		}
 		
 		// remove postcustom metabox (removes expensive SQL query)
@@ -188,23 +206,6 @@ class ACF_Form_Post {
 		// Render fields.
 		$fields = acf_get_fields( $field_group );
 		acf_render_fields( $fields, $post->ID, 'div', $field_group['instruction_placement'] );
-		
-		// Create metabox localized data.
-		$data = array(
-			'id'		=> $id,
-			'key'		=> $field_group['key'],
-			'style'		=> $field_group['style'],
-			'label'		=> $field_group['label_placement'],
-			'edit'		=> acf_get_field_group_edit_link( $field_group['ID'] )
-		);
-		
-		?>
-		<script type="text/javascript">
-		if( typeof acf !== 'undefined' ) {
-			acf.newPostbox(<?php echo wp_json_encode($data); ?>);
-		}	
-		</script>
-		<?php
 	}
 	
 	/**

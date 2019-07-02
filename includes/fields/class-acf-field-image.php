@@ -26,7 +26,7 @@ class acf_field_image extends acf_field {
 		$this->category = 'content';
 		$this->defaults = array(
 			'return_format'	=> 'array',
-			'preview_size'	=> 'thumbnail',
+			'preview_size'	=> 'medium',
 			'library'		=> 'all',
 			'min_width'		=> 0,
 			'min_height'	=> 0,
@@ -202,8 +202,8 @@ class acf_field_image extends acf_field {
 		
 		// return_format
 		acf_render_field_setting( $field, array(
-			'label'			=> __('Return Value','acf'),
-			'instructions'	=> __('Specify the returned value on front end','acf'),
+			'label'			=> __('Return Format','acf'),
+			'instructions'	=> '',
 			'type'			=> 'radio',
 			'name'			=> 'return_format',
 			'layout'		=> 'horizontal',
@@ -218,7 +218,7 @@ class acf_field_image extends acf_field {
 		// preview_size
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Preview Size','acf'),
-			'instructions'	=> __('Shown when entering data','acf'),
+			'instructions'	=> '',
 			'type'			=> 'select',
 			'name'			=> 'preview_size',
 			'choices'		=> acf_get_image_sizes()

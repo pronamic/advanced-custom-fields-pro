@@ -4210,48 +4210,41 @@ function acf_get_post_thumbnail( $post = null, $size = 'thumbnail' ) {
 	
 }
 
-
-/*
-*  acf_get_browser
-*
-*  This functino will return the browser string for major browsers
-*
-*  @type	function
-*  @date	17/01/2014
-*  @since	5.0.0
-*
-*  @param	n/a
-*  @return	(string)
-*/
-
+/**
+ * acf_get_browser
+ *
+ * Returns the name of the current browser.
+ *
+ * @date	17/01/2014
+ * @since	5.0.0
+ *
+ * @param	void
+ * @return	string
+ */
 function acf_get_browser() {
 	
-	// vars
-	$agent = $_SERVER['HTTP_USER_AGENT'];
-	
-	
-	// browsers
-	$browsers = array(
-		'Firefox'	=> 'firefox',
-		'Trident'	=> 'msie',
-		'MSIE'		=> 'msie',
-		'Edge'		=> 'edge',
-		'Chrome'	=> 'chrome',
-		'Safari'	=> 'safari',
-	);
-	
-	
-	// loop
-	foreach( $browsers as $k => $v ) {
+	// Check server var.
+	if( isset($_SERVER['HTTP_USER_AGENT']) ) {
+		$agent = $_SERVER['HTTP_USER_AGENT'];
 		
-		if( strpos($agent, $k) !== false ) return $v;
-		
+		// Loop over search terms.
+		$browsers = array(
+			'Firefox'	=> 'firefox',
+			'Trident'	=> 'msie',
+			'MSIE'		=> 'msie',
+			'Edge'		=> 'edge',
+			'Chrome'	=> 'chrome',
+			'Safari'	=> 'safari',
+		);
+		foreach( $browsers as $k => $v ) {
+			if( strpos($agent, $k) !== false ) {
+				return $v;
+			}
+		}
 	}
 	
-	
-	// return
+	// Return default.
 	return '';
-	
 }
 
 
@@ -4918,31 +4911,13 @@ function acf_parse_markdown( $text = '' ) {
 *  @return	array
 */
 function acf_get_sites() {
-	
-	// vars
 	$results = array();
-	
-	// function get_sites() was added in WP 4.6
-	if( function_exists('get_sites') ) {
-		
-		$_sites = get_sites(array(
-			'number' => 0
-		));
-		
-		if( $_sites ) {
-		foreach( $_sites as $_site ) {
-			$_site = get_site( $_site );
-	        $results[] = $_site->to_array();
-	    }}
-		
-	// function wp_get_sites() returns in the desired output
-	} else {
-		$results = wp_get_sites(array(
-			'limit' => 0
-		));
+	$sites = get_sites( array( 'number' => 0 ) );
+	if( $sites ) {
+		foreach( $sites as $site ) {
+	        $results[] = get_site( $site )->to_array();
+	    }
 	}
-	
-	// return
 	return $results;
 }
 
@@ -5063,17 +5038,24 @@ function acf_array_camel_case( $array = array() ) {
 }
 
 /**
-*  acf_is_block_editor
-*
-*  Returns true if the current screen uses the block editor.
-*
-*  @date	13/12/18
-*  @since	5.8.0
-*
-*  @return	bool
-*/
+ * acf_is_block_editor
+ *
+ * Returns true if the current screen uses the block editor.
+ *
+ * @date	13/12/18
+ * @since	5.8.0
+ *
+ * @param	void
+ * @return	bool
+ */
 function acf_is_block_editor() {
-	return get_current_screen()->is_block_editor();
+	if( function_exists('get_current_screen') ) {
+		$screen = get_current_screen();
+		if( method_exists($screen, 'is_block_editor') ) {
+			return $screen->is_block_editor();
+		}
+	}
+	return false;
 }
 
 ?>

@@ -1038,7 +1038,7 @@ function acf_import_field_group( $field_group ) {
 			
 			// Only add menu order if doesn't already exist.
 			// Allows Flexible Content field to set custom order.
-			if( empty($field['menu_order']) ) {
+			if( !isset($field['menu_order']) ) {
 				$field['menu_order'] = ($count[ $field['parent'] ] - 1);
 			}
 			
