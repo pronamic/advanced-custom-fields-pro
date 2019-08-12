@@ -108,7 +108,7 @@ class acf_field_range extends acf_field_number {
 			// input
 			$html .= acf_get_text_input(array(
 				'type'	=> 'number', 
-				'id'	=> $atts['id'] . '-alt', 
+				'id'	=> $atts['id'] . '-alt',
 				'value'	=> $atts['value'],
 				'step'	=> $atts['step'],
 				//'min'	=> $atts['min'], // removed to avoid browser validation errors

@@ -73,7 +73,7 @@ class acf_location_options_page extends acf_location {
 		// populate
 		if( !empty($pages) ) {
 			foreach( $pages as $page ) {
-				$choices[ $page['menu_slug'] ] = $page['menu_title'];
+				$choices[ $page['menu_slug'] ] = $page['page_title'];
 			}
 		} else {
 			$choices[''] = __('No options pages exist', 'acf');

@@ -118,10 +118,37 @@ class ACF_Form_Gutenberg {
 			// Update original data.
 			$wp_meta_boxes[ $current_screen->id ] = $locations;
 			unset( $wp_meta_boxes[ $current_screen->id ]['acf_after_title'] );
+			
+			// Avoid conflicts with saved metabox order.
+			add_filter( 'get_user_option_meta-box-order_' . $current_screen->id, array($this, 'modify_user_option_meta_box_order') );
 		}
 		
 		// Return
 		return $wp_meta_boxes;
+	}
+	
+	/**
+	 * modify_user_option_meta_box_order
+	 *
+	 * Filters the `meta-box-order_{$post_type}` value by prepending "acf_after_title" data to "normal".
+	 * Fixes a bug where metaboxes with position "acf_after_title" do not appear in the block editor.
+	 *
+	 * @date	11/7/19
+	 * @since	5.8.2
+	 *
+	 * @param	array $stored_meta_box_order User's existing meta box order.
+	 * @return	array Modified array with meta boxes moved around.
+	 */
+	function modify_user_option_meta_box_order( $locations ) {
+		if( !empty($locations['acf_after_title']) ) {
+			if( !empty($locations['normal']) ) {
+				$locations['normal'] = $locations['acf_after_title'] . ',' . $locations['normal'];
+			} else {
+				$locations['normal'] = $locations['acf_after_title'];
+			}
+			unset($locations['acf_after_title']);
+		}
+		return $locations;
 	}
 	
 	/**
