@@ -40,6 +40,28 @@ class ACF_Compatibility {
 		// location
 		add_filter('acf/location/validate_rule/type=post_taxonomy', array($this, 'validate_post_taxonomy_location_rule'), 20, 1);
 		add_filter('acf/location/validate_rule/type=post_category', array($this, 'validate_post_taxonomy_location_rule'), 20, 1);
+		
+		// Update settings
+		add_action('acf/init', array($this, 'init'));
+	}
+	
+	/**
+	 * init
+	 *
+	 * Adds compatibility for deprecated settings.
+	 *
+	 * @date	10/6/19
+	 * @since	5.8.1
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	function init() {
+		
+		// Update "show_admin" setting based on defined constant.
+		if( defined('ACF_LITE') && ACF_LITE ) {
+			acf_update_setting( 'show_admin', false );
+		}
 	}
 	
 	/**
@@ -446,4 +468,17 @@ acf_new_instance('ACF_Compatibility');
 
 endif; // class_exists check
 
-?>
+/*
+ * acf_get_compatibility
+ *
+ * Returns true if compatibility is enabled for the given component.
+ *
+ * @date	20/1/15
+ * @since	5.1.5
+ *
+ * @param	string $name The name of the component to check.
+ * @return	bool
+ */
+function acf_get_compatibility( $name ) {
+	return apply_filters( "acf/compatibility/{$name}", false );
+}
