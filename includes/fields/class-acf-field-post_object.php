@@ -504,7 +504,7 @@ class acf_field_post_object extends acf_field {
 		
 		
 		// convert back from array if neccessary
-		if( !$field['multiple'] && acf_is_array($value) ) {
+		if( !$field['multiple'] && is_array($value) ) {
 		
 			$value = current($value);
 			

@@ -415,7 +415,7 @@ function acf_enqueue_block_type_assets( $block_type ) {
 	
 	// Enqueue assets callback.
 	if( $block_type['enqueue_assets'] && is_callable($block_type['enqueue_assets']) ) {
-		call_user_func( $block_type['enqueue_assets'] );
+		call_user_func( $block_type['enqueue_assets'], $block_type );
 	}
 }
 
@@ -534,7 +534,7 @@ function acf_parse_save_blocks( $text = '' ) {
 	// Search text for dynamic blocks and modify attrs.
 	return addslashes(
 		preg_replace_callback(
-			'/<!--\s+wp:(?P<name>[\S]+)\s+(?P<attrs>{[\S\s]+?})\s+\/-->/',
+			'/<!--\s+wp:(?P<name>[\S]+)\s+(?P<attrs>{[\S\s]+?})\s+(?P<void>\/)?-->/',
 			'acf_parse_save_blocks_callback',
 			stripslashes( $text )
 		)

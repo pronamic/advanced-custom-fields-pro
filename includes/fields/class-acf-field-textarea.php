@@ -208,8 +208,10 @@ class acf_field_textarea extends acf_field {
 	 */
 	function validate_value( $valid, $value, $field, $input ){
 		
-		// Check maxlength
-		if( $field['maxlength'] && mb_strlen(wp_unslash($value)) > $field['maxlength'] ) {
+		// Check maxlength.
+		// Note: Due to the way strlen (and mb_strlen) work, line breaks count as two characters in PHP, but not in Javascript (or HTML). 
+		// To avoid incorrectly calculating the length, replace double line breaks. 
+		if( $field['maxlength'] && mb_strlen(str_replace("\r\n", "\n", wp_unslash($value))) > $field['maxlength'] ) {
 			return sprintf( __('Value must not exceed %d characters', 'acf'), $field['maxlength'] );
 		}
 		

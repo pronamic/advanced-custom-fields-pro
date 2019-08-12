@@ -201,7 +201,7 @@ function _acf_apply_deprecated_hook() {
 		if( has_filter($deprecated) ) {
 			
 			// Log warning.
-			_deprecated_hook( $deprecated, $version, $hook );
+			//_deprecated_hook( $deprecated, $version, $hook );
 		
 			// Apply filters.
 			if( $type === 'filter' ) {

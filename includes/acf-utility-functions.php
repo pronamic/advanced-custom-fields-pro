@@ -104,3 +104,55 @@ function acf_switch_stores( $site_id, $prev_site_id ) {
 	}
 }
 add_action( 'switch_blog', 'acf_switch_stores', 10, 2 );
+
+/**
+ * acf_get_path
+ *
+ * Returns the plugin path to a specified file.
+ *
+ * @date	28/9/13
+ * @since	5.0.0
+ *
+ * @param	string $filename The specified file.
+ * @return	string
+ */
+function acf_get_path( $filename = '' ) {
+	return ACF_PATH . ltrim($filename, '/');
+}
+
+/**
+ * acf_get_url
+ *
+ * Returns the plugin url to a specified file.
+ * This function also defines the ACF_URL constant.
+ *
+ * @date	12/12/17
+ * @since	5.6.8
+ *
+ * @param	string $filename The specified file.
+ * @return	string
+ */
+function acf_get_url( $filename = '' ) {
+	if( !defined('ACF_URL') ) {
+		define( 'ACF_URL', acf_get_setting('url') );
+	}
+	return ACF_URL . ltrim($filename, '/');
+}
+
+/*
+ * acf_include
+ *
+ * Includes a file within the ACF plugin.
+ *
+ * @date	10/3/14
+ * @since	5.0.0
+ *
+ * @param	string $filename The specified file.
+ * @return	void
+ */
+function acf_include( $filename = '' ) {
+	$file_path = acf_get_path($filename);
+	if( file_exists($file_path) ) {
+		include_once($file_path);
+	}
+}

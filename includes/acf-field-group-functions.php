@@ -52,7 +52,6 @@ function acf_get_field_group( $id = 0 ) {
 	 *
 	 * @param	array The field_group array.
 	 */
-	$field_group = apply_filters( 'acf/get_field_group', $field_group );
 	$field_group = apply_filters( 'acf/load_field_group', $field_group );
 	
 	// Store field group using aliasses to also find via key, ID and name.
@@ -319,7 +318,6 @@ function acf_get_field_groups( $filter = array() ) {
 		}
 	}
 	
-	
 	/**
 	 * Filters the $field_groups array.
 	 *
@@ -329,7 +327,6 @@ function acf_get_field_groups( $filter = array() ) {
 	 * @param	array $field_groups The array of field_groups.
 	 */
 	$field_groups = apply_filters( 'acf/load_field_groups', $field_groups );
-	$field_groups = apply_filters( 'acf/get_field_groups', $field_groups );
 	
 	// Filter results.
 	if( $filter ) {
