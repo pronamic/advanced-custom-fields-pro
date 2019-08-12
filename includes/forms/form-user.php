@@ -38,6 +38,9 @@ class ACF_Form_User {
 		// save
 		add_action('user_register',					array($this, 'save_user'));
 		add_action('profile_update',				array($this, 'save_user'));
+		
+		// Perform validation before new user is registered.
+		add_filter('registration_errors',			array($this, 'filter_registration_errors'), 10, 3);
 	}
 	
 	
@@ -185,6 +188,11 @@ class ACF_Form_User {
 	
 	function render( $args = array() ) {
 		
+		// Allow $_POST data to persist across form submission attempts.
+		if( isset($_POST['acf']) ) {
+			add_filter('acf/pre_load_value', array($this, 'filter_pre_load_value'), 10, 3);
+		}
+		
 		// defaults
 		$args = wp_parse_args($args, array(
 			'user_id'	=> 0,
@@ -304,7 +312,54 @@ class ACF_Form_User {
 	    if( acf_validate_save_post(true) ) {
 			acf_save_post( "user_$user_id" );
 		}
-	}		
+	}
+	
+	/**
+	 * filter_registration_errors
+	 *
+	 * Validates $_POST data and appends any errors to prevent new user registration.
+	 *
+	 * @date	12/7/19
+	 * @since	5.8.1
+	 *
+	 * @param	WP_Error $errors A WP_Error object containing any errors encountered during registration.
+     * @param	string $sanitized_user_login User's username after it has been sanitized.
+     * @param	string $user_email User's email.
+	 * @return	WP_Error
+	 */
+	function filter_registration_errors( $errors, $sanitized_user_login, $user_email ) {
+		if( !acf_validate_save_post() ) {
+			$acf_errors = acf_get_validation_errors();
+			foreach( $acf_errors as $acf_error ) {
+				$errors->add(
+					acf_idify( $acf_error['input'] ), 
+					acf_punctify( sprintf( __('<strong>ERROR</strong>: %s', 'acf'), $acf_error['message'] ) )
+				);
+			}
+		}
+		return $errors;
+	}
+	
+	/**
+	 * filter_pre_load_value
+	 *
+	 * Checks if a $_POST value exists for this field to allow persistent values.
+	 *
+	 * @date	12/7/19
+	 * @since	5.8.2
+	 *
+	 * @param	null $null A null placeholder.
+	 * @param	(int|string) $post_id The post id.
+	 * @param	array $field The field array.
+	 * @return	mixed
+	 */
+	function filter_pre_load_value( $null, $post_id, $field ) {
+		$field_key = $field['key'];
+		if( isset( $_POST['acf'][ $field_key ] )) {
+			return $_POST['acf'][ $field_key ];
+		}
+		return $null;
+	}
 }
 
 // instantiate

@@ -39,9 +39,6 @@ function acf_get_reference( $field_name, $post_id ) {
 	return apply_filters( "acf/load_reference", $reference, $field_name, $post_id );
 }
 
-// Register deprecated.
-acf_add_deprecated_filter( 'acf/get_field_reference', '5.6.5', 'acf/load_reference' );
-
 /**
  * acf_get_value
  *
@@ -117,7 +114,7 @@ acf_add_filter_variations( 'acf/load_value', array('type', 'name', 'key'), 2 );
 function acf_format_value( $value, $post_id, $field ) {
 	
 	// Allow filter to short-circuit load_value logic.
-	$check = apply_filters( "acf/pre_format_value", null, $post_id, $field );
+	$check = apply_filters( "acf/pre_format_value", null, $value, $post_id, $field );
     if( $check !== null ) {
 	    return $check;
     }

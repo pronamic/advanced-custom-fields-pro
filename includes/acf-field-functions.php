@@ -369,7 +369,6 @@ function acf_get_fields( $parent ) {
 	 * @param	array $fields The array of fields.
 	 */
 	$fields = apply_filters( 'acf/load_fields', $fields, $parent );
-	$fields = apply_filters( 'acf/get_fields', $fields, $parent );
 	
 	// Return fields
 	return $fields;	

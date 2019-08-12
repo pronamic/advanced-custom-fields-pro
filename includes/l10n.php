@@ -24,9 +24,9 @@ function determine_locale() {
 	if ( ! empty( $determined_locale ) && is_string( $determined_locale ) ) {
 		return $determined_locale;
 	}
-
+	
 	$determined_locale = get_locale();
-
+	
 	if ( function_exists('get_user_locale') && is_admin() ) {
 		$determined_locale = get_user_locale();
 	}
@@ -34,11 +34,11 @@ function determine_locale() {
 	if ( function_exists('get_user_locale') && isset( $_GET['_locale'] ) && 'user' === $_GET['_locale'] ) {
 		$determined_locale = get_user_locale();
 	}
-
+	
 	if ( ! empty( $_GET['wp_lang'] ) && ! empty( $GLOBALS['pagenow'] ) && 'wp-login.php' === $GLOBALS['pagenow'] ) {
 		$determined_locale = sanitize_text_field( $_GET['wp_lang'] );
 	}
-
+	
 	/**
 	 * Filters the locale for the current request.
 	 *
@@ -71,7 +71,6 @@ function acf_get_locale() {
 	$langs = array(
 		'az_TR'	=> 'az',		// Azerbaijani (Turkey)
 		'zh_HK'	=> 'zh_CN',		// Chinese (Hong Kong)
-		//'zh_TW'	=> 'zh_CN',		// Chinese (Taiwan)
 		'nl_BE'	=> 'nl_NL',		// Dutch (Belgium)
 		'fr_BE'	=> 'fr_FR',		// French (Belgium)
 		'nn_NO'	=> 'nb_NO',		// Norwegian (Nynorsk)
@@ -152,6 +151,3 @@ function _acf_apply_language_cache_key( $key ) {
 
 // Hook into filter.
 add_filter( 'acf/get_cache_key', '_acf_apply_language_cache_key' );
-
-
-

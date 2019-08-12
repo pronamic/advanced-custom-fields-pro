@@ -19,58 +19,6 @@ function acf_is_array( $array ) {
 	
 }
 
-
-/*
-*  acf_is_empty
-*
-*  This function will return true for an empty var (allows 0 as true)
-*
-*  @type	function
-*  @date	6/07/2016
-*  @since	5.4.0
-*
-*  @param	$value (mixed)
-*  @return	(boolean)
-*/
-
-function acf_is_empty( $value ) {
-	
-	return ( empty($value) && !is_numeric($value) );
-	
-}
-
-/**
-*  acf_idify
-*
-*  Returns an id friendly string
-*
-*  @date	24/12/17
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-
-function acf_idify( $str = '' ) {
-	return str_replace(array('][', '[', ']'), array('-', '-', ''), strtolower($str));
-}
-
-/**
-*  acf_slugify
-*
-*  Returns a slug friendly string
-*
-*  @date	24/12/17
-*  @since	5.6.5
-*
-*  @param	type $var Description. Default.
-*  @return	type Description.
-*/
-
-function acf_slugify( $str = '' ) {
-	return str_replace(array('_', '/', ' '), '-', strtolower($str));
-}
-
 /**
 *  acf_has_setting
 *
@@ -264,26 +212,6 @@ function acf_init() {
 
 
 /*
-*  acf_get_compatibility
-*
-*  This function will return true or false for a given compatibility setting
-*
-*  @type	function
-*  @date	20/01/2015
-*  @since	5.1.5
-*
-*  @param	$name (string)
-*  @return	(boolean)
-*/
-
-function acf_get_compatibility( $name ) {
-	
-	return apply_filters( "acf/compatibility/{$name}", false );
-	
-}
-
-
-/*
 *  acf_has_done
 *
 *  This function will return true if this action has already been done
@@ -309,111 +237,7 @@ function acf_has_done( $name ) {
 }
 
 
-/*
-*  acf_get_path
-*
-*  This function will return the path to a file within the ACF plugin folder
-*
-*  @type	function
-*  @date	28/09/13
-*  @since	5.0.0
-*
-*  @param	$path (string) the relative path from the root of the ACF plugin folder
-*  @return	(string)
-*/
 
-function acf_get_path( $path = '' ) {
-	
-	return ACF_PATH . $path;
-	
-}
-
-
-/**
-*  acf_get_url
-*
-*  This function will return the url to a file within the ACF plugin folder
-*
-*  @date	12/12/17
-*  @since	5.6.8
-*
-*  @param	string $path The relative path from the root of the ACF plugin folder
-*  @return	string
-*/
-
-function acf_get_url( $path = '' ) {
-	
-	// define ACF_URL to optimise performance
-	if( !defined('ACF_URL') ) {
-		define( 'ACF_URL', acf_get_setting('url') );
-	}
-	
-	// return
-	return ACF_URL . $path;
-	
-}
-
-
-/*
-*  acf_get_dir
-*
-*  Deprecated in 5.6.8. Use acf_get_url() instead.
-*
-*  @date	28/09/13
-*  @since	5.0.0
-*
-*  @param	string
-*  @return	string
-*/
-
-function acf_get_dir( $path = '' ) {
-	return acf_get_url( $path );
-}
-
-
-/*
-*  acf_include
-*
-*  This function will include a file
-*
-*  @type	function
-*  @date	10/03/2014
-*  @since	5.0.0
-*
-*  @param	$post_id (int)
-*  @return	$post_id (int)
-*/
-
-function acf_include( $file ) {
-	
-	$path = acf_get_path( $file );
-	
-	if( file_exists($path) ) {
-		
-		include_once( $path );
-		
-	}
-	
-}
-
-/**
-*  acf_include_once
-*
-*  Includes a file one time only.
-*
-*  @date	24/8/18
-*  @since	5.7.4
-*
-*  @param	string $file The relative file path.
-*  @return	void
-*/
-
-function acf_include_once( $file = '' ) {
-	$path = acf_get_path( $file );
-	if( file_exists($path) ) {
-		include_once( $path );
-	}
-}
 
 /*
 *  acf_get_external_path
@@ -3440,43 +3264,6 @@ function acf_get_truncated( $text, $length = 64 ) {
 
 function acf_get_current_url() {
 	return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-}
-
-/**
-*  acf_str_join
-*
-*  Joins together 2 strings removing any overlapping characters.
-*  Useful for urls. Eg: 'test.local/foo/' + '/foo/bar/' = 'test.local/foo/bar/'
-*
-*  @date	19/11/18
-*  @since	5.8.0
-*
-*  @param	string $s1 The first string.
-*  @param	string $s2 The seccond string.
-*  @return	string
-*/
-function acf_str_join( $s1 = '', $s2 = '' ) {
-	
-	// Remember number of chars that overlap.
-	$overlap = 0;
-	
-	// Find shortest word length.
-	$length = min( strlen($s1), strlen($s2) );
-	
-	// Find number of chars that overlap.
-	for( $i = 0; $i < $length; $i++ ) {
-		if( substr($s1, -$i) === substr($s2, 0, $i) ) {
-			$overlap = $i;
-		}
-	}
-	
-	// shorten $s2 based on overlap
-	if( $overlap ) {
-		$s2 = substr($s2, $overlap);
-	}
-	
-	// Return joined string.
-	return $s1 . $s2;
 }
 
 /*
