@@ -362,4 +362,26 @@ function acf_punctify( $str = '' ) {
 	return trim($str, '.') . '.';
 }
 
-
+/**
+ * acf_did
+ *
+ * Returns true if ACF already did an event.
+ *
+ * @date	30/8/19
+ * @since	5.8.1
+ *
+ * @param	string $name The name of the event.
+ * @return	bool
+ */
+function acf_did( $name ) {
+	
+	// Return true if already did the event (preventing event).
+	if( acf_get_data("acf_did_$name") ) {
+		return true;
+	
+	// Otherwise, update store and return false (alowing event).
+	} else {
+		acf_set_data("acf_did_$name", true);
+		return false;
+	}
+}
