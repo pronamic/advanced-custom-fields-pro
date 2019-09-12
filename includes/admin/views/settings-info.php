@@ -15,17 +15,14 @@
 		<h2><?php _e("A Smoother Experience", 'acf'); ?> </h2>
 		<div class="acf-three-col">
 			<div>
-				<p><img src="https://assets.advancedcustomfields.com/info/5.0.0/select2.png" /></p>
 				<h3><?php _e("Improved Usability", 'acf'); ?></h3>
 				<p><?php _e("Including the popular Select2 library has improved both usability and speed across a number of field types including post object, page link, taxonomy and select.", 'acf'); ?></p>
 			</div>
 			<div>
-				<p><img src="https://assets.advancedcustomfields.com/info/5.0.0/design.png" /></p>
 				<h3><?php _e("Improved Design", 'acf'); ?></h3>
 				<p><?php _e("Many fields have undergone a visual refresh to make ACF look better than ever! Noticeable changes are seen on the gallery, relationship and oEmbed (new) fields!", 'acf'); ?></p>
 			</div>
 			<div>
-				<p><img src="https://assets.advancedcustomfields.com/info/5.0.0/sub-fields.png" /></p>
 				<h3><?php _e("Improved Data", 'acf'); ?></h3>
 				<p><?php _e("Redesigning the data architecture has allowed sub fields to live independently from their parents. This allows you to drag and drop fields in and out of parent fields!", 'acf'); ?></p>
 			</div>
