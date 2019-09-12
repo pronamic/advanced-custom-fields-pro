@@ -221,6 +221,10 @@ function acf_validate_field_group( $field_group = array() ) {
 		'description'			=> '',
 	));
 	
+	// Convert types.
+	$field_group['ID'] = (int) $field_group['ID'];
+	$field_group['menu_order'] = (int) $field_group['menu_order'];
+	
 	// Field group is now valid.
 	$field_group['_valid'] = 1;
 	
@@ -515,6 +519,8 @@ function acf_update_field_group( $field_group ) {
     	'post_excerpt'	=> sanitize_title( $field_group['title'] ),
     	'post_content'	=> maybe_serialize( $_field_group ),
     	'menu_order'	=> $field_group['menu_order'],
+    	'comment_status' => 'closed',
+    	'ping_status'	=> 'closed',
 	);
 	
 	// Unhook wp_targeted_link_rel() filter from WP 5.1 corrupting serialized data.

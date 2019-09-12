@@ -12,9 +12,6 @@ class ACF_Updates {
 	/** @var array The array of registered plugins */
 	var $plugins = array();
 	
-	/** @var boolean Dev mode */
-	var $dev = false;	
-	
 	/** @var int Counts the number of plugin update checks */
 	var $checked = 0;	
 	
@@ -114,10 +111,9 @@ class ACF_Updates {
 		// vars
 		$url = 'https://connect.advancedcustomfields.com/' . $query;
 		
-		// development mode
-		if( $this->dev ) {
+		// Development mode
+		if( defined('ACF_DEV') && ACF_DEV ) {
 			$url = 'http://connect/' . $query;
-			acf_log('acf connect: '. $url, $body);
 		}
 		
 		// post

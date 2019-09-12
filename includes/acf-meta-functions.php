@@ -92,12 +92,14 @@ function acf_get_meta( $post_id = 0 ) {
 	
 	// Loop over meta and check that a reference exists for each value.
 	$meta = array();
-	foreach( $allmeta as $key => $value ) {
-		
-		// If a reference exists for this value, add it to the meta array.
-		if( isset($allmeta["_$key"]) ) {
-			$meta[ $key ] = $allmeta[ $key ][0];
-			$meta[ "_$key" ] = $allmeta[ "_$key" ][0];
+	if( $allmeta ) {
+		foreach( $allmeta as $key => $value ) {
+			
+			// If a reference exists for this value, add it to the meta array.
+			if( isset($allmeta["_$key"]) ) {
+				$meta[ $key ] = $allmeta[ $key ][0];
+				$meta[ "_$key" ] = $allmeta[ "_$key" ][0];
+			}
 		}
 	}
 	
