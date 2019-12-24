@@ -412,10 +412,6 @@ class acf_admin_field_group {
 	// remove edit links
 	$('#misc-publishing-actions a').remove();
 	
-	
-	// remove editables (fixes status text changing on submit)
-	$('#misc-publishing-actions .hide-if-js').remove();
-	
 })(jQuery);	
 </script>
 <?php	

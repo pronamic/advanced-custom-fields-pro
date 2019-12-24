@@ -50,6 +50,11 @@ class acf_location_post_taxonomy extends acf_location {
 		$post_id = acf_maybe_get( $screen, 'post_id' );
 		$post_terms = acf_maybe_get( $screen, 'post_terms' );
 		
+		// Allow compatibility for attachments.
+		if( !$post_id ) {
+			$post_id = acf_maybe_get( $screen, 'attachment_id' );
+		}
+		
 		// bail early if not a post
 		if( !$post_id ) return false;
 		

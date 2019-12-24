@@ -128,13 +128,13 @@ acf.unload.active = 0;
 		$is_page = acf_is_screen('attachment');
 		$post_id = $post->ID;
 		$el = 'tr';
-		$args = array(
-			'attachment' => $post_id
-		);
 		
 		
 		// get field groups
-		$field_groups = acf_get_field_groups( $args );
+		$field_groups = acf_get_field_groups(array(
+			'attachment_id' => $post_id,
+			'attachment' => $post_id // Leave for backwards compatibility
+		));
 		
 		
 		// render

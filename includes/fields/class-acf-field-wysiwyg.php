@@ -427,7 +427,7 @@ class acf_field_wysiwyg extends acf_field {
 		// delay
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Delay initialization?','acf'),
-			'instructions'	=> __('TinyMCE will not be initalized until field is clicked','acf'),
+			'instructions'	=> __('TinyMCE will not be initialized until field is clicked','acf'),
 			'name'			=> 'delay',
 			'type'			=> 'true_false',
 			'ui'			=> 1,

@@ -52,50 +52,67 @@ class ACF_Admin_Upgrade {
 	}
 	
 	/**
-	*  network_admin_menu
-	*
-	*  Setus up logic if DB Upgrade is needed on a multi site.
-	*
-	*  @date	24/8/18
-	*  @since	5.7.4
-	*
-	*  @param	void
-	*  @return	void
-	*/
+	 * network_admin_menu
+	 *
+	 * Sets up admin logic if DB Upgrade is required on a multi site.
+	 *
+	 * @date	24/8/18
+	 * @since	5.7.4
+	 *
+	 * @param	void
+	 * @return	void
+	 */
 	function network_admin_menu() {
 		
-		// vars
-		$has_upgrade = false;
+		// Vars.
+		$upgrade = false;
 		
-		// loop over sites
-		$sites = acf_get_sites();
+		// Loop over sites and check for upgrades.
+		$sites = get_sites( array( 'number' => 0 ) );
 		if( $sites ) {
-		foreach( $sites as $site ) {
+			
+			// Unhook action to avoid memory issue (as seen in wp-includes/ms-site.php).
+			remove_action( 'switch_blog', 'wp_switch_roles_and_user', 1 );
+			foreach( $sites as $site ) {
 				
-			// switch blog
-			switch_to_blog( $site['blog_id'] );
-			
-			// check for upgrade
-			if( acf_has_upgrade() ) {
-				$has_upgrade = true;
-			}
-			
-			// restore blog
-			restore_current_blog();
-		}}
-		
-		// check if upgrade is avaialble
-		if( $has_upgrade ) {
-			
-			// add notice
-			add_action('network_admin_notices', array($this, 'network_admin_notices'));
-			
-			// add page
-			$page = add_submenu_page('index.php', __('Upgrade Database','acf'), __('Upgrade Database','acf'), acf_get_setting('capability'), 'acf-upgrade-network', array($this,'network_admin_html'));
-			
-			// actions
-			add_action('load-' . $page, array($this,'network_admin_load'));
+				// Switch site.
+				switch_to_blog( $site->blog_id );
+				
+				// Check for upgrade.
+				$site_upgrade = acf_has_upgrade();
+				
+				// Restore site.
+				// Ideally, we would switch back to the original site at after looping, however,
+				// the restore_current_blog() is needed to modify global vars.
+				restore_current_blog();
+				
+				// Check if upgrade was found.
+				if( $site_upgrade ) {
+					$upgrade = true;
+					break;
+				}
+		    }
+		    add_action( 'switch_blog', 'wp_switch_roles_and_user', 1, 2 );
 		}
+		
+		// Bail early if no upgrade is needed.
+		if( !$upgrade ) {
+			return;
+		}
+		
+		// Add notice.
+		add_action('network_admin_notices', array($this, 'network_admin_notices'));
+		
+		// Add page.
+		$page = add_submenu_page(
+			'index.php', 
+			__('Upgrade Database','acf'), 
+			__('Upgrade Database','acf'), 
+			acf_get_setting('capability'), 
+			'acf-upgrade-network', 
+			array( $this,'network_admin_html' )
+		);
+		add_action( "load-$page", array( $this, 'network_admin_load' ) );
 	}
 	
 	/**
