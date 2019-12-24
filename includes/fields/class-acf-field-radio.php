@@ -132,7 +132,7 @@ class acf_field_radio extends acf_field {
 			
 			
 			// append other choice
-			$field['choices']['other'] .= '</label><input type="text" ' . acf_esc_attr($input) . ' /><label>';
+			$field['choices']['other'] .= '</label> <input type="text" ' . acf_esc_attr($input) . ' /><label>';
 		
 		}
 		

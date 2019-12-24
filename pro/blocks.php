@@ -9,7 +9,7 @@ acf_register_store( 'block-types' );
 /**
  * acf_register_block_type
  *
- * Registeres a block type.
+ * Registers a block type.
  *
  * @date	18/2/19
  * @since	5.7.12
@@ -188,8 +188,10 @@ function acf_validate_block_type( $block ) {
 		'enqueue_assets'	=> false,
 	));
 	
-	// Restrict keywords to 3 max to avoid JS error.
-	$block['keywords'] = array_slice($block['keywords'], 0, 3);
+	// Restrict keywords to 3 max to avoid JS error in older versions.
+	if( acf_version_compare('wp', '<', '5.2') ) {
+		$block['keywords'] = array_slice($block['keywords'], 0, 3);
+	}
 	
 	// Generate name with prefix.
 	$block['name'] = 'acf/' . acf_slugify($block['name']);
@@ -560,6 +562,7 @@ function acf_parse_save_blocks_callback( $matches ) {
 	// Defaults
 	$name = isset($matches['name']) ? $matches['name'] : '';
 	$attrs = isset($matches['attrs']) ? json_decode( $matches['attrs'], true) : '';
+	$void = isset($matches['void']) ? $matches['void'] : '';
 	
 	// Bail early if missing data or not an ACF Block.
 	if( !$name || !$attrs || !acf_has_block_type($name) ) {
@@ -588,5 +591,5 @@ function acf_parse_save_blocks_callback( $matches ) {
 	$attrs = apply_filters( 'acf/pre_save_block', $attrs );
 	
 	// Return new comment
-	return '<!-- wp:' . $name . ' ' . acf_json_encode($attrs) . ' /-->';
+	return '<!-- wp:' . $name . ' ' . acf_json_encode($attrs) . ' ' . $void . '-->';
 }
