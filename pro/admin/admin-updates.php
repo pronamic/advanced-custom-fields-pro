@@ -218,7 +218,7 @@ class ACF_Admin_Updates {
 		
 		// Connect to API.
 		$post = array(
-			'acf_license'	=> $_POST['acf_pro_licence'],
+			'acf_license'	=> trim($_POST['acf_pro_licence']),
 			'acf_version'	=> acf_get_setting('version'),
 			'wp_name'		=> get_bloginfo('name'),
 			'wp_url'		=> home_url(),

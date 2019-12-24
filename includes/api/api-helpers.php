@@ -3167,7 +3167,7 @@ function acf_get_attachment( $attachment ) {
 	// video
 	} elseif( $type === 'video' ) {
 		
-		// dimentions
+		// dimensions
 		$response['width'] = acf_maybe_get($meta, 'width', 0);
 		$response['height'] = acf_maybe_get($meta, 'height', 0);
 		

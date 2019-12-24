@@ -111,32 +111,15 @@ class acf_field_google_map extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// validate value
-		if( empty($field['value']) ) {
-			$field['value'] = array();
-		}
-		
-		
-		// value
-		$field['value'] = wp_parse_args($field['value'], array(
-			'address'	=> '',
-			'lat'		=> '',
-			'lng'		=> ''
-		));
-		
-		
-		// default options
+		// Apply defaults.
 		foreach( $this->default_values as $k => $v ) {
-		
-			if( empty($field[ $k ]) ) {
+			if( !$field[ $k ] ) {
 				$field[ $k ] = $v;
-			}
-				
+			}	
 		}
 		
-		
-		// vars
-		$atts = array(
+		// Attrs.
+		$attrs = array(
 			'id'			=> $field['id'],
 			'class'			=> "acf-google-map {$field['class']}",
 			'data-lat'		=> $field['center_lat'],
@@ -144,20 +127,18 @@ class acf_field_google_map extends acf_field {
 			'data-zoom'		=> $field['zoom'],
 		);
 		
-		
-		// has value
-		if( $field['value']['address'] ) {
-			$atts['class'] .= ' -value';
+		$search = '';
+		if( $field['value'] ) {
+			$attrs['class'] .= ' -value';
+			$search = $field['value']['address'];
+		} else {
+			$field['value'] = '';
 		}
 		
 ?>
-<div <?php acf_esc_attr_e($atts); ?>>
+<div <?php acf_esc_attr_e($attrs); ?>>
 	
-	<div class="acf-hidden">
-		<?php foreach( $field['value'] as $k => $v ): 
-			acf_hidden_input(array( 'name' => $field['name'].'['.$k.']', 'value' => $v, 'data-name' => $k ));
-		endforeach; ?>
-	</div>
+	<?php acf_hidden_input( array('name' => $field['name'], 'value' => $field['value']) ); ?>
 	
 	<div class="title">
 		
@@ -167,7 +148,7 @@ class acf_field_google_map extends acf_field {
 			?><a href="#" data-name="locate" class="acf-icon -location grey" title="<?php _e("Find current location", 'acf'); ?>"></a>
 		</div>
 		
-		<input class="search" type="text" placeholder="<?php _e("Search for address...",'acf'); ?>" value="<?php echo esc_attr($field['value']['address']); ?>" />
+		<input class="search" type="text" placeholder="<?php _e("Search for address...",'acf'); ?>" value="<?php echo esc_attr( $search ); ?>" />
 		<i class="acf-loading"></i>
 				
 	</div>
@@ -240,40 +221,32 @@ class acf_field_google_map extends acf_field {
 		
 	}
 	
-	
-	/*
-	*  validate_value
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	11/02/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	function validate_value( $valid, $value, $field, $input ){
+	/**
+	 * load_value
+	 *
+	 * Filters the value loaded from the database.
+	 *
+	 * @date	16/10/19
+	 * @since	5.8.1
+	 *
+	 * @param	mixed $value The value loaded from the database.
+	 * @param	mixed $post_id The post ID where the value is saved.
+	 * @param	array $field The field settings array.
+	 * @return	(array|false)
+	 */
+	 function load_value( $value, $post_id, $field ) {
 		
-		// bail early if not required
-		if( ! $field['required'] ) {
-			
-			return $valid;
-			
+		// Ensure value is an array.
+		if( $value ) {
+			return wp_parse_args($value, array(
+				'address'	=> '',
+				'lat'		=> 0,
+				'lng'		=> 0
+			));
 		}
 		
-		
-		if( empty($value) || empty($value['lat']) || empty($value['lng']) ) {
-			
-			return false;
-			
-		}
-		
-		
-		// return
-		return $valid;
-		
+		// Return default.
+		return false;
 	}
 	
 	
@@ -292,16 +265,20 @@ class acf_field_google_map extends acf_field {
 	*
 	*  @return	$value - the modified value
 	*/
-	
 	function update_value( $value, $post_id, $field ) {
 		
-		// Check if value is an empty array and convert to empty string.
-		if( empty($value) || empty($value['lat']) ) {
-			$value = "";
+		// decode JSON string.
+		if( is_string($value) ) {
+			$value = json_decode( wp_unslash($value), true );
 		}
 		
-		// return
-		return $value;
+		// Ensure value is an array.
+		if( $value ) {
+			return (array) $value;
+		}
+		
+		// Return default.
+		return false;
 	}
 }
 

@@ -2,7 +2,7 @@
 Contributors: elliotcondon
 Tags: acf, advanced, custom, field, fields, form, repeater, content
 Requires at least: 4.7.0
-Tested up to: 5.2
+Tested up to: 5.3.0
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -66,6 +66,38 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.8.7 =
+*Release Date - 12 November 2019*
+
+* New - Updated admin CSS for new WordPress 5.3 styling.
+* Fix - Fixed various issues affecting dynamic metaboxes in the block editor (requires WordPress 5.3)
+* Fix - Fixed performance issue when checking network sites for upgrades.
+* Fix - Fixed Select2 clones appearing after duplicating a Relationship field.
+* Tweak - Repeater field "Add row" icons will now hide when maximum rows are reached.
+* Tweak - Removed ACF Blocks keyword limit for later versions of Gutenberg.
+
+= 5.8.6 =
+*Release Date - 24 October 2019*
+
+* New - Added more data to Google Maps field value including place_id, street_name, country and more.
+* Fix - Fixed bug in Gallery field incorrectly displaying .pdf attachments as icons.
+* Fix - Fixed bug in Checkbox field missing "selected" class after "Toggle All".
+* Dev - Added compatibility for Attachments in the Post Taxonomy location rule.
+* Dev - Added missing return statement from `acf_get_form()` function.
+* Dev - Added "google_map_result" JS filter.
+
+= 5.8.5 =
+*Release Date - 8 October 2019*
+
+* New - Added new choice "Add" to the User Form location rule.
+* New - Optimized `acf_form()` logic when used in combination with `acf_register_form()`.
+* Fix - Fixed bug causing incorrect field order after sync.
+* Fix - Fixed bug reverting the first field type to Text in Firefox version 69.0.1.
+* Fix - Fixed bug causing tinymce issues when changing between block modes.
+* Fix - Fixed bug preventing block registration when category does not exist.
+* Fix - Fixed bug preventing block registration when no icon is declared.
+* Dev - Added RegExp compatibility for innerBlocks.
 
 = 5.8.4 =
 *Release Date - 3 September 2019*

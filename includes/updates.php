@@ -94,47 +94,52 @@ class ACF_Updates {
 	}
 	
 	/*
-	*  request
-	*
-	*  Makes a request to the ACF connect server.
-	*
-	*  @date	8/4/17
-	*  @since	5.5.10
-	*
-	*  @param	string $query The api path. Defaults to 'index.php'
-	*  @param	array $body The body to post
-	*  @return	array|string|WP_Error
-	*/
-	
-	function request( $query = 'index.php', $body = null ) {
+	 * request
+	 *
+	 * Makes a request to the ACF connect server.
+	 *
+	 * @date	8/4/17
+	 * @since	5.5.10
+	 *
+	 * @param	string $endpoint The API endpoint.
+	 * @param	array $body The body to post.
+	 * @return	(array|string|WP_Error)
+	 */
+	function request( $endpoint = '', $body = null ) {
 		
-		// vars
-		$url = 'https://connect.advancedcustomfields.com/' . $query;
+		// Determine URL.
+		$url = "https://connect.advancedcustomfields.com/$endpoint";
 		
-		// Development mode
-		if( defined('ACF_DEV') && ACF_DEV ) {
-			$url = 'http://connect/' . $query;
+		// Staging environment.
+		if( defined('ACF_DEV_API') && ACF_DEV_API === 'STAGE' ) {
+			$url = "https://staging.connect.advancedcustomfields.com/$endpoint";
+			acf_log( $url, $body );
+		
+		// Dev environment.	
+		} elseif( defined('ACF_DEV_API') && ACF_DEV_API ) {
+			$url = "http://connect/$endpoint";
+			acf_log( $url, $body );
 		}
 		
-		// post
+		// Make request.
 		$raw_response = wp_remote_post( $url, array(
 			'timeout'	=> 10,
 			'body'		=> $body
 		));
 		
-		// wp error
+		// Handle response error.
 		if( is_wp_error($raw_response) ) {
 			return $raw_response;
 		
-		// http error
+		// Handle http error.
 		} elseif( wp_remote_retrieve_response_code($raw_response) != 200 ) {
 			return new WP_Error( 'server_error', wp_remote_retrieve_response_message($raw_response) );
 		}
 		
-		// decode response
+		// Decode JSON response.
 		$json = json_decode( wp_remote_retrieve_body($raw_response), true );
 		
-		// allow non json value
+		// Allow non json value.
 		if( $json === null ) {
 			return wp_remote_retrieve_body($raw_response);
 		}
