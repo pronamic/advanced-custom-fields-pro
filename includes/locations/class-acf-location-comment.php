@@ -2,94 +2,68 @@
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists('acf_location_comment') ) :
+if( ! class_exists('ACF_Location_Comment') ) :
 
-class acf_location_comment extends acf_location {
+class ACF_Location_Comment extends ACF_Location {
 	
-	
-	/*
-	*  __construct
-	*
-	*  This function will setup the class functionality
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function initialize() {
-		
-		// vars
+	/**
+	 * Initializes props.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function initialize() {
 		$this->name = 'comment';
-		$this->label = __("Comment",'acf');
+		$this->label = __( "Comment", 'acf' );
 		$this->category = 'forms';
-    	
+		$this->object_type = 'comment';
 	}
 	
-
-	/*
-	*  rule_match
-	*
-	*  This function is used to match this location $rule to the current $screen
-	*
-	*  @type	function
-	*  @date	3/01/13
-	*  @since	3.5.7
-	*
-	*  @param	$match (boolean) 
-	*  @param	$rule (array)
-	*  @return	$options (array)
-	*/
-	
-	function rule_match( $result, $rule, $screen ) {
+	/**
+	 * Matches the provided rule against the screen args returning a bool result.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule The location rule.
+	 * @param	array $screen The screen args.
+	 * @param	array $field_group The field group settings.
+	 * @return	bool
+	 */
+	public function match( $rule, $screen, $field_group ) {
 		
-		// vars
-		$comment = acf_maybe_get( $screen, 'comment' );
-		
-		
-		// bail early if not comment
-		if( !$comment ) return false;
-				
-		
-        // return
-        return $this->compare( $comment, $rule );
-		
+		// Check screen args.
+		if( isset($screen['comment']) ) {
+			$comment = $screen['comment'];
+		} else {
+			return false;
+		}
+		return $this->compare_to_rule( $comment, $rule );
 	}
 	
-	
-	/*
-	*  rule_operators
-	*
-	*  This function returns the available values for this rule type
-	*
-	*  @type	function
-	*  @date	30/5/17
-	*  @since	5.6.0
-	*
-	*  @param	n/a
-	*  @return	(array)
-	*/
-	
-	function rule_values( $choices, $rule ) {
-		
-		// vars
-		$choices = array( 'all' => __('All', 'acf') );
-		$choices = array_merge( $choices, acf_get_pretty_post_types() );
-		// change this to post types that support comments				
-		
-		// return
-		return $choices;
-		
+	/**
+	 * Returns an array of possible values for this rule type.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule A location rule.
+	 * @return	array
+	 */
+	public function get_values( $rule ) {
+		return array_merge(
+			array(
+				'all' => __('All', 'acf')
+			),
+			acf_get_pretty_post_types() // Todo: Change to post types that support comments.
+		);
 	}
-	
 }
 
-// initialize
-acf_register_location_rule( 'acf_location_comment' );
+// Register.
+acf_register_location_type( 'ACF_Location_Comment' );
 
 endif; // class_exists check
-
-?>

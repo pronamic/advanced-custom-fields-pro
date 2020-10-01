@@ -17,7 +17,7 @@
 		
 		?>
 		
-		<div id="poststuff">
+		<div id="poststuff" class="poststuff">
 			
 			<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
 				

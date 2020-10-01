@@ -2,94 +2,78 @@
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists('acf_location_options_page') ) :
+if( ! class_exists('ACF_Location_Options_Page') ) :
 
-class acf_location_options_page extends acf_location {
+class ACF_Location_Options_Page extends ACF_Location {
 	
-	/*
-	*  __construct
-	*
-	*  This function will setup the class functionality
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function initialize() {
-		
-		// vars
+	/**
+	 * Initializes props.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function initialize() {
 		$this->name = 'options_page';
 		$this->label = __("Options Page",'acf');
 		$this->category = 'forms';
-    	
+		$this->object_type = 'option';
 	}
 	
-	
-	/*
-	*  rule_match
-	*
-	*  This function is used to match this location $rule to the current $screen
-	*
-	*  @type	function
-	*  @date	3/01/13
-	*  @since	3.5.7
-	*
-	*  @param	$match (boolean) 
-	*  @param	$rule (array)
-	*  @return	$options (array)
-	*/
-	
-	function rule_match( $result, $rule, $screen ) {
+	/**
+	 * Matches the provided rule against the screen args returning a bool result.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule The location rule.
+	 * @param	array $screen The screen args.
+	 * @param	array $field_group The field group settings.
+	 * @return	bool
+	 */
+	public function match( $rule, $screen, $field_group ) {
 		
-		$options_page = acf_maybe_get( $screen, 'options_page' );
-		return $this->compare( $options_page, $rule );
+		// Check screen args.
+		if( isset($screen['options_page']) ) {
+			$options_page = $screen['options_page'];
+		} else {
+			return false;
+		}
 		
+		// Compare rule against $nav_menu.
+		return $this->compare_to_rule( $options_page, $rule );
 	}
 	
-	
-	/*
-	*  rule_operators
-	*
-	*  This function returns the available values for this rule type
-	*
-	*  @type	function
-	*  @date	30/5/17
-	*  @since	5.6.0
-	*
-	*  @param	n/a
-	*  @return	(array)
-	*/
-	
-	function rule_values( $choices, $rule ) {
+	/**
+	 * Returns an array of possible values for this rule type.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule A location rule.
+	 * @return	array
+	 */
+	public function get_values( $rule ) {
+		$choices = array();
 		
-		// vars
+		// Append pages.
 		$pages = acf_get_options_pages();
-		
-		
-		// populate
-		if( !empty($pages) ) {
+		if( $pages ) {
 			foreach( $pages as $page ) {
 				$choices[ $page['menu_slug'] ] = $page['page_title'];
 			}
 		} else {
-			$choices[''] = __('No options pages exist', 'acf');
+			$choices[ '' ] = __( 'No options pages exist', 'acf' );
 		}
 		
-		
-		// return
-	    return $choices;
-		
+		// Return choices.
+		return $choices;
 	}
-	
 }
 
 // initialize
-acf_register_location_rule( 'acf_location_options_page' );
+acf_register_location_type( 'ACF_Location_Options_Page' );
 
 endif; // class_exists check
-
-?>

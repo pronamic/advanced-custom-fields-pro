@@ -153,7 +153,7 @@ class acf_field_text extends acf_field {
 	function validate_value( $valid, $value, $field, $input ){
 		
 		// Check maxlength
-		if( $field['maxlength'] && mb_strlen(wp_unslash($value)) > $field['maxlength'] ) {
+		if( $field['maxlength'] && (acf_strlen($value) > $field['maxlength']) ) {
 			return sprintf( __('Value must not exceed %d characters', 'acf'), $field['maxlength'] );
 		}
 		

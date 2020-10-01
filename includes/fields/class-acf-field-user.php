@@ -1,26 +1,21 @@
 <?php
 
-if( ! class_exists('acf_field_user') ) :
+if( ! class_exists('ACF_Field_User') ) :
 
-class acf_field_user extends acf_field {
+class ACF_Field_User extends ACF_Field {
 	
-	
-	/*
-	*  __construct
-	*
-	*  This function will setup the field type data
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
+	/**
+	 * Initializes the field type.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
 	function initialize() {
 		
-		// vars
+		// Props.
 		$this->name = 'user';
 		$this->label = __("User",'acf');
 		$this->category = 'relational';
@@ -31,302 +26,78 @@ class acf_field_user extends acf_field {
 			'return_format'	=> 'array',
 		);
 		
+		// Register filter variations.
+		acf_add_filter_variations( 'acf/fields/user/query', array('name', 'key'), 1 );
+		acf_add_filter_variations( 'acf/fields/user/result', array('name', 'key'), 2 );
+		acf_add_filter_variations( 'acf/fields/user/search_columns', array('name', 'key'), 3 );
 		
-		// extra
-		add_action('wp_ajax_acf/fields/user/query',			array($this, 'ajax_query'));
-		add_action('wp_ajax_nopriv_acf/fields/user/query',	array($this, 'ajax_query'));
-    	
-	}
-
-	
-	/*
-	*  ajax_query
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	24/10/13
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
-	function ajax_query() {
-		
-		// validate
-		if( !acf_verify_ajax() ) die();
-		
-		
-		// get choices
-		$response = $this->get_ajax_query( $_POST );
-		
-		
-		// return
-		acf_send_ajax_results($response);
-			
+		// Add AJAX query.
+		add_action( 'wp_ajax_acf/fields/user/query', array( $this, 'ajax_query' ) );
+		add_action( 'wp_ajax_nopriv_acf/fields/user/query', array( $this, 'ajax_query' ) );
 	}
 	
-	
-	/*
-	*  get_ajax_query
-	*
-	*  This function will return an array of data formatted for use in a select2 AJAX response
-	*
-	*  @type	function
-	*  @date	15/10/2014
-	*  @since	5.0.9
-	*
-	*  @param	$options (array)
-	*  @return	(array)
-	*/
-	
-	function get_ajax_query( $options = array() ) {
+	/**
+	 * Renders the field settings HTML.
+	 *
+	 * @date	23/01/13
+	 * @since	3.6.0
+	 *
+	 * @param	array $field The ACF field.
+	 * @return	void
+	 */
+	function render_field_settings( $field ) {
 		
-		// defaults
-   		$options = acf_parse_args($options, array(
-			'post_id'		=> 0,
-			's'				=> '',
-			'field_key'		=> '',
-			'paged'			=> 1
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Filter by role','acf'),
+			'instructions'	=> '',
+			'type'			=> 'select',
+			'name'			=> 'role',
+			'choices'		=> acf_get_user_role_labels(),
+			'multiple'		=> 1,
+			'ui'			=> 1,
+			'allow_null'	=> 1,
+			'placeholder'	=> __("All user roles",'acf'),
 		));
 		
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Allow Null?','acf'),
+			'instructions'	=> '',
+			'name'			=> 'allow_null',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+		));
 		
-		// load field
-		$field = acf_get_field( $options['field_key'] );
-		if( !$field ) return false;
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Select multiple values?','acf'),
+			'instructions'	=> '',
+			'name'			=> 'multiple',
+			'type'			=> 'true_false',
+			'ui'			=> 1,
+		));
 		
-		
-   		// vars
-   		$results = array();
-   		$args = array();
-   		$s = false;
-   		$is_search = false;
-   		
-		
-		// paged
-   		$args['users_per_page'] = 20;
-   		$args['paged'] = $options['paged'];
-   		
-   		
-   		// search
-		if( $options['s'] !== '' ) {
-			
-			// strip slashes (search may be integer)
-			$s = wp_unslash( strval($options['s']) );
-			
-			
-			// update vars
-			$args['s'] = $s;
-			$is_search = true;
-			
-		}
-		
-		
-		// role
-		if( !empty($field['role']) ) {
-		
-			$args['role'] = acf_get_array( $field['role'] );
-			
-		}
-		
-		
-		// search
-		if( $is_search ) {
-			
-			// append to $args
-			$args['search'] = '*' . $options['s'] . '*';
-			
-			
-			// add reference
-			$this->field = $field;
-			
-			
-			// add filter to modify search colums
-			add_filter('user_search_columns', array($this, 'user_search_columns'), 10, 3);
-			
-		}
-		
-		
-		// filters
-		$args = apply_filters("acf/fields/user/query",							$args, $field, $options['post_id']);
-		$args = apply_filters("acf/fields/user/query/name={$field['_name']}",	$args, $field, $options['post_id']);
-		$args = apply_filters("acf/fields/user/query/key={$field['key']}",		$args, $field, $options['post_id']);
-		
-		
-		// get users
-		$groups = acf_get_grouped_users( $args );
-		
-		
-		// loop
-		if( !empty($groups) ) {
-			
-			foreach( array_keys($groups) as $group_title ) {
-				
-				// vars
-				$users = acf_extract_var( $groups, $group_title );
-				$data = array(
-					'text'		=> $group_title,
-					'children'	=> array()
-				);
-				
-				
-				// append users
-				foreach( array_keys($users) as $user_id ) {
-					
-					$users[ $user_id ] = $this->get_result( $users[ $user_id ], $field, $options['post_id'] );
-					
-				};
-				
-				
-				// order by search
-				if( $is_search && empty($args['orderby']) ) {
-					
-					$users = acf_order_by_search( $users, $args['s'] );
-					
-				}
-				
-				
-				// append to $data
-				foreach( $users as $id => $title ) {
-					
-					$data['children'][] = array(
-						'id'	=> $id,
-						'text'	=> $title
-					);
-					
-				}
-				
-				
-				// append to $r
-				$results[] = $data;
-				
-			}
-			
-			// optgroup or single
-			if( !empty($args['role']) && count($args['role']) == 1 ) {
-				$results = $results[0]['children'];
-			}
-		}
-		
-		
-		// vars
-		$response = array(
-			'results'	=> $results,
-			'limit'		=> $args['users_per_page']
-		);
-		
-		
-		// return
-		return $response;
-		
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Return Format','acf'),
+			'instructions'	=> '',
+			'type'			=> 'radio',
+			'name'			=> 'return_format',
+			'choices'		=> array(
+				'array'			=> __("User Array",'acf'),
+				'object'		=> __("User Object",'acf'),
+				'id'			=> __("User ID",'acf'),
+			),
+			'layout'	=>	'horizontal',
+		));
 	}
 	
-	
-	
-	/*
-	*  get_result
-	*
-	*  This function returns the HTML for a result
-	*
-	*  @type	function
-	*  @date	1/11/2013
-	*  @since	5.0.0
-	*
-	*  @param	$post (object)
-	*  @param	$field (array)
-	*  @param	$post_id (int) the post_id to which this value is saved to
-	*  @return	(string)
-	*/
-	
-	function get_result( $user, $field, $post_id = 0 ) {
-		
-		// get post_id
-		if( !$post_id ) $post_id = acf_get_form_data('post_id');
-		
-		
-		// vars
-		$result = $user->user_login;
-		
-		
-		// append name
-		if( $user->first_name ) {
-			
-			$result .= ' (' .  $user->first_name;
-			
-			if( $user->last_name ) {
-				
-				$result .= ' ' . $user->last_name;
-				
-			}
-			
-			$result .= ')';
-			
-		}
-		
-		
-		// filters
-		$result = apply_filters("acf/fields/user/result",							$result, $user, $field, $post_id);
-		$result = apply_filters("acf/fields/user/result/name={$field['_name']}",	$result, $user, $field, $post_id);
-		$result = apply_filters("acf/fields/user/result/key={$field['key']}",		$result, $user, $field, $post_id);
-		
-		
-		// return
-		return $result;
-		
-	}
-	
-	
-	/*
-	*  user_search_columns
-	*
-	*  This function will modify the columns which the user AJAX search looks in
-	*
-	*  @type	function
-	*  @date	17/06/2014
-	*  @since	5.0.0
-	*
-	*  @param	$columns (array)
-	*  @return	$columns
-	*/
-	
-	function user_search_columns( $columns, $search, $WP_User_Query ) {
-		
-		// bail early if no field
-		if( empty($this->field) ) {
-			
-			return $columns;
-			
-		}
-		
-		
-		// vars
-		$field = $this->field;
-		
-		
-		// filter for 3rd party customization
-		$columns = apply_filters("acf/fields/user/search_columns", 							$columns, $search, $WP_User_Query, $field);
-		$columns = apply_filters("acf/fields/user/search_columns/name={$field['_name']}",	$columns, $search, $WP_User_Query, $field);
-		$columns = apply_filters("acf/fields/user/search_columns/key={$field['key']}",		$columns, $search, $WP_User_Query, $field);
-		
-		
-		// return
-		return $columns;
-		
-	}
-	
-	/*
-	*  render_field()
-	*
-	*  Create the HTML interface for your field
-	*
-	*  @type	action
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$field - an array holding all the field's data
-	*/
-	
+	/**
+	 * Renders the field input HTML.
+	 *
+	 * @date	23/01/13
+	 * @since	3.6.0
+	 *
+	 * @param	array $field The ACF field.
+	 * @return	void
+	 */
 	function render_field( $field ) {
 		
 		// Change Field into a select.
@@ -358,159 +129,69 @@ class acf_field_user extends acf_field {
 		acf_render_field( $field );
 	}
 	
-	
-	/*
-	*  render_field_settings()
-	*
-	*  Create extra options for your field. This is rendered when editing a field.
-	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-	*
-	*  @type	action
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$field	- an array holding all the field's data
-	*/
-	
-	function render_field_settings( $field ) {
+	/**
+	 * Returns the result text for a fiven WP_User object.
+	 *
+	 * @date	1/11/2013
+	 * @since	5.0.0
+	 *
+	 * @param	WP_User $user The WP_User object.
+	 * @param	array $field The ACF field related to this query.
+	 * @param	(int|string) $post_id The post_id being edited.
+	 * @return	string
+	 */
+	function get_result( $user, $field, $post_id = 0 ) {
 		
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Filter by role','acf'),
-			'instructions'	=> '',
-			'type'			=> 'select',
-			'name'			=> 'role',
-			'choices'		=> acf_get_pretty_user_roles(),
-			'multiple'		=> 1,
-			'ui'			=> 1,
-			'allow_null'	=> 1,
-			'placeholder'	=> __("All user roles",'acf'),
-		));
+		// Get user result item.
+		$item = acf_get_user_result( $user );
 		
+		// Default $post_id to current post being edited.
+		$post_id = $post_id ? $post_id : acf_get_form_data('post_id');
 		
-		
-		// allow_null
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Allow Null?','acf'),
-			'instructions'	=> '',
-			'name'			=> 'allow_null',
-			'type'			=> 'true_false',
-			'ui'			=> 1,
-		));
-		
-		
-		// multiple
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Select multiple values?','acf'),
-			'instructions'	=> '',
-			'name'			=> 'multiple',
-			'type'			=> 'true_false',
-			'ui'			=> 1,
-		));
-		
-		// return_format
-		acf_render_field_setting( $field, array(
-			'label'			=> __('Return Format','acf'),
-			'instructions'	=> '',
-			'type'			=> 'radio',
-			'name'			=> 'return_format',
-			'choices'		=> array(
-				'array'			=> __("User Array",'acf'),
-				'object'		=> __("User Object",'acf'),
-				'id'			=> __("User ID",'acf'),
-			),
-			'layout'	=>	'horizontal',
-		));
-		
-		
+		/**
+		 * Filters the result text.
+		 *
+		 * @date	21/5/19
+		 * @since	5.8.1
+		 *
+		 * @param	array $args The query args.
+		 * @param	array $field The ACF field related to this query.
+		 * @param	(int|string) $post_id The post_id being edited.
+		 */
+		return apply_filters( "acf/fields/user/result", $item['text'], $user, $field, $post_id );
 	}
 	
-	
-	/*
-	*  update_value()
-	*
-	*  This filter is appied to the $value before it is updated in the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value - the value which will be saved in the database
-	*  @param	$post_id - the $post_id of which the value will be saved
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$value - the modified value
-	*/
-	
-	function update_value( $value, $post_id, $field ) {
-		
-		// Bail early if no value.
-		if( empty($value) ) {
-			return $value;
-		}
-		
-		// Format array of values.
-		// - ensure each value is an id.
-		// - Parse each id as string for SQL LIKE queries.
-		if( acf_is_sequential_array($value) ) {
-			$value = array_map('acf_idval', $value);
-			$value = array_map('strval', $value);
-		
-		// Parse single value for id.
-		} else {
-			$value = acf_idval( $value );
-		}
-		
-		// Return value.
-		return $value;
-	}
-	
-	
-	/*
-	*  load_value()
-	*
-	*  This filter is applied to the $value after it is loaded from the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value found in the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$value
-	*/
-	
+	/**
+	 * Filters the field value after it is loaded from the database.
+	 *
+	 * @date	23/01/13
+	 * @since	3.6.0
+	 *
+	 * @param	mixed $value The field value.
+	 * @param	mixed $post_id The post ID where the value is saved.
+	 * @param	array $field The field array containing all settings.
+	 * @return	mixed
+	 */
 	function load_value( $value, $post_id, $field ) {
 		
-		// ACF4 null
+		// Add compatibility for version 4.
 		if( $value === 'null' ) {
-		
 			return false;
-			
 		}
-		
-		
-		// return
 		return $value;
 	}
 	
-	
-	/*
-	*  format_value()
-	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value which was loaded from the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*
-	*  @return	$value (mixed) the modified value
-	*/
-	
+	/**
+	 * Filters the field value after it is loaded from the database but before it is returned to the front-end API.
+	 *
+	 * @date	23/01/13
+	 * @since	3.6.0
+	 *
+	 * @param	mixed $value The field value.
+	 * @param	mixed $post_id The post ID where the value is saved.
+	 * @param	array $field The field array containing all settings.
+	 * @return	mixed
+	 */
 	function format_value( $value, $post_id, $field ) {
 		
 		// Bail early if no value.
@@ -571,13 +252,210 @@ class acf_field_user extends acf_field {
 		
 		// Return.
 		return $value;
+	}
+	
+	/**
+	 * Filters the field value before it is saved into the database.
+	 *
+	 * @date	23/01/13
+	 * @since	3.6.0
+	 *
+	 * @param	mixed $value The field value.
+	 * @param	mixed $post_id The post ID where the value is saved.
+	 * @param	array $field The field array containing all settings.
+	 * @return	mixed
+	 */
+	function update_value( $value, $post_id, $field ) {
+		
+		// Bail early if no value.
+		if( empty($value) ) {
+			return $value;
+		}
+		
+		// Format array of values.
+		// - ensure each value is an id.
+		// - Parse each id as string for SQL LIKE queries.
+		if( acf_is_sequential_array($value) ) {
+			$value = array_map('acf_idval', $value);
+			$value = array_map('strval', $value);
+		
+		// Parse single value for id.
+		} else {
+			$value = acf_idval( $value );
+		}
+		
+		// Return value.
+		return $value;
+	}
+
+	/**
+	 * Callback for the AJAX query request.
+	 *
+	 * @date	24/10/13
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	function ajax_query() {
+		
+		// Modify Request args.
+		if( isset($_REQUEST['s']) ) {
+			$_REQUEST['search'] = $_REQUEST['s'];
+		}
+		if( isset($_REQUEST['paged']) ) {
+			$_REQUEST['page'] = $_REQUEST['paged'];
+		}
+		
+		// Add query hooks.
+		add_action( 'acf/ajax/query_users/init', array( $this, 'ajax_query_init' ), 10, 2 );
+		add_filter( 'acf/ajax/query_users/args', array( $this, 'ajax_query_args' ), 10, 3 );
+		add_filter( 'acf/ajax/query_users/result', array( $this, 'ajax_query_result' ), 10, 3 );
+		add_filter( 'acf/ajax/query_users/search_columns', array( $this, 'ajax_query_search_columns' ), 10, 4 );
+		
+		// Simulate AJAX request.
+		acf_get_instance('ACF_Ajax_Query_Users')->request();
+	}
+	
+	/**
+	 * Runs during the AJAX query initialization.
+	 *
+	 * @date	9/3/20
+	 * @since	5.8.8
+	 *
+	 * @param	array $request The query request.
+	 * @param	ACF_Ajax_Query $query The query object.
+	 * @return	void
+	 */
+	function ajax_query_init( $request, $query ) {
+		
+		// Require field.
+		if( !$query->field ) {
+			$query->send( new WP_Error( 'acf_missing_field', __( 'Error loading field.', 'acf' ), array( 'status' => 404 ) ) );
+		}
+	}
+	
+	/**
+	 * Filters the AJAX query args.
+	 *
+	 * @date	9/3/20
+	 * @since	5.8.8
+	 *
+	 * @param	array $args The query args.
+	 * @param	array $request The query request.
+	 * @param	ACF_Ajax_Query $query The query object.
+	 * @return	array
+	 */
+	function ajax_query_args( $args, $request, $query ) {
+		
+		// Add specific roles.
+		if( $query->field['role'] ) {
+			$args['role__in'] = acf_array( $query->field['role'] );
+		}
+		
+		/**
+		 * Filters the query args.
+		 *
+		 * @date	21/5/19
+		 * @since	5.8.1
+		 *
+		 * @param	array $args The query args.
+		 * @param	array $field The ACF field related to this query.
+		 * @param	(int|string) $post_id The post_id being edited.
+		 */
+		return apply_filters( "acf/fields/user/query", $args, $query->field, $query->post_id );
+	}
+	
+	/**
+	 * Filters the WP_User_Query search columns.
+	 *
+	 * @date	9/3/20
+	 * @since	5.8.8
+	 *
+	 * @param	array $columns An array of column names to be searched.
+	 * @param	string $search The search term.
+	 * @param	WP_User_Query $WP_User_Query The WP_User_Query instance.
+	 * @return	array
+	 */
+	function ajax_query_search_columns( $columns, $search, $WP_User_Query, $query ) {
+		
+		/**
+		 * Filters the column names to be searched.
+		 *
+		 * @date	21/5/19
+		 * @since	5.8.1
+		 *
+		 * @param	array $columns An array of column names to be searched.
+		 * @param	string $search The search term.
+		 * @param	WP_User_Query $WP_User_Query The WP_User_Query instance.
+		 * @param	array $field The ACF field related to this query.
+		 */
+		return apply_filters( "acf/fields/user/search_columns", $columns, $search, $WP_User_Query, $query->field );
+	}
+	
+	/**
+	 * Filters the AJAX Query result.
+	 *
+	 * @date	9/3/20
+	 * @since	5.8.8
+	 *
+	 * @param	array $item The choice id and text.
+	 * @param	WP_User $user The user object.
+	 * @param	ACF_Ajax_Query $query The query object.
+	 * @return	array
+	 */
+	function ajax_query_result( $item, $user, $query ) {
+		
+		/**
+		 * Filters the result text.
+		 *
+		 * @date	21/5/19
+		 * @since	5.8.1
+		 *
+		 * @param	string The result text.
+		 * @param	WP_User $user The user object.
+		 * @param	array $field The ACF field related to this query.
+		 * @param	(int|string) $post_id The post_id being edited.
+		 */
+		$item['text'] = apply_filters( "acf/fields/user/result", $item['text'], $user, $query->field, $query->post_id );
+		return $item;
+	}
+	
+	/**
+	 * Return an array of data formatted for use in a select2 AJAX response.
+	 *
+	 * @date	15/10/2014
+	 * @since	5.0.9
+	 * @deprecated 5.8.9
+	 *
+	 * @param	array $args An array of query args.
+	 * @return	array
+	 */
+	function get_ajax_query( $options = array() ) {
+		_deprecated_function( __FUNCTION__, '5.8.9' );
+		return array();
+	}
+	
+	/**
+	 * Filters the WP_User_Query search columns.
+	 *
+	 * @date	15/10/2014
+	 * @since	5.0.9
+	 * @deprecated 5.8.9
+	 *
+	 * @param	array $columns An array of column names to be searched.
+	 * @param	string $search The search term.
+	 * @param	WP_User_Query $WP_User_Query The WP_User_Query instance.
+	 * @return	array
+	 */
+	function user_search_columns( $columns, $search, $WP_User_Query ) {
+		_deprecated_function( __FUNCTION__, '5.8.9' );
+		return $columns;
 	}	
 }
 
 
 // initialize
-acf_register_field_type( 'acf_field_user' );
+acf_register_field_type( 'ACF_Field_User' );
 
 endif; // class_exists check
-
-?>

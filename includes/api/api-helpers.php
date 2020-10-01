@@ -191,6 +191,23 @@ function acf_set_data( $name, $value ) {
 	return acf()->set_data( $name, $value );
 }
 
+/**
+ * Appends data to an existing key.
+ *
+ * @date	11/06/2020
+ * @since	5.9.0
+ *
+ * @param	string $name The data name.
+ * @return	array $data The data array.
+ */
+function acf_append_data( $name, $data ) {
+	$prev_data = acf()->get_data( $name );
+	if( is_array($prev_data) ) {
+		$data = array_merge( $prev_data, $data );
+	}
+	acf()->set_data( $name, $data );
+}
+
 /*
 *  acf_init
 *
@@ -1214,6 +1231,22 @@ function acf_decode_taxonomy_term( $value ) {
  */
 function acf_array( $val = array() ) {
 	return (array) $val;
+}
+
+/**
+ * Returns a non-array value.
+ *
+ * @date	11/05/2020
+ * @since	5.8.10
+ *
+ * @param	mixed $val The value to review.
+ * @return	mixed
+ */
+function acf_unarray( $val ) {
+	if( is_array( $val ) ) {
+		return reset( $val );
+	}
+	return $val;
 }
 
 /*
@@ -3083,53 +3116,50 @@ function acf_maybe_get_GET( $key = '', $default = null ) {
 	
 }
 
-
-/*
-*  acf_get_attachment
-*
-*  This function will return an array of attachment data
-*
-*  @type	function
-*  @date	5/01/2015
-*  @since	5.1.5
-*
-*  @param	$post (mixed) either post ID or post object
-*  @return	(array)
-*/
-
+/**
+ * Returns an array of attachment data.
+ *
+ * @date	05/01/2015
+ * @since	5.1.5
+ *
+ * @param	int|WP_Post The attachment ID or object.
+ * @return	array|false
+ */
 function acf_get_attachment( $attachment ) {
 	
-	// get post
-	if( !$attachment = get_post($attachment) ) {
+	// Allow filter to short-circuit load attachment logic.
+	// Alternatively, this filter may be used to switch blogs for multisite media functionality. 
+	$response = apply_filters( "acf/pre_load_attachment", null, $attachment );
+	if( $response !== null ) {
+		return $response;
+	}
+
+	// Get the attachment post object.
+	$attachment = get_post( $attachment );
+	if( !$attachment ) {
 		return false;
 	}
-	
-	// validate post_type
 	if( $attachment->post_type !== 'attachment' ) {
 		return false;
 	}
 	
-	// vars
-	$sizes_id = 0;
+	// Load various attachment details.
 	$meta = wp_get_attachment_metadata( $attachment->ID );
 	$attached_file = get_attached_file( $attachment->ID );
-	$attachment_url = wp_get_attachment_url( $attachment->ID );
-	
-	// get mime types
 	if( strpos( $attachment->post_mime_type, '/' ) !== false ) {
 		list( $type, $subtype ) = explode( '/', $attachment->post_mime_type );
 	} else {
 		list( $type, $subtype ) = array( $attachment->post_mime_type, '' );
 	}
-	
-	// vars
+
+	// Generate response.
 	$response = array(
 		'ID'			=> $attachment->ID,
 		'id'			=> $attachment->ID,
 		'title'       	=> $attachment->post_title,
 		'filename'		=> wp_basename( $attached_file ),
 		'filesize'		=> 0,
-		'url'			=> $attachment_url,
+		'url'			=> wp_get_attachment_url( $attachment->ID ),
 		'link'			=> get_attachment_link( $attachment->ID ),
 		'alt'			=> get_post_meta( $attachment->ID, '_wp_attachment_image_alt', true ),
 		'author'		=> $attachment->post_author,
@@ -3147,67 +3177,63 @@ function acf_get_attachment( $attachment ) {
         'icon'			=> wp_mime_type_icon( $attachment->ID )
 	);
 	
-	// filesize
+	// Append filesize data.
 	if( isset($meta['filesize']) ) {
 		$response['filesize'] = $meta['filesize'];
 	} elseif( file_exists($attached_file) ) {
 		$response['filesize'] = filesize( $attached_file );
 	}
 	
-	// image
-	if( $type === 'image' ) {
-		
-		$sizes_id = $attachment->ID;
-		$src = wp_get_attachment_image_src( $attachment->ID, 'full' );
-		
-		$response['url'] = $src[0];
-		$response['width'] = $src[1];
-		$response['height'] = $src[2];
-	
-	// video
-	} elseif( $type === 'video' ) {
-		
-		// dimensions
-		$response['width'] = acf_maybe_get($meta, 'width', 0);
-		$response['height'] = acf_maybe_get($meta, 'height', 0);
-		
-		// featured image
-		if( $featured_id = get_post_thumbnail_id($attachment->ID) ) {
-			$sizes_id = $featured_id;
-		}
-		
-	// audio
-	} elseif( $type === 'audio' ) {
-		
-		// featured image
-		if( $featured_id = get_post_thumbnail_id($attachment->ID) ) {
-			$sizes_id = $featured_id;
-		}				
+	// Restrict the loading of image "sizes".
+	$sizes_id = 0;
+
+	// Type specific logic.
+	switch( $type ) {
+		case 'image':
+			$sizes_id = $attachment->ID;
+			$src = wp_get_attachment_image_src( $attachment->ID, 'full' );
+			$response['url'] = $src[0];
+			$response['width'] = $src[1];
+			$response['height'] = $src[2];
+			break;
+		case 'video':
+			$response['width'] = acf_maybe_get( $meta, 'width', 0 );
+			$response['height'] = acf_maybe_get( $meta, 'height', 0 );
+			if( $featured_id = get_post_thumbnail_id( $attachment->ID ) ) {
+				$sizes_id = $featured_id;
+			}
+			break;
+		case 'audio':
+			if( $featured_id = get_post_thumbnail_id( $attachment->ID ) ) {
+				$sizes_id = $featured_id;
+			}	
+			break;
 	}
-	
-	
-	// sizes
+
+	// Load array of image sizes.
 	if( $sizes_id ) {
-		
-		// vars
 		$sizes = get_intermediate_image_sizes();
 		$data = array();
-		
-		// loop
 		foreach( $sizes as $size ) {
 			$src = wp_get_attachment_image_src( $sizes_id, $size );
-			$data[ $size ] = $src[0];
-			$data[ $size . '-width' ] = $src[1];
-			$data[ $size . '-height' ] = $src[2];
+			$data[ $size ] = $src[ 0 ];
+			$data[ $size . '-width' ] = $src[ 1 ];
+			$data[ $size . '-height' ] = $src[ 2 ];
 		}
-		
-		// append
 		$response['sizes'] = $data;
 	}
 	
-	// return
-	return $response;
-	
+	/**
+	 * Filters the attachment $response after it has been loaded.
+	 *
+	 * @date	16/06/2020
+ 	 * @since	5.9.0
+	 *
+	 * @param	array $response Array of loaded attachment data.
+     * @param	WP_Post $attachment Attachment object.
+     * @param	array|false $meta Array of attachment meta data, or false if there is none.
+	 */
+	return apply_filters( "acf/load_attachment", $response, $attachment, $meta );
 }
 
 
@@ -3616,7 +3642,7 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 		} elseif( $max_size && $file['size'] > acf_get_filesize($max_size) ) {
 				
 			// min width
-			$errors['max_size'] = sprintf(__('File size must must not exceed %s.', 'acf'), acf_format_filesize($max_size) );
+			$errors['max_size'] = sprintf(__('File size must not exceed %s.', 'acf'), acf_format_filesize($max_size) );
 			
 		}
 	

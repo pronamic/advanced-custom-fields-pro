@@ -147,11 +147,10 @@ class acf_field_file extends acf_field {
 			</p>
 		</div>
 		<div class="acf-actions -hover">
-			<?php 
-			if( $uploader != 'basic' ): 
-			?><a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php _e('Edit', 'acf'); ?>"></a><?php 
-			endif;
-			?><a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php _e('Remove', 'acf'); ?>"></a>
+			<?php if( $uploader != 'basic' ): ?>
+			<a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php _e('Edit', 'acf'); ?>"></a>
+			<?php endif; ?>
+			<a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php _e('Remove', 'acf'); ?>"></a>
 		</div>
 	</div>
 	<div class="hide-if-value">

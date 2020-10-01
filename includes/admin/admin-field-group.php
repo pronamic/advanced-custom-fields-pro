@@ -180,6 +180,18 @@ class acf_admin_field_group {
 			'copy'																=> __('copy', 'acf'),
 			'or'																=> __('or', 'acf'),
 			'Null'																=> __('Null', 'acf'),
+			
+			// Conditions
+			'Has any value'				=> __('Has any value', 'acf'),
+			'Has no value'				=> __('Has no value', 'acf'),
+			'Value is equal to'			=> __('Value is equal to', 'acf'),
+			'Value is not equal to'		=> __('Value is not equal to', 'acf'),
+			'Value matches pattern'		=> __('Value matches pattern', 'acf'),
+			'Value contains'			=> __('Value contains', 'acf'),
+			'Value is greater than'		=> __('Value is greater than', 'acf'),
+			'Value is less than'		=> __('Value is less than', 'acf'),
+			'Selection is greater than'	=> __('Selection is greater than', 'acf'),
+			'Selection is less than'	=> __('Selection is less than', 'acf'),
 		));
 		
 		// localize data
@@ -407,11 +419,7 @@ class acf_admin_field_group {
 	
 	// modify status
 	$('#post-status-display').html('<?php echo $status; ?>');
-	
-	
-	// remove edit links
-	$('#misc-publishing-actions a').remove();
-	
+
 })(jQuery);	
 </script>
 <?php	

@@ -100,8 +100,8 @@ class acf_field_time_picker extends acf_field {
 	function render_field_settings( $field ) {
 		
 		// vars
-		$g_i_a = date('g:i a');
-		$H_i_s = date('H:i:s');
+		$g_i_a = date_i18n('g:i a');
+		$H_i_s = date_i18n('H:i:s');
 		
 		
 		// display_format

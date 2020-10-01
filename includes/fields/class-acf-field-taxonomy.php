@@ -474,26 +474,23 @@ class acf_field_taxonomy extends acf_field {
 	
 	function save_post( $post_id ) {
 		
-		// bail ealry if no terms
-		if( empty($this->save_post_terms) ) return;
-		
-		
-		// vars
-		$info = acf_get_post_id_info($post_id);
-		
-		
-		// loop
-		foreach( $this->save_post_terms as $taxonomy => $term_ids ){
+		// Check for saved terms.
+		if( !empty($this->save_post_terms) ) {
 			
-			// save
-			wp_set_object_terms( $info['id'], $term_ids, $taxonomy, false );
+			// Determine object ID allowing for non "post" $post_id (user, taxonomy, etc).
+			// Although not fully supported by WordPress, non "post" objects may use the term relationships table.
+			// Sharing taxonomies across object types is discoraged, but unique taxonomies work well.
+			// Note: Do not attempt to restrict to "post" only. This has been attempted in 5.8.9 and later reverted.
+			$info = acf_get_post_id_info( $post_id );
 			
+			// Loop over taxonomies and save terms.
+			foreach( $this->save_post_terms as $taxonomy => $term_ids ){
+				wp_set_object_terms( $info['id'], $term_ids, $taxonomy, false );
+			}
+			
+			// Reset storage.
+			$this->save_post_terms = array();
 		}
-		
-		
-		// reset array ( WP saves twice )
-		$this->save_post_terms = array();
-		
 	}
 	
 	
