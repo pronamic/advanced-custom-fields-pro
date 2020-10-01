@@ -2,137 +2,100 @@
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists('acf_location_nav_menu') ) :
+if( ! class_exists('ACF_Location_Nav_Menu') ) :
 
-class acf_location_nav_menu extends acf_location {
+class ACF_Location_Nav_Menu extends ACF_Location {
 	
-	
-	/*
-	*  __construct
-	*
-	*  This function will setup the class functionality
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function initialize() {
-		
-		// vars
+	/**
+	 * Initializes props.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function initialize() {
 		$this->name = 'nav_menu';
-		$this->label = __("Menu",'acf');
+		$this->label = __( "Menu", 'acf' );
 		$this->category = 'forms';
-    	
-	}
+		$this->object_type = 'menu';
+	}	
 	
-
-	/*
-	*  rule_match
-	*
-	*  This function is used to match this location $rule to the current $screen
-	*
-	*  @type	function
-	*  @date	3/01/13
-	*  @since	3.5.7
-	*
-	*  @param	$match (boolean) 
-	*  @param	$rule (array)
-	*  @return	$options (array)
-	*/
-	
-	function rule_match( $result, $rule, $screen ) {
+	/**
+	 * Matches the provided rule against the screen args returning a bool result.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule The location rule.
+	 * @param	array $screen The screen args.
+	 * @param	array $field_group The field group settings.
+	 * @return	bool
+	 */
+	public function match( $rule, $screen, $field_group ) {
 		
-		// vars
-		$nav_menu = acf_maybe_get( $screen, 'nav_menu' );
-		
-		
-		// bail early if not nav_menu
-		if( !$nav_menu ) return false;
-		
-		
-		// location
-		if( substr($rule['value'], 0, 9) === 'location/' ) {
-			
-			// vars
-			$location = substr($rule['value'], 9);
-			$menu_locations = get_nav_menu_locations();
-			
-			
-			// bail ealry if no location
-			if( !isset($menu_locations[$location]) ) return false;
-			
-			
-			// if location matches, update value
-			if( $menu_locations[$location] == $nav_menu ) {
-				
-				$nav_menu = $rule['value'];
-				
-			}
-			
+		// Check screen args.
+		if( isset($screen['nav_menu']) ) {
+			$nav_menu = $screen['nav_menu'];
+		} else {
+			return false;
 		}
 		
+		// Allow for "location/xxx" rule value.
+		$bits = explode('/', $rule['value']);
+		if( $bits[0] === 'location' ) {
+			$location = $bits[1];
+			
+			// Get the map of menu locations [location => menu_id] and update $nav_menu to a location value.
+			$menu_locations = get_nav_menu_locations();
+			if( isset($menu_locations[ $location ]) ) {
+				$rule['value'] = $menu_locations[ $location ];
+			}
+		}
 		
-        // return
-        return $this->compare( $nav_menu, $rule );
-		
+		// Compare rule against $nav_menu.
+		return $this->compare_to_rule( $nav_menu, $rule );
 	}
 	
-	
-	/*
-	*  rule_operators
-	*
-	*  This function returns the available values for this rule type
-	*
-	*  @type	function
-	*  @date	30/5/17
-	*  @since	5.6.0
-	*
-	*  @param	n/a
-	*  @return	(array)
-	*/
-	
-	function rule_values( $choices, $rule ) {
-		
-		// all
+	/**
+	 * Returns an array of possible values for this rule type.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule A location rule.
+	 * @return	array
+	 */
+	public function get_values( $rule ) {
 		$choices = array(
-			'all' => __('All', 'acf'),
+			'all' => __( 'All', 'acf' )
 		);
 		
-		
-		// locations
+		// Append locations.
 		$nav_locations = get_registered_nav_menus();
-		if( !empty($nav_locations) ) {
-			$cat = __('Menu Locations', 'acf');
+		if( $nav_locations ) {
+			$cat = __( 'Menu Locations', 'acf' );
 			foreach( $nav_locations as $slug => $title ) {
-				$choices[ $cat ][ 'location/'.$slug ] = $title;
+				$choices[ $cat ][ "location/$slug" ] = $title;
 			}
 		}
 		
-		
-		// specific menus
+		// Append menu IDs.
 		$nav_menus = wp_get_nav_menus();
-		if( !empty($nav_menus) ) {
-			$cat = __('Menus', 'acf');
+		if( $nav_menus ) {
+			$cat = __( 'Menus', 'acf' );
 			foreach( $nav_menus as $nav_menu ) {
 				$choices[ $cat ][ $nav_menu->term_id ] = $nav_menu->name;
 			}
-		}
-				
+		}	
 		
-		// return
+		// Return choices.
 		return $choices;
-		
 	}
-	
 }
 
-// initialize
-acf_register_location_rule( 'acf_location_nav_menu' );
+// Register.
+acf_register_location_type( 'ACF_Location_Nav_Menu' );
 
 endif; // class_exists check
-
-?>

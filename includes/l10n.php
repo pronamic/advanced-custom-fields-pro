@@ -70,7 +70,7 @@ function acf_get_locale() {
 	// https://wpastra.com/docs/complete-list-wordpress-locale-codes/
 	$langs = array(
 		'az_TR'	=> 'az',		// Azerbaijani (Turkey)
-		'zh_HK'	=> 'zh_CN',		// Chinese (Hong Kong)
+		'zh_HK'	=> 'zh_TW',		// Chinese (Hong Kong)
 		'nl_BE'	=> 'nl_NL',		// Dutch (Belgium)
 		'fr_BE'	=> 'fr_FR',		// French (Belgium)
 		'nn_NO'	=> 'nb_NO',		// Norwegian (Nynorsk)

@@ -146,40 +146,44 @@ function acf_count_local_field_groups() {
  * @since	5.7.10
  *
  * @param	array $field_group The field group array.
- * @return	void
+ * @return	bool
  */
 function acf_add_local_field_group( $field_group ) {
 	
-	// Validate field group.
-	$field_group = acf_get_valid_field_group( $field_group );
+	// Apply default properties needed for import.
+	$field_group = wp_parse_args($field_group, array(
+		'key'		=> '',
+		'title'		=> '',
+		'fields'	=> array(),
+		'local'		=> 'php'
+	));
+	
+	// Generate key if only name is provided.
+	if( !$field_group['key'] ) {
+		$field_group['key'] = 'group_' . acf_slugify($field_group['title'], '_');
+	}
 	
 	// Bail early if field group already exists.
 	if( acf_is_local_field_group($field_group['key']) ) {
-		return;
+		return false;
 	}
+	
+	// Prepare field group for import (adds menu_order and parent properties to fields).
+	$field_group = acf_prepare_field_group_for_import( $field_group );
 	
 	// Extract fields from group.
 	$fields = acf_extract_var( $field_group, 'fields' );
-	
-	// Add local reference (may be set to "json").
-	if( empty($field_group['local']) ) {
-		$field_group['local'] = 'php';
-	}
 	
 	// Add to store
 	acf_get_local_store( 'groups' )->set( $field_group['key'], $field_group );
 	
 	// Add fields
 	if( $fields ) {
-		
-		// Add parent reference
-		foreach( $fields as $i => $field ) {
-			$fields[ $i ]['parent'] = $field_group['key'];
-		}
-		
-		// Add fields.
 		acf_add_local_fields( $fields );
 	}
+	
+	// Return true on success.
+	return true;
 }
 
 /**
@@ -348,27 +352,22 @@ function acf_count_local_fields( $parent = '' ) {
  */
 function acf_add_local_field( $field, $prepared = false ) {
 	
-	// Apply default args needed for import.
+	// Apply default properties needed for import.
 	$field = wp_parse_args($field, array(
 		'key'		=> '',
 		'name'		=> '',
 		'type'		=> '',
-		'parent'	=> ''
+		'parent'	=> '',
 	));
 	
-	// Ensure field has a key.
+	// Generate key if only name is provided.
 	if( !$field['key'] ) {
-		$field['key'] = "field_{$field['name']}";
+		$field['key'] = 'field_' . $field['name'];
 	}
 	
 	// If called directly, allow sub fields to be correctly prepared.
 	if( !$prepared ) {
 		return acf_add_local_fields( array( $field ) );
-	}
-	
-	// Set menu order.
-	if( !isset($field['menu_order']) ) {
-		$field['menu_order'] = acf_count_local_fields( $field['parent'] );
 	}
 	
 	// Extract attributes.
@@ -511,7 +510,7 @@ function _acf_apply_get_local_field_groups( $groups = array() ) {
 }
 
 // Hook into filter.
-add_filter( 'acf/get_field_groups', '_acf_apply_get_local_field_groups', 20, 1 );
+add_filter( 'acf/load_field_groups', '_acf_apply_get_local_field_groups', 20, 1 );
 
 /**
  * _acf_apply_is_local_field_key

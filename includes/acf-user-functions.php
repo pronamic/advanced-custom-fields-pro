@@ -53,7 +53,7 @@ function acf_get_user_result( $user ) {
 	// Add name.
 	if( $user->first_name && $user->last_name ) {
 		$text .= " ({$user->first_name} {$user->last_name})";
-	} elseif( $user->last_name ) {
+	} elseif( $user->first_name ) {
 		$text .= " ({$user->first_name})";
 	}
 	return compact('id', 'text');
@@ -72,16 +72,19 @@ function acf_get_user_result( $user ) {
  * @return	array
  */
 function acf_get_user_role_labels( $roles = array() ) {
+	$all_roles = wp_roles()->get_names();
 	
 	// Load all roles if none provided.
-	if( !$roles ) {
-		$roles = get_editable_roles();
+	if( empty($roles) ) {
+		$roles = array_keys( $all_roles );
 	}
 	
 	// Loop over roles and populare labels.
 	$lables = array();
 	foreach( $roles as $role ) {
-		$lables[ $role ] = translate_user_role( $role );
+		if( isset($all_roles[ $role ]) ) {
+			$lables[ $role ] = translate_user_role( $all_roles[ $role ] );
+		}
 	}
 	
 	// Return labels.

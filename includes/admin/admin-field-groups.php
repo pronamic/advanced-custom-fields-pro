@@ -1,830 +1,879 @@
-<?php
+<?php 
 
-/*
-*  ACF Admin Field Groups Class
-*
-*  All the logic for editing a list of field groups
-*
-*  @class 		acf_admin_field_groups
-*  @package		ACF
-*  @subpackage	Admin
-*/
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists('acf_admin_field_groups') ) :
+if( ! class_exists('ACF_Admin_Field_Groups') ) :
 
-class acf_admin_field_groups {
+class ACF_Admin_Field_Groups {
 	
-	// vars
-	var $url = 'edit.php?post_type=acf-field-group',
-		$sync = array();
+	/**
+	 * Array of field groups availbale for sync.
+	 *
+	 * @since 5.9.0
+	 * @var array
+	 */
+	public $sync = array();
+	
+	/**
+	 * The current view (post_status).
+	 *
+	 * @since 5.9.0
+	 * @var string
+	 */
+	public $view = '';
+	
+	/**
+	 * Constructor.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function __construct() {
 		
-	
-	/*
-	*  __construct
-	*
-	*  This function will setup the class functionality
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function __construct() {
-	
-		// actions
-		add_action('current_screen',		array($this, 'current_screen'));
-		add_action('trashed_post',			array($this, 'trashed_post'));
-		add_action('untrashed_post',		array($this, 'untrashed_post'));
-		add_action('deleted_post',			array($this, 'deleted_post'));
-		add_action('load-edit.php',			array($this, 'maybe_redirect_edit'));
+		// Add hooks.
+		add_action( 'load-edit.php',	array( $this, 'handle_redirection') );
+		add_action( 'current_screen',	array( $this, 'current_screen' ) );
+		
+		// Handle post status change events.
+		add_action( 'trashed_post',		array( $this, 'trashed_post') );
+		add_action( 'untrashed_post',	array( $this, 'untrashed_post') );
+		add_action( 'deleted_post',		array( $this, 'deleted_post') );
 	}
 	
 	/**
-	*  maybe_redirect_edit
-	*
-	*  Redirects the user from the old ACF4 edit page to the new ACF5 edit page
-	*
-	*  @date	17/9/18
-	*  @since	5.7.6
-	*
-	*  @param	void
-	*  @return	void
-	*/
-	function maybe_redirect_edit() {
-		if( acf_maybe_get_GET('post_type') == 'acf' ) {
-			wp_redirect( admin_url($this->url) );
+	 * Returns the Field Groups admin URL. 
+	 *
+	 * @date	27/3/20
+	 * @since	5.9.0
+	 *
+	 * @param	string $params Extra URL params.
+	 * @return	string
+	 */
+	public function get_admin_url( $params = '' ) {
+		return admin_url( "edit.php?post_type=acf-field-group{$params}" );
+	}
+
+	/**
+	 * Returns the Field Groups admin URL taking into account the current view. 
+	 *
+	 * @date	27/3/20
+	 * @since	5.9.0
+	 *
+	 * @param	string $params Extra URL params.
+	 * @return	string
+	 */
+	public function get_current_admin_url( $params = '' ) {
+		return $this->get_admin_url( ( $this->view ? '&post_status=' . $this->view : '' ) . $params );
+	}
+	
+	/**
+	 * Redirects users from ACF 4.0 admin page.
+	 *
+	 * @date	17/9/18
+	 * @since	5.7.6
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function handle_redirection() {
+		if( isset($_GET['post_type']) && $_GET['post_type'] === 'acf' ) {
+			wp_redirect( $this->get_admin_url() );
 			exit;
 		}
 	}
 	
-	/*
-	*  current_screen
-	*
-	*  This function is fired when loading the admin page before HTML has been rendered.
-	*
-	*  @type	action (current_screen)
-	*  @date	21/07/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function current_screen() {
+	/**
+	 * Constructor for the Field Groups admin page.
+	 *
+	 * @date	21/07/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function current_screen() {
 		
-		// validate screen
+		// Bail early if not Field Groups admin page.
 		if( !acf_is_screen('edit-acf-field-group') ) {
 			return;
 		}
 		
-
-		// customize post_status
-		global $wp_post_statuses;
+		// Get the current view.
+		$this->view = isset( $_GET['post_status'] ) ? sanitize_text_field( $_GET['post_status'] ) : '';
 		
-		
-		// modify publish post status
-		$wp_post_statuses['publish']->label_count = _n_noop( 'Active <span class="count">(%s)</span>', 'Active <span class="count">(%s)</span>', 'acf' );
-		
-		
-		// reorder trash to end
-		$wp_post_statuses['trash'] = acf_extract_var( $wp_post_statuses, 'trash' );
-
-		
-		// check stuff
-		$this->check_duplicate();
+		// Setup and check for custom actions..
+		$this->setup_sync();
 		$this->check_sync();
+		$this->check_duplicate();
 		
+		// Modify publish post status text and order.
+		global $wp_post_statuses;
+		$wp_post_statuses['publish']->label_count = _n_noop( 'Active <span class="count">(%s)</span>', 'Active <span class="count">(%s)</span>', 'acf' );
+		$wp_post_statuses['trash'] = acf_extract_var( $wp_post_statuses, 'trash' );
 		
-		// actions
-		add_action('admin_enqueue_scripts',							array($this, 'admin_enqueue_scripts'));
-		add_action('admin_footer',									array($this, 'admin_footer'));
-		
-		
-		// columns
-		add_filter('manage_edit-acf-field-group_columns',			array($this, 'field_group_columns'), 10, 1);
-		add_action('manage_acf-field-group_posts_custom_column',	array($this, 'field_group_columns_html'), 10, 2);
-		
+		// Add hooks.
+		add_action( 'admin_enqueue_scripts',						array( $this, 'admin_enqueue_scripts') );
+		add_action( 'admin_body_class', 							array( $this, 'admin_body_class' ) );
+		add_filter( 'views_edit-acf-field-group',					array( $this, 'admin_table_views' ), 10, 1 );
+		add_filter( 'manage_acf-field-group_posts_columns',			array( $this, 'admin_table_columns' ), 10, 1 );
+		add_action( 'manage_acf-field-group_posts_custom_column',	array( $this, 'admin_table_columns_html' ), 10, 2 );
+		add_filter( 'display_post_states',							array( $this, 'display_post_states' ), 10, 2 );
+		add_filter( 'bulk_actions-edit-acf-field-group',			array( $this, 'admin_table_bulk_actions' ), 10, 1 );
+		add_action( 'admin_footer',									array( $this, 'admin_footer' ), 1 );
+		if( $this->view !== 'trash' ) {
+			add_filter( 'page_row_actions',							array( $this, 'page_row_actions' ), 10, 2 );
+		}
+
+		// Add hooks for "sync" view.
+		if( $this->view === 'sync' ) {
+			add_action( 'admin_footer',								array( $this, 'admin_footer__sync' ), 1 );
+		}
 	}
 	
-	
-	/*
-	*  admin_enqueue_scripts
-	*
-	*  This function will add the already registered css
-	*
-	*  @type	function
-	*  @date	28/09/13
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function admin_enqueue_scripts() {
+	/**
+	 * Sets up the field groups ready for sync.
+	 *
+	 * @date	17/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function setup_sync() {
 		
-		wp_enqueue_script('acf-input');
-		
+		// Review local json field groups.
+		if( acf_get_local_json_files() ) {
+			
+			// Get all groups in a single cached query to check if sync is available.
+			$all_field_groups = acf_get_field_groups();
+			foreach( $all_field_groups as $field_group ) {
+				
+				// Extract vars.
+				$local = acf_maybe_get( $field_group, 'local' );
+				$modified = acf_maybe_get( $field_group, 'modified' );
+				$private = acf_maybe_get( $field_group, 'private' );
+				
+				// Ignore if is private.
+				if( $private ) {
+					continue;
+				
+				// Ignore not local "json".
+				} elseif( $local !== 'json' ) {
+					continue;
+				
+				// Append to sync if not yet in database.	
+				} elseif( !$field_group['ID'] ) {
+					$this->sync[ $field_group['key'] ] = $field_group;
+				
+				// Append to sync if "json" modified time is newer than database.
+				} elseif( $modified && $modified > get_post_modified_time('U', true, $field_group['ID']) ) {
+					$this->sync[ $field_group['key'] ] = $field_group;
+				}
+			}
+		}
 	}
 	
-	
-	/*
-	*  check_duplicate
-	*
-	*  This function will check for any $_GET data to duplicate
-	*
-	*  @type	function
-	*  @date	17/10/13
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function check_duplicate() {
+	/**
+	 * Enqueues admin scripts.
+	 *
+	 * @date	18/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function admin_enqueue_scripts() {
+		acf_enqueue_script( 'acf' );
 		
-		// Display notice
-		if( $ids = acf_maybe_get_GET('acfduplicatecomplete') ) {
-			
-			// explode
-			$ids = explode(',', $ids);
-			$total = count($ids);
-			
-			// Generate text.
-			$text = sprintf( _n( 'Field group duplicated.', '%s field groups duplicated.', $total, 'acf' ), $total );
-			
-			// Add links to text.
-			$links = array();
-			foreach( $ids as $id ) {
-				$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
-			}
-			$text .= ' ' . implode( ', ', $links );
-			
-			// Add notice
-			acf_add_admin_notice( $text, 'success' );
-		}
-		
-		
-		// vars
-		$ids = array();
-		
-		
-		// check single
-		if( $id = acf_maybe_get_GET('acfduplicate') ) {
-			
-			$ids[] = $id;
-		
-		// check multiple
-		} elseif( acf_maybe_get_GET('action2') === 'acfduplicate' ) {
-			
-			$ids = acf_maybe_get_GET('post');
-			
-		}
-		
-		
-		// sync
-		if( !empty($ids) ) {
-			
-			// validate
-			check_admin_referer('bulk-posts');
-			
-			
-			// vars
-			$new_ids = array();
-			
-			
-			// loop
-			foreach( $ids as $id ) {
-				
-				// duplicate
-				$field_group = acf_duplicate_field_group( $id );
-				
-				
-				// increase counter
-				$new_ids[] = $field_group['ID'];
-				
-			}
-			
-			
-			// redirect
-			wp_redirect( admin_url( $this->url . '&acfduplicatecomplete=' . implode(',', $new_ids)) );
-			exit;
-				
-		}
-		
+		// Localize text.
+		acf_localize_text(array(
+			'Review local JSON changes' => __( 'Review local JSON changes', 'acf' ),
+			'Loading diff'              => __( 'Loading diff', 'acf' ),
+			'Sync changes'              => __( 'Sync changes', 'acf' ),
+		));
 	}
 	
+	/**
+	 * Modifies the admin body class.
+	 *
+	 * @date	18/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	string $classes Space-separated list of CSS classes.
+	 * @return	string
+	 */
+	public function admin_body_class( $classes ) {
+		$classes .= ' acf-admin-field-groups';
+		if( $this->view ) {
+			$classes .= " view-{$this->view}";
+		}
+		return $classes;
+	}
 	
-	/*
-	*  check_sync
-	*
-	*  This function will check for any $_GET data to sync
-	*
-	*  @type	function
-	*  @date	9/12/2014
-	*  @since	5.1.5
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
+	/**
+	 * returns the disabled post state HTML.
+	 *
+	 * @date	17/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	void
+	 * @return	string
+	 */
+	public function get_disabled_post_state() {
+		return '<span class="dashicons dashicons-hidden"></span> ' . _x( 'Disabled', 'post status', 'acf' );
+	}
 	
-	function check_sync() {
-		
-		// Display notice
-		if( $ids = acf_maybe_get_GET('acfsynccomplete') ) {
-			
-			// explode
-			$ids = explode(',', $ids);
-			$total = count($ids);
-			
-			// Generate text.
-			$text = sprintf( _n( 'Field group synchronised.', '%s field groups synchronised.', $total, 'acf' ), $total );
-			
-			// Add links to text.
-			$links = array();
-			foreach( $ids as $id ) {
-				$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
-			}
-			$text .= ' ' . implode( ', ', $links );
-			
-			// Add notice
-			acf_add_admin_notice( $text, 'success' );
+	/**
+	 * Adds the "disabled" post state for the admin table title.
+	 *
+	 * @date	1/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $post_states An array of post display states.
+     * @param	WP_Post $post The current post object.
+	 * @return	array
+	 */
+	public function display_post_states( $post_states, $post ) {
+		if( $post->post_status === 'acf-disabled' ) {
+			$post_states['acf-disabled'] = $this->get_disabled_post_state();
 		}
-		
-		
-		// vars
-		$groups = acf_get_field_groups();
-		
-		
-		// bail early if no field groups
-		if( empty($groups) ) return;
-		
-		
-		// find JSON field groups which have not yet been imported
-		foreach( $groups as $group ) {
-			
-			// vars
-			$local = acf_maybe_get($group, 'local', false);
-			$modified = acf_maybe_get($group, 'modified', 0);
-			$private = acf_maybe_get($group, 'private', false);
-			
-			// Ignore if is private.
-			if( $private ) {
-				continue;
-			
-			// Ignore not local "json".
-			} elseif( $local !== 'json' ) {
-				continue;
-			
-			// Append to sync if not yet in database.	
-			} elseif( !$group['ID'] ) {
-				$this->sync[ $group['key'] ] = $group;
-			
-			// Append to sync if "json" modified time is newer than database.
-			} elseif( $modified && $modified > get_post_modified_time('U', true, $group['ID'], true) ) {
-				$this->sync[ $group['key'] ]  = $group;
-			}
+		return $post_states;
+	}
+	
+	/**
+	 * Customizes the admin table columns.
+	 *
+	 * @date	1/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $columns The columns array.
+	 * @return	array
+	 */
+	public function admin_table_columns( $_columns ) {
+		$columns = array(
+			'cb'	 			=> $_columns['cb'],
+			'title' 			=> $_columns['title'],
+			'acf-description'	=> __('Description', 'acf'),
+			'acf-key'			=> __('Key', 'acf'),
+			'acf-location' 		=> __('Location', 'acf'),
+			'acf-count' 		=> __('Fields', 'acf'),
+		);
+		if( acf_get_local_json_files() ) {
+			$columns['acf-json'] = __('Local JSON', 'acf');
 		}
-		
-		
-		// bail if no sync needed
-		if( empty($this->sync) ) return;
-		
-		
-		// maybe sync
-		$sync_keys = array();
-		
-		
-		// check single
-		if( $key = acf_maybe_get_GET('acfsync') ) {
-			
-			$sync_keys[] = $key;
-		
-		// check multiple
-		} elseif( acf_maybe_get_GET('action2') === 'acfsync' ) {
-			
-			$sync_keys = acf_maybe_get_GET('post');
-			
+		return $columns;
+	}
+	
+	/**
+	 * Renders the admin table column HTML
+	 *
+	 * @date	1/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	string $column_name The name of the column to display.
+	 * @param	int $post_id The current post ID.
+	 * @return	void
+	 */
+	public function admin_table_columns_html( $column_name, $post_id ) {
+		$field_group = acf_get_field_group( $post_id );
+		if( $field_group ) {
+			$this->render_admin_table_column( $column_name, $field_group );
 		}
-		
-		
-		// sync
-		if( !empty($sync_keys) ) {
+	}
+	
+	/**
+	 * Renders a specific admin table column.
+	 *
+	 * @date	17/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	string $column_name The name of the column to display.
+	 * @param	array $field_group The field group.
+	 * @return	void
+	 */
+	public function render_admin_table_column( $column_name, $field_group ) {
+		switch ( $column_name ) {
 			
-			// validate
-			check_admin_referer('bulk-posts');
-			
-			
-			// disable filters to ensure ACF loads raw data from DB
-			acf_disable_filters();
-			acf_enable_filter('local');
-			
-			
-			// disable JSON
-			// - this prevents a new JSON file being created and causing a 'change' to theme files - solves git anoyance
-			acf_update_setting('json', false);
-			
-			
-			// vars
-			$new_ids = array();
+			// Key.
+			case 'acf-key':
+				echo esc_html( $field_group['key'] );
+				break;
 				
+			// Description.
+			case 'acf-description':
+				if( $field_group['description'] ) {
+					echo '<span class="acf-description">' . acf_esc_html( $field_group['description'] ) . '</span>';
+				}
+				break;
 			
-			// loop
-			foreach( $sync_keys as $key ) {
+			// Location.
+			case 'acf-location':
+				$this->render_admin_table_column_locations( $field_group );
+				break;
 				
-				// Bail early if not found.
-				if( !isset($this->sync[ $key ]) ) {
+			// Count.
+			case 'acf-count':
+				echo esc_html( acf_get_field_count( $field_group ) );
+				break;
+			
+			// Local JSON.
+			case 'acf-json':
+				$this->render_admin_table_column_local_status( $field_group );
+				break;
+		}
+	}
+	
+	/**
+	 * Displays a visual representation of the field group's locations.
+	 *
+	 * @date	1/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $field_group The field group.
+	 * @return	void
+	 */
+	public function render_admin_table_column_locations( $field_group ) {
+		$objects = array();
+		
+		// Loop over location rules and determine connected object types.
+		if( $field_group['location'] ) {
+			foreach( $field_group['location'] as $i => $rules ) {
+				
+				// Determine object types for each rule.
+				foreach( $rules as $j => $rule ) {
+					
+					// Get location type and subtype for the current rule.
+					$location = acf_get_location_rule( $rule['param'] );
+					$location_object_type = '';
+					$location_object_subtype = '';
+					if( $location ) {
+						$location_object_type = $location->get_object_type( $rule );
+						$location_object_subtype = $location->get_object_subtype( $rule );
+					}
+					$rules[ $j ]['object_type'] = $location_object_type;
+					$rules[ $j ]['object_subtype'] = $location_object_subtype;
+				}
+				
+				// Now that each $rule conains object type data...
+				$object_types = array_column( $rules, 'object_type' );
+				$object_types = array_filter( $object_types );
+				$object_types = array_values( $object_types );
+				if( $object_types ) {
+					$object_type = $object_types[0];
+				} else {
 					continue;
 				}
 				
-				// Get field group.
-				$field_group = $this->sync[ $key ];
+				$object_subtypes = array_column( $rules, 'object_subtype' );
+				$object_subtypes = array_filter( $object_subtypes );
+				$object_subtypes = array_values( $object_subtypes );
+				$object_subtypes = array_map('acf_array', $object_subtypes);
+				if( count($object_subtypes) > 1 ) {
+					$object_subtypes = call_user_func_array('array_intersect', $object_subtypes);
+					$object_subtypes = array_values( $object_subtypes );
+				} elseif( $object_subtypes ) {
+					$object_subtypes = $object_subtypes[0];
+				} else {
+					$object_subtypes = array( '' );
+				}
 				
-				// Append fields.
-				$field_group['fields'] = acf_get_fields( $field_group );
-				
-				// Import field group.
-				$field_group = acf_import_field_group( $field_group );
-									
-				// Append imported ID.
+				// Append to objects.
+				foreach( $object_subtypes as $object_subtype ) {
+					$object = acf_get_object_type( $object_type, $object_subtype );
+					if( $object ) {
+						$objects[ $object->name ] = $object;
+					}
+				}
+			}
+		}
+		
+		// Reset keys.
+		$objects = array_values( $objects );
+		
+		// Display.
+		$html = '';
+		if( $objects ) {
+			$limit = 3;
+			$total = count( $objects );
+	
+			// Icon.
+			$html .= '<span class="dashicons ' . $objects[0]->icon . ($total > 1 ? ' acf-multi-dashicon' : '') . '"></span> ';
+			
+			// Labels.
+			$labels = array_column( $objects, 'label' );
+			$labels = array_slice( $labels, 0, 3 );
+			$html .= implode(', ', $labels );
+			
+			// More.
+			if( $total > $limit ) {
+				$html .= ', ...';
+			}
+		} else {
+			$html = '<span class="dashicons dashicons-businesswoman"></span> ' . __( 'Various', 'acf' );
+		}
+		
+		// Filter.
+		echo acf_esc_html( $html );
+	}
+	
+	/**
+	 * Returns a human readable file location.
+	 *
+	 * @date	17/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	string $file The full file path.
+	 * @return	string
+	 */
+	public function get_human_readable_file_location( $file ) {
+		
+		// Generate friendly file path.
+		$theme_path = get_stylesheet_directory();
+		if( strpos($file, $theme_path) !== false ) {
+			$rel_file = str_replace( $theme_path, '', $file );
+			$located = sprintf( __('Located in theme: %s', 'acf'), $rel_file );
+			
+		} elseif( strpos($file, WP_PLUGIN_DIR) !== false ) {
+			$rel_file = str_replace( WP_PLUGIN_DIR, '', $file );
+			$located = sprintf( __('Located in plugin: %s', 'acf'), $rel_file );
+		
+		} else {
+			$rel_file = str_replace( ABSPATH, '', $file );
+			$located = sprintf( __('Located in: %s', 'acf'), $rel_file );
+		}
+		return $located;
+	}
+	
+	/**
+	 * Displays the local JSON status of a field group.
+	 *
+	 * @date	14/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	type $var Description. Default.
+	 * @return	type Description.
+	 */
+	public function render_admin_table_column_local_status( $field_group ) {
+		$json = acf_get_local_json_files();
+		if( isset( $json[ $field_group['key'] ] ) ) {
+			$file = $json[ $field_group['key'] ];
+			if( isset($this->sync[ $field_group['key'] ]) ) {
+				$url = $this->get_admin_url( '&acfsync=' . $field_group['key'] . '&_wpnonce=' . wp_create_nonce('bulk-posts') );
+				echo '<strong>' . __( 'Sync available', 'acf' ) . '</strong>';
+				if( $field_group['ID'] ) {
+					echo '<div class="row-actions">
+						<span class="sync"><a href="' . esc_url( $url ) . '">' . __( 'Sync', 'acf' ) . '</a> | </span>
+						<span class="review"><a href="#" data-event="review-sync" data-id="' . esc_attr($field_group['ID']) . '" data-href="' . esc_url( $url ) . '">' . __( 'Review changes', 'acf' ) . '</a></span>
+					</div>';
+				} else {
+					echo '<div class="row-actions">
+						<span class="sync"><a href="' . esc_url( $url ) . '">' . __( 'Import', 'acf' ) . '</a></span>
+					</div>';
+				}
+			} else {
+				echo __( 'Saved', 'acf' );
+			}
+		} else {
+			echo '<span class="acf-secondary-text">' . __( 'Awaiting save', 'acf' ) . '</span>';
+		}
+	}
+	
+	/**
+	 * Customizes the page row actions visible on hover.
+	 *
+	 * @date	14/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $actions The array of actions HTML.
+	 * @param	WP_Post $post The post.
+	 * @return	array
+	 */
+	public function page_row_actions( $actions, $post ) {
+
+		// Remove "Quick Edit" action.
+		unset( $actions['inline'], $actions['inline hide-if-no-js'] );
+		
+		// Append "Duplicate" action.
+		$duplicate_action_url = $this->get_admin_url( '&acfduplicate=' . $post->ID . '&_wpnonce=' . wp_create_nonce('bulk-posts') );
+		$actions[ 'acfduplicate' ] = '<a href="' . esc_url( $duplicate_action_url ) . '" aria-label="' . esc_attr__( 'Duplicate this item', 'acf' ) . '">' . __( 'Duplicate', 'acf' ) . '</a>';
+		
+		// Return actions in custom order.
+		$order = array( 'edit', 'acfduplicate', 'trash' );
+		return array_merge( array_flip($order), $actions );
+	}
+	
+	/**
+	 * Modifies the admin table bulk actions dropdown.
+	 *
+	 * @date	15/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $actions The actions array.
+	 * @return	array
+	 */
+	public function admin_table_bulk_actions( $actions ) {
+		
+		// Add "duplicate" action.
+		if( $this->view !== 'sync' ) {
+			$actions[ 'acfduplicate' ] = __( 'Duplicate', 'acf' );
+		}
+		
+		// Add "Sync" action.
+		if( $this->sync ) {
+			if( $this->view === 'sync' ) {
+				$actions = array();
+			}
+			$actions[ 'acfsync' ] = __( 'Sync changes', 'acf' );
+		}
+		return $actions;
+	}
+	
+	/**
+	 * Checks for the custom "duplicate" action.
+	 *
+	 * @date	15/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function check_duplicate() {
+		
+		// Display notice on success redirect.
+		if( isset($_GET['acfduplicatecomplete']) ) {
+			$ids = array_map( 'intval', explode(',', $_GET['acfduplicatecomplete']) );
+			
+			// Generate text.
+			$text = sprintf( 
+				_n( 'Field group duplicated.', '%s field groups duplicated.', count($ids), 'acf' ),
+				count($ids)
+			);
+			
+			// Append links to text.
+			$links = array();
+			foreach( $ids as $id ) {
+				$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+			}
+			$text .= ' ' . implode( ', ', $links );
+			
+			// Add notice.
+			acf_add_admin_notice( $text, 'success' );
+			return;
+		}
+		
+		// Find items to duplicate.
+		$ids = array();
+		if( isset($_GET['acfduplicate']) ) {
+			$ids[] = intval( $_GET['acfduplicate'] );
+		} elseif( isset($_GET['post'], $_GET['action2']) && $_GET['action2'] === 'acfduplicate' ) {
+			$ids = array_map( 'intval', $_GET['post'] );
+		}
+		
+		if( $ids ) {
+			check_admin_referer('bulk-posts');
+			
+			// Duplicate field groups and generate array of new IDs.
+			$new_ids = array();
+			foreach( $ids as $id ) {
+				$field_group = acf_duplicate_field_group( $id );
 				$new_ids[] = $field_group['ID'];
 			}
 			
-			
-			// redirect
-			wp_redirect( admin_url( $this->url . '&acfsynccomplete=' . implode(',', $new_ids)) );
+			// Redirect.
+			wp_redirect( $this->get_admin_url( '&acfduplicatecomplete=' . implode(',', $new_ids) ) );
 			exit;
-			
 		}
-		
-		
-		// filters
-		add_filter('views_edit-acf-field-group', array($this, 'list_table_views'));
-		
 	}
 	
-	
-	/*
-	*  list_table_views
-	*
-	*  This function will add an extra link for JSON in the field group list table
-	*
-	*  @type	function
-	*  @date	3/12/2014
-	*  @since	5.1.5
-	*
-	*  @param	$views (array)
-	*  @return	$views
-	*/
-	
-	function list_table_views( $views ) {
+	/**
+	 * Checks for the custom "acfsync" action.
+	 *
+	 * @date	15/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function check_sync() {
 		
-		// vars
-		$class = '';
-		$total = count($this->sync);
+		// Display notice on success redirect.
+		if( isset($_GET['acfsynccomplete']) ) {
+			$ids = array_map( 'intval', explode(',', $_GET['acfsynccomplete']) );
+			
+			// Generate text.
+			$text = sprintf( 
+				_n( 'Field group synchronised.', '%s field groups synchronised.', count($ids), 'acf' ),
+				count($ids)
+			);
+			
+			// Append links to text.
+			$links = array();
+			foreach( $ids as $id ) {
+				$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+			}
+			$text .= ' ' . implode( ', ', $links );
+			
+			// Add notice.
+			acf_add_admin_notice( $text, 'success' );
+			return;
+		}
 		
-		// active
-		if( acf_maybe_get_GET('post_status') === 'sync' ) {
+		// Find items to sync.
+		$keys = array();
+		if( isset($_GET['acfsync']) ) {
+			$keys[] = sanitize_text_field( $_GET['acfsync'] );
+		} elseif( isset($_GET['post'], $_GET['action2']) && $_GET['action2'] === 'acfsync' ) {
+			$keys = array_map( 'sanitize_text_field', $_GET['post'] );
+		}
+		
+		if( $keys && $this->sync ) {
+			check_admin_referer('bulk-posts');
 			
-			// actions
-			add_action('admin_footer', array($this, 'sync_admin_footer'), 5);
+			// Disabled "Local JSON" controller to prevent the .json file from being modified during import.
+			acf_update_setting( 'json', false );
 			
+			// Sync field groups and generate array of new IDs.
+			$files = acf_get_local_json_files();
+			$new_ids = array();
+			foreach( $this->sync as $key => $field_group ) {
+				if( $field_group['key'] && in_array($field_group['key'], $keys) ) {
+					// Import.
+				} elseif( $field_group['ID'] && in_array($field_group['ID'], $keys) ) {
+					// Import.
+				} else {
+					// Ignore.
+					continue;
+				}
+				$local_field_group = json_decode( file_get_contents( $files[ $key ] ), true );
+				$local_field_group['ID'] = $field_group['ID'];
+				$result = acf_import_field_group( $local_field_group );
+				$new_ids[] = $result['ID'];
+			}
 			
-			// set active class
-			$class = ' class="current"';
-			
-			
-			// global
-			global $wp_list_table;
-			
-			
-			// update pagination
+			// Redirect.
+			wp_redirect( $this->get_current_admin_url( '&acfsynccomplete=' . implode(',', $new_ids) ) );
+			exit;
+		}
+	}
+	
+	/**
+	 * Customizes the admin table subnav.
+	 *
+	 * @date	17/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $views The available views.
+	 * @return	array
+	 */
+	public function admin_table_views( $views ) {
+		global $wp_list_table, $wp_query;
+		
+		// Count items.
+		$count = count( $this->sync );
+		
+		// Append "sync" link to subnav.
+		if( $count ) {
+			$views['sync'] = sprintf(
+				'<a %s href="%s">%s <span class="count">(%s)</span></a>',
+				( $this->view === 'sync' ? 'class="current"' : '' ),
+				esc_url( $this->get_admin_url( '&post_status=sync' ) ),
+				esc_html( __('Sync available', 'acf') ),
+				$count
+			);
+		}
+		
+		// Modify table pagination args to match JSON data.
+		if( $this->view === 'sync' ) {
 			$wp_list_table->set_pagination_args( array(
-				'total_items' => $total,
+				'total_items' => $count,
 				'total_pages' => 1,
-				'per_page' => $total
+				'per_page' => $count
 			));
-			
+			$wp_query->post_count = 1; // At least one post is needed to render bulk drop-down.
 		}
-		
-		
-		// add view
-		$views['json'] = '<a' . $class . ' href="' . admin_url($this->url . '&post_status=sync') . '">' . __('Sync available', 'acf') . ' <span class="count">(' . $total . ')</span></a>';
-		
-		
-		// return
 		return $views;
-		
 	}
 	
-	
-	/*
-	*  trashed_post
-	*
-	*  This function is run when a post object is sent to the trash
-	*
-	*  @type	action (trashed_post)
-	*  @date	8/01/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	n/a
-	*/
-	
-	function trashed_post( $post_id ) {
-		
-		// validate post type
-		if( get_post_type($post_id) != 'acf-field-group' ) {
-		
-			return;
-		
-		}
-		
-		
-		// trash field group
-		acf_trash_field_group( $post_id );
-		
-	}
-	
-	
-	/*
-	*  untrashed_post
-	*
-	*  This function is run when a post object is restored from the trash
-	*
-	*  @type	action (untrashed_post)
-	*  @date	8/01/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	n/a
-	*/
-	
-	function untrashed_post( $post_id ) {
-		
-		// validate post type
-		if( get_post_type($post_id) != 'acf-field-group' ) {
-		
-			return;
-			
-		}
-		
-		
-		// trash field group
-		acf_untrash_field_group( $post_id );
-		
-	}
-	
-	
-	/*
-	*  deleted_post
-	*
-	*  This function is run when a post object is deleted from the trash
-	*
-	*  @type	action (deleted_post)
-	*  @date	8/01/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	n/a
-	*/
-	
-	function deleted_post( $post_id ) {
-		
-		// validate post type
-		if( get_post_type($post_id) != 'acf-field-group' ) {
-		
-			return;
-			
-		}
-		
-		
-		// trash field group
-		acf_delete_field_group( $post_id );
-		
-	}
-	
-	
-	/*
-	*  field_group_columns
-	*
-	*  This function will customize the columns for the field group table
-	*
-	*  @type	filter (manage_edit-acf-field-group_columns)
-	*  @date	28/09/13
-	*  @since	5.0.0
-	*
-	*  @param	$columns (array)
-	*  @return	$columns (array)
-	*/
-	
-	function field_group_columns( $columns ) {
-		
-		return array(
-			'cb'	 				=> '<input type="checkbox" />',
-			'title' 				=> __('Title', 'acf'),
-			'acf-fg-description'	=> __('Description', 'acf'),
-			'acf-fg-status' 		=> '<i class="acf-icon -dot-3 small acf-js-tooltip" title="' . esc_attr__('Status', 'acf') . '"></i>',
-			'acf-fg-count' 			=> __('Fields', 'acf'),
-		);
-		
-	}
-	
-	
-	/*
-	*  field_group_columns_html
-	*
-	*  This function will render the HTML for each table cell
-	*
-	*  @type	action (manage_acf-field-group_posts_custom_column)
-	*  @date	28/09/13
-	*  @since	5.0.0
-	*
-	*  @param	$column (string)
-	*  @param	$post_id (int)
-	*  @return	n/a
-	*/
-	
-	function field_group_columns_html( $column, $post_id ) {
-		
-		// vars
-		$field_group = acf_get_field_group( $post_id );
-		
-		
-		// render
-		$this->render_column( $column, $field_group );
-	    
-	}
-	
-	function render_column( $column, $field_group ) {
-		
-		// description
-		if( $column == 'acf-fg-description' ) {
-			
-			if( $field_group['description'] ) {
-				
-				echo '<span class="acf-description">' . acf_esc_html($field_group['description']) . '</span>';
-				
-			}
-        
-        // status
-	    } elseif( $column == 'acf-fg-status' ) {
-			
-			if( isset($this->sync[ $field_group['key'] ]) ) {
-				
-				echo '<i class="acf-icon -sync grey small acf-js-tooltip" title="' . esc_attr__('Sync available', 'acf') .'"></i> ';
-				
-			}
-			
-			if( $field_group['active'] ) {
-				
-				//echo '<i class="acf-icon -check small acf-js-tooltip" title="' . esc_attr__('Active', 'acf') .'"></i> ';
-				
-			} else {
-				
-				echo '<i class="acf-icon -minus yellow small acf-js-tooltip" title="' . esc_attr__('Inactive', 'acf') . '"></i> ';
-				
-			}
-	    
-        // fields
-	    } elseif( $column == 'acf-fg-count' ) {
-			
-			echo esc_html( acf_get_field_count( $field_group ) );
-        
-        }
-		
-	}
-	
-	
-	/*
-	*  admin_footer
-	*
-	*  This function will render extra HTML onto the page
-	*
-	*  @type	action (admin_footer)
-	*  @date	23/06/12
-	*  @since	3.1.8
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
+	/**
+	 * Prints scripts into the admin footer.
+	 *
+	 * @date	20/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
 	function admin_footer() {
-		
-		// vars
-		$url_home = 'https://www.advancedcustomfields.com';
-		$icon = '<i aria-hidden="true" class="dashicons dashicons-external"></i>';
-		
-?>
-<script type="text/html" id="tmpl-acf-column-2">
-<div class="acf-column-2">
-	<div class="acf-box">
-		<div class="inner">
-			<h2><?php echo acf_get_setting('name'); ?></h2>
-			<p><?php _e('Customize WordPress with powerful, professional and intuitive fields.','acf'); ?></p>
-			
-			<h3><?php _e("Changelog",'acf'); ?></h3>
-			<p><?php 
-			
-			$acf_changelog = admin_url('edit.php?post_type=acf-field-group&page=acf-settings-info&tab=changelog');
-			$acf_version = acf_get_setting('version');
-			printf( __('See what\'s new in <a href="%s">version %s</a>.','acf'), esc_url($acf_changelog), $acf_version );
-			
-			?></p>
-			<h3><?php _e("Resources",'acf'); ?></h3>
-			<ul>
-				<li><a href="<?php echo esc_url( $url_home ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Website",'acf'); ?></a></li>
-				<li><a href="<?php echo esc_url( $url_home . '/resources/' ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Documentation",'acf'); ?></a></li>
-				<li><a href="<?php echo esc_url( $url_home . '/support/' ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Support",'acf'); ?></a></li>
-				<?php if( !acf_get_setting('pro') ): ?>
-				<li><a href="<?php echo esc_url( $url_home . '/pro/' ); ?>" target="_blank"><?php echo $icon; ?> <?php _e("Pro",'acf'); ?></a></li>
-				<?php endif; ?>
-			</ul>
-		</div>
-		<div class="footer">
-			<p><?php printf( __('Thank you for creating with <a href="%s">ACF</a>.','acf'), esc_url($url_home) ); ?></p>
-		</div>
-	</div>
-</div>
-</script>
+		?>
 <script type="text/javascript">
 (function($){
-	
-	// wrap
-	$('#wpbody .wrap').attr('id', 'acf-field-group-wrap');
-	
-	
-	// wrap form
-	$('#posts-filter').wrap('<div class="acf-columns-2" />');
-	
-	
-	// add column main
-	$('#posts-filter').addClass('acf-column-1');
-	
-	
-	// add column side
-	$('#posts-filter').after( $('#tmpl-acf-column-2').html() );
-	
-	
-	// modify row actions
-	$('#the-list tr').each(function(){
+
+	// Displays a modal comparing local changes.
+	function reviewSync( props ) {
+		var modal = acf.newModal({
+			title: acf.__('Review local JSON changes'),
+			content: '<p class="acf-modal-feedback"><i class="acf-loading"></i> ' + acf.__('Loading diff') + '</p>',
+			toolbar: '<a href="' + props.href + '" class="button button-primary button-sync-changes disabled">' + acf.__('Sync changes') + '</a>',
+		});
 		
-		// vars
-		var $tr = $(this),
-			id = $tr.attr('id'),
-			description = $tr.find('.column-acf-fg-description').html();
-		
-		
-		// replace Quick Edit with Duplicate (sync page has no id attribute)
-		if( id ) {
-			
-			// vars
-			var post_id	= id.replace('post-', '');
-			var url = '<?php echo esc_url( admin_url( $this->url . '&acfduplicate=__post_id__&_wpnonce=' . wp_create_nonce('bulk-posts') ) ); ?>';
-			var $span = $('<span class="acf-duplicate-field-group"><a title="<?php _e('Duplicate this item', 'acf'); ?>" href="' + url.replace('__post_id__', post_id) + '"><?php _e('Duplicate', 'acf'); ?></a> | </span>');
-			
-			
-			// replace
-			$tr.find('.column-title .row-actions .inline').replaceWith( $span );
-			
-		}
-		
-		
-		// add description to title
-		$tr.find('.column-title .row-title').after( description );
-		
-	});
+		// Call AJAX.
+		var xhr = $.ajax({
+			url: acf.get('ajaxurl'),
+			method: 'POST',
+			dataType: 'json',
+			data: acf.prepareForAjax({
+				action:	'acf/ajax/local_json_diff',
+				id: props.id
+			})
+		})
+		.done(function( data, textStatus, jqXHR ) {
+			modal.content( data.html );
+			modal.$('.button-sync-changes').removeClass('disabled');
+		})
+		.fail(function( jqXHR, textStatus, errorThrown ) {
+			if( error = acf.getXhrError(jqXHR) ) {
+				modal.content( '<p class="acf-modal-feedback error">' + error + '</p>' );
+			}
+		});
+	}
 	
-	
-	// modify bulk actions
-	$('#bulk-action-selector-bottom option[value="edit"]').attr('value','acfduplicate').text('<?php _e( 'Duplicate', 'acf' ); ?>');
-	
-	
-	// clean up table
-	$('#adv-settings label[for="acf-fg-description-hide"]').remove();
-	
-	
-	// mobile compatibility
-	var status = $('.acf-icon.-dot-3').first().attr('title');
-	$('td.column-acf-fg-status').attr('data-colname', status);
-	
-	
-	// no field groups found
-	$('#the-list tr.no-items td').attr('colspan', 4);
-	
-	
-	// search
-	$('.subsubsub').append(' | <li><a href="#" class="acf-toggle-search"><?php _e('Search', 'acf'); ?></a></li>');
-	
-	
-	// events
-	$(document).on('click', '.acf-toggle-search', function( e ){
-		
-		// prevent default
+	// Add event listener.
+	$(document).on('click', 'a[data-event="review-sync"]', function( e ){
 		e.preventDefault();
-		
-		
-		// toggle
-		$('.search-box').slideToggle();
-		
+		reviewSync( $(this).data() );
 	});
-	
 })(jQuery);
 </script>
-<?php
-		
+		<?php
 	}
 	
-	
-	/*
-	*  sync_admin_footer
-	*
-	*  This function will render extra HTML onto the page
-	*
-	*  @type	action (admin_footer)
-	*  @date	23/06/12
-	*  @since	3.1.8
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function sync_admin_footer() {
+	/**
+	 * Customizes the admin table HTML when viewing "sync" post_status.
+	 *
+	 * @date	17/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $views The available views.
+	 * @return	array
+	 */
+	public function admin_footer__sync() {
+		global $wp_list_table;
 		
-		// vars
-		$i = -1;
-		$columns = array(
-			'acf-fg-description',
-			'acf-fg-status',
-			'acf-fg-count'
-		);
-		$nonce = wp_create_nonce('bulk-posts');
-		
-?>
-<script type="text/html" id="tmpl-acf-json-tbody">
-<?php foreach( $this->sync as $field_group ): 
-	
-	// vars
-	$i++; 
-	$key = $field_group['key'];
-	$title = $field_group['title'];
-	$url = admin_url( $this->url . '&post_status=sync&acfsync=' . $key . '&_wpnonce=' . $nonce );
-	
+		// Get table columns.
+		$columns = $wp_list_table->get_columns();
+		$hidden = get_hidden_columns( $wp_list_table->screen );
+		?>
+<div style="display: none;">
+<table>
+	<tbody id="acf-the-list">
+	<?php 
+	foreach( $this->sync as $k => $field_group ) {
+		echo '<tr>';
+		foreach( $columns as $column_name => $column_label ) {
+			$el = 'td';
+			if( $column_name === 'cb' ) {
+				$el = 'th';
+				$classes = 'check-column';
+				$column_label = '';
+			} elseif( $column_name === 'title' ) {
+				$classes = "$column_name column-$column_name column-primary";
+			} else {
+				$classes = "$column_name column-$column_name";
+			}
+			if( in_array( $column_name, $hidden, true ) ) {
+				$classes .= ' hidden';
+			}
+			echo "<$el class=\"$classes\" data-colname=\"$column_label\">";
+			switch ( $column_name ) {
+				
+				// Checkbox.
+				case 'cb':
+					echo '<label for="cb-select-' . esc_attr( $k ) .'" class="screen-reader-text">' .esc_html( sprintf( __( 'Select %s', 'acf' ), $field_group['title'] ) ) . '</label>';
+					echo '<input id="cb-select-' . esc_attr( $k ) .'" type="checkbox" value="'. esc_attr( $k ) .'" name="post[]">';
+					break;
+					
+				// Title.
+				case 'title':
+					$post_state = '';
+					if( !$field_group['active'] ) {
+						$post_state = ' — <span class="post-state">' . $this->get_disabled_post_state() . '</span>';
+					}
+					echo '<strong><span class="row-title">' . esc_html( $field_group['title']) . '</span>' . $post_state . '</strong>';
+					echo '<div class="row-actions"><span class="file acf-secondary-text">' . $this->get_human_readable_file_location( $field_group['local_file'] ) . '</span></div>';
+					echo '<button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button>';
+					break;
+					
+				// All other columns.
+				default:
+					$this->render_admin_table_column( $column_name, $field_group );
+					break;
+			}
+			echo "</$el>";
+		}
+		echo '</tr>';
+	}
 	?>
-	<tr <?php if($i%2 == 0): ?>class="alternate"<?php endif; ?>>
-		<th class="check-column" scope="row">
-			<label for="cb-select-<?php echo esc_attr($key); ?>" class="screen-reader-text"><?php echo esc_html(sprintf(__('Select %s', 'acf'), $title)); ?></label>
-			<input type="checkbox" value="<?php echo esc_attr($key); ?>" name="post[]" id="cb-select-<?php echo esc_attr($key); ?>">
-		</th>
-		<td class="post-title page-title column-title">
-			<strong>
-				<span class="row-title"><?php echo esc_html($title); ?></span><span class="acf-description"><?php echo esc_html($key); ?>.json</span>
-			</strong>
-			<div class="row-actions">
-				<span class="import"><a title="<?php echo esc_attr( __('Synchronise field group', 'acf') ); ?>" href="<?php echo esc_url($url); ?>"><?php _e( 'Sync', 'acf' ); ?></a></span>
-			</div>
-		</td>
-		<?php foreach( $columns as $column ): ?>
-			<td class="column-<?php echo esc_attr($column); ?>"><?php $this->render_column( $column, $field_group ); ?></td>
-		<?php endforeach; ?>
-	</tr>
-<?php endforeach; ?>
-</script>
-<script type="text/html" id="tmpl-acf-bulk-actions">
-	<?php // source: bulk_actions() wp-admin/includes/class-wp-list-table.php ?>
-	<select name="action2" id="bulk-action-selector-bottom"></select>
-	<?php submit_button( __( 'Apply' ), 'action', '', false, array( 'id' => "doaction2" ) ); ?>
-</script>
+	</tbody>
+</table>
+</div>
 <script type="text/javascript">
 (function($){
-	
-	// update table HTML
-	$('#the-list').html( $('#tmpl-acf-json-tbody').html() );
-	
-	
-	// bulk may not exist if no field groups in DB
-	if( !$('#bulk-action-selector-bottom').exists() ) {
-		
-		$('.tablenav.bottom .actions.alignleft').html( $('#tmpl-acf-bulk-actions').html() );
-		
-	}
-	
-	
-	// set only options
-	$('#bulk-action-selector-bottom').html('<option value="-1"><?php _e('Bulk Actions'); ?></option><option value="acfsync"><?php _e('Sync', 'acf'); ?></option>');
-		
+	$('#the-list').html( $('#acf-the-list').children() );
 })(jQuery);
 </script>
-<?php
-		
+		<?php
 	}
-			
+	
+	/**
+	 * Fires when trashing a field group post.
+	 *
+	 * @date	8/01/2014
+	 * @since	5.0.0
+	 *
+	 * @param	int $post_id The post ID.
+	 * @return	void
+	 */
+	public function trashed_post( $post_id ) {
+		if( get_post_type($post_id) === 'acf-field-group' ) {
+			acf_trash_field_group( $post_id );
+		}
+	}
+	
+	/**
+	 * Fires when untrashing a field group post.
+	 *
+	 * @date	8/01/2014
+	 * @since	5.0.0
+	 *
+	 * @param	int $post_id The post ID.
+	 * @return	void
+	 */
+	public function untrashed_post( $post_id ) {
+		if( get_post_type($post_id) === 'acf-field-group' ) {
+			acf_untrash_field_group( $post_id );
+		}
+	}
+	
+	/**
+	 * Fires when deleting a field group post.
+	 *
+	 * @date	8/01/2014
+	 * @since	5.0.0
+	 *
+	 * @param	int $post_id The post ID.
+	 * @return	void
+	 */
+	public function deleted_post( $post_id ) {
+		if( get_post_type($post_id) === 'acf-field-group' ) {
+			acf_delete_field_group( $post_id );
+		}
+	}	
 }
 
-new acf_admin_field_groups();
+// Instantiate.
+acf_new_instance('ACF_Admin_Field_Groups');
 
-endif;
-
-?>
+endif; // class_exists check

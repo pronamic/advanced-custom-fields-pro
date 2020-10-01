@@ -2,131 +2,92 @@
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists('acf_location_post_type') ) :
+if( ! class_exists('ACF_Location_Post_Type') ) :
 
-class acf_location_post_type extends acf_location {
+class ACF_Location_Post_Type extends ACF_Location {
 	
-	
-	/*
-	*  __construct
-	*
-	*  This function will setup the class functionality
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function initialize() {
-		
-		// vars
+	/**
+	 * Initializes props.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function initialize() {
 		$this->name = 'post_type';
-		$this->label = __("Post Type",'acf');
+		$this->label = __( "Post Type", 'acf' );
 		$this->category = 'post';
-    	
+    	$this->object_type = 'post';
 	}
 	
-	
-	/*
-	*  get_post_type
-	*
-	*  This function will return the current post_type
-	*
-	*  @type	function
-	*  @date	25/11/16
-	*  @since	5.5.0
-	*
-	*  @param	$options (int)
-	*  @return	(mixed)
-	*/
-	
-	function get_post_type( $screen ) {
+	/**
+	 * Matches the provided rule against the screen args returning a bool result.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule The location rule.
+	 * @param	array $screen The screen args.
+	 * @param	array $field_group The field group settings.
+	 * @return	bool
+	 */
+	public function match( $rule, $screen, $field_group ) {
 		
-		// vars
-		$post_id = acf_maybe_get( $screen, 'post_id' );
-		$post_type = acf_maybe_get( $screen, 'post_type' );
+		// Check screen args.
+		if( isset($screen['post_type']) ) {
+			$post_type = $screen['post_type'];
+		} elseif( isset($screen['post_id']) ) {
+			$post_type = get_post_type( $screen['post_id'] );
+		} else {
+			return false;
+		}
 		
-		
-		// post_type
-		if( $post_type ) return $post_type;
-		
-		
-		// $post_id
-		if( $post_id ) return get_post_type( $post_id );
-		
-		
-		// return
-		return false;
-		
+		// Compare rule against $post_type.
+		return $this->compare_to_rule( $post_type, $rule );
 	}
 	
-	
-	/*
-	*  rule_match
-	*
-	*  This function is used to match this location $rule to the current $screen
-	*
-	*  @type	function
-	*  @date	3/01/13
-	*  @since	3.5.7
-	*
-	*  @param	$match (boolean) 
-	*  @param	$rule (array)
-	*  @return	$options (array)
-	*/
-	
-	function rule_match( $result, $rule, $screen ) {
+	/**
+	 * Returns an array of possible values for this rule type.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule A location rule.
+	 * @return	array
+	 */
+	public function get_values( $rule ) {
 		
-		// vars
-		$post_type = $this->get_post_type( $screen );
-		
-		
-		// bail early if no post_type found (not a post)
-		if( !$post_type ) return false;
-		
-		
-		// match
-		return $this->compare( $post_type, $rule );
-		
-	}
-	
-	
-	/*
-	*  rule_operators
-	*
-	*  This function returns the available values for this rule type
-	*
-	*  @type	function
-	*  @date	30/5/17
-	*  @since	5.6.0
-	*
-	*  @param	n/a
-	*  @return	(array)
-	*/
-	
-	function rule_values( $choices, $rule ) {
-		
-		// get post types
-		// - removed show_ui to allow 3rd party code to register a post type using a custom admin edit page
+		// Get post types.
 		$post_types = acf_get_post_types(array(
 			'show_ui'	=> 1, 
-			'exclude'	=> array('attachment')
+			'exclude'	=> array( 'attachment' )
 		));
 		
-		
-		// return choices
+		// Return array of [type => label].
 		return acf_get_pretty_post_types( $post_types );
-		
+	}
+	
+	/**
+	 * Returns the object_subtype connected to this location.
+	 *
+	 * @date	1/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule A location rule.
+	 * @return	string|array
+	 */
+	public function get_object_subtype( $rule ) {
+		if( $rule['operator'] === '==' ) {
+			return $rule['value'];
+		}
+		return '';
 	}
 	
 }
 
 // initialize
-acf_register_location_rule( 'acf_location_post_type' );
+acf_register_location_type( 'ACF_Location_Post_Type' );
 
 endif; // class_exists check
-
-?>

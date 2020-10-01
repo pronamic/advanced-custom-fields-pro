@@ -30,7 +30,7 @@
 	<p><?php _e('Reading upgrade tasks...', 'acf'); ?></p>
 	<p class="step-1"><i class="acf-loading"></i> <?php printf(__('Upgrading data to version %s', 'acf'), ACF_VERSION); ?></p>
 	<p class="step-2"></p>
-	<p class="step-3"><?php echo sprintf( __('Database upgrade complete. <a href="%s">See what\'s new</a>', 'acf' ), admin_url('edit.php?post_type=acf-field-group&page=acf-settings-info') ); ?></p>
+	<p class="step-3"><?php echo sprintf( __('Database upgrade complete. <a href="%s">See what\'s new</a>', 'acf' ), admin_url('edit.php?post_type=acf-field-group') ); ?></p>
 	
 	<script type="text/javascript">
 	(function($) {
@@ -59,34 +59,12 @@
 						action: 'acf/ajax/upgrade'
 					}),
 					success: function( json ){
-						
-						// success
-						if( acf.isAjaxSuccess(json) ) {
-							
-							// update
-							success = true;
-							
-							// set response text
-							if( jsonText = acf.getAjaxMessage(json) ) {
-								response = jsonText;
-							}
-						
-						// error
-						} else {
-							
-							// set response text
-							response = '<?php _e('Upgrade failed.', 'acf'); ?>';
-							if( jsonText = acf.getAjaxError(json) ) {
-								response += ' <pre>' + jsonText +  '</pre>';
-							}
-						}			
+						success = true;
 					},
 					error: function( jqXHR, textStatus, errorThrown ){
-						
-						// set response text
 						response = '<?php _e('Upgrade failed.', 'acf'); ?>';
-						if( errorThrown) {
-							response += ' <pre>' + errorThrown +  '</pre>';
+						if( error = acf.getXhrError(jqXHR) ) {
+							response += ' <code>' + error +  '</code>';
 						}
 					},
 					complete: this.proxy(function(){

@@ -12,7 +12,7 @@ acf_register_store( 'block-types' );
  * Registers a block type.
  *
  * @date	18/2/19
- * @since	5.7.12
+ * @since	5.8.0
  *
  * @param	array $block The block settings.
  * @return	(array|false)
@@ -22,8 +22,26 @@ function acf_register_block_type( $block ) {
 	// Validate block type settings.
 	$block = acf_validate_block_type( $block );
 	
+	/**
+	 * Filters the arguments for registering a block type.
+	 *
+	 * @since	5.8.9
+	 *
+	 * @param	array $block The array of arguments for registering a block type.
+	 */
+    $block = apply_filters( 'acf/register_block_type_args', $block );
+    
+    // Require name.
+    if( !$block['name'] ) {
+	    $message = __( 'Block type name is required.', 'acf' );
+	    _doing_it_wrong( __FUNCTION__, $message, '5.8.0' );
+		return false;
+    }
+    
 	// Bail early if already exists.
 	if( acf_has_block_type($block['name']) ) {
+		$message = sprintf( __( 'Block type "%s" is already registered.' ), $block['name'] );
+		_doing_it_wrong( __FUNCTION__, $message, '5.8.0' );
 		return false;
 	}
 	
@@ -33,7 +51,7 @@ function acf_register_block_type( $block ) {
 	// Register block type in WP.
 	if( function_exists('register_block_type') ) {
 		register_block_type($block['name'], array(
-			'attributes'		=> acf_get_block_type_default_attributes(),
+			'attributes'		=> acf_get_block_type_default_attributes( $block ),
 			'render_callback'	=> 'acf_rendered_block',
 		));
 	}
@@ -131,8 +149,8 @@ function acf_remove_block_type( $name ) {
  * @param	void
  * @return	array
  */
-function acf_get_block_type_default_attributes() {
-	return array(
+function acf_get_block_type_default_attributes( $block_type ) {
+	$attributes = array(
 		'id'		=> array(
 			'type'		=> 'string',
 			'default'	=> '',
@@ -154,6 +172,19 @@ function acf_get_block_type_default_attributes() {
 			'default'	=> '',
 		)
 	);
+	if( !empty( $block_type['supports']['align_text'] ) ) {
+		$attributes['align_text'] = array(
+			'type'		=> 'string',
+			'default'	=> '',
+		);
+	}
+	if( !empty( $block_type['supports']['align_content'] ) ) {
+		$attributes['align_content'] = array(
+			'type'		=> 'string',
+			'default'	=> '',
+		);
+	}
+	return $attributes;
 }
 
 /**
@@ -194,7 +225,9 @@ function acf_validate_block_type( $block ) {
 	}
 	
 	// Generate name with prefix.
-	$block['name'] = 'acf/' . acf_slugify($block['name']);
+	if( $block['name'] ) {
+		$block['name'] = 'acf/' . acf_slugify($block['name']);
+	}
 	
 	// Add default 'supports' settings.
 	$block['supports'] = wp_parse_args($block['supports'], array(
@@ -202,6 +235,11 @@ function acf_validate_block_type( $block ) {
 		'html'		=> false,
 		'mode'		=> true,
 	));
+
+	// Correct "Experimental" flags.
+	if( isset($block['supports']['__experimental_jsx']) ) {
+		$block['supports']['jsx'] = $block['supports']['__experimental_jsx'];
+	}
 	
 	// Return block.
 	return $block;
@@ -233,7 +271,7 @@ function acf_prepare_block( $block ) {
 	
 	// Generate default attributes.
 	$attributes = array();
-	foreach( acf_get_block_type_default_attributes() as $k => $v ) {
+	foreach( acf_get_block_type_default_attributes($block_type) as $k => $v ) {
 		$attributes[ $k ] = $v['default'];
 	}
 	
@@ -257,14 +295,21 @@ function acf_prepare_block( $block ) {
  */
 function acf_rendered_block( $block, $content = '', $is_preview = false, $post_id = 0 ) {
 	
-	// Start capture.
+	// Gutenberg plugin passes different parameters to core.
+	$is_preview = is_bool( $is_preview ) ? $is_preview : false;
+	
+	// Capture block render output.
 	ob_start();
-	
-	// Render.
 	acf_render_block( $block, $content, $is_preview, $post_id );
-	
-	// Return capture.
-	return ob_get_clean();
+	$html = ob_get_clean();
+
+	// Replace <InnerBlocks /> placeholder on front-end.
+	if( !$is_preview ) {
+		// Escape "$" character to avoid "capture group" interpretation.
+		$content = str_replace( '$', '\$', $content );
+		$html = preg_replace( '/<InnerBlocks([\S\s]*?)\/>/', $content, $html );
+	}
+	return $html;
 }
 
 /**
@@ -367,11 +412,15 @@ function acf_get_block_fields( $block ) {
  * @return	void
  */
 function acf_enqueue_block_assets() {
-	
+
 	// Localize text.
 	acf_localize_text(array(
 		'Switch to Edit'		=> __('Switch to Edit', 'acf'),
 		'Switch to Preview'		=> __('Switch to Preview', 'acf'),
+		'Change content alignment'	=> __('Change content alignment', 'acf'),
+
+		/* translators: %s: Block type title */
+		'%s settings'			=> __('%s settings', 'acf'),
 	));
 	
 	// Get block types.
@@ -379,11 +428,29 @@ function acf_enqueue_block_assets() {
 	
 	// Localize data.
 	acf_localize_data(array(
-		'blockTypes'	=> array_values( $block_types )
+		'blockTypes'	=> array_values( $block_types ),
+		
+		// List of attributes to replace for HTML to JSX compatibility.
+		// https://github.com/facebook/react/blob/master/packages/react-dom/src/shared/possibleStandardNames.js
+		'jsxAttributes'	=> array(
+			'cellpadding'	=> 'cellPadding',
+			'cellspacing'	=> 'cellSpacing',
+			'class'			=> 'className',
+			'colspan'		=> 'colSpan',
+			'for'			=> 'htmlFor',
+			'hreflang'		=> 'hrefLang',
+			'readonly'		=> 'readOnly',
+			'rowspan'		=> 'rowSpan',
+			'srclang'		=> 'srcLang',
+			'srcset'		=> 'srcSet',
+			'allowedblocks'	=> 'allowedBlocks',
+			'templatelock'	=> 'templateLock'
+		),
+		'postType'	=> get_post_type()
 	));
 	
 	// Enqueue script.
-	wp_enqueue_script('acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks.min.js"), array('acf-input', 'wp-blocks'), ACF_VERSION, true );
+	wp_enqueue_script( 'acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks.min.js"), array('acf-input', 'wp-blocks'), ACF_VERSION, true );
 	
 	// Enqueue block assets.
 	array_map( 'acf_enqueue_block_type_assets', $block_types );

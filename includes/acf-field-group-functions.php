@@ -224,9 +224,10 @@ function acf_validate_field_group( $field_group = array() ) {
 	// Convert types.
 	$field_group['ID'] = (int) $field_group['ID'];
 	$field_group['menu_order'] = (int) $field_group['menu_order'];
+	$field_group['active'] = (bool) $field_group['active'];
 	
 	// Field group is now valid.
-	$field_group['_valid'] = 1;
+	$field_group['_valid'] = true;
 	
 	/**
 	 * Filters the $field_group array to validate settings.
@@ -952,6 +953,38 @@ function acf_prepare_field_group_for_export( $field_group = array() ) {
 }
 
 /**
+ * acf_prepare_field_group_for_import
+ *
+ * Prepares a field group for the import process.
+ *
+ * @date	21/11/19
+ * @since	5.8.8
+ *
+ * @param	array $field_group The field group array.
+ * @return	array
+ */
+function acf_prepare_field_group_for_import( $field_group ) {
+	
+	// Update parent and menu_order properties for all fields.
+	if( $field_group['fields'] ) {
+		foreach( $field_group['fields'] as $i => &$field ) {
+			$field['parent'] = $field_group['key'];
+			$field['menu_order'] = $i;
+		}
+	}
+	
+	/**
+	 * Filters the $field_group array before being returned to the import tool.
+	 *
+	 * @date	21/11/19
+	 * @since	5.8.8
+	 *
+	 * @param	array $field_group The field group array.
+	 */
+	return apply_filters( "acf/prepare_field_group_for_import", $field_group );
+}
+
+/**
  * acf_import_field_group
  *
  * Imports a field group into the databse.
@@ -967,24 +1000,23 @@ function acf_import_field_group( $field_group ) {
 	// Disable filters to ensure data is not modified by local, clone, etc.
 	$filters = acf_disable_filters();
 	
-	// Validate field group.
+	// Validate field group (ensures all settings exist).
 	$field_group = acf_get_valid_field_group( $field_group );
+	
+	// Prepare group for import (modifies settings).
+	$field_group = acf_prepare_field_group_for_import( $field_group );
+	
+	// Prepare fields for import (modifies settings).
+	$fields = acf_prepare_fields_for_import( $field_group['fields'] );
 	
 	// Stores a map of field "key" => "ID".
 	$ids = array();
 	
-	// Stores a map of field "parent_key" => "child_count".
-	$count = array();
-	
-	// Prepare fields for import.
-	$fields = acf_prepare_fields_for_import( $field_group['fields'] );
-	
-	// If the field group has an ID, review and delete stale fields in the databse. 
+	// If the field group has an ID, review and delete stale fields in the database. 
 	if( $field_group['ID'] ) {
 		
 		// Load database fields.
-		$db_fields = acf_get_fields( $field_group );
-		$db_fields = acf_prepare_fields_for_import( $db_fields );
+		$db_fields = acf_prepare_fields_for_import( acf_get_fields( $field_group ) );
 		
 		// Generate map of "index" => "key" data.
 		$keys = wp_list_pluck( $fields, 'key' );
@@ -1011,44 +1043,22 @@ function acf_import_field_group( $field_group ) {
 	// Add field group data to $ids map.
 	$ids[ $field_group['key'] ] = $field_group['ID'];
 	
-	// Add count to map.
-	$count[ $field_group['ID'] ] = 0;
-	
 	// Loop over and add fields.
 	if( $fields ) {
 		foreach( $fields as $field ) {
 			
-			// Check $ids map for existing ID for this key.
+			// Replace any "key" references with "ID".
 			if( isset($ids[ $field['key'] ]) ) {
 				$field['ID'] = $ids[ $field['key'] ];	
 			}
-			
-			// Add field group as parent.
-			if( empty($field['parent']) ) {
-				$field['parent'] = $field_group['ID'];
-			
-			// Check $ids map for existing parent	
-			} elseif( isset($ids[ $field['parent'] ]) ) {
+			if( isset($ids[ $field['parent'] ]) ) {
 				$field['parent'] = $ids[ $field['parent'] ];	
-			}
-			
-			// Add field menu_order.
-			if( !isset($count[ $field['parent'] ]) ) {
-				$count[ $field['parent'] ] = 1;
-			} else {
-				$count[ $field['parent'] ]++;
-			}
-			
-			// Only add menu order if doesn't already exist.
-			// Allows Flexible Content field to set custom order.
-			if( !isset($field['menu_order']) ) {
-				$field['menu_order'] = ($count[ $field['parent'] ] - 1);
 			}
 			
 			// Save field.
 			$field = acf_update_field( $field );
 			
-			// Add field data to $ids map.
+			// Add field data to $ids map for children.
 			$ids[ $field['key'] ] = $field['ID'];
 		}
 	}
