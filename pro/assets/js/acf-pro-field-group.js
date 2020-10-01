@@ -227,6 +227,11 @@
 		
 		onClickDelete: function( e, $el ){
 			
+			// Bypass confirmation when holding down "shift" key.
+			if( e.shiftKey ) {
+				return this.delete();
+			}
+			
 			// add class
 			this.$el.addClass('-hover');
 			

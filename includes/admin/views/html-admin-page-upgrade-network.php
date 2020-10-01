@@ -153,38 +153,14 @@
 						blog_id: $input.val()
 					}),
 					success: function( json ){
-						
-						// success
-						if( acf.isAjaxSuccess(json) ) {
-							
-							// update
-							success = true;
-							
-							// remove input
-							$input.remove();
-							
-							// set response text
-							text = '<?php _e('Upgrade complete.', 'acf'); ?>';
-							if( jsonText = acf.getAjaxMessage(json) ) {
-								text = jsonText;
-							}
-						
-						// error
-						} else {
-							
-							// set response text
-							text = '<?php _e('Upgrade failed.', 'acf'); ?>';
-							if( jsonText = acf.getAjaxError(json) ) {
-								text += ' <pre>' + jsonText +  '</pre>';
-							}
-						}			
+						success = true;
+						$input.remove();
+						text = '<?php _e('Upgrade complete.', 'acf'); ?>';	
 					},
 					error: function( jqXHR, textStatus, errorThrown ){
-						
-						// set response text
 						text = '<?php _e('Upgrade failed.', 'acf'); ?>';
-						if( errorThrown) {
-							text += ' <pre>' + errorThrown +  '</pre>';
+						if( error = acf.getXhrError(jqXHR) ) {
+							text += ' <code>' + error +  '</code>';
 						}
 					},
 					complete: this.proxy(function(){

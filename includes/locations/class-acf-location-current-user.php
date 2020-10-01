@@ -2,110 +2,78 @@
 
 if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-if( ! class_exists('acf_location_current_user') ) :
+if( ! class_exists('ACF_Location_Current_User') ) :
 
-class acf_location_current_user extends acf_location {
+class ACF_Location_Current_User extends ACF_Location {
 	
-	
-	/*
-	*  __construct
-	*
-	*  This function will setup the class functionality
-	*
-	*  @type	function
-	*  @date	5/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-	
-	function initialize() {
-		
-		// vars
+	/**
+	 * Initializes props.
+	 *
+	 * @date	5/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	void
+	 * @return	void
+	 */
+	public function initialize() {
 		$this->name = 'current_user';
-		$this->label = __("Current User",'acf');
+		$this->label = __( "Current User", 'acf' );
 		$this->category = 'user';
-    	
 	}
 	
-	
-	/*
-	*  rule_match
-	*
-	*  This function is used to match this location $rule to the current $screen
-	*
-	*  @type	function
-	*  @date	3/01/13
-	*  @since	3.5.7
-	*
-	*  @param	$match (boolean) 
-	*  @param	$rule (array)
-	*  @return	$options (array)
-	*/
-	
-	function rule_match( $result, $rule, $screen ) {
-		
-		// logged in
-		if( $rule['value'] == 'logged_in' ) {
-			
-			$result = is_user_logged_in();
-			
-		// viewing_front
-		} elseif( $rule['value'] == 'viewing_front' ) {
-			
-			$result = !is_admin();
-			
-		// viewing_back
-		} elseif( $rule['value'] == 'viewing_back' ) {
-			
-			$result = is_admin();
-			
+	/**
+	 * Matches the provided rule against the screen args returning a bool result.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule The location rule.
+	 * @param	array $screen The screen args.
+	 * @param	array $field_group The field group settings.
+	 * @return	bool
+	 */
+	public function match( $rule, $screen, $field_group ) {
+		switch( $rule['value'] ) {
+			case 'logged_in':
+				$result = is_user_logged_in();
+				break;
+			case 'viewing_front':
+				$result = !is_admin();
+				break;
+			case 'viewing_back':
+				$result = is_admin();
+				break;
+			default:
+				$result = false;
+				break;
 		}
 		
-		
-		// reverse if 'not equal to'
-        if( $rule['operator'] == '!=' ) {
-	        	
-        	$result = !$result;
-        
+		// Reverse result for "!=" operator.
+        if( $rule['operator'] === '!=' ) {
+        	return !$result;
         }
-		
-		
-        // return
-        return $result;
-        
+		return $result;
 	}
 	
-	
-	/*
-	*  rule_operators
-	*
-	*  This function returns the available values for this rule type
-	*
-	*  @type	function
-	*  @date	30/5/17
-	*  @since	5.6.0
-	*
-	*  @param	n/a
-	*  @return	(array)
-	*/
-	
-	function rule_values( $choices, $rule ) {
-		
+	/**
+	 * Returns an array of possible values for this rule type.
+	 *
+	 * @date	9/4/20
+	 * @since	5.9.0
+	 *
+	 * @param	array $rule A location rule.
+	 * @return	array
+	 */
+	public function get_values( $rule ) {
 		return array(
-			'logged_in'		=> __('Logged in', 'acf'),
-			'viewing_front'	=> __('Viewing front end', 'acf'),
-			'viewing_back'	=> __('Viewing back end', 'acf')
+			'logged_in'		=> __( 'Logged in', 'acf' ),
+			'viewing_front'	=> __( 'Viewing front end', 'acf' ),
+			'viewing_back'	=> __( 'Viewing back end', 'acf' )
 		);
-		
 	}
-	
 }
 
-// initialize
-acf_register_location_rule( 'acf_location_current_user' );
+// Register.
+acf_register_location_type( 'ACF_Location_Current_User' );
 
 endif; // class_exists check
-
-?>

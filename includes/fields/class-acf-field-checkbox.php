@@ -442,8 +442,10 @@ class acf_field_checkbox extends acf_field {
 
 	function update_field( $field ) {
 		
-		return acf_get_field_type('select')->update_field( $field );
-		
+		// Decode choices (convert to array).
+		$field['choices'] = acf_decode_choices( $field['choices'] );
+		$field['default_value'] = acf_decode_choices( $field['default_value'], true );
+		return $field;
 	}
 	
 	
@@ -479,7 +481,10 @@ class acf_field_checkbox extends acf_field {
 			// get raw $field (may have been changed via repeater field)
 			// if field is local, it won't have an ID
 			$selector = $field['ID'] ? $field['ID'] : $field['key'];
-			$field = acf_get_field( $selector, true );
+			$field = acf_get_field( $selector );
+			if( !$field ) {
+				return false;
+			}
 			
 			
 			// bail early if no ID (JSON only)

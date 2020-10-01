@@ -49,12 +49,22 @@ class ACF_Media {
 	*/
 	
 	function enqueue_scripts(){
-		
-		// localize
-		acf_localize_data(array(
-			'mimeTypeIcon'	=> wp_mime_type_icon(),
-			'mimeTypes'		=> get_allowed_mime_types()
-		));
+		if( wp_script_is('acf-input') ) {
+			acf_localize_text(array(
+				'Select.verb'			=> _x('Select', 'verb', 'acf'),
+				'Edit.verb'				=> _x('Edit', 'verb', 'acf'),
+				'Update.verb'			=> _x('Update', 'verb', 'acf'),
+				'Uploaded to this post'	=> __('Uploaded to this post', 'acf'),
+				'Expand Details' 		=> __('Expand Details', 'acf'),
+				'Collapse Details' 		=> __('Collapse Details', 'acf'),
+				'Restricted'			=> __('Restricted', 'acf'),
+				'All images'			=> __('All images', 'acf')
+			));
+			acf_localize_data(array(
+				'mimeTypeIcon'	=> wp_mime_type_icon(),
+				'mimeTypes'		=> get_allowed_mime_types()
+			));
+		}
 	}
 		
 		

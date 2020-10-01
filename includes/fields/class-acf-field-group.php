@@ -571,78 +571,54 @@ class acf_field__group extends acf_field {
 		
 	}
 	
-	
-	/*
-	*  prepare_field_for_export
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	11/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
+	/**
+	 * prepare_field_for_export
+	 *
+	 * Prepares the field for export.
+	 *
+	 * @date	11/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	array $field The field settings.
+	 * @return	array
+	 */
 	function prepare_field_for_export( $field ) {
 		
-		// bail early if no sub fields
-		if( empty($field['sub_fields']) ) return $field;
-		
-		
-		// prepare
-		$field['sub_fields'] = acf_prepare_fields_for_export( $field['sub_fields'] );
-		
-		
-		// return
+		// Check for sub fields.
+		if( !empty($field['sub_fields']) ) {
+			$field['sub_fields'] = acf_prepare_fields_for_export( $field['sub_fields'] );
+		}
 		return $field;
-		
 	}
 	
-	
-	/*
-	*  prepare_field_for_import
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	11/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
+	/**
+	 * prepare_field_for_import
+	 *
+	 * Returns a flat array of fields containing all sub fields ready for import.
+	 *
+	 * @date	11/03/2014
+	 * @since	5.0.0
+	 *
+	 * @param	array $field The field settings.
+	 * @return	array
+	 */
 	function prepare_field_for_import( $field ) {
 		
-		// bail early if no sub fields
-		if( empty($field['sub_fields']) ) return $field;
-		
-		
-		// vars
-		$sub_fields = $field['sub_fields'];
-		
-		
-		// reset field setting
-		$field['sub_fields'] = array();
-		
-		
-		// loop
-		foreach( $sub_fields as &$sub_field ) {
+		// Check for sub fields.
+		if( !empty($field['sub_fields']) ) {
+			$sub_fields = acf_extract_var( $field, 'sub_fields' );
 			
-			$sub_field['parent'] = $field['key'];
+			// Modify sub fields.
+			foreach( $sub_fields as $i => $sub_field ) {
+				$sub_fields[ $i ]['parent'] = $field['key'];
+				$sub_fields[ $i ]['menu_order'] = $i;
+			}
+			
+			// Return array of [field, sub_1, sub_2, ...].
+			return array_merge( array($field), $sub_fields );
 			
 		}
-		
-		
-		// merge
-		array_unshift($sub_fields, $field);
-		
-		
-		// return
-		return $sub_fields;
-		
+		return $field;
 	}
 	
 	

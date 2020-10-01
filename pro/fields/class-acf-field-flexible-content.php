@@ -411,8 +411,9 @@ class acf_field_flexible_content extends acf_field {
 	
 	<div class="acf-fc-layout-controls">
 		<a class="acf-icon -plus small light acf-js-tooltip" href="#" data-name="add-layout" title="<?php _e('Add layout','acf'); ?>"></a>
+		<a class="acf-icon -duplicate small light acf-js-tooltip" href="#" data-name="duplicate-layout" title="<?php _e('Duplicate layout','acf'); ?>"></a>
 		<a class="acf-icon -minus small light acf-js-tooltip" href="#" data-name="remove-layout" title="<?php _e('Remove layout','acf'); ?>"></a>
-		<a class="acf-icon -collapse small acf-js-tooltip" href="#" data-name="collapse-layout" title="<?php _e('Click to toggle','acf'); ?>"></a>
+		<a class="acf-icon -collapse small -clear acf-js-tooltip" href="#" data-name="collapse-layout" title="<?php _e('Click to toggle','acf'); ?>"></a>
 	</div>
 	
 <?php if( !empty($sub_fields) ): ?>
@@ -600,7 +601,7 @@ class acf_field_flexible_content extends acf_field {
 			</li>
 			<li class="acf-fc-meta-display">
 				<div class="acf-input-prepend"><?php _e('Layout','acf'); ?></div>
-				<div class="acf-input-wrap select">
+				<div class="acf-input-wrap">
 					<?php 
 					
 					acf_render_field(array(
@@ -608,6 +609,7 @@ class acf_field_flexible_content extends acf_field {
 						'name'		=> 'display',
 						'prefix'	=> $layout_prefix,
 						'value'		=> $layout['display'],
+						'class'		=> 'acf-is-prepended',
 						'choices'	=> array(
 							'table'			=> __('Table','acf'),
 							'block'			=> __('Block','acf'),

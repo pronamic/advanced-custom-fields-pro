@@ -354,200 +354,140 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 }
 
 
-/*
-*  have_rows
-*
-*  This function will instantiate a global variable containing the rows of a repeater or flexible content field,
-*  after which, it will determine if another row exists to loop through
-*
-*  @type	function
-*  @date	2/09/13
-*  @since	4.3.0
-*
-*  @param	$field_name (string) the field name
-*  @param	$post_id (mixed) the post_id of which the value is saved against
-*  @return	(boolean)
-*/
-
+/**
+ * have_rows
+ *
+ * Checks if a field (such as Repeater or Flexible Content) has any rows of data to loop over.
+ * This function is intended to be used in conjunction with the_row() to step through available values.
+ *
+ * @date	2/09/13
+ * @since	4.3.0
+ *
+ * @param	string $selector The field name or field key.
+ * @param	mixed $post_id The post ID where the value is saved. Defaults to the current post.
+ * @return	bool
+ */
 function have_rows( $selector, $post_id = false ) {
 	
-	// reference
+	// Validate and backup $post_id.
 	$_post_id = $post_id;
-	
-	
-	// filter post_id
 	$post_id = acf_get_valid_post_id( $post_id );
 	
-	
-	// vars
+	// Vars.
 	$key = "selector={$selector}/post_id={$post_id}";
 	$active_loop = acf_get_loop('active');
-	$previous_loop = acf_get_loop('previous');
-	$new_parent_loop = false;
-	$new_child_loop = false;
+	$prev_loop = acf_get_loop('previous');
+	$new_loop = false;
 	$sub_field = false;
-	$sub_exists = false;
-	$change = false;
 	
-	
-	// no active loops
+	// Check if no active loop.
 	if( !$active_loop ) {
-		
-		// create a new loop
-		$new_parent_loop = true;
+		$new_loop = 'parent';
 	
-	// loop has changed
-	} elseif( $active_loop['key'] != $key ) {
+	// Detect "change" compared to the active loop.
+	} elseif( $key !== $active_loop['key'] ) {
 		
-		// detect change
+		// Find sub field and check if a sub value exists.
+		$sub_field_exists = false;
+		$sub_field = acf_get_sub_field($selector, $active_loop['field']);
+		if( $sub_field ) {
+			$sub_field_exists = isset( $active_loop['value'][ $active_loop['i'] ][ $sub_field['key'] ] );
+		}
+		
+		// Detect change in post_id.
 		if( $post_id != $active_loop['post_id'] ) {
 			
-			$change = 'post_id';
-				
+			// Case: Change in $post_id was due to this being a nested loop and not specifying the $post_id.
+			// Action: Move down one level into a new loop.
+			if( empty($_post_id) && $sub_field_exists ) {
+				$new_loop = 'child';
+			
+			// Case: Change in $post_id was due to a nested loop ending.
+			// Action: move up one level through the loops.
+			} elseif( $prev_loop && $prev_loop['post_id'] == $post_id ) {
+				acf_remove_loop('active');
+				$active_loop = $prev_loop;
+			
+			// Case: Chang in $post_id is the most obvious, used in an WP_Query loop with multiple $post objects.
+			// Action: leave this current loop alone and create a new parent loop.
+			} else {
+				$new_loop = 'parent';
+			}
+		
+		// Detect change in selector.
 		} elseif( $selector != $active_loop['selector'] ) {
 			
-			$change = 'selector';
-				
-		} else {
+			// Case: Change in $field_name was due to this being a nested loop.
+			// Action: move down one level into a new loop.
+			if( $sub_field_exists ) {
+				$new_loop = 'child';
 			
-			// key has changed due to a technicallity, however, the post_id and selector are the same
-			
-		}
-		
-		
-		// attempt to find sub field
-		$sub_field = acf_get_sub_field($selector, $active_loop['field']);
-			
-		if( $sub_field ) {
-			
-			$sub_exists = isset( $active_loop['value'][ $active_loop['i'] ][ $sub_field['key'] ] );
-			
-		}
-		
-		
-		// If post_id has changed, this is most likely an archive loop
-		if( $change == 'post_id' ) {
-			
-			if( empty($_post_id) && $sub_exists ) {
-				
-				// case: Change in $post_id was due to this being a nested loop and not specifying the $post_id
-				// action: move down one level into a new loop
-				$new_child_loop = true;
-			
-			} elseif( $previous_loop && $previous_loop['post_id'] == $post_id ) {
-				
-				// case: Change in $post_id was due to a nested loop ending
-				// action: move up one level through the loops
+			// Case: Change in $field_name was due to a nested loop ending.
+			// Action: move up one level through the loops.
+			} elseif( $prev_loop && $prev_loop['selector'] == $selector && $prev_loop['post_id'] == $post_id ) {
 				acf_remove_loop('active');
-				$active_loop = $previous_loop;
+				$active_loop = $prev_loop;
 			
+			// Case: Change in $field_name is the most obvious, this is a new loop for a different field within the $post.
+			// Action: leave this current loop alone and create a new parent loop.
 			} else {
-				
-				// case: Chang in $post_id is the most obvious, used in an WP_Query loop with multiple $post objects
-				// action: leave this current loop alone and create a new parent loop
-				$new_parent_loop = true;
-				
+				$new_loop = 'parent';
 			}
-			
-		} elseif( $change == 'selector' ) {
-			
-			if( $sub_exists ) {
-				
-				// case: Change in $field_name was due to this being a nested loop
-				// action: move down one level into a new loop
-				$new_child_loop = true;
-				
-			} elseif( $previous_loop && $previous_loop['selector'] == $selector && $previous_loop['post_id'] == $post_id ) {
-				
-				// case: Change in $field_name was due to a nested loop ending
-				// action: move up one level through the loops
-				acf_remove_loop('active');
-				$active_loop = $previous_loop;
-				
-			} else {
-				
-				// case: Chang in $field_name is the most obvious, this is a new loop for a different field within the $post
-				// action: leave this current loop alone and create a new parent loop
-				$new_parent_loop = true;
-				
-			}
-			
 		}
-	
-	// loop is the same	
-	} else {
-		
-		// do nothing
-		
 	}
 	
-	
-	// add loop
-	if( $new_parent_loop || $new_child_loop ) {
-		
-		// vars
-		$field = null;
-		$value = null;
-		$name = '';
-		
-		
-		// parent loop
-		if( $new_parent_loop ) {
-			
-			$field = get_field_object( $selector, $post_id, false );
-			$value = acf_extract_var( $field, 'value' );
-			$name = $field['name'];
-			
-		// child loop
-		} else {
-			
-			$field = $sub_field;
-			$value = $active_loop['value'][ $active_loop['i'] ][ $sub_field['key'] ];
-			$name = $active_loop['name'] . '_' . $active_loop['i'] . '_' . $sub_field['name'];
-			$post_id = $active_loop['post_id'];
-			
-		}
-		
-		
-		// bail early if value is either empty or a non array
-		if( !acf_is_array($value) ) return false;
-		
-		
-		// allow for non repeatable data (group)
-		if( acf_get_field_type_prop($field['type'], 'have_rows') === 'single' ) {
-			$value = array( $value );
-		}
-		
-		
-		// add loop
-		$active_loop = acf_add_loop(array(
+	// Add loop if required.
+	if( $new_loop ) {
+		$args = array(
+			'key'		=> $key,
 			'selector'	=> $selector,
-			'name'		=> $name, // used by update_sub_field
-			'value'		=> $value,
-			'field'		=> $field,
-			'i'			=> -1,
 			'post_id'	=> $post_id,
-			'key'		=> $key
-		));
+			'name'		=> null,
+			'value'		=> null,
+			'field'		=> null,
+			'i'			=> -1,
+		);
 		
+		// Case: Parent loop.
+		if( $new_loop === 'parent' ) {
+			$field = get_field_object( $selector, $post_id, false );
+			if( $field ) {
+				$args['field'] = $field;
+				$args['value'] = $field['value'];
+				$args['name'] = $field['name'];
+				unset( $args['field']['value'] );
+			}
+			
+		// Case: Child loop ($sub_field must exist).
+		} else {
+			$args['field'] = $sub_field;
+			$args['value'] = $active_loop['value'][ $active_loop['i'] ][ $sub_field['key'] ];
+			$args['name'] = "{$active_loop['name']}_{$active_loop['i']}_{$sub_field['name']}";
+			$args['post_id'] = $active_loop['post_id'];
+		}
+		
+		// Bail early if value is either empty or a non array.
+		if( !$args['value'] || !is_array($args['value']) ) {
+			return false;
+		}
+		
+		// Allow for non repeatable data for Group and Clone fields.
+		if( acf_get_field_type_prop($args['field']['type'], 'have_rows') === 'single' ) {
+			$args['value'] = array( $args['value'] );
+		}
+		
+		// Add loop.
+		$active_loop = acf_add_loop($args);
 	}
 	
-	
-	// return true if next row exists
+	// Return true if next row exists.
 	if( $active_loop && isset($active_loop['value'][ $active_loop['i']+1 ]) ) {
-		
 		return true;
-		
-	}
+	}	
 	
-	
-	// no next row!
+	// Return false if no next row.
 	acf_remove_loop('active');
-	
-	
-	// return
 	return false;
-  
 }
 
 
