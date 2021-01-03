@@ -106,3 +106,111 @@ function acf_get_object_type( $object_type, $object_subtype = '' ) {
 	 */
 	return apply_filters( 'acf/get_object_type', $object, $object_type, $object_subtype );
 }
+
+/**
+ * Decodes a post_id value such as 1 or "user_1" into an array containing the type and ID.
+ *
+ * @date	25/1/19
+ * @since	5.7.11
+ *
+ * @param	(int|string) $post_id The post id.
+ * @return	array
+ */
+function acf_decode_post_id( $post_id = 0 ) {
+	$type = '';
+	$id = 0;
+	
+	// Interpret numeric value (123).
+	if ( is_numeric($post_id) ) {
+		$type = 'post';
+		$id = $post_id;
+		
+	// Interpret string value ("user_123" or "option").
+	} elseif ( is_string($post_id) ) {
+		$i = strrpos($post_id, '_');
+		if( $i > 0 ) {
+			$type = substr($post_id, 0, $i);
+			$id = substr($post_id, $i+1);
+		} else {
+			$type = $post_id;
+		}
+	
+	// Handle incorrect param type.
+	} else {
+		return compact( 'type', 'id' );
+	}
+	
+	// Validate props based on param format.
+	$format = $type . '_' . (is_numeric($id) ? '%d' : '%s');
+	switch ( $format ) {
+		case 'post_%d':
+			$type = 'post';
+			$id = absint( $id );
+			break;
+		case 'term_%d':
+			$type = 'term';
+			$id = absint( $id );
+			break;
+		case 'attachment_%d':
+			$type = 'post';
+			$id = absint( $id );
+			break;
+		case 'comment_%d':
+			$type = 'comment';
+			$id = absint( $id );
+			break;
+		case 'widget_%s':
+		case 'widget_%d':
+			$type = 'option';
+			$id = $post_id;
+			break;
+		case 'menu_%d':
+			$type = 'term';
+			$id = absint( $id );
+			break;
+		case 'menu_item_%d':
+			$type = 'post';
+			$id = absint( $id );
+			break;
+		case 'user_%d':
+			$type = 'user';
+			$id = absint( $id );
+			break;
+		case 'block_%s':
+			$type = 'block';
+			$id = $post_id;
+			break;
+		case 'option_%s':
+			$type = 'option';
+			$id = $post_id;
+			break;
+		case 'blog_%d':
+		case 'site_%d':
+			$type = 'blog';
+			$id = absint( $id );
+			break;
+		default:
+			// Check for taxonomy name.
+			if( taxonomy_exists($type) && is_numeric($id) ) {
+				$type = 'term';
+				$id = absint( $id );
+				break;
+			}
+			
+			// Treat unknown post_id format as an option.
+			$type = 'option';
+			$id = $post_id;
+			break;
+	}
+	
+	/**
+	 * Filters the decoded post_id information.
+	 *
+	 * @date	25/1/19
+	 * @since	5.7.11
+	 *
+	 * @param	array $props An array containing "type" and "id" information.
+	 * @param	(int|string) $post_id The post id.
+	 */
+	return apply_filters( "acf/decode_post_id", compact( 'type', 'id' ), $post_id );
+}

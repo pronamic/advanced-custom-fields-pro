@@ -5,6 +5,7 @@ defined( 'ABSPATH' ) || exit;
 
 // Register store.
 acf_register_store( 'block-types' );
+acf_register_store( 'block-cache' );
 		
 /**
  * acf_register_block_type
@@ -52,7 +53,7 @@ function acf_register_block_type( $block ) {
 	if( function_exists('register_block_type') ) {
 		register_block_type($block['name'], array(
 			'attributes'		=> acf_get_block_type_default_attributes( $block ),
-			'render_callback'	=> 'acf_rendered_block',
+			'render_callback'	=> 'acf_render_block_callback',
 		));
 	}
 	
@@ -283,24 +284,47 @@ function acf_prepare_block( $block ) {
 }
 
 /**
- * acf_rendered_block
+ * The render callback for all ACF blocks.
  *
- * Returns the HTML from acf_render_block().
+ * @date	28/10/20
+ * @since	5.9.2
+ *
+ * @param	array  $attributes The block attributes.
+ * @param	string $content The block content.
+ * @param	WP_Block $wp_block The block instance (since WP 5.5).
+ * @return	string The block HTML.
+ */
+function acf_render_block_callback( $attributes, $content = '', $wp_block = null ) {
+	$is_preview = false;
+	$post_id = get_the_ID();
+	
+	// Set preview flag to true when rendering for the block editor.
+	if( is_admin() && acf_is_block_editor() ) {
+		$is_preview = true;
+	}
+	
+	// Return rendered block HTML.
+	return acf_rendered_block( $attributes, $content, $is_preview, $post_id, $wp_block );
+}
+
+/**
+ * Returns the rendered block HTML.
  *
  * @date	28/2/19
  * @since	5.7.13
- * @see		acf_render_block() for list of parameters.
  *
- * @return	string
+ * @param	array  $attributes The block attributes.
+ * @param	string $content The block content.
+ * @param	bool $is_preview Whether or not the block is being rendered for editing preview.
+ * @param	int $post_id The current post being edited or viewed.
+ * @param	WP_Block $wp_block The block instance (since WP 5.5).
+ * @return	string The block HTML.
  */
-function acf_rendered_block( $block, $content = '', $is_preview = false, $post_id = 0 ) {
-	
-	// Gutenberg plugin passes different parameters to core.
-	$is_preview = is_bool( $is_preview ) ? $is_preview : false;
+function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null ) {
 	
 	// Capture block render output.
 	ob_start();
-	acf_render_block( $block, $content, $is_preview, $post_id );
+	acf_render_block( $attributes, $content, $is_preview, $post_id, $wp_block );
 	$html = ob_get_clean();
 
 	// Replace <InnerBlocks /> placeholder on front-end.
@@ -309,27 +333,29 @@ function acf_rendered_block( $block, $content = '', $is_preview = false, $post_i
 		$content = str_replace( '$', '\$', $content );
 		$html = preg_replace( '/<InnerBlocks([\S\s]*?)\/>/', $content, $html );
 	}
+	
+	// Store in cache for preloading.
+	acf_get_store( 'block-cache' )->set( $attributes['id'], $html );
 	return $html;
 }
 
 /**
- * acf_render_block
- *
  * Renders the block HTML.
  *
  * @date	19/2/19
  * @since	5.7.12
  *
- * @param	array $block The block props.
- * @param	string $content The block content (emtpy string).
- * @param	bool $is_preview True during AJAX preview.
- * @param	int $post_id The post being edited.
+ * @param	array  $attributes The block attributes.
+ * @param	string $content The block content.
+ * @param	bool $is_preview Whether or not the block is being rendered for editing preview.
+ * @param	int $post_id The current post being edited or viewed.
+ * @param	WP_Block $wp_block The block instance (since WP 5.5).
  * @return	void
  */
-function acf_render_block( $block, $content = '', $is_preview = false, $post_id = 0 ) {
+function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null ) {
 	
 	// Prepare block ensuring all settings and attributes exist.
-	$block = acf_prepare_block( $block );
+	$block = acf_prepare_block( $attributes );
 	if( !$block ) {
 		return '';
 	}
@@ -347,7 +373,7 @@ function acf_render_block( $block, $content = '', $is_preview = false, $post_id 
 	
 	// Call render_callback.
 	if( is_callable( $block['render_callback'] ) ) {
-		call_user_func( $block['render_callback'], $block, $content, $is_preview, $post_id );
+		call_user_func( $block['render_callback'], $block, $content, $is_preview, $post_id, $wp_block );
 	
 	// Or include template.
 	} elseif( $block['render_template'] ) {
@@ -412,7 +438,7 @@ function acf_get_block_fields( $block ) {
  * @return	void
  */
 function acf_enqueue_block_assets() {
-
+	
 	// Localize text.
 	acf_localize_text(array(
 		'Switch to Edit'		=> __('Switch to Edit', 'acf'),
@@ -437,6 +463,7 @@ function acf_enqueue_block_assets() {
 			'cellspacing'	=> 'cellSpacing',
 			'class'			=> 'className',
 			'colspan'		=> 'colSpan',
+			'datetime'		=> 'dateTime',
 			'for'			=> 'htmlFor',
 			'hreflang'		=> 'hrefLang',
 			'readonly'		=> 'readOnly',
@@ -454,6 +481,15 @@ function acf_enqueue_block_assets() {
 	
 	// Enqueue block assets.
 	array_map( 'acf_enqueue_block_type_assets', $block_types );
+	
+	// During the edit screen loading, WordPress renders all blocks in its own attempt to preload data.
+	// Retrieve any cached block HTML and include this in the localized data.
+	if( defined('ACF_EXPERIMENTAL_PRELOAD_BLOCKS') && ACF_EXPERIMENTAL_PRELOAD_BLOCKS ) {
+		$preloaded_blocks = acf_get_store( 'block-cache' )->get_data();
+		acf_localize_data(array(
+			'preloadedBlocks' => $preloaded_blocks
+		));
+	}
 }
 
 /**

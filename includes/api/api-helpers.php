@@ -2611,7 +2611,8 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 	}
 	
 	
-	// $post_id may be an object
+	// $post_id may be an object.
+	// todo: Compare class types instead.
 	if( is_object($post_id) ) {
 		
 		// post
@@ -2627,7 +2628,7 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 		// term
 		} elseif( isset($post_id->taxonomy, $post_id->term_id) ) {
 			
-			$post_id = acf_get_term_post_id( $post_id->taxonomy, $post_id->term_id );
+			$post_id = 'term_' . $post_id->term_id;
 		
 		// comment
 		} elseif( isset($post_id->comment_ID) ) {
@@ -2812,36 +2813,6 @@ function acf_isset_termmeta( $taxonomy = '' ) {
 	// return
 	return true;
 		
-}
-
-
-/*
-*  acf_get_term_post_id
-*
-*  This function will return a valid post_id string for a given term and taxonomy
-*
-*  @type	function
-*  @date	6/2/17
-*  @since	5.5.6
-*
-*  @param	$taxonomy (string)
-*  @param	$term_id (int)
-*  @return	(string)
-*/
-
-function acf_get_term_post_id( $taxonomy, $term_id ) {
-	
-	// WP < 4.4
-	if( !acf_isset_termmeta() ) {
-		
-		return $taxonomy . '_' . $term_id;
-		
-	}
-	
-	
-	// return
-	return 'term_' . $term_id;
-	
 }
 
 
@@ -4870,5 +4841,3 @@ function acf_is_block_editor() {
 	}
 	return false;
 }
-
-?>

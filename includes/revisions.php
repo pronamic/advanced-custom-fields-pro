@@ -169,13 +169,13 @@ class acf_revisions {
 			$value = $value[0];
 			$key = $key[0];
 			
-					
-			// bail early if $key is a not a field_key
-			if( !acf_is_field_key($key) ) continue;
-			
+			// Load field.
+			$field = acf_get_field( $key );
+			if( !$field ) {
+				continue;
+			}
 			
 			// get field
-			$field = acf_get_field( $key );
 			$field_title = $field['label'] . ' (' . $name . ')';
 			$field_order = $field['menu_order'];
 			$ancestors = acf_get_field_ancestors( $field );

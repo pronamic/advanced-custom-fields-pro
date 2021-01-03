@@ -67,6 +67,25 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.9.3 =
+*Release Date - 3 November 2020*
+
+* Fix - Fixed bug causing Revision meta to incorrectly update the parent Post meta.
+* Fix - Fixed bug breaking "Filter by Post Type" and "Filter by Taxonomy" Field settings.
+
+= 5.9.2 =
+*Release Date - 29 October 2020*
+
+* Enhancement - Added experiment for preloading block HTML and reducing AJAX requests on page load.
+* Fix - Added boolean attribute value detection to JSX parser (fixes issue with templateLock="false").
+* Fix - Added "dateTime" attribute to JSX parser ruleset.
+* Fix - Fixed unresponsive Select2 instances after duplicating a row or layout.
+* Fix - Added missing Color Picker script translations for previous WordPress versions.
+* Fix - Fixed bug in Clone Field causing potential PHP error if cloning a Field Group that no longer exists.
+* Fix - Fixed PHP warning logged when comparing a revision that contains values for a Field that no longer exist.
+* Dev - Added `$wp_block` parameter to block render_callback and render_template (unavailable during AJAX preview requests).
+* Dev - Deprecated `acf_get_term_post_id()` function.
+
 = 5.9.1 =
 *Release Date - 8 September 2020*
 
