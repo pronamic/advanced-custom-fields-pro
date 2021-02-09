@@ -186,7 +186,8 @@ function acf_decode_post_id( $post_id = 0 ) {
 			break;
 		case 'blog_%d':
 		case 'site_%d':
-			$type = 'blog';
+			// Allow backwards compatibility for custom taxonomies.
+			$type = taxonomy_exists($type) ? 'term' : 'blog';
 			$id = absint( $id );
 			break;
 		default:

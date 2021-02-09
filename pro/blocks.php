@@ -335,7 +335,7 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 	}
 	
 	// Store in cache for preloading.
-	acf_get_store( 'block-cache' )->set( $attributes['id'], $html );
+	acf_get_store( 'block-cache' )->set( $attributes['id'], '<div class="acf-block-preview">' . $html . '</div>' );
 	return $html;
 }
 

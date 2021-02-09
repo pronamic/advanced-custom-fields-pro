@@ -40,18 +40,16 @@ function acf_get_reference( $field_name, $post_id ) {
 }
 
 /**
- * acf_get_value
- *
  * Retrieves the value for a given field and post_id.
  *
  * @date	28/09/13
  * @since	5.0.0
  *
- * @param	(int|string) $post_id The post id.
+ * @param	int|string $post_id The post id.
  * @param	array $field The field array.
- * @return	mixed.
+ * @return	mixed
  */
-function acf_get_value( $post_id = 0, $field ) {
+function acf_get_value( $post_id, $field ) {
 	
 	// Allow filter to short-circuit load_value logic.
 	$value = apply_filters( "acf/pre_load_value", null, $post_id, $field );
