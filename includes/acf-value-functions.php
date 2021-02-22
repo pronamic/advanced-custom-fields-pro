@@ -161,7 +161,7 @@ acf_add_filter_variations( 'acf/format_value', array('type', 'name', 'key'), 2 )
  * @param	array $field The field array.
  * @return	bool.
  */
-function acf_update_value( $value = null, $post_id = 0, $field ) {
+function acf_update_value( $value, $post_id, $field ) {
 	
 	// Allow filter to short-circuit update_value logic.
 	$check = apply_filters( "acf/pre_update_value", null, $value, $post_id, $field );
@@ -215,7 +215,7 @@ acf_add_filter_variations( 'acf/update_value', array('type', 'name', 'key'), 2 )
  * @param	(int|string) $post_id The post id.
  * @return	void
  */
-function acf_update_values( $values = array(), $post_id = 0 ) {
+function acf_update_values( $values, $post_id ) {
 	
 	// Loop over values.
 	foreach( $values as $key => $value ) {

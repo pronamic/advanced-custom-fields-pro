@@ -133,6 +133,7 @@ function acf_decode_post_id( $post_id = 0 ) {
 			$id = substr($post_id, $i+1);
 		} else {
 			$type = $post_id;
+			$id = '';
 		}
 	
 	// Handle incorrect param type.
