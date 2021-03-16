@@ -141,7 +141,7 @@ class acf_form_nav_menu {
 	function update_nav_menu( $menu_id ) {
 		
 		// vars
-		$post_id = acf_get_term_post_id( 'nav_menu', $menu_id );
+		$post_id = 'term_' . $menu_id;
 		
 		
 		// verify and remove nonce
@@ -288,7 +288,7 @@ class acf_form_nav_menu {
 		
 		// vars
 		$nav_menu_id = acf_get_data('nav_menu_id');
-		$post_id = acf_get_term_post_id( 'nav_menu', $nav_menu_id );
+		$post_id = 'term_' . $nav_menu_id;
 		
 		
 		// get field groups

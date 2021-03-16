@@ -2523,6 +2523,20 @@
 	}
 	
 	/**
+	 * Returns true if value is a number or a numeric string. 
+	 *
+	 * @date	30/11/20
+	 * @since	5.9.4
+	 * @link	https://stackoverflow.com/questions/9716468/pure-javascript-a-function-like-jquerys-isnumeric/9716488#9716488
+	 *
+	 * @param	mixed n The variable being evaluated.
+	 * @return	bool.
+	 */
+	acf.isNumeric = function( n ){
+		return !isNaN(parseFloat(n)) && isFinite(n);
+	}
+	
+	/**
 	 * Triggers a "refresh" action used by various Components to redraw the DOM.
 	 *
 	 * @date	26/05/2020
@@ -2542,7 +2556,11 @@
 	});
 	
 	$(window).on('load', function(){
-		acf.doAction('load');
+		
+		// Use timeout to ensure action runs after Gutenberg has modified DOM elements during "DOMContentLoaded".
+		setTimeout(function(){
+			acf.doAction('load');
+		});
 	});
 	
 	$(window).on('beforeunload', function(){

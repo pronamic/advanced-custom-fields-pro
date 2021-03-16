@@ -213,7 +213,7 @@ class ACF_Local_JSON {
 		if( $field_group['ID'] ) {
 			$field_group['modified'] = get_post_modified_time( 'U', true, $field_group['ID'] );
 		} else {
-			$field_group['modified'] = strtotime();
+			$field_group['modified'] = strtotime( 'now' );
 		}
 		
 		// Prepare for export.
