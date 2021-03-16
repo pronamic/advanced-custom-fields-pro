@@ -138,22 +138,19 @@ function acf_get_taxonomy_labels( $taxonomies = array() ) {
 */
 
 function acf_get_term_title( $term ) {
-	
-	// set to term name
 	$title = $term->name;
 	
-	// allow for empty name
+	// Allow for empty name.
 	if( $title === '' ) {
 		$title = __('(no title)', 'acf');
 	}
 	
-	// prepent ancestors indentation
+	// Prepend ancestors indentation.
 	if( is_taxonomy_hierarchical($term->taxonomy) ) {
 		$ancestors = get_ancestors( $term->term_id, $term->taxonomy );
 		$title = str_repeat('- ', count($ancestors)) . $title;
 	}
 	
-	// return
 	return $title;
 }
 
@@ -493,6 +490,19 @@ function acf_get_choice_from_term( $term, $format = 'term_id' ) {
 	);
 }
 
-
-
-?>
+/**
+ * Returns a valid post_id string for a given term and taxonomy.
+ * No longer needed since WP introduced the termmeta table in WP 4.4.
+ *
+ * @date	6/2/17
+ * @since	5.5.6
+ * @deprecated 5.9.2
+ *
+ * @param	$taxonomy (string) The taxonomy type.
+ * @param	$term_id (int) The term ID.
+ * @return	(string)
+ */
+function acf_get_term_post_id( $taxonomy, $term_id ) {
+	_deprecated_function( __FUNCTION__, '5.9.2', 'string format term_%d' );
+	return 'term_' . $term_id;
+}
