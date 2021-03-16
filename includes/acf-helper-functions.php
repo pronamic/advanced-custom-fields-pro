@@ -124,6 +124,20 @@ function acf_request_args( $args = array() ) {
 	return $args;
 }
 
+/**
+ * Returns a single $_REQUEST arg with fallback.
+ *
+ * @date	23/10/20
+ * @since	5.9.2
+ *
+ * @param	string $key The property name.
+ * @param	mixed $default The default value to fallback to.
+ * @return	mixed
+ */
+function acf_request_arg( $name = '', $default = null ) {
+	return isset( $_REQUEST[ $name ] ) ? $_REQUEST[ $name ] : $default;
+}
+
 // Register store.
 acf_register_store( 'filters' );
 

@@ -40,18 +40,16 @@ function acf_get_reference( $field_name, $post_id ) {
 }
 
 /**
- * acf_get_value
- *
  * Retrieves the value for a given field and post_id.
  *
  * @date	28/09/13
  * @since	5.0.0
  *
- * @param	(int|string) $post_id The post id.
+ * @param	int|string $post_id The post id.
  * @param	array $field The field array.
- * @return	mixed.
+ * @return	mixed
  */
-function acf_get_value( $post_id = 0, $field ) {
+function acf_get_value( $post_id, $field ) {
 	
 	// Allow filter to short-circuit load_value logic.
 	$value = apply_filters( "acf/pre_load_value", null, $post_id, $field );
@@ -163,7 +161,7 @@ acf_add_filter_variations( 'acf/format_value', array('type', 'name', 'key'), 2 )
  * @param	array $field The field array.
  * @return	bool.
  */
-function acf_update_value( $value = null, $post_id = 0, $field ) {
+function acf_update_value( $value, $post_id, $field ) {
 	
 	// Allow filter to short-circuit update_value logic.
 	$check = apply_filters( "acf/pre_update_value", null, $value, $post_id, $field );
@@ -217,7 +215,7 @@ acf_add_filter_variations( 'acf/update_value', array('type', 'name', 'key'), 2 )
  * @param	(int|string) $post_id The post id.
  * @return	void
  */
-function acf_update_values( $values = array(), $post_id = 0 ) {
+function acf_update_values( $values, $post_id ) {
 	
 	// Loop over values.
 	foreach( $values as $key => $value ) {

@@ -282,8 +282,6 @@ class acf_field_gallery extends acf_field {
 	}
 	
 	/**
-	 * render_attachment
-	 *
 	 * Renders the sidebar HTML shown when selecting an attachmemnt.
 	 *
 	 * @date	13/12/2013
@@ -293,8 +291,7 @@ class acf_field_gallery extends acf_field {
 	 * @param	array $field The field array.
 	 * @return	void
 	 */	
-	function render_attachment( $id = 0, $field ) {
-		
+	function render_attachment( $id, $field ) {
 		// Load attachmenet data.
 		$attachment = wp_prepare_attachment_for_js( $id );
 		$compat = get_compat_media_markup( $id );

@@ -136,7 +136,7 @@ class acf_form_taxonomy {
 	function add_term( $taxonomy ) {
 		
 		// vars
-		$post_id = acf_get_term_post_id( $taxonomy, 0 );
+		$post_id = 'term_0';
 		
 		
 		// update vars
@@ -191,7 +191,7 @@ class acf_form_taxonomy {
 	function edit_term( $term, $taxonomy ) {
 		
 		// vars
-		$post_id = acf_get_term_post_id( $term->taxonomy, $term->term_id );
+		$post_id = 'term_' . $term->term_id;
 		
 		
 		// update vars
@@ -345,7 +345,7 @@ if( $this->view == 'add' ): ?>
 	function save_term( $term_id, $tt_id, $taxonomy ) {
 		
 		// vars
-		$post_id = acf_get_term_post_id( $taxonomy, $term_id );
+		$post_id = 'term_' . $term_id;
 		
 		
 		// verify and remove nonce
