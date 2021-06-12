@@ -46,15 +46,14 @@ class acf_field_time_picker extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// format value
+		// Set value.
 		$display_value = '';
 		
 		if( $field['value'] ) {
 			$display_value = acf_format_date( $field['value'], $field['display_format'] );
 		}
 		
-		
-		// vars
+		// Elements.
 		$div = array(
 			'class'					=> 'acf-time-picker acf-input-wrap',
 			'data-time_format'		=> acf_convert_time_to_js($field['display_format'])
@@ -71,9 +70,14 @@ class acf_field_time_picker extends acf_field {
 			'type'					=> 'text',
 			'value'					=> $display_value,
 		);
+		foreach( array( 'readonly', 'disabled' ) as $k ) {
+			if( !empty($field[ $k ]) ) {
+				$hidden_input[ $k ] = $k;
+				$text_input[ $k ] = $k;
+			}
+		}
 		
-		
-		// html
+		// Output.
 		?>
 		<div <?php acf_esc_attr_e( $div ); ?>>
 			<?php acf_hidden_input( $hidden_input ); ?>

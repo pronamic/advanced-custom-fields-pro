@@ -6,7 +6,7 @@ if( ! class_exists('acf_options_page') ) :
 
 class acf_options_page {
 	
-	/** @var array Contains an array of optiions page settings */
+	/** @var array Contains an array of options page settings */
 	var $pages = array();
 	
 	
@@ -29,35 +29,28 @@ class acf_options_page {
 		
 	}
 	
-	
-	/*
-	*  validate_page
-	*
-	*  description
-	*
-	*  @type	function
-	*  @date	28/2/17
-	*  @since	5.5.8
-	*
-	*  @param	$post_id (int)
-	*  @return	$post_id (int)
-	*/
-	
+	/**
+	 * Validates an Options Page settings array.
+	 *
+	 * @date	28/2/17
+	 * @since	5.5.8
+	 *
+	 * @param	array|string $page The Options Page settings array or name.
+	 * @return	array
+	 */
 	function validate_page( $page ) {
 		
-		// default
+		// Allow empty arg to generate the default Options Page.
 		if( empty($page) ) {
-			
-			$page_title =  __('Options', 'acf');
+			$page_title =  __( 'Options', 'acf' );
 			$page = array(
 				'page_title'	=> $page_title,
 				'menu_title'	=> $page_title,
 				'menu_slug' 	=> 'acf-options'
 			);
 		
-		// string		
+		// Allow string to define Options Page name.		
 		} elseif( is_string($page) ) {
-		
 			$page_title = $page;
 			$page = array(
 				'page_title'	=> $page_title,
@@ -65,58 +58,52 @@ class acf_options_page {
 			);
 		}
 		
-		
-		// defaults
-		$page = wp_parse_args($page, array(
+		// Apply defaults.
+		$page = wp_parse_args( $page, array(
 			'page_title' 		=> '',
 			'menu_title'		=> '',
 			'menu_slug' 		=> '',
 			'capability'		=> 'edit_posts',
 			'parent_slug'		=> '',
-			'position'			=> false,
+			'position'			=> null,
 			'icon_url'			=> false,
 			'redirect'			=> true,
 			'post_id'			=> 'options',
 			'autoload'			=> false,
-			'update_button'		=> __('Update', 'acf'),
-			'updated_message'	=> __("Options Updated", 'acf'),
+			'update_button'		=> __( 'Update', 'acf' ),
+			'updated_message'	=> __( 'Options Updated', 'acf' ),
 		));
 		
-		
-		// ACF4 compatibility
+		// Allow compatibility for changed settings.
 		$migrate = array(
 			'title' 	=> 'page_title',
 			'menu'		=> 'menu_title',
 			'slug'		=> 'menu_slug',
 			'parent'	=> 'parent_slug'
 		);
-		
 		foreach( $migrate as $old => $new ) {
-			if( !empty($page[$old]) ) {
+			if( !empty( $page[ $old ] ) ) {
 				$page[ $new ] = $page[ $old ];
 			}
 		}
 		
-		
-		// page_title (allows user to define page with just page_title or title)
-		if( empty($page['menu_title']) ) {
+		// If no menu_title is set, use the page_title value.
+		if( empty( $page['menu_title'] ) ) {
 			$page['menu_title'] = $page['page_title'];
 		}
 		
-		
-		// menu_slug
+		// If no menu_slug is set, generate one using the menu_title value.
 		if( empty($page['menu_slug']) ) {
 			$page['menu_slug'] = 'acf-options-' . sanitize_title( $page['menu_title'] );
 		}
 		
-		
-		// filter
-		$page = apply_filters('acf/validate_options_page', $page);
-		
-		
-		// return
-		return $page;
-		
+		/**
+		 * Filters the $page array after it has been validated.
+		 *
+		 * @since	5.5.8
+		 * @param	array $page The Options Page settings array.
+		 */
+		return apply_filters( 'acf/validate_options_page', $page );
 	}
 	
 	

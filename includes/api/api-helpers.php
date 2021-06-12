@@ -3250,23 +3250,6 @@ function acf_get_truncated( $text, $length = 64 ) {
 	
 }
 
-
-/*
-*  acf_get_current_url
-*
-*  This function will return the current URL.
-*
-*  @date	23/01/2015
-*  @since	5.1.5
-*
-*  @param	void
-*  @return	string
-*/
-
-function acf_get_current_url() {
-	return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-}
-
 /*
 *  acf_current_user_can_admin
 *
@@ -3448,53 +3431,6 @@ function acf_get_valid_terms( $terms = false, $taxonomy = 'category' ) {
 	return $terms;
 	
 }
-
-
-/*
-*  acf_esc_html_deep
-*
-*  Navigates through an array and escapes html from the values.
-*
-*  @type	function
-*  @date	10/06/2015
-*  @since	5.2.7
-*
-*  @param	$value (mixed)
-*  @return	$value
-*/
-
-/*
-function acf_esc_html_deep( $value ) {
-	
-	// array
-	if( is_array($value) ) {
-		
-		$value = array_map('acf_esc_html_deep', $value);
-	
-	// object
-	} elseif( is_object($value) ) {
-		
-		$vars = get_object_vars( $value );
-		
-		foreach( $vars as $k => $v ) {
-			
-			$value->{$k} = acf_esc_html_deep( $v );
-		
-		}
-		
-	// string
-	} elseif( is_string($value) ) {
-
-		$value = esc_html($value);
-
-	}
-	
-	
-	// return
-	return $value;
-
-}
-*/
 
 
 /*

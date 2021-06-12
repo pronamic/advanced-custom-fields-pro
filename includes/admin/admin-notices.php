@@ -32,9 +32,6 @@ class ACF_Admin_Notice extends ACF_Data {
 		/** @type string Text displayed in notice. */
 		'text' => '',
 		
-		/** @type string Optional HTML alternative to text. 
-		'html' => '', */
-		
 		/** @type string The type of notice (warning, error, success, info). */
 		'type' => 'info',
 		
@@ -54,25 +51,14 @@ class ACF_Admin_Notice extends ACF_Data {
 	*  @return	void
 	*/
 	function render() {
+		$notice_text = $this->get('text');
+		$notice_type = $this->get('type');
+		$is_dismissible = $this->get('dismissible');
 		
-		// Ensure text contains punctuation.
-		// todo: Remove this after updating translations.
-		$text = $this->get('text');
-		if( substr($text, -1) !== '.' && substr($text, -1) !== '>' ) {
-			$text .= '.';
-		} 
-		
-		// Print HTML.
 		printf('<div class="acf-admin-notice notice notice-%s %s">%s</div>',
-			
-			// Type class.
-			$this->get('type'),
-			
-			// Dismissible class.
-			$this->get('dismissible') ? 'is-dismissible' : '',
-			
-			// InnerHTML
-			$this->has('html') ? $this->get('html') : wpautop($text)
+			esc_attr( $notice_type ),
+			$is_dismissible ? 'is-dismissible' : '',
+			acf_esc_html( wpautop( acf_punctify( $notice_text ) ) )
 		);
 	}
 }

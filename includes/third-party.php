@@ -136,7 +136,7 @@ class acf_third_party {
 				
 				
 				// add meta box
-				add_meta_box( $id, $title, '__return_true', $post_type );
+				add_meta_box( $id, acf_esc_html( $title ), '__return_true', $post_type );
 				
 			}
 			
