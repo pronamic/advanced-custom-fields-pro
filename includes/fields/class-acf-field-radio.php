@@ -68,43 +68,32 @@ class acf_field_radio extends acf_field {
 		$ul['class'] .= ' ' . $field['class'];
 		
 		
-		// select value
-		$checked = '';
-		$value = strval($field['value']);
+		// Determine selected value.
+		$value = (string) $field['value'];
 		
-		
-		// selected choice
-		if( isset($field['choices'][ $value ]) ) {
+		// 1. Selected choice.
+		if( isset( $field['choices'][ $value ] ) ) {
+			$checked = (string) $value;
 			
-			$checked = $value;
-			
-		// custom choice
+		// 2. Custom choice.
 		} elseif( $field['other_choice'] && $value !== '' ) {
-			
 			$checked = 'other';
 			
-		// allow null	
+		// 3. Empty choice. 
 		} elseif( $field['allow_null'] ) {
+			$checked = '';
 			
-			// do nothing
-			
-		// select first input by default	
+		// 4. Default to first choice.
 		} else {
-			
-			$checked = key($field['choices']);
-			
+			$checked = (string) key( $field['choices'] );
 		}
-		
-		
-		// ensure $checked is a string (could be an int)
-		$checked = strval($checked); 
-		
 				
 		// other choice
+		$other_input = false;
 		if( $field['other_choice'] ) {
 			
-			// vars
-			$input = array(
+			// Define other input attrs.
+			$other_input = array(
 				'type'		=> 'text',
 				'name'		=> $field['name'],
 				'value'		=> '',
@@ -112,89 +101,70 @@ class acf_field_radio extends acf_field {
 				'class'		=> 'acf-disabled'
 			);
 			
-			
-			// select other choice if value is not a valid choice
+			// Select other choice if value is not a valid choice.
 			if( $checked === 'other' ) {
-				
-				unset($input['disabled']);
-				$input['value'] = $field['value'];
-				
+				unset( $other_input['disabled'] );
+				$other_input['value'] = $field['value'];
 			}
 			
-			
-			// allow custom 'other' choice to be defined
-			if( !isset($field['choices']['other']) ) {
-				
+			// Ensure an 'other' choice is defined.
+			if( !isset( $field['choices']['other'] ) ) {
 				$field['choices']['other'] = '';
-				
 			}
-			
-			
-			// append other choice
-			$field['choices']['other'] .= '</label> <input type="text" ' . acf_esc_attr($input) . ' /><label>';
-		
 		}
 		
+		// Bail early if no choices.
+		if( empty( $field['choices'] ) ) {
+			return;
+		}
 		
-		// bail early if no choices
-		if( empty($field['choices']) ) return;
-		
-		
-		// hiden input
+		// Hiden input.
 		$e .= acf_get_hidden_input( array('name' => $field['name']) );
 		
-		
-		// open
+		// Open <ul>.
 		$e .= '<ul ' . acf_esc_attr($ul) . '>';
 		
-		
-		// foreach choices
+		// Loop through choices.
 		foreach( $field['choices'] as $value => $label ) {
+			$is_selected = false;
 			
-			// ensure value is a string
-			$value = strval($value);
-			$class = '';
+			// Ensure value is a string.
+			$value = (string) $value;
 			
-			
-			// vars
-			$atts = array(
+			// Define input attrs.
+			$attrs = array(
 				'type'	=> 'radio',
 				'id'	=> sanitize_title( $field['id'] . '-' . $value ), 
 				'name'	=> $field['name'],
 				'value'	=> $value
 			);
 			
-			
-			// checked
-			if( $value === $checked ) {
-				
-				$atts['checked'] = 'checked';
-				$class = ' class="selected"';
-				
+			// Check if selected.
+			if( esc_attr($value) === esc_attr($checked) ) {
+				$attrs['checked'] = 'checked';
+				$is_selected = true;
 			}
 			
-			
-			// deisabled
+			// Check if is disabled.
 			if( isset($field['disabled']) && acf_in_array($value, $field['disabled']) ) {
-			
-				$atts['disabled'] = 'disabled';
-				
+				$attrs['disabled'] = 'disabled';
 			}
 			
+			// Additional HTML (the "Other" input).
+			$additional_html = '';
+			if( $value === 'other' && $other_input ) {
+				$additional_html = ' ' . acf_get_text_input( $other_input );
+			}
 			
 			// append
-			$e .= '<li><label' . $class . '><input ' . acf_esc_attr( $atts ) . '/>' . $label . '</label></li>';
-			
+			$e .= '<li><label' . ( $is_selected ? ' class="selected"' : '' ) . '><input ' . acf_esc_attr( $attrs ) . '/>' . acf_esc_html( $label ) . '</label>' . $additional_html . '</li>';
 		}
 		
-		
-		// close
+		// Close <ul>.
 		$e .= '</ul>';
 		
-		
-		// return
+		// Output HTML.
 		echo $e;
-		
 	}
 	
 	

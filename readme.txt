@@ -2,7 +2,7 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -66,6 +66,20 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.9.6 =
+*Release Date - 20 May 2021*
+
+* Enhancement - Added 'position' setting compatibility for Options Page submenus.
+* Enhancement - Visually highlight "High" metabox area when dragging metaboxes.
+* Fix - Fixed compatibility issue between Block matrix alignment setting and the latest version of Gutenberg (10.6).
+* Fix - Fixed bug breaking WYSIWYG field after reordering a child block via the block's toolbar up/down buttons.
+* Fix - Added missing "readonly" and "disabled" attributes to DateTime and Time picker fields.
+* Fix - Fixed bug incorrectly validating Email field values containing special characters.
+* Fix - Fixed missing "dashicons" asset dependency from front-end forms.
+* Fix - Fixed bug causing Review JSON diff modal to appear with narrow column since WP 5.7.
+* Dev - Added label elements to Repeater, Flexible Content and Clone field's table header titles.
+* Dev - Added new `ACF_EXPERIMENTAL_ESC_HTML` constant. [Read more](https://github.com/AdvancedCustomFields/acf/issues/500)
 
 = 5.9.5 =
 *Release Date - 11 February 2021*
