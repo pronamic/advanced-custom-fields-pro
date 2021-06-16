@@ -333,7 +333,7 @@ class ACF_Form_User {
 			foreach( $acf_errors as $acf_error ) {
 				$errors->add(
 					acf_idify( $acf_error['input'] ), 
-					acf_punctify( sprintf( __('<strong>ERROR</strong>: %s', 'acf'), $acf_error['message'] ) )
+					acf_esc_html( acf_punctify( sprintf( __('<strong>Error</strong>: %s', 'acf'), $acf_error['message'] ) ) )
 				);
 			}
 		}

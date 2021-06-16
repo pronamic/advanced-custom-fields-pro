@@ -103,45 +103,43 @@ class acf_field_date_and_time_picker extends acf_field {
 	
 	function render_field( $field ) {
 		
-		// format value
+		// Set value.
 		$hidden_value = '';
 		$display_value = '';
 		
 		if( $field['value'] ) {
-			
 			$hidden_value = acf_format_date( $field['value'], 'Y-m-d H:i:s' );
 			$display_value = acf_format_date( $field['value'], $field['display_format'] );
-			
 		}
 		
+		// Convert "display_format" setting to individual date and time formats.
+		$formats = acf_split_date_time( $field['display_format'] );
 		
-		// convert display_format to date and time
-		// the letter 'm' is used for date and minute in JS, so this must be done here in PHP
-		$formats = acf_split_date_time($field['display_format']);
-		
-		
-		// vars
+		// Elements.
 		$div = array(
 			'class'					=> 'acf-date-time-picker acf-input-wrap',
 			'data-date_format'		=> acf_convert_date_to_js($formats['date']),
 			'data-time_format'		=> acf_convert_time_to_js($formats['time']),
 			'data-first_day'		=> $field['first_day'],
 		);
-		
 		$hidden_input = array(
 			'id'					=> $field['id'],
 			'class' 				=> 'input-alt',
 			'name'					=> $field['name'],
 			'value'					=> $hidden_value,
 		);
-		
 		$text_input = array(
 			'class' 				=> 'input',
 			'value'					=> $display_value,
 		);
+		foreach( array( 'readonly', 'disabled' ) as $k ) {
+			if( !empty($field[ $k ]) ) {
+				$hidden_input[ $k ] = $k;
+				$text_input[ $k ] = $k;
+			}
+		}
 		
-		
-		// html
+		// Output.
 		?>
 		<div <?php acf_esc_attr_e( $div ); ?>>
 			<?php acf_hidden_input( $hidden_input ); ?>

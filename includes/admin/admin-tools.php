@@ -243,9 +243,8 @@ class acf_admin_tools {
 			// check active
 			if( $active && $active !== $tool->name ) continue;
 			
-			
 			// add metabox
-			add_meta_box( 'acf-admin-tool-' . $tool->name, $tool->title, array($this, 'metabox_html'), $screen->id, 'normal', 'default', array('tool' => $tool->name) );
+			add_meta_box( 'acf-admin-tool-' . $tool->name, acf_esc_html( $tool->title ), array($this, 'metabox_html'), $screen->id, 'normal', 'default', array('tool' => $tool->name) );
 			
 		}
 		

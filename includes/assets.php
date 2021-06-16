@@ -115,9 +115,9 @@ class ACF_Assets {
 		wp_register_script( 'acf-field-group', acf_get_url( 'assets/js/acf-field-group' . $suffix . '.js' ), array( 'acf-input' ), $version );
 		
 		// Register styles.
-		wp_register_style( 'acf-global', acf_get_url( 'assets/css/acf-global.css' ), array(), $version );
-		wp_register_style( 'acf-input', acf_get_url( 'assets/css/acf-input.css' ), array('acf-global'), $version );
-		wp_register_style( 'acf-field-group', acf_get_url( 'assets/css/acf-field-group.css' ), array('acf-input'), $version );
+		wp_register_style( 'acf-global', acf_get_url( 'assets/css/acf-global.css' ), array( 'dashicons' ), $version );
+		wp_register_style( 'acf-input', acf_get_url( 'assets/css/acf-input.css' ), array( 'acf-global' ), $version );
+		wp_register_style( 'acf-field-group', acf_get_url( 'assets/css/acf-field-group.css' ), array( 'acf-input' ), $version );
 		
 		/**
 		 * Fires after core scripts and styles have been registered.

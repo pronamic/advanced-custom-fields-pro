@@ -206,7 +206,6 @@ class acf_field_wysiwyg extends acf_field {
 		$id = uniqid('acf-editor-');
 		$default_editor = 'html';
 		$show_tabs = true;
-		$button = '';
 		
 		
 		// get height
@@ -250,31 +249,6 @@ class acf_field_wysiwyg extends acf_field {
 		$switch_class = ($default_editor === 'html') ? 'html-active' : 'tmce-active';
 		
 		
-		// filter value for editor
-		remove_filter( 'acf_the_editor_content', 'format_for_editor', 10, 2 );
-		remove_filter( 'acf_the_editor_content', 'wp_htmledit_pre', 10, 1 );
-		remove_filter( 'acf_the_editor_content', 'wp_richedit_pre', 10, 1 );
-		
-		
-		// WP 4.3
-		if( acf_version_compare('wp', '>=', '4.3') ) {
-			
-			add_filter( 'acf_the_editor_content', 'format_for_editor', 10, 2 );
-			
-			$button = 'data-wp-editor-id="' . $id . '"';
-			
-		// WP < 4.3
-		} else {
-			
-			$function = ($default_editor === 'html') ? 'wp_htmledit_pre' : 'wp_richedit_pre';
-			
-			add_filter('acf_the_editor_content', $function, 10, 1);
-			
-			$button = 'onclick="switchEditors.switchto(this);"';
-			
-		}
-		
-		
 		// filter
 		$field['value'] = apply_filters( 'acf_the_editor_content', $field['value'], $default_editor );
 		
@@ -304,9 +278,9 @@ class acf_field_wysiwyg extends acf_field {
 		
 		?>
 		<div <?php acf_esc_attr_e($wrap); ?>>
-			<div id="wp-<?php echo $id; ?>-editor-tools" class="wp-editor-tools hide-if-no-js">
+			<div id="wp-<?php echo esc_attr( $id ); ?>-editor-tools" class="wp-editor-tools hide-if-no-js">
 				<?php if( $field['media_upload'] ): ?>
-				<div id="wp-<?php echo $id; ?>-media-buttons" class="wp-media-buttons">
+				<div id="wp-<?php echo esc_attr( $id ); ?>-media-buttons" class="wp-media-buttons">
 					<?php 
 					if( !function_exists( 'media_buttons' ) ) {
 						require ABSPATH . 'wp-admin/includes/media.php';
@@ -317,12 +291,12 @@ class acf_field_wysiwyg extends acf_field {
 				<?php endif; ?>
 				<?php if( user_can_richedit() && $show_tabs ): ?>
 					<div class="wp-editor-tabs">
-						<button id="<?php echo $id; ?>-tmce" class="wp-switch-editor switch-tmce" <?php echo $button; ?> type="button"><?php echo __('Visual', 'acf'); ?></button>
-						<button id="<?php echo $id; ?>-html" class="wp-switch-editor switch-html" <?php echo $button; ?> type="button"><?php echo _x( 'Text', 'Name for the Text editor tab (formerly HTML)', 'acf' ); ?></button>
+						<button id="<?php echo esc_attr( $id ); ?>-tmce" class="wp-switch-editor switch-tmce" data-wp-editor-id="<?php echo esc_attr( $id ); ?>" type="button"><?php echo __('Visual', 'acf'); ?></button>
+						<button id="<?php echo esc_attr( $id ); ?>-html" class="wp-switch-editor switch-html" data-wp-editor-id="<?php echo esc_attr( $id ); ?>" type="button"><?php echo _x( 'Text', 'Name for the Text editor tab (formerly HTML)', 'acf' ); ?></button>
 					</div>
 				<?php endif; ?>
 			</div>
-			<div id="wp-<?php echo $id; ?>-editor-container" class="wp-editor-container">
+			<div id="wp-<?php echo esc_attr( $id ); ?>-editor-container" class="wp-editor-container">
 				<?php if( $field['delay'] ): ?>
 					<div class="acf-editor-toolbar"><?php _e('Click to initialize TinyMCE', 'acf'); ?></div>
 				<?php endif; ?>

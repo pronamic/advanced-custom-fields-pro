@@ -69,7 +69,7 @@ class acf_admin_options_page {
 			// child
 			} else {
 				
-				$slug = add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array($this, 'html') );
+				$slug = add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array($this, 'html'), $page['position'] );
 				
 			}
 			
@@ -232,7 +232,7 @@ class acf_admin_options_page {
 				
 				
 				// add meta box
-				add_meta_box( $id, $title, array($this, 'postbox_acf'), 'acf_options_page', $context, $priority, $args );
+				add_meta_box( $id, acf_esc_html( $title ), array($this, 'postbox_acf'), 'acf_options_page', $context, $priority, $args );
 				
 				
 			}
