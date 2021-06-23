@@ -3436,13 +3436,13 @@ function acf_get_valid_terms( $terms = false, $taxonomy = 'category' ) {
 /*
 *  acf_validate_attachment
 *
-*  This function will validate an attachment based on a field's resrictions and return an array of errors
+*  This function will validate an attachment based on a field's restrictions and return an array of errors
 *
 *  @type	function
 *  @date	3/07/2015
 *  @since	5.2.3
 *
-*  @param	$attachment (array) attachment data. Cahnges based on context
+*  @param	$attachment (array) attachment data. Changes based on context
 *  @param	$field (array) field settings containing restrictions
 *  @param	$context (string) $file is different when uploading / preparing
 *  @return	$errors (array)
@@ -3478,7 +3478,7 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 	// prepare
 	} elseif( $context == 'prepare' ) {
 		
-		$file['type'] = pathinfo($attachment['url'], PATHINFO_EXTENSION);
+		$file['type'] = pathinfo($attachment['filename'], PATHINFO_EXTENSION);
 		$file['size'] = acf_maybe_get($attachment, 'filesizeInBytes', 0);
 		$file['width'] = acf_maybe_get($attachment, 'width', 0);
 		$file['height'] = acf_maybe_get($attachment, 'height', 0);
@@ -3487,7 +3487,7 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 	} else {
 		
 		$file = array_merge($file, $attachment);
-		$file['type'] = pathinfo($attachment['url'], PATHINFO_EXTENSION);
+		$file['type'] = pathinfo($attachment['filename'], PATHINFO_EXTENSION);
 		
 	}
 	
