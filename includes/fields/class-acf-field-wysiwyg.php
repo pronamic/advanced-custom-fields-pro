@@ -237,7 +237,7 @@ class acf_field_wysiwyg extends acf_field {
 		}
 		
 		
-		// must be logged in tp upload
+		// must be logged in to upload
 		if( !current_user_can('upload_files') ) {
 			
 			$field['media_upload'] = 0;
@@ -250,6 +250,7 @@ class acf_field_wysiwyg extends acf_field {
 		
 		
 		// filter
+		add_filter( 'acf_the_editor_content', 'format_for_editor', 10, 2 );
 		$field['value'] = apply_filters( 'acf_the_editor_content', $field['value'], $default_editor );
 		
 		

@@ -96,7 +96,10 @@ class acf_options_page {
 		if( empty($page['menu_slug']) ) {
 			$page['menu_slug'] = 'acf-options-' . sanitize_title( $page['menu_title'] );
 		}
-		
+
+		// Standardize on position being either null or int.
+		$page['position'] = is_numeric( $page['position'] ) ? (int) $page['position'] : null;
+
 		/**
 		 * Filters the $page array after it has been validated.
 		 *

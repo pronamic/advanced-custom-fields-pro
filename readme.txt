@@ -51,8 +51,6 @@ From your WordPress dashboard
 
 = What kind of support do you provide? =
 
-**Help Desk.** Support is currently provided via our email help desk. Questions are generally answered within 24 hours, with the exception of weekends and holidays. We answer questions related to ACF, its usage and provide minor customization guidance. We cannot guarantee support for questions which include custom theme code, or 3rd party plugin conflicts & compatibility. [Open a Support Ticket](https://www.advancedcustomfields.com/support/)
-
 **Support Forums.** Our Community Forums provide a great resource for searching and finding previously answered and asked support questions. You may create a new thread on these forums, however, it is not guaranteed that you will receive an answer from our support team. This is more of an area for developers to talk to one another, post ideas, plugins and provide basic help. [View the Support Forum](https://support.advancedcustomfields.com/)
 
 
@@ -66,6 +64,15 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.9.7 =
+*Release Date - 22 June 2021*
+
+* Fix - Fixed PHP warnings logged due to incorrect parameter type for `add_menu_page()`/`add_submenu_page()`
+* Fix - Fixed bug causing WYSIWYG field to not keep line breaks
+* Fix - Fixed bug causing Email field to incorrectly invalidate emails with unicode characters
+* Fix - Fixed bug causing file type validation to fail in some cases
+* Fix - Fixed bug where newly uploaded or selected images do not contain custom preview size data
 
 = 5.9.6 =
 *Release Date - 20 May 2021*
