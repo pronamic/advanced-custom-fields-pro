@@ -453,31 +453,16 @@ function acf_enqueue_block_assets() {
 	$block_types = acf_get_block_types();
 	
 	// Localize data.
-	acf_localize_data(array(
-		'blockTypes'	=> array_values( $block_types ),
-		
-		// List of attributes to replace for HTML to JSX compatibility.
-		// https://github.com/facebook/react/blob/master/packages/react-dom/src/shared/possibleStandardNames.js
-		'jsxAttributes'	=> array(
-			'cellpadding'	=> 'cellPadding',
-			'cellspacing'	=> 'cellSpacing',
-			'class'			=> 'className',
-			'colspan'		=> 'colSpan',
-			'datetime'		=> 'dateTime',
-			'for'			=> 'htmlFor',
-			'hreflang'		=> 'hrefLang',
-			'readonly'		=> 'readOnly',
-			'rowspan'		=> 'rowSpan',
-			'srclang'		=> 'srcLang',
-			'srcset'		=> 'srcSet',
-			'allowedblocks'	=> 'allowedBlocks',
-			'templatelock'	=> 'templateLock'
-		),
-		'postType'	=> get_post_type()
-	));
+	acf_localize_data(
+		array(
+			'blockTypes' => array_values( $block_types ),
+			'postType'   => get_post_type(),
+		)
+	);
 	
 	// Enqueue script.
-	wp_enqueue_script( 'acf-blocks', acf_get_url("pro/assets/js/acf-pro-blocks.min.js"), array('acf-input', 'wp-blocks'), ACF_VERSION, true );
+	$min = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+	wp_enqueue_script( 'acf-blocks', acf_get_url("assets/build/js/pro/acf-pro-blocks{$min}.js"), array('acf-input', 'wp-blocks'), ACF_VERSION, true );
 	
 	// Enqueue block assets.
 	array_map( 'acf_enqueue_block_type_assets', $block_types );

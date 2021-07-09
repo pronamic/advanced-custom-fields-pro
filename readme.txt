@@ -65,6 +65,15 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 5.9.8 =
+*Release Date - 08 July 2021*
+
+* Fix - Fixed bug causing multiple image fields to not validate files properly
+* Fix - Fixed bug preventing case-sensitive HTML tags from working in blocks
+* Fix - Fixed bug causing JSX-enabled blocks to improperly remove whitespace in preview
+* Fix - Fixed bug causing text fields to remove HTML entities when editing saved fields
+* Fix - Fixed deprecated jQuery notices on "Add Field Group" page
+
 = 5.9.7 =
 *Release Date - 22 June 2021*
 
