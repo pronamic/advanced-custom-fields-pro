@@ -183,6 +183,7 @@ class ACF_Media {
 		
 		// Validate the attachment and append any errors.
 		$errors = acf_validate_attachment( $response, $field, 'prepare' );
+		$response['acf_errors'] = false;
 		if( !empty($errors) ) {
 			$response['acf_errors'] = implode('<br />', $errors);
 		}
