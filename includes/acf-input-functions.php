@@ -203,7 +203,10 @@ function acf_get_text_input( $attrs = array() ) {
 	$attrs = wp_parse_args($attrs, array(
 		'type' => 'text'
 	));
-	return sprintf( '<input %s/>', acf_esc_attrs($attrs) );
+	if ( isset( $attrs['value'] ) && is_string( $attrs['value'] ) ) {
+		$attrs['value'] = htmlspecialchars( $attrs['value'] );
+	}
+	return sprintf( '<input %s/>', acf_esc_attrs( $attrs ) );
 }
 
 /**
