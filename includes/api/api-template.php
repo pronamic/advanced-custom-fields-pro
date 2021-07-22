@@ -1041,7 +1041,7 @@ function delete_field( $selector, $post_id = false ) {
 	
 	
 	// delete
-	return acf_delete_value( $post_id, $field );
+	return $field ? acf_delete_value( $post_id, $field ) : false;
 	
 }
 
