@@ -80,7 +80,7 @@ if( $tabs === false ) {
 	} ?>
 
     <?php if ( ! defined( 'ACF_PRO' ) || ! ACF_PRO ) : ?>
-        <a href="https://www.advancedcustomfields.com/pro/?utm_source=ACF%2BFree&utm_medium=insideplugin&utm_campaign=ACF%2Bupgrade" class="btn-upgrade">
+        <a target="_blank" href="https://www.advancedcustomfields.com/pro/?utm_source=ACF%2BFree&utm_medium=insideplugin&utm_campaign=ACF%2Bupgrade" class="btn-upgrade">
             <img src="<?php echo acf_get_url('assets/images/icon-upgrade-pro.svg' ); ?>" />
             <p><?php _e('Upgrade to Pro', 'acf'); ?></p>
         </a>
