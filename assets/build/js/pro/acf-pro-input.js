@@ -529,7 +529,6 @@
 	});
 		
 })(jQuery);
-
 (function($){
 	
 	var Field = acf.Field.extend({
@@ -1223,7 +1222,6 @@
 	});
 	
 })(jQuery);
-
 (function($){
 	
 	var Field = acf.Field.extend({
@@ -1850,7 +1848,3 @@
 	acf.registerConditionForFieldType('selectionGreaterThan', 'gallery');
 	
 })(jQuery);
-
-// @codekit-prepend "_acf-field-repeater.js";
-// @codekit-prepend "_acf-field-flexible-content.js";
-// @codekit-prepend "_acf-field-gallery.js";

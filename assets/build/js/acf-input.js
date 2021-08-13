@@ -526,7 +526,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -919,7 +918,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var i = 0;
@@ -1164,7 +1162,6 @@
 	});
 
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -1210,7 +1207,6 @@
 	acf.registerFieldType( Field );
 
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -1321,7 +1317,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -1399,7 +1394,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -1562,7 +1556,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.models.DatePickerField.extend({
@@ -1662,7 +1655,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -2259,7 +2251,6 @@
 	}
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -2449,7 +2440,6 @@
 	acf.registerFieldType( Field );
 
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.models.ImageField.extend({
@@ -2570,7 +2560,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -2767,7 +2756,6 @@
 	});	
 
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -2931,7 +2919,6 @@
 	acf.registerFieldType( Field );
 
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -3000,7 +2987,6 @@
 	acf.registerFieldType( Field );
 
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -3043,7 +3029,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -3422,7 +3407,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -3488,7 +3472,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	// vars
@@ -4001,7 +3984,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.models.SelectField.extend({
@@ -4011,7 +3993,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.models.SelectField.extend({
@@ -4021,7 +4002,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.models.SelectField.extend({
@@ -4031,7 +4011,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -4150,7 +4129,7 @@
 				$button = popup.$('.acf-submit-button');
 				
 				// focus
-				$name.focus();
+				$name.trigger('focus');
 				
 				// submit form
 				popup.on('submit', 'form', step3);
@@ -4165,7 +4144,7 @@
 				
 				// basic validation
 				if( $name.val() === '' ) {
-					$name.focus();
+					$name.trigger('focus');
 					return false;
 				}
 				
@@ -4231,7 +4210,7 @@
 				}
 				
 				// focus
-				$name.focus();
+				$name.trigger('focus');
 			};
 			
 			// step 5.
@@ -4355,7 +4334,6 @@
 	acf.registerFieldType( Field );
 		
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.models.DatePickerField.extend({
@@ -4433,7 +4411,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -4529,7 +4506,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -4594,7 +4570,6 @@
 	acf.registerFieldType( Field );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var Field = acf.Field.extend({
@@ -4698,7 +4673,6 @@
 	acf.registerFieldType( Field );
 		
 })(jQuery);
-
 (function($, undefined){
 	
 	// vars
@@ -4948,7 +4922,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	// vars
@@ -5255,7 +5228,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var __ = acf.__;
@@ -5703,7 +5675,6 @@
 	acf.registerConditionType( SelectionLessThan );
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	acf.unload = new acf.Model({
@@ -5766,7 +5737,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -5995,7 +5965,6 @@
 	});
 		
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -6828,7 +6797,6 @@
 	});
 
 })(jQuery);
-
 (function($, undefined){
 	
 	acf.screen = new acf.Model({
@@ -7446,7 +7414,6 @@
 	});
 
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -8236,7 +8203,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	acf.tinymce = {
@@ -8639,7 +8605,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -9769,7 +9734,6 @@
 	});
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -10156,7 +10120,6 @@
 	});
 		
 })(jQuery);
-
 (function($, undefined){
 	
 	/**
@@ -10918,42 +10881,3 @@
 	_acf.ajax = acf.screen;
 	
 })(jQuery);
-
-// @codekit-prepend "_acf-field.js";
-// @codekit-prepend "_acf-fields.js";
-// @codekit-prepend "_acf-field-accordion.js";
-// @codekit-prepend "_acf-field-button-group.js";
-// @codekit-prepend "_acf-field-checkbox.js";
-// @codekit-prepend "_acf-field-color-picker.js";
-// @codekit-prepend "_acf-field-date-picker.js";
-// @codekit-prepend "_acf-field-date-time-picker.js";
-// @codekit-prepend "_acf-field-google-map.js";
-// @codekit-prepend "_acf-field-image.js";
-// @codekit-prepend "_acf-field-file.js";
-// @codekit-prepend "_acf-field-link.js";
-// @codekit-prepend "_acf-field-oembed.js";
-// @codekit-prepend "_acf-field-radio.js";
-// @codekit-prepend "_acf-field-range.js";
-// @codekit-prepend "_acf-field-relationship.js";
-// @codekit-prepend "_acf-field-select.js";
-// @codekit-prepend "_acf-field-tab.js";
-// @codekit-prepend "_acf-field-post-object.js";
-// @codekit-prepend "_acf-field-page-link.js";
-// @codekit-prepend "_acf-field-user.js";
-// @codekit-prepend "_acf-field-taxonomy.js";
-// @codekit-prepend "_acf-field-time-picker.js";
-// @codekit-prepend "_acf-field-true-false.js";
-// @codekit-prepend "_acf-field-url.js";
-// @codekit-prepend "_acf-field-wysiwyg.js";
-// @codekit-prepend "_acf-condition.js";
-// @codekit-prepend "_acf-conditions.js";
-// @codekit-prepend "_acf-condition-types.js";
-// @codekit-prepend "_acf-unload.js";
-// @codekit-prepend "_acf-postbox.js";
-// @codekit-prepend "_acf-media.js";
-// @codekit-prepend "_acf-screen.js";
-// @codekit-prepend "_acf-select2.js";
-// @codekit-prepend "_acf-tinymce.js";
-// @codekit-prepend "_acf-validation.js";
-// @codekit-prepend "_acf-helpers.js";
-// @codekit-prepend "_acf-compatibility";

@@ -16,7 +16,7 @@ $readonly = $active ? 1 : 0;
 			<h3><?php _e('License Information', 'acf'); ?></h3>
 		</div>
 		<div class="inner">
-			<p><?php printf(__('To unlock updates, please enter your license key below. If you don\'t have a licence key, please see <a href="%s" target="_blank">details & pricing</a>.','acf'), esc_url('https://www.advancedcustomfields.com/pro')); ?></p>
+			<p><?php printf(__('To unlock updates, please enter your license key below. If you don\'t have a licence key, please see <a href="%s" target="_blank">details & pricing</a>.','acf'), esc_url('https://www.advancedcustomfields.com/pro/?utm_source=ACF%2Bpro%2Bplugin&utm_medium=insideplugin&utm_campaign=ACF%2Bupgrade&utm_content=license%2Bactivations')); ?></p>
 			<form action="" method="post">
 				<?php acf_nonce_input( $nonce ); ?>
 				<table class="form-table">

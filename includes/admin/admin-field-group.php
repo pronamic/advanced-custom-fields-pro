@@ -191,6 +191,12 @@ class acf_admin_field_group {
 			'Value is less than'		=> __('Value is less than', 'acf'),
 			'Selection is greater than'	=> __('Selection is greater than', 'acf'),
 			'Selection is less than'	=> __('Selection is less than', 'acf'),
+
+			// Pro-only fields
+			'Repeater (Pro only)'         => __('Repeater (Pro only)', 'acf'),
+			'Flexibly Content (Pro only)' => __('Flexible Content (Pro only)', 'acf'),
+			'Clone (Pro only)'            => __('Clone (Pro only)', 'acf'),
+			'Gallery (Pro only)'          => __('Gallery (Pro only)', 'acf'),
 		));
 		
 		// localize data

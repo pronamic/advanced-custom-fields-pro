@@ -1940,7 +1940,7 @@
 		};
 		
 		// modern browsers
-		var file = acf.isget( $input[0], 'files', 0);
+		var file = $input[0].files.length ? acf.isget($input[0].files, 0) : false;
 		if( file ){
 			
 			// update data
@@ -2580,7 +2580,6 @@
 	});
 	
 })(jQuery);
-
 ( function( window, undefined ) {
 	"use strict";
 
@@ -2833,7 +2832,6 @@
 	acf.hooks = new EventManager();
 
 } )( window );
-
 (function($, undefined){
 	
 	// Cached regex to split keys for `addEvent`.
@@ -3742,7 +3740,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	acf.models.Popup = acf.Model.extend({
@@ -3857,7 +3854,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	acf.models.Modal = acf.Model.extend({
@@ -3947,7 +3943,6 @@
 	};
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	var panel = new acf.Model({
@@ -3982,7 +3977,6 @@
 	});
 		
 })(jQuery);
-
 (function($, undefined){
 	
 	var Notice = acf.Model.extend({
@@ -4129,7 +4123,6 @@
 	
 	
 })(jQuery);
-
 (function($, undefined){
 	
 	acf.newTooltip = function( props ){
@@ -4454,12 +4447,3 @@
 	});
 	
 })(jQuery);
-
-// @codekit-prepend "_acf.js";
-// @codekit-prepend "_acf-hooks.js";
-// @codekit-prepend "_acf-model.js";
-// @codekit-prepend "_acf-popup.js";
-// @codekit-prepend "_acf-modal.js";
-// @codekit-prepend "_acf-panel.js";
-// @codekit-prepend "_acf-notice.js";
-// @codekit-prepend "_acf-tooltip.js";
