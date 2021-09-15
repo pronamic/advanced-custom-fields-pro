@@ -1,34 +1,34 @@
-<?php 
+<?php
 
 /**
  * acf_get_users
  *
  * Similar to the get_users() function but with extra functionality.
  *
- * @date	9/1/19
- * @since	5.7.10
+ * @date    9/1/19
+ * @since   5.7.10
  *
- * @param	array $args The query args.
- * @return	array
+ * @param   array $args The query args.
+ * @return  array
  */
 function acf_get_users( $args = array() ) {
-	
+
 	// Get users.
 	$users = get_users( $args );
-	
+
 	// Maintain order.
-	if( $users && $args['include'] ) {
-		
+	if ( $users && $args['include'] ) {
+
 		// Generate order array.
 		$order = array();
-		foreach( $users as $i => $user ) {
-			$order[ $i ] = array_search($user->ID, $args['include']);
+		foreach ( $users as $i => $user ) {
+			$order[ $i ] = array_search( $user->ID, $args['include'] );
 		}
-		
+
 		// Sort results.
-		array_multisort($order, $users);	
+		array_multisort( $order, $users );
 	}
-	
+
 	// Return
 	return $users;
 }
@@ -38,25 +38,25 @@ function acf_get_users( $args = array() ) {
  *
  * Returns a result containing "id" and "text" for the given user.
  *
- * @date	21/5/19
- * @since	5.8.1
+ * @date    21/5/19
+ * @since   5.8.1
  *
- * @param	WP_User $user The user object.
- * @return	array
+ * @param   WP_User $user The user object.
+ * @return  array
  */
 function acf_get_user_result( $user ) {
-	
+
 	// Vars.
-	$id = $user->ID;
+	$id   = $user->ID;
 	$text = $user->user_login;
-	
+
 	// Add name.
-	if( $user->first_name && $user->last_name ) {
+	if ( $user->first_name && $user->last_name ) {
 		$text .= " ({$user->first_name} {$user->last_name})";
-	} elseif( $user->first_name ) {
+	} elseif ( $user->first_name ) {
 		$text .= " ({$user->first_name})";
 	}
-	return compact('id', 'text');
+	return compact( 'id', 'text' );
 }
 
 
@@ -65,28 +65,28 @@ function acf_get_user_result( $user ) {
  *
  * Returns an array of user roles in the format "name => label".
  *
- * @date	20/5/19
- * @since	5.8.1
+ * @date    20/5/19
+ * @since   5.8.1
  *
- * @param	array $roles A specific array of roles.
- * @return	array
+ * @param   array $roles A specific array of roles.
+ * @return  array
  */
 function acf_get_user_role_labels( $roles = array() ) {
 	$all_roles = wp_roles()->get_names();
-	
+
 	// Load all roles if none provided.
-	if( empty($roles) ) {
+	if ( empty( $roles ) ) {
 		$roles = array_keys( $all_roles );
 	}
-	
+
 	// Loop over roles and populare labels.
 	$lables = array();
-	foreach( $roles as $role ) {
-		if( isset($all_roles[ $role ]) ) {
+	foreach ( $roles as $role ) {
+		if ( isset( $all_roles[ $role ] ) ) {
 			$lables[ $role ] = translate_user_role( $all_roles[ $role ] );
 		}
 	}
-	
+
 	// Return labels.
 	return $lables;
 }
@@ -96,24 +96,24 @@ function acf_get_user_role_labels( $roles = array() ) {
  *
  * Returns true if the current user is allowed to save unfiltered HTML.
  *
- * @date	9/1/19
- * @since	5.7.10
+ * @date    9/1/19
+ * @since   5.7.10
  *
- * @param	void
- * @return	bool
+ * @param   void
+ * @return  bool
  */
 function acf_allow_unfiltered_html() {
-	
+
 	// Check capability.
-	$allow_unfiltered_html = current_user_can('unfiltered_html');
-	
+	$allow_unfiltered_html = current_user_can( 'unfiltered_html' );
+
 	/**
 	 * Filters whether the current user is allowed to save unfiltered HTML.
 	 *
-	 * @date	9/1/19
-	 * @since	5.7.10
+	 * @date    9/1/19
+	 * @since   5.7.10
 	 *
-	 * @param	bool allow_unfiltered_html The result.
+	 * @param   bool allow_unfiltered_html The result.
 	 */
 	return apply_filters( 'acf/allow_unfiltered_html', $allow_unfiltered_html );
 }

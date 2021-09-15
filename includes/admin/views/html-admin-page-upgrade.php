@@ -1,14 +1,14 @@
 <?php
 
 /**
-*  Admin Database Upgrade
-*
-*  Shows the databse upgrade process. 
-*
-*  @date	24/8/18
-*  @since	5.7.4
-*  @param	void
-*/
+ *  Admin Database Upgrade
+ *
+ *  Shows the databse upgrade process.
+ *
+ *  @date    24/8/18
+ *  @since   5.7.4
+ *  @param   void
+ */
 
 ?>
 <style type="text/css">
@@ -23,14 +23,14 @@
 </style>
 <div id="acf-upgrade-wrap" class="wrap">
 	
-	<h1><?php _e("Upgrade Database", 'acf'); ?></h1>
+	<h1><?php _e( 'Upgrade Database', 'acf' ); ?></h1>
 	
-<?php if( acf_has_upgrade() ): ?>
+<?php if ( acf_has_upgrade() ) : ?>
 
-	<p><?php _e('Reading upgrade tasks...', 'acf'); ?></p>
-	<p class="step-1"><i class="acf-loading"></i> <?php printf(__('Upgrading data to version %s', 'acf'), ACF_VERSION); ?></p>
+	<p><?php _e( 'Reading upgrade tasks...', 'acf' ); ?></p>
+	<p class="step-1"><i class="acf-loading"></i> <?php printf( __( 'Upgrading data to version %s', 'acf' ), ACF_VERSION ); ?></p>
 	<p class="step-2"></p>
-	<p class="step-3"><?php echo sprintf( __('Database upgrade complete. <a href="%s">See what\'s new</a>', 'acf' ), admin_url('edit.php?post_type=acf-field-group') ); ?></p>
+	<p class="step-3"><?php echo sprintf( __( 'Database upgrade complete. <a href="%s">See what\'s new</a>', 'acf' ), admin_url( 'edit.php?post_type=acf-field-group' ) ); ?></p>
 	
 	<script type="text/javascript">
 	(function($) {
@@ -51,8 +51,8 @@
 				var success = false;
 				
 				// send ajax request to upgrade DB
-			    $.ajax({
-			    	url: acf.get('ajaxurl'),
+				$.ajax({
+					url: acf.get('ajaxurl'),
 					dataType: 'json',
 					type: 'post',
 					data: acf.prepareForAjax({
@@ -62,7 +62,7 @@
 						success = true;
 					},
 					error: function( jqXHR, textStatus, errorThrown ){
-						response = '<?php _e('Upgrade failed.', 'acf'); ?>';
+						response = '<?php _e( 'Upgrade failed.', 'acf' ); ?>';
 						if( error = acf.getXhrError(jqXHR) ) {
 							response += ' <code>' + error +  '</code>';
 						}
@@ -89,9 +89,9 @@
 	})(jQuery);	
 	</script>
 
-<?php else: ?>
+<?php else : ?>
 
-	<p><?php _e('No updates available.', 'acf'); ?></p>
+	<p><?php _e( 'No updates available.', 'acf' ); ?></p>
 	
 <?php endif; ?>
 </div>
