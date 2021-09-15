@@ -1266,6 +1266,36 @@
 	acf.registerFieldSetting( TimePickerDisplayFormatFieldSetting );
 	acf.registerFieldSetting( TimePickerReturnFormatFieldSetting );
 	
+	/**
+	 * Color Picker Settings.
+	 *
+	 * @date	16/12/20
+	 * @since	5.9.4
+	 *
+	 * @param	type $var Description. Default.
+	 * @return	type Description.
+	 */
+	var ColorPickerReturnFormat = acf.FieldSetting.extend({
+		type: 'color_picker',
+		name: 'enable_opacity',
+		render: function(){
+			var $return_format_setting = this.fieldObject.$setting('return_format');
+			var $default_value_setting = this.fieldObject.$setting('default_value');
+			var $labelText = $return_format_setting.find('input[type="radio"][value="string"]').parent('label').contents().last();
+			var $defaultPlaceholder = $default_value_setting.find('input[type="text"]');
+			var l10n = acf.get('colorPickerL10n');
+
+			if( this.field.val() ) {
+				$labelText.replaceWith( l10n.rgba_string );
+				$defaultPlaceholder.attr('placeholder', 'rgba(255,255,255,0.8)');
+			} else {
+				$labelText.replaceWith( l10n.hex_string );
+				$defaultPlaceholder.attr('placeholder', '#FFFFFF');
+			}
+		}
+	});
+	acf.registerFieldSetting( ColorPickerReturnFormat );
+	
 })(jQuery);
 (function($, undefined){
 	
@@ -2166,6 +2196,7 @@
 		
 		initialize: function(){
 			this.$el = $('#acf-field-group-locations');
+			this.updateGroupsClass();
 		},
 		
 		onClickAddRule: function( e, $el ){
@@ -2186,6 +2217,7 @@
 		
 		addRule: function( $tr ){
 			acf.duplicate( $tr );
+			this.updateGroupsClass();
 		},
 		
 		removeRule: function( $tr ){
@@ -2194,6 +2226,13 @@
 			} else {
 				$tr.remove();
 			}
+
+			// Update h4
+			var $group = this.$('.rule-group:first');
+			$group.find('h4').text( acf.__('Show this field group if') );
+
+
+			this.updateGroupsClass();
 		},
 		
 		changeRule: function( $rule ){
@@ -2238,7 +2277,24 @@
 			
 			// remove all tr's except the first one
 			$group2.find('tr').not(':first').remove();
-		}
+
+			// update the groups class
+			this.updateGroupsClass();
+		},
+
+		updateGroupsClass: function () {
+			var $group = this.$(".rule-group:last");
+
+			var $ruleGroups = $group.closest(".rule-groups");
+
+			var rows_count = $ruleGroups.find(".acf-table tr").length;
+
+			if (rows_count > 1) {
+				$ruleGroups.addClass("rule-groups-multiple");
+			} else {
+				$ruleGroups.removeClass("rule-groups-multiple");
+			}
+		},
 	});
 	
 })(jQuery);
