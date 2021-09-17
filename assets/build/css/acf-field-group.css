@@ -255,7 +255,6 @@
 }
 .rule-groups .rule-group {
   margin: 0 0 5px;
-  /* Don't allow user to delete the first field group */
 }
 .rule-groups .rule-group h4 {
   margin: 0 0 3px;
@@ -279,11 +278,12 @@
 .rule-groups .rule-group tr:hover td.remove a {
   visibility: visible;
 }
-.rule-groups .rule-group:first-child tr:first-child td.remove a {
-  visibility: hidden !important;
-}
 .rule-groups .rule-group select:empty {
   background: #f8f8f8;
+}
+.rule-groups:not(.rule-groups-multiple) .rule-group:first-child tr:first-child td.remove a {
+  /* Don't allow user to delete the only rule group */
+  visibility: hidden !important;
 }
 
 /*---------------------------------------------------------------------------------------------
