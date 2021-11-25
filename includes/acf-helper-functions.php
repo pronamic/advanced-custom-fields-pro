@@ -317,6 +317,26 @@ function acf_maybe_idval( $value ) {
 }
 
 /**
+ * Convert any numeric strings into their equivalent numeric type. This function will
+ * work with both single values and arrays.
+ *
+ * @param mixed $value Either a single value or an array of values.
+ * @return mixed
+ */
+function acf_format_numerics( $value ) {
+	if ( is_array( $value ) ) {
+		return array_map(
+			function ( $v ) {
+				return is_numeric( $v ) ? $v + 0 : $v;
+			},
+			$value
+		);
+	}
+
+	return is_numeric( $value ) ? $value + 0 : $value;
+}
+
+/**
  * acf_numval
  *
  * Casts the provided value as eiter an int or float using a simple hack.

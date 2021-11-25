@@ -66,7 +66,7 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 				'value' => $field['value'],
 			);
 			$text_input   = array(
-				'class' => 'input',
+				'class' => $field['class'] . ' input',
 				'type'  => 'text',
 				'value' => $display_value,
 			);
@@ -166,6 +166,43 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 
 		}
 
+		/**
+		 *  This filter is applied to the $field after it is loaded from the database
+		 *  and ensures the return and display values are set.
+		 *
+		 *  @type    filter
+		 *  @since   5.11.0
+		 *  @date    28/09/21
+		 *
+		 *  @param array $field The field array holding all the field options.
+		 *
+		 *  @return array
+		 */
+		function load_field( $field ) {
+			if ( empty( $field['display_format'] ) ) {
+				$field['display_format'] = $this->defaults['display_format'];
+			}
+
+			if ( empty( $field['return_format'] ) ) {
+				$field['return_format'] = $this->defaults['return_format'];
+			}
+
+			return $field;
+        }
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			return array(
+				'type'        => array( 'string', 'null' ),
+				'description' => 'A `H:i:s` formatted time string.',
+				'required'    => ! empty( $field['required'] ),
+			);
+		}
 	}
 
 

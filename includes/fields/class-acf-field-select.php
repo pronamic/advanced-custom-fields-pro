@@ -324,6 +324,15 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				);
 			}
 
+			if ( ! empty( $field['query_nonce'] ) ) {
+				acf_hidden_input(
+					array(
+						'id'    => 'acf-' . $field['key'] . '-query-nonce',
+						'value' => $field['query_nonce']
+					)
+				);
+			}
+
 			// append
 			$select['value']   = $value;
 			$select['choices'] = $choices;
@@ -625,6 +634,87 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 			// return
 			return $value;
 
+		}
+
+		/**
+		 * Validates select fields updated via the REST API.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			// rest_validate_request_arg() handles the other types, we just worry about strings.
+			if ( is_null( $value ) || is_array( $value ) ) {
+				return $valid;
+			}
+
+			$option_keys = array_diff(
+				array_keys( $field['choices'] ),
+				array_values( $field['choices'] )
+			);
+
+			$allowed = empty( $option_keys ) ? $field['choices'] : $option_keys;
+
+			if ( ! in_array( $value, $allowed ) ) {
+				$param = sprintf( '%s[%s]', $field['prefix'], $field['name'] );
+				$data  = array(
+					'param' => $param,
+					'value' => $value,
+				);
+				$error = sprintf(
+					__( '%1$s is not one of %2$s', 'acf' ),
+					$param,
+					implode( ', ', $allowed )
+				);
+
+				return new WP_Error( 'rest_invalid_param', $error, $data );
+			}
+
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			/**
+			 * If a user has defined keys for the select options,
+			 * we should use the keys for the available options to POST to,
+			 * since they are what is displayed in GET requests.
+			 */
+			$option_keys = array_diff(
+				array_keys( $field['choices'] ),
+				array_values( $field['choices'] )
+			);
+
+			$schema = array(
+				'type'     => array( 'string', 'array', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'items'    => array(
+					'type' => array( 'string' ),
+					'enum' => empty( $option_keys ) ? $field['choices'] : $option_keys,
+				),
+			);
+
+			if ( empty( $field['allow_null'] ) ) {
+				$schema['minItems'] = 1;
+			}
+
+			if ( empty( $field['multiple'] ) ) {
+				$schema['maxItems'] = 1;
+			}
+
+			if ( isset( $field['default_value'] ) && '' !== $field['default_value'] ) {
+				$schema['default'] = $field['default_value'];
+			}
+
+			return $schema;
 		}
 
 	}

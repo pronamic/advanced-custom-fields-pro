@@ -528,6 +528,37 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 
 		}
 
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			if ( empty( $value ) || ! is_array( $value ) ) {
+				return $value;
+			}
+
+			if ( ! is_array( $field ) || ! isset( $field['sub_fields'] ) || ! is_array( $field['sub_fields'] ) ) {
+				return $value;
+			}
+
+			// Loop through each row and within that, each sub field to process sub fields individually.
+			foreach ( $field['sub_fields'] as $sub_field ) {
+
+				// Extract the sub field 'field_key'=>'value' pair from the $value and format it.
+				$sub_value = acf_extract_var( $value, $sub_field['key'] );
+				$sub_value = acf_format_value_for_rest( $sub_value, $post_id, $sub_field );
+
+				// Add the sub field value back to the $value but mapped to the field name instead
+				// of the key reference.
+				$value[ $sub_field['name'] ] = $sub_value;
+			}
+
+			return $value;
+		}
 
 		/*
 		*  update_value()
@@ -1291,6 +1322,53 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 			// return
 			return $valid;
 
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'object', 'null' ),
+				'required' => ! empty( $field['required'] ) ? array() : false,
+				'items'    => array(
+					'type'       => 'object',
+					'properties' => array(),
+				),
+			);
+
+			foreach ( $field['sub_fields'] as $sub_field ) {
+				/** @var acf_field $type */
+				$type = acf_get_field_type( $sub_field['type'] );
+
+				if ( ! $type ) {
+					continue;
+				}
+
+				$sub_field_schema = $type->get_rest_schema( $sub_field );
+
+				// Passing null to nested fields has no effect. Remove this as a possible type to prevent
+				// confusion in the schema.
+				$null_type_index = array_search( 'null', $sub_field_schema['type'] );
+				if ( $null_type_index !== false ) {
+					unset( $sub_field_schema['type'][ $null_type_index ] );
+				}
+
+				$schema['items']['properties'][ $sub_field['name'] ] = $sub_field_schema;
+
+				/**
+				 * If the clone field itself is marked as required, all subfields are required,
+				 * regardless of the status of the original fields.
+				 */
+				if ( is_array( $schema['required'] ) ) {
+					$schema['required'][] = $sub_field['name'];
+				}
+			}
+
+			return $schema;
 		}
 
 	}

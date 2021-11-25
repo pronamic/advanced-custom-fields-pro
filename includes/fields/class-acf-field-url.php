@@ -160,6 +160,19 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema           = parent::get_rest_schema( $field );
+			$schema['format'] = 'uri';
+
+			return $schema;
+		}
+
 	}
 
 

@@ -422,23 +422,55 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		}
 
 
-		/*
-		*  validate_value
-		*
-		*  This function will validate a basic file input
-		*
-		*  @type    function
-		*  @date    11/02/2014
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
-
+		/**
+		 *  validate_value
+		 *
+		 *  This function will validate a basic file input
+		 *
+		 *  @type    function
+		 *  @date    11/02/2014
+		 *  @since   5.0.0
+		 *
+		 *  @param   $post_id (int)
+		 *  @return  $post_id (int)
+		 */
 		function validate_value( $valid, $value, $field, $input ) {
-
 			return acf_get_field_type( 'file' )->validate_value( $valid, $value, $field, $input );
+		}
 
+		/**
+		 * Additional validation for the image field when submitted via REST.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			return acf_get_field_type( 'file' )->validate_rest_value( $valid, $value, $field );
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			return acf_get_field_type( 'file' )->get_rest_schema( $field );
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return acf_format_numerics( $value );
 		}
 
 	}

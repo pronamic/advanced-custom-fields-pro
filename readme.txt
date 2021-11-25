@@ -2,13 +2,13 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
-Tested up to: 5.8
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 5.10.2
+Stable tag: 5.11.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customize WordPress with powerful, professional and intuitive fields. Proudly powering over 1 million websites, Advanced Custom Fields is the plugin WordPress developers love.
+Customize WordPress with powerful, professional and intuitive fields. Proudly powering over 2 million websites, Advanced Custom Fields is the plugin WordPress developers love.
 
 == Description ==
 
@@ -75,6 +75,40 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.11.1 =
+*Release Date - 18 November 2021*
+
+* Enhancement - Added "acf/admin/license_key_constant_message" filter to allow changing of the "Your license key is defined in wp-config.php" message
+* Fix - Added warning for when get_field() or similar functions are called before ACF has initialized. [Learn more](https://www.advancedcustomfields.com/resources/acf-field-functions/)
+* Fix - Fixed fields not appearing on user REST API endpoints if their field group location was set to a user form other than "all"
+* Fix - Fixed warning in REST API if a custom field type did not have the "show_in_rest" property
+* Fix - Fixed an error that could occur if value of WYSIWYG field was not a string
+
+= 5.11 =
+*Release Date - 10 November 2021*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-5-11-release-rest-api/)
+* New - Fields can now be viewed and updated with the WordPress REST API (props @mishterk)
+* New - License key can now be defined in code with the "ACF_PRO_LICENSE" constant
+* Enhancement - Improved error handling for expired or deactivated licenses
+* Enhancement - Improved support for various block editor features, such as block styles and padding/spacing
+* Enhancement - Added support for using WordPress "Screen Options" to hide field groups in Classic Editor
+* Enhancement - Support filters adding custom classes on date and time field inputs
+* Enhancement - Support filtering ACF shortcode attributes (with the "shortcode_atts_acf" filter)
+* Fix - Removed usages of PHP "extract()" function
+* Fix - Fixed a security issue with user field
+* Fix - Fixed a security issue with "acf_get_value()"
+* Fix - Correctly set ".acf-block-preview" wrapper when previewing a block in auto mode
+* Fix - Resolved an issue with select2 rendering for nav menu fields
+* Fix - Fixed an issue with file validation that occurred when removing a file that failed validation
+* Fix - Fixed a notice in "acf_prepare_field()"
+* Fix - Prevented an issue where setting an empty string for the return format of date and time fields would cause JS errors
+* Fix - Fix issues with conditional logic for multi-select fields (props @bhujagendra-ishaya)
+* Fix - Added support for Google Maps schema change which prevented Google Maps fields from correctly saving the city for some areas
+* Fix - Fixed an issue where removing the collapsed property of a repeater prevents viewing previously collapsed rows
+* i18n - Updated Polish Translations (props @webnatural)
+* Dev - Formatted JavaScript to WordPress code standards
 
 = 5.10.2 =
 *Release Date - 31 August 2021*

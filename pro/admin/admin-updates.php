@@ -137,26 +137,27 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 		 * @return  void
 		 */
 		function load() {
-
 			// Check activate.
-			if ( acf_verify_nonce( 'activate_pro_licence' ) ) {
-				$this->activate_pro_licence();
+			if ( acf_verify_nonce( 'activate_pro_license' ) ) {
+				acf_pro_activate_license( $_POST['acf_pro_license'] );
 
 				// Check deactivate.
-			} elseif ( acf_verify_nonce( 'deactivate_pro_licence' ) ) {
-				$this->deactivate_pro_licence();
+			} elseif ( acf_verify_nonce( 'deactivate_pro_license' ) ) {
+				acf_pro_deactivate_license();
 			}
 
 			// vars
 			$license    = acf_pro_get_license_key();
 			$this->view = array(
-				'license'          => $license,
-				'active'           => $license ? 1 : 0,
-				'current_version'  => acf_get_setting( 'version' ),
-				'remote_version'   => '',
-				'update_available' => false,
-				'changelog'        => '',
-				'upgrade_notice'   => '',
+				'license'            => $license,
+				'active'             => $license ? 1 : 0,
+				'current_version'    => acf_get_setting( 'version' ),
+				'remote_version'     => '',
+				'update_available'   => false,
+				'changelog'          => '',
+				'upgrade_notice'     => '',
+				'is_defined_license' => defined( 'ACF_PRO_LICENSE' ) && ! empty( ACF_PRO_LICENSE ) && is_string( ACF_PRO_LICENSE ),
+				'license_error'      => false,
 			);
 
 			// get plugin updates
@@ -187,16 +188,29 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 				$update   = acf_updates()->get_plugin_update( $basename );
 				if ( $license ) {
 
-					// display error if no package url
-					// - possible if license key has been modified
-					if ( $update && ! $update['package'] ) {
-						$this->view['update_available'] = false;
+					if ( isset( $update['license_valid'] ) && ! $update['license_valid'] ) {
+
+						$this->view['license_error'] = true;
 						acf_new_admin_notice(
 							array(
-								'text' => __( '<b>Error</b>. Could not authenticate update package. Please check again or deactivate and reactivate your ACF PRO license.', 'acf' ),
+								'text' => __( '<b>Error</b>. Your license for this site has expired or been deactivated. Please reactivate your ACF PRO license.', 'acf' ),
 								'type' => 'error',
 							)
 						);
+
+					} else {
+
+						// display error if no package url
+						// - possible if license key has been modified
+						if ( $update && ! $update['package'] ) {
+							$this->view['license_error'] = true;
+							acf_new_admin_notice(
+								array(
+									'text' => __( '<b>Error</b>. Could not authenticate update package. Please check again or deactivate and reactivate your ACF PRO license.', 'acf' ),
+									'type' => 'error',
+								)
+							);
+						}
 					}
 
 					// refresh transient
@@ -209,118 +223,7 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 			}
 		}
 
-		/**
-		 * activate_pro_licence
-		 *
-		 * Activates the submitted license key.
-		 *
-		 * @date    16/01/2014
-		 * @since   5.0.0
-		 *
-		 * @param   void
-		 * @return  void
-		 */
-		function activate_pro_licence() {
 
-			// Connect to API.
-			$post     = array(
-				'acf_license' => trim( $_POST['acf_pro_licence'] ),
-				'acf_version' => acf_get_setting( 'version' ),
-				'wp_name'     => get_bloginfo( 'name' ),
-				'wp_url'      => home_url(),
-				'wp_version'  => get_bloginfo( 'version' ),
-				'wp_language' => get_bloginfo( 'language' ),
-				'wp_timezone' => get_option( 'timezone_string' ),
-			);
-			$response = acf_updates()->request( 'v2/plugins/activate?p=pro', $post );
-
-			// Check response is expected JSON array (not string).
-			if ( is_string( $response ) ) {
-				$response = new WP_Error( 'server_error', esc_html( $response ) );
-			}
-
-			// Display error.
-			if ( is_wp_error( $response ) ) {
-				return $this->display_wp_error( $response );
-			}
-
-			// On success.
-			if ( $response['status'] == 1 ) {
-
-				// Update license.
-				acf_pro_update_license( $response['license'] );
-
-				// Refresh plugins transient to fetch new update data.
-				acf_updates()->refresh_plugins_transient();
-
-				// Show notice.
-				acf_add_admin_notice( $response['message'], 'success' );
-
-				// On failure.
-			} else {
-
-				// Show notice.
-				acf_add_admin_notice( $response['message'], 'warning' );
-			}
-		}
-
-		/**
-		 * activate_pro_licence
-		 *
-		 * Deactivates the registered license key.
-		 *
-		 * @date    16/01/2014
-		 * @since   5.0.0
-		 *
-		 * @param   void
-		 * @return  void
-		 */
-		function deactivate_pro_licence() {
-
-			// Get license key.
-			$license = acf_pro_get_license_key();
-
-			// Bail early if no key.
-			if ( ! $license ) {
-				return;
-			}
-
-			// Connect to API.
-			$post     = array(
-				'acf_license' => $license,
-				'wp_url'      => home_url(),
-			);
-			$response = acf_updates()->request( 'v2/plugins/deactivate?p=pro', $post );
-
-			// Check response is expected JSON array (not string).
-			if ( is_string( $response ) ) {
-				$response = new WP_Error( 'server_error', esc_html( $response ) );
-			}
-
-			// Display error.
-			if ( is_wp_error( $response ) ) {
-				return $this->display_wp_error( $response );
-			}
-
-			// Remove license key from DB.
-			acf_pro_update_license( '' );
-
-			// Refresh plugins transient to fetch new update data.
-			acf_updates()->refresh_plugins_transient();
-
-			// On success.
-			if ( $response['status'] == 1 ) {
-
-				// Show notice.
-				acf_add_admin_notice( $response['message'], 'info' );
-
-				// On failure.
-			} else {
-
-				// Show notice.
-				acf_add_admin_notice( $response['message'], 'warning' );
-			}
-		}
 
 		/**
 		 * html

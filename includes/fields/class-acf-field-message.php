@@ -4,6 +4,7 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 
 	class acf_field_message extends acf_field {
 
+		public $show_in_rest = false;
 
 		/*
 		*  __construct
