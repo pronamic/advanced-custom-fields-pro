@@ -533,7 +533,7 @@ function acf_prepare_field( $field ) {
 	}
 
 	// Use field prefix to modify input name.
-	if ( $field['prefix'] ) {
+	if ( ! empty( $field['prefix'] ) ) {
 		$field['name'] = "{$field['prefix']}[{$field['name']}]";
 	}
 

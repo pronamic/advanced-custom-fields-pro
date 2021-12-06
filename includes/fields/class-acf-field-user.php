@@ -113,10 +113,11 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		function render_field( $field ) {
 
 			// Change Field into a select.
-			$field['type']    = 'select';
-			$field['ui']      = 1;
-			$field['ajax']    = 1;
-			$field['choices'] = array();
+			$field['type']        = 'select';
+			$field['ui']          = 1;
+			$field['ajax']        = 1;
+			$field['choices']     = array();
+			$field['query_nonce'] = wp_create_nonce( 'acf/fields/user/query' . $field['key'] );
 
 			// Populate choices.
 			if ( $field['value'] ) {
@@ -344,10 +345,14 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @return  void
 		 */
 		function ajax_query_init( $request, $query ) {
-
-			// Require field.
-			if ( ! $query->field ) {
+			// Require field and make sure it's a user field.
+			if ( ! $query->field || $query->field['type'] !== $this->name ) {
 				$query->send( new WP_Error( 'acf_missing_field', __( 'Error loading field.', 'acf' ), array( 'status' => 404 ) ) );
+			}
+
+			// Verify that this is a legitimate request using a separate nonce from the main AJAX nonce.
+			if ( ! isset( $_REQUEST['user_query_nonce'] ) || ! wp_verify_nonce( $_REQUEST['user_query_nonce'], 'acf/fields/user/query' . $query->field['key']) ) {
+				$query->send( new WP_Error( 'acf_invalid_request', __( 'Invalid request.', 'acf' ), array( 'status' => 404 ) ) );
 			}
 		}
 
@@ -468,6 +473,135 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			_deprecated_function( __FUNCTION__, '5.8.9' );
 			return $columns;
 		}
+
+		/**
+		 * Validates user fields updated via the REST API.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			if ( is_null( $value ) ) {
+				return $valid;
+			}
+
+			$param = sprintf( '%s[%s]', $field['prefix'], $field['name'] );
+			$data  = array( 'param' => $param );
+			$value = is_array( $value ) ? $value : array( $value );
+
+			$invalid_users      = array();
+			$insufficient_roles = array();
+
+			foreach ( $value as $user_id ) {
+				$user_data = get_userdata( $user_id );
+				if ( ! $user_data ) {
+					$invalid_users[] = $user_id;
+					continue;
+				}
+
+				if ( empty( $field['role'] ) ) {
+					continue;
+				}
+
+				$has_roles = count( array_intersect( $field['role'], $user_data->roles ) );
+				if ( ! $has_roles ) {
+					$insufficient_roles[] = $user_id;
+				}
+			}
+
+			if ( count( $invalid_users ) ) {
+				$error         = sprintf(
+					__( '%1$s must have a valid user ID.', 'acf' ),
+					$param
+				);
+				$data['value'] = $invalid_users;
+				return new WP_Error( 'rest_invalid_param', $error, $data );
+			}
+
+			if ( count( $insufficient_roles ) ) {
+				$error         = sprintf(
+					_n(
+						'%1$s must have a user with the %2$s role.',
+						'%1$s must have a user with one of the following roles: %2$s',
+						count( $field['role'] ),
+						'acf'
+					),
+					$param,
+					count( $field['role'] ) > 1 ? implode( ', ', $field['role'] ) : $field['role'][0]
+				);
+				$data['value'] = $insufficient_roles;
+				return new WP_Error( 'rest_invalid_param', $error, $data );
+			}
+
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'integer', 'array', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'items'    => array(
+					'type' => 'integer',
+				),
+			);
+
+			if ( empty( $field['allow_null'] ) ) {
+				$schema['minItems'] = 1;
+			}
+
+			if ( empty( $field['multiple'] ) ) {
+				$schema['maxItems'] = 1;
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * @see \acf_field::get_rest_links()
+		 * @param mixed      $value The raw (unformatted) field value.
+		 * @param int|string $post_id
+		 * @param array      $field
+		 * @return array
+		 */
+		public function get_rest_links( $value, $post_id, array $field ) {
+			$links = array();
+
+			if ( empty( $value ) ) {
+				return $links;
+			}
+
+			foreach ( (array) $value as $object_id ) {
+				$links[] = array(
+					'rel'        => 'acf:user',
+					'href'       => rest_url( '/wp/v2/users/' . $object_id ),
+					'embeddable' => true,
+				);
+			}
+
+			return $links;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return acf_format_numerics( $value );
+		}
+
 	}
 
 

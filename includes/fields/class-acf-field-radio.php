@@ -443,6 +443,42 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		function get_rest_schema( array $field ) {
+			$schema = parent::get_rest_schema( $field );
+
+			if ( isset( $field['default_value'] ) && '' !== $field['default_value'] ) {
+				$schema['default'] = $field['default_value'];
+			}
+
+			// If other/custom choices are allowed, nothing else to do here.
+			if ( ! empty( $field['other_choice'] ) ) {
+				return $schema;
+			}
+
+			/**
+			 * If a user has defined keys for the radio options,
+			 * we should use the keys for the available options to POST to,
+			 * since they are what is displayed in GET requests.
+			 */
+			$radio_keys = array_diff(
+				array_keys( $field['choices'] ),
+				array_values( $field['choices'] )
+			);
+
+			$schema['enum'] = empty( $radio_keys ) ? $field['choices'] : $radio_keys;
+			if ( ! empty( $field['allow_null'] ) ) {
+				$schema['enum'][] = null;
+			}
+
+			return $schema;
+		}
+
 	}
 
 

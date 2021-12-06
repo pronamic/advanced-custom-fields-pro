@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com
 Description: Customize WordPress with powerful, professional and intuitive fields.
-Version: 5.10.2
+Version: 5.11.4
 Author: Delicious Brains
 Author URI: https://www.advancedcustomfields.com
 Text Domain: acf
@@ -19,7 +19,7 @@ if ( ! class_exists( 'ACF' ) ) :
 	class ACF {
 
 		/** @var string The plugin version number. */
-		var $version = '5.10.2';
+		var $version = '5.11.4';
 
 		/** @var array The plugin settings array. */
 		var $settings = array();
@@ -97,6 +97,9 @@ if ( ! class_exists( 'ACF' ) ) :
 				'select2_version'        => 4,
 				'row_index_offset'       => 1,
 				'remove_wp_meta_box'     => true,
+				'rest_api_enabled'       => true,
+				'rest_api_format'        => 'light',
+				'rest_api_embed_links'   => true,
 			);
 
 			// Include utility functions.
@@ -142,6 +145,7 @@ if ( ! class_exists( 'ACF' ) ) :
 			acf_include( 'includes/updates.php' );
 			acf_include( 'includes/upgrades.php' );
 			acf_include( 'includes/validation.php' );
+			acf_include( 'includes/rest-api.php' );
 
 			// Include ajax.
 			acf_include( 'includes/ajax/class-acf-ajax.php' );

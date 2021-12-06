@@ -1,3 +1,6 @@
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/advanced-custom-fields-pro/assets/src/sass/acf-input.scss ***!
+  \****************************************************************************************************************************************************************************************************************/
 /*--------------------------------------------------------------------------------------------
 *
 *	Vars
@@ -647,6 +650,9 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
 .select2-container.-acf li {
   margin-bottom: 0;
 }
+.select2-container.-acf[data-select2-id^=select2-data] .select2-selection--multiple {
+  overflow: hidden;
+}
 .select2-container.-acf .select2-selection {
   border-color: #7e8993;
 }
@@ -661,6 +667,14 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
 }
 .select2-container.-acf .select2-selection--multiple .select2-selection__rendered {
   padding-right: 0;
+}
+.select2-container.-acf .select2-selection--multiple .select2-selection__rendered[id^=select2-acf-field] {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+.select2-container.-acf .select2-selection--multiple .select2-selection__rendered[id^=select2-acf-field] .select2-selection__choice {
+  margin-right: 0;
 }
 .select2-container.-acf .select2-selection--multiple .select2-selection__choice {
   background-color: #f7f7f7;
@@ -679,6 +693,11 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
 .select2-container.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-helper span {
   visibility: hidden;
 }
+.select2-container.-acf .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+  position: static;
+  border-right: none;
+  padding: 0;
+}
 .select2-container.-acf .select2-selection--multiple .select2-selection__choice.ui-sortable-placeholder {
   background-color: #f7f7f7;
   border-color: #f7f7f7;
@@ -693,6 +712,10 @@ html[dir=rtl] .select2-container.-acf .select2-choice .select2-arrow {
 }
 .acf-row .select2-container.-acf .select2-selection--single .select2-selection__rendered {
   white-space: normal;
+}
+
+.select2-dropdown .select2-results__option {
+  margin-bottom: 0;
 }
 
 .select2-container .select2-dropdown {
@@ -2930,3 +2953,5 @@ body.is-dragging-metaboxes #acf_after_title-sortables {
   min-height: 60px;
   margin-bottom: 3px !important;
 }
+
+/*# sourceMappingURL=acf-input.css.map*/

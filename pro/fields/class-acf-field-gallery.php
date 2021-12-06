@@ -875,6 +875,94 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			return $value;
 
 		}
+
+		/**
+		 * Validates file fields updated via the REST API.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			if ( ! $valid || ! is_array( $value ) ) {
+				return $valid;
+			}
+
+			foreach ( $value as $attachment_id ) {
+				$file_valid = acf_get_field_type( 'file' )->validate_rest_value( $valid, $attachment_id, $field );
+
+				if ( is_wp_error( $file_valid ) ) {
+					return $file_valid;
+				}
+			}
+
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'array', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'items'    => array(
+					'type' => 'number',
+				),
+			);
+
+			if ( ! empty( $field['min'] ) ) {
+				$schema['minItems'] = (int) $field['min'];
+			}
+
+			if ( ! empty( $field['max'] ) ) {
+				$schema['maxItems'] = (int) $field['max'];
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * @see \acf_field::get_rest_links()
+		 * @param mixed      $value The raw (unformatted) field value.
+		 * @param int|string $post_id
+		 * @param array      $field
+		 * @return array
+		 */
+		public function get_rest_links( $value, $post_id, array $field ) {
+			$links = array();
+
+			if ( empty( $value ) ) {
+				return $links;
+			}
+
+			foreach ( (array) $value as $object_id ) {
+				$links[] = array(
+					'rel'        => 'acf:attachment',
+					'href'       => rest_url( '/wp/v2/media/' . $object_id ),
+					'embeddable' => true,
+				);
+			}
+
+			return $links;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return acf_format_numerics( $value );
+		}
 	}
 
 

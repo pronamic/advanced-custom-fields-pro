@@ -4,6 +4,7 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 
 	class acf_field_tab extends acf_field {
 
+		public $show_in_rest = false;
 
 		/*
 		*  __construct

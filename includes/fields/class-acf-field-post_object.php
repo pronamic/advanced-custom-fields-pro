@@ -580,6 +580,179 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 		}
 
+		/**
+		 * Validates post object fields updated via the REST API.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			if ( is_null( $value ) ) {
+				return $valid;
+			}
+
+			$param = sprintf( '%s[%s]', $field['prefix'], $field['name'] );
+			$data  = array( 'param' => $param );
+			$value = is_array( $value ) ? $value : array( $value );
+
+			$invalid_posts    = array();
+			$post_type_errors = array();
+			$taxonomy_errors  = array();
+
+			foreach ( $value as $post_id ) {
+				if ( is_string( $post_id ) ) {
+					continue;
+				}
+
+				$post_type = get_post_type( $post_id );
+				if ( ! $post_type ) {
+					$invalid_posts[] = $post_id;
+					continue;
+				}
+
+				if (
+					is_array( $field['post_type'] ) &&
+					! empty( $field['post_type'] ) &&
+					! in_array( $post_type, $field['post_type'] )
+				) {
+					$post_type_errors[] = $post_id;
+				}
+
+				if ( is_array( $field['taxonomy'] ) && ! empty( $field['taxonomy'] ) ) {
+					$found = false;
+					foreach ( $field['taxonomy'] as $taxonomy_term ) {
+						$decoded = acf_decode_taxonomy_term( $taxonomy_term );
+						if ( $decoded && is_object_in_term( $post_id, $decoded['taxonomy'], $decoded['term'] ) ) {
+							$found = true;
+							break;
+						}
+					}
+
+					if ( ! $found ) {
+						$taxonomy_errors[] = $post_id;
+					}
+				}
+			}
+
+			if ( count( $invalid_posts ) ) {
+				$error         = sprintf(
+					__( '%1$s must have a valid post ID.', 'acf' ),
+					$param
+				);
+				$data['value'] = $invalid_posts;
+				return new WP_Error( 'rest_invalid_param', $error, $data );
+			}
+
+			if ( count( $post_type_errors ) ) {
+				$error         = sprintf(
+					_n(
+						'%1$s must be of post type %2$s.',
+						'%1$s must be of one of the following post types: %2$s',
+						count( $field['post_type'] ),
+						'acf'
+					),
+					$param,
+					count( $field['post_type'] ) > 1 ? implode( ', ', $field['post_type'] ) : $field['post_type'][0]
+				);
+				$data['value'] = $post_type_errors;
+
+				return new WP_Error( 'rest_invalid_param', $error, $data );
+			}
+
+			if ( count( $taxonomy_errors ) ) {
+				$error         = sprintf(
+					_n(
+						'%1$s must have term %2$s.',
+						'%1$s must have one of the following terms: %2$s',
+						count( $field['taxonomy'] ),
+						'acf'
+					),
+					$param,
+					count( $field['taxonomy'] ) > 1 ? implode( ', ', $field['taxonomy'] ) : $field['taxonomy'][0]
+				);
+				$data['value'] = $taxonomy_errors;
+
+				return new WP_Error( 'rest_invalid_param', $error, $data );
+			}
+
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'integer', 'array', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'items'    => array(
+					'type' => 'integer',
+				),
+			);
+
+			if ( empty( $field['allow_null'] ) ) {
+				$schema['minItems'] = 1;
+			}
+
+			if ( empty( $field['multiple'] ) ) {
+				$schema['maxItems'] = 1;
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * @see \acf_field::get_rest_links()
+		 * @param mixed      $value The raw (unformatted) field value.
+		 * @param int|string $post_id
+		 * @param array      $field
+		 * @return array
+		 */
+		public function get_rest_links( $value, $post_id, array $field ) {
+			$links = array();
+
+			if ( empty( $value ) ) {
+				return $links;
+			}
+
+			foreach ( (array) $value as $object_id ) {
+				if ( ! $post_type = get_post_type( $object_id ) ) {
+					continue;
+				}
+
+				if ( ! $post_type_object = get_post_type_object( $post_type ) ) {
+					continue;
+				}
+
+				$rest_base = acf_get_object_type_rest_base( $post_type_object );
+				$links[]   = array(
+					'rel'        => $post_type_object->name === 'attachment' ? 'acf:attachment' : 'acf:post',
+					'href'       => rest_url( sprintf( '/wp/v2/%s/%s', $rest_base, $object_id ) ),
+					'embeddable' => true,
+				);
+			}
+
+			return $links;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return acf_format_numerics( $value );
+		}
+
 	}
 
 

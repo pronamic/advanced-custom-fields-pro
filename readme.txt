@@ -2,13 +2,13 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
-Tested up to: 5.8
+Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 5.10.2
+Stable tag: 5.11.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Customize WordPress with powerful, professional and intuitive fields. Proudly powering over 1 million websites, Advanced Custom Fields is the plugin WordPress developers love.
+Customize WordPress with powerful, professional and intuitive fields. Proudly powering over 2 million websites, Advanced Custom Fields is the plugin WordPress developers love.
 
 == Description ==
 
@@ -75,6 +75,63 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.11.4 =
+*Release Date - 2nd December 2021*
+
+* Fix - Fixed several Select2.js conflicts with other plugins
+* Fix - Fixed an issue where block name sanitization could change valid block names containing double hyphens
+* Fix - Fixed an issue where blocks with integer IDs could fail to load example field data
+
+= 5.11.3 =
+*Release Date - 24th November 2021*
+
+* Fix - Fixed a bug when accessing field values for options pages registered with a custom post_id
+
+= 5.11.2 =
+*Release Date - 24th November 2021*
+
+* Fix - Previously implemented data access changes for get_field() and the_field() are now limited to the ACF shortcode only. [Learn more](https://www.advancedcustomfields.com/resources/acf-field-functions/)
+* Fix - get_field() and the_field() functions can once again access meta values regardless of being registered with ACF, restoring functionality that existed before 5.11
+* Fix - get_field() and the_field() functions now are only able to access site options which are ACF fields
+* Fix - UI issues for select boxes related to Yoast and WooCommerce’s select2 versions by upgrading our select2 version, and updating our CSS to support older versions
+* Fix - User fields failed to load values when using the legacy select2 v3 option
+* Fix - acf_slugify() now correctly supports special characters which solves issues with block names or field group names (during imports) containing those characters
+* Fix - PHP Notice generated while processing a field group’s postbox classes
+
+= 5.11.1 =
+*Release Date - 18 November 2021*
+
+* Enhancement - Added "acf/admin/license_key_constant_message" filter to allow changing of the "Your license key is defined in wp-config.php" message
+* Fix - Added warning for when get_field() or similar functions are called before ACF has initialized. [Learn more](https://www.advancedcustomfields.com/resources/acf-field-functions/)
+* Fix - Fixed fields not appearing on user REST API endpoints if their field group location was set to a user form other than "all"
+* Fix - Fixed warning in REST API if a custom field type did not have the "show_in_rest" property
+* Fix - Fixed an error that could occur if value of WYSIWYG field was not a string
+
+= 5.11 =
+*Release Date - 10 November 2021*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-5-11-release-rest-api/)
+* New - Fields can now be viewed and updated with the WordPress REST API (props @mishterk)
+* New - License key can now be defined in code with the "ACF_PRO_LICENSE" constant
+* Enhancement - Improved error handling for expired or deactivated licenses
+* Enhancement - Improved support for various block editor features, such as block styles and padding/spacing
+* Enhancement - Added support for using WordPress "Screen Options" to hide field groups in Classic Editor
+* Enhancement - Support filters adding custom classes on date and time field inputs
+* Enhancement - Support filtering ACF shortcode attributes (with the "shortcode_atts_acf" filter)
+* Fix - Removed usages of PHP "extract()" function
+* Fix - Fixed a security issue with user field
+* Fix - Fixed a security issue with "acf_get_value()"
+* Fix - Correctly set ".acf-block-preview" wrapper when previewing a block in auto mode
+* Fix - Resolved an issue with select2 rendering for nav menu fields
+* Fix - Fixed an issue with file validation that occurred when removing a file that failed validation
+* Fix - Fixed a notice in "acf_prepare_field()"
+* Fix - Prevented an issue where setting an empty string for the return format of date and time fields would cause JS errors
+* Fix - Fix issues with conditional logic for multi-select fields (props @bhujagendra-ishaya)
+* Fix - Added support for Google Maps schema change which prevented Google Maps fields from correctly saving the city for some areas
+* Fix - Fixed an issue where removing the collapsed property of a repeater prevents viewing previously collapsed rows
+* i18n - Updated Polish Translations (props @webnatural)
+* Dev - Formatted JavaScript to WordPress code standards
 
 = 5.10.2 =
 *Release Date - 31 August 2021*
