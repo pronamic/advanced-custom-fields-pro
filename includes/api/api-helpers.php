@@ -419,37 +419,29 @@ function acf_parse_type( $v ) {
 }
 
 
-/*
-*  acf_get_view
-*
-*  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   $view_name (string)
-*  @param   $args (array)
-*  @return  n/a
-*/
-
-function acf_get_view( $path = '', $args = array() ) {
-
+/**
+ *  This function will load in a file from the 'admin/views' folder and allow variables to be passed through
+ *
+ *  @date    28/09/13
+ *  @since   5.0.0
+ *
+ *  @param string $view_path
+ *  @param array  $view_args
+ *
+ *  @return void
+ */
+function acf_get_view( $view_path = '', $view_args = array() ) {
 	// allow view file name shortcut
-	if ( substr( $path, -4 ) !== '.php' ) {
-
-		$path = acf_get_path( "includes/admin/views/{$path}.php" );
-
+	if ( substr( $view_path, -4 ) !== '.php' ) {
+		$view_path = acf_get_path( "includes/admin/views/{$view_path}.php" );
 	}
 
 	// include
-	if ( file_exists( $path ) ) {
-
-		extract( $args );
-		include $path;
-
+	if ( file_exists( $view_path ) ) {
+		// Use `EXTR_SKIP` here to prevent `$view_path` from being accidentally/maliciously overridden.
+		extract( $view_args, EXTR_SKIP );
+		include $view_path;
 	}
-
 }
 
 
@@ -4246,7 +4238,7 @@ function acf_remove_array_key_prefix( $array, $prefix ) {
 *  acf_strip_protocol
 *
 *  This function will remove the proticol from a url
-*  Used to allow licences to remain active if a site is switched to https
+*  Used to allow licenses to remain active if a site is switched to https
 *
 *  @type    function
 *  @date    10/01/2017

@@ -12,6 +12,7 @@ if ( ! class_exists( 'acf_field' ) ) :
 		$l10n     = array(),
 		$public   = true;
 
+		public $show_in_rest = true;
 
 		/*
 		*  __construct
@@ -49,6 +50,7 @@ if ( ! class_exists( 'acf_field' ) ) :
 			$this->add_field_action( 'acf/delete_value', array( $this, 'delete_value' ), 10, 3 );
 
 			// field
+			$this->add_field_filter( 'acf/validate_rest_value', array( $this, 'validate_rest_value' ), 10, 3 );
 			$this->add_field_filter( 'acf/validate_field', array( $this, 'validate_field' ), 10, 1 );
 			$this->add_field_filter( 'acf/load_field', array( $this, 'load_field' ), 10, 1 );
 			$this->add_field_filter( 'acf/update_field', array( $this, 'update_field' ), 10, 1 );
@@ -266,6 +268,79 @@ if ( ! class_exists( 'acf_field' ) ) :
 			// return
 			return $l10n;
 
+		}
+
+		/**
+		 * Add additional validation for fields being updated via the REST API.
+		 *
+		 * @param bool  $valid
+		 * @param mixed $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'string', 'null' ),
+				'required' => ! empty( $field['required'] ),
+			);
+
+			if ( isset( $field['default_value'] ) && '' !== $field['default_value'] ) {
+				$schema['default'] = $field['default_value'];
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * Return an array of links for addition to the REST API response. Each link is an array and must have both `rel` and
+		 * `href` keys. The `href` key must be a REST API resource URL. If a link is marked as `embeddable`, the `_embed` URL
+		 * parameter will trigger WordPress to dispatch an internal sub request and load the object within the same request
+		 * under the `_embedded` response property.
+		 *
+		 * e.g;
+		 *    [
+		 *        [
+		 *            'rel' => 'acf:post',
+		 *            'href' => 'https://example.com/wp-json/wp/v2/posts/497',
+		 *            'embeddable' => true,
+		 *        ],
+		 *        [
+		 *            'rel' => 'acf:user',
+		 *            'href' => 'https://example.com/wp-json/wp/v2/users/2',
+		 *            'embeddable' => true,
+		 *        ],
+		 *    ]
+		 *
+		 * @param mixed      $value The raw (unformatted) field value.
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return array
+		 */
+		public function get_rest_links( $value, $post_id, array $field ) {
+			return array();
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return $value;
 		}
 
 	}

@@ -345,7 +345,9 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 (function($) {
 	
 	// append html
-	$('#post-body-content').append( $('#tmpl-acf-menu-settings').html() );
+	var html = $('#tmpl-acf-menu-settings').html();
+	$('#tmpl-acf-menu-settings').remove();
+	$('#post-body-content').append( html );
 	
 	
 	// avoid WP over-writing $_POST data

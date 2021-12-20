@@ -564,6 +564,45 @@ if ( ! class_exists( 'acf_field_checkbox' ) ) :
 			return acf_get_field_type( 'select' )->format_value( $value, $post_id, $field );
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'string', 'array', 'null' ),
+				'required' => isset( $field['required'] ) && $field['required'],
+				'items'    => array(
+					'type' => 'string',
+				),
+			);
+
+			if ( isset( $field['default_value'] ) && '' !== $field['default_value'] ) {
+				$schema['default'] = $field['default_value'];
+			}
+
+			// If we allow custom values, nothing else to do here.
+			if ( ! empty( $field['allow_custom'] ) ) {
+				return $schema;
+			}
+
+			/**
+			 * If a user has defined keys for the checkboxes,
+			 * we should use the keys for the available options to POST to,
+			 * since they are what is displayed in GET requests.
+			 */
+			$checkbox_keys = array_diff(
+				array_keys( $field['choices'] ),
+				array_values( $field['choices'] )
+			);
+
+			$schema['items']['enum'] = empty( $checkbox_keys ) ? $field['choices'] : $checkbox_keys;
+
+			return $schema;
+		}
+
 	}
 
 

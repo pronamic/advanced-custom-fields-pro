@@ -1089,6 +1089,97 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 			return $field;
 		}
 
+		/**
+		 * Additional validation for the repeater field when submitted via REST.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			if ( ! is_array( $value ) && is_null( $value ) ) {
+				$param = sprintf( '%s[%s]', $field['prefix'], $field['name'] );
+				$data  = array(
+					'param' => $param,
+					'value' => $value,
+				);
+				$error = sprintf( __( '%s must be of type array or null.', 'acf' ), $param );
+				return new WP_Error( 'rest_invalid_param', $error, $param );
+			}
+
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'array', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'items'    => array(
+					'type'       => 'object',
+					'properties' => array(),
+				),
+			);
+
+			foreach ( $field['sub_fields'] as $sub_field ) {
+				if ( $sub_field_schema = acf_get_field_rest_schema( $sub_field ) ) {
+					$schema['items']['properties'][ $sub_field['name'] ] = $sub_field_schema;
+				}
+			}
+
+			if ( ! empty( $field['min'] ) ) {
+				$schema['minItems'] = (int) $field['min'];
+			}
+
+			if ( ! empty( $field['max'] ) ) {
+				$schema['maxItems'] = (int) $field['max'];
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param int|string $post_id
+		 * @param array      $field
+		 * @return array|mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			if ( empty( $value ) || ! is_array( $value ) || empty( $field['sub_fields'] ) ) {
+				return null;
+			}
+
+			// Loop through each row and within that, each sub field to process sub fields individually.
+			foreach ( $value as &$row ) {
+				foreach ( $field['sub_fields'] as $sub_field ) {
+
+					// Bail early if the field has no name (tab).
+					if ( acf_is_empty( $sub_field['name'] ) ) {
+						continue;
+					}
+
+					// Extract the sub field 'field_key'=>'value' pair from the $row and format it.
+					$sub_value = acf_extract_var( $row, $sub_field['key'] );
+					$sub_value = acf_format_value_for_rest( $sub_value, $post_id, $sub_field );
+
+					// Add the sub field value back to the $row but mapped to the field name instead
+					// of the key reference.
+					$row[ $sub_field['name'] ] = $sub_value;
+				}
+			}
+
+			return $value;
+		}
+
 	}
 
 

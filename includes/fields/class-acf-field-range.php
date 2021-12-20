@@ -227,6 +227,39 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'number', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'minimum'  => empty( $field['min'] ) ? 0 : (int) $field['min'],
+				'maximum'  => empty( $field['max'] ) ? 100 : (int) $field['max'],
+			);
+
+			if ( isset( $field['default_value'] ) && is_numeric( $field['default_value'] ) ) {
+				$schema['default'] = (int) $field['default_value'];
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return acf_format_numerics( $value );
+		}
+
 
 	}
 

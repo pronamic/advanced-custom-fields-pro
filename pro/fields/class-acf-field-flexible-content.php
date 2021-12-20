@@ -1684,6 +1684,164 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 		}
 
+		/**
+		 * Additional validation for the flexible content field when submitted via REST.
+		 *
+		 * @param bool  $valid
+		 * @param int   $value
+		 * @param array $field
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function validate_rest_value( $valid, $value, $field ) {
+			$param = sprintf( '%s[%s]', $field['prefix'], $field['name'] );
+			$data  = array(
+				'param' => $param,
+				'value' => $value,
+			);
+
+			if ( ! is_array( $value ) && is_null( $value ) ) {
+				$error = sprintf( __( '%s must be of type array or null.', 'acf' ), $param );
+				return new WP_Error( 'rest_invalid_param', $error, $param );
+			}
+
+			$layouts_to_update = array_count_values( array_column( $value, 'acf_fc_layout' ) );
+
+			foreach ( $field['layouts'] as $layout ) {
+				$num_layouts = isset( $layouts_to_update[ $layout['name'] ] ) ? $layouts_to_update[ $layout['name'] ] : 0;
+
+				if ( '' !== $layout['min'] && $num_layouts < (int) $layout['min'] ) {
+					$error = sprintf(
+						_n(
+							'%1$s must contain at least %2$s %3$s layout.',
+							'%1$s must contain at least %2$s %3$s layouts.',
+							$layout['min'],
+							'acf'
+						),
+						$param,
+						number_format_i18n( $layout['min'] ),
+						$layout['name']
+					);
+
+					return new WP_Error( 'rest_invalid_param', $error, $data );
+				}
+
+				if ( '' !== $layout['max'] && $num_layouts > (int) $layout['max'] ) {
+					$error = sprintf(
+						_n(
+							'%1$s must contain at most %2$s %3$s layout.',
+							'%1$s must contain at most %2$s %3$s layouts.',
+							$layout['max'],
+							'acf'
+						),
+						$param,
+						number_format_i18n( $layout['max'] ),
+						$layout['name']
+					);
+
+					return new WP_Error( 'rest_invalid_param', $error, $data );
+				}
+			}
+
+			return $valid;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'array', 'null' ),
+				'required' => ! empty( $field['required'] ),
+				'items'    => array(
+					'oneOf' => array(),
+				),
+			);
+
+			// Loop through layouts building up a schema for each.
+			foreach ( $field['layouts'] as $layout ) {
+				$layout_schema = array(
+					'type'       => 'object',
+					'properties' => array(
+						'acf_fc_layout' => array(
+							'type'     => 'string',
+							'required' => true,
+							// By using a pattern match against the layout name, data sent in must match an available
+							// layout on the flexible field. If it doesn't, a 400 Bad Request response will result.
+							'pattern'  => '^' . $layout['name'] . '$',
+						),
+					),
+				);
+
+				foreach ( $layout['sub_fields'] as $sub_field ) {
+					if ( $sub_field_schema = acf_get_field_rest_schema( $sub_field ) ) {
+						$layout_schema['properties'][ $sub_field['name'] ] = $sub_field_schema;
+					}
+				}
+
+				$schema['items']['oneOf'][] = $layout_schema;
+			}
+
+			if ( ! empty( $field['min'] ) ) {
+				$schema['minItems'] = (int) $field['min'];
+			}
+
+			if ( ! empty( $field['max'] ) ) {
+				$schema['maxItems'] = (int) $field['max'];
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param int|string $post_id
+		 * @param array      $field
+		 * @return array|mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			if ( empty( $value ) || ! is_array( $value ) || empty( $field['layouts'] ) ) {
+				return null;
+			}
+
+			// Create a map of layout sub fields mapped to layout names.
+			foreach ( $field['layouts'] as $layout ) {
+				$layouts[ $layout['name'] ] = $layout['sub_fields'];
+			}
+
+			// Loop through each layout and within that, each sub field to process sub fields individually.
+			foreach ( $value as &$layout ) {
+				$name = $layout['acf_fc_layout'];
+
+				if ( empty( $layouts[ $name ] ) ) {
+					continue;
+				}
+
+				foreach ( $layouts[ $name ] as $sub_field ) {
+
+					// Bail early if the field has no name (tab).
+					if ( acf_is_empty( $sub_field['name'] ) ) {
+						continue;
+					}
+
+					// Extract the sub field 'field_key'=>'value' pair from the $layout and format it.
+					$sub_value = acf_extract_var( $layout, $sub_field['key'] );
+					$sub_value = acf_format_value_for_rest( $sub_value, $post_id, $sub_field );
+
+					// Add the sub field value back to the $layout but mapped to the field name instead
+					// of the key reference.
+					$layout[ $sub_field['name'] ] = $sub_value;
+				}
+			}
+
+			return $value;
+		}
+
 	}
 
 

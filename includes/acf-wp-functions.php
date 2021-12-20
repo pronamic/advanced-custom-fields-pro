@@ -178,6 +178,7 @@ function acf_decode_post_id( $post_id = 0 ) {
 			$id   = absint( $id );
 			break;
 		case 'block_%s':
+		case 'block_%d':
 			$type = 'block';
 			$id   = $post_id;
 			break;
@@ -215,4 +216,47 @@ function acf_decode_post_id( $post_id = 0 ) {
 	 * @param   (int|string) $post_id The post id.
 	 */
 	return apply_filters( 'acf/decode_post_id', compact( 'type', 'id' ), $post_id );
+}
+
+/**
+ * Determine the REST base for a post type or taxonomy object. Note that this is not intended for use
+ * with term or post objects but is, instead, to be used with the underlying WP_Post_Type and WP_Taxonomy
+ * instances.
+ *
+ * @param WP_Post_Type|WP_Taxonomy $type_object
+ * @return string|null
+ */
+function acf_get_object_type_rest_base( $type_object ) {
+	if ( $type_object instanceof WP_Post_Type || $type_object instanceof WP_Taxonomy ) {
+		return ! empty( $type_object->rest_base ) ? $type_object->rest_base : $type_object->name;
+	}
+
+	return null;
+}
+
+/**
+ * Extract the ID of a given object/array. This supports all expected types handled by our update_fields() and
+ * load_fields() callbacks.
+ *
+ * @param WP_Post|WP_User|WP_Term|array $object
+ * @return int|mixed|null
+ */
+function acf_get_object_id( $object ) {
+	if ( is_object( $object ) ) {
+		switch ( get_class( $object ) ) {
+			case WP_User::class:
+			case WP_Post::class:
+				return (int) $object->ID;
+
+			case WP_Term::class:
+				return (int) $object->term_id;
+		}
+	} elseif ( isset( $object['id'] ) ) {
+		return (int) $object['id'];
+
+	} elseif ( isset( $object['ID'] ) ) {
+		return (int) $object['ID'];
+	}
+
+	return null;
 }

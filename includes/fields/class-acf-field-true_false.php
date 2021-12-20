@@ -285,6 +285,37 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'     => array( 'boolean', 'null' ),
+				'required' => ! empty( $field['required'] ),
+			);
+
+			if ( isset( $field['default_value'] ) && '' !== $field['default_value'] ) {
+				$schema['default'] = (bool) $field['default_value'];
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			return (bool) $value;
+		}
+
 	}
 
 

@@ -4,6 +4,7 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 
 	class acf_field__accordion extends acf_field {
 
+		public $show_in_rest = false;
 
 		/**
 		 *  initialize

@@ -130,7 +130,7 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 				'value' => $hidden_value,
 			);
 			$text_input   = array(
-				'class' => 'input',
+				'class' => $field['class'] . ' input',
 				'value' => $display_value,
 			);
 			foreach ( array( 'readonly', 'disabled' ) as $k ) {
@@ -248,6 +248,45 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 
 			return acf_format_date( $value, $field['return_format'] );
 
+		}
+		
+
+		/**
+		 *  This filter is applied to the $field after it is loaded from the database
+		 *  and ensures the return and display values are set.
+		 *
+		 *  @type    filter
+		 *  @since   5.11.0
+		 *  @date    28/09/21
+		 *
+		 *  @param array $field The field array holding all the field options.
+		 *
+		 *  @return array
+		 */
+		function load_field( $field ) {
+			if ( empty( $field['display_format'] ) ) {
+				$field['display_format'] = $this->defaults['display_format'];
+			}
+
+			if ( empty( $field['return_format'] ) ) {
+				$field['return_format'] = $this->defaults['return_format'];
+			}
+
+			return $field;
+		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			return array(
+				'type'        => array( 'string', 'null' ),
+				'description' => 'A `Y-m-d H:i:s` formatted date string.',
+				'required'    => ! empty( $field['required'] ),
+			);
 		}
 
 	}

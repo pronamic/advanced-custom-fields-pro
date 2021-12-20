@@ -36,6 +36,10 @@ if ( ! class_exists( 'ACF_Location_User_Form' ) ) :
 		 * @return  bool
 		 */
 		public function match( $rule, $screen, $field_group ) {
+			// REST API has no forms, so we should always allow it.
+			if ( ! empty( $screen['rest'] ) ) {
+				return true;
+			}
 
 			// Check screen args.
 			if ( isset( $screen['user_form'] ) ) {

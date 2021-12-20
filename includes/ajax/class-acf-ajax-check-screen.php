@@ -57,11 +57,18 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 						'key'      => $field_group['key'],
 						'title'    => $field_group['title'],
 						'position' => $field_group['position'],
+						'classes'  => postbox_classes( 'acf-' . $field_group['key'], $args['screen'] ),
 						'style'    => $field_group['style'],
 						'label'    => $field_group['label_placement'],
 						'edit'     => acf_get_field_group_edit_link( $field_group['ID'] ),
 						'html'     => '',
 					);
+
+					$hidden_metaboxes = get_hidden_meta_boxes( $args['screen'] );
+
+					if ( is_array( $hidden_metaboxes ) && in_array( $item['id'], $hidden_metaboxes ) ) {
+						$item['classes'] = trim( $item['classes'] . ' hide-if-js' );
+					}
 
 					// append html if doesnt already exist on page
 					if ( ! in_array( $field_group['key'], $args['exists'] ) ) {

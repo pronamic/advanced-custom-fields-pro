@@ -66,7 +66,7 @@ function acf_add_action_variations( $action = '', $variations = array(), $index 
 /**
  * _acf_apply_hook_variations
  *
- * Applys hook variations during apply_filters() or do_action().
+ * Applies hook variations during apply_filters() or do_action().
  *
  * @date    25/1/19
  * @since   5.7.11
@@ -84,7 +84,9 @@ function _acf_apply_hook_variations() {
 
 	// Get variation information.
 	$variations = acf_get_store( 'hook-variations' )->get( $filter );
-	extract( $variations );
+	$index      = $variations['index'];
+	$type       = $variations['type'];
+	$variations = $variations['variations'];
 
 	// Find field in args using index.
 	$field = $args[ $index ];
@@ -145,7 +147,7 @@ function acf_add_deprecated_filter( $deprecated, $version, $replacement ) {
 	);
 
 	// Add generic handler.
-	// Use a priotiry of 10, and accepted args of 10 (ignored by WP).
+	// Use a priority of 10, and accepted args of 10 (ignored by WP).
 	add_filter( $replacement, '_acf_apply_deprecated_hook', 10, 10 );
 }
 
@@ -175,14 +177,12 @@ function acf_add_deprecated_action( $deprecated, $version, $replacement ) {
 	);
 
 	// Add generic handler.
-	// Use a priotiry of 10, and accepted args of 10 (ignored by WP).
+	// Use a priority of 10, and accepted args of 10 (ignored by WP).
 	add_filter( $replacement, '_acf_apply_deprecated_hook', 10, 10 );
 }
 
 /**
- * _acf_apply_deprecated_hook
- *
- * Applys a deprecated filter during apply_filters() or do_action().
+ * Applies a deprecated filter during apply_filters() or do_action().
  *
  * @date    25/1/19
  * @since   5.7.11
@@ -191,35 +191,28 @@ function acf_add_deprecated_action( $deprecated, $version, $replacement ) {
  * @return  mixed
  */
 function _acf_apply_deprecated_hook() {
-
 	// Get current hook.
-	$hook = current_filter();
+	$current_hook = current_filter();
 
 	// Get args provided.
 	$args = func_get_args();
 
 	// Get deprecated items for this hook.
-	$items = acf_get_store( 'deprecated-hooks' )->query( array( 'replacement' => $hook ) );
+	$deprecated_hooks = acf_get_store( 'deprecated-hooks' )->query( array( 'replacement' => $current_hook ) );
 
 	// Loop over results.
-	foreach ( $items as $item ) {
-
-		// Extract data.
-		extract( $item );
-
+	foreach ( $deprecated_hooks as $hook ) {
 		// Check if anyone is hooked into this deprecated hook.
-		if ( has_filter( $deprecated ) ) {
+		if ( isset( $hook['deprecated'] ) && has_filter( $hook['deprecated'] ) ) {
 
 			// Log warning.
 			// _deprecated_hook( $deprecated, $version, $hook );
 
-			// Apply filters.
-			if ( $type === 'filter' ) {
-				$args[0] = apply_filters_ref_array( $deprecated, $args );
-
-				// Or do action.
+			// Apply the item/do the action.
+			if ( $hook['type'] === 'filter' ) {
+				$args[0] = apply_filters_ref_array( $hook['deprecated'], $args );
 			} else {
-				do_action_ref_array( $deprecated, $args );
+				do_action_ref_array( $hook['deprecated'], $args );
 			}
 		}
 	}
