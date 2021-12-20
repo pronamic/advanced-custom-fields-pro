@@ -288,6 +288,40 @@ if ( ! class_exists( 'acf_field_button_group' ) ) :
 
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		function get_rest_schema( array $field ) {
+			$schema = parent::get_rest_schema( $field );
+
+			if ( isset( $field['default_value'] ) && '' !== $field['default_value'] ) {
+				$schema['default'] = $field['default_value'];
+			}
+
+			/**
+			 * If a user has defined keys for the buttons,
+			 * we should use the keys for the available options to POST to,
+			 * since they are what is displayed in GET requests.
+			 */
+			$button_keys = array_diff(
+				array_keys( $field['choices'] ),
+				array_values( $field['choices'] )
+			);
+
+			$schema['enum']   = empty( $button_keys ) ? $field['choices'] : $button_keys;
+			$schema['enum'][] = null;
+
+			// Allow null via UI will value to empty string.
+			if ( ! empty( $field['allow_null'] ) ) {
+				$schema['enum'][] = '';
+			}
+
+			return $schema;
+		}
+
 	}
 
 

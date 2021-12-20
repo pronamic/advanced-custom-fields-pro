@@ -18,7 +18,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 * @return  void
 		 */
 		function __construct() {
-
 			// Add actions.
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
@@ -201,6 +200,7 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			// Use RegExp to append "ACF" after the <a> element allowing translations to read correctly.
 			return preg_replace( '/(<a[\S\s]+?\/a>)/', '$1 ' . __( 'and', 'acf' ) . ' <a href="https://www.advancedcustomfields.com" target="_blank">ACF</a>', $text, 1 );
 		}
+
 	}
 
 	// Instantiate.

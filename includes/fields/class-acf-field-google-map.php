@@ -301,6 +301,82 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 			// Return default.
 			return false;
 		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			return array(
+				'type'       => array( 'object', 'null' ),
+				'required'   => ! empty( $field['required'] ),
+				'properties' => array(
+					'address'           => array(
+						'type' => 'string',
+					),
+					'lat'               => array(
+						'type' => array( 'string', 'float' ),
+					),
+					'lng'               => array(
+						'type' => array( 'string', 'float' ),
+					),
+					'zoom'              => array(
+						'type' => array( 'string', 'int' ),
+					),
+					'place_id'          => array(
+						'type' => 'string',
+					),
+					'name'              => array(
+						'type' => 'string',
+					),
+					'street_number'     => array(
+						'type' => array( 'string', 'int' ),
+					),
+					'street_name'       => array(
+						'type' => 'string',
+					),
+					'street_name_short' => array(
+						'type' => 'string',
+					),
+					'city'              => array(
+						'type' => 'string',
+					),
+					'state'             => array(
+						'type' => 'string',
+					),
+					'state_short'       => array(
+						'type' => 'string',
+					),
+					'post_code'         => array(
+						'type' => array( 'string', 'int' ),
+					),
+					'country'           => array(
+						'type' => 'string',
+					),
+					'country_short'     => array(
+						'type' => 'string',
+					),
+				),
+			);
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param string|int $post_id
+		 * @param array      $field
+		 * @return mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			if ( ! $value ) {
+				return null;
+			}
+
+			return acf_format_numerics( $value );
+		}
 	}
 
 

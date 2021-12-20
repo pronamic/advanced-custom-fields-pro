@@ -659,6 +659,56 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 			}
 		}
 
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			$schema = array(
+				'type'       => array( 'object', 'null' ),
+				'properties' => array(),
+				'required'   => ! empty( $field['required'] ),
+			);
+
+			foreach ( $field['sub_fields'] as $sub_field ) {
+				if ( $sub_field_schema = acf_get_field_rest_schema( $sub_field ) ) {
+					$schema['properties'][ $sub_field['name'] ] = $sub_field_schema;
+				}
+			}
+
+			return $schema;
+		}
+
+		/**
+		 * Apply basic formatting to prepare the value for default REST output.
+		 *
+		 * @param mixed      $value
+		 * @param int|string $post_id
+		 * @param array      $field
+		 * @return array|mixed
+		 */
+		public function format_value_for_rest( $value, $post_id, array $field ) {
+			if ( empty( $value ) || ! is_array( $value ) || empty( $field['sub_fields'] ) ) {
+				return $value;
+			}
+
+			// Loop through each row and within that, each sub field to process sub fields individually.
+			foreach ( $field['sub_fields'] as $sub_field ) {
+
+				// Extract the sub field 'field_key'=>'value' pair from the $value and format it.
+				$sub_value = acf_extract_var( $value, $sub_field['key'] );
+				$sub_value = acf_format_value_for_rest( $sub_value, $post_id, $sub_field );
+
+				// Add the sub field value back to the $value but mapped to the field name instead
+				// of the key reference.
+				$value[ $sub_field['name'] ] = $sub_value;
+			}
+
+			return $value;
+		}
+
 	}
 
 

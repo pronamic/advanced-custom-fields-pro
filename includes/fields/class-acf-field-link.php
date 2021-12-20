@@ -280,6 +280,32 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 			// return
 			return $value;
 		}
+
+		/**
+		 * Return the schema array for the REST API.
+		 *
+		 * @param array $field
+		 * @return array
+		 */
+		public function get_rest_schema( array $field ) {
+			return array(
+				'type'       => array( 'object', 'null' ),
+				'required'   => ! empty( $field['required'] ),
+				'properties' => array(
+					'title'  => array(
+						'type' => 'string',
+					),
+					'url'    => array(
+						'type'     => 'string',
+						'required' => true,
+						'format'   => 'uri',
+					),
+					'target' => array(
+						'type' => 'string',
+					),
+				),
+			);
+		}
 	}
 
 

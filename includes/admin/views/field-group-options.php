@@ -20,6 +20,24 @@ acf_render_field_wrap(
 );
 
 
+// Show fields in REST API.
+if ( acf_get_setting( 'rest_api_enabled' ) ) {
+	acf_render_field_wrap(
+		array(
+			'label'        => __( 'Show in REST API', 'acf' ),
+			'instructions' => '',
+			'type'         => 'true_false',
+			'name'         => 'show_in_rest',
+			'prefix'       => 'acf_field_group',
+			'value'        => $field_group['show_in_rest'],
+			'ui'           => 1,
+		// 'ui_on_text'  => __('Active', 'acf'),
+		// 'ui_off_text' => __('Inactive', 'acf'),
+		)
+	);
+}
+
+
 // style
 acf_render_field_wrap(
 	array(
