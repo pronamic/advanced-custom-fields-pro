@@ -367,8 +367,6 @@ function acf_idify( $str = '' ) {
 }
 
 /**
- * acf_slugify
- *
  * Returns a slug friendly string.
  *
  * @date    24/12/17
@@ -379,7 +377,20 @@ function acf_idify( $str = '' ) {
  * @return  string
  */
 function acf_slugify( $str = '', $glue = '-' ) {
-	return str_replace( array( '_', '-', '/', ' ' ), $glue, strtolower( $str ) );
+	$raw  = $str;
+	$slug = str_replace( array( '_', '-', '/', ' ' ), $glue, strtolower( remove_accents( $raw ) ) );
+	$slug = preg_replace( "/[^A-Za-z0-9" . preg_quote( $glue ) . "]/", '', $slug );
+
+	/**
+	 * Filters the slug created by acf_slugify().
+	 *
+	 * @since 5.11.4
+	 *
+	 * @param string $slug The newly created slug.
+	 * @param string $raw  The original string.
+	 * @param string $glue The separator used to join the string into a slug.
+	 */
+	return apply_filters( 'acf/slugify', $slug, $raw, $glue );
 }
 
 /**

@@ -178,6 +178,7 @@ function acf_decode_post_id( $post_id = 0 ) {
 			$id   = absint( $id );
 			break;
 		case 'block_%s':
+		case 'block_%d':
 			$type = 'block';
 			$id   = $post_id;
 			break;

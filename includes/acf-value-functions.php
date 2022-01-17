@@ -60,57 +60,29 @@ function acf_get_value( $post_id, $field ) {
 	// Get field name.
 	$field_name = $field['name'];
 
+	// If we still don't have a proper field array, the field doesn't exist currently.
+	if ( empty( $field['type'] ) && empty( $field['key'] ) ) {
+		//  Get field ID & type.
+		$decoded = acf_decode_post_id( $post_id );
+
+		if ( apply_filters( 'acf/prevent_access_to_unknown_fields', false ) || ( 'option' === $decoded['type'] && 'options' !== $decoded['id'] ) ) {
+			return null;
+		}
+
+		do_action( 'acf/get_invalid_field_value', $field, __FUNCTION__ );
+	}
+
 	// Check store.
 	$store = acf_get_store( 'values' );
 	if ( $store->has( "$post_id:$field_name" ) ) {
 		return $store->get( "$post_id:$field_name" );
 	}
 
-	/**
-	 * If we still don't have a field, try a last-ditch effort to get it by name.
-	 * We don't do this by default in `get_field()`, which uses "strict" mode internally
-	 * to protect against multiple fields with same name.
-	 */
-	$strict = true;
-	$_field = $field;
-
-	if ( empty( $field['type'] ) && empty( $field['key'] ) ) {
-		$field  = acf_get_field( $field_name );
-		$strict = false;
-	}
-
-	// At least we tried.
-	if ( ! $field ) {
-		// If ACF was initialized before init, show a notice and log the error unless told otherwise.
-		if ( ! did_action( 'init' ) && apply_filters( 'acf/admin/show_early_init_notice', true ) ) {
-			$error_text = sprintf(
-				__( '<strong>%1$s</strong> - We\'ve detected one or more calls to retrieve ACF field values before ACF has been initialized, resulting in missing data. <a href="%2$s" target="_blank">Learn how to fix this</a>.', 'acf'),
-				acf_get_setting( 'name' ),
-				'https://www.advancedcustomfields.com/resources/acf-field-functions/'
-			);
-
-			_doing_it_wrong( __FUNCTION__, $error_text, '5.11.1' );
-			set_site_transient( 'acf_early_init_notice', $error_text );
-		}
-
-		/**
-		 * Filters the $value after it has been loaded.
-		 *
-		 * @date    28/09/13
-		 * @since   5.0.0
-		 *
-		 * @param mixed  $value   The value to preview.
-		 * @param string $post_id The post ID for this value.
-		 * @param array  $field   The field array.
-		 */
-		return apply_filters( 'acf/load_value', null, $post_id, $_field );
-	}
-
 	// Load value from database.
 	$value = acf_get_metadata( $post_id, $field_name );
 
 	// Use field's default_value if no meta was found.
-	if ( $value === null && isset( $field['default_value'] ) && $strict ) {
+	if ( $value === null && isset( $field['default_value'] ) ) {
 		$value = $field['default_value'];
 	}
 
@@ -362,3 +334,26 @@ function acf_preview_value( $value, $post_id, $field ) {
 
 // Register variation.
 acf_add_filter_variations( 'acf/preview_value', array( 'type', 'name', 'key' ), 2 );
+
+/**
+ * Potentially log an error if a field doesn't exist when we expect it to.
+ *
+ * @param array  $field    An array representing the field that a value was requested for.
+ * @param string $function The function that noticed the problem.
+ *
+ * @return void
+ */
+function acf_log_invalid_field_notice( $field, $function ) {
+	// If "init" has fired, ACF probably wasn't initialized early.
+	if ( did_action( 'init' ) ) {
+		return;
+	}
+
+	$error_text = sprintf(
+		__( '<strong>%1$s</strong> - We\'ve detected one or more calls to retrieve ACF field values before ACF has been initialized. This is not supported and can result in malformed or missing data. <a href="%2$s" target="_blank">Learn how to fix this</a>.', 'acf' ),
+		acf_get_setting( 'name' ),
+		'https://www.advancedcustomfields.com/resources/acf-field-functions/'
+	);
+	_doing_it_wrong( $function, $error_text, '5.11.1' );
+}
+add_action( 'acf/get_invalid_field_value', 'acf_log_invalid_field_notice', 10, 2 );

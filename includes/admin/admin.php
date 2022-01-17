@@ -23,7 +23,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 			add_action( 'current_screen', array( $this, 'current_screen' ) );
-			add_action( 'admin_init', array( $this, 'maybe_show_early_init_notice' ) );
 		}
 
 		/**
@@ -202,26 +201,6 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			return preg_replace( '/(<a[\S\s]+?\/a>)/', '$1 ' . __( 'and', 'acf' ) . ' <a href="https://www.advancedcustomfields.com" target="_blank">ACF</a>', $text, 1 );
 		}
 
-		/**
-		 * Displays the notice that can be shown when calling `get_field()`, etc. before `acf/init`.
-		 *
-		 * @since 5.11.1
-		 *
-		 * @return void
-		 */
-		function maybe_show_early_init_notice() {
-			if ( ! acf_get_setting( 'show_admin' ) || ! acf_current_user_can_admin() ) {
-				return;
-			}
-
-			$notice = get_site_transient( 'acf_early_init_notice' );
-			if ( ! $notice ) {
-				return;
-			}
-
-			acf_add_admin_notice( (string) $notice, 'warning', false );
-			delete_site_transient( 'acf_early_init_notice' );
-		}
 	}
 
 	// Instantiate.

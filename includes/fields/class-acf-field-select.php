@@ -57,7 +57,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 
 		function input_admin_enqueue_scripts() {
 
-			// bail ealry if no enqueue
+			// bail early if no enqueue
 			if ( ! acf_get_setting( 'enqueue_select2' ) ) {
 				return;
 			}
@@ -83,7 +83,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 			// v4
 			if ( $major == 4 ) {
 
-				$version = '4.0';
+				$version = '4.0.13';
 				$script  = acf_get_url( "assets/inc/select2/4/select2.full{$min}.js" );
 				$style   = acf_get_url( "assets/inc/select2/4/select2{$min}.css" );
 
@@ -325,12 +325,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 			}
 
 			if ( ! empty( $field['query_nonce'] ) ) {
-				acf_hidden_input(
-					array(
-						'id'    => 'acf-' . $field['key'] . '-query-nonce',
-						'value' => $field['query_nonce']
-					)
-				);
+				$select['data-query-nonce'] = $field['query_nonce'];
 			}
 
 			// append

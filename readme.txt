@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
 Tested up to: 5.8.1
 Requires PHP: 5.6
-Stable tag: 5.11.1
+Stable tag: 5.11.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,29 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.11.4 =
+*Release Date - 2nd December 2021*
+
+* Fix - Fixed several Select2.js conflicts with other plugins
+* Fix - Fixed an issue where block name sanitization could change valid block names containing double hyphens
+* Fix - Fixed an issue where blocks with integer IDs could fail to load example field data
+
+= 5.11.3 =
+*Release Date - 24th November 2021*
+
+* Fix - Fixed a bug when accessing field values for options pages registered with a custom post_id
+
+= 5.11.2 =
+*Release Date - 24th November 2021*
+
+* Fix - Previously implemented data access changes for get_field() and the_field() are now limited to the ACF shortcode only. [Learn more](https://www.advancedcustomfields.com/resources/acf-field-functions/)
+* Fix - get_field() and the_field() functions can once again access meta values regardless of being registered with ACF, restoring functionality that existed before 5.11
+* Fix - get_field() and the_field() functions now are only able to access site options which are ACF fields
+* Fix - UI issues for select boxes related to Yoast and WooCommerce’s select2 versions by upgrading our select2 version, and updating our CSS to support older versions
+* Fix - User fields failed to load values when using the legacy select2 v3 option
+* Fix - acf_slugify() now correctly supports special characters which solves issues with block names or field group names (during imports) containing those characters
+* Fix - PHP Notice generated while processing a field group’s postbox classes
 
 = 5.11.1 =
 *Release Date - 18 November 2021*

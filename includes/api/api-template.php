@@ -859,7 +859,8 @@ function get_row_layout() {
  */
 function acf_shortcode( $atts ) {
 	// Mitigate issue where some AJAX requests can return ACF field data.
-	if ( wp_doing_ajax() && ! current_user_can( 'edit_posts' ) ) {
+	$capability = apply_filters( 'acf/ajax/shortcode_capability', 'edit_posts' );
+	if ( wp_doing_ajax() && ( $capability !== false ) && ! current_user_can( $capability ) ) {
 		return;
 	}
 
@@ -873,8 +874,20 @@ function acf_shortcode( $atts ) {
 		'acf'
 	);
 
-	// get value and return it
+	$access_already_prevented = apply_filters( 'acf/prevent_access_to_unknown_fields', false );
+	$filter_applied           = false;
+
+	if ( ! $access_already_prevented ) {
+		$filter_applied = true;
+		add_filter( 'acf/prevent_access_to_unknown_fields', '__return_true' );
+	}
+
+	// Try to get the field value.
 	$value = get_field( $atts['field'], $atts['post_id'], $atts['format_value'] );
+
+	if ( $filter_applied ) {
+		remove_filter( 'acf/prevent_access_to_unknown_fields', '__return_true' );
+	}
 
 	if ( is_array( $value ) ) {
 		$value = @implode( ', ', $value );
