@@ -1394,6 +1394,8 @@ function acf_duplicate_fields( $fields = array(), $parent_id = 0 ) {
 	}
 	acf_append_data( 'generated_keys', $keys );
 
+	$duplicates = array();
+
 	// Duplicate fields.
 	foreach ( $fields as $field ) {
 		$field_id     = $field['ID'] ? $field['ID'] : $field['key'];

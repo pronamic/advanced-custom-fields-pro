@@ -48,8 +48,15 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 			// Call edit_form_after_title manually.
 			add_action( 'block_editor_meta_box_hidden_fields', array( $this, 'block_editor_meta_box_hidden_fields' ) );
 
-			// Cusotmize editor metaboxes.
+			// Customize editor metaboxes.
 			add_filter( 'filter_block_editor_meta_boxes', array( $this, 'filter_block_editor_meta_boxes' ) );
+
+			// Trigger ACF enqueue scripts as the site editor doesn't trigger this from form-post.php
+			acf_enqueue_scripts(
+				array(
+					'uploader' => true,
+				)
+			);
 		}
 
 		/**
