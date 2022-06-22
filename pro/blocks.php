@@ -55,6 +55,8 @@ function acf_register_block_type( $block ) {
 			$block['name'],
 			array(
 				'attributes'      => acf_get_block_type_default_attributes( $block ),
+				'uses_context'    => $block['usesContext'],
+				'api_version'     => 2,
 				'render_callback' => 'acf_render_block_callback',
 			)
 		);
@@ -218,6 +220,7 @@ function acf_validate_block_type( $block ) {
 			'keywords'        => array(),
 			'supports'        => array(),
 			'post_types'      => array(),
+			'usesContext'     => array(),
 			'render_template' => false,
 			'render_callback' => false,
 			'enqueue_style'   => false,
@@ -243,6 +246,15 @@ function acf_validate_block_type( $block ) {
 			'align' => true,
 			'html'  => false,
 			'mode'  => true,
+		)
+	);
+
+	// Add default 'usesContext' settings.
+	$block['usesContext'] = wp_parse_args(
+		$block['usesContext'],
+		array(
+			'postId',
+			'postType',
 		)
 	);
 
@@ -327,31 +339,38 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
  * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
  * @param   int      $post_id The current post being edited or viewed.
  * @param   WP_Block $wp_block The block instance (since WP 5.5).
- * @return  string The block HTML.
+ * @param   array    $context The block context array.
+ * @return  string   The block HTML.
  */
-function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null ) {
+function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
 	$mode = isset( $attributes['mode'] ) ? $attributes['mode'] : 'auto';
+
+	// If context is available from the WP_Block class object and we have no context of our own, use that.
+	if ( empty( $context ) && ! empty( $wp_block->context ) ) {
+		$context = $wp_block->context;
+	}
 
 	ob_start();
 
-	if ( 'edit' === $mode && $is_preview ) {
-		// Load the block form since we're in edit mode.
-		$block = acf_prepare_block( $attributes );
-		acf_setup_meta( $block['data'], $block['id'], true );
-		$fields = acf_get_block_fields( $block );
-		acf_prefix_fields( $fields, "acf-{$block['id']}" );
-
-		echo '<div class="acf-block-fields acf-fields">';
-		acf_render_fields( $fields, $block['id'], 'div', 'field' );
-		echo '</div>';
-	} else {
+	// if ( 'edit' === $mode && $is_preview ) {
+	// Load the block form since we're in edit mode.
+	// $block = acf_prepare_block( $attributes );
+	// acf_setup_meta( $block['data'], $block['id'], true );
+	// $fields = acf_get_block_fields( $block );
+	// acf_prefix_fields( $fields, "acf-{$block['id']}" );
+	//
+	// echo '<div class="acf-block-fields acf-fields">';
+	// acf_render_fields( $fields, $block['id'], 'div', 'field' );
+	// echo '</div>';
+	// } else {
 		// Capture block render output.
-		acf_render_block( $attributes, $content, $is_preview, $post_id, $wp_block );
-	}
+		acf_render_block( $attributes, $content, $is_preview, $post_id, $wp_block, $context );
+	// }
 
 	$html = ob_get_clean();
 
-	if ( in_array( $mode, array( 'preview', 'auto' ) ) && $is_preview ) {
+	//if ( in_array( $mode, array( 'preview', 'auto' ) ) && $is_preview ) {
+	if ( $is_preview ) {
 		$html = '<div class="acf-block-preview">' . $html . '</div>';
 	}
 
@@ -378,9 +397,10 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
  * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
  * @param   int      $post_id The current post being edited or viewed.
  * @param   WP_Block $wp_block The block instance (since WP 5.5).
+ * @param   array    $context The block context array.
  * @return  void
  */
-function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null ) {
+function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
 
 	// Prepare block ensuring all settings and attributes exist.
 	$block = acf_prepare_block( $attributes );
@@ -401,7 +421,7 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
 
 	// Call render_callback.
 	if ( is_callable( $block['render_callback'] ) ) {
-		call_user_func( $block['render_callback'], $block, $content, $is_preview, $post_id, $wp_block );
+		call_user_func( $block['render_callback'], $block, $content, $is_preview, $post_id, $wp_block, $context );
 
 		// Or include template.
 	} elseif ( $block['render_template'] ) {
@@ -509,12 +529,14 @@ function acf_enqueue_block_assets() {
 
 	// During the edit screen loading, WordPress renders all blocks in its own attempt to preload data.
 	// Retrieve any cached block HTML and include this in the localized data.
-	$preloaded_blocks = acf_get_store( 'block-cache' )->get_data();
-	acf_localize_data(
-		array(
-			'preloadedBlocks' => $preloaded_blocks,
-		)
-	);
+	if ( acf_get_setting( 'preload_blocks' ) ) {
+		$preloaded_blocks = acf_get_store( 'block-cache' )->get_data();
+		acf_localize_data(
+			array(
+				'preloadedBlocks' => $preloaded_blocks,
+			)
+		);
+	}
 }
 
 /**
@@ -563,7 +585,7 @@ function acf_enqueue_block_type_assets( $block_type ) {
 function acf_ajax_fetch_block() {
 	// Validate ajax request.
 	if ( ! acf_verify_ajax() ) {
-		 wp_send_json_error();
+		wp_send_json_error();
 	}
 
 	// Get request args.
@@ -572,21 +594,34 @@ function acf_ajax_fetch_block() {
 			'block'   => false,
 			'post_id' => 0,
 			'query'   => array(),
+			'context' => array(),
 		)
 	);
 
-	$block   = $args['block'];
-	$post_id = $args['post_id'];
-	$query   = $args['query'];
+	$block       = $args['block'];
+	$query       = $args['query'];
+	$raw_context = $args['context'];
+	$post_id     = $args['post_id'];
 
 	// Bail early if no block.
 	if ( ! $block ) {
 		wp_send_json_error();
 	}
 
-	// Unslash and decode $_POST data.
+	// Unslash and decode $_POST data for block and context.
 	$block = wp_unslash( $block );
 	$block = json_decode( $block, true );
+
+	$context = false;
+	if ( ! empty( $raw_context ) ) {
+		$raw_context = wp_unslash( $raw_context );
+		$raw_context = json_decode( $raw_context, true );
+		if ( is_array( $raw_context ) ) {
+			$context = $raw_context;
+			// Check if a postId is set in the context, otherwise try and use it the default post_id.
+			$post_id = isset( $context['postId'] ) ? intval( $context['postId'] ) : intval( $args['post_id'] );
+		}
+	}
 
 	// Prepare block ensuring all settings and attributes exist.
 	if ( ! $block = acf_prepare_block( $block ) ) {
@@ -603,6 +638,11 @@ function acf_ajax_fetch_block() {
 
 	// Setup postdata allowing form to load meta.
 	acf_setup_meta( $block['data'], $block['id'], true );
+
+	// Setup main postdata for post_id.
+	global $post;
+	$post = get_post( $post_id );
+	setup_postdata( $post );
 
 	// Vars.
 	$response = array();
@@ -637,7 +677,7 @@ function acf_ajax_fetch_block() {
 		$is_preview = true;
 
 		// Render and store HTML.
-		$response['preview'] = acf_rendered_block( $block, $content, $is_preview, $post_id );
+		$response['preview'] = acf_rendered_block( $block, $content, $is_preview, $post_id, null, $context );
 	}
 
 	// Send response.
@@ -702,13 +742,8 @@ function acf_parse_save_blocks_callback( $matches ) {
 		$attrs['data'] = acf_setup_meta( $attrs['data'], $attrs['id'] );
 	}
 
-	// Prevent wp_targeted_link_rel from corrupting JSON.
-	remove_filter( 'content_save_pre', 'wp_filter_post_kses' );
-	remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );
-	remove_filter( 'content_save_pre', 'balanceTags', 50 );
-
 	/**
-	 * Filteres the block attributes before saving.
+	 * Filters the block attributes before saving.
 	 *
 	 * @date    18/3/19
 	 * @since   5.7.14
@@ -717,6 +752,36 @@ function acf_parse_save_blocks_callback( $matches ) {
 	 */
 	$attrs = apply_filters( 'acf/pre_save_block', $attrs );
 
-	// Return new comment
-	return '<!-- wp:' . $name . ' ' . acf_json_encode( $attrs ) . ' ' . $void . '-->';
+	// Gutenberg expects a specific encoding format.
+	$attrs = acf_serialize_block_attributes( $attrs );
+
+	return '<!-- wp:' . $name . ' ' . $attrs . ' ' . $void . '-->';
+}
+
+/**
+ * This directly copied from the WordPress core `serialize_block_attributes()` function.
+ *
+ * We need this in order to make sure that block attributes are stored in a way that is
+ * consistent with how Gutenberg sends them over from JS, and so that things like wp_kses()
+ * work as expected. Copied from core to get around a bug that was fixed in 5.8.1 or on the off chance
+ * that folks are still using WP 5.3 or below.
+ *
+ * TODO: Remove this when we refactor `acf_parse_save_blocks_callback()` to use `serialize_block()`,
+ * or when we're confident that folks aren't using WP versions prior to 5.8.
+ *
+ * @since 5.12
+ *
+ * @param array $block_attributes Attributes object.
+ * @return string Serialized attributes.
+ */
+function acf_serialize_block_attributes( $block_attributes ) {
+	$encoded_attributes = wp_json_encode( $block_attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+	$encoded_attributes = preg_replace( '/--/', '\\u002d\\u002d', $encoded_attributes );
+	$encoded_attributes = preg_replace( '/</', '\\u003c', $encoded_attributes );
+	$encoded_attributes = preg_replace( '/>/', '\\u003e', $encoded_attributes );
+	$encoded_attributes = preg_replace( '/&/', '\\u0026', $encoded_attributes );
+	// Regex: /\\"/
+	$encoded_attributes = preg_replace( '/\\\\"/', '\\u0022', $encoded_attributes );
+
+	return $encoded_attributes;
 }

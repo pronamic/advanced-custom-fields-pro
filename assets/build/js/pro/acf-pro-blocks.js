@@ -18,6 +18,8 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
+const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
+
 (($, undefined) => {
   // Dependencies.
   const {
@@ -71,7 +73,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
    * @date	31/07/2020
    * @since	5.9.0
    *
-   * @param	object props The block props (of which, the attributes properties is destructured)
+   * @param	{object} props The block props (of which, the attributes properties is destructured)
    * @return	bool
    */
 
@@ -89,7 +91,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
    * @date	31/07/2020
    * @since	5.9.0
    *
-   * @param	object props The block props (of which, the attributes and clientId properties are destructured)
+   * @param	{object} props The block props (of which, the attributes and clientId properties are destructured)
    * @return	bool
    */
 
@@ -99,7 +101,88 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       attributes,
       clientId
     } = _ref2;
-    return getBlocks().filter(block => block.attributes.id === attributes.id).filter(block => block.clientId !== clientId).length;
+    return !!getBlocks().filter(block => block.attributes.id === attributes.id).filter(block => block.clientId !== clientId).length;
+  }
+  /**
+   * Returns true if a block (identified by client ID) is nested in a query loop block.
+   *
+   * @date 17/1/22
+   * @since 5.12
+   *
+   * @param {string} clientId A block client ID
+   * @return boolean
+   */
+
+
+  function isBlockInQueryLoop(clientId) {
+    const parents = wp.data.select('core/block-editor').getBlockParents(clientId);
+    const parentsData = wp.data.select('core/block-editor').getBlocksByClientId(parents);
+    return parentsData.filter(block => block.name === 'core/query').length;
+  }
+  /**
+   * Returns true if we're currently inside the WP 5.9+ site editor.
+   *
+   * @date 08/02/22
+   * @since 5.12
+   *
+   * @return boolean
+   */
+
+
+  function isSiteEditor() {
+    return typeof pagenow === 'string' && pagenow === 'site-editor';
+  }
+  /**
+   * Returns true if the block editor is currently showing the desktop device type preview.
+   *
+   * This function will always return true in the site editor as it uses the
+   * edit-post store rather than the edit-site store.
+   *
+   * @date 15/02/22
+   * @since 5.12
+   *
+   * @return boolean
+   */
+
+
+  function isDesktopPreviewDeviceType() {
+    const editPostStore = select('core/edit-post'); // Return true if the edit post store isn't available (such as in the widget editor)
+
+    if (!editPostStore) return true; // Return true if the function doesn't exist
+
+    if (!editPostStore.__experimentalGetPreviewDeviceType) return true;
+    return 'Desktop' === editPostStore.__experimentalGetPreviewDeviceType();
+  }
+  /**
+   * Returns true if the block editor is currently in template edit mode.
+   *
+   * @date 16/02/22
+   * @since 5.12
+   *
+   * @return boolean
+   */
+
+
+  function isEditingTemplate() {
+    const editPostStore = select('core/edit-post'); // Return false if the edit post store isn't available (such as in the widget editor)
+
+    if (!editPostStore) return false; // Return false if the function doesn't exist
+
+    if (!editPostStore.isEditingTemplate) return false;
+    return editPostStore.isEditingTemplate();
+  }
+  /**
+   * Returns true if we're currently inside an iFramed non-desktop device preview type (WP5.9+)
+   *
+   * @date 15/02/22
+   * @since 5.12
+   *
+   * @return boolean
+   */
+
+
+  function isiFramedMobileDevicePreview() {
+    return $('iframe[name=editor-canvas]').length && !isDesktopPreviewDeviceType();
   }
   /**
    * Registers a block type.
@@ -171,7 +254,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       mode: {
         type: 'string'
       }
-    }; // Append edit and save functions.
+    }; // Apply anchor supports to avoid block editor default writing to ID.
+
+    if (blockType.supports.anchor) {
+      attributes.anchor = {
+        type: 'string'
+      };
+    } // Append edit and save functions.
+
 
     let ThisBlockEdit = BlockEdit;
     let ThisBlockSave = BlockSave; // Apply align_text functionality.
@@ -201,14 +291,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       attributes,
       apiVersion: 2,
       edit: props => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ThisBlockEdit, props),
-      save: props => {
-        return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ThisBlockSave, useBlockProps.save());
-      }
+      save: () => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ThisBlockSave, null)
     }); // Add to storage.
 
     blockTypes[blockType.name] = blockType; // Register with WP.
 
     const result = wp.blocks.registerBlockType(blockType.name, blockType); // Fix bug in 'core/anchor/attribute' filter overwriting attribute.
+    // Required for < WP5.9
     // See https://github.com/WordPress/gutenberg/issues/15240
 
     if (result.attributes.anchor) {
@@ -258,22 +347,21 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
    * @date	27/2/19
    * @since	5.7.13
    *
-   * @param	object args An object of key=>value pairs used to filter results.
+   * @param	{object} args An object of key=>value pairs used to filter results.
    * @return	array.
    */
 
 
   function getBlocks(args) {
-    // Get all blocks (avoid deprecated warning).
-    let blocks = select('core/block-editor').getBlocks(); // Append innerBlocks.
+    let blocks = []; // Local function to recurse through all child blocks and add to the blocks array.
 
-    let i = 0;
+    const recurseBlocks = block => {
+      blocks.push(block);
+      select('core/block-editor').getBlocks(block.clientId).forEach(recurseBlocks);
+    }; // Trigger initial recursion for parent level blocks.
 
-    while (i < blocks.length) {
-      blocks = blocks.concat(blocks[i].innerBlocks);
-      i++;
-    } // Loop over args and filter.
 
+    select('core/block-editor').getBlocks().forEach(recurseBlocks); // Loop over args and filter.
 
     for (const k in args) {
       blocks = blocks.filter(_ref4 => {
@@ -286,10 +374,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
     return blocks;
-  } // Data storage for AJAX requests.
+  }
+  /**
+   * Storage for the AJAX queue.
+   *
+   * @const {array}
+   */
 
 
   const ajaxQueue = {};
+  /**
+   * Storage for cached AJAX requests for block content.
+   *
+   * @since 5.12
+   * @const {array}
+   */
+
+  const fetchCache = {};
   /**
    * Fetches a JSON result from the AJAX API.
    *
@@ -304,44 +405,54 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
   function fetchBlock(args) {
     const {
       attributes = {},
+      context = {},
       query = {},
       delay = 0
-    } = args; // Use storage or default data.
+    } = args; // Build a unique queue ID from block data
 
-    const {
-      id
-    } = attributes;
-    const data = ajaxQueue[id] || {
+    const queueId = md5(JSON.stringify(_objectSpread(_objectSpread(_objectSpread({}, attributes), context), query)));
+    const data = ajaxQueue[queueId] || {
       query: {},
       timeout: false,
-      promise: $.Deferred()
+      promise: $.Deferred(),
+      started: false
     }; // Append query args to storage.
 
-    data.query = _objectSpread(_objectSpread({}, data.query), query); // Set fresh timeout.
+    data.query = _objectSpread(_objectSpread({}, data.query), query);
+    if (data.started) return data.promise; // Set fresh timeout.
 
     clearTimeout(data.timeout);
     data.timeout = setTimeout(() => {
-      $.ajax({
-        url: acf.get('ajaxurl'),
-        dataType: 'json',
-        type: 'post',
-        cache: false,
-        data: acf.prepareForAjax({
-          action: 'acf/ajax/fetch-block',
-          block: JSON.stringify(attributes),
-          query: data.query
-        })
-      }).always(() => {
-        // Clean up queue after AJAX request is complete.
-        ajaxQueue[id] = null;
-      }).done(function () {
-        data.promise.resolve.apply(this, arguments);
-      }).fail(function () {
-        data.promise.reject.apply(this, arguments);
-      });
+      data.started = true;
+
+      if (fetchCache[queueId]) {
+        ajaxQueue[queueId] = null;
+        data.promise.resolve.apply(fetchCache[queueId][0], fetchCache[queueId][1]);
+      } else {
+        $.ajax({
+          url: acf.get('ajaxurl'),
+          dataType: 'json',
+          type: 'post',
+          cache: false,
+          data: acf.prepareForAjax({
+            action: 'acf/ajax/fetch-block',
+            block: JSON.stringify(attributes),
+            context: JSON.stringify(context),
+            query: data.query
+          })
+        }).always(() => {
+          // Clean up queue after AJAX request is complete.
+          ajaxQueue[queueId] = null;
+        }).done(function () {
+          fetchCache[queueId] = [this, arguments];
+          data.promise.resolve.apply(this, arguments);
+        }).fail(function () {
+          data.promise.reject.apply(this, arguments);
+        });
+      }
     }, delay); // Update storage.
 
-    ajaxQueue[id] = data; // Return promise.
+    ajaxQueue[queueId] = data; // Return promise.
 
     return data.promise;
   }
@@ -613,7 +724,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     setup() {
       const {
         name,
-        attributes
+        attributes,
+        clientId
       } = this.props;
       const blockType = getBlockType(name); // Restrict current mode.
 
@@ -623,18 +735,22 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
         }
       }
 
-      switch (blockType.mode) {
-        case 'edit':
-          restrictMode(['edit', 'preview']);
-          break;
+      if (isBlockInQueryLoop(clientId) || isSiteEditor() || isiFramedMobileDevicePreview() || isEditingTemplate()) {
+        restrictMode(['preview']);
+      } else {
+        switch (blockType.mode) {
+          case 'edit':
+            restrictMode(['edit', 'preview']);
+            break;
 
-        case 'preview':
-          restrictMode(['preview', 'edit']);
-          break;
+          case 'preview':
+            restrictMode(['preview', 'edit']);
+            break;
 
-        default:
-          restrictMode(['auto']);
-          break;
+          default:
+            restrictMode(['auto']);
+            break;
+        }
       }
     }
 
@@ -642,16 +758,23 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       const {
         name,
         attributes,
-        setAttributes
+        setAttributes,
+        clientId
       } = this.props;
-      const {
+      const blockType = getBlockType(name);
+      const forcePreview = isBlockInQueryLoop(clientId) || isSiteEditor() || isiFramedMobileDevicePreview() || isEditingTemplate();
+      let {
         mode
       } = attributes;
-      const blockType = getBlockType(name); // Show toggle only for edit/preview modes.
+
+      if (forcePreview) {
+        mode = 'preview';
+      } // Show toggle only for edit/preview modes and for blocks not in a query loop/FSE.
+
 
       let showToggle = blockType.supports.mode;
 
-      if (mode === 'auto') {
+      if (mode === 'auto' || forcePreview) {
         showToggle = false;
       } // Configure toggle variables.
 
@@ -801,7 +924,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     }
 
     maybePreload(blockId) {
-      if (this.state.html === undefined) {
+      if (this.state.html === undefined && !isBlockInQueryLoop(this.props.clientId)) {
         const preloadedBlocks = acf.get('preloadedBlocks');
 
         if (preloadedBlocks && preloadedBlocks[blockId]) {
@@ -985,18 +1108,19 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     fetch() {
       // Extract props.
       const {
-        attributes
+        attributes,
+        context
       } = this.props; // Try preloaded data first.
-
-      const preloaded = this.maybePreload(attributes.id);
-
-      if (preloaded) {
-        return;
-      } // Request AJAX and update HTML on complete.
-
+      // const preloaded = this.maybePreload( attributes.id );
+      //
+      // if ( preloaded ) {
+      // 	return;
+      // }
+      // Request AJAX and update HTML on complete.
 
       fetchBlock({
         attributes,
+        context,
         query: {
           form: true
         }
@@ -1066,8 +1190,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
         attributes,
         name
       } = _ref10;
-      this.id = `BlockPreview-${attributes.id}`;
       const blockType = getBlockType(name);
+      const contextPostId = acf.isget(this.props, 'context', 'postId');
+      this.id = `BlockPreview-${attributes.id}`; // Apply the contextPostId to the ID if set to stop query loop ID duplication.
+
+      if (contextPostId) {
+        this.id = `BlockPreview-${attributes.id}-${contextPostId}`;
+      }
 
       if (blockType.supports.jsx) {
         this.renderMethod = 'jsx';
@@ -1079,6 +1208,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       let args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       const {
         attributes = this.props.attributes,
+        context = this.props.context,
         delay = 0
       } = args; // Remember attributes used to fetch HTML.
 
@@ -1087,14 +1217,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       }); // Try preloaded data first.
 
       const preloaded = this.maybePreload(attributes.id);
-
-      if (preloaded) {
-        return;
-      } // Request AJAX and update HTML on complete.
-
+      if (preloaded) return; // Request AJAX and update HTML on complete.
 
       fetchBlock({
         attributes,
+        context,
         query: {
           preview: true
         },
@@ -1128,7 +1255,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       const thisAttributes = this.props.attributes; // Update preview if block data has changed.
 
       if (!compareObjects(nextAttributes, thisAttributes)) {
-        let delay = 0; // Delay fetch when editing className or anchor to simulate conscistent logic to custom fields.
+        let delay = 0; // Delay fetch when editing className or anchor to simulate consistent logic to custom fields.
 
         if (nextAttributes.className !== thisAttributes.className) {
           delay = 300;
@@ -1759,6 +1886,356 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     zoomandpan: 'zoomAndPan'
   };
 })(jQuery);
+
+/***/ }),
+
+/***/ "./node_modules/charenc/charenc.js":
+/*!*****************************************!*\
+  !*** ./node_modules/charenc/charenc.js ***!
+  \*****************************************/
+/***/ (function(module) {
+
+var charenc = {
+  // UTF-8 encoding
+  utf8: {
+    // Convert a string to a byte array
+    stringToBytes: function(str) {
+      return charenc.bin.stringToBytes(unescape(encodeURIComponent(str)));
+    },
+
+    // Convert a byte array to a string
+    bytesToString: function(bytes) {
+      return decodeURIComponent(escape(charenc.bin.bytesToString(bytes)));
+    }
+  },
+
+  // Binary encoding
+  bin: {
+    // Convert a string to a byte array
+    stringToBytes: function(str) {
+      for (var bytes = [], i = 0; i < str.length; i++)
+        bytes.push(str.charCodeAt(i) & 0xFF);
+      return bytes;
+    },
+
+    // Convert a byte array to a string
+    bytesToString: function(bytes) {
+      for (var str = [], i = 0; i < bytes.length; i++)
+        str.push(String.fromCharCode(bytes[i]));
+      return str.join('');
+    }
+  }
+};
+
+module.exports = charenc;
+
+
+/***/ }),
+
+/***/ "./node_modules/crypt/crypt.js":
+/*!*************************************!*\
+  !*** ./node_modules/crypt/crypt.js ***!
+  \*************************************/
+/***/ (function(module) {
+
+(function() {
+  var base64map
+      = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
+
+  crypt = {
+    // Bit-wise rotation left
+    rotl: function(n, b) {
+      return (n << b) | (n >>> (32 - b));
+    },
+
+    // Bit-wise rotation right
+    rotr: function(n, b) {
+      return (n << (32 - b)) | (n >>> b);
+    },
+
+    // Swap big-endian to little-endian and vice versa
+    endian: function(n) {
+      // If number given, swap endian
+      if (n.constructor == Number) {
+        return crypt.rotl(n, 8) & 0x00FF00FF | crypt.rotl(n, 24) & 0xFF00FF00;
+      }
+
+      // Else, assume array and swap all items
+      for (var i = 0; i < n.length; i++)
+        n[i] = crypt.endian(n[i]);
+      return n;
+    },
+
+    // Generate an array of any length of random bytes
+    randomBytes: function(n) {
+      for (var bytes = []; n > 0; n--)
+        bytes.push(Math.floor(Math.random() * 256));
+      return bytes;
+    },
+
+    // Convert a byte array to big-endian 32-bit words
+    bytesToWords: function(bytes) {
+      for (var words = [], i = 0, b = 0; i < bytes.length; i++, b += 8)
+        words[b >>> 5] |= bytes[i] << (24 - b % 32);
+      return words;
+    },
+
+    // Convert big-endian 32-bit words to a byte array
+    wordsToBytes: function(words) {
+      for (var bytes = [], b = 0; b < words.length * 32; b += 8)
+        bytes.push((words[b >>> 5] >>> (24 - b % 32)) & 0xFF);
+      return bytes;
+    },
+
+    // Convert a byte array to a hex string
+    bytesToHex: function(bytes) {
+      for (var hex = [], i = 0; i < bytes.length; i++) {
+        hex.push((bytes[i] >>> 4).toString(16));
+        hex.push((bytes[i] & 0xF).toString(16));
+      }
+      return hex.join('');
+    },
+
+    // Convert a hex string to a byte array
+    hexToBytes: function(hex) {
+      for (var bytes = [], c = 0; c < hex.length; c += 2)
+        bytes.push(parseInt(hex.substr(c, 2), 16));
+      return bytes;
+    },
+
+    // Convert a byte array to a base-64 string
+    bytesToBase64: function(bytes) {
+      for (var base64 = [], i = 0; i < bytes.length; i += 3) {
+        var triplet = (bytes[i] << 16) | (bytes[i + 1] << 8) | bytes[i + 2];
+        for (var j = 0; j < 4; j++)
+          if (i * 8 + j * 6 <= bytes.length * 8)
+            base64.push(base64map.charAt((triplet >>> 6 * (3 - j)) & 0x3F));
+          else
+            base64.push('=');
+      }
+      return base64.join('');
+    },
+
+    // Convert a base-64 string to a byte array
+    base64ToBytes: function(base64) {
+      // Remove non-base-64 characters
+      base64 = base64.replace(/[^A-Z0-9+\/]/ig, '');
+
+      for (var bytes = [], i = 0, imod4 = 0; i < base64.length;
+          imod4 = ++i % 4) {
+        if (imod4 == 0) continue;
+        bytes.push(((base64map.indexOf(base64.charAt(i - 1))
+            & (Math.pow(2, -2 * imod4 + 8) - 1)) << (imod4 * 2))
+            | (base64map.indexOf(base64.charAt(i)) >>> (6 - imod4 * 2)));
+      }
+      return bytes;
+    }
+  };
+
+  module.exports = crypt;
+})();
+
+
+/***/ }),
+
+/***/ "./node_modules/is-buffer/index.js":
+/*!*****************************************!*\
+  !*** ./node_modules/is-buffer/index.js ***!
+  \*****************************************/
+/***/ (function(module) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/md5/md5.js":
+/*!*********************************!*\
+  !*** ./node_modules/md5/md5.js ***!
+  \*********************************/
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+(function(){
+  var crypt = __webpack_require__(/*! crypt */ "./node_modules/crypt/crypt.js"),
+      utf8 = (__webpack_require__(/*! charenc */ "./node_modules/charenc/charenc.js").utf8),
+      isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js"),
+      bin = (__webpack_require__(/*! charenc */ "./node_modules/charenc/charenc.js").bin),
+
+  // The core
+  md5 = function (message, options) {
+    // Convert to byte array
+    if (message.constructor == String)
+      if (options && options.encoding === 'binary')
+        message = bin.stringToBytes(message);
+      else
+        message = utf8.stringToBytes(message);
+    else if (isBuffer(message))
+      message = Array.prototype.slice.call(message, 0);
+    else if (!Array.isArray(message) && message.constructor !== Uint8Array)
+      message = message.toString();
+    // else, assume byte array already
+
+    var m = crypt.bytesToWords(message),
+        l = message.length * 8,
+        a =  1732584193,
+        b = -271733879,
+        c = -1732584194,
+        d =  271733878;
+
+    // Swap endian
+    for (var i = 0; i < m.length; i++) {
+      m[i] = ((m[i] <<  8) | (m[i] >>> 24)) & 0x00FF00FF |
+             ((m[i] << 24) | (m[i] >>>  8)) & 0xFF00FF00;
+    }
+
+    // Padding
+    m[l >>> 5] |= 0x80 << (l % 32);
+    m[(((l + 64) >>> 9) << 4) + 14] = l;
+
+    // Method shortcuts
+    var FF = md5._ff,
+        GG = md5._gg,
+        HH = md5._hh,
+        II = md5._ii;
+
+    for (var i = 0; i < m.length; i += 16) {
+
+      var aa = a,
+          bb = b,
+          cc = c,
+          dd = d;
+
+      a = FF(a, b, c, d, m[i+ 0],  7, -680876936);
+      d = FF(d, a, b, c, m[i+ 1], 12, -389564586);
+      c = FF(c, d, a, b, m[i+ 2], 17,  606105819);
+      b = FF(b, c, d, a, m[i+ 3], 22, -1044525330);
+      a = FF(a, b, c, d, m[i+ 4],  7, -176418897);
+      d = FF(d, a, b, c, m[i+ 5], 12,  1200080426);
+      c = FF(c, d, a, b, m[i+ 6], 17, -1473231341);
+      b = FF(b, c, d, a, m[i+ 7], 22, -45705983);
+      a = FF(a, b, c, d, m[i+ 8],  7,  1770035416);
+      d = FF(d, a, b, c, m[i+ 9], 12, -1958414417);
+      c = FF(c, d, a, b, m[i+10], 17, -42063);
+      b = FF(b, c, d, a, m[i+11], 22, -1990404162);
+      a = FF(a, b, c, d, m[i+12],  7,  1804603682);
+      d = FF(d, a, b, c, m[i+13], 12, -40341101);
+      c = FF(c, d, a, b, m[i+14], 17, -1502002290);
+      b = FF(b, c, d, a, m[i+15], 22,  1236535329);
+
+      a = GG(a, b, c, d, m[i+ 1],  5, -165796510);
+      d = GG(d, a, b, c, m[i+ 6],  9, -1069501632);
+      c = GG(c, d, a, b, m[i+11], 14,  643717713);
+      b = GG(b, c, d, a, m[i+ 0], 20, -373897302);
+      a = GG(a, b, c, d, m[i+ 5],  5, -701558691);
+      d = GG(d, a, b, c, m[i+10],  9,  38016083);
+      c = GG(c, d, a, b, m[i+15], 14, -660478335);
+      b = GG(b, c, d, a, m[i+ 4], 20, -405537848);
+      a = GG(a, b, c, d, m[i+ 9],  5,  568446438);
+      d = GG(d, a, b, c, m[i+14],  9, -1019803690);
+      c = GG(c, d, a, b, m[i+ 3], 14, -187363961);
+      b = GG(b, c, d, a, m[i+ 8], 20,  1163531501);
+      a = GG(a, b, c, d, m[i+13],  5, -1444681467);
+      d = GG(d, a, b, c, m[i+ 2],  9, -51403784);
+      c = GG(c, d, a, b, m[i+ 7], 14,  1735328473);
+      b = GG(b, c, d, a, m[i+12], 20, -1926607734);
+
+      a = HH(a, b, c, d, m[i+ 5],  4, -378558);
+      d = HH(d, a, b, c, m[i+ 8], 11, -2022574463);
+      c = HH(c, d, a, b, m[i+11], 16,  1839030562);
+      b = HH(b, c, d, a, m[i+14], 23, -35309556);
+      a = HH(a, b, c, d, m[i+ 1],  4, -1530992060);
+      d = HH(d, a, b, c, m[i+ 4], 11,  1272893353);
+      c = HH(c, d, a, b, m[i+ 7], 16, -155497632);
+      b = HH(b, c, d, a, m[i+10], 23, -1094730640);
+      a = HH(a, b, c, d, m[i+13],  4,  681279174);
+      d = HH(d, a, b, c, m[i+ 0], 11, -358537222);
+      c = HH(c, d, a, b, m[i+ 3], 16, -722521979);
+      b = HH(b, c, d, a, m[i+ 6], 23,  76029189);
+      a = HH(a, b, c, d, m[i+ 9],  4, -640364487);
+      d = HH(d, a, b, c, m[i+12], 11, -421815835);
+      c = HH(c, d, a, b, m[i+15], 16,  530742520);
+      b = HH(b, c, d, a, m[i+ 2], 23, -995338651);
+
+      a = II(a, b, c, d, m[i+ 0],  6, -198630844);
+      d = II(d, a, b, c, m[i+ 7], 10,  1126891415);
+      c = II(c, d, a, b, m[i+14], 15, -1416354905);
+      b = II(b, c, d, a, m[i+ 5], 21, -57434055);
+      a = II(a, b, c, d, m[i+12],  6,  1700485571);
+      d = II(d, a, b, c, m[i+ 3], 10, -1894986606);
+      c = II(c, d, a, b, m[i+10], 15, -1051523);
+      b = II(b, c, d, a, m[i+ 1], 21, -2054922799);
+      a = II(a, b, c, d, m[i+ 8],  6,  1873313359);
+      d = II(d, a, b, c, m[i+15], 10, -30611744);
+      c = II(c, d, a, b, m[i+ 6], 15, -1560198380);
+      b = II(b, c, d, a, m[i+13], 21,  1309151649);
+      a = II(a, b, c, d, m[i+ 4],  6, -145523070);
+      d = II(d, a, b, c, m[i+11], 10, -1120210379);
+      c = II(c, d, a, b, m[i+ 2], 15,  718787259);
+      b = II(b, c, d, a, m[i+ 9], 21, -343485551);
+
+      a = (a + aa) >>> 0;
+      b = (b + bb) >>> 0;
+      c = (c + cc) >>> 0;
+      d = (d + dd) >>> 0;
+    }
+
+    return crypt.endian([a, b, c, d]);
+  };
+
+  // Auxiliary functions
+  md5._ff  = function (a, b, c, d, x, s, t) {
+    var n = a + (b & c | ~b & d) + (x >>> 0) + t;
+    return ((n << s) | (n >>> (32 - s))) + b;
+  };
+  md5._gg  = function (a, b, c, d, x, s, t) {
+    var n = a + (b & d | c & ~d) + (x >>> 0) + t;
+    return ((n << s) | (n >>> (32 - s))) + b;
+  };
+  md5._hh  = function (a, b, c, d, x, s, t) {
+    var n = a + (b ^ c ^ d) + (x >>> 0) + t;
+    return ((n << s) | (n >>> (32 - s))) + b;
+  };
+  md5._ii  = function (a, b, c, d, x, s, t) {
+    var n = a + (c ^ (b | ~d)) + (x >>> 0) + t;
+    return ((n << s) | (n >>> (32 - s))) + b;
+  };
+
+  // Package private blocksize
+  md5._blocksize = 16;
+  md5._digestsize = 16;
+
+  module.exports = function (message, options) {
+    if (message === undefined || message === null)
+      throw new Error('Illegal argument ' + message);
+
+    var digestbytes = crypt.wordsToBytes(md5(message, options));
+    return options && options.asBytes ? digestbytes :
+        options && options.asString ? bin.bytesToString(digestbytes) :
+        crypt.bytesToHex(digestbytes);
+  };
+
+})();
+
 
 /***/ }),
 

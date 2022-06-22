@@ -3,9 +3,10 @@
 Plugin Name: Advanced Custom Fields PRO
 Plugin URI: https://www.advancedcustomfields.com
 Description: Customize WordPress with powerful, professional and intuitive fields.
-Version: 5.11.4
+Version: 5.12.2
 Author: Delicious Brains
 Author URI: https://www.advancedcustomfields.com
+Update URI: https://www.advancedcustomfields.com/pro
 Text Domain: acf
 Domain Path: /lang
 */
@@ -19,7 +20,7 @@ if ( ! class_exists( 'ACF' ) ) :
 	class ACF {
 
 		/** @var string The plugin version number. */
-		var $version = '5.11.4';
+		var $version = '5.12.2';
 
 		/** @var array The plugin settings array. */
 		var $settings = array();
@@ -100,6 +101,7 @@ if ( ! class_exists( 'ACF' ) ) :
 				'rest_api_enabled'       => true,
 				'rest_api_format'        => 'light',
 				'rest_api_embed_links'   => true,
+				'preload_blocks'         => true,
 			);
 
 			// Include utility functions.
@@ -193,6 +195,8 @@ if ( ! class_exists( 'ACF' ) ) :
 			add_action( 'init', array( $this, 'init' ), 5 );
 			add_action( 'init', array( $this, 'register_post_types' ), 5 );
 			add_action( 'init', array( $this, 'register_post_status' ), 5 );
+			add_action( 'activated_plugin', array( $this, 'deactivate_other_instances' ) );
+			add_action( 'pre_current_active_plugins', array( $this, 'plugin_deactivated_notice' ) );
 
 			// Add filters.
 			add_filter( 'posts_where', array( $this, 'posts_where' ), 10, 2 );
@@ -442,6 +446,65 @@ if ( ! class_exists( 'ACF' ) ) :
 					'label_count'               => _n_noop( 'Disabled <span class="count">(%s)</span>', 'Disabled <span class="count">(%s)</span>', 'acf' ),
 				)
 			);
+		}
+
+		/**
+		 * Checks if another version of ACF/ACF PRO is active and deactivates it.
+		 * Hooked on `activated_plugin` so other plugin is deactivated when current plugin is activated.
+		 *
+		 * @param string $plugin The plugin being activated.
+		 */
+		public function deactivate_other_instances( $plugin ) {
+			if ( ! in_array( $plugin, array( 'advanced-custom-fields/acf.php', 'advanced-custom-fields-pro/acf.php' ) ) ) {
+				return;
+			}
+
+			$plugin_to_deactivate  = 'advanced-custom-fields/acf.php';
+			$deactivated_notice_id = '1';
+
+			// If we just activated the free version, deactivate the pro version.
+			if ( $plugin === $plugin_to_deactivate ) {
+				$plugin_to_deactivate  = 'advanced-custom-fields-pro/acf.php';
+				$deactivated_notice_id = '2';
+			}
+
+			if ( is_multisite() && is_network_admin() ) {
+				$active_plugins = (array) get_site_option( 'active_sitewide_plugins', array() );
+				$active_plugins = array_keys( $active_plugins );
+			} else {
+				$active_plugins = (array) get_option( 'active_plugins', array() );
+			}
+
+			foreach ( $active_plugins as $plugin_basename ) {
+				if ( $plugin_to_deactivate === $plugin_basename ) {
+					set_transient( 'acf_deactivated_notice_id', $deactivated_notice_id, 1 * HOUR_IN_SECONDS );
+					deactivate_plugins( $plugin_basename );
+					return;
+				}
+			}
+		}
+
+		/**
+		 * Displays a notice when either ACF or ACF PRO is automatically deactivated.
+		 */
+		public function plugin_deactivated_notice() {
+			$deactivated_notice_id = get_transient( 'acf_deactivated_notice_id' );
+			if ( ! in_array( $deactivated_notice_id, array( '1', '2' ) ) ) {
+				return;
+			}
+
+			$message = __( "Advanced Custom Fields and Advanced Custom Fields PRO should not be active at the same time. We've automatically deactivated Advanced Custom Fields.", 'acf' );
+			if ( '2' === $deactivated_notice_id ) {
+				$message = __( "Advanced Custom Fields and Advanced Custom Fields PRO should not be active at the same time. We've automatically deactivated Advanced Custom Fields PRO.", 'acf' );
+			}
+
+			?>
+			<div class="updated" style="border-left: 4px solid #ffba00;">
+				<p><?php echo esc_html( $message ); ?></p>
+			</div>
+			<?php
+
+			delete_transient( 'acf_deactivated_notice_id' );
 		}
 
 		/**

@@ -8,6 +8,12 @@
  */
 function acf_get_field_rest_schema( array $field ) {
 	$type   = acf_get_field_type( $field['type'] );
+	$schema = array();
+
+	if ( ! is_object( $type ) || ! method_exists( $type, 'get_rest_schema' ) ) {
+		return $schema;
+	}
+
 	$schema = $type->get_rest_schema( $field );
 
 	/**

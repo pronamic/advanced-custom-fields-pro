@@ -2,9 +2,9 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
-Tested up to: 5.8.1
+Tested up to: 5.9.3
 Requires PHP: 5.6
-Stable tag: 5.11.4
+Stable tag: 5.12.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,45 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 5.12.2 =
+*Release Date 6th April 2022*
+
+* Fix - Cloned fields in custom named options pages now behave correctly
+* Fix - Default values and the `acf/load_value` filter are now applied if a field value load [fails security validation](https://www.advancedcustomfields.com/resources/acf-field-functions/#non-acf-data)
+* Fix - The ACF field is no longer present in REST responses if the ACF REST API setting is disabled
+* Fix - Duplicating a flexible content layout or repeater row now also replaces the field ID in `for` attributes
+
+= 5.12.1 =
+*Release Date 23rd March 2022*
+
+* New - REST API now supports the comment route for displaying ACF fields.
+* Fix - ACF now validates access to option page field values when accessing via field keys the same way as field names. [View More](https://www.advancedcustomfields.com/resources/acf-field-functions/#non-acf-data)
+* Fix - REST API now correctly validates fields for POST update requests
+* Fix - Fixed an issue where invalid field types caused an error during REST API requests
+* Fix - Fixed a PHP warning when duplicating an empty field group
+* Fix - Fixed a bug preventing block duplication detection changing an ACF Block’s ID if it was nested deeper than one level inside another block
+* Fix - Fixed a bug where the `acf-block-preview` wrapper might not appear around a block if it was saved in edit mode
+* i18n - Updated several translations from user contributions (Thanks to Dariusz Zielonka, Mikko Kekki and Alberto!)
+
+= 5.12 =
+*Release Date 23rd February 2022*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-5-12-released/)
+* New - ACF blocks now support the new Full Site Editor included in WordPress 5.9
+* New - ACF blocks now support the WordPress Query Loop block
+* New - Added block caching system to reduce the number of AJAX calls in the block editor
+* Enhancement - Block preloading can now be disabled by using "acf_update_setting( 'preload_blocks', false );" in the "acf/init" action hook
+* Enhancement - ACF and ACF PRO will now detect if each other are active and deactivate the other plugin on plugin activation
+* Fix - Fixed an issue with the media library not working correctly in ACF Blocks in WordPress 5.9.1
+* Fix - Fixed an issue where anchors weren't working correctly in WordPress 5.9
+* Fix - Fixed an issue where the "unfiltered_html" capability wasn't being used by ACF blocks
+* Fix - Fixed an issue where it was impossible to update an ACF block inside the widget block editor
+* Fix - Fixed an issue where ACF fields might not appear in REST API calls made via internal WordPress functions
+* Fix - Warnings and PHP 8.1 deprecation notices in REST API
+* Fix - Better support for double byte characters in "acf_get_truncated()" (props @cabradb)
+* i18n - Broken link in the Croatian translation
+* i18n - Automated building of acf.pot for translators in each release
 
 = 5.11.4 =
 *Release Date - 2nd December 2021*
