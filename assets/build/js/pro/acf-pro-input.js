@@ -321,7 +321,7 @@
         // Provide a custom renaming callback to avoid renaming parent row attributes.
         rename: function (name, value, search, replace) {
           // Rename id attributes from "field_1-search" to "field_1-replace".
-          if (name === 'id') {
+          if (name === 'id' || name === 'for') {
             return value.replace(fieldKey + '-' + search, fieldKey + '-' + replace); // Rename name and for attributes from "[field_1][search]" to "[field_1][replace]".
           } else {
             return value.replace(fieldKey + '][' + search, fieldKey + '][' + replace);
@@ -1330,7 +1330,7 @@
         // Provide a custom renaming callback to avoid renaming parent row attributes.
         rename: function (name, value, search, replace) {
           // Rename id attributes from "field_1-search" to "field_1-replace".
-          if (name === 'id') {
+          if (name === 'id' || name === 'for') {
             return value.replace(fieldKey + '-' + search, fieldKey + '-' + replace); // Rename name and for attributes from "[field_1][search]" to "[field_1][replace]".
           } else {
             return value.replace(fieldKey + '][' + search, fieldKey + '][' + replace);

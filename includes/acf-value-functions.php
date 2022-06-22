@@ -60,26 +60,45 @@ function acf_get_value( $post_id, $field ) {
 	// Get field name.
 	$field_name = $field['name'];
 
-	// If we still don't have a proper field array, the field doesn't exist currently.
+	// Get field ID & type.
+	$decoded = acf_decode_post_id( $post_id );
+
+	$allow_load = true;
+
+	// If we don't have a proper field array, the field doesn't exist currently.
 	if ( empty( $field['type'] ) && empty( $field['key'] ) ) {
-		//  Get field ID & type.
-		$decoded = acf_decode_post_id( $post_id );
+
+		// Check if we should trigger warning about accessing fields too early via action.
+		do_action( 'acf/get_invalid_field_value', $field, __FUNCTION__ );
 
 		if ( apply_filters( 'acf/prevent_access_to_unknown_fields', false ) || ( 'option' === $decoded['type'] && 'options' !== $decoded['id'] ) ) {
-			return null;
+			$allow_load = false;
+		}
+	}
+
+	// If we're using a non options_ option key, ensure we have a valid reference key.
+	if ( 'option' === $decoded['type'] && 'options' !== $decoded['id'] ) {
+		$meta = acf_get_metadata( $post_id, $field_name, true );
+		if ( ! $meta ) {
+			$allow_load = false;
+		} elseif ( $meta !== $field['key'] ) {
+			if ( ! isset( $field['__key'] ) || $meta !== $field['__key'] ) {
+				$allow_load = false;
+			}
+		}
+	}
+
+	// Load Store.
+	$store = acf_get_store( 'values' );
+
+	// If we're allowing load, check the store or load value from database.
+	if ( $allow_load ) {
+		if ( $store->has( "$post_id:$field_name" ) ) {
+			return $store->get( "$post_id:$field_name" );
 		}
 
-		do_action( 'acf/get_invalid_field_value', $field, __FUNCTION__ );
+		$value = acf_get_metadata( $post_id, $field_name );
 	}
-
-	// Check store.
-	$store = acf_get_store( 'values' );
-	if ( $store->has( "$post_id:$field_name" ) ) {
-		return $store->get( "$post_id:$field_name" );
-	}
-
-	// Load value from database.
-	$value = acf_get_metadata( $post_id, $field_name );
 
 	// Use field's default_value if no meta was found.
 	if ( $value === null && isset( $field['default_value'] ) ) {
@@ -98,8 +117,10 @@ function acf_get_value( $post_id, $field ) {
 	 */
 	$value = apply_filters( 'acf/load_value', $value, $post_id, $field );
 
-	// Update store.
-	$store->set( "$post_id:$field_name", $value );
+	// Update store if we allowed the value load.
+	if ( $allow_load ) {
+		$store->set( "$post_id:$field_name", $value );
+	}
 
 	// Return value.
 	return $value;

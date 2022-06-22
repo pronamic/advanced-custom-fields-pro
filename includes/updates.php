@@ -273,12 +273,14 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 						'wp_version'  => get_bloginfo( 'version' ),
 						'wp_language' => get_bloginfo( 'language' ),
 						'wp_timezone' => get_option( 'timezone_string' ),
+						'php_version' => PHP_VERSION,
 					)
 				),
 				'acf'     => wp_json_encode(
 					array(
 						'acf_version' => get_option( 'acf_version' ),
 						'acf_pro'     => ( defined( 'ACF_PRO' ) && ACF_PRO ),
+						'block_count' => acf_pro_get_registered_block_count(),
 					)
 				),
 			);
