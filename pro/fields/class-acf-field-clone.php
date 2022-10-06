@@ -188,7 +188,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 				return $fields;
 			}
 
-			// bail ealry if already cloning this field (avoid infinite looping)
+			// bail early if already cloning this field (avoid infinite looping)
 			if ( isset( $this->cloning[ $field['key'] ] ) ) {
 				return $fields;
 			}
@@ -419,7 +419,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 			$length = strlen( $field['_name'] );
 			$prefix = substr( $field['name'], 0, -$length );
 
-			// bail ealry if _name is not found at the end of name (unknown potential error)
+			// bail early if _name is not found at the end of name (unknown potential error)
 			if ( $prefix . $field['_name'] !== $field['name'] ) {
 				return $field;
 			}
@@ -583,7 +583,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 				return null;
 			}
 
-			// bail ealry if no sub fields
+			// bail early if no sub fields
 			if ( empty( $field['sub_fields'] ) ) {
 				return null;
 			}
@@ -763,7 +763,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 				}
 
 				?>
-			<th <?php acf_esc_attr_e( $attrs ); ?>>
+			<th <?php echo acf_esc_attrs( $attrs ); ?>>
 				<?php acf_render_field_label( $sub_field ); ?>
 				<?php acf_render_field_instructions( $sub_field ); ?>
 			</th>
@@ -866,13 +866,12 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'   => __( 'Prefix Field Labels', 'acf' ),
-					'message' => $instructions,
-					// 'instructions_placement'  => 'field',
-					'name'    => 'prefix_label',
-					'class'   => 'setting-prefix-label',
-					'type'    => 'true_false',
-					'ui'      => 1,
+					'label' => __( 'Prefix Field Labels', 'acf' ),
+					'hint'  => $instructions,
+					'name'  => 'prefix_label',
+					'class' => 'setting-prefix-label',
+					'type'  => 'true_false',
+					'ui'    => 1,
 				)
 			);
 
@@ -882,13 +881,12 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'   => __( 'Prefix Field Names', 'acf' ),
-					'message' => $instructions,
-					// 'instructions_placement'  => 'field',
-					'name'    => 'prefix_name',
-					'class'   => 'setting-prefix-name',
-					'type'    => 'true_false',
-					'ui'      => 1,
+					'label' => __( 'Prefix Field Names', 'acf' ),
+					'hint'  => $instructions,
+					'name'  => 'prefix_name',
+					'class' => 'setting-prefix-name',
+					'type'  => 'true_false',
+					'ui'    => 1,
 				)
 			);
 
@@ -954,12 +952,14 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 				return '';
 			}
 
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 			// ajax_fields
 			if ( isset( $_POST['fields'][ $selector ] ) ) {
 
 				return $this->get_clone_setting_field_choice( $_POST['fields'][ $selector ] );
 
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			// field
 			if ( acf_is_field_key( $selector ) ) {
@@ -1178,7 +1178,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 				// loop
 				foreach ( $children as $child ) {
 
-					// bail ealry if no key (fake field group or corrupt field)
+					// bail early if no key (fake field group or corrupt field)
 					if ( ! $child ) {
 						continue;
 					}
@@ -1261,7 +1261,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 
 		function acf_prepare_field( $field ) {
 
-			// bail ealry if not cloned
+			// bail early if not cloned
 			if ( empty( $field['_clone'] ) ) {
 				return $field;
 			}

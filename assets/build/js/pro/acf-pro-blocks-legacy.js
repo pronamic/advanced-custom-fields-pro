@@ -14,9 +14,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 (function ($, undefined) {
   // Dependencies.
@@ -119,7 +119,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
   function registerBlockType(blockType) {
-    // Bail ealry if is excluded post_type.
+    // bail early if is excluded post_type.
     var allowedTypes = blockType.post_types || [];
 
     if (allowedTypes.length) {
@@ -200,7 +200,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       save: function (props) {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ThisBlockSave, props);
       }
-    }); // Add to storage.
+    }); // Remove all attribute defaults from PHP values to allow serialisation.
+    // https://github.com/WordPress/gutenberg/issues/7342
+
+    for (const key in blockType.attributes) {
+      delete blockType.attributes[key].default;
+    } // Add to storage.
+
 
     blockTypes[blockType.name] = blockType; // Register with WP.
 
@@ -794,23 +800,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     fetch() {// Do nothing.
     }
 
-    maybePreload(blockId) {
-      if (this.state.html === undefined) {
-        const preloadedBlocks = acf.get('preloadedBlocks');
-
-        if (preloadedBlocks && preloadedBlocks[blockId]) {
-          // Set HTML to the preloaded version.
-          this.setHtml(preloadedBlocks[blockId]); // Delete the preloaded HTML so we don't try to load it again.
-
-          delete preloadedBlocks[blockId];
-          acf.set('preloadedBlocks', preloadedBlocks);
-          return true;
-        }
-      }
-
-      return false;
-    }
-
     loadState() {
       this.state = store[this.id] || {};
     }
@@ -970,14 +959,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
       // Extract props.
       const {
         attributes
-      } = this.props; // Try preloaded data first.
-
-      const preloaded = this.maybePreload(attributes.id);
-
-      if (preloaded) {
-        return;
-      } // Request AJAX and update HTML on complete.
-
+      } = this.props; // Request AJAX and update HTML on complete.
 
       fetchBlock({
         attributes: attributes,
@@ -1060,14 +1042,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
       this.setState({
         prevAttributes: attributes
-      }); // Try preloaded data first.
-
-      const preloaded = this.maybePreload(attributes.id);
-
-      if (preloaded) {
-        return;
-      } // Request AJAX and update HTML on complete.
-
+      }); // Request AJAX and update HTML on complete.
 
       fetchBlock({
         attributes: attributes,
@@ -1076,7 +1051,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
         },
         delay: delay
       }).done(json => {
-        this.setHtml(json.data.preview);
+        this.setHtml('<div class="acf-block-preview">' + json.data.preview + '</div>');
       });
     }
 
@@ -1462,6 +1437,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     fontvariant: 'fontVariant',
     fontweight: 'fontWeight',
     for: 'htmlFor',
+    foreignobject: 'foreignObject',
     formaction: 'formAction',
     formenctype: 'formEncType',
     formmethod: 'formMethod',

@@ -873,6 +873,40 @@ function acf_duplicate_field_group( $id = 0, $new_post_id = 0 ) {
 }
 
 /**
+ * Activates or deactivates a field group.
+ *
+ * @param int|string $id The field_group ID, key or name.
+ * @return bool
+ */
+function acf_update_field_group_active_status( $id, $activate = true ) {
+	// Disable filters to ensure ACF loads data from DB.
+	acf_disable_filters();
+
+	$field_group = acf_get_field_group( $id );
+	if ( ! $field_group || ! $field_group['ID'] ) {
+		return false;
+	}
+
+	$field_group['active'] = (bool) $activate;
+	$updated_field_group   = acf_update_field_group( $field_group );
+
+	/**
+	 * Fires immediately after a field_group has been made active/inactive.
+	 *
+	 * @since 6.0.0
+	 *
+	 * @param array $field_group The updated field group array.
+	 */
+	do_action( 'acf/update_field_group_active_status', $updated_field_group );
+
+	if ( ! isset( $updated_field_group['active'] ) || $activate !== $updated_field_group['active'] ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
  * acf_get_field_group_style
  *
  * Returns the CSS styles generated from field group settings.

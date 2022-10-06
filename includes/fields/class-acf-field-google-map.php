@@ -61,7 +61,7 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 				)
 			);
 
-			// bail ealry if no enqueue
+			// bail early if no enqueue
 			if ( ! acf_get_setting( 'enqueue_google_maps' ) ) {
 				return;
 			}
@@ -138,7 +138,7 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 			}
 
 			?>
-<div <?php acf_esc_attr_e( $attrs ); ?>>
+<div <?php echo acf_esc_attrs( $attrs ); ?>>
 	
 			<?php
 			acf_hidden_input(

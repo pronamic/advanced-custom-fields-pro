@@ -199,7 +199,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		function render( $args = array() ) {
 
 			// Allow $_POST data to persist across form submission attempts.
-			if ( isset( $_POST['acf'] ) ) {
+			if ( isset( $_POST['acf'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				add_filter( 'acf/pre_load_value', array( $this, 'filter_pre_load_value' ), 10, 3 );
 			}
 
@@ -372,9 +372,11 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 */
 		function filter_pre_load_value( $null, $post_id, $field ) {
 			$field_key = $field['key'];
+			// phpcs:disable WordPress.Security.NonceVerification.Missing
 			if ( isset( $_POST['acf'][ $field_key ] ) ) {
 				return $_POST['acf'][ $field_key ];
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return $null;
 		}
 	}

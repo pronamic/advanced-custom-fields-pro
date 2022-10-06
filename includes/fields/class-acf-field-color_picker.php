@@ -66,12 +66,12 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 						'wp-color-picker',
 						'wpColorPickerL10n',
 						array(
-							'clear'            => __( 'Clear' ),
-							'clearAriaLabel'   => __( 'Clear color' ),
-							'defaultString'    => __( 'Default' ),
-							'defaultAriaLabel' => __( 'Select default color' ),
-							'pick'             => __( 'Select Color' ),
-							'defaultLabel'     => __( 'Color value' ),
+							'clear'            => __( 'Clear', 'acf' ),
+							'clearAriaLabel'   => __( 'Clear color', 'acf' ),
+							'defaultString'    => __( 'Default', 'acf' ),
+							'defaultAriaLabel' => __( 'Select default color', 'acf' ),
+							'pick'             => __( 'Select Color', 'acf' ),
+							'defaultLabel'     => __( 'Color value', 'acf' ),
 						)
 					);
 				}

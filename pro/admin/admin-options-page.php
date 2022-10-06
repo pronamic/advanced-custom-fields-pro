@@ -187,7 +187,7 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 			);
 
 			// notices
-			if ( ! empty( $_GET['message'] ) && $_GET['message'] == '1' ) {
+			if ( ! empty( $_GET['message'] ) && $_GET['message'] == '1' ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used to display a notice.
 				acf_add_admin_notice( $this->page['updated_message'], 'success' );
 			}
 

@@ -87,7 +87,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 
 		function save_widget( $instance, $new_instance, $old_instance, $widget ) {
 
-			// bail ealry if not valid (customize + acf values + nonce)
+			// bail early if not valid (customize + acf values + nonce)
 			if ( ! isset( $_POST['wp_customize'] ) || ! isset( $new_instance['acf'] ) || ! acf_verify_nonce( 'widget' ) ) {
 				return $instance;
 			}
@@ -147,7 +147,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 			$data     = array();
 			$settings = $customizer->settings();
 
-			// bail ealry if no settings
+			// bail early if no settings
 			if ( empty( $settings ) ) {
 				return false;
 			}
@@ -181,7 +181,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 
 			}
 
-			// bail ealry if no settings
+			// bail early if no settings
 			if ( empty( $data ) ) {
 				return false;
 			}
@@ -210,7 +210,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 			// get customizer settings (widgets)
 			$settings = $this->settings( $customizer );
 
-			// bail ealry if no settings
+			// bail early if no settings
 			if ( empty( $settings ) ) {
 				return;
 			}
@@ -227,7 +227,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 
 			}
 
-			// bail ealry if no preview_values
+			// bail early if no preview_values
 			if ( empty( $this->preview_values ) ) {
 				return;
 			}
@@ -305,7 +305,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 			// get customizer settings (widgets)
 			$settings = $this->settings( $customizer );
 
-			// bail ealry if no settings
+			// bail early if no settings
 			if ( empty( $settings ) ) {
 				return;
 			}
@@ -343,7 +343,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 
 		function pre_update_option( $value, $option, $old_value ) {
 
-			// bail ealry if no value
+			// bail early if no value
 			if ( empty( $value ) ) {
 				return $value;
 			}
@@ -352,7 +352,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 			// WP saves all widgets (of the same type) as an array of widgets
 			foreach ( $value as $i => $widget ) {
 
-				// bail ealry if no acf
+				// bail early if no acf
 				if ( ! isset( $widget['acf'] ) ) {
 					continue;
 				}
@@ -426,7 +426,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 			var bit = signature[i];
 			
 			
-			// bail ealry if acf is found
+			// bail early if acf is found
 			if( bit.indexOf('acf') !== -1 ) continue;
 			
 			

@@ -161,7 +161,7 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 				// attempt to find key value
 				$key = acf_maybe_get( $meta, '_' . $name );
 
-				// bail ealry if no key
+				// bail early if no key
 				if ( ! $key ) {
 					continue;
 				}
@@ -244,45 +244,33 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 		*  @param   $direction (string) to / from - not used
 		*  @return  $value (string)
 		*/
-
 		function wp_post_revision_field( $value, $field_name, $post = null, $direction = false ) {
 
-			// bail ealry if is empty
+			// bail early if is empty.
 			if ( empty( $value ) ) {
 				return $value;
 			}
 
-			// value has not yet been 'maybe_unserialize'
-			$value = maybe_unserialize( $value );
-
-			// vars
+			$value   = maybe_unserialize( $value );
 			$post_id = $post->ID;
 
-			// load field
+			// load field.
 			$field = acf_maybe_get_field( $field_name, $post_id );
 
-			// default formatting
+			// default formatting.
 			if ( is_array( $value ) ) {
-
 				$value = implode( ', ', $value );
-
 			} elseif ( is_object( $value ) ) {
-
 				$value = serialize( $value );
-
 			}
 
-			// image
-			if ( $field['type'] == 'image' || $field['type'] == 'file' ) {
-
+			// image.
+			if ( is_array( $field ) && isset( $field['type'] ) && ( $field['type'] === 'image' || $field['type'] === 'file' ) ) {
 				$url   = wp_get_attachment_url( $value );
 				$value = $value . ' (' . $url . ')';
-
 			}
 
-			// return
 			return $value;
-
 		}
 
 
@@ -334,6 +322,7 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 		function acf_validate_post_id( $post_id, $_post_id ) {
 
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			// bail early if no preview in URL
 			if ( ! isset( $_GET['preview'] ) ) {
 				return $post_id;
@@ -367,6 +356,7 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 				$preview_id = (int) $_GET['page_id'];
 
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 			// bail early id $preview_id does not match $post_id
 			if ( $preview_id != $post_id ) {

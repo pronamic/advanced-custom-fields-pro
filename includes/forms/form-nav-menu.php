@@ -182,7 +182,7 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 		function update_nav_menu_items( $menu_id ) {
 
-			// bail ealry if not set
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 			if ( empty( $_POST['menu-item-acf'] ) ) {
 				return;
 			}
@@ -193,7 +193,7 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				acf_save_post( $post_id, $values );
 
 			}
-
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 		}
 
 
@@ -258,7 +258,7 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 		function acf_validate_save_post() {
 
-			// bail ealry if not set
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 			if ( empty( $_POST['menu-item-acf'] ) ) {
 				return;
 			}
@@ -273,6 +273,7 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				acf_validate_values( $values, $prefix );
 
 			}
+			// phpcs:enable // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 		}
 
