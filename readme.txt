@@ -12,6 +12,7 @@ Customize WordPress with powerful, professional and intuitive fields. Proudly po
 
 == Description ==
 
+
 Advanced Custom Fields turns WordPress sites into a fully-fledged content management system by giving you all the tools to do more with your data.
 
 Use the Advanced Custom Fields plugin to take full control of your WordPress edit screens & custom field data.
