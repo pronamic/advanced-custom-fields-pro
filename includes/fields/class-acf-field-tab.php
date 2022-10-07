@@ -56,8 +56,12 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 				'data-key'       => $field['key'],
 			);
 
+			if ( isset( $field['settings-type'] ) ) {
+				$atts['class'] .= ' acf-settings-type-' . acf_slugify( $field['settings-type'] );
+			}
+
 			?>
-		<a <?php acf_esc_attr_e( $atts ); ?>><?php echo acf_esc_html( $field['label'] ); ?></a>
+		<a <?php echo acf_esc_attrs( $atts ); ?>><?php echo acf_esc_html( $field['label'] ); ?></a>
 			<?php
 
 		}
@@ -114,8 +118,8 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Endpoint', 'acf' ),
-					'instructions' => __( 'Define an endpoint for the previous tabs to stop. This will start a new group of tabs.', 'acf' ),
+					'label'        => __( 'New Tab Group', 'acf' ),
+					'instructions' => __( 'Start a new group of tabs at this tab.', 'acf' ),
 					'name'         => 'endpoint',
 					'type'         => 'true_false',
 					'ui'           => 1,

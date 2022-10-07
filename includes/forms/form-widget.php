@@ -97,7 +97,8 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 		function acf_validate_save_post() {
 
-			// bail ealry if not widget
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+			// bail early if not widget
 			if ( ! isset( $_POST['_acf_widget_id'] ) ) {
 				return;
 			}
@@ -109,7 +110,7 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 			// validate
 			acf_validate_values( $_POST[ $id ][ $number ]['acf'], $prefix );
-
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 		}
 
 

@@ -47,7 +47,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 		function input_admin_enqueue_scripts() {
 
-			// bail ealry if no enqueue
+			// bail early if no enqueue
 			if ( ! acf_get_setting( 'enqueue_datepicker' ) ) {
 				return;
 			}
@@ -142,7 +142,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 			// html
 			?>
-		<div <?php acf_esc_attr_e( $div ); ?>>
+		<div <?php echo acf_esc_attrs( $div ); ?>>
 			<?php acf_hidden_input( $hidden_input ); ?>
 			<?php acf_text_input( $text_input ); ?>
 		</div>
@@ -162,19 +162,16 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// global
 			global $wp_locale;
 
-			// vars
 			$d_m_Y = date_i18n( 'd/m/Y' );
 			$m_d_Y = date_i18n( 'm/d/Y' );
 			$F_j_Y = date_i18n( 'F j, Y' );
 			$Ymd   = date_i18n( 'Ymd' );
 
-			// display_format
+			echo '<div class="acf-field-settings-split">';
+
 			acf_render_field_setting(
 				$field,
 				array(
@@ -194,8 +191,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 			// save_format - compatibility with ACF < 5.0.0
 			if ( ! empty( $field['save_format'] ) ) {
-
-				// save_format
 				acf_render_field_setting(
 					$field,
 					array(
@@ -206,10 +201,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 					// 'readonly'        => 1 // this setting was not readonly in v4
 					)
 				);
-
 			} else {
-
-				// return_format
 				acf_render_field_setting(
 					$field,
 					array(
@@ -227,10 +219,10 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 						),
 					)
 				);
-
 			}
 
-			// first_day
+			echo '</div>';
+
 			acf_render_field_setting(
 				$field,
 				array(
@@ -241,9 +233,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 					'choices'      => array_values( $wp_locale->weekday ),
 				)
 			);
-
 		}
-
 
 		/*
 		*  format_value()
@@ -274,7 +264,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			return acf_format_date( $value, $field['return_format'] );
 
 		}
-		
+
 
 		/**
 		 *  This filter is applied to the $field after it is loaded from the database

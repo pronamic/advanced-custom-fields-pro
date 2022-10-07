@@ -31,7 +31,7 @@ if ( ! class_exists( 'ACF_Ajax_Local_JSON_Diff' ) ) :
 			// Extract props.
 			$id = isset( $request['id'] ) ? intval( $request['id'] ) : 0;
 
-			// Bail ealry if missing props.
+			// bail early if missing props.
 			if ( ! $id ) {
 				return new WP_Error( 'acf_invalid_param', __( 'Invalid field group parameter(s).', 'acf' ), array( 'status' => 404 ) );
 			}

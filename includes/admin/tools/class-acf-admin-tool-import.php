@@ -46,25 +46,30 @@ if ( ! class_exists( 'ACF_Admin_Tool_Import' ) ) :
 		function html() {
 
 			?>
-		<p><?php _e( 'Select the Advanced Custom Fields JSON file you would like to import. When you click the import button below, ACF will import the field groups.', 'acf' ); ?></p>
-		<div class="acf-fields">
-			<?php
-
-			acf_render_field_wrap(
-				array(
-					'label'    => __( 'Select File', 'acf' ),
-					'type'     => 'file',
-					'name'     => 'acf_import_file',
-					'value'    => false,
-					'uploader' => 'basic',
-				)
-			);
-
-			?>
+		<div class="acf-postbox-header">
+			<h2 class="acf-postbox-title"><?php _e( 'Import Field Groups', 'acf' ); ?></h2>
+			<div class="acf-tip"><i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="<?php esc_attr_e( 'Select the Advanced Custom Fields JSON file you would like to import. When you click the import button below, ACF will import the field groups', 'acf' ); ?>">?</i></div>
 		</div>
-		<p class="acf-submit">
-			<input type="submit" class="button button-primary" value="<?php _e( 'Import File', 'acf' ); ?>" />
-		</p>
+		<div class="acf-postbox-inner">
+			<div class="acf-fields">
+				<?php
+
+				acf_render_field_wrap(
+					array(
+						'label'    => __( 'Select File', 'acf' ),
+						'type'     => 'file',
+						'name'     => 'acf_import_file',
+						'value'    => false,
+						'uploader' => 'basic',
+					)
+				);
+
+				?>
+			</div>
+			<p class="acf-submit">
+				<input type="submit" class="acf-btn" value="<?php _e( 'Import JSON', 'acf' ); ?>" />
+			</p>
+		</div>
 			<?php
 
 		}

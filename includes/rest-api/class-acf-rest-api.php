@@ -237,6 +237,13 @@ class ACF_Rest_Api {
 			}
 		}
 
+		/**
+		 * Reset the store so that REST API values (which may be preloaded
+		 * by WP core and have different values than standard values) aren't
+		 * saved to the store.
+		 */
+		acf_get_store( 'values' )->reset();
+
 		return $fields;
 	}
 

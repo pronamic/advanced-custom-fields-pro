@@ -81,7 +81,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		 * @return  void
 		 */
 		public function handle_redirection() {
-			if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'acf' ) {
+			if ( isset( $_GET['post_type'] ) && $_GET['post_type'] === 'acf' ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				wp_redirect( $this->get_admin_url() );
 				exit;
 			}
@@ -104,12 +104,14 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			}
 
 			// Get the current view.
-			$this->view = isset( $_GET['post_status'] ) ? sanitize_text_field( $_GET['post_status'] ) : '';
+			$this->view = isset( $_GET['post_status'] ) ? sanitize_text_field( $_GET['post_status'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 			// Setup and check for custom actions..
 			$this->setup_sync();
 			$this->check_sync();
 			$this->check_duplicate();
+			$this->check_activate();
+			$this->check_deactivate();
 
 			// Modify publish post status text and order.
 			global $wp_post_statuses;
@@ -227,7 +229,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		 * @return  string
 		 */
 		public function get_disabled_post_state() {
-			return '<span class="dashicons dashicons-hidden"></span> ' . _x( 'Disabled', 'post status', 'acf' );
+			return '<span class="dashicons dashicons-hidden"></span> ' . _x( 'Inactive', 'post status', 'acf' );
 		}
 
 		/**
@@ -248,15 +250,34 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		}
 
 		/**
+		 * Get the HTML for when a file is not found.
+		 *
+		 * @since   6.0.0
+		 *
+		 * @return  string html.
+		 */
+		public function get_not_found_html() {
+			ob_start();
+			acf_get_view( 'field-groups-empty' );
+			return ob_get_clean();
+		}
+
+		/**
 		 * Customizes the admin table columns.
 		 *
 		 * @date    1/4/20
 		 * @since   5.9.0
 		 *
-		 * @param   array $columns The columns array.
+		 * @param   array $_columns The columns array.
 		 * @return  array
 		 */
 		public function admin_table_columns( $_columns ) {
+
+			// Set the "no found" label to be our custom HTML for no results.
+			global $wp_post_types;
+			$this->not_found_label                               = $wp_post_types['acf-field-group']->labels->not_found;
+			$wp_post_types['acf-field-group']->labels->not_found = $this->get_not_found_html();
+
 			$columns = array(
 				'cb'              => $_columns['cb'],
 				'title'           => $_columns['title'],
@@ -303,6 +324,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 
 				// Key.
 				case 'acf-key':
+					echo '<i class="acf-icon acf-icon-key-solid"></i>';
 					echo esc_html( $field_group['key'] );
 					break;
 
@@ -404,7 +426,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 				$total = count( $objects );
 
 				// Icon.
-				$html .= '<span class="dashicons ' . $objects[0]->icon . ( $total > 1 ? ' acf-multi-dashicon' : '' ) . '"></span> ';
+				$html .= '<span class="dashicons ' . $objects[0]->icon . ( $total > 1 ? ' acf-multi-dashicon' : '' ) . '"></span>';
 
 				// Labels.
 				$labels = array_column( $objects, 'label' );
@@ -504,8 +526,19 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			$duplicate_action_url    = $this->get_admin_url( '&acfduplicate=' . $post->ID . '&_wpnonce=' . wp_create_nonce( 'bulk-posts' ) );
 			$actions['acfduplicate'] = '<a href="' . esc_url( $duplicate_action_url ) . '" aria-label="' . esc_attr__( 'Duplicate this item', 'acf' ) . '">' . __( 'Duplicate', 'acf' ) . '</a>';
 
+			// Append the "Activate" or "Deactivate" actions.
+			if ( 'acf-disabled' === $post->post_status ) {
+				$activate_deactivate_action = 'acfactivate';
+				$activate_action_url        = $this->get_admin_url( '&acfactivate=' . $post->ID . '&_wpnonce=' . wp_create_nonce( 'bulk-posts' ) );
+				$actions['acfactivate']     = '<a href="' . esc_url( $activate_action_url ) . '" aria-label="' . esc_attr__( 'Activate this item', 'acf' ) . '">' . __( 'Activate', 'acf' ) . '</a>';
+			} else {
+				$activate_deactivate_action = 'acfdeactivate';
+				$deactivate_action_url      = $this->get_admin_url( '&acfdeactivate=' . $post->ID . '&_wpnonce=' . wp_create_nonce( 'bulk-posts' ) );
+				$actions['acfdeactivate']   = '<a href="' . esc_url( $deactivate_action_url ) . '" aria-label="' . esc_attr__( 'Deactivate this item', 'acf' ) . '">' . __( 'Deactivate', 'acf' ) . '</a>';
+			}
+
 			// Return actions in custom order.
-			$order = array( 'edit', 'acfduplicate', 'trash' );
+			$order = array( 'edit', 'acfduplicate', $activate_deactivate_action, 'trash' );
 			return array_merge( array_flip( $order ), $actions );
 		}
 
@@ -519,20 +552,127 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		 * @return  array
 		 */
 		public function admin_table_bulk_actions( $actions ) {
-
-			// Add "duplicate" action.
-			if ( $this->view !== 'sync' ) {
-				$actions['acfduplicate'] = __( 'Duplicate', 'acf' );
+			if ( ! in_array( $this->view, array( 'sync', 'trash' ), true ) ) {
+				$actions['acfduplicate']  = __( 'Duplicate', 'acf' );
+				$actions['acfactivate']   = __( 'Activate', 'acf' );
+				$actions['acfdeactivate'] = __( 'Deactivate', 'acf' );
 			}
 
-			// Add "Sync" action.
 			if ( $this->sync ) {
 				if ( $this->view === 'sync' ) {
 					$actions = array();
 				}
 				$actions['acfsync'] = __( 'Sync changes', 'acf' );
 			}
+
 			return $actions;
+		}
+
+		/**
+		 * Checks for the custom "Activate" bulk action.
+		 *
+		 * @since 6.0
+		 */
+		public function check_activate() {
+
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
+			// Display notice on success redirect.
+			if ( isset( $_GET['acfactivatecomplete'] ) ) {
+				$ids = array_map( 'intval', explode( ',', $_GET['acfactivatecomplete'] ) );
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
+				// Generate text.
+				$text = sprintf(
+					_n( 'Field group activated.', '%s field groups activated.', count( $ids ), 'acf' ),
+					count( $ids )
+				);
+
+				// Append links to text.
+				$links = array();
+				foreach ( $ids as $id ) {
+					$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+				}
+				$text .= ' ' . implode( ', ', $links );
+
+				// Add notice.
+				acf_add_admin_notice( $text, 'success' );
+				return;
+			}
+
+			// Find items to activate.
+			$ids = array();
+			if ( isset( $_GET['acfactivate'] ) ) {
+				$ids[] = intval( $_GET['acfactivate'] );
+			} elseif ( isset( $_GET['post'], $_GET['action2'] ) && $_GET['action2'] === 'acfactivate' ) {
+				$ids = array_map( 'intval', $_GET['post'] );
+			}
+
+			if ( $ids ) {
+				check_admin_referer( 'bulk-posts' );
+
+				// Activate the field groups and return an array of IDs that were activated.
+				$new_ids = array();
+				foreach ( $ids as $id ) {
+					if ( acf_update_field_group_active_status( $id ) ) {
+						$new_ids[] = $id;
+					}
+				}
+
+				wp_redirect( $this->get_admin_url( '&acfactivatecomplete=' . implode( ',', $new_ids ) ) );
+				exit;
+			}
+		}
+
+		/**
+		 * Checks for the custom "Deactivate" bulk action.
+		 *
+		 * @since 6.0
+		 */
+		public function check_deactivate() {
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
+			// Display notice on success redirect.
+			if ( isset( $_GET['acfdeactivatecomplete'] ) ) {
+				$ids = array_map( 'intval', explode( ',', $_GET['acfdeactivatecomplete'] ) );
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
+				// Generate text.
+				$text = sprintf(
+					_n( 'Field group deactivated.', '%s field groups deactivated.', count( $ids ), 'acf' ),
+					count( $ids )
+				);
+
+				// Append links to text.
+				$links = array();
+				foreach ( $ids as $id ) {
+					$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+				}
+				$text .= ' ' . implode( ', ', $links );
+
+				// Add notice.
+				acf_add_admin_notice( $text, 'success' );
+				return;
+			}
+
+			// Find items to activate.
+			$ids = array();
+			if ( isset( $_GET['acfdeactivate'] ) ) {
+				$ids[] = intval( $_GET['acfdeactivate'] );
+			} elseif ( isset( $_GET['post'], $_GET['action2'] ) && $_GET['action2'] === 'acfdeactivate' ) {
+				$ids = array_map( 'intval', $_GET['post'] );
+			}
+
+			if ( $ids ) {
+				check_admin_referer( 'bulk-posts' );
+
+				// Activate the field groups and return an array of IDs.
+				$new_ids = array();
+				foreach ( $ids as $id ) {
+					if ( acf_update_field_group_active_status( $id, false ) ) {
+						$new_ids[] = $id;
+					}
+				}
+
+				wp_redirect( $this->get_admin_url( '&acfdeactivatecomplete=' . implode( ',', $new_ids ) ) );
+				exit;
+			}
 		}
 
 		/**
@@ -546,10 +686,11 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		 */
 		public function check_duplicate() {
 
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
 			// Display notice on success redirect.
 			if ( isset( $_GET['acfduplicatecomplete'] ) ) {
 				$ids = array_map( 'intval', explode( ',', $_GET['acfduplicatecomplete'] ) );
-
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// Generate text.
 				$text = sprintf(
 					_n( 'Field group duplicated.', '%s field groups duplicated.', count( $ids ), 'acf' ),
@@ -603,10 +744,11 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		 */
 		public function check_sync() {
 
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			// Display notice on success redirect.
 			if ( isset( $_GET['acfsynccomplete'] ) ) {
 				$ids = array_map( 'intval', explode( ',', $_GET['acfsynccomplete'] ) );
-
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// Generate text.
 				$text = sprintf(
 					_n( 'Field group synchronised.', '%s field groups synchronised.', count( $ids ), 'acf' ),
@@ -724,7 +866,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			content: '<p class="acf-modal-feedback"><i class="acf-loading"></i> ' + acf.__('Loading diff') + '</p>',
 			toolbar: '<a href="' + props.href + '" class="button button-primary button-sync-changes disabled">' + acf.__('Sync changes') + '</a>',
 		});
-		
+
 		// Call AJAX.
 		var xhr = $.ajax({
 			url: acf.get('ajaxurl'),
@@ -745,7 +887,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			}
 		});
 	}
-	
+
 	// Add event listener.
 	$(document).on('click', 'a[data-event="review-sync"]', function( e ){
 		e.preventDefault();

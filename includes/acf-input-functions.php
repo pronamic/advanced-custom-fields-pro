@@ -213,7 +213,42 @@ function acf_file_input( $attrs = array() ) {
  * @return  string
  */
 function acf_get_file_input( $attrs = array() ) {
-	return sprintf( '<input type="file" %s/>', acf_esc_attrs( $attrs ) );
+	$field_key   = isset( $attrs['key'] ) && is_string( $attrs['key'] ) ? $attrs['key'] : '';
+	$nonce_field = '';
+
+	/**
+	 * If we don't have a field key (most likely because this was called by a third-party field),
+	 * we have to try to guess the field key based on the field name.
+	 */
+	if ( '' === $field_key ) {
+		$parts = explode( '[', $attrs['name'] );
+		if ( is_array( $parts ) && ! empty( $parts[1] ) ) {
+			// Remove the trailing `]`.
+			$field_key = substr( end( $parts ), 0, -1 );
+		}
+	}
+
+	/**
+	 * We only output the nonce if we have a field key, as it's possible to render
+	 * the file input without a real field. But, basic uploaders that don't have any
+	 * custom logic will likely fail to upload anyway if they don't have a field key.
+	 */
+	if ( '' !== $field_key ) {
+		$nonce_attrs = array(
+			'name'  => 'acf[' . $field_key . '_file_nonce]',
+			'value' => wp_create_nonce( 'acf/file_uploader_nonce/' . $field_key ),
+		);
+		$nonce_field = sprintf(
+			'<input type="hidden" %s />',
+			acf_esc_attrs( $nonce_attrs )
+		);
+	}
+
+	return sprintf(
+		'<input type="file" %1$s />%2$s',
+		acf_esc_attrs( $attrs ),
+		$nonce_field
+	);
 }
 
 /**

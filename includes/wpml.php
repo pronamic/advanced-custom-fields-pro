@@ -137,7 +137,7 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 				ARRAY_A
 			);
 
-			// bail ealry if no rows
+			// bail early if no rows
 			if ( ! $old_row || ! $new_row ) {
 				return;
 			}
@@ -281,12 +281,14 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		 */
 		function verify_ajax() {
 
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified elsewhere.
 			// set the language for this AJAX request
 			// this will allow get_posts to work as expected (load posts from the correct language)
 			if ( isset( $_REQUEST['lang'] ) ) {
 				global $sitepress;
 				$sitepress->switch_lang( $_REQUEST['lang'] );
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		}
 
 		/**

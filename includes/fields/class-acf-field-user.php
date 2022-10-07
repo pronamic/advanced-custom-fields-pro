@@ -46,7 +46,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @return  void
 		 */
 		function render_field_settings( $field ) {
-
 			acf_render_field_setting(
 				$field,
 				array(
@@ -65,11 +64,16 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Allow Null?', 'acf' ),
+					'label'        => __( 'Return Format', 'acf' ),
 					'instructions' => '',
-					'name'         => 'allow_null',
-					'type'         => 'true_false',
-					'ui'           => 1,
+					'type'         => 'radio',
+					'name'         => 'return_format',
+					'choices'      => array(
+						'array'  => __( 'User Array', 'acf' ),
+						'object' => __( 'User Object', 'acf' ),
+						'id'     => __( 'User ID', 'acf' ),
+					),
+					'layout'       => 'horizontal',
 				)
 			);
 
@@ -83,20 +87,25 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 					'ui'           => 1,
 				)
 			);
+		}
 
+		/**
+		 * Renders the field settings used in the "Validation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_validation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Return Format', 'acf' ),
+					'label'        => __( 'Allow Null?', 'acf' ),
 					'instructions' => '',
-					'type'         => 'radio',
-					'name'         => 'return_format',
-					'choices'      => array(
-						'array'  => __( 'User Array', 'acf' ),
-						'object' => __( 'User Object', 'acf' ),
-						'id'     => __( 'User ID', 'acf' ),
-					),
-					'layout'       => 'horizontal',
+					'name'         => 'allow_null',
+					'type'         => 'true_false',
+					'ui'           => 1,
 				)
 			);
 		}
@@ -316,6 +325,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 */
 		function ajax_query() {
 
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			// Modify Request args.
 			if ( isset( $_REQUEST['s'] ) ) {
 				$_REQUEST['search'] = $_REQUEST['s'];
@@ -323,6 +333,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			if ( isset( $_REQUEST['paged'] ) ) {
 				$_REQUEST['page'] = $_REQUEST['paged'];
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 			// Add query hooks.
 			add_action( 'acf/ajax/query_users/init', array( $this, 'ajax_query_init' ), 10, 2 );
