@@ -79,7 +79,7 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 
 			// Output.
 			?>
-		<div <?php acf_esc_attr_e( $div ); ?>>
+		<div <?php echo acf_esc_attrs( $div ); ?>>
 			<?php acf_hidden_input( $hidden_input ); ?>
 			<?php acf_text_input( $text_input ); ?>
 		</div>
@@ -100,14 +100,12 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// vars
 			$g_i_a = date_i18n( 'g:i a' );
 			$H_i_s = date_i18n( 'H:i:s' );
 
-			// display_format
+			echo '<div class="acf-field-settings-split">';
+
 			acf_render_field_setting(
 				$field,
 				array(
@@ -124,7 +122,6 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 				)
 			);
 
-			// return_format
 			acf_render_field_setting(
 				$field,
 				array(
@@ -141,8 +138,9 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 				)
 			);
 
-		}
+			echo '</div>';
 
+		}
 
 		/*
 		*  format_value()

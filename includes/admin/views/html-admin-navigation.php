@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-global $submenu, $parent_file, $submenu_file, $plugin_page, $pagenow;
+global $submenu, $parent_file, $submenu_file, $plugin_page, $pagenow, $acf_page_title;
 
 // Vars.
 $parent_slug = 'edit.php?post_type=acf-field-group';
@@ -38,7 +38,11 @@ if ( isset( $submenu[ $parent_slug ] ) ) {
 
 		// Convert submenu slug "test" to "$parent_slug&page=test".
 		if ( ! strpos( $sub_item[2], '.php' ) ) {
-			$tab['url'] = add_query_arg( array( 'page' => $sub_item[2] ), $parent_slug );
+			$tab['url']   = add_query_arg( array( 'page' => $sub_item[2] ), $parent_slug );
+			$tab['class'] = $sub_item[2];
+		} else {
+			// Build class from URL.
+			$tab['class'] = str_replace( 'edit.php?post_type=', '', $sub_item[2] );
 		}
 
 		// Detect active state.
@@ -71,12 +75,16 @@ if ( $tabs === false ) {
 
 ?>
 <div class="acf-admin-toolbar">
-	<h2><i class="acf-tab-icon dashicons dashicons-welcome-widgets-menus"></i> <?php echo acf_get_setting( 'name' ); ?></h2>
+
+	<a href="<?php echo admin_url( 'edit.php?post_type=acf-field-group' ); ?>" class="acf-logo"><img src="<?php echo acf_get_url( 'assets/images/acf-logo.svg' ); ?>" alt="<?php esc_attr_e( 'Advanced Custom Fields logo', 'acf' ); ?>"></a>
+	<h2><?php echo acf_get_setting( 'name' ); ?></h2>
 	<?php
 	foreach ( $tabs as $tab ) {
+		$classname = ! empty( $tab['class'] ) ? $tab['class'] : $tab['text'];
 		printf(
-			'<a class="acf-tab%s" href="%s">%s</a>',
+			'<a class="acf-tab%s %s" href="%s"><i class="acf-icon"></i>%s</a>',
 			! empty( $tab['is_active'] ) ? ' is-active' : '',
+			'acf-header-tab-' . acf_slugify( $classname ),
 			esc_url( $tab['url'] ),
 			acf_esc_html( $tab['text'] )
 		);
@@ -84,10 +92,24 @@ if ( $tabs === false ) {
 	?>
 
 	<?php if ( ! defined( 'ACF_PRO' ) || ! ACF_PRO ) : ?>
-		<a target="_blank" href="https://www.advancedcustomfields.com/pro/?utm_source=ACF%2BFree&utm_medium=insideplugin&utm_campaign=ACF%2Bupgrade" class="btn-upgrade">
-			<img src="<?php echo acf_get_url( 'assets/images/icon-upgrade-pro.svg' ); ?>" />
-			<p><?php _e( 'Upgrade to Pro', 'acf' ); ?></p>
-		</a>
+	<a target="_blank" href="<?php echo acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'header' ); ?>" class="btn-upgrade acf-admin-toolbar-upgrade-btn">
+		<i class="acf-icon acf-icon-stars"></i>
+		<p><?php _e( 'Unlock Extra Features with ACF PRO', 'acf' ); ?></p>
+	</a>
 	<?php endif; ?>
 
 </div>
+
+<?php
+
+global $plugin_page;
+$screen = get_current_screen();
+if ( $screen->id !== 'acf-field-group' ) {
+	if ( $plugin_page == 'acf-tools' ) {
+		$acf_page_title = __( 'Tools', 'acf' );
+	} elseif ( $plugin_page == 'acf-settings-updates' ) {
+		$acf_page_title = __( 'Updates', 'acf' );
+	}
+	acf_get_view( 'html-admin-acf-header' );
+}
+?>

@@ -66,47 +66,36 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 		}
 
-
-		/*
-		*  wp_oembed_get
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    24/01/2014
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
-
+		/**
+		 * Attempts to fetch the HTML for the provided URL using oEmbed.
+		 *
+		 * @date    24/01/2014
+		 * @since   5.0.0
+		 *
+		 * @param string     $url    The URL that should be embedded.
+		 * @param int|string $width  Optional maxwidth value passed to the provider URL.
+		 * @param int|string $height Optional maxheight value passed to the provider URL.
+		 * @return string|false The embedded HTML on success, false on failure.
+		 */
 		function wp_oembed_get( $url = '', $width = 0, $height = 0 ) {
-
-			// vars
-			$embed = '';
+			$embed = false;
 			$res   = array(
 				'width'  => $width,
 				'height' => $height,
 			);
 
-			// get emebed
-			$embed = @wp_oembed_get( $url, $res );
+			if ( function_exists( 'wp_oembed_get' ) ) {
+				$embed = wp_oembed_get( $url, $res );
+			}
 
 			// try shortcode
 			if ( ! $embed ) {
-
-				 // global
 				global $wp_embed;
-
-				// get emebed
 				$embed = $wp_embed->shortcode( $res, $url );
-
 			}
 
-			// return
 			return $embed;
 		}
-
 
 		/*
 		*  ajax_query
@@ -209,7 +198,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			}
 
 			?>
-<div <?php acf_esc_attr_e( $atts ); ?>>
+<div <?php echo acf_esc_attrs( $atts ); ?>>
 	
 			<?php
 			acf_hidden_input(
@@ -266,10 +255,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		*  @since   3.6
 		*  @date    23/01/13
 		*/
-
 		function render_field_settings( $field ) {
-
-			// width
 			acf_render_field_setting(
 				$field,
 				array(
@@ -282,7 +268,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 				)
 			);
 
-			// height
 			acf_render_field_setting(
 				$field,
 				array(
@@ -295,9 +280,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 					'_append'     => 'width',
 				)
 			);
-
 		}
-
 
 		/**
 		 *  format_value()

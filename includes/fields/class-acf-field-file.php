@@ -125,7 +125,7 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 			}
 
 			?>
-<div <?php acf_esc_attr_e( $div ); ?>>
+<div <?php echo acf_esc_attrs( $div ); ?>>
 			<?php
 			acf_hidden_input(
 				array(
@@ -172,6 +172,7 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 					array(
 						'name' => $field['name'],
 						'id'   => $field['id'],
+						'key'  => $field['key'],
 					)
 				);
 				?>
@@ -189,7 +190,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 
 		}
 
-
 		/*
 		*  render_field_settings()
 		*
@@ -202,25 +202,7 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// clear numeric settings
-			$clear = array(
-				'min_size',
-				'max_size',
-			);
-
-			foreach ( $clear as $k ) {
-
-				if ( empty( $field[ $k ] ) ) {
-
-					$field[ $k ] = '';
-
-				}
-			}
-
-			// return_format
 			acf_render_field_setting(
 				$field,
 				array(
@@ -237,7 +219,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 				)
 			);
 
-			// library
 			acf_render_field_setting(
 				$field,
 				array(
@@ -252,8 +233,30 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 					),
 				)
 			);
+		}
 
-			// min
+		/**
+		 * Renders the field settings used in the "Validation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_validation_settings( $field ) {
+			// Clear numeric settings.
+			$clear = array(
+				'min_size',
+				'max_size',
+			);
+
+			foreach ( $clear as $k ) {
+
+				if ( empty( $field[ $k ] ) ) {
+					$field[ $k ] = '';
+				}
+			}
+
 			acf_render_field_setting(
 				$field,
 				array(
@@ -266,7 +269,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 				)
 			);
 
-			// max
 			acf_render_field_setting(
 				$field,
 				array(
@@ -279,19 +281,16 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 				)
 			);
 
-			// allowed type
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Allowed file types', 'acf' ),
-					'instructions' => __( 'Comma separated list. Leave blank for all types', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'mime_types',
+					'label' => __( 'Allowed file types', 'acf' ),
+					'hint'  => __( 'Comma separated list. Leave blank for all types', 'acf' ),
+					'type'  => 'text',
+					'name'  => 'mime_types',
 				)
 			);
-
 		}
-
 
 		/*
 		*  format_value()
@@ -412,12 +411,12 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 				return $valid;
 			}
 
-			// bail ealry if is numeric
+			// bail early if is numeric
 			if ( is_numeric( $value ) ) {
 				return $valid;
 			}
 
-			// bail ealry if not basic string
+			// bail early if not basic string
 			if ( ! is_string( $value ) ) {
 				return $valid;
 			}

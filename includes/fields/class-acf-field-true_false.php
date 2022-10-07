@@ -127,21 +127,17 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// message
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Message', 'acf' ),
-					'instructions' => __( 'Displays text alongside the checkbox', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'message',
+					'label' => __( 'Message', 'acf' ),
+					'hint'  => __( 'Displays text alongside the checkbox', 'acf' ),
+					'type'  => 'text',
+					'name'  => 'message',
 				)
 			);
 
-			// default_value
 			acf_render_field_setting(
 				$field,
 				array(
@@ -151,21 +147,17 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 					'name'         => 'default_value',
 				)
 			);
+		}
 
-			// ui
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Stylised UI', 'acf' ),
-					'instructions' => '',
-					'type'         => 'true_false',
-					'name'         => 'ui',
-					'ui'           => 1,
-					'class'        => 'acf-field-object-true-false-ui',
-				)
-			);
-
-			// on_text
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_presentation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -182,7 +174,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
-			// on_text
 			acf_render_field_setting(
 				$field,
 				array(
@@ -199,8 +190,18 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 				)
 			);
 
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Stylized UI', 'acf' ),
+					'instructions' => __( 'Use a stylized checkbox using select2', 'acf' ),
+					'type'         => 'true_false',
+					'name'         => 'ui',
+					'ui'           => 1,
+					'class'        => 'acf-field-object-true-false-ui',
+				)
+			);
 		}
-
 
 		/*
 		*  format_value()

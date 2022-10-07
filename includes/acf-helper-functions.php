@@ -119,7 +119,7 @@ function acf_cache_key( $key = '' ) {
  */
 function acf_request_args( $args = array() ) {
 	foreach ( $args as $k => $v ) {
-		$args[ $k ] = isset( $_REQUEST[ $k ] ) ? $_REQUEST[ $k ] : $args[ $k ];
+		$args[ $k ] = isset( $_REQUEST[ $k ] ) ? $_REQUEST[ $k ] : $args[ $k ]; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Verified elsewhere.
 	}
 	return $args;
 }
@@ -135,7 +135,7 @@ function acf_request_args( $args = array() ) {
  * @return  mixed
  */
 function acf_request_arg( $name = '', $default = null ) {
-	return isset( $_REQUEST[ $name ] ) ? $_REQUEST[ $name ] : $default;
+	return isset( $_REQUEST[ $name ] ) ? $_REQUEST[ $name ] : $default; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 }
 
 // Register store.
@@ -379,7 +379,7 @@ function acf_idify( $str = '' ) {
 function acf_slugify( $str = '', $glue = '-' ) {
 	$raw  = $str;
 	$slug = str_replace( array( '_', '-', '/', ' ' ), $glue, strtolower( remove_accents( $raw ) ) );
-	$slug = preg_replace( "/[^A-Za-z0-9" . preg_quote( $glue ) . "]/", '', $slug );
+	$slug = preg_replace( '/[^A-Za-z0-9' . preg_quote( $glue ) . ']/', '', $slug );
 
 	/**
 	 * Filters the slug created by acf_slugify().
@@ -498,4 +498,33 @@ function acf_get_current_url() {
 		return ( is_ssl() ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	}
 	return '';
+}
+
+/**
+ * Add UTM tracking tags to internal ACF URLs
+ *
+ * @since 6.0.0
+ *
+ * @param string $url The URL to be tagged.
+ * @param string $campaign The campaign tag.
+ * @param string $content The UTM content tag.
+ * @return string
+ */
+function acf_add_url_utm_tags( $url, $campaign, $content, $anchor = false ) {
+	$anchor_url = $anchor ? '#' . $anchor : '';
+	$query      = http_build_query(
+		apply_filters(
+			'acf/admin/acf_url_utm_parameters',
+			array(
+				'utm_source'   => ( defined( 'ACF_PRO' ) && ACF_PRO ) ? 'ACF PRO' : 'ACF Free',
+				'utm_medium'   => 'insideplugin',
+				'utm_campagin' => $campaign,
+				'utm_content'  => $content,
+			)
+		)
+	);
+	if ( $query ) {
+		$query = '?' . $query;
+	}
+	return esc_url( $url . $query . $anchor_url );
 }

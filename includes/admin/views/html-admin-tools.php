@@ -14,17 +14,17 @@
  */
 
 $class = $active ? 'single' : 'grid';
-
+$tool  = $active ? ' tool-' . $active : '';
 ?>
-<div class="wrap" id="acf-admin-tools">
-	
+<div id="acf-admin-tools" class="wrap<?php echo esc_attr( $tool ); ?>">
+
 	<h1><?php _e( 'Tools', 'acf' ); ?> <?php
 	if ( $active ) :
 		?>
 		<a class="page-title-action" href="<?php echo acf_get_admin_tools_url(); ?>"><?php _e( 'Back to all tools', 'acf' ); ?></a><?php endif; ?></h1>
-	
+
 	<div class="acf-meta-box-wrap -<?php echo $class; ?>">
-		<?php do_meta_boxes( $screen_id, 'normal', '' ); ?>	
+		<?php do_meta_boxes( $screen_id, 'normal', '' ); ?>
 	</div>
-	
+
 </div>

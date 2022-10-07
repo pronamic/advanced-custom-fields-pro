@@ -9,6 +9,13 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 	class ACF_Admin_Upgrade {
 
 		/**
+		 * The name of the transient to store the network update check status.
+		 *
+		 * @var string
+		 */
+		public $network_upgrade_needed_transient;
+
+		/**
 		 *  __construct
 		 *
 		 *  Sets up the class functionality.
@@ -21,7 +28,8 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 */
 		function __construct() {
 
-			// actions
+			$this->network_upgrade_needed_transient = 'acf_network_upgrade_needed_' . ACF_UPGRADE_VERSION;
+
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 20 );
 			if ( is_multisite() ) {
 				add_action( 'network_admin_menu', array( $this, 'network_admin_menu' ), 20 );
@@ -56,58 +64,30 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		}
 
 		/**
-		 * network_admin_menu
-		 *
-		 * Sets up admin logic if DB Upgrade is required on a multi site.
+		 * Displays a “Database Upgrade Required” network admin notice and adds
+		 * the “Upgrade Database” submenu under the “Dashboard” network admin
+		 * menu item if an ACF upgrade needs to run on any network site.
 		 *
 		 * @date    24/8/18
 		 * @since   5.7.4
+		 * @since   6.0.0 Reduce memory usage, cache network upgrade checks.
 		 *
-		 * @param   void
 		 * @return  void
 		 */
 		function network_admin_menu() {
-
-			// Vars.
-			$upgrade = false;
-
-			// Loop over sites and check for upgrades.
-			$sites = get_sites( array( 'number' => 0 ) );
-			if ( $sites ) {
-
-				// Unhook action to avoid memory issue (as seen in wp-includes/ms-site.php).
-				remove_action( 'switch_blog', 'wp_switch_roles_and_user', 1 );
-				foreach ( $sites as $site ) {
-
-					// Switch site.
-					switch_to_blog( $site->blog_id );
-
-					// Check for upgrade.
-					$site_upgrade = acf_has_upgrade();
-
-					// Restore site.
-					// Ideally, we would switch back to the original site at after looping, however,
-					// the restore_current_blog() is needed to modify global vars.
-					restore_current_blog();
-
-					// Check if upgrade was found.
-					if ( $site_upgrade ) {
-						$upgrade = true;
-						break;
-					}
-				}
-				add_action( 'switch_blog', 'wp_switch_roles_and_user', 1, 2 );
+			$network_upgrade_needed = get_site_transient( $this->network_upgrade_needed_transient );
+			
+			// No transient value exists, so run the upgrade check.
+			if ( $network_upgrade_needed === false ) {
+				$network_upgrade_needed = $this->check_for_network_upgrades();
 			}
 
-			// Bail early if no upgrade is needed.
-			if ( ! $upgrade ) {
+			if ( $network_upgrade_needed === 'no' ) {
 				return;
 			}
 
-			// Add notice.
 			add_action( 'network_admin_notices', array( $this, 'network_admin_notices' ) );
 
-			// Add page.
 			$page = add_submenu_page(
 				'index.php',
 				__( 'Upgrade Database', 'acf' ),
@@ -116,7 +96,63 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 				'acf-upgrade-network',
 				array( $this, 'network_admin_html' )
 			);
+
 			add_action( "load-$page", array( $this, 'network_admin_load' ) );
+		}
+
+		/**
+		 * Checks if an ACF database upgrade is required on any site in the
+		 * multisite network.
+		 * 
+		 * Stores the result in `$this->network_upgrade_needed_transient`,
+		 * which is version-linked to ACF_UPGRADE_VERSION: the highest ACF
+		 * version that requires an upgrade function to run. Bumping
+		 * ACF_UPGRADE_VERSION will trigger new upgrade checks but incrementing
+		 * ACF_VERSION alone will not.
+		 *
+		 * @since 6.0.0
+		 * @return string 'yes' if any site in the network requires an upgrade,
+		 *                otherwise 'no'. String instead of boolean so that
+		 *                `false` returned from a get_site_transient check can
+		 *                denote that an upgrade check is needed.
+		 */
+		public function check_for_network_upgrades() {
+			$network_upgrade_needed = 'no';
+
+			$sites = get_sites( 
+				array(
+					'number' => 0,
+					'fields' => 'ids', // Reduces PHP memory usage.
+				)
+			);
+
+			if ( $sites ) {
+				// Reduces memory usage (same pattern used in wp-includes/ms-site.php).
+				remove_action( 'switch_blog', 'wp_switch_roles_and_user', 1 );
+
+				foreach ( $sites as $site_id ) {
+					switch_to_blog( $site_id );
+
+					$site_needs_upgrade = acf_has_upgrade();
+
+					restore_current_blog(); // Restores global vars.
+
+					if ( $site_needs_upgrade ) {
+						$network_upgrade_needed = 'yes';
+						break;
+					}
+				}
+
+				add_action( 'switch_blog', 'wp_switch_roles_and_user', 1, 2 );
+			}
+
+			set_site_transient(
+				$this->network_upgrade_needed_transient,
+				$network_upgrade_needed,
+				3 * MONTH_IN_SECONDS
+			);
+
+			return $network_upgrade_needed;
 		}
 
 		/**
@@ -242,5 +278,3 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 	acf_new_instance( 'ACF_Admin_Upgrade' );
 
 endif; // class_exists check
-
-

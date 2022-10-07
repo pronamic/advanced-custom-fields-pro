@@ -265,7 +265,7 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			);
 
 			?>
-		<div <?php acf_esc_attr_e( $wrap ); ?>>
+		<div <?php echo acf_esc_attrs( $wrap ); ?>>
 			<div id="wp-<?php echo esc_attr( $id ); ?>-editor-tools" class="wp-editor-tools hide-if-no-js">
 				<?php if ( $field['media_upload'] ) : ?>
 				<div id="wp-<?php echo esc_attr( $id ); ?>-media-buttons" class="wp-media-buttons">
@@ -308,26 +308,7 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// vars
-			$toolbars = $this->get_toolbars();
-			$choices  = array();
-
-			if ( ! empty( $toolbars ) ) {
-
-				foreach ( $toolbars as $k => $v ) {
-
-					$label = $k;
-					$name  = sanitize_title( $label );
-					$name  = str_replace( '-', '_', $name );
-
-					$choices[ $name ] = $label;
-				}
-			}
-
-			// default_value
 			acf_render_field_setting(
 				$field,
 				array(
@@ -338,52 +319,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				)
 			);
 
-			// tabs
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Tabs', 'acf' ),
-					'instructions' => '',
-					'type'         => 'select',
-					'name'         => 'tabs',
-					'choices'      => array(
-						'all'    => __( 'Visual & Text', 'acf' ),
-						'visual' => __( 'Visual Only', 'acf' ),
-						'text'   => __( 'Text Only', 'acf' ),
-					),
-				)
-			);
-
-			// toolbar
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Toolbar', 'acf' ),
-					'instructions' => '',
-					'type'         => 'select',
-					'name'         => 'toolbar',
-					'choices'      => $choices,
-					'conditions'   => array(
-						'field'    => 'tabs',
-						'operator' => '!=',
-						'value'    => 'text',
-					),
-				)
-			);
-
-			// media_upload
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Show Media Upload Buttons?', 'acf' ),
-					'instructions' => '',
-					'name'         => 'media_upload',
-					'type'         => 'true_false',
-					'ui'           => 1,
-				)
-			);
-
-			// delay
 			acf_render_field_setting(
 				$field,
 				array(
@@ -400,6 +335,73 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				)
 			);
 
+		}
+
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_presentation_settings( $field ) {
+			$toolbars = $this->get_toolbars();
+			$choices  = array();
+
+			if ( ! empty( $toolbars ) ) {
+
+				foreach ( $toolbars as $k => $v ) {
+
+					$label = $k;
+					$name  = sanitize_title( $label );
+					$name  = str_replace( '-', '_', $name );
+
+					$choices[ $name ] = $label;
+				}
+			}
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Tabs', 'acf' ),
+					'instructions' => '',
+					'type'         => 'select',
+					'name'         => 'tabs',
+					'choices'      => array(
+						'all'    => __( 'Visual & Text', 'acf' ),
+						'visual' => __( 'Visual Only', 'acf' ),
+						'text'   => __( 'Text Only', 'acf' ),
+					),
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Toolbar', 'acf' ),
+					'instructions' => '',
+					'type'         => 'select',
+					'name'         => 'toolbar',
+					'choices'      => $choices,
+					'conditions'   => array(
+						'field'    => 'tabs',
+						'operator' => '!=',
+						'value'    => 'text',
+					),
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Show Media Upload Buttons?', 'acf' ),
+					'instructions' => '',
+					'name'         => 'media_upload',
+					'type'         => 'true_false',
+					'ui'           => 1,
+				)
+			);
 		}
 
 		/**
