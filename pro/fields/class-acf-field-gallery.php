@@ -226,7 +226,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			$r     = array();
 			$order = 'DESC';
 			$args  = acf_parse_args(
-				$_POST,
+				$_POST, // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified below.
 				array(
 					'ids'       => 0,
 					'sort'      => 'date',
@@ -457,7 +457,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			}
 
 			?>
-<div <?php acf_esc_attr_e( $attrs ); ?>>
+<div <?php echo acf_esc_attrs( $attrs ); ?>>
 	<input type="hidden" name="<?php echo esc_attr( $field['name'] ); ?>" value="" />
 	<div class="acf-gallery-main">
 		<div class="acf-gallery-attachments">
@@ -546,27 +546,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		*/
 
 		function render_field_settings( $field ) {
-
-			// clear numeric settings
-			$clear = array(
-				'min',
-				'max',
-				'min_width',
-				'min_height',
-				'min_size',
-				'max_width',
-				'max_height',
-				'max_size',
-			);
-
-			foreach ( $clear as $k ) {
-
-				if ( empty( $field[ $k ] ) ) {
-					$field[ $k ] = '';
-				}
-			}
-
-			// return_format
 			acf_render_field_setting(
 				$field,
 				array(
@@ -583,34 +562,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			// preview_size
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Preview Size', 'acf' ),
-					'instructions' => '',
-					'type'         => 'select',
-					'name'         => 'preview_size',
-					'choices'      => acf_get_image_sizes(),
-				)
-			);
-
-			// insert
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Insert', 'acf' ),
-					'instructions' => __( 'Specify where new attachments are added', 'acf' ),
-					'type'         => 'select',
-					'name'         => 'insert',
-					'choices'      => array(
-						'append'  => __( 'Append to the end', 'acf' ),
-						'prepend' => __( 'Prepend to the beginning', 'acf' ),
-					),
-				)
-			);
-
-			// library
 			acf_render_field_setting(
 				$field,
 				array(
@@ -625,8 +576,35 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 					),
 				)
 			);
+		}
 
-			// min
+		/**
+		 * Renders the field settings used in the "Validation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_validation_settings( $field ) {
+			// Clear numeric settings.
+			$clear = array(
+				'min',
+				'max',
+				'min_width',
+				'min_height',
+				'min_size',
+				'max_width',
+				'max_height',
+				'max_size',
+			);
+
+			foreach ( $clear as $k ) {
+				if ( empty( $field[ $k ] ) ) {
+					$field[ $k ] = '';
+				}
+			}
+
 			acf_render_field_setting(
 				$field,
 				array(
@@ -637,7 +615,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			// max
 			acf_render_field_setting(
 				$field,
 				array(
@@ -648,7 +625,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			// min
 			acf_render_field_setting(
 				$field,
 				array(
@@ -685,7 +661,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			// max
 			acf_render_field_setting(
 				$field,
 				array(
@@ -722,18 +697,51 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			// allowed type
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Allowed file types', 'acf' ),
-					'instructions' => __( 'Comma separated list. Leave blank for all types', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'mime_types',
+					'label' => __( 'Allowed file types', 'acf' ),
+					'hint'  => __( 'Comma separated list. Leave blank for all types', 'acf' ),
+					'type'  => 'text',
+					'name'  => 'mime_types',
 				)
 			);
 		}
 
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_presentation_settings( $field ) {
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Insert', 'acf' ),
+					'instructions' => __( 'Specify where new attachments are added', 'acf' ),
+					'type'         => 'select',
+					'name'         => 'insert',
+					'choices'      => array(
+						'append'  => __( 'Append to the end', 'acf' ),
+						'prepend' => __( 'Prepend to the beginning', 'acf' ),
+					),
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Preview Size', 'acf' ),
+					'instructions' => '',
+					'type'         => 'select',
+					'name'         => 'preview_size',
+					'choices'      => acf_get_image_sizes(),
+				)
+			);
+		}
 
 		/*
 		*  format_value()

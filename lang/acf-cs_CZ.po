@@ -1,114 +1,2909 @@
+# Advanced Custom Fields Translations are a combination of translate.wordpress.org contributions,
+# combined with user contributed strings for the PRO version.
+# Translations from translate.wordpress.org take priority over translations in this file.
+# translate.wordpress.org contributions are synced at the time of each release.
+#
+# If you would like to contribute translations, please visit
+# https://translate.wordpress.org/projects/wp-plugins/advanced-custom-fields/stable/
+#
+# For additional ACF PRO strings, please submit a pull request over on the ACF GitHub repo at
+# http://github.com/advancedcustomfields/acf using the .pot (and any existing .po) files in /lang/pro/
+#
+# This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"Project-Id-Version: Advanced Custom Fields Pro v5.2.9\n"
+"PO-Revision-Date: 2022-09-29T12:15:07+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
-"POT-Creation-Date: 2018-09-06 12:21+1000\n"
-"PO-Revision-Date: 2018-12-11 09:20+0100\n"
-"Last-Translator: Elliot Condon <e@elliotcondon.com>\n"
-"Language-Team: webees.cz s.r.o. <jakubmachala@webees.cz>\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: acf.php\n"
-"X-Textdomain-Support: yes\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Generator: gettext\n"
+"Project-Id-Version: Advanced Custom Fields\n"
 
-#: acf.php:80
-msgid "Advanced Custom Fields"
-msgstr "Advanced Custom Fields"
+#: includes/fields/class-acf-field-tab.php:122
+msgid "Start a new group of tabs at this tab."
+msgstr ""
 
-#: acf.php:385 includes/admin/admin.php:117
-msgid "Field Groups"
-msgstr "Skupiny polí"
+#: includes/fields/class-acf-field-tab.php:121
+msgid "New Tab Group"
+msgstr ""
 
-#: acf.php:386
-msgid "Field Group"
-msgstr "Skupina polí"
+#: includes/fields/class-acf-field-select.php:446
+#: includes/fields/class-acf-field-true_false.php:197
+msgid "Use a stylized checkbox using select2"
+msgstr ""
 
-#: acf.php:387 acf.php:419 includes/admin/admin.php:118
-#: pro/fields/class-acf-field-flexible-content.php:572
-msgid "Add New"
-msgstr "Přidat nové"
+#: includes/fields/class-acf-field-radio.php:257
+msgid "Save Other Choice"
+msgstr ""
 
-#: acf.php:388
-msgid "Add New Field Group"
-msgstr "Přidat novou skupinu polí"
+#: includes/fields/class-acf-field-radio.php:246
+msgid "Allow Other Choice"
+msgstr ""
 
-#: acf.php:389
-msgid "Edit Field Group"
-msgstr "Upravit skupinu polí"
+#: includes/fields/class-acf-field-checkbox.php:446
+msgid "Add Toggle All"
+msgstr ""
 
-#: acf.php:390
-msgid "New Field Group"
-msgstr "Nová skupina polí"
+#: includes/fields/class-acf-field-checkbox.php:405
+msgid "Save Custom Values"
+msgstr ""
 
-#: acf.php:391
-msgid "View Field Group"
-msgstr "Prohlížet skupinu polí"
+#: includes/fields/class-acf-field-checkbox.php:394
+msgid "Allow Custom Values"
+msgstr ""
 
-#: acf.php:392
-msgid "Search Field Groups"
-msgstr "Hledat skupiny polí"
+#: includes/fields/class-acf-field-checkbox.php:144
+msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
+msgstr ""
 
-#: acf.php:393
-msgid "No Field Groups found"
-msgstr "Nebyly nalezeny žádné skupiny polí"
+#: pro/admin/admin-settings-updates.php:162
+#: pro/admin/views/html-settings-updates.php:13
+msgid "Updates"
+msgstr "Aktualizace"
 
-#: acf.php:394
-msgid "No Field Groups found in Trash"
-msgstr "V koši nebyly nalezeny žádné skupiny polí"
+#: includes/admin/views/html-admin-navigation.php:79
+msgid "Advanced Custom Fields logo"
+msgstr ""
 
-#: acf.php:417 includes/admin/admin-field-group.php:202
-#: includes/admin/admin-field-groups.php:510
-#: pro/fields/class-acf-field-clone.php:811
-msgid "Fields"
-msgstr "Pole"
+#: includes/admin/views/html-admin-form-top.php:22
+msgid "Save Changes"
+msgstr ""
 
-#: acf.php:418
-msgid "Field"
-msgstr "Pole"
+#: includes/admin/views/html-admin-form-top.php:16
+msgid "Field Group Title"
+msgstr ""
 
-#: acf.php:420
-msgid "Add New Field"
-msgstr "Přidat nové pole"
+#: includes/admin/views/html-admin-form-top.php:3
+msgid "Add title"
+msgstr ""
 
-#: acf.php:421
-msgid "Edit Field"
+#. translators: %s url to getting started guide
+#: includes/admin/views/field-groups-empty.php:20
+msgid ""
+"New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting "
+"started guide</a>."
+msgstr ""
+
+#: includes/admin/views/field-groups-empty.php:15
+msgid "Add Field Group"
+msgstr ""
+
+#. translators: %s url to creating a field group page
+#: includes/admin/views/field-groups-empty.php:10
+msgid ""
+"ACF uses <a href=\"%s\" target=\"_blank\">field groups</a> to group custom "
+"fields together, and then attach those fields to edit screens."
+msgstr ""
+
+#: includes/admin/views/field-groups-empty.php:5
+msgid "Add Your First Field Group"
+msgstr ""
+
+#: includes/admin/views/field-group-pro-features.php:16
+msgid "Upgrade Now"
+msgstr ""
+
+#: includes/admin/views/field-group-pro-features.php:11
+msgid "Options Pages"
+msgstr ""
+
+#: includes/admin/views/field-group-pro-features.php:10
+msgid "ACF Blocks"
+msgstr ""
+
+#: includes/admin/views/field-group-pro-features.php:4
+#: includes/admin/views/html-admin-navigation.php:97
+msgid "Unlock Extra Features with ACF PRO"
+msgstr ""
+
+#: includes/admin/views/field-group-options.php:244
+msgid "Delete Field Group"
+msgstr ""
+
+#. translators: 1: Post creation date 2: Post creation time
+#: includes/admin/views/field-group-options.php:238
+msgid "Created on %1$s at %2$s"
+msgstr ""
+
+#: includes/admin/views/field-group-options.php:180
+msgid "Group Settings"
+msgstr ""
+
+#: includes/admin/views/field-group-options.php:28
+msgid "Location Rules"
+msgstr ""
+
+#. translators: %s url to field types list
+#: includes/admin/views/field-group-fields.php:61
+msgid ""
+"Choose from over 30 field types. <a href=\"%s\" target=\"_blank\">Learn "
+"more</a>."
+msgstr ""
+
+#: includes/admin/views/field-group-fields.php:54
+msgid ""
+"Get started creating new custom fields for your posts, pages, custom post "
+"types and other WordPress content."
+msgstr ""
+
+#: includes/admin/views/field-group-fields.php:53
+msgid "Add Your First Field"
+msgstr ""
+
+#. translators: A symbol (or text, if not available in your locale) meaning
+#. "Order Number", in terms of positional placement.
+#: includes/admin/views/field-group-fields.php:32
+msgid "#"
+msgstr ""
+
+#: includes/admin/views/field-group-fields.php:22
+#: includes/admin/views/field-group-fields.php:56
+#: includes/admin/views/field-group-fields.php:92
+#: includes/admin/views/html-admin-form-top.php:21
+msgid "Add Field"
+msgstr ""
+
+#: includes/admin/views/field-group-field.php:192
+#: includes/admin/views/field-group-options.php:40
+msgid "Presentation"
+msgstr ""
+
+#: includes/admin/views/field-group-field.php:160
+msgid "Validation"
+msgstr ""
+
+#: includes/admin/views/field-group-field.php:94
+msgid "General"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:70
+msgid "Import JSON"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:361
+msgid "Export Field Groups - Generate PHP"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:336
+msgid "Export As JSON"
+msgstr ""
+
+#: includes/admin/admin-field-groups.php:638
+msgid "Field group deactivated."
+msgid_plural "%s field groups deactivated."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/admin/admin-field-groups.php:585
+msgid "Field group activated."
+msgid_plural "%s field groups activated."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/admin/admin-field-groups.php:537
+msgid "Deactivate this item"
+msgstr ""
+
+#: includes/admin/admin-field-groups.php:533
+msgid "Activate this item"
+msgstr ""
+
+#: includes/admin/admin-field-group.php:158
+#: assets/build/js/acf-field-group.js:2174
+#: assets/build/js/acf-field-group.js:2582
+msgid "Move field group to trash?"
+msgstr ""
+
+#: acf.php:447 includes/admin/admin-field-group.php:351
+#: includes/admin/admin-field-groups.php:232
+msgctxt "post status"
+msgid "Inactive"
+msgstr ""
+
+#. Author of the plugin
+msgid "WP Engine"
+msgstr ""
+
+#: acf.php:505
+msgid ""
+"Advanced Custom Fields and Advanced Custom Fields should not be active at "
+"the same time. We've automatically deactivated Advanced Custom Fields PRO."
+msgstr ""
+"Advanced Custom Fields a Advanced Custom Fields PRO by neměly být aktivní "
+"současně. Automaticky jsme deaktivovali Advanced Custom Fields PRO."
+
+#: acf.php:503
+msgid ""
+"Advanced Custom Fields and Advanced Custom Fields should not be active at "
+"the same time. We've automatically deactivated Advanced Custom Fields."
+msgstr ""
+"Advanced Custom Fields a Advanced Custom Fields PRO by neměly být aktivní "
+"současně. Automaticky jsme deaktivovali Advanced Custom Fields."
+
+#: includes/acf-value-functions.php:374
+msgid ""
+"<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
+"field values before ACF has been initialized. This is not supported and can "
+"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
+"\">Learn how to fix this</a>."
+msgstr ""
+"<strong>%1$s</strong> – Zjistili jsme jedno nebo více volání k načtení "
+"hodnot polí ACF před inicializací ACF. Toto není podporováno a může mít za "
+"následek chybná nebo chybějící data. <a href=\"%2$s\" target=\"_blank"
+"\">Přečtěte si, jak to opravit</a>."
+
+#: includes/fields/class-acf-field-user.php:537
+msgid "%1$s must have a user with the %2$s role."
+msgid_plural "%1$s must have a user with one of the following roles: %2$s"
+msgstr[0] "%1$s musí mít uživatele s rolí %2$s."
+msgstr[1] "%1$s musí mít uživatele s jednou z následujících rolí: %2$s"
+msgstr[2] "%1$s musí mít uživatele s jednou z následujících rolí: %2$s"
+
+#: includes/fields/class-acf-field-user.php:528
+msgid "%1$s must have a valid user ID."
+msgstr "%1$s musí mít platné ID uživatele."
+
+#: includes/fields/class-acf-field-user.php:366
+msgid "Invalid request."
+msgstr "Neplatný požadavek."
+
+#: includes/fields/class-acf-field-select.php:679
+msgid "%1$s is not one of %2$s"
+msgstr "%1$s není jedním z %2$s"
+
+#: includes/fields/class-acf-field-post_object.php:669
+msgid "%1$s must have term %2$s."
+msgid_plural "%1$s must have one of the following terms: %2$s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/fields/class-acf-field-post_object.php:653
+msgid "%1$s must be of post type %2$s."
+msgid_plural "%1$s must be of one of the following post types: %2$s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/fields/class-acf-field-post_object.php:644
+msgid "%1$s must have a valid post ID."
+msgstr ""
+
+#: includes/fields/class-acf-field-file.php:468
+msgid "%s requires a valid attachment ID."
+msgstr ""
+
+#: includes/admin/views/field-group-options.php:206
+msgid "Show in REST API"
+msgstr "Zobrazit v REST API"
+
+#: includes/fields/class-acf-field-color_picker.php:167
+msgid "Enable Transparency"
+msgstr ""
+
+#: includes/fields/class-acf-field-color_picker.php:186
+msgid "RGBA Array"
+msgstr ""
+
+#: includes/fields/class-acf-field-color_picker.php:96
+msgid "RGBA String"
+msgstr ""
+
+#: includes/fields/class-acf-field-color_picker.php:95
+#: includes/fields/class-acf-field-color_picker.php:185
+msgid "Hex String"
+msgstr ""
+
+#: includes/admin/admin-field-group.php:185
+#: assets/build/js/acf-field-group.js:754
+#: assets/build/js/acf-field-group.js:919
+msgid "Gallery (Pro only)"
+msgstr "Galerie (pouze Pro)"
+
+#: includes/admin/admin-field-group.php:184
+#: assets/build/js/acf-field-group.js:751
+#: assets/build/js/acf-field-group.js:909
+msgid "Clone (Pro only)"
+msgstr "Klonovat (pouze Pro)"
+
+#: includes/admin/admin-field-group.php:183
+#: assets/build/js/acf-field-group.js:751
+#: assets/build/js/acf-field-group.js:906
+msgid "Flexible Content (Pro only)"
+msgstr "Flexibilní obsah (pouze Pro)"
+
+#: includes/admin/admin-field-group.php:182
+#: assets/build/js/acf-field-group.js:751
+#: assets/build/js/acf-field-group.js:903
+msgid "Repeater (Pro only)"
+msgstr "Opakovač (pouze Pro)"
+
+#: includes/admin/admin-field-group.php:351
+msgctxt "post status"
+msgid "Active"
+msgstr "Aktivní"
+
+#: includes/fields/class-acf-field-email.php:178
+msgid "'%s' is not a valid email address"
+msgstr ""
+
+#: includes/fields/class-acf-field-color_picker.php:74
+msgid "Color value"
+msgstr "Hodnota barvy"
+
+#: includes/fields/class-acf-field-color_picker.php:72
+msgid "Select default color"
+msgstr "Vyberte výchozí barvu"
+
+#: includes/fields/class-acf-field-color_picker.php:70
+msgid "Clear color"
+msgstr "Zrušit barvu"
+
+#: includes/acf-wp-functions.php:87
+msgid "Blocks"
+msgstr "Bloky"
+
+#: includes/acf-wp-functions.php:83
+msgid "Options"
+msgstr "Konfigurace"
+
+#: includes/acf-wp-functions.php:79
+msgid "Users"
+msgstr "Uživatelé"
+
+#: includes/acf-wp-functions.php:75
+msgid "Menu items"
+msgstr "Položky menu"
+
+#: includes/acf-wp-functions.php:67
+msgid "Widgets"
+msgstr "Widgety"
+
+#: includes/acf-wp-functions.php:59
+msgid "Attachments"
+msgstr "Přílohy"
+
+#: includes/acf-wp-functions.php:54
+msgid "Taxonomies"
+msgstr "Taxonomie"
+
+#: includes/acf-wp-functions.php:41
+msgid "Posts"
+msgstr "Příspěvky"
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:68
+msgid "JSON field group (newer)"
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:64
+msgid "Original field group"
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:59
+msgid "Last updated: %s"
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:53
+msgid "Sorry, this field group is unavailable for diff comparison."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:43
+msgid "Invalid field group ID."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:36
+msgid "Invalid field group parameter(s)."
+msgstr ""
+
+#: includes/admin/admin-field-groups.php:506
+msgid "Awaiting save"
+msgstr ""
+
+#: includes/admin/admin-field-groups.php:503
+msgid "Saved"
+msgstr "Uloženo"
+
+#: includes/admin/admin-field-groups.php:499
+msgid "Import"
+msgstr "Import"
+
+#: includes/admin/admin-field-groups.php:495
+msgid "Review changes"
+msgstr "Zkontrolovat změny"
+
+#: includes/admin/admin-field-groups.php:471
+msgid "Located in: %s"
+msgstr ""
+
+#: includes/admin/admin-field-groups.php:467
+msgid "Located in plugin: %s"
+msgstr "Nachází se v pluginu: %s"
+
+#: includes/admin/admin-field-groups.php:463
+msgid "Located in theme: %s"
+msgstr "Nachází se v šabloně: %s"
+
+#: includes/admin/admin-field-groups.php:441
+msgid "Various"
+msgstr "Různé"
+
+#: includes/admin/admin-field-groups.php:200
+#: includes/admin/admin-field-groups.php:565
+msgid "Sync changes"
+msgstr "Synchronizovat změny"
+
+#: includes/admin/admin-field-groups.php:199
+msgid "Loading diff"
+msgstr ""
+
+#: includes/admin/admin-field-groups.php:198
+msgid "Review local JSON changes"
+msgstr ""
+
+#: includes/admin/admin.php:172
+msgid "Visit website"
+msgstr "Navštívit stránky"
+
+#: includes/admin/admin.php:171
+msgid "View details"
+msgstr "Zobrazit podrobnosti"
+
+#: includes/admin/admin.php:170
+msgid "Version %s"
+msgstr "Verze %s"
+
+#: includes/admin/admin.php:169
+msgid "Information"
+msgstr "Informace"
+
+#: includes/admin/admin.php:160
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
+"our Help Desk will assist with your more in depth, technical challenges."
+msgstr ""
+
+#: includes/admin/admin.php:156
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
+"friendly community on our Community Forums who may be able to help you "
+"figure out the ‘how-tos’ of the ACF world."
+msgstr ""
+
+#: includes/admin/admin.php:152
+msgid ""
+"<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
+"documentation contains references and guides for most situations you may "
+"encounter."
+msgstr ""
+
+#: includes/admin/admin.php:149
+msgid ""
+"We are fanatical about support, and want you to get the best out of your "
+"website with ACF. If you run into any difficulties, there are several places "
+"you can find help:"
+msgstr ""
+
+#: includes/admin/admin.php:146 includes/admin/admin.php:148
+msgid "Help & Support"
+msgstr ""
+
+#: includes/admin/admin.php:137
+msgid ""
+"Please use the Help & Support tab to get in touch should you find yourself "
+"requiring assistance."
+msgstr ""
+
+#: includes/admin/admin.php:134
+msgid ""
+"Before creating your first Field Group, we recommend first reading our <a "
+"href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
+"yourself with the plugin's philosophy and best practises."
+msgstr ""
+
+#: includes/admin/admin.php:132
+msgid ""
+"The Advanced Custom Fields plugin provides a visual form builder to "
+"customize WordPress edit screens with extra fields, and an intuitive API to "
+"display custom field values in any theme template file."
+msgstr ""
+
+#: includes/admin/admin.php:129 includes/admin/admin.php:131
+msgid "Overview"
+msgstr "Přehled"
+
+#: includes/locations.php:36
+msgid "Location type \"%s\" is already registered."
+msgstr ""
+
+#: includes/locations.php:25
+msgid "Class \"%s\" does not exist."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax.php:157
+msgid "Invalid nonce."
+msgstr "Neplatná hodnota."
+
+#: includes/fields/class-acf-field-user.php:361
+msgid "Error loading field."
+msgstr ""
+
+#: assets/build/js/acf-input.js:2596 assets/build/js/acf-input.js:2657
+#: assets/build/js/acf-input.js:2904 assets/build/js/acf-input.js:2978
+msgid "Location not found: %s"
+msgstr ""
+
+#: includes/forms/form-user.php:353
+msgid "<strong>Error</strong>: %s"
+msgstr ""
+
+#: includes/locations/class-acf-location-widget.php:22
+msgid "Widget"
+msgstr "Widget"
+
+#: includes/locations/class-acf-location-user-role.php:24
+msgid "User Role"
+msgstr "Uživatelská úroveň"
+
+#: includes/locations/class-acf-location-comment.php:22
+msgid "Comment"
+msgstr "Komentář"
+
+#: includes/locations/class-acf-location-post-format.php:22
+msgid "Post Format"
+msgstr "Formát příspěvku"
+
+#: includes/locations/class-acf-location-nav-menu-item.php:22
+msgid "Menu Item"
+msgstr "Položka nabídky"
+
+#: includes/locations/class-acf-location-post-status.php:22
+msgid "Post Status"
+msgstr "Stav příspěvku"
+
+#: includes/acf-wp-functions.php:71
+#: includes/locations/class-acf-location-nav-menu.php:89
+msgid "Menus"
+msgstr "Nabídky"
+
+#: includes/locations/class-acf-location-nav-menu.php:80
+msgid "Menu Locations"
+msgstr "Umístění nabídky"
+
+#: includes/locations/class-acf-location-nav-menu.php:22
+msgid "Menu"
+msgstr "Nabídka"
+
+#: includes/locations/class-acf-location-post-taxonomy.php:22
+msgid "Post Taxonomy"
+msgstr "Taxonomie příspěvku"
+
+#: includes/locations/class-acf-location-page-type.php:114
+msgid "Child Page (has parent)"
+msgstr "Podřazená stránka (má rodiče)"
+
+#: includes/locations/class-acf-location-page-type.php:113
+msgid "Parent Page (has children)"
+msgstr "Rodičovská stránka (má potomky)"
+
+#: includes/locations/class-acf-location-page-type.php:112
+msgid "Top Level Page (no parent)"
+msgstr "Stránka nejvyšší úrovně (žádný nadřazený)"
+
+#: includes/locations/class-acf-location-page-type.php:111
+msgid "Posts Page"
+msgstr "Stránka příspěvku"
+
+#: includes/locations/class-acf-location-page-type.php:110
+msgid "Front Page"
+msgstr "Hlavní stránka"
+
+#: includes/locations/class-acf-location-page-type.php:22
+msgid "Page Type"
+msgstr "Typ stránky"
+
+#: includes/locations/class-acf-location-current-user.php:73
+msgid "Viewing back end"
+msgstr "Prohlížíte backend"
+
+#: includes/locations/class-acf-location-current-user.php:72
+msgid "Viewing front end"
+msgstr "Prohlížíte frontend"
+
+#: includes/locations/class-acf-location-current-user.php:71
+msgid "Logged in"
+msgstr "Přihlášen"
+
+#: includes/locations/class-acf-location-current-user.php:22
+msgid "Current User"
+msgstr "Aktuální uživatel"
+
+#: includes/locations/class-acf-location-page-template.php:22
+msgid "Page Template"
+msgstr "Šablona stránky"
+
+#: includes/locations/class-acf-location-user-form.php:74
+msgid "Register"
+msgstr "Registrovat"
+
+#: includes/locations/class-acf-location-user-form.php:73
+msgid "Add / Edit"
+msgstr "Přidat / Editovat"
+
+#: includes/locations/class-acf-location-user-form.php:22
+msgid "User Form"
+msgstr "Uživatelský formulář"
+
+#: includes/locations/class-acf-location-page-parent.php:22
+msgid "Page Parent"
+msgstr "Rodičovská stránka"
+
+#: includes/locations/class-acf-location-current-user-role.php:77
+msgid "Super Admin"
+msgstr "Super Admin"
+
+#: includes/locations/class-acf-location-current-user-role.php:22
+msgid "Current User Role"
+msgstr "Aktuální uživatelská role"
+
+#: includes/locations/class-acf-location-page-template.php:73
+#: includes/locations/class-acf-location-post-template.php:85
+msgid "Default Template"
+msgstr "Výchozí šablona"
+
+#: includes/locations/class-acf-location-post-template.php:22
+msgid "Post Template"
+msgstr "Šablona příspěvku"
+
+#: includes/locations/class-acf-location-post-category.php:22
+msgid "Post Category"
+msgstr "Rubrika příspěvku"
+
+#: includes/locations/class-acf-location-attachment.php:84
+msgid "All %s formats"
+msgstr "Všechny formáty %s"
+
+#: includes/locations/class-acf-location-attachment.php:22
+msgid "Attachment"
+msgstr "Příloha"
+
+#: includes/validation.php:365
+msgid "%s value is required"
+msgstr "%s hodnota je vyžadována"
+
+#: includes/admin/views/field-group-field-conditional-logic.php:59
+msgid "Show this field if"
+msgstr "Zobrazit toto pole, pokud"
+
+#: includes/admin/views/field-group-field-conditional-logic.php:26
+#: includes/admin/views/field-group-field.php:280
+msgid "Conditional Logic"
+msgstr "Podmíněná logika"
+
+#: includes/admin/admin.php:207
+#: includes/admin/views/field-group-field-conditional-logic.php:156
+#: includes/admin/views/html-location-rule.php:92
+msgid "and"
+msgstr "a"
+
+#: includes/admin/admin-field-groups.php:290
+msgid "Local JSON"
+msgstr "Lokální JSON"
+
+#: includes/admin/views/settings-info.php:84
+msgid "Clone Field"
+msgstr "Klonovat pole"
+
+#: includes/admin/views/html-notice-upgrade.php:31
+msgid ""
+"Please also check all premium add-ons (%s) are updated to the latest version."
+msgstr ""
+
+#: includes/admin/views/html-notice-upgrade.php:29
+msgid ""
+"This version contains improvements to your database and requires an upgrade."
+msgstr "Tato verze obsahuje vylepšení databáze a vyžaduje upgrade."
+
+#: includes/admin/views/html-notice-upgrade.php:29
+msgid "Thank you for updating to %1$s v%2$s!"
+msgstr ""
+
+#: includes/admin/views/html-notice-upgrade.php:28
+msgid "Database Upgrade Required"
+msgstr "Vyžadován upgrade databáze"
+
+#: includes/admin/views/html-notice-upgrade.php:18
+msgid "Options Page"
+msgstr "Stránka konfigurace"
+
+#: includes/admin/views/html-notice-upgrade.php:15
+msgid "Gallery"
+msgstr "Galerie"
+
+#: includes/admin/views/html-notice-upgrade.php:12
+msgid "Flexible Content"
+msgstr "Flexibilní obsah"
+
+#: includes/admin/views/html-notice-upgrade.php:9
+msgid "Repeater"
+msgstr "Opakovač"
+
+#: includes/admin/views/html-admin-tools.php:24
+msgid "Back to all tools"
+msgstr ""
+
+#: includes/admin/views/field-group-options.php:161
+msgid ""
+"If multiple field groups appear on an edit screen, the first field group's "
+"options will be used (the one with the lowest order number)"
+msgstr ""
+"Pokud se na obrazovce úprav objeví více skupin polí, použije se nastavení "
+"dle první skupiny polí (té s nejnižším pořadovým číslem)"
+
+#: includes/admin/views/field-group-options.php:161
+msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
+msgstr "<b>Zvolte</b> položky, které budou na obrazovce úprav <b>skryté</b>."
+
+#: includes/admin/views/field-group-options.php:160
+msgid "Hide on screen"
+msgstr "Skrýt na obrazovce"
+
+#: includes/admin/views/field-group-options.php:152
+msgid "Send Trackbacks"
+msgstr "Odesílat zpětné linkování odkazů"
+
+#: includes/admin/views/field-group-options.php:151
+msgid "Tags"
+msgstr "Štítky"
+
+#: includes/admin/views/field-group-options.php:150
+msgid "Categories"
+msgstr "Kategorie"
+
+#: includes/admin/views/field-group-options.php:148
+msgid "Page Attributes"
+msgstr "Atributy stránky"
+
+#: includes/admin/views/field-group-options.php:147
+msgid "Format"
+msgstr "Formát"
+
+#: includes/admin/views/field-group-options.php:146
+msgid "Author"
+msgstr "Autor"
+
+#: includes/admin/views/field-group-options.php:145
+msgid "Slug"
+msgstr "Adresa"
+
+#: includes/admin/views/field-group-options.php:144
+msgid "Revisions"
+msgstr "Revize"
+
+#: includes/acf-wp-functions.php:63
+#: includes/admin/views/field-group-options.php:143
+msgid "Comments"
+msgstr "Komentáře"
+
+#: includes/admin/views/field-group-options.php:142
+msgid "Discussion"
+msgstr "Diskuze"
+
+#: includes/admin/views/field-group-options.php:140
+msgid "Excerpt"
+msgstr "Stručný výpis"
+
+#: includes/admin/views/field-group-options.php:139
+msgid "Content Editor"
+msgstr "Editor obsahu"
+
+#: includes/admin/views/field-group-options.php:138
+msgid "Permalink"
+msgstr "Trvalý odkaz"
+
+#: includes/admin/views/field-group-options.php:223
+msgid "Shown in field group list"
+msgstr "Zobrazit v seznamu skupin polí"
+
+#: includes/admin/views/field-group-options.php:122
+msgid "Field groups with a lower order will appear first"
+msgstr "Skupiny polí s nižším pořadím se zobrazí první"
+
+#: includes/admin/views/field-group-options.php:121
+msgid "Order No."
+msgstr "Pořadové č."
+
+#: includes/admin/views/field-group-options.php:112
+msgid "Below fields"
+msgstr "Pod poli"
+
+#: includes/admin/views/field-group-options.php:111
+msgid "Below labels"
+msgstr "Pod štítky"
+
+#: includes/admin/views/field-group-options.php:104
+msgid "Instruction placement"
+msgstr "Umístění instrukcí"
+
+#: includes/admin/views/field-group-options.php:87
+msgid "Label placement"
+msgstr "Umístění štítků"
+
+#: includes/admin/views/field-group-options.php:77
+msgid "Side"
+msgstr "Na straně"
+
+#: includes/admin/views/field-group-options.php:76
+msgid "Normal (after content)"
+msgstr "Normální (po obsahu)"
+
+#: includes/admin/views/field-group-options.php:75
+msgid "High (after title)"
+msgstr "Vysoko (po nadpisu)"
+
+#: includes/admin/views/field-group-options.php:68
+msgid "Position"
+msgstr "Pozice"
+
+#: includes/admin/views/field-group-options.php:59
+msgid "Seamless (no metabox)"
+msgstr "Bezokrajové (bez metaboxu)"
+
+#: includes/admin/views/field-group-options.php:58
+msgid "Standard (WP metabox)"
+msgstr "Standardní (WP metabox)"
+
+#: includes/admin/views/field-group-options.php:51
+msgid "Style"
+msgstr "Styl"
+
+#: includes/admin/views/field-group-fields.php:44
+msgid "Type"
+msgstr "Typ"
+
+#: includes/admin/admin-field-groups.php:285
+#: includes/admin/views/field-group-fields.php:43
+msgid "Key"
+msgstr "Klíč"
+
+#. translators: Hidden accessibility text for the positional order number of
+#. the field.
+#: includes/admin/views/field-group-fields.php:37
+msgid "Order"
+msgstr "Pořadí"
+
+#: includes/admin/views/field-group-field.php:295
+msgid "Close Field"
+msgstr "Zavřít pole"
+
+#: includes/admin/views/field-group-field.php:236
+msgid "id"
+msgstr "ID"
+
+#: includes/admin/views/field-group-field.php:220
+msgid "class"
+msgstr "třída"
+
+#: includes/admin/views/field-group-field.php:257
+msgid "width"
+msgstr "šířka"
+
+#: includes/admin/views/field-group-field.php:251
+msgid "Wrapper Attributes"
+msgstr "Atributy obalového pole"
+
+#: includes/admin/views/field-group-field.php:172
+msgid "Required"
+msgstr "Požadováno?"
+
+#: includes/admin/views/field-group-field.php:204
+msgid "Instructions for authors. Shown when submitting data"
+msgstr "Instrukce pro autory. Jsou zobrazeny při zadávání dat"
+
+#: includes/admin/views/field-group-field.php:203
+msgid "Instructions"
+msgstr "Instrukce"
+
+#: includes/admin/views/field-group-field.php:107
+msgid "Field Type"
+msgstr "Typ pole"
+
+#: includes/admin/views/field-group-field.php:135
+msgid "Single word, no spaces. Underscores and dashes allowed"
+msgstr "Jedno slovo, bez mezer. Podtržítka a pomlčky jsou povoleny"
+
+#: includes/admin/views/field-group-field.php:134
+msgid "Field Name"
+msgstr "Jméno pole"
+
+#: includes/admin/views/field-group-field.php:122
+msgid "This is the name which will appear on the EDIT page"
+msgstr "Toto je jméno, které se zobrazí na stránce úprav"
+
+#: includes/admin/views/field-group-field.php:121
+msgid "Field Label"
+msgstr "Štítek pole"
+
+#: includes/admin/views/field-group-field.php:70
+msgid "Delete"
+msgstr "Smazat"
+
+#: includes/admin/views/field-group-field.php:70
+msgid "Delete field"
+msgstr "Smazat pole"
+
+#: includes/admin/views/field-group-field.php:68
+msgid "Move"
+msgstr "Přesunout"
+
+#: includes/admin/views/field-group-field.php:68
+msgid "Move field to another group"
+msgstr "Přesunout pole do jiné skupiny"
+
+#: includes/admin/views/field-group-field.php:66
+msgid "Duplicate field"
+msgstr "Duplikovat pole"
+
+#: includes/admin/views/field-group-field.php:62
+#: includes/admin/views/field-group-field.php:65
+msgid "Edit field"
 msgstr "Upravit pole"
 
-#: acf.php:422 includes/admin/views/field-group-fields.php:41
-msgid "New Field"
-msgstr "Nové pole"
+#: includes/admin/views/field-group-field.php:58
+msgid "Drag to reorder"
+msgstr "Přetažením změníte pořadí"
 
-#: acf.php:423
-msgid "View Field"
-msgstr "Zobrazit pole"
+#: includes/admin/admin-field-group.php:166
+#: includes/admin/views/html-location-group.php:3
+#: assets/build/js/acf-field-group.js:1771
+#: assets/build/js/acf-field-group.js:2130
+msgid "Show this field group if"
+msgstr "Zobrazit tuto skupinu polí, pokud"
 
-#: acf.php:424
-msgid "Search Fields"
-msgstr "Vyhledat pole"
+#: includes/admin/views/html-admin-page-upgrade.php:94
+#: includes/ajax/class-acf-ajax-upgrade.php:34
+msgid "No updates available."
+msgstr "K dispozici nejsou žádné aktualizace."
 
-#: acf.php:425
-msgid "No Fields found"
-msgstr "Nenalezeno žádné pole"
+#: includes/admin/views/html-admin-page-upgrade.php:33
+msgid "Database upgrade complete. <a href=\"%s\">See what's new</a>"
+msgstr ""
+"Upgrade databáze byl dokončen. <a href=\"%s\">Podívejte se, co je nového</a>"
 
-#: acf.php:426
-msgid "No Fields found in Trash"
-msgstr "V koši nenalezeno žádné pole"
+#: includes/admin/views/html-admin-page-upgrade.php:30
+msgid "Reading upgrade tasks..."
+msgstr "Čtení úkolů aktualizace..."
 
-#: acf.php:465 includes/admin/admin-field-group.php:384
-#: includes/admin/admin-field-groups.php:567
-msgid "Inactive"
-msgstr "Neaktivní"
+#: includes/admin/views/html-admin-page-upgrade-network.php:165
+#: includes/admin/views/html-admin-page-upgrade.php:65
+msgid "Upgrade failed."
+msgstr "Upgrade se nezdařil."
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:162
+msgid "Upgrade complete."
+msgstr "Aktualizace dokončena."
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:148
+#: includes/admin/views/html-admin-page-upgrade.php:31
+msgid "Upgrading data to version %s"
+msgstr "Aktualizace dat na verzi %s"
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:121
+#: includes/admin/views/html-notice-upgrade.php:45
+msgid ""
+"It is strongly recommended that you backup your database before proceeding. "
+"Are you sure you wish to run the updater now?"
+msgstr ""
+"Důrazně doporučujeme zálohovat databázi před pokračováním. Opravdu chcete "
+"aktualizaci spustit?"
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:117
+msgid "Please select at least one site to upgrade."
+msgstr "Vyberte alespoň jednu stránku, kterou chcete upgradovat."
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:97
+msgid ""
+"Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
+msgstr ""
+"Aktualizace databáze je dokončena. <a href=\"%s\">Návrat na nástěnku sítě</a>"
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:80
+msgid "Site is up to date"
+msgstr "Stránky jsou aktuální"
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:78
+msgid "Site requires database upgrade from %1$s to %2$s"
+msgstr ""
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:36
+#: includes/admin/views/html-admin-page-upgrade-network.php:47
+msgid "Site"
+msgstr "Stránky"
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:26
+#: includes/admin/views/html-admin-page-upgrade-network.php:27
+#: includes/admin/views/html-admin-page-upgrade-network.php:96
+msgid "Upgrade Sites"
+msgstr "Upgradovat stránky"
+
+#: includes/admin/views/html-admin-page-upgrade-network.php:26
+msgid ""
+"The following sites require a DB upgrade. Check the ones you want to update "
+"and then click %s."
+msgstr ""
+"Následující stránky vyžadují upgrade DB. Zaškrtněte ty, které chcete "
+"aktualizovat, a poté klikněte na %s."
+
+#: includes/admin/views/field-group-field-conditional-logic.php:171
+#: includes/admin/views/field-group-locations.php:38
+msgid "Add rule group"
+msgstr "Přidat skupinu pravidel"
+
+#: includes/admin/views/field-group-locations.php:10
+msgid ""
+"Create a set of rules to determine which edit screens will use these "
+"advanced custom fields"
+msgstr ""
+"Vytváří sadu pravidel pro určení, na kterých stránkách úprav budou použita "
+"tato vlastní pole"
+
+#: includes/admin/views/field-group-locations.php:9
+msgid "Rules"
+msgstr "Pravidla"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:478
+msgid "Copied"
+msgstr "Zkopírováno"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:441
+msgid "Copy to clipboard"
+msgstr "Zkopírovat od schránky"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:362
+msgid ""
+"The following code can be used to register a local version of the selected "
+"field group(s). A local field group can provide many benefits such as faster "
+"load times, version control & dynamic fields/settings. Simply copy and paste "
+"the following code to your theme's functions.php file or include it within "
+"an external file."
+msgstr ""
+"Následující kód lze použít k registraci lokální verze vybrané skupiny polí. "
+"Místní skupina polí může poskytnout mnoho výhod, jako jsou rychlejší doby "
+"načítání, řízení verzí a dynamická pole / nastavení. Jednoduše zkopírujte a "
+"vložte následující kód do souboru functions.php svého motivu nebo jej vložte "
+"do externího souboru."
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:329
+msgid ""
+"Select the field groups you would like to export and then select your export "
+"method. Export As JSON to export to a .json file which you can then import "
+"to another ACF installation. Generate PHP to export to PHP code which you "
+"can place in your theme."
+msgstr ""
+"Vyberte skupiny polí, které chcete exportovat, a vyberte způsob exportu. "
+"Použijte tlačítko pro stažení pro exportování do souboru .json, který pak "
+"můžete importovat do jiné instalace ACF. Pomocí tlačítka generovat můžete "
+"exportovat do kódu PHP, který můžete umístit do vašeho tématu."
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:233
+#: includes/admin/tools/class-acf-admin-tool-export.php:262
+msgid "Select Field Groups"
+msgstr "Zvolit skupiny polí"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:167
+msgid "Exported 1 field group."
+msgid_plural "Exported %s field groups."
+msgstr[0] "Exportovaná 1 skupina polí."
+msgstr[1] "Exportované %s skupiny polí."
+msgstr[2] "Exportovaných %s skupin polí."
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:96
+#: includes/admin/tools/class-acf-admin-tool-export.php:131
+msgid "No field groups selected"
+msgstr "Nebyly vybrány žádné skupiny polí"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:39
+#: includes/admin/tools/class-acf-admin-tool-export.php:337
+#: includes/admin/tools/class-acf-admin-tool-export.php:371
+msgid "Generate PHP"
+msgstr "Vytvořit PHP"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:35
+msgid "Export Field Groups"
+msgstr "Exportovat skupiny polí"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:147
+msgid "Imported 1 field group"
+msgid_plural "Imported %s field groups"
+msgstr[0] "Importovaná 1 skupina polí"
+msgstr[1] "Importované %s skupiny polí"
+msgstr[2] "Importovaných %s skupin polí"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:116
+msgid "Import file empty"
+msgstr "Importovaný soubor je prázdný"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:107
+msgid "Incorrect file type"
+msgstr "Nesprávný typ souboru"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:102
+msgid "Error uploading file. Please try again"
+msgstr "Chyba při nahrávání souboru. Prosím zkuste to znovu"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:51
+msgid ""
+"Select the Advanced Custom Fields JSON file you would like to import. When "
+"you click the import button below, ACF will import the field groups"
+msgstr ""
+"Vyberte Advanced Custom Fields JSON soubor, který chcete importovat. Po "
+"klepnutí na tlačítko importu níže bude ACF importovat skupiny polí."
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:28
+#: includes/admin/tools/class-acf-admin-tool-import.php:50
+msgid "Import Field Groups"
+msgstr "Importovat skupiny polí"
+
+#: includes/admin/admin-field-groups.php:494
+msgid "Sync"
+msgstr "Synchronizace"
+
+#: includes/admin/admin-field-groups.php:942
+msgid "Select %s"
+msgstr "Zvolit %s"
+
+#: includes/admin/admin-field-groups.php:527
+#: includes/admin/admin-field-groups.php:556
+#: includes/admin/views/field-group-field.php:66
+msgid "Duplicate"
+msgstr "Duplikovat"
+
+#: includes/admin/admin-field-groups.php:527
+msgid "Duplicate this item"
+msgstr "Duplikovat tuto položku"
+
+#: includes/admin/admin-field-groups.php:284
+#: includes/admin/views/field-group-options.php:222
+#: includes/admin/views/html-admin-page-upgrade-network.php:38
+#: includes/admin/views/html-admin-page-upgrade-network.php:49
+msgid "Description"
+msgstr "Popis"
+
+#: includes/admin/admin-field-groups.php:491
+#: includes/admin/admin-field-groups.php:829
+msgid "Sync available"
+msgstr "Synchronizace je k dispozici"
+
+#: includes/admin/admin-field-groups.php:754
+msgid "Field group synchronised."
+msgid_plural "%s field groups synchronised."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/admin/admin-field-groups.php:696
+msgid "Field group duplicated."
+msgid_plural "%s field groups duplicated."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/admin/admin-field-groups.php:118
+msgid "Active <span class=\"count\">(%s)</span>"
+msgid_plural "Active <span class=\"count\">(%s)</span>"
+msgstr[0] "Aktivní <span class=\"count\">(%s)</span>"
+msgstr[1] "Aktivní <span class=\"count\">(%s)</span>"
+msgstr[2] "Aktivních <span class=\"count\">(%s)</span>"
+
+#: includes/admin/admin-upgrade.php:237
+msgid "Review sites & upgrade"
+msgstr "Zkontrolujte stránky a aktualizujte"
+
+#: includes/admin/admin-upgrade.php:59 includes/admin/admin-upgrade.php:93
+#: includes/admin/admin-upgrade.php:94 includes/admin/admin-upgrade.php:213
+#: includes/admin/views/html-admin-page-upgrade-network.php:24
+#: includes/admin/views/html-admin-page-upgrade.php:26
+msgid "Upgrade Database"
+msgstr "Aktualizovat databázi"
+
+#: includes/admin/admin.php:49 includes/admin/views/field-group-options.php:141
+msgid "Custom Fields"
+msgstr "Vlastní pole"
+
+#: includes/admin/admin-field-group.php:714
+msgid "Move Field"
+msgstr "Přesunout pole"
+
+#: includes/admin/admin-field-group.php:707
+msgid "Please select the destination for this field"
+msgstr "Prosím zvolte umístění pro toto pole"
+
+#: includes/admin/admin-field-group.php:669
+msgid "Close Window"
+msgstr "Zavřít okno"
+
+#. translators: Confirmation message once a field has been moved to a different
+#. field group.
+#: includes/admin/admin-field-group.php:665
+msgid "The %1$s field can now be found in the %2$s field group"
+msgstr ""
+
+#: includes/admin/admin-field-group.php:662
+msgid "Move Complete."
+msgstr "Přesun hotov."
+
+#: includes/admin/views/field-group-field.php:274
+#: includes/admin/views/field-group-options.php:190
+msgid "Active"
+msgstr "Aktivní"
+
+#: includes/admin/admin-field-group.php:323
+msgid "Field Keys"
+msgstr "Klíče polí"
+
+#: includes/admin/admin-field-group.php:222
+#: includes/admin/tools/class-acf-admin-tool-export.php:286
+msgid "Settings"
+msgstr "Nastavení"
+
+#: includes/admin/admin-field-groups.php:286
+msgid "Location"
+msgstr "Umístění"
+
+#: includes/admin/admin-field-group.php:167 assets/build/js/acf-input.js:963
+#: assets/build/js/acf-input.js:1075
+msgid "Null"
+msgstr "Nula"
+
+#: includes/acf-field-group-functions.php:846
+#: includes/admin/admin-field-group.php:164
+#: assets/build/js/acf-field-group.js:1035
+#: assets/build/js/acf-field-group.js:1285
+msgid "copy"
+msgstr "kopírovat"
+
+#: includes/admin/admin-field-group.php:163
+#: assets/build/js/acf-field-group.js:323
+#: assets/build/js/acf-field-group.js:389
+msgid "(this field)"
+msgstr "(toto pole)"
+
+#: includes/admin/admin-field-group.php:161 assets/build/js/acf-input.js:900
+#: assets/build/js/acf-input.js:924 assets/build/js/acf-input.js:1002
+#: assets/build/js/acf-input.js:1030
+msgid "Checked"
+msgstr "Zaškrtnuto"
+
+#: includes/admin/admin-field-group.php:160
+#: assets/build/js/acf-field-group.js:1116
+#: assets/build/js/acf-field-group.js:1383
+msgid "Move Custom Field"
+msgstr "Přesunout vlastní pole"
+
+#: includes/admin/admin-field-group.php:159
+#: assets/build/js/acf-field-group.js:346
+#: assets/build/js/acf-field-group.js:415
+msgid "No toggle fields available"
+msgstr "Žádné zapínatelné pole není k dispozici"
+
+#: includes/admin/admin-field-group.php:157
+#: assets/build/js/acf-field-group.js:2158
+#: assets/build/js/acf-field-group.js:2562
+msgid "Field group title is required"
+msgstr "Vyžadován nadpis pro skupinu polí"
+
+#: includes/admin/admin-field-group.php:156
+#: assets/build/js/acf-field-group.js:1104
+#: assets/build/js/acf-field-group.js:1369
+msgid "This field cannot be moved until its changes have been saved"
+msgstr "Toto pole nelze přesunout, dokud nebudou uloženy jeho změny"
+
+#: includes/admin/admin-field-group.php:155
+#: assets/build/js/acf-field-group.js:934
+#: assets/build/js/acf-field-group.js:1167
+msgid "The string \"field_\" may not be used at the start of a field name"
+msgstr "Řetězec \"pole_\" nesmí být použit na začátku názvu pole"
+
+#: includes/admin/admin-field-group.php:82
+msgid "Field group draft updated."
+msgstr "Koncept skupiny polí aktualizován."
+
+#: includes/admin/admin-field-group.php:81
+msgid "Field group scheduled for."
+msgstr "Skupina polí naplánována."
+
+#: includes/admin/admin-field-group.php:80
+msgid "Field group submitted."
+msgstr "Skupina polí odeslána."
+
+#: includes/admin/admin-field-group.php:79
+msgid "Field group saved."
+msgstr "Skupina polí uložena."
+
+#: includes/admin/admin-field-group.php:78
+msgid "Field group published."
+msgstr "Skupina polí publikována."
+
+#: includes/admin/admin-field-group.php:75
+msgid "Field group deleted."
+msgstr "Skupina polí smazána."
+
+#: includes/admin/admin-field-group.php:73
+#: includes/admin/admin-field-group.php:74
+#: includes/admin/admin-field-group.php:76
+msgid "Field group updated."
+msgstr "Skupina polí aktualizována."
+
+#: includes/admin/admin-tools.php:119
+#: includes/admin/views/html-admin-navigation.php:109
+#: includes/admin/views/html-admin-tools.php:21
+msgid "Tools"
+msgstr "Nástroje"
+
+#: includes/locations/abstract-acf-location.php:106
+msgid "is not equal to"
+msgstr "není rovno"
+
+#: includes/locations/abstract-acf-location.php:105
+msgid "is equal to"
+msgstr "je rovno"
+
+#: includes/locations.php:102
+msgid "Forms"
+msgstr "Formuláře"
+
+#: includes/locations.php:100 includes/locations/class-acf-location-page.php:22
+msgid "Page"
+msgstr "Stránka"
+
+#: includes/locations.php:99 includes/locations/class-acf-location-post.php:22
+msgid "Post"
+msgstr "Příspěvek"
+
+#: includes/fields.php:358
+msgid "jQuery"
+msgstr "jQuery"
+
+#: includes/fields.php:357
+msgid "Relational"
+msgstr "Relační"
+
+#: includes/fields.php:356
+msgid "Choice"
+msgstr "Volba"
+
+#: includes/fields.php:354
+msgid "Basic"
+msgstr "Základní"
+
+#: includes/fields.php:313
+msgid "Unknown"
+msgstr "Neznámý"
+
+#: includes/fields.php:313
+msgid "Field type does not exist"
+msgstr "Typ pole neexistuje"
+
+#: includes/forms/form-front.php:236
+msgid "Spam Detected"
+msgstr "Zjištěn spam"
+
+#: includes/forms/form-front.php:107
+msgid "Post updated"
+msgstr "Příspěvek aktualizován"
+
+#: includes/forms/form-front.php:106
+msgid "Update"
+msgstr "Aktualizace"
+
+#: includes/forms/form-front.php:57
+msgid "Validate Email"
+msgstr "Ověřit e-mail"
+
+#: includes/fields.php:355 includes/forms/form-front.php:49
+msgid "Content"
+msgstr "Obsah"
+
+#: includes/forms/form-front.php:40
+msgid "Title"
+msgstr "Název"
+
+#: includes/assets.php:371 includes/forms/form-comment.php:160
+#: assets/build/js/acf-input.js:6894 assets/build/js/acf-input.js:7849
+msgid "Edit field group"
+msgstr "Editovat skupinu polí"
+
+#: includes/admin/admin-field-group.php:179 assets/build/js/acf-input.js:1102
+#: assets/build/js/acf-input.js:1230
+msgid "Selection is less than"
+msgstr "Výběr je menší než"
+
+#: includes/admin/admin-field-group.php:178 assets/build/js/acf-input.js:1084
+#: assets/build/js/acf-input.js:1202
+msgid "Selection is greater than"
+msgstr "Výběr je větší než"
+
+#: includes/admin/admin-field-group.php:177 assets/build/js/acf-input.js:1051
+#: assets/build/js/acf-input.js:1170
+msgid "Value is less than"
+msgstr "Hodnota je menší než"
+
+#: includes/admin/admin-field-group.php:176 assets/build/js/acf-input.js:1020
+#: assets/build/js/acf-input.js:1139
+msgid "Value is greater than"
+msgstr "Hodnota je větší než"
+
+#: includes/admin/admin-field-group.php:175 assets/build/js/acf-input.js:871
+#: assets/build/js/acf-input.js:960
+msgid "Value contains"
+msgstr "Hodnota obsahuje"
+
+#: includes/admin/admin-field-group.php:174 assets/build/js/acf-input.js:846
+#: assets/build/js/acf-input.js:926
+msgid "Value matches pattern"
+msgstr "Hodnota odpovídá masce"
+
+#: includes/admin/admin-field-group.php:173 assets/build/js/acf-input.js:825
+#: assets/build/js/acf-input.js:999 assets/build/js/acf-input.js:903
+#: assets/build/js/acf-input.js:1116
+msgid "Value is not equal to"
+msgstr "Hodnota není rovna"
+
+#: includes/admin/admin-field-group.php:172 assets/build/js/acf-input.js:796
+#: assets/build/js/acf-input.js:944 assets/build/js/acf-input.js:864
+#: assets/build/js/acf-input.js:1053
+msgid "Value is equal to"
+msgstr "Hodnota je rovna"
+
+#: includes/admin/admin-field-group.php:171 assets/build/js/acf-input.js:775
+#: assets/build/js/acf-input.js:841
+msgid "Has no value"
+msgstr "Nemá hodnotu"
+
+#: includes/admin/admin-field-group.php:170 assets/build/js/acf-input.js:744
+#: assets/build/js/acf-input.js:783
+msgid "Has any value"
+msgstr "Má libovolnou hodnotu"
+
+#: includes/assets.php:352 assets/build/js/acf.js:1489
+#: assets/build/js/acf.js:1550
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: includes/assets.php:348 assets/build/js/acf.js:1641
+#: assets/build/js/acf.js:1747
+msgid "Are you sure?"
+msgstr "Jste si jistí?"
+
+#: includes/assets.php:368 assets/build/js/acf-input.js:8823
+#: assets/build/js/acf-input.js:10145
+msgid "%d fields require attention"
+msgstr "Několik polí vyžaduje pozornost (%d)"
+
+#: includes/assets.php:367 assets/build/js/acf-input.js:8821
+#: assets/build/js/acf-input.js:10141
+msgid "1 field requires attention"
+msgstr "1 pole vyžaduje pozornost"
+
+#: includes/assets.php:366 includes/validation.php:287
+#: includes/validation.php:297 assets/build/js/acf-input.js:8814
+#: assets/build/js/acf-input.js:10136
+msgid "Validation failed"
+msgstr "Ověření selhalo"
+
+#: includes/assets.php:365 assets/build/js/acf-input.js:8969
+#: assets/build/js/acf-input.js:10319
+msgid "Validation successful"
+msgstr "Ověření úspěšné"
+
+#: includes/media.php:54 assets/build/js/acf-input.js:6723
+#: assets/build/js/acf-input.js:7653
+msgid "Restricted"
+msgstr "Omezeno"
+
+#: includes/media.php:53 assets/build/js/acf-input.js:6553
+#: assets/build/js/acf-input.js:7417
+msgid "Collapse Details"
+msgstr "Sbalit podrobnosti"
+
+#: includes/media.php:52 assets/build/js/acf-input.js:6553
+#: assets/build/js/acf-input.js:7414
+msgid "Expand Details"
+msgstr "Rozbalit podrobnosti"
+
+#: includes/media.php:51 assets/build/js/acf-input.js:6425
+#: assets/build/js/acf-input.js:7262
+msgid "Uploaded to this post"
+msgstr "Nahrán k tomuto příspěvku"
+
+#: includes/media.php:50 assets/build/js/acf-input.js:6461
+#: assets/build/js/acf-input.js:7301
+msgctxt "verb"
+msgid "Update"
+msgstr "Aktualizace"
+
+#: includes/media.php:49
+msgctxt "verb"
+msgid "Edit"
+msgstr "Upravit"
+
+#: includes/assets.php:362 assets/build/js/acf-input.js:8591
+#: assets/build/js/acf-input.js:9907
+msgid "The changes you made will be lost if you navigate away from this page"
+msgstr ""
+"Pokud opustíte tuto stránku, změny, které jste provedli, budou ztraceny"
+
+#: includes/api/api-helpers.php:3409
+msgid "File type must be %s."
+msgstr "Typ souboru musí být %s."
+
+#: includes/admin/admin-field-group.php:165
+#: includes/admin/views/field-group-field-conditional-logic.php:59
+#: includes/admin/views/field-group-field-conditional-logic.php:169
+#: includes/admin/views/field-group-locations.php:36
+#: includes/admin/views/html-location-group.php:3
+#: includes/api/api-helpers.php:3405 assets/build/js/acf-field-group.js:452
+#: assets/build/js/acf-field-group.js:1804
+#: assets/build/js/acf-field-group.js:544
+#: assets/build/js/acf-field-group.js:2174
+msgid "or"
+msgstr "nebo"
+
+#: includes/api/api-helpers.php:3378
+msgid "File size must not exceed %s."
+msgstr ""
+
+#: includes/api/api-helpers.php:3373
+msgid "File size must be at least %s."
+msgstr "Velikost souboru musí být alespoň %s."
+
+#: includes/api/api-helpers.php:3358
+msgid "Image height must not exceed %dpx."
+msgstr "Výška obrázku nesmí přesáhnout %dpx."
+
+#: includes/api/api-helpers.php:3353
+msgid "Image height must be at least %dpx."
+msgstr "Výška obrázku musí být alespoň %dpx."
+
+#: includes/api/api-helpers.php:3339
+msgid "Image width must not exceed %dpx."
+msgstr "Šířka obrázku nesmí přesáhnout %dpx."
+
+#: includes/api/api-helpers.php:3334
+msgid "Image width must be at least %dpx."
+msgstr "Šířka obrázku musí být alespoň %dpx."
+
+#: includes/api/api-helpers.php:1566 includes/api/api-term.php:147
+msgid "(no title)"
+msgstr "(bez názvu)"
+
+#: includes/api/api-helpers.php:861
+msgid "Full Size"
+msgstr "Plná velikost"
+
+#: includes/api/api-helpers.php:820
+msgid "Large"
+msgstr "Velký"
+
+#: includes/api/api-helpers.php:819
+msgid "Medium"
+msgstr "Střední"
+
+#: includes/api/api-helpers.php:818
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+#: includes/acf-field-functions.php:849
+#: includes/admin/admin-field-group.php:162
+#: assets/build/js/acf-field-group.js:718
+#: assets/build/js/acf-field-group.js:857
+msgid "(no label)"
+msgstr "(bez štítku)"
+
+#: includes/fields/class-acf-field-textarea.php:142
+msgid "Sets the textarea height"
+msgstr "Nastavuje výšku textového pole"
+
+#: includes/fields/class-acf-field-textarea.php:141
+msgid "Rows"
+msgstr "Řádky"
+
+#: includes/fields/class-acf-field-textarea.php:25
+msgid "Text Area"
+msgstr "Textové pole"
+
+#: includes/fields/class-acf-field-checkbox.php:447
+msgid "Prepend an extra checkbox to toggle all choices"
+msgstr "Přidat zaškrtávátko navíc pro přepnutí všech možností"
+
+#: includes/fields/class-acf-field-checkbox.php:409
+msgid "Save 'custom' values to the field's choices"
+msgstr "Uložit 'vlastní' hodnoty do voleb polí"
+
+#: includes/fields/class-acf-field-checkbox.php:398
+msgid "Allow 'custom' values to be added"
+msgstr "Povolit přidání 'vlastních' hodnot"
+
+#: includes/fields/class-acf-field-checkbox.php:233
+msgid "Add new choice"
+msgstr "Přidat novou volbu"
+
+#: includes/fields/class-acf-field-checkbox.php:170
+msgid "Toggle All"
+msgstr "Přepnout vše"
+
+#: includes/fields/class-acf-field-page_link.php:477
+msgid "Allow Archives URLs"
+msgstr "Umožnit URL adresy archivu"
+
+#: includes/fields/class-acf-field-page_link.php:165
+msgid "Archives"
+msgstr "Archivy"
+
+#: includes/fields/class-acf-field-page_link.php:25
+msgid "Page Link"
+msgstr "Odkaz stránky"
+
+#: includes/fields/class-acf-field-taxonomy.php:955
+#: includes/locations/class-acf-location-user-form.php:72
+msgid "Add"
+msgstr "Přidat"
+
+#: includes/admin/views/field-group-fields.php:42
+#: includes/fields/class-acf-field-taxonomy.php:920
+msgid "Name"
+msgstr "Jméno"
+
+#: includes/fields/class-acf-field-taxonomy.php:904
+msgid "%s added"
+msgstr "%s přidán"
+
+#: includes/fields/class-acf-field-taxonomy.php:868
+msgid "%s already exists"
+msgstr "%s již existuje"
+
+#: includes/fields/class-acf-field-taxonomy.php:856
+msgid "User unable to add new %s"
+msgstr "Uživatel není schopen přidat nové %s"
+
+#: includes/fields/class-acf-field-taxonomy.php:756
+msgid "Term ID"
+msgstr "ID pojmu"
+
+#: includes/fields/class-acf-field-taxonomy.php:755
+msgid "Term Object"
+msgstr "Objekt pojmu"
+
+#: includes/fields/class-acf-field-taxonomy.php:740
+msgid "Load value from posts terms"
+msgstr "Nahrát pojmy z příspěvků"
+
+#: includes/fields/class-acf-field-taxonomy.php:739
+msgid "Load Terms"
+msgstr "Nahrát pojmy"
+
+#: includes/fields/class-acf-field-taxonomy.php:729
+msgid "Connect selected terms to the post"
+msgstr "Připojte vybrané pojmy k příspěvku"
+
+#: includes/fields/class-acf-field-taxonomy.php:728
+msgid "Save Terms"
+msgstr "Uložit pojmy"
+
+#: includes/fields/class-acf-field-taxonomy.php:718
+msgid "Allow new terms to be created whilst editing"
+msgstr "Povolit vytvoření nových pojmů během editace"
+
+#: includes/fields/class-acf-field-taxonomy.php:717
+msgid "Create Terms"
+msgstr "Vytvořit pojmy"
+
+#: includes/fields/class-acf-field-taxonomy.php:776
+msgid "Radio Buttons"
+msgstr "Radio přepínače"
+
+#: includes/fields/class-acf-field-taxonomy.php:775
+msgid "Single Value"
+msgstr "Jednotlivá hodnota"
+
+#: includes/fields/class-acf-field-taxonomy.php:773
+msgid "Multi Select"
+msgstr "Vícenásobný výběr"
+
+#: includes/fields/class-acf-field-checkbox.php:25
+#: includes/fields/class-acf-field-taxonomy.php:772
+msgid "Checkbox"
+msgstr "Zaškrtávátko"
+
+#: includes/fields/class-acf-field-taxonomy.php:771
+msgid "Multiple Values"
+msgstr "Více hodnot"
+
+#: includes/fields/class-acf-field-taxonomy.php:766
+msgid "Select the appearance of this field"
+msgstr "Vyberte vzhled tohoto pole"
+
+#: includes/fields/class-acf-field-taxonomy.php:765
+msgid "Appearance"
+msgstr "Vzhled"
+
+#: includes/fields/class-acf-field-taxonomy.php:707
+msgid "Select the taxonomy to be displayed"
+msgstr "Zvolit zobrazovanou taxonomii"
+
+#: includes/fields/class-acf-field-taxonomy.php:668
+msgctxt "No Terms"
+msgid "No %s"
+msgstr "Nic pro %s"
+
+#: includes/fields/class-acf-field-number.php:263
+msgid "Value must be equal to or lower than %d"
+msgstr "Hodnota musí být rovna nebo menší než %d"
+
+#: includes/fields/class-acf-field-number.php:256
+msgid "Value must be equal to or higher than %d"
+msgstr "Hodnota musí být rovna nebo větší než %d"
+
+#: includes/fields/class-acf-field-number.php:241
+msgid "Value must be a number"
+msgstr "Hodnota musí být číslo"
+
+#: includes/fields/class-acf-field-number.php:25
+msgid "Number"
+msgstr "Číslo"
+
+#: includes/fields/class-acf-field-radio.php:261
+msgid "Save 'other' values to the field's choices"
+msgstr "Uložit 'jiné' hodnoty do voleb polí"
+
+#: includes/fields/class-acf-field-radio.php:250
+msgid "Add 'other' choice to allow for custom values"
+msgstr "Přidat volbu 'jiné', která umožňuje vlastní hodnoty"
+
+#: includes/fields/class-acf-field-radio.php:25
+msgid "Radio Button"
+msgstr "Přepínač"
+
+#: includes/fields/class-acf-field-accordion.php:105
+msgid ""
+"Define an endpoint for the previous accordion to stop. This accordion will "
+"not be visible."
+msgstr ""
+"Definujte koncový bod pro předchozí akordeon. Tento akordeon nebude "
+"viditelný."
+
+#: includes/fields/class-acf-field-accordion.php:94
+msgid "Allow this accordion to open without closing others."
+msgstr "Povolit otevření tohoto akordeonu bez zavření ostatních."
+
+#: includes/fields/class-acf-field-accordion.php:93
+msgid "Multi-expand"
+msgstr "Vícenásobné rozbalení"
+
+#: includes/fields/class-acf-field-accordion.php:83
+msgid "Display this accordion as open on page load."
+msgstr "Zobrazit tento akordeon jako otevřený při načtení stránky."
+
+#: includes/fields/class-acf-field-accordion.php:82
+msgid "Open"
+msgstr "Otevřít"
+
+#: includes/fields/class-acf-field-accordion.php:25
+msgid "Accordion"
+msgstr "Akordeon"
+
+#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:276
+msgid "Restrict which files can be uploaded"
+msgstr "Omezte, které typy souborů lze nahrát"
+
+#: includes/fields/class-acf-field-file.php:217
+msgid "File ID"
+msgstr "ID souboru"
+
+#: includes/fields/class-acf-field-file.php:216
+msgid "File URL"
+msgstr "Adresa souboru"
+
+#: includes/fields/class-acf-field-file.php:215
+msgid "File Array"
+msgstr "Pole souboru"
+
+#: includes/fields/class-acf-field-file.php:183
+msgid "Add File"
+msgstr "Přidat soubor"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:94
+#: includes/fields/class-acf-field-file.php:183
+msgid "No file selected"
+msgstr "Dokument nevybrán"
+
+#: includes/fields/class-acf-field-file.php:147
+msgid "File name"
+msgstr "Jméno souboru"
+
+#: includes/fields/class-acf-field-file.php:60
+#: assets/build/js/acf-input.js:2334 assets/build/js/acf-input.js:2603
+msgid "Update File"
+msgstr "Aktualizovat soubor"
+
+#: includes/fields/class-acf-field-file.php:59
+#: assets/build/js/acf-input.js:2333 assets/build/js/acf-input.js:2602
+msgid "Edit File"
+msgstr "Upravit soubor"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:59
+#: includes/fields/class-acf-field-file.php:58
+#: assets/build/js/acf-input.js:2308 assets/build/js/acf-input.js:2575
+msgid "Select File"
+msgstr "Vybrat soubor"
+
+#: includes/fields/class-acf-field-file.php:25
+msgid "File"
+msgstr "Soubor"
+
+#: includes/fields/class-acf-field-password.php:25
+msgid "Password"
+msgstr "Heslo"
+
+#: includes/fields/class-acf-field-select.php:387
+msgid "Specify the value returned"
+msgstr "Zadat konkrétní návratovou hodnotu"
+
+#: includes/fields/class-acf-field-select.php:456
+msgid "Use AJAX to lazy load choices?"
+msgstr "K načtení volby použít AJAX lazy load?"
+
+#: includes/fields/class-acf-field-checkbox.php:358
+#: includes/fields/class-acf-field-select.php:376
+msgid "Enter each default value on a new line"
+msgstr "Zadejte každou výchozí hodnotu na nový řádek"
+
+#: includes/fields/class-acf-field-select.php:255 includes/media.php:48
+#: assets/build/js/acf-input.js:6335 assets/build/js/acf-input.js:7147
+msgctxt "verb"
+msgid "Select"
+msgstr "Vybrat"
+
+#: includes/fields/class-acf-field-select.php:118
+msgctxt "Select2 JS load_fail"
+msgid "Loading failed"
+msgstr "Načítání selhalo"
+
+#: includes/fields/class-acf-field-select.php:117
+msgctxt "Select2 JS searching"
+msgid "Searching&hellip;"
+msgstr "Vyhledávání&hellip;"
+
+#: includes/fields/class-acf-field-select.php:116
+msgctxt "Select2 JS load_more"
+msgid "Loading more results&hellip;"
+msgstr "Načítání dalších výsledků&hellip;"
+
+#: includes/fields/class-acf-field-select.php:115
+msgctxt "Select2 JS selection_too_long_n"
+msgid "You can only select %d items"
+msgstr "Můžete vybrat pouze %d položek"
+
+#: includes/fields/class-acf-field-select.php:114
+msgctxt "Select2 JS selection_too_long_1"
+msgid "You can only select 1 item"
+msgstr "Můžete vybrat pouze 1 položku"
+
+#: includes/fields/class-acf-field-select.php:113
+msgctxt "Select2 JS input_too_long_n"
+msgid "Please delete %d characters"
+msgstr "Prosím odstraňte %d znaků"
+
+#: includes/fields/class-acf-field-select.php:112
+msgctxt "Select2 JS input_too_long_1"
+msgid "Please delete 1 character"
+msgstr "Prosím odstraňte 1 znak"
+
+#: includes/fields/class-acf-field-select.php:111
+msgctxt "Select2 JS input_too_short_n"
+msgid "Please enter %d or more characters"
+msgstr "Prosím zadejte %d nebo více znaků"
+
+#: includes/fields/class-acf-field-select.php:110
+msgctxt "Select2 JS input_too_short_1"
+msgid "Please enter 1 or more characters"
+msgstr "Prosím zadejte 1 nebo více znaků"
+
+#: includes/fields/class-acf-field-select.php:109
+msgctxt "Select2 JS matches_0"
+msgid "No matches found"
+msgstr "Nebyly nalezeny žádné výsledky"
+
+#: includes/fields/class-acf-field-select.php:108
+msgctxt "Select2 JS matches_n"
+msgid "%d results are available, use up and down arrow keys to navigate."
+msgstr "%d výsledků je k dispozici, použijte šipky nahoru a dolů pro navigaci."
+
+#: includes/fields/class-acf-field-select.php:107
+msgctxt "Select2 JS matches_1"
+msgid "One result is available, press enter to select it."
+msgstr ""
+"Jeden výsledek je k dispozici, stiskněte klávesu enter pro jeho vybrání."
+
+#: includes/fields/class-acf-field-select.php:25
+#: includes/fields/class-acf-field-taxonomy.php:777
+msgctxt "noun"
+msgid "Select"
+msgstr "Vybrat"
+
+#: includes/fields/class-acf-field-user.php:74
+msgid "User ID"
+msgstr "ID uživatele"
+
+#: includes/fields/class-acf-field-user.php:73
+msgid "User Object"
+msgstr "Objekt uživatele"
+
+#: includes/fields/class-acf-field-user.php:72
+msgid "User Array"
+msgstr "Pole uživatelů"
+
+#: includes/fields/class-acf-field-user.php:60
+msgid "All user roles"
+msgstr "Všechny uživatelské role"
+
+#: includes/fields/class-acf-field-user.php:52
+msgid "Filter by role"
+msgstr "Filtrovat podle role"
+
+#: includes/fields/class-acf-field-user.php:20 includes/locations.php:101
+msgid "User"
+msgstr "Uživatel"
+
+#: includes/fields/class-acf-field-separator.php:25
+msgid "Separator"
+msgstr "Oddělovač"
+
+#: includes/fields/class-acf-field-color_picker.php:73
+msgid "Select Color"
+msgstr "Výběr barvy"
+
+#: includes/fields/class-acf-field-color_picker.php:71
+msgid "Default"
+msgstr "Výchozí nastavení"
+
+#: includes/fields/class-acf-field-color_picker.php:69
+msgid "Clear"
+msgstr "Vymazat"
+
+#: includes/fields/class-acf-field-color_picker.php:25
+msgid "Color Picker"
+msgstr "Výběr barvy"
+
+#: includes/fields/class-acf-field-date_time_picker.php:85
+msgctxt "Date Time Picker JS pmTextShort"
+msgid "P"
+msgstr "do"
+
+#: includes/fields/class-acf-field-date_time_picker.php:84
+msgctxt "Date Time Picker JS pmText"
+msgid "PM"
+msgstr "odp"
+
+#: includes/fields/class-acf-field-date_time_picker.php:81
+msgctxt "Date Time Picker JS amTextShort"
+msgid "A"
+msgstr "od"
+
+#: includes/fields/class-acf-field-date_time_picker.php:80
+msgctxt "Date Time Picker JS amText"
+msgid "AM"
+msgstr "dop"
+
+#: includes/fields/class-acf-field-date_time_picker.php:78
+msgctxt "Date Time Picker JS selectText"
+msgid "Select"
+msgstr "Vybrat"
+
+#: includes/fields/class-acf-field-date_time_picker.php:77
+msgctxt "Date Time Picker JS closeText"
+msgid "Done"
+msgstr "Hotovo"
+
+#: includes/fields/class-acf-field-date_time_picker.php:76
+msgctxt "Date Time Picker JS currentText"
+msgid "Now"
+msgstr "Nyní"
+
+#: includes/fields/class-acf-field-date_time_picker.php:75
+msgctxt "Date Time Picker JS timezoneText"
+msgid "Time Zone"
+msgstr "Časové pásmo"
+
+#: includes/fields/class-acf-field-date_time_picker.php:74
+msgctxt "Date Time Picker JS microsecText"
+msgid "Microsecond"
+msgstr "Mikrosekunda"
+
+#: includes/fields/class-acf-field-date_time_picker.php:73
+msgctxt "Date Time Picker JS millisecText"
+msgid "Millisecond"
+msgstr "Milisekunda"
+
+#: includes/fields/class-acf-field-date_time_picker.php:72
+msgctxt "Date Time Picker JS secondText"
+msgid "Second"
+msgstr "Vteřina"
+
+#: includes/fields/class-acf-field-date_time_picker.php:71
+msgctxt "Date Time Picker JS minuteText"
+msgid "Minute"
+msgstr "Minuta"
+
+#: includes/fields/class-acf-field-date_time_picker.php:70
+msgctxt "Date Time Picker JS hourText"
+msgid "Hour"
+msgstr "Hodina"
+
+#: includes/fields/class-acf-field-date_time_picker.php:69
+msgctxt "Date Time Picker JS timeText"
+msgid "Time"
+msgstr "Čas"
+
+#: includes/fields/class-acf-field-date_time_picker.php:68
+msgctxt "Date Time Picker JS timeOnlyTitle"
+msgid "Choose Time"
+msgstr "Zvolit čas"
+
+#: includes/fields/class-acf-field-date_time_picker.php:25
+msgid "Date Time Picker"
+msgstr "Výběr data a času"
+
+#: includes/fields/class-acf-field-accordion.php:104
+msgid "Endpoint"
+msgstr "Koncový bod"
+
+#: includes/admin/views/field-group-options.php:95
+#: includes/fields/class-acf-field-tab.php:112
+msgid "Left aligned"
+msgstr "Zarovnat zleva"
+
+#: includes/admin/views/field-group-options.php:94
+#: includes/fields/class-acf-field-tab.php:111
+msgid "Top aligned"
+msgstr "Zarovnat shora"
+
+#: includes/fields/class-acf-field-tab.php:107
+msgid "Placement"
+msgstr "Umístění"
+
+#: includes/fields/class-acf-field-tab.php:26
+msgid "Tab"
+msgstr "Záložka"
+
+#: includes/fields/class-acf-field-url.php:159
+msgid "Value must be a valid URL"
+msgstr "Hodnota musí být validní adresa URL"
+
+#: includes/fields/class-acf-field-url.php:25
+msgid "Url"
+msgstr "Adresa URL"
+
+#: includes/fields/class-acf-field-link.php:174
+msgid "Link URL"
+msgstr "URL adresa odkazu"
+
+#: includes/fields/class-acf-field-link.php:173
+msgid "Link Array"
+msgstr "Pole odkazů"
+
+#: includes/fields/class-acf-field-link.php:142
+msgid "Opens in a new window/tab"
+msgstr "Otevřít v novém okně/záložce"
+
+#: includes/fields/class-acf-field-link.php:137
+msgid "Select Link"
+msgstr "Vybrat odkaz"
+
+#: includes/fields/class-acf-field-link.php:25
+msgid "Link"
+msgstr "Odkaz"
+
+#: includes/fields/class-acf-field-email.php:25
+msgid "Email"
+msgstr "E-mail"
+
+#: includes/fields/class-acf-field-number.php:185
+#: includes/fields/class-acf-field-range.php:214
+msgid "Step Size"
+msgstr "Velikost kroku"
+
+#: includes/fields/class-acf-field-number.php:155
+#: includes/fields/class-acf-field-range.php:192
+msgid "Maximum Value"
+msgstr "Maximální hodnota"
+
+#: includes/fields/class-acf-field-number.php:145
+#: includes/fields/class-acf-field-range.php:181
+msgid "Minimum Value"
+msgstr "Minimální hodnota"
+
+#: includes/fields/class-acf-field-range.php:25
+msgid "Range"
+msgstr "Rozmezí"
+
+#: includes/fields/class-acf-field-button-group.php:172
+#: includes/fields/class-acf-field-checkbox.php:375
+#: includes/fields/class-acf-field-radio.php:217
+#: includes/fields/class-acf-field-select.php:394
+msgid "Both (Array)"
+msgstr "Obě (pole)"
+
+#: includes/admin/views/field-group-fields.php:41
+#: includes/fields/class-acf-field-button-group.php:171
+#: includes/fields/class-acf-field-checkbox.php:374
+#: includes/fields/class-acf-field-radio.php:216
+#: includes/fields/class-acf-field-select.php:393
+msgid "Label"
+msgstr "Štítek"
+
+#: includes/fields/class-acf-field-button-group.php:170
+#: includes/fields/class-acf-field-checkbox.php:373
+#: includes/fields/class-acf-field-radio.php:215
+#: includes/fields/class-acf-field-select.php:392
+msgid "Value"
+msgstr "Hodnota"
+
+#: includes/fields/class-acf-field-button-group.php:219
+#: includes/fields/class-acf-field-checkbox.php:437
+#: includes/fields/class-acf-field-radio.php:289
+msgid "Vertical"
+msgstr "Vertikální"
+
+#: includes/fields/class-acf-field-button-group.php:218
+#: includes/fields/class-acf-field-checkbox.php:438
+#: includes/fields/class-acf-field-radio.php:290
+msgid "Horizontal"
+msgstr "Horizontální"
+
+#: includes/fields/class-acf-field-button-group.php:145
+#: includes/fields/class-acf-field-checkbox.php:348
+#: includes/fields/class-acf-field-radio.php:190
+#: includes/fields/class-acf-field-select.php:365
+msgid "red : Red"
+msgstr "cervena : Červená"
+
+#: includes/fields/class-acf-field-button-group.php:145
+#: includes/fields/class-acf-field-checkbox.php:348
+#: includes/fields/class-acf-field-radio.php:190
+#: includes/fields/class-acf-field-select.php:365
+msgid "For more control, you may specify both a value and label like this:"
+msgstr "Pro větší kontrolu můžete zadat jak hodnotu, tak štítek:"
+
+#: includes/fields/class-acf-field-button-group.php:145
+#: includes/fields/class-acf-field-checkbox.php:348
+#: includes/fields/class-acf-field-radio.php:190
+#: includes/fields/class-acf-field-select.php:365
+msgid "Enter each choice on a new line."
+msgstr "Zadejte každou volbu na nový řádek."
+
+#: includes/fields/class-acf-field-button-group.php:144
+#: includes/fields/class-acf-field-checkbox.php:347
+#: includes/fields/class-acf-field-radio.php:189
+#: includes/fields/class-acf-field-select.php:364
+msgid "Choices"
+msgstr "Možnosti"
+
+#: includes/fields/class-acf-field-button-group.php:24
+msgid "Button Group"
+msgstr "Skupina tlačítek"
+
+#: includes/fields/class-acf-field-page_link.php:488
+#: includes/fields/class-acf-field-post_object.php:404
+#: includes/fields/class-acf-field-select.php:402
+#: includes/fields/class-acf-field-user.php:83
+msgid "Select multiple values?"
+msgstr "Vybrat více hodnot?"
+
+#: includes/fields/class-acf-field-button-group.php:191
+#: includes/fields/class-acf-field-page_link.php:509
+#: includes/fields/class-acf-field-post_object.php:426
+#: includes/fields/class-acf-field-radio.php:235
+#: includes/fields/class-acf-field-select.php:424
+#: includes/fields/class-acf-field-taxonomy.php:796
+#: includes/fields/class-acf-field-user.php:104
+msgid "Allow Null?"
+msgstr "Povolit prázdné?"
+
+#: includes/fields/class-acf-field-page_link.php:249
+#: includes/fields/class-acf-field-post_object.php:250
+#: includes/fields/class-acf-field-taxonomy.php:942
+msgid "Parent"
+msgstr "Rodič"
+
+#: includes/fields/class-acf-field-wysiwyg.php:326
+msgid "TinyMCE will not be initialized until field is clicked"
+msgstr ""
+
+#: includes/fields/class-acf-field-wysiwyg.php:325
+msgid "Delay initialization?"
+msgstr "Zpoždění inicializace?"
+
+#: includes/fields/class-acf-field-wysiwyg.php:398
+msgid "Show Media Upload Buttons?"
+msgstr "Zobrazit tlačítka nahrávání médií?"
+
+#: includes/fields/class-acf-field-wysiwyg.php:382
+msgid "Toolbar"
+msgstr "Lišta nástrojů"
+
+#: includes/fields/class-acf-field-wysiwyg.php:374
+msgid "Text Only"
+msgstr "Pouze text"
+
+#: includes/fields/class-acf-field-wysiwyg.php:373
+msgid "Visual Only"
+msgstr "Pouze grafika"
+
+#: includes/fields/class-acf-field-wysiwyg.php:372
+msgid "Visual & Text"
+msgstr "Grafika a text"
+
+#: includes/fields/class-acf-field-wysiwyg.php:367
+msgid "Tabs"
+msgstr "Záložky"
+
+#: includes/fields/class-acf-field-wysiwyg.php:289
+msgid "Click to initialize TinyMCE"
+msgstr "Klikněte pro inicializaci TinyMCE"
+
+#: includes/fields/class-acf-field-wysiwyg.php:283
+msgctxt "Name for the Text editor tab (formerly HTML)"
+msgid "Text"
+msgstr "Text"
+
+#: includes/fields/class-acf-field-wysiwyg.php:282
+msgid "Visual"
+msgstr "Grafika"
+
+#: includes/fields/class-acf-field-wysiwyg.php:25
+msgid "Wysiwyg Editor"
+msgstr "Wysiwyg Editor"
+
+#: includes/fields/class-acf-field-text.php:180
+#: includes/fields/class-acf-field-textarea.php:233
+msgid "Value must not exceed %d characters"
+msgstr ""
+
+#: includes/fields/class-acf-field-text.php:115
+#: includes/fields/class-acf-field-textarea.php:121
+msgid "Leave blank for no limit"
+msgstr "Nechte prázdné pro nastavení bez omezení"
+
+#: includes/fields/class-acf-field-text.php:114
+#: includes/fields/class-acf-field-textarea.php:120
+msgid "Character Limit"
+msgstr "Limit znaků"
+
+#: includes/fields/class-acf-field-email.php:155
+#: includes/fields/class-acf-field-number.php:206
+#: includes/fields/class-acf-field-password.php:102
+#: includes/fields/class-acf-field-range.php:236
+#: includes/fields/class-acf-field-text.php:155
+msgid "Appears after the input"
+msgstr "Zobrazí se za inputem"
+
+#: includes/fields/class-acf-field-email.php:154
+#: includes/fields/class-acf-field-number.php:205
+#: includes/fields/class-acf-field-password.php:101
+#: includes/fields/class-acf-field-range.php:235
+#: includes/fields/class-acf-field-text.php:154
+msgid "Append"
+msgstr "Zobrazit po"
+
+#: includes/fields/class-acf-field-email.php:145
+#: includes/fields/class-acf-field-number.php:196
+#: includes/fields/class-acf-field-password.php:92
+#: includes/fields/class-acf-field-range.php:226
+#: includes/fields/class-acf-field-text.php:145
+msgid "Appears before the input"
+msgstr "Zobrazí se před inputem"
+
+#: includes/fields/class-acf-field-email.php:144
+#: includes/fields/class-acf-field-number.php:195
+#: includes/fields/class-acf-field-password.php:91
+#: includes/fields/class-acf-field-range.php:225
+#: includes/fields/class-acf-field-text.php:144
+msgid "Prepend"
+msgstr "Zobrazit před"
+
+#: includes/fields/class-acf-field-email.php:135
+#: includes/fields/class-acf-field-number.php:176
+#: includes/fields/class-acf-field-password.php:82
+#: includes/fields/class-acf-field-text.php:135
+#: includes/fields/class-acf-field-textarea.php:153
+#: includes/fields/class-acf-field-url.php:119
+msgid "Appears within the input"
+msgstr "Zobrazí se v inputu"
+
+#: includes/fields/class-acf-field-email.php:134
+#: includes/fields/class-acf-field-number.php:175
+#: includes/fields/class-acf-field-password.php:81
+#: includes/fields/class-acf-field-text.php:134
+#: includes/fields/class-acf-field-textarea.php:152
+#: includes/fields/class-acf-field-url.php:118
+msgid "Placeholder Text"
+msgstr "Zástupný text"
+
+#: includes/fields/class-acf-field-button-group.php:155
+#: includes/fields/class-acf-field-email.php:115
+#: includes/fields/class-acf-field-number.php:126
+#: includes/fields/class-acf-field-radio.php:200
+#: includes/fields/class-acf-field-range.php:162
+#: includes/fields/class-acf-field-text.php:95
+#: includes/fields/class-acf-field-textarea.php:101
+#: includes/fields/class-acf-field-url.php:99
+#: includes/fields/class-acf-field-wysiwyg.php:316
+msgid "Appears when creating a new post"
+msgstr "Objeví se při vytváření nového příspěvku"
+
+#: includes/fields/class-acf-field-text.php:25
+msgid "Text"
+msgstr "Text"
+
+#: includes/fields/class-acf-field-relationship.php:760
+msgid "%1$s requires at least %2$s selection"
+msgid_plural "%1$s requires at least %2$s selections"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: includes/fields/class-acf-field-post_object.php:395
+#: includes/fields/class-acf-field-relationship.php:622
+msgid "Post ID"
+msgstr "ID příspěvku"
+
+#: includes/fields/class-acf-field-post_object.php:25
+#: includes/fields/class-acf-field-post_object.php:394
+#: includes/fields/class-acf-field-relationship.php:621
+msgid "Post Object"
+msgstr "Objekt příspěvku"
+
+#: includes/fields/class-acf-field-relationship.php:654
+msgid "Maximum posts"
+msgstr "Maximum příspěvků"
+
+#: includes/fields/class-acf-field-relationship.php:644
+msgid "Minimum posts"
+msgstr "Minimum příspěvků"
+
+#: includes/admin/views/field-group-options.php:149
+#: includes/fields/class-acf-field-relationship.php:679
+msgid "Featured Image"
+msgstr "Uživatelský obrázek"
+
+#: includes/fields/class-acf-field-relationship.php:675
+msgid "Selected elements will be displayed in each result"
+msgstr "Vybrané prvky se zobrazí v každém výsledku"
+
+#: includes/fields/class-acf-field-relationship.php:674
+msgid "Elements"
+msgstr "Prvky"
+
+#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-taxonomy.php:28
+#: includes/fields/class-acf-field-taxonomy.php:706
+#: includes/locations/class-acf-location-taxonomy.php:22
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#: includes/fields/class-acf-field-relationship.php:607
+#: includes/locations/class-acf-location-post-type.php:22
+msgid "Post Type"
+msgstr "Typ příspěvku"
+
+#: includes/fields/class-acf-field-relationship.php:601
+msgid "Filters"
+msgstr "Filtry"
+
+#: includes/fields/class-acf-field-page_link.php:470
+#: includes/fields/class-acf-field-post_object.php:382
+#: includes/fields/class-acf-field-relationship.php:594
+msgid "All taxonomies"
+msgstr "Všechny taxonomie"
+
+#: includes/fields/class-acf-field-page_link.php:462
+#: includes/fields/class-acf-field-post_object.php:374
+#: includes/fields/class-acf-field-relationship.php:586
+msgid "Filter by Taxonomy"
+msgstr "Filtrovat dle taxonomie"
+
+#: includes/fields/class-acf-field-page_link.php:455
+#: includes/fields/class-acf-field-post_object.php:367
+#: includes/fields/class-acf-field-relationship.php:579
+msgid "All post types"
+msgstr "Všechny typy příspěvků"
+
+#: includes/fields/class-acf-field-page_link.php:447
+#: includes/fields/class-acf-field-post_object.php:359
+#: includes/fields/class-acf-field-relationship.php:571
+msgid "Filter by Post Type"
+msgstr "Filtrovat dle typu příspěvku"
+
+#: includes/fields/class-acf-field-relationship.php:469
+msgid "Search..."
+msgstr "Hledat..."
+
+#: includes/fields/class-acf-field-relationship.php:399
+msgid "Select taxonomy"
+msgstr "Zvolit taxonomii"
+
+#: includes/fields/class-acf-field-relationship.php:390
+msgid "Select post type"
+msgstr "Zvolit typ příspěvku"
+
+#: includes/fields/class-acf-field-relationship.php:65
+#: assets/build/js/acf-input.js:3686 assets/build/js/acf-input.js:4168
+msgid "No matches found"
+msgstr "Nebyly nalezeny žádné výsledky"
+
+#: includes/fields/class-acf-field-relationship.php:64
+#: assets/build/js/acf-input.js:3670 assets/build/js/acf-input.js:4147
+msgid "Loading"
+msgstr "Načítání"
+
+#: includes/fields/class-acf-field-relationship.php:63
+#: assets/build/js/acf-input.js:3593 assets/build/js/acf-input.js:4051
+msgid "Maximum values reached ( {max} values )"
+msgstr "Dosaženo maximálního množství hodnot ( {max} hodnot )"
+
+#: includes/fields/class-acf-field-relationship.php:25
+msgid "Relationship"
+msgstr "Vztah"
+
+#: includes/fields/class-acf-field-file.php:288
+#: includes/fields/class-acf-field-image.php:314
+msgid "Comma separated list. Leave blank for all types"
+msgstr "Seznam oddělený čárkami. Nechte prázdné pro povolení všech typů"
+
+#: includes/fields/class-acf-field-file.php:287
+#: includes/fields/class-acf-field-image.php:313
+msgid "Allowed file types"
+msgstr "Povolené typy souborů"
+
+#: includes/fields/class-acf-field-file.php:275
+#: includes/fields/class-acf-field-image.php:277
+msgid "Maximum"
+msgstr "Maximum"
+
+#: includes/fields/class-acf-field-file.php:151
+#: includes/fields/class-acf-field-file.php:267
+#: includes/fields/class-acf-field-file.php:279
+#: includes/fields/class-acf-field-image.php:268
+#: includes/fields/class-acf-field-image.php:304
+msgid "File size"
+msgstr "Velikost souboru"
+
+#: includes/fields/class-acf-field-image.php:242
+#: includes/fields/class-acf-field-image.php:278
+msgid "Restrict which images can be uploaded"
+msgstr "Omezte, které typy obrázků je možné nahrát"
+
+#: includes/fields/class-acf-field-file.php:263
+#: includes/fields/class-acf-field-image.php:241
+msgid "Minimum"
+msgstr "Minimum"
+
+#: includes/fields/class-acf-field-file.php:232
+#: includes/fields/class-acf-field-image.php:207
+msgid "Uploaded to post"
+msgstr "Nahráno k příspěvku"
+
+#: includes/fields/class-acf-field-file.php:231
+#: includes/fields/class-acf-field-image.php:206
+#: includes/locations/class-acf-location-attachment.php:73
+#: includes/locations/class-acf-location-comment.php:61
+#: includes/locations/class-acf-location-nav-menu.php:74
+#: includes/locations/class-acf-location-taxonomy.php:63
+#: includes/locations/class-acf-location-user-form.php:71
+#: includes/locations/class-acf-location-user-role.php:78
+#: includes/locations/class-acf-location-widget.php:65
+msgid "All"
+msgstr "Vše"
+
+#: includes/fields/class-acf-field-file.php:226
+#: includes/fields/class-acf-field-image.php:201
+msgid "Limit the media library choice"
+msgstr "Omezit výběr knihovny médií"
+
+#: includes/fields/class-acf-field-file.php:225
+#: includes/fields/class-acf-field-image.php:200
+msgid "Library"
+msgstr "Knihovna"
+
+#: includes/fields/class-acf-field-image.php:333
+msgid "Preview Size"
+msgstr "Velikost náhledu"
+
+#: includes/fields/class-acf-field-image.php:192
+msgid "Image ID"
+msgstr "ID obrázku"
+
+#: includes/fields/class-acf-field-image.php:191
+msgid "Image URL"
+msgstr "Adresa obrázku"
+
+#: includes/fields/class-acf-field-image.php:190
+msgid "Image Array"
+msgstr "Pole obrázku"
+
+#: includes/fields/class-acf-field-button-group.php:165
+#: includes/fields/class-acf-field-checkbox.php:368
+#: includes/fields/class-acf-field-file.php:210
+#: includes/fields/class-acf-field-link.php:168
+#: includes/fields/class-acf-field-radio.php:210
+msgid "Specify the returned value on front end"
+msgstr "Zadat konkrétní návratovou hodnotu na frontendu"
+
+#: includes/fields/class-acf-field-button-group.php:164
+#: includes/fields/class-acf-field-checkbox.php:367
+#: includes/fields/class-acf-field-file.php:209
+#: includes/fields/class-acf-field-link.php:167
+#: includes/fields/class-acf-field-radio.php:209
+#: includes/fields/class-acf-field-taxonomy.php:750
+msgid "Return Value"
+msgstr "Vrátit hodnotu"
+
+#: includes/fields/class-acf-field-image.php:159
+msgid "Add Image"
+msgstr "Přidat obrázek"
+
+#: includes/fields/class-acf-field-image.php:159
+msgid "No image selected"
+msgstr "Není vybrán žádný obrázek"
+
+#: includes/assets.php:351 includes/fields/class-acf-field-file.php:159
+#: includes/fields/class-acf-field-image.php:139
+#: includes/fields/class-acf-field-link.php:142 assets/build/js/acf.js:1488
+#: assets/build/js/acf.js:1549
+msgid "Remove"
+msgstr "Odstranit"
+
+#: includes/admin/views/field-group-field.php:65
+#: includes/fields/class-acf-field-file.php:157
+#: includes/fields/class-acf-field-image.php:137
+#: includes/fields/class-acf-field-link.php:142
+msgid "Edit"
+msgstr "Upravit"
+
+#: includes/fields/class-acf-field-image.php:67 includes/media.php:55
+#: assets/build/js/acf-input.js:6378 assets/build/js/acf-input.js:7201
+msgid "All images"
+msgstr "Všechny obrázky"
+
+#: includes/fields/class-acf-field-image.php:66
+#: assets/build/js/acf-input.js:2997 assets/build/js/acf-input.js:3377
+msgid "Update Image"
+msgstr "Aktualizovat obrázek"
+
+#: includes/fields/class-acf-field-image.php:65
+#: assets/build/js/acf-input.js:2996 assets/build/js/acf-input.js:3376
+msgid "Edit Image"
+msgstr "Upravit obrázek"
+
+#: includes/fields/class-acf-field-image.php:64
+#: assets/build/js/acf-input.js:2974 assets/build/js/acf-input.js:3351
+msgid "Select Image"
+msgstr "Vybrat obrázek"
+
+#: includes/fields/class-acf-field-image.php:25
+msgid "Image"
+msgstr "Obrázek"
+
+#: includes/fields/class-acf-field-message.php:123
+msgid "Allow HTML markup to display as visible text instead of rendering"
+msgstr "Nevykreslovat efekt, ale zobrazit značky HTML jako prostý text"
+
+#: includes/fields/class-acf-field-message.php:122
+msgid "Escape HTML"
+msgstr "Escapovat HTML"
+
+#: includes/fields/class-acf-field-message.php:114
+#: includes/fields/class-acf-field-textarea.php:169
+msgid "No Formatting"
+msgstr "Žádné formátování"
+
+#: includes/fields/class-acf-field-message.php:113
+#: includes/fields/class-acf-field-textarea.php:168
+msgid "Automatically add &lt;br&gt;"
+msgstr "Automaticky přidávat &lt;br&gt;"
+
+#: includes/fields/class-acf-field-message.php:112
+#: includes/fields/class-acf-field-textarea.php:167
+msgid "Automatically add paragraphs"
+msgstr "Automaticky přidávat odstavce"
+
+#: includes/fields/class-acf-field-message.php:108
+#: includes/fields/class-acf-field-textarea.php:163
+msgid "Controls how new lines are rendered"
+msgstr "Řídí, jak se vykreslují nové řádky"
+
+#: includes/fields/class-acf-field-message.php:107
+#: includes/fields/class-acf-field-textarea.php:162
+msgid "New Lines"
+msgstr "Nové řádky"
+
+#: includes/fields/class-acf-field-date_picker.php:229
+#: includes/fields/class-acf-field-date_time_picker.php:217
+msgid "Week Starts On"
+msgstr "Týden začíná"
+
+#: includes/fields/class-acf-field-date_picker.php:198
+msgid "The format used when saving a value"
+msgstr "Formát použitý při ukládání hodnoty"
+
+#: includes/fields/class-acf-field-date_picker.php:197
+msgid "Save Format"
+msgstr "Uložit formát"
+
+#: includes/fields/class-acf-field-date_picker.php:64
+msgctxt "Date Picker JS weekHeader"
+msgid "Wk"
+msgstr "Týden"
+
+#: includes/fields/class-acf-field-date_picker.php:63
+msgctxt "Date Picker JS prevText"
+msgid "Prev"
+msgstr "Předchozí"
+
+#: includes/fields/class-acf-field-date_picker.php:62
+msgctxt "Date Picker JS nextText"
+msgid "Next"
+msgstr "Následující"
+
+#: includes/fields/class-acf-field-date_picker.php:61
+msgctxt "Date Picker JS currentText"
+msgid "Today"
+msgstr "Dnes"
+
+#: includes/fields/class-acf-field-date_picker.php:60
+msgctxt "Date Picker JS closeText"
+msgid "Done"
+msgstr "Hotovo"
+
+#: includes/fields/class-acf-field-date_picker.php:25
+msgid "Date Picker"
+msgstr "Výběr data"
+
+#: includes/fields/class-acf-field-image.php:245
+#: includes/fields/class-acf-field-image.php:281
+#: includes/fields/class-acf-field-oembed.php:265
+msgid "Width"
+msgstr "Šířka"
+
+#: includes/fields/class-acf-field-oembed.php:262
+#: includes/fields/class-acf-field-oembed.php:274
+msgid "Embed Size"
+msgstr "Velikost pro Embed"
+
+#: includes/fields/class-acf-field-oembed.php:219
+msgid "Enter URL"
+msgstr "Vložte URL"
+
+#: includes/fields/class-acf-field-oembed.php:25
+msgid "oEmbed"
+msgstr "oEmbed"
+
+#: includes/fields/class-acf-field-true_false.php:181
+msgid "Text shown when inactive"
+msgstr "Text zobrazený při neaktivním poli"
+
+#: includes/fields/class-acf-field-true_false.php:180
+msgid "Off Text"
+msgstr "Text (neaktivní)"
+
+#: includes/fields/class-acf-field-true_false.php:165
+msgid "Text shown when active"
+msgstr "Text zobrazený při aktivním poli"
+
+#: includes/fields/class-acf-field-true_false.php:164
+msgid "On Text"
+msgstr "Text (aktivní)"
+
+#: includes/fields/class-acf-field-select.php:445
+#: includes/fields/class-acf-field-true_false.php:196
+msgid "Stylized UI"
+msgstr "Stylizované uživatelské rozhraní"
+
+#: includes/fields/class-acf-field-button-group.php:154
+#: includes/fields/class-acf-field-checkbox.php:357
+#: includes/fields/class-acf-field-color_picker.php:155
+#: includes/fields/class-acf-field-email.php:114
+#: includes/fields/class-acf-field-number.php:125
+#: includes/fields/class-acf-field-radio.php:199
+#: includes/fields/class-acf-field-range.php:161
+#: includes/fields/class-acf-field-select.php:375
+#: includes/fields/class-acf-field-text.php:94
+#: includes/fields/class-acf-field-textarea.php:100
+#: includes/fields/class-acf-field-true_false.php:144
+#: includes/fields/class-acf-field-url.php:98
+#: includes/fields/class-acf-field-wysiwyg.php:315
+msgid "Default Value"
+msgstr "Výchozí hodnota"
+
+#: includes/fields/class-acf-field-true_false.php:135
+msgid "Displays text alongside the checkbox"
+msgstr "Zobrazí text vedle zaškrtávacího políčka"
+
+#: includes/fields/class-acf-field-message.php:26
+#: includes/fields/class-acf-field-message.php:97
+#: includes/fields/class-acf-field-true_false.php:134
+msgid "Message"
+msgstr "Zpráva"
+
+#: includes/assets.php:350 includes/fields/class-acf-field-true_false.php:83
+#: includes/fields/class-acf-field-true_false.php:184
+#: assets/build/js/acf.js:1645 assets/build/js/acf.js:1749
+msgid "No"
+msgstr "Ne"
+
+#: includes/assets.php:349 includes/fields/class-acf-field-true_false.php:80
+#: includes/fields/class-acf-field-true_false.php:168
+#: assets/build/js/acf.js:1643 assets/build/js/acf.js:1748
+msgid "Yes"
+msgstr "Ano"
+
+#: includes/fields/class-acf-field-true_false.php:25
+msgid "True / False"
+msgstr "Pravda / Nepravda"
+
+#: includes/fields/class-acf-field-group.php:471
+msgid "Row"
+msgstr "Řádek"
+
+#: includes/fields/class-acf-field-group.php:470
+msgid "Table"
+msgstr "Tabulka"
+
+#: includes/fields/class-acf-field-group.php:469
+msgid "Block"
+msgstr "Blok"
+
+#: includes/fields/class-acf-field-group.php:464
+msgid "Specify the style used to render the selected fields"
+msgstr "Určení stylu použitého pro vykreslení vybraných polí"
+
+#: includes/fields.php:359 includes/fields/class-acf-field-button-group.php:212
+#: includes/fields/class-acf-field-checkbox.php:431
+#: includes/fields/class-acf-field-group.php:463
+#: includes/fields/class-acf-field-radio.php:283
+msgid "Layout"
+msgstr "Typ zobrazení"
+
+#: includes/fields/class-acf-field-group.php:447
+msgid "Sub Fields"
+msgstr "Podřazená pole"
+
+#: includes/fields/class-acf-field-group.php:25
+msgid "Group"
+msgstr "Skupina"
+
+#: includes/fields/class-acf-field-google-map.php:232
+msgid "Customize the map height"
+msgstr ""
+
+#: includes/fields/class-acf-field-google-map.php:231
+#: includes/fields/class-acf-field-image.php:256
+#: includes/fields/class-acf-field-image.php:292
+#: includes/fields/class-acf-field-oembed.php:277
+msgid "Height"
+msgstr "Výška"
+
+#: includes/fields/class-acf-field-google-map.php:220
+msgid "Set the initial zoom level"
+msgstr "Nastavit počáteční úroveň přiblížení"
+
+#: includes/fields/class-acf-field-google-map.php:219
+msgid "Zoom"
+msgstr "Přiblížení"
+
+#: includes/fields/class-acf-field-google-map.php:193
+#: includes/fields/class-acf-field-google-map.php:206
+msgid "Center the initial map"
+msgstr "Vycentrovat počáteční zobrazení mapy"
+
+#: includes/fields/class-acf-field-google-map.php:192
+#: includes/fields/class-acf-field-google-map.php:205
+msgid "Center"
+msgstr "Vycentrovat"
+
+#: includes/fields/class-acf-field-google-map.php:160
+msgid "Search for address..."
+msgstr "Vyhledat adresu..."
+
+#: includes/fields/class-acf-field-google-map.php:157
+msgid "Find current location"
+msgstr "Najít aktuální umístění"
+
+#: includes/fields/class-acf-field-google-map.php:156
+msgid "Clear location"
+msgstr "Vymazat polohu"
+
+#: includes/fields/class-acf-field-google-map.php:155
+#: includes/fields/class-acf-field-relationship.php:606
+msgid "Search"
+msgstr "Hledat"
+
+#: includes/fields/class-acf-field-google-map.php:60
+#: assets/build/js/acf-input.js:2673 assets/build/js/acf-input.js:3004
+msgid "Sorry, this browser does not support geolocation"
+msgstr "Je nám líto, ale tento prohlížeč nepodporuje geolokaci"
+
+#: includes/fields/class-acf-field-google-map.php:25
+msgid "Google Map"
+msgstr "Mapa Google"
+
+#: includes/fields/class-acf-field-date_picker.php:209
+#: includes/fields/class-acf-field-date_time_picker.php:198
+#: includes/fields/class-acf-field-time_picker.php:129
+msgid "The format returned via template functions"
+msgstr "Formát vrácen pomocí funkcí šablony"
+
+#: includes/fields/class-acf-field-color_picker.php:179
+#: includes/fields/class-acf-field-date_picker.php:208
+#: includes/fields/class-acf-field-date_time_picker.php:197
+#: includes/fields/class-acf-field-image.php:184
+#: includes/fields/class-acf-field-post_object.php:389
+#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-select.php:386
+#: includes/fields/class-acf-field-time_picker.php:128
+#: includes/fields/class-acf-field-user.php:67
+msgid "Return Format"
+msgstr "Formát návratové hodnoty"
+
+#: includes/fields/class-acf-field-date_picker.php:187
+#: includes/fields/class-acf-field-date_picker.php:218
+#: includes/fields/class-acf-field-date_time_picker.php:189
+#: includes/fields/class-acf-field-date_time_picker.php:207
+#: includes/fields/class-acf-field-time_picker.php:120
+#: includes/fields/class-acf-field-time_picker.php:136
+msgid "Custom:"
+msgstr "Vlastní:"
+
+#: includes/fields/class-acf-field-date_picker.php:179
+#: includes/fields/class-acf-field-date_time_picker.php:180
+#: includes/fields/class-acf-field-time_picker.php:113
+msgid "The format displayed when editing a post"
+msgstr "Formát zobrazený při úpravě příspěvku"
+
+#: includes/fields/class-acf-field-date_picker.php:178
+#: includes/fields/class-acf-field-date_time_picker.php:179
+#: includes/fields/class-acf-field-time_picker.php:112
+msgid "Display Format"
+msgstr "Formát zobrazení"
+
+#: includes/fields/class-acf-field-time_picker.php:25
+msgid "Time Picker"
+msgstr "Výběr času"
 
 #: acf.php:470
 #, php-format
@@ -118,136 +2913,111 @@ msgstr[0] "Neaktivní <span class=\"count\">(%s)</span>"
 msgstr[1] "Neaktivní <span class=\"count\">(%s)</span>"
 msgstr[2] "Neaktivních <span class=\"count\">(%s)</span>"
 
-#: includes/admin/admin-field-group.php:68
-#: includes/admin/admin-field-group.php:69
-#: includes/admin/admin-field-group.php:71
-msgid "Field group updated."
-msgstr "Skupina polí aktualizována."
+#: acf.php:412
+msgid "No Fields found in Trash"
+msgstr "V koši nenalezeno žádné pole"
 
-#: includes/admin/admin-field-group.php:70
-msgid "Field group deleted."
-msgstr "Skupina polí smazána."
+#: acf.php:411
+msgid "No Fields found"
+msgstr "Nenalezeno žádné pole"
 
-#: includes/admin/admin-field-group.php:73
-msgid "Field group published."
-msgstr "Skupina polí publikována."
+#: acf.php:410
+msgid "Search Fields"
+msgstr "Vyhledat pole"
 
-#: includes/admin/admin-field-group.php:74
-msgid "Field group saved."
-msgstr "Skupina polí uložena."
+#: acf.php:409
+msgid "View Field"
+msgstr "Zobrazit pole"
 
-#: includes/admin/admin-field-group.php:75
-msgid "Field group submitted."
-msgstr "Skupina polí odeslána."
+#: acf.php:408 includes/admin/views/field-group-fields.php:104
+msgid "New Field"
+msgstr "Nové pole"
 
-#: includes/admin/admin-field-group.php:76
-msgid "Field group scheduled for."
-msgstr "Skupina polí naplánována."
+#: acf.php:407
+msgid "Edit Field"
+msgstr "Upravit pole"
 
-#: includes/admin/admin-field-group.php:77
-msgid "Field group draft updated."
-msgstr "Koncept skupiny polí aktualizován."
+#: acf.php:406
+msgid "Add New Field"
+msgstr "Přidat nové pole"
 
-#: includes/admin/admin-field-group.php:153
-msgid "The string \"field_\" may not be used at the start of a field name"
-msgstr "Řetězec \"pole_\" nesmí být použit na začátku názvu pole"
+#: acf.php:404
+msgid "Field"
+msgstr "Pole"
 
-#: includes/admin/admin-field-group.php:154
-msgid "This field cannot be moved until its changes have been saved"
-msgstr "Toto pole nelze přesunout, dokud nebudou uloženy jeho změny"
+#: acf.php:403 includes/admin/admin-field-group.php:218
+#: includes/admin/admin-field-groups.php:287
+#: includes/admin/views/field-group-fields.php:21
+msgid "Fields"
+msgstr "Pole"
 
-#: includes/admin/admin-field-group.php:155
-msgid "Field group title is required"
-msgstr "Vyžadován nadpis pro skupinu polí"
+#: acf.php:378
+msgid "No Field Groups found in Trash"
+msgstr "V koši nebyly nalezeny žádné skupiny polí"
+
+#: acf.php:377
+msgid "No Field Groups found"
+msgstr "Nebyly nalezeny žádné skupiny polí"
+
+#: acf.php:376
+msgid "Search Field Groups"
+msgstr "Hledat skupiny polí"
+
+#: acf.php:375
+msgid "View Field Group"
+msgstr "Prohlížet skupinu polí"
+
+#: acf.php:374
+msgid "New Field Group"
+msgstr "Nová skupina polí"
+
+#: acf.php:373
+msgid "Edit Field Group"
+msgstr "Upravit skupinu polí"
+
+#: acf.php:372
+msgid "Add New Field Group"
+msgstr "Přidat novou skupinu polí"
+
+#: acf.php:371 acf.php:405 includes/admin/admin.php:51
+msgid "Add New"
+msgstr "Přidat nové"
+
+#: acf.php:370
+msgid "Field Group"
+msgstr "Skupina polí"
+
+#: acf.php:369 includes/admin/admin.php:50
+msgid "Field Groups"
+msgstr "Skupiny polí"
+
+#. Description of the plugin
+msgid "Customize WordPress with powerful, professional and intuitive fields."
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://www.advancedcustomfields.com"
+msgstr "https://www.advancedcustomfields.com"
+
+#. Plugin Name of the plugin
+#: acf.php:91
+msgid "Advanced Custom Fields"
+msgstr "Advanced Custom Fields"
+
+#: acf.php:465 includes/admin/admin-field-group.php:384
+#: includes/admin/admin-field-groups.php:567
+msgid "Inactive"
+msgstr "Neaktivní"
 
 #: includes/admin/admin-field-group.php:156
 msgid "Move to trash. Are you sure?"
 msgstr "Přesunout do koše. Jste si jistí?"
 
-#: includes/admin/admin-field-group.php:157
-msgid "No toggle fields available"
-msgstr "Žádné zapínatelné pole není k dispozici"
-
-#: includes/admin/admin-field-group.php:158
-msgid "Move Custom Field"
-msgstr "Přesunout vlastní pole"
-
-#: includes/admin/admin-field-group.php:159
-msgid "Checked"
-msgstr "Zaškrtnuto"
-
-#: includes/admin/admin-field-group.php:160 includes/api/api-field.php:289
-msgid "(no label)"
-msgstr "(bez štítku)"
-
-#: includes/admin/admin-field-group.php:161
-msgid "(this field)"
-msgstr "(toto pole)"
-
-#: includes/admin/admin-field-group.php:162
-#: includes/api/api-field-group.php:751
-msgid "copy"
-msgstr "kopírovat"
-
-#: includes/admin/admin-field-group.php:163
-#: includes/admin/views/field-group-field-conditional-logic.php:51
-#: includes/admin/views/field-group-field-conditional-logic.php:151
-#: includes/admin/views/field-group-locations.php:29
-#: includes/admin/views/html-location-group.php:3
-#: includes/api/api-helpers.php:4073
-msgid "or"
-msgstr "nebo"
-
-#: includes/admin/admin-field-group.php:164
-msgid "Null"
-msgstr "Nula"
-
-#: includes/admin/admin-field-group.php:203
-msgid "Location"
-msgstr "Umístění"
-
-#: includes/admin/admin-field-group.php:204
-#: includes/admin/tools/class-acf-admin-tool-export.php:295
-msgid "Settings"
-msgstr "Nastavení"
-
-#: includes/admin/admin-field-group.php:354
-msgid "Field Keys"
-msgstr "Klíče polí"
-
-#: includes/admin/admin-field-group.php:384
-#: includes/admin/views/field-group-options.php:9
-msgid "Active"
-msgstr "Aktivní"
-
-#: includes/admin/admin-field-group.php:746
-msgid "Move Complete."
-msgstr "Přesun hotov."
-
 #: includes/admin/admin-field-group.php:747
 #, php-format
 msgid "The %s field can now be found in the %s field group"
 msgstr "Pole %s lze nyní najít ve skupině polí %s"
-
-#: includes/admin/admin-field-group.php:748
-msgid "Close Window"
-msgstr "Zavřít okno"
-
-#: includes/admin/admin-field-group.php:789
-msgid "Please select the destination for this field"
-msgstr "Prosím zvolte umístění pro toto pole"
-
-#: includes/admin/admin-field-group.php:796
-msgid "Move Field"
-msgstr "Přesunout pole"
-
-#: includes/admin/admin-field-groups.php:74
-#, php-format
-msgid "Active <span class=\"count\">(%s)</span>"
-msgid_plural "Active <span class=\"count\">(%s)</span>"
-msgstr[0] "Aktivní <span class=\"count\">(%s)</span>"
-msgstr[1] "Aktivní <span class=\"count\">(%s)</span>"
-msgstr[2] "Aktivních <span class=\"count\">(%s)</span>"
 
 #: includes/admin/admin-field-groups.php:142
 #, php-format
@@ -274,24 +3044,6 @@ msgid_plural "%s field groups synchronised."
 msgstr[0] "%s skupina polí synchronizována."
 msgstr[1] "%s skupiny polí synchronizovány."
 msgstr[2] "%s skupin polí synchronizováno."
-
-#: includes/admin/admin-field-groups.php:394
-#: includes/admin/admin-field-groups.php:557
-msgid "Sync available"
-msgstr "Synchronizace je k dispozici"
-
-#: includes/admin/admin-field-groups.php:507 includes/forms/form-front.php:38
-#: pro/fields/class-acf-field-gallery.php:370
-msgid "Title"
-msgstr "Název"
-
-#: includes/admin/admin-field-groups.php:508
-#: includes/admin/views/field-group-options.php:96
-#: includes/admin/views/html-admin-page-upgrade-network.php:38
-#: includes/admin/views/html-admin-page-upgrade-network.php:49
-#: pro/fields/class-acf-field-gallery.php:397
-msgid "Description"
-msgstr "Popis"
 
 #: includes/admin/admin-field-groups.php:509
 msgid "Status"
@@ -341,36 +3093,9 @@ msgstr "Pro"
 msgid "Thank you for creating with <a href=\"%s\">ACF</a>."
 msgstr "Děkujeme, že používáte <a href=\"%s\">ACF</a>."
 
-#: includes/admin/admin-field-groups.php:667
-msgid "Duplicate this item"
-msgstr "Duplikovat tuto položku"
-
-#: includes/admin/admin-field-groups.php:667
-#: includes/admin/admin-field-groups.php:683
-#: includes/admin/views/field-group-field.php:46
-#: pro/fields/class-acf-field-flexible-content.php:571
-msgid "Duplicate"
-msgstr "Duplikovat"
-
-#: includes/admin/admin-field-groups.php:700
-#: includes/fields/class-acf-field-google-map.php:164
-#: includes/fields/class-acf-field-relationship.php:674
-msgid "Search"
-msgstr "Hledat"
-
-#: includes/admin/admin-field-groups.php:759
-#, php-format
-msgid "Select %s"
-msgstr "Zvolit %s"
-
 #: includes/admin/admin-field-groups.php:767
 msgid "Synchronise field group"
 msgstr "Synchronizujte skupinu polí"
-
-#: includes/admin/admin-field-groups.php:767
-#: includes/admin/admin-field-groups.php:797
-msgid "Sync"
-msgstr "Synchronizace"
 
 #: includes/admin/admin-field-groups.php:779
 msgid "Apply"
@@ -379,27 +3104,6 @@ msgstr "Použít"
 #: includes/admin/admin-field-groups.php:797
 msgid "Bulk Actions"
 msgstr "Hromadné akce"
-
-#: includes/admin/admin-tools.php:116
-#: includes/admin/views/html-admin-tools.php:21
-msgid "Tools"
-msgstr "Nástroje"
-
-#: includes/admin/admin-upgrade.php:47 includes/admin/admin-upgrade.php:94
-#: includes/admin/admin-upgrade.php:156
-#: includes/admin/views/html-admin-page-upgrade-network.php:24
-#: includes/admin/views/html-admin-page-upgrade.php:26
-msgid "Upgrade Database"
-msgstr "Aktualizovat databázi"
-
-#: includes/admin/admin-upgrade.php:180
-msgid "Review sites & upgrade"
-msgstr "Zkontrolujte stránky a aktualizujte"
-
-#: includes/admin/admin.php:113
-#: includes/admin/views/field-group-options.php:110
-msgid "Custom Fields"
-msgstr "Vlastní pole"
 
 #: includes/admin/settings-addons.php:51
 #: includes/admin/views/settings-addons.php:3
@@ -418,34 +3122,6 @@ msgstr "Informace"
 msgid "What's New"
 msgstr "Co je nového"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:33
-msgid "Export Field Groups"
-msgstr "Exportovat skupiny polí"
-
-#: includes/admin/tools/class-acf-admin-tool-export.php:38
-#: includes/admin/tools/class-acf-admin-tool-export.php:342
-#: includes/admin/tools/class-acf-admin-tool-export.php:371
-msgid "Generate PHP"
-msgstr "Vytvořit PHP"
-
-#: includes/admin/tools/class-acf-admin-tool-export.php:97
-#: includes/admin/tools/class-acf-admin-tool-export.php:135
-msgid "No field groups selected"
-msgstr "Nebyly vybrány žádné skupiny polí"
-
-#: includes/admin/tools/class-acf-admin-tool-export.php:174
-#, php-format
-msgid "Exported 1 field group."
-msgid_plural "Exported %s field groups."
-msgstr[0] "Exportovaná 1 skupina polí."
-msgstr[1] "Exportované %s skupiny polí."
-msgstr[2] "Exportovaných %s skupin polí."
-
-#: includes/admin/tools/class-acf-admin-tool-export.php:241
-#: includes/admin/tools/class-acf-admin-tool-export.php:269
-msgid "Select Field Groups"
-msgstr "Zvolit skupiny polí"
-
 #: includes/admin/tools/class-acf-admin-tool-export.php:336
 msgid ""
 "Select the field groups you would like to export and then select your export "
@@ -462,32 +3138,6 @@ msgstr ""
 msgid "Export File"
 msgstr "Exportovat soubor"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:414
-msgid ""
-"The following code can be used to register a local version of the selected "
-"field group(s). A local field group can provide many benefits such as faster "
-"load times, version control & dynamic fields/settings. Simply copy and paste "
-"the following code to your theme's functions.php file or include it within "
-"an external file."
-msgstr ""
-"Následující kód lze použít k registraci lokální verze vybrané skupiny polí. "
-"Místní skupina polí může poskytnout mnoho výhod, jako jsou rychlejší doby "
-"načítání, řízení verzí a dynamická pole / nastavení. Jednoduše zkopírujte a "
-"vložte následující kód do souboru functions.php svého motivu nebo jej vložte "
-"do externího souboru."
-
-#: includes/admin/tools/class-acf-admin-tool-export.php:446
-msgid "Copy to clipboard"
-msgstr "Zkopírovat od schránky"
-
-#: includes/admin/tools/class-acf-admin-tool-export.php:483
-msgid "Copied"
-msgstr "Zkopírováno"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:26
-msgid "Import Field Groups"
-msgstr "Importovat skupiny polí"
-
 #: includes/admin/tools/class-acf-admin-tool-import.php:61
 msgid ""
 "Select the Advanced Custom Fields JSON file you would like to import. When "
@@ -496,176 +3146,13 @@ msgstr ""
 "Vyberte Advanced Custom Fields JSON soubor, který chcete importovat. Po "
 "klepnutí na tlačítko importu níže bude ACF importovat skupiny polí."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:66
-#: includes/fields/class-acf-field-file.php:57
-msgid "Select File"
-msgstr "Vybrat soubor"
-
 #: includes/admin/tools/class-acf-admin-tool-import.php:76
 msgid "Import File"
 msgstr "Importovat soubor"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:100
-#: includes/fields/class-acf-field-file.php:170
-msgid "No file selected"
-msgstr "Dokument nevybrán"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:113
-msgid "Error uploading file. Please try again"
-msgstr "Chyba při nahrávání souboru. Prosím zkuste to znovu"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:122
-msgid "Incorrect file type"
-msgstr "Nesprávný typ souboru"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:139
-msgid "Import file empty"
-msgstr "Importovaný soubor je prázdný"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:247
-#, php-format
-msgid "Imported 1 field group"
-msgid_plural "Imported %s field groups"
-msgstr[0] "Importovaná 1 skupina polí"
-msgstr[1] "Importované %s skupiny polí"
-msgstr[2] "Importovaných %s skupin polí"
-
-#: includes/admin/views/field-group-field-conditional-logic.php:25
-msgid "Conditional Logic"
-msgstr "Podmíněná logika"
-
-#: includes/admin/views/field-group-field-conditional-logic.php:51
-msgid "Show this field if"
-msgstr "Zobrazit toto pole, pokud"
-
-#: includes/admin/views/field-group-field-conditional-logic.php:138
-#: includes/admin/views/html-location-rule.php:86
-msgid "and"
-msgstr "a"
-
-#: includes/admin/views/field-group-field-conditional-logic.php:153
-#: includes/admin/views/field-group-locations.php:31
-msgid "Add rule group"
-msgstr "Přidat skupinu pravidel"
-
-#: includes/admin/views/field-group-field.php:38
-#: pro/fields/class-acf-field-flexible-content.php:424
-#: pro/fields/class-acf-field-repeater.php:294
-msgid "Drag to reorder"
-msgstr "Přetažením změníte pořadí"
-
-#: includes/admin/views/field-group-field.php:42
-#: includes/admin/views/field-group-field.php:45
-msgid "Edit field"
-msgstr "Upravit pole"
-
-#: includes/admin/views/field-group-field.php:45
-#: includes/fields/class-acf-field-file.php:152
-#: includes/fields/class-acf-field-image.php:139
-#: includes/fields/class-acf-field-link.php:139
-#: pro/fields/class-acf-field-gallery.php:357
-msgid "Edit"
-msgstr "Upravit"
-
-#: includes/admin/views/field-group-field.php:46
-msgid "Duplicate field"
-msgstr "Duplikovat pole"
-
-#: includes/admin/views/field-group-field.php:47
-msgid "Move field to another group"
-msgstr "Přesunout pole do jiné skupiny"
-
-#: includes/admin/views/field-group-field.php:47
-msgid "Move"
-msgstr "Přesunout"
-
-#: includes/admin/views/field-group-field.php:48
-msgid "Delete field"
-msgstr "Smazat pole"
-
-#: includes/admin/views/field-group-field.php:48
-#: pro/fields/class-acf-field-flexible-content.php:570
-msgid "Delete"
-msgstr "Smazat"
-
-#: includes/admin/views/field-group-field.php:65
-msgid "Field Label"
-msgstr "Štítek pole"
-
-#: includes/admin/views/field-group-field.php:66
-msgid "This is the name which will appear on the EDIT page"
-msgstr "Toto je jméno, které se zobrazí na stránce úprav"
-
-#: includes/admin/views/field-group-field.php:75
-msgid "Field Name"
-msgstr "Jméno pole"
-
-#: includes/admin/views/field-group-field.php:76
-msgid "Single word, no spaces. Underscores and dashes allowed"
-msgstr "Jedno slovo, bez mezer. Podtržítka a pomlčky jsou povoleny"
-
-#: includes/admin/views/field-group-field.php:85
-msgid "Field Type"
-msgstr "Typ pole"
-
-#: includes/admin/views/field-group-field.php:96
-msgid "Instructions"
-msgstr "Instrukce"
-
-#: includes/admin/views/field-group-field.php:97
-msgid "Instructions for authors. Shown when submitting data"
-msgstr "Instrukce pro autory. Jsou zobrazeny při zadávání dat"
-
 #: includes/admin/views/field-group-field.php:106
 msgid "Required?"
 msgstr "Požadováno?"
-
-#: includes/admin/views/field-group-field.php:129
-msgid "Wrapper Attributes"
-msgstr "Atributy obalového pole"
-
-#: includes/admin/views/field-group-field.php:135
-msgid "width"
-msgstr "šířka"
-
-#: includes/admin/views/field-group-field.php:150
-msgid "class"
-msgstr "třída"
-
-#: includes/admin/views/field-group-field.php:163
-msgid "id"
-msgstr "identifikátor"
-
-#: includes/admin/views/field-group-field.php:175
-msgid "Close Field"
-msgstr "Zavřít pole"
-
-#: includes/admin/views/field-group-fields.php:4
-msgid "Order"
-msgstr "Pořadí"
-
-#: includes/admin/views/field-group-fields.php:5
-#: includes/fields/class-acf-field-button-group.php:198
-#: includes/fields/class-acf-field-checkbox.php:420
-#: includes/fields/class-acf-field-radio.php:311
-#: includes/fields/class-acf-field-select.php:428
-#: pro/fields/class-acf-field-flexible-content.php:596
-msgid "Label"
-msgstr "Štítek"
-
-#: includes/admin/views/field-group-fields.php:6
-#: includes/fields/class-acf-field-taxonomy.php:939
-#: pro/fields/class-acf-field-flexible-content.php:610
-msgid "Name"
-msgstr "Jméno"
-
-#: includes/admin/views/field-group-fields.php:7
-msgid "Key"
-msgstr "Klíč"
-
-#: includes/admin/views/field-group-fields.php:8
-msgid "Type"
-msgstr "Typ"
 
 #: includes/admin/views/field-group-fields.php:14
 msgid ""
@@ -679,275 +3166,15 @@ msgstr ""
 msgid "+ Add Field"
 msgstr "+ Přidat pole"
 
-#: includes/admin/views/field-group-locations.php:9
-msgid "Rules"
-msgstr "Pravidla"
-
-#: includes/admin/views/field-group-locations.php:10
-msgid ""
-"Create a set of rules to determine which edit screens will use these "
-"advanced custom fields"
-msgstr ""
-"Vytváří sadu pravidel pro určení, na kterých stránkách úprav budou použita "
-"tato vlastní pole"
-
-#: includes/admin/views/field-group-options.php:23
-msgid "Style"
-msgstr "Styl"
-
-#: includes/admin/views/field-group-options.php:30
-msgid "Standard (WP metabox)"
-msgstr "Standardní (WP metabox)"
-
-#: includes/admin/views/field-group-options.php:31
-msgid "Seamless (no metabox)"
-msgstr "Bezokrajové (bez metaboxu)"
-
-#: includes/admin/views/field-group-options.php:38
-msgid "Position"
-msgstr "Pozice"
-
-#: includes/admin/views/field-group-options.php:45
-msgid "High (after title)"
-msgstr "Vysoko (po nadpisu)"
-
-#: includes/admin/views/field-group-options.php:46
-msgid "Normal (after content)"
-msgstr "Normální (po obsahu)"
-
-#: includes/admin/views/field-group-options.php:47
-msgid "Side"
-msgstr "Na straně"
-
-#: includes/admin/views/field-group-options.php:55
-msgid "Label placement"
-msgstr "Umístění štítků"
-
-#: includes/admin/views/field-group-options.php:62
-#: includes/fields/class-acf-field-tab.php:106
-msgid "Top aligned"
-msgstr "Zarovnat shora"
-
-#: includes/admin/views/field-group-options.php:63
-#: includes/fields/class-acf-field-tab.php:107
-msgid "Left aligned"
-msgstr "Zarovnat zleva"
-
-#: includes/admin/views/field-group-options.php:70
-msgid "Instruction placement"
-msgstr "Umístění instrukcí"
-
-#: includes/admin/views/field-group-options.php:77
-msgid "Below labels"
-msgstr "Pod štítky"
-
-#: includes/admin/views/field-group-options.php:78
-msgid "Below fields"
-msgstr "Pod poli"
-
-#: includes/admin/views/field-group-options.php:85
-msgid "Order No."
-msgstr "Pořadové č."
-
-#: includes/admin/views/field-group-options.php:86
-msgid "Field groups with a lower order will appear first"
-msgstr "Skupiny polí s nižším pořadím se zobrazí první"
-
-#: includes/admin/views/field-group-options.php:97
-msgid "Shown in field group list"
-msgstr "Zobrazit v seznamu skupin polí"
-
-#: includes/admin/views/field-group-options.php:107
-msgid "Permalink"
-msgstr "Trvalý odkaz"
-
-#: includes/admin/views/field-group-options.php:108
-msgid "Content Editor"
-msgstr "Editor obsahu"
-
-#: includes/admin/views/field-group-options.php:109
-msgid "Excerpt"
-msgstr "Stručný výpis"
-
-#: includes/admin/views/field-group-options.php:111
-msgid "Discussion"
-msgstr "Diskuze"
-
-#: includes/admin/views/field-group-options.php:112
-msgid "Comments"
-msgstr "Komentáře"
-
-#: includes/admin/views/field-group-options.php:113
-msgid "Revisions"
-msgstr "Revize"
-
-#: includes/admin/views/field-group-options.php:114
-msgid "Slug"
-msgstr "Adresa"
-
-#: includes/admin/views/field-group-options.php:115
-msgid "Author"
-msgstr "Autor"
-
-#: includes/admin/views/field-group-options.php:116
-msgid "Format"
-msgstr "Formát"
-
-#: includes/admin/views/field-group-options.php:117
-msgid "Page Attributes"
-msgstr "Atributy stránky"
-
-#: includes/admin/views/field-group-options.php:118
-#: includes/fields/class-acf-field-relationship.php:688
-msgid "Featured Image"
-msgstr "Uživatelský obrázek"
-
-#: includes/admin/views/field-group-options.php:119
-msgid "Categories"
-msgstr "Kategorie"
-
-#: includes/admin/views/field-group-options.php:120
-msgid "Tags"
-msgstr "Štítky"
-
-#: includes/admin/views/field-group-options.php:121
-msgid "Send Trackbacks"
-msgstr "Odesílat zpětné linkování odkazů"
-
-#: includes/admin/views/field-group-options.php:128
-msgid "Hide on screen"
-msgstr "Skrýt na obrazovce"
-
-#: includes/admin/views/field-group-options.php:129
-msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
-msgstr "<b>Zvolte</b> položky, které budou na obrazovce úprav <b>skryté</b>."
-
-#: includes/admin/views/field-group-options.php:129
-msgid ""
-"If multiple field groups appear on an edit screen, the first field group's "
-"options will be used (the one with the lowest order number)"
-msgstr ""
-"Pokud se na obrazovce úprav objeví více skupin polí, použije se nastavení "
-"dle první skupiny polí (té s nejnižším pořadovým číslem)"
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:26
-#, php-format
-msgid ""
-"The following sites require a DB upgrade. Check the ones you want to update "
-"and then click %s."
-msgstr ""
-"Následující stránky vyžadují upgrade DB. Zaškrtněte ty, které chcete "
-"aktualizovat, a poté klikněte na %s."
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:26
-#: includes/admin/views/html-admin-page-upgrade-network.php:27
-#: includes/admin/views/html-admin-page-upgrade-network.php:92
-msgid "Upgrade Sites"
-msgstr "Upgradovat stránky"
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:36
-#: includes/admin/views/html-admin-page-upgrade-network.php:47
-msgid "Site"
-msgstr "Stránky"
-
 #: includes/admin/views/html-admin-page-upgrade-network.php:74
 #, php-format
 msgid "Site requires database upgrade from %s to %s"
 msgstr "Stránky vyžadují aktualizaci databáze z %s na %s"
 
-#: includes/admin/views/html-admin-page-upgrade-network.php:76
-msgid "Site is up to date"
-msgstr "Stránky jsou aktuální"
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:93
-#, php-format
-msgid ""
-"Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
-msgstr ""
-"Aktualizace databáze je dokončena. <a href=\"%s\">Návrat na nástěnku sítě</a>"
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:113
-msgid "Please select at least one site to upgrade."
-msgstr "Vyberte alespoň jednu stránku, kterou chcete upgradovat."
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:117
-#: includes/admin/views/html-notice-upgrade.php:38
-msgid ""
-"It is strongly recommended that you backup your database before proceeding. "
-"Are you sure you wish to run the updater now?"
-msgstr ""
-"Důrazně doporučujeme zálohovat databázi před pokračováním. Opravdu chcete "
-"aktualizaci spustit?"
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:144
-#: includes/admin/views/html-admin-page-upgrade.php:31
-#, php-format
-msgid "Upgrading data to version %s"
-msgstr "Aktualizace dat na verzi %s"
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:167
-msgid "Upgrade complete."
-msgstr "Aktualizace dokončena."
-
-#: includes/admin/views/html-admin-page-upgrade-network.php:176
-#: includes/admin/views/html-admin-page-upgrade-network.php:185
-#: includes/admin/views/html-admin-page-upgrade.php:78
-#: includes/admin/views/html-admin-page-upgrade.php:87
-msgid "Upgrade failed."
-msgstr "Upgrade se nezdařil."
-
-#: includes/admin/views/html-admin-page-upgrade.php:30
-msgid "Reading upgrade tasks..."
-msgstr "Čtení úkolů aktualizace..."
-
-#: includes/admin/views/html-admin-page-upgrade.php:33
-#, php-format
-msgid "Database upgrade complete. <a href=\"%s\">See what's new</a>"
-msgstr ""
-"Upgrade databáze byl dokončen. <a href=\"%s\">Podívejte se, co je nového</a>"
-
-#: includes/admin/views/html-admin-page-upgrade.php:116
-#: includes/ajax/class-acf-ajax-upgrade.php:33
-msgid "No updates available."
-msgstr "K dispozici nejsou žádné aktualizace."
-
-#: includes/admin/views/html-location-group.php:3
-msgid "Show this field group if"
-msgstr "Zobrazit tuto skupinu polí, pokud"
-
-#: includes/admin/views/html-notice-upgrade.php:8
-#: pro/fields/class-acf-field-repeater.php:25
-msgid "Repeater"
-msgstr "Opakovač"
-
-#: includes/admin/views/html-notice-upgrade.php:9
-#: pro/fields/class-acf-field-flexible-content.php:25
-msgid "Flexible Content"
-msgstr "Flexibilní obsah"
-
-#: includes/admin/views/html-notice-upgrade.php:10
-#: pro/fields/class-acf-field-gallery.php:25
-msgid "Gallery"
-msgstr "Galerie"
-
-#: includes/admin/views/html-notice-upgrade.php:11
-#: pro/locations/class-acf-location-options-page.php:26
-msgid "Options Page"
-msgstr "Stránka konfigurace"
-
-#: includes/admin/views/html-notice-upgrade.php:21
-msgid "Database Upgrade Required"
-msgstr "Vyžadován upgrade databáze"
-
 #: includes/admin/views/html-notice-upgrade.php:22
 #, php-format
 msgid "Thank you for updating to %s v%s!"
 msgstr "Děkujeme vám za aktualizaci na %s v%s!"
-
-#: includes/admin/views/html-notice-upgrade.php:22
-msgid ""
-"This version contains improvements to your database and requires an upgrade."
-msgstr "Tato verze obsahuje vylepšení databáze a vyžaduje upgrade."
 
 #: includes/admin/views/html-notice-upgrade.php:24
 #, php-format
@@ -1126,10 +3353,6 @@ msgstr ""
 "oEmbed pole umožňuje snadno vkládat videa, obrázky, tweety, audio a další "
 "obsah."
 
-#: includes/admin/views/settings-info.php:84
-msgid "Clone Field"
-msgstr "Klonovat pole"
-
 #: includes/admin/views/settings-info.php:85
 msgid "The clone field allows you to select and display existing fields."
 msgstr "Klonované pole umožňuje vybrat a zobrazit existující pole."
@@ -1141,10 +3364,6 @@ msgstr "Více AJAXu"
 #: includes/admin/views/settings-info.php:90
 msgid "More fields use AJAX powered search to speed up page loading."
 msgstr "Více polí využívá vyhledávání pomocí AJAX pro rychlé načítání stránky."
-
-#: includes/admin/views/settings-info.php:94
-msgid "Local JSON"
-msgstr "Lokální JSON"
 
 #: includes/admin/views/settings-info.php:95
 msgid ""
@@ -1243,1148 +3462,42 @@ msgstr ""
 msgid "We think you'll love the changes in %s."
 msgstr "Myslíme si, že změny v %s si zamilujete."
 
-#: includes/api/api-helpers.php:1046
-msgid "Thumbnail"
-msgstr "Miniatura"
-
-#: includes/api/api-helpers.php:1047
-msgid "Medium"
-msgstr "Střední"
-
-#: includes/api/api-helpers.php:1048
-msgid "Large"
-msgstr "Velký"
-
-#: includes/api/api-helpers.php:1097
-msgid "Full Size"
-msgstr "Plná velikost"
-
-#: includes/api/api-helpers.php:1339 includes/api/api-helpers.php:1912
-#: pro/fields/class-acf-field-clone.php:996
-msgid "(no title)"
-msgstr "(bez názvu)"
-
-#: includes/api/api-helpers.php:3994
-#, php-format
-msgid "Image width must be at least %dpx."
-msgstr "Šířka obrázku musí být alespoň %dpx."
-
-#: includes/api/api-helpers.php:3999
-#, php-format
-msgid "Image width must not exceed %dpx."
-msgstr "Šířka obrázku nesmí přesáhnout %dpx."
-
-#: includes/api/api-helpers.php:4015
-#, php-format
-msgid "Image height must be at least %dpx."
-msgstr "Výška obrázku musí být alespoň %dpx."
-
-#: includes/api/api-helpers.php:4020
-#, php-format
-msgid "Image height must not exceed %dpx."
-msgstr "Výška obrázku nesmí přesáhnout %dpx."
-
-#: includes/api/api-helpers.php:4038
-#, php-format
-msgid "File size must be at least %s."
-msgstr "Velikost souboru musí být alespoň %s."
-
 #: includes/api/api-helpers.php:4043
 #, php-format
 msgid "File size must must not exceed %s."
 msgstr "Velikost souboru nesmí přesáhnout %s."
 
-#: includes/api/api-helpers.php:4077
-#, php-format
-msgid "File type must be %s."
-msgstr "Typ souboru musí být %s."
-
-#: includes/assets.php:172
-msgid "The changes you made will be lost if you navigate away from this page"
-msgstr ""
-"Pokud opustíte tuto stránku, změny, které jste provedli, budou ztraceny"
-
-#: includes/assets.php:175 includes/fields/class-acf-field-select.php:259
-msgctxt "verb"
-msgid "Select"
-msgstr "Vybrat"
-
-#: includes/assets.php:176
-msgctxt "verb"
-msgid "Edit"
-msgstr "Upravit"
-
-#: includes/assets.php:177
-msgctxt "verb"
-msgid "Update"
-msgstr "Aktualizace"
-
-#: includes/assets.php:178
-msgid "Uploaded to this post"
-msgstr "Nahrán k tomuto příspěvku"
-
-#: includes/assets.php:179
-msgid "Expand Details"
-msgstr "Rozbalit podrobnosti"
-
-#: includes/assets.php:180
-msgid "Collapse Details"
-msgstr "Sbalit podrobnosti"
-
-#: includes/assets.php:181
-msgid "Restricted"
-msgstr "Omezeno"
-
-#: includes/assets.php:182 includes/fields/class-acf-field-image.php:67
-msgid "All images"
-msgstr "Všechny obrázky"
-
-#: includes/assets.php:185
-msgid "Validation successful"
-msgstr "Ověření úspěšné"
-
-#: includes/assets.php:186 includes/validation.php:285
-#: includes/validation.php:296
-msgid "Validation failed"
-msgstr "Ověření selhalo"
-
-#: includes/assets.php:187
-msgid "1 field requires attention"
-msgstr "1 pole vyžaduje pozornost"
-
-#: includes/assets.php:188
-#, php-format
-msgid "%d fields require attention"
-msgstr "Několik polí vyžaduje pozornost (%d)"
-
-#: includes/assets.php:191
-msgid "Are you sure?"
-msgstr "Jste si jistí?"
-
-#: includes/assets.php:192 includes/fields/class-acf-field-true_false.php:79
-#: includes/fields/class-acf-field-true_false.php:159
-#: pro/admin/views/html-settings-updates.php:89
-msgid "Yes"
-msgstr "Ano"
-
-#: includes/assets.php:193 includes/fields/class-acf-field-true_false.php:80
-#: includes/fields/class-acf-field-true_false.php:174
-#: pro/admin/views/html-settings-updates.php:99
-msgid "No"
-msgstr "Ne"
-
-#: includes/assets.php:194 includes/fields/class-acf-field-file.php:154
-#: includes/fields/class-acf-field-image.php:141
-#: includes/fields/class-acf-field-link.php:140
-#: pro/fields/class-acf-field-gallery.php:358
-#: pro/fields/class-acf-field-gallery.php:546
-msgid "Remove"
-msgstr "Odstranit"
-
-#: includes/assets.php:195
-msgid "Cancel"
-msgstr "Zrušit"
-
-#: includes/assets.php:198
-msgid "Has any value"
-msgstr "Má libovolnou hodnotu"
-
-#: includes/assets.php:199
-msgid "Has no value"
-msgstr "Nemá hodnotu"
-
-#: includes/assets.php:200
-msgid "Value is equal to"
-msgstr "Hodnota je rovna"
-
-#: includes/assets.php:201
-msgid "Value is not equal to"
-msgstr "Hodnota není rovna"
-
-#: includes/assets.php:202
-msgid "Value matches pattern"
-msgstr "Hodnota odpovídá masce"
-
-#: includes/assets.php:203
-msgid "Value contains"
-msgstr "Hodnota obsahuje"
-
-#: includes/assets.php:204
-msgid "Value is greater than"
-msgstr "Hodnota je větší než"
-
-#: includes/assets.php:205
-msgid "Value is less than"
-msgstr "Hodnota je menší než"
-
-#: includes/assets.php:206
-msgid "Selection is greater than"
-msgstr "Výběr je větší než"
-
-#: includes/assets.php:207
-msgid "Selection is less than"
-msgstr "Výběr je menší než"
-
-#: includes/fields.php:308
-msgid "Field type does not exist"
-msgstr "Typ pole neexistuje"
-
-#: includes/fields.php:308
-msgid "Unknown"
-msgstr "Neznámý"
-
-#: includes/fields.php:349
-msgid "Basic"
-msgstr "Základní"
-
-#: includes/fields.php:350 includes/forms/form-front.php:47
-msgid "Content"
-msgstr "Obsah"
-
-#: includes/fields.php:351
-msgid "Choice"
-msgstr "Volba"
-
-#: includes/fields.php:352
-msgid "Relational"
-msgstr "Relační"
-
-#: includes/fields.php:353
-msgid "jQuery"
-msgstr "jQuery"
-
-#: includes/fields.php:354 includes/fields/class-acf-field-button-group.php:177
-#: includes/fields/class-acf-field-checkbox.php:389
-#: includes/fields/class-acf-field-group.php:474
-#: includes/fields/class-acf-field-radio.php:290
-#: pro/fields/class-acf-field-clone.php:843
-#: pro/fields/class-acf-field-flexible-content.php:567
-#: pro/fields/class-acf-field-flexible-content.php:616
-#: pro/fields/class-acf-field-repeater.php:443
-msgid "Layout"
-msgstr "Typ zobrazení"
-
-#: includes/fields/class-acf-field-accordion.php:24
-msgid "Accordion"
-msgstr "Akordeon"
-
-#: includes/fields/class-acf-field-accordion.php:99
-msgid "Open"
-msgstr "Otevřít"
-
-#: includes/fields/class-acf-field-accordion.php:100
-msgid "Display this accordion as open on page load."
-msgstr "Zobrazit tento akordeon jako otevřený při načtení stránky."
-
-#: includes/fields/class-acf-field-accordion.php:109
-msgid "Multi-expand"
-msgstr "Vícenásobné rozbalení"
-
-#: includes/fields/class-acf-field-accordion.php:110
-msgid "Allow this accordion to open without closing others."
-msgstr "Povolit otevření tohoto akordeonu bez zavření ostatních."
-
-#: includes/fields/class-acf-field-accordion.php:119
-#: includes/fields/class-acf-field-tab.php:114
-msgid "Endpoint"
-msgstr "Koncový bod"
-
-#: includes/fields/class-acf-field-accordion.php:120
-msgid ""
-"Define an endpoint for the previous accordion to stop. This accordion will "
-"not be visible."
-msgstr ""
-"Definujte koncový bod pro předchozí akordeon. Tento akordeon nebude "
-"viditelný."
-
-#: includes/fields/class-acf-field-button-group.php:24
-msgid "Button Group"
-msgstr "Skupina tlačítek"
-
-#: includes/fields/class-acf-field-button-group.php:149
-#: includes/fields/class-acf-field-checkbox.php:344
-#: includes/fields/class-acf-field-radio.php:235
-#: includes/fields/class-acf-field-select.php:359
-msgid "Choices"
-msgstr "Možnosti"
-
-#: includes/fields/class-acf-field-button-group.php:150
-#: includes/fields/class-acf-field-checkbox.php:345
-#: includes/fields/class-acf-field-radio.php:236
-#: includes/fields/class-acf-field-select.php:360
-msgid "Enter each choice on a new line."
-msgstr "Zadejte každou volbu na nový řádek."
-
-#: includes/fields/class-acf-field-button-group.php:150
-#: includes/fields/class-acf-field-checkbox.php:345
-#: includes/fields/class-acf-field-radio.php:236
-#: includes/fields/class-acf-field-select.php:360
-msgid "For more control, you may specify both a value and label like this:"
-msgstr "Pro větší kontrolu můžete zadat jak hodnotu, tak štítek:"
-
-#: includes/fields/class-acf-field-button-group.php:150
-#: includes/fields/class-acf-field-checkbox.php:345
-#: includes/fields/class-acf-field-radio.php:236
-#: includes/fields/class-acf-field-select.php:360
-msgid "red : Red"
-msgstr "cervena : Červená"
-
-#: includes/fields/class-acf-field-button-group.php:158
-#: includes/fields/class-acf-field-page_link.php:513
-#: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-radio.php:244
-#: includes/fields/class-acf-field-select.php:377
-#: includes/fields/class-acf-field-taxonomy.php:784
-#: includes/fields/class-acf-field-user.php:409
-msgid "Allow Null?"
-msgstr "Povolit prázdné?"
-
-#: includes/fields/class-acf-field-button-group.php:168
-#: includes/fields/class-acf-field-checkbox.php:380
-#: includes/fields/class-acf-field-color_picker.php:131
-#: includes/fields/class-acf-field-email.php:118
-#: includes/fields/class-acf-field-number.php:127
-#: includes/fields/class-acf-field-radio.php:281
-#: includes/fields/class-acf-field-range.php:149
-#: includes/fields/class-acf-field-select.php:368
-#: includes/fields/class-acf-field-text.php:119
-#: includes/fields/class-acf-field-textarea.php:102
-#: includes/fields/class-acf-field-true_false.php:135
-#: includes/fields/class-acf-field-url.php:100
-#: includes/fields/class-acf-field-wysiwyg.php:381
-msgid "Default Value"
-msgstr "Výchozí hodnota"
-
-#: includes/fields/class-acf-field-button-group.php:169
-#: includes/fields/class-acf-field-email.php:119
-#: includes/fields/class-acf-field-number.php:128
-#: includes/fields/class-acf-field-radio.php:282
-#: includes/fields/class-acf-field-range.php:150
-#: includes/fields/class-acf-field-text.php:120
-#: includes/fields/class-acf-field-textarea.php:103
-#: includes/fields/class-acf-field-url.php:101
-#: includes/fields/class-acf-field-wysiwyg.php:382
-msgid "Appears when creating a new post"
-msgstr "Objeví se při vytváření nového příspěvku"
-
-#: includes/fields/class-acf-field-button-group.php:183
-#: includes/fields/class-acf-field-checkbox.php:396
-#: includes/fields/class-acf-field-radio.php:297
-msgid "Horizontal"
-msgstr "Horizontální"
-
-#: includes/fields/class-acf-field-button-group.php:184
-#: includes/fields/class-acf-field-checkbox.php:395
-#: includes/fields/class-acf-field-radio.php:296
-msgid "Vertical"
-msgstr "Vertikální"
-
-#: includes/fields/class-acf-field-button-group.php:191
-#: includes/fields/class-acf-field-checkbox.php:413
-#: includes/fields/class-acf-field-file.php:215
-#: includes/fields/class-acf-field-image.php:205
-#: includes/fields/class-acf-field-link.php:166
-#: includes/fields/class-acf-field-radio.php:304
-#: includes/fields/class-acf-field-taxonomy.php:829
-msgid "Return Value"
-msgstr "Vrátit hodnotu"
-
-#: includes/fields/class-acf-field-button-group.php:192
-#: includes/fields/class-acf-field-checkbox.php:414
-#: includes/fields/class-acf-field-file.php:216
-#: includes/fields/class-acf-field-image.php:206
-#: includes/fields/class-acf-field-link.php:167
-#: includes/fields/class-acf-field-radio.php:305
-msgid "Specify the returned value on front end"
-msgstr "Zadat konkrétní návratovou hodnotu na frontendu"
-
-#: includes/fields/class-acf-field-button-group.php:197
-#: includes/fields/class-acf-field-checkbox.php:419
-#: includes/fields/class-acf-field-radio.php:310
-#: includes/fields/class-acf-field-select.php:427
-msgid "Value"
-msgstr "Hodnota"
-
-#: includes/fields/class-acf-field-button-group.php:199
-#: includes/fields/class-acf-field-checkbox.php:421
-#: includes/fields/class-acf-field-radio.php:312
-#: includes/fields/class-acf-field-select.php:429
-msgid "Both (Array)"
-msgstr "Obě (pole)"
-
-#: includes/fields/class-acf-field-checkbox.php:25
-#: includes/fields/class-acf-field-taxonomy.php:771
-msgid "Checkbox"
-msgstr "Zaškrtávátko"
-
-#: includes/fields/class-acf-field-checkbox.php:154
-msgid "Toggle All"
-msgstr "Přepnout vše"
-
-#: includes/fields/class-acf-field-checkbox.php:221
-msgid "Add new choice"
-msgstr "Přidat novou volbu"
-
 #: includes/fields/class-acf-field-checkbox.php:353
 msgid "Allow Custom"
 msgstr "Povolit vlastní"
-
-#: includes/fields/class-acf-field-checkbox.php:358
-msgid "Allow 'custom' values to be added"
-msgstr "Povolit přidání 'vlastních' hodnot"
 
 #: includes/fields/class-acf-field-checkbox.php:364
 msgid "Save Custom"
 msgstr "Uložit vlastní"
 
-#: includes/fields/class-acf-field-checkbox.php:369
-msgid "Save 'custom' values to the field's choices"
-msgstr "Uložit 'vlastní' hodnoty do voleb polí"
-
-#: includes/fields/class-acf-field-checkbox.php:381
-#: includes/fields/class-acf-field-select.php:369
-msgid "Enter each default value on a new line"
-msgstr "Zadejte každou výchozí hodnotu na nový řádek"
-
 #: includes/fields/class-acf-field-checkbox.php:403
 msgid "Toggle"
 msgstr "Přepnout"
-
-#: includes/fields/class-acf-field-checkbox.php:404
-msgid "Prepend an extra checkbox to toggle all choices"
-msgstr "Přidat zaškrtávátko navíc pro přepnutí všech možností"
-
-#: includes/fields/class-acf-field-color_picker.php:25
-msgid "Color Picker"
-msgstr "Výběr barvy"
-
-#: includes/fields/class-acf-field-color_picker.php:68
-msgid "Clear"
-msgstr "Vymazat"
-
-#: includes/fields/class-acf-field-color_picker.php:69
-msgid "Default"
-msgstr "Výchozí nastavení"
-
-#: includes/fields/class-acf-field-color_picker.php:70
-msgid "Select Color"
-msgstr "Výběr barvy"
 
 #: includes/fields/class-acf-field-color_picker.php:71
 msgid "Current Color"
 msgstr "Aktuální barva"
 
-#: includes/fields/class-acf-field-date_picker.php:25
-msgid "Date Picker"
-msgstr "Výběr data"
-
-#: includes/fields/class-acf-field-date_picker.php:59
-msgctxt "Date Picker JS closeText"
-msgid "Done"
-msgstr "Hotovo"
-
-#: includes/fields/class-acf-field-date_picker.php:60
-msgctxt "Date Picker JS currentText"
-msgid "Today"
-msgstr "Dnes"
-
-#: includes/fields/class-acf-field-date_picker.php:61
-msgctxt "Date Picker JS nextText"
-msgid "Next"
-msgstr "Následující"
-
-#: includes/fields/class-acf-field-date_picker.php:62
-msgctxt "Date Picker JS prevText"
-msgid "Prev"
-msgstr "Předchozí"
-
-#: includes/fields/class-acf-field-date_picker.php:63
-msgctxt "Date Picker JS weekHeader"
-msgid "Wk"
-msgstr "Týden"
-
-#: includes/fields/class-acf-field-date_picker.php:180
-#: includes/fields/class-acf-field-date_time_picker.php:183
-#: includes/fields/class-acf-field-time_picker.php:109
-msgid "Display Format"
-msgstr "Formát zobrazení"
-
-#: includes/fields/class-acf-field-date_picker.php:181
-#: includes/fields/class-acf-field-date_time_picker.php:184
-#: includes/fields/class-acf-field-time_picker.php:110
-msgid "The format displayed when editing a post"
-msgstr "Formát zobrazený při úpravě příspěvku"
-
-#: includes/fields/class-acf-field-date_picker.php:189
-#: includes/fields/class-acf-field-date_picker.php:220
-#: includes/fields/class-acf-field-date_time_picker.php:193
-#: includes/fields/class-acf-field-date_time_picker.php:210
-#: includes/fields/class-acf-field-time_picker.php:117
-#: includes/fields/class-acf-field-time_picker.php:132
-msgid "Custom:"
-msgstr "Vlastní:"
-
-#: includes/fields/class-acf-field-date_picker.php:199
-msgid "Save Format"
-msgstr "Uložit formát"
-
-#: includes/fields/class-acf-field-date_picker.php:200
-msgid "The format used when saving a value"
-msgstr "Formát použitý při ukládání hodnoty"
-
-#: includes/fields/class-acf-field-date_picker.php:210
-#: includes/fields/class-acf-field-date_time_picker.php:200
-#: includes/fields/class-acf-field-post_object.php:431
-#: includes/fields/class-acf-field-relationship.php:715
-#: includes/fields/class-acf-field-select.php:422
-#: includes/fields/class-acf-field-time_picker.php:124
-#: includes/fields/class-acf-field-user.php:428
-msgid "Return Format"
-msgstr "Formát návratové hodnoty"
-
-#: includes/fields/class-acf-field-date_picker.php:211
-#: includes/fields/class-acf-field-date_time_picker.php:201
-#: includes/fields/class-acf-field-time_picker.php:125
-msgid "The format returned via template functions"
-msgstr "Formát vrácen pomocí funkcí šablony"
-
-#: includes/fields/class-acf-field-date_picker.php:229
-#: includes/fields/class-acf-field-date_time_picker.php:217
-msgid "Week Starts On"
-msgstr "Týden začíná"
-
-#: includes/fields/class-acf-field-date_time_picker.php:25
-msgid "Date Time Picker"
-msgstr "Výběr data a času"
-
-#: includes/fields/class-acf-field-date_time_picker.php:68
-msgctxt "Date Time Picker JS timeOnlyTitle"
-msgid "Choose Time"
-msgstr "Zvolit čas"
-
-#: includes/fields/class-acf-field-date_time_picker.php:69
-msgctxt "Date Time Picker JS timeText"
-msgid "Time"
-msgstr "Čas"
-
-#: includes/fields/class-acf-field-date_time_picker.php:70
-msgctxt "Date Time Picker JS hourText"
-msgid "Hour"
-msgstr "Hodina"
-
-#: includes/fields/class-acf-field-date_time_picker.php:71
-msgctxt "Date Time Picker JS minuteText"
-msgid "Minute"
-msgstr "Minuta"
-
-#: includes/fields/class-acf-field-date_time_picker.php:72
-msgctxt "Date Time Picker JS secondText"
-msgid "Second"
-msgstr "Vteřina"
-
-#: includes/fields/class-acf-field-date_time_picker.php:73
-msgctxt "Date Time Picker JS millisecText"
-msgid "Millisecond"
-msgstr "Milisekunda"
-
-#: includes/fields/class-acf-field-date_time_picker.php:74
-msgctxt "Date Time Picker JS microsecText"
-msgid "Microsecond"
-msgstr "Mikrosekunda"
-
-#: includes/fields/class-acf-field-date_time_picker.php:75
-msgctxt "Date Time Picker JS timezoneText"
-msgid "Time Zone"
-msgstr "Časové pásmo"
-
-#: includes/fields/class-acf-field-date_time_picker.php:76
-msgctxt "Date Time Picker JS currentText"
-msgid "Now"
-msgstr "Nyní"
-
-#: includes/fields/class-acf-field-date_time_picker.php:77
-msgctxt "Date Time Picker JS closeText"
-msgid "Done"
-msgstr "Hotovo"
-
-#: includes/fields/class-acf-field-date_time_picker.php:78
-msgctxt "Date Time Picker JS selectText"
-msgid "Select"
-msgstr "Vybrat"
-
-#: includes/fields/class-acf-field-date_time_picker.php:80
-msgctxt "Date Time Picker JS amText"
-msgid "AM"
-msgstr "dop"
-
-#: includes/fields/class-acf-field-date_time_picker.php:81
-msgctxt "Date Time Picker JS amTextShort"
-msgid "A"
-msgstr "od"
-
-#: includes/fields/class-acf-field-date_time_picker.php:84
-msgctxt "Date Time Picker JS pmText"
-msgid "PM"
-msgstr "odp"
-
-#: includes/fields/class-acf-field-date_time_picker.php:85
-msgctxt "Date Time Picker JS pmTextShort"
-msgid "P"
-msgstr "do"
-
-#: includes/fields/class-acf-field-email.php:25
-msgid "Email"
-msgstr "Email"
-
-#: includes/fields/class-acf-field-email.php:127
-#: includes/fields/class-acf-field-number.php:136
-#: includes/fields/class-acf-field-password.php:71
-#: includes/fields/class-acf-field-text.php:128
-#: includes/fields/class-acf-field-textarea.php:111
-#: includes/fields/class-acf-field-url.php:109
-msgid "Placeholder Text"
-msgstr "Zástupný text"
-
-#: includes/fields/class-acf-field-email.php:128
-#: includes/fields/class-acf-field-number.php:137
-#: includes/fields/class-acf-field-password.php:72
-#: includes/fields/class-acf-field-text.php:129
-#: includes/fields/class-acf-field-textarea.php:112
-#: includes/fields/class-acf-field-url.php:110
-msgid "Appears within the input"
-msgstr "Zobrazí se v inputu"
-
-#: includes/fields/class-acf-field-email.php:136
-#: includes/fields/class-acf-field-number.php:145
-#: includes/fields/class-acf-field-password.php:80
-#: includes/fields/class-acf-field-range.php:188
-#: includes/fields/class-acf-field-text.php:137
-msgid "Prepend"
-msgstr "Zobrazit před"
-
-#: includes/fields/class-acf-field-email.php:137
-#: includes/fields/class-acf-field-number.php:146
-#: includes/fields/class-acf-field-password.php:81
-#: includes/fields/class-acf-field-range.php:189
-#: includes/fields/class-acf-field-text.php:138
-msgid "Appears before the input"
-msgstr "Zobrazí se před inputem"
-
-#: includes/fields/class-acf-field-email.php:145
-#: includes/fields/class-acf-field-number.php:154
-#: includes/fields/class-acf-field-password.php:89
-#: includes/fields/class-acf-field-range.php:197
-#: includes/fields/class-acf-field-text.php:146
-msgid "Append"
-msgstr "Zobrazit po"
-
-#: includes/fields/class-acf-field-email.php:146
-#: includes/fields/class-acf-field-number.php:155
-#: includes/fields/class-acf-field-password.php:90
-#: includes/fields/class-acf-field-range.php:198
-#: includes/fields/class-acf-field-text.php:147
-msgid "Appears after the input"
-msgstr "Zobrazí se za inputem"
-
-#: includes/fields/class-acf-field-file.php:25
-msgid "File"
-msgstr "Soubor"
-
-#: includes/fields/class-acf-field-file.php:58
-msgid "Edit File"
-msgstr "Upravit soubor"
-
-#: includes/fields/class-acf-field-file.php:59
-msgid "Update File"
-msgstr "Aktualizovat soubor"
-
-#: includes/fields/class-acf-field-file.php:141
-msgid "File name"
-msgstr "Jméno souboru"
-
-#: includes/fields/class-acf-field-file.php:145
-#: includes/fields/class-acf-field-file.php:248
-#: includes/fields/class-acf-field-file.php:259
-#: includes/fields/class-acf-field-image.php:265
-#: includes/fields/class-acf-field-image.php:294
-#: pro/fields/class-acf-field-gallery.php:705
-#: pro/fields/class-acf-field-gallery.php:734
-msgid "File size"
-msgstr "Velikost souboru"
-
-#: includes/fields/class-acf-field-file.php:170
-msgid "Add File"
-msgstr "Přidat soubor"
-
-#: includes/fields/class-acf-field-file.php:221
-msgid "File Array"
-msgstr "Pole souboru"
-
-#: includes/fields/class-acf-field-file.php:222
-msgid "File URL"
-msgstr "Adresa souboru"
-
-#: includes/fields/class-acf-field-file.php:223
-msgid "File ID"
-msgstr "ID souboru"
-
-#: includes/fields/class-acf-field-file.php:230
-#: includes/fields/class-acf-field-image.php:230
-#: pro/fields/class-acf-field-gallery.php:670
-msgid "Library"
-msgstr "Knihovna"
-
-#: includes/fields/class-acf-field-file.php:231
-#: includes/fields/class-acf-field-image.php:231
-#: pro/fields/class-acf-field-gallery.php:671
-msgid "Limit the media library choice"
-msgstr "Omezit výběr knihovny médií"
-
-#: includes/fields/class-acf-field-file.php:236
-#: includes/fields/class-acf-field-image.php:236
-#: includes/locations/class-acf-location-attachment.php:101
-#: includes/locations/class-acf-location-comment.php:79
-#: includes/locations/class-acf-location-nav-menu.php:102
-#: includes/locations/class-acf-location-taxonomy.php:79
-#: includes/locations/class-acf-location-user-form.php:87
-#: includes/locations/class-acf-location-user-role.php:111
-#: includes/locations/class-acf-location-widget.php:83
-#: pro/fields/class-acf-field-gallery.php:676
-msgid "All"
-msgstr "Vše"
-
-#: includes/fields/class-acf-field-file.php:237
-#: includes/fields/class-acf-field-image.php:237
-#: pro/fields/class-acf-field-gallery.php:677
-msgid "Uploaded to post"
-msgstr "Nahráno k příspěvku"
-
-#: includes/fields/class-acf-field-file.php:244
-#: includes/fields/class-acf-field-image.php:244
-#: pro/fields/class-acf-field-gallery.php:684
-msgid "Minimum"
-msgstr "Minimum"
-
-#: includes/fields/class-acf-field-file.php:245
-#: includes/fields/class-acf-field-file.php:256
-msgid "Restrict which files can be uploaded"
-msgstr "Omezte, které typy souborů lze nahrát"
-
-#: includes/fields/class-acf-field-file.php:255
-#: includes/fields/class-acf-field-image.php:273
-#: pro/fields/class-acf-field-gallery.php:713
-msgid "Maximum"
-msgstr "Maximum"
-
-#: includes/fields/class-acf-field-file.php:266
-#: includes/fields/class-acf-field-image.php:302
-#: pro/fields/class-acf-field-gallery.php:742
-msgid "Allowed file types"
-msgstr "Povolené typy souborů"
-
-#: includes/fields/class-acf-field-file.php:267
-#: includes/fields/class-acf-field-image.php:303
-#: pro/fields/class-acf-field-gallery.php:743
-msgid "Comma separated list. Leave blank for all types"
-msgstr "Seznam oddělený čárkami. Nechte prázdné pro povolení všech typů"
-
-#: includes/fields/class-acf-field-google-map.php:25
-msgid "Google Map"
-msgstr "Mapa Google"
-
-#: includes/fields/class-acf-field-google-map.php:59
-msgid "Sorry, this browser does not support geolocation"
-msgstr "Je nám líto, ale tento prohlížeč nepodporuje geolokaci"
-
-#: includes/fields/class-acf-field-google-map.php:165
-msgid "Clear location"
-msgstr "Vymazat polohu"
-
-#: includes/fields/class-acf-field-google-map.php:166
-msgid "Find current location"
-msgstr "Najít aktuální umístění"
-
-#: includes/fields/class-acf-field-google-map.php:169
-msgid "Search for address..."
-msgstr "Vyhledat adresu..."
-
-#: includes/fields/class-acf-field-google-map.php:199
-#: includes/fields/class-acf-field-google-map.php:210
-msgid "Center"
-msgstr "Vycentrovat"
-
-#: includes/fields/class-acf-field-google-map.php:200
-#: includes/fields/class-acf-field-google-map.php:211
-msgid "Center the initial map"
-msgstr "Vycentrovat počáteční zobrazení mapy"
-
-#: includes/fields/class-acf-field-google-map.php:222
-msgid "Zoom"
-msgstr "Přiblížení"
-
-#: includes/fields/class-acf-field-google-map.php:223
-msgid "Set the initial zoom level"
-msgstr "Nastavit počáteční úroveň přiblížení"
-
-#: includes/fields/class-acf-field-google-map.php:232
-#: includes/fields/class-acf-field-image.php:256
-#: includes/fields/class-acf-field-image.php:285
-#: includes/fields/class-acf-field-oembed.php:268
-#: pro/fields/class-acf-field-gallery.php:696
-#: pro/fields/class-acf-field-gallery.php:725
-msgid "Height"
-msgstr "Výška"
-
 #: includes/fields/class-acf-field-google-map.php:233
 msgid "Customise the map height"
 msgstr "Upravit výšku mapy"
-
-#: includes/fields/class-acf-field-group.php:25
-msgid "Group"
-msgstr "Skupina"
-
-#: includes/fields/class-acf-field-group.php:459
-#: pro/fields/class-acf-field-repeater.php:379
-msgid "Sub Fields"
-msgstr "Podřazená pole"
-
-#: includes/fields/class-acf-field-group.php:475
-#: pro/fields/class-acf-field-clone.php:844
-msgid "Specify the style used to render the selected fields"
-msgstr "Určení stylu použitého pro vykreslení vybraných polí"
-
-#: includes/fields/class-acf-field-group.php:480
-#: pro/fields/class-acf-field-clone.php:849
-#: pro/fields/class-acf-field-flexible-content.php:627
-#: pro/fields/class-acf-field-repeater.php:451
-msgid "Block"
-msgstr "Blok"
-
-#: includes/fields/class-acf-field-group.php:481
-#: pro/fields/class-acf-field-clone.php:850
-#: pro/fields/class-acf-field-flexible-content.php:626
-#: pro/fields/class-acf-field-repeater.php:450
-msgid "Table"
-msgstr "Tabulka"
-
-#: includes/fields/class-acf-field-group.php:482
-#: pro/fields/class-acf-field-clone.php:851
-#: pro/fields/class-acf-field-flexible-content.php:628
-#: pro/fields/class-acf-field-repeater.php:452
-msgid "Row"
-msgstr "Řádek"
-
-#: includes/fields/class-acf-field-image.php:25
-msgid "Image"
-msgstr "Obrázek"
-
-#: includes/fields/class-acf-field-image.php:64
-msgid "Select Image"
-msgstr "Vybrat obrázek"
-
-#: includes/fields/class-acf-field-image.php:65
-msgid "Edit Image"
-msgstr "Upravit obrázek"
-
-#: includes/fields/class-acf-field-image.php:66
-msgid "Update Image"
-msgstr "Aktualizovat obrázek"
-
-#: includes/fields/class-acf-field-image.php:157
-msgid "No image selected"
-msgstr "Není vybrán žádný obrázek"
-
-#: includes/fields/class-acf-field-image.php:157
-msgid "Add Image"
-msgstr "Přidat obrázek"
-
-#: includes/fields/class-acf-field-image.php:211
-msgid "Image Array"
-msgstr "Pole obrázku"
-
-#: includes/fields/class-acf-field-image.php:212
-msgid "Image URL"
-msgstr "Adresa obrázku"
-
-#: includes/fields/class-acf-field-image.php:213
-msgid "Image ID"
-msgstr "ID obrázku"
-
-#: includes/fields/class-acf-field-image.php:220
-msgid "Preview Size"
-msgstr "Velikost náhledu"
 
 #: includes/fields/class-acf-field-image.php:221
 msgid "Shown when entering data"
 msgstr "Zobrazit při zadávání dat"
 
-#: includes/fields/class-acf-field-image.php:245
-#: includes/fields/class-acf-field-image.php:274
-#: pro/fields/class-acf-field-gallery.php:685
-#: pro/fields/class-acf-field-gallery.php:714
-msgid "Restrict which images can be uploaded"
-msgstr "Omezte, které typy obrázků je možné nahrát"
-
-#: includes/fields/class-acf-field-image.php:248
-#: includes/fields/class-acf-field-image.php:277
-#: includes/fields/class-acf-field-oembed.php:257
-#: pro/fields/class-acf-field-gallery.php:688
-#: pro/fields/class-acf-field-gallery.php:717
-msgid "Width"
-msgstr "Šířka"
-
-#: includes/fields/class-acf-field-link.php:25
-msgid "Link"
-msgstr "Odkaz"
-
-#: includes/fields/class-acf-field-link.php:133
-msgid "Select Link"
-msgstr "Vybrat odkaz"
-
-#: includes/fields/class-acf-field-link.php:138
-msgid "Opens in a new window/tab"
-msgstr "Otevřít v novém okně/záložce"
-
-#: includes/fields/class-acf-field-link.php:172
-msgid "Link Array"
-msgstr "Pole odkazů"
-
-#: includes/fields/class-acf-field-link.php:173
-msgid "Link URL"
-msgstr "URL adresa odkazu"
-
-#: includes/fields/class-acf-field-message.php:25
-#: includes/fields/class-acf-field-message.php:101
-#: includes/fields/class-acf-field-true_false.php:126
-msgid "Message"
-msgstr "Zpráva"
-
-#: includes/fields/class-acf-field-message.php:110
-#: includes/fields/class-acf-field-textarea.php:139
-msgid "New Lines"
-msgstr "Nové řádky"
-
-#: includes/fields/class-acf-field-message.php:111
-#: includes/fields/class-acf-field-textarea.php:140
-msgid "Controls how new lines are rendered"
-msgstr "Řídí, jak se vykreslují nové řádky"
-
-#: includes/fields/class-acf-field-message.php:115
-#: includes/fields/class-acf-field-textarea.php:144
-msgid "Automatically add paragraphs"
-msgstr "Automaticky přidávat odstavce"
-
-#: includes/fields/class-acf-field-message.php:116
-#: includes/fields/class-acf-field-textarea.php:145
-msgid "Automatically add &lt;br&gt;"
-msgstr "Automaticky přidávat &lt;br&gt;"
-
-#: includes/fields/class-acf-field-message.php:117
-#: includes/fields/class-acf-field-textarea.php:146
-msgid "No Formatting"
-msgstr "Žádné formátování"
-
-#: includes/fields/class-acf-field-message.php:124
-msgid "Escape HTML"
-msgstr "Escapovat HTML"
-
-#: includes/fields/class-acf-field-message.php:125
-msgid "Allow HTML markup to display as visible text instead of rendering"
-msgstr "Nevykreslovat efekt, ale zobrazit značky HTML jako prostý text"
-
-#: includes/fields/class-acf-field-number.php:25
-msgid "Number"
-msgstr "Číslo"
-
-#: includes/fields/class-acf-field-number.php:163
-#: includes/fields/class-acf-field-range.php:158
-msgid "Minimum Value"
-msgstr "Minimální hodnota"
-
-#: includes/fields/class-acf-field-number.php:172
-#: includes/fields/class-acf-field-range.php:168
-msgid "Maximum Value"
-msgstr "Maximální hodnota"
-
-#: includes/fields/class-acf-field-number.php:181
-#: includes/fields/class-acf-field-range.php:178
-msgid "Step Size"
-msgstr "Velikost kroku"
-
-#: includes/fields/class-acf-field-number.php:219
-msgid "Value must be a number"
-msgstr "Hodnota musí být číslo"
-
-#: includes/fields/class-acf-field-number.php:237
-#, php-format
-msgid "Value must be equal to or higher than %d"
-msgstr "Hodnota musí být rovna nebo větší než %d"
-
-#: includes/fields/class-acf-field-number.php:245
-#, php-format
-msgid "Value must be equal to or lower than %d"
-msgstr "Hodnota musí být rovna nebo menší než %d"
-
-#: includes/fields/class-acf-field-oembed.php:25
-msgid "oEmbed"
-msgstr "oEmbed"
-
-#: includes/fields/class-acf-field-oembed.php:216
-msgid "Enter URL"
-msgstr "Vložte URL"
-
-#: includes/fields/class-acf-field-oembed.php:254
-#: includes/fields/class-acf-field-oembed.php:265
-msgid "Embed Size"
-msgstr "Velikost pro Embed"
-
-#: includes/fields/class-acf-field-page_link.php:25
-msgid "Page Link"
-msgstr "Odkaz stránky"
-
-#: includes/fields/class-acf-field-page_link.php:177
-msgid "Archives"
-msgstr "Archivy"
-
-#: includes/fields/class-acf-field-page_link.php:269
-#: includes/fields/class-acf-field-post_object.php:267
-#: includes/fields/class-acf-field-taxonomy.php:961
-msgid "Parent"
-msgstr "Rodič"
-
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:383
-#: includes/fields/class-acf-field-relationship.php:641
-msgid "Filter by Post Type"
-msgstr "Filtrovat dle typu příspěvku"
-
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:391
-#: includes/fields/class-acf-field-relationship.php:649
-msgid "All post types"
-msgstr "Všechny typy příspěvků"
-
-#: includes/fields/class-acf-field-page_link.php:499
-#: includes/fields/class-acf-field-post_object.php:397
-#: includes/fields/class-acf-field-relationship.php:655
-msgid "Filter by Taxonomy"
-msgstr "Filtrovat dle taxonomie"
-
-#: includes/fields/class-acf-field-page_link.php:507
-#: includes/fields/class-acf-field-post_object.php:405
-#: includes/fields/class-acf-field-relationship.php:663
-msgid "All taxonomies"
-msgstr "Všechny taxonomie"
-
-#: includes/fields/class-acf-field-page_link.php:523
-msgid "Allow Archives URLs"
-msgstr "Umožnit URL adresy archivu"
-
-#: includes/fields/class-acf-field-page_link.php:533
-#: includes/fields/class-acf-field-post_object.php:421
-#: includes/fields/class-acf-field-select.php:387
-#: includes/fields/class-acf-field-user.php:419
-msgid "Select multiple values?"
-msgstr "Vybrat více hodnot?"
-
-#: includes/fields/class-acf-field-password.php:25
-msgid "Password"
-msgstr "Heslo"
-
-#: includes/fields/class-acf-field-post_object.php:25
-#: includes/fields/class-acf-field-post_object.php:436
-#: includes/fields/class-acf-field-relationship.php:720
-msgid "Post Object"
-msgstr "Objekt příspěvku"
-
-#: includes/fields/class-acf-field-post_object.php:437
-#: includes/fields/class-acf-field-relationship.php:721
-msgid "Post ID"
-msgstr "ID příspěvku"
-
-#: includes/fields/class-acf-field-radio.php:25
-msgid "Radio Button"
-msgstr "Přepínač"
-
 #: includes/fields/class-acf-field-radio.php:254
 msgid "Other"
 msgstr "Jiné"
 
-#: includes/fields/class-acf-field-radio.php:259
-msgid "Add 'other' choice to allow for custom values"
-msgstr "Přidat volbu 'jiné', která umožňuje vlastní hodnoty"
-
 #: includes/fields/class-acf-field-radio.php:265
 msgid "Save Other"
 msgstr "Uložit Jiné"
-
-#: includes/fields/class-acf-field-radio.php:270
-msgid "Save 'other' values to the field's choices"
-msgstr "Uložit 'jiné' hodnoty do voleb polí"
-
-#: includes/fields/class-acf-field-range.php:25
-msgid "Range"
-msgstr "Rozmezí"
-
-#: includes/fields/class-acf-field-relationship.php:25
-msgid "Relationship"
-msgstr "Vztah"
-
-#: includes/fields/class-acf-field-relationship.php:62
-msgid "Maximum values reached ( {max} values )"
-msgstr "Dosaženo maximálního množství hodnot ( {max} hodnot )"
-
-#: includes/fields/class-acf-field-relationship.php:63
-msgid "Loading"
-msgstr "Načítání"
-
-#: includes/fields/class-acf-field-relationship.php:64
-msgid "No matches found"
-msgstr "Nebyly nalezeny žádné výsledky"
-
-#: includes/fields/class-acf-field-relationship.php:441
-msgid "Select post type"
-msgstr "Zvolit typ příspěvku"
-
-#: includes/fields/class-acf-field-relationship.php:467
-msgid "Select taxonomy"
-msgstr "Zvolit taxonomii"
-
-#: includes/fields/class-acf-field-relationship.php:557
-msgid "Search..."
-msgstr "Hledat..."
-
-#: includes/fields/class-acf-field-relationship.php:669
-msgid "Filters"
-msgstr "Filtry"
-
-#: includes/fields/class-acf-field-relationship.php:675
-#: includes/locations/class-acf-location-post-type.php:27
-msgid "Post Type"
-msgstr "Typ příspěvku"
-
-#: includes/fields/class-acf-field-relationship.php:676
-#: includes/fields/class-acf-field-taxonomy.php:28
-#: includes/fields/class-acf-field-taxonomy.php:754
-#: includes/locations/class-acf-location-taxonomy.php:27
-msgid "Taxonomy"
-msgstr "Taxonomie"
-
-#: includes/fields/class-acf-field-relationship.php:683
-msgid "Elements"
-msgstr "Prvky"
-
-#: includes/fields/class-acf-field-relationship.php:684
-msgid "Selected elements will be displayed in each result"
-msgstr "Vybrané prvky se zobrazí v každém výsledku"
-
-#: includes/fields/class-acf-field-relationship.php:695
-msgid "Minimum posts"
-msgstr "Minimum příspěvků"
-
-#: includes/fields/class-acf-field-relationship.php:704
-msgid "Maximum posts"
-msgstr "Maximum příspěvků"
 
 #: includes/fields/class-acf-field-relationship.php:808
 #: pro/fields/class-acf-field-gallery.php:815
@@ -2395,101 +3508,10 @@ msgstr[0] "%s vyžaduje alespoň %s volbu"
 msgstr[1] "%s vyžaduje alespoň %s volby"
 msgstr[2] "%s vyžaduje alespoň %s voleb"
 
-#: includes/fields/class-acf-field-select.php:25
-#: includes/fields/class-acf-field-taxonomy.php:776
-msgctxt "noun"
-msgid "Select"
-msgstr "Vybrat"
-
-#: includes/fields/class-acf-field-select.php:111
-msgctxt "Select2 JS matches_1"
-msgid "One result is available, press enter to select it."
-msgstr ""
-"Jeden výsledek je k dispozici, stiskněte klávesu enter pro jeho vybrání."
-
-#: includes/fields/class-acf-field-select.php:112
-#, php-format
-msgctxt "Select2 JS matches_n"
-msgid "%d results are available, use up and down arrow keys to navigate."
-msgstr "%d výsledků je k dispozici, použijte šipky nahoru a dolů pro navigaci."
-
-#: includes/fields/class-acf-field-select.php:113
-msgctxt "Select2 JS matches_0"
-msgid "No matches found"
-msgstr "Nebyly nalezeny žádné výsledky"
-
-#: includes/fields/class-acf-field-select.php:114
-msgctxt "Select2 JS input_too_short_1"
-msgid "Please enter 1 or more characters"
-msgstr "Prosím zadejte 1 nebo více znaků"
-
-#: includes/fields/class-acf-field-select.php:115
-#, php-format
-msgctxt "Select2 JS input_too_short_n"
-msgid "Please enter %d or more characters"
-msgstr "Prosím zadejte %d nebo více znaků"
-
-#: includes/fields/class-acf-field-select.php:116
-msgctxt "Select2 JS input_too_long_1"
-msgid "Please delete 1 character"
-msgstr "Prosím odstraňte 1 znak"
-
-#: includes/fields/class-acf-field-select.php:117
-#, php-format
-msgctxt "Select2 JS input_too_long_n"
-msgid "Please delete %d characters"
-msgstr "Prosím odstraňte %d znaků"
-
-#: includes/fields/class-acf-field-select.php:118
-msgctxt "Select2 JS selection_too_long_1"
-msgid "You can only select 1 item"
-msgstr "Můžete vybrat pouze 1 položku"
-
-#: includes/fields/class-acf-field-select.php:119
-#, php-format
-msgctxt "Select2 JS selection_too_long_n"
-msgid "You can only select %d items"
-msgstr "Můžete vybrat pouze %d položek"
-
-#: includes/fields/class-acf-field-select.php:120
-msgctxt "Select2 JS load_more"
-msgid "Loading more results&hellip;"
-msgstr "Načítání dalších výsledků&hellip;"
-
-#: includes/fields/class-acf-field-select.php:121
-msgctxt "Select2 JS searching"
-msgid "Searching&hellip;"
-msgstr "Vyhledávání&hellip;"
-
-#: includes/fields/class-acf-field-select.php:122
-msgctxt "Select2 JS load_fail"
-msgid "Loading failed"
-msgstr "Načítání selhalo"
-
 #: includes/fields/class-acf-field-select.php:397
 #: includes/fields/class-acf-field-true_false.php:144
 msgid "Stylised UI"
 msgstr "Stylizované uživatelské rozhraní"
-
-#: includes/fields/class-acf-field-select.php:407
-msgid "Use AJAX to lazy load choices?"
-msgstr "K načtení volby použít AJAX lazy load?"
-
-#: includes/fields/class-acf-field-select.php:423
-msgid "Specify the value returned"
-msgstr "Zadat konkrétní návratovou hodnotu"
-
-#: includes/fields/class-acf-field-separator.php:25
-msgid "Separator"
-msgstr "Oddělovač"
-
-#: includes/fields/class-acf-field-tab.php:25
-msgid "Tab"
-msgstr "Záložka"
-
-#: includes/fields/class-acf-field-tab.php:102
-msgid "Placement"
-msgstr "Umístění"
 
 #: includes/fields/class-acf-field-tab.php:115
 msgid ""
@@ -2505,396 +3527,9 @@ msgctxt "No terms"
 msgid "No %s"
 msgstr "Nic pro %s"
 
-#: includes/fields/class-acf-field-taxonomy.php:755
-msgid "Select the taxonomy to be displayed"
-msgstr "Zvolit zobrazovanou taxonomii"
-
-#: includes/fields/class-acf-field-taxonomy.php:764
-msgid "Appearance"
-msgstr "Vzhled"
-
-#: includes/fields/class-acf-field-taxonomy.php:765
-msgid "Select the appearance of this field"
-msgstr "Vyberte vzhled tohoto pole"
-
-#: includes/fields/class-acf-field-taxonomy.php:770
-msgid "Multiple Values"
-msgstr "Více hodnot"
-
-#: includes/fields/class-acf-field-taxonomy.php:772
-msgid "Multi Select"
-msgstr "Vícenásobný výběr"
-
-#: includes/fields/class-acf-field-taxonomy.php:774
-msgid "Single Value"
-msgstr "Jednotlivá hodnota"
-
-#: includes/fields/class-acf-field-taxonomy.php:775
-msgid "Radio Buttons"
-msgstr "Radio přepínače"
-
-#: includes/fields/class-acf-field-taxonomy.php:799
-msgid "Create Terms"
-msgstr "Vytvořit pojmy"
-
-#: includes/fields/class-acf-field-taxonomy.php:800
-msgid "Allow new terms to be created whilst editing"
-msgstr "Povolit vytvoření nových pojmů během editace"
-
-#: includes/fields/class-acf-field-taxonomy.php:809
-msgid "Save Terms"
-msgstr "Uložit pojmy"
-
-#: includes/fields/class-acf-field-taxonomy.php:810
-msgid "Connect selected terms to the post"
-msgstr "Připojte vybrané pojmy k příspěvku"
-
-#: includes/fields/class-acf-field-taxonomy.php:819
-msgid "Load Terms"
-msgstr "Nahrát pojmy"
-
-#: includes/fields/class-acf-field-taxonomy.php:820
-msgid "Load value from posts terms"
-msgstr "Nahrát pojmy z příspěvků"
-
-#: includes/fields/class-acf-field-taxonomy.php:834
-msgid "Term Object"
-msgstr "Objekt pojmu"
-
-#: includes/fields/class-acf-field-taxonomy.php:835
-msgid "Term ID"
-msgstr "ID pojmu"
-
-#: includes/fields/class-acf-field-taxonomy.php:885
-#, php-format
-msgid "User unable to add new %s"
-msgstr "Uživatel není schopen přidat nové %s"
-
-#: includes/fields/class-acf-field-taxonomy.php:895
-#, php-format
-msgid "%s already exists"
-msgstr "%s již existuje"
-
-#: includes/fields/class-acf-field-taxonomy.php:927
-#, php-format
-msgid "%s added"
-msgstr "%s přidán"
-
-#: includes/fields/class-acf-field-taxonomy.php:973
-msgid "Add"
-msgstr "Přidat"
-
-#: includes/fields/class-acf-field-text.php:25
-msgid "Text"
-msgstr "Text"
-
-#: includes/fields/class-acf-field-text.php:155
-#: includes/fields/class-acf-field-textarea.php:120
-msgid "Character Limit"
-msgstr "Limit znaků"
-
-#: includes/fields/class-acf-field-text.php:156
-#: includes/fields/class-acf-field-textarea.php:121
-msgid "Leave blank for no limit"
-msgstr "Nechte prázdné pro nastavení bez omezení"
-
-#: includes/fields/class-acf-field-textarea.php:25
-msgid "Text Area"
-msgstr "Textové pole"
-
-#: includes/fields/class-acf-field-textarea.php:129
-msgid "Rows"
-msgstr "Řádky"
-
-#: includes/fields/class-acf-field-textarea.php:130
-msgid "Sets the textarea height"
-msgstr "Nastavuje výšku textového pole"
-
-#: includes/fields/class-acf-field-time_picker.php:25
-msgid "Time Picker"
-msgstr "Výběr času"
-
-#: includes/fields/class-acf-field-true_false.php:25
-msgid "True / False"
-msgstr "Pravda / Nepravda"
-
-#: includes/fields/class-acf-field-true_false.php:127
-msgid "Displays text alongside the checkbox"
-msgstr "Zobrazí text vedle zaškrtávacího políčka"
-
-#: includes/fields/class-acf-field-true_false.php:155
-msgid "On Text"
-msgstr "Text (aktivní)"
-
-#: includes/fields/class-acf-field-true_false.php:156
-msgid "Text shown when active"
-msgstr "Text zobrazený při aktivním poli"
-
-#: includes/fields/class-acf-field-true_false.php:170
-msgid "Off Text"
-msgstr "Text (neaktivní)"
-
-#: includes/fields/class-acf-field-true_false.php:171
-msgid "Text shown when inactive"
-msgstr "Text zobrazený při neaktivním poli"
-
-#: includes/fields/class-acf-field-url.php:25
-msgid "Url"
-msgstr "Adresa URL"
-
-#: includes/fields/class-acf-field-url.php:151
-msgid "Value must be a valid URL"
-msgstr "Hodnota musí být validní adresa URL"
-
-#: includes/fields/class-acf-field-user.php:25 includes/locations.php:95
-msgid "User"
-msgstr "Uživatel"
-
-#: includes/fields/class-acf-field-user.php:394
-msgid "Filter by role"
-msgstr "Filtrovat podle role"
-
-#: includes/fields/class-acf-field-user.php:402
-msgid "All user roles"
-msgstr "Všechny uživatelské role"
-
-#: includes/fields/class-acf-field-user.php:433
-msgid "User Array"
-msgstr "Pole uživatelů"
-
-#: includes/fields/class-acf-field-user.php:434
-msgid "User Object"
-msgstr "Objekt uživatele"
-
-#: includes/fields/class-acf-field-user.php:435
-msgid "User ID"
-msgstr "ID uživatele"
-
-#: includes/fields/class-acf-field-wysiwyg.php:25
-msgid "Wysiwyg Editor"
-msgstr "Wysiwyg Editor"
-
-#: includes/fields/class-acf-field-wysiwyg.php:330
-msgid "Visual"
-msgstr "Grafika"
-
-#: includes/fields/class-acf-field-wysiwyg.php:331
-msgctxt "Name for the Text editor tab (formerly HTML)"
-msgid "Text"
-msgstr "Text"
-
-#: includes/fields/class-acf-field-wysiwyg.php:337
-msgid "Click to initialize TinyMCE"
-msgstr "Klikněte pro inicializaci TinyMCE"
-
-#: includes/fields/class-acf-field-wysiwyg.php:390
-msgid "Tabs"
-msgstr "Záložky"
-
-#: includes/fields/class-acf-field-wysiwyg.php:395
-msgid "Visual & Text"
-msgstr "Grafika a text"
-
-#: includes/fields/class-acf-field-wysiwyg.php:396
-msgid "Visual Only"
-msgstr "Pouze grafika"
-
-#: includes/fields/class-acf-field-wysiwyg.php:397
-msgid "Text Only"
-msgstr "Pouze text"
-
-#: includes/fields/class-acf-field-wysiwyg.php:404
-msgid "Toolbar"
-msgstr "Lišta nástrojů"
-
-#: includes/fields/class-acf-field-wysiwyg.php:419
-msgid "Show Media Upload Buttons?"
-msgstr "Zobrazit tlačítka nahrávání médií?"
-
-#: includes/fields/class-acf-field-wysiwyg.php:429
-msgid "Delay initialization?"
-msgstr "Zpoždění inicializace?"
-
 #: includes/fields/class-acf-field-wysiwyg.php:430
 msgid "TinyMCE will not be initalized until field is clicked"
 msgstr "TinyMCE nebude inicializován, dokud nekliknete na pole"
-
-#: includes/forms/form-comment.php:166 includes/forms/form-post.php:301
-#: pro/admin/admin-options-page.php:308
-msgid "Edit field group"
-msgstr "Editovat skupinu polí"
-
-#: includes/forms/form-front.php:55
-msgid "Validate Email"
-msgstr "Ověřit email"
-
-#: includes/forms/form-front.php:103 pro/fields/class-acf-field-gallery.php:588
-#: pro/options-page.php:81
-msgid "Update"
-msgstr "Aktualizace"
-
-#: includes/forms/form-front.php:104
-msgid "Post updated"
-msgstr "Příspěvek aktualizován"
-
-#: includes/forms/form-front.php:230
-msgid "Spam Detected"
-msgstr "Zjištěn spam"
-
-#: includes/locations.php:93 includes/locations/class-acf-location-post.php:27
-msgid "Post"
-msgstr "Příspěvek"
-
-#: includes/locations.php:94 includes/locations/class-acf-location-page.php:27
-msgid "Page"
-msgstr "Stránka"
-
-#: includes/locations.php:96
-msgid "Forms"
-msgstr "Formuláře"
-
-#: includes/locations.php:243
-msgid "is equal to"
-msgstr "je rovno"
-
-#: includes/locations.php:244
-msgid "is not equal to"
-msgstr "není rovno"
-
-#: includes/locations/class-acf-location-attachment.php:27
-msgid "Attachment"
-msgstr "Příloha"
-
-#: includes/locations/class-acf-location-attachment.php:109
-#, php-format
-msgid "All %s formats"
-msgstr "Všechny formáty %s"
-
-#: includes/locations/class-acf-location-comment.php:27
-msgid "Comment"
-msgstr "Komentář"
-
-#: includes/locations/class-acf-location-current-user-role.php:27
-msgid "Current User Role"
-msgstr "Aktuální uživatelská role"
-
-#: includes/locations/class-acf-location-current-user-role.php:110
-msgid "Super Admin"
-msgstr "Super Admin"
-
-#: includes/locations/class-acf-location-current-user.php:27
-msgid "Current User"
-msgstr "Aktuální uživatel"
-
-#: includes/locations/class-acf-location-current-user.php:97
-msgid "Logged in"
-msgstr "Přihlášen"
-
-#: includes/locations/class-acf-location-current-user.php:98
-msgid "Viewing front end"
-msgstr "Prohlížíte frontend"
-
-#: includes/locations/class-acf-location-current-user.php:99
-msgid "Viewing back end"
-msgstr "Prohlížíte backend"
-
-#: includes/locations/class-acf-location-nav-menu-item.php:27
-msgid "Menu Item"
-msgstr "Položka nabídky"
-
-#: includes/locations/class-acf-location-nav-menu.php:27
-msgid "Menu"
-msgstr "Nabídka"
-
-#: includes/locations/class-acf-location-nav-menu.php:109
-msgid "Menu Locations"
-msgstr "Umístění nabídky"
-
-#: includes/locations/class-acf-location-nav-menu.php:119
-msgid "Menus"
-msgstr "Nabídky"
-
-#: includes/locations/class-acf-location-page-parent.php:27
-msgid "Page Parent"
-msgstr "Rodičovská stránka"
-
-#: includes/locations/class-acf-location-page-template.php:27
-msgid "Page Template"
-msgstr "Šablona stránky"
-
-#: includes/locations/class-acf-location-page-template.php:98
-#: includes/locations/class-acf-location-post-template.php:151
-msgid "Default Template"
-msgstr "Výchozí šablona"
-
-#: includes/locations/class-acf-location-page-type.php:27
-msgid "Page Type"
-msgstr "Typ stránky"
-
-#: includes/locations/class-acf-location-page-type.php:146
-msgid "Front Page"
-msgstr "Hlavní stránka"
-
-#: includes/locations/class-acf-location-page-type.php:147
-msgid "Posts Page"
-msgstr "Stránka příspěvku"
-
-#: includes/locations/class-acf-location-page-type.php:148
-msgid "Top Level Page (no parent)"
-msgstr "Stránka nejvyšší úrovně (žádný nadřazený)"
-
-#: includes/locations/class-acf-location-page-type.php:149
-msgid "Parent Page (has children)"
-msgstr "Rodičovská stránka (má potomky)"
-
-#: includes/locations/class-acf-location-page-type.php:150
-msgid "Child Page (has parent)"
-msgstr "Podřazená stránka (má rodiče)"
-
-#: includes/locations/class-acf-location-post-category.php:27
-msgid "Post Category"
-msgstr "Rubrika příspěvku"
-
-#: includes/locations/class-acf-location-post-format.php:27
-msgid "Post Format"
-msgstr "Formát příspěvku"
-
-#: includes/locations/class-acf-location-post-status.php:27
-msgid "Post Status"
-msgstr "Stav příspěvku"
-
-#: includes/locations/class-acf-location-post-taxonomy.php:27
-msgid "Post Taxonomy"
-msgstr "Taxonomie příspěvku"
-
-#: includes/locations/class-acf-location-post-template.php:27
-msgid "Post Template"
-msgstr "Šablona příspěvku"
-
-#: includes/locations/class-acf-location-user-form.php:27
-msgid "User Form"
-msgstr "Uživatelský formulář"
-
-#: includes/locations/class-acf-location-user-form.php:88
-msgid "Add / Edit"
-msgstr "Přidat / Editovat"
-
-#: includes/locations/class-acf-location-user-form.php:89
-msgid "Register"
-msgstr "Registrovat"
-
-#: includes/locations/class-acf-location-user-role.php:27
-msgid "User Role"
-msgstr "Uživatelská role"
-
-#: includes/locations/class-acf-location-widget.php:27
-msgid "Widget"
-msgstr "Widget"
-
-#: includes/validation.php:364
-#, php-format
-msgid "%s value is required"
-msgstr "%s hodnota je vyžadována"
 
 #. Plugin Name of the plugin/theme
 #: pro/acf-pro.php:28
@@ -2917,11 +3552,6 @@ msgstr ""
 #: pro/admin/admin-settings-updates.php:78
 msgid "<b>Error</b>. Could not connect to update server"
 msgstr "<b>Chyba</b>. Nelze se připojit k serveru a aktualizovat"
-
-#: pro/admin/admin-settings-updates.php:162
-#: pro/admin/views/html-settings-updates.php:13
-msgid "Updates"
-msgstr "Aktualizace"
 
 #: pro/admin/views/html-settings-updates.php:7
 msgid "Deactivate License"
@@ -3247,10 +3877,6 @@ msgstr "Maximum řádků"
 msgid "No options pages exist"
 msgstr "Neexistuje stránka nastavení"
 
-#: pro/options-page.php:51
-msgid "Options"
-msgstr "Konfigurace"
-
 #: pro/options-page.php:82
 msgid "Options Updated"
 msgstr "Nastavení aktualizováno"
@@ -3279,6 +3905,21 @@ msgstr "Elliot Condon"
 #. Author URI of the plugin/theme
 msgid "http://www.elliotcondon.com/"
 msgstr "http://www.elliotcondon.com/"
+
+#~ msgid "Gallery Field"
+#~ msgstr "Pole galerie"
+
+#~ msgid "Flexible Content Field"
+#~ msgstr "Pole flexibilního obsahu"
+
+#~ msgid "Repeater Field"
+#~ msgstr "Opakovací pole"
+
+#~ msgid "Deactivate"
+#~ msgstr "Deaktivovat"
+
+#~ msgid "Activate"
+#~ msgstr "Aktivovat"
 
 #~ msgid "Disabled"
 #~ msgstr "Zakázáno"
@@ -3645,21 +4286,6 @@ msgstr "http://www.elliotcondon.com/"
 
 #~ msgid "Activation Code"
 #~ msgstr "Aktivační kód"
-
-#~ msgid "Repeater Field"
-#~ msgstr "Opakovací pole"
-
-#~ msgid "Deactivate"
-#~ msgstr "Deaktivovat"
-
-#~ msgid "Activate"
-#~ msgstr "Aktivovat"
-
-#~ msgid "Flexible Content Field"
-#~ msgstr "Pole flexibilního obsahu"
-
-#~ msgid "Gallery Field"
-#~ msgstr "Pole galerie"
 
 #~ msgid "Export Field Groups to XML"
 #~ msgstr "Exportovat skupiny polí do XML"

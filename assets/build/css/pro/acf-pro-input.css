@@ -1,6 +1,7 @@
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/advanced-custom-fields-pro/assets/src/sass/pro/acf-pro-input.scss ***!
   \************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
 /*--------------------------------------------------------------------------------------------
 *
 *	Vars
@@ -9,6 +10,11 @@
 /* colors */
 /* acf-field */
 /* responsive */
+/*--------------------------------------------------------------------------------------------
+*
+*	ACF 6 ↓
+*
+*--------------------------------------------------------------------------------------------*/
 /*--------------------------------------------------------------------------------------------
 *
 *  Mixins
@@ -44,6 +50,9 @@
   margin: 0 0 8px;
   background: #F9F9F9;
 }
+.acf-repeater .acf-divider td {
+  border-top: 10px solid #e4e4e4;
+}
 .acf-repeater .acf-row-handle {
   width: 16px;
   text-align: center !important;
@@ -52,6 +61,18 @@
   /* icons */
   /* .order */
   /* remove */
+}
+.acf-repeater .acf-row-handle .acf-order-input-wrap {
+  width: 45px;
+}
+.acf-repeater .acf-row-handle .acf-order-input::-webkit-outer-spin-button,
+.acf-repeater .acf-row-handle .acf-order-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.acf-repeater .acf-row-handle .acf-order-input {
+  -moz-appearance: textfield;
+  text-align: center;
 }
 .acf-repeater .acf-row-handle .acf-icon {
   display: none;
@@ -78,6 +99,9 @@ body.browser-msie .acf-repeater .acf-row-handle .acf-icon.-minus {
 }
 .acf-repeater .acf-row-handle.order + td {
   border-left-color: #DFDFDF;
+}
+.acf-repeater .acf-row-handle.pagination {
+  cursor: auto;
 }
 .acf-repeater .acf-row-handle.remove {
   background: #F9F9F9;
@@ -150,6 +174,16 @@ body.acf-keydown-shift .acf-repeater .acf-row:hover > .acf-row-handle .acf-icon.
 }
 .acf-repeater.-max .acf-icon[data-event=add-row] {
   display: none !important;
+}
+.acf-repeater .acf-actions .acf-button {
+  float: right;
+}
+.acf-repeater .acf-actions .acf-tablenav {
+  float: right;
+  margin-right: 20px;
+}
+.acf-repeater .acf-actions .acf-tablenav .current-page {
+  width: auto !important;
 }
 
 /*---------------------------------------------------------------------------------------------
@@ -625,11 +659,11 @@ html[dir=rtl] .acf-gallery .acf-gallery-side-data th.label {
   position: relative;
 }
 
-/*--------------------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------
 *
 *	ACF Blocks
 *
-*--------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-block-component .components-placeholder {
   margin: 0;
 }
@@ -641,6 +675,15 @@ html[dir=rtl] .acf-gallery .acf-gallery-side-data th.label {
   line-height: 1.4em;
   color: #444;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+.acf-block-component .acf-block-fields.acf-empty-block-fields {
+  border: 1px solid #1e1e1e;
+  padding: 12px;
+}
+.components-panel .acf-block-component .acf-block-fields.acf-empty-block-fields {
+  border: none;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 html[dir=rtl] .acf-block-component .acf-block-fields {
   text-align: right;
@@ -671,7 +714,8 @@ html[dir=rtl] .acf-block-component .acf-block-fields {
 }
 
 .acf-block-panel .acf-block-fields {
-  border-top: #e2e4e7 solid 1px;
+  border-top: #ddd solid 1px;
+  border-bottom: #ddd solid 1px;
   min-height: 1px;
 }
 .acf-block-panel .acf-block-fields:empty {

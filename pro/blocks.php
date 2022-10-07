@@ -1,4 +1,9 @@
 <?php
+/**
+ * The ACF Blocks PHP code.
+ *
+ * @package ACF
+ */
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
@@ -7,9 +12,137 @@ defined( 'ABSPATH' ) || exit;
 acf_register_store( 'block-types' );
 acf_register_store( 'block-cache' );
 
+// Register block.json support handlers.
+add_filter( 'block_type_metadata', 'acf_add_block_namespace' );
+add_filter( 'block_type_metadata_settings', 'acf_handle_json_block_registration', 99, 2 );
+
 /**
- * acf_register_block_type
+ * Prefix block names for ACF blocks registered through block.json
  *
+ * @since 6.0.0
+ *
+ * @param array $metadata The block metadata array.
+ * @return array The original array with a prefixed block name if it's an ACF block.
+ */
+function acf_add_block_namespace( $metadata ) {
+	if ( acf_is_acf_block_json( $metadata ) ) {
+		// If the block doesn't already have a namespace, append ACF's.
+		if ( strpos( $metadata['name'], '/' ) === false ) {
+			$metadata['name'] = 'acf/' . acf_slugify( $metadata['name'] );
+		}
+	}
+	return $metadata;
+}
+
+/**
+ * Handle an ACF block registered through block.json
+ *
+ * @since 6.0.0
+ *
+ * @param array $settings The compiled block settings.
+ * @param array $metadata The raw json metadata.
+ *
+ * @return array Block registration settings with ACF required additions.
+ */
+function acf_handle_json_block_registration( $settings, $metadata ) {
+	if ( ! acf_is_acf_block_json( $metadata ) ) {
+		return $settings;
+	}
+
+	// Setup ACF defaults.
+	$settings = wp_parse_args(
+		$settings,
+		array(
+			'render_template'   => false,
+			'render_callback'   => false,
+			'enqueue_style'     => false,
+			'enqueue_script'    => false,
+			'enqueue_assets'    => false,
+			'post_types'        => array(),
+			'uses_context'      => array(),
+			'supports'          => array(),
+			'attributes'        => array(),
+			'acf_block_version' => 2,
+			'api_version'       => 2,
+		)
+	);
+
+	// Add user provided attributes to ACF's required defaults.
+	$settings['attributes'] = wp_parse_args(
+		acf_get_block_type_default_attributes( $metadata ),
+		$settings['attributes']
+	);
+
+	// Add default ACF 'supports' settings.
+	$settings['supports'] = wp_parse_args(
+		$settings['supports'],
+		array(
+			'align' => true,
+			'html'  => false,
+			'mode'  => true,
+			'jsx'   => true,
+		)
+	);
+
+	// Add default ACF 'uses_context' settings.
+	$settings['uses_context'] = array_unique(
+		array_merge(
+			$settings['uses_context'],
+			array(
+				'postId',
+				'postType',
+			)
+		)
+	);
+
+	// Map custom ACF properties from the ACF key, with localization.
+	$property_mappings = array(
+		'renderCallback' => 'render_callback',
+		'renderTemplate' => 'render_template',
+		'mode'           => 'mode',
+		'blockVersion'   => 'acf_block_version',
+		'postTypes'      => 'post_types',
+	);
+	$textdomain        = ! empty( $metadata['textdomain'] ) ? $metadata['textdomain'] : 'acf';
+	$i18n_schema       = get_block_metadata_i18n_schema();
+
+	foreach ( $property_mappings as $key => $mapped_key ) {
+		if ( isset( $metadata['acf'][ $key ] ) ) {
+			unset( $settings[ $key ] );
+			$settings[ $mapped_key ] = $metadata['acf'][ $key ];
+			if ( $textdomain && isset( $i18n_schema->$key ) ) {
+				$settings[ $mapped_key ] = translate_settings_using_i18n_schema( $i18n_schema->$key, $settings[ $key ], $textdomain );
+			}
+		}
+	}
+
+	// Add the block name and registration path to settings.
+	$settings['name'] = $metadata['name'];
+	$settings['path'] = dirname( $metadata['file'] );
+
+	acf_get_store( 'block-types' )->set( $metadata['name'], $settings );
+	add_action( 'enqueue_block_editor_assets', 'acf_enqueue_block_assets' );
+
+	// Ensure our render callback is used.
+	$settings['render_callback'] = 'acf_render_block_callback';
+
+	return $settings;
+}
+
+/**
+ * Check if a block.json block is an ACF block.
+ *
+ * @since 6.0.0
+ *
+ * @param array $metadata The raw block metadata array.
+ * @return bool
+ */
+function acf_is_acf_block_json( $metadata ) {
+	return ( isset( $metadata['acf'] ) && $metadata['acf'] );
+}
+
+
+/**
  * Registers a block type.
  *
  * @date    18/2/19
@@ -19,7 +152,6 @@ acf_register_store( 'block-cache' );
  * @return  (array|false)
  */
 function acf_register_block_type( $block ) {
-
 	// Validate block type settings.
 	$block = acf_validate_block_type( $block );
 
@@ -35,30 +167,38 @@ function acf_register_block_type( $block ) {
 	// Require name.
 	if ( ! $block['name'] ) {
 		$message = __( 'Block type name is required.', 'acf' );
-		_doing_it_wrong( __FUNCTION__, $message, '5.8.0' );
+		_doing_it_wrong( __FUNCTION__, $message, '5.8.0' ); //phpcs:ignore -- escape not required.
 		return false;
 	}
 
 	// Bail early if already exists.
 	if ( acf_has_block_type( $block['name'] ) ) {
-		$message = sprintf( __( 'Block type "%s" is already registered.' ), $block['name'] );
-		_doing_it_wrong( __FUNCTION__, $message, '5.8.0' );
+		/* translators: The name of the block type */
+		$message = sprintf( __( 'Block type "%s" is already registered.', 'acf' ), $block['name'] );
+		_doing_it_wrong( __FUNCTION__, $message, '5.8.0' ); //phpcs:ignore -- escape not required.
 		return false;
+	}
+
+	// Set ACF required attributes.
+	$block['attributes'] = acf_get_block_type_default_attributes( $block );
+	if ( ! isset( $block['api_version'] ) ) {
+		$block['api_version'] = 2;
+	}
+	if ( ! isset( $block['acf_block_version'] ) ) {
+		$block['acf_block_version'] = 1;
 	}
 
 	// Add to storage.
 	acf_get_store( 'block-types' )->set( $block['name'], $block );
 
+	// Overwrite callback for WordPress registration.
+	$block['render_callback'] = 'acf_render_block_callback';
+
 	// Register block type in WP.
 	if ( function_exists( 'register_block_type' ) ) {
 		register_block_type(
 			$block['name'],
-			array(
-				'attributes'      => acf_get_block_type_default_attributes( $block ),
-				'uses_context'    => $block['usesContext'],
-				'api_version'     => 2,
-				'render_callback' => 'acf_render_block_callback',
-			)
+			$block
 		);
 	}
 
@@ -70,8 +210,6 @@ function acf_register_block_type( $block ) {
 }
 
 /**
- * acf_register_block
- *
  * See acf_register_block_type().
  *
  * @date    18/2/19
@@ -85,11 +223,8 @@ function acf_register_block( $block ) {
 }
 
 /**
- * acf_has_block_type
- *
  * Returns true if a block type exists for the given name.
  *
- * @date    18/2/19
  * @since   5.7.12
  *
  * @param   string $name The block type name.
@@ -100,14 +235,10 @@ function acf_has_block_type( $name ) {
 }
 
 /**
- * acf_get_block_types
- *
  * Returns an array of all registered block types.
  *
- * @date    18/2/19
  * @since   5.7.12
  *
- * @param   void
  * @return  array
  */
 function acf_get_block_types() {
@@ -115,11 +246,8 @@ function acf_get_block_types() {
 }
 
 /**
- * acf_get_block_types
- *
  * Returns a block type for the given name.
  *
- * @date    18/2/19
  * @since   5.7.12
  *
  * @param   string $name The block type name.
@@ -130,11 +258,8 @@ function acf_get_block_type( $name ) {
 }
 
 /**
- * acf_remove_block_type
- *
  * Removes a block type for the given name.
  *
- * @date    18/2/19
  * @since   5.7.12
  *
  * @param   string $name The block type name.
@@ -145,22 +270,16 @@ function acf_remove_block_type( $name ) {
 }
 
 /**
- * acf_get_block_type_default_attributes
- *
  * Returns an array of default attribute settings for a block type.
  *
  * @date    19/11/18
  * @since   5.8.0
  *
- * @param   void
- * @return  array
+ * @param array $block_type A block configuration array.
+ * @return array
  */
 function acf_get_block_type_default_attributes( $block_type ) {
 	$attributes = array(
-		'id'    => array(
-			'type'    => 'string',
-			'default' => '',
-		),
 		'name'  => array(
 			'type'    => 'string',
 			'default' => '',
@@ -178,27 +297,48 @@ function acf_get_block_type_default_attributes( $block_type ) {
 			'default' => '',
 		),
 	);
-	if ( ! empty( $block_type['supports']['align_text'] ) ) {
-		$attributes['align_text'] = array(
+
+	foreach ( acf_get_block_back_compat_attribute_key_array() as $new => $old ) {
+		if ( isset( $block_type['supports'][ $old ] ) ) {
+			$block_type['supports'][ $new ] = $block_type['supports'][ $old ];
+			unset( $block_type['supports'][ $old ] );
+		}
+	}
+
+	if ( ! empty( $block_type['supports']['alignText'] ) ) {
+		$attributes['alignText'] = array(
 			'type'    => 'string',
 			'default' => '',
 		);
 	}
-	if ( ! empty( $block_type['supports']['align_content'] ) ) {
-		$attributes['align_content'] = array(
+	if ( ! empty( $block_type['supports']['alignContent'] ) ) {
+		$attributes['alignContent'] = array(
 			'type'    => 'string',
 			'default' => '',
 		);
 	}
+	if ( ! empty( $block_type['supports']['fullHeight'] ) ) {
+		$attributes['fullHeight'] = array(
+			'type'    => 'boolean',
+			'default' => '',
+		);
+	}
+
+	// For each of ACF's block attributes, check if the user's block attributes contains a default value we should use.
+	if ( isset( $block_type['attributes'] ) && is_array( $block_type['attributes'] ) ) {
+		foreach ( array_keys( $attributes ) as $key ) {
+			if ( isset( $block_type['attributes'][ $key ] ) && is_array( $block_type['attributes'][ $key ] ) && isset( $block_type['attributes'][ $key ]['default'] ) ) {
+				$attributes[ $key ]['default'] = $block_type['attributes'][ $key ]['default'];
+			}
+		}
+	}
+
 	return $attributes;
 }
 
 /**
- * acf_validate_block_type
- *
  * Validates a block type ensuring all settings exist.
  *
- * @date    10/4/18
  * @since   5.8.0
  *
  * @param   array $block The block settings.
@@ -216,11 +356,10 @@ function acf_validate_block_type( $block ) {
 			'category'        => 'common',
 			'icon'            => '',
 			'mode'            => 'preview',
-			'align'           => '',
 			'keywords'        => array(),
 			'supports'        => array(),
 			'post_types'      => array(),
-			'usesContext'     => array(),
+			'uses_context'    => array(),
 			'render_template' => false,
 			'render_callback' => false,
 			'enqueue_style'   => false,
@@ -249,9 +388,9 @@ function acf_validate_block_type( $block ) {
 		)
 	);
 
-	// Add default 'usesContext' settings.
-	$block['usesContext'] = wp_parse_args(
-		$block['usesContext'],
+	// Add default 'uses_context' settings.
+	$block['uses_context'] = wp_parse_args(
+		$block['uses_context'],
 		array(
 			'postId',
 			'postType',
@@ -268,11 +407,8 @@ function acf_validate_block_type( $block ) {
 }
 
 /**
- * acf_prepare_block
- *
  * Prepares a block for use in render_callback by merging in all settings and attributes.
  *
- * @date    19/11/18
  * @since   5.8.0
  *
  * @param   array $block The block props.
@@ -300,9 +436,46 @@ function acf_prepare_block( $block ) {
 	// Merge together arrays in order of least to most specific.
 	$block = array_merge( $block_type, $attributes, $block );
 
+	// Add backward compatibility attributes.
+	$block = acf_add_back_compat_attributes( $block );
+
 	// Return block.
 	return $block;
 }
+
+/**
+ * Add backwards compatible attribute values.
+ *
+ * @since 6.0.0
+ *
+ * @param array $block The original block.
+ * @return array Modified block array with backwards compatibility attributes.
+ */
+function acf_add_back_compat_attributes( $block ) {
+	foreach ( acf_get_block_back_compat_attribute_key_array() as $new => $old ) {
+		if ( isset( $block[ $new ] ) ) {
+			$block[ $old ] = $block[ $new ];
+		}
+	}
+
+	return $block;
+}
+
+/**
+ * Get back compat new values and old values.
+ *
+ * @since 6.0.0
+ *
+ * @return array back compat key array.
+ */
+function acf_get_block_back_compat_attribute_key_array() {
+	return array(
+		'fullHeight'   => 'full_height',
+		'alignText'    => 'align_text',
+		'alignContent' => 'align_content',
+	);
+}
+
 
 /**
  * The render callback for all ACF blocks.
@@ -344,52 +517,93 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
  */
 function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
 	$mode = isset( $attributes['mode'] ) ? $attributes['mode'] : 'auto';
+	$form = ( 'edit' === $mode && $is_preview );
 
 	// If context is available from the WP_Block class object and we have no context of our own, use that.
 	if ( empty( $context ) && ! empty( $wp_block->context ) ) {
 		$context = $wp_block->context;
 	}
 
+	// Check if we need to generate a block ID.
+	$attributes['id'] = acf_get_block_id( $attributes, $context );
+
+	// Check if we've already got a cache of this block ID and return it to save rendering if we're in the backend.
+	if ( $is_preview ) {
+		$cached_block = acf_get_store( 'block-cache' )->get( $attributes['id'] );
+		if ( $cached_block ) {
+			if ( $form ) {
+				if ( $cached_block['form'] ) {
+					return $cached_block['html'];
+				}
+			} else {
+				if ( ! $cached_block['form'] ) {
+					return $cached_block['html'];
+				}
+			}
+		}
+	}
+
 	ob_start();
 
-	// if ( 'edit' === $mode && $is_preview ) {
-	// Load the block form since we're in edit mode.
-	// $block = acf_prepare_block( $attributes );
-	// acf_setup_meta( $block['data'], $block['id'], true );
-	// $fields = acf_get_block_fields( $block );
-	// acf_prefix_fields( $fields, "acf-{$block['id']}" );
-	//
-	// echo '<div class="acf-block-fields acf-fields">';
-	// acf_render_fields( $fields, $block['id'], 'div', 'field' );
-	// echo '</div>';
-	// } else {
+	if ( $form ) {
+		// Load the block form since we're in edit mode.
+
+		// Set flag for post REST cleanup of media enqueue count during preloads.
+		acf_set_data( 'acf_did_render_block_form', true );
+
+		$block = acf_prepare_block( $attributes );
+		acf_setup_meta( $block['data'], $block['id'], true );
+		$fields = acf_get_block_fields( $block );
+		if ( $fields ) {
+			acf_prefix_fields( $fields, "acf-{$block['id']}" );
+
+			echo '<div class="acf-block-fields acf-fields">';
+			acf_render_fields( $fields, $block['id'], 'div', 'field' );
+			echo '</div>';
+		} else {
+			echo acf_get_empty_block_form_html( $attributes['name'] ); //phpcs:ignore -- escaped in function.
+		}
+	} else {
 		// Capture block render output.
 		acf_render_block( $attributes, $content, $is_preview, $post_id, $wp_block, $context );
-	// }
+	}
 
 	$html = ob_get_clean();
-
-	//if ( in_array( $mode, array( 'preview', 'auto' ) ) && $is_preview ) {
-	if ( $is_preview ) {
-		$html = '<div class="acf-block-preview">' . $html . '</div>';
-	}
 
 	// Replace <InnerBlocks /> placeholder on front-end.
 	if ( ! $is_preview ) {
 		// Escape "$" character to avoid "capture group" interpretation.
 		$content = str_replace( '$', '\$', $content );
-		$html    = preg_replace( '/<InnerBlocks([\S\s]*?)\/>/', $content, $html );
+
+		// Wrap content in our acf-inner-container wrapper if necessary.
+		if ( $wp_block && $wp_block->block_type->acf_block_version > 1 && apply_filters( 'acf/blocks/wrap_frontend_innerblocks', true, $attributes['name'] ) ) {
+			// Check for a class (or className) provided in the template to become the InnerBlocks wrapper class.
+			$matches = array();
+			if ( preg_match( '/<InnerBlocks(?:[^<]+?)(?:class|className)=(?:["\']\W+\s*(?:\w+)\()?["\']([^\'"]+)[\'"]/', $html, $matches ) ) {
+				$class = isset( $matches[1] ) ? $matches[1] : 'acf-innerblocks-container';
+			} else {
+				$class = 'acf-innerblocks-container';
+			}
+			$content = '<div class="' . $class . '">' . $content . '</div>';
+		}
+		$html = preg_replace( '/<InnerBlocks([\S\s]*?)\/>/', $content, $html );
 	}
 
-	// Store in cache for preloading.
-	acf_get_store( 'block-cache' )->set( $attributes['id'], $html );
+	// Store in cache for preloading if we're in the backend.
+	acf_get_store( 'block-cache' )->set(
+		$attributes['id'],
+		array(
+			'form' => $form,
+			'html' => $html,
+		)
+	);
+
 	return $html;
 }
 
 /**
  * Renders the block HTML.
  *
- * @date    19/2/19
  * @since   5.7.12
  *
  * @param   array    $attributes The block attributes.
@@ -398,7 +612,7 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
  * @param   int      $post_id The current post being edited or viewed.
  * @param   WP_Block $wp_block The block instance (since WP 5.5).
  * @param   array    $context The block context array.
- * @return  void
+ * @return  void|string
  */
 function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
 
@@ -416,6 +630,9 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
 	// Enqueue block type assets.
 	acf_enqueue_block_type_assets( $block );
 
+	// Ensure block ID is prefixed for render.
+	$block['id'] = acf_ensure_block_id_prefix( $block['id'] );
+
 	// Setup postdata allowing get_field() to work.
 	acf_setup_meta( $block['data'], $block['id'], true );
 
@@ -427,7 +644,9 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
 	} elseif ( $block['render_template'] ) {
 
 		// Locate template.
-		if ( file_exists( $block['render_template'] ) ) {
+		if ( isset( $block['path'] ) && file_exists( $block['path'] . '/' . $block['render_template'] ) ) {
+			$path = $block['path'] . '/' . $block['render_template'];
+		} elseif ( file_exists( $block['render_template'] ) ) {
 			$path = $block['render_template'];
 		} else {
 			$path = locate_template( $block['render_template'] );
@@ -444,8 +663,6 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
 }
 
 /**
- * acf_get_block_fields
- *
  * Returns an array of all fields for the given block.
  *
  * @date    24/10/18
@@ -478,14 +695,10 @@ function acf_get_block_fields( $block ) {
 }
 
 /**
- * acf_enqueue_block_assets
- *
  * Enqueues and localizes block scripts and styles.
  *
- * @date    28/2/19
  * @since   5.7.13
  *
- * @param   void
  * @return  void
  */
 function acf_enqueue_block_assets() {
@@ -540,11 +753,8 @@ function acf_enqueue_block_assets() {
 }
 
 /**
- * acf_enqueue_block_type_assets
- *
  * Enqueues scripts and styles for a specific block type.
  *
- * @date    28/2/19
  * @since   5.7.13
  *
  * @param   array $block_type The block type settings.
@@ -557,12 +767,12 @@ function acf_enqueue_block_type_assets( $block_type ) {
 
 	// Enqueue style.
 	if ( $block_type['enqueue_style'] ) {
-		wp_enqueue_style( $handle, $block_type['enqueue_style'], array(), false, 'all' );
+		wp_enqueue_style( $handle, $block_type['enqueue_style'], array(), ACF_VERSION, 'all' );
 	}
 
 	// Enqueue script.
 	if ( $block_type['enqueue_script'] ) {
-		wp_enqueue_script( $handle, $block_type['enqueue_script'], array(), false, true );
+		wp_enqueue_script( $handle, $block_type['enqueue_script'], array(), ACF_VERSION, true );
 	}
 
 	// Enqueue assets callback.
@@ -572,14 +782,10 @@ function acf_enqueue_block_type_assets( $block_type ) {
 }
 
 /**
- * acf_ajax_fetch_block
- *
  * Handles the ajax request for block data.
  *
- * @date    28/2/19
  * @since   5.7.13
  *
- * @param   void
  * @return  void
  */
 function acf_ajax_fetch_block() {
@@ -591,15 +797,17 @@ function acf_ajax_fetch_block() {
 	// Get request args.
 	$args = acf_request_args(
 		array(
-			'block'   => false,
-			'post_id' => 0,
-			'query'   => array(),
-			'context' => array(),
+			'block'    => false,
+			'post_id'  => 0,
+			'clientId' => null,
+			'query'    => array(),
+			'context'  => array(),
 		)
 	);
 
 	$block       = $args['block'];
 	$query       = $args['query'];
+	$client_id   = $args['clientId'];
 	$raw_context = $args['context'];
 	$post_id     = $args['post_id'];
 
@@ -623,8 +831,14 @@ function acf_ajax_fetch_block() {
 		}
 	}
 
+	// Check if clientId should become $block['id'].
+	if ( empty( $block['id'] ) && ! empty( $client_id ) ) {
+		$block['id'] = $client_id;
+	}
+
 	// Prepare block ensuring all settings and attributes exist.
-	if ( ! $block = acf_prepare_block( $block ) ) {
+	$block = acf_prepare_block( $block );
+	if ( ! $block ) {
 		wp_send_json_error();
 	}
 
@@ -637,15 +851,16 @@ function acf_ajax_fetch_block() {
 	}
 
 	// Setup postdata allowing form to load meta.
-	acf_setup_meta( $block['data'], $block['id'], true );
+	acf_setup_meta( $block['data'], acf_ensure_block_id_prefix( $block['id'] ), true );
 
 	// Setup main postdata for post_id.
 	global $post;
+	//phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- required for block template rendering.
 	$post = get_post( $post_id );
 	setup_postdata( $post );
 
 	// Vars.
-	$response = array();
+	$response = array( 'clientId' => $client_id );
 
 	// Query form.
 	if ( ! empty( $query['form'] ) ) {
@@ -656,22 +871,25 @@ function acf_ajax_fetch_block() {
 		// Prefix field inputs to avoid multiple blocks using the same name/id attributes.
 		acf_prefix_fields( $fields, "acf-{$block['id']}" );
 
-		// Start Capture.
-		ob_start();
+		if ( $fields ) {
+			// Start Capture.
+			ob_start();
 
-		// Render.
-		echo '<div class="acf-block-fields acf-fields">';
-			acf_render_fields( $fields, $block['id'], 'div', 'field' );
-		echo '</div>';
+			// Render.
+			echo '<div class="acf-block-fields acf-fields">';
+				acf_render_fields( $fields, acf_ensure_block_id_prefix( $block['id'] ), 'div', 'field' );
+			echo '</div>';
 
-		// Store Capture.
-		$response['form'] = ob_get_contents();
-		ob_end_clean();
+			// Store Capture.
+			$response['form'] = ob_get_clean();
+		} else {
+			// There are no fields on this block.
+			$response['form'] = acf_get_empty_block_form_html( $block['name'] ); //phpcs:ignore -- escaped in function.
+		}
 	}
 
 	// Query preview.
 	if ( ! empty( $query['preview'] ) ) {
-
 		// Render_callback vars.
 		$content    = '';
 		$is_preview = true;
@@ -688,11 +906,36 @@ function acf_ajax_fetch_block() {
 acf_register_ajax( 'fetch-block', 'acf_ajax_fetch_block' );
 
 /**
- * acf_parse_save_blocks
+ * Render the empty block form for when a block has no fields assigned.
  *
+ * @since   6.0.0
+ *
+ * @param   string $block_name The block name current being rendered.
+ * @return  string The html that makes up a block form with no fields.
+ */
+function acf_get_empty_block_form_html( $block_name ) {
+	$html = '<div class="acf-block-fields acf-fields acf-empty-block-fields">';
+
+	$message = __( 'This block contains no editable fields.', 'acf' );
+
+	if ( acf_current_user_can_admin() ) {
+		$message .= ' ';
+		$message .= sprintf(
+			/* translators: %s: an admin URL to the field group edit screen */
+			__( 'Assign a <a href="%s" target="_blank">field group</a> to add fields to this block.', 'acf' ),
+			admin_url( 'edit.php?post_type=acf-field-group' )
+		);
+	}
+
+	$html .= apply_filters( 'acf/blocks/no_fields_assigned_message', $message, $block_name );
+
+	$html .= '</div>';
+	return acf_esc_html( $html );
+}
+
+/**
  * Parse content that may contain HTML block comments and saves ACF block meta.
  *
- * @date    27/2/19
  * @since   5.7.13
  *
  * @param   string $text Content that may contain HTML block comments.
@@ -714,11 +957,8 @@ function acf_parse_save_blocks( $text = '' ) {
 add_filter( 'content_save_pre', 'acf_parse_save_blocks', 5, 1 );
 
 /**
- * acf_parse_save_blocks_callback
- *
  * Callback used in preg_replace to modify ACF Block comment.
  *
- * @date    1/3/19
  * @since   5.7.13
  *
  * @param   array $matches The preg matches.
@@ -726,7 +966,7 @@ add_filter( 'content_save_pre', 'acf_parse_save_blocks', 5, 1 );
  */
 function acf_parse_save_blocks_callback( $matches ) {
 
-	// Defaults
+	// Defaults.
 	$name  = isset( $matches['name'] ) ? $matches['name'] : '';
 	$attrs = isset( $matches['attrs'] ) ? json_decode( $matches['attrs'], true ) : '';
 	$void  = isset( $matches['void'] ) ? $matches['void'] : '';
@@ -736,10 +976,13 @@ function acf_parse_save_blocks_callback( $matches ) {
 		return $matches[0];
 	}
 
+	// Check if we need to generate a block ID.
+	$block_id = acf_get_block_id( $attrs );
+
 	// Convert "data" to "meta".
 	// No need to check if already in meta format. Local Meta will do this for us.
 	if ( isset( $attrs['data'] ) ) {
-		$attrs['data'] = acf_setup_meta( $attrs['data'], $attrs['id'] );
+		$attrs['data'] = acf_setup_meta( $attrs['data'], acf_ensure_block_id_prefix( $block_id ) );
 	}
 
 	/**
@@ -756,6 +999,53 @@ function acf_parse_save_blocks_callback( $matches ) {
 	$attrs = acf_serialize_block_attributes( $attrs );
 
 	return '<!-- wp:' . $name . ' ' . $attrs . ' ' . $void . '-->';
+}
+
+/**
+ * Return or generate a block ID.
+ *
+ * @since 6.0.0
+ *
+ * @param array $attributes A block attributes array.
+ * @param array $context The block context array, defaults to an empty array.
+ * @return string A block ID.
+ */
+function acf_get_block_id( $attributes, $context = array() ) {
+	$attributes['_acf_context'] = $context;
+	if ( empty( $attributes['id'] ) ) {
+		unset( $attributes['id'] );
+
+		// Remove all empty string values as they're not present in JS hash building.
+		foreach ( $attributes as $key => $value ) {
+			if ( '' === $value ) {
+				unset( $attributes[ $key ] );
+			}
+		}
+
+		// Check if data is empty and remove it if so to match JS hash building.
+		if ( isset( $attributes['data'] ) && empty( $attributes['data'] ) ) {
+			unset( $attributes['data'] );
+		}
+
+		ksort( $attributes );
+		return md5( wp_json_encode( $attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) );
+	}
+	return $attributes['id'];
+}
+
+/**
+ * Ensure a block ID always has a block_ prefix for post meta internals.
+ *
+ * @since 6.0.0
+ *
+ * @param string $block_id A possibly non-prefixed block ID.
+ * @return string A prefixed block ID.
+ */
+function acf_ensure_block_id_prefix( $block_id ) {
+	if ( substr( $block_id, 0, 6 ) === 'block_' ) {
+		return $block_id;
+	}
+	return 'block_' . $block_id;
 }
 
 /**
@@ -780,8 +1070,47 @@ function acf_serialize_block_attributes( $block_attributes ) {
 	$encoded_attributes = preg_replace( '/</', '\\u003c', $encoded_attributes );
 	$encoded_attributes = preg_replace( '/>/', '\\u003e', $encoded_attributes );
 	$encoded_attributes = preg_replace( '/&/', '\\u0026', $encoded_attributes );
-	// Regex: /\\"/
+	// Regex: /\\"/.
 	$encoded_attributes = preg_replace( '/\\\\"/', '\\u0022', $encoded_attributes );
 
 	return $encoded_attributes;
 }
+
+/**
+ * Set ACF data before a rest call if media scripts have not been enqueued yet for after REST reset.
+ *
+ * @date    07/06/22
+ * @since   6.0
+ *
+ * @param   WP_REST_Response|WP_HTTP_Response|WP_Error|mixed $response The WordPress response object.
+ * @return  mixed
+ */
+function acf_set_after_rest_media_enqueue_reset_flag( $response ) {
+	global $wp_actions;
+
+	acf_set_data( 'acf_should_reset_media_enqueue', empty( $wp_actions['wp_enqueue_media'] ) );
+	acf_set_data( 'acf_did_render_block_form', false );
+
+	return $response;
+}
+add_filter( 'rest_request_before_callbacks', 'acf_set_after_rest_media_enqueue_reset_flag' );
+
+/**
+ * Reset wp_enqueue_media action count after REST call so it can happen inside the main execution if required.
+ *
+ * @date    07/06/22
+ * @since   6.0
+ *
+ * @param   WP_REST_Response|WP_HTTP_Response|WP_Error|mixed $response The WordPress response object.
+ * @return  mixed
+ */
+function acf_reset_media_enqueue_after_rest( $response ) {
+	if ( acf_get_data( 'acf_should_reset_media_enqueue' ) && acf_get_data( 'acf_did_render_block_form' ) ) {
+		global $wp_actions;
+		//phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- no other option here as this works around a breaking WordPress change with REST preload scopes.
+		$wp_actions['wp_enqueue_media'] = 0;
+	}
+
+	return $response;
+}
+add_filter( 'rest_request_after_callbacks', 'acf_reset_media_enqueue_after_rest' );

@@ -33,7 +33,7 @@ function acf_register_location_type( $class_name ) {
 
 	// Check location type is unique.
 	if ( $store->has( $name ) ) {
-		$message = sprintf( __( 'Location type "%s" is already registered.' ), $name );
+		$message = sprintf( __( 'Location type "%s" is already registered.', 'acf' ), $name );
 		_doing_it_wrong( __FUNCTION__, $message, '5.9.0' );
 		return false;
 	}

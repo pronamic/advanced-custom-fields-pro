@@ -259,10 +259,8 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 
 			?>
 		<div class="acf-panel acf-panel-selection">
-			<h3 class="acf-panel-title"><?php _e( 'Select Field Groups', 'acf' ); ?> <i class="dashicons dashicons-arrow-right"></i></h3>
-			<div class="acf-panel-inside">
-				<?php $this->html_field_selection(); ?>
-			</div>
+			<h3 class="acf-panel-title"><?php _e( 'Select Field Groups', 'acf' ); ?></h3>
+			<?php $this->html_field_selection(); ?>
 		</div>
 			<?php
 
@@ -326,14 +324,19 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 		function html_archive() {
 
 			?>
-		<p><?php _e( 'Select the field groups you would like to export and then select your export method. Use the download button to export to a .json file which you can then import to another ACF installation. Use the generate button to export to PHP code which you can place in your theme.', 'acf' ); ?></p>
-		<div class="acf-fields">
-			<?php $this->html_field_selection(); ?>
+		<div class="acf-postbox-header">
+			<h2 class="acf-postbox-title">Export Field Groups</h2>
+			<div class="acf-tip"><i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="<?php esc_attr_e( 'Select the field groups you would like to export and then select your export method. Export As JSON to export to a .json file which you can then import to another ACF installation. Generate PHP to export to PHP code which you can place in your theme.', 'acf' ); ?>">?</i></div>
 		</div>
-		<p class="acf-submit">
-			<button type="submit" name="action" class="button button-primary" value="download"><?php _e( 'Export File', 'acf' ); ?></button>
-			<button type="submit" name="action" class="button" value="generate"><?php _e( 'Generate PHP', 'acf' ); ?></button>
-		</p>
+		<div class="acf-postbox-inner">
+			<div class="acf-fields">
+				<?php $this->html_field_selection(); ?>
+			</div>
+			<p class="acf-submit acf-actions-strip">
+				<button type="submit" name="action" class="acf-btn acf-button-primary" value="download"><?php _e( 'Export As JSON', 'acf' ); ?></button>
+				<button type="submit" name="action" class="acf-btn acf-btn-secondary" value="generate"><?php _e( 'Generate PHP', 'acf' ); ?></button>
+			</p>
+		</div>
 			<?php
 
 		}
@@ -354,6 +357,10 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 		function html_single() {
 
 			?>
+		<div class="acf-postbox-header">
+			<h2 class="acf-postbox-title"><?php _e( 'Export Field Groups - Generate PHP', 'acf' ); ?></h2>
+			<i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="<?php esc_attr_e( "The following code can be used to register a local version of the selected field group(s). A local field group can provide many benefits such as faster load times, version control & dynamic fields/settings. Simply copy and paste the following code to your theme's functions.php file or include it within an external file.", 'acf' ); ?>">?</i>
+		</div>
 		<div class="acf-postbox-columns">
 			<div class="acf-postbox-main">
 				<?php $this->html_generate(); ?>
@@ -361,7 +368,7 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 			<div class="acf-postbox-side">
 				<?php $this->html_panel_selection(); ?>
 				<p class="acf-submit">
-					<button type="submit" name="action" class="button button-primary" value="generate"><?php _e( 'Generate PHP', 'acf' ); ?></button>
+					<button type="submit" name="action" class="acf-btn" value="generate"><?php _e( 'Generate PHP', 'acf' ); ?></button>
 				</p>
 			</div>
 		</div>
@@ -402,8 +409,7 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 			);
 
 			?>
-		<p><?php _e( "The following code can be used to register a local version of the selected field group(s). A local field group can provide many benefits such as faster load times, version control & dynamic fields/settings. Simply copy and paste the following code to your theme's functions.php file or include it within an external file.", 'acf' ); ?></p>
-		<textarea id="acf-export-textarea" readonly="true">
+			<textarea id="acf-export-textarea" readonly="true">
 			<?php
 
 			echo "if( function_exists('acf_add_local_field_group') ):" . "\r\n" . "\r\n";
@@ -436,52 +442,52 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 		</p>
 		<script type="text/javascript">
 		(function($){
-			
+
 			// vars
 			var $a = $('#acf-export-copy');
 			var $textarea = $('#acf-export-textarea');
-			
-			
+
+
 			// remove $a if 'copy' is not supported
 			if( !document.queryCommandSupported('copy') ) {
 				return $a.remove();
 			}
-			
-			
+
+
 			// event
 			$a.on('click', function( e ){
-				
+
 				// prevent default
 				e.preventDefault();
-				
-				
+
+
 				// select
 				$textarea.get(0).select();
-				
-				
+
+
 				// try
 				try {
-					
+
 					// copy
 					var copy = document.execCommand('copy');
 					if( !copy ) return;
-					
-					
+
+
 					// tooltip
 					acf.newTooltip({
 						text: 		"<?php _e( 'Copied', 'acf' ); ?>",
 						timeout:	250,
 						target: 	$(this),
 					});
-					
+
 				} catch (err) {
-					
+
 					// do nothing
-					
+
 				}
-						
+
 			});
-		
+
 		})(jQuery);
 		</script>
 			<?php

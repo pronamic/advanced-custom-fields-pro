@@ -440,7 +440,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			);
 
 			?>
-<div <?php acf_esc_attr_e( $atts ); ?>>
+<div <?php echo acf_esc_attrs( $atts ); ?>>
 	
 			<?php
 			acf_hidden_input(
@@ -564,14 +564,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// vars
-			$field['min'] = empty( $field['min'] ) ? '' : $field['min'];
-			$field['max'] = empty( $field['max'] ) ? '' : $field['max'];
-
-			// post_type
 			acf_render_field_setting(
 				$field,
 				array(
@@ -587,7 +580,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
-			// taxonomy
 			acf_render_field_setting(
 				$field,
 				array(
@@ -603,7 +595,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
-			// filters
 			acf_render_field_setting(
 				$field,
 				array(
@@ -619,43 +610,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				)
 			);
 
-			// filters
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Elements', 'acf' ),
-					'instructions' => __( 'Selected elements will be displayed in each result', 'acf' ),
-					'type'         => 'checkbox',
-					'name'         => 'elements',
-					'choices'      => array(
-						'featured_image' => __( 'Featured Image', 'acf' ),
-					),
-				)
-			);
-
-			// min
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Minimum posts', 'acf' ),
-					'instructions' => '',
-					'type'         => 'number',
-					'name'         => 'min',
-				)
-			);
-
-			// max
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Maximum posts', 'acf' ),
-					'instructions' => '',
-					'type'         => 'number',
-					'name'         => 'max',
-				)
-			);
-
-			// return_format
 			acf_render_field_setting(
 				$field,
 				array(
@@ -670,9 +624,63 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 					'layout'       => 'horizontal',
 				)
 			);
-
 		}
 
+		/**
+		 * Renders the field settings used in the "Validation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_validation_settings( $field ) {
+			$field['min'] = empty( $field['min'] ) ? '' : $field['min'];
+			$field['max'] = empty( $field['max'] ) ? '' : $field['max'];
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Minimum posts', 'acf' ),
+					'instructions' => '',
+					'type'         => 'number',
+					'name'         => 'min',
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Maximum posts', 'acf' ),
+					'instructions' => '',
+					'type'         => 'number',
+					'name'         => 'max',
+				)
+			);
+		}
+
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		function render_field_presentation_settings( $field ) {
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Elements', 'acf' ),
+					'instructions' => __( 'Selected elements will be displayed in each result', 'acf' ),
+					'type'         => 'checkbox',
+					'name'         => 'elements',
+					'choices'      => array(
+						'featured_image' => __( 'Featured Image', 'acf' ),
+					),
+				)
+			);
+		}
 
 		/*
 		*  format_value()

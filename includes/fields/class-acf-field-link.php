@@ -117,7 +117,7 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 			echo esc_textarea('<a href="'.$link['url'].'" target="'.$link['target'].'">'.$link['title'].'</a>');
 			?></textarea>*/
 			?>
-<div <?php acf_esc_attr_e( $div ); ?>>
+<div <?php echo acf_esc_attrs( $div ); ?>>
 	
 	<div class="acf-hidden">
 		<a class="link-node" href="<?php echo esc_url( $link['url'] ); ?>" target="<?php echo esc_attr( $link['target'] ); ?>"><?php echo esc_html( $link['title'] ); ?></a>
@@ -160,10 +160,7 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 		*
 		*  @param   $field  - an array holding all the field's data
 		*/
-
 		function render_field_settings( $field ) {
-
-			// return_format
 			acf_render_field_setting(
 				$field,
 				array(
@@ -180,7 +177,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 			);
 
 		}
-
 
 		/*
 		*  format_value()

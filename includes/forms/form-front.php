@@ -221,7 +221,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			foreach ( $this->fields as $k => $field ) {
 
 				// bail early if no in $_POST
-				if ( ! isset( $_POST['acf'][ $k ] ) ) {
+				if ( ! isset( $_POST['acf'][ $k ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 					continue;
 				}
 
@@ -231,7 +231,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			}
 
 			// honeypot
-			if ( ! empty( $_POST['acf']['_validate_email'] ) ) {
+			if ( ! empty( $_POST['acf']['_validate_email'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Data not used; presence indicates spam.
 
 				acf_add_validation_error( '', __( 'Spam Detected', 'acf' ) );
 
@@ -278,6 +278,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 
 			}
 
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified in check_submit_form().
 			// save post_title
 			if ( isset( $_POST['acf']['_post_title'] ) ) {
 
@@ -291,9 +292,10 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				$save['post_content'] = acf_extract_var( $_POST['acf'], '_post_content' );
 
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			// honeypot
-			if ( ! empty( $_POST['acf']['_validate_email'] ) ) {
+			if ( ! empty( $_POST['acf']['_validate_email'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Data not used; presence indicates spam.
 				return false;
 			}
 
@@ -558,7 +560,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			}
 
 			// Display updated_message
-			if ( ! empty( $_GET['updated'] ) && $args['updated_message'] ) {
+			if ( ! empty( $_GET['updated'] ) && $args['updated_message'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Used as a flag; data not used.
 				printf( $args['html_updated_message'], $args['updated_message'] );
 			}
 
