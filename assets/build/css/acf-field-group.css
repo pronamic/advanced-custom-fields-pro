@@ -37,11 +37,11 @@
   display: none;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Postbox: Publish
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 #minor-publishing-actions,
 #misc-publishing-actions #visibility,
 #misc-publishing-actions .edit-timestamp {
@@ -60,17 +60,18 @@
   border-bottom-color: #F5F5F5;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Postbox: Fields
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 #acf-field-group-fields {
   border: 0 none;
   /* links */
   /* Field type */
   /* table header */
   /* show keys */
+  /* hide tabs */
   /* fields */
 }
 #acf-field-group-fields .inside {
@@ -104,11 +105,11 @@
   width: 25%;
   word-break: break-word;
 }
-#acf-field-group-fields .li-field-type {
-  width: 25%;
-}
 #acf-field-group-fields .li-field-key {
   display: none;
+}
+#acf-field-group-fields .li-field-type {
+  width: 25%;
 }
 #acf-field-group-fields.show-field-keys .li-field-label {
   width: calc(35% - 64px);
@@ -123,6 +124,34 @@
 #acf-field-group-fields.show-field-keys .li-field-type {
   width: 25%;
 }
+#acf-field-group-fields.hide-tabs .acf-field-settings-tab-bar {
+  display: none;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-main {
+  padding: 0;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-main.acf-field-settings-main-general {
+  padding-top: 32px;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-main .acf-field {
+  margin-bottom: 32px;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-main .acf-field-setting-wrapper {
+  padding-top: 0;
+  border-top: none;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-main .acf-field-settings-split .acf-field {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #EAECF0;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-main .acf-field-setting-first_day {
+  padding-top: 0;
+  border-top: none;
+}
+#acf-field-group-fields.hide-tabs .acf-field-settings-footer {
+  margin-top: 32px;
+}
 #acf-field-group-fields .acf-field-list-wrap {
   border: #ccd0d4 solid 1px;
 }
@@ -131,6 +160,43 @@
   margin-top: -1px;
   /* no fields */
   /* empty */
+}
+#acf-field-group-fields .acf-field-list .acf-tbody > .li-field-name,
+#acf-field-group-fields .acf-field-list .acf-tbody > .li-field-key {
+  align-items: flex-start;
+}
+#acf-field-group-fields .acf-field-list .copyable:not(.copy-unsupported) {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+#acf-field-group-fields .acf-field-list .copyable:not(.copy-unsupported):hover:after {
+  content: "";
+  display: block;
+  padding-left: 5px;
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  background-color: #667085;
+  border: none;
+  border-radius: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  text-indent: 500%;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-mask-image: url("../../images/icons/icon-copy.svg");
+  mask-image: url("../../images/icons/icon-copy.svg");
+  background-size: cover;
+}
+#acf-field-group-fields .acf-field-list .copyable:not(.copy-unsupported).copied:hover:after {
+  -webkit-mask-image: url("../../images/icons/icon-check-circle-solid.svg");
+  mask-image: url("../../images/icons/icon-check-circle-solid.svg");
+  background-color: #49ad52;
 }
 #acf-field-group-fields .acf-field-list .no-fields-message {
   padding: 15px 15px;
@@ -142,6 +208,11 @@
 }
 .acf-admin-3-8 #acf-field-group-fields .acf-field-list-wrap {
   border-color: #dfdfdf;
+}
+
+.rtl #acf-field-group-fields .li-field-type .field-type-icon {
+  margin-left: 8px;
+  margin-right: 0;
 }
 
 /* field object */
@@ -268,11 +339,11 @@
   margin-top: 20px;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 * Postbox: Locations
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .rule-groups h4 {
   margin: 3px 0;
 }
@@ -316,11 +387,11 @@
   visibility: hidden !important;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Options
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 #acf-field-group-options tr[data-name=hide_on_screen] li {
   float: left;
   width: 33%;
@@ -331,11 +402,11 @@
     width: 50%;
   }
 }
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Conditional Logic
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 table.conditional-logic-rules {
   background: transparent;
   border: 0 none;
@@ -348,11 +419,11 @@ table.conditional-logic-rules tbody td {
   padding: 5px 2px !important;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Field: Tab
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-object-tab .acf-field-setting-name,
 .acf-field-object-tab .acf-field-setting-instructions,
 .acf-field-object-tab .acf-field-setting-required,
@@ -371,21 +442,11 @@ table.conditional-logic-rules tbody td {
   display: none !important;
 }
 
-/*---------------------------------------------------------------------------------------------
-*
-*	Field: Clone
-*
-*---------------------------------------------------------------------------------------------*/
-.acf-field-object-clone li.acf-settings-type-presentation,
-.acf-field-object-clone .acf-field-settings-main-presentation {
-  display: none !important;
-}
-
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Field: Accordion
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-object-accordion .acf-field-setting-name,
 .acf-field-object-accordion .acf-field-setting-instructions,
 .acf-field-object-accordion .acf-field-setting-required,
@@ -403,11 +464,11 @@ table.conditional-logic-rules tbody td {
   display: block;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Field: Message
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-object-message tr[data-name=name],
 .acf-field-object-message tr[data-name=instructions],
 .acf-field-object-message tr[data-name=required] {
@@ -422,22 +483,22 @@ table.conditional-logic-rules tbody td {
   height: 175px !important;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Field: Separator
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-object-separator tr[data-name=name],
 .acf-field-object-separator tr[data-name=instructions],
 .acf-field-object-separator tr[data-name=required] {
   display: none !important;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *	Field: Date Picker
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-object-date-picker .acf-radio-list li,
 .acf-field-object-time-picker .acf-radio-list li,
 .acf-field-object-date-time-picker .acf-radio-list li {
@@ -483,27 +544,18 @@ table.conditional-logic-rules tbody td {
 *
 *--------------------------------------------------------------------------------------------*/
 html[dir=rtl] .acf-field-object.open > .handle {
-  margin: -1px -1px 0;
+  margin: 0;
 }
 
-html[dir=rtl] .acf-field-object.open > .handle .acf-icon {
-  float: right;
-}
-
-html[dir=rtl] .acf-field-object.open > .handle .li-field-order {
-  padding-left: 0 !important;
-  padding-right: 15px !important;
-}
-
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Device
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 @media only screen and (max-width: 850px) {
   tr.acf-field,
-td.acf-label,
-td.acf-input {
+  td.acf-label,
+  td.acf-input {
     display: block !important;
     width: auto !important;
     border: 0 none !important;
@@ -517,11 +569,11 @@ td.acf-input {
     padding-bottom: 0 !important;
   }
 }
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Subtle background on accordion & tab fields to separate them from others
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group #acf-field-group-fields .acf-field-object-tab,
 .post-type-acf-field-group #acf-field-group-fields .acf-field-object-accordion {
   background-color: #F9FAFB;
@@ -550,19 +602,19 @@ td.acf-input {
 *  Headings
 *
 *---------------------------------------------------------------------------------------------*/
-.h1, .post-type-acf-field-group h1,
+.acf-h1, .post-type-acf-field-group h1,
 .acf-headerbar h1 {
   font-size: 21px;
   font-weight: 400;
 }
 
-.h2, .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message .no-fields-message-inner h2, .acf-page-title, .post-type-acf-field-group h2,
+.acf-h2, .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message .no-fields-message-inner h2, .acf-page-title, .post-type-acf-field-group h2,
 .acf-headerbar h2 {
   font-size: 18px;
   font-weight: 400;
 }
 
-.h3, .post-type-acf-field-group .acf-field-settings-fc_head label, .post-type-acf-field-group #acf-popup .acf-popup-box .title h1,
+.acf-h3, .post-type-acf-field-group .acf-field-settings-fc_head label, .post-type-acf-field-group #acf-popup .acf-popup-box .title h1,
 .post-type-acf-field-group #acf-popup .acf-popup-box .title h2,
 .post-type-acf-field-group #acf-popup .acf-popup-box .title h3,
 .post-type-acf-field-group #acf-popup .acf-popup-box .title h4, .post-type-acf-field-group h3,
@@ -576,41 +628,36 @@ td.acf-input {
 *  Paragraphs
 *
 *---------------------------------------------------------------------------------------------*/
-.p1 {
+.post-type-acf-field-group .p1 {
   font-size: 15px;
 }
-
-.p2, .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message .no-fields-message-inner p {
+.post-type-acf-field-group .p2, .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message .no-fields-message-inner p {
   font-size: 14px;
 }
-
-.p3 {
+.post-type-acf-field-group .p3 {
   font-size: 13.5px;
 }
-
-.p4, .acf-field-list .acf-sortable-handle, .post-type-acf-field-group .acf-field-object .handle li.li-field-label a.edit-field, .post-type-acf-field-group .acf-field-object .handle li, .post-type-acf-field-group .acf-thead li, .post-type-acf-field-group .acf-input .select2-container.-acf .select2-selection__rendered, .post-type-acf-field-group .button, .post-type-acf-field-group input[type=text],
+.post-type-acf-field-group .p4, .post-type-acf-field-group .acf-field-list .acf-sortable-handle, .acf-field-list .post-type-acf-field-group .acf-sortable-handle, .post-type-acf-field-group .acf-field-object .handle li.li-field-label a.edit-field, .post-type-acf-field-group .acf-field-object .handle li, .post-type-acf-field-group .acf-thead li, .post-type-acf-field-group .acf-input .select2-container.-acf .select2-selection__rendered, .post-type-acf-field-group .button, .post-type-acf-field-group input[type=text],
 .post-type-acf-field-group input[type=search],
 .post-type-acf-field-group input[type=number],
 .post-type-acf-field-group textarea,
 .post-type-acf-field-group select {
   font-size: 13px;
 }
-
-.p5, .acf-field-setting-display_format .acf-radio-list li label code,
-.acf-field-setting-return_format .acf-radio-list li label code, .acf-field-group-settings-footer .acf-created-on, .acf-fields .acf-field-settings-tab-bar li a,
-.acf-fields .acf-tab-wrap .acf-tab-group li a {
+.post-type-acf-field-group .p5, .post-type-acf-field-group .acf-field-setting-display_format .acf-radio-list li label code, .acf-field-setting-display_format .acf-radio-list li label .post-type-acf-field-group code,
+.post-type-acf-field-group .acf-field-setting-return_format .acf-radio-list li label code,
+.acf-field-setting-return_format .acf-radio-list li label .post-type-acf-field-group code, .post-type-acf-field-group .acf-field-group-settings-footer .acf-created-on, .acf-field-group-settings-footer .post-type-acf-field-group .acf-created-on, .post-type-acf-field-group .acf-fields .acf-field-settings-tab-bar li a, .acf-fields .acf-field-settings-tab-bar li .post-type-acf-field-group a,
+.post-type-acf-field-group .acf-fields .acf-tab-wrap .acf-tab-group li a,
+.acf-fields .acf-tab-wrap .acf-tab-group li .post-type-acf-field-group a {
   font-size: 12.5px;
 }
-
-.p6, .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message .no-fields-message-inner p.acf-small, .post-type-acf-field-group .acf-field-object .handle li.li-field-label .row-options a, .acf-small {
+.post-type-acf-field-group .p6, .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message .no-fields-message-inner p.acf-small, .post-type-acf-field-group .acf-field-object .handle li.li-field-label .row-options a, .post-type-acf-field-group .acf-small {
   font-size: 12px;
 }
-
-.p7 {
+.post-type-acf-field-group .p7 {
   font-size: 11.5px;
 }
-
-.p8 {
+.post-type-acf-field-group .p8 {
   font-size: 11px;
 }
 
@@ -810,6 +857,11 @@ td.acf-input {
   height: 20px;
   background-color: red;
 }
+.post-type-acf-field-group.rtl select {
+  padding-right: 12px;
+  padding-left: 40px;
+  background-position: left 10px top 50%;
+}
 .post-type-acf-field-group input[type=radio],
 .post-type-acf-field-group input[type=checkbox] {
   box-sizing: border-box;
@@ -857,6 +909,11 @@ td.acf-input {
 .post-type-acf-field-group input[type=checkbox]:disabled {
   background-color: #F9FAFB;
   border-color: #D0D5DD;
+}
+.post-type-acf-field-group.rtl input[type=radio]:checked:before, .post-type-acf-field-group.rtl input[type=radio]:focus-visible:before,
+.post-type-acf-field-group.rtl input[type=checkbox]:checked:before,
+.post-type-acf-field-group.rtl input[type=checkbox]:focus-visible:before {
+  left: 1px;
 }
 .post-type-acf-field-group input[type=radio]:checked:before, .post-type-acf-field-group input[type=radio]:focus:before {
   background-image: url("../../images/field-states/radio-active.svg");
@@ -919,12 +976,13 @@ td.acf-input {
 }
 .post-type-acf-field-group .acf-field-true-false {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 .post-type-acf-field-group .acf-field-true-false .acf-label {
   order: 2;
-  display: inline-flex;
+  display: block;
   align-items: center;
+  margin-top: 2px;
   margin-bottom: 0;
   margin-left: 12px;
 }
@@ -933,6 +991,19 @@ td.acf-input {
 }
 .post-type-acf-field-group .acf-field-true-false .acf-label .acf-tip {
   margin-left: 12px;
+}
+.post-type-acf-field-group .acf-field-true-false .acf-label .description {
+  display: block;
+  margin-top: 2px;
+  margin-left: 0;
+}
+.post-type-acf-field-group.rtl .acf-field-true-false .acf-label {
+  margin-right: 12px;
+  margin-left: 0;
+}
+.post-type-acf-field-group.rtl .acf-field-true-false .acf-tip {
+  margin-right: 12px;
+  margin-left: 0;
 }
 .post-type-acf-field-group input::file-selector-button {
   box-sizing: border-box;
@@ -1071,6 +1142,9 @@ td.acf-input {
 .post-type-acf-field-group .acf-label label {
   margin-bottom: 0;
 }
+.post-type-acf-field-group .acf-label .description {
+  margin-top: 2px;
+}
 .post-type-acf-field-group .acf-field-setting-name .acf-tip {
   position: absolute;
   top: 0;
@@ -1082,11 +1156,16 @@ td.acf-input {
   height: 18px;
 }
 
-/*---------------------------------------------------------------------------------------------
+.rtl.post-type-acf-field-group .acf-field-setting-name .acf-tip {
+  left: auto;
+  right: 654px;
+}
+
+/*----------------------------------------------------------------------------
 *
 *  Container sizes
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group .metabox-holder.columns-1 #acf-field-group-fields,
 .post-type-acf-field-group .metabox-holder.columns-1 #acf-field-group-options,
 .post-type-acf-field-group .metabox-holder.columns-1 .meta-box-sortables.ui-sortable,
@@ -1094,29 +1173,29 @@ td.acf-input {
   max-width: 1440px;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Max width for notices in 1 column edit field group layout
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group.columns-1 .notice {
   max-width: 1440px;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Widen edit field group headerbar for 2 column layout
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group.columns-2 .acf-headerbar .acf-headerbar-inner {
   max-width: 100%;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Post stuff
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group #poststuff {
   margin-top: 0;
   margin-right: 0;
@@ -1128,11 +1207,11 @@ td.acf-input {
   padding-left: 0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Table
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap {
   overflow: hidden;
   border: none;
@@ -1152,11 +1231,11 @@ td.acf-input {
   min-height: 280px;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Table header
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group .acf-thead {
   background-color: #F9FAFB;
   border-top-width: 1px;
@@ -1176,11 +1255,11 @@ td.acf-input {
   font-weight: 500;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Table body
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group .acf-field-object {
   border-top-width: 1px;
   border-top-style: solid;
@@ -1251,11 +1330,11 @@ td.acf-input {
 .post-type-acf-field-group .acf-field-object .handle li.li-field-label .row-options {
   width: 100%;
 }
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Table footer
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group .acf-tfoot {
   display: flex;
   align-items: center;
@@ -1282,11 +1361,11 @@ td.acf-input {
   padding-left: 0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Edit field settings
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group .acf-field-object .settings {
   box-sizing: border-box;
   padding-top: 0;
@@ -1297,11 +1376,11 @@ td.acf-input {
   border-left-color: #6BB5D8;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Main field settings container
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings-main {
   padding-top: 32px;
   padding-right: 0;
@@ -1312,13 +1391,13 @@ td.acf-input {
   margin-bottom: 0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Field label
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings .acf-label {
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
   align-content: center;
@@ -1328,11 +1407,11 @@ td.acf-input {
   margin-left: 0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Single field
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings .acf-field {
   box-sizing: border-box;
   width: 100%;
@@ -1363,11 +1442,11 @@ td.acf-input {
   overflow: visible;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Field separators
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings .acf-field.acf-field-setting-label,
 .acf-field-settings .acf-field-setting-wrapper {
   padding-top: 24px;
@@ -1380,11 +1459,11 @@ td.acf-input {
   margin-top: 24px;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Edit fields footer
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings .acf-field-settings-footer {
   display: flex;
   align-items: center;
@@ -1409,11 +1488,18 @@ td.acf-input {
   }
 }
 
-/*---------------------------------------------------------------------------------------------
+.rtl .acf-field-settings .acf-field-settings-footer {
+  padding-top: 0;
+  padding-right: 72px;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+/*----------------------------------------------------------------------------
 *
 *  Tabs
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-fields .acf-tab-wrap {
   background: #F9FAFB;
   border-bottom-color: #1D2939;
@@ -1499,11 +1585,11 @@ td.acf-input {
   }
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Field group settings
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 #acf-field-group-options .field-group-settings-tab {
   padding-top: 24px;
   padding-right: 24px;
@@ -1561,11 +1647,20 @@ td.acf-input {
   display: inline-flex;
 }
 
-/*---------------------------------------------------------------------------------------------
+.rtl #acf-field-group-options .field-group-setting-split-container .field-group-setting-split:nth-child(2n) {
+  margin-right: 32px;
+  margin-left: 0;
+  border-left: none;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #EAECF0;
+}
+
+/*----------------------------------------------------------------------------
 *
 *  Reorder handles
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-list .li-field-order {
   padding: 0;
   display: flex;
@@ -1621,11 +1716,16 @@ td.acf-input {
   mask-image: url("../../images/icons/icon-draggable.svg");
 }
 
-/*---------------------------------------------------------------------------------------------
+.rtl .acf-field-list .acf-sortable-handle:before {
+  left: 0;
+  right: 8px;
+}
+
+/*----------------------------------------------------------------------------
 *
 *  Expand / collapse field icon
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-object .li-field-label {
   position: relative;
   padding-left: 40px;
@@ -1651,21 +1751,32 @@ td.acf-input {
   text-indent: 500%;
   white-space: nowrap;
   overflow: hidden;
-  -webkit-mask-image: url("../../images/icons/icon-chevron-right.svg");
-  mask-image: url("../../images/icons/icon-chevron-right.svg");
+  -webkit-mask-image: url("../../images/icons/icon-chevron-down.svg");
+  mask-image: url("../../images/icons/icon-chevron-down.svg");
 }
 .acf-field-object .li-field-label:hover:before {
   cursor: pointer;
 }
-.acf-field-object.open .li-field-label:before {
+
+.rtl .acf-field-object .li-field-label {
+  padding-left: 0;
+  padding-right: 40px;
+}
+.rtl .acf-field-object .li-field-label:before {
+  left: 0;
+  right: 6px;
   -webkit-mask-image: url("../../images/icons/icon-chevron-down.svg");
   mask-image: url("../../images/icons/icon-chevron-down.svg");
 }
-.acf-field-object.open .acf-input-sub .li-field-label:before {
+.rtl .acf-field-object.open .li-field-label:before {
+  -webkit-mask-image: url("../../images/icons/icon-chevron-down.svg");
+  mask-image: url("../../images/icons/icon-chevron-down.svg");
+}
+.rtl .acf-field-object.open .acf-input-sub .li-field-label:before {
   -webkit-mask-image: url("../../images/icons/icon-chevron-right.svg");
   mask-image: url("../../images/icons/icon-chevron-right.svg");
 }
-.acf-field-object.open .acf-input-sub .acf-field-object.open .li-field-label:before {
+.rtl .acf-field-object.open .acf-input-sub .acf-field-object.open .li-field-label:before {
   -webkit-mask-image: url("../../images/icons/icon-chevron-down.svg");
   mask-image: url("../../images/icons/icon-chevron-down.svg");
 }
@@ -1673,12 +1784,16 @@ td.acf-input {
 .acf-thead .li-field-label {
   padding-left: 40px;
 }
+.rtl .acf-thead .li-field-label {
+  padding-left: 0;
+  padding-right: 40px;
+}
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Conditional logic layout
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings-main-conditional-logic .acf-conditional-toggle {
   display: flex;
   padding-right: 72px;
@@ -1722,11 +1837,11 @@ td.acf-input {
   }
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Prefix & append styling
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-input .acf-input-prepend,
 .acf-input .acf-input-append {
   display: inline-flex;
@@ -1747,11 +1862,11 @@ td.acf-input {
   border-radius: 0 6px 6px 0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  ACF input wrap
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-input-wrap {
   display: flex;
 }
@@ -1760,78 +1875,11 @@ td.acf-input {
   display: flex;
 }
 
-/*---------------------------------------------------------------------------------------------
-*
-*  Sub-fields layout
-*
-*---------------------------------------------------------------------------------------------*/
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub {
-  overflow: hidden;
-  border-radius: 8px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #dbdfe5;
-  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-sub-field-list-header {
-  display: flex;
-  justify-content: space-between;
-  align-content: stretch;
-  align-items: center;
-  min-height: 64px;
-  padding-right: 24px;
-  padding-left: 24px;
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-list-wrap {
-  box-shadow: none;
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object .settings {
-  border-left-color: #BF7DD7;
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object-text.open .handle {
-  background-color: #F2E8FF !important;
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .handle {
-  background-color: transparent;
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .handle:hover {
-  background-color: #fbf7ff;
-}
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-hl.acf-tfoot {
-  min-height: 64px;
-  align-items: center;
-}
-
-.post-type-acf-field-group .acf-input-sub .acf-field-object .acf-sortable-handle {
-  width: 100%;
-  height: 100%;
-}
-
-.post-type-acf-field-group .acf-field-object:hover .acf-input-sub .acf-sortable-handle:before {
-  display: none;
-}
-
-.post-type-acf-field-group .acf-field-object:hover .acf-input-sub .acf-field-list .acf-field-object:hover .acf-sortable-handle:before {
-  display: block;
-}
-
-.post-type-acf-field-group .acf-field-object .acf-is-subfields .acf-thead .li-field-label:before {
-  display: none;
-}
-
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object.open .handle {
-  background-color: #F2E8FF;
-}
-
-.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object.open {
-  border-top-color: #dbdfe5;
-}
-
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Empty state
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group #acf-field-group-fields .acf-field-list.-empty .no-fields-message {
   display: flex;
   justify-content: center;
@@ -1875,20 +1923,20 @@ td.acf-input {
   margin-top: 32px;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Hide add title prompt label
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group .acf-headerbar #title-prompt-text {
   display: none;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Modal styling
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .post-type-acf-field-group #acf-popup .acf-popup-box {
   min-width: 480px;
 }
@@ -1965,20 +2013,20 @@ td.acf-input {
   margin-top: 0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Hide original #post-body-content from edit field group page
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-admin-single-field-group #post-body-content {
   display: none;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Settings section footer
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-group-settings-footer {
   display: flex;
   justify-content: space-between;
@@ -2021,11 +2069,11 @@ td.acf-input {
   mask-image: url("../../images/icons/icon-time.svg");
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Conditional logic enabled badge
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .conditional-logic-badge {
   display: none;
 }
@@ -2044,11 +2092,11 @@ td.acf-input {
   white-space: nowrap;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Split field settings
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-settings-split {
   display: flex;
   border-top-width: 1px;
@@ -2066,14 +2114,14 @@ td.acf-input {
   border-left-color: #EAECF0;
 }
 
-/*---------------------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------
 *
 *  Display & return format
 *
-*---------------------------------------------------------------------------------------------*/
+*----------------------------------------------------------------------------*/
 .acf-field-setting-display_format .acf-label,
 .acf-field-setting-return_format .acf-label {
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 .acf-field-setting-display_format .acf-radio-list li,
 .acf-field-setting-return_format .acf-radio-list li {
@@ -2108,12 +2156,170 @@ td.acf-input {
   border-top-color: #EAECF0;
 }
 
+/*----------------------------------------------------------------------------
+*
+*  Image and Gallery fields
+*
+*----------------------------------------------------------------------------*/
+.acf-field-object-image .acf-hl[data-cols="3"] > li,
+.acf-field-object-gallery .acf-hl[data-cols="3"] > li {
+  width: auto;
+}
+
+/*----------------------------------------------------------------------------
+*
+* Appended fields fields
+*
+*----------------------------------------------------------------------------*/
+.acf-field-settings .acf-field-appended {
+  overflow: auto;
+}
+.acf-field-settings .acf-field-appended .acf-input {
+  float: left;
+}
+
+/*----------------------------------------------------------------------------
+*
+*  Flexible widths for image minimum / maximum size fields
+*
+*----------------------------------------------------------------------------*/
+.acf-field-settings .acf-field.acf-field-setting-min_width .acf-input,
+.acf-field-settings .acf-field.acf-field-setting-max_width .acf-input {
+  max-width: none;
+}
+.acf-field-settings .acf-field.acf-field-setting-min_width .acf-input-wrap input[type=text],
+.acf-field-settings .acf-field.acf-field-setting-max_width .acf-input-wrap input[type=text] {
+  max-width: 81px;
+}
+
+/*----------------------------------------------------------------------------
+*
+*  Temporary fix to hide pagination setting for repeaters used as subfields.
+*
+*----------------------------------------------------------------------------*/
+.post-type-acf-field-group .acf-field-object-flexible-content .acf-field-setting-pagination {
+  display: none;
+}
+.post-type-acf-field-group .acf-field-object-repeater .acf-field-object-repeater .acf-field-setting-pagination {
+  display: none;
+}
+
+/*----------------------------------------------------------------------------
+*
+*  Flexible content field width
+*
+*----------------------------------------------------------------------------*/
+.acf-admin-single-field-group .acf-field-object-flexible-content .acf-is-subfields .acf-field-object .acf-label,
+.acf-admin-single-field-group .acf-field-object-flexible-content .acf-is-subfields .acf-field-object .acf-input {
+  max-width: 600px;
+}
+
+/*----------------------------------------------------------------------------
+*
+*  Fix default value checkbox focus state
+*
+*----------------------------------------------------------------------------*/
+.acf-admin-single-field-group .acf-field.acf-field-true-false.acf-field-setting-default_value .acf-true-false {
+  border: none;
+}
+.acf-admin-single-field-group .acf-field.acf-field-true-false.acf-field-setting-default_value .acf-true-false input[type=checkbox] {
+  margin-right: 0;
+}
+
+/*---------------------------------------------------------------------------------------------
+*
+*  Sub-fields layout
+*
+*---------------------------------------------------------------------------------------------*/
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dbdfe5;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-sub-field-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-content: stretch;
+  align-items: center;
+  min-height: 64px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-list-wrap {
+  box-shadow: none;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-hl.acf-tfoot {
+  min-height: 64px;
+  align-items: center;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input.acf-input-sub {
+  max-width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.post-type-acf-field-group .acf-input-sub .acf-field-object .acf-sortable-handle {
+  width: 100%;
+  height: 100%;
+}
+
+.post-type-acf-field-group .acf-field-object:hover .acf-input-sub .acf-sortable-handle:before {
+  display: none;
+}
+
+.post-type-acf-field-group .acf-field-object:hover .acf-input-sub .acf-field-list .acf-field-object:hover .acf-sortable-handle:before {
+  display: block;
+}
+
+.post-type-acf-field-group .acf-field-object .acf-is-subfields .acf-thead .li-field-label:before {
+  display: none;
+}
+
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object.open {
+  border-top-color: #dbdfe5;
+}
+
 /*---------------------------------------------------------------------------------------------
 *
 *  Flexible content field
 *
 *---------------------------------------------------------------------------------------------*/
+.post-type-acf-field-group i.acf-icon.-duplicate.duplicate-layout {
+  margin: 0 auto !important;
+  background-color: #667085;
+  color: #667085;
+}
+.post-type-acf-field-group i.acf-icon.acf-icon-trash.delete-layout {
+  margin: 0 auto !important;
+  background-color: #667085;
+  color: #667085;
+}
+.post-type-acf-field-group button.acf-btn.acf-btn-tertiary.acf-field-setting-fc-duplicate, .post-type-acf-field-group button.acf-btn.acf-btn-tertiary.acf-field-setting-fc-delete {
+  background-color: #ffffff !important;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px !important;
+  min-height: 32px;
+  padding: 0;
+}
+.post-type-acf-field-group button.add-layout.acf-btn.acf-btn-primary.add-field,
+.post-type-acf-field-group .acf-sub-field-list-header a.acf-btn.acf-btn-secondary.add-field,
+.post-type-acf-field-group .acf-field-list-wrap.acf-is-subfields a.acf-btn.acf-btn-secondary.add-field {
+  height: 32px !important;
+  min-height: 32px;
+  margin-left: 5px;
+}
+.post-type-acf-field-group .acf-field.acf-field-setting-fc_layout {
+  background-color: #ffffff;
+  margin-bottom: 16px;
+}
 .post-type-acf-field-group .acf-field-setting-fc_layout {
+  overflow: hidden;
   width: calc(100% - 144px);
   margin-right: 72px;
   margin-left: 72px;
@@ -2125,6 +2331,12 @@ td.acf-input {
   border-radius: 8px;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
 }
+.post-type-acf-field-group .acf-field-setting-fc_layout .acf-field-layout-settings.open {
+  background-color: #ffffff;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #EAECF0;
+}
 @media screen and (max-width: 768px) {
   .post-type-acf-field-group .acf-field-setting-fc_layout {
     width: calc(100% - 16px);
@@ -2132,9 +2344,14 @@ td.acf-input {
     margin-left: 8px;
   }
 }
+.post-type-acf-field-group .acf-field-setting-fc_layout .acf-input-sub {
+  max-width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
 .post-type-acf-field-group .acf-field-setting-fc_layout .acf-label,
 .post-type-acf-field-group .acf-field-setting-fc_layout .acf-input {
-  max-width: 100%;
+  max-width: 100% !important;
 }
 .post-type-acf-field-group .acf-field-setting-fc_layout .acf-input-sub {
   margin-right: 32px;
@@ -2142,18 +2359,27 @@ td.acf-input {
   margin-left: 32px;
 }
 .post-type-acf-field-group .acf-field-setting-fc_layout .acf-fc-meta {
-  max-width: 600px;
+  max-width: 100%;
+  padding-top: 24px;
   padding-right: 32px;
   padding-left: 32px;
 }
 .post-type-acf-field-group .acf-field-settings-fc_head {
+  background-color: #F9FAFB;
+  border-radius: 8px 8px 0px 0px;
+  display: flex;
   min-height: 64px;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
   padding-right: 24px;
+}
+.post-type-acf-field-group .acf-field-settings-fc_head .acf-fc_draggable {
+  min-height: 64px;
   padding-left: 24px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #EAECF0;
+  display: flex;
+}
+.post-type-acf-field-group .acf-field-settings-fc_head span.toggle-indicator {
+  pointer-events: none;
+  margin-top: 7px;
 }
 .post-type-acf-field-group .acf-field-settings-fc_head label {
   display: inline-flex;
@@ -2175,11 +2401,22 @@ td.acf-input {
   -webkit-mask-position: center;
   mask-position: center;
 }
+.rtl.post-type-acf-field-group .acf-field-settings-fc_head label:before {
+  padding-right: 10px;
+}
+
 .post-type-acf-field-group .acf-field-settings-fc_head .acf-fl-actions {
   display: flex;
+  align-items: center;
+}
+.post-type-acf-field-group .acf-field-settings-fc_head .acf-fl-actions .acf-fc-add-layout {
+  margin-left: 10px;
+}
+.post-type-acf-field-group .acf-field-settings-fc_head .acf-fl-actions .acf-fc-add-layout .add-field {
+  margin-left: 0px !important;
 }
 .post-type-acf-field-group .acf-field-settings-fc_head .acf-fl-actions li {
-  margin-right: 16px;
+  margin-right: 4px;
 }
 .post-type-acf-field-group .acf-field-settings-fc_head .acf-fl-actions li:last-of-type {
   margin-right: 0;
@@ -2187,59 +2424,66 @@ td.acf-input {
 
 /*---------------------------------------------------------------------------------------------
 *
-*  Image field
+*  Field open / closed icon state
 *
 *---------------------------------------------------------------------------------------------*/
-.acf-field-object-image .acf-hl[data-cols="3"] > li {
-  width: auto;
+.post-type-acf-field-group .acf-field-object.open > .handle > .acf-tbody > .li-field-label::before {
+  -webkit-mask-image: url("../../images/icons/icon-chevron-up.svg");
+  mask-image: url("../../images/icons/icon-chevron-up.svg");
 }
 
 /*---------------------------------------------------------------------------------------------
 *
-*  Flexible widths for image minimum / maximum size fields
+*  Different coloured levels (current 5 supported)
 *
 *---------------------------------------------------------------------------------------------*/
-.acf-field-settings .acf-field.acf-field-setting-min_width .acf-input,
-.acf-field-settings .acf-field.acf-field-setting-max_width .acf-input {
-  max-width: none;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object .handle {
+  background-color: transparent;
 }
-.acf-field-settings .acf-field.acf-field-setting-min_width .acf-input-wrap input[type=text],
-.acf-field-settings .acf-field.acf-field-setting-max_width .acf-input-wrap input[type=text] {
-  max-width: 81px;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object .handle:hover {
+  background-color: #f9f2fb;
 }
-
-/*---------------------------------------------------------------------------------------------
-*
-*  Temporary fix to hide pagination setting for repeaters used as subfields.
-*
-*---------------------------------------------------------------------------------------------*/
-.post-type-acf-field-group .acf-field-object-flexible-content .acf-field-setting-pagination {
-  display: none;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object.open .handle {
+  background-color: #f5eaf9;
 }
-.post-type-acf-field-group .acf-field-object-repeater .acf-field-object-repeater .acf-field-setting-pagination {
-  display: none;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-field-object .settings {
+  border-left-color: #BF7DD7;
 }
-
-/*---------------------------------------------------------------------------------------------
-*
-*  Flexible content field width
-*
-*---------------------------------------------------------------------------------------------*/
-.acf-admin-single-field-group .acf-field-object-flexible-content .acf-is-subfields .acf-field-object .acf-label,
-.acf-admin-single-field-group .acf-field-object-flexible-content .acf-is-subfields .acf-field-object .acf-input {
-  max-width: 600px;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-field-object .handle {
+  background-color: transparent;
 }
-
-/*---------------------------------------------------------------------------------------------
-*
-*  Fix default value checkbox focus state
-*
-*---------------------------------------------------------------------------------------------*/
-.acf-admin-single-field-group .acf-field.acf-field-true-false.acf-field-setting-default_value .acf-true-false {
-  border: none;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-field-object .handle:hover {
+  background-color: #ebf7f4;
 }
-.acf-admin-single-field-group .acf-field.acf-field-true-false.acf-field-setting-default_value .acf-true-false input[type=checkbox] {
-  margin-right: 0;
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-field-object.open .handle {
+  background-color: #e3f4f0;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-field-object .settings {
+  border-left-color: #7CCDB9;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .handle {
+  background-color: transparent;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .handle:hover {
+  background-color: #fcf5f2;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object.open .handle {
+  background-color: #fbeee9;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .settings {
+  border-left-color: #E29473;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .handle {
+  background-color: transparent;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .handle:hover {
+  background-color: #fafbfb;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object.open .handle {
+  background-color: #f4f6f7;
+}
+.post-type-acf-field-group #acf-field-group-fields .acf-field-list-wrap .acf-input-sub .acf-input-sub .acf-input-sub .acf-input-sub .acf-field-object .settings {
+  border-left-color: #A3B1B9;
 }
 
 /*# sourceMappingURL=acf-field-group.css.map*/

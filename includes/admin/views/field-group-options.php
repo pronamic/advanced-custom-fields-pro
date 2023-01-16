@@ -126,8 +126,7 @@ acf_render_field_wrap(
 		'value'        => $field_group['menu_order'],
 	),
 	'div',
-	'label',
-	true
+	'field'
 );
 
 echo '</div>';
@@ -227,8 +226,7 @@ acf_render_field_wrap(
 		'value'        => $field_group['description'],
 	),
 	'div',
-	'label',
-	true
+	'field'
 );
 
 // 3rd party settings

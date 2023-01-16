@@ -128,7 +128,7 @@ function acf_pro_check_defined_license() {
 	}
 
 	// Check if we've been asked to clear the transient to retry activation.
-	if ( acf_verify_nonce( 'acf_delete_activation_transient' ) || ( isset( $_REQUEST['acf_retry_nonce'] ) && wp_verify_nonce( $_REQUEST['acf_retry_nonce'], 'acf_retry_activation' ) ) ) {
+	if ( acf_verify_nonce( 'acf_delete_activation_transient' ) || ( isset( $_REQUEST['acf_retry_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['acf_retry_nonce'] ) ), 'acf_retry_activation' ) ) ) {
 		delete_transient( 'acf_activation_error' );
 	} else {
 		// If we've failed activation recently, check if the key has been changed, otherwise return.

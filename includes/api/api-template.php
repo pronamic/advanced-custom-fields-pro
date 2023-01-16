@@ -289,7 +289,7 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 	foreach ( $meta as $key => $value ) {
 
 		// bail if reference key does not exist
-		if ( ! isset( $meta[ "_$key" ] ) ) {
+		if ( ! isset( $meta[ "_$key" ] ) || ( ! is_string( $meta[ "_$key" ] ) && ! is_numeric( $meta[ "_$key" ] ) ) ) {
 			continue;
 		}
 
@@ -849,9 +849,27 @@ function get_row_layout() {
  * @return string
  */
 function acf_shortcode( $atts ) {
+	// Return if the ACF shortcode is disabled.
+	if ( ! acf_get_setting( 'enable_shortcode' ) ) {
+		return;
+	}
+
+	if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+		// Prevent the ACF shortcode in FSE block template parts by default.
+		if ( ! doing_filter( 'the_content' ) && ! apply_filters( 'acf/shortcode/allow_in_block_themes_outside_content', false ) ) {
+			return;
+		}
+	}
+
+	// Limit previews of ACF shortcode data for users without publish_posts permissions.
+	$preview_capability = apply_filters( 'acf/shortcode/preview_capability', 'publish_posts' );
+	if ( is_preview() && ! current_user_can( $preview_capability ) ) {
+		return apply_filters( 'acf/shortcode/preview_capability_message', __( '[ACF shortcode value disabled for preview]', 'acf' ) );
+	}
+
 	// Mitigate issue where some AJAX requests can return ACF field data.
-	$capability = apply_filters( 'acf/ajax/shortcode_capability', 'edit_posts' );
-	if ( wp_doing_ajax() && ( $capability !== false ) && ! current_user_can( $capability ) ) {
+	$ajax_capability = apply_filters( 'acf/ajax/shortcode_capability', 'edit_posts' );
+	if ( wp_doing_ajax() && ( $ajax_capability !== false ) && ! current_user_can( $ajax_capability ) ) {
 		return;
 	}
 

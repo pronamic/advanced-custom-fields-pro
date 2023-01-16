@@ -537,7 +537,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 								)
 							);
 						?>
-						<span data-id="<?php echo esc_attr( $post->ID ); ?>" class="acf-rel-item">
+						<span tabindex="0" data-id="<?php echo esc_attr( $post->ID ); ?>" class="acf-rel-item acf-rel-item-remove">
 								<?php echo acf_esc_html( $this->get_post_title( $post, $field ) ); ?>
 							<a href="#" class="acf-icon -minus small dark" data-name="remove_item"></a>
 						</span>

@@ -779,17 +779,7 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 					),
 				)
 			);
-		}
 
-		/**
-		 * Renders the field settings used in the "Validation" tab.
-		 *
-		 * @since 6.0
-		 *
-		 * @param array $field The field settings array.
-		 * @return void
-		 */
-		function render_field_validation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(

@@ -104,12 +104,13 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 			}
 
 			// vars
-			$id     = $_POST['_acf_widget_id'];
-			$number = $_POST['_acf_widget_number'];
-			$prefix = $_POST['_acf_widget_prefix'];
+			$id     = sanitize_text_field( $_POST['_acf_widget_id'] );
+			$number = sanitize_text_field( $_POST['_acf_widget_number'] );
+			$prefix = sanitize_text_field( $_POST['_acf_widget_prefix'] );
+			$values = acf_sanitize_request_args( $_POST[ $id ][ $number ]['acf'] );
 
 			// validate
-			acf_validate_values( $_POST[ $id ][ $number ]['acf'], $prefix );
+			acf_validate_values( $values, $prefix );
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
 		}
 

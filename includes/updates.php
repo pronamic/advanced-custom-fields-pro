@@ -261,7 +261,7 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 				'wp'      => wp_json_encode(
 					array(
 						'wp_name'     => get_bloginfo( 'name' ),
-						'wp_url'      => home_url(),
+						'wp_url'      => acf_get_home_url(),
 						'wp_version'  => get_bloginfo( 'version' ),
 						'wp_language' => get_bloginfo( 'language' ),
 						'wp_timezone' => get_option( 'timezone_string' ),

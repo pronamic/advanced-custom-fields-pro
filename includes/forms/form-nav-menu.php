@@ -187,8 +187,9 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				return;
 			}
 
-			// loop
-			foreach ( $_POST['menu-item-acf'] as $post_id => $values ) {
+			$posted_values = acf_sanitize_request_args( $_POST['menu-item-acf'] );
+
+			foreach ( $posted_values as $post_id => $values ) {
 
 				acf_save_post( $post_id, $values );
 
@@ -263,8 +264,9 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				return;
 			}
 
-			// loop
-			foreach ( $_POST['menu-item-acf'] as $post_id => $values ) {
+			$posted_values = acf_sanitize_request_args( $_POST['menu-item-acf'] );
+
+			foreach ( $posted_values as $post_id => $values ) {
 
 				// vars
 				$prefix = 'menu-item-acf[' . $post_id . ']';
@@ -276,7 +278,6 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 			// phpcs:enable // phpcs:disable WordPress.Security.NonceVerification.Missing
 
 		}
-
 
 		/*
 		*  admin_footer
@@ -399,5 +400,4 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 	acf_new_instance( 'acf_form_nav_menu' );
 
 endif;
-
 ?>

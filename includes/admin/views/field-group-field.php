@@ -70,13 +70,12 @@ if ( ! isset( $num_field_groups ) ) {
 					<a class="delete-field" title="<?php _e( 'Delete field', 'acf' ); ?>" href="#"><?php _e( 'Delete', 'acf' ); ?></a>
 				</div>
 			</li>
-			<?php // whitespace before field name looks odd but fixes chrome bug selecting all text in row ?>
-			<li class="li-field-name"> <?php echo esc_html( $field['name'] ); ?></li>
-			<li class="li-field-key"> <?php echo esc_html( $field['key'] ); ?></li>
+			<li class="li-field-name"><span class="copyable"><?php echo esc_html( $field['name'] ); ?></span></li>
+			<li class="li-field-key"><span class="copyable"><?php echo esc_html( $field['key'] ); ?></span></li>
 			<li class="li-field-type">
 				<i class="field-type-icon field-type-icon-<?php echo acf_slugify( $field['type'] ); ?>"></i>
 				<span class="field-type-label">
-					<?php echo esc_html( $field_type_label ); ?>
+					<?php echo acf_esc_html( $field_type_label ); ?>
 				</span>
 			</li>
 		</ul>

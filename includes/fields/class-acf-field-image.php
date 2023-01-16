@@ -238,12 +238,12 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Minimum', 'acf' ),
-					'instructions' => __( 'Restrict which images can be uploaded', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'min_width',
-					'prepend'      => __( 'Width', 'acf' ),
-					'append'       => 'px',
+					'label'   => __( 'Minimum', 'acf' ),
+					'hint'    => __( 'Restrict which images can be uploaded', 'acf' ),
+					'type'    => 'text',
+					'name'    => 'min_width',
+					'prepend' => __( 'Width', 'acf' ),
+					'append'  => 'px',
 				)
 			);
 
@@ -274,12 +274,12 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Maximum', 'acf' ),
-					'instructions' => __( 'Restrict which images can be uploaded', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'max_width',
-					'prepend'      => __( 'Width', 'acf' ),
-					'append'       => 'px',
+					'label'   => __( 'Maximum', 'acf' ),
+					'hint'    => __( 'Restrict which images can be uploaded', 'acf' ),
+					'type'    => 'text',
+					'name'    => 'max_width',
+					'prepend' => __( 'Width', 'acf' ),
+					'append'  => 'px',
 				)
 			);
 
@@ -310,10 +310,10 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label' => __( 'Allowed file types', 'acf' ),
-					'hint'  => __( 'Comma separated list. Leave blank for all types', 'acf' ),
-					'type'  => 'text',
-					'name'  => 'mime_types',
+					'label'        => __( 'Allowed file types', 'acf' ),
+					'instructions' => __( 'Comma separated list. Leave blank for all types', 'acf' ),
+					'type'         => 'text',
+					'name'         => 'mime_types',
 				)
 			);
 		}

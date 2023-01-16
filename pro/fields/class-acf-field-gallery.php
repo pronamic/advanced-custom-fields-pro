@@ -141,7 +141,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		function ajax_update_attachment() {
 
 			// validate nonce
-			if ( ! wp_verify_nonce( $_POST['nonce'], 'acf_nonce' ) ) {
+			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'acf_nonce' ) ) {
 
 				wp_send_json_error();
 
@@ -155,7 +155,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			}
 
 			// loop over attachments
-			foreach ( $_POST['attachments'] as $id => $changes ) {
+			foreach ( $_POST['attachments'] as $id => $changes ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized by WP core when saved.
 
 				if ( ! current_user_can( 'edit_post', $id ) ) {
 					wp_send_json_error();
@@ -628,12 +628,12 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Minimum', 'acf' ),
-					'instructions' => __( 'Restrict which images can be uploaded', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'min_width',
-					'prepend'      => __( 'Width', 'acf' ),
-					'append'       => 'px',
+					'label'   => __( 'Minimum', 'acf' ),
+					'hint'    => __( 'Restrict which images can be uploaded', 'acf' ),
+					'type'    => 'text',
+					'name'    => 'min_width',
+					'prepend' => __( 'Width', 'acf' ),
+					'append'  => 'px',
 				)
 			);
 
@@ -664,12 +664,12 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			acf_render_field_setting(
 				$field,
 				array(
-					'label'        => __( 'Maximum', 'acf' ),
-					'instructions' => __( 'Restrict which images can be uploaded', 'acf' ),
-					'type'         => 'text',
-					'name'         => 'max_width',
-					'prepend'      => __( 'Width', 'acf' ),
-					'append'       => 'px',
+					'label'   => __( 'Maximum', 'acf' ),
+					'hint'    => __( 'Restrict which images can be uploaded', 'acf' ),
+					'type'    => 'text',
+					'name'    => 'max_width',
+					'prepend' => __( 'Width', 'acf' ),
+					'append'  => 'px',
 				)
 			);
 

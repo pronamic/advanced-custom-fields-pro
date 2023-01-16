@@ -372,9 +372,9 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		 */
 		function filter_pre_load_value( $null, $post_id, $field ) {
 			$field_key = $field['key'];
-			// phpcs:disable WordPress.Security.NonceVerification.Missing
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified in save_user().
 			if ( isset( $_POST['acf'][ $field_key ] ) ) {
-				return $_POST['acf'][ $field_key ];
+				return $_POST['acf'][ $field_key ]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized elsewhere.
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			return $null;

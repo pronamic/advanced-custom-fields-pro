@@ -110,7 +110,7 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 				$field,
 				array(
 					'label'        => __( 'Display Format', 'acf' ),
-					'instructions' => __( 'The format displayed when editing a post', 'acf' ),
+					'hint'         => __( 'The format displayed when editing a post', 'acf' ),
 					'type'         => 'radio',
 					'name'         => 'display_format',
 					'other_choice' => 1,
@@ -126,7 +126,7 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 				$field,
 				array(
 					'label'        => __( 'Return Format', 'acf' ),
-					'instructions' => __( 'The format returned via template functions', 'acf' ),
+					'hint'         => __( 'The format returned via template functions', 'acf' ),
 					'type'         => 'radio',
 					'name'         => 'return_format',
 					'other_choice' => 1,
@@ -139,7 +139,6 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 			);
 
 			echo '</div>';
-
 		}
 
 		/*
@@ -186,7 +185,7 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 			}
 
 			return $field;
-        }
+		}
 
 		/**
 		 * Return the schema array for the REST API.

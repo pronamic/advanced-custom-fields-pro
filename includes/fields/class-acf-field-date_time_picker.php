@@ -177,7 +177,7 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 				$field,
 				array(
 					'label'        => __( 'Display Format', 'acf' ),
-					'instructions' => __( 'The format displayed when editing a post', 'acf' ),
+					'hint'         => __( 'The format displayed when editing a post', 'acf' ),
 					'type'         => 'radio',
 					'name'         => 'display_format',
 					'other_choice' => 1,
@@ -195,7 +195,7 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 				$field,
 				array(
 					'label'        => __( 'Return Format', 'acf' ),
-					'instructions' => __( 'The format returned via template functions', 'acf' ),
+					'hint'         => __( 'The format returned via template functions', 'acf' ),
 					'type'         => 'radio',
 					'name'         => 'return_format',
 					'other_choice' => 1,
@@ -244,7 +244,7 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 			return acf_format_date( $value, $field['return_format'] );
 
 		}
-		
+
 
 		/**
 		 *  This filter is applied to the $field after it is loaded from the database

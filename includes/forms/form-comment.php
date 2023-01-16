@@ -281,7 +281,7 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 			// kses
 			if ( isset( $_POST['acf'] ) ) {
-				$_POST['acf'] = wp_kses_post_deep( $_POST['acf'] );
+				$_POST['acf'] = wp_kses_post_deep( $_POST['acf'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with wp_kses_post_deep().
 			}
 
 			// validate and save

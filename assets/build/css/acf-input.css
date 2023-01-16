@@ -43,19 +43,19 @@
 *  Headings
 *
 *---------------------------------------------------------------------------------------------*/
-.h1, .post-type-acf-field-group h1,
+.acf-h1, .post-type-acf-field-group h1,
 .acf-headerbar h1 {
   font-size: 21px;
   font-weight: 400;
 }
 
-.h2, .acf-page-title, .post-type-acf-field-group h2,
+.acf-h2, .acf-page-title, .post-type-acf-field-group h2,
 .acf-headerbar h2 {
   font-size: 18px;
   font-weight: 400;
 }
 
-.h3, .post-type-acf-field-group h3,
+.acf-h3, .post-type-acf-field-group h3,
 .acf-headerbar h3 {
   font-size: 16px;
   font-weight: 400;
@@ -66,36 +66,30 @@
 *  Paragraphs
 *
 *---------------------------------------------------------------------------------------------*/
-.p1 {
+.post-type-acf-field-group .p1 {
   font-size: 15px;
 }
-
-.p2 {
+.post-type-acf-field-group .p2 {
   font-size: 14px;
 }
-
-.p3 {
+.post-type-acf-field-group .p3 {
   font-size: 13.5px;
 }
-
-.p4 {
+.post-type-acf-field-group .p4 {
   font-size: 13px;
 }
-
-.p5 {
+.post-type-acf-field-group .p5 {
   font-size: 12.5px;
 }
-
-.p6, .acf-field p.description, .acf-small {
+.post-type-acf-field-group .p6, .post-type-acf-field-group .acf-field p.description, .acf-field .post-type-acf-field-group p.description, .post-type-acf-field-group .acf-small {
   font-size: 12px;
 }
-
-.p7, .acf-field-setting-prefix_label p.description code,
-.acf-field-setting-prefix_name p.description code {
+.post-type-acf-field-group .p7, .post-type-acf-field-group .acf-field-setting-prefix_label p.description code, .acf-field-setting-prefix_label p.description .post-type-acf-field-group code,
+.post-type-acf-field-group .acf-field-setting-prefix_name p.description code,
+.acf-field-setting-prefix_name p.description .post-type-acf-field-group code {
   font-size: 11.5px;
 }
-
-.p8 {
+.post-type-acf-field-group .p8 {
   font-size: 11px;
 }
 
@@ -2886,7 +2880,7 @@ p.submit .acf-spinner {
     /* field */
   }
   .media-modal .setting span,
-.media-modal .compat-attachment-fields > tbody > .acf-field > .acf-label {
+  .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-label {
     width: 98%;
     float: none;
     text-align: left;
@@ -2894,8 +2888,8 @@ p.submit .acf-spinner {
     padding: 0;
   }
   .media-modal .setting input,
-.media-modal .setting textarea,
-.media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input {
+  .media-modal .setting textarea,
+  .media-modal .compat-attachment-fields > tbody > .acf-field > .acf-input {
     float: none;
     height: auto;
     max-width: none;

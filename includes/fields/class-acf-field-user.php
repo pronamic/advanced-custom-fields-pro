@@ -328,10 +328,10 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			// Modify Request args.
 			if ( isset( $_REQUEST['s'] ) ) {
-				$_REQUEST['search'] = $_REQUEST['s'];
+				$_REQUEST['search'] = sanitize_text_field( $_REQUEST['s'] );
 			}
 			if ( isset( $_REQUEST['paged'] ) ) {
-				$_REQUEST['page'] = $_REQUEST['paged'];
+				$_REQUEST['page'] = absint( $_REQUEST['paged'] );
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -362,7 +362,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			}
 
 			// Verify that this is a legitimate request using a separate nonce from the main AJAX nonce.
-			if ( ! isset( $_REQUEST['user_query_nonce'] ) || ! wp_verify_nonce( $_REQUEST['user_query_nonce'], 'acf/fields/user/query' . $query->field['key']) ) {
+			if ( ! isset( $_REQUEST['user_query_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['user_query_nonce'] ), 'acf/fields/user/query' . $query->field['key']) ) {
 				$query->send( new WP_Error( 'acf_invalid_request', __( 'Invalid request.', 'acf' ), array( 'status' => 404 ) ) );
 			}
 		}

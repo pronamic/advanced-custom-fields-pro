@@ -319,22 +319,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 				)
 			);
 
-			acf_render_field_setting(
-				$field,
-				array(
-					'label'        => __( 'Delay initialization?', 'acf' ),
-					'instructions' => __( 'TinyMCE will not be initialized until field is clicked', 'acf' ),
-					'name'         => 'delay',
-					'type'         => 'true_false',
-					'ui'           => 1,
-					'conditions'   => array(
-						'field'    => 'tabs',
-						'operator' => '!=',
-						'value'    => 'text',
-					),
-				)
-			);
-
 		}
 
 		/**
@@ -400,6 +384,22 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 					'name'         => 'media_upload',
 					'type'         => 'true_false',
 					'ui'           => 1,
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Delay initialization?', 'acf' ),
+					'instructions' => __( 'TinyMCE will not be initialized until field is clicked', 'acf' ),
+					'name'         => 'delay',
+					'type'         => 'true_false',
+					'ui'           => 1,
+					'conditions'   => array(
+						'field'    => 'tabs',
+						'operator' => '!=',
+						'value'    => 'text',
+					),
 				)
 			);
 		}

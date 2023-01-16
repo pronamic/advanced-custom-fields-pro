@@ -578,7 +578,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
 			// Display notice on success redirect.
 			if ( isset( $_GET['acfactivatecomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfactivatecomplete'] ) );
+				$ids = array_map( 'intval', explode( ',', $_GET['acfactivatecomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
 				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// Generate text.
 				$text = sprintf(
@@ -631,7 +631,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
 			// Display notice on success redirect.
 			if ( isset( $_GET['acfdeactivatecomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfdeactivatecomplete'] ) );
+				$ids = array_map( 'intval', explode( ',', $_GET['acfdeactivatecomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
 				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// Generate text.
 				$text = sprintf(
@@ -689,7 +689,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
 			// Display notice on success redirect.
 			if ( isset( $_GET['acfduplicatecomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfduplicatecomplete'] ) );
+				$ids = array_map( 'intval', explode( ',', $_GET['acfduplicatecomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
 				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// Generate text.
 				$text = sprintf(
@@ -747,7 +747,7 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			// Display notice on success redirect.
 			if ( isset( $_GET['acfsynccomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfsynccomplete'] ) );
+				$ids = array_map( 'intval', explode( ',', $_GET['acfsynccomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
 				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// Generate text.
 				$text = sprintf(
