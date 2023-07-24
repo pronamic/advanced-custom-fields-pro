@@ -190,7 +190,7 @@ run(
 );
 
 line( '::endgroup::' );
-exit;
+
 /**
  * Git user.
  * 
