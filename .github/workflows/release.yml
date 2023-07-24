@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  schedule:
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Release
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        ACF_PRO_LICENSE: ${{ secrets.ACF_PRO_LICENSE }}
+      run: php .github/scripts/release.php
