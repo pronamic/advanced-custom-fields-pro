@@ -363,6 +363,7 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 			// Make sure any provided labels are strings and not empty.
 			$labels = array_filter( $post['labels'] );
 			$labels = array_map( 'strval', $labels );
+			$labels = array_map( 'esc_html', $labels );
 
 			if ( ! empty( $labels ) ) {
 				$args['labels'] = $labels;

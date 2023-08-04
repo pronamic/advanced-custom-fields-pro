@@ -2,9 +2,9 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 4.7
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 5.6
-Stable tag: 6.1.7
+Stable tag: 6.1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,11 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 6.1.8 =
+*Release Date 3rd August 2023*
+
+* Security Fix - This release resolves a stored XSS vulnerability in admin screens with ACF post type and taxonomy labels (Thanks to Satoo Nakano and Ryotaro Imamura)
+
 = 6.1.7 =
 *Release Date 27th June 2023*
 
@@ -114,7 +119,7 @@ From your WordPress dashboard
 = 6.1.6 =
 *Release Date 4th May 2023*
 
-* Security Fix - This release resolves an XSS vulnerability in ACF’s admin pages (Thanks to Rafie Muhammad for the responsible disclosure)
+* Security Fix - This release resolves an XSS vulnerability in ACF's admin pages (Thanks to Rafie Muhammad for the responsible disclosure)
 * Fix - Duplicating fields in a new field group with field setting tabs disabled now behaves correctly
 
 = 6.1.5 =

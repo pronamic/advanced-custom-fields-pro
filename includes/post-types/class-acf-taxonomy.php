@@ -190,10 +190,10 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 				),
 				'description'            => '',
 				'capabilities'           => array(
-					'manage_terms'    => 'manage_categories',
-					'edit_terms'      => 'manage_categories',
-					'delete_terms'    => 'manage_categories',
-					'assign_terms'    => 'edit_posts',
+					'manage_terms' => 'manage_categories',
+					'edit_terms'   => 'manage_categories',
+					'delete_terms' => 'manage_categories',
+					'assign_terms' => 'edit_posts',
 				),
 				'public'                 => true,
 				'publicly_queryable'     => true,
@@ -309,6 +309,7 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 			// Make sure any provided labels are strings and not empty.
 			$labels = array_filter( $post['labels'] );
 			$labels = array_map( 'strval', $labels );
+			$labels = array_map( 'esc_html', $labels );
 
 			if ( ! empty( $labels ) ) {
 				$args['labels'] = $labels;
