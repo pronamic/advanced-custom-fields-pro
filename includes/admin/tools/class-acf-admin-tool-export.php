@@ -283,6 +283,28 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 					)
 				);
 			}
+
+			$choices       = array();
+			$selected      = $this->get_selected_keys();
+			$options_pages = acf_get_internal_post_type_posts( 'acf-ui-options-page' );
+
+			if ( $options_pages ) {
+				foreach ( $options_pages as $options_page ) {
+					$choices[ $options_page['key'] ] = esc_html( $options_page['title'] );
+				}
+
+				acf_render_field_wrap(
+					array(
+						'label'   => __( 'Select Options Pages', 'acf' ),
+						'type'    => 'checkbox',
+						'name'    => 'ui_options_page_keys',
+						'prefix'  => false,
+						'value'   => $selected,
+						'toggle'  => true,
+						'choices' => $choices,
+					)
+				);
+			}
 		}
 
 		/**
@@ -435,6 +457,8 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 					echo "\tif ( ! function_exists( 'acf_add_local_field_group' ) ) {\r\n\t\treturn;\r\n\t}\r\n\r\n";
 				} elseif ( 'acf-post-type' === $post_type || 'acf-taxonomy' === $post_type ) {
 					echo "add_action( 'init', function() {\r\n";
+				} elseif ( 'acf-ui-options-page' === $post_type ) {
+					echo "add_action( 'acf/init', function() {\r\n";
 				}
 
 				$count = 0;
@@ -447,7 +471,7 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 					$count++;
 				}
 
-				if ( in_array( $post_type, array( 'acf-post-type', 'acf-taxonomy', 'acf-field-group' ), true ) ) {
+				if ( in_array( $post_type, array( 'acf-post-type', 'acf-taxonomy', 'acf-field-group', 'acf-ui-options-page' ), true ) ) {
 					echo "} );\r\n\r\n";
 				}
 			}
@@ -501,7 +525,7 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 		 * @return array|bool
 		 */
 		public function get_selected_keys() {
-			$key_names = array( 'keys', 'post_type_keys', 'taxonomy_keys' );
+			$key_names = array( 'keys', 'post_type_keys', 'taxonomy_keys', 'ui_options_page_keys' );
 			$all_keys  = array();
 
 			foreach ( $key_names as $key_name ) {

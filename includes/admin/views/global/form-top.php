@@ -4,14 +4,16 @@ $acf_title_placeholder = apply_filters( 'enter_title_here', __( 'Add title' ), $
 $acf_title             = $post->post_title;
 $acf_post_type         = is_object( $post_type_object ) ? $post_type_object->name : '';
 $acf_publish_btn_name  = 'save';
+$acf_duplicated_from   = '';
 
 if ( 'publish' !== $post->post_status ) {
 	$acf_publish_btn_name = 'publish';
 }
 
 if ( 'acf-field-group' === $acf_post_type ) {
-	$acf_use_post_type = acf_get_post_type_from_request_args( 'add-fields' );
-	$acf_use_taxonomy  = acf_get_taxonomy_from_request_args( 'add-fields' );
+	$acf_use_post_type    = acf_get_post_type_from_request_args( 'add-fields' );
+	$acf_use_taxonomy     = acf_get_taxonomy_from_request_args( 'add-fields' );
+	$acf_use_options_page = acf_get_ui_options_page_from_request_args( 'add-fields' );
 
 	/* translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre" */
 	$acf_prefilled_title = __( '%s fields', 'acf' );
@@ -29,12 +31,29 @@ if ( 'acf-field-group' === $acf_post_type ) {
 		$acf_prefilled_title = sprintf( $acf_prefilled_title, $acf_use_post_type['labels']['singular_name'] );
 	} elseif ( $acf_use_taxonomy && ! empty( $acf_use_taxonomy['labels']['singular_name'] ) ) {
 		$acf_prefilled_title = sprintf( $acf_prefilled_title, $acf_use_taxonomy['labels']['singular_name'] );
+	} elseif ( $acf_use_options_page && ! empty( $acf_use_options_page['page_title'] ) ) {
+		$acf_prefilled_title = sprintf( $acf_prefilled_title, $acf_use_options_page['page_title'] );
 	} else {
 		$acf_prefilled_title = false;
 	}
 
 	if ( empty( $acf_title ) && $acf_prefilled_title ) {
 		$acf_title = $acf_prefilled_title;
+	}
+} elseif ( in_array( $acf_post_type, array( 'acf-post-type', 'acf-taxonomy' ) ) ) {
+	$acf_duplicate_post_type   = acf_get_post_type_from_request_args( 'acfduplicate' );
+	$acf_duplicate_taxonomy    = acf_get_taxonomy_from_request_args( 'acfduplicate' );
+	$acf_duplicated_from_label = '';
+
+	if ( $acf_duplicate_post_type && ! empty( $acf_duplicate_post_type['labels']['singular_name'] ) ) {
+		$acf_duplicated_from_label = $acf_duplicate_post_type['labels']['singular_name'];
+	} elseif ( $acf_duplicate_taxonomy && ! empty( $acf_duplicate_taxonomy['labels']['singular_name'] ) ) {
+		$acf_duplicated_from_label = $acf_duplicate_taxonomy['labels']['singular_name'];
+	}
+
+	if ( ! empty( $acf_duplicated_from_label ) ) {
+		/* translators: %s - A singular label for a post type or taxonomy. */
+		$acf_duplicated_from = sprintf( __( ' (Duplicated from %s)', 'acf' ), $acf_duplicated_from_label );
 	}
 }
 ?>
@@ -45,6 +64,10 @@ if ( 'acf-field-group' === $acf_post_type ) {
 			<h1 class="acf-page-title">
 			<?php
 			echo esc_html( $title );
+
+			if ( ! empty( $acf_duplicated_from ) ) {
+				echo '<span class="acf-duplicated-from">' . esc_html( $acf_duplicated_from ) . '</span>';
+			}
 			?>
 			</h1>
 			<?php if ( 'acf-field-group' === $acf_post_type ) : ?>

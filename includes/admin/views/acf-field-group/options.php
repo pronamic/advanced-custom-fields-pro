@@ -17,8 +17,9 @@ if ( empty( $field_group['location'] ) ) {
 		),
 	);
 
-	$acf_use_post_type = acf_get_post_type_from_request_args( 'add-fields' );
-	$acf_use_taxonomy  = acf_get_taxonomy_from_request_args( 'add-fields' );
+	$acf_use_post_type    = acf_get_post_type_from_request_args( 'add-fields' );
+	$acf_use_taxonomy     = acf_get_taxonomy_from_request_args( 'add-fields' );
+	$acf_use_options_page = acf_get_ui_options_page_from_request_args( 'add-fields' );
 
 	if ( $acf_use_post_type && ! empty( $acf_use_post_type['post_type'] ) ) {
 		$field_group['location'] = array(
@@ -39,6 +40,18 @@ if ( empty( $field_group['location'] ) ) {
 					'param'    => 'taxonomy',
 					'operator' => '==',
 					'value'    => $acf_use_taxonomy['taxonomy'],
+				),
+			),
+		);
+	}
+
+	if ( $acf_use_options_page && ! empty( $acf_use_options_page['menu_slug'] ) ) {
+		$field_group['location'] = array(
+			array(
+				array(
+					'param'    => 'options_page',
+					'operator' => '==',
+					'value'    => $acf_use_options_page['menu_slug'],
 				),
 			),
 		);

@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: WP Engine <support@advancedcustomfields.com>\n"
-"POT-Creation-Date: 2023-06-27 14:12+0000\n"
+"POT-Creation-Date: 2023-08-09 12:54+0000\n"
 "Report-Msgid-Bugs-To: https://support.advancedcustomfields.com\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -20,50 +20,50 @@ msgstr ""
 msgid "Advanced Custom Fields PRO"
 msgstr ""
 
-#: pro/blocks.php:170
+#: pro/blocks.php:172
 msgid "Block type name is required."
 msgstr ""
 
 #. translators: The name of the block type
-#: pro/blocks.php:178
+#: pro/blocks.php:180
 msgid "Block type \"%s\" is already registered."
 msgstr ""
 
-#: pro/blocks.php:726
+#: pro/blocks.php:728
 msgid "Switch to Edit"
 msgstr ""
 
-#: pro/blocks.php:727
+#: pro/blocks.php:729
 msgid "Switch to Preview"
 msgstr ""
 
-#: pro/blocks.php:728
+#: pro/blocks.php:730
 msgid "Change content alignment"
 msgstr ""
 
 #. translators: %s: Block type title
-#: pro/blocks.php:731
+#: pro/blocks.php:733
 msgid "%s settings"
 msgstr ""
 
-#: pro/blocks.php:943
+#: pro/blocks.php:945
 msgid "This block contains no editable fields."
 msgstr ""
 
 #. translators: %s: an admin URL to the field group edit screen
-#: pro/blocks.php:949
+#: pro/blocks.php:951
 msgid "Assign a <a href=\"%s\" target=\"_blank\">field group</a> to add fields to this block."
 msgstr ""
 
-#: pro/options-page.php:47
+#: pro/options-page.php:47, pro/admin/views/acf-ui-options-page/advanced-settings.php:199
 msgid "Options"
 msgstr ""
 
-#: pro/options-page.php:77, pro/fields/class-acf-field-gallery.php:528
+#: pro/options-page.php:77, pro/fields/class-acf-field-gallery.php:528, pro/post-types/acf-ui-options-page.php:172, pro/admin/views/acf-ui-options-page/advanced-settings.php:127
 msgid "Update"
 msgstr ""
 
-#: pro/options-page.php:78
+#: pro/options-page.php:78, pro/post-types/acf-ui-options-page.php:173
 msgid "Options Updated"
 msgstr ""
 
@@ -378,7 +378,7 @@ msgstr ""
 msgid "Alt Text"
 msgstr ""
 
-#: pro/fields/class-acf-field-gallery.php:393
+#: pro/fields/class-acf-field-gallery.php:393, pro/admin/post-types/admin-ui-options-pages.php:121, pro/admin/views/acf-ui-options-page/advanced-settings.php:115
 msgid "Description"
 msgstr ""
 
@@ -627,8 +627,181 @@ msgid "Options Page"
 msgstr ""
 
 #: pro/locations/class-acf-location-options-page.php:70
-msgid "No options pages exist"
+msgid "Select options page..."
 msgstr ""
+
+#: pro/locations/class-acf-location-options-page.php:73, pro/post-types/acf-ui-options-page.php:95, pro/admin/post-types/admin-ui-options-page.php:463
+msgid "Add New Options Page"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:92, pro/post-types/acf-ui-options-page.php:93, pro/admin/post-types/admin-ui-options-pages.php:98, pro/admin/post-types/admin-ui-options-pages.php:98
+msgid "Options Pages"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:94
+msgid "Add New"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:96
+msgid "Edit Options Page"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:97
+msgid "New Options Page"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:98
+msgid "View Options Page"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:99
+msgid "Search Options Pages"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:100
+msgid "No Options Pages found"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:101
+msgid "No Options Pages found in Trash"
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:198
+msgid "The menu slug must only contain lower case alphanumeric characters, underscores or dashes."
+msgstr ""
+
+#: pro/post-types/acf-ui-options-page.php:230
+msgid "This Menu Slug is already in use by another ACF Options Page."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:57
+msgid "Options page deleted."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:58
+msgid "Options page updated."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:61
+msgid "Options page saved."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:62
+msgid "Options page submitted."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:63
+msgid "Options page scheduled for."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:64
+msgid "Options page draft updated."
+msgstr ""
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:84
+msgid "%s options page updated"
+msgstr ""
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:86
+msgid "Add fields to %s"
+msgstr ""
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:90
+msgid "%s options page created"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:103
+msgid "Link existing field groups"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:121
+msgid "Post"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:122
+msgid "Posts"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:123
+msgid "Page"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:124
+msgid "Pages"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:125
+msgid "Default"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:149
+msgid "Basic Settings"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:150
+msgid "Advanced Settings"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:284
+msgctxt "post status"
+msgid "Active"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:284
+msgctxt "post status"
+msgid "Inactive"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:364, pro/admin/views/acf-ui-options-page/basic-settings.php:37
+msgid "No Parent"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-page.php:432
+msgid "The provided Menu Slug already exists."
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-pages.php:122
+msgid "Key"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-pages.php:126
+msgid "Local JSON"
+msgstr ""
+
+#: pro/admin/post-types/admin-ui-options-pages.php:155
+msgid "No description"
+msgstr ""
+
+#. translators: %s number of post types activated
+#: pro/admin/post-types/admin-ui-options-pages.php:183
+msgid "Options page activated."
+msgid_plural "%s options pages activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s number of post types deactivated
+#: pro/admin/post-types/admin-ui-options-pages.php:190
+msgid "Options page deactivated."
+msgid_plural "%s options pages deactivated."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s number of post types duplicated
+#: pro/admin/post-types/admin-ui-options-pages.php:197
+msgid "Options page duplicated."
+msgid_plural "%s options pages duplicated."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s number of post types synchronized
+#: pro/admin/post-types/admin-ui-options-pages.php:204
+msgid "Options page synchronized."
+msgid_plural "%s options pages synchronized."
+msgstr[0] ""
+msgstr[1] ""
 
 #: pro/admin/views/html-settings-updates.php:6
 msgid "Deactivate License"
@@ -700,4 +873,154 @@ msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:117
 msgid "Please reactivate your license to unlock updates"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:16
+msgid "Dashicon class name"
+msgstr ""
+
+#. translators: %s = "dashicon class name", link to the WordPress dashicon documentation.
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:21
+msgid "The icon used for the options page menu item in the admin dashboard. Can be a URL or %s to use for the icon."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:27
+msgid "Menu Icon"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:48
+msgid "Menu Title"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:62
+msgid "Learn more about menu positions."
+msgstr ""
+
+#. translators: %s - link to WordPress docs to learn more about menu positions.
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:66
+msgid "The position in the menu where this page should appear. %s"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:72
+msgid "Menu Position"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:91
+msgid "Redirect to Child Page"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:92
+msgid "When child pages exist for this parent page, this page will redirect to the first child page."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:116
+msgid "A descriptive summary of the options page."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:125
+msgid "Update Button Label"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:126
+msgid "The label used for the submit button which updates the fields on the options page."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:140
+msgid "Updated Message"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:141
+msgid "The message that is displayed after successfully updating the options page."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:142
+msgid "Updated Options"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:179
+msgid "Capability"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:180
+msgid "The capability required for this menu to be displayed to the user."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:196
+msgid "Data Storage"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:197
+msgid "By default, the option page stores field data in the options table. You can make the page load field data from a post, user, or term."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:200, pro/admin/views/acf-ui-options-page/advanced-settings.php:231
+msgid "Custom Storage"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:220
+msgid "Learn more about available settings."
+msgstr ""
+
+#. translators: %s = link to learn more about storage locations.
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:225
+msgid "Set a custom storage location. Can be a numeric post ID (123), or a string (`user_2`). %s"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:250
+msgid "Autoload Options"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:251
+msgid "Improve performance by loading the fields in the option records automatically when WordPress loads."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:6, pro/admin/views/acf-ui-options-page/create-options-page-modal.php:16
+msgid "Page Title"
+msgstr ""
+
+#. translators: example options page name
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:8, pro/admin/views/acf-ui-options-page/create-options-page-modal.php:18
+msgid "Site Settings"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:23, pro/admin/views/acf-ui-options-page/create-options-page-modal.php:33
+msgid "Menu Slug"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:64, pro/admin/views/acf-ui-options-page/create-options-page-modal.php:47
+msgid "Parent Page"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:84
+msgid "Advanced Configuration"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:85
+msgid "I know what I'm doing, show me all the options."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:62
+msgid "Cancel"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:63
+msgid "Done"
+msgstr ""
+
+#. translators: %s URL to ACF options pages documentation
+#: pro/admin/views/acf-ui-options-page/list-empty.php:4
+msgid "ACF <a href=\"%s\" target=\"_blank\">options pages</a> are custom admin pages for managing global settings via fields. You can create multiple pages and sub-pages."
+msgstr ""
+
+#. translators: %s url to getting started guide
+#: pro/admin/views/acf-ui-options-page/list-empty.php:10
+msgid "New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting started guide</a>."
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/list-empty.php:18
+msgid "Add Your First Options Page"
+msgstr ""
+
+#: pro/admin/views/acf-ui-options-page/list-empty.php:20
+msgid "Add Options Page"
 msgstr ""

@@ -2,6 +2,22 @@
 
 global $acf_taxonomy;
 
+$acf_duplicate_taxonomy = acf_get_taxonomy_from_request_args( 'acfduplicate' );
+
+if ( acf_is_taxonomy( $acf_duplicate_taxonomy ) ) {
+	// Reset vars that likely have to be changed.
+	$acf_duplicate_taxonomy['key']             = uniqid( 'taxonomy_' );
+	$acf_duplicate_taxonomy['title']           = '';
+	$acf_duplicate_taxonomy['labels']          = array_map( '__return_empty_string', $acf_duplicate_taxonomy['labels'] );
+	$acf_duplicate_taxonomy['taxonomy']        = '';
+	$acf_duplicate_taxonomy['rewrite']['slug'] = '';
+	$acf_duplicate_taxonomy['query_var_name']  = '';
+	$acf_duplicate_taxonomy['rest_base']       = '';
+
+	// Rest of the vars can be reused.
+	$acf_taxonomy = $acf_duplicate_taxonomy;
+}
+
 acf_render_field_wrap(
 	array(
 		'label'       => __( 'Plural Label', 'acf' ),

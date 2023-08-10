@@ -490,7 +490,8 @@ if ( ! function_exists( 'acf_get_options_pages' ) ) :
 
 			// finally update parent menu_slug
 			if ( $child ) {
-				$page['menu_slug'] = $child;
+				$page['_menu_slug'] = $page['menu_slug'];
+				$page['menu_slug']  = $child;
 			}
 		}
 

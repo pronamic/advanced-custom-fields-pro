@@ -6,6 +6,7 @@ acf_register_store( 'local-groups' );
 acf_register_store( 'local-empty' );
 acf_register_store( 'local-post-types' );
 acf_register_store( 'local-taxonomies' );
+acf_register_store( 'local-ui-options-pages' );
 
 // Register filter.
 acf_enable_filter( 'local' );
@@ -79,6 +80,9 @@ function acf_get_local_store( $name = '', $post_type = '' ) {
 				break;
 			case 'acf-field':
 				$name = 'fields';
+				break;
+			case 'acf-ui-options-page':
+				$name = 'ui-options-pages';
 				break;
 		}
 	}
@@ -648,6 +652,7 @@ function _acf_apply_get_local_internal_posts( $posts = array(), $post_type = 'ac
 add_filter( 'acf/load_field_groups', '_acf_apply_get_local_internal_posts', 20, 2 );
 add_filter( 'acf/load_post_types', '_acf_apply_get_local_internal_posts', 20, 2 );
 add_filter( 'acf/load_taxonomies', '_acf_apply_get_local_internal_posts', 20, 2 );
+add_filter( 'acf/load_ui_options_pages', '_acf_apply_get_local_internal_posts', 20, 2 );
 
 /**
  * _acf_apply_is_local_field_key

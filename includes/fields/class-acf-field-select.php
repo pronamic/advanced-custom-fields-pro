@@ -154,22 +154,15 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		}
 
 
-		/*
-		*  get_ajax_query
-		*
-		*  This function will return an array of data formatted for use in a select2 AJAX response
-		*
-		*  @type    function
-		*  @date    15/10/2014
-		*  @since   5.0.9
-		*
-		*  @param   $options (array)
-		*  @return  (array)
-		*/
-
-		function get_ajax_query( $options = array() ) {
-
-			// defaults
+		/**
+		 * This function will return an array of data formatted for use in a select2 AJAX response
+		 *
+		 * @since   5.0.9
+		 *
+		 * @param array $options An array of options.
+		 * @return array A select2 compatible array of options.
+		 */
+		public function get_ajax_query( $options = array() ) {
 			$options = acf_parse_args(
 				$options,
 				array(
@@ -180,23 +173,28 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				)
 			);
 
-			// load field
+			$shortcut = apply_filters( 'acf/fields/select/query', array(), $options );
+			$shortcut = apply_filters( 'acf/fields/select/query/key=' . $options['field_key'], $shortcut, $options );
+			if ( ! empty( $shortcut ) ) {
+				return $shortcut;
+			}
+
+			// load field.
 			$field = acf_get_field( $options['field_key'] );
 			if ( ! $field ) {
 				return false;
 			}
 
-			// get choices
+			// get choices.
 			$choices = acf_get_array( $field['choices'] );
 			if ( empty( $field['choices'] ) ) {
 				return false;
 			}
 
-			// vars
 			$results = array();
 			$s       = null;
 
-			// search
+			// search.
 			if ( $options['s'] !== '' ) {
 
 				// strip slashes (search may be integer)
@@ -205,18 +203,17 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 
 			}
 
-			// loop
 			foreach ( $field['choices'] as $k => $v ) {
 
-				// ensure $v is a string
+				// ensure $v is a string.
 				$v = strval( $v );
 
-				// if searching, but doesn't exist
+				// if searching, but doesn't exist.
 				if ( is_string( $s ) && stripos( $v, $s ) === false ) {
 					continue;
 				}
 
-				// append
+				// append results.
 				$results[] = array(
 					'id'   => $k,
 					'text' => $v,
@@ -224,14 +221,11 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 
 			}
 
-			// vars
 			$response = array(
 				'results' => $results,
 			);
 
-			// return
 			return $response;
-
 		}
 
 
@@ -699,28 +693,52 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		}
 
 		/**
+		 * Formats the choices available for the REST API.
+		 *
+		 * @since 6.2
+		 *
+		 * @param array $choices The choices for the field.
+		 * @return array
+		 */
+		public function format_rest_choices( $choices ) {
+			$keys        = array_keys( $choices );
+			$values      = array_values( $choices );
+			$int_choices = array();
+
+			if ( array_diff( $keys, $values ) ) {
+				// User has specified custom keys.
+				$choices = $keys;
+			} else {
+				// Default keys, same as value.
+				$choices = $values;
+			}
+
+			// Assume everything is a string by default.
+			$choices = array_map( 'strval', $choices );
+
+			// Also allow integers if is_numeric().
+			foreach ( $choices as $choice ) {
+				if ( is_numeric( $choice ) ) {
+					$int_choices[] = (int) $choice;
+				}
+			}
+
+			return array_merge( $choices, $int_choices );
+		}
+
+		/**
 		 * Return the schema array for the REST API.
 		 *
-		 * @param array $field
+		 * @param array $field The main field array.
 		 * @return array
 		 */
 		public function get_rest_schema( array $field ) {
-			/**
-			 * If a user has defined keys for the select options,
-			 * we should use the keys for the available options to POST to,
-			 * since they are what is displayed in GET requests.
-			 */
-			$option_keys = array_diff(
-				array_keys( $field['choices'] ),
-				array_values( $field['choices'] )
-			);
-
 			$schema = array(
 				'type'     => array( 'string', 'array', 'int', 'null' ),
 				'required' => ! empty( $field['required'] ),
 				'items'    => array(
 					'type' => array( 'string', 'int' ),
-					'enum' => empty( $option_keys ) ? $field['choices'] : $option_keys,
+					'enum' => $this->format_rest_choices( $field['choices'] ),
 				),
 			);
 

@@ -483,7 +483,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 
 			// Make a backup of internal post type data and remove some args.
 			$_post = $post;
-			acf_extract_vars( $_post, array( 'ID', 'key', 'title', 'menu_order', 'fields', 'active', '_valid' ) );
+			acf_extract_vars( $_post, array( 'ID', 'key', 'title', 'menu_order', 'fields', 'active', '_valid', '_parent' ) );
 
 			// Create array of data to save.
 			$save = array(
@@ -498,6 +498,10 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 				'comment_status' => 'closed',
 				'ping_status'    => 'closed',
 			);
+
+			if ( ! empty( $post['_parent'] ) ) {
+				$save['post_parent'] = (int) $post['_parent'];
+			}
 
 			// Unhook wp_targeted_link_rel() filter from WP 5.1 corrupting serialized data.
 			remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );

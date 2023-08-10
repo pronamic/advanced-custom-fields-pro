@@ -1,6 +1,22 @@
 <?php
 global $acf_post_type;
 
+$acf_duplicate_post_type = acf_get_post_type_from_request_args( 'acfduplicate' );
+
+if ( acf_is_post_type( $acf_duplicate_post_type ) ) {
+	// Reset vars that likely have to be changed.
+	$acf_duplicate_post_type['key']             = uniqid( 'post_type_' );
+	$acf_duplicate_post_type['title']           = '';
+	$acf_duplicate_post_type['labels']          = array_map( '__return_empty_string', $acf_duplicate_post_type['labels'] );
+	$acf_duplicate_post_type['post_type']       = '';
+	$acf_duplicate_post_type['rest_base']       = '';
+	$acf_duplicate_post_type['query_var_name']  = '';
+	$acf_duplicate_post_type['rewrite']['slug'] = '';
+
+	// Rest of the vars can be reused.
+	$acf_post_type = $acf_duplicate_post_type;
+}
+
 acf_render_field_wrap(
 	array(
 		'label'       => __( 'Plural Label', 'acf' ),

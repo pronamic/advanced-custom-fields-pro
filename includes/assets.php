@@ -471,7 +471,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 					'post_id'     => acf_get_form_data( 'post_id' ),
 					'validation'  => acf_get_form_data( 'validation' ),
 					'editor'      => acf_is_block_editor() ? 'block' : 'classic',
-					'is_pro'      => defined( 'ACF_PRO' ) && ACF_PRO,
+					'is_pro'      => acf_is_pro(),
 				)
 			);
 

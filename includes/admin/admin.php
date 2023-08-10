@@ -102,6 +102,7 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			if ( isset( $screen->post_type ) && in_array( $screen->post_type, acf_get_internal_post_types(), true ) ) {
 				add_action( 'in_admin_header', array( $this, 'in_admin_header' ) );
 				add_filter( 'admin_footer_text', array( $this, 'admin_footer_text' ) );
+				add_filter( 'update_footer', array( $this, 'admin_footer_version_text' ) );
 				$this->setup_help_tab();
 				$this->maybe_show_import_from_cptui_notice();
 			}
@@ -223,19 +224,47 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		 * @date    7/4/20
 		 * @since   5.9.0
 		 *
-		 * @param   string $text The admin footer text.
+		 * @param   string $text The current admin footer text.
 		 * @return  string
 		 */
-		function admin_footer_text( $text ) {
-			if ( null === $text ) {
-				$text = '';
-			}
+		public function admin_footer_text( $text ) {
+			$wp_engine_link = acf_add_url_utm_tags( 'https://wpengine.com/', 'bx_prod_referral', acf_is_pro() ? 'acf_pro_plugin_footer_text' : 'acf_free_plugin_footer_text', false, 'acf_plugin', 'referral' );
+			$acf_link       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/', 'footer', 'footer' );
 
-			$is_free        = ! defined( 'ACF_PRO' ) || ! ACF_PRO;
-			$wp_engine_link = acf_add_url_utm_tags( 'https://wpengine.com/', 'bx_prod_referral', $is_free ? 'acf_free_plugin_footer_text' : 'acf_pro_plugin_footer_text', false, 'acf_plugin', 'referral' );
+			return sprintf(
+				/* translators: This text is prepended by a link to ACF's website, and appended by a link to WP Engine's website. */
+				'<a href="%1$s" target="_blank">' . ( acf_is_pro() ? 'ACF PRO' : 'ACF' ) . '</a> ' . __( 'is developed and maintained by', 'acf' ) . ' <a href="%2$s" target="_blank">WP Engine</a>.',
+				$acf_link,
+				$wp_engine_link
+			);
+		}
 
-			// Use RegExp to append "ACF" after the <a> element allowing translations to read correctly.
-			return preg_replace( '/(<a[\S\s]+?\/a>)/', '$1 ' . __( 'and', 'acf' ) . ' <a href="' . acf_add_url_utm_tags( 'https://www.advancedcustomfields.com', 'footer', 'footer' ) . '" target="_blank">ACF</a> ' . __( 'from', 'acf' ) . ' <a href="' . $wp_engine_link . '" target="_blank">WP Engine</a>', $text, 1 );
+		/**
+		 * Modifies the admin footer version text.
+		 *
+		 * @since 6.2
+		 *
+		 * @param   string $text The current admin footer version text.
+		 * @return  string
+		 */
+		public function admin_footer_version_text( $text ) {
+			$documentation_link = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/', 'footer', 'footer' );
+			$support_link       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/support/', 'footer', 'footer' );
+			$feedback_link      = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/feedback/', 'footer', 'footer' );
+			$version_link       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/changelog/', 'footer', 'footer' );
+
+			return sprintf(
+				'<a href="%s" target="_blank">%s</a> &#8729; <a href="%s" target="_blank">%s</a> &#8729; <a href="%s" target="_blank">%s</a> &#8729; <a href="%s" target="_blank">%s %s</a>',
+				$documentation_link,
+				__( 'Documentation', 'acf' ),
+				$support_link,
+				__( 'Support', 'acf' ),
+				$feedback_link,
+				__( 'Feedback', 'acf' ),
+				$version_link,
+				acf_is_pro() ? __( 'ACF PRO', 'acf' ) : __( 'ACF', 'acf' ),
+				ACF_VERSION
+			);
 		}
 
 		/**

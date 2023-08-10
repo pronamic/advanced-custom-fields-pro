@@ -8,22 +8,14 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 		var $save_post_terms = array();
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function initialize() {
-
-			// vars
+		/**
+		 *  This function will setup the field type data
+		 *
+		 *  @type    function
+		 *  @date    5/03/2014
+		 *  @since   5.0.0
+		 */
+		public function initialize() {
 			$this->name          = 'taxonomy';
 			$this->label         = __( 'Taxonomy', 'acf' );
 			$this->category      = 'relational';
@@ -31,14 +23,15 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-taxonomy.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/taxonomy/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'taxonomy'      => 'category',
-				'field_type'    => 'checkbox',
-				'multiple'      => 0,
-				'allow_null'    => 0,
-				'return_format' => 'id',
-				'add_term'      => 1, // 5.2.3
-				'load_terms'    => 0, // 5.2.7
-				'save_terms'    => 0, // 5.2.7
+				'taxonomy'             => 'category',
+				'field_type'           => 'checkbox',
+				'multiple'             => 0,
+				'allow_null'           => 0,
+				'return_format'        => 'id',
+				'add_term'             => 1, // 5.2.3
+				'load_terms'           => 0, // 5.2.7
+				'save_terms'           => 0, // 5.2.7
+				'bidirectional_target' => array(),
 			);
 
 			// Register filter variations.
@@ -246,7 +239,7 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			 * @param   array $field The field settings.
 			 * @param   (int|string) $post_id The post_id being edited.
 			 */
-			 return apply_filters( 'acf/fields/taxonomy/result', $title, $term, $field, $post_id );
+			return apply_filters( 'acf/fields/taxonomy/result', $title, $term, $field, $post_id );
 		}
 
 
@@ -374,60 +367,50 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  update_value()
-		*
-		*  This filter is appied to the $value before it is updated in the db
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value - the value which will be saved in the database
-		*  @param   $field - the field array holding all the field options
-		*  @param   $post_id - the $post_id of which the value will be saved
-		*
-		*  @return  $value - the modified value
-		*/
+		/**
+		 * Filters the field value before it is saved into the database.
+		 *
+		 * @since 3.6
+		 *
+		 * @param mixed $value The value which will be saved in the database.
+		 * @param int   $post_id The post_id of which the value will be saved.
+		 * @param array $field The field array holding all the field options.
+		 *
+		 * @return mixed $value The modified value.
+		 */
+		public function update_value( $value, $post_id, $field ) {
 
-		function update_value( $value, $post_id, $field ) {
-
-			// vars
 			if ( is_array( $value ) ) {
-
 				$value = array_filter( $value );
-
 			}
 
-			// save_terms
+			acf_update_bidirectional_values( acf_get_array( $value ), $post_id, $field, 'term' );
+
+			// save_terms if enabled.
 			if ( $field['save_terms'] ) {
 
 				// vars
 				$taxonomy = $field['taxonomy'];
 
-				// force value to array
+				// force value to array.
 				$term_ids = acf_get_array( $value );
 
-				// convert to int
+				// convert to int.
 				$term_ids = array_map( 'intval', $term_ids );
 
-				// get existing term id's (from a previously saved field)
+				// get existing term id's (from a previously saved field).
 				$old_term_ids = isset( $this->save_post_terms[ $taxonomy ] ) ? $this->save_post_terms[ $taxonomy ] : array();
 
 				// append
 				$this->save_post_terms[ $taxonomy ] = array_merge( $old_term_ids, $term_ids );
 
-				// if called directly from frontend update_field()
+				// if called directly from frontend update_field().
 				if ( ! did_action( 'acf/save_post' ) ) {
-
 					$this->save_post( $post_id );
-
 					return $value;
-
 				}
 			}
 
-			// return
 			return $value;
 
 		}
@@ -798,6 +781,18 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 					),
 				)
 			);
+		}
+
+		/**
+		 * Renders the field settings used in the "Advanced" tab.
+		 *
+		 * @since 6.2
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		public function render_field_advanced_settings( $field ) {
+			acf_render_bidirectional_field_settings( $field );
 		}
 
 		/*

@@ -5,22 +5,14 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 	class acf_field_relationship extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function initialize() {
-
-			// vars
+		/**
+		 *  This function will setup the field type data
+		 *
+		 *  @type    function
+		 *  @date    5/03/2014
+		 *  @since   5.0.0
+		 */
+		public function initialize() {
 			$this->name          = 'relationship';
 			$this->label         = __( 'Relationship', 'acf' );
 			$this->category      = 'relational';
@@ -28,13 +20,14 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-relationship.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/relationship/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'post_type'     => array(),
-				'taxonomy'      => array(),
-				'min'           => 0,
-				'max'           => 0,
-				'filters'       => array( 'search', 'post_type', 'taxonomy' ),
-				'elements'      => array(),
-				'return_format' => 'object',
+				'post_type'            => array(),
+				'taxonomy'             => array(),
+				'min'                  => 0,
+				'max'                  => 0,
+				'filters'              => array( 'search', 'post_type', 'taxonomy' ),
+				'elements'             => array(),
+				'return_format'        => 'object',
+				'bidirectional_target' => array(),
 			);
 
 			// extra
@@ -711,6 +704,18 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			);
 		}
 
+		/**
+		 * Renders the field settings used in the "Advanced" tab.
+		 *
+		 * @since 6.2
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		public function render_field_advanced_settings( $field ) {
+			acf_render_bidirectional_field_settings( $field );
+		}
+
 		/*
 		*  format_value()
 		*
@@ -798,23 +803,21 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 
 		/**
-		 *  update_value()
+		 * Filters the field value before it is saved into the database.
 		 *
-		 *  This filter is applied to the $value before it is updated in the db
+		 * @since 3.6
 		 *
-		 *  @type    filter
-		 *  @since   3.6
-		 *  @date    23/01/13
+		 * @param mixed $value The value which will be saved in the database.
+		 * @param int   $post_id The post_id of which the value will be saved.
+		 * @param array $field The field array holding all the field options.
 		 *
-		 *  @param   $value - the value which will be saved in the database
-		 *  @param   $post_id - the post_id of which the value will be saved
-		 *  @param   $field - the field array holding all the field options
-		 *
-		 *  @return  $value - the modified value
+		 * @return mixed $value The modified value.
 		 */
-		function update_value( $value, $post_id, $field ) {
+		public function update_value( $value, $post_id, $field ) {
+
 			// Bail early if no value.
 			if ( empty( $value ) ) {
+				acf_update_bidirectional_values( array(), $post_id, $field );
 				return $value;
 			}
 
@@ -829,6 +832,8 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			} else {
 				$value = acf_idval( $value );
 			}
+
+			acf_update_bidirectional_values( acf_get_array( $value ), $post_id, $field );
 
 			// Return value.
 			return $value;

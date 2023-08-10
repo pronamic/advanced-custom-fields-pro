@@ -271,7 +271,7 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 				'acf'     => wp_json_encode(
 					array(
 						'acf_version' => get_option( 'acf_version' ),
-						'acf_pro'     => ( defined( 'ACF_PRO' ) && ACF_PRO ),
+						'acf_pro'     => acf_is_pro(),
 						'block_count' => acf_pro_get_registered_block_count(),
 					)
 				),

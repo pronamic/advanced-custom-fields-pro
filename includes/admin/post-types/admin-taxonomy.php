@@ -87,7 +87,11 @@ if ( ! class_exists( 'ACF_Admin_Taxonomy' ) ) :
 				'add-fields-' . $post_id
 			);
 
-			$create_taxonomy_link = admin_url( 'post-new.php?post_type=acf-taxonomy' );
+			$create_taxonomy_link    = admin_url( 'post-new.php?post_type=acf-taxonomy' );
+			$duplicate_taxonomy_link = wp_nonce_url(
+				admin_url( 'post-new.php?post_type=acf-taxonomy&use_taxonomy=' . $post_id ),
+				'acfduplicate-' . $post_id
+			);
 
 			$create_post_type_link = wp_nonce_url(
 				admin_url( 'post-new.php?post_type=acf-post-type&use_taxonomy=' . $post_id ),
@@ -97,10 +101,11 @@ if ( ! class_exists( 'ACF_Admin_Taxonomy' ) ) :
 			ob_start(); ?>
 			<p class="acf-item-saved-text"><?php echo esc_html( $item_saved_text ); ?></p>
 			<div class="acf-item-saved-links">
-				<a href="<?php echo esc_url( $add_fields_link ); ?>"><?php echo esc_html( $add_fields_text ); ?></a>
-				<a class="acf-link-field-groups" href="#"><?php esc_html_e( 'Link existing field groups', 'acf' ); ?></a>
-				<a href="<?php echo esc_url( $create_taxonomy_link ); ?>"><?php esc_html_e( 'Create new taxonomy', 'acf' ); ?></a>
-				<a href="<?php echo esc_url( $create_post_type_link ); ?>"><?php esc_html_e( 'Create new post type', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $add_fields_link ); ?>"><?php esc_html_e( 'Add fields', 'acf' ); ?></a>
+				<a class="acf-link-field-groups" href="#"><?php esc_html_e( 'Link field groups', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $create_taxonomy_link ); ?>"><?php esc_html_e( 'Create taxonomy', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $duplicate_taxonomy_link ); ?>"><?php esc_html_e( 'Duplicate taxonomy', 'acf' ); ?></a>
+				<a href="<?php echo esc_url( $create_post_type_link ); ?>"><?php esc_html_e( 'Create post type', 'acf' ); ?></a>
 			</div>
 			<?php
 			return ob_get_clean();

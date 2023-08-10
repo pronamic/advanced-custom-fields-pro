@@ -259,11 +259,22 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 						continue;
 					}
 
+					if ( 'acf-post-type' === $post_type ) {
+						$param = 'post_type';
+						$value = $saved_post['post_type'];
+					} elseif ( 'acf-taxonomy' === $post_type ) {
+						$param = 'taxonomy';
+						$value = $saved_post['taxonomy'];
+					} else {
+						$param = 'options_page';
+						$value = $saved_post['menu_slug'];
+					}
+
 					$field_group['location'][] = array(
 						array(
-							'param'    => 'acf-post-type' === $post_type ? 'post_type' : 'taxonomy',
+							'param'    => $param,
 							'operator' => '==',
-							'value'    => 'acf-post-type' === $post_type ? $saved_post['post_type'] : $saved_post['taxonomy'],
+							'value'    => $value,
 						),
 					);
 
@@ -305,6 +316,12 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 				}
 			}
 
+			$instructions = sprintf(
+				/* translators: %s - either "post type" or "taxonomy" */
+				__( 'Add this %s to the location rules of the selected field groups.', 'acf' ),
+				'acf-post-type' === $post_type ? __( 'post type', 'acf' ) : __( 'taxonomy', 'acf' )
+			);
+
 			$field = acf_get_valid_field(
 				array(
 					'type'         => 'select',
@@ -312,7 +329,8 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 					'choices'      => $choices,
 					'aria-label'   => __( 'Please select the field groups to link.', 'acf' ),
 					'placeholder'  => __( 'Select one or many field groups...', 'acf' ),
-					'instructions' => __( 'Field group(s)', 'acf' ),
+					'label'        => __( 'Field Group(s)', 'acf' ),
+					'instructions' => $instructions,
 					'ui'           => true,
 					'multiple'     => true,
 					'allow_null'   => true,
@@ -322,7 +340,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 			ob_start();
 			?>
 			<form id="acf-link-field-groups-form">
-				<?php acf_render_field_wrap( $field ); ?>
+				<?php acf_render_field_wrap( $field, 'div', 'field' ); ?>
 				<div class="acf-actions">
 					<button type="button" class="acf-btn acf-btn-secondary acf-close-popup"><?php esc_html_e( 'Cancel', 'acf' ); ?></button>
 					<button type="submit" class="acf-btn acf-btn-primary"><?php esc_html_e( 'Done', 'acf' ); ?></button>
@@ -330,17 +348,11 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 			</form>
 			<?php
 			$content = ob_get_clean();
-			$title   = sprintf(
-				/* translators: %1$s - name of newly created post. %2$s - either "post type" or "taxonomy". */
-				__( 'Link %1$s %2$s to field groups', 'acf' ),
-				isset( $saved_post['title'] ) ? $saved_post['title'] : '',
-				'acf-post-type' === $post_type ? __( 'post type', 'acf' ) : __( 'taxonomy', 'acf' )
-			);
 
 			wp_send_json_success(
 				array(
 					'content' => $content,
-					'title'   => $title,
+					'title'   => esc_html__( 'Link Existing Field Groups', 'acf' ),
 				)
 			);
 		}

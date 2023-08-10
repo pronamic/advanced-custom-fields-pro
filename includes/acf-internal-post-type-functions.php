@@ -524,6 +524,32 @@ function acf_get_combined_taxonomy_settings_tabs() {
 }
 
 /**
+ * Returns an array of tabs for the options page advanced settings
+ *
+ * @since 6.2
+ *
+ * @return array
+ */
+function acf_get_combined_options_page_settings_tabs() {
+	$default_options_page_tabs = array(
+		'visibility'  => __( 'Visibility', 'acf' ),
+		'labels'      => __( 'Labels', 'acf' ),
+		'permissions' => __( 'Permissions', 'acf' ),
+	);
+
+	$additional_options_page_tabs = (array) apply_filters( 'acf/ui_options_page/additional_settings_tabs', array() );
+
+	// Remove any default tab values from the filtered tabs.
+	foreach ( $additional_options_page_tabs as $key => $tab ) {
+		if ( isset( $default_options_page_tabs[ $key ] ) ) {
+			unset( $additional_options_page_tabs[ $key ] );
+		}
+	}
+
+	return array_merge( $default_options_page_tabs, $additional_options_page_tabs );
+}
+
+/**
  * Converts an _acf_screen or hook value into a post type.
  *
  * @since 6.1
@@ -539,6 +565,8 @@ function acf_get_post_type_from_screen_value( $screen ) {
 			return 'acf-taxonomy';
 		case 'field_group':
 			return 'acf-field-group';
+		case 'ui_options_page':
+			return 'acf-ui-options-page';
 		default:
 			return false;
 	}
@@ -565,16 +593,19 @@ function acf_validate_internal_post_type_values( $post_type ) {
  *
  * @since 6.1
  *
- * @param string $name    The name of the input.
- * @param string $message An optional error message to display.
+ * @param string $name      The name of the input.
+ * @param string $message   An optional error message to display.
+ * @param string $post_type Optional post type the error message is for.
  * @return void
  */
-function acf_add_internal_post_type_validation_error( $name, $message = '' ) {
-	$screen    = isset( $_POST['_acf_screen'] ) ? (string) $_POST['_acf_screen'] : 'post_type'; // phpcs:ignore WordPress.Security -- Nonce verified upstream, value only used for comparison.
-	$post_type = acf_get_post_type_from_screen_value( $screen );
+function acf_add_internal_post_type_validation_error( $name, $message = '', $post_type = '' ) {
+	if ( empty( $post_type ) ) {
+		$screen    = isset( $_POST['_acf_screen'] ) ? (string) $_POST['_acf_screen'] : 'post_type'; // phpcs:ignore WordPress.Security -- Nonce verified upstream, value only used for comparison.
+		$post_type = acf_get_post_type_from_screen_value( $screen );
 
-	if ( ! $post_type ) {
-		return;
+		if ( ! $post_type ) {
+			return;
+		}
 	}
 
 	$input_prefix = str_replace( '-', '_', $post_type );
@@ -595,13 +626,13 @@ function acf_add_internal_post_type_validation_error( $name, $message = '' ) {
  * @return array|bool
  */
 function acf_get_post_type_from_request_args( $action = '' ) {
-	$acf_use_post_type = acf_request_arg( 'use_post_type', false );
+	$acf_use_post_type = (int) acf_request_arg( 'use_post_type', 0 );
 
 	if ( ! $acf_use_post_type || ! wp_verify_nonce( acf_request_arg( '_wpnonce' ), $action . '-' . $acf_use_post_type ) ) {
 		return false;
 	}
 
-	return acf_get_internal_post_type( (int) $acf_use_post_type, 'acf-post-type' );
+	return acf_get_internal_post_type( $acf_use_post_type, 'acf-post-type' );
 }
 
 /**
@@ -613,11 +644,29 @@ function acf_get_post_type_from_request_args( $action = '' ) {
  * @return array|bool
  */
 function acf_get_taxonomy_from_request_args( $action = '' ) {
-	$acf_use_taxonomy = acf_request_arg( 'use_taxonomy', false );
+	$acf_use_taxonomy = (int) acf_request_arg( 'use_taxonomy', 0 );
 
 	if ( ! $acf_use_taxonomy || ! wp_verify_nonce( acf_request_arg( '_wpnonce' ), $action . '-' . $acf_use_taxonomy ) ) {
 		return false;
 	}
 
-	return acf_get_internal_post_type( (int) $acf_use_taxonomy, 'acf-taxonomy' );
+	return acf_get_internal_post_type( $acf_use_taxonomy, 'acf-taxonomy' );
+}
+
+/**
+ * Gets an ACF options page from request args and verifies nonce based on action.
+ *
+ * @since 6.2
+ *
+ * @param string $action The action being performed.
+ * @return array|bool
+ */
+function acf_get_ui_options_page_from_request_args( $action = '' ) {
+	$acf_use_options_page = (int) acf_request_arg( 'use_options_page', 0 );
+
+	if ( ! $acf_use_options_page || ! wp_verify_nonce( acf_request_arg( '_wpnonce' ), $action . '-' . $acf_use_options_page ) ) {
+		return false;
+	}
+
+	return acf_get_internal_post_type( $acf_use_options_page, 'acf-ui-options-page' );
 }

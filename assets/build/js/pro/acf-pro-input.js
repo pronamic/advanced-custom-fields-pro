@@ -1,11 +1,11 @@
-/******/ (function() { // webpackBootstrap
+/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./src/advanced-custom-fields-pro/assets/src/js/pro/_acf-field-flexible-content.js":
 /*!*****************************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/pro/_acf-field-flexible-content.js ***!
   \*****************************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($) {
   var Field = acf.Field.extend({
@@ -592,7 +592,7 @@
 /*!********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/pro/_acf-field-gallery.js ***!
   \********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($) {
   var Field = acf.Field.extend({
@@ -1157,7 +1157,7 @@
 /*!*********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/pro/_acf-field-repeater.js ***!
   \*********************************************************************************/
-/***/ (function() {
+/***/ (() => {
 
 (function ($) {
   var Field = acf.Field.extend({
@@ -1328,8 +1328,7 @@
       // render
       this.render();
     },
-    render: function () {
-      let update_order_numbers = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+    render: function (update_order_numbers = true) {
       // Update order number.
       if (update_order_numbers) {
         this.$rows().each(function (i) {
@@ -1634,8 +1633,7 @@
     onBlurRowOrder: function (e, $el) {
       this.onChangeRowOrder(e, $el, false);
     },
-    onChangeRowOrder: function (e, $el) {
-      let update = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    onChangeRowOrder: function (e, $el, update = true) {
       if (!this.get('pagination')) {
         return;
       }
@@ -1776,8 +1774,7 @@
       }
       this.updateRowStatus($row, 'changed');
     },
-    updateRowStatus: function ($row, status) {
-      let data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    updateRowStatus: function ($row, status, data = true) {
       if (!this.get('pagination')) {
         return;
       }
@@ -1853,8 +1850,7 @@
         }
       });
     },
-    ajaxLoadPage: function () {
-      let clearChanged = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    ajaxLoadPage: function (clearChanged = false) {
       const ajaxData = acf.prepareForAjax({
         action: 'acf/ajax/query_repeater',
         paged: this.page,
@@ -2038,49 +2034,49 @@
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = function(module) {
+/******/ 		__webpack_require__.n = (module) => {
 /******/ 			var getter = module && module.__esModule ?
-/******/ 				function() { return module['default']; } :
-/******/ 				function() { return module; };
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/define property getters */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = function(exports, definition) {
+/******/ 		__webpack_require__.d = (exports, definition) => {
 /******/ 			for(var key in definition) {
 /******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
 /******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
 /******/ 				}
 /******/ 			}
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	!function() {
-/******/ 		__webpack_require__.o = function(obj, prop) { return Object.prototype.hasOwnProperty.call(obj, prop); }
-/******/ 	}();
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
-/******/ 	!function() {
+/******/ 	(() => {
 /******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = function(exports) {
+/******/ 		__webpack_require__.r = (exports) => {
 /******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
-/******/ 	}();
+/******/ 	})();
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
-!function() {
+(() => {
 "use strict";
 /*!***************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/pro/acf-pro-input.js ***!
@@ -2095,7 +2091,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-}();
+})();
+
 /******/ })()
 ;
 //# sourceMappingURL=acf-pro-input.js.map

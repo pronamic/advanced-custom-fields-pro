@@ -472,17 +472,8 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 				return $schema;
 			}
 
-			/**
-			 * If a user has defined keys for the radio options,
-			 * we should use the keys for the available options to POST to,
-			 * since they are what is displayed in GET requests.
-			 */
-			$radio_keys = array_diff(
-				array_keys( $field['choices'] ),
-				array_values( $field['choices'] )
-			);
+			$schema['enum'] = acf_get_field_type( 'select' )->format_rest_choices( $field['choices'] );
 
-			$schema['enum'] = empty( $radio_keys ) ? $field['choices'] : $radio_keys;
 			if ( ! empty( $field['allow_null'] ) ) {
 				$schema['enum'][] = null;
 			}

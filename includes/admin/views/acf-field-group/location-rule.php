@@ -72,6 +72,7 @@ $prefix = 'acf_field_group[location][' . $rule['group'] . '][' . $rule['id'] . '
 				array(
 					'type'    => 'select',
 					'name'    => 'value',
+					'class'   => 'location-rule-value',
 					'prefix'  => $prefix,
 					'value'   => $rule['value'],
 					'choices' => $choices,

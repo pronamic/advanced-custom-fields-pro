@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields PRO\n"
 "Report-Msgid-Bugs-To: https://support.advancedcustomfields.com\n"
 "POT-Creation-Date: 2023-04-18 07:25+0000\n"
-"PO-Revision-Date: 2023-04-24 13:31+0100\n"
+"PO-Revision-Date: 2023-07-21 15:01+0200\n"
 "Last-Translator: WP Engine <support@advancedcustomfields.com>\n"
 "Language-Team: WP Engine <support@advancedcustomfields.com>\n"
 "Language: fr_FR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -52,7 +52,7 @@ msgstr "Modifier l’alignement du contenu"
 #. translators: %s: Block type title
 #: pro/blocks.php:731
 msgid "%s settings"
-msgstr "Réglages de %s "
+msgstr "Réglages de %s"
 
 #: pro/blocks.php:936
 msgid "This block contains no editable fields."
@@ -190,6 +190,10 @@ msgid ""
 "time. The Clone field can either replace itself with the selected fields or "
 "display the selected fields as a group of subfields."
 msgstr ""
+"Vous permet de sélectionner et afficher des champs existants. Le clone ne "
+"duplique pas les champs dans la base de données, il récupère leurs valeurs "
+"au chargement de la page. Le Clone sera remplacé par les champs qu’il "
+"représente et les affiche comme un groupe de sous-champs."
 
 # @ acf
 #: pro/fields/class-acf-field-clone.php:818,
@@ -294,10 +298,13 @@ msgid ""
 "Allows you to define, create and manage content with total control by "
 "creating layouts that contain subfields that content editors can choose from."
 msgstr ""
+"Vous permet de définir, créer et gérer des contenus avec un contrôle total : "
+"les éditeurs peuvent créer des mises en page en sélectionnant des "
+"dispositions basées sur des sous-champs."
 
 #: pro/fields/class-acf-field-flexible-content.php:27
 msgid "We do not recommend using this field in ACF Blocks."
-msgstr ""
+msgstr "Nous recommandons de ne pas utiliser ce champ dans un Bloc ACF."
 
 # @ acf
 #: pro/fields/class-acf-field-flexible-content.php:36,
@@ -388,8 +395,6 @@ msgstr "Ajouter une disposition"
 
 # @ acf
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Ajouter une disposition"
 
@@ -453,6 +458,8 @@ msgid ""
 "An interactive interface for managing a collection of attachments, such as "
 "images."
 msgstr ""
+"Une interface interactive pour gérer une collection de fichiers joints, "
+"telles que des images."
 
 # @ acf
 #: pro/fields/class-acf-field-gallery.php:77
@@ -648,10 +655,8 @@ msgstr "Répéteur"
 
 #: pro/fields/class-acf-field-repeater.php:66,
 #: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
 msgid "Minimum rows not reached ({min} rows)"
-msgstr "Nombre minimal d’éléments atteint ({min} éléments)"
+msgstr "Nombre minimal d’éléments insuffisant ({min} éléments)"
 
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
@@ -663,7 +668,7 @@ msgstr "Erreur de chargement de la page"
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
-msgstr ""
+msgstr "L’ordre sera assigné après l’enregistrement"
 
 # @ acf
 #: pro/fields/class-acf-field-repeater.php:162
@@ -709,20 +714,16 @@ msgid "Invalid nonce."
 msgstr "Nonce invalide."
 
 #: pro/fields/class-acf-field-repeater.php:1060
-#, fuzzy
-#| msgid "Invalid field key."
 msgid "Invalid field key or name."
-msgstr "Clé de champ invalide"
+msgstr "Clé de champ invalide."
 
 #: pro/fields/class-acf-field-repeater.php:1069
 msgid "There was an error retrieving the field."
 msgstr "Il y a une erreur lors de la récupération du champ."
 
 #: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
 msgid "Click to reorder"
-msgstr "Glisser pour réorganiser"
+msgstr "Cliquer pour réorganiser"
 
 # @ acf
 #: pro/fields/class-acf-repeater-table.php:402
@@ -746,15 +747,11 @@ msgstr "Page actuelle"
 
 #: pro/fields/class-acf-repeater-table.php:456,
 #: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "First page"
 msgid "First Page"
 msgstr "Première page"
 
 #: pro/fields/class-acf-repeater-table.php:460,
 #: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Previous page"
 msgid "Previous Page"
 msgstr "Page précédente"
 
@@ -766,15 +763,11 @@ msgstr "%1$s sur %2$s"
 
 #: pro/fields/class-acf-repeater-table.php:477,
 #: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Next page"
 msgid "Next Page"
 msgstr "Page suivante"
 
 #: pro/fields/class-acf-repeater-table.php:481,
 #: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Last page"
 msgid "Last Page"
 msgstr "Dernière page"
 
@@ -785,7 +778,7 @@ msgstr "Aucun type de blocs existant"
 # @ acf
 #: pro/locations/class-acf-location-options-page.php:22
 msgid "Options Page"
-msgstr "Page d'options"
+msgstr "Page d’options"
 
 #: pro/locations/class-acf-location-options-page.php:70
 msgid "No options pages exist"
@@ -822,7 +815,7 @@ msgstr "Clé de licence"
 
 #: pro/admin/views/html-settings-updates.php:22
 msgid "Your license key is defined in wp-config.php."
-msgstr "Votre clé de licence est définie dans le fichier wp-config.php"
+msgstr "Votre clé de licence est définie dans le fichier wp-config.php."
 
 #: pro/admin/views/html-settings-updates.php:29
 msgid "Retry Activation"
@@ -861,13 +854,11 @@ msgstr "Améliorations"
 
 #: pro/admin/views/html-settings-updates.php:126
 msgid "Check For Updates"
-msgstr ""
+msgstr "Vérifier les mises à jour"
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
-msgstr "Entrez votre clé de licence ci-dessous pour activer les mises à jour"
+msgstr "Indiquez votre clé de licence pour activer les mises à jour"
 
 # @ acf
 #: pro/admin/views/html-settings-updates.php:119

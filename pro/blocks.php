@@ -86,12 +86,14 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 	);
 
 	// Add default ACF 'uses_context' settings.
-	$settings['uses_context'] = array_unique(
-		array_merge(
-			$settings['uses_context'],
-			array(
-				'postId',
-				'postType',
+	$settings['uses_context'] = array_values(
+		array_unique(
+			array_merge(
+				$settings['uses_context'],
+				array(
+					'postId',
+					'postType',
+				)
 			)
 		)
 	);

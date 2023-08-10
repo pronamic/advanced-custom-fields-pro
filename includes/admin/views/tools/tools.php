@@ -28,7 +28,7 @@ $tool  = $active ? ' tool-' . $active : '';
 	</div>
 
 	<?php
-	if ( ! defined( 'ACF_PRO' ) || ! ACF_PRO ) {
+	if ( ! acf_is_pro() ) {
 		acf_get_view( 'acf-field-group/pro-features' );
 	}
 	?>

@@ -306,7 +306,7 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 		public function get_taxonomy_args( $post ) {
 			$args = array();
 
-			// Make sure any provided labels are strings and not empty.
+			// Make sure any provided labels are escaped strings and not empty.
 			$labels = array_filter( $post['labels'] );
 			$labels = array_map( 'strval', $labels );
 			$labels = array_map( 'esc_html', $labels );

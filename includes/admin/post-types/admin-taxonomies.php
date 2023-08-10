@@ -56,7 +56,7 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 		 */
 		public function include_pro_features() {
 			// Bail if on PRO.
-			if ( defined( 'ACF_PRO' ) && ACF_PRO ) {
+			if ( acf_is_pro() ) {
 				return;
 			}
 

@@ -41,7 +41,7 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			add_action( 'acf/trash_post_type', array( $this, 'delete_internal_post_type' ) );
 			add_action( 'acf/delete_post_type', array( $this, 'delete_internal_post_type' ) );
 			add_action( 'acf/update_taxonomy', array( $this, 'update_internal_post_type' ) );
-			add_action( 'acf/untrash/taxonomy', array( $this, 'update_internal_post_type' ) );
+			add_action( 'acf/untrash_taxonomy', array( $this, 'update_internal_post_type' ) );
 			add_action( 'acf/trash_taxonomy', array( $this, 'delete_internal_post_type' ) );
 			add_action( 'acf/delete_taxonomy', array( $this, 'delete_internal_post_type' ) );
 
@@ -62,6 +62,60 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		 */
 		public function is_enabled() {
 			return (bool) acf_get_setting( 'json' );
+		}
+
+		/**
+		 * Gets the path(s) to load JSON from.
+		 *
+		 * @since 6.2
+		 *
+		 * @return array
+		 */
+		public function get_load_paths() {
+			$paths = (array) acf_get_setting( 'load_json' );
+
+			/**
+			 * Filters the path(s) used to load JSON from.
+			 *
+			 * @since 6.2
+			 *
+			 * @param array $paths An array of potential paths to load JSON from.
+			 * @return array
+			 */
+			return (array) apply_filters( 'acf/json/load_paths', $paths );
+		}
+
+		/**
+		 * Gets the path(s) to save JSON to.
+		 *
+		 * @since 6.2
+		 *
+		 * @param string $key  The key to get paths for (optional).
+		 * @param array  $post The main ACF post array (optional).
+		 * @return array
+		 */
+		public function get_save_paths( $key = '', $post = array() ) {
+			$name      = ! empty( $post['title'] ) ? (string) $post['title'] : '';
+			$post_type = acf_determine_internal_post_type( $key );
+			$paths     = array();
+
+			// Paths are sorted by priority, with key overriding name, etc.
+			$paths[] = acf_get_setting( "save_json/key={$key}" );
+			$paths[] = acf_get_setting( "save_json/name={$name}" );
+			$paths[] = acf_get_setting( "save_json/type={$post_type}" );
+			$paths[] = acf_get_setting( 'save_json' );
+			$paths   = array_values( array_filter( $paths ) );
+
+			/**
+			 * Filters the paths used to save JSON.
+			 *
+			 * @since 6.2
+			 *
+			 * @param array $paths An array of the potential paths to save JSON to.
+			 * @param array $post  The ACF field group, post type, or taxonomy array.
+			 * @return array
+			 */
+			return (array) apply_filters( 'acf/json/save_paths', $paths, $post );
 		}
 
 		/**
@@ -141,7 +195,7 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			// WP appends '__trashed' to the end of 'key' (post_name).
 			$key = str_replace( '__trashed', '', $post['key'] );
 
-			return $this->delete_file( $key );
+			return $this->delete_file( $key, $post );
 		}
 
 		/**
@@ -240,8 +294,7 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			$json_files = array();
 
 			// Loop over "local_json" paths and parse JSON files.
-			$paths = (array) acf_get_setting( 'load_json' );
-			foreach ( $paths as $path ) {
+			foreach ( $this->get_load_paths() as $path ) {
 				if ( is_dir( $path ) ) {
 					$files = scandir( $path );
 					if ( $files ) {
@@ -326,9 +379,64 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		 * @return bool
 		 */
 		public function save_file( $key, $post ) {
-			$path = acf_get_setting( 'save_json' );
-			$file = untrailingslashit( $path ) . '/' . $key . '.json';
-			if ( ! is_writable( $path ) ) {
+			$paths          = $this->get_save_paths( $key, $post );
+			$file           = false;
+			$first_writable = false;
+			$load_path      = '';
+
+			if ( is_array( $this->files ) && isset( $this->files[ $key ] ) ) {
+				$load_path = $this->files[ $key ];
+			}
+
+			/**
+			 * Filters the filename used when saving JSON.
+			 *
+			 * @since 6.2
+			 *
+			 * @param string $filename  The default filename.
+			 * @param array  $post      The main post array for the item being saved.
+			 * @param string $load_path The path that the item was loaded from.
+			 */
+			$filename = apply_filters( 'acf/json/save_file_name', $key . '.json', $post, $load_path );
+
+			if ( ! is_string( $filename ) ) {
+				return false;
+			}
+
+			$filename = sanitize_file_name( $filename );
+
+			// sanitize_file_name() can potentially remove all characters.
+			if ( empty( $filename ) ) {
+				return false;
+			}
+
+			foreach ( $paths as $path ) {
+				if ( ! is_writable( $path ) ) {
+					continue;
+				}
+
+				if ( false === $first_writable ) {
+					$first_writable = $path;
+				}
+
+				$file_to_check = trailingslashit( $path ) . $filename;
+
+				if ( is_file( $file_to_check ) ) {
+					$file = $file_to_check;
+				}
+			}
+
+			if ( ! $file ) {
+				if ( $first_writable ) {
+					$file = trailingslashit( $first_writable ) . $filename;
+				} else {
+					return false;
+				}
+			}
+
+			// Make sure this is a valid ACF post type.
+			$post_type = acf_determine_internal_post_type( $key );
+			if ( ! $post_type ) {
 				return false;
 			}
 
@@ -339,18 +447,12 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 				$post['modified'] = strtotime( 'now' );
 			}
 
-			$post_type = acf_determine_internal_post_type( $key );
+			// Prepare for export and save the file.
+			$post   = acf_prepare_internal_post_type_for_export( $post, $post_type );
+			$result = file_put_contents( $file, acf_json_encode( $post ) . apply_filters( 'acf/json/eof_newline', PHP_EOL ) );
 
-			if ( $post_type ) {
-				// Prepare for export and save the file.
-				$post   = acf_prepare_internal_post_type_for_export( $post, $post_type );
-				$result = file_put_contents( $file, acf_json_encode( $post ) . "\r\n" );
-
-				// Return true if bytes were written.
-				return is_int( $result );
-			}
-
-			return false;
+			// Return true if bytes were written.
+			return is_int( $result );
 		}
 
 		/**
@@ -359,17 +461,22 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		 * @date 17/4/20
 		 * @since 5.9.0
 		 *
-		 * @param string $key The ACF post key.
-		 * @return bool True on success.
+		 * @param string $key  The ACF post key.
+		 * @param array  $post The main ACF post array.
+		 * @return bool
 		 */
-		public function delete_file( $key ) {
-			$path = acf_get_setting( 'save_json' );
-			$file = untrailingslashit( $path ) . '/' . $key . '.json';
-			if ( is_readable( $file ) ) {
-				unlink( $file );
-				return true;
+		public function delete_file( $key, $post = array() ) {
+			$paths = $this->get_save_paths( $key, $post );
+
+			foreach ( $paths as $path_to_check ) {
+				$file = untrailingslashit( $path_to_check ) . '/' . $key . '.json';
+
+				if ( is_writable( $file ) ) {
+					wp_delete_file( $file );
+				}
 			}
-			return false;
+
+			return true;
 		}
 
 		/**
