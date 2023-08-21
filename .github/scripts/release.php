@@ -45,7 +45,8 @@ $data_plugins = [
 ];
 
 $data_wp = [
-	'wp_name' => 'acf',
+	'wp_name'    => 'acf',
+	'wp_version' => '6.3',
 ];
 
 $data_acf = [
