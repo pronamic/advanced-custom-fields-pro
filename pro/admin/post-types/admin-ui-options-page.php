@@ -7,7 +7,6 @@
  * @package    ACF
  * @subpackage Admin
  */
-
 if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 
 	/**
@@ -359,14 +358,19 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		 * @param string $menu_slug Optional menu_slug of an existing options page.
 		 * @return array
 		 */
-		public static function get_parent_page_choices( $menu_slug = '' ) {
-			$all_options_pages   = acf_get_options_pages();
-			$parent_page_choices = array( 'none' => __( 'No Parent', 'acf' ) );
-
-			if ( is_array( $all_options_pages ) ) {
-				foreach ( $all_options_pages as $options_page ) {
+		public static function get_parent_page_choices( $current_slug = '' ) {
+			global $menu;
+			$acf_all_options_pages   = acf_get_options_pages();
+			$acf_parent_page_choices = array( 'None' => array( 'none' => __( 'No Parent', 'acf' ) ) );
+			if ( is_array( $acf_all_options_pages ) ) {
+				foreach ( $acf_all_options_pages as $options_page ) {
 					// Can't assign to child pages.
 					if ( ! empty( $options_page['parent_slug'] ) ) {
+						continue;
+					}
+
+					// Can't be a child of itself.
+					if ( $current_slug === $options_page['menu_slug'] ) {
 						continue;
 					}
 
@@ -377,16 +381,29 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 						$acf_parent_menu_slug = $options_page['_menu_slug'];
 					}
 
-					// Can't be a child of itself...
-					if ( $acf_parent_menu_slug === $menu_slug ) {
-						continue;
-					}
-
-					$parent_page_choices[ $acf_parent_menu_slug ] = ! empty( $options_page['page_title'] ) ? $options_page['page_title'] : $options_page['menu_slug'];
+					$acf_parent_page_choices['acfOptionsPages'][ $acf_parent_menu_slug ] = ! empty( $options_page['page_title'] ) ? $options_page['page_title'] : $options_page['menu_slug'];
 				}
 			}
 
-			return $parent_page_choices;
+			foreach ( $menu as $item ) {
+				if ( ! empty( $item[0] ) ) {
+					$page_name      = $item[0];
+					$markup         = '/<[^>]+>.*<\/[^>]+>/';
+					$sanitized_name = preg_replace( $markup, '', $page_name );
+
+					// Can't be a child of itself.
+					if ( $current_slug === $item[2] ) {
+						continue;
+					}
+
+					// Ensure that the current item is not an ACF page or that ACF pages are an empty array before adding to others.
+					if ( ! empty( $acf_parent_page_choices['acfOptionsPages'] ) && ! in_array( $page_name, $acf_parent_page_choices['acfOptionsPages'], true ) || empty( $acf_parent_page_choices['acfOptionsPages'] ) ) {
+						// If matched menu slug is not in the list add it to others.
+						$acf_parent_page_choices['Others'][ $item[2] ] = acf_esc_html( $sanitized_name );
+					}
+				}
+			}
+			return $acf_parent_page_choices;
 		}
 
 		/**
@@ -403,10 +420,11 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 			$args = acf_parse_args(
 				$_POST,
 				array(
-					'nonce'               => '',
-					'post_id'             => 0,
-					'acf_ui_options_page' => array(),
-					'field_group_title'   => '',
+					'nonce'                   => '',
+					'post_id'                 => 0,
+					'acf_ui_options_page'     => array(),
+					'field_group_title'       => '',
+					'acf_parent_page_choices' => array(),
 				)
 			);
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
@@ -425,13 +443,15 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 				$existing_options_pages = acf_get_options_pages();
 
 				// Check for duplicates.
-				foreach ( $existing_options_pages as $existing_options_page ) {
-					if ( $existing_options_page['menu_slug'] === $options_page['menu_slug'] ) {
-						wp_send_json_error(
-							array(
-								'error' => __( 'The provided Menu Slug already exists.', 'acf' ),
-							)
-						);
+				if ( ! empty( $existing_options_pages ) ) {
+					foreach ( $existing_options_pages as $existing_options_page ) {
+						if ( $existing_options_page['menu_slug'] === $options_page['menu_slug'] ) {
+							wp_send_json_error(
+								array(
+									'error' => __( 'The provided Menu Slug already exists.', 'acf' ),
+								)
+							);
+						}
 					}
 				}
 
@@ -451,8 +471,8 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 			acf_get_view(
 				dirname( __FILE__ ) . '/../views/acf-ui-options-page/create-options-page-modal.php',
 				array(
-					'acf_parent_page_choices' => self::get_parent_page_choices(),
 					'field_group_title'       => $args['field_group_title'],
+					'acf_parent_page_choices' => $args['acf_parent_page_choices'],
 				)
 			);
 			$content = ob_get_clean();

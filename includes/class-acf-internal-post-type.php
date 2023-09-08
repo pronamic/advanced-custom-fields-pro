@@ -497,11 +497,8 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 				'menu_order'     => $post['menu_order'],
 				'comment_status' => 'closed',
 				'ping_status'    => 'closed',
+				'post_parent'    => ! empty( $post['_parent'] ) ? (int) $post['_parent'] : 0,
 			);
-
-			if ( ! empty( $post['_parent'] ) ) {
-				$save['post_parent'] = (int) $post['_parent'];
-			}
 
 			// Unhook wp_targeted_link_rel() filter from WP 5.1 corrupting serialized data.
 			remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );

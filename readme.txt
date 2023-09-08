@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
 Tested up to: 6.3
 Requires PHP: 7.0
-Stable tag: 6.2.0
+Stable tag: 6.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,21 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.1 =
+*Release Date 7th September 2023*
+
+* New - Options Pages created in the admin UI can now be assigned as child pages for any top-level menu item
+* New - Added a "Title Placeholder" setting to ACF Post Types which filters the "Add title" text when editing posts
+* Enhancement - ACF PRO will now warn when it can’t update due to PHP version incompatibilities
+* Enhancement - ACF PRO will now work correctly with WordPress automatic updates
+* Enhancement - The internal ACF Blocks template attribute parser function `parseNodeAttr` can now be shortcut with the new `acf_blocks_parse_node_attr` filter.
+* Enhancement - Removed legacy code for supporting WordPress versions under 5.8
+* Fix - The "Menu Position" setting is no longer hidden for child options pages
+* Fix - The tabs for the "Advanced" settings in Post Types and Taxonomies are now rendered inside a wrapper div
+* Fix - Options pages will no longer display as a child page in the list view when set to a top level page after previously being a child
+* Fix - Conflict with Elementor CSS breaking the ACF PRO banner
+* Fix - Errors generated during the block editor’s `savePost` function will no longer be caught and ignored by ACF
 
 = 6.2.0 =
 *Release Date 9th August 2023*

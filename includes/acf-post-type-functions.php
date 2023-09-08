@@ -266,3 +266,35 @@ function acf_prepare_post_type_for_import( array $post_type = array() ) {
 function acf_import_post_type( array $post_type ) {
 	return acf_import_internal_post_type( $post_type, 'acf-post-type' );
 }
+
+/**
+ * Exports the "Enter Title Here" text for the provided ACF post types.
+ *
+ * @since 6.2.1
+ *
+ * @param array $post_types The post types being exported.
+ * @return string
+ */
+function acf_export_enter_title_here( array $post_types ) {
+	$to_export = array();
+	$export    = '';
+
+	foreach ( $post_types as $post_type ) {
+		if ( ! empty( $post_type['enter_title_here'] ) ) {
+			$to_export[ $post_type['post_type'] ] = $post_type['enter_title_here'];
+		}
+	}
+
+	if ( ! empty( $to_export ) ) {
+		$export .= "\r\nadd_filter( 'enter_title_here', function( \$default, \$post ) {\r\n";
+		$export .= "\tswitch ( \$post->post_type ) {\r\n";
+
+		foreach ( $to_export as $post_type => $enter_title_here ) {
+			$export .= "\t\tcase '$post_type':\r\n\t\t\treturn '$enter_title_here';\r\n";
+		}
+
+		$export .= "\t}\r\n\r\n\treturn \$default;\r\n}, 10, 2 );\r\n\r\n";
+	}
+
+	return esc_textarea( $export );
+}

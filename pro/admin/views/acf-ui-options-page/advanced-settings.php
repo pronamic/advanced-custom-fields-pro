@@ -11,6 +11,10 @@ foreach ( acf_get_combined_options_page_settings_tabs() as $tab_key => $tab_labe
 		)
 	);
 
+	$wrapper_class = str_replace( '_', '-', $tab_key );
+
+	echo '<div class="acf-ui-options-page-advanced-settings acf-ui-options-page-' . esc_attr( $wrapper_class ) . '-settings">';
+
 	switch ( $tab_key ) {
 		case 'visibility':
 			$acf_dashicon_class_name = __( 'Dashicon class name', 'acf' );
@@ -67,6 +71,17 @@ foreach ( acf_get_combined_options_page_settings_tabs() as $tab_key => $tab_labe
 				$acf_menu_position_link
 			);
 
+			$acf_menu_position_desc_parent = sprintf(
+				/* translators: %s - link to WordPress docs to learn more about menu positions. */
+				__( 'The position in the menu where this page should appear. %s', 'acf' ),
+				$acf_menu_position_link
+			);
+
+			$acf_menu_position_desc_child = __( 'The position in the menu where this child page should appear. The first child page is 0, the next is 1, etc.', 'acf' );
+
+			$acf_menu_position_desc  = '<span class="acf-menu-position-desc-parent">' . $acf_menu_position_desc_parent . '</span>';
+			$acf_menu_position_desc .= '<span class="acf-menu-position-desc-child">' . $acf_menu_position_desc_child . '</span>';
+
 			acf_render_field_wrap(
 				array(
 					'label'        => __( 'Menu Position', 'acf' ),
@@ -76,11 +91,6 @@ foreach ( acf_get_combined_options_page_settings_tabs() as $tab_key => $tab_labe
 					'prefix'       => 'acf_ui_options_page',
 					'value'        => $acf_ui_options_page['position'],
 					'instructions' => $acf_menu_position_desc,
-					'conditions'   => array(
-						'field'    => 'parent_slug',
-						'operator' => '==',
-						'value'    => 'none',
-					),
 				),
 				'div',
 				'field'
@@ -263,4 +273,6 @@ foreach ( acf_get_combined_options_page_settings_tabs() as $tab_key => $tab_labe
 	}
 
 	do_action( "acf/ui_options_page/render_settings_tab/{$tab_key}", $acf_ui_options_page );
+
+	echo '</div>';
 }

@@ -33,32 +33,6 @@ acf_render_field_wrap(
 	'field'
 );
 
-$acf_all_options_pages   = acf_get_options_pages();
-$acf_parent_page_choices = array( 'none' => __( 'No Parent', 'acf' ) );
-
-if ( is_array( $acf_all_options_pages ) ) {
-	foreach ( $acf_all_options_pages as $options_page ) {
-		// Can't assign to child pages.
-		if ( ! empty( $options_page['parent_slug'] ) ) {
-			continue;
-		}
-
-		$acf_parent_menu_slug = ! empty( $options_page['menu_slug'] ) ? $options_page['menu_slug'] : '';
-
-		// ACF overrides the `menu_slug` of parent pages with one child so they redirect to the child.
-		if ( ! empty( $options_page['_menu_slug'] ) ) {
-			$acf_parent_menu_slug = $options_page['_menu_slug'];
-		}
-
-		// Can't be a child of itself...
-		if ( $acf_parent_menu_slug === $acf_ui_options_page['menu_slug'] ) {
-			continue;
-		}
-
-		$acf_parent_page_choices[ $acf_parent_menu_slug ] = ! empty( $options_page['page_title'] ) ? $options_page['page_title'] : $options_page['menu_slug'];
-	}
-}
-
 acf_render_field_wrap(
 	array(
 		'label'    => __( 'Parent Page', 'acf' ),
@@ -68,7 +42,7 @@ acf_render_field_wrap(
 		'class'    => 'acf-options-page-parent_slug',
 		'prefix'   => 'acf_ui_options_page',
 		'value'    => $acf_ui_options_page['parent_slug'],
-		'choices'  => $acf_parent_page_choices,
+		'choices'  => ACF_Admin_UI_Options_Page::get_parent_page_choices( $acf_ui_options_page['menu_slug'] ),
 		'required' => true,
 	),
 	'div',

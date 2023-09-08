@@ -474,6 +474,10 @@ if ( ! class_exists( 'ACF_Admin_Tool_Export' ) ) :
 				if ( in_array( $post_type, array( 'acf-post-type', 'acf-taxonomy', 'acf-field-group', 'acf-ui-options-page' ), true ) ) {
 					echo "} );\r\n\r\n";
 				}
+
+				if ( 'acf-post-type' === $post_type ) {
+					echo acf_export_enter_title_here( $posts ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_textarea() used earlier.
+				}
 			}
 
 			echo '</textarea>';

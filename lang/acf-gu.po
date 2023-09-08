@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-08-09T12:53:50+00:00\n"
+"PO-Revision-Date: 2023-09-07T15:02:44+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: gu\n"
 "MIME-Version: 1.0\n"
@@ -21,18 +21,131 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/views/global/navigation.php:93
+msgid "4 Months Free"
+msgstr "4 મહિના મફત"
+
+#. translators: %s - A singular label for a post type or taxonomy.
+#: includes/admin/views/global/form-top.php:56
+msgid " (Duplicated from %s)"
+msgstr " (%s માંથી ડુપ્લિકેટ)"
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:298
+msgid "Select Options Pages"
+msgstr "વિકલ્પો પૃષ્ઠો પસંદ કરો"
+
+#: includes/admin/post-types/admin-taxonomy.php:107
+msgid "Duplicate taxonomy"
+msgstr "ડુપ્લિકેટ વર્ગીકરણ"
+
+#: includes/admin/post-types/admin-post-type.php:106
+#: includes/admin/post-types/admin-taxonomy.php:106
+msgid "Create taxonomy"
+msgstr "વર્ગીકરણ બનાવો"
+
+#: includes/admin/post-types/admin-post-type.php:105
+msgid "Duplicate post type"
+msgstr "ડુપ્લિકેટ પોસ્ટ પ્રકાર"
+
+#: includes/admin/post-types/admin-post-type.php:104
+#: includes/admin/post-types/admin-taxonomy.php:108
+msgid "Create post type"
+msgstr "પોસ્ટ પ્રકાર બનાવો"
+
+#: includes/admin/post-types/admin-post-type.php:103
+#: includes/admin/post-types/admin-taxonomy.php:105
+msgid "Link field groups"
+msgstr "ફીલ્ડ જૂથોને લિંક કરો"
+
+#: includes/admin/post-types/admin-post-type.php:102
+#: includes/admin/post-types/admin-taxonomy.php:104
+msgid "Add fields"
+msgstr "ક્ષેત્રો ઉમેરો"
+
+#: includes/admin/post-types/admin-field-group.php:121
+#: assets/build/js/acf-field-group.js:2744
+#: assets/build/js/acf-field-group.js:3220
+msgid "This Field"
+msgstr "આ ક્ષેત્ર"
+
+#: includes/admin/admin.php:265
+msgid "ACF PRO"
+msgstr "એસીએફ પ્રો"
+
+#: includes/admin/admin.php:263
+msgid "Feedback"
+msgstr "પ્રતિસાદ"
+
+#: includes/admin/admin.php:261
+msgid "Support"
+msgstr "સપોર્ટ"
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:236
+msgid "is developed and maintained by"
+msgstr "દ્વારા વિકસિત અને જાળવણી કરવામાં આવે છે"
+
+#. translators: %s - either "post type" or "taxonomy"
+#: includes/admin/admin-internal-post-type.php:321
+msgid "Add this %s to the location rules of the selected field groups."
+msgstr "પસંદ કરેલ ક્ષેત્ર જૂથોના સ્થાન નિયમોમાં આ %s ઉમેરો."
+
+#. translators: %s the URL to ACF's bidirectional relationship documentation
+#: includes/acf-bidirectional-functions.php:271
+msgid ""
+"Enabling the bidirectional setting allows you to update a value in the "
+"target fields for each value selected for this field, adding or removing the "
+"Post ID, Taxonomy ID or User ID of the item being updated. For more "
+"information, please read the <a href=\"%s\" target=\"_blank\">documentation</"
+"a>."
+msgstr ""
+"દ્વિપક્ષીય સેટિંગને સક્ષમ કરવાથી તમે આ ફીલ્ડ માટે પસંદ કરેલ દરેક મૂલ્ય માટે લક્ષ્ય ફીલ્ડમાં મૂલ્ય "
+"અપડેટ કરી શકો છો, પોસ્ટ ID, વર્ગીકરણ ID અથવા અપડેટ કરવામાં આવી રહેલી આઇટમના "
+"વપરાશકર્તા ID ને ઉમેરીને અથવા દૂર કરી શકો છો. વધુ માહિતી માટે, કૃપા કરીને <a "
+"href=\"%s\" target=\"_blank\">દસ્તાવેજીકરણ</a> વાંચો."
+
+#: includes/acf-bidirectional-functions.php:247
+msgid ""
+"Select field(s) to store the reference back to the item being updated. You "
+"may select this field. Target fields must be compatible with where this "
+"field is being displayed. For example, if this field is displayed on a "
+"Taxonomy, your target field should be of type Taxonomy"
+msgstr ""
+"અપડેટ કરવામાં આવી રહેલી આઇટમનો સંદર્ભ પાછો સંગ્રહિત કરવા માટે ક્ષેત્ર(ઓ) પસંદ કરો. તમે આ "
+"ક્ષેત્ર પસંદ કરી શકો છો. જ્યાં આ ક્ષેત્ર પ્રદર્શિત થઈ રહ્યું છે તેની સાથે લક્ષ્ય ક્ષેત્રો સુસંગત "
+"હોવા જોઈએ. ઉદાહરણ તરીકે, જો આ ક્ષેત્ર વર્ગીકરણ પર પ્રદર્શિત થાય છે, તો તમારું લક્ષ્ય "
+"ક્ષેત્ર વર્ગીકરણ પ્રકારનું હોવું જોઈએ"
+
+#: includes/acf-bidirectional-functions.php:246
+msgid "Target Field"
+msgstr "લક્ષ્ય ક્ષેત્ર"
+
+#: includes/acf-bidirectional-functions.php:220
+msgid "Update a field on the selected values, referencing back to this ID"
+msgstr "આ ID નો સંદર્ભ આપીને પસંદ કરેલ મૂલ્યો પર ફીલ્ડ અપડેટ કરો"
+
+#: includes/acf-bidirectional-functions.php:219
+msgid "Bidirectional"
+msgstr "દ્વિપક્ષીય"
+
+#. translators: %s A field type name, such as "Relationship"
+#: includes/acf-bidirectional-functions.php:192
+msgid "%s Field"
+msgstr "%s ફીલ્ડ"
+
 #: includes/fields/class-acf-field-page_link.php:517
-#: includes/fields/class-acf-field-post_object.php:433
-#: includes/fields/class-acf-field-select.php:413
-#: includes/fields/class-acf-field-user.php:86
+#: includes/fields/class-acf-field-post_object.php:426
+#: includes/fields/class-acf-field-select.php:407
+#: includes/fields/class-acf-field-user.php:82
 msgid "Select Multiple"
 msgstr "બહુવિધ પસંદ કરો"
 
-#: includes/admin/views/global/navigation.php:141
+#: includes/admin/views/global/navigation.php:211
 msgid "WP Engine logo"
 msgstr "WP એન્જિન લોગો"
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:42
+#: includes/admin/views/acf-taxonomy/basic-settings.php:58
 msgid "Lower case letters, underscores and dashes only, Max 32 characters."
 msgstr "લોઅર કેસ અક્ષરો, માત્ર અન્ડરસ્કોર અને ડૅશ, મહત્તમ 32 અક્ષરો."
 
@@ -107,12 +220,8 @@ msgstr ""
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
 msgstr "ACF PRO સાથે અદ્યતન સુવિધાઓને અનલૉક કરો અને હજી વધુ બનાવો"
 
-#: includes/admin/admin.php:238
-msgid "from"
-msgstr "થી"
-
 #. translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre"
-#: includes/admin/views/global/form-top.php:17
+#: includes/admin/views/global/form-top.php:19
 msgid "%s fields"
 msgstr "%s ફીલ્ડ"
 
@@ -148,8 +257,8 @@ msgid "No description"
 msgstr "કોઈ વર્ણન નથી"
 
 #: includes/fields/class-acf-field-page_link.php:484
-#: includes/fields/class-acf-field-post_object.php:396
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-post_object.php:389
+#: includes/fields/class-acf-field-relationship.php:601
 msgid "Any post status"
 msgstr "કોઈપણ પોસ્ટ સ્થિતિ"
 
@@ -288,7 +397,7 @@ msgstr ""
 msgid "WYSIWYG Editor"
 msgstr "WYSIWYG સંપાદક"
 
-#: includes/fields/class-acf-field-user.php:22
+#: includes/fields/class-acf-field-user.php:17
 msgid ""
 "Allows the selection of one or more users which can be used to create "
 "relationships between data objects."
@@ -328,7 +437,7 @@ msgstr "ટેક્સ્ટના ફકરાને સ્ટોર કરવ
 msgid "A basic text input, useful for storing single string values."
 msgstr "મૂળભૂત મૂળ લખાણ ઇનપુટ, એક તાર મૂલ્યો સંગ્રહ કરવા માટે ઉપયોગી."
 
-#: includes/fields/class-acf-field-taxonomy.php:30
+#: includes/fields/class-acf-field-taxonomy.php:22
 msgid ""
 "Allows the selection of one or more taxonomy terms based on the criteria and "
 "options specified in the fields settings."
@@ -348,7 +457,7 @@ msgstr ""
 msgid "A dropdown list with a selection of choices that you specify."
 msgstr "તમે ઉલ્લેખિત કરો છો તે પસંદગીઓની પસંદગી સાથે ડ્રોપડાઉન સૂચિ."
 
-#: includes/fields/class-acf-field-relationship.php:27
+#: includes/fields/class-acf-field-relationship.php:19
 msgid ""
 "A dual-column interface to select one or more posts, pages, or custom post "
 "type items to create a relationship with the item that you're currently "
@@ -373,7 +482,7 @@ msgstr ""
 "રેડિયો બટન ઇનપુટ્સનું એક જૂથ જે વપરાશકર્તાને તમે ઉલ્લેખિત મૂલ્યોમાંથી એક જ પસંદગી કરવાની "
 "મંજૂરી આપે છે."
 
-#: includes/fields/class-acf-field-post_object.php:27
+#: includes/fields/class-acf-field-post_object.php:19
 msgid ""
 "An interactive and customizable UI for picking one or many posts, pages or "
 "post type items with the option to search. "
@@ -386,8 +495,8 @@ msgid "An input for providing a password using a masked field."
 msgstr "માસ્ક્ડ ફીલ્ડનો ઉપયોગ કરીને પાસવર્ડ આપવા માટેનું ઇનપુટ."
 
 #: includes/fields/class-acf-field-page_link.php:476
-#: includes/fields/class-acf-field-post_object.php:388
-#: includes/fields/class-acf-field-relationship.php:600
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:593
 msgid "Filter by Post Status"
 msgstr "પોસ્ટ સ્ટેટસ દ્વારા ફિલ્ટર કરો"
 
@@ -499,7 +608,7 @@ msgstr ""
 "તમને કન્ટેન્ટ સંપાદિત કરતી વખતે બતાવવામાં આવતી સંકુચિત પેનલ્સમાં કસ્ટમ ફીલ્ડ્સને જૂથ અને "
 "ગોઠવવાની મંજૂરી આપે છે. મોટા ડેટાસેટ્સને વ્યવસ્થિત રાખવા માટે ઉપયોગી."
 
-#: includes/fields.php:474
+#: includes/fields.php:475
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
@@ -509,7 +618,7 @@ msgstr ""
 "ઉકેલ પૂરો પાડે છે, પેરન્ટ તરીકે કામ કરીને પેટાફિલ્ડના સમૂહ કે જેને વારંવાર પુનરાવર્તિત કરી "
 "શકાય છે."
 
-#: includes/fields.php:464
+#: includes/fields.php:465
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -521,7 +630,7 @@ msgstr ""
 "ઉમેરવામાં આવે છે અને જોડાણોની ન્યૂનતમ/મહત્તમ સંખ્યાને મંજૂરી આપે છે તેનો ઉલ્લેખ કરવાની મંજૂરી આપે "
 "છે."
 
-#: includes/fields.php:454
+#: includes/fields.php:455
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
@@ -531,7 +640,7 @@ msgstr ""
 "બ્લોક્સ ડિઝાઇન કરવા માટે લેઆઉટ અને સબફિલ્ડનો ઉપયોગ કરીને સંપૂર્ણ નિયંત્રણ સાથે સામગ્રીને "
 "વ્યાખ્યાયિત કરવા, બનાવવા અને સંચાલિત કરવાની મંજૂરી આપે છે."
 
-#: includes/fields.php:444
+#: includes/fields.php:445
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -543,16 +652,16 @@ msgstr ""
 "ક્લોન ફીલ્ડ કાં તો પોતાને પસંદ કરેલ ફીલ્ડ્સ સાથે બદલી શકે છે અથવા પસંદ કરેલ ફીલ્ડ્સને "
 "સબફિલ્ડના જૂથ તરીકે પ્રદર્શિત કરી શકે છે."
 
-#: includes/fields.php:441
+#: includes/fields.php:442
 msgctxt "noun"
 msgid "Clone"
 msgstr "ક્લોન"
 
-#: includes/fields.php:357
+#: includes/admin/views/global/navigation.php:82 includes/fields.php:357
 msgid "PRO"
 msgstr "પ્રો"
 
-#: includes/fields.php:355
+#: includes/fields.php:355 includes/fields.php:412
 msgid "Advanced"
 msgstr "અદ્યતન"
 
@@ -572,7 +681,7 @@ msgstr "અમાન્ય પોસ્ટ આઈડી."
 msgid "Invalid post type selected for review."
 msgstr "સમીક્ષા માટે અમાન્ય પોસ્ટ પ્રકાર પસંદ કર્યો."
 
-#: includes/admin/views/global/navigation.php:115
+#: includes/admin/views/global/navigation.php:182
 msgid "More"
 msgstr "વધુ"
 
@@ -626,30 +735,30 @@ msgstr "પોસ્ટ પ્રકારની સામગ્રીને વ
 msgid "Add Your First Taxonomy"
 msgstr "તમારી પ્રથમ વર્ગીકરણ ઉમેરો"
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:106
+#: includes/admin/views/acf-taxonomy/basic-settings.php:122
 msgid "Hierarchical taxonomies can have descendants (like categories)."
 msgstr "અધિક્રમિક વર્ગીકરણમાં વંશજો હોઈ શકે છે (જેમ કે શ્રેણીઓ)."
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:91
+#: includes/admin/views/acf-taxonomy/basic-settings.php:107
 msgid "Makes a taxonomy visible on the frontend and in the admin dashboard."
 msgstr "અગ્રભાગ પર અને એડમિન ડેશબોર્ડમાં વર્ગીકરણ દૃશ્યમાન બનાવે છે."
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:75
+#: includes/admin/views/acf-taxonomy/basic-settings.php:91
 msgid "One or many post types that can be classified with this taxonomy."
 msgstr "આ વર્ગીકરણ સાથે વર્ગીકૃત કરી શકાય તેવા એક અથવા ઘણા પોસ્ટ પ્રકારો."
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:44
+#: includes/admin/views/acf-taxonomy/basic-settings.php:60
 msgid "genre"
 msgstr "શૈલી"
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:26
+#: includes/admin/views/acf-taxonomy/basic-settings.php:42
 msgid "Genre"
 msgstr "શૈલી"
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:9
+#: includes/admin/views/acf-taxonomy/basic-settings.php:25
 msgid "Genres"
 msgstr "શૈલીઓ"
 
@@ -695,7 +804,7 @@ msgstr "સ્લગ તરીકે વર્ગીકરણ કીનો ઉ�
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:909
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1026
-#: includes/admin/views/acf-taxonomy/basic-settings.php:41
+#: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
 msgstr "વર્ગીકરણ કી"
 
@@ -1072,7 +1181,7 @@ msgstr "પિતૃ શ્રેણી"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:293
 msgid "Assigns parent item text. Only used on hierarchical taxonomies."
-msgstr ""
+msgstr "પેરેન્ટ આઇટમ ટેક્સ્ટ અસાઇન કરે છે. માત્ર અધિક્રમિક વર્ગીકરણ પર વપરાય છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:292
 msgid "Parent Item"
@@ -1089,7 +1198,7 @@ msgstr "નવા ટેગ નું નામ"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:273
 msgid "Assigns the new item name text."
-msgstr ""
+msgstr "નવી આઇટમ નામનો ટેક્સ્ટ અસાઇન કરે છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:272
 msgid "New Item Name"
@@ -1106,7 +1215,7 @@ msgstr "નવું ટેગ ઉમેરો"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:253
 msgid "Assigns the add new item text."
-msgstr ""
+msgstr "નવી આઇટમ ઉમેરો ટેક્સ્ટ સોંપે છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:234
 msgid "Update Tag"
@@ -1131,7 +1240,7 @@ msgstr "ટેગ જુઓ"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:213
 msgid "In the admin bar to view term during editing."
-msgstr ""
+msgstr "સંપાદન દરમિયાન શબ્દ જોવા માટે એડમિન બારમાં."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:194
 msgid "Edit Tag"
@@ -1139,7 +1248,7 @@ msgstr "ટેગ માં ફેરફાર કરો"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:193
 msgid "At the top of the editor screen when editing a term."
-msgstr ""
+msgstr "શબ્દ સંપાદિત કરતી વખતે સંપાદક સ્ક્રીનની ટોચ પર."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:174
 msgid "All Tags"
@@ -1147,11 +1256,11 @@ msgstr "બધા ટૅગ્સ"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:173
 msgid "Assigns the all items text."
-msgstr ""
+msgstr "બધી આઇટમ ટેક્સ્ટ અસાઇન કરે છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:154
 msgid "Assigns the menu name text."
-msgstr ""
+msgstr "મેનુ નામ લખાણ સોંપે છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:153
 msgid "Menu Label"
@@ -1159,15 +1268,15 @@ msgstr "મેનુ લેબલ"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:127
 msgid "Active taxonomies are enabled and registered with WordPress."
-msgstr ""
+msgstr "સક્રિય વર્ગીકરણ વર્ડપ્રેસ સાથે સક્ષમ અને નોંધાયેલ છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:111
 msgid "A descriptive summary of the taxonomy."
-msgstr ""
+msgstr "વર્ગીકરણનો વર્ણનાત્મક સારાંશ."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:91
 msgid "A descriptive summary of the term."
-msgstr ""
+msgstr "શબ્દનો વર્ણનાત્મક સારાંશ."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:90
 msgid "Term Description"
@@ -1175,11 +1284,11 @@ msgstr "ટર્મ વર્ણન"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:72
 msgid "Single word, no spaces. Underscores and dashes allowed."
-msgstr ""
+msgstr "એક શબ્દ, કોઈ જગ્યા નથી. અન્ડરસ્કોર અને ડેશની મંજૂરી છે."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:71
 msgid "Term Slug"
-msgstr ""
+msgstr "ટર્મ સ્લગ"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:52
 msgid "The name of the default term."
@@ -1229,61 +1338,61 @@ msgstr ""
 msgid "Add Your First Post Type"
 msgstr "તમારો પ્રથમ પોસ્ટ પ્રકાર ઉમેરો"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:120
-#: includes/admin/views/acf-taxonomy/basic-settings.php:119
+#: includes/admin/views/acf-post-type/basic-settings.php:136
+#: includes/admin/views/acf-taxonomy/basic-settings.php:135
 msgid "I know what I'm doing, show me all the options."
 msgstr "હું જાણું છું કે હું શું કરી રહ્યો છું, મને બધા વિકલ્પો બતાવો."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:119
-#: includes/admin/views/acf-taxonomy/basic-settings.php:118
+#: includes/admin/views/acf-post-type/basic-settings.php:135
+#: includes/admin/views/acf-taxonomy/basic-settings.php:134
 msgid "Advanced Configuration"
 msgstr "અદ્યતન રૂપરેખાંકન"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:107
+#: includes/admin/views/acf-post-type/basic-settings.php:123
 msgid "Hierarchical post types can have descendants (like pages)."
 msgstr "અધિક્રમિક વર્ગીકરણમાં વંશજો હોઈ શકે છે (જેમ કે શ્રેણીઓ)."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:106
+#: includes/admin/views/acf-post-type/basic-settings.php:122
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:976
-#: includes/admin/views/acf-taxonomy/basic-settings.php:105
+#: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
 msgstr "વંશવેલો"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:91
+#: includes/admin/views/acf-post-type/basic-settings.php:107
 msgid "Visible on the frontend and in the admin dashboard."
 msgstr "અગ્રભાગ પર અને એડમિન ડેશબોર્ડમાં દૃશ્યમાન."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:90
-#: includes/admin/views/acf-taxonomy/basic-settings.php:90
+#: includes/admin/views/acf-post-type/basic-settings.php:106
+#: includes/admin/views/acf-taxonomy/basic-settings.php:106
 msgid "Public"
 msgstr "પબ્લિક"
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:43
+#: includes/admin/views/acf-post-type/basic-settings.php:59
 msgid "movie"
 msgstr "ફિલ્મ"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:41
+#: includes/admin/views/acf-post-type/basic-settings.php:57
 msgid "Lower case letters, underscores and dashes only, Max 20 characters."
 msgstr "લોઅર કેસ અક્ષરો, માત્ર અન્ડરસ્કોર અને ડૅશ, મહત્તમ ૨૦ અક્ષરો."
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:25
+#: includes/admin/views/acf-post-type/basic-settings.php:41
 msgid "Movie"
 msgstr "ફિલ્મ"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:23
-#: includes/admin/views/acf-taxonomy/basic-settings.php:24
+#: includes/admin/views/acf-post-type/basic-settings.php:39
+#: includes/admin/views/acf-taxonomy/basic-settings.php:40
 msgid "Singular Label"
 msgstr "એકવચન નામ"
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:8
+#: includes/admin/views/acf-post-type/basic-settings.php:24
 msgid "Movies"
 msgstr "મૂવીઝ"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:6
-#: includes/admin/views/acf-taxonomy/basic-settings.php:7
+#: includes/admin/views/acf-post-type/basic-settings.php:22
+#: includes/admin/views/acf-taxonomy/basic-settings.php:23
 msgid "Plural Label"
 msgstr "બહુવચન નામ"
 
@@ -1310,7 +1419,7 @@ msgstr "નેમસ્પેસ રૂટ"
 #: includes/admin/views/acf-post-type/advanced-settings.php:1212
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1168
 msgid "The base URL for the post type REST API URLs."
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર REST API URL માટે આધાર URL."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1211
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1167
@@ -1321,6 +1430,7 @@ msgstr "આધાર URL"
 msgid ""
 "Exposes this post type in the REST API. Required to use the block editor."
 msgstr ""
+"REST API માં આ પોસ્ટ પ્રકારનો પર્દાફાશ કરે છે. બ્લોક એડિટરનો ઉપયોગ કરવા માટે જરૂરી છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1196
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1150
@@ -1329,43 +1439,45 @@ msgstr "REST API માં બતાવો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1175
 msgid "Customize the query variable name."
-msgstr ""
+msgstr "ક્વેરી વેરીએબલ નામને કસ્ટમાઇઝ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1174
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1050
 msgid "Query Variable"
-msgstr ""
+msgstr "ક્વેરી વેરીએબલ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1152
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
 msgid "No Query Variable Support"
-msgstr ""
+msgstr "કોઈ ક્વેરી વેરીએબલ સપોર્ટ નથી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1151
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
 msgid "Custom Query Variable"
-msgstr ""
+msgstr "કસ્ટમ ક્વેરી વેરીએબલ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1148
 msgid ""
 "Items can be accessed using the non-pretty permalink, eg. {post_type}"
 "={post_slug}."
 msgstr ""
+"બિન-સુંદર પરમાલિંકનો ઉપયોગ કરીને શરતોને ઍક્સેસ કરી શકાય છે, દા.ત., {query_var}"
+"={term_slug}."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1147
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1023
 msgid "Query Variable Support"
-msgstr ""
+msgstr "વેરીએબલ સપોર્ટ ક્વેરી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1122
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:999
 msgid "URLs for an item and items can be accessed with a query string."
-msgstr ""
+msgstr "આઇટમ અને આઇટમ્સ માટેના URL ને ક્વેરી સ્ટ્રિંગ વડે એક્સેસ કરી શકાય છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1121
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:998
 msgid "Publicly Queryable"
-msgstr ""
+msgstr "સાર્વજનિક રૂપે પૂછવા યોગ્ય"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1100
 msgid "Custom slug for the Archive URL."
@@ -1380,26 +1492,27 @@ msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
 msgstr ""
+"તમારી થીમમાં આર્કાઇવ ટેમ્પલેટ ફાઇલ સાથે કસ્ટમાઇઝ કરી શકાય તેવી આઇટમ આર્કાઇવ ધરાવે છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1085
 msgid "Archive"
-msgstr ""
+msgstr "આર્કાઇવ્સ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1065
 msgid "Pagination support for the items URLs such as the archives."
-msgstr ""
+msgstr "આર્કાઇવ્સ જેવી વસ્તુઓ URL માટે પૃષ્ઠ ક્રમાંકન સપોર્ટ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1064
 msgid "Pagination"
-msgstr ""
+msgstr "પૃષ્ઠ ક્રમાંકન"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1047
 msgid "RSS feed URL for the post type items."
-msgstr ""
+msgstr "પોસ્ટ પ્રકારની વસ્તુઓ માટે RSS ફીડ URL."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1046
 msgid "Feed URL"
-msgstr ""
+msgstr "ફીડ URL"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1028
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:957
@@ -1411,7 +1524,7 @@ msgstr "URL માં `WP_Rwrite::$front` ઉપસર્ગ ઉમેરવા 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1027
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:956
 msgid "Front URL Prefix"
-msgstr ""
+msgstr "ફ્રન્ટ URL ઉપસર્ગ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1008
 msgid "Customize the slug used in the URL."
@@ -1420,11 +1533,11 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:1007
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:936
 msgid "URL Slug"
-msgstr ""
+msgstr "URL સ્લગ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:991
 msgid "Permalinks for this post type are disabled."
-msgstr ""
+msgstr "આ વર્ગીકરણ માટે પરમાલિંક્સ અક્ષમ છે."
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-post-type/advanced-settings.php:990
@@ -1433,22 +1546,24 @@ msgid ""
 "Rewrite the URL using a custom slug defined in the input below. Your "
 "permalink structure will be"
 msgstr ""
+"નીચેના ઇનપુટમાં વ્યાખ્યાયિત કસ્ટમ સ્લગનો ઉપયોગ કરીને URL ને ફરીથી લખો. તમારું પરમાલિંક "
+"માળખું હશે"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:982
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:911
 msgid "No Permalink (prevent URL rewriting)"
-msgstr ""
+msgstr "કોઈ પરમાલિંક નથી (URL પુનઃલેખન અટકાવો)"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:981
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:910
 msgid "Custom Permalink"
-msgstr ""
+msgstr "કસ્ટમ પરમાલિંક"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:980
 #: includes/admin/views/acf-post-type/advanced-settings.php:1150
-#: includes/admin/views/acf-post-type/basic-settings.php:40
+#: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર કી"
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-post-type/advanced-settings.php:978
@@ -1456,16 +1571,16 @@ msgstr ""
 msgid ""
 "Rewrite the URL using the post type key as the slug. Your permalink "
 "structure will be"
-msgstr ""
+msgstr "સ્લગ તરીકે વર્ગીકરણ કીનો ઉપયોગ કરીને URL ને ફરીથી લખો. તમારું પરમાલિંક માળખું હશે"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:976
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:906
 msgid "Permalink Rewrite"
-msgstr ""
+msgstr "પરમાલિંક ફરીથી લખો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:962
 msgid "Delete items by a user when that user is deleted."
-msgstr ""
+msgstr "જ્યારે તે વપરાશકર્તા કાઢી નાખવામાં આવે ત્યારે વપરાશકર્તા દ્વારા આઇટમ્સ કાઢી નાખો."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:961
 msgid "Delete With User"
@@ -1473,15 +1588,15 @@ msgstr "વપરાશકર્તા સાથે કાઢી નાખો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:947
 msgid "Allow the post type to be exported from 'Tools' > 'Export'."
-msgstr ""
+msgstr "પોસ્ટ પ્રકારને 'ટૂલ્સ' > 'નિકાસ'માંથી નિકાસ કરવાની મંજૂરી આપો."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:946
 msgid "Can Export"
-msgstr ""
+msgstr "નિકાસ કરી શકે છે"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:915
 msgid "Optionally provide a plural to be used in capabilities."
-msgstr ""
+msgstr "વૈકલ્પિક રીતે ક્ષમતાઓમાં ઉપયોગમાં લેવા માટે બહુવચન પ્રદાન કરો."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:914
 msgid "Plural Capability Name"
@@ -1489,7 +1604,7 @@ msgstr "બહુવચન ક્ષમતા નામ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:896
 msgid "Choose another post type to base the capabilities for this post type."
-msgstr ""
+msgstr "આ પોસ્ટ પ્રકાર માટેની ક્ષમતાઓને આધાર આપવા માટે અન્ય પોસ્ટ પ્રકાર પસંદ કરો."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:895
 msgid "Singular Capability Name"
@@ -1501,6 +1616,9 @@ msgid ""
 "capability names, eg. edit_post, delete_posts. Enable to use post type "
 "specific capabilities, eg. edit_{singular}, delete_{plural}."
 msgstr ""
+"મૂળભૂત રીતે પોસ્ટ પ્રકારની ક્ષમતાઓ 'પોસ્ટ' ક્ષમતાના નામોને વારસામાં મેળવશે, દા.ત. "
+"એડિટ_પોસ્ટ, ડિલીટ_પોસ્ટ. પોસ્ટ પ્રકારની વિશિષ્ટ ક્ષમતાઓનો ઉપયોગ કરવા સક્ષમ કરો, દા."
+"ત. edit_{singular}, delete_{plural}."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:880
 msgid "Rename Capabilities"
@@ -1516,29 +1634,31 @@ msgid ""
 "Allow items to be added to menus in the 'Appearance' > 'Menus' screen. Must "
 "be turned on in 'Screen options'."
 msgstr ""
+"આઇટમ્સને 'દેખાવ' > 'મેનૂઝ' સ્ક્રીનમાં મેનૂમાં ઉમેરવાની મંજૂરી આપો. 'સ્ક્રીન વિકલ્પો'માં ચાલુ "
+"કરવું આવશ્યક છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:851
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:849
 msgid "Appearance Menus Support"
-msgstr ""
+msgstr "દેખાવ મેનુ આધાર"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:833
 msgid "Appears as an item in the 'New' menu in the admin bar."
-msgstr ""
+msgstr "એડમિન બારમાં 'નવા' મેનૂમાં આઇટમ તરીકે દેખાય છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:832
 msgid "Show In Admin Bar"
-msgstr ""
+msgstr "એડમિન બારમાં બતાવો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:801
 msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen."
-msgstr ""
+msgstr "સંપાદન સ્ક્રીન માટે મેટા બોક્સ સેટ કરતી વખતે કૉલ કરવા માટે PHP ફંક્શન નામ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:800
 msgid "Custom Meta Box Callback"
-msgstr ""
+msgstr "કસ્ટમ મેટા બોક્સ કોલબેક"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:780
 msgid "Menu Icon"
@@ -1546,7 +1666,7 @@ msgstr "મેનુ આયકન"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:762
 msgid "The position in the sidebar menu in the admin dashboard."
-msgstr ""
+msgstr "એડમિન ડેશબોર્ડમાં સાઇડબાર મેનૂમાં સ્થિતિ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:761
 msgid "Menu Position"
@@ -1558,10 +1678,12 @@ msgid ""
 "an existing top level item is supplied here, the post type will be added as "
 "a submenu item under it."
 msgstr ""
+"ડિફૉલ્ટ રૂપે પોસ્ટના પ્રકારને એડમિન મેનૂમાં નવી ટોચની આઇટમ મળશે. જો હાલની ટોચની આઇટમ "
+"અહીં પૂરી પાડવામાં આવે છે, તો પોસ્ટનો પ્રકાર તેની હેઠળ સબમેનુ આઇટમ તરીકે ઉમેરવામાં આવશે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:742
 msgid "Admin Menu Parent"
-msgstr ""
+msgstr "એડમિન મેનુ પેરન્ટ"
 
 #. translators: %s = "dashicon class name", link to the WordPress dashicon
 #. documentation.
@@ -1570,25 +1692,27 @@ msgid ""
 "The icon used for the post type menu item in the admin dashboard. Can be a "
 "URL or %s to use for the icon."
 msgstr ""
+"એડમિન ડેશબોર્ડમાં પોસ્ટ ટાઇપ મેનૂ આઇટમ માટે વપરાયેલ આઇકન. આયકન માટે વાપરવા માટે URL "
+"અથવા %s હોઈ શકે છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:725
 msgid "Dashicon class name"
-msgstr ""
+msgstr "ડૅશઆઇકન વર્ગ નામ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:714
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:730
 msgid "Admin editor navigation in the sidebar menu."
-msgstr ""
+msgstr "સાઇડબાર મેનૂમાં એડમિન એડિટર નેવિગેશન."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:713
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:729
 msgid "Show In Admin Menu"
-msgstr ""
+msgstr "એડમિન મેનુમાં બતાવો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:700
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:715
 msgid "Items can be edited and managed in the admin dashboard."
-msgstr ""
+msgstr "એડમિન ડેશબોર્ડમાં વસ્તુઓને સંપાદિત અને સંચાલિત કરી શકાય છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:699
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:714
@@ -1601,17 +1725,17 @@ msgstr "પોસ્ટની લિંક."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:684
 msgid "Description for a navigation link block variation."
-msgstr ""
+msgstr "નેવિગેશન લિંક બ્લોક વિવિધતા માટે વર્ણન."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:683
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:698
 msgid "Item Link Description"
-msgstr ""
+msgstr "આઇટમ લિંક વર્ણન"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:679
 msgid "A link to a %s."
-msgstr ""
+msgstr "%s ની લિંક."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:664
 msgid "Post Link"
@@ -1619,12 +1743,12 @@ msgstr "પોસ્ટ લિંક"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:663
 msgid "Title for a navigation link block variation."
-msgstr ""
+msgstr "નેવિગેશન લિંક બ્લોક વિવિધતા માટે શીર્ષક."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:662
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:677
 msgid "Item Link"
-msgstr ""
+msgstr "આઇટમ લિંક"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
@@ -1635,88 +1759,88 @@ msgstr "%s લિંક"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:644
 msgid "Post updated."
-msgstr ""
+msgstr "પોસ્ટ અપડેટ થઇ ગઈ છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:643
 msgid "In the editor notice after an item is updated."
-msgstr ""
+msgstr "આઇટમ અપડેટ થયા પછી એડિટર નોટિસમાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:642
 msgid "Item Updated"
-msgstr ""
+msgstr "આઈટમ અપડેટેડ."
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:639
 msgid "%s updated."
-msgstr ""
+msgstr "%s અપડેટ થઇ ગયું!"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:624
 msgid "Post scheduled."
-msgstr ""
+msgstr "સુનિશ્ચિત પોસ્ટ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:623
 msgid "In the editor notice after scheduling an item."
-msgstr ""
+msgstr "આઇટમ સુનિશ્ચિત કર્યા પછી સંપાદક સૂચનામાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:622
 msgid "Item Scheduled"
-msgstr ""
+msgstr "આઇટમ સુનિશ્ચિત"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:619
 msgid "%s scheduled."
-msgstr ""
+msgstr "%s શેડ્યૂલ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:604
 msgid "Post reverted to draft."
-msgstr ""
+msgstr "પોસ્ટ ડ્રાફ્ટમાં પાછું ફેરવ્યું."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:603
 msgid "In the editor notice after reverting an item to draft."
-msgstr ""
+msgstr "આઇટમને ડ્રાફ્ટમાં પાછી ફેરવ્યા પછી સંપાદક સૂચનામાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:602
 msgid "Item Reverted To Draft"
-msgstr ""
+msgstr "આઇટમ ડ્રાફ્ટમાં પાછી ફેરવાઈ"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:599
 msgid "%s reverted to draft."
-msgstr ""
+msgstr "%s ડ્રાફ્ટમાં પાછું ફર્યું."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:584
 msgid "Post published privately."
-msgstr ""
+msgstr "પોસ્ટ ખાનગી રીતે પ્રકાશિત."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:583
 msgid "In the editor notice after publishing a private item."
-msgstr ""
+msgstr "આઇટમ સુનિશ્ચિત કર્યા પછી સંપાદક સૂચનામાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:582
 msgid "Item Published Privately"
-msgstr ""
+msgstr "આઇટમ ખાનગી રીતે પ્રકાશિત"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:579
 msgid "%s published privately."
-msgstr ""
+msgstr "%s ખાનગી રીતે પ્રકાશિત."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:564
 msgid "Post published."
-msgstr ""
+msgstr "પોસ્ટ પ્રકાશિત થઇ ગઈ છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:563
 msgid "In the editor notice after publishing an item."
-msgstr ""
+msgstr "આઇટમ સુનિશ્ચિત કર્યા પછી સંપાદક સૂચનામાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:562
 msgid "Item Published"
-msgstr ""
+msgstr "આઇટમ પ્રકાશિત"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:559
 msgid "%s published."
-msgstr ""
+msgstr "%s પ્રકાશિત."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:544
 msgid "Posts list"
@@ -1725,6 +1849,7 @@ msgstr "પોસ્ટ્સ યાદી"
 #: includes/admin/views/acf-post-type/advanced-settings.php:543
 msgid "Used by screen readers for the items list on the post type list screen."
 msgstr ""
+"પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીન પરની ફિલ્ટર લિંક્સ માટે સ્ક્રીન રીડર્સ દ્વારા ઉપયોગમાં લેવાય છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:542
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:636
@@ -1736,167 +1861,171 @@ msgstr "આઇટ્મસ  યાદી"
 #: includes/admin/views/acf-post-type/advanced-settings.php:539
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:633
 msgid "%s list"
-msgstr ""
+msgstr "%s યાદી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:524
 msgid "Posts list navigation"
-msgstr ""
+msgstr "પોસ્ટ્સ સંશોધક માટે ની યાદી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:523
 msgid ""
 "Used by screen readers for the filter list pagination on the post type list "
 "screen."
 msgstr ""
+"પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીન પરની ફિલ્ટર લિંક્સ માટે સ્ક્રીન રીડર્સ દ્વારા ઉપયોગમાં લેવાય છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:522
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:616
 msgid "Items List Navigation"
-msgstr ""
+msgstr "વસ્તુઓની યાદી સંશોધક"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:519
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:613
 msgid "%s list navigation"
-msgstr ""
+msgstr "%s ટૅગ્સ યાદી નેવિગેશન"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:503
 msgid "Filter posts by date"
-msgstr ""
+msgstr "તારીખ દ્વારા પોસ્ટ્સ ફિલ્ટર કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:502
 msgid ""
 "Used by screen readers for the filter by date heading on the post type list "
 "screen."
 msgstr ""
+"પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીન પર તારીખ દ્વારા ફિલ્ટર માટે સ્ક્રીન રીડર્સ દ્વારા ઉપયોગમાં લેવાય "
+"છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:501
 msgid "Filter Items By Date"
-msgstr ""
+msgstr "તારીખ દ્વારા આઇટમ્સ ફિલ્ટર કરો"
 
 #. translators: %s Plural form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:497
 msgid "Filter %s by date"
-msgstr ""
+msgstr "તારીખ દ્વારા %s ફિલ્ટર કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:482
 msgid "Filter posts list"
-msgstr ""
+msgstr "પોસ્ટની સૂચિ ને ફિલ્ટર કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:481
 msgid ""
 "Used by screen readers for the filter links heading on the post type list "
 "screen."
 msgstr ""
+"પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીન પરની ફિલ્ટર લિંક્સ માટે સ્ક્રીન રીડર્સ દ્વારા ઉપયોગમાં લેવાય છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:480
 msgid "Filter Items List"
-msgstr ""
+msgstr "વસ્તુઓ ની યાદી ફિલ્ટર કરો"
 
 #. translators: %s Plural form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:476
 msgid "Filter %s list"
-msgstr ""
+msgstr "%s સૂચિને ફિલ્ટર કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:460
 msgid "In the media modal showing all media uploaded to this item."
-msgstr ""
+msgstr "મીડિયા મોડલમાં આ આઇટમ પર અપલોડ કરેલ તમામ મીડિયા દર્શાવે છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:459
 msgid "Uploaded To This Item"
-msgstr ""
+msgstr "આ પોસ્ટમાં અપલોડ કરવામાં આવ્યું છે"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:455
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "%s આ પોસ્ટમાં અપલોડ કરવામાં આવ્યું છે"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:440
 msgid "Insert into post"
-msgstr ""
+msgstr "પોસ્ટ માં સામેલ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:439
 msgid "As the button label when adding media to content."
-msgstr ""
+msgstr "સામગ્રીમાં મીડિયા ઉમેરતી વખતે બટન લેબલ તરીકે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:438
 msgid "Insert Into Media Button"
-msgstr ""
+msgstr "મીડિયા બટનમાં દાખલ કરો"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:434
 msgid "Insert into %s"
-msgstr ""
+msgstr "%s માં દાખલ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:419
 msgid "Use as featured image"
-msgstr ""
+msgstr "વૈશિષ્ટિકૃત છબી તરીકે ઉપયોગ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:418
 msgid ""
 "As the button label for selecting to use an image as the featured image."
-msgstr ""
+msgstr "વૈશિષ્ટિકૃત છબી તરીકે છબીનો ઉપયોગ કરવા માટે પસંદ કરવા માટેના બટન લેબલ તરીકે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:417
 msgid "Use Featured Image"
-msgstr ""
+msgstr "વૈશિષ્ટિકૃત છબીનો ઉપયોગ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:404
 msgid "Remove featured image"
-msgstr ""
+msgstr "વૈશિષ્ટિકૃત છબી દૂર કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:403
 msgid "As the button label when removing the featured image."
-msgstr ""
+msgstr "ફીચર્ડ ઈમેજ દૂર કરતી વખતે બટન લેબલ તરીકે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:402
 msgid "Remove Featured Image"
-msgstr ""
+msgstr "વિશેષ ચિત્ર દૂર કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:389
 msgid "Set featured image"
-msgstr ""
+msgstr "ફીચર્ડ ચિત્ર સેટ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:388
 msgid "As the button label when setting the featured image."
-msgstr ""
+msgstr "ફીચર્ડ ઈમેજ સેટ કરતી વખતે બટન લેબલ તરીકે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:387
 msgid "Set Featured Image"
-msgstr ""
+msgstr "ફીચર્ડ છબી સેટ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:374
 msgid "Featured image"
-msgstr ""
+msgstr "વૈશિષ્ટિકૃત છબી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:373
 msgid "In the editor used for the title of the featured image meta box."
-msgstr ""
+msgstr "ફીચર્ડ ઈમેજ મેટા બોક્સના શીર્ષક માટે ઉપયોગમાં લેવાતા એડિટરમાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:372
 msgid "Featured Image Meta Box"
-msgstr ""
+msgstr "ફીચર્ડ ઇમેજ મેટા બોક્સ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:359
 msgid "Post Attributes"
-msgstr ""
+msgstr "પોસ્ટ લક્ષણો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:358
 msgid "In the editor used for the title of the post attributes meta box."
-msgstr ""
+msgstr "પોસ્ટ એટ્રીબ્યુટ્સ મેટા બોક્સના શીર્ષક માટે ઉપયોગમાં લેવાતા એડિટરમાં."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:357
 msgid "Attributes Meta Box"
-msgstr ""
+msgstr "લક્ષણો મેટા બોક્સ"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:354
 msgid "%s Attributes"
-msgstr ""
+msgstr "%s પોસ્ટ લક્ષણો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:339
 msgid "Post Archives"
-msgstr ""
+msgstr "કાર્ય આર્કાઇવ્ઝ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:338
 msgid ""
@@ -1905,81 +2034,85 @@ msgid ""
 "appears when editing menus in 'Live Preview' mode and a custom archive slug "
 "has been provided."
 msgstr ""
+"આ લેબલ સાથે 'પોસ્ટ ટાઇપ આર્કાઇવ' આઇટમ્સને આર્કાઇવ્સ સક્ષમ સાથે CPTમાં અસ્તિત્વમાંના મેનૂમાં "
+"આઇટમ ઉમેરતી વખતે બતાવવામાં આવેલી પોસ્ટ્સની સૂચિમાં ઉમેરે છે. જ્યારે 'લાઈવ પ્રીવ્યૂ' મોડમાં મેનુ "
+"સંપાદિત કરવામાં આવે ત્યારે જ દેખાય છે અને કસ્ટમ આર્કાઈવ સ્લગ પ્રદાન કરવામાં આવે છે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:337
 msgid "Archives Nav Menu"
-msgstr ""
+msgstr "આર્કાઇવ્સ નેવ મેનુ"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:334
 msgid "%s Archives"
-msgstr ""
+msgstr "%s આર્કાઇવ્સ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:319
 msgid "No posts found in Trash"
-msgstr ""
+msgstr "ટ્રેશમાં કોઈ પોસ્ટ્સ મળી નથી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:318
 msgid ""
 "At the top of the post type list screen when there are no posts in the trash."
-msgstr ""
+msgstr "જ્યારે ટ્રેશમાં કોઈ પોસ્ટ ન હોય ત્યારે પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીનની ટોચ પર."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:317
 msgid "No Items Found in Trash"
-msgstr ""
+msgstr "ટ્રેશમાં કોઈ આઇટમ્સ મળી નથી"
 
 #. translators: %s Plural form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:313
 msgid "No %s found in Trash"
-msgstr ""
+msgstr "ટ્રેશમાં કોઈ %s મળ્યું નથી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:298
 msgid "No posts found"
-msgstr ""
+msgstr "કોઈ પોસ્ટ મળી નથી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:297
 msgid ""
 "At the top of the post type list screen when there are no posts to display."
 msgstr ""
+"જ્યારે પ્રદર્શિત કરવા માટે કોઈ પોસ્ટ્સ ન હોય ત્યારે પોસ્ટ ટાઇપ સૂચિ સ્ક્રીનની ટોચ પર."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:296
 msgid "No Items Found"
-msgstr ""
+msgstr "કોઈ આઇટમ્સ મળી નથી"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:292
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:476
 msgid "No %s found"
-msgstr ""
+msgstr "કોઈ %s મળ્યું નથી"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:277
 msgid "Search Posts"
-msgstr ""
+msgstr "પોસ્ટ્સ શોધો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:276
 msgid "At the top of the items screen when searching for an item."
-msgstr ""
+msgstr "શબ્દ સંપાદિત કરતી વખતે સંપાદક સ્ક્રીનની ટોચ પર."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:275
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:341
 msgid "Search Items"
-msgstr ""
+msgstr "આઇટમ્સ શોધો"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:272
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:338
 msgid "Search %s"
-msgstr ""
+msgstr "%s શોધો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:257
 msgid "Parent Page:"
-msgstr ""
+msgstr "પિતૃ પૃષ્ઠ:"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:256
 msgid "For hierarchical types in the post type list screen."
-msgstr ""
+msgstr "પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીનમાં અધિક્રમિક પ્રકારો માટે."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:255
 msgid "Parent Item Prefix"
@@ -1990,44 +2123,44 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:252
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:314
 msgid "Parent %s:"
-msgstr ""
+msgstr "પેરન્ટ %s"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:237
 msgid "New Post"
-msgstr ""
+msgstr "નવી પોસ્ટ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:235
 msgid "New Item"
-msgstr ""
+msgstr "નવી આઇટમ"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:232
 msgid "New %s"
-msgstr ""
+msgstr "નવું %s"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:202
 msgid "Add New Post"
-msgstr ""
+msgstr "નવી પોસ્ટ ઉમેરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:201
 msgid "At the top of the editor screen when adding a new item."
-msgstr ""
+msgstr "શબ્દ સંપાદિત કરતી વખતે સંપાદક સ્ક્રીનની ટોચ પર."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:200
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:252
 msgid "Add New Item"
-msgstr ""
+msgstr "નવી આઇટમ ઉમેરો"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:197
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:249
 msgid "Add New %s"
-msgstr ""
+msgstr "નવું %s ઉમેરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:182
 msgid "View Posts"
-msgstr ""
+msgstr "પોસ્ટ્સ જુઓ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:181
 msgid ""
@@ -2037,11 +2170,11 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:180
 msgid "View Items"
-msgstr ""
+msgstr "આઇટમ જુઓ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:162
 msgid "View Post"
-msgstr ""
+msgstr "પોસ્ટ જુઓ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:161
 msgid "In the admin bar to view item when editing it."
@@ -2050,7 +2183,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:160
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:212
 msgid "View Item"
-msgstr ""
+msgstr "આઇટમ જુઓ"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of post type name
@@ -2059,11 +2192,11 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:177
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:209
 msgid "View %s"
-msgstr ""
+msgstr "%s જુઓ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:142
 msgid "Edit Post"
-msgstr ""
+msgstr "પોસ્ટ સુધારો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:141
 msgid "At the top of the editor screen when editing an item."
@@ -2072,18 +2205,18 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:140
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:192
 msgid "Edit Item"
-msgstr ""
+msgstr "આઇટમ સંપાદિત કરો"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:137
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:189
 msgid "Edit %s"
-msgstr ""
+msgstr "%s સંપાદિત કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:122
 msgid "All Posts"
-msgstr ""
+msgstr "બધા પોસ્ટ્સ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:121
 #: includes/admin/views/acf-post-type/advanced-settings.php:216
@@ -2094,14 +2227,14 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:120
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:172
 msgid "All Items"
-msgstr ""
+msgstr "બધી વસ્તુઓ"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:117
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:169
 msgid "All %s"
-msgstr ""
+msgstr "બધા %s"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:101
 msgid "Admin menu name for the post type."
@@ -2109,7 +2242,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:100
 msgid "Menu Name"
-msgstr ""
+msgstr "મેનુ નુ નામ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:86
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:138
@@ -2119,7 +2252,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:84
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:136
 msgid "Regenerate"
-msgstr ""
+msgstr "પુનઃસર્જન કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:75
 msgid "Active post types are enabled and registered with WordPress."
@@ -2135,60 +2268,60 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:38
 msgid "Enable various features in the content editor."
-msgstr ""
+msgstr "સામગ્રી સંપાદકમાં વિવિધ સુવિધાઓને સક્ષમ કરો."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:27
 msgid "Post Formats"
-msgstr ""
+msgstr "પોસ્ટ ફોર્મેટ્સ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
 msgid "Editor"
-msgstr ""
+msgstr "સંપાદક"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:20
 msgid "Trackbacks"
-msgstr ""
+msgstr "ટ્રેકબેક્સ"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:71
+#: includes/admin/views/acf-post-type/basic-settings.php:87
 msgid "Select existing taxonomies to classify items of the post type."
-msgstr ""
+msgstr "પોસ્ટ પ્રકારની વસ્તુઓનું વર્ગીકરણ કરવા માટે વર્તમાન વર્ગીકરણ પસંદ કરો."
 
 #: includes/admin/views/acf-field-group/field.php:141
 msgid "Browse Fields"
-msgstr ""
+msgstr "ક્ષેત્રો બ્રાઉઝ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:292
 msgid "Nothing to import"
-msgstr ""
+msgstr "આયાત કરવા માટે કંઈ નથી"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:287
 msgid ". The Custom Post Type UI plugin can be deactivated."
-msgstr ""
+msgstr ". કસ્ટમ પોસ્ટ પ્રકાર UI પ્લગઇન નિષ્ક્રિય કરી શકાય છે."
 
 #. translators: %d - number of items imported from CPTUI
 #: includes/admin/tools/class-acf-admin-tool-import.php:278
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "કસ્ટમ પોસ્ટ પ્રકાર UI માંથી %d આઇટમ આયાત કરી -"
+msgstr[1] "કસ્ટમ પોસ્ટ પ્રકાર UI માંથી %d આઇટમ આયાત કરી -"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:262
 msgid "Failed to import taxonomies."
-msgstr ""
+msgstr "વર્ગીકરણ આયાત કરવામાં નિષ્ફળ."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:244
 msgid "Failed to import post types."
-msgstr ""
+msgstr "પોસ્ટ પ્રકારો આયાત કરવામાં નિષ્ફળ."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:233
 msgid "Nothing from Custom Post Type UI plugin selected for import."
-msgstr ""
+msgstr "કસ્ટમ પોસ્ટ પ્રકાર UI પ્લગઇનમાંથી કંઈપણ આયાત માટે પસંદ કરેલ નથી."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:209
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 આઇટમ આયાત કરી"
+msgstr[1] "%s આઇટમ આયાત કરી"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:122
 msgid ""
@@ -2196,13 +2329,15 @@ msgid ""
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
 "with those of the import."
 msgstr ""
+"પહેલાથી જ અસ્તિત્વમાં છે તે જ કી સાથે પોસ્ટ પ્રકાર અથવા વર્ગીકરણ આયાત કરવાથી વર્તમાન "
+"પોસ્ટ પ્રકાર અથવા વર્ગીકરણની સેટિંગ્સ આયાતની સાથે ઓવરરાઈટ થઈ જશે."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:111
 #: includes/admin/tools/class-acf-admin-tool-import.php:127
 msgid "Import from Custom Post Type UI"
-msgstr ""
+msgstr "કસ્ટમ પોસ્ટ પ્રકાર UI માંથી આયાત કરો"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:390
+#: includes/admin/tools/class-acf-admin-tool-export.php:412
 msgid ""
 "The following code can be used to register a local version of the selected "
 "items. Storing field groups, post types, or taxonomies locally can provide "
@@ -2211,14 +2346,19 @@ msgid ""
 "php file or include it within an external file, then deactivate or delete "
 "the items from the ACF admin."
 msgstr ""
+"નીચેના કોડનો ઉપયોગ પસંદ કરેલી વસ્તુઓના સ્થાનિક સંસ્કરણની નોંધણી કરવા માટે થઈ શકે છે. "
+"સ્થાનિક રીતે ફીલ્ડ જૂથો, પોસ્ટ પ્રકારો અથવા વર્ગીકરણને સંગ્રહિત કરવાથી ઝડપી લોડ ટાઈમ, "
+"વર્ઝન કંટ્રોલ અને ડાયનેમિક ફીલ્ડ્સ/સેટિંગ્સ જેવા ઘણા ફાયદા મળી શકે છે. ફક્ત નીચેના કોડને "
+"તમારી થીમની functions.php ફાઇલમાં કોપી અને પેસ્ટ કરો અથવા તેને બાહ્ય ફાઇલમાં સમાવિષ્ટ "
+"કરો, પછી ACF એડમિન તરફથી આઇટમ્સને નિષ્ક્રિય કરો અથવા કાઢી નાખો."
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:389
+#: includes/admin/tools/class-acf-admin-tool-export.php:411
 msgid "Export - Generate PHP"
-msgstr ""
+msgstr "નિકાસ - PHP જનરેટ કરો"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:362
+#: includes/admin/tools/class-acf-admin-tool-export.php:384
 msgid "Export"
-msgstr ""
+msgstr "નિકાસ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:276
 msgid "Select Taxonomies"
@@ -2234,22 +2374,17 @@ msgid_plural "Exported %s items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/post-types/admin-taxonomy.php:124
-#: assets/build/js/acf-internal-post-type.js:177
-#: assets/build/js/acf-internal-post-type.js:247
+#: includes/admin/post-types/admin-taxonomy.php:129
+#: assets/build/js/acf-internal-post-type.js:182
+#: assets/build/js/acf-internal-post-type.js:256
 msgid "Category"
-msgstr ""
+msgstr "વર્ગ"
 
-#: includes/admin/post-types/admin-taxonomy.php:122
-#: assets/build/js/acf-internal-post-type.js:174
-#: assets/build/js/acf-internal-post-type.js:244
+#: includes/admin/post-types/admin-taxonomy.php:127
+#: assets/build/js/acf-internal-post-type.js:179
+#: assets/build/js/acf-internal-post-type.js:253
 msgid "Tag"
-msgstr ""
-
-#: includes/admin/post-types/admin-post-type.php:102
-#: includes/admin/post-types/admin-taxonomy.php:103
-msgid "Create new post type"
-msgstr ""
+msgstr "ટૅગ"
 
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:82
@@ -2286,7 +2421,7 @@ msgid "Taxonomy updated."
 msgstr ""
 
 #: includes/admin/post-types/admin-taxonomies.php:377
-#: includes/admin/post-types/admin-taxonomy.php:152
+#: includes/admin/post-types/admin-taxonomy.php:157
 msgid ""
 "This taxonomy could not be registered because its key is in use by another "
 "taxonomy registered by another plugin or theme."
@@ -2317,110 +2452,104 @@ msgstr[1] ""
 #: includes/admin/post-types/admin-taxonomies.php:338
 msgid "Taxonomy activated."
 msgid_plural "%s taxonomies activated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "વર્ગીકરણ સક્રિય થયું."
+msgstr[1] "%s વર્ગીકરણ સક્રિય."
 
 #: includes/admin/post-types/admin-taxonomies.php:139
 msgid "Terms"
-msgstr ""
+msgstr "શરતો"
 
 #. translators: %s number of post types synchronized
 #: includes/admin/post-types/admin-post-types.php:352
 msgid "Post type synchronized."
 msgid_plural "%s post types synchronized."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "પોસ્ટ પ્રકાર સમન્વયિત."
+msgstr[1] "%s પોસ્ટ પ્રકારો સમન્વયિત."
 
 #. translators: %s number of post types duplicated
 #: includes/admin/post-types/admin-post-types.php:345
 msgid "Post type duplicated."
 msgid_plural "%s post types duplicated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "પોસ્ટ પ્રકાર ડુપ્લિકેટ."
+msgstr[1] "%s પોસ્ટ પ્રકારો ડુપ્લિકેટ."
 
 #. translators: %s number of post types deactivated
 #: includes/admin/post-types/admin-post-types.php:338
 msgid "Post type deactivated."
 msgid_plural "%s post types deactivated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "પોસ્ટ પ્રકાર નિષ્ક્રિય."
+msgstr[1] "%s પોસ્ટ પ્રકારો નિષ્ક્રિય કર્યા."
 
 #. translators: %s number of post types activated
 #: includes/admin/post-types/admin-post-types.php:331
 msgid "Post type activated."
 msgid_plural "%s post types activated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "પોસ્ટનો પ્રકાર સક્રિય કર્યો."
+msgstr[1] "%s પોસ્ટ પ્રકારો સક્રિય થયા."
 
 #: includes/admin/post-types/admin-post-types.php:112
 #: includes/admin/post-types/admin-taxonomies.php:137
 #: includes/admin/tools/class-acf-admin-tool-import.php:82
-#: includes/admin/views/acf-taxonomy/basic-settings.php:66
+#: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:90
 msgid "Post Types"
-msgstr ""
+msgstr "પોસ્ટ પ્રકારો"
 
-#: includes/admin/post-types/admin-post-type.php:159
-#: includes/admin/post-types/admin-taxonomy.php:159
+#: includes/admin/post-types/admin-post-type.php:162
+#: includes/admin/post-types/admin-taxonomy.php:164
 msgid "Advanced Settings"
-msgstr ""
+msgstr "સંવર્ધિત વિકલ્પો"
 
-#: includes/admin/post-types/admin-post-type.php:158
-#: includes/admin/post-types/admin-taxonomy.php:158
+#: includes/admin/post-types/admin-post-type.php:161
+#: includes/admin/post-types/admin-taxonomy.php:163
 msgid "Basic Settings"
-msgstr ""
+msgstr "મૂળભૂત સેટિંગ્સ"
 
-#: includes/admin/post-types/admin-post-type.php:152
+#: includes/admin/post-types/admin-post-type.php:155
 #: includes/admin/post-types/admin-post-types.php:370
 msgid ""
 "This post type could not be registered because its key is in use by another "
 "post type registered by another plugin or theme."
 msgstr ""
+"આ પોસ્ટ પ્રકાર રજીસ્ટર થઈ શક્યો નથી કારણ કે તેની કી અન્ય પ્લગઈન અથવા થીમ દ્વારા "
+"નોંધાયેલ અન્ય પોસ્ટ પ્રકાર દ્વારા ઉપયોગમાં લેવાય છે."
 
-#: includes/admin/post-types/admin-post-type.php:125
-#: assets/build/js/acf-internal-post-type.js:171
-#: assets/build/js/acf-internal-post-type.js:241
+#: includes/admin/post-types/admin-post-type.php:128
+#: assets/build/js/acf-internal-post-type.js:176
+#: assets/build/js/acf-internal-post-type.js:250
 msgid "Pages"
-msgstr ""
+msgstr "પૃષ્ઠો"
 
-#: includes/admin/post-types/admin-post-type.php:103
-#: includes/admin/post-types/admin-taxonomy.php:102
-msgid "Create new taxonomy"
-msgstr ""
-
-#: includes/admin/post-types/admin-post-type.php:101
-#: includes/admin/post-types/admin-taxonomy.php:101
-msgid "Link existing field groups"
-msgstr ""
+#: includes/admin/admin-internal-post-type.php:355
+msgid "Link Existing Field Groups"
+msgstr "હાલના ફીલ્ડ જૂથોને લિંક કરો"
 
 #. translators: %s post type name
-#: includes/admin/post-types/admin-post-type.php:82
+#: includes/admin/post-types/admin-post-type.php:80
 msgid "%s post type created"
-msgstr ""
+msgstr "%s પોસ્ટ પ્રકાર બનાવ્યો"
 
-#. translators: %s post type name
 #. translators: %s taxonomy name
-#: includes/admin/post-types/admin-post-type.php:78
 #: includes/admin/post-types/admin-taxonomy.php:78
 msgid "Add fields to %s"
-msgstr ""
+msgstr "%s માં ફીલ્ડ્સ ઉમેરો"
 
 #. translators: %s post type name
 #: includes/admin/post-types/admin-post-type.php:76
 msgid "%s post type updated"
-msgstr ""
+msgstr "%s પોસ્ટ પ્રકાર અપડેટ કર્યો"
 
 #: includes/admin/post-types/admin-post-type.php:56
 msgid "Post type draft updated."
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર ડ્રાફ્ટ અપડેટ કર્યો."
 
 #: includes/admin/post-types/admin-post-type.php:55
 msgid "Post type scheduled for."
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર માટે સુનિશ્ચિત થયેલ છે."
 
 #: includes/admin/post-types/admin-post-type.php:54
 msgid "Post type submitted."
-msgstr ""
+msgstr "પોસ્ટનો પ્રકાર સબમિટ કર્યો."
 
 #: includes/admin/post-types/admin-post-type.php:53
 msgid "Post type saved."
@@ -2442,73 +2571,67 @@ msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-field-group.js:1172
-#: assets/build/js/acf-field-group.js:2295
+#: assets/build/js/acf-field-group.js:2311
 #: assets/build/js/acf-field-group.js:1414
-#: assets/build/js/acf-field-group.js:2689
+#: assets/build/js/acf-field-group.js:2711
 msgid "PRO Only"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: assets/build/js/acf-internal-post-type.js:303
-#: assets/build/js/acf-internal-post-type.js:408
+#: assets/build/js/acf-internal-post-type.js:308
+#: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
 msgstr ""
 
 #. translators: %s - URL to ACF tools page.
-#: includes/admin/admin.php:194
+#: includes/admin/admin.php:195
 msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:48
+#: includes/admin/admin.php:48 includes/admin/admin.php:265
 msgid "ACF"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:322
 msgid "taxonomy"
-msgstr ""
+msgstr "વર્ગીકરણ"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:322
 msgid "post type"
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર"
 
-#. translators: %1$s - name of newly created post. %2$s - either "post type" or
-#. "taxonomy".
-#: includes/admin/admin-internal-post-type.php:335
-msgid "Link %1$s %2$s to field groups"
-msgstr ""
-
-#: includes/admin/admin-internal-post-type.php:328
+#: includes/admin/admin-internal-post-type.php:346
 msgid "Done"
-msgstr ""
+msgstr "પૂર્ણ"
 
-#: includes/admin/admin-internal-post-type.php:315
-msgid "Field group(s)"
-msgstr ""
+#: includes/admin/admin-internal-post-type.php:332
+msgid "Field Group(s)"
+msgstr "ક્ષેત્ર જૂથો"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:331
 msgid "Select one or many field groups..."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:330
 msgid "Please select the field groups to link."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:277
+#: includes/admin/admin-internal-post-type.php:288
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:254
+#: includes/admin/admin-internal-post-type-list.php:261
 #: includes/admin/post-types/admin-post-types.php:371
 #: includes/admin/post-types/admin-taxonomies.php:378
 msgctxt "post status"
 msgid "Registration Failed"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:253
+#: includes/admin/admin-internal-post-type-list.php:260
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
@@ -2521,25 +2644,28 @@ msgstr ""
 
 #: includes/acf-internal-post-type-functions.php:481
 #: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:537
 msgid "Permissions"
 msgstr ""
 
 #: includes/acf-internal-post-type-functions.php:480
 #: includes/acf-internal-post-type-functions.php:509
 msgid "URLs"
-msgstr ""
+msgstr "URLs"
 
 #: includes/acf-internal-post-type-functions.php:479
 #: includes/acf-internal-post-type-functions.php:508
+#: includes/acf-internal-post-type-functions.php:535
 msgid "Visibility"
-msgstr ""
+msgstr "દૃશ્યતા"
 
 #: includes/acf-internal-post-type-functions.php:478
 #: includes/acf-internal-post-type-functions.php:507
+#: includes/acf-internal-post-type-functions.php:536
 msgid "Labels"
-msgstr ""
+msgstr "લેબલ્સ"
 
-#: includes/admin/post-types/admin-field-group.php:260
+#: includes/admin/post-types/admin-field-group.php:261
 msgid "Field Settings Tabs"
 msgstr "ફીલ્ડ સેટિંગ્સ ટૅબ્સ"
 
@@ -2548,36 +2674,38 @@ msgid ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 msgstr ""
+"https://wpengine.com/?utm_source=wordpress."
+"org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
 #: includes/api/api-template.php:867
 msgid "[ACF shortcode value disabled for preview]"
-msgstr ""
+msgstr "[એસીએફ શોર્ટકોડ મૂલ્ય પૂર્વાવલોકન માટે અક્ષમ કર્યું]"
 
-#: includes/admin/admin-internal-post-type.php:287
-#: includes/admin/post-types/admin-field-group.php:562
+#: includes/admin/admin-internal-post-type.php:298
+#: includes/admin/post-types/admin-field-group.php:563
 msgid "Close Modal"
-msgstr ""
+msgstr "મોડલ બંધ કરો"
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:1661
-#: assets/build/js/acf-field-group.js:1980
+#: assets/build/js/acf-field-group.js:1662
+#: assets/build/js/acf-field-group.js:1982
 msgid "Field moved to other group"
 msgstr "ફિલ્ડ અન્ય જૂથમાં ખસેડવામાં આવ્યું"
 
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf.js:1440 assets/build/js/acf.js:1521
+#: assets/build/js/acf.js:1441 assets/build/js/acf.js:1522
 msgid "Close modal"
 msgstr "મોડલ બંધ કરો"
 
 #: includes/fields/class-acf-field-tab.php:125
 msgid "Start a new group of tabs at this tab."
-msgstr ""
+msgstr "આ ટૅબ પર ટૅબનું નવું જૂથ શરૂ કરો."
 
 #: includes/fields/class-acf-field-tab.php:124
 msgid "New Tab Group"
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:457
+#: includes/fields/class-acf-field-select.php:451
 #: includes/fields/class-acf-field-true_false.php:200
 msgid "Use a stylized checkbox using select2"
 msgstr ""
@@ -2606,19 +2734,19 @@ msgstr ""
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:156
+#: includes/admin/views/global/navigation.php:226
 msgid "Updates"
 msgstr "સુધારાઓ"
 
-#: includes/admin/views/global/navigation.php:94
+#: includes/admin/views/global/navigation.php:172
 msgid "Advanced Custom Fields logo"
 msgstr ""
 
-#: includes/admin/views/global/form-top.php:66
+#: includes/admin/views/global/form-top.php:89
 msgid "Save Changes"
 msgstr "ફેરફારો સેવ કરો"
 
-#: includes/admin/views/global/form-top.php:53
+#: includes/admin/views/global/form-top.php:76
 msgid "Field Group Title"
 msgstr ""
 
@@ -2651,6 +2779,7 @@ msgid "Add Your First Field Group"
 msgstr ""
 
 #: includes/admin/views/acf-field-group/pro-features.php:39
+#: includes/admin/views/global/navigation.php:82
 msgid "Options Pages"
 msgstr ""
 
@@ -2670,16 +2799,16 @@ msgstr ""
 msgid "Repeater Field"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:137
+#: includes/admin/views/global/navigation.php:207
 msgid "Unlock Extra Features with ACF PRO"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:252
+#: includes/admin/views/acf-field-group/options.php:265
 msgid "Delete Field Group"
 msgstr ""
 
 #. translators: 1: Post creation date 2: Post creation time
-#: includes/admin/views/acf-field-group/options.php:246
+#: includes/admin/views/acf-field-group/options.php:259
 msgid "Created on %1$s at %2$s"
 msgstr ""
 
@@ -2717,13 +2846,13 @@ msgstr "#"
 #: includes/admin/views/acf-field-group/fields.php:33
 #: includes/admin/views/acf-field-group/fields.php:67
 #: includes/admin/views/acf-field-group/fields.php:103
-#: includes/admin/views/global/form-top.php:62
+#: includes/admin/views/global/form-top.php:85
 msgid "Add Field"
 msgstr ""
 
 #: includes/acf-field-group-functions.php:496 includes/fields.php:410
 msgid "Presentation"
-msgstr ""
+msgstr "રજૂઆત"
 
 #: includes/fields.php:409
 msgid "Validation"
@@ -2738,7 +2867,7 @@ msgstr "સામાન્ય"
 msgid "Import JSON"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:370
+#: includes/admin/tools/class-acf-admin-tool-export.php:392
 msgid "Export As JSON"
 msgstr ""
 
@@ -2756,43 +2885,43 @@ msgid_plural "%s field groups activated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:429
-#: includes/admin/admin-internal-post-type-list.php:460
+#: includes/admin/admin-internal-post-type-list.php:452
+#: includes/admin/admin-internal-post-type-list.php:478
 msgid "Deactivate"
 msgstr "નિષ્ક્રિય"
 
-#: includes/admin/admin-internal-post-type-list.php:429
+#: includes/admin/admin-internal-post-type-list.php:452
 msgid "Deactivate this item"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:425
-#: includes/admin/admin-internal-post-type-list.php:459
+#: includes/admin/admin-internal-post-type-list.php:448
+#: includes/admin/admin-internal-post-type-list.php:477
 msgid "Activate"
 msgstr "સક્રિય કરો"
 
-#: includes/admin/admin-internal-post-type-list.php:425
+#: includes/admin/admin-internal-post-type-list.php:448
 msgid "Activate this item"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2741
-#: assets/build/js/acf-field-group.js:3180
+#: assets/build/js/acf-field-group.js:2803
+#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr ""
 
-#: acf.php:485 includes/admin/admin-internal-post-type-list.php:241
-#: includes/admin/post-types/admin-field-group.php:288
-#: includes/admin/post-types/admin-post-type.php:292
-#: includes/admin/post-types/admin-taxonomy.php:292
+#: acf.php:491 includes/admin/admin-internal-post-type-list.php:248
+#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-post-type.php:295
+#: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Inactive"
-msgstr ""
+msgstr "નિષ્ક્રિય"
 
 #. Author of the plugin
 msgid "WP Engine"
 msgstr ""
 
-#: acf.php:543
+#: acf.php:549
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2800,7 +2929,7 @@ msgstr ""
 "અદ્યતન કસ્ટમ ફીલ્ડ્સ અને એડવાન્સ કસ્ટમ ફીલ્ડ્સ PRO એક જ સમયે સક્રિય ન હોવા જોઈએ. અમે "
 "એડવાન્સ્ડ કસ્ટમ ફીલ્ડ્સ પ્રોને આપમેળે નિષ્ક્રિય કરી દીધું છે."
 
-#: acf.php:541
+#: acf.php:547
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2812,45 +2941,45 @@ msgstr ""
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
-"\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" "
+"target=\"_blank\">Learn how to fix this</a>."
 msgstr ""
 "<strong>%1$s</strong> - ACF શરૂ થાય તે પહેલાં અમે ACF ફીલ્ડ મૂલ્યો પુનઃપ્રાપ્ત કરવા માટે "
 "એક અથવા વધુ કૉલ્સ શોધી કાઢ્યા છે. આ સમર્થિત નથી અને તે ખોટા અથવા ખોવાયેલા ડેટામાં "
 "પરિણમી શકે છે. <a href=\"%2$s\" target=\"_blank\">આને કેવી રીતે ઠીક કરવું તે જાણો</"
 "a>."
 
-#: includes/fields/class-acf-field-user.php:540
+#: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-user.php:531
+#: includes/fields/class-acf-field-user.php:542
 msgid "%1$s must have a valid user ID."
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:369
+#: includes/fields/class-acf-field-user.php:380
 msgid "Invalid request."
 msgstr "અમાન્ય વિનંતી."
 
-#: includes/fields/class-acf-field-select.php:690
+#: includes/fields/class-acf-field-select.php:684
 msgid "%1$s is not one of %2$s"
 msgstr ""
 
-#: includes/fields/class-acf-field-post_object.php:698
+#: includes/fields/class-acf-field-post_object.php:700
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-post_object.php:682
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:675
 msgid "%1$s must have a valid post ID."
 msgstr ""
 
@@ -2858,7 +2987,7 @@ msgstr ""
 msgid "%s requires a valid attachment ID."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:218
+#: includes/admin/views/acf-field-group/options.php:231
 msgid "Show in REST API"
 msgstr "REST API માં બતાવો"
 
@@ -2883,9 +3012,9 @@ msgstr ""
 msgid "Upgrade to PRO"
 msgstr "પ્રો પર અપગ્રેડ કરો"
 
-#: includes/admin/post-types/admin-field-group.php:288
-#: includes/admin/post-types/admin-post-type.php:292
-#: includes/admin/post-types/admin-taxonomy.php:292
+#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-post-type.php:295
+#: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Active"
 msgstr "સક્રિય"
@@ -2934,18 +3063,18 @@ msgstr "જોડાણો"
 #: includes/admin/post-types/admin-post-types.php:137
 #: includes/admin/post-types/admin-taxonomies.php:112
 #: includes/admin/tools/class-acf-admin-tool-import.php:93
-#: includes/admin/views/acf-post-type/basic-settings.php:70
+#: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
 msgid "Taxonomies"
 msgstr "વર્ગીકરણ"
 
 #: includes/acf-wp-functions.php:41
-#: includes/admin/post-types/admin-post-type.php:123
+#: includes/admin/post-types/admin-post-type.php:126
 #: includes/admin/post-types/admin-post-types.php:139
 #: includes/admin/views/acf-post-type/advanced-settings.php:102
-#: assets/build/js/acf-internal-post-type.js:168
-#: assets/build/js/acf-internal-post-type.js:238
+#: assets/build/js/acf-internal-post-type.js:173
+#: assets/build/js/acf-internal-post-type.js:247
 msgid "Posts"
 msgstr "પોસ્ટો"
 
@@ -2961,32 +3090,32 @@ msgstr "માફ કરશો, આ પોસ્ટ અલગ સરખામણ
 msgid "Invalid field group parameter(s)."
 msgstr "અમાન્ય ક્ષેત્ર જૂથ પરિમાણ(ઓ)."
 
-#: includes/admin/admin-internal-post-type-list.php:395
+#: includes/admin/admin-internal-post-type-list.php:413
 msgid "Awaiting save"
 msgstr "સેવ પ્રતીક્ષામાં છે"
 
-#: includes/admin/admin-internal-post-type-list.php:392
+#: includes/admin/admin-internal-post-type-list.php:410
 msgid "Saved"
 msgstr "સેવ થયેલ"
 
-#: includes/admin/admin-internal-post-type-list.php:388
+#: includes/admin/admin-internal-post-type-list.php:406
 #: includes/admin/tools/class-acf-admin-tool-import.php:49
 msgid "Import"
 msgstr "આયાત"
 
-#: includes/admin/admin-internal-post-type-list.php:384
+#: includes/admin/admin-internal-post-type-list.php:402
 msgid "Review changes"
 msgstr "ફેરફારોની સમીક્ષા કરો"
 
-#: includes/admin/admin-internal-post-type-list.php:360
+#: includes/admin/admin-internal-post-type-list.php:378
 msgid "Located in: %s"
 msgstr "સ્થિત થયેલ છે: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:357
+#: includes/admin/admin-internal-post-type-list.php:375
 msgid "Located in plugin: %s"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:354
+#: includes/admin/admin-internal-post-type-list.php:372
 msgid "Located in theme: %s"
 msgstr ""
 
@@ -2994,56 +3123,56 @@ msgstr ""
 msgid "Various"
 msgstr "વિવિધ"
 
-#: includes/admin/admin-internal-post-type-list.php:209
-#: includes/admin/admin-internal-post-type-list.php:467
+#: includes/admin/admin-internal-post-type-list.php:216
+#: includes/admin/admin-internal-post-type-list.php:485
 msgid "Sync changes"
 msgstr "સમન્વય ફેરફારો"
 
-#: includes/admin/admin-internal-post-type-list.php:208
+#: includes/admin/admin-internal-post-type-list.php:215
 msgid "Loading diff"
 msgstr "તફાવત લોડ કરી રહ્યું છે"
 
-#: includes/admin/admin-internal-post-type-list.php:207
+#: includes/admin/admin-internal-post-type-list.php:214
 msgid "Review local JSON changes"
 msgstr "સ્થાનિક JSON ફેરફારોની સમીક્ષા કરો"
 
-#: includes/admin/admin.php:169
+#: includes/admin/admin.php:170
 msgid "Visit website"
 msgstr "વેબસાઇટની મુલાકાત લો"
 
-#: includes/admin/admin.php:168
+#: includes/admin/admin.php:169
 msgid "View details"
 msgstr "વિગતો જુઓ"
 
-#: includes/admin/admin.php:167
+#: includes/admin/admin.php:168
 msgid "Version %s"
 msgstr "આવૃત્તિ %s"
 
-#: includes/admin/admin.php:166
+#: includes/admin/admin.php:167
 msgid "Information"
 msgstr "માહિતી"
 
-#: includes/admin/admin.php:157
+#: includes/admin/admin.php:158
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
 msgstr ""
 
-#: includes/admin/admin.php:153
+#: includes/admin/admin.php:154
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
 "friendly community on our Community Forums who may be able to help you "
 "figure out the 'how-tos' of the ACF world."
 msgstr ""
 
-#: includes/admin/admin.php:149
+#: includes/admin/admin.php:150
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
 "documentation contains references and guides for most situations you may "
 "encounter."
 msgstr ""
 
-#: includes/admin/admin.php:146
+#: includes/admin/admin.php:147
 msgid ""
 "We are fanatical about support, and want you to get the best out of your "
 "website with ACF. If you run into any difficulties, there are several places "
@@ -3052,11 +3181,11 @@ msgstr ""
 "અમે સમર્થનને લઈને કટ્ટરપંથી છીએ અને ઈચ્છીએ છીએ કે તમે ACF સાથે તમારી વેબસાઇટનો શ્રેષ્ઠ લાભ "
 "મેળવો. જો તમને કોઈ મુશ્કેલી આવે, તો ત્યાં ઘણી જગ્યાએ મદદ મળી શકે છે:"
 
-#: includes/admin/admin.php:143 includes/admin/admin.php:145
+#: includes/admin/admin.php:144 includes/admin/admin.php:146
 msgid "Help & Support"
 msgstr "મદદ અને આધાર"
 
-#: includes/admin/admin.php:134
+#: includes/admin/admin.php:135
 msgid ""
 "Please use the Help & Support tab to get in touch should you find yourself "
 "requiring assistance."
@@ -3064,21 +3193,21 @@ msgstr ""
 "જો તમને તમારી જાતને સહાયની જરૂર જણાય તો સંપર્કમાં રહેવા માટે કૃપા કરીને મદદ અને સમર્થન "
 "ટેબનો ઉપયોગ કરો."
 
-#: includes/admin/admin.php:131
+#: includes/admin/admin.php:132
 msgid ""
 "Before creating your first Field Group, we recommend first reading our <a "
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
 "yourself with the plugin's philosophy and best practises."
 msgstr ""
 
-#: includes/admin/admin.php:129
+#: includes/admin/admin.php:130
 msgid ""
 "The Advanced Custom Fields plugin provides a visual form builder to "
 "customize WordPress edit screens with extra fields, and an intuitive API to "
 "display custom field values in any theme template file."
 msgstr ""
 
-#: includes/admin/admin.php:126 includes/admin/admin.php:128
+#: includes/admin/admin.php:127 includes/admin/admin.php:129
 msgid "Overview"
 msgstr "અવલોકન"
 
@@ -3094,7 +3223,7 @@ msgstr ""
 msgid "Invalid nonce."
 msgstr "અમાન્ય નૉન."
 
-#: includes/fields/class-acf-field-user.php:364
+#: includes/fields/class-acf-field-user.php:375
 msgid "Error loading field."
 msgstr ""
 
@@ -3231,13 +3360,13 @@ msgstr "પોસ્ટ કેટેગરી"
 
 #: includes/locations/class-acf-location-attachment.php:84
 msgid "All %s formats"
-msgstr ""
+msgstr "બધા %s ફોર્મેટ"
 
 #: includes/locations/class-acf-location-attachment.php:22
 msgid "Attachment"
 msgstr "જોડાણ"
 
-#: includes/validation.php:364
+#: includes/validation.php:366
 msgid "%s value is required"
 msgstr ""
 
@@ -3250,9 +3379,8 @@ msgstr ""
 msgid "Conditional Logic"
 msgstr ""
 
-#: includes/admin/admin.php:238
 #: includes/admin/views/acf-field-group/conditional-logic.php:156
-#: includes/admin/views/acf-field-group/location-rule.php:91
+#: includes/admin/views/acf-field-group/location-rule.php:92
 msgid "and"
 msgstr "અને"
 
@@ -3285,20 +3413,20 @@ msgstr ""
 msgid "Database Upgrade Required"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:132
+#: includes/admin/post-types/admin-field-group.php:133
 #: includes/admin/views/upgrade/notice.php:18
 msgid "Options Page"
 msgstr ""
 
-#: includes/admin/views/upgrade/notice.php:15 includes/fields.php:461
+#: includes/admin/views/upgrade/notice.php:15 includes/fields.php:462
 msgid "Gallery"
 msgstr "ગેલેરી"
 
-#: includes/admin/views/upgrade/notice.php:12 includes/fields.php:451
+#: includes/admin/views/upgrade/notice.php:12 includes/fields.php:452
 msgid "Flexible Content"
 msgstr ""
 
-#: includes/admin/views/upgrade/notice.php:9 includes/fields.php:471
+#: includes/admin/views/upgrade/notice.php:9 includes/fields.php:472
 msgid "Repeater"
 msgstr ""
 
@@ -3306,140 +3434,140 @@ msgstr ""
 msgid "Back to all tools"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:193
 msgid ""
 "If multiple field groups appear on an edit screen, the first field group's "
 "options will be used (the one with the lowest order number)"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:193
 msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:179
+#: includes/admin/views/acf-field-group/options.php:192
 msgid "Hide on screen"
 msgstr "સ્ક્રીન પર છુપાવો"
 
-#: includes/admin/views/acf-field-group/options.php:171
+#: includes/admin/views/acf-field-group/options.php:184
 msgid "Send Trackbacks"
 msgstr "ટ્રેકબેકસ મોકલો"
 
-#: includes/admin/post-types/admin-taxonomy.php:123
-#: includes/admin/views/acf-field-group/options.php:170
+#: includes/admin/post-types/admin-taxonomy.php:128
+#: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:155
-#: assets/build/js/acf-internal-post-type.js:175
-#: assets/build/js/acf-internal-post-type.js:245
+#: assets/build/js/acf-internal-post-type.js:180
+#: assets/build/js/acf-internal-post-type.js:254
 msgid "Tags"
 msgstr "ટૅગ્સ"
 
-#: includes/admin/post-types/admin-taxonomy.php:125
-#: includes/admin/views/acf-field-group/options.php:169
-#: assets/build/js/acf-internal-post-type.js:178
-#: assets/build/js/acf-internal-post-type.js:248
+#: includes/admin/post-types/admin-taxonomy.php:130
+#: includes/admin/views/acf-field-group/options.php:182
+#: assets/build/js/acf-internal-post-type.js:183
+#: assets/build/js/acf-internal-post-type.js:257
 msgid "Categories"
 msgstr "કેટેગરીઓ"
 
-#: includes/admin/views/acf-field-group/options.php:167
+#: includes/admin/views/acf-field-group/options.php:180
 #: includes/admin/views/acf-post-type/advanced-settings.php:24
 msgid "Page Attributes"
 msgstr "પેજ લક્ષણો"
 
-#: includes/admin/views/acf-field-group/options.php:166
+#: includes/admin/views/acf-field-group/options.php:179
 msgid "Format"
 msgstr "ફોર્મેટ"
 
-#: includes/admin/views/acf-field-group/options.php:165
+#: includes/admin/views/acf-field-group/options.php:178
 #: includes/admin/views/acf-post-type/advanced-settings.php:18
 msgid "Author"
 msgstr "લેખક"
 
-#: includes/admin/views/acf-field-group/options.php:164
+#: includes/admin/views/acf-field-group/options.php:177
 msgid "Slug"
 msgstr "સ્લગ"
 
-#: includes/admin/views/acf-field-group/options.php:163
+#: includes/admin/views/acf-field-group/options.php:176
 #: includes/admin/views/acf-post-type/advanced-settings.php:23
 msgid "Revisions"
 msgstr "પુનરાવર્તનો"
 
 #: includes/acf-wp-functions.php:63
-#: includes/admin/views/acf-field-group/options.php:162
+#: includes/admin/views/acf-field-group/options.php:175
 #: includes/admin/views/acf-post-type/advanced-settings.php:19
 msgid "Comments"
 msgstr "ટિપ્પણીઓ"
 
-#: includes/admin/views/acf-field-group/options.php:161
+#: includes/admin/views/acf-field-group/options.php:174
 msgid "Discussion"
 msgstr "ચર્ચા"
 
-#: includes/admin/views/acf-field-group/options.php:159
+#: includes/admin/views/acf-field-group/options.php:172
 #: includes/admin/views/acf-post-type/advanced-settings.php:22
 msgid "Excerpt"
 msgstr "અવતરણ"
 
-#: includes/admin/views/acf-field-group/options.php:158
+#: includes/admin/views/acf-field-group/options.php:171
 msgid "Content Editor"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:157
+#: includes/admin/views/acf-field-group/options.php:170
 msgid "Permalink"
-msgstr ""
+msgstr "પરમાલિંક"
 
-#: includes/admin/views/acf-field-group/options.php:235
+#: includes/admin/views/acf-field-group/options.php:248
 msgid "Shown in field group list"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:142
+#: includes/admin/views/acf-field-group/options.php:155
 msgid "Field groups with a lower order will appear first"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:141
+#: includes/admin/views/acf-field-group/options.php:154
 msgid "Order No."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:132
+#: includes/admin/views/acf-field-group/options.php:145
 msgid "Below fields"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:131
+#: includes/admin/views/acf-field-group/options.php:144
 msgid "Below labels"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:124
+#: includes/admin/views/acf-field-group/options.php:137
 msgid "Instruction Placement"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:107
+#: includes/admin/views/acf-field-group/options.php:120
 msgid "Label Placement"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:97
+#: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:96
+#: includes/admin/views/acf-field-group/options.php:109
 msgid "Normal (after content)"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:95
+#: includes/admin/views/acf-field-group/options.php:108
 msgid "High (after title)"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:88
+#: includes/admin/views/acf-field-group/options.php:101
 msgid "Position"
 msgstr "પદ"
 
-#: includes/admin/views/acf-field-group/options.php:79
+#: includes/admin/views/acf-field-group/options.php:92
 msgid "Seamless (no metabox)"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:78
+#: includes/admin/views/acf-field-group/options.php:91
 msgid "Standard (WP metabox)"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:71
+#: includes/admin/views/acf-field-group/options.php:84
 msgid "Style"
-msgstr ""
+msgstr "સ્ટાઇલ"
 
 #: includes/admin/views/acf-field-group/fields.php:55
 msgid "Type"
@@ -3450,7 +3578,7 @@ msgstr "પ્રકાર"
 #: includes/admin/post-types/admin-taxonomies.php:136
 #: includes/admin/views/acf-field-group/fields.php:54
 msgid "Key"
-msgstr ""
+msgstr "ચાવી"
 
 #. translators: Hidden accessibility text for the positional order number of
 #. the field.
@@ -3492,7 +3620,7 @@ msgstr ""
 
 #: includes/admin/views/acf-field-group/field.php:125
 msgid "Field Type"
-msgstr ""
+msgstr "ક્ષેત્ર પ્રકાર"
 
 #: includes/admin/views/acf-field-group/field.php:166
 msgid "Single word, no spaces. Underscores and dashes allowed"
@@ -3500,7 +3628,7 @@ msgstr ""
 
 #: includes/admin/views/acf-field-group/field.php:165
 msgid "Field Name"
-msgstr ""
+msgstr "ક્ષેત્રનું નામ"
 
 #: includes/admin/views/acf-field-group/field.php:153
 msgid "This is the name which will appear on the EDIT page"
@@ -3542,8 +3670,8 @@ msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:103
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2323
-#: assets/build/js/acf-field-group.js:2725
+#: assets/build/js/acf-field-group.js:2339
+#: assets/build/js/acf-field-group.js:2747
 msgid "Show this field group if"
 msgstr ""
 
@@ -3632,15 +3760,15 @@ msgstr ""
 msgid "Rules"
 msgstr "નિયમો"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:482
+#: includes/admin/tools/class-acf-admin-tool-export.php:506
 msgid "Copied"
 msgstr "કૉપિ થઇ ગયું"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:458
+#: includes/admin/tools/class-acf-admin-tool-export.php:482
 msgid "Copy to clipboard"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:363
+#: includes/admin/tools/class-acf-admin-tool-export.php:385
 msgid ""
 "Select the items you would like to export and then select your export "
 "method. Export As JSON to export to a .json file which you can then import "
@@ -3661,8 +3789,8 @@ msgid "No field groups selected"
 msgstr ""
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:39
-#: includes/admin/tools/class-acf-admin-tool-export.php:371
-#: includes/admin/tools/class-acf-admin-tool-export.php:399
+#: includes/admin/tools/class-acf-admin-tool-export.php:393
+#: includes/admin/tools/class-acf-admin-tool-export.php:421
 msgid "Generate PHP"
 msgstr ""
 
@@ -3692,21 +3820,21 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:383
+#: includes/admin/admin-internal-post-type-list.php:401
 msgid "Sync"
-msgstr ""
+msgstr "સમન્વય"
 
-#: includes/admin/admin-internal-post-type-list.php:840
+#: includes/admin/admin-internal-post-type-list.php:858
 msgid "Select %s"
-msgstr ""
+msgstr "%s પસંદ કરો"
 
-#: includes/admin/admin-internal-post-type-list.php:418
-#: includes/admin/admin-internal-post-type-list.php:456
+#: includes/admin/admin-internal-post-type-list.php:442
+#: includes/admin/admin-internal-post-type-list.php:474
 #: includes/admin/views/acf-field-group/field.php:73
 msgid "Duplicate"
-msgstr ""
+msgstr "ડુપ્લિકેટ"
 
-#: includes/admin/admin-internal-post-type-list.php:418
+#: includes/admin/admin-internal-post-type-list.php:442
 msgid "Duplicate this item"
 msgstr ""
 
@@ -3714,14 +3842,14 @@ msgstr ""
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:259 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
 msgstr "માર્ગદર્શિકા"
 
 #: includes/admin/post-types/admin-field-groups.php:116
 #: includes/admin/post-types/admin-post-types.php:135
 #: includes/admin/post-types/admin-taxonomies.php:135
-#: includes/admin/views/acf-field-group/options.php:234
+#: includes/admin/views/acf-field-group/options.php:247
 #: includes/admin/views/acf-post-type/advanced-settings.php:58
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:110
 #: includes/admin/views/upgrade/network.php:38
@@ -3729,8 +3857,8 @@ msgstr "માર્ગદર્શિકા"
 msgid "Description"
 msgstr "વર્ણન"
 
-#: includes/admin/admin-internal-post-type-list.php:380
-#: includes/admin/admin-internal-post-type-list.php:729
+#: includes/admin/admin-internal-post-type-list.php:398
+#: includes/admin/admin-internal-post-type-list.php:747
 msgid "Sync available"
 msgstr ""
 
@@ -3748,7 +3876,7 @@ msgid_plural "%s field groups duplicated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:130
+#: includes/admin/admin-internal-post-type-list.php:137
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "સક્રિય <span class=\"count\">(%s)</span>"
@@ -3765,43 +3893,43 @@ msgstr ""
 msgid "Upgrade Database"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:160
+#: includes/admin/views/acf-field-group/options.php:173
 #: includes/admin/views/acf-post-type/advanced-settings.php:26
 msgid "Custom Fields"
-msgstr ""
+msgstr "કસ્ટમ ફીલ્ડ"
 
-#: includes/admin/post-types/admin-field-group.php:607
+#: includes/admin/post-types/admin-field-group.php:608
 msgid "Move Field"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:596
-#: includes/admin/post-types/admin-field-group.php:600
+#: includes/admin/post-types/admin-field-group.php:597
+#: includes/admin/post-types/admin-field-group.php:601
 msgid "Please select the destination for this field"
 msgstr ""
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:558
+#: includes/admin/post-types/admin-field-group.php:559
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "%1$s ક્ષેત્ર હવે %2$s ક્ષેત્ર જૂથમાં મળી શકે છે"
 
-#: includes/admin/post-types/admin-field-group.php:555
+#: includes/admin/post-types/admin-field-group.php:556
 msgid "Move Complete."
 msgstr ""
 
 #: includes/admin/views/acf-field-group/field.php:35
-#: includes/admin/views/acf-field-group/options.php:202
+#: includes/admin/views/acf-field-group/options.php:215
 #: includes/admin/views/acf-post-type/advanced-settings.php:74
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:126
 msgid "Active"
 msgstr "સક્રિય"
 
-#: includes/admin/post-types/admin-field-group.php:257
+#: includes/admin/post-types/admin-field-group.php:258
 msgid "Field Keys"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:155
-#: includes/admin/tools/class-acf-admin-tool-export.php:320
+#: includes/admin/post-types/admin-field-group.php:156
+#: includes/admin/tools/class-acf-admin-tool-export.php:342
 msgid "Settings"
 msgstr "સેટિંગ્સ"
 
@@ -3815,10 +3943,10 @@ msgid "Null"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: includes/class-acf-internal-post-type.php:729
+#: includes/class-acf-internal-post-type.php:733
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1501
-#: assets/build/js/acf-field-group.js:1808
+#: assets/build/js/acf-field-group.js:1502
+#: assets/build/js/acf-field-group.js:1810
 msgid "copy"
 msgstr "નકલ"
 
@@ -3832,11 +3960,11 @@ msgstr ""
 #: assets/build/js/acf-input.js:918 assets/build/js/acf-input.js:943
 #: assets/build/js/acf-input.js:1002 assets/build/js/acf-input.js:1030
 msgid "Checked"
-msgstr ""
+msgstr "ચકાસાયેલ"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-field-group.js:1606
-#: assets/build/js/acf-field-group.js:1920
+#: assets/build/js/acf-field-group.js:1607
+#: assets/build/js/acf-field-group.js:1922
 msgid "Move Custom Field"
 msgstr ""
 
@@ -3851,14 +3979,14 @@ msgid "Field group title is required"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1595
-#: assets/build/js/acf-field-group.js:1906
+#: assets/build/js/acf-field-group.js:1596
+#: assets/build/js/acf-field-group.js:1908
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "જ્યાં સુધી તેના ફેરફારો સાચવવામાં ન આવે ત્યાં સુધી આ ક્ષેત્ર ખસેડી શકાતું નથી"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:1405
-#: assets/build/js/acf-field-group.js:1703
+#: assets/build/js/acf-field-group.js:1406
+#: assets/build/js/acf-field-group.js:1705
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "શબ્દમાળા \"field_\" નો ઉપયોગ ક્ષેત્રના નામની શરૂઆતમાં થઈ શકશે નહીં"
 
@@ -3893,10 +4021,10 @@ msgid "Field group updated."
 msgstr ""
 
 #: includes/admin/admin-tools.php:118
-#: includes/admin/views/global/navigation.php:154
+#: includes/admin/views/global/navigation.php:224
 #: includes/admin/views/tools/tools.php:21
 msgid "Tools"
-msgstr ""
+msgstr "સાધનો"
 
 #: includes/locations/abstract-acf-location.php:106
 msgid "is not equal to"
@@ -3908,19 +4036,19 @@ msgstr ""
 
 #: includes/locations.php:102
 msgid "Forms"
-msgstr ""
+msgstr "સ્વરૂપો"
 
-#: includes/admin/post-types/admin-post-type.php:124 includes/locations.php:100
+#: includes/admin/post-types/admin-post-type.php:127 includes/locations.php:100
 #: includes/locations/class-acf-location-page.php:22
-#: assets/build/js/acf-internal-post-type.js:170
-#: assets/build/js/acf-internal-post-type.js:240
+#: assets/build/js/acf-internal-post-type.js:175
+#: assets/build/js/acf-internal-post-type.js:249
 msgid "Page"
 msgstr "પેજ"
 
-#: includes/admin/post-types/admin-post-type.php:122 includes/locations.php:99
+#: includes/admin/post-types/admin-post-type.php:125 includes/locations.php:99
 #: includes/locations/class-acf-location-post.php:22
-#: assets/build/js/acf-internal-post-type.js:167
-#: assets/build/js/acf-internal-post-type.js:237
+#: assets/build/js/acf-internal-post-type.js:172
+#: assets/build/js/acf-internal-post-type.js:246
 msgid "Post"
 msgstr "પોસ્ટ"
 
@@ -4019,42 +4147,42 @@ msgstr ""
 #: includes/admin/post-types/admin-field-group.php:109
 #: assets/build/js/acf-input.js:788 assets/build/js/acf-input.js:841
 msgid "Has no value"
-msgstr ""
+msgstr "કોઈ મૂલ્ય નથી"
 
 #: includes/admin/post-types/admin-field-group.php:108
 #: assets/build/js/acf-input.js:758 assets/build/js/acf-input.js:783
 msgid "Has any value"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:327
+#: includes/admin/admin-internal-post-type.php:345
 #: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:353
-#: assets/build/js/acf.js:1567 assets/build/js/acf.js:1662
+#: assets/build/js/acf.js:1568 assets/build/js/acf.js:1663
 msgid "Cancel"
-msgstr ""
+msgstr "રદ"
 
-#: includes/assets.php:349 assets/build/js/acf.js:1741
-#: assets/build/js/acf.js:1859
+#: includes/assets.php:349 assets/build/js/acf.js:1742
+#: assets/build/js/acf.js:1860
 msgid "Are you sure?"
-msgstr ""
+msgstr "શું તમને ખાતરી છે?"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9409
-#: assets/build/js/acf-input.js:10260
+#: includes/assets.php:369 assets/build/js/acf-input.js:9408
+#: assets/build/js/acf-input.js:10259
 msgid "%d fields require attention"
 msgstr ""
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9407
-#: assets/build/js/acf-input.js:10256
+#: includes/assets.php:368 assets/build/js/acf-input.js:9406
+#: assets/build/js/acf-input.js:10255
 msgid "1 field requires attention"
 msgstr ""
 
-#: includes/assets.php:367 includes/validation.php:286
-#: includes/validation.php:296 assets/build/js/acf-input.js:9402
-#: assets/build/js/acf-input.js:10251
+#: includes/assets.php:367 includes/validation.php:288
+#: includes/validation.php:298 assets/build/js/acf-input.js:9401
+#: assets/build/js/acf-input.js:10250
 msgid "Validation failed"
 msgstr ""
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9565
-#: assets/build/js/acf-input.js:10434
+#: includes/assets.php:366 assets/build/js/acf-input.js:9569
+#: assets/build/js/acf-input.js:10438
 msgid "Validation successful"
 msgstr ""
 
@@ -4090,12 +4218,12 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "સંપાદિત કરો"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9179
-#: assets/build/js/acf-input.js:10022
+#: includes/assets.php:363 assets/build/js/acf-input.js:9178
+#: assets/build/js/acf-input.js:10021
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "જો તમે આ પૃષ્ઠ છોડીને જશો તો તમે કરેલા ફેરફારો ખોવાઈ જશે"
 
-#: includes/api/api-helpers.php:3498
+#: includes/api/api-helpers.php:3499
 msgid "File type must be %s."
 msgstr "ફાઇલનો પ્રકાર %s હોવો આવશ્યક છે."
 
@@ -4104,63 +4232,63 @@ msgstr "ફાઇલનો પ્રકાર %s હોવો આવશ્યક
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3494 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2361
+#: includes/api/api-helpers.php:3495 assets/build/js/acf-field-group.js:771
+#: assets/build/js/acf-field-group.js:2377
 #: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2769
+#: assets/build/js/acf-field-group.js:2791
 msgid "or"
 msgstr "અથવા"
 
-#: includes/api/api-helpers.php:3467
+#: includes/api/api-helpers.php:3468
 msgid "File size must not exceed %s."
 msgstr "ફાઇલનું કદ %s થી વધુ ન હોવું જોઈએ."
 
-#: includes/api/api-helpers.php:3462
+#: includes/api/api-helpers.php:3463
 msgid "File size must be at least %s."
 msgstr ""
 
-#: includes/api/api-helpers.php:3447
+#: includes/api/api-helpers.php:3448
 msgid "Image height must not exceed %dpx."
 msgstr "છબીની ઊંચાઈ %dpx કરતાં વધુ ન હોવી જોઈએ."
 
-#: includes/api/api-helpers.php:3442
+#: includes/api/api-helpers.php:3443
 msgid "Image height must be at least %dpx."
 msgstr "છબીની ઊંચાઈ ઓછામાં ઓછી %dpx હોવી જોઈએ."
 
-#: includes/api/api-helpers.php:3428
+#: includes/api/api-helpers.php:3429
 msgid "Image width must not exceed %dpx."
 msgstr "છબીની પહોળાઈ %dpx થી વધુ ન હોવી જોઈએ."
 
-#: includes/api/api-helpers.php:3423
+#: includes/api/api-helpers.php:3424
 msgid "Image width must be at least %dpx."
 msgstr "છબીની પહોળાઈ ઓછામાં ઓછી %dpx હોવી જોઈએ."
 
-#: includes/api/api-helpers.php:1669 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1670 includes/api/api-term.php:147
 msgid "(no title)"
 msgstr "(કોઈ શીર્ષક નથી)"
 
-#: includes/api/api-helpers.php:944
+#: includes/api/api-helpers.php:945
 msgid "Full Size"
 msgstr "પૂર્ણ કદ"
 
-#: includes/api/api-helpers.php:903
+#: includes/api/api-helpers.php:904
 msgid "Large"
 msgstr "મોટું"
 
-#: includes/api/api-helpers.php:902
+#: includes/api/api-helpers.php:903
 msgid "Medium"
 msgstr "મધ્યમ"
 
-#: includes/api/api-helpers.php:901
+#: includes/api/api-helpers.php:902
 msgid "Thumbnail"
-msgstr ""
+msgstr "થંબનેલ"
 
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:99
 #: assets/build/js/acf-field-group.js:1077
 #: assets/build/js/acf-field-group.js:1260
 msgid "(no label)"
-msgstr ""
+msgstr "(લેબલ નથી)"
 
 #: includes/fields/class-acf-field-textarea.php:145
 msgid "Sets the textarea height"
@@ -4200,103 +4328,103 @@ msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:179
 msgid "Archives"
-msgstr ""
+msgstr "આર્કાઇવ્સ"
 
 #: includes/fields/class-acf-field-page_link.php:25
 msgid "Page Link"
-msgstr ""
+msgstr "પૃષ્ઠ લિંક"
 
-#: includes/fields/class-acf-field-taxonomy.php:948
+#: includes/fields/class-acf-field-taxonomy.php:943
 #: includes/locations/class-acf-location-user-form.php:72
 msgid "Add"
 msgstr "ઉમેરો"
 
 #: includes/admin/views/acf-field-group/fields.php:53
-#: includes/fields/class-acf-field-taxonomy.php:913
+#: includes/fields/class-acf-field-taxonomy.php:908
 msgid "Name"
 msgstr "નામ"
 
-#: includes/fields/class-acf-field-taxonomy.php:897
+#: includes/fields/class-acf-field-taxonomy.php:892
 msgid "%s added"
-msgstr ""
+msgstr "%s ઉમેર્યું"
 
-#: includes/fields/class-acf-field-taxonomy.php:861
+#: includes/fields/class-acf-field-taxonomy.php:856
 msgid "%s already exists"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:849
+#: includes/fields/class-acf-field-taxonomy.php:844
 msgid "User unable to add new %s"
 msgstr "વપરાશકર્તા નવા %s ઉમેરવામાં અસમર્થ છે"
 
-#: includes/fields/class-acf-field-taxonomy.php:759
+#: includes/fields/class-acf-field-taxonomy.php:742
 msgid "Term ID"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:758
+#: includes/fields/class-acf-field-taxonomy.php:741
 msgid "Term Object"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:743
+#: includes/fields/class-acf-field-taxonomy.php:726
 msgid "Load value from posts terms"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:742
+#: includes/fields/class-acf-field-taxonomy.php:725
 msgid "Load Terms"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:732
+#: includes/fields/class-acf-field-taxonomy.php:715
 msgid "Connect selected terms to the post"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:731
+#: includes/fields/class-acf-field-taxonomy.php:714
 msgid "Save Terms"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:721
+#: includes/fields/class-acf-field-taxonomy.php:704
 msgid "Allow new terms to be created whilst editing"
 msgstr "સંપાદન કરતી વખતે નવી શરતો બનાવવાની મંજૂરી આપો"
 
-#: includes/fields/class-acf-field-taxonomy.php:720
+#: includes/fields/class-acf-field-taxonomy.php:703
 msgid "Create Terms"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:779
+#: includes/fields/class-acf-field-taxonomy.php:762
 msgid "Radio Buttons"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:778
+#: includes/fields/class-acf-field-taxonomy.php:761
 msgid "Single Value"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:776
+#: includes/fields/class-acf-field-taxonomy.php:759
 msgid "Multi Select"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:25
-#: includes/fields/class-acf-field-taxonomy.php:775
+#: includes/fields/class-acf-field-taxonomy.php:758
 msgid "Checkbox"
-msgstr ""
+msgstr "ચેકબોક્સ"
 
-#: includes/fields/class-acf-field-taxonomy.php:774
+#: includes/fields/class-acf-field-taxonomy.php:757
 msgid "Multiple Values"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:769
+#: includes/fields/class-acf-field-taxonomy.php:752
 msgid "Select the appearance of this field"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:768
+#: includes/fields/class-acf-field-taxonomy.php:751
 msgid "Appearance"
-msgstr ""
+msgstr "દેખાવ"
 
-#: includes/fields/class-acf-field-taxonomy.php:710
+#: includes/fields/class-acf-field-taxonomy.php:693
 msgid "Select the taxonomy to be displayed"
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:671
+#: includes/fields/class-acf-field-taxonomy.php:654
 msgctxt "No Terms"
 msgid "No %s"
-msgstr ""
+msgstr "ના %s"
 
 #: includes/fields/class-acf-field-number.php:266
 msgid "Value must be equal to or lower than %d"
@@ -4321,6 +4449,10 @@ msgstr "ક્ષેત્રની પસંદગીમાં 'અન્ય' �
 #: includes/fields/class-acf-field-radio.php:253
 msgid "Add 'other' choice to allow for custom values"
 msgstr ""
+
+#: includes/admin/views/global/navigation.php:192
+msgid "Other"
+msgstr "અન્ય"
 
 #: includes/fields/class-acf-field-radio.php:25
 msgid "Radio Button"
@@ -4347,7 +4479,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-accordion.php:84
 msgid "Open"
-msgstr ""
+msgstr "ઓપન"
 
 #: includes/fields/class-acf-field-accordion.php:25
 msgid "Accordion"
@@ -4364,7 +4496,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-file.php:219
 msgid "File URL"
-msgstr ""
+msgstr "ફાઈલ યુઆરએલ"
 
 #: includes/fields/class-acf-field-file.php:218
 msgid "File Array"
@@ -4381,7 +4513,7 @@ msgstr "કોઈ ફાઇલ પસંદ કરી નથી"
 
 #: includes/fields/class-acf-field-file.php:150
 msgid "File name"
-msgstr ""
+msgstr "ફાઇલનું નામ"
 
 #: includes/fields/class-acf-field-file.php:63
 #: assets/build/js/acf-input.js:2474 assets/build/js/acf-input.js:2625
@@ -4407,20 +4539,20 @@ msgstr "ફાઇલ"
 msgid "Password"
 msgstr "પાસવર્ડ"
 
-#: includes/fields/class-acf-field-select.php:398
+#: includes/fields/class-acf-field-select.php:392
 msgid "Specify the value returned"
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:467
+#: includes/fields/class-acf-field-select.php:461
 msgid "Use AJAX to lazy load choices?"
 msgstr ""
 
 #: includes/fields/class-acf-field-checkbox.php:362
-#: includes/fields/class-acf-field-select.php:387
+#: includes/fields/class-acf-field-select.php:381
 msgid "Enter each default value on a new line"
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:258 includes/media.php:48
+#: includes/fields/class-acf-field-select.php:252 includes/media.php:48
 #: assets/build/js/acf-input.js:6756 assets/build/js/acf-input.js:7232
 msgctxt "verb"
 msgid "Select"
@@ -4487,32 +4619,32 @@ msgid "One result is available, press enter to select it."
 msgstr "એક પરિણામ ઉપલબ્ધ છે, તેને પસંદ કરવા માટે એન્ટર દબાવો."
 
 #: includes/fields/class-acf-field-select.php:25
-#: includes/fields/class-acf-field-taxonomy.php:780
+#: includes/fields/class-acf-field-taxonomy.php:763
 msgctxt "noun"
 msgid "Select"
 msgstr "પસંદ કરો"
 
-#: includes/fields/class-acf-field-user.php:77
+#: includes/fields/class-acf-field-user.php:73
 msgid "User ID"
 msgstr "વપરાશકર્તા ID"
 
-#: includes/fields/class-acf-field-user.php:76
+#: includes/fields/class-acf-field-user.php:72
 msgid "User Object"
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:75
+#: includes/fields/class-acf-field-user.php:71
 msgid "User Array"
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:63
+#: includes/fields/class-acf-field-user.php:59
 msgid "All user roles"
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:55
+#: includes/fields/class-acf-field-user.php:51
 msgid "Filter by Role"
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:20 includes/locations.php:101
+#: includes/fields/class-acf-field-user.php:15 includes/locations.php:101
 msgid "User"
 msgstr "વપરાશકર્તા"
 
@@ -4524,11 +4656,11 @@ msgstr "વિભાજક"
 msgid "Select Color"
 msgstr "રંગ પસંદ કરો"
 
-#: includes/admin/post-types/admin-post-type.php:126
-#: includes/admin/post-types/admin-taxonomy.php:126
+#: includes/admin/post-types/admin-post-type.php:129
+#: includes/admin/post-types/admin-taxonomy.php:131
 #: includes/fields/class-acf-field-color_picker.php:74
-#: assets/build/js/acf-internal-post-type.js:67
-#: assets/build/js/acf-internal-post-type.js:77
+#: assets/build/js/acf-internal-post-type.js:72
+#: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
 msgstr "મૂળભૂત"
 
@@ -4595,7 +4727,7 @@ msgstr ""
 #: includes/fields/class-acf-field-date_time_picker.php:75
 msgctxt "Date Time Picker JS secondText"
 msgid "Second"
-msgstr ""
+msgstr "સેકન્ડ"
 
 #: includes/fields/class-acf-field-date_time_picker.php:74
 msgctxt "Date Time Picker JS minuteText"
@@ -4625,12 +4757,12 @@ msgstr ""
 msgid "Endpoint"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:115
+#: includes/admin/views/acf-field-group/options.php:128
 #: includes/fields/class-acf-field-tab.php:115
 msgid "Left aligned"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:114
+#: includes/admin/views/acf-field-group/options.php:127
 #: includes/fields/class-acf-field-tab.php:114
 msgid "Top aligned"
 msgstr ""
@@ -4641,7 +4773,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-tab.php:26
 msgid "Tab"
-msgstr ""
+msgstr "ટેબ"
 
 #: includes/fields/class-acf-field-url.php:162
 msgid "Value must be a valid URL"
@@ -4649,7 +4781,7 @@ msgstr "મૂલ્ય એક માન્ય URL હોવું આવશ્�
 
 #: includes/fields/class-acf-field-link.php:177
 msgid "Link URL"
-msgstr ""
+msgstr "લિંક યુઆરએલ"
 
 #: includes/fields/class-acf-field-link.php:176
 msgid "Link Array"
@@ -4693,7 +4825,7 @@ msgstr ""
 #: includes/fields/class-acf-field-button-group.php:175
 #: includes/fields/class-acf-field-checkbox.php:379
 #: includes/fields/class-acf-field-radio.php:220
-#: includes/fields/class-acf-field-select.php:405
+#: includes/fields/class-acf-field-select.php:399
 msgid "Both (Array)"
 msgstr ""
 
@@ -4701,14 +4833,14 @@ msgstr ""
 #: includes/fields/class-acf-field-button-group.php:174
 #: includes/fields/class-acf-field-checkbox.php:378
 #: includes/fields/class-acf-field-radio.php:219
-#: includes/fields/class-acf-field-select.php:404
+#: includes/fields/class-acf-field-select.php:398
 msgid "Label"
 msgstr "લેબલ"
 
 #: includes/fields/class-acf-field-button-group.php:173
 #: includes/fields/class-acf-field-checkbox.php:377
 #: includes/fields/class-acf-field-radio.php:218
-#: includes/fields/class-acf-field-select.php:403
+#: includes/fields/class-acf-field-select.php:397
 msgid "Value"
 msgstr "મૂલ્ય"
 
@@ -4722,33 +4854,33 @@ msgstr "ઊભું"
 #: includes/fields/class-acf-field-checkbox.php:442
 #: includes/fields/class-acf-field-radio.php:293
 msgid "Horizontal"
-msgstr ""
+msgstr "આડું"
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "red : Red"
 msgstr ""
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "For more control, you may specify both a value and label like this:"
 msgstr "વધુ નિયંત્રણ માટે, તમે આના જેવું મૂલ્ય અને નામપટ્ટી બંનેનો ઉલ્લેખ કરી શકો છો:"
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "Enter each choice on a new line."
 msgstr "દરેક પસંદગીને નવી લાઇન પર દાખલ કરો."
 
 #: includes/fields/class-acf-field-button-group.php:147
 #: includes/fields/class-acf-field-checkbox.php:351
 #: includes/fields/class-acf-field-radio.php:192
-#: includes/fields/class-acf-field-select.php:375
+#: includes/fields/class-acf-field-select.php:369
 msgid "Choices"
 msgstr "પસંદગીઓ"
 
@@ -4758,19 +4890,19 @@ msgstr ""
 
 #: includes/fields/class-acf-field-button-group.php:194
 #: includes/fields/class-acf-field-page_link.php:538
-#: includes/fields/class-acf-field-post_object.php:455
+#: includes/fields/class-acf-field-post_object.php:448
 #: includes/fields/class-acf-field-radio.php:238
-#: includes/fields/class-acf-field-select.php:435
-#: includes/fields/class-acf-field-taxonomy.php:789
-#: includes/fields/class-acf-field-user.php:107
+#: includes/fields/class-acf-field-select.php:429
+#: includes/fields/class-acf-field-taxonomy.php:772
+#: includes/fields/class-acf-field-user.php:103
 msgid "Allow Null"
 msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:263
-#: includes/fields/class-acf-field-post_object.php:264
-#: includes/fields/class-acf-field-taxonomy.php:935
+#: includes/fields/class-acf-field-post_object.php:257
+#: includes/fields/class-acf-field-taxonomy.php:930
 msgid "Parent"
-msgstr ""
+msgstr "પેરેન્ટ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:397
 msgid "TinyMCE will not be initialized until field is clicked"
@@ -4786,7 +4918,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-wysiwyg.php:369
 msgid "Toolbar"
-msgstr ""
+msgstr "ટૂલબાર"
 
 #: includes/fields/class-acf-field-wysiwyg.php:361
 msgid "Text Only"
@@ -4802,7 +4934,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-wysiwyg.php:354
 msgid "Tabs"
-msgstr ""
+msgstr "ટૅબ્સ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:292
 msgid "Click to initialize TinyMCE"
@@ -4815,7 +4947,7 @@ msgstr "લખાણ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:285
 msgid "Visual"
-msgstr ""
+msgstr "દ્રશ્ય"
 
 #: includes/fields/class-acf-field-text.php:183
 #: includes/fields/class-acf-field-textarea.php:236
@@ -4898,116 +5030,116 @@ msgstr "નવી પોસ્ટ બનાવતી વખતે દેખા�
 msgid "Text"
 msgstr "લખાણ"
 
-#: includes/fields/class-acf-field-relationship.php:789
+#: includes/fields/class-acf-field-relationship.php:794
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s ને ઓછામાં ઓછા %2$s પસંદગીની જરૂર છે"
 msgstr[1] "%1$s ને ઓછામાં ઓછી %2$s પસંદગીની જરૂર છે"
 
-#: includes/fields/class-acf-field-post_object.php:424
-#: includes/fields/class-acf-field-relationship.php:651
+#: includes/fields/class-acf-field-post_object.php:417
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Post ID"
 msgstr ""
 
-#: includes/fields/class-acf-field-post_object.php:25
-#: includes/fields/class-acf-field-post_object.php:423
-#: includes/fields/class-acf-field-relationship.php:650
+#: includes/fields/class-acf-field-post_object.php:17
+#: includes/fields/class-acf-field-post_object.php:416
+#: includes/fields/class-acf-field-relationship.php:643
 msgid "Post Object"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:683
+#: includes/fields/class-acf-field-relationship.php:676
 msgid "Maximum Posts"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:673
+#: includes/fields/class-acf-field-relationship.php:666
 msgid "Minimum Posts"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:168
+#: includes/admin/views/acf-field-group/options.php:181
 #: includes/admin/views/acf-post-type/advanced-settings.php:25
-#: includes/fields/class-acf-field-relationship.php:708
+#: includes/fields/class-acf-field-relationship.php:701
 msgid "Featured Image"
-msgstr ""
+msgstr "ફીચર્ડ છબી"
 
-#: includes/fields/class-acf-field-relationship.php:704
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Selected elements will be displayed in each result"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:703
+#: includes/fields/class-acf-field-relationship.php:696
 msgid "Elements"
-msgstr ""
+msgstr "તત્વો"
 
-#: includes/fields/class-acf-field-relationship.php:637
-#: includes/fields/class-acf-field-taxonomy.php:28
-#: includes/fields/class-acf-field-taxonomy.php:709
+#: includes/fields/class-acf-field-relationship.php:630
+#: includes/fields/class-acf-field-taxonomy.php:20
+#: includes/fields/class-acf-field-taxonomy.php:692
 #: includes/locations/class-acf-location-taxonomy.php:22
 msgid "Taxonomy"
 msgstr "વર્ગીકરણ"
 
-#: includes/fields/class-acf-field-relationship.php:636
+#: includes/fields/class-acf-field-relationship.php:629
 #: includes/locations/class-acf-location-post-type.php:22
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Type"
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર"
 
-#: includes/fields/class-acf-field-relationship.php:630
+#: includes/fields/class-acf-field-relationship.php:623
 msgid "Filters"
 msgstr "ફિલ્ટર્સ"
 
 #: includes/fields/class-acf-field-page_link.php:499
-#: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-post_object.php:404
+#: includes/fields/class-acf-field-relationship.php:616
 msgid "All taxonomies"
 msgstr "બધા વર્ગીકરણ"
 
 #: includes/fields/class-acf-field-page_link.php:491
-#: includes/fields/class-acf-field-post_object.php:403
-#: includes/fields/class-acf-field-relationship.php:615
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:608
 msgid "Filter by Taxonomy"
 msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:469
-#: includes/fields/class-acf-field-post_object.php:381
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-post_object.php:374
+#: includes/fields/class-acf-field-relationship.php:586
 msgid "All post types"
 msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:461
-#: includes/fields/class-acf-field-post_object.php:373
-#: includes/fields/class-acf-field-relationship.php:585
+#: includes/fields/class-acf-field-post_object.php:366
+#: includes/fields/class-acf-field-relationship.php:578
 msgid "Filter by Post Type"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:483
+#: includes/fields/class-acf-field-relationship.php:476
 msgid "Search..."
-msgstr ""
+msgstr "શોધો"
 
-#: includes/fields/class-acf-field-relationship.php:413
+#: includes/fields/class-acf-field-relationship.php:406
 msgid "Select taxonomy"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:404
+#: includes/fields/class-acf-field-relationship.php:397
 msgid "Select post type"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:68
+#: includes/fields/class-acf-field-relationship.php:61
 #: assets/build/js/acf-input.js:3925 assets/build/js/acf-input.js:4208
 msgid "No matches found"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:67
+#: includes/fields/class-acf-field-relationship.php:60
 #: assets/build/js/acf-input.js:3908 assets/build/js/acf-input.js:4187
 msgid "Loading"
-msgstr ""
+msgstr "લોડ કરી રહ્યું છે"
 
-#: includes/fields/class-acf-field-relationship.php:66
+#: includes/fields/class-acf-field-relationship.php:59
 #: assets/build/js/acf-input.js:3817 assets/build/js/acf-input.js:4083
 msgid "Maximum values reached ( {max} values )"
 msgstr "મહત્તમ મૂલ્યો પહોંચી ગયા ( {max} મૂલ્યો )"
 
-#: includes/fields/class-acf-field-relationship.php:25
+#: includes/fields/class-acf-field-relationship.php:17
 msgid "Relationship"
-msgstr ""
+msgstr "સંબંધ"
 
 #: includes/fields/class-acf-field-file.php:291
 #: includes/fields/class-acf-field-image.php:317
@@ -5030,7 +5162,7 @@ msgstr "મહત્તમ"
 #: includes/fields/class-acf-field-image.php:271
 #: includes/fields/class-acf-field-image.php:307
 msgid "File size"
-msgstr ""
+msgstr "ફાઈલ સાઇઝ઼:"
 
 #: includes/fields/class-acf-field-image.php:245
 #: includes/fields/class-acf-field-image.php:281
@@ -5045,7 +5177,7 @@ msgstr "ન્યૂનતમ"
 #: includes/fields/class-acf-field-file.php:235
 #: includes/fields/class-acf-field-image.php:210
 msgid "Uploaded to post"
-msgstr ""
+msgstr "પોસ્ટમાં અપલોડ કરવામાં આવ્યું છે"
 
 #: includes/fields/class-acf-field-file.php:234
 #: includes/fields/class-acf-field-image.php:209
@@ -5067,7 +5199,7 @@ msgstr "મીડિયા લાઇબ્રેરીની પસંદગી�
 #: includes/fields/class-acf-field-file.php:228
 #: includes/fields/class-acf-field-image.php:203
 msgid "Library"
-msgstr ""
+msgstr "લાઇબ્રેરી"
 
 #: includes/fields/class-acf-field-image.php:336
 msgid "Preview Size"
@@ -5098,7 +5230,7 @@ msgstr "અગ્રભાગ પર પરત કરેલ મૂલ્યન�
 #: includes/fields/class-acf-field-file.php:212
 #: includes/fields/class-acf-field-link.php:170
 #: includes/fields/class-acf-field-radio.php:212
-#: includes/fields/class-acf-field-taxonomy.php:753
+#: includes/fields/class-acf-field-taxonomy.php:736
 msgid "Return Value"
 msgstr "વળતર મૂલ્ય"
 
@@ -5112,8 +5244,8 @@ msgstr "કોઇ ચિત્ર પસંદ નથી કયુઁ"
 
 #: includes/assets.php:352 includes/fields/class-acf-field-file.php:162
 #: includes/fields/class-acf-field-image.php:142
-#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1566
-#: assets/build/js/acf.js:1661
+#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1567
+#: assets/build/js/acf.js:1662
 msgid "Remove"
 msgstr "દૂર કરો"
 
@@ -5221,7 +5353,7 @@ msgstr "પૂર્ણ"
 
 #: includes/fields/class-acf-field-date_picker.php:25
 msgid "Date Picker"
-msgstr ""
+msgstr "તારીખ પીકર"
 
 #: includes/fields/class-acf-field-image.php:248
 #: includes/fields/class-acf-field-image.php:284
@@ -5236,7 +5368,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-oembed.php:222
 msgid "Enter URL"
-msgstr ""
+msgstr "યુઆરએલ દાખલ કરો"
 
 #: includes/fields/class-acf-field-oembed.php:25
 msgid "oEmbed"
@@ -5258,7 +5390,7 @@ msgstr ""
 msgid "On Text"
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:456
+#: includes/fields/class-acf-field-select.php:450
 #: includes/fields/class-acf-field-true_false.php:199
 msgid "Stylized UI"
 msgstr ""
@@ -5270,7 +5402,7 @@ msgstr ""
 #: includes/fields/class-acf-field-number.php:128
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-range.php:164
-#: includes/fields/class-acf-field-select.php:386
+#: includes/fields/class-acf-field-select.php:380
 #: includes/fields/class-acf-field-text.php:97
 #: includes/fields/class-acf-field-textarea.php:103
 #: includes/fields/class-acf-field-true_false.php:147
@@ -5291,13 +5423,13 @@ msgstr "સંદેશ"
 
 #: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:86
 #: includes/fields/class-acf-field-true_false.php:187
-#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
+#: assets/build/js/acf.js:1744 assets/build/js/acf.js:1862
 msgid "No"
 msgstr "ના"
 
 #: includes/assets.php:350 includes/fields/class-acf-field-true_false.php:83
 #: includes/fields/class-acf-field-true_false.php:171
-#: assets/build/js/acf.js:1742 assets/build/js/acf.js:1860
+#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
 msgid "Yes"
 msgstr "હા"
 
@@ -5307,13 +5439,13 @@ msgstr "સાચું / ખોટું"
 
 #: includes/fields/class-acf-field-group.php:474
 msgid "Row"
-msgstr ""
+msgstr "પંક્તિ"
 
 #: includes/fields/class-acf-field-group.php:473
 msgid "Table"
 msgstr "ટેબલ"
 
-#: includes/admin/post-types/admin-field-group.php:131
+#: includes/admin/post-types/admin-field-group.php:132
 #: includes/fields/class-acf-field-group.php:472
 msgid "Block"
 msgstr "બ્લોક"
@@ -5335,7 +5467,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-group.php:25
 msgid "Group"
-msgstr ""
+msgstr "જૂથ"
 
 #: includes/fields/class-acf-field-google-map.php:235
 msgid "Customize the map height"
@@ -5379,7 +5511,7 @@ msgid "Clear location"
 msgstr "સ્થાન સાફ કરો"
 
 #: includes/fields/class-acf-field-google-map.php:158
-#: includes/fields/class-acf-field-relationship.php:635
+#: includes/fields/class-acf-field-relationship.php:628
 msgid "Search"
 msgstr "શોધો"
 
@@ -5402,11 +5534,11 @@ msgstr ""
 #: includes/fields/class-acf-field-date_picker.php:211
 #: includes/fields/class-acf-field-date_time_picker.php:200
 #: includes/fields/class-acf-field-image.php:187
-#: includes/fields/class-acf-field-post_object.php:418
-#: includes/fields/class-acf-field-relationship.php:645
-#: includes/fields/class-acf-field-select.php:397
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-select.php:391
 #: includes/fields/class-acf-field-time_picker.php:131
-#: includes/fields/class-acf-field-user.php:70
+#: includes/fields/class-acf-field-user.php:66
 msgid "Return Format"
 msgstr ""
 
@@ -5417,7 +5549,7 @@ msgstr ""
 #: includes/fields/class-acf-field-time_picker.php:123
 #: includes/fields/class-acf-field-time_picker.php:139
 msgid "Custom:"
-msgstr ""
+msgstr "કસ્ટમ:"
 
 #: includes/fields/class-acf-field-date_picker.php:182
 #: includes/fields/class-acf-field-date_time_picker.php:183
@@ -5433,82 +5565,82 @@ msgstr ""
 
 #: includes/fields/class-acf-field-time_picker.php:25
 msgid "Time Picker"
-msgstr ""
+msgstr "તારીખ પીકર"
 
 #. translators: counts for inactive field groups
-#: acf.php:491
+#: acf.php:497
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: acf.php:450
+#: acf.php:456
 msgid "No Fields found in Trash"
 msgstr ""
 
-#: acf.php:449
+#: acf.php:455
 msgid "No Fields found"
 msgstr "કોઈ ક્ષેત્રો મળ્યાં નથી"
 
-#: acf.php:448
+#: acf.php:454
 msgid "Search Fields"
 msgstr "શોધ ક્ષેત્રો"
 
-#: acf.php:447
+#: acf.php:453
 msgid "View Field"
 msgstr "ક્ષેત્ર જુઓ"
 
-#: acf.php:446 includes/admin/views/acf-field-group/fields.php:115
+#: acf.php:452 includes/admin/views/acf-field-group/fields.php:115
 msgid "New Field"
 msgstr "નવી ફીલ્ડ"
 
-#: acf.php:445
+#: acf.php:451
 msgid "Edit Field"
 msgstr "ફીલ્ડ સંપાદિત કરો"
 
-#: acf.php:444
+#: acf.php:450
 msgid "Add New Field"
 msgstr "નવી ફીલ્ડ ઉમેરો"
 
-#: acf.php:442
+#: acf.php:448
 msgid "Field"
 msgstr "ફિલ્ડ"
 
-#: acf.php:441 includes/admin/post-types/admin-field-group.php:154
+#: acf.php:447 includes/admin/post-types/admin-field-group.php:155
 #: includes/admin/post-types/admin-field-groups.php:119
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "ક્ષેત્રો"
 
-#: acf.php:416
+#: acf.php:422
 msgid "No Field Groups found in Trash"
 msgstr ""
 
-#: acf.php:415
+#: acf.php:421
 msgid "No Field Groups found"
 msgstr "કોઈ ક્ષેત્ર જૂથો મળ્યાં નથી"
 
-#: acf.php:414
+#: acf.php:420
 msgid "Search Field Groups"
 msgstr "ક્ષેત્ર જૂથો શોધો"
 
-#: acf.php:413
+#: acf.php:419
 msgid "View Field Group"
 msgstr "ક્ષેત્ર જૂથ જુઓ"
 
-#: acf.php:412
+#: acf.php:418
 msgid "New Field Group"
 msgstr "નવું ક્ષેત્ર જૂથ"
 
-#: acf.php:411
+#: acf.php:417
 msgid "Edit Field Group"
 msgstr "ક્ષેત્ર જૂથ સંપાદિત કરો"
 
-#: acf.php:410
+#: acf.php:416
 msgid "Add New Field Group"
 msgstr "નવું ક્ષેત્ર જૂથ ઉમેરો"
 
-#: acf.php:409 acf.php:443
+#: acf.php:415 acf.php:449
 #: includes/admin/views/acf-post-type/advanced-settings.php:215
 #: includes/admin/views/acf-post-type/advanced-settings.php:217
 #: includes/post-types/class-acf-post-type.php:92
@@ -5516,11 +5648,11 @@ msgstr "નવું ક્ષેત્ર જૂથ ઉમેરો"
 msgid "Add New"
 msgstr "નવું ઉમેરો"
 
-#: acf.php:408
+#: acf.php:414
 msgid "Field Group"
 msgstr "ક્ષેત્ર જૂથ"
 
-#: acf.php:407 includes/admin/post-types/admin-field-groups.php:78
+#: acf.php:413 includes/admin/post-types/admin-field-groups.php:78
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"

@@ -11,6 +11,10 @@ foreach ( acf_get_combined_taxonomy_settings_tabs() as $tab_key => $tab_label ) 
 		)
 	);
 
+	$wrapper_class = str_replace( '_', '-', $tab_key );
+
+	echo '<div class="acf-taxonomy-advanced-settings acf-taxonomy-' . esc_attr( $wrapper_class ) . '-settings">';
+
 	switch ( $tab_key ) {
 		case 'general':
 			acf_render_field_wrap(
@@ -1219,4 +1223,6 @@ foreach ( acf_get_combined_taxonomy_settings_tabs() as $tab_key => $tab_label ) 
 	}
 
 	do_action( "acf/taxonomy/render_settings_tab/{$tab_key}", $acf_taxonomy );
+
+	echo '</div>';
 }

@@ -233,12 +233,6 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 			// update data (needed for ajax location rules to work)
 			acf_set_data( 'nav_menu_id', $menu_id );
 
-			// Use custom walker class to inject "wp_nav_menu_item_custom_fields" action prioir to WP 5.4.
-			if ( acf_version_compare( 'wp', '<', '5.3.99' ) ) {
-				acf_include( 'includes/walkers/class-acf-walker-nav-menu-edit.php' );
-				return 'ACF_Walker_Nav_Menu_Edit';
-			}
-
 			// Return class.
 			return $class;
 		}

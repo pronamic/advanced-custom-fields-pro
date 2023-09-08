@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-08-09T12:53:50+00:00\n"
+"PO-Revision-Date: 2023-09-07T15:02:44+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: es_CR\n"
 "MIME-Version: 1.0\n"
@@ -21,18 +21,123 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/views/global/navigation.php:93
+msgid "4 Months Free"
+msgstr ""
+
+#. translators: %s - A singular label for a post type or taxonomy.
+#: includes/admin/views/global/form-top.php:56
+msgid " (Duplicated from %s)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:298
+msgid "Select Options Pages"
+msgstr ""
+
+#: includes/admin/post-types/admin-taxonomy.php:107
+msgid "Duplicate taxonomy"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:106
+#: includes/admin/post-types/admin-taxonomy.php:106
+msgid "Create taxonomy"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:105
+msgid "Duplicate post type"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:104
+#: includes/admin/post-types/admin-taxonomy.php:108
+msgid "Create post type"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:103
+#: includes/admin/post-types/admin-taxonomy.php:105
+msgid "Link field groups"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:102
+#: includes/admin/post-types/admin-taxonomy.php:104
+msgid "Add fields"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:121
+#: assets/build/js/acf-field-group.js:2744
+#: assets/build/js/acf-field-group.js:3220
+msgid "This Field"
+msgstr ""
+
+#: includes/admin/admin.php:265
+msgid "ACF PRO"
+msgstr ""
+
+#: includes/admin/admin.php:263
+msgid "Feedback"
+msgstr ""
+
+#: includes/admin/admin.php:261
+msgid "Support"
+msgstr ""
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:236
+msgid "is developed and maintained by"
+msgstr ""
+
+#. translators: %s - either "post type" or "taxonomy"
+#: includes/admin/admin-internal-post-type.php:321
+msgid "Add this %s to the location rules of the selected field groups."
+msgstr ""
+
+#. translators: %s the URL to ACF's bidirectional relationship documentation
+#: includes/acf-bidirectional-functions.php:271
+msgid ""
+"Enabling the bidirectional setting allows you to update a value in the "
+"target fields for each value selected for this field, adding or removing the "
+"Post ID, Taxonomy ID or User ID of the item being updated. For more "
+"information, please read the <a href=\"%s\" target=\"_blank\">documentation</"
+"a>."
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:247
+msgid ""
+"Select field(s) to store the reference back to the item being updated. You "
+"may select this field. Target fields must be compatible with where this "
+"field is being displayed. For example, if this field is displayed on a "
+"Taxonomy, your target field should be of type Taxonomy"
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:246
+msgid "Target Field"
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:220
+msgid "Update a field on the selected values, referencing back to this ID"
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:219
+msgid "Bidirectional"
+msgstr ""
+
+#. translators: %s A field type name, such as "Relationship"
+#: includes/acf-bidirectional-functions.php:192
+msgid "%s Field"
+msgstr ""
+
 #: includes/fields/class-acf-field-page_link.php:517
-#: includes/fields/class-acf-field-post_object.php:433
-#: includes/fields/class-acf-field-select.php:413
-#: includes/fields/class-acf-field-user.php:86
+#: includes/fields/class-acf-field-post_object.php:426
+#: includes/fields/class-acf-field-select.php:407
+#: includes/fields/class-acf-field-user.php:82
 msgid "Select Multiple"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:141
+#: includes/admin/views/global/navigation.php:211
 msgid "WP Engine logo"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:42
+#: includes/admin/views/acf-taxonomy/basic-settings.php:58
 msgid "Lower case letters, underscores and dashes only, Max 32 characters."
 msgstr ""
 
@@ -102,12 +207,8 @@ msgstr ""
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
 msgstr ""
 
-#: includes/admin/admin.php:238
-msgid "from"
-msgstr ""
-
 #. translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre"
-#: includes/admin/views/global/form-top.php:17
+#: includes/admin/views/global/form-top.php:19
 msgid "%s fields"
 msgstr ""
 
@@ -143,8 +244,8 @@ msgid "No description"
 msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:484
-#: includes/fields/class-acf-field-post_object.php:396
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-post_object.php:389
+#: includes/fields/class-acf-field-relationship.php:601
 msgid "Any post status"
 msgstr ""
 
@@ -270,7 +371,7 @@ msgstr ""
 msgid "WYSIWYG Editor"
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:22
+#: includes/fields/class-acf-field-user.php:17
 msgid ""
 "Allows the selection of one or more users which can be used to create "
 "relationships between data objects."
@@ -304,7 +405,7 @@ msgstr ""
 msgid "A basic text input, useful for storing single string values."
 msgstr ""
 
-#: includes/fields/class-acf-field-taxonomy.php:30
+#: includes/fields/class-acf-field-taxonomy.php:22
 msgid ""
 "Allows the selection of one or more taxonomy terms based on the criteria and "
 "options specified in the fields settings."
@@ -320,7 +421,7 @@ msgstr ""
 msgid "A dropdown list with a selection of choices that you specify."
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:27
+#: includes/fields/class-acf-field-relationship.php:19
 msgid ""
 "A dual-column interface to select one or more posts, pages, or custom post "
 "type items to create a relationship with the item that you're currently "
@@ -339,7 +440,7 @@ msgid ""
 "selection from values that you specify."
 msgstr ""
 
-#: includes/fields/class-acf-field-post_object.php:27
+#: includes/fields/class-acf-field-post_object.php:19
 msgid ""
 "An interactive and customizable UI for picking one or many posts, pages or "
 "post type items with the option to search. "
@@ -350,8 +451,8 @@ msgid "An input for providing a password using a masked field."
 msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:476
-#: includes/fields/class-acf-field-post_object.php:388
-#: includes/fields/class-acf-field-relationship.php:600
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:593
 msgid "Filter by Post Status"
 msgstr ""
 
@@ -441,14 +542,14 @@ msgid ""
 "are shown while editing content. Useful for keeping large datasets tidy."
 msgstr ""
 
-#: includes/fields.php:474
+#: includes/fields.php:475
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
 "can be repeated again and again."
 msgstr ""
 
-#: includes/fields.php:464
+#: includes/fields.php:465
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -456,14 +557,14 @@ msgid ""
 "and the minimum/maximum number of attachments allowed."
 msgstr ""
 
-#: includes/fields.php:454
+#: includes/fields.php:455
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
 "control by using layouts and subfields to design the available blocks."
 msgstr ""
 
-#: includes/fields.php:444
+#: includes/fields.php:445
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -471,16 +572,16 @@ msgid ""
 "or display the selected fields as a group of subfields."
 msgstr ""
 
-#: includes/fields.php:441
+#: includes/fields.php:442
 msgctxt "noun"
 msgid "Clone"
 msgstr ""
 
-#: includes/fields.php:357
+#: includes/admin/views/global/navigation.php:82 includes/fields.php:357
 msgid "PRO"
 msgstr ""
 
-#: includes/fields.php:355
+#: includes/fields.php:355 includes/fields.php:412
 msgid "Advanced"
 msgstr ""
 
@@ -500,7 +601,7 @@ msgstr ""
 msgid "Invalid post type selected for review."
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:115
+#: includes/admin/views/global/navigation.php:182
 msgid "More"
 msgstr ""
 
@@ -554,30 +655,30 @@ msgstr ""
 msgid "Add Your First Taxonomy"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:106
+#: includes/admin/views/acf-taxonomy/basic-settings.php:122
 msgid "Hierarchical taxonomies can have descendants (like categories)."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:91
+#: includes/admin/views/acf-taxonomy/basic-settings.php:107
 msgid "Makes a taxonomy visible on the frontend and in the admin dashboard."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:75
+#: includes/admin/views/acf-taxonomy/basic-settings.php:91
 msgid "One or many post types that can be classified with this taxonomy."
 msgstr ""
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:44
+#: includes/admin/views/acf-taxonomy/basic-settings.php:60
 msgid "genre"
 msgstr ""
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:26
+#: includes/admin/views/acf-taxonomy/basic-settings.php:42
 msgid "Genre"
 msgstr ""
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:9
+#: includes/admin/views/acf-taxonomy/basic-settings.php:25
 msgid "Genres"
 msgstr ""
 
@@ -621,7 +722,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:909
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1026
-#: includes/admin/views/acf-taxonomy/basic-settings.php:41
+#: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
 msgstr ""
 
@@ -1128,61 +1229,61 @@ msgstr ""
 msgid "Add Your First Post Type"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:120
-#: includes/admin/views/acf-taxonomy/basic-settings.php:119
+#: includes/admin/views/acf-post-type/basic-settings.php:136
+#: includes/admin/views/acf-taxonomy/basic-settings.php:135
 msgid "I know what I'm doing, show me all the options."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:119
-#: includes/admin/views/acf-taxonomy/basic-settings.php:118
+#: includes/admin/views/acf-post-type/basic-settings.php:135
+#: includes/admin/views/acf-taxonomy/basic-settings.php:134
 msgid "Advanced Configuration"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:107
+#: includes/admin/views/acf-post-type/basic-settings.php:123
 msgid "Hierarchical post types can have descendants (like pages)."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:106
+#: includes/admin/views/acf-post-type/basic-settings.php:122
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:976
-#: includes/admin/views/acf-taxonomy/basic-settings.php:105
+#: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:91
+#: includes/admin/views/acf-post-type/basic-settings.php:107
 msgid "Visible on the frontend and in the admin dashboard."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:90
-#: includes/admin/views/acf-taxonomy/basic-settings.php:90
+#: includes/admin/views/acf-post-type/basic-settings.php:106
+#: includes/admin/views/acf-taxonomy/basic-settings.php:106
 msgid "Public"
 msgstr ""
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:43
+#: includes/admin/views/acf-post-type/basic-settings.php:59
 msgid "movie"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:41
+#: includes/admin/views/acf-post-type/basic-settings.php:57
 msgid "Lower case letters, underscores and dashes only, Max 20 characters."
 msgstr ""
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:25
+#: includes/admin/views/acf-post-type/basic-settings.php:41
 msgid "Movie"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:23
-#: includes/admin/views/acf-taxonomy/basic-settings.php:24
+#: includes/admin/views/acf-post-type/basic-settings.php:39
+#: includes/admin/views/acf-taxonomy/basic-settings.php:40
 msgid "Singular Label"
 msgstr ""
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:8
+#: includes/admin/views/acf-post-type/basic-settings.php:24
 msgid "Movies"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:6
-#: includes/admin/views/acf-taxonomy/basic-settings.php:7
+#: includes/admin/views/acf-post-type/basic-settings.php:22
+#: includes/admin/views/acf-taxonomy/basic-settings.php:23
 msgid "Plural Label"
 msgstr ""
 
@@ -1345,7 +1446,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:980
 #: includes/admin/views/acf-post-type/advanced-settings.php:1150
-#: includes/admin/views/acf-post-type/basic-settings.php:40
+#: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
 msgstr ""
 
@@ -2048,7 +2149,7 @@ msgstr ""
 msgid "Trackbacks"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:71
+#: includes/admin/views/acf-post-type/basic-settings.php:87
 msgid "Select existing taxonomies to classify items of the post type."
 msgstr ""
 
@@ -2101,7 +2202,7 @@ msgstr ""
 msgid "Import from Custom Post Type UI"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:390
+#: includes/admin/tools/class-acf-admin-tool-export.php:412
 msgid ""
 "The following code can be used to register a local version of the selected "
 "items. Storing field groups, post types, or taxonomies locally can provide "
@@ -2111,11 +2212,11 @@ msgid ""
 "the items from the ACF admin."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:389
+#: includes/admin/tools/class-acf-admin-tool-export.php:411
 msgid "Export - Generate PHP"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:362
+#: includes/admin/tools/class-acf-admin-tool-export.php:384
 msgid "Export"
 msgstr ""
 
@@ -2133,21 +2234,16 @@ msgid_plural "Exported %s items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/post-types/admin-taxonomy.php:124
-#: assets/build/js/acf-internal-post-type.js:177
-#: assets/build/js/acf-internal-post-type.js:247
+#: includes/admin/post-types/admin-taxonomy.php:129
+#: assets/build/js/acf-internal-post-type.js:182
+#: assets/build/js/acf-internal-post-type.js:256
 msgid "Category"
 msgstr ""
 
-#: includes/admin/post-types/admin-taxonomy.php:122
-#: assets/build/js/acf-internal-post-type.js:174
-#: assets/build/js/acf-internal-post-type.js:244
+#: includes/admin/post-types/admin-taxonomy.php:127
+#: assets/build/js/acf-internal-post-type.js:179
+#: assets/build/js/acf-internal-post-type.js:253
 msgid "Tag"
-msgstr ""
-
-#: includes/admin/post-types/admin-post-type.php:102
-#: includes/admin/post-types/admin-taxonomy.php:103
-msgid "Create new post type"
 msgstr ""
 
 #. translators: %s taxonomy name
@@ -2185,7 +2281,7 @@ msgid "Taxonomy updated."
 msgstr ""
 
 #: includes/admin/post-types/admin-taxonomies.php:377
-#: includes/admin/post-types/admin-taxonomy.php:152
+#: includes/admin/post-types/admin-taxonomy.php:157
 msgid ""
 "This taxonomy could not be registered because its key is in use by another "
 "taxonomy registered by another plugin or theme."
@@ -2254,52 +2350,44 @@ msgstr[1] ""
 #: includes/admin/post-types/admin-post-types.php:112
 #: includes/admin/post-types/admin-taxonomies.php:137
 #: includes/admin/tools/class-acf-admin-tool-import.php:82
-#: includes/admin/views/acf-taxonomy/basic-settings.php:66
+#: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:90
 msgid "Post Types"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:159
-#: includes/admin/post-types/admin-taxonomy.php:159
+#: includes/admin/post-types/admin-post-type.php:162
+#: includes/admin/post-types/admin-taxonomy.php:164
 msgid "Advanced Settings"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:158
-#: includes/admin/post-types/admin-taxonomy.php:158
+#: includes/admin/post-types/admin-post-type.php:161
+#: includes/admin/post-types/admin-taxonomy.php:163
 msgid "Basic Settings"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:152
+#: includes/admin/post-types/admin-post-type.php:155
 #: includes/admin/post-types/admin-post-types.php:370
 msgid ""
 "This post type could not be registered because its key is in use by another "
 "post type registered by another plugin or theme."
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:125
-#: assets/build/js/acf-internal-post-type.js:171
-#: assets/build/js/acf-internal-post-type.js:241
+#: includes/admin/post-types/admin-post-type.php:128
+#: assets/build/js/acf-internal-post-type.js:176
+#: assets/build/js/acf-internal-post-type.js:250
 msgid "Pages"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:103
-#: includes/admin/post-types/admin-taxonomy.php:102
-msgid "Create new taxonomy"
-msgstr ""
-
-#: includes/admin/post-types/admin-post-type.php:101
-#: includes/admin/post-types/admin-taxonomy.php:101
-msgid "Link existing field groups"
+#: includes/admin/admin-internal-post-type.php:355
+msgid "Link Existing Field Groups"
 msgstr ""
 
 #. translators: %s post type name
-#: includes/admin/post-types/admin-post-type.php:82
+#: includes/admin/post-types/admin-post-type.php:80
 msgid "%s post type created"
 msgstr ""
 
-#. translators: %s post type name
 #. translators: %s taxonomy name
-#: includes/admin/post-types/admin-post-type.php:78
 #: includes/admin/post-types/admin-taxonomy.php:78
 msgid "Add fields to %s"
 msgstr ""
@@ -2341,73 +2429,67 @@ msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-field-group.js:1172
-#: assets/build/js/acf-field-group.js:2295
+#: assets/build/js/acf-field-group.js:2311
 #: assets/build/js/acf-field-group.js:1414
-#: assets/build/js/acf-field-group.js:2689
+#: assets/build/js/acf-field-group.js:2711
 msgid "PRO Only"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: assets/build/js/acf-internal-post-type.js:303
-#: assets/build/js/acf-internal-post-type.js:408
+#: assets/build/js/acf-internal-post-type.js:308
+#: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
 msgstr ""
 
 #. translators: %s - URL to ACF tools page.
-#: includes/admin/admin.php:194
+#: includes/admin/admin.php:195
 msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:48
+#: includes/admin/admin.php:48 includes/admin/admin.php:265
 msgid "ACF"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:322
 msgid "taxonomy"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:322
 msgid "post type"
 msgstr ""
 
-#. translators: %1$s - name of newly created post. %2$s - either "post type" or
-#. "taxonomy".
-#: includes/admin/admin-internal-post-type.php:335
-msgid "Link %1$s %2$s to field groups"
-msgstr ""
-
-#: includes/admin/admin-internal-post-type.php:328
+#: includes/admin/admin-internal-post-type.php:346
 msgid "Done"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:315
-msgid "Field group(s)"
+#: includes/admin/admin-internal-post-type.php:332
+msgid "Field Group(s)"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:331
 msgid "Select one or many field groups..."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:330
 msgid "Please select the field groups to link."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:277
+#: includes/admin/admin-internal-post-type.php:288
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:254
+#: includes/admin/admin-internal-post-type-list.php:261
 #: includes/admin/post-types/admin-post-types.php:371
 #: includes/admin/post-types/admin-taxonomies.php:378
 msgctxt "post status"
 msgid "Registration Failed"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:253
+#: includes/admin/admin-internal-post-type-list.php:260
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
@@ -2420,6 +2502,7 @@ msgstr ""
 
 #: includes/acf-internal-post-type-functions.php:481
 #: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:537
 msgid "Permissions"
 msgstr ""
 
@@ -2430,15 +2513,17 @@ msgstr ""
 
 #: includes/acf-internal-post-type-functions.php:479
 #: includes/acf-internal-post-type-functions.php:508
+#: includes/acf-internal-post-type-functions.php:535
 msgid "Visibility"
 msgstr ""
 
 #: includes/acf-internal-post-type-functions.php:478
 #: includes/acf-internal-post-type-functions.php:507
+#: includes/acf-internal-post-type-functions.php:536
 msgid "Labels"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:260
+#: includes/admin/post-types/admin-field-group.php:261
 msgid "Field Settings Tabs"
 msgstr ""
 
@@ -2452,19 +2537,19 @@ msgstr ""
 msgid "[ACF shortcode value disabled for preview]"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:287
-#: includes/admin/post-types/admin-field-group.php:562
+#: includes/admin/admin-internal-post-type.php:298
+#: includes/admin/post-types/admin-field-group.php:563
 msgid "Close Modal"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:1661
-#: assets/build/js/acf-field-group.js:1980
+#: assets/build/js/acf-field-group.js:1662
+#: assets/build/js/acf-field-group.js:1982
 msgid "Field moved to other group"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf.js:1440 assets/build/js/acf.js:1521
+#: assets/build/js/acf.js:1441 assets/build/js/acf.js:1522
 msgid "Close modal"
 msgstr ""
 
@@ -2476,7 +2561,7 @@ msgstr ""
 msgid "New Tab Group"
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:457
+#: includes/fields/class-acf-field-select.php:451
 #: includes/fields/class-acf-field-true_false.php:200
 msgid "Use a stylized checkbox using select2"
 msgstr ""
@@ -2505,19 +2590,19 @@ msgstr ""
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:156
+#: includes/admin/views/global/navigation.php:226
 msgid "Updates"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:94
+#: includes/admin/views/global/navigation.php:172
 msgid "Advanced Custom Fields logo"
 msgstr ""
 
-#: includes/admin/views/global/form-top.php:66
+#: includes/admin/views/global/form-top.php:89
 msgid "Save Changes"
 msgstr ""
 
-#: includes/admin/views/global/form-top.php:53
+#: includes/admin/views/global/form-top.php:76
 msgid "Field Group Title"
 msgstr ""
 
@@ -2550,6 +2635,7 @@ msgid "Add Your First Field Group"
 msgstr ""
 
 #: includes/admin/views/acf-field-group/pro-features.php:39
+#: includes/admin/views/global/navigation.php:82
 msgid "Options Pages"
 msgstr ""
 
@@ -2569,16 +2655,16 @@ msgstr ""
 msgid "Repeater Field"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:137
+#: includes/admin/views/global/navigation.php:207
 msgid "Unlock Extra Features with ACF PRO"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:252
+#: includes/admin/views/acf-field-group/options.php:265
 msgid "Delete Field Group"
 msgstr ""
 
 #. translators: 1: Post creation date 2: Post creation time
-#: includes/admin/views/acf-field-group/options.php:246
+#: includes/admin/views/acf-field-group/options.php:259
 msgid "Created on %1$s at %2$s"
 msgstr ""
 
@@ -2616,7 +2702,7 @@ msgstr ""
 #: includes/admin/views/acf-field-group/fields.php:33
 #: includes/admin/views/acf-field-group/fields.php:67
 #: includes/admin/views/acf-field-group/fields.php:103
-#: includes/admin/views/global/form-top.php:62
+#: includes/admin/views/global/form-top.php:85
 msgid "Add Field"
 msgstr ""
 
@@ -2637,7 +2723,7 @@ msgstr ""
 msgid "Import JSON"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:370
+#: includes/admin/tools/class-acf-admin-tool-export.php:392
 msgid "Export As JSON"
 msgstr ""
 
@@ -2655,34 +2741,34 @@ msgid_plural "%s field groups activated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:429
-#: includes/admin/admin-internal-post-type-list.php:460
+#: includes/admin/admin-internal-post-type-list.php:452
+#: includes/admin/admin-internal-post-type-list.php:478
 msgid "Deactivate"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:429
+#: includes/admin/admin-internal-post-type-list.php:452
 msgid "Deactivate this item"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:425
-#: includes/admin/admin-internal-post-type-list.php:459
+#: includes/admin/admin-internal-post-type-list.php:448
+#: includes/admin/admin-internal-post-type-list.php:477
 msgid "Activate"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:425
+#: includes/admin/admin-internal-post-type-list.php:448
 msgid "Activate this item"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2741
-#: assets/build/js/acf-field-group.js:3180
+#: assets/build/js/acf-field-group.js:2803
+#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr ""
 
-#: acf.php:485 includes/admin/admin-internal-post-type-list.php:241
-#: includes/admin/post-types/admin-field-group.php:288
-#: includes/admin/post-types/admin-post-type.php:292
-#: includes/admin/post-types/admin-taxonomy.php:292
+#: acf.php:491 includes/admin/admin-internal-post-type-list.php:248
+#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-post-type.php:295
+#: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Inactive"
 msgstr ""
@@ -2691,13 +2777,13 @@ msgstr ""
 msgid "WP Engine"
 msgstr ""
 
-#: acf.php:543
+#: acf.php:549
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
 msgstr ""
 
-#: acf.php:541
+#: acf.php:547
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2707,41 +2793,41 @@ msgstr ""
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
-"\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" "
+"target=\"_blank\">Learn how to fix this</a>."
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:540
+#: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-user.php:531
+#: includes/fields/class-acf-field-user.php:542
 msgid "%1$s must have a valid user ID."
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:369
+#: includes/fields/class-acf-field-user.php:380
 msgid "Invalid request."
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:690
+#: includes/fields/class-acf-field-select.php:684
 msgid "%1$s is not one of %2$s"
 msgstr ""
 
-#: includes/fields/class-acf-field-post_object.php:698
+#: includes/fields/class-acf-field-post_object.php:700
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-post_object.php:682
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:675
 msgid "%1$s must have a valid post ID."
 msgstr ""
 
@@ -2749,7 +2835,7 @@ msgstr ""
 msgid "%s requires a valid attachment ID."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:218
+#: includes/admin/views/acf-field-group/options.php:231
 msgid "Show in REST API"
 msgstr ""
 
@@ -2774,9 +2860,9 @@ msgstr ""
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:288
-#: includes/admin/post-types/admin-post-type.php:292
-#: includes/admin/post-types/admin-taxonomy.php:292
+#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-post-type.php:295
+#: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Active"
 msgstr ""
@@ -2825,18 +2911,18 @@ msgstr "Adjuntos"
 #: includes/admin/post-types/admin-post-types.php:137
 #: includes/admin/post-types/admin-taxonomies.php:112
 #: includes/admin/tools/class-acf-admin-tool-import.php:93
-#: includes/admin/views/acf-post-type/basic-settings.php:70
+#: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
 msgid "Taxonomies"
 msgstr "Taxonomías"
 
 #: includes/acf-wp-functions.php:41
-#: includes/admin/post-types/admin-post-type.php:123
+#: includes/admin/post-types/admin-post-type.php:126
 #: includes/admin/post-types/admin-post-types.php:139
 #: includes/admin/views/acf-post-type/advanced-settings.php:102
-#: assets/build/js/acf-internal-post-type.js:168
-#: assets/build/js/acf-internal-post-type.js:238
+#: assets/build/js/acf-internal-post-type.js:173
+#: assets/build/js/acf-internal-post-type.js:247
 msgid "Posts"
 msgstr "Entradas"
 
@@ -2852,32 +2938,32 @@ msgstr ""
 msgid "Invalid field group parameter(s)."
 msgstr "Parámetros del grupo de campos inválido."
 
-#: includes/admin/admin-internal-post-type-list.php:395
+#: includes/admin/admin-internal-post-type-list.php:413
 msgid "Awaiting save"
 msgstr "Esperando guardado"
 
-#: includes/admin/admin-internal-post-type-list.php:392
+#: includes/admin/admin-internal-post-type-list.php:410
 msgid "Saved"
 msgstr "Guardado"
 
-#: includes/admin/admin-internal-post-type-list.php:388
+#: includes/admin/admin-internal-post-type-list.php:406
 #: includes/admin/tools/class-acf-admin-tool-import.php:49
 msgid "Import"
 msgstr "Importar"
 
-#: includes/admin/admin-internal-post-type-list.php:384
+#: includes/admin/admin-internal-post-type-list.php:402
 msgid "Review changes"
 msgstr "Revisar cambios"
 
-#: includes/admin/admin-internal-post-type-list.php:360
+#: includes/admin/admin-internal-post-type-list.php:378
 msgid "Located in: %s"
 msgstr "Ubicado en: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:357
+#: includes/admin/admin-internal-post-type-list.php:375
 msgid "Located in plugin: %s"
 msgstr "Ubicado en plugin: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:354
+#: includes/admin/admin-internal-post-type-list.php:372
 msgid "Located in theme: %s"
 msgstr "Ubicado en el tema: %s"
 
@@ -2885,36 +2971,36 @@ msgstr "Ubicado en el tema: %s"
 msgid "Various"
 msgstr "Varios"
 
-#: includes/admin/admin-internal-post-type-list.php:209
-#: includes/admin/admin-internal-post-type-list.php:467
+#: includes/admin/admin-internal-post-type-list.php:216
+#: includes/admin/admin-internal-post-type-list.php:485
 msgid "Sync changes"
 msgstr "Sincronizar cambios"
 
-#: includes/admin/admin-internal-post-type-list.php:208
+#: includes/admin/admin-internal-post-type-list.php:215
 msgid "Loading diff"
 msgstr "Cargando diff"
 
-#: includes/admin/admin-internal-post-type-list.php:207
+#: includes/admin/admin-internal-post-type-list.php:214
 msgid "Review local JSON changes"
 msgstr "Revisar cambios de JSON local"
 
-#: includes/admin/admin.php:169
+#: includes/admin/admin.php:170
 msgid "Visit website"
 msgstr "Visitar web"
 
-#: includes/admin/admin.php:168
+#: includes/admin/admin.php:169
 msgid "View details"
 msgstr "Ver detalles"
 
-#: includes/admin/admin.php:167
+#: includes/admin/admin.php:168
 msgid "Version %s"
 msgstr "Versión: %s"
 
-#: includes/admin/admin.php:166
+#: includes/admin/admin.php:167
 msgid "Information"
 msgstr "Información"
 
-#: includes/admin/admin.php:157
+#: includes/admin/admin.php:158
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
@@ -2923,14 +3009,14 @@ msgstr ""
 "soporte de nuestro centro de ayuda le ayudarán más en profundidad con los "
 "retos técnicos."
 
-#: includes/admin/admin.php:153
+#: includes/admin/admin.php:154
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
 "friendly community on our Community Forums who may be able to help you "
 "figure out the 'how-tos' of the ACF world."
 msgstr ""
 
-#: includes/admin/admin.php:149
+#: includes/admin/admin.php:150
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
 "documentation contains references and guides for most situations you may "
@@ -2940,7 +3026,7 @@ msgstr ""
 "documentación contiene referencias y guías para la mayoría de situaciones a "
 "las que puede enfrentarse."
 
-#: includes/admin/admin.php:146
+#: includes/admin/admin.php:147
 msgid ""
 "We are fanatical about support, and want you to get the best out of your "
 "website with ACF. If you run into any difficulties, there are several places "
@@ -2949,11 +3035,11 @@ msgstr ""
 "Somos fanáticos del soporte, y queremos que consiga el máximo en su web con "
 "ACF."
 
-#: includes/admin/admin.php:143 includes/admin/admin.php:145
+#: includes/admin/admin.php:144 includes/admin/admin.php:146
 msgid "Help & Support"
 msgstr "Ayuda y soporte"
 
-#: includes/admin/admin.php:134
+#: includes/admin/admin.php:135
 msgid ""
 "Please use the Help & Support tab to get in touch should you find yourself "
 "requiring assistance."
@@ -2961,7 +3047,7 @@ msgstr ""
 "Por favor, use la pestaña de ayuda y soporte para avisarnos que necesita "
 "ayuda."
 
-#: includes/admin/admin.php:131
+#: includes/admin/admin.php:132
 msgid ""
 "Before creating your first Field Group, we recommend first reading our <a "
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
@@ -2971,7 +3057,7 @@ msgstr ""
 "nuestra <a href=\"%s\" target=\"_blank\">guía de primeros pasos</a> para "
 "familiarizarse con la filosofía y buenas prácticas del plugin."
 
-#: includes/admin/admin.php:129
+#: includes/admin/admin.php:130
 msgid ""
 "The Advanced Custom Fields plugin provides a visual form builder to "
 "customize WordPress edit screens with extra fields, and an intuitive API to "
@@ -2982,7 +3068,7 @@ msgstr ""
 "intuitiva parra mostrar valores de campos personalizados en cualquier "
 "archivo de plantilla de cualquier tema."
 
-#: includes/admin/admin.php:126 includes/admin/admin.php:128
+#: includes/admin/admin.php:127 includes/admin/admin.php:129
 msgid "Overview"
 msgstr "Resumen"
 
@@ -2998,7 +3084,7 @@ msgstr "La clase «%s» no existe."
 msgid "Invalid nonce."
 msgstr "Nonce no válido."
 
-#: includes/fields/class-acf-field-user.php:364
+#: includes/fields/class-acf-field-user.php:375
 msgid "Error loading field."
 msgstr "Error al cargar el campo."
 
@@ -3141,7 +3227,7 @@ msgstr "Todo los formatos de %s"
 msgid "Attachment"
 msgstr "Adjunto"
 
-#: includes/validation.php:364
+#: includes/validation.php:366
 msgid "%s value is required"
 msgstr "El valor de %s es obligatorio"
 
@@ -3154,9 +3240,8 @@ msgstr "Mostrar este campo si"
 msgid "Conditional Logic"
 msgstr "Lógica condicional"
 
-#: includes/admin/admin.php:238
 #: includes/admin/views/acf-field-group/conditional-logic.php:156
-#: includes/admin/views/acf-field-group/location-rule.php:91
+#: includes/admin/views/acf-field-group/location-rule.php:92
 msgid "and"
 msgstr "y"
 
@@ -3192,20 +3277,20 @@ msgstr ""
 msgid "Database Upgrade Required"
 msgstr "Es necesario actualizar la base de datos"
 
-#: includes/admin/post-types/admin-field-group.php:132
+#: includes/admin/post-types/admin-field-group.php:133
 #: includes/admin/views/upgrade/notice.php:18
 msgid "Options Page"
 msgstr "Página de opciones"
 
-#: includes/admin/views/upgrade/notice.php:15 includes/fields.php:461
+#: includes/admin/views/upgrade/notice.php:15 includes/fields.php:462
 msgid "Gallery"
 msgstr "Galería"
 
-#: includes/admin/views/upgrade/notice.php:12 includes/fields.php:451
+#: includes/admin/views/upgrade/notice.php:12 includes/fields.php:452
 msgid "Flexible Content"
 msgstr "Contenido flexible"
 
-#: includes/admin/views/upgrade/notice.php:9 includes/fields.php:471
+#: includes/admin/views/upgrade/notice.php:9 includes/fields.php:472
 msgid "Repeater"
 msgstr "Repetidor"
 
@@ -3213,7 +3298,7 @@ msgstr "Repetidor"
 msgid "Back to all tools"
 msgstr "Volver a todas las herramientas"
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:193
 msgid ""
 "If multiple field groups appear on an edit screen, the first field group's "
 "options will be used (the one with the lowest order number)"
@@ -3222,133 +3307,133 @@ msgstr ""
 "utilizarán las opciones del primer grupo (el que tenga el número de orden "
 "menor)"
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:193
 msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
 msgstr ""
 "<b>Selecciona</b> los elementos que <b>ocultar</b> de la pantalla de edición."
 
-#: includes/admin/views/acf-field-group/options.php:179
+#: includes/admin/views/acf-field-group/options.php:192
 msgid "Hide on screen"
 msgstr "Ocultar en pantalla"
 
-#: includes/admin/views/acf-field-group/options.php:171
+#: includes/admin/views/acf-field-group/options.php:184
 msgid "Send Trackbacks"
 msgstr "Enviar trackbacks"
 
-#: includes/admin/post-types/admin-taxonomy.php:123
-#: includes/admin/views/acf-field-group/options.php:170
+#: includes/admin/post-types/admin-taxonomy.php:128
+#: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:155
-#: assets/build/js/acf-internal-post-type.js:175
-#: assets/build/js/acf-internal-post-type.js:245
+#: assets/build/js/acf-internal-post-type.js:180
+#: assets/build/js/acf-internal-post-type.js:254
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: includes/admin/post-types/admin-taxonomy.php:125
-#: includes/admin/views/acf-field-group/options.php:169
-#: assets/build/js/acf-internal-post-type.js:178
-#: assets/build/js/acf-internal-post-type.js:248
+#: includes/admin/post-types/admin-taxonomy.php:130
+#: includes/admin/views/acf-field-group/options.php:182
+#: assets/build/js/acf-internal-post-type.js:183
+#: assets/build/js/acf-internal-post-type.js:257
 msgid "Categories"
 msgstr "Categorías"
 
-#: includes/admin/views/acf-field-group/options.php:167
+#: includes/admin/views/acf-field-group/options.php:180
 #: includes/admin/views/acf-post-type/advanced-settings.php:24
 msgid "Page Attributes"
 msgstr "Atributos de página"
 
-#: includes/admin/views/acf-field-group/options.php:166
+#: includes/admin/views/acf-field-group/options.php:179
 msgid "Format"
 msgstr "Formato"
 
-#: includes/admin/views/acf-field-group/options.php:165
+#: includes/admin/views/acf-field-group/options.php:178
 #: includes/admin/views/acf-post-type/advanced-settings.php:18
 msgid "Author"
 msgstr "Autor"
 
-#: includes/admin/views/acf-field-group/options.php:164
+#: includes/admin/views/acf-field-group/options.php:177
 msgid "Slug"
 msgstr "Slug"
 
-#: includes/admin/views/acf-field-group/options.php:163
+#: includes/admin/views/acf-field-group/options.php:176
 #: includes/admin/views/acf-post-type/advanced-settings.php:23
 msgid "Revisions"
 msgstr "Revisiones"
 
 #: includes/acf-wp-functions.php:63
-#: includes/admin/views/acf-field-group/options.php:162
+#: includes/admin/views/acf-field-group/options.php:175
 #: includes/admin/views/acf-post-type/advanced-settings.php:19
 msgid "Comments"
 msgstr "Comentarios"
 
-#: includes/admin/views/acf-field-group/options.php:161
+#: includes/admin/views/acf-field-group/options.php:174
 msgid "Discussion"
 msgstr "Discusión"
 
-#: includes/admin/views/acf-field-group/options.php:159
+#: includes/admin/views/acf-field-group/options.php:172
 #: includes/admin/views/acf-post-type/advanced-settings.php:22
 msgid "Excerpt"
 msgstr "Extracto"
 
-#: includes/admin/views/acf-field-group/options.php:158
+#: includes/admin/views/acf-field-group/options.php:171
 msgid "Content Editor"
 msgstr "Editor de contenido"
 
-#: includes/admin/views/acf-field-group/options.php:157
+#: includes/admin/views/acf-field-group/options.php:170
 msgid "Permalink"
 msgstr "Enlace permanente"
 
-#: includes/admin/views/acf-field-group/options.php:235
+#: includes/admin/views/acf-field-group/options.php:248
 msgid "Shown in field group list"
 msgstr "Mostrado en lista de grupos de campos"
 
-#: includes/admin/views/acf-field-group/options.php:142
+#: includes/admin/views/acf-field-group/options.php:155
 msgid "Field groups with a lower order will appear first"
 msgstr "Los grupos de campos con menor orden aparecerán primero"
 
-#: includes/admin/views/acf-field-group/options.php:141
+#: includes/admin/views/acf-field-group/options.php:154
 msgid "Order No."
 msgstr "Número de orden"
 
-#: includes/admin/views/acf-field-group/options.php:132
+#: includes/admin/views/acf-field-group/options.php:145
 msgid "Below fields"
 msgstr "Debajo de los campos"
 
-#: includes/admin/views/acf-field-group/options.php:131
+#: includes/admin/views/acf-field-group/options.php:144
 msgid "Below labels"
 msgstr "Debajo de las etiquetas"
 
-#: includes/admin/views/acf-field-group/options.php:124
+#: includes/admin/views/acf-field-group/options.php:137
 msgid "Instruction Placement"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:107
+#: includes/admin/views/acf-field-group/options.php:120
 msgid "Label Placement"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:97
+#: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
 msgstr "Lateral"
 
-#: includes/admin/views/acf-field-group/options.php:96
+#: includes/admin/views/acf-field-group/options.php:109
 msgid "Normal (after content)"
 msgstr "Normal (después del contenido)"
 
-#: includes/admin/views/acf-field-group/options.php:95
+#: includes/admin/views/acf-field-group/options.php:108
 msgid "High (after title)"
 msgstr "Alta (después del título)"
 
-#: includes/admin/views/acf-field-group/options.php:88
+#: includes/admin/views/acf-field-group/options.php:101
 msgid "Position"
 msgstr "Posición"
 
-#: includes/admin/views/acf-field-group/options.php:79
+#: includes/admin/views/acf-field-group/options.php:92
 msgid "Seamless (no metabox)"
 msgstr "Directo (sin caja meta)"
 
-#: includes/admin/views/acf-field-group/options.php:78
+#: includes/admin/views/acf-field-group/options.php:91
 msgid "Standard (WP metabox)"
 msgstr "Estándar (caja meta de WP)"
 
-#: includes/admin/views/acf-field-group/options.php:71
+#: includes/admin/views/acf-field-group/options.php:84
 msgid "Style"
 msgstr "Estilo"
 
@@ -3454,8 +3539,8 @@ msgstr "Arrastra para reordenar"
 
 #: includes/admin/post-types/admin-field-group.php:103
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2323
-#: assets/build/js/acf-field-group.js:2725
+#: assets/build/js/acf-field-group.js:2339
+#: assets/build/js/acf-field-group.js:2747
 msgid "Show this field group if"
 msgstr "Mostrar este grupo de campos si"
 
@@ -3552,15 +3637,15 @@ msgstr ""
 msgid "Rules"
 msgstr "Reglas"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:482
+#: includes/admin/tools/class-acf-admin-tool-export.php:506
 msgid "Copied"
 msgstr "Copiado"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:458
+#: includes/admin/tools/class-acf-admin-tool-export.php:482
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapeles"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:363
+#: includes/admin/tools/class-acf-admin-tool-export.php:385
 msgid ""
 "Select the items you would like to export and then select your export "
 "method. Export As JSON to export to a .json file which you can then import "
@@ -3578,8 +3663,8 @@ msgid "No field groups selected"
 msgstr "Ningún grupo de campos seleccionado"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:39
-#: includes/admin/tools/class-acf-admin-tool-export.php:371
-#: includes/admin/tools/class-acf-admin-tool-export.php:399
+#: includes/admin/tools/class-acf-admin-tool-export.php:393
+#: includes/admin/tools/class-acf-admin-tool-export.php:421
 msgid "Generate PHP"
 msgstr "Generar PHP"
 
@@ -3609,21 +3694,21 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr "Importar grupo de campos"
 
-#: includes/admin/admin-internal-post-type-list.php:383
+#: includes/admin/admin-internal-post-type-list.php:401
 msgid "Sync"
 msgstr "Sincronizar"
 
-#: includes/admin/admin-internal-post-type-list.php:840
+#: includes/admin/admin-internal-post-type-list.php:858
 msgid "Select %s"
 msgstr "Selecciona %s"
 
-#: includes/admin/admin-internal-post-type-list.php:418
-#: includes/admin/admin-internal-post-type-list.php:456
+#: includes/admin/admin-internal-post-type-list.php:442
+#: includes/admin/admin-internal-post-type-list.php:474
 #: includes/admin/views/acf-field-group/field.php:73
 msgid "Duplicate"
 msgstr "Duplicar"
 
-#: includes/admin/admin-internal-post-type-list.php:418
+#: includes/admin/admin-internal-post-type-list.php:442
 msgid "Duplicate this item"
 msgstr "Duplicar este elemento"
 
@@ -3631,14 +3716,14 @@ msgstr "Duplicar este elemento"
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:259 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
 msgstr "Documentación"
 
 #: includes/admin/post-types/admin-field-groups.php:116
 #: includes/admin/post-types/admin-post-types.php:135
 #: includes/admin/post-types/admin-taxonomies.php:135
-#: includes/admin/views/acf-field-group/options.php:234
+#: includes/admin/views/acf-field-group/options.php:247
 #: includes/admin/views/acf-post-type/advanced-settings.php:58
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:110
 #: includes/admin/views/upgrade/network.php:38
@@ -3646,8 +3731,8 @@ msgstr "Documentación"
 msgid "Description"
 msgstr "Descripción"
 
-#: includes/admin/admin-internal-post-type-list.php:380
-#: includes/admin/admin-internal-post-type-list.php:729
+#: includes/admin/admin-internal-post-type-list.php:398
+#: includes/admin/admin-internal-post-type-list.php:747
 msgid "Sync available"
 msgstr "Sincronización disponible"
 
@@ -3665,7 +3750,7 @@ msgid_plural "%s field groups duplicated."
 msgstr[0] "Grupo de campos duplicado."
 msgstr[1] "%s grupos de campos duplicados."
 
-#: includes/admin/admin-internal-post-type-list.php:130
+#: includes/admin/admin-internal-post-type-list.php:137
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "Activo <span class=\"count\">(%s)</span>"
@@ -3682,43 +3767,43 @@ msgstr "Revisar sitios y actualizar"
 msgid "Upgrade Database"
 msgstr "Actualizar base de datos"
 
-#: includes/admin/views/acf-field-group/options.php:160
+#: includes/admin/views/acf-field-group/options.php:173
 #: includes/admin/views/acf-post-type/advanced-settings.php:26
 msgid "Custom Fields"
 msgstr "Campos personalizados"
 
-#: includes/admin/post-types/admin-field-group.php:607
+#: includes/admin/post-types/admin-field-group.php:608
 msgid "Move Field"
 msgstr "Mover campo"
 
-#: includes/admin/post-types/admin-field-group.php:596
-#: includes/admin/post-types/admin-field-group.php:600
+#: includes/admin/post-types/admin-field-group.php:597
+#: includes/admin/post-types/admin-field-group.php:601
 msgid "Please select the destination for this field"
 msgstr "Por favor, selecciona el destino para este campo"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:558
+#: includes/admin/post-types/admin-field-group.php:559
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:555
+#: includes/admin/post-types/admin-field-group.php:556
 msgid "Move Complete."
 msgstr "Movimiento completo."
 
 #: includes/admin/views/acf-field-group/field.php:35
-#: includes/admin/views/acf-field-group/options.php:202
+#: includes/admin/views/acf-field-group/options.php:215
 #: includes/admin/views/acf-post-type/advanced-settings.php:74
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:126
 msgid "Active"
 msgstr "Activo"
 
-#: includes/admin/post-types/admin-field-group.php:257
+#: includes/admin/post-types/admin-field-group.php:258
 msgid "Field Keys"
 msgstr "Claves de campo"
 
-#: includes/admin/post-types/admin-field-group.php:155
-#: includes/admin/tools/class-acf-admin-tool-export.php:320
+#: includes/admin/post-types/admin-field-group.php:156
+#: includes/admin/tools/class-acf-admin-tool-export.php:342
 msgid "Settings"
 msgstr "Ajustes"
 
@@ -3732,10 +3817,10 @@ msgid "Null"
 msgstr "Null"
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: includes/class-acf-internal-post-type.php:729
+#: includes/class-acf-internal-post-type.php:733
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1501
-#: assets/build/js/acf-field-group.js:1808
+#: assets/build/js/acf-field-group.js:1502
+#: assets/build/js/acf-field-group.js:1810
 msgid "copy"
 msgstr "copiar"
 
@@ -3752,8 +3837,8 @@ msgid "Checked"
 msgstr "Seleccionado"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-field-group.js:1606
-#: assets/build/js/acf-field-group.js:1920
+#: assets/build/js/acf-field-group.js:1607
+#: assets/build/js/acf-field-group.js:1922
 msgid "Move Custom Field"
 msgstr "Mover campo personalizado"
 
@@ -3768,14 +3853,14 @@ msgid "Field group title is required"
 msgstr "El título del grupo de campos es obligatorio"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1595
-#: assets/build/js/acf-field-group.js:1906
+#: assets/build/js/acf-field-group.js:1596
+#: assets/build/js/acf-field-group.js:1908
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Este campo se puede mover hasta que sus cambios se hayan guardado"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:1405
-#: assets/build/js/acf-field-group.js:1703
+#: assets/build/js/acf-field-group.js:1406
+#: assets/build/js/acf-field-group.js:1705
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr ""
 "La cadena \"field_\" no se debe utilizar al comienzo de un nombre de campo"
@@ -3811,7 +3896,7 @@ msgid "Field group updated."
 msgstr "Grupo de campos actualizado."
 
 #: includes/admin/admin-tools.php:118
-#: includes/admin/views/global/navigation.php:154
+#: includes/admin/views/global/navigation.php:224
 #: includes/admin/views/tools/tools.php:21
 msgid "Tools"
 msgstr "Herramientas"
@@ -3828,17 +3913,17 @@ msgstr "es igual a"
 msgid "Forms"
 msgstr "Formularios"
 
-#: includes/admin/post-types/admin-post-type.php:124 includes/locations.php:100
+#: includes/admin/post-types/admin-post-type.php:127 includes/locations.php:100
 #: includes/locations/class-acf-location-page.php:22
-#: assets/build/js/acf-internal-post-type.js:170
-#: assets/build/js/acf-internal-post-type.js:240
+#: assets/build/js/acf-internal-post-type.js:175
+#: assets/build/js/acf-internal-post-type.js:249
 msgid "Page"
 msgstr "Página"
 
-#: includes/admin/post-types/admin-post-type.php:122 includes/locations.php:99
+#: includes/admin/post-types/admin-post-type.php:125 includes/locations.php:99
 #: includes/locations/class-acf-location-post.php:22
-#: assets/build/js/acf-internal-post-type.js:167
-#: assets/build/js/acf-internal-post-type.js:237
+#: assets/build/js/acf-internal-post-type.js:172
+#: assets/build/js/acf-internal-post-type.js:246
 msgid "Post"
 msgstr "Entrada"
 
@@ -3944,35 +4029,35 @@ msgstr "No tiene ningún valor"
 msgid "Has any value"
 msgstr "No tiene algún valor"
 
-#: includes/admin/admin-internal-post-type.php:327
+#: includes/admin/admin-internal-post-type.php:345
 #: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:353
-#: assets/build/js/acf.js:1567 assets/build/js/acf.js:1662
+#: assets/build/js/acf.js:1568 assets/build/js/acf.js:1663
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: includes/assets.php:349 assets/build/js/acf.js:1741
-#: assets/build/js/acf.js:1859
+#: includes/assets.php:349 assets/build/js/acf.js:1742
+#: assets/build/js/acf.js:1860
 msgid "Are you sure?"
 msgstr "¿Estás seguro?"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9409
-#: assets/build/js/acf-input.js:10260
+#: includes/assets.php:369 assets/build/js/acf-input.js:9408
+#: assets/build/js/acf-input.js:10259
 msgid "%d fields require attention"
 msgstr "%d campos requieren atención"
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9407
-#: assets/build/js/acf-input.js:10256
+#: includes/assets.php:368 assets/build/js/acf-input.js:9406
+#: assets/build/js/acf-input.js:10255
 msgid "1 field requires attention"
 msgstr "1 campo requiere atención"
 
-#: includes/assets.php:367 includes/validation.php:286
-#: includes/validation.php:296 assets/build/js/acf-input.js:9402
-#: assets/build/js/acf-input.js:10251
+#: includes/assets.php:367 includes/validation.php:288
+#: includes/validation.php:298 assets/build/js/acf-input.js:9401
+#: assets/build/js/acf-input.js:10250
 msgid "Validation failed"
 msgstr "Validación fallida"
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9565
-#: assets/build/js/acf-input.js:10434
+#: includes/assets.php:366 assets/build/js/acf-input.js:9569
+#: assets/build/js/acf-input.js:10438
 msgid "Validation successful"
 msgstr "Validación correcta"
 
@@ -4008,12 +4093,12 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Editar"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9179
-#: assets/build/js/acf-input.js:10022
+#: includes/assets.php:363 assets/build/js/acf-input.js:9178
+#: assets/build/js/acf-input.js:10021
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Los cambios que has realizado se perderán si navegas hacia otra página"
 
-#: includes/api/api-helpers.php:3498
+#: includes/api/api-helpers.php:3499
 msgid "File type must be %s."
 msgstr "El tipo de archivo debe ser %s."
 
@@ -4022,54 +4107,54 @@ msgstr "El tipo de archivo debe ser %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3494 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2361
+#: includes/api/api-helpers.php:3495 assets/build/js/acf-field-group.js:771
+#: assets/build/js/acf-field-group.js:2377
 #: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2769
+#: assets/build/js/acf-field-group.js:2791
 msgid "or"
 msgstr "o"
 
-#: includes/api/api-helpers.php:3467
+#: includes/api/api-helpers.php:3468
 msgid "File size must not exceed %s."
 msgstr "El tamaño del archivo no debe sobrepasar %s."
 
-#: includes/api/api-helpers.php:3462
+#: includes/api/api-helpers.php:3463
 msgid "File size must be at least %s."
 msgstr "El tamaño de archivo debe ser al menos %s."
 
-#: includes/api/api-helpers.php:3447
+#: includes/api/api-helpers.php:3448
 msgid "Image height must not exceed %dpx."
 msgstr "La altura de la imagen no debe exceder %dpx."
 
-#: includes/api/api-helpers.php:3442
+#: includes/api/api-helpers.php:3443
 msgid "Image height must be at least %dpx."
 msgstr "La altura de la imagen debe ser al menos %dpx."
 
-#: includes/api/api-helpers.php:3428
+#: includes/api/api-helpers.php:3429
 msgid "Image width must not exceed %dpx."
 msgstr "El ancho de la imagen no debe exceder %dpx."
 
-#: includes/api/api-helpers.php:3423
+#: includes/api/api-helpers.php:3424
 msgid "Image width must be at least %dpx."
 msgstr "El ancho de la imagen debe ser al menos %dpx."
 
-#: includes/api/api-helpers.php:1669 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1670 includes/api/api-term.php:147
 msgid "(no title)"
 msgstr "(sin título)"
 
-#: includes/api/api-helpers.php:944
+#: includes/api/api-helpers.php:945
 msgid "Full Size"
 msgstr "Tamaño completo"
 
-#: includes/api/api-helpers.php:903
+#: includes/api/api-helpers.php:904
 msgid "Large"
 msgstr "Grande"
 
-#: includes/api/api-helpers.php:902
+#: includes/api/api-helpers.php:903
 msgid "Medium"
 msgstr "Mediano"
 
-#: includes/api/api-helpers.php:901
+#: includes/api/api-helpers.php:902
 msgid "Thumbnail"
 msgstr "Miniatura"
 
@@ -4125,94 +4210,94 @@ msgstr "Archivo"
 msgid "Page Link"
 msgstr "Enlace a página"
 
-#: includes/fields/class-acf-field-taxonomy.php:948
+#: includes/fields/class-acf-field-taxonomy.php:943
 #: includes/locations/class-acf-location-user-form.php:72
 msgid "Add"
 msgstr "Añadir"
 
 #: includes/admin/views/acf-field-group/fields.php:53
-#: includes/fields/class-acf-field-taxonomy.php:913
+#: includes/fields/class-acf-field-taxonomy.php:908
 msgid "Name"
 msgstr "Nombre"
 
-#: includes/fields/class-acf-field-taxonomy.php:897
+#: includes/fields/class-acf-field-taxonomy.php:892
 msgid "%s added"
 msgstr "%s añadido/s"
 
-#: includes/fields/class-acf-field-taxonomy.php:861
+#: includes/fields/class-acf-field-taxonomy.php:856
 msgid "%s already exists"
 msgstr "%s ya existe"
 
-#: includes/fields/class-acf-field-taxonomy.php:849
+#: includes/fields/class-acf-field-taxonomy.php:844
 msgid "User unable to add new %s"
 msgstr "El usuario no puede añadir nuevos %s"
 
-#: includes/fields/class-acf-field-taxonomy.php:759
+#: includes/fields/class-acf-field-taxonomy.php:742
 msgid "Term ID"
 msgstr "ID de término"
 
-#: includes/fields/class-acf-field-taxonomy.php:758
+#: includes/fields/class-acf-field-taxonomy.php:741
 msgid "Term Object"
 msgstr "Objeto de término"
 
-#: includes/fields/class-acf-field-taxonomy.php:743
+#: includes/fields/class-acf-field-taxonomy.php:726
 msgid "Load value from posts terms"
 msgstr "Cargar el valor de los términos de la publicación"
 
-#: includes/fields/class-acf-field-taxonomy.php:742
+#: includes/fields/class-acf-field-taxonomy.php:725
 msgid "Load Terms"
 msgstr "Cargar términos"
 
-#: includes/fields/class-acf-field-taxonomy.php:732
+#: includes/fields/class-acf-field-taxonomy.php:715
 msgid "Connect selected terms to the post"
 msgstr "Conectar los términos seleccionados con la publicación"
 
-#: includes/fields/class-acf-field-taxonomy.php:731
+#: includes/fields/class-acf-field-taxonomy.php:714
 msgid "Save Terms"
 msgstr "Guardar términos"
 
-#: includes/fields/class-acf-field-taxonomy.php:721
+#: includes/fields/class-acf-field-taxonomy.php:704
 msgid "Allow new terms to be created whilst editing"
 msgstr "Permitir la creación de nuevos términos mientras se edita"
 
-#: includes/fields/class-acf-field-taxonomy.php:720
+#: includes/fields/class-acf-field-taxonomy.php:703
 msgid "Create Terms"
 msgstr "Crear términos"
 
-#: includes/fields/class-acf-field-taxonomy.php:779
+#: includes/fields/class-acf-field-taxonomy.php:762
 msgid "Radio Buttons"
 msgstr "Botones de radio"
 
-#: includes/fields/class-acf-field-taxonomy.php:778
+#: includes/fields/class-acf-field-taxonomy.php:761
 msgid "Single Value"
 msgstr "Valor único"
 
-#: includes/fields/class-acf-field-taxonomy.php:776
+#: includes/fields/class-acf-field-taxonomy.php:759
 msgid "Multi Select"
 msgstr "Selección múltiple"
 
 #: includes/fields/class-acf-field-checkbox.php:25
-#: includes/fields/class-acf-field-taxonomy.php:775
+#: includes/fields/class-acf-field-taxonomy.php:758
 msgid "Checkbox"
 msgstr "Casilla de verificación"
 
-#: includes/fields/class-acf-field-taxonomy.php:774
+#: includes/fields/class-acf-field-taxonomy.php:757
 msgid "Multiple Values"
 msgstr "Valores múltiples"
 
-#: includes/fields/class-acf-field-taxonomy.php:769
+#: includes/fields/class-acf-field-taxonomy.php:752
 msgid "Select the appearance of this field"
 msgstr "Selecciona la apariencia de este campo"
 
-#: includes/fields/class-acf-field-taxonomy.php:768
+#: includes/fields/class-acf-field-taxonomy.php:751
 msgid "Appearance"
 msgstr "Apariencia"
 
-#: includes/fields/class-acf-field-taxonomy.php:710
+#: includes/fields/class-acf-field-taxonomy.php:693
 msgid "Select the taxonomy to be displayed"
 msgstr "Selecciona la taxonomía a mostrar"
 
-#: includes/fields/class-acf-field-taxonomy.php:671
+#: includes/fields/class-acf-field-taxonomy.php:654
 msgctxt "No Terms"
 msgid "No %s"
 msgstr ""
@@ -4240,6 +4325,10 @@ msgstr "Guardar los valores de 'otros' en las opciones del campo"
 #: includes/fields/class-acf-field-radio.php:253
 msgid "Add 'other' choice to allow for custom values"
 msgstr "Añade la opción 'otros' para permitir valores personalizados"
+
+#: includes/admin/views/global/navigation.php:192
+msgid "Other"
+msgstr "Otros"
 
 #: includes/fields/class-acf-field-radio.php:25
 msgid "Radio Button"
@@ -4327,20 +4416,20 @@ msgstr "Archivo"
 msgid "Password"
 msgstr "Contraseña"
 
-#: includes/fields/class-acf-field-select.php:398
+#: includes/fields/class-acf-field-select.php:392
 msgid "Specify the value returned"
 msgstr "Especifica el valor devuelto"
 
-#: includes/fields/class-acf-field-select.php:467
+#: includes/fields/class-acf-field-select.php:461
 msgid "Use AJAX to lazy load choices?"
 msgstr "¿Usar AJAX para hacer cargar las opciones de forma asíncrona?"
 
 #: includes/fields/class-acf-field-checkbox.php:362
-#: includes/fields/class-acf-field-select.php:387
+#: includes/fields/class-acf-field-select.php:381
 msgid "Enter each default value on a new line"
 msgstr "Añade cada valor en una nueva línea"
 
-#: includes/fields/class-acf-field-select.php:258 includes/media.php:48
+#: includes/fields/class-acf-field-select.php:252 includes/media.php:48
 #: assets/build/js/acf-input.js:6756 assets/build/js/acf-input.js:7232
 msgctxt "verb"
 msgid "Select"
@@ -4409,32 +4498,32 @@ msgid "One result is available, press enter to select it."
 msgstr "Hay un resultado disponible, pulsa enter para seleccionarlo."
 
 #: includes/fields/class-acf-field-select.php:25
-#: includes/fields/class-acf-field-taxonomy.php:780
+#: includes/fields/class-acf-field-taxonomy.php:763
 msgctxt "noun"
 msgid "Select"
 msgstr "Selección"
 
-#: includes/fields/class-acf-field-user.php:77
+#: includes/fields/class-acf-field-user.php:73
 msgid "User ID"
 msgstr "ID del usuario"
 
-#: includes/fields/class-acf-field-user.php:76
+#: includes/fields/class-acf-field-user.php:72
 msgid "User Object"
 msgstr "Grupo de objetos"
 
-#: includes/fields/class-acf-field-user.php:75
+#: includes/fields/class-acf-field-user.php:71
 msgid "User Array"
 msgstr "Grupo de usuarios"
 
-#: includes/fields/class-acf-field-user.php:63
+#: includes/fields/class-acf-field-user.php:59
 msgid "All user roles"
 msgstr "Todos los roles de usuario"
 
-#: includes/fields/class-acf-field-user.php:55
+#: includes/fields/class-acf-field-user.php:51
 msgid "Filter by Role"
 msgstr ""
 
-#: includes/fields/class-acf-field-user.php:20 includes/locations.php:101
+#: includes/fields/class-acf-field-user.php:15 includes/locations.php:101
 msgid "User"
 msgstr "Usuario"
 
@@ -4446,11 +4535,11 @@ msgstr "Separador"
 msgid "Select Color"
 msgstr "Seleccionar color"
 
-#: includes/admin/post-types/admin-post-type.php:126
-#: includes/admin/post-types/admin-taxonomy.php:126
+#: includes/admin/post-types/admin-post-type.php:129
+#: includes/admin/post-types/admin-taxonomy.php:131
 #: includes/fields/class-acf-field-color_picker.php:74
-#: assets/build/js/acf-internal-post-type.js:67
-#: assets/build/js/acf-internal-post-type.js:77
+#: assets/build/js/acf-internal-post-type.js:72
+#: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
 msgstr "Por defecto"
 
@@ -4547,12 +4636,12 @@ msgstr "Selector de fecha y hora"
 msgid "Endpoint"
 msgstr "Variable"
 
-#: includes/admin/views/acf-field-group/options.php:115
+#: includes/admin/views/acf-field-group/options.php:128
 #: includes/fields/class-acf-field-tab.php:115
 msgid "Left aligned"
 msgstr "Alineada a la izquierda"
 
-#: includes/admin/views/acf-field-group/options.php:114
+#: includes/admin/views/acf-field-group/options.php:127
 #: includes/fields/class-acf-field-tab.php:114
 msgid "Top aligned"
 msgstr "Alineada arriba"
@@ -4615,7 +4704,7 @@ msgstr "Rango"
 #: includes/fields/class-acf-field-button-group.php:175
 #: includes/fields/class-acf-field-checkbox.php:379
 #: includes/fields/class-acf-field-radio.php:220
-#: includes/fields/class-acf-field-select.php:405
+#: includes/fields/class-acf-field-select.php:399
 msgid "Both (Array)"
 msgstr "Ambos (Array)"
 
@@ -4623,14 +4712,14 @@ msgstr "Ambos (Array)"
 #: includes/fields/class-acf-field-button-group.php:174
 #: includes/fields/class-acf-field-checkbox.php:378
 #: includes/fields/class-acf-field-radio.php:219
-#: includes/fields/class-acf-field-select.php:404
+#: includes/fields/class-acf-field-select.php:398
 msgid "Label"
 msgstr "Etiqueta"
 
 #: includes/fields/class-acf-field-button-group.php:173
 #: includes/fields/class-acf-field-checkbox.php:377
 #: includes/fields/class-acf-field-radio.php:218
-#: includes/fields/class-acf-field-select.php:403
+#: includes/fields/class-acf-field-select.php:397
 msgid "Value"
 msgstr "Valor"
 
@@ -4649,14 +4738,14 @@ msgstr "Horizontal"
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "red : Red"
 msgstr "rojo : Rojo"
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "For more control, you may specify both a value and label like this:"
 msgstr ""
 "Para más control, puedes especificar tanto un valor como una etiqueta, así:"
@@ -4664,14 +4753,14 @@ msgstr ""
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "Enter each choice on a new line."
 msgstr "Añade cada opción en una nueva línea."
 
 #: includes/fields/class-acf-field-button-group.php:147
 #: includes/fields/class-acf-field-checkbox.php:351
 #: includes/fields/class-acf-field-radio.php:192
-#: includes/fields/class-acf-field-select.php:375
+#: includes/fields/class-acf-field-select.php:369
 msgid "Choices"
 msgstr "Opciones"
 
@@ -4681,17 +4770,17 @@ msgstr "Grupo de botones"
 
 #: includes/fields/class-acf-field-button-group.php:194
 #: includes/fields/class-acf-field-page_link.php:538
-#: includes/fields/class-acf-field-post_object.php:455
+#: includes/fields/class-acf-field-post_object.php:448
 #: includes/fields/class-acf-field-radio.php:238
-#: includes/fields/class-acf-field-select.php:435
-#: includes/fields/class-acf-field-taxonomy.php:789
-#: includes/fields/class-acf-field-user.php:107
+#: includes/fields/class-acf-field-select.php:429
+#: includes/fields/class-acf-field-taxonomy.php:772
+#: includes/fields/class-acf-field-user.php:103
 msgid "Allow Null"
 msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:263
-#: includes/fields/class-acf-field-post_object.php:264
-#: includes/fields/class-acf-field-taxonomy.php:935
+#: includes/fields/class-acf-field-post_object.php:257
+#: includes/fields/class-acf-field-taxonomy.php:930
 msgid "Parent"
 msgstr "Superior"
 
@@ -4821,114 +4910,114 @@ msgstr "Aparece cuando se está creando una nueva entrada"
 msgid "Text"
 msgstr "Texto"
 
-#: includes/fields/class-acf-field-relationship.php:789
+#: includes/fields/class-acf-field-relationship.php:794
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-post_object.php:424
-#: includes/fields/class-acf-field-relationship.php:651
+#: includes/fields/class-acf-field-post_object.php:417
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Post ID"
 msgstr "ID de publicación"
 
-#: includes/fields/class-acf-field-post_object.php:25
-#: includes/fields/class-acf-field-post_object.php:423
-#: includes/fields/class-acf-field-relationship.php:650
+#: includes/fields/class-acf-field-post_object.php:17
+#: includes/fields/class-acf-field-post_object.php:416
+#: includes/fields/class-acf-field-relationship.php:643
 msgid "Post Object"
 msgstr "Objeto de publicación"
 
-#: includes/fields/class-acf-field-relationship.php:683
+#: includes/fields/class-acf-field-relationship.php:676
 msgid "Maximum Posts"
 msgstr ""
 
-#: includes/fields/class-acf-field-relationship.php:673
+#: includes/fields/class-acf-field-relationship.php:666
 msgid "Minimum Posts"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/options.php:168
+#: includes/admin/views/acf-field-group/options.php:181
 #: includes/admin/views/acf-post-type/advanced-settings.php:25
-#: includes/fields/class-acf-field-relationship.php:708
+#: includes/fields/class-acf-field-relationship.php:701
 msgid "Featured Image"
 msgstr "Imagen destacada"
 
-#: includes/fields/class-acf-field-relationship.php:704
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Selected elements will be displayed in each result"
 msgstr "Los elementos seleccionados se mostrarán en cada resultado"
 
-#: includes/fields/class-acf-field-relationship.php:703
+#: includes/fields/class-acf-field-relationship.php:696
 msgid "Elements"
 msgstr "Elementos"
 
-#: includes/fields/class-acf-field-relationship.php:637
-#: includes/fields/class-acf-field-taxonomy.php:28
-#: includes/fields/class-acf-field-taxonomy.php:709
+#: includes/fields/class-acf-field-relationship.php:630
+#: includes/fields/class-acf-field-taxonomy.php:20
+#: includes/fields/class-acf-field-taxonomy.php:692
 #: includes/locations/class-acf-location-taxonomy.php:22
 msgid "Taxonomy"
 msgstr "Taxonomía"
 
-#: includes/fields/class-acf-field-relationship.php:636
+#: includes/fields/class-acf-field-relationship.php:629
 #: includes/locations/class-acf-location-post-type.php:22
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Type"
 msgstr "Tipo de contenido"
 
-#: includes/fields/class-acf-field-relationship.php:630
+#: includes/fields/class-acf-field-relationship.php:623
 msgid "Filters"
 msgstr "Filtros"
 
 #: includes/fields/class-acf-field-page_link.php:499
-#: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-post_object.php:404
+#: includes/fields/class-acf-field-relationship.php:616
 msgid "All taxonomies"
 msgstr "Todas las taxonomías"
 
 #: includes/fields/class-acf-field-page_link.php:491
-#: includes/fields/class-acf-field-post_object.php:403
-#: includes/fields/class-acf-field-relationship.php:615
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:608
 msgid "Filter by Taxonomy"
 msgstr "Filtrar por taxonomía"
 
 #: includes/fields/class-acf-field-page_link.php:469
-#: includes/fields/class-acf-field-post_object.php:381
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-post_object.php:374
+#: includes/fields/class-acf-field-relationship.php:586
 msgid "All post types"
 msgstr "Todos los tipos de contenido"
 
 #: includes/fields/class-acf-field-page_link.php:461
-#: includes/fields/class-acf-field-post_object.php:373
-#: includes/fields/class-acf-field-relationship.php:585
+#: includes/fields/class-acf-field-post_object.php:366
+#: includes/fields/class-acf-field-relationship.php:578
 msgid "Filter by Post Type"
 msgstr "Filtrar por tipo de contenido"
 
-#: includes/fields/class-acf-field-relationship.php:483
+#: includes/fields/class-acf-field-relationship.php:476
 msgid "Search..."
 msgstr "Buscar..."
 
-#: includes/fields/class-acf-field-relationship.php:413
+#: includes/fields/class-acf-field-relationship.php:406
 msgid "Select taxonomy"
 msgstr "Selecciona taxonomía"
 
-#: includes/fields/class-acf-field-relationship.php:404
+#: includes/fields/class-acf-field-relationship.php:397
 msgid "Select post type"
 msgstr "Seleccionar tipo de contenido"
 
-#: includes/fields/class-acf-field-relationship.php:68
+#: includes/fields/class-acf-field-relationship.php:61
 #: assets/build/js/acf-input.js:3925 assets/build/js/acf-input.js:4208
 msgid "No matches found"
 msgstr "No se han encontrado coincidencias"
 
-#: includes/fields/class-acf-field-relationship.php:67
+#: includes/fields/class-acf-field-relationship.php:60
 #: assets/build/js/acf-input.js:3908 assets/build/js/acf-input.js:4187
 msgid "Loading"
 msgstr "Cargando"
 
-#: includes/fields/class-acf-field-relationship.php:66
+#: includes/fields/class-acf-field-relationship.php:59
 #: assets/build/js/acf-input.js:3817 assets/build/js/acf-input.js:4083
 msgid "Maximum values reached ( {max} values )"
 msgstr "Valores máximos alcanzados ( {max} valores )"
 
-#: includes/fields/class-acf-field-relationship.php:25
+#: includes/fields/class-acf-field-relationship.php:17
 msgid "Relationship"
 msgstr "Relación"
 
@@ -5021,7 +5110,7 @@ msgstr "Especificar el valor devuelto en la web"
 #: includes/fields/class-acf-field-file.php:212
 #: includes/fields/class-acf-field-link.php:170
 #: includes/fields/class-acf-field-radio.php:212
-#: includes/fields/class-acf-field-taxonomy.php:753
+#: includes/fields/class-acf-field-taxonomy.php:736
 msgid "Return Value"
 msgstr "Valor de retorno"
 
@@ -5035,8 +5124,8 @@ msgstr "No hay ninguna imagen seleccionada"
 
 #: includes/assets.php:352 includes/fields/class-acf-field-file.php:162
 #: includes/fields/class-acf-field-image.php:142
-#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1566
-#: assets/build/js/acf.js:1661
+#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1567
+#: assets/build/js/acf.js:1662
 msgid "Remove"
 msgstr "Quitar"
 
@@ -5183,7 +5272,7 @@ msgstr "Texto mostrado cuando está activo"
 msgid "On Text"
 msgstr "Texto activado"
 
-#: includes/fields/class-acf-field-select.php:456
+#: includes/fields/class-acf-field-select.php:450
 #: includes/fields/class-acf-field-true_false.php:199
 msgid "Stylized UI"
 msgstr ""
@@ -5195,7 +5284,7 @@ msgstr ""
 #: includes/fields/class-acf-field-number.php:128
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-range.php:164
-#: includes/fields/class-acf-field-select.php:386
+#: includes/fields/class-acf-field-select.php:380
 #: includes/fields/class-acf-field-text.php:97
 #: includes/fields/class-acf-field-textarea.php:103
 #: includes/fields/class-acf-field-true_false.php:147
@@ -5216,13 +5305,13 @@ msgstr "Mensaje"
 
 #: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:86
 #: includes/fields/class-acf-field-true_false.php:187
-#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
+#: assets/build/js/acf.js:1744 assets/build/js/acf.js:1862
 msgid "No"
 msgstr "No"
 
 #: includes/assets.php:350 includes/fields/class-acf-field-true_false.php:83
 #: includes/fields/class-acf-field-true_false.php:171
-#: assets/build/js/acf.js:1742 assets/build/js/acf.js:1860
+#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
 msgid "Yes"
 msgstr "Sí"
 
@@ -5238,7 +5327,7 @@ msgstr "Fila"
 msgid "Table"
 msgstr "Tabla"
 
-#: includes/admin/post-types/admin-field-group.php:131
+#: includes/admin/post-types/admin-field-group.php:132
 #: includes/fields/class-acf-field-group.php:472
 msgid "Block"
 msgstr "Bloque"
@@ -5305,7 +5394,7 @@ msgid "Clear location"
 msgstr "Borrar ubicación"
 
 #: includes/fields/class-acf-field-google-map.php:158
-#: includes/fields/class-acf-field-relationship.php:635
+#: includes/fields/class-acf-field-relationship.php:628
 msgid "Search"
 msgstr "Buscar"
 
@@ -5328,11 +5417,11 @@ msgstr "El formato devuelto por de las funciones del tema"
 #: includes/fields/class-acf-field-date_picker.php:211
 #: includes/fields/class-acf-field-date_time_picker.php:200
 #: includes/fields/class-acf-field-image.php:187
-#: includes/fields/class-acf-field-post_object.php:418
-#: includes/fields/class-acf-field-relationship.php:645
-#: includes/fields/class-acf-field-select.php:397
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-select.php:391
 #: includes/fields/class-acf-field-time_picker.php:131
-#: includes/fields/class-acf-field-user.php:70
+#: includes/fields/class-acf-field-user.php:66
 msgid "Return Format"
 msgstr "Formato de retorno"
 
@@ -5362,79 +5451,79 @@ msgid "Time Picker"
 msgstr "Selector de hora"
 
 #. translators: counts for inactive field groups
-#: acf.php:491
+#: acf.php:497
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: acf.php:450
+#: acf.php:456
 msgid "No Fields found in Trash"
 msgstr "No se han encontrado campos en la papelera"
 
-#: acf.php:449
+#: acf.php:455
 msgid "No Fields found"
 msgstr "No se han encontrado campos"
 
-#: acf.php:448
+#: acf.php:454
 msgid "Search Fields"
 msgstr "Buscar campos"
 
-#: acf.php:447
+#: acf.php:453
 msgid "View Field"
 msgstr "Ver campo"
 
-#: acf.php:446 includes/admin/views/acf-field-group/fields.php:115
+#: acf.php:452 includes/admin/views/acf-field-group/fields.php:115
 msgid "New Field"
 msgstr "Nuevo campo"
 
-#: acf.php:445
+#: acf.php:451
 msgid "Edit Field"
 msgstr "Editar campo"
 
-#: acf.php:444
+#: acf.php:450
 msgid "Add New Field"
 msgstr "Añadir nuevo campo"
 
-#: acf.php:442
+#: acf.php:448
 msgid "Field"
 msgstr "Campo"
 
-#: acf.php:441 includes/admin/post-types/admin-field-group.php:154
+#: acf.php:447 includes/admin/post-types/admin-field-group.php:155
 #: includes/admin/post-types/admin-field-groups.php:119
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Campos"
 
-#: acf.php:416
+#: acf.php:422
 msgid "No Field Groups found in Trash"
 msgstr "No se han encontrado grupos de campos en la papelera"
 
-#: acf.php:415
+#: acf.php:421
 msgid "No Field Groups found"
 msgstr "No se han encontrado grupos de campos"
 
-#: acf.php:414
+#: acf.php:420
 msgid "Search Field Groups"
 msgstr "Buscar grupo de campos"
 
-#: acf.php:413
+#: acf.php:419
 msgid "View Field Group"
 msgstr "Ver grupo de campos"
 
-#: acf.php:412
+#: acf.php:418
 msgid "New Field Group"
 msgstr "Nuevo grupo de campos"
 
-#: acf.php:411
+#: acf.php:417
 msgid "Edit Field Group"
 msgstr "Editar grupo de campos"
 
-#: acf.php:410
+#: acf.php:416
 msgid "Add New Field Group"
 msgstr "Añadir nuevo grupo de campos"
 
-#: acf.php:409 acf.php:443
+#: acf.php:415 acf.php:449
 #: includes/admin/views/acf-post-type/advanced-settings.php:215
 #: includes/admin/views/acf-post-type/advanced-settings.php:217
 #: includes/post-types/class-acf-post-type.php:92
@@ -5442,11 +5531,11 @@ msgstr "Añadir nuevo grupo de campos"
 msgid "Add New"
 msgstr "Añadir nuevo"
 
-#: acf.php:408
+#: acf.php:414
 msgid "Field Group"
 msgstr "Grupo de campos"
 
-#: acf.php:407 includes/admin/post-types/admin-field-groups.php:78
+#: acf.php:413 includes/admin/post-types/admin-field-groups.php:78
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"

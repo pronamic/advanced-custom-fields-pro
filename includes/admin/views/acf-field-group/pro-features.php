@@ -1,7 +1,7 @@
 <?php
 $acf_field_group_pro_features_title = __( 'Unlock Advanced Features and Build Even More with ACF PRO', 'acf' );
 $acf_learn_more_link                = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'metabox' );
-$acf_pricing_link                   = acf_add_url_utm_tags( 'https://advancedcustomfields.com/pro/', 'ACF upgrade', 'metabox', 'pricing-table' );
+$acf_pricing_link                   = acf_add_url_utm_tags( 'https://advancedcustomfields.com/pro/', 'ACF upgrade', 'metabox_pricing', 'pricing-table' );
 $acf_more_tools_link                = acf_add_url_utm_tags( 'https://wpengine.com/developer/', 'bx_prod_referral', 'acf_free_plugin_cta_panel_logo', false, 'acf_plugin', 'referral' );
 $acf_wpengine_logo_link             = acf_add_url_utm_tags( 'https://wpengine.com/', 'bx_prod_referral', 'acf_free_plugin_cta_panel_logo', false, 'acf_plugin', 'referral' );
 ?>

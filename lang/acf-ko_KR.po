@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-08-09T12:53:50+00:00\n"
+"PO-Revision-Date: 2023-09-07T15:02:44+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
@@ -21,18 +21,123 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/views/global/navigation.php:93
+msgid "4 Months Free"
+msgstr ""
+
+#. translators: %s - A singular label for a post type or taxonomy.
+#: includes/admin/views/global/form-top.php:56
+msgid " (Duplicated from %s)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-export.php:298
+msgid "Select Options Pages"
+msgstr ""
+
+#: includes/admin/post-types/admin-taxonomy.php:107
+msgid "Duplicate taxonomy"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:106
+#: includes/admin/post-types/admin-taxonomy.php:106
+msgid "Create taxonomy"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:105
+msgid "Duplicate post type"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:104
+#: includes/admin/post-types/admin-taxonomy.php:108
+msgid "Create post type"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:103
+#: includes/admin/post-types/admin-taxonomy.php:105
+msgid "Link field groups"
+msgstr ""
+
+#: includes/admin/post-types/admin-post-type.php:102
+#: includes/admin/post-types/admin-taxonomy.php:104
+msgid "Add fields"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:121
+#: assets/build/js/acf-field-group.js:2744
+#: assets/build/js/acf-field-group.js:3220
+msgid "This Field"
+msgstr ""
+
+#: includes/admin/admin.php:265
+msgid "ACF PRO"
+msgstr ""
+
+#: includes/admin/admin.php:263
+msgid "Feedback"
+msgstr ""
+
+#: includes/admin/admin.php:261
+msgid "Support"
+msgstr ""
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:236
+msgid "is developed and maintained by"
+msgstr ""
+
+#. translators: %s - either "post type" or "taxonomy"
+#: includes/admin/admin-internal-post-type.php:321
+msgid "Add this %s to the location rules of the selected field groups."
+msgstr ""
+
+#. translators: %s the URL to ACF's bidirectional relationship documentation
+#: includes/acf-bidirectional-functions.php:271
+msgid ""
+"Enabling the bidirectional setting allows you to update a value in the "
+"target fields for each value selected for this field, adding or removing the "
+"Post ID, Taxonomy ID or User ID of the item being updated. For more "
+"information, please read the <a href=\"%s\" target=\"_blank\">documentation</"
+"a>."
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:247
+msgid ""
+"Select field(s) to store the reference back to the item being updated. You "
+"may select this field. Target fields must be compatible with where this "
+"field is being displayed. For example, if this field is displayed on a "
+"Taxonomy, your target field should be of type Taxonomy"
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:246
+msgid "Target Field"
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:220
+msgid "Update a field on the selected values, referencing back to this ID"
+msgstr ""
+
+#: includes/acf-bidirectional-functions.php:219
+msgid "Bidirectional"
+msgstr ""
+
+#. translators: %s A field type name, such as "Relationship"
+#: includes/acf-bidirectional-functions.php:192
+msgid "%s Field"
+msgstr ""
+
 #: includes/fields/class-acf-field-page_link.php:517
-#: includes/fields/class-acf-field-post_object.php:433
-#: includes/fields/class-acf-field-select.php:413
-#: includes/fields/class-acf-field-user.php:86
+#: includes/fields/class-acf-field-post_object.php:426
+#: includes/fields/class-acf-field-select.php:407
+#: includes/fields/class-acf-field-user.php:82
 msgid "Select Multiple"
 msgstr "여러 개 선택"
 
-#: includes/admin/views/global/navigation.php:141
+#: includes/admin/views/global/navigation.php:211
 msgid "WP Engine logo"
 msgstr "WP 엔진 로고"
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:42
+#: includes/admin/views/acf-taxonomy/basic-settings.php:58
 msgid "Lower case letters, underscores and dashes only, Max 32 characters."
 msgstr ""
 "소문자, 밑줄 및 대시만 입력할 수 있으며 최대 32자까지 입력할 수 있습니다."
@@ -107,12 +212,8 @@ msgstr ""
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
 msgstr "ACF 프로로 고급 기능을 잠금 해제하고 더 많은 것을 구축하세요."
 
-#: includes/admin/admin.php:238
-msgid "from"
-msgstr "발신"
-
 #. translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre"
-#: includes/admin/views/global/form-top.php:17
+#: includes/admin/views/global/form-top.php:19
 msgid "%s fields"
 msgstr "%s 필드"
 
@@ -148,8 +249,8 @@ msgid "No description"
 msgstr "설명 없음"
 
 #: includes/fields/class-acf-field-page_link.php:484
-#: includes/fields/class-acf-field-post_object.php:396
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-post_object.php:389
+#: includes/fields/class-acf-field-relationship.php:601
 msgid "Any post status"
 msgstr "모든 게시물 상태"
 
@@ -289,7 +390,7 @@ msgstr ""
 msgid "WYSIWYG Editor"
 msgstr "WYSIWYG 편집기"
 
-#: includes/fields/class-acf-field-user.php:22
+#: includes/fields/class-acf-field-user.php:17
 msgid ""
 "Allows the selection of one or more users which can be used to create "
 "relationships between data objects."
@@ -329,7 +430,7 @@ msgstr "텍스트 단락을 저장하기 위한 기본 텍스트 영역 입력."
 msgid "A basic text input, useful for storing single string values."
 msgstr "단일 문자열 값을 저장하는 데 유용한 기본 텍스트 입력입니다."
 
-#: includes/fields/class-acf-field-taxonomy.php:30
+#: includes/fields/class-acf-field-taxonomy.php:22
 msgid ""
 "Allows the selection of one or more taxonomy terms based on the criteria and "
 "options specified in the fields settings."
@@ -349,7 +450,7 @@ msgstr ""
 msgid "A dropdown list with a selection of choices that you specify."
 msgstr "지정한 선택 항목이 있는 드롭다운 목록입니다."
 
-#: includes/fields/class-acf-field-relationship.php:27
+#: includes/fields/class-acf-field-relationship.php:19
 msgid ""
 "A dual-column interface to select one or more posts, pages, or custom post "
 "type items to create a relationship with the item that you're currently "
@@ -375,7 +476,7 @@ msgstr ""
 "사용자가 지정한 값에서 단일 선택을 할 수 있도록 하는 라디오 버튼 입력 그룹입"
 "니다."
 
-#: includes/fields/class-acf-field-post_object.php:27
+#: includes/fields/class-acf-field-post_object.php:19
 msgid ""
 "An interactive and customizable UI for picking one or many posts, pages or "
 "post type items with the option to search. "
@@ -388,8 +489,8 @@ msgid "An input for providing a password using a masked field."
 msgstr "마스킹된 필드를 사용하여 암호를 제공하기 위한 입력입니다."
 
 #: includes/fields/class-acf-field-page_link.php:476
-#: includes/fields/class-acf-field-post_object.php:388
-#: includes/fields/class-acf-field-relationship.php:600
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:593
 msgid "Filter by Post Status"
 msgstr "게시물 상태로 필터링"
 
@@ -503,7 +604,7 @@ msgstr ""
 "콘텐츠를 편집하는 동안 표시되는 접을 수 있는 패널로 사용자 정의 필드를 그룹화"
 "하고 구성할 수 있습니다. 큰 데이터 세트를 깔끔하게 유지하는 데 유용합니다."
 
-#: includes/fields.php:474
+#: includes/fields.php:475
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
@@ -512,7 +613,7 @@ msgstr ""
 "반복해서 반복할 수 있는 하위 필드 세트의 상위 역할을 하여 슬라이드, 팀 구성"
 "원 및 클릭 유도 문안 타일과 같은 반복 콘텐츠에 대한 솔루션을 제공합니다."
 
-#: includes/fields.php:464
+#: includes/fields.php:465
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -523,7 +624,7 @@ msgstr ""
 "설정은 이미지 필드 유형과 유사합니다. 추가 설정을 통해 갤러리에서 새 첨부 파"
 "일이 추가되는 위치와 허용되는 첨부 파일의 최소/최대 수를 지정할 수 있습니다."
 
-#: includes/fields.php:454
+#: includes/fields.php:455
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
@@ -533,7 +634,7 @@ msgstr ""
 "용하면 레이아웃과 하위 필드를 사용하여 사용 가능한 블록을 디자인함으로써 전"
 "체 제어로 콘텐츠를 정의, 생성 및 관리할 수 있습니다."
 
-#: includes/fields.php:444
+#: includes/fields.php:445
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -545,16 +646,16 @@ msgstr ""
 "택한 필드로 자신을 교체하거나 선택한 필드를 하위 필드 그룹으로 표시할 수 있습"
 "니다."
 
-#: includes/fields.php:441
+#: includes/fields.php:442
 msgctxt "noun"
 msgid "Clone"
 msgstr "복제"
 
-#: includes/fields.php:357
+#: includes/admin/views/global/navigation.php:82 includes/fields.php:357
 msgid "PRO"
 msgstr "프로"
 
-#: includes/fields.php:355
+#: includes/fields.php:355 includes/fields.php:412
 msgid "Advanced"
 msgstr "고급의"
 
@@ -574,7 +675,7 @@ msgstr "게시물 ID가 잘못되었습니다."
 msgid "Invalid post type selected for review."
 msgstr "검토를 위해 잘못된 게시물 유형을 선택했습니다."
 
-#: includes/admin/views/global/navigation.php:115
+#: includes/admin/views/global/navigation.php:182
 msgid "More"
 msgstr "더 보기"
 
@@ -628,30 +729,30 @@ msgstr "게시물 유형 콘텐츠를 택소노미하기 위한 사용자 정의
 msgid "Add Your First Taxonomy"
 msgstr "첫 번째 택소노미 추가"
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:106
+#: includes/admin/views/acf-taxonomy/basic-settings.php:122
 msgid "Hierarchical taxonomies can have descendants (like categories)."
 msgstr "계층적 택소노미는 범주와 같은 하위 항목을 가질 수 있습니다."
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:91
+#: includes/admin/views/acf-taxonomy/basic-settings.php:107
 msgid "Makes a taxonomy visible on the frontend and in the admin dashboard."
 msgstr "프런트엔드와 관리자 알림판에서 택소노미를 볼 수 있습니다."
 
-#: includes/admin/views/acf-taxonomy/basic-settings.php:75
+#: includes/admin/views/acf-taxonomy/basic-settings.php:91
 msgid "One or many post types that can be classified with this taxonomy."
 msgstr "이 택소노미로 택소노미할 수 있는 하나 이상의 게시물 유형입니다."
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:44
+#: includes/admin/views/acf-taxonomy/basic-settings.php:60
 msgid "genre"
 msgstr "장르"
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:26
+#: includes/admin/views/acf-taxonomy/basic-settings.php:42
 msgid "Genre"
 msgstr "장르"
 
 #. translators: example taxonomy
-#: includes/admin/views/acf-taxonomy/basic-settings.php:9
+#: includes/admin/views/acf-taxonomy/basic-settings.php:25
 msgid "Genres"
 msgstr "장르"
 
@@ -698,7 +799,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:909
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1026
-#: includes/admin/views/acf-taxonomy/basic-settings.php:41
+#: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
 msgstr "택소노미 키"
 
@@ -1235,61 +1336,61 @@ msgstr ""
 msgid "Add Your First Post Type"
 msgstr "첫 게시물 유형 추가"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:120
-#: includes/admin/views/acf-taxonomy/basic-settings.php:119
+#: includes/admin/views/acf-post-type/basic-settings.php:136
+#: includes/admin/views/acf-taxonomy/basic-settings.php:135
 msgid "I know what I'm doing, show me all the options."
 msgstr "내가 무엇을 하는지 알고 모든 옵션을 보여주세요."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:119
-#: includes/admin/views/acf-taxonomy/basic-settings.php:118
+#: includes/admin/views/acf-post-type/basic-settings.php:135
+#: includes/admin/views/acf-taxonomy/basic-settings.php:134
 msgid "Advanced Configuration"
 msgstr "고급 구성"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:107
+#: includes/admin/views/acf-post-type/basic-settings.php:123
 msgid "Hierarchical post types can have descendants (like pages)."
 msgstr "계층적 게시물 유형은 페이지와 같은 하위 항목을 가질 수 있습니다."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:106
+#: includes/admin/views/acf-post-type/basic-settings.php:122
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:976
-#: includes/admin/views/acf-taxonomy/basic-settings.php:105
+#: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
 msgstr "계층적"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:91
+#: includes/admin/views/acf-post-type/basic-settings.php:107
 msgid "Visible on the frontend and in the admin dashboard."
 msgstr "프런트엔드와 관리 알림판에서 볼 수 있습니다."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:90
-#: includes/admin/views/acf-taxonomy/basic-settings.php:90
+#: includes/admin/views/acf-post-type/basic-settings.php:106
+#: includes/admin/views/acf-taxonomy/basic-settings.php:106
 msgid "Public"
 msgstr "공공의"
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:43
+#: includes/admin/views/acf-post-type/basic-settings.php:59
 msgid "movie"
 msgstr "동영상"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:41
+#: includes/admin/views/acf-post-type/basic-settings.php:57
 msgid "Lower case letters, underscores and dashes only, Max 20 characters."
 msgstr "소문자, 밑줄 및 대시만 가능하며 최대 20자입니다."
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:25
+#: includes/admin/views/acf-post-type/basic-settings.php:41
 msgid "Movie"
 msgstr "동영상"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:23
-#: includes/admin/views/acf-taxonomy/basic-settings.php:24
+#: includes/admin/views/acf-post-type/basic-settings.php:39
+#: includes/admin/views/acf-taxonomy/basic-settings.php:40
 msgid "Singular Label"
 msgstr "단일 레이블"
 
 #. translators: example post type
-#: includes/admin/views/acf-post-type/basic-settings.php:8
+#: includes/admin/views/acf-post-type/basic-settings.php:24
 msgid "Movies"
 msgstr "동영상"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:6
-#: includes/admin/views/acf-taxonomy/basic-settings.php:7
+#: includes/admin/views/acf-post-type/basic-settings.php:22
+#: includes/admin/views/acf-taxonomy/basic-settings.php:23
 msgid "Plural Label"
 msgstr "복수 라벨"
 
@@ -1460,7 +1561,7 @@ msgstr "맞춤 퍼머링크"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:980
 #: includes/admin/views/acf-post-type/advanced-settings.php:1150
-#: includes/admin/views/acf-post-type/basic-settings.php:40
+#: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
 msgstr "게시물 유형 키"
 
@@ -2187,7 +2288,7 @@ msgstr "편집자"
 msgid "Trackbacks"
 msgstr "트랙백"
 
-#: includes/admin/views/acf-post-type/basic-settings.php:71
+#: includes/admin/views/acf-post-type/basic-settings.php:87
 msgid "Select existing taxonomies to classify items of the post type."
 msgstr "게시물 유형의 항목을 택소노미하려면 기존 택소노미를 선택하십시오."
 
@@ -2240,7 +2341,7 @@ msgstr ""
 msgid "Import from Custom Post Type UI"
 msgstr "사용자 정의 게시물 유형 UI에서 가져오기"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:390
+#: includes/admin/tools/class-acf-admin-tool-export.php:412
 msgid ""
 "The following code can be used to register a local version of the selected "
 "items. Storing field groups, post types, or taxonomies locally can provide "
@@ -2255,11 +2356,11 @@ msgstr ""
 "여 테마의 functions.php 파일에 붙여넣거나 외부 파일에 포함시킨 다음 ACF 관리"
 "자에서 항목을 비활성화하거나 삭제하십시오."
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:389
+#: includes/admin/tools/class-acf-admin-tool-export.php:411
 msgid "Export - Generate PHP"
 msgstr "내보내기 - PHP 생성"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:362
+#: includes/admin/tools/class-acf-admin-tool-export.php:384
 msgid "Export"
 msgstr "내보내다"
 
@@ -2276,22 +2377,17 @@ msgid "Exported 1 item."
 msgid_plural "Exported %s items."
 msgstr[0] "내보낸 %s개 항목"
 
-#: includes/admin/post-types/admin-taxonomy.php:124
-#: assets/build/js/acf-internal-post-type.js:177
-#: assets/build/js/acf-internal-post-type.js:247
+#: includes/admin/post-types/admin-taxonomy.php:129
+#: assets/build/js/acf-internal-post-type.js:182
+#: assets/build/js/acf-internal-post-type.js:256
 msgid "Category"
 msgstr "범주"
 
-#: includes/admin/post-types/admin-taxonomy.php:122
-#: assets/build/js/acf-internal-post-type.js:174
-#: assets/build/js/acf-internal-post-type.js:244
+#: includes/admin/post-types/admin-taxonomy.php:127
+#: assets/build/js/acf-internal-post-type.js:179
+#: assets/build/js/acf-internal-post-type.js:253
 msgid "Tag"
 msgstr "꼬리표"
-
-#: includes/admin/post-types/admin-post-type.php:102
-#: includes/admin/post-types/admin-taxonomy.php:103
-msgid "Create new post type"
-msgstr "새 게시물 유형 만들기"
 
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:82
@@ -2328,7 +2424,7 @@ msgid "Taxonomy updated."
 msgstr "택소노미가 업데이트되었습니다."
 
 #: includes/admin/post-types/admin-taxonomies.php:377
-#: includes/admin/post-types/admin-taxonomy.php:152
+#: includes/admin/post-types/admin-taxonomy.php:157
 msgid ""
 "This taxonomy could not be registered because its key is in use by another "
 "taxonomy registered by another plugin or theme."
@@ -2391,22 +2487,22 @@ msgstr[0] "%s 게시물 유형이 활성화되었습니다."
 #: includes/admin/post-types/admin-post-types.php:112
 #: includes/admin/post-types/admin-taxonomies.php:137
 #: includes/admin/tools/class-acf-admin-tool-import.php:82
-#: includes/admin/views/acf-taxonomy/basic-settings.php:66
+#: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:90
 msgid "Post Types"
 msgstr "게시물 유형"
 
-#: includes/admin/post-types/admin-post-type.php:159
-#: includes/admin/post-types/admin-taxonomy.php:159
+#: includes/admin/post-types/admin-post-type.php:162
+#: includes/admin/post-types/admin-taxonomy.php:164
 msgid "Advanced Settings"
 msgstr "고급 설정"
 
-#: includes/admin/post-types/admin-post-type.php:158
-#: includes/admin/post-types/admin-taxonomy.php:158
+#: includes/admin/post-types/admin-post-type.php:161
+#: includes/admin/post-types/admin-taxonomy.php:163
 msgid "Basic Settings"
 msgstr "기본 설정"
 
-#: includes/admin/post-types/admin-post-type.php:152
+#: includes/admin/post-types/admin-post-type.php:155
 #: includes/admin/post-types/admin-post-types.php:370
 msgid ""
 "This post type could not be registered because its key is in use by another "
@@ -2415,30 +2511,22 @@ msgstr ""
 "이 게시물 유형은 다른 플러그인 또는 테마에서 등록한 다른 게시물 유형에서 해"
 "당 키를 사용 중이므로 등록할 수 없습니다."
 
-#: includes/admin/post-types/admin-post-type.php:125
-#: assets/build/js/acf-internal-post-type.js:171
-#: assets/build/js/acf-internal-post-type.js:241
+#: includes/admin/post-types/admin-post-type.php:128
+#: assets/build/js/acf-internal-post-type.js:176
+#: assets/build/js/acf-internal-post-type.js:250
 msgid "Pages"
 msgstr "페이지"
 
-#: includes/admin/post-types/admin-post-type.php:103
-#: includes/admin/post-types/admin-taxonomy.php:102
-msgid "Create new taxonomy"
-msgstr "새 택소노미 만들기"
-
-#: includes/admin/post-types/admin-post-type.php:101
-#: includes/admin/post-types/admin-taxonomy.php:101
-msgid "Link existing field groups"
+#: includes/admin/admin-internal-post-type.php:355
+msgid "Link Existing Field Groups"
 msgstr "기존 필드 그룹 연결"
 
 #. translators: %s post type name
-#: includes/admin/post-types/admin-post-type.php:82
+#: includes/admin/post-types/admin-post-type.php:80
 msgid "%s post type created"
 msgstr "%s 게시물 유형이 생성됨"
 
-#. translators: %s post type name
 #. translators: %s taxonomy name
-#: includes/admin/post-types/admin-post-type.php:78
 #: includes/admin/post-types/admin-taxonomy.php:78
 msgid "Add fields to %s"
 msgstr "%s에 필드 추가"
@@ -2480,20 +2568,20 @@ msgstr "검색하려면 입력하세요..."
 
 #: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-field-group.js:1172
-#: assets/build/js/acf-field-group.js:2295
+#: assets/build/js/acf-field-group.js:2311
 #: assets/build/js/acf-field-group.js:1414
-#: assets/build/js/acf-field-group.js:2689
+#: assets/build/js/acf-field-group.js:2711
 msgid "PRO Only"
 msgstr "프로 전용"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: assets/build/js/acf-internal-post-type.js:303
-#: assets/build/js/acf-internal-post-type.js:408
+#: assets/build/js/acf-internal-post-type.js:308
+#: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
 msgstr "필드 그룹이 성공적으로 연결되었습니다."
 
 #. translators: %s - URL to ACF tools page.
-#: includes/admin/admin.php:194
+#: includes/admin/admin.php:195
 msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
@@ -2501,53 +2589,47 @@ msgstr ""
 "Custom Post Type UI에 등록된 Post Type과 Taxonomies를 가져와서 ACF로 관리합니"
 "다. <a href=\"%s\">시작하기</a>."
 
-#: includes/admin/admin.php:48
+#: includes/admin/admin.php:48 includes/admin/admin.php:265
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:322
 msgid "taxonomy"
 msgstr "택소노미"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:322
 msgid "post type"
 msgstr "게시물 유형"
 
-#. translators: %1$s - name of newly created post. %2$s - either "post type" or
-#. "taxonomy".
-#: includes/admin/admin-internal-post-type.php:335
-msgid "Link %1$s %2$s to field groups"
-msgstr "필드 그룹에 %1$s %2$s 연결"
-
-#: includes/admin/admin-internal-post-type.php:328
+#: includes/admin/admin-internal-post-type.php:346
 msgid "Done"
 msgstr "완료"
 
-#: includes/admin/admin-internal-post-type.php:315
-msgid "Field group(s)"
+#: includes/admin/admin-internal-post-type.php:332
+msgid "Field Group(s)"
 msgstr "필드 그룹"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:331
 msgid "Select one or many field groups..."
 msgstr "하나 이상의 필드 그룹 선택..."
 
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:330
 msgid "Please select the field groups to link."
 msgstr "연결할 필드 그룹을 선택하십시오."
 
-#: includes/admin/admin-internal-post-type.php:277
+#: includes/admin/admin-internal-post-type.php:288
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "필드 그룹이 성공적으로 연결되었습니다."
 
-#: includes/admin/admin-internal-post-type-list.php:254
+#: includes/admin/admin-internal-post-type-list.php:261
 #: includes/admin/post-types/admin-post-types.php:371
 #: includes/admin/post-types/admin-taxonomies.php:378
 msgctxt "post status"
 msgid "Registration Failed"
 msgstr "등록 실패"
 
-#: includes/admin/admin-internal-post-type-list.php:253
+#: includes/admin/admin-internal-post-type-list.php:260
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
@@ -2562,6 +2644,7 @@ msgstr "REST API"
 
 #: includes/acf-internal-post-type-functions.php:481
 #: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:537
 msgid "Permissions"
 msgstr "권한"
 
@@ -2572,15 +2655,17 @@ msgstr "URL"
 
 #: includes/acf-internal-post-type-functions.php:479
 #: includes/acf-internal-post-type-functions.php:508
+#: includes/acf-internal-post-type-functions.php:535
 msgid "Visibility"
 msgstr "가시성"
 
 #: includes/acf-internal-post-type-functions.php:478
 #: includes/acf-internal-post-type-functions.php:507
+#: includes/acf-internal-post-type-functions.php:536
 msgid "Labels"
 msgstr "레이블"
 
-#: includes/admin/post-types/admin-field-group.php:260
+#: includes/admin/post-types/admin-field-group.php:261
 msgid "Field Settings Tabs"
 msgstr "필드 설정 탭"
 
@@ -2596,19 +2681,19 @@ msgstr ""
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[미리보기에 사용할 수 없는 ACF 쇼트코드 값]"
 
-#: includes/admin/admin-internal-post-type.php:287
-#: includes/admin/post-types/admin-field-group.php:562
+#: includes/admin/admin-internal-post-type.php:298
+#: includes/admin/post-types/admin-field-group.php:563
 msgid "Close Modal"
 msgstr "모달 닫기"
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:1661
-#: assets/build/js/acf-field-group.js:1980
+#: assets/build/js/acf-field-group.js:1662
+#: assets/build/js/acf-field-group.js:1982
 msgid "Field moved to other group"
 msgstr "필드가 다른 그룹으로 이동됨"
 
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf.js:1440 assets/build/js/acf.js:1521
+#: assets/build/js/acf.js:1441 assets/build/js/acf.js:1522
 msgid "Close modal"
 msgstr "모달 닫기"
 
@@ -2620,7 +2705,7 @@ msgstr "이 탭에서 새 탭 그룹을 시작합니다."
 msgid "New Tab Group"
 msgstr "새 탭 그룹"
 
-#: includes/fields/class-acf-field-select.php:457
+#: includes/fields/class-acf-field-select.php:451
 #: includes/fields/class-acf-field-true_false.php:200
 msgid "Use a stylized checkbox using select2"
 msgstr "Select2를 사용하여 양식화된 체크박스 사용"
@@ -2650,19 +2735,19 @@ msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
 msgstr ""
 "체크박스 맞춤 값은 비워둘 수 없습니다. 비어 있는 값을 모두 선택 취소합니다."
 
-#: includes/admin/views/global/navigation.php:156
+#: includes/admin/views/global/navigation.php:226
 msgid "Updates"
 msgstr "업데이트"
 
-#: includes/admin/views/global/navigation.php:94
+#: includes/admin/views/global/navigation.php:172
 msgid "Advanced Custom Fields logo"
 msgstr "고급 사용자 정의 필드 로고"
 
-#: includes/admin/views/global/form-top.php:66
+#: includes/admin/views/global/form-top.php:89
 msgid "Save Changes"
 msgstr "변경 사항을 저장하다"
 
-#: includes/admin/views/global/form-top.php:53
+#: includes/admin/views/global/form-top.php:76
 msgid "Field Group Title"
 msgstr "필드 그룹 제목"
 
@@ -2699,6 +2784,7 @@ msgid "Add Your First Field Group"
 msgstr "첫 번째 필드 그룹 추가"
 
 #: includes/admin/views/acf-field-group/pro-features.php:39
+#: includes/admin/views/global/navigation.php:82
 msgid "Options Pages"
 msgstr "옵션 페이지"
 
@@ -2718,16 +2804,16 @@ msgstr "유연한 콘텐츠 필드"
 msgid "Repeater Field"
 msgstr "리피터 필드"
 
-#: includes/admin/views/global/navigation.php:137
+#: includes/admin/views/global/navigation.php:207
 msgid "Unlock Extra Features with ACF PRO"
 msgstr "ACF 프로로 추가 기능 잠금 해제"
 
-#: includes/admin/views/acf-field-group/options.php:252
+#: includes/admin/views/acf-field-group/options.php:265
 msgid "Delete Field Group"
 msgstr "필드 그룹 삭제"
 
 #. translators: 1: Post creation date 2: Post creation time
-#: includes/admin/views/acf-field-group/options.php:246
+#: includes/admin/views/acf-field-group/options.php:259
 msgid "Created on %1$s at %2$s"
 msgstr "%1$s에서 %2$s에 생성됨"
 
@@ -2769,7 +2855,7 @@ msgstr "#"
 #: includes/admin/views/acf-field-group/fields.php:33
 #: includes/admin/views/acf-field-group/fields.php:67
 #: includes/admin/views/acf-field-group/fields.php:103
-#: includes/admin/views/global/form-top.php:62
+#: includes/admin/views/global/form-top.php:85
 msgid "Add Field"
 msgstr "필드 추가"
 
@@ -2790,7 +2876,7 @@ msgstr "일반적인"
 msgid "Import JSON"
 msgstr "JSON 가져오기"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:370
+#: includes/admin/tools/class-acf-admin-tool-export.php:392
 msgid "Export As JSON"
 msgstr "JSON으로 내보내기"
 
@@ -2806,34 +2892,34 @@ msgid "Field group activated."
 msgid_plural "%s field groups activated."
 msgstr[0] "%s 필드 그룹이 활성화되었습니다."
 
-#: includes/admin/admin-internal-post-type-list.php:429
-#: includes/admin/admin-internal-post-type-list.php:460
+#: includes/admin/admin-internal-post-type-list.php:452
+#: includes/admin/admin-internal-post-type-list.php:478
 msgid "Deactivate"
 msgstr "비활성화"
 
-#: includes/admin/admin-internal-post-type-list.php:429
+#: includes/admin/admin-internal-post-type-list.php:452
 msgid "Deactivate this item"
 msgstr "이 항목 비활성화"
 
-#: includes/admin/admin-internal-post-type-list.php:425
-#: includes/admin/admin-internal-post-type-list.php:459
+#: includes/admin/admin-internal-post-type-list.php:448
+#: includes/admin/admin-internal-post-type-list.php:477
 msgid "Activate"
 msgstr "활성화"
 
-#: includes/admin/admin-internal-post-type-list.php:425
+#: includes/admin/admin-internal-post-type-list.php:448
 msgid "Activate this item"
 msgstr "이 항목 활성화"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2741
-#: assets/build/js/acf-field-group.js:3180
+#: assets/build/js/acf-field-group.js:2803
+#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr "필드 그룹을 휴지통으로 이동하시겠습니까?"
 
-#: acf.php:485 includes/admin/admin-internal-post-type-list.php:241
-#: includes/admin/post-types/admin-field-group.php:288
-#: includes/admin/post-types/admin-post-type.php:292
-#: includes/admin/post-types/admin-taxonomy.php:292
+#: acf.php:491 includes/admin/admin-internal-post-type-list.php:248
+#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-post-type.php:295
+#: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Inactive"
 msgstr "비활성"
@@ -2842,7 +2928,7 @@ msgstr "비활성"
 msgid "WP Engine"
 msgstr "WP 엔진"
 
-#: acf.php:543
+#: acf.php:549
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2850,7 +2936,7 @@ msgstr ""
 "고급 사용자 정의 필드와 고급 사용자 정의 필드 프로는 동시에 활성화되어서는 "
 "안 됩니다. 고급 사용자 정의 필드 프로를 자동으로 비활성화했습니다."
 
-#: acf.php:541
+#: acf.php:547
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2862,42 +2948,42 @@ msgstr ""
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
-"\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" "
+"target=\"_blank\">Learn how to fix this</a>."
 msgstr ""
 "<strong>%1$s</strong> - ACF가 초기화되기 전에 ACF 필드 값을 검색하는 호출이 "
 "하나 이상 감지되었습니다. 이는 지원되지 않으며 잘못된 형식의 데이터 또는 누락"
 "된 데이터가 발생할 수 있습니다. <a href=\"%2$s\" target=\"_blank\">이 문제를 "
 "해결하는 방법을 알아보세요</a>."
 
-#: includes/fields/class-acf-field-user.php:540
+#: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] "%1$s에는 다음 역할 중 하나를 가진 사용자가 있어야 합니다. %2$s"
 
-#: includes/fields/class-acf-field-user.php:531
+#: includes/fields/class-acf-field-user.php:542
 msgid "%1$s must have a valid user ID."
 msgstr "%1$s에는 유효한 사용자 ID가 있어야 합니다."
 
-#: includes/fields/class-acf-field-user.php:369
+#: includes/fields/class-acf-field-user.php:380
 msgid "Invalid request."
 msgstr "잘못된 요청."
 
-#: includes/fields/class-acf-field-select.php:690
+#: includes/fields/class-acf-field-select.php:684
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s은(는) %2$s 중 하나가 아닙니다."
 
-#: includes/fields/class-acf-field-post_object.php:698
+#: includes/fields/class-acf-field-post_object.php:700
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s에는 다음 용어 중 하나가 있어야 합니다. %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:682
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s은(는) 다음 게시물 유형 중 하나여야 합니다: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:675
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s에는 유효한 게시물 ID가 있어야 합니다."
 
@@ -2905,7 +2991,7 @@ msgstr "%1$s에는 유효한 게시물 ID가 있어야 합니다."
 msgid "%s requires a valid attachment ID."
 msgstr "%s에는 유효한 첨부 파일 ID가 필요합니다."
 
-#: includes/admin/views/acf-field-group/options.php:218
+#: includes/admin/views/acf-field-group/options.php:231
 msgid "Show in REST API"
 msgstr "REST API에 표시"
 
@@ -2930,9 +3016,9 @@ msgstr "16진수 문자열"
 msgid "Upgrade to PRO"
 msgstr "프로로 업그레이드"
 
-#: includes/admin/post-types/admin-field-group.php:288
-#: includes/admin/post-types/admin-post-type.php:292
-#: includes/admin/post-types/admin-taxonomy.php:292
+#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-post-type.php:295
+#: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Active"
 msgstr "활성"
@@ -2981,18 +3067,18 @@ msgstr "첨부파일"
 #: includes/admin/post-types/admin-post-types.php:137
 #: includes/admin/post-types/admin-taxonomies.php:112
 #: includes/admin/tools/class-acf-admin-tool-import.php:93
-#: includes/admin/views/acf-post-type/basic-settings.php:70
+#: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
 msgid "Taxonomies"
 msgstr "택소노미"
 
 #: includes/acf-wp-functions.php:41
-#: includes/admin/post-types/admin-post-type.php:123
+#: includes/admin/post-types/admin-post-type.php:126
 #: includes/admin/post-types/admin-post-types.php:139
 #: includes/admin/views/acf-post-type/advanced-settings.php:102
-#: assets/build/js/acf-internal-post-type.js:168
-#: assets/build/js/acf-internal-post-type.js:238
+#: assets/build/js/acf-internal-post-type.js:173
+#: assets/build/js/acf-internal-post-type.js:247
 msgid "Posts"
 msgstr "게시물"
 
@@ -3008,32 +3094,32 @@ msgstr "죄송합니다. 이 게시물은 diff 비교에 사용할 수 없습니
 msgid "Invalid field group parameter(s)."
 msgstr "잘못된 필드 그룹 매개변수입니다."
 
-#: includes/admin/admin-internal-post-type-list.php:395
+#: includes/admin/admin-internal-post-type-list.php:413
 msgid "Awaiting save"
 msgstr "저장 대기 중"
 
-#: includes/admin/admin-internal-post-type-list.php:392
+#: includes/admin/admin-internal-post-type-list.php:410
 msgid "Saved"
 msgstr "저장했어요"
 
-#: includes/admin/admin-internal-post-type-list.php:388
+#: includes/admin/admin-internal-post-type-list.php:406
 #: includes/admin/tools/class-acf-admin-tool-import.php:49
 msgid "Import"
 msgstr "가져오기"
 
-#: includes/admin/admin-internal-post-type-list.php:384
+#: includes/admin/admin-internal-post-type-list.php:402
 msgid "Review changes"
 msgstr "변경사항 검토하기"
 
-#: includes/admin/admin-internal-post-type-list.php:360
+#: includes/admin/admin-internal-post-type-list.php:378
 msgid "Located in: %s"
 msgstr "위치: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:357
+#: includes/admin/admin-internal-post-type-list.php:375
 msgid "Located in plugin: %s"
 msgstr "플러그인에 있음: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:354
+#: includes/admin/admin-internal-post-type-list.php:372
 msgid "Located in theme: %s"
 msgstr "테마에 있음: %s"
 
@@ -3041,36 +3127,36 @@ msgstr "테마에 있음: %s"
 msgid "Various"
 msgstr "다양한"
 
-#: includes/admin/admin-internal-post-type-list.php:209
-#: includes/admin/admin-internal-post-type-list.php:467
+#: includes/admin/admin-internal-post-type-list.php:216
+#: includes/admin/admin-internal-post-type-list.php:485
 msgid "Sync changes"
 msgstr "변경사항 동기화하기"
 
-#: includes/admin/admin-internal-post-type-list.php:208
+#: includes/admin/admin-internal-post-type-list.php:215
 msgid "Loading diff"
 msgstr "로딩 차이"
 
-#: includes/admin/admin-internal-post-type-list.php:207
+#: includes/admin/admin-internal-post-type-list.php:214
 msgid "Review local JSON changes"
 msgstr "지역 JSON 변경 검토하기"
 
-#: includes/admin/admin.php:169
+#: includes/admin/admin.php:170
 msgid "Visit website"
 msgstr "웹 사이트 방문하기"
 
-#: includes/admin/admin.php:168
+#: includes/admin/admin.php:169
 msgid "View details"
 msgstr "세부 정보 보기"
 
-#: includes/admin/admin.php:167
+#: includes/admin/admin.php:168
 msgid "Version %s"
 msgstr "버전 %s"
 
-#: includes/admin/admin.php:166
+#: includes/admin/admin.php:167
 msgid "Information"
 msgstr "정보"
 
-#: includes/admin/admin.php:157
+#: includes/admin/admin.php:158
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
@@ -3078,7 +3164,7 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\">헬프 데스크</a>. 당사 헬프데스크의 지원 전문"
 "가가 보다 심도 있는 기술 문제를 지원할 것입니다."
 
-#: includes/admin/admin.php:153
+#: includes/admin/admin.php:154
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
 "friendly community on our Community Forums who may be able to help you "
@@ -3087,7 +3173,7 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\">토론</a>. ACF 세계의 '방법'을 파악하는 데 도"
 "움을 줄 수 있는 커뮤니티 포럼에 활발하고 친근한 커뮤니티가 있습니다."
 
-#: includes/admin/admin.php:149
+#: includes/admin/admin.php:150
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
 "documentation contains references and guides for most situations you may "
@@ -3096,7 +3182,7 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\">문서</a>. 광범위한 문서에는 발생할 수 있는 "
 "대부분의 상황에 대한 참조 및 가이드가 포함되어 있습니다."
 
-#: includes/admin/admin.php:146
+#: includes/admin/admin.php:147
 msgid ""
 "We are fanatical about support, and want you to get the best out of your "
 "website with ACF. If you run into any difficulties, there are several places "
@@ -3105,17 +3191,17 @@ msgstr ""
 "우리는 지원에 열광하며 ACF를 통해 웹 사이트를 최대한 활용하기를 바랍니다. 어"
 "려움에 처한 경우 도움을 받을 수 있는 여러 곳이 있습니다."
 
-#: includes/admin/admin.php:143 includes/admin/admin.php:145
+#: includes/admin/admin.php:144 includes/admin/admin.php:146
 msgid "Help & Support"
 msgstr "도움말 및 지원"
 
-#: includes/admin/admin.php:134
+#: includes/admin/admin.php:135
 msgid ""
 "Please use the Help & Support tab to get in touch should you find yourself "
 "requiring assistance."
 msgstr "도움이 필요한 경우 도움말 및 지원 탭을 사용하여 연락하십시오."
 
-#: includes/admin/admin.php:131
+#: includes/admin/admin.php:132
 msgid ""
 "Before creating your first Field Group, we recommend first reading our <a "
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
@@ -3124,7 +3210,7 @@ msgstr ""
 "첫 번째 필드 그룹을 만들기 전에 먼저 <a href=\"%s\" target=\"_blank\">시작하"
 "기</a> 가이드를 읽고 플러그인의 철학과 모범 사례를 숙지하는 것이 좋습니다."
 
-#: includes/admin/admin.php:129
+#: includes/admin/admin.php:130
 msgid ""
 "The Advanced Custom Fields plugin provides a visual form builder to "
 "customize WordPress edit screens with extra fields, and an intuitive API to "
@@ -3134,7 +3220,7 @@ msgstr ""
 "의할 수 있는 시각적 양식 빌더와 모든 테마 템플릿 파일에 사용자 정의 필드 값"
 "을 표시하는 직관적인 API를 제공합니다."
 
-#: includes/admin/admin.php:126 includes/admin/admin.php:128
+#: includes/admin/admin.php:127 includes/admin/admin.php:129
 msgid "Overview"
 msgstr "개요"
 
@@ -3150,7 +3236,7 @@ msgstr "\"%s\" 클래스가 존재하지 않습니다."
 msgid "Invalid nonce."
 msgstr "논스가 잘못되었습니다."
 
-#: includes/fields/class-acf-field-user.php:364
+#: includes/fields/class-acf-field-user.php:375
 msgid "Error loading field."
 msgstr "필드를 로드하는 중 오류가 발생했습니다."
 
@@ -3293,7 +3379,7 @@ msgstr "모든 %s 형식"
 msgid "Attachment"
 msgstr "첨부"
 
-#: includes/validation.php:364
+#: includes/validation.php:366
 msgid "%s value is required"
 msgstr "%s 값이 필요합니다."
 
@@ -3306,9 +3392,8 @@ msgstr "다음과 같은 경우 이 필드를 표시합니다."
 msgid "Conditional Logic"
 msgstr "조건부 논리"
 
-#: includes/admin/admin.php:238
 #: includes/admin/views/acf-field-group/conditional-logic.php:156
-#: includes/admin/views/acf-field-group/location-rule.php:91
+#: includes/admin/views/acf-field-group/location-rule.php:92
 msgid "and"
 msgstr "그리고"
 
@@ -3340,20 +3425,20 @@ msgstr "%1$s v%2$s로 업데이트해주셔서 감사합니다!"
 msgid "Database Upgrade Required"
 msgstr "데이터베이스 업그래이드가 필요합니다"
 
-#: includes/admin/post-types/admin-field-group.php:132
+#: includes/admin/post-types/admin-field-group.php:133
 #: includes/admin/views/upgrade/notice.php:18
 msgid "Options Page"
 msgstr "옵션 페이지"
 
-#: includes/admin/views/upgrade/notice.php:15 includes/fields.php:461
+#: includes/admin/views/upgrade/notice.php:15 includes/fields.php:462
 msgid "Gallery"
 msgstr "갤러리"
 
-#: includes/admin/views/upgrade/notice.php:12 includes/fields.php:451
+#: includes/admin/views/upgrade/notice.php:12 includes/fields.php:452
 msgid "Flexible Content"
 msgstr "유연한 콘텐츠"
 
-#: includes/admin/views/upgrade/notice.php:9 includes/fields.php:471
+#: includes/admin/views/upgrade/notice.php:9 includes/fields.php:472
 msgid "Repeater"
 msgstr "리피터"
 
@@ -3361,7 +3446,7 @@ msgstr "리피터"
 msgid "Back to all tools"
 msgstr "모든 도구로 돌아가기"
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:193
 msgid ""
 "If multiple field groups appear on an edit screen, the first field group's "
 "options will be used (the one with the lowest order number)"
@@ -3369,132 +3454,132 @@ msgstr ""
 "편집 화면에 여러 개의 필드 그룹이 나타나는 경우 첫 번째 필드 그룹의 옵션(순"
 "서 번호가 가장 낮은 옵션)이 사용됩니다."
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:193
 msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
 msgstr "항목을 <b>선택</b>하여 편집 화면에서 <b>숨깁니다</b>."
 
-#: includes/admin/views/acf-field-group/options.php:179
+#: includes/admin/views/acf-field-group/options.php:192
 msgid "Hide on screen"
 msgstr "화면에 숨기기"
 
-#: includes/admin/views/acf-field-group/options.php:171
+#: includes/admin/views/acf-field-group/options.php:184
 msgid "Send Trackbacks"
 msgstr "트랙백 보내기"
 
-#: includes/admin/post-types/admin-taxonomy.php:123
-#: includes/admin/views/acf-field-group/options.php:170
+#: includes/admin/post-types/admin-taxonomy.php:128
+#: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:155
-#: assets/build/js/acf-internal-post-type.js:175
-#: assets/build/js/acf-internal-post-type.js:245
+#: assets/build/js/acf-internal-post-type.js:180
+#: assets/build/js/acf-internal-post-type.js:254
 msgid "Tags"
 msgstr "태그"
 
-#: includes/admin/post-types/admin-taxonomy.php:125
-#: includes/admin/views/acf-field-group/options.php:169
-#: assets/build/js/acf-internal-post-type.js:178
-#: assets/build/js/acf-internal-post-type.js:248
+#: includes/admin/post-types/admin-taxonomy.php:130
+#: includes/admin/views/acf-field-group/options.php:182
+#: assets/build/js/acf-internal-post-type.js:183
+#: assets/build/js/acf-internal-post-type.js:257
 msgid "Categories"
 msgstr "카테고리"
 
-#: includes/admin/views/acf-field-group/options.php:167
+#: includes/admin/views/acf-field-group/options.php:180
 #: includes/admin/views/acf-post-type/advanced-settings.php:24
 msgid "Page Attributes"
 msgstr "페이지 속성"
 
-#: includes/admin/views/acf-field-group/options.php:166
+#: includes/admin/views/acf-field-group/options.php:179
 msgid "Format"
 msgstr "형식"
 
-#: includes/admin/views/acf-field-group/options.php:165
+#: includes/admin/views/acf-field-group/options.php:178
 #: includes/admin/views/acf-post-type/advanced-settings.php:18
 msgid "Author"
 msgstr "작성자"
 
-#: includes/admin/views/acf-field-group/options.php:164
+#: includes/admin/views/acf-field-group/options.php:177
 msgid "Slug"
 msgstr "슬러그"
 
-#: includes/admin/views/acf-field-group/options.php:163
+#: includes/admin/views/acf-field-group/options.php:176
 #: includes/admin/views/acf-post-type/advanced-settings.php:23
 msgid "Revisions"
 msgstr "개정"
 
 #: includes/acf-wp-functions.php:63
-#: includes/admin/views/acf-field-group/options.php:162
+#: includes/admin/views/acf-field-group/options.php:175
 #: includes/admin/views/acf-post-type/advanced-settings.php:19
 msgid "Comments"
 msgstr "코멘트"
 
-#: includes/admin/views/acf-field-group/options.php:161
+#: includes/admin/views/acf-field-group/options.php:174
 msgid "Discussion"
 msgstr "논의"
 
-#: includes/admin/views/acf-field-group/options.php:159
+#: includes/admin/views/acf-field-group/options.php:172
 #: includes/admin/views/acf-post-type/advanced-settings.php:22
 msgid "Excerpt"
 msgstr "요약문"
 
-#: includes/admin/views/acf-field-group/options.php:158
+#: includes/admin/views/acf-field-group/options.php:171
 msgid "Content Editor"
 msgstr "콘텐츠 편집기"
 
-#: includes/admin/views/acf-field-group/options.php:157
+#: includes/admin/views/acf-field-group/options.php:170
 msgid "Permalink"
 msgstr "퍼머링크"
 
-#: includes/admin/views/acf-field-group/options.php:235
+#: includes/admin/views/acf-field-group/options.php:248
 msgid "Shown in field group list"
 msgstr "필드 그룹 목록에 표시됨"
 
-#: includes/admin/views/acf-field-group/options.php:142
+#: includes/admin/views/acf-field-group/options.php:155
 msgid "Field groups with a lower order will appear first"
 msgstr "순서가 낮은 필드 그룹이 먼저 나타납니다."
 
-#: includes/admin/views/acf-field-group/options.php:141
+#: includes/admin/views/acf-field-group/options.php:154
 msgid "Order No."
 msgstr "주문번호"
 
-#: includes/admin/views/acf-field-group/options.php:132
+#: includes/admin/views/acf-field-group/options.php:145
 msgid "Below fields"
 msgstr "필드 아래"
 
-#: includes/admin/views/acf-field-group/options.php:131
+#: includes/admin/views/acf-field-group/options.php:144
 msgid "Below labels"
 msgstr "레이블 아래"
 
-#: includes/admin/views/acf-field-group/options.php:124
+#: includes/admin/views/acf-field-group/options.php:137
 msgid "Instruction Placement"
 msgstr "지침 배치"
 
-#: includes/admin/views/acf-field-group/options.php:107
+#: includes/admin/views/acf-field-group/options.php:120
 msgid "Label Placement"
 msgstr "라벨 배치"
 
-#: includes/admin/views/acf-field-group/options.php:97
+#: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
 msgstr "측면"
 
-#: includes/admin/views/acf-field-group/options.php:96
+#: includes/admin/views/acf-field-group/options.php:109
 msgid "Normal (after content)"
 msgstr "일반(내용 후)"
 
-#: includes/admin/views/acf-field-group/options.php:95
+#: includes/admin/views/acf-field-group/options.php:108
 msgid "High (after title)"
 msgstr "높음(제목 뒤)"
 
-#: includes/admin/views/acf-field-group/options.php:88
+#: includes/admin/views/acf-field-group/options.php:101
 msgid "Position"
 msgstr "위치"
 
-#: includes/admin/views/acf-field-group/options.php:79
+#: includes/admin/views/acf-field-group/options.php:92
 msgid "Seamless (no metabox)"
 msgstr "원활한(메타박스 없음)"
 
-#: includes/admin/views/acf-field-group/options.php:78
+#: includes/admin/views/acf-field-group/options.php:91
 msgid "Standard (WP metabox)"
 msgstr "표준(WP 메타박스)"
 
-#: includes/admin/views/acf-field-group/options.php:71
+#: includes/admin/views/acf-field-group/options.php:84
 msgid "Style"
 msgstr "스타일"
 
@@ -3599,8 +3684,8 @@ msgstr "드래그하여 재정렬"
 
 #: includes/admin/post-types/admin-field-group.php:103
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2323
-#: assets/build/js/acf-field-group.js:2725
+#: assets/build/js/acf-field-group.js:2339
+#: assets/build/js/acf-field-group.js:2747
 msgid "Show this field group if"
 msgstr "다음과 같은 경우 이 필드 그룹 표시"
 
@@ -3696,15 +3781,15 @@ msgstr ""
 msgid "Rules"
 msgstr "규칙"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:482
+#: includes/admin/tools/class-acf-admin-tool-export.php:506
 msgid "Copied"
 msgstr "복사했습니다"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:458
+#: includes/admin/tools/class-acf-admin-tool-export.php:482
 msgid "Copy to clipboard"
 msgstr "클립보드에 복사하기"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:363
+#: includes/admin/tools/class-acf-admin-tool-export.php:385
 msgid ""
 "Select the items you would like to export and then select your export "
 "method. Export As JSON to export to a .json file which you can then import "
@@ -3725,8 +3810,8 @@ msgid "No field groups selected"
 msgstr "선택한 필드 그룹 없음"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:39
-#: includes/admin/tools/class-acf-admin-tool-export.php:371
-#: includes/admin/tools/class-acf-admin-tool-export.php:399
+#: includes/admin/tools/class-acf-admin-tool-export.php:393
+#: includes/admin/tools/class-acf-admin-tool-export.php:421
 msgid "Generate PHP"
 msgstr "PHP 생성"
 
@@ -3758,21 +3843,21 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr "필드 그룹 가져오기"
 
-#: includes/admin/admin-internal-post-type-list.php:383
+#: includes/admin/admin-internal-post-type-list.php:401
 msgid "Sync"
 msgstr "동기화하기"
 
-#: includes/admin/admin-internal-post-type-list.php:840
+#: includes/admin/admin-internal-post-type-list.php:858
 msgid "Select %s"
 msgstr "%s 선택하기"
 
-#: includes/admin/admin-internal-post-type-list.php:418
-#: includes/admin/admin-internal-post-type-list.php:456
+#: includes/admin/admin-internal-post-type-list.php:442
+#: includes/admin/admin-internal-post-type-list.php:474
 #: includes/admin/views/acf-field-group/field.php:73
 msgid "Duplicate"
 msgstr "복제하기"
 
-#: includes/admin/admin-internal-post-type-list.php:418
+#: includes/admin/admin-internal-post-type-list.php:442
 msgid "Duplicate this item"
 msgstr "이 항목 복제하기"
 
@@ -3780,14 +3865,14 @@ msgstr "이 항목 복제하기"
 msgid "Supports"
 msgstr "지원"
 
-#: includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:259 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
 msgstr "문서화"
 
 #: includes/admin/post-types/admin-field-groups.php:116
 #: includes/admin/post-types/admin-post-types.php:135
 #: includes/admin/post-types/admin-taxonomies.php:135
-#: includes/admin/views/acf-field-group/options.php:234
+#: includes/admin/views/acf-field-group/options.php:247
 #: includes/admin/views/acf-post-type/advanced-settings.php:58
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:110
 #: includes/admin/views/upgrade/network.php:38
@@ -3795,8 +3880,8 @@ msgstr "문서화"
 msgid "Description"
 msgstr "설명"
 
-#: includes/admin/admin-internal-post-type-list.php:380
-#: includes/admin/admin-internal-post-type-list.php:729
+#: includes/admin/admin-internal-post-type-list.php:398
+#: includes/admin/admin-internal-post-type-list.php:747
 msgid "Sync available"
 msgstr "동기화 가능"
 
@@ -3812,7 +3897,7 @@ msgid "Field group duplicated."
 msgid_plural "%s field groups duplicated."
 msgstr[0] "%s 필드 그룹이 복사되었습니다."
 
-#: includes/admin/admin-internal-post-type-list.php:130
+#: includes/admin/admin-internal-post-type-list.php:137
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "활성 <span class=\"count\">(%s)</span>"
@@ -3828,43 +3913,43 @@ msgstr "사이트 검토하기 & 업그래이드하기"
 msgid "Upgrade Database"
 msgstr "데이터베이스 업그래이드하기"
 
-#: includes/admin/views/acf-field-group/options.php:160
+#: includes/admin/views/acf-field-group/options.php:173
 #: includes/admin/views/acf-post-type/advanced-settings.php:26
 msgid "Custom Fields"
 msgstr "사용자 정의 필드"
 
-#: includes/admin/post-types/admin-field-group.php:607
+#: includes/admin/post-types/admin-field-group.php:608
 msgid "Move Field"
 msgstr "필드 이동하기"
 
-#: includes/admin/post-types/admin-field-group.php:596
-#: includes/admin/post-types/admin-field-group.php:600
+#: includes/admin/post-types/admin-field-group.php:597
+#: includes/admin/post-types/admin-field-group.php:601
 msgid "Please select the destination for this field"
 msgstr "이 필드의 대상을 선택하십시오"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:558
+#: includes/admin/post-types/admin-field-group.php:559
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "%1$s 필드는 이제 %2$s 필드 그룹에서 찾을 수 있습니다."
 
-#: includes/admin/post-types/admin-field-group.php:555
+#: includes/admin/post-types/admin-field-group.php:556
 msgid "Move Complete."
 msgstr "이동완료."
 
 #: includes/admin/views/acf-field-group/field.php:35
-#: includes/admin/views/acf-field-group/options.php:202
+#: includes/admin/views/acf-field-group/options.php:215
 #: includes/admin/views/acf-post-type/advanced-settings.php:74
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:126
 msgid "Active"
 msgstr "활동적인"
 
-#: includes/admin/post-types/admin-field-group.php:257
+#: includes/admin/post-types/admin-field-group.php:258
 msgid "Field Keys"
 msgstr "필드 키"
 
-#: includes/admin/post-types/admin-field-group.php:155
-#: includes/admin/tools/class-acf-admin-tool-export.php:320
+#: includes/admin/post-types/admin-field-group.php:156
+#: includes/admin/tools/class-acf-admin-tool-export.php:342
 msgid "Settings"
 msgstr "설정"
 
@@ -3878,10 +3963,10 @@ msgid "Null"
 msgstr "빈값"
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: includes/class-acf-internal-post-type.php:729
+#: includes/class-acf-internal-post-type.php:733
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1501
-#: assets/build/js/acf-field-group.js:1808
+#: assets/build/js/acf-field-group.js:1502
+#: assets/build/js/acf-field-group.js:1810
 msgid "copy"
 msgstr "복사하기"
 
@@ -3898,8 +3983,8 @@ msgid "Checked"
 msgstr "체크"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-field-group.js:1606
-#: assets/build/js/acf-field-group.js:1920
+#: assets/build/js/acf-field-group.js:1607
+#: assets/build/js/acf-field-group.js:1922
 msgid "Move Custom Field"
 msgstr "사용자 필드 이동하기"
 
@@ -3914,14 +3999,14 @@ msgid "Field group title is required"
 msgstr "필드 그룹 제목이 필요합니다."
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1595
-#: assets/build/js/acf-field-group.js:1906
+#: assets/build/js/acf-field-group.js:1596
+#: assets/build/js/acf-field-group.js:1908
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "변경 사항이 저장될 때까지 이 필드를 이동할 수 없습니다."
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:1405
-#: assets/build/js/acf-field-group.js:1703
+#: assets/build/js/acf-field-group.js:1406
+#: assets/build/js/acf-field-group.js:1705
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "문자열 \"field_\"는 필드 이름의 시작 부분에 사용할 수 없습니다."
 
@@ -3956,7 +4041,7 @@ msgid "Field group updated."
 msgstr "필드 그룹을 업대이트했습니다."
 
 #: includes/admin/admin-tools.php:118
-#: includes/admin/views/global/navigation.php:154
+#: includes/admin/views/global/navigation.php:224
 #: includes/admin/views/tools/tools.php:21
 msgid "Tools"
 msgstr "도구"
@@ -3973,17 +4058,17 @@ msgstr "동일하다"
 msgid "Forms"
 msgstr "양식"
 
-#: includes/admin/post-types/admin-post-type.php:124 includes/locations.php:100
+#: includes/admin/post-types/admin-post-type.php:127 includes/locations.php:100
 #: includes/locations/class-acf-location-page.php:22
-#: assets/build/js/acf-internal-post-type.js:170
-#: assets/build/js/acf-internal-post-type.js:240
+#: assets/build/js/acf-internal-post-type.js:175
+#: assets/build/js/acf-internal-post-type.js:249
 msgid "Page"
 msgstr "페이지"
 
-#: includes/admin/post-types/admin-post-type.php:122 includes/locations.php:99
+#: includes/admin/post-types/admin-post-type.php:125 includes/locations.php:99
 #: includes/locations/class-acf-location-post.php:22
-#: assets/build/js/acf-internal-post-type.js:167
-#: assets/build/js/acf-internal-post-type.js:237
+#: assets/build/js/acf-internal-post-type.js:172
+#: assets/build/js/acf-internal-post-type.js:246
 msgid "Post"
 msgstr "게시물"
 
@@ -4089,35 +4174,35 @@ msgstr "값이 없음"
 msgid "Has any value"
 msgstr "값이 있음"
 
-#: includes/admin/admin-internal-post-type.php:327
+#: includes/admin/admin-internal-post-type.php:345
 #: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:353
-#: assets/build/js/acf.js:1567 assets/build/js/acf.js:1662
+#: assets/build/js/acf.js:1568 assets/build/js/acf.js:1663
 msgid "Cancel"
 msgstr "취소하기"
 
-#: includes/assets.php:349 assets/build/js/acf.js:1741
-#: assets/build/js/acf.js:1859
+#: includes/assets.php:349 assets/build/js/acf.js:1742
+#: assets/build/js/acf.js:1860
 msgid "Are you sure?"
 msgstr "확실합니까?"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9409
-#: assets/build/js/acf-input.js:10260
+#: includes/assets.php:369 assets/build/js/acf-input.js:9408
+#: assets/build/js/acf-input.js:10259
 msgid "%d fields require attention"
 msgstr "%d개의 필드에 주의가 필요합니다."
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9407
-#: assets/build/js/acf-input.js:10256
+#: includes/assets.php:368 assets/build/js/acf-input.js:9406
+#: assets/build/js/acf-input.js:10255
 msgid "1 field requires attention"
 msgstr "주의가 필요한 필드 1개"
 
-#: includes/assets.php:367 includes/validation.php:286
-#: includes/validation.php:296 assets/build/js/acf-input.js:9402
-#: assets/build/js/acf-input.js:10251
+#: includes/assets.php:367 includes/validation.php:288
+#: includes/validation.php:298 assets/build/js/acf-input.js:9401
+#: assets/build/js/acf-input.js:10250
 msgid "Validation failed"
 msgstr "검증에 실패했습니다"
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9565
-#: assets/build/js/acf-input.js:10434
+#: includes/assets.php:366 assets/build/js/acf-input.js:9569
+#: assets/build/js/acf-input.js:10438
 msgid "Validation successful"
 msgstr "유효성 검사 성공"
 
@@ -4153,12 +4238,12 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "편집하기"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9179
-#: assets/build/js/acf-input.js:10022
+#: includes/assets.php:363 assets/build/js/acf-input.js:9178
+#: assets/build/js/acf-input.js:10021
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "페이지를 벗어나면 변경 한 내용이 손실 됩니다"
 
-#: includes/api/api-helpers.php:3498
+#: includes/api/api-helpers.php:3499
 msgid "File type must be %s."
 msgstr "파일 유형은 %s여야 합니다."
 
@@ -4167,54 +4252,54 @@ msgstr "파일 유형은 %s여야 합니다."
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3494 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2361
+#: includes/api/api-helpers.php:3495 assets/build/js/acf-field-group.js:771
+#: assets/build/js/acf-field-group.js:2377
 #: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2769
+#: assets/build/js/acf-field-group.js:2791
 msgid "or"
 msgstr "또는"
 
-#: includes/api/api-helpers.php:3467
+#: includes/api/api-helpers.php:3468
 msgid "File size must not exceed %s."
 msgstr "파일 크기는 %s를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3462
+#: includes/api/api-helpers.php:3463
 msgid "File size must be at least %s."
 msgstr "파일 크기는 %s 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:3447
+#: includes/api/api-helpers.php:3448
 msgid "Image height must not exceed %dpx."
 msgstr "이미지 높이는 %dpx를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3442
+#: includes/api/api-helpers.php:3443
 msgid "Image height must be at least %dpx."
 msgstr "이미지 높이는 %dpx 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:3428
+#: includes/api/api-helpers.php:3429
 msgid "Image width must not exceed %dpx."
 msgstr "이미지 너비는 %dpx를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3423
+#: includes/api/api-helpers.php:3424
 msgid "Image width must be at least %dpx."
 msgstr "이미지 너비는 %dpx 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:1669 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1670 includes/api/api-term.php:147
 msgid "(no title)"
 msgstr "(제목 없음)"
 
-#: includes/api/api-helpers.php:944
+#: includes/api/api-helpers.php:945
 msgid "Full Size"
 msgstr "전체 크기"
 
-#: includes/api/api-helpers.php:903
+#: includes/api/api-helpers.php:904
 msgid "Large"
 msgstr "크기가 큰"
 
-#: includes/api/api-helpers.php:902
+#: includes/api/api-helpers.php:903
 msgid "Medium"
 msgstr "중간"
 
-#: includes/api/api-helpers.php:901
+#: includes/api/api-helpers.php:902
 msgid "Thumbnail"
 msgstr "썸네일"
 
@@ -4269,94 +4354,94 @@ msgstr "아카이브"
 msgid "Page Link"
 msgstr "페이지 링크"
 
-#: includes/fields/class-acf-field-taxonomy.php:948
+#: includes/fields/class-acf-field-taxonomy.php:943
 #: includes/locations/class-acf-location-user-form.php:72
 msgid "Add"
 msgstr "추가하기"
 
 #: includes/admin/views/acf-field-group/fields.php:53
-#: includes/fields/class-acf-field-taxonomy.php:913
+#: includes/fields/class-acf-field-taxonomy.php:908
 msgid "Name"
 msgstr "이름"
 
-#: includes/fields/class-acf-field-taxonomy.php:897
+#: includes/fields/class-acf-field-taxonomy.php:892
 msgid "%s added"
 msgstr "%s 추가됨"
 
-#: includes/fields/class-acf-field-taxonomy.php:861
+#: includes/fields/class-acf-field-taxonomy.php:856
 msgid "%s already exists"
 msgstr "%s이(가) 이미 존재합니다."
 
-#: includes/fields/class-acf-field-taxonomy.php:849
+#: includes/fields/class-acf-field-taxonomy.php:844
 msgid "User unable to add new %s"
 msgstr "사용자가 새 %s을(를) 추가할 수 없습니다."
 
-#: includes/fields/class-acf-field-taxonomy.php:759
+#: includes/fields/class-acf-field-taxonomy.php:742
 msgid "Term ID"
 msgstr "용어 ID"
 
-#: includes/fields/class-acf-field-taxonomy.php:758
+#: includes/fields/class-acf-field-taxonomy.php:741
 msgid "Term Object"
 msgstr "용어 객체"
 
-#: includes/fields/class-acf-field-taxonomy.php:743
+#: includes/fields/class-acf-field-taxonomy.php:726
 msgid "Load value from posts terms"
 msgstr "글 용어에서 값 로드하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:742
+#: includes/fields/class-acf-field-taxonomy.php:725
 msgid "Load Terms"
 msgstr "용어 로드하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:732
+#: includes/fields/class-acf-field-taxonomy.php:715
 msgid "Connect selected terms to the post"
 msgstr "글에 선택한 조건을 연결하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:731
+#: includes/fields/class-acf-field-taxonomy.php:714
 msgid "Save Terms"
 msgstr "조건 저장하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:721
+#: includes/fields/class-acf-field-taxonomy.php:704
 msgid "Allow new terms to be created whilst editing"
 msgstr "편집하는 동안 생성할 새로운 조건을 허용하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:720
+#: includes/fields/class-acf-field-taxonomy.php:703
 msgid "Create Terms"
 msgstr "용어 만들기"
 
-#: includes/fields/class-acf-field-taxonomy.php:779
+#: includes/fields/class-acf-field-taxonomy.php:762
 msgid "Radio Buttons"
 msgstr "라디오 버튼"
 
-#: includes/fields/class-acf-field-taxonomy.php:778
+#: includes/fields/class-acf-field-taxonomy.php:761
 msgid "Single Value"
 msgstr "단일 값"
 
-#: includes/fields/class-acf-field-taxonomy.php:776
+#: includes/fields/class-acf-field-taxonomy.php:759
 msgid "Multi Select"
 msgstr "다중 선택"
 
 #: includes/fields/class-acf-field-checkbox.php:25
-#: includes/fields/class-acf-field-taxonomy.php:775
+#: includes/fields/class-acf-field-taxonomy.php:758
 msgid "Checkbox"
 msgstr "체크박스"
 
-#: includes/fields/class-acf-field-taxonomy.php:774
+#: includes/fields/class-acf-field-taxonomy.php:757
 msgid "Multiple Values"
 msgstr "여러 값"
 
-#: includes/fields/class-acf-field-taxonomy.php:769
+#: includes/fields/class-acf-field-taxonomy.php:752
 msgid "Select the appearance of this field"
 msgstr "이 필드의 외관 선택하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:768
+#: includes/fields/class-acf-field-taxonomy.php:751
 msgid "Appearance"
 msgstr "외관"
 
-#: includes/fields/class-acf-field-taxonomy.php:710
+#: includes/fields/class-acf-field-taxonomy.php:693
 msgid "Select the taxonomy to be displayed"
 msgstr "보일 할 분류를 선택하기"
 
-#: includes/fields/class-acf-field-taxonomy.php:671
+#: includes/fields/class-acf-field-taxonomy.php:654
 msgctxt "No Terms"
 msgid "No %s"
 msgstr "%s 없음"
@@ -4384,6 +4469,10 @@ msgstr "선택한 필드에 ‘다른’ 값 저장하기"
 #: includes/fields/class-acf-field-radio.php:253
 msgid "Add 'other' choice to allow for custom values"
 msgstr "사용자 정의 값을 허용하는 ‘기타’ 선택 사항 추가하기"
+
+#: includes/admin/views/global/navigation.php:192
+msgid "Other"
+msgstr "기타"
 
 #: includes/fields/class-acf-field-radio.php:25
 msgid "Radio Button"
@@ -4470,20 +4559,20 @@ msgstr "파일"
 msgid "Password"
 msgstr "비밀번호"
 
-#: includes/fields/class-acf-field-select.php:398
+#: includes/fields/class-acf-field-select.php:392
 msgid "Specify the value returned"
 msgstr "반환할 값 지정하기"
 
-#: includes/fields/class-acf-field-select.php:467
+#: includes/fields/class-acf-field-select.php:461
 msgid "Use AJAX to lazy load choices?"
 msgstr "지연 로드 선택에 AJAX를 사용하시겠습니까?"
 
 #: includes/fields/class-acf-field-checkbox.php:362
-#: includes/fields/class-acf-field-select.php:387
+#: includes/fields/class-acf-field-select.php:381
 msgid "Enter each default value on a new line"
 msgstr "새로운 줄에 기본 값 입력하기"
 
-#: includes/fields/class-acf-field-select.php:258 includes/media.php:48
+#: includes/fields/class-acf-field-select.php:252 includes/media.php:48
 #: assets/build/js/acf-input.js:6756 assets/build/js/acf-input.js:7232
 msgctxt "verb"
 msgid "Select"
@@ -4550,32 +4639,32 @@ msgid "One result is available, press enter to select it."
 msgstr "1개 결과를 사용할 수 있습니다. 선택하려면 Enter 키를 누르세요."
 
 #: includes/fields/class-acf-field-select.php:25
-#: includes/fields/class-acf-field-taxonomy.php:780
+#: includes/fields/class-acf-field-taxonomy.php:763
 msgctxt "noun"
 msgid "Select"
 msgstr "선택하기"
 
-#: includes/fields/class-acf-field-user.php:77
+#: includes/fields/class-acf-field-user.php:73
 msgid "User ID"
 msgstr "사용자 아이디"
 
-#: includes/fields/class-acf-field-user.php:76
+#: includes/fields/class-acf-field-user.php:72
 msgid "User Object"
 msgstr "사용자 객체"
 
-#: includes/fields/class-acf-field-user.php:75
+#: includes/fields/class-acf-field-user.php:71
 msgid "User Array"
 msgstr "사용자 배열"
 
-#: includes/fields/class-acf-field-user.php:63
+#: includes/fields/class-acf-field-user.php:59
 msgid "All user roles"
 msgstr "모든 사용자 역할"
 
-#: includes/fields/class-acf-field-user.php:55
+#: includes/fields/class-acf-field-user.php:51
 msgid "Filter by Role"
 msgstr "역할로 필터하기"
 
-#: includes/fields/class-acf-field-user.php:20 includes/locations.php:101
+#: includes/fields/class-acf-field-user.php:15 includes/locations.php:101
 msgid "User"
 msgstr "사용자"
 
@@ -4587,11 +4676,11 @@ msgstr "분리 기호"
 msgid "Select Color"
 msgstr "색상 선택하기"
 
-#: includes/admin/post-types/admin-post-type.php:126
-#: includes/admin/post-types/admin-taxonomy.php:126
+#: includes/admin/post-types/admin-post-type.php:129
+#: includes/admin/post-types/admin-taxonomy.php:131
 #: includes/fields/class-acf-field-color_picker.php:74
-#: assets/build/js/acf-internal-post-type.js:67
-#: assets/build/js/acf-internal-post-type.js:77
+#: assets/build/js/acf-internal-post-type.js:72
+#: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
 msgstr "기본"
 
@@ -4688,12 +4777,12 @@ msgstr "날짜 시간 선택기"
 msgid "Endpoint"
 msgstr "끝점"
 
-#: includes/admin/views/acf-field-group/options.php:115
+#: includes/admin/views/acf-field-group/options.php:128
 #: includes/fields/class-acf-field-tab.php:115
 msgid "Left aligned"
 msgstr "왼쪽 정렬"
 
-#: includes/admin/views/acf-field-group/options.php:114
+#: includes/admin/views/acf-field-group/options.php:127
 #: includes/fields/class-acf-field-tab.php:114
 msgid "Top aligned"
 msgstr "상단 정렬"
@@ -4756,7 +4845,7 @@ msgstr "범위"
 #: includes/fields/class-acf-field-button-group.php:175
 #: includes/fields/class-acf-field-checkbox.php:379
 #: includes/fields/class-acf-field-radio.php:220
-#: includes/fields/class-acf-field-select.php:405
+#: includes/fields/class-acf-field-select.php:399
 msgid "Both (Array)"
 msgstr "모두(배열)"
 
@@ -4764,14 +4853,14 @@ msgstr "모두(배열)"
 #: includes/fields/class-acf-field-button-group.php:174
 #: includes/fields/class-acf-field-checkbox.php:378
 #: includes/fields/class-acf-field-radio.php:219
-#: includes/fields/class-acf-field-select.php:404
+#: includes/fields/class-acf-field-select.php:398
 msgid "Label"
 msgstr "레이블"
 
 #: includes/fields/class-acf-field-button-group.php:173
 #: includes/fields/class-acf-field-checkbox.php:377
 #: includes/fields/class-acf-field-radio.php:218
-#: includes/fields/class-acf-field-select.php:403
+#: includes/fields/class-acf-field-select.php:397
 msgid "Value"
 msgstr "값"
 
@@ -4790,28 +4879,28 @@ msgstr "수평"
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "red : Red"
 msgstr "빨강 : 빨강"
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "For more control, you may specify both a value and label like this:"
 msgstr "더 많은 제어를 위해 다음과 같이 값과 레이블을 모두 지정할 수 있습니다."
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-checkbox.php:352
 #: includes/fields/class-acf-field-radio.php:193
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-select.php:370
 msgid "Enter each choice on a new line."
 msgstr "새 줄에 각 선택 항목을 입력합니다."
 
 #: includes/fields/class-acf-field-button-group.php:147
 #: includes/fields/class-acf-field-checkbox.php:351
 #: includes/fields/class-acf-field-radio.php:192
-#: includes/fields/class-acf-field-select.php:375
+#: includes/fields/class-acf-field-select.php:369
 msgid "Choices"
 msgstr "선택하기"
 
@@ -4821,17 +4910,17 @@ msgstr "버튼 그룹"
 
 #: includes/fields/class-acf-field-button-group.php:194
 #: includes/fields/class-acf-field-page_link.php:538
-#: includes/fields/class-acf-field-post_object.php:455
+#: includes/fields/class-acf-field-post_object.php:448
 #: includes/fields/class-acf-field-radio.php:238
-#: includes/fields/class-acf-field-select.php:435
-#: includes/fields/class-acf-field-taxonomy.php:789
-#: includes/fields/class-acf-field-user.php:107
+#: includes/fields/class-acf-field-select.php:429
+#: includes/fields/class-acf-field-taxonomy.php:772
+#: includes/fields/class-acf-field-user.php:103
 msgid "Allow Null"
 msgstr "Null 값 허용"
 
 #: includes/fields/class-acf-field-page_link.php:263
-#: includes/fields/class-acf-field-post_object.php:264
-#: includes/fields/class-acf-field-taxonomy.php:935
+#: includes/fields/class-acf-field-post_object.php:257
+#: includes/fields/class-acf-field-taxonomy.php:930
 msgid "Parent"
 msgstr "부모"
 
@@ -4961,113 +5050,113 @@ msgstr "새 게시물을 작성할 때 나타납니다."
 msgid "Text"
 msgstr "텍스트"
 
-#: includes/fields/class-acf-field-relationship.php:789
+#: includes/fields/class-acf-field-relationship.php:794
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s에는 %2$s개 이상의 선택 항목이 필요합니다."
 
-#: includes/fields/class-acf-field-post_object.php:424
-#: includes/fields/class-acf-field-relationship.php:651
+#: includes/fields/class-acf-field-post_object.php:417
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Post ID"
 msgstr "게시물 ID"
 
-#: includes/fields/class-acf-field-post_object.php:25
-#: includes/fields/class-acf-field-post_object.php:423
-#: includes/fields/class-acf-field-relationship.php:650
+#: includes/fields/class-acf-field-post_object.php:17
+#: includes/fields/class-acf-field-post_object.php:416
+#: includes/fields/class-acf-field-relationship.php:643
 msgid "Post Object"
 msgstr "개체 게시"
 
-#: includes/fields/class-acf-field-relationship.php:683
+#: includes/fields/class-acf-field-relationship.php:676
 msgid "Maximum Posts"
 msgstr "최대 게시물"
 
-#: includes/fields/class-acf-field-relationship.php:673
+#: includes/fields/class-acf-field-relationship.php:666
 msgid "Minimum Posts"
 msgstr "최소 게시물"
 
-#: includes/admin/views/acf-field-group/options.php:168
+#: includes/admin/views/acf-field-group/options.php:181
 #: includes/admin/views/acf-post-type/advanced-settings.php:25
-#: includes/fields/class-acf-field-relationship.php:708
+#: includes/fields/class-acf-field-relationship.php:701
 msgid "Featured Image"
 msgstr "특성 이미지"
 
-#: includes/fields/class-acf-field-relationship.php:704
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Selected elements will be displayed in each result"
 msgstr "선택한 요소가 각 결과에 표시됩니다."
 
-#: includes/fields/class-acf-field-relationship.php:703
+#: includes/fields/class-acf-field-relationship.php:696
 msgid "Elements"
 msgstr "엘리먼트"
 
-#: includes/fields/class-acf-field-relationship.php:637
-#: includes/fields/class-acf-field-taxonomy.php:28
-#: includes/fields/class-acf-field-taxonomy.php:709
+#: includes/fields/class-acf-field-relationship.php:630
+#: includes/fields/class-acf-field-taxonomy.php:20
+#: includes/fields/class-acf-field-taxonomy.php:692
 #: includes/locations/class-acf-location-taxonomy.php:22
 msgid "Taxonomy"
 msgstr "택소노미"
 
-#: includes/fields/class-acf-field-relationship.php:636
+#: includes/fields/class-acf-field-relationship.php:629
 #: includes/locations/class-acf-location-post-type.php:22
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Type"
 msgstr "게시물 유형"
 
-#: includes/fields/class-acf-field-relationship.php:630
+#: includes/fields/class-acf-field-relationship.php:623
 msgid "Filters"
 msgstr "필터"
 
 #: includes/fields/class-acf-field-page_link.php:499
-#: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-post_object.php:404
+#: includes/fields/class-acf-field-relationship.php:616
 msgid "All taxonomies"
 msgstr "모든 분류"
 
 #: includes/fields/class-acf-field-page_link.php:491
-#: includes/fields/class-acf-field-post_object.php:403
-#: includes/fields/class-acf-field-relationship.php:615
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:608
 msgid "Filter by Taxonomy"
 msgstr "분류로 필터하기"
 
 #: includes/fields/class-acf-field-page_link.php:469
-#: includes/fields/class-acf-field-post_object.php:381
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-post_object.php:374
+#: includes/fields/class-acf-field-relationship.php:586
 msgid "All post types"
 msgstr "모든 게시물 유형"
 
 #: includes/fields/class-acf-field-page_link.php:461
-#: includes/fields/class-acf-field-post_object.php:373
-#: includes/fields/class-acf-field-relationship.php:585
+#: includes/fields/class-acf-field-post_object.php:366
+#: includes/fields/class-acf-field-relationship.php:578
 msgid "Filter by Post Type"
 msgstr "글 유형으로 필터하기"
 
-#: includes/fields/class-acf-field-relationship.php:483
+#: includes/fields/class-acf-field-relationship.php:476
 msgid "Search..."
 msgstr "검색하기..."
 
-#: includes/fields/class-acf-field-relationship.php:413
+#: includes/fields/class-acf-field-relationship.php:406
 msgid "Select taxonomy"
 msgstr "분류 선택하기"
 
-#: includes/fields/class-acf-field-relationship.php:404
+#: includes/fields/class-acf-field-relationship.php:397
 msgid "Select post type"
 msgstr "글 유형 선택하기"
 
-#: includes/fields/class-acf-field-relationship.php:68
+#: includes/fields/class-acf-field-relationship.php:61
 #: assets/build/js/acf-input.js:3925 assets/build/js/acf-input.js:4208
 msgid "No matches found"
 msgstr "검색 결과가 없습니다"
 
-#: includes/fields/class-acf-field-relationship.php:67
+#: includes/fields/class-acf-field-relationship.php:60
 #: assets/build/js/acf-input.js:3908 assets/build/js/acf-input.js:4187
 msgid "Loading"
 msgstr "로딩중"
 
-#: includes/fields/class-acf-field-relationship.php:66
+#: includes/fields/class-acf-field-relationship.php:59
 #: assets/build/js/acf-input.js:3817 assets/build/js/acf-input.js:4083
 msgid "Maximum values reached ( {max} values )"
 msgstr "최대 값에 도달함( {max} values ​​)"
 
-#: includes/fields/class-acf-field-relationship.php:25
+#: includes/fields/class-acf-field-relationship.php:17
 msgid "Relationship"
 msgstr "관계"
 
@@ -5160,7 +5249,7 @@ msgstr "프론트 엔드에 반환 값 지정하기"
 #: includes/fields/class-acf-field-file.php:212
 #: includes/fields/class-acf-field-link.php:170
 #: includes/fields/class-acf-field-radio.php:212
-#: includes/fields/class-acf-field-taxonomy.php:753
+#: includes/fields/class-acf-field-taxonomy.php:736
 msgid "Return Value"
 msgstr "값 반환하기"
 
@@ -5174,8 +5263,8 @@ msgstr "선택한 이미지 없음"
 
 #: includes/assets.php:352 includes/fields/class-acf-field-file.php:162
 #: includes/fields/class-acf-field-image.php:142
-#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1566
-#: assets/build/js/acf.js:1661
+#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1567
+#: assets/build/js/acf.js:1662
 msgid "Remove"
 msgstr "제거하기"
 
@@ -5320,7 +5409,7 @@ msgstr "활성 상태일 때 표시되는 텍스트"
 msgid "On Text"
 msgstr "텍스트에"
 
-#: includes/fields/class-acf-field-select.php:456
+#: includes/fields/class-acf-field-select.php:450
 #: includes/fields/class-acf-field-true_false.php:199
 msgid "Stylized UI"
 msgstr "양식에 일치하는 UI"
@@ -5332,7 +5421,7 @@ msgstr "양식에 일치하는 UI"
 #: includes/fields/class-acf-field-number.php:128
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-range.php:164
-#: includes/fields/class-acf-field-select.php:386
+#: includes/fields/class-acf-field-select.php:380
 #: includes/fields/class-acf-field-text.php:97
 #: includes/fields/class-acf-field-textarea.php:103
 #: includes/fields/class-acf-field-true_false.php:147
@@ -5353,13 +5442,13 @@ msgstr "메시지"
 
 #: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:86
 #: includes/fields/class-acf-field-true_false.php:187
-#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
+#: assets/build/js/acf.js:1744 assets/build/js/acf.js:1862
 msgid "No"
 msgstr "아니요"
 
 #: includes/assets.php:350 includes/fields/class-acf-field-true_false.php:83
 #: includes/fields/class-acf-field-true_false.php:171
-#: assets/build/js/acf.js:1742 assets/build/js/acf.js:1860
+#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
 msgid "Yes"
 msgstr "예"
 
@@ -5375,7 +5464,7 @@ msgstr "열"
 msgid "Table"
 msgstr "태이블"
 
-#: includes/admin/post-types/admin-field-group.php:131
+#: includes/admin/post-types/admin-field-group.php:132
 #: includes/fields/class-acf-field-group.php:472
 msgid "Block"
 msgstr "블록"
@@ -5441,7 +5530,7 @@ msgid "Clear location"
 msgstr "위치 지우기"
 
 #: includes/fields/class-acf-field-google-map.php:158
-#: includes/fields/class-acf-field-relationship.php:635
+#: includes/fields/class-acf-field-relationship.php:628
 msgid "Search"
 msgstr "검색하기"
 
@@ -5464,11 +5553,11 @@ msgstr "템플릿 함수를 통해 반환되는 형식"
 #: includes/fields/class-acf-field-date_picker.php:211
 #: includes/fields/class-acf-field-date_time_picker.php:200
 #: includes/fields/class-acf-field-image.php:187
-#: includes/fields/class-acf-field-post_object.php:418
-#: includes/fields/class-acf-field-relationship.php:645
-#: includes/fields/class-acf-field-select.php:397
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-select.php:391
 #: includes/fields/class-acf-field-time_picker.php:131
-#: includes/fields/class-acf-field-user.php:70
+#: includes/fields/class-acf-field-user.php:66
 msgid "Return Format"
 msgstr "반환 형식"
 
@@ -5498,78 +5587,78 @@ msgid "Time Picker"
 msgstr "시간 선택기"
 
 #. translators: counts for inactive field groups
-#: acf.php:491
+#: acf.php:497
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "비활성 <span class=\"count\">(%s)</span>"
 
-#: acf.php:450
+#: acf.php:456
 msgid "No Fields found in Trash"
 msgstr "휴지통에서 필드를 찾을 수 없습니다."
 
-#: acf.php:449
+#: acf.php:455
 msgid "No Fields found"
 msgstr "필드를 찾을 수 없음"
 
-#: acf.php:448
+#: acf.php:454
 msgid "Search Fields"
 msgstr "필드 검색하기"
 
-#: acf.php:447
+#: acf.php:453
 msgid "View Field"
 msgstr "필드보기"
 
-#: acf.php:446 includes/admin/views/acf-field-group/fields.php:115
+#: acf.php:452 includes/admin/views/acf-field-group/fields.php:115
 msgid "New Field"
 msgstr "새 필드"
 
-#: acf.php:445
+#: acf.php:451
 msgid "Edit Field"
 msgstr "필드 편집하기"
 
-#: acf.php:444
+#: acf.php:450
 msgid "Add New Field"
 msgstr "새로운 필드 추가하기"
 
-#: acf.php:442
+#: acf.php:448
 msgid "Field"
 msgstr "필드"
 
-#: acf.php:441 includes/admin/post-types/admin-field-group.php:154
+#: acf.php:447 includes/admin/post-types/admin-field-group.php:155
 #: includes/admin/post-types/admin-field-groups.php:119
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "필드"
 
-#: acf.php:416
+#: acf.php:422
 msgid "No Field Groups found in Trash"
 msgstr "휴지통에서 필드 그룹을 찾을 수 없습니다."
 
-#: acf.php:415
+#: acf.php:421
 msgid "No Field Groups found"
 msgstr "필드 그룹을 찾을 수 없음"
 
-#: acf.php:414
+#: acf.php:420
 msgid "Search Field Groups"
 msgstr "필드 그룹 검색하기"
 
-#: acf.php:413
+#: acf.php:419
 msgid "View Field Group"
 msgstr "필드 그룹 보기"
 
-#: acf.php:412
+#: acf.php:418
 msgid "New Field Group"
 msgstr "새 필드 그룹"
 
-#: acf.php:411
+#: acf.php:417
 msgid "Edit Field Group"
 msgstr "필드 그룹 편집하기"
 
-#: acf.php:410
+#: acf.php:416
 msgid "Add New Field Group"
 msgstr "새 필드 그룹 추가하기"
 
-#: acf.php:409 acf.php:443
+#: acf.php:415 acf.php:449
 #: includes/admin/views/acf-post-type/advanced-settings.php:215
 #: includes/admin/views/acf-post-type/advanced-settings.php:217
 #: includes/post-types/class-acf-post-type.php:92
@@ -5577,11 +5666,11 @@ msgstr "새 필드 그룹 추가하기"
 msgid "Add New"
 msgstr "새로 추가하기"
 
-#: acf.php:408
+#: acf.php:414
 msgid "Field Group"
 msgstr "필드 그룹"
 
-#: acf.php:407 includes/admin/post-types/admin-field-groups.php:78
+#: acf.php:413 includes/admin/post-types/admin-field-groups.php:78
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"

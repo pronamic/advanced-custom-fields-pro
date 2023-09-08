@@ -660,6 +660,34 @@ html[dir=rtl] .acf-gallery .acf-gallery-side-data th.label {
   position: relative;
 }
 
+.acf-admin-single-options-page .select2-dropdown {
+  border-color: #6BB5D8 !important;
+  margin-top: -5px;
+  overflow: hidden;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.1);
+}
+.acf-admin-single-options-page .select2-dropdown.select2-dropdown--above {
+  margin-top: 0;
+}
+.acf-admin-single-options-page .select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: #F9FAFB !important;
+  color: #667085;
+}
+.acf-admin-single-options-page .select2-container--default .select2-results__option[aria-selected=true]:hover {
+  color: #399CCB;
+}
+.acf-admin-single-options-page .select2-container--default .select2-results__option--highlighted[aria-selected] {
+  color: #fff !important;
+  background-color: #0783BE !important;
+}
+.acf-admin-single-options-page .select2-dropdown .select2-results__option {
+  margin-bottom: 0;
+}
+
+.acf-create-options-page-popup ~ .select2-container {
+  z-index: 999999999;
+}
+
 /*-----------------------------------------------------------------------------
 *
 *	ACF Blocks

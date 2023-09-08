@@ -188,27 +188,44 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 		}
 
 		/**
-		 *  get_plugin_update
+		 * Returns specific data from the 'update-check' response.
 		 *
-		 *  Returns specific data from the 'update-check' response.
+		 * @since   5.7.2
 		 *
-		 *  @date    3/8/18
-		 *  @since   5.7.2
-		 *
-		 *  @param   string  $basename The plugin basename.
-		 *  @param   boolean $force_check Bypasses cached result. Defaults to false
-		 *  @return  array
+		 * @param string  $basename The plugin basename.
+		 * @param boolean $force_check Bypasses cached result. Defaults to false.
+		 * @return array|false
 		 */
-
-		function get_plugin_update( $basename = '', $force_check = false ) {
-
-			// get updates
+		public function get_plugin_update( $basename = '', $force_check = false ) {
+			// get updates.
 			$updates = $this->get_plugin_updates( $force_check );
 
-			// check for and return update
+			// check for and return update.
 			if ( is_array( $updates ) && isset( $updates['plugins'][ $basename ] ) ) {
 				return $updates['plugins'][ $basename ];
 			}
+
+			return false;
+		}
+
+		/**
+		 * Checks if an update is available, but can't be updated to.
+		 *
+		 * @since   6.2.1
+		 *
+		 * @param string  $basename The plugin basename.
+		 * @param boolean $force_check Bypasses cached result. Defaults to false.
+		 * @return array|false
+		 */
+		public function get_no_update( $basename = '', $force_check = false ) {
+			// get updates.
+			$updates = $this->get_plugin_updates( $force_check );
+
+			// check for and return update.
+			if ( is_array( $updates ) && isset( $updates['no_update'][ $basename ] ) ) {
+				return $updates['no_update'][ $basename ];
+			}
+
 			return false;
 		}
 
@@ -260,12 +277,13 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 				'plugins' => wp_json_encode( $this->plugins ),
 				'wp'      => wp_json_encode(
 					array(
-						'wp_name'     => get_bloginfo( 'name' ),
-						'wp_url'      => acf_get_home_url(),
-						'wp_version'  => get_bloginfo( 'version' ),
-						'wp_language' => get_bloginfo( 'language' ),
-						'wp_timezone' => get_option( 'timezone_string' ),
-						'php_version' => PHP_VERSION,
+						'wp_name'      => get_bloginfo( 'name' ),
+						'wp_url'       => acf_get_home_url(),
+						'wp_version'   => get_bloginfo( 'version' ),
+						'wp_language'  => get_bloginfo( 'language' ),
+						'wp_timezone'  => get_option( 'timezone_string' ),
+						'wp_multisite' => (int) is_multisite(),
+						'php_version'  => PHP_VERSION,
 					)
 				),
 				'acf'     => wp_json_encode(
@@ -348,42 +366,48 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 			delete_transient( 'acf_plugin_updates' );
 		}
 
-		/*
-		*  modify_plugins_transient
-		*
-		*  Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
-		*
-		*  @date    16/01/2014
-		*  @since   5.0.0
-		*
-		*  @param   object $transient
-		*  @return  $transient
-		*/
+		/**
+		 *  Called when WP updates the 'update_plugins' site transient. Used to inject ACF plugin update info.
+		 *
+		 *  @since   5.0.0
+		 *
+		 *  @param object $transient The current transient value.
+		 *  @return object $transient The modified transient value.
+		 */
+		public function modify_plugins_transient( $transient ) {
 
-		function modify_plugins_transient( $transient ) {
-
-			// bail early if no response (error)
+			// bail early if no response (error).
 			if ( ! isset( $transient->response ) ) {
 				return $transient;
 			}
 
-			// force-check (only once)
+			// ensure no_update is set for back compat.
+			if ( ! isset( $transient->no_update ) ) {
+				$transient->no_update = array();
+			}
+
+			// force-check (only once).
 			$force_check = ( $this->checked == 0 ) ? ! empty( $_GET['force-check'] ) : false; // phpcs:ignore -- False positive, value not used.
 
-			// fetch updates (this filter is called multiple times during a single page load)
+			// fetch updates (this filter is called multiple times during a single page load).
 			$updates = $this->get_plugin_updates( $force_check );
 
-			// append
+			// append ACF pro plugins.
 			if ( is_array( $updates ) ) {
-				foreach ( $updates['plugins'] as $basename => $update ) {
-					$transient->response[ $basename ] = (object) $update;
+				if ( ! empty( $updates['plugins'] ) ) {
+					foreach ( $updates['plugins'] as $basename => $update ) {
+						$transient->response[ $basename ] = (object) $update;
+					}
+				}
+				if ( ! empty( $updates['no_update'] ) ) {
+					foreach ( $updates['no_update'] as $basename => $update ) {
+						$transient->no_update[ $basename ] = (object) $update;
+					}
 				}
 			}
 
-			// increase
 			$this->checked++;
 
-			// return
 			return $transient;
 		}
 

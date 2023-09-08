@@ -113,7 +113,9 @@ $readonly = $active ? 1 : 0;
 
 			<?php if ( $update_available ) : ?>
 
-				<?php if ( $license_error ) : ?>
+				<?php if ( $wp_not_compatible ) : ?>
+					<a class="button" disabled="disabled" href="#"><?php _e( 'Please upgrade WordPress to update ACF', 'acf' ); ?></a>
+				<?php elseif ( $license_error ) : ?>
 					<a class="button" disabled="disabled" href="#"><?php _e( 'Please reactivate your license to unlock updates', 'acf' ); ?></a>
 				<?php elseif ( $active ) : ?>
 					<a class="acf-btn" href="<?php echo esc_attr( admin_url( 'plugins.php?s=Advanced+Custom+Fields+Pro' ) ); ?>"><?php _e( 'Update Plugin', 'acf' ); ?></a>

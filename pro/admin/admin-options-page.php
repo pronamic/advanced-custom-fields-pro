@@ -61,12 +61,10 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 
 				// vars
 				$slug = '';
-
 				// parent
 				if ( empty( $page['parent_slug'] ) ) {
 
 					$slug = add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $page['icon_url'], $page['position'] );
-
 					// child
 				} else {
 

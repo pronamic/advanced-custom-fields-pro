@@ -449,15 +449,16 @@ function acf_pro_activate_license( $license_key, $silent = false ) {
 
 	// Connect to API.
 	$post = array(
-		'acf_license' => trim( $license_key ),
-		'acf_version' => acf_get_setting( 'version' ),
-		'wp_name'     => get_bloginfo( 'name' ),
-		'wp_url'      => acf_get_home_url(),
-		'wp_version'  => get_bloginfo( 'version' ),
-		'wp_language' => get_bloginfo( 'language' ),
-		'wp_timezone' => get_option( 'timezone_string' ),
-		'php_version' => PHP_VERSION,
-		'block_count' => acf_pro_get_registered_block_count(),
+		'acf_license'  => trim( $license_key ),
+		'acf_version'  => acf_get_setting( 'version' ),
+		'wp_name'      => get_bloginfo( 'name' ),
+		'wp_url'       => acf_get_home_url(),
+		'wp_version'   => get_bloginfo( 'version' ),
+		'wp_language'  => get_bloginfo( 'language' ),
+		'wp_timezone'  => get_option( 'timezone_string' ),
+		'wp_multisite' => (int) is_multisite(),
+		'php_version'  => PHP_VERSION,
+		'block_count'  => acf_pro_get_registered_block_count(),
 	);
 
 	$response = acf_updates()->request( 'v2/plugins/activate?p=pro', $post );
