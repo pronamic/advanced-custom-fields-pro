@@ -122,12 +122,12 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 				)
 			);
 
-			if ( acf_is_pro() ) {
+			if ( acf_is_pro() && acf_get_setting( 'enable_options_pages_ui' ) ) {
 				acf_localize_data(
 					array(
 						'acfParentPageChoices' => ACF_Admin_UI_Options_Page::get_parent_page_choices(),
 					)
-				);	
+				);
 			}
 
 			acf_localize_data(

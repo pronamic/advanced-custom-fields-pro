@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
 Tested up to: 6.3
 Requires PHP: 7.0
-Stable tag: 6.2.1
+Stable tag: 6.2.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,11 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.1.1 =
+*Release Date 8th September 2023*
+
+* Fix - Editing a field group no longer generates an error when UI options pages are disabled
 
 = 6.2.1 =
 *Release Date 7th September 2023*
