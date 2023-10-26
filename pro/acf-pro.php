@@ -45,6 +45,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			add_action( 'acf/include_location_rules', array( $this, 'include_location_rules' ), 5 );
 			add_action( 'acf/input/admin_enqueue_scripts', array( $this, 'input_admin_enqueue_scripts' ) );
 			add_action( 'acf/field_group/admin_enqueue_scripts', array( $this, 'field_group_admin_enqueue_scripts' ) );
+			add_action( 'acf/in_admin_header', array( $this, 'maybe_show_license_status_error' ) );
 
 			// Add filters.
 			add_filter( 'posts_where', array( $this, 'posts_where' ), 10, 2 );
@@ -176,6 +177,21 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			wp_enqueue_script( 'acf-pro-field-group' );
 			wp_enqueue_style( 'acf-pro-field-group' );
 
+		}
+
+		/**
+		 * Checks for a license status error and renders it if necessary.
+		 *
+		 * @since 6.2.1
+		 *
+		 * @return void
+		 */
+		public function maybe_show_license_status_error() {
+			$status = acf_pro_get_license_status();
+
+			if ( ! empty( $status['error_msg'] ) ) {
+				acf_add_admin_notice( $status['error_msg'], 'warning', false );
+			}
 		}
 
 		/**

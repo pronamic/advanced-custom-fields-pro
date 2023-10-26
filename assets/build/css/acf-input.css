@@ -1474,14 +1474,14 @@ html[dir=rtl] .pac-container .pac-item {
   max-height: 20px;
   margin-top: 1px;
 }
-.acf-relationship .list .acf-rel-item:hover {
+.acf-relationship .list .acf-rel-item:hover, .acf-relationship .list .acf-rel-item.relationship-hover {
   background: #3875d7;
   color: #fff;
 }
-.acf-relationship .list .acf-rel-item:hover .thumbnail {
+.acf-relationship .list .acf-rel-item:hover .thumbnail, .acf-relationship .list .acf-rel-item.relationship-hover .thumbnail {
   background: #a2bfec;
 }
-.acf-relationship .list .acf-rel-item:hover .thumbnail.-icon {
+.acf-relationship .list .acf-rel-item:hover .thumbnail.-icon, .acf-relationship .list .acf-rel-item.relationship-hover .thumbnail.-icon {
   background: #fff;
 }
 .acf-relationship .list .acf-rel-item.disabled {
@@ -1539,7 +1539,7 @@ html[dir=rtl] .acf-relationship .selection .values .acf-icon {
   right: auto;
   left: 7px;
 }
-.acf-relationship .selection .values .acf-rel-item:hover .acf-icon {
+.acf-relationship .selection .values .acf-rel-item:hover .acf-icon, .acf-relationship .selection .values .acf-rel-item.relationship-hover .acf-icon {
   display: block;
 }
 .acf-relationship .selection .values .acf-rel-item {

@@ -300,17 +300,19 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param array $post The main ACF taxonomy settings array.
+		 * @param  array   $post The main ACF taxonomy settings array.
+		 * @param  boolean $escape_labels Determines if the label values should be escaped.
 		 * @return array
 		 */
-		public function get_taxonomy_args( $post ) {
+		public function get_taxonomy_args( $post, $escape_labels = true ) {
 			$args = array();
 
 			// Make sure any provided labels are escaped strings and not empty.
 			$labels = array_filter( $post['labels'] );
 			$labels = array_map( 'strval', $labels );
-			$labels = array_map( 'esc_html', $labels );
-
+			if ( $escape_labels ) {
+				$labels = array_map( 'esc_html', $labels );
+			}
 			if ( ! empty( $labels ) ) {
 				$args['labels'] = $labels;
 			}
@@ -517,7 +519,7 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 			$taxonomy_key = $post['taxonomy'];
 			$objects      = (array) $post['object_type'];
 			$objects      = var_export( $objects, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions -- Used for PHP export.
-			$args         = $this->get_taxonomy_args( $post );
+			$args         = $this->get_taxonomy_args( $post, false );
 			$args         = var_export( $args, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions -- Used for PHP export.
 
 			if ( ! $args ) {

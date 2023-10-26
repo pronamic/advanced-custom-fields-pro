@@ -153,6 +153,7 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 			$license    = acf_pro_get_license_key();
 			$this->view = array(
 				'license'            => $license,
+				'license_status'     => acf_pro_get_license_status( ! empty( $_GET['acf-recheck-license'] ) ),
 				'active'             => $license ? 1 : 0,
 				'current_version'    => acf_get_setting( 'version' ),
 				'remote_version'     => '',

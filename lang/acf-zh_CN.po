@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-07T15:02:44+00:00\n"
+"PO-Revision-Date: 2023-10-25T08:59:42+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -21,75 +21,83 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/views/acf-post-type/advanced-settings.php:703
+msgid "In the editor used as the placeholder of the title."
+msgstr "在编辑器中用作标题的占位符。"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:702
+msgid "Title Placeholder"
+msgstr "标题占位符"
+
 #: includes/admin/views/global/navigation.php:93
 msgid "4 Months Free"
-msgstr ""
+msgstr "4个月免费"
 
 #. translators: %s - A singular label for a post type or taxonomy.
 #: includes/admin/views/global/form-top.php:56
 msgid " (Duplicated from %s)"
-msgstr ""
+msgstr " （复制自 %s）"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:298
 msgid "Select Options Pages"
-msgstr ""
+msgstr "选择选项页面"
 
 #: includes/admin/post-types/admin-taxonomy.php:107
 msgid "Duplicate taxonomy"
-msgstr ""
+msgstr "克隆分类法"
 
 #: includes/admin/post-types/admin-post-type.php:106
 #: includes/admin/post-types/admin-taxonomy.php:106
 msgid "Create taxonomy"
-msgstr ""
+msgstr "创建分类法"
 
 #: includes/admin/post-types/admin-post-type.php:105
 msgid "Duplicate post type"
-msgstr ""
+msgstr "克隆文章类型"
 
 #: includes/admin/post-types/admin-post-type.php:104
 #: includes/admin/post-types/admin-taxonomy.php:108
 msgid "Create post type"
-msgstr ""
+msgstr "创建文章类型"
 
 #: includes/admin/post-types/admin-post-type.php:103
 #: includes/admin/post-types/admin-taxonomy.php:105
 msgid "Link field groups"
-msgstr ""
+msgstr "链接字段组"
 
 #: includes/admin/post-types/admin-post-type.php:102
 #: includes/admin/post-types/admin-taxonomy.php:104
 msgid "Add fields"
-msgstr ""
+msgstr "添加字段"
 
 #: includes/admin/post-types/admin-field-group.php:121
-#: assets/build/js/acf-field-group.js:2744
+#: assets/build/js/acf-field-group.js:2745
 #: assets/build/js/acf-field-group.js:3220
 msgid "This Field"
-msgstr ""
+msgstr "这个字段"
 
 #: includes/admin/admin.php:265
 msgid "ACF PRO"
-msgstr ""
+msgstr "ACF PRO"
 
 #: includes/admin/admin.php:263
 msgid "Feedback"
-msgstr ""
+msgstr "反馈"
 
 #: includes/admin/admin.php:261
 msgid "Support"
-msgstr ""
+msgstr "支持"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:236
 msgid "is developed and maintained by"
-msgstr ""
+msgstr "开发和维护者"
 
 #. translators: %s - either "post type" or "taxonomy"
 #: includes/admin/admin-internal-post-type.php:321
 msgid "Add this %s to the location rules of the selected field groups."
-msgstr ""
+msgstr "将此 %s 添加到所选字段组的位置规则中。"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
 #: includes/acf-bidirectional-functions.php:271
@@ -100,6 +108,9 @@ msgid ""
 "information, please read the <a href=\"%s\" target=\"_blank\">documentation</"
 "a>."
 msgstr ""
+"启用双向设置允许您更新为此字段选择的每个值的目标字段中的值，添加或删除正在更"
+"新的项目的文章 ID、分类法 ID 或用户 ID。有关更多信息，请阅读<a href=\"%s\" "
+"target=\"_blank\">文档</a>。"
 
 #: includes/acf-bidirectional-functions.php:247
 msgid ""
@@ -108,93 +119,95 @@ msgid ""
 "field is being displayed. For example, if this field is displayed on a "
 "Taxonomy, your target field should be of type Taxonomy"
 msgstr ""
+"选择字段以将引用存储回正在更新的项目。您可以选择该字段。目标字段必须与该字段"
+"的显示位置兼容。例如，如果此字段显示在分类法上，则您的目标字段应为分类法类型"
 
 #: includes/acf-bidirectional-functions.php:246
 msgid "Target Field"
-msgstr ""
+msgstr "目标字段"
 
 #: includes/acf-bidirectional-functions.php:220
 msgid "Update a field on the selected values, referencing back to this ID"
-msgstr ""
+msgstr "更新所选值的字段，引用回此 ID"
 
 #: includes/acf-bidirectional-functions.php:219
 msgid "Bidirectional"
-msgstr ""
+msgstr "双向"
 
 #. translators: %s A field type name, such as "Relationship"
 #: includes/acf-bidirectional-functions.php:192
 msgid "%s Field"
-msgstr ""
+msgstr "%s 字段"
 
 #: includes/fields/class-acf-field-page_link.php:517
 #: includes/fields/class-acf-field-post_object.php:426
 #: includes/fields/class-acf-field-select.php:407
 #: includes/fields/class-acf-field-user.php:82
 msgid "Select Multiple"
-msgstr ""
+msgstr "选择多个"
 
 #: includes/admin/views/global/navigation.php:211
 msgid "WP Engine logo"
-msgstr ""
+msgstr "WP Engine logo"
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:58
 msgid "Lower case letters, underscores and dashes only, Max 32 characters."
-msgstr ""
+msgstr "仅小写字母、下划线和破折号，最多 32 个字符。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1132
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1136
 msgid "The capability name for assigning terms of this taxonomy."
-msgstr ""
+msgstr "用于分配此分类的术语的功能名称。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1131
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1135
 msgid "Assign Terms Capability"
-msgstr ""
+msgstr "分配分类项能力"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1115
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1119
 msgid "The capability name for deleting terms of this taxonomy."
-msgstr ""
+msgstr "用于删除该分类法的分类项的功能名称。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1114
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1118
 msgid "Delete Terms Capability"
-msgstr ""
+msgstr "删除分类项功能"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1098
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1102
 msgid "The capability name for editing terms of this taxonomy."
-msgstr ""
+msgstr "用于编辑该分类法的分类项的功能名称。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1097
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1101
 msgid "Edit Terms Capability"
-msgstr ""
+msgstr "编辑分类项能力"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1081
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1085
 msgid "The capability name for managing terms of this taxonomy."
-msgstr ""
+msgstr "用于管理该分类法的分类项的功能名称。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1080
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1084
 msgid "Manage Terms Capability"
-msgstr ""
+msgstr "管理分类项能力"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:866
+#: includes/admin/views/acf-post-type/advanced-settings.php:886
 msgid ""
 "Sets whether posts should be excluded from search results and taxonomy "
 "archive pages."
-msgstr ""
+msgstr "设置帖子是否应从搜索结果和分类存档页面中排除。"
 
 #: includes/admin/views/acf-field-group/pro-features.php:59
 msgid "More Tools from WP Engine"
-msgstr ""
+msgstr "WP Engine 的更多工具"
 
 #. translators: %s - WP Engine logo
 #: includes/admin/views/acf-field-group/pro-features.php:54
 msgid "Built for those that build with WordPress, by the team at %s"
-msgstr ""
+msgstr "由 %s 团队专为使用 WordPress 构建的用户而构建"
 
 #: includes/admin/views/acf-field-group/pro-features.php:16
 msgid "View Pricing & Upgrade"
-msgstr ""
+msgstr "查看定价和升级"
 
 #: includes/admin/views/acf-field-group/pro-features.php:15
 msgid "Learn More"
-msgstr ""
+msgstr "了解更多"
 
 #: includes/admin/views/acf-field-group/pro-features.php:13
 msgid ""
@@ -202,10 +215,12 @@ msgid ""
 "Blocks and Options Pages, and sophisticated field types like Repeater, "
 "Flexible Content, Clone, and Gallery."
 msgstr ""
+"利用 ACF 块和选项页面等功能以及循环、弹性内容、克隆和图库等复杂的字段类型，加"
+"快您的工作流程并开发更好的网站。"
 
 #: includes/admin/views/acf-field-group/pro-features.php:2
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
-msgstr ""
+msgstr "使用 ACF PRO 解锁高级功能并构建更多功能"
 
 #. translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre"
 #: includes/admin/views/global/form-top.php:19
@@ -214,34 +229,34 @@ msgstr "%s 字段"
 
 #: includes/admin/post-types/admin-taxonomies.php:293
 msgid "No terms"
-msgstr "没有相应条款"
+msgstr "无分类项"
 
 #: includes/admin/post-types/admin-taxonomies.php:266
 msgid "No post types"
-msgstr "没有帖子类型"
+msgstr "无文章类型"
 
 #: includes/admin/post-types/admin-post-types.php:289
 msgid "No posts"
-msgstr "没有文章"
+msgstr "无文章"
 
 #: includes/admin/post-types/admin-post-types.php:263
 msgid "No taxonomies"
-msgstr "没有分类"
+msgstr "无分类"
 
 #: includes/admin/post-types/admin-post-types.php:208
 #: includes/admin/post-types/admin-taxonomies.php:208
 msgid "No field groups"
-msgstr "没有字段分组"
+msgstr "无字段分组"
 
 #: includes/admin/post-types/admin-field-groups.php:281
 msgid "No fields"
-msgstr "没有字段"
+msgstr "无字段"
 
 #: includes/admin/post-types/admin-field-groups.php:154
 #: includes/admin/post-types/admin-post-types.php:172
 #: includes/admin/post-types/admin-taxonomies.php:172
 msgid "No description"
-msgstr "没有说明"
+msgstr "无描述"
 
 #: includes/fields/class-acf-field-page_link.php:484
 #: includes/fields/class-acf-field-post_object.php:389
@@ -260,167 +275,173 @@ msgstr ""
 msgid ""
 "This taxonomy key is already in use by another taxonomy in ACF and cannot be "
 "used."
-msgstr ""
+msgstr "此分类法已被 ACF 中的另一个分类法使用，因此无法使用。"
 
 #: includes/post-types/class-acf-taxonomy.php:252
 msgid ""
 "The taxonomy key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
-msgstr ""
+msgstr "分类法只能包含小写字母数字字符、下划线或破折号。"
 
 #: includes/post-types/class-acf-taxonomy.php:247
 msgid "The taxonomy key must be under 32 characters."
-msgstr ""
+msgstr "分类法必须少于 32 个字符。"
 
 #: includes/post-types/class-acf-taxonomy.php:99
 msgid "No Taxonomies found in Trash"
-msgstr ""
+msgstr "回收站中未找到分类法"
 
 #: includes/post-types/class-acf-taxonomy.php:98
 msgid "No Taxonomies found"
-msgstr ""
+msgstr "未找到分类法"
 
 #: includes/post-types/class-acf-taxonomy.php:97
 msgid "Search Taxonomies"
-msgstr ""
+msgstr "搜索分类法"
 
 #: includes/post-types/class-acf-taxonomy.php:96
 msgid "View Taxonomy"
-msgstr ""
+msgstr "查看分类法"
 
 #: includes/post-types/class-acf-taxonomy.php:95
 msgid "New Taxonomy"
-msgstr ""
+msgstr "新分类法"
 
 #: includes/post-types/class-acf-taxonomy.php:94
 msgid "Edit Taxonomy"
-msgstr ""
+msgstr "编辑分类法"
 
 #: includes/post-types/class-acf-taxonomy.php:93
 msgid "Add New Taxonomy"
-msgstr ""
+msgstr "新增分类法"
+
+#: includes/post-types/class-acf-post-type.php:100
+msgid "No Post Types found in Trash"
+msgstr "在回收站中找不到文章类型"
 
 #: includes/post-types/class-acf-post-type.php:99
-msgid "No Post Types found in Trash"
-msgstr ""
+msgid "No Post Types found"
+msgstr "找不到文章类型"
 
 #: includes/post-types/class-acf-post-type.php:98
-msgid "No Post Types found"
-msgstr ""
+msgid "Search Post Types"
+msgstr "搜索文章类型"
 
 #: includes/post-types/class-acf-post-type.php:97
-msgid "Search Post Types"
-msgstr ""
+msgid "View Post Type"
+msgstr "查看文章类型"
 
 #: includes/post-types/class-acf-post-type.php:96
-msgid "View Post Type"
-msgstr ""
+msgid "New Post Type"
+msgstr "新文章类型"
 
 #: includes/post-types/class-acf-post-type.php:95
-msgid "New Post Type"
-msgstr ""
+msgid "Edit Post Type"
+msgstr "编辑文章类型"
 
 #: includes/post-types/class-acf-post-type.php:94
-msgid "Edit Post Type"
-msgstr ""
-
-#: includes/post-types/class-acf-post-type.php:93
 msgid "Add New Post Type"
-msgstr ""
+msgstr "新增文章类型"
 
-#: includes/post-types/class-acf-post-type.php:338
+#: includes/post-types/class-acf-post-type.php:361
 msgid ""
 "This post type key is already in use by another post type registered outside "
 "of ACF and cannot be used."
-msgstr ""
+msgstr "此帖子类型密钥已被 ACF 外部注册的另一个帖子类型使用，因此无法使用。"
 
-#: includes/post-types/class-acf-post-type.php:333
+#: includes/post-types/class-acf-post-type.php:356
 msgid ""
 "This post type key is already in use by another post type in ACF and cannot "
 "be used."
-msgstr ""
+msgstr "此帖子类型密钥已被 ACF 中的另一个帖子类型使用，无法使用。"
 
 #. translators: %s a link to WordPress.org's Reserved Terms page
-#: includes/post-types/class-acf-post-type.php:312
+#: includes/post-types/class-acf-post-type.php:335
 #: includes/post-types/class-acf-taxonomy.php:258
 msgid ""
 "This field must not be a WordPress <a href=\"%s\" target=\"_blank\">reserved "
 "term</a>."
-msgstr ""
+msgstr "此字段不得是 WordPress <a href=\"%s\" target=\"_blank\">保留词</a>。"
 
-#: includes/post-types/class-acf-post-type.php:306
+#: includes/post-types/class-acf-post-type.php:329
 msgid ""
 "The post type key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
-msgstr ""
+msgstr "帖子类型键只能包含小写字母数字字符、下划线或破折号。"
 
-#: includes/post-types/class-acf-post-type.php:301
+#: includes/post-types/class-acf-post-type.php:324
 msgid "The post type key must be under 20 characters."
-msgstr ""
+msgstr "帖子类型键必须少于 20 个字符。"
 
 #: includes/fields/class-acf-field-wysiwyg.php:27
 msgid "We do not recommend using this field in ACF Blocks."
-msgstr ""
+msgstr "我们不建议在 ACF 块中使用此字段。"
 
 #: includes/fields/class-acf-field-wysiwyg.php:27
 msgid ""
 "Displays the WordPress WYSIWYG editor as seen in Posts and Pages allowing "
 "for a rich text-editing experience that also allows for multimedia content."
 msgstr ""
+"显示 WordPress 所见即所得编辑器，如帖子和页面中所示，可提供丰富的文本编辑体"
+"验，还支持多媒体内容。"
 
 #: includes/fields/class-acf-field-wysiwyg.php:25
 msgid "WYSIWYG Editor"
-msgstr ""
+msgstr "所见即所得编辑器"
 
 #: includes/fields/class-acf-field-user.php:17
 msgid ""
 "Allows the selection of one or more users which can be used to create "
 "relationships between data objects."
-msgstr ""
+msgstr "允许选择一个或多个可用于在数据对象之间创建关系的用户。"
 
 #: includes/fields/class-acf-field-url.php:26
 msgid "A text input specifically designed for storing web addresses."
-msgstr ""
+msgstr "专门为存储网址而设计的文本输入。"
 
 #: includes/fields/class-acf-field-url.php:25
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: includes/fields/class-acf-field-true_false.php:27
 msgid ""
 "A toggle that allows you to pick a value of 1 or 0 (on or off, true or "
 "false, etc). Can be presented as a stylized switch or checkbox."
 msgstr ""
+"允许您选择值 1 或 0（打开或关闭、true 或 false 等）的切换开关。可以呈现为程式"
+"化的开关或复选框。"
 
 #: includes/fields/class-acf-field-time_picker.php:27
 msgid ""
 "An interactive UI for picking a time. The time format can be customized "
 "using the field settings."
-msgstr ""
+msgstr "用于选择时间的交互式 UI。可以使用字段设置自定义时间格式。"
 
 #: includes/fields/class-acf-field-textarea.php:26
 msgid "A basic textarea input for storing paragraphs of text."
-msgstr ""
+msgstr "用于存储文本段落的基本文本区域输入。"
 
 #: includes/fields/class-acf-field-text.php:26
 msgid "A basic text input, useful for storing single string values."
-msgstr ""
+msgstr "基本文本输入，可用于存储单个字符串值。"
 
 #: includes/fields/class-acf-field-taxonomy.php:22
 msgid ""
 "Allows the selection of one or more taxonomy terms based on the criteria and "
 "options specified in the fields settings."
-msgstr ""
+msgstr "允许根据字段设置中指定的条件和选项选择一个或多个分类术语。"
 
 #: includes/fields/class-acf-field-tab.php:28
 msgid ""
 "Allows you to group fields into tabbed sections in the edit screen. Useful "
 "for keeping fields organized and structured."
 msgstr ""
+"允许您将字段分组到编辑屏幕中的选项卡部分。对于保持字段的组织性和结构化很有"
+"用。"
 
 #: includes/fields/class-acf-field-select.php:27
 msgid "A dropdown list with a selection of choices that you specify."
-msgstr ""
+msgstr "包含您指定的选项的下拉列表。"
 
 #: includes/fields/class-acf-field-relationship.php:19
 msgid ""
@@ -428,120 +449,134 @@ msgid ""
 "type items to create a relationship with the item that you're currently "
 "editing. Includes options to search and filter."
 msgstr ""
+"双栏界面，用于选择一个或多个帖子、页面或自定义帖子类型项目，以创建与您当前正"
+"在编辑的项目的关系。包括搜索和过滤选项。"
 
 #: includes/fields/class-acf-field-range.php:26
 msgid ""
 "An input for selecting a numerical value within a specified range using a "
 "range slider element."
-msgstr ""
+msgstr "用于使用范围滑块元素选择指定范围内的数值的输入。"
 
 #: includes/fields/class-acf-field-radio.php:27
 msgid ""
 "A group of radio button inputs that allows the user to make a single "
 "selection from values that you specify."
-msgstr ""
+msgstr "一组单选按钮输入，允许用户从您指定的值中进行单一选择。"
 
 #: includes/fields/class-acf-field-post_object.php:19
 msgid ""
 "An interactive and customizable UI for picking one or many posts, pages or "
 "post type items with the option to search. "
 msgstr ""
+"一种交互式且可定制的用户界面，用于选择一个或多个帖子、页面或帖子类型项目，并"
+"提供搜索选项。 "
 
 #: includes/fields/class-acf-field-password.php:26
 msgid "An input for providing a password using a masked field."
-msgstr ""
+msgstr "使用屏蔽字段提供密码的输入。"
 
 #: includes/fields/class-acf-field-page_link.php:476
 #: includes/fields/class-acf-field-post_object.php:381
 #: includes/fields/class-acf-field-relationship.php:593
 msgid "Filter by Post Status"
-msgstr ""
+msgstr "按文章状态过滤"
 
 #: includes/fields/class-acf-field-page_link.php:27
 msgid ""
 "An interactive dropdown to select one or more posts, pages, custom post type "
 "items or archive URLs, with the option to search."
 msgstr ""
+"交互式下拉菜单，用于选择一个或多个帖子、页面、自定义帖子类型项目或存档 URL，"
+"并提供搜索选项。"
 
 #: includes/fields/class-acf-field-oembed.php:27
 msgid ""
 "An interactive component for embedding videos, images, tweets, audio and "
 "other content by making use of the native WordPress oEmbed functionality."
 msgstr ""
+"一个交互式组件，用于通过使用本机 WordPress oEmbed 功能来嵌入视频、图像、推"
+"文、音频和其他内容。"
 
 #: includes/fields/class-acf-field-number.php:26
 msgid "An input limited to numerical values."
-msgstr ""
+msgstr "输入仅限于数值。"
 
 #: includes/fields/class-acf-field-message.php:28
 msgid ""
 "Used to display a message to editors alongside other fields. Useful for "
 "providing additional context or instructions around your fields."
 msgstr ""
+"用于与其他字段一起向编辑者显示消息。对于提供有关您的字段的附加上下文或说明很"
+"有用。"
 
 #: includes/fields/class-acf-field-link.php:27
 msgid ""
 "Allows you to specify a link and its properties such as title and target "
 "using the WordPress native link picker."
-msgstr ""
+msgstr "允许您使用 WordPress 本机链接选择器指定链接及其属性，例如标题和目标。"
 
 #: includes/fields/class-acf-field-image.php:27
 msgid "Uses the native WordPress media picker to upload, or choose images."
-msgstr ""
+msgstr "使用本机 WordPress 媒体选择器上传或选择图像。"
 
 #: includes/fields/class-acf-field-group.php:27
 msgid ""
 "Provides a way to structure fields into groups to better organize the data "
 "and the edit screen."
-msgstr ""
+msgstr "提供一种将字段组织为组的方法，以更好地组织数据和编辑屏幕。"
 
 #: includes/fields/class-acf-field-google-map.php:27
 msgid ""
 "An interactive UI for selecting a location using Google Maps. Requires a "
 "Google Maps API key and additional configuration to display correctly."
 msgstr ""
+"用于使用 Google 地图选择位置的交互式 UI。需要 Google 地图 API 密钥和其他配置"
+"才能正确显示。"
 
 #: includes/fields/class-acf-field-file.php:27
 msgid "Uses the native WordPress media picker to upload, or choose files."
-msgstr ""
+msgstr "使用本机 WordPress 媒体选择器上传或选择文件。"
 
 #: includes/fields/class-acf-field-email.php:26
 msgid "A text input specifically designed for storing email addresses."
-msgstr ""
+msgstr "专门用于存储电子邮件地址的文本输入。"
 
 #: includes/fields/class-acf-field-date_time_picker.php:27
 msgid ""
 "An interactive UI for picking a date and time. The date return format can be "
 "customized using the field settings."
-msgstr ""
+msgstr "用于选择日期和时间的交互式 UI。可以使用字段设置自定义日期返回格式。"
 
 #: includes/fields/class-acf-field-date_picker.php:27
 msgid ""
 "An interactive UI for picking a date. The date return format can be "
 "customized using the field settings."
-msgstr ""
+msgstr "用于选择日期的交互式用户界面。可以使用字段设置自定义日期返回格式。"
 
 #: includes/fields/class-acf-field-color_picker.php:27
 msgid "An interactive UI for selecting a color, or specifying a Hex value."
-msgstr ""
+msgstr "用于选择颜色或指定十六进制值的交互式 UI。"
 
 #: includes/fields/class-acf-field-checkbox.php:27
 msgid ""
 "A group of checkbox inputs that allow the user to select one, or multiple "
 "values that you specify."
-msgstr ""
+msgstr "一组复选框输入，允许用户选择您指定的一个或多个值。"
 
 #: includes/fields/class-acf-field-button-group.php:26
 msgid ""
 "A group of buttons with values that you specify, users can choose one option "
 "from the values provided."
-msgstr ""
+msgstr "一组具有您指定的值的按钮，用户可以从提供的值中选择一个选项。"
 
 #: includes/fields/class-acf-field-accordion.php:27
 msgid ""
 "Allows you to group and organize custom fields into collapsable panels that "
 "are shown while editing content. Useful for keeping large datasets tidy."
 msgstr ""
+"允许您将自定义字段分组并组织到可折叠面板中，这些面板在编辑内容时显示。对于保"
+"持大型数据集整洁很有用。"
 
 #: includes/fields.php:475
 msgid ""
@@ -549,6 +584,8 @@ msgid ""
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
 "can be repeated again and again."
 msgstr ""
+"这提供了一种通过充当一组可以一次又一次重复的子字段的父字段来重复幻灯片、团队"
+"成员和号召性用语图块等内容的解决方案。"
 
 #: includes/fields.php:465
 msgid ""
@@ -557,6 +594,8 @@ msgid ""
 "settings allow you to specify where new attachments are added in the gallery "
 "and the minimum/maximum number of attachments allowed."
 msgstr ""
+"这提供了用于管理附件集合的交互式界面。大多数设置与图像字段类型类似。其他设置"
+"允许您指定在库中添加新附件的位置以及允许的最小/最大附件数量。"
 
 #: includes/fields.php:455
 msgid ""
@@ -564,6 +603,8 @@ msgid ""
 "Content field allows you to define, create and manage content with total "
 "control by using layouts and subfields to design the available blocks."
 msgstr ""
+"这提供了一个简单、结构化、基于布局的编辑器。弹性内容字段允许您通过使用布局和"
+"子字段来设计可用块来定义、创建和管理具有完全控制的内容。"
 
 #: includes/fields.php:445
 msgid ""
@@ -572,1622 +613,1644 @@ msgid ""
 "run-time. The Clone field can either replace itself with the selected fields "
 "or display the selected fields as a group of subfields."
 msgstr ""
+"这允许您选择并显示现有字段。它不会复制数据库中的任何字段，而是在运行时加载并"
+"显示所选字段。克隆字段可以用所选字段替换自身，也可以将所选字段显示为一组子字"
+"段。"
 
 #: includes/fields.php:442
 msgctxt "noun"
 msgid "Clone"
-msgstr ""
+msgstr "克隆"
 
 #: includes/admin/views/global/navigation.php:82 includes/fields.php:357
 msgid "PRO"
-msgstr ""
+msgstr "PRO"
 
 #: includes/fields.php:355 includes/fields.php:412
 msgid "Advanced"
-msgstr ""
+msgstr "高级"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:85
 msgid "JSON (newer)"
-msgstr ""
+msgstr "JSON (新)"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:81
 msgid "Original"
-msgstr ""
+msgstr "原始"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:55
 msgid "Invalid post ID."
-msgstr ""
+msgstr "文章 ID 无效。"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:47
 msgid "Invalid post type selected for review."
-msgstr ""
+msgstr "选择进行审核的帖子类型无效。"
 
 #: includes/admin/views/global/navigation.php:182
 msgid "More"
-msgstr ""
+msgstr "更多"
 
 #: includes/admin/views/browse-fields-modal.php:86
 msgid "Tutorial"
-msgstr ""
+msgstr "教程"
 
 #: includes/admin/views/browse-fields-modal.php:75
 msgid "Available with ACF PRO"
-msgstr ""
+msgstr "适用于 ACF PRO"
 
 #: includes/admin/views/browse-fields-modal.php:63
 msgid "Select Field"
-msgstr ""
+msgstr "选择字段"
 
 #. translators: %s: A link to the popular fields used in ACF
 #: includes/admin/views/browse-fields-modal.php:50
 msgid "Try a different search term or browse %s"
-msgstr ""
+msgstr "尝试不同的搜索词或浏览 %s"
 
 #: includes/admin/views/browse-fields-modal.php:47
 msgid "Popular fields"
-msgstr ""
+msgstr "热门字段"
 
 #. translators: %s: The invalid search term
 #: includes/admin/views/browse-fields-modal.php:40
 msgid "No search results for '%s'"
-msgstr ""
+msgstr "没有搜索到“%s”结果"
 
 #: includes/admin/views/browse-fields-modal.php:13
 msgid "Search fields..."
-msgstr ""
+msgstr "搜索字段..."
 
 #: includes/admin/views/browse-fields-modal.php:11
 msgid "Select Field Type"
-msgstr ""
+msgstr "选择字段类型"
 
 #: includes/admin/views/browse-fields-modal.php:4
 msgid "Popular"
-msgstr ""
+msgstr "热门"
 
 #: includes/admin/views/acf-taxonomy/list-empty.php:7
 msgid "Add Taxonomy"
-msgstr ""
+msgstr "添加分类法"
 
 #: includes/admin/views/acf-taxonomy/list-empty.php:6
 msgid "Create custom taxonomies to classify post type content"
-msgstr ""
+msgstr "创建自定义分类法对文章类型内容进行分类"
 
 #: includes/admin/views/acf-taxonomy/list-empty.php:5
 msgid "Add Your First Taxonomy"
-msgstr ""
+msgstr "添加您的第一个分类法"
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:122
 msgid "Hierarchical taxonomies can have descendants (like categories)."
-msgstr ""
+msgstr "分层分类法可以有后代（如类别）。"
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:107
 msgid "Makes a taxonomy visible on the frontend and in the admin dashboard."
-msgstr ""
+msgstr "使分类在前端和管理仪表板中可见。"
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:91
 msgid "One or many post types that can be classified with this taxonomy."
-msgstr ""
+msgstr "可以使用此分类法对一种或多种文章类型进行分类。"
 
 #. translators: example taxonomy
 #: includes/admin/views/acf-taxonomy/basic-settings.php:60
 msgid "genre"
-msgstr ""
+msgstr "类型"
 
 #. translators: example taxonomy
 #: includes/admin/views/acf-taxonomy/basic-settings.php:42
 msgid "Genre"
-msgstr ""
+msgstr "类型"
 
 #. translators: example taxonomy
 #: includes/admin/views/acf-taxonomy/basic-settings.php:25
 msgid "Genres"
-msgstr ""
+msgstr "类型"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1207
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1211
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Terms_Controller `."
-msgstr ""
+msgstr "使用可选的自定义控制器来代替“WP_REST_Terms_Controller”。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1151
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1155
 msgid "Expose this post type in the REST API."
-msgstr ""
+msgstr "在 REST API 中公开此文章类型。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1051
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1055
 msgid "Customize the query variable name"
-msgstr ""
+msgstr "自定义查询变量名"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1024
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
 msgid ""
 "Terms can be accessed using the non-pretty permalink, e.g., {query_var}"
 "={term_slug}."
-msgstr ""
+msgstr "可以使用非漂亮的永久链接访问术语，例如 {query_var}={term_slug}。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:977
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:981
 msgid "Parent-child terms in URLs for hierarchical taxonomies."
-msgstr ""
+msgstr "分层分类法 URL 中的父子术语。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:937
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:941
 msgid "Customize the slug used in the URL"
-msgstr ""
+msgstr "自定义 URL 中使用的 slug"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:920
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:924
 msgid "Permalinks for this taxonomy are disabled."
-msgstr ""
+msgstr "此分类的永久链接已禁用。"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:917
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:921
 msgid ""
 "Rewrite the URL using the taxonomy key as the slug. Your permalink structure "
 "will be"
-msgstr ""
+msgstr "使用分类键作为 slug 重写 URL。您的永久链接结构将是"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:909
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1026
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:913
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1030
 #: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
-msgstr ""
+msgstr "分类法键"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:907
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:911
 msgid "Select the type of permalink to use for this taxonomy."
-msgstr ""
+msgstr "选择用于此分类的永久链接类型。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:892
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:896
 msgid "Display a column for the taxonomy on post type listing screens."
-msgstr ""
+msgstr "在帖子类型列表屏幕上显示分类法列。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:891
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:895
 msgid "Show Admin Column"
-msgstr ""
+msgstr "显示管理栏"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:878
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:882
 msgid "Show the taxonomy in the quick/bulk edit panel."
-msgstr ""
+msgstr "在快速/批量编辑面板中显示分类。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:877
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:881
 msgid "Quick Edit"
-msgstr ""
+msgstr "快速编辑"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:864
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:868
 msgid "List the taxonomy in the Tag Cloud Widget controls."
-msgstr ""
+msgstr "列出标签云小部件控件中的分类法。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:863
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:867
 msgid "Tag Cloud"
-msgstr ""
+msgstr "标签云"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:820
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:824
 msgid ""
 "A PHP function name to be called for sanitizing taxonomy data saved from a "
 "meta box."
-msgstr ""
+msgstr "要调用的 PHP 函数名称，用于清理从元框中保存的分类数据。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:819
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:823
 msgid "Meta Box Sanitization Callback"
-msgstr ""
+msgstr "Meta Box 清理回调"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:801
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:805
 msgid ""
 "A PHP function name to be called to handle the content of a meta box on your "
 "taxonomy."
-msgstr ""
+msgstr "要调用的 PHP 函数名称来处理分类法上元框的内容。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:800
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:804
 msgid "Register Meta Box Callback"
-msgstr ""
+msgstr "注册元框回调"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:759
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:763
 msgid "No Meta Box"
-msgstr ""
+msgstr "无  Meta Box"
+
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:762
+msgid "Custom Meta Box"
+msgstr "自定义  Meta Box"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:758
-msgid "Custom Meta Box"
-msgstr ""
-
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:754
 msgid ""
 "Controls the meta box on the content editor screen. By default, the "
 "Categories meta box is shown for hierarchical taxonomies, and the Tags meta "
 "box is shown for non-hierarchical taxonomies."
 msgstr ""
+"控制内容编辑器屏幕上的元框。默认情况下，对于分层分类法显示“类别”元框，对于非"
+"分层分类法显示“标签”元框。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:753
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:757
 msgid "Meta Box"
-msgstr ""
+msgstr "Meta Box"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:742
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:763
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:746
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:767
 msgid "Categories Meta Box"
-msgstr ""
+msgstr "分类 Meta Box"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:741
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:762
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:745
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:766
 msgid "Tags Meta Box"
-msgstr ""
+msgstr "标签  Meta Box"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:700
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:704
 msgid "A link to a tag"
-msgstr ""
+msgstr "指向标签的链接"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:699
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:703
 msgid "Describes a navigation link block variation used in the block editor."
-msgstr ""
+msgstr "描述块编辑器中使用的导航链接块变体。"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:694
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:698
 msgid "A link to a %s"
-msgstr ""
+msgstr "%s 的链接"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:679
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:683
 msgid "Tag Link"
-msgstr ""
+msgstr "标签链接"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:678
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:682
 msgid ""
 "Assigns a title for navigation link block variation used in the block editor."
-msgstr ""
+msgstr "为块编辑器中使用的导航链接块变体分配标题。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:659
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:663
 msgid "← Go to tags"
-msgstr ""
+msgstr "← 转到标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:658
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:662
 msgid ""
 "Assigns the text used to link back to the main index after updating a term."
-msgstr ""
+msgstr "在更新分类项后，指定用于链接回主索引的文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:657
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:661
 msgid "Back To Items"
-msgstr ""
+msgstr "返回项目"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:653
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:657
 msgid "← Go to %s"
-msgstr ""
+msgstr "← 前往 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:638
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:642
 msgid "Tags list"
-msgstr ""
+msgstr "标签列表"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:637
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:641
 msgid "Assigns text to the table hidden heading."
-msgstr ""
+msgstr "将文本分配给表格隐藏标题。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:618
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:622
 msgid "Tags list navigation"
-msgstr ""
+msgstr "标签列表导航"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:617
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:621
 msgid "Assigns text to the table pagination hidden heading."
-msgstr ""
+msgstr "将文本分配给表格分页隐藏标题。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:593
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:597
 msgid "Filter by category"
-msgstr ""
+msgstr "按类别过滤"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:592
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:596
 msgid "Assigns text to the filter button in the posts lists table."
-msgstr ""
+msgstr "将文本分配给帖子列表中的过滤器按钮。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:591
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:595
 msgid "Filter By Item"
-msgstr ""
+msgstr "按项目过滤"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:587
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:591
 msgid "Filter by %s"
-msgstr ""
+msgstr "按 %s 过滤"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:571
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:572
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:575
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:576
 msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
-msgstr ""
+msgstr "默认情况下描述不突出；但是，某些主题可能会显示它。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:570
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:574
 msgid "Describes the Description field on the Edit Tags screen."
-msgstr ""
+msgstr "描述编辑标签屏幕上的描述字段。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:569
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:573
 msgid "Description Field Description"
-msgstr ""
+msgstr "描述 字段 描述"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:550
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:551
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:554
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:555
 msgid ""
 "Assign a parent term to create a hierarchy. The term Jazz, for example, "
 "would be the parent of Bebop and Big Band"
 msgstr ""
+"指定父分类项以创建层次结构。例如，“爵士乐”一词就是“Bebop”和“Big Band”的父词"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:549
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:553
 msgid "Describes the Parent field on the Edit Tags screen."
-msgstr ""
+msgstr "描述编辑标签屏幕上的父字段。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:548
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:552
 msgid "Parent Field Description"
-msgstr ""
+msgstr "父字段描述"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:534
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:535
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:538
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:539
 msgid ""
 "The \"slug\" is the URL-friendly version of the name. It is usually all "
 "lower case and contains only letters, numbers, and hyphens."
 msgstr ""
+"“slug”是该名称的 URL 友好版本。它通常全部小写，仅包含字母、数字和连字符。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:533
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:537
 msgid "Describes the Slug field on the Edit Tags screen."
-msgstr ""
+msgstr "描述编辑标签屏幕上的 Slug 字段。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:532
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:536
 msgid "Slug Field Description"
-msgstr ""
+msgstr "Slug 字段描述"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:518
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:519
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:522
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:523
 msgid "The name is how it appears on your site"
-msgstr ""
+msgstr "该名称是它在您网站上的显示方式"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:517
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:521
 msgid "Describes the Name field on the Edit Tags screen."
-msgstr ""
+msgstr "描述编辑标签屏幕上的名称字段。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:516
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:520
 msgid "Name Field Description"
-msgstr ""
+msgstr "名称 字段 描述"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:503
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:507
 msgid "No tags"
-msgstr ""
+msgstr "无标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:502
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:506
 msgid ""
 "Assigns the text displayed in the posts and media list tables when no tags "
 "or categories are available."
-msgstr ""
+msgstr "当没有可用标签或类别时，分配帖子和媒体列表中显示的文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:501
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:505
 msgid "No Terms"
-msgstr ""
+msgstr "无分类项"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:497
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:501
 msgid "No %s"
-msgstr ""
+msgstr "无 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:482
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:486
 msgid "No tags found"
-msgstr ""
+msgstr "未找到标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:481
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:485
 msgid ""
 "Assigns the text displayed when clicking the 'choose from most used' text in "
 "the taxonomy meta box when no tags are available, and assigns the text used "
 "in the terms list table when there are no items for a taxonomy."
 msgstr ""
+"当没有可用标签时，分配在分类元框中单击“从最常用的选择”文本时显示的文本，并在"
+"没有分类项时分配术语列表中使用的文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:480
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:484
 msgid "Not Found"
-msgstr ""
+msgstr "未找到"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:459
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:463
 msgid "Assigns text to the Title field of the Most Used tab."
-msgstr ""
+msgstr "将文本分配给最常用选项卡的标题字段。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:458
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:460
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:461
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:462
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:464
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:465
 msgid "Most Used"
-msgstr ""
+msgstr "最常被使用"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:440
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:444
 msgid "Choose from the most used tags"
-msgstr ""
+msgstr "从最常用的标签中选择"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:439
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:443
 msgid ""
 "Assigns the 'choose from most used' text used in the meta box when "
 "JavaScript is disabled. Only used on non-hierarchical taxonomies."
 msgstr ""
+"当禁用 JavaScript 时，指定元框中使用的“从最常用的选项中选择”文本。仅用于非层"
+"次分类法。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:438
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:442
 msgid "Choose From Most Used"
-msgstr ""
+msgstr "从最常用的中选择"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:434
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:438
 msgid "Choose from the most used %s"
-msgstr ""
+msgstr "从最常用的 %s 中选择"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:414
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:418
 msgid "Add or remove tags"
-msgstr ""
+msgstr "添加或删除标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:413
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:417
 msgid ""
 "Assigns the add or remove items text used in the meta box when JavaScript is "
 "disabled. Only used on non-hierarchical taxonomies"
 msgstr ""
+"禁用 JavaScript 时分配在元框中使用的添加或删除项目文本。仅用于非层次分类法"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:412
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:416
 msgid "Add Or Remove Items"
-msgstr ""
+msgstr "添加或删除项目"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:408
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:412
 msgid "Add or remove %s"
-msgstr ""
+msgstr "添加或删除%s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:388
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:392
 msgid "Separate tags with commas"
-msgstr ""
+msgstr "用逗号分隔标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:387
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:391
 msgid ""
 "Assigns the separate item with commas text used in the taxonomy meta box. "
 "Only used on non-hierarchical taxonomies."
-msgstr ""
+msgstr "使用分类元框中使用的逗号文本分配单独的项目。仅用于非层次分类法。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:386
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:390
 msgid "Separate Items With Commas"
-msgstr ""
+msgstr "用逗号分隔项目"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:382
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:386
 msgid "Separate %s with commas"
-msgstr ""
+msgstr "用逗号分隔 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:362
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:366
 msgid "Popular Tags"
-msgstr ""
+msgstr "热门标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:361
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:365
 msgid "Assigns popular items text. Only used for non-hierarchical taxonomies."
-msgstr ""
+msgstr "分配热门项目文本。仅用于非层次分类法。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:360
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:364
 msgid "Popular Items"
-msgstr ""
+msgstr "热门项目"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:357
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:361
 msgid "Popular %s"
-msgstr ""
+msgstr "热门 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:343
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:347
 msgid "Search Tags"
-msgstr ""
+msgstr "搜索标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:342
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:346
 msgid "Assigns search items text."
-msgstr ""
+msgstr "分配搜索项文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:319
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:323
 msgid "Parent Category:"
-msgstr ""
+msgstr "父级分类："
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:318
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:322
 msgid "Assigns parent item text, but with a colon (:) added to the end."
-msgstr ""
+msgstr "分配父项文本，但在末尾添加冒号 (:)。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:317
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:321
 msgid "Parent Item With Colon"
-msgstr ""
+msgstr "带冒号的父项"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:294
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:298
 msgid "Parent Category"
-msgstr ""
+msgstr "父类别"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:293
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:297
 msgid "Assigns parent item text. Only used on hierarchical taxonomies."
-msgstr ""
+msgstr "分配父项文本。仅用于分层分类法。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:292
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:296
 msgid "Parent Item"
-msgstr ""
+msgstr "父级项目"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:289
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:293
 msgid "Parent %s"
-msgstr ""
+msgstr "上级 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:274
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:278
 msgid "New Tag Name"
-msgstr ""
+msgstr "新标签名称"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:273
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:277
 msgid "Assigns the new item name text."
-msgstr ""
+msgstr "分配新的项目名称文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:272
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:276
 msgid "New Item Name"
-msgstr ""
+msgstr "新项目名称"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:269
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:273
 msgid "New %s Name"
-msgstr ""
+msgstr "新 %s 名称"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:254
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:258
 msgid "Add New Tag"
-msgstr ""
+msgstr "新增标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:253
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:257
 msgid "Assigns the add new item text."
-msgstr ""
+msgstr "分配新的项目名称文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:234
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:238
 msgid "Update Tag"
-msgstr ""
+msgstr "更新标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:233
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:237
 msgid "Assigns the update item text."
-msgstr ""
+msgstr "分配更新项目文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:232
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:236
 msgid "Update Item"
-msgstr ""
+msgstr "更新项目"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:229
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:233
 msgid "Update %s"
-msgstr ""
+msgstr "更新 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:214
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:218
 msgid "View Tag"
-msgstr ""
+msgstr "查看标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:213
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:217
 msgid "In the admin bar to view term during editing."
-msgstr ""
+msgstr "在管理栏中可以在编辑期间查看分类项。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:194
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:198
 msgid "Edit Tag"
-msgstr ""
+msgstr "编辑标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:193
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:197
 msgid "At the top of the editor screen when editing a term."
-msgstr ""
+msgstr "编辑分类项时位于编辑器屏幕的顶部。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:174
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:178
 msgid "All Tags"
-msgstr ""
+msgstr "所有标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:173
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:177
 msgid "Assigns the all items text."
-msgstr ""
+msgstr "分配所有项目文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:154
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:158
 msgid "Assigns the menu name text."
-msgstr ""
+msgstr "分配菜单名称文本。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:153
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:157
 msgid "Menu Label"
-msgstr ""
+msgstr "菜单标签"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:127
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:131
 msgid "Active taxonomies are enabled and registered with WordPress."
-msgstr ""
+msgstr "活动分类法已启用并在 WordPress 中注册。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:111
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:115
 msgid "A descriptive summary of the taxonomy."
-msgstr ""
+msgstr "分类法的描述性摘要。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:91
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:95
 msgid "A descriptive summary of the term."
-msgstr ""
+msgstr "该分类项的描述性摘要。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:90
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:94
 msgid "Term Description"
-msgstr ""
+msgstr "分类项说明"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:72
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:76
 msgid "Single word, no spaces. Underscores and dashes allowed."
-msgstr ""
+msgstr "单个字符串，不能有空格，允许下划线和破折号。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:71
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:75
 msgid "Term Slug"
-msgstr ""
+msgstr "分类项 Slug"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:52
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:56
 msgid "The name of the default term."
-msgstr ""
+msgstr "默认分类项的名称。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:51
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:55
 msgid "Term Name"
-msgstr ""
+msgstr "分类项名称"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:37
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:41
 msgid ""
 "Create a term for the taxonomy that cannot be deleted. It will not be "
 "selected for posts by default."
-msgstr ""
+msgstr "为无法删除的分类法创建分类项。默认情况下不会选择它来发布帖子。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:36
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:40
 msgid "Default Term"
-msgstr ""
+msgstr "默认分类项"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:24
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:28
 msgid ""
 "Whether terms in this taxonomy should be sorted in the order they are "
 "provided to `wp_set_object_terms()`."
 msgstr ""
+"此分类法中的分类项是否应按照提供给“wp_set_object_terms()”的顺序进行排序。"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:23
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:27
 msgid "Sort Terms"
-msgstr ""
+msgstr "排序分类项"
 
 #: includes/admin/views/acf-post-type/list-empty.php:7
 msgid "Add Post Type"
-msgstr ""
+msgstr "添加文章类型"
 
 #: includes/admin/views/acf-post-type/list-empty.php:6
 msgid ""
 "Expand the functionality of WordPress beyond standard posts and pages with "
 "custom post types."
-msgstr ""
+msgstr "使用自定义文章类型将 WordPress 的功能扩展到标准文章和页面之外。"
 
 #: includes/admin/views/acf-post-type/list-empty.php:5
 msgid "Add Your First Post Type"
-msgstr ""
+msgstr "添加您的第一个文章类型"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:136
 #: includes/admin/views/acf-taxonomy/basic-settings.php:135
 msgid "I know what I'm doing, show me all the options."
-msgstr ""
+msgstr "我知道我在做什么，告诉我所有的选择。"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:135
 #: includes/admin/views/acf-taxonomy/basic-settings.php:134
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "高级配置"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:123
 msgid "Hierarchical post types can have descendants (like pages)."
-msgstr ""
+msgstr "分层文章类型可以有后代（如页面）。"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:122
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:976
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:980
 #: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
-msgstr ""
+msgstr "分层"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:107
 msgid "Visible on the frontend and in the admin dashboard."
-msgstr ""
+msgstr "在前端和管理仪表板中可见。"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:106
 #: includes/admin/views/acf-taxonomy/basic-settings.php:106
 msgid "Public"
-msgstr ""
+msgstr "公开"
 
 #. translators: example post type
 #: includes/admin/views/acf-post-type/basic-settings.php:59
 msgid "movie"
-msgstr ""
+msgstr "电影"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:57
 msgid "Lower case letters, underscores and dashes only, Max 20 characters."
-msgstr ""
+msgstr "仅限小写字母、下划线和破折号，最多 20 个字符。"
 
 #. translators: example post type
 #: includes/admin/views/acf-post-type/basic-settings.php:41
 msgid "Movie"
-msgstr ""
+msgstr "电影"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:39
 #: includes/admin/views/acf-taxonomy/basic-settings.php:40
 msgid "Singular Label"
-msgstr ""
+msgstr "单一标签"
 
 #. translators: example post type
 #: includes/admin/views/acf-post-type/basic-settings.php:24
 msgid "Movies"
-msgstr ""
+msgstr "电影"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:22
 #: includes/admin/views/acf-taxonomy/basic-settings.php:23
 msgid "Plural Label"
-msgstr ""
+msgstr "复数标签"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1250
+#: includes/admin/views/acf-post-type/advanced-settings.php:1270
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Posts_Controller`."
-msgstr ""
+msgstr "使用可选的自定义控制器来代替“WP_REST_Posts_Controller”。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1249
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1206
+#: includes/admin/views/acf-post-type/advanced-settings.php:1269
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
 msgid "Controller Class"
-msgstr ""
+msgstr "控制器类"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:1251
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1191
+msgid "The namespace part of the REST API URL."
+msgstr "REST API URL 的命名空间部分。"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:1250
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1190
+msgid "Namespace Route"
+msgstr "命名空间路由"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:1232
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1172
+msgid "The base URL for the post type REST API URLs."
+msgstr "文章类型 REST API URL 的基本 URL。"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1231
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1187
-msgid "The namespace part of the REST API URL."
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:1230
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1186
-msgid "Namespace Route"
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:1212
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1168
-msgid "The base URL for the post type REST API URLs."
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:1211
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1167
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1171
 msgid "Base URL"
-msgstr ""
+msgstr "基本网址"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1197
+#: includes/admin/views/acf-post-type/advanced-settings.php:1217
 msgid ""
 "Exposes this post type in the REST API. Required to use the block editor."
-msgstr ""
+msgstr "在 REST API 中公开此帖子类型。需要使用块编辑器。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1196
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1150
+#: includes/admin/views/acf-post-type/advanced-settings.php:1216
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1154
 msgid "Show In REST API"
-msgstr ""
+msgstr "在 REST API 中显示"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1175
+#: includes/admin/views/acf-post-type/advanced-settings.php:1195
 msgid "Customize the query variable name."
-msgstr ""
+msgstr "自定义查询变量名称。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1174
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1050
+#: includes/admin/views/acf-post-type/advanced-settings.php:1194
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1054
 msgid "Query Variable"
-msgstr ""
+msgstr "查询变量"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1152
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
+#: includes/admin/views/acf-post-type/advanced-settings.php:1172
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1032
 msgid "No Query Variable Support"
-msgstr ""
+msgstr "不支持查询变量"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1151
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
+#: includes/admin/views/acf-post-type/advanced-settings.php:1171
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1031
 msgid "Custom Query Variable"
-msgstr ""
+msgstr "自定义查询变量"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1148
+#: includes/admin/views/acf-post-type/advanced-settings.php:1168
 msgid ""
 "Items can be accessed using the non-pretty permalink, eg. {post_type}"
 "={post_slug}."
-msgstr ""
+msgstr "可以使用非漂亮的永久链接访问项目，例如。 {post_type}={post_slug}。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1147
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1023
+#: includes/admin/views/acf-post-type/advanced-settings.php:1167
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
 msgid "Query Variable Support"
-msgstr ""
+msgstr "查询变量支持"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1122
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:999
+#: includes/admin/views/acf-post-type/advanced-settings.php:1142
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1003
 msgid "URLs for an item and items can be accessed with a query string."
-msgstr ""
+msgstr "可以使用查询字符串访问一个或多个项目的 URL。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1121
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:998
+#: includes/admin/views/acf-post-type/advanced-settings.php:1141
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1002
 msgid "Publicly Queryable"
-msgstr ""
+msgstr "可公开查询"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1100
+#: includes/admin/views/acf-post-type/advanced-settings.php:1120
 msgid "Custom slug for the Archive URL."
-msgstr ""
+msgstr "存档 URL 的自定义 slug。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1099
+#: includes/admin/views/acf-post-type/advanced-settings.php:1119
 msgid "Archive Slug"
-msgstr ""
+msgstr "归档 Slug"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1086
+#: includes/admin/views/acf-post-type/advanced-settings.php:1106
 msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
-msgstr ""
+msgstr "拥有一个项目存档，可以使用主题中的存档模板文件进行自定义。"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:1105
+msgid "Archive"
+msgstr "归档"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1085
-msgid "Archive"
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:1065
 msgid "Pagination support for the items URLs such as the archives."
-msgstr ""
+msgstr "对项目 URL（例如归档）的分页支持。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1064
+#: includes/admin/views/acf-post-type/advanced-settings.php:1084
 msgid "Pagination"
-msgstr ""
+msgstr "分页"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1047
+#: includes/admin/views/acf-post-type/advanced-settings.php:1067
 msgid "RSS feed URL for the post type items."
-msgstr ""
+msgstr "文章类型项目的 RSS 源 URL。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1046
+#: includes/admin/views/acf-post-type/advanced-settings.php:1066
 msgid "Feed URL"
-msgstr ""
+msgstr "Feed 网址"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1028
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:957
+#: includes/admin/views/acf-post-type/advanced-settings.php:1048
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:961
 msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
-msgstr ""
+msgstr "更改永久链接结构以将 `WP_Rewrite::$front` 前缀添加到 URL。"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:1047
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:960
+msgid "Front URL Prefix"
+msgstr "前面的 URL 前缀"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:1028
+msgid "Customize the slug used in the URL."
+msgstr "自定义 URL 中使用的 slug。"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1027
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:956
-msgid "Front URL Prefix"
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:1008
-msgid "Customize the slug used in the URL."
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:1007
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:936
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:940
 msgid "URL Slug"
-msgstr ""
+msgstr "URL Slug"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:991
+#: includes/admin/views/acf-post-type/advanced-settings.php:1011
 msgid "Permalinks for this post type are disabled."
-msgstr ""
+msgstr "此文章类型的永久链接已禁用。"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:990
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:919
+#: includes/admin/views/acf-post-type/advanced-settings.php:1010
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:923
 msgid ""
 "Rewrite the URL using a custom slug defined in the input below. Your "
 "permalink structure will be"
-msgstr ""
+msgstr "使用下面输入中定义的自定义 slug 重写 URL。您的永久链接结构将是"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:982
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:911
+#: includes/admin/views/acf-post-type/advanced-settings.php:1002
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:915
 msgid "No Permalink (prevent URL rewriting)"
-msgstr ""
+msgstr "无固定链接（防止 URL 重写）"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:981
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:910
+#: includes/admin/views/acf-post-type/advanced-settings.php:1001
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:914
 msgid "Custom Permalink"
-msgstr ""
+msgstr "自定义固定链接"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:980
-#: includes/admin/views/acf-post-type/advanced-settings.php:1150
+#: includes/admin/views/acf-post-type/advanced-settings.php:1000
+#: includes/admin/views/acf-post-type/advanced-settings.php:1170
 #: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
-msgstr ""
+msgstr "文章类型键"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:978
-#: includes/admin/views/acf-post-type/advanced-settings.php:988
+#: includes/admin/views/acf-post-type/advanced-settings.php:998
+#: includes/admin/views/acf-post-type/advanced-settings.php:1008
 msgid ""
 "Rewrite the URL using the post type key as the slug. Your permalink "
 "structure will be"
-msgstr ""
+msgstr "使用文章类型键作为 slug 重写 URL。您的永久链接结构将是"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:976
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:906
+#: includes/admin/views/acf-post-type/advanced-settings.php:996
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:910
 msgid "Permalink Rewrite"
-msgstr ""
+msgstr "永久链接重写"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:962
+#: includes/admin/views/acf-post-type/advanced-settings.php:982
 msgid "Delete items by a user when that user is deleted."
-msgstr ""
+msgstr "删除用户后，删除该用户的项目。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:961
+#: includes/admin/views/acf-post-type/advanced-settings.php:981
 msgid "Delete With User"
-msgstr ""
+msgstr "与用户一起删除"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:947
+#: includes/admin/views/acf-post-type/advanced-settings.php:967
 msgid "Allow the post type to be exported from 'Tools' > 'Export'."
-msgstr ""
+msgstr "允许从“工具”>“导出”导出文章类型。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:946
+#: includes/admin/views/acf-post-type/advanced-settings.php:966
 msgid "Can Export"
-msgstr ""
+msgstr "可以导出"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:935
+msgid "Optionally provide a plural to be used in capabilities."
+msgstr "可以选择提供要在功能中使用的复数。"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:934
+msgid "Plural Capability Name"
+msgstr "复数能力名称"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:916
+msgid "Choose another post type to base the capabilities for this post type."
+msgstr "选择另一个文章类型以基于此文章类型的功能。"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:915
-msgid "Optionally provide a plural to be used in capabilities."
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:914
-msgid "Plural Capability Name"
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:896
-msgid "Choose another post type to base the capabilities for this post type."
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:895
 msgid "Singular Capability Name"
-msgstr ""
+msgstr "单一能力名称"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:881
+#: includes/admin/views/acf-post-type/advanced-settings.php:901
 msgid ""
 "By default the capabilities of the post type will inherit the 'Post' "
 "capability names, eg. edit_post, delete_posts. Enable to use post type "
 "specific capabilities, eg. edit_{singular}, delete_{plural}."
 msgstr ""
+"默认情况下，文章类型的功能将继承“文章”功能名称，例如。编辑帖子、删除帖子。允"
+"许使用文章类型特定的功能，例如。编辑_{单数}，删除_{复数}。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:880
+#: includes/admin/views/acf-post-type/advanced-settings.php:900
 msgid "Rename Capabilities"
-msgstr ""
+msgstr "重命名功能"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:865
+#: includes/admin/views/acf-post-type/advanced-settings.php:885
 msgid "Exclude From Search"
-msgstr ""
+msgstr "从搜索中排除"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:852
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:850
+#: includes/admin/views/acf-post-type/advanced-settings.php:872
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:854
 msgid ""
 "Allow items to be added to menus in the 'Appearance' > 'Menus' screen. Must "
 "be turned on in 'Screen options'."
-msgstr ""
+msgstr "允许将项目添加到“外观”>“菜单”屏幕中的菜单。必须在“屏幕选项”中打开。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:851
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:849
+#: includes/admin/views/acf-post-type/advanced-settings.php:871
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:853
 msgid "Appearance Menus Support"
-msgstr ""
+msgstr "外观菜单支持"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:833
+#: includes/admin/views/acf-post-type/advanced-settings.php:853
 msgid "Appears as an item in the 'New' menu in the admin bar."
-msgstr ""
+msgstr "显示为管理栏中“新建”菜单中的一个项目。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:832
+#: includes/admin/views/acf-post-type/advanced-settings.php:852
 msgid "Show In Admin Bar"
-msgstr ""
+msgstr "在管理栏中显示"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:801
+#: includes/admin/views/acf-post-type/advanced-settings.php:821
 msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen."
-msgstr ""
+msgstr "为编辑屏幕设置元框时要调用的 PHP 函数名称。"
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:820
+msgid "Custom Meta Box Callback"
+msgstr "自定义 Meta Box 回调"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:800
-msgid "Custom Meta Box Callback"
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:780
 msgid "Menu Icon"
-msgstr ""
+msgstr "菜单图标"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:762
+#: includes/admin/views/acf-post-type/advanced-settings.php:782
 msgid "The position in the sidebar menu in the admin dashboard."
-msgstr ""
+msgstr "管理仪表板侧边栏菜单中的位置。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:761
+#: includes/admin/views/acf-post-type/advanced-settings.php:781
 msgid "Menu Position"
-msgstr ""
+msgstr "菜单位置"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:743
+#: includes/admin/views/acf-post-type/advanced-settings.php:763
 msgid ""
 "By default the post type will get a new top level item in the admin menu. If "
 "an existing top level item is supplied here, the post type will be added as "
 "a submenu item under it."
 msgstr ""
+"默认情况下，文章类型将在管理菜单中获得一个新的顶级项目。如果此处提供了现有的"
+"顶级项目，则文章类型将作为其下的子菜单项添加。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:742
+#: includes/admin/views/acf-post-type/advanced-settings.php:762
 msgid "Admin Menu Parent"
-msgstr ""
+msgstr "管理菜单父级"
 
 #. translators: %s = "dashicon class name", link to the WordPress dashicon
 #. documentation.
-#: includes/admin/views/acf-post-type/advanced-settings.php:730
+#: includes/admin/views/acf-post-type/advanced-settings.php:750
 msgid ""
 "The icon used for the post type menu item in the admin dashboard. Can be a "
 "URL or %s to use for the icon."
-msgstr ""
+msgstr "用于管理仪表板中的文章类型菜单项的图标。可以是用于图标的 URL 或 %s。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:725
+#: includes/admin/views/acf-post-type/advanced-settings.php:745
 msgid "Dashicon class name"
-msgstr ""
+msgstr "Dashicon 类名"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:714
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:730
+#: includes/admin/views/acf-post-type/advanced-settings.php:734
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:734
 msgid "Admin editor navigation in the sidebar menu."
-msgstr ""
+msgstr "侧边栏菜单中的管理编辑器导航。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:713
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:729
+#: includes/admin/views/acf-post-type/advanced-settings.php:733
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:733
 msgid "Show In Admin Menu"
-msgstr ""
+msgstr "在管理菜单中显示"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:700
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:715
+#: includes/admin/views/acf-post-type/advanced-settings.php:720
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:719
 msgid "Items can be edited and managed in the admin dashboard."
-msgstr ""
+msgstr "可以在管理仪表板中编辑和管理项目。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:699
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:714
+#: includes/admin/views/acf-post-type/advanced-settings.php:719
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:718
 msgid "Show In UI"
-msgstr ""
+msgstr "在用户界面中显示"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:685
+#: includes/admin/views/acf-post-type/advanced-settings.php:689
 msgid "A link to a post."
-msgstr ""
+msgstr "文章的链接。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:684
+#: includes/admin/views/acf-post-type/advanced-settings.php:688
 msgid "Description for a navigation link block variation."
-msgstr ""
+msgstr "导航链接块变体的描述。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:683
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:698
+#: includes/admin/views/acf-post-type/advanced-settings.php:687
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:702
 msgid "Item Link Description"
-msgstr ""
+msgstr "项目链接说明"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:679
+#: includes/admin/views/acf-post-type/advanced-settings.php:683
 msgid "A link to a %s."
-msgstr ""
+msgstr "%s 的链接"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:664
+#: includes/admin/views/acf-post-type/advanced-settings.php:668
 msgid "Post Link"
-msgstr ""
+msgstr "文章链接"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:663
+#: includes/admin/views/acf-post-type/advanced-settings.php:667
 msgid "Title for a navigation link block variation."
-msgstr ""
+msgstr "导航链接块变体的标题。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:662
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:677
+#: includes/admin/views/acf-post-type/advanced-settings.php:666
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:681
 msgid "Item Link"
-msgstr ""
+msgstr "项目链接"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:659
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:674
+#: includes/admin/views/acf-post-type/advanced-settings.php:663
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:678
 msgid "%s Link"
-msgstr ""
+msgstr "%s 链接"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:644
+#: includes/admin/views/acf-post-type/advanced-settings.php:648
 msgid "Post updated."
-msgstr ""
+msgstr "文章已更新。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:643
+#: includes/admin/views/acf-post-type/advanced-settings.php:647
 msgid "In the editor notice after an item is updated."
-msgstr ""
+msgstr "项目更新后在编辑器通知中。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:642
+#: includes/admin/views/acf-post-type/advanced-settings.php:646
 msgid "Item Updated"
-msgstr ""
+msgstr "项目已更新。"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:639
+#: includes/admin/views/acf-post-type/advanced-settings.php:643
 msgid "%s updated."
-msgstr ""
+msgstr "%s 已更新。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:624
+#: includes/admin/views/acf-post-type/advanced-settings.php:628
 msgid "Post scheduled."
-msgstr ""
+msgstr "文章已计划。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:623
+#: includes/admin/views/acf-post-type/advanced-settings.php:627
 msgid "In the editor notice after scheduling an item."
-msgstr ""
+msgstr "在安排项目后的编辑器通知中。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:622
+#: includes/admin/views/acf-post-type/advanced-settings.php:626
 msgid "Item Scheduled"
-msgstr ""
+msgstr "项目已计划"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:619
+#: includes/admin/views/acf-post-type/advanced-settings.php:623
 msgid "%s scheduled."
-msgstr ""
+msgstr "%s 已计划。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:604
+#: includes/admin/views/acf-post-type/advanced-settings.php:608
 msgid "Post reverted to draft."
-msgstr ""
+msgstr "文章已恢复为草稿。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:603
+#: includes/admin/views/acf-post-type/advanced-settings.php:607
 msgid "In the editor notice after reverting an item to draft."
-msgstr ""
+msgstr "将项目恢复为草稿后在编辑器通知中。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:602
+#: includes/admin/views/acf-post-type/advanced-settings.php:606
 msgid "Item Reverted To Draft"
-msgstr ""
+msgstr "项目恢复为草稿"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:599
+#: includes/admin/views/acf-post-type/advanced-settings.php:603
 msgid "%s reverted to draft."
-msgstr ""
+msgstr "%s 已恢复为草稿。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:584
+#: includes/admin/views/acf-post-type/advanced-settings.php:588
 msgid "Post published privately."
-msgstr ""
+msgstr "文章已私密发布。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:583
+#: includes/admin/views/acf-post-type/advanced-settings.php:587
 msgid "In the editor notice after publishing a private item."
-msgstr ""
+msgstr "在编辑发布私密项目后的通知中。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:582
+#: includes/admin/views/acf-post-type/advanced-settings.php:586
 msgid "Item Published Privately"
-msgstr ""
+msgstr "私密项目已发布。"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:579
+#: includes/admin/views/acf-post-type/advanced-settings.php:583
 msgid "%s published privately."
-msgstr ""
+msgstr "%s 已私密发布"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:564
+#: includes/admin/views/acf-post-type/advanced-settings.php:568
 msgid "Post published."
-msgstr ""
+msgstr "文章已发布。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:563
+#: includes/admin/views/acf-post-type/advanced-settings.php:567
 msgid "In the editor notice after publishing an item."
-msgstr ""
+msgstr "在编辑发布项目后的通知中。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:562
+#: includes/admin/views/acf-post-type/advanced-settings.php:566
 msgid "Item Published"
-msgstr ""
+msgstr "项目已发布"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:559
+#: includes/admin/views/acf-post-type/advanced-settings.php:563
 msgid "%s published."
-msgstr ""
+msgstr "%s 已发布。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:544
+#: includes/admin/views/acf-post-type/advanced-settings.php:548
 msgid "Posts list"
-msgstr ""
+msgstr "文章列表"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:543
+#: includes/admin/views/acf-post-type/advanced-settings.php:547
 msgid "Used by screen readers for the items list on the post type list screen."
-msgstr ""
+msgstr "由屏幕阅读器用于文章类型列表屏幕上的项目列表。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:542
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:636
+#: includes/admin/views/acf-post-type/advanced-settings.php:546
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:640
 msgid "Items List"
-msgstr ""
+msgstr "项目列表"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:539
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:633
+#: includes/admin/views/acf-post-type/advanced-settings.php:543
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:637
 msgid "%s list"
-msgstr ""
+msgstr "%s 列表"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:524
+#: includes/admin/views/acf-post-type/advanced-settings.php:528
 msgid "Posts list navigation"
-msgstr ""
+msgstr "文章列表导航"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:523
+#: includes/admin/views/acf-post-type/advanced-settings.php:527
 msgid ""
 "Used by screen readers for the filter list pagination on the post type list "
 "screen."
-msgstr ""
+msgstr "由屏幕阅读器用于文章类型列表屏幕上的过滤器列表分页。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:522
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:616
+#: includes/admin/views/acf-post-type/advanced-settings.php:526
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:620
 msgid "Items List Navigation"
-msgstr ""
+msgstr "项目列表导航"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:519
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:613
+#: includes/admin/views/acf-post-type/advanced-settings.php:523
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:617
 msgid "%s list navigation"
-msgstr ""
+msgstr "%s 列表导航"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:503
+#: includes/admin/views/acf-post-type/advanced-settings.php:507
 msgid "Filter posts by date"
-msgstr ""
+msgstr "按日期过滤文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:502
+#: includes/admin/views/acf-post-type/advanced-settings.php:506
 msgid ""
 "Used by screen readers for the filter by date heading on the post type list "
 "screen."
-msgstr ""
+msgstr "屏幕阅读器用于按文章类型列表屏幕上的日期标题进行过滤。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:501
+#: includes/admin/views/acf-post-type/advanced-settings.php:505
 msgid "Filter Items By Date"
-msgstr ""
+msgstr "按日期过滤项目"
 
 #. translators: %s Plural form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:497
+#: includes/admin/views/acf-post-type/advanced-settings.php:501
 msgid "Filter %s by date"
-msgstr ""
+msgstr "按日期过滤 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:482
+#: includes/admin/views/acf-post-type/advanced-settings.php:486
 msgid "Filter posts list"
-msgstr ""
+msgstr "筛选文章列表"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:481
+#: includes/admin/views/acf-post-type/advanced-settings.php:485
 msgid ""
 "Used by screen readers for the filter links heading on the post type list "
 "screen."
-msgstr ""
+msgstr "由屏幕阅读器用于文章类型列表屏幕上的过滤器链接标题。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:480
+#: includes/admin/views/acf-post-type/advanced-settings.php:484
 msgid "Filter Items List"
-msgstr ""
+msgstr "筛选项目列表"
 
 #. translators: %s Plural form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:476
+#: includes/admin/views/acf-post-type/advanced-settings.php:480
 msgid "Filter %s list"
-msgstr ""
+msgstr "筛选 %s 列表"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:460
+#: includes/admin/views/acf-post-type/advanced-settings.php:464
 msgid "In the media modal showing all media uploaded to this item."
-msgstr ""
+msgstr "在媒体模式中显示上传到此项目的所有媒体。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:459
+#: includes/admin/views/acf-post-type/advanced-settings.php:463
 msgid "Uploaded To This Item"
-msgstr ""
+msgstr "已上传至此项目"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:455
+#: includes/admin/views/acf-post-type/advanced-settings.php:459
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "已上传至此 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:440
+#: includes/admin/views/acf-post-type/advanced-settings.php:444
 msgid "Insert into post"
-msgstr ""
+msgstr "插入至文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:439
+#: includes/admin/views/acf-post-type/advanced-settings.php:443
 msgid "As the button label when adding media to content."
-msgstr ""
+msgstr "作为向内容添加媒体时的按钮标签。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:438
+#: includes/admin/views/acf-post-type/advanced-settings.php:442
 msgid "Insert Into Media Button"
-msgstr ""
+msgstr "插入到媒体按钮"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:434
+#: includes/admin/views/acf-post-type/advanced-settings.php:438
 msgid "Insert into %s"
-msgstr ""
+msgstr "插入至 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:419
+#: includes/admin/views/acf-post-type/advanced-settings.php:423
 msgid "Use as featured image"
-msgstr ""
+msgstr "用作特色图像"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:418
+#: includes/admin/views/acf-post-type/advanced-settings.php:422
 msgid ""
 "As the button label for selecting to use an image as the featured image."
-msgstr ""
+msgstr "作为选择使用图像作为特色图像的按钮标签。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:417
+#: includes/admin/views/acf-post-type/advanced-settings.php:421
 msgid "Use Featured Image"
-msgstr ""
+msgstr "使用特色图像"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:404
+#: includes/admin/views/acf-post-type/advanced-settings.php:408
 msgid "Remove featured image"
-msgstr ""
+msgstr "移除特色图片"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:403
+#: includes/admin/views/acf-post-type/advanced-settings.php:407
 msgid "As the button label when removing the featured image."
-msgstr ""
+msgstr "作为删除特色图像时的按钮标签。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:402
+#: includes/admin/views/acf-post-type/advanced-settings.php:406
 msgid "Remove Featured Image"
-msgstr ""
+msgstr "移除特色图片"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:389
+#: includes/admin/views/acf-post-type/advanced-settings.php:393
 msgid "Set featured image"
-msgstr ""
+msgstr "设置特色图像"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:388
+#: includes/admin/views/acf-post-type/advanced-settings.php:392
 msgid "As the button label when setting the featured image."
-msgstr ""
+msgstr "作为设置特色图片时的按钮标签。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:387
+#: includes/admin/views/acf-post-type/advanced-settings.php:391
 msgid "Set Featured Image"
-msgstr ""
+msgstr "设置特色图像"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:374
+#: includes/admin/views/acf-post-type/advanced-settings.php:378
 msgid "Featured image"
-msgstr ""
+msgstr "特色图像"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:373
+#: includes/admin/views/acf-post-type/advanced-settings.php:377
 msgid "In the editor used for the title of the featured image meta box."
-msgstr ""
+msgstr "在编辑器中用于特色图像 meta box 的标题。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:372
+#: includes/admin/views/acf-post-type/advanced-settings.php:376
 msgid "Featured Image Meta Box"
-msgstr ""
+msgstr "特色图像 Meta Box"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:359
+#: includes/admin/views/acf-post-type/advanced-settings.php:363
 msgid "Post Attributes"
-msgstr ""
+msgstr "文章属性"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:358
+#: includes/admin/views/acf-post-type/advanced-settings.php:362
 msgid "In the editor used for the title of the post attributes meta box."
-msgstr ""
+msgstr "在编辑器中用于文章属性 Meta Box 的标题。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:357
+#: includes/admin/views/acf-post-type/advanced-settings.php:361
 msgid "Attributes Meta Box"
-msgstr ""
+msgstr "属性 Meta Box"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:354
+#: includes/admin/views/acf-post-type/advanced-settings.php:358
 msgid "%s Attributes"
-msgstr ""
+msgstr "%s 属性"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:339
+#: includes/admin/views/acf-post-type/advanced-settings.php:343
 msgid "Post Archives"
-msgstr ""
+msgstr "文章归档"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:338
+#: includes/admin/views/acf-post-type/advanced-settings.php:342
 msgid ""
 "Adds 'Post Type Archive' items with this label to the list of posts shown "
 "when adding items to an existing menu in a CPT with archives enabled. Only "
 "appears when editing menus in 'Live Preview' mode and a custom archive slug "
 "has been provided."
 msgstr ""
+"将带有此标签的“文章类型存档”项目添加到在启用存档的情况下将项目添加到 CPT 中的"
+"现有菜单时显示的文章列表。仅当在“实时预览”模式下编辑菜单并且提供了自定义存档"
+"段时才会出现。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:337
+#: includes/admin/views/acf-post-type/advanced-settings.php:341
 msgid "Archives Nav Menu"
-msgstr ""
+msgstr "归档导航菜单"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:334
+#: includes/admin/views/acf-post-type/advanced-settings.php:338
 msgid "%s Archives"
-msgstr ""
+msgstr "%s 归档"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:319
+#: includes/admin/views/acf-post-type/advanced-settings.php:323
 msgid "No posts found in Trash"
-msgstr ""
+msgstr "在回收站中未找到文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:318
+#: includes/admin/views/acf-post-type/advanced-settings.php:322
 msgid ""
 "At the top of the post type list screen when there are no posts in the trash."
-msgstr ""
+msgstr "当回收站中没有文章时，位于文章类型列表屏幕的顶部。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:317
+#: includes/admin/views/acf-post-type/advanced-settings.php:321
 msgid "No Items Found in Trash"
-msgstr ""
+msgstr "在回收站中未找到项目"
 
 #. translators: %s Plural form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:313
+#: includes/admin/views/acf-post-type/advanced-settings.php:317
 msgid "No %s found in Trash"
-msgstr ""
+msgstr "在回收站中未找到 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:298
+#: includes/admin/views/acf-post-type/advanced-settings.php:302
 msgid "No posts found"
-msgstr ""
+msgstr "未找到文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:297
+#: includes/admin/views/acf-post-type/advanced-settings.php:301
 msgid ""
 "At the top of the post type list screen when there are no posts to display."
-msgstr ""
+msgstr "当没有可显示的帖子时，位于文章类型列表屏幕的顶部。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:296
+#: includes/admin/views/acf-post-type/advanced-settings.php:300
 msgid "No Items Found"
-msgstr ""
+msgstr "未找到项目。"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:292
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:476
+#: includes/admin/views/acf-post-type/advanced-settings.php:296
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:480
 msgid "No %s found"
-msgstr ""
+msgstr "未找到 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:277
+#: includes/admin/views/acf-post-type/advanced-settings.php:281
 msgid "Search Posts"
-msgstr ""
+msgstr "搜索文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:276
+#: includes/admin/views/acf-post-type/advanced-settings.php:280
 msgid "At the top of the items screen when searching for an item."
-msgstr ""
+msgstr "搜索项目时位于项目屏幕的顶部。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:275
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:341
+#: includes/admin/views/acf-post-type/advanced-settings.php:279
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:345
 msgid "Search Items"
-msgstr ""
+msgstr "搜索项目"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:272
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:338
+#: includes/admin/views/acf-post-type/advanced-settings.php:276
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:342
 msgid "Search %s"
-msgstr ""
+msgstr "搜索 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:257
+#: includes/admin/views/acf-post-type/advanced-settings.php:261
 msgid "Parent Page:"
-msgstr ""
+msgstr "父页："
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:256
+#: includes/admin/views/acf-post-type/advanced-settings.php:260
 msgid "For hierarchical types in the post type list screen."
-msgstr ""
+msgstr "对于文章类型列表屏幕中的分层类型。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:255
+#: includes/admin/views/acf-post-type/advanced-settings.php:259
 msgid "Parent Item Prefix"
-msgstr ""
+msgstr "父项前缀"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:252
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:314
+#: includes/admin/views/acf-post-type/advanced-settings.php:256
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:318
 msgid "Parent %s:"
-msgstr ""
+msgstr "父级 %s："
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:237
+#: includes/admin/views/acf-post-type/advanced-settings.php:241
 msgid "New Post"
-msgstr ""
+msgstr "新文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:235
+#: includes/admin/views/acf-post-type/advanced-settings.php:239
 msgid "New Item"
-msgstr ""
+msgstr "新项目"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:232
+#: includes/admin/views/acf-post-type/advanced-settings.php:236
 msgid "New %s"
-msgstr ""
+msgstr "新 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:202
+#: includes/admin/views/acf-post-type/advanced-settings.php:206
 msgid "Add New Post"
-msgstr ""
+msgstr "新增文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:201
+#: includes/admin/views/acf-post-type/advanced-settings.php:205
 msgid "At the top of the editor screen when adding a new item."
-msgstr ""
+msgstr "添加新项目时位于编辑器屏幕的顶部。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:200
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:252
+#: includes/admin/views/acf-post-type/advanced-settings.php:204
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:256
 msgid "Add New Item"
-msgstr ""
+msgstr "新增项目"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:197
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:249
+#: includes/admin/views/acf-post-type/advanced-settings.php:201
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:253
 msgid "Add New %s"
-msgstr ""
+msgstr "新增 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:182
+#: includes/admin/views/acf-post-type/advanced-settings.php:186
 msgid "View Posts"
-msgstr ""
+msgstr "查看文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:181
+#: includes/admin/views/acf-post-type/advanced-settings.php:185
 msgid ""
 "Appears in the admin bar in the 'All Posts' view, provided the post type "
 "supports archives and the home page is not an archive of that post type."
 msgstr ""
+"显示在管理栏中的“所有文章”视图中，前提是文章类型支持存档并且主页不是该文章类"
+"型的存档。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:180
+#: includes/admin/views/acf-post-type/advanced-settings.php:184
 msgid "View Items"
-msgstr ""
+msgstr "查看项目"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:162
+#: includes/admin/views/acf-post-type/advanced-settings.php:166
 msgid "View Post"
-msgstr ""
+msgstr "查看文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:161
+#: includes/admin/views/acf-post-type/advanced-settings.php:165
 msgid "In the admin bar to view item when editing it."
-msgstr ""
+msgstr "在管理栏中编辑项目时可以查看项目。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:160
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:212
+#: includes/admin/views/acf-post-type/advanced-settings.php:164
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:216
 msgid "View Item"
-msgstr ""
+msgstr "查看项目"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:157
-#: includes/admin/views/acf-post-type/advanced-settings.php:177
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:209
+#: includes/admin/views/acf-post-type/advanced-settings.php:161
+#: includes/admin/views/acf-post-type/advanced-settings.php:181
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:213
 msgid "View %s"
-msgstr ""
+msgstr "查看 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:142
+#: includes/admin/views/acf-post-type/advanced-settings.php:146
 msgid "Edit Post"
-msgstr ""
+msgstr "编辑文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:141
+#: includes/admin/views/acf-post-type/advanced-settings.php:145
 msgid "At the top of the editor screen when editing an item."
-msgstr ""
+msgstr "编辑项目时位于编辑器屏幕的顶部。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:140
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:192
+#: includes/admin/views/acf-post-type/advanced-settings.php:144
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:196
 msgid "Edit Item"
-msgstr ""
+msgstr "编辑项目"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:137
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:189
+#: includes/admin/views/acf-post-type/advanced-settings.php:141
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:193
 msgid "Edit %s"
-msgstr ""
+msgstr "编辑 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:122
+#: includes/admin/views/acf-post-type/advanced-settings.php:126
 msgid "All Posts"
-msgstr ""
+msgstr "所有文章"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:121
-#: includes/admin/views/acf-post-type/advanced-settings.php:216
-#: includes/admin/views/acf-post-type/advanced-settings.php:236
+#: includes/admin/views/acf-post-type/advanced-settings.php:125
+#: includes/admin/views/acf-post-type/advanced-settings.php:220
+#: includes/admin/views/acf-post-type/advanced-settings.php:240
 msgid "In the post type submenu in the admin dashboard."
-msgstr ""
+msgstr "在管理仪表板的文章类型子菜单中。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:120
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:172
+#: includes/admin/views/acf-post-type/advanced-settings.php:124
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:176
 msgid "All Items"
-msgstr ""
+msgstr "所有项目"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:117
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:169
+#: includes/admin/views/acf-post-type/advanced-settings.php:121
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:173
 msgid "All %s"
-msgstr ""
+msgstr "所有 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:101
+#: includes/admin/views/acf-post-type/advanced-settings.php:105
 msgid "Admin menu name for the post type."
-msgstr ""
+msgstr "文章类型的管理菜单名称。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:100
+#: includes/admin/views/acf-post-type/advanced-settings.php:104
 msgid "Menu Name"
-msgstr ""
+msgstr "菜单名称"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:86
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:138
+#: includes/admin/views/acf-post-type/advanced-settings.php:90
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:142
 msgid "Regenerate all labels using the Singular and Plural labels"
-msgstr ""
+msgstr "使用单数和复数标签重新生成所有标签"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:84
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:136
+#: includes/admin/views/acf-post-type/advanced-settings.php:88
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:140
 msgid "Regenerate"
-msgstr ""
+msgstr "重新生成"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:75
+#: includes/admin/views/acf-post-type/advanced-settings.php:79
 msgid "Active post types are enabled and registered with WordPress."
-msgstr ""
+msgstr "活动文章类型已在 WordPress 中启用并注册。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:59
+#: includes/admin/views/acf-post-type/advanced-settings.php:63
 msgid "A descriptive summary of the post type."
-msgstr ""
+msgstr "文章类型的描述性摘要。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:44
+#: includes/admin/views/acf-post-type/advanced-settings.php:48
 msgid "Add Custom"
-msgstr ""
+msgstr "添加自定义"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:38
+#: includes/admin/views/acf-post-type/advanced-settings.php:42
 msgid "Enable various features in the content editor."
-msgstr ""
+msgstr "启用内容编辑器中的各种功能。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:27
+#: includes/admin/views/acf-post-type/advanced-settings.php:31
 msgid "Post Formats"
-msgstr ""
+msgstr "文章格式"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:21
+#: includes/admin/views/acf-post-type/advanced-settings.php:25
 msgid "Editor"
-msgstr ""
+msgstr "编辑"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:20
+#: includes/admin/views/acf-post-type/advanced-settings.php:24
 msgid "Trackbacks"
-msgstr ""
+msgstr "引用通告"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:87
 msgid "Select existing taxonomies to classify items of the post type."
-msgstr ""
+msgstr "选择现有分类法对文章类型的项目进行分类。"
 
 #: includes/admin/views/acf-field-group/field.php:141
 msgid "Browse Fields"
-msgstr ""
+msgstr "浏览字段"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:292
 msgid "Nothing to import"
-msgstr ""
+msgstr "没有什么可导入的"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:287
 msgid ". The Custom Post Type UI plugin can be deactivated."
-msgstr ""
+msgstr "可以停用自定义文章类型 UI 插件。"
 
 #. translators: %d - number of items imported from CPTUI
 #: includes/admin/tools/class-acf-admin-tool-import.php:278
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
-msgstr[0] ""
+msgstr[0] "已从自定义文章类型 UI 导入 %d 项 -"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:262
 msgid "Failed to import taxonomies."
-msgstr ""
+msgstr "导入分类法失败。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:244
 msgid "Failed to import post types."
-msgstr ""
+msgstr "导入文章类型失败。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:233
 msgid "Nothing from Custom Post Type UI plugin selected for import."
-msgstr ""
+msgstr "自定义文章类型 UI 插件中没有选择导入。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:209
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
-msgstr[0] ""
+msgstr[0] "已导入 %s 个项目"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:122
 msgid ""
@@ -2195,11 +2258,13 @@ msgid ""
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
 "with those of the import."
 msgstr ""
+"导入与现有文章类型或分类法具有相同键的文章类型或分类法将会用导入的设置覆盖现"
+"有文章类型或分类法的设置。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:111
 #: includes/admin/tools/class-acf-admin-tool-import.php:127
 msgid "Import from Custom Post Type UI"
-msgstr ""
+msgstr "从自定义文章类型 UI 导入"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:412
 msgid ""
@@ -2210,73 +2275,77 @@ msgid ""
 "php file or include it within an external file, then deactivate or delete "
 "the items from the ACF admin."
 msgstr ""
+"以下代码可用于注册所选项目的本地版本。在本地存储字段组、帖子类型或分类法可以"
+"提供许多好处，例如更快的加载时间、版本控制和动态字段/设置。只需将以下代码复制"
+"并粘贴到主题的functions.php 文件中或将其包含在外部文件中，然后从ACF 管理中停"
+"用或删除这些项目。"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:411
 msgid "Export - Generate PHP"
-msgstr ""
+msgstr "导出 - 生成 PHP"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:384
 msgid "Export"
-msgstr ""
+msgstr "导出"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:276
 msgid "Select Taxonomies"
-msgstr ""
+msgstr "选择分类法"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:254
 msgid "Select Post Types"
-msgstr ""
+msgstr "选择文章类型"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:167
 msgid "Exported 1 item."
 msgid_plural "Exported %s items."
-msgstr[0] ""
+msgstr[0] "已导出 %s 个项目。"
 
 #: includes/admin/post-types/admin-taxonomy.php:129
 #: assets/build/js/acf-internal-post-type.js:182
 #: assets/build/js/acf-internal-post-type.js:256
 msgid "Category"
-msgstr ""
+msgstr "分类"
 
 #: includes/admin/post-types/admin-taxonomy.php:127
 #: assets/build/js/acf-internal-post-type.js:179
 #: assets/build/js/acf-internal-post-type.js:253
 msgid "Tag"
-msgstr ""
+msgstr "标签"
 
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:82
 msgid "%s taxonomy created"
-msgstr ""
+msgstr "%s 分类法已创建"
 
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:76
 msgid "%s taxonomy updated"
-msgstr ""
+msgstr "%s 分类法已更新"
 
 #: includes/admin/post-types/admin-taxonomy.php:56
 msgid "Taxonomy draft updated."
-msgstr ""
+msgstr "分类法草稿已更新。"
 
 #: includes/admin/post-types/admin-taxonomy.php:55
 msgid "Taxonomy scheduled for."
-msgstr ""
+msgstr "分类法已计划。"
 
 #: includes/admin/post-types/admin-taxonomy.php:54
 msgid "Taxonomy submitted."
-msgstr ""
+msgstr "已提交分类法。"
 
 #: includes/admin/post-types/admin-taxonomy.php:53
 msgid "Taxonomy saved."
-msgstr ""
+msgstr "分类法已保存。"
 
 #: includes/admin/post-types/admin-taxonomy.php:49
 msgid "Taxonomy deleted."
-msgstr ""
+msgstr "分类法已删除。"
 
 #: includes/admin/post-types/admin-taxonomy.php:48
 msgid "Taxonomy updated."
-msgstr ""
+msgstr "分类法已更新。"
 
 #: includes/admin/post-types/admin-taxonomies.php:377
 #: includes/admin/post-types/admin-taxonomy.php:157
@@ -2284,76 +2353,77 @@ msgid ""
 "This taxonomy could not be registered because its key is in use by another "
 "taxonomy registered by another plugin or theme."
 msgstr ""
+"无法注册此分类法，因为其密钥已被另一个插件或主题注册的另一个分类法使用。"
 
 #. translators: %s number of taxonomies synchronized
 #: includes/admin/post-types/admin-taxonomies.php:359
 msgid "Taxonomy synchronized."
 msgid_plural "%s taxonomies synchronized."
-msgstr[0] ""
+msgstr[0] "%s 分类法已同步。"
 
 #. translators: %s number of taxonomies duplicated
 #: includes/admin/post-types/admin-taxonomies.php:352
 msgid "Taxonomy duplicated."
 msgid_plural "%s taxonomies duplicated."
-msgstr[0] ""
+msgstr[0] "%s 分类法已复制。"
 
 #. translators: %s number of taxonomies deactivated
 #: includes/admin/post-types/admin-taxonomies.php:345
 msgid "Taxonomy deactivated."
 msgid_plural "%s taxonomies deactivated."
-msgstr[0] ""
+msgstr[0] "%s 分类法已停用。"
 
 #. translators: %s number of taxonomies activated
 #: includes/admin/post-types/admin-taxonomies.php:338
 msgid "Taxonomy activated."
 msgid_plural "%s taxonomies activated."
-msgstr[0] ""
+msgstr[0] "%s 分类法已激活。"
 
 #: includes/admin/post-types/admin-taxonomies.php:139
 msgid "Terms"
-msgstr ""
+msgstr "分类项"
 
 #. translators: %s number of post types synchronized
 #: includes/admin/post-types/admin-post-types.php:352
 msgid "Post type synchronized."
 msgid_plural "%s post types synchronized."
-msgstr[0] ""
+msgstr[0] "%s 个文章类型已同步。"
 
 #. translators: %s number of post types duplicated
 #: includes/admin/post-types/admin-post-types.php:345
 msgid "Post type duplicated."
 msgid_plural "%s post types duplicated."
-msgstr[0] ""
+msgstr[0] "%s 个文章类型已复制。"
 
 #. translators: %s number of post types deactivated
 #: includes/admin/post-types/admin-post-types.php:338
 msgid "Post type deactivated."
 msgid_plural "%s post types deactivated."
-msgstr[0] ""
+msgstr[0] "%s 个文章类型已停用。"
 
 #. translators: %s number of post types activated
 #: includes/admin/post-types/admin-post-types.php:331
 msgid "Post type activated."
 msgid_plural "%s post types activated."
-msgstr[0] ""
+msgstr[0] "%s 个文章类型已激活。"
 
 #: includes/admin/post-types/admin-post-types.php:112
 #: includes/admin/post-types/admin-taxonomies.php:137
 #: includes/admin/tools/class-acf-admin-tool-import.php:82
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
-#: includes/post-types/class-acf-post-type.php:90
+#: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
-msgstr ""
+msgstr "文章类型"
 
 #: includes/admin/post-types/admin-post-type.php:162
 #: includes/admin/post-types/admin-taxonomy.php:164
 msgid "Advanced Settings"
-msgstr ""
+msgstr "高级设置"
 
 #: includes/admin/post-types/admin-post-type.php:161
 #: includes/admin/post-types/admin-taxonomy.php:163
 msgid "Basic Settings"
-msgstr ""
+msgstr "基本设置"
 
 #: includes/admin/post-types/admin-post-type.php:155
 #: includes/admin/post-types/admin-post-types.php:370
@@ -2361,61 +2431,62 @@ msgid ""
 "This post type could not be registered because its key is in use by another "
 "post type registered by another plugin or theme."
 msgstr ""
+"无法注册此帖子类型，因为其密钥已被另一个插件或主题注册的另一个帖子类型使用。"
 
 #: includes/admin/post-types/admin-post-type.php:128
 #: assets/build/js/acf-internal-post-type.js:176
 #: assets/build/js/acf-internal-post-type.js:250
 msgid "Pages"
-msgstr ""
+msgstr "页面"
 
 #: includes/admin/admin-internal-post-type.php:355
 msgid "Link Existing Field Groups"
-msgstr ""
+msgstr "链接现有字段组"
 
 #. translators: %s post type name
 #: includes/admin/post-types/admin-post-type.php:80
 msgid "%s post type created"
-msgstr ""
+msgstr "%s 文章类型已创建"
 
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:78
 msgid "Add fields to %s"
-msgstr ""
+msgstr "将字段添加到 %s"
 
 #. translators: %s post type name
 #: includes/admin/post-types/admin-post-type.php:76
 msgid "%s post type updated"
-msgstr ""
+msgstr "%s 文章类型已更新"
 
 #: includes/admin/post-types/admin-post-type.php:56
 msgid "Post type draft updated."
-msgstr ""
+msgstr "文章类型草稿已更新。"
 
 #: includes/admin/post-types/admin-post-type.php:55
 msgid "Post type scheduled for."
-msgstr ""
+msgstr "已计划文章类型。"
 
 #: includes/admin/post-types/admin-post-type.php:54
 msgid "Post type submitted."
-msgstr ""
+msgstr "已提交文章类型。"
 
 #: includes/admin/post-types/admin-post-type.php:53
 msgid "Post type saved."
-msgstr ""
+msgstr "文章类型已保存。"
 
 #: includes/admin/post-types/admin-post-type.php:50
 msgid "Post type updated."
-msgstr ""
+msgstr "文章类型已更新。"
 
 #: includes/admin/post-types/admin-post-type.php:49
 msgid "Post type deleted."
-msgstr ""
+msgstr "文章类型已删除。"
 
 #: includes/admin/post-types/admin-field-group.php:120
 #: assets/build/js/acf-field-group.js:1146
 #: assets/build/js/acf-field-group.js:1366
 msgid "Type to search..."
-msgstr ""
+msgstr "输入以搜索……"
 
 #: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-field-group.js:1172
@@ -2423,13 +2494,13 @@ msgstr ""
 #: assets/build/js/acf-field-group.js:1414
 #: assets/build/js/acf-field-group.js:2711
 msgid "PRO Only"
-msgstr ""
+msgstr "仅限专业版"
 
 #: includes/admin/post-types/admin-field-group.php:97
 #: assets/build/js/acf-internal-post-type.js:308
 #: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
-msgstr ""
+msgstr "字段组链接成功。"
 
 #. translators: %s - URL to ACF tools page.
 #: includes/admin/admin.php:195
@@ -2437,168 +2508,172 @@ msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
+"导入使用自定义帖子类型 UI 注册的帖子类型和分类法并使用 ACF 进行管理。 <a "
+"href=\"%s\">开始使用</a>。"
 
 #: includes/admin/admin.php:48 includes/admin/admin.php:265
 msgid "ACF"
-msgstr ""
+msgstr "ACF"
 
 #: includes/admin/admin-internal-post-type.php:322
 msgid "taxonomy"
-msgstr ""
+msgstr "分类法"
 
 #: includes/admin/admin-internal-post-type.php:322
 msgid "post type"
-msgstr ""
+msgstr "文章类型"
 
 #: includes/admin/admin-internal-post-type.php:346
 msgid "Done"
-msgstr ""
+msgstr "完成"
 
 #: includes/admin/admin-internal-post-type.php:332
 msgid "Field Group(s)"
-msgstr ""
+msgstr "字段组"
 
 #: includes/admin/admin-internal-post-type.php:331
 msgid "Select one or many field groups..."
-msgstr ""
+msgstr "选择一个或多个字段组..."
 
 #: includes/admin/admin-internal-post-type.php:330
 msgid "Please select the field groups to link."
-msgstr ""
+msgstr "请选择要链接的字段组。"
 
 #: includes/admin/admin-internal-post-type.php:288
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
-msgstr[0] ""
+msgstr[0] "字段组链接成功。"
 
 #: includes/admin/admin-internal-post-type-list.php:261
 #: includes/admin/post-types/admin-post-types.php:371
 #: includes/admin/post-types/admin-taxonomies.php:378
 msgctxt "post status"
 msgid "Registration Failed"
-msgstr ""
+msgstr "注册失败"
 
 #: includes/admin/admin-internal-post-type-list.php:260
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
-msgstr ""
+msgstr "无法注册此项目，因为其密钥已被另一个插件或主题注册的另一个项目使用。"
 
 #: includes/acf-internal-post-type-functions.php:482
 #: includes/acf-internal-post-type-functions.php:511
 msgid "REST API"
-msgstr ""
+msgstr "REST API"
 
 #: includes/acf-internal-post-type-functions.php:481
 #: includes/acf-internal-post-type-functions.php:510
 #: includes/acf-internal-post-type-functions.php:537
 msgid "Permissions"
-msgstr ""
+msgstr "权限"
 
 #: includes/acf-internal-post-type-functions.php:480
 #: includes/acf-internal-post-type-functions.php:509
 msgid "URLs"
-msgstr ""
+msgstr "网址"
 
 #: includes/acf-internal-post-type-functions.php:479
 #: includes/acf-internal-post-type-functions.php:508
 #: includes/acf-internal-post-type-functions.php:535
 msgid "Visibility"
-msgstr ""
+msgstr "可见性"
 
 #: includes/acf-internal-post-type-functions.php:478
 #: includes/acf-internal-post-type-functions.php:507
 #: includes/acf-internal-post-type-functions.php:536
 msgid "Labels"
-msgstr ""
+msgstr "标签"
 
-#: includes/admin/post-types/admin-field-group.php:261
+#: includes/admin/post-types/admin-field-group.php:269
 msgid "Field Settings Tabs"
-msgstr ""
+msgstr "字段设置选项卡"
 
 #. Author URI of the plugin
 msgid ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 msgstr ""
+"https://wpengine.com/?utm_source=wordpress."
+"org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
 #: includes/api/api-template.php:867
 msgid "[ACF shortcode value disabled for preview]"
-msgstr ""
+msgstr "[预览时禁用 ACF 短代码值]"
 
 #: includes/admin/admin-internal-post-type.php:298
-#: includes/admin/post-types/admin-field-group.php:563
+#: includes/admin/post-types/admin-field-group.php:571
 msgid "Close Modal"
-msgstr ""
+msgstr "关闭模态框"
 
 #: includes/admin/post-types/admin-field-group.php:96
 #: assets/build/js/acf-field-group.js:1662
 #: assets/build/js/acf-field-group.js:1982
 msgid "Field moved to other group"
-msgstr ""
+msgstr "字段移至其他组"
 
 #: includes/admin/post-types/admin-field-group.php:95
 #: assets/build/js/acf.js:1441 assets/build/js/acf.js:1522
 msgid "Close modal"
-msgstr ""
+msgstr "关闭模态框"
 
 #: includes/fields/class-acf-field-tab.php:125
 msgid "Start a new group of tabs at this tab."
-msgstr ""
+msgstr "在此选项卡上启动一组新选项卡。"
 
 #: includes/fields/class-acf-field-tab.php:124
 msgid "New Tab Group"
-msgstr ""
+msgstr "新标签组"
 
 #: includes/fields/class-acf-field-select.php:451
 #: includes/fields/class-acf-field-true_false.php:200
 msgid "Use a stylized checkbox using select2"
-msgstr ""
+msgstr "使用 select2 使用程式化复选框"
 
 #: includes/fields/class-acf-field-radio.php:260
 msgid "Save Other Choice"
-msgstr ""
+msgstr "保存其他选择"
 
 #: includes/fields/class-acf-field-radio.php:249
 msgid "Allow Other Choice"
-msgstr ""
+msgstr "允许其他选择"
 
 #: includes/fields/class-acf-field-checkbox.php:450
 msgid "Add Toggle All"
-msgstr ""
+msgstr "添加 全部切换"
 
 #: includes/fields/class-acf-field-checkbox.php:409
 msgid "Save Custom Values"
-msgstr ""
+msgstr "保存自定义值"
 
 #: includes/fields/class-acf-field-checkbox.php:398
 msgid "Allow Custom Values"
-msgstr ""
+msgstr "允许自定义值"
 
 #: includes/fields/class-acf-field-checkbox.php:148
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
-msgstr ""
+msgstr "复选框自定义值不能为空。取消选中任何空值。"
 
-#: pro/admin/admin-updates.php:122,
-#: pro/admin/views/html-settings-updates.php:12
+#: includes/admin/views/global/navigation.php:226
 msgid "Updates"
 msgstr "更新"
 
 #: includes/admin/views/global/navigation.php:172
 msgid "Advanced Custom Fields logo"
-msgstr ""
+msgstr "高级自定义字段 LOGO"
 
 #: includes/admin/views/global/form-top.php:89
 msgid "Save Changes"
-msgstr ""
+msgstr "保存更改"
 
 #: includes/admin/views/global/form-top.php:76
 msgid "Field Group Title"
-msgstr ""
+msgstr "字段组标题"
 
+#: includes/admin/views/acf-post-type/advanced-settings.php:704
 #: includes/admin/views/global/form-top.php:3
 msgid "Add title"
-msgstr ""
+msgstr "添加标题"
 
 #. translators: %s url to getting started guide
 #: includes/admin/views/acf-field-group/list-empty.php:20
@@ -2607,11 +2682,11 @@ msgstr ""
 msgid ""
 "New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting "
 "started guide</a>."
-msgstr ""
+msgstr "ACF 新手？请查看我们的<a href=\"%s\" target=\"_blank\">入门指南</a>。"
 
 #: includes/admin/views/acf-field-group/list-empty.php:15
 msgid "Add Field Group"
-msgstr ""
+msgstr "添加字段组"
 
 #. translators: %s url to creating a field group page
 #: includes/admin/views/acf-field-group/list-empty.php:10
@@ -2619,52 +2694,54 @@ msgid ""
 "ACF uses <a href=\"%s\" target=\"_blank\">field groups</a> to group custom "
 "fields together, and then attach those fields to edit screens."
 msgstr ""
+"ACF 使用<a href=\"%s\" target=\"_blank\">字段组</a>将自定义字段分组在一起，然"
+"后将这些字段附加到编辑屏幕。"
 
 #: includes/admin/views/acf-field-group/list-empty.php:5
 msgid "Add Your First Field Group"
-msgstr ""
+msgstr "添加您的第一个字段组"
 
 #: includes/admin/views/acf-field-group/pro-features.php:39
 #: includes/admin/views/global/navigation.php:82
 msgid "Options Pages"
-msgstr ""
+msgstr "选项页"
 
 #: includes/admin/views/acf-field-group/pro-features.php:35
 msgid "ACF Blocks"
-msgstr ""
+msgstr "ACF 块"
 
 #: includes/admin/views/acf-field-group/pro-features.php:43
 msgid "Gallery Field"
-msgstr ""
+msgstr "画廊字段"
 
 #: includes/admin/views/acf-field-group/pro-features.php:23
 msgid "Flexible Content Field"
-msgstr ""
+msgstr "弹性的内容字段"
 
 #: includes/admin/views/acf-field-group/pro-features.php:27
 msgid "Repeater Field"
-msgstr ""
+msgstr "循环字段"
 
 #: includes/admin/views/global/navigation.php:207
 msgid "Unlock Extra Features with ACF PRO"
-msgstr ""
+msgstr "使用 ACF PRO 解锁额外功能"
 
 #: includes/admin/views/acf-field-group/options.php:265
 msgid "Delete Field Group"
-msgstr ""
+msgstr "删除字段组"
 
 #. translators: 1: Post creation date 2: Post creation time
 #: includes/admin/views/acf-field-group/options.php:259
 msgid "Created on %1$s at %2$s"
-msgstr ""
+msgstr "于 %1$s 在 %2$s 创建"
 
 #: includes/acf-field-group-functions.php:497
 msgid "Group Settings"
-msgstr ""
+msgstr "群组设置"
 
 #: includes/acf-field-group-functions.php:495
 msgid "Location Rules"
-msgstr ""
+msgstr "定位规则"
 
 #. translators: %s url to field types list
 #: includes/admin/views/acf-field-group/fields.php:72
@@ -2672,110 +2749,116 @@ msgid ""
 "Choose from over 30 field types. <a href=\"%s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"从30多种字段类型中进行选择<a href=\"%s\"target=\"_blank\">了解更多信息</a>。"
 
 #: includes/admin/views/acf-field-group/fields.php:65
 msgid ""
 "Get started creating new custom fields for your posts, pages, custom post "
 "types and other WordPress content."
 msgstr ""
+"开始为您的文章、页面、自定义帖子类型和其他WordPress内容创建新的自定义字段。"
 
 #: includes/admin/views/acf-field-group/fields.php:64
 msgid "Add Your First Field"
-msgstr ""
+msgstr "添加您的第一个字段"
 
 #. translators: A symbol (or text, if not available in your locale) meaning
 #. "Order Number", in terms of positional placement.
 #: includes/admin/views/acf-field-group/fields.php:43
 msgid "#"
-msgstr ""
+msgstr "#"
 
 #: includes/admin/views/acf-field-group/fields.php:33
 #: includes/admin/views/acf-field-group/fields.php:67
 #: includes/admin/views/acf-field-group/fields.php:103
 #: includes/admin/views/global/form-top.php:85
 msgid "Add Field"
-msgstr ""
+msgstr "添加字段"
 
 #: includes/acf-field-group-functions.php:496 includes/fields.php:410
 msgid "Presentation"
-msgstr ""
+msgstr "展示"
 
 #: includes/fields.php:409
 msgid "Validation"
-msgstr ""
+msgstr "验证"
 
 #: includes/acf-internal-post-type-functions.php:477
 #: includes/acf-internal-post-type-functions.php:506 includes/fields.php:408
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:70
 msgid "Import JSON"
-msgstr ""
+msgstr "导入 JSON"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:392
 msgid "Export As JSON"
-msgstr ""
+msgstr "导出为 JSON"
 
 #. translators: %s number of field groups deactivated
 #: includes/admin/post-types/admin-field-groups.php:367
 msgid "Field group deactivated."
 msgid_plural "%s field groups deactivated."
-msgstr[0] ""
+msgstr[0] "%s 字段组已停用。"
 
 #. translators: %s number of field groups activated
 #: includes/admin/post-types/admin-field-groups.php:360
 msgid "Field group activated."
 msgid_plural "%s field groups activated."
-msgstr[0] ""
+msgstr[0] "%s 个字段组已激活。"
 
 #: includes/admin/admin-internal-post-type-list.php:452
 #: includes/admin/admin-internal-post-type-list.php:478
 msgid "Deactivate"
-msgstr ""
+msgstr "停用"
 
 #: includes/admin/admin-internal-post-type-list.php:452
 msgid "Deactivate this item"
-msgstr ""
+msgstr "停用此项目"
 
 #: includes/admin/admin-internal-post-type-list.php:448
 #: includes/admin/admin-internal-post-type-list.php:477
 msgid "Activate"
-msgstr ""
+msgstr "激活"
 
 #: includes/admin/admin-internal-post-type-list.php:448
 msgid "Activate this item"
-msgstr ""
+msgstr "激活此项目"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2803
+#: assets/build/js/acf-field-group.js:2804
 #: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
-msgstr ""
+msgstr "将字段组移至回收站？"
 
-#: acf.php:491 includes/admin/admin-internal-post-type-list.php:248
-#: includes/admin/post-types/admin-field-group.php:289
+#: acf.php:493 includes/admin/admin-internal-post-type-list.php:248
+#: includes/admin/post-types/admin-field-group.php:297
 #: includes/admin/post-types/admin-post-type.php:295
 #: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
 msgid "Inactive"
-msgstr ""
+msgstr "停用"
 
 #. Author of the plugin
 msgid "WP Engine"
-msgstr ""
+msgstr "WP Engine"
 
-#: acf.php:549
+#: acf.php:551
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
 msgstr ""
+"高级自定义字段和高级自定义字段 PRO 不应同时处于活动状态。我们已自动停用高级自"
+"定义字段 PRO。"
 
-#: acf.php:547
+#: acf.php:549
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
 msgstr ""
+"高级自定义字段和高级自定义字段 PRO 不应同时处于活动状态。我们已自动停用高级自"
+"定义字段。"
 
 #: includes/acf-value-functions.php:374
 msgid ""
@@ -2784,41 +2867,44 @@ msgid ""
 "result in malformed or missing data. <a href=\"%2$s\" "
 "target=\"_blank\">Learn how to fix this</a>."
 msgstr ""
+"<strong>%1$s</strong> - 我们检测到在 ACF 初始化之前检索 ACF 字段值的一次或多"
+"次调用。不支持此操作，并且可能会导致数据格式错误或丢失。 <a href=\"%2$s\" "
+"target=\"_blank\">了解如何解决此问题</a>。"
 
 #: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
-msgstr[0] ""
+msgstr[0] "%1$s 必须拥有具有以下角色之一的用户：%2$s"
 
 #: includes/fields/class-acf-field-user.php:542
 msgid "%1$s must have a valid user ID."
-msgstr ""
+msgstr "%1$s 必须具有有效的用户 ID。"
 
 #: includes/fields/class-acf-field-user.php:380
 msgid "Invalid request."
-msgstr ""
+msgstr "无效的请求。"
 
 #: includes/fields/class-acf-field-select.php:684
 msgid "%1$s is not one of %2$s"
-msgstr ""
+msgstr "%1$s 不是 %2$s 之一。"
 
 #: includes/fields/class-acf-field-post_object.php:700
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
-msgstr[0] ""
+msgstr[0] "%1$s 必须具有以下分类项之一：%2$s"
 
 #: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
-msgstr[0] ""
+msgstr[0] "%1$s 必须属于以下文章类型之一：%2$s"
 
 #: includes/fields/class-acf-field-post_object.php:675
 msgid "%1$s must have a valid post ID."
-msgstr ""
+msgstr "%1$s 必须具有有效的文章 ID。"
 
 #: includes/fields/class-acf-field-file.php:475
 msgid "%s requires a valid attachment ID."
-msgstr ""
+msgstr "%s 需要有效的附件 ID。"
 
 #: includes/admin/views/acf-field-group/options.php:231
 msgid "Show in REST API"
@@ -2843,9 +2929,9 @@ msgstr "十六进制字符串"
 
 #: includes/admin/views/browse-fields-modal.php:65
 msgid "Upgrade to PRO"
-msgstr ""
+msgstr "升级到专业版"
 
-#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-field-group.php:297
 #: includes/admin/post-types/admin-post-type.php:295
 #: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
@@ -2905,7 +2991,7 @@ msgstr "分类法"
 #: includes/acf-wp-functions.php:41
 #: includes/admin/post-types/admin-post-type.php:126
 #: includes/admin/post-types/admin-post-types.php:139
-#: includes/admin/views/acf-post-type/advanced-settings.php:102
+#: includes/admin/views/acf-post-type/advanced-settings.php:106
 #: assets/build/js/acf-internal-post-type.js:173
 #: assets/build/js/acf-internal-post-type.js:247
 msgid "Posts"
@@ -2917,7 +3003,7 @@ msgstr "最后更新：%s"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:70
 msgid "Sorry, this post is unavailable for diff comparison."
-msgstr ""
+msgstr "抱歉，这篇文章无法进行差异比较。"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:42
 msgid "Invalid field group parameter(s)."
@@ -2999,6 +3085,8 @@ msgid ""
 "friendly community on our Community Forums who may be able to help you "
 "figure out the 'how-tos' of the ACF world."
 msgstr ""
+"<a href=\"%s\" target=\"_blank\">讨论</a>。我们的社区论坛上有一个活跃且友好的"
+"社区，他们也许能够帮助您了解 ACF 世界的“操作方法”。"
 
 #: includes/admin/admin.php:150
 msgid ""
@@ -3252,22 +3340,22 @@ msgstr "感谢您更新到 %1$s v%2$s!"
 msgid "Database Upgrade Required"
 msgstr "需要升级数据库"
 
-#: includes/admin/post-types/admin-field-group.php:133
+#: includes/admin/post-types/admin-field-group.php:141
 #: includes/admin/views/upgrade/notice.php:18
 msgid "Options Page"
 msgstr "选项页面"
 
 #: includes/admin/views/upgrade/notice.php:15 includes/fields.php:462
 msgid "Gallery"
-msgstr "相册"
+msgstr "画廊"
 
 #: includes/admin/views/upgrade/notice.php:12 includes/fields.php:452
 msgid "Flexible Content"
-msgstr "大段内容"
+msgstr "弹性内容"
 
 #: includes/admin/views/upgrade/notice.php:9 includes/fields.php:472
 msgid "Repeater"
-msgstr "重复器"
+msgstr "循环"
 
 #: includes/admin/views/tools/tools.php:24
 msgid "Back to all tools"
@@ -3295,7 +3383,7 @@ msgstr "发送 Trackbacks"
 
 #: includes/admin/post-types/admin-taxonomy.php:128
 #: includes/admin/views/acf-field-group/options.php:183
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:155
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:159
 #: assets/build/js/acf-internal-post-type.js:180
 #: assets/build/js/acf-internal-post-type.js:254
 msgid "Tags"
@@ -3309,7 +3397,7 @@ msgid "Categories"
 msgstr "类别"
 
 #: includes/admin/views/acf-field-group/options.php:180
-#: includes/admin/views/acf-post-type/advanced-settings.php:24
+#: includes/admin/views/acf-post-type/advanced-settings.php:28
 msgid "Page Attributes"
 msgstr "页面属性"
 
@@ -3318,7 +3406,7 @@ msgid "Format"
 msgstr "格式"
 
 #: includes/admin/views/acf-field-group/options.php:178
-#: includes/admin/views/acf-post-type/advanced-settings.php:18
+#: includes/admin/views/acf-post-type/advanced-settings.php:22
 msgid "Author"
 msgstr "作者"
 
@@ -3327,13 +3415,13 @@ msgid "Slug"
 msgstr "别名"
 
 #: includes/admin/views/acf-field-group/options.php:176
-#: includes/admin/views/acf-post-type/advanced-settings.php:23
+#: includes/admin/views/acf-post-type/advanced-settings.php:27
 msgid "Revisions"
 msgstr "修订"
 
 #: includes/acf-wp-functions.php:63
 #: includes/admin/views/acf-field-group/options.php:175
-#: includes/admin/views/acf-post-type/advanced-settings.php:19
+#: includes/admin/views/acf-post-type/advanced-settings.php:23
 msgid "Comments"
 msgstr "评论"
 
@@ -3342,7 +3430,7 @@ msgid "Discussion"
 msgstr "讨论"
 
 #: includes/admin/views/acf-field-group/options.php:172
-#: includes/admin/views/acf-post-type/advanced-settings.php:22
+#: includes/admin/views/acf-post-type/advanced-settings.php:26
 msgid "Excerpt"
 msgstr "摘要"
 
@@ -3376,11 +3464,11 @@ msgstr "标签之下"
 
 #: includes/admin/views/acf-field-group/options.php:137
 msgid "Instruction Placement"
-msgstr ""
+msgstr "说明位置"
 
 #: includes/admin/views/acf-field-group/options.php:120
 msgid "Label Placement"
-msgstr ""
+msgstr "标签位置"
 
 #: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
@@ -3449,7 +3537,7 @@ msgstr "包装属性"
 
 #: includes/admin/views/acf-field-group/field.php:192
 msgid "Required"
-msgstr ""
+msgstr "必填"
 
 #: includes/admin/views/acf-field-group/field.php:217
 msgid "Instructions for authors. Shown when submitting data"
@@ -3465,7 +3553,7 @@ msgstr "字段类型"
 
 #: includes/admin/views/acf-field-group/field.php:166
 msgid "Single word, no spaces. Underscores and dashes allowed"
-msgstr "单个字符串，不能有空格，可以用横线或下画线。"
+msgstr "单个字符串，不能有空格，允许下划线和破折号。"
 
 #: includes/admin/views/acf-field-group/field.php:165
 msgid "Field Name"
@@ -3599,11 +3687,11 @@ msgstr "创建一组规则以确定自定义字段在哪个编辑界面上显示
 msgid "Rules"
 msgstr "规则"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:506
+#: includes/admin/tools/class-acf-admin-tool-export.php:510
 msgid "Copied"
 msgstr "复制"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:482
+#: includes/admin/tools/class-acf-admin-tool-export.php:486
 msgid "Copy to clipboard"
 msgstr "复制到剪贴板"
 
@@ -3614,6 +3702,9 @@ msgid ""
 "to another ACF installation. Generate PHP to export to PHP code which you "
 "can place in your theme."
 msgstr ""
+"选择您要导出的项目，然后选择导出方法。导出为 JSON 以导出到 .json 文件，然后可"
+"以将其导入到另一个 ACF 安装中。生成 PHP 以导出到 PHP 代码，您可以将其放置在主"
+"题中。"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:233
 msgid "Select Field Groups"
@@ -3651,6 +3742,8 @@ msgid ""
 "Select the Advanced Custom Fields JSON file you would like to import. When "
 "you click the import button below, ACF will import the items in that file."
 msgstr ""
+"选择您要导入的高级自定义字段 JSON 文件。当您单击下面的导入按钮时，ACF 将导入"
+"该文件中的项目。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:27
 msgid "Import Field Groups"
@@ -3674,20 +3767,20 @@ msgstr "复制"
 msgid "Duplicate this item"
 msgstr "复制此项"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:37
+#: includes/admin/views/acf-post-type/advanced-settings.php:41
 msgid "Supports"
-msgstr ""
+msgstr "支持"
 
 #: includes/admin/admin.php:259 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
-msgstr "进程文档"
+msgstr "文档"
 
 #: includes/admin/post-types/admin-field-groups.php:116
 #: includes/admin/post-types/admin-post-types.php:135
 #: includes/admin/post-types/admin-taxonomies.php:135
 #: includes/admin/views/acf-field-group/options.php:247
-#: includes/admin/views/acf-post-type/advanced-settings.php:58
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:110
+#: includes/admin/views/acf-post-type/advanced-settings.php:62
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:114
 #: includes/admin/views/upgrade/network.php:38
 #: includes/admin/views/upgrade/network.php:49
 msgid "Description"
@@ -3702,7 +3795,7 @@ msgstr "有可用同步"
 #: includes/admin/post-types/admin-field-groups.php:381
 msgid "Field group synchronized."
 msgid_plural "%s field groups synchronized."
-msgstr[0] ""
+msgstr[0] "%s 个字段组已同步。"
 
 #. translators: %s number of field groups duplicated
 #: includes/admin/post-types/admin-field-groups.php:374
@@ -3727,41 +3820,41 @@ msgid "Upgrade Database"
 msgstr "升级数据库"
 
 #: includes/admin/views/acf-field-group/options.php:173
-#: includes/admin/views/acf-post-type/advanced-settings.php:26
+#: includes/admin/views/acf-post-type/advanced-settings.php:30
 msgid "Custom Fields"
 msgstr "字段"
 
-#: includes/admin/post-types/admin-field-group.php:608
+#: includes/admin/post-types/admin-field-group.php:616
 msgid "Move Field"
 msgstr "移动字段"
 
-#: includes/admin/post-types/admin-field-group.php:597
-#: includes/admin/post-types/admin-field-group.php:601
+#: includes/admin/post-types/admin-field-group.php:605
+#: includes/admin/post-types/admin-field-group.php:609
 msgid "Please select the destination for this field"
 msgstr "请选择这个字段的位置"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:559
+#: includes/admin/post-types/admin-field-group.php:567
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "现在可以在 %2$s 字段组中找到 %1$s 字段"
 
-#: includes/admin/post-types/admin-field-group.php:556
+#: includes/admin/post-types/admin-field-group.php:564
 msgid "Move Complete."
 msgstr "移动完成。"
 
 #: includes/admin/views/acf-field-group/field.php:35
 #: includes/admin/views/acf-field-group/options.php:215
-#: includes/admin/views/acf-post-type/advanced-settings.php:74
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:126
+#: includes/admin/views/acf-post-type/advanced-settings.php:78
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:130
 msgid "Active"
 msgstr "激活"
 
-#: includes/admin/post-types/admin-field-group.php:258
+#: includes/admin/post-types/admin-field-group.php:266
 msgid "Field Keys"
 msgstr "字段 Keys"
 
-#: includes/admin/post-types/admin-field-group.php:156
+#: includes/admin/post-types/admin-field-group.php:164
 #: includes/admin/tools/class-acf-admin-tool-export.php:342
 msgid "Settings"
 msgstr "设置"
@@ -3776,7 +3869,7 @@ msgid "Null"
 msgstr "Null"
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: includes/class-acf-internal-post-type.php:733
+#: includes/class-acf-internal-post-type.php:730
 #: includes/post-types/class-acf-field-group.php:345
 #: assets/build/js/acf-field-group.js:1502
 #: assets/build/js/acf-field-group.js:1810
@@ -3925,13 +4018,13 @@ msgstr "验证邮箱"
 msgid "Content"
 msgstr "内容"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:17
+#: includes/admin/views/acf-post-type/advanced-settings.php:21
 #: includes/forms/form-front.php:40
 msgid "Title"
 msgstr "标题"
 
 #: includes/assets.php:372 includes/forms/form-comment.php:160
-#: assets/build/js/acf-input.js:7348 assets/build/js/acf-input.js:7934
+#: assets/build/js/acf-input.js:7367 assets/build/js/acf-input.js:7950
 msgid "Edit field group"
 msgstr "编辑字段组"
 
@@ -3998,50 +4091,50 @@ msgstr "退出"
 msgid "Are you sure?"
 msgstr "确定吗?"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9408
-#: assets/build/js/acf-input.js:10259
+#: includes/assets.php:369 assets/build/js/acf-input.js:9427
+#: assets/build/js/acf-input.js:10275
 msgid "%d fields require attention"
 msgstr "%d 个字段需要注意"
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9406
-#: assets/build/js/acf-input.js:10255
+#: includes/assets.php:368 assets/build/js/acf-input.js:9425
+#: assets/build/js/acf-input.js:10271
 msgid "1 field requires attention"
 msgstr "1 个字段需要注意"
 
 #: includes/assets.php:367 includes/validation.php:288
-#: includes/validation.php:298 assets/build/js/acf-input.js:9401
-#: assets/build/js/acf-input.js:10250
+#: includes/validation.php:298 assets/build/js/acf-input.js:9420
+#: assets/build/js/acf-input.js:10266
 msgid "Validation failed"
 msgstr "验证失败"
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9569
-#: assets/build/js/acf-input.js:10438
+#: includes/assets.php:366 assets/build/js/acf-input.js:9588
+#: assets/build/js/acf-input.js:10454
 msgid "Validation successful"
 msgstr "验证成功"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7176
-#: assets/build/js/acf-input.js:7738
+#: includes/media.php:54 assets/build/js/acf-input.js:7195
+#: assets/build/js/acf-input.js:7754
 msgid "Restricted"
 msgstr "限制"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:6991
-#: assets/build/js/acf-input.js:7502
+#: includes/media.php:53 assets/build/js/acf-input.js:7010
+#: assets/build/js/acf-input.js:7518
 msgid "Collapse Details"
 msgstr "折叠"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:6991
-#: assets/build/js/acf-input.js:7499
+#: includes/media.php:52 assets/build/js/acf-input.js:7010
+#: assets/build/js/acf-input.js:7515
 msgid "Expand Details"
 msgstr "展开"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:461
-#: includes/media.php:51 assets/build/js/acf-input.js:6858
-#: assets/build/js/acf-input.js:7347
+#: includes/admin/views/acf-post-type/advanced-settings.php:465
+#: includes/media.php:51 assets/build/js/acf-input.js:6877
+#: assets/build/js/acf-input.js:7363
 msgid "Uploaded to this post"
 msgstr "上传到这个文章"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6897
-#: assets/build/js/acf-input.js:7386
+#: includes/media.php:50 assets/build/js/acf-input.js:6916
+#: assets/build/js/acf-input.js:7402
 msgctxt "verb"
 msgid "Update"
 msgstr "更新"
@@ -4051,12 +4144,12 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "编辑"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9178
-#: assets/build/js/acf-input.js:10021
+#: includes/assets.php:363 assets/build/js/acf-input.js:9197
+#: assets/build/js/acf-input.js:10037
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "如果浏览其它页面，会丢失当前所做的修改"
 
-#: includes/api/api-helpers.php:3499
+#: includes/api/api-helpers.php:3494
 msgid "File type must be %s."
 msgstr "字段类型必须是 %s。"
 
@@ -4065,38 +4158,38 @@ msgstr "字段类型必须是 %s。"
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3495 assets/build/js/acf-field-group.js:771
+#: includes/api/api-helpers.php:3490 assets/build/js/acf-field-group.js:771
 #: assets/build/js/acf-field-group.js:2377
 #: assets/build/js/acf-field-group.js:933
 #: assets/build/js/acf-field-group.js:2791
 msgid "or"
 msgstr "或"
 
-#: includes/api/api-helpers.php:3468
+#: includes/api/api-helpers.php:3463
 msgid "File size must not exceed %s."
 msgstr "文件尺寸最大不能超过 %s。"
 
-#: includes/api/api-helpers.php:3463
+#: includes/api/api-helpers.php:3458
 msgid "File size must be at least %s."
 msgstr "文件尺寸至少得是 %s。"
 
-#: includes/api/api-helpers.php:3448
+#: includes/api/api-helpers.php:3443
 msgid "Image height must not exceed %dpx."
 msgstr "图像高度最大不能超过 %dpx。"
 
-#: includes/api/api-helpers.php:3443
+#: includes/api/api-helpers.php:3438
 msgid "Image height must be at least %dpx."
 msgstr "图像高度至少得是 %dpx。"
 
-#: includes/api/api-helpers.php:3429
+#: includes/api/api-helpers.php:3424
 msgid "Image width must not exceed %dpx."
 msgstr "图像宽度最大不能超过 %dpx。"
 
-#: includes/api/api-helpers.php:3424
+#: includes/api/api-helpers.php:3419
 msgid "Image width must be at least %dpx."
 msgstr "图像宽度至少得是 %dpx。"
 
-#: includes/api/api-helpers.php:1670 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1665 includes/api/api-term.php:147
 msgid "(no title)"
 msgstr "(无标题)"
 
@@ -4257,7 +4350,7 @@ msgstr "选择要显示的分类法"
 #: includes/fields/class-acf-field-taxonomy.php:654
 msgctxt "No Terms"
 msgid "No %s"
-msgstr ""
+msgstr "无 %s"
 
 #: includes/fields/class-acf-field-number.php:266
 msgid "Value must be equal to or lower than %d"
@@ -4303,7 +4396,7 @@ msgstr "允许此手风琴打开而不关闭其他。"
 
 #: includes/fields/class-acf-field-accordion.php:95
 msgid "Multi-Expand"
-msgstr ""
+msgstr "多扩展"
 
 #: includes/fields/class-acf-field-accordion.php:85
 msgid "Display this accordion as open on page load."
@@ -4385,7 +4478,7 @@ msgid "Enter each default value on a new line"
 msgstr "每行输入一个默认值"
 
 #: includes/fields/class-acf-field-select.php:252 includes/media.php:48
-#: assets/build/js/acf-input.js:6756 assets/build/js/acf-input.js:7232
+#: assets/build/js/acf-input.js:6775 assets/build/js/acf-input.js:7248
 msgctxt "verb"
 msgid "Select"
 msgstr "选择"
@@ -4474,7 +4567,7 @@ msgstr "所有用户角色"
 
 #: includes/fields/class-acf-field-user.php:51
 msgid "Filter by Role"
-msgstr ""
+msgstr "按角色过滤"
 
 #: includes/fields/class-acf-field-user.php:15 includes/locations.php:101
 msgid "User"
@@ -4496,8 +4589,8 @@ msgstr "选择颜色"
 msgid "Default"
 msgstr "默认"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:85
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:137
+#: includes/admin/views/acf-post-type/advanced-settings.php:89
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:141
 #: includes/fields/class-acf-field-color_picker.php:72
 msgid "Clear"
 msgstr "清除"
@@ -4728,7 +4821,7 @@ msgstr "按钮组"
 #: includes/fields/class-acf-field-taxonomy.php:772
 #: includes/fields/class-acf-field-user.php:103
 msgid "Allow Null"
-msgstr ""
+msgstr "允许空值"
 
 #: includes/fields/class-acf-field-page_link.php:263
 #: includes/fields/class-acf-field-post_object.php:257
@@ -4736,48 +4829,48 @@ msgstr ""
 msgid "Parent"
 msgstr "父级"
 
-#: includes/fields/class-acf-field-wysiwyg.php:397
+#: includes/fields/class-acf-field-wysiwyg.php:390
 msgid "TinyMCE will not be initialized until field is clicked"
 msgstr "TinyMCE 在栏位没有点击之前不会初始化"
 
-#: includes/fields/class-acf-field-wysiwyg.php:396
+#: includes/fields/class-acf-field-wysiwyg.php:389
 msgid "Delay Initialization"
-msgstr ""
+msgstr "延迟初始化"
 
-#: includes/fields/class-acf-field-wysiwyg.php:385
+#: includes/fields/class-acf-field-wysiwyg.php:378
 msgid "Show Media Upload Buttons"
-msgstr ""
+msgstr "显示媒体上传按钮"
 
-#: includes/fields/class-acf-field-wysiwyg.php:369
+#: includes/fields/class-acf-field-wysiwyg.php:362
 msgid "Toolbar"
 msgstr "工具条"
 
-#: includes/fields/class-acf-field-wysiwyg.php:361
+#: includes/fields/class-acf-field-wysiwyg.php:354
 msgid "Text Only"
 msgstr "纯文本"
 
-#: includes/fields/class-acf-field-wysiwyg.php:360
+#: includes/fields/class-acf-field-wysiwyg.php:353
 msgid "Visual Only"
 msgstr "只有显示"
 
-#: includes/fields/class-acf-field-wysiwyg.php:359
+#: includes/fields/class-acf-field-wysiwyg.php:352
 msgid "Visual & Text"
 msgstr "显示与文本"
 
-#: includes/fields/class-acf-field-wysiwyg.php:354
+#: includes/fields/class-acf-field-wysiwyg.php:347
 msgid "Tabs"
 msgstr "标签"
 
-#: includes/fields/class-acf-field-wysiwyg.php:292
+#: includes/fields/class-acf-field-wysiwyg.php:285
 msgid "Click to initialize TinyMCE"
 msgstr "点击初始化 TinyMCE 编辑器"
 
-#: includes/fields/class-acf-field-wysiwyg.php:286
+#: includes/fields/class-acf-field-wysiwyg.php:279
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "文本"
 
-#: includes/fields/class-acf-field-wysiwyg.php:285
+#: includes/fields/class-acf-field-wysiwyg.php:278
 msgid "Visual"
 msgstr "显示"
 
@@ -4854,7 +4947,7 @@ msgstr "占位符文本"
 #: includes/fields/class-acf-field-text.php:98
 #: includes/fields/class-acf-field-textarea.php:104
 #: includes/fields/class-acf-field-url.php:102
-#: includes/fields/class-acf-field-wysiwyg.php:319
+#: includes/fields/class-acf-field-wysiwyg.php:312
 msgid "Appears when creating a new post"
 msgstr "创建新文章的时候显示"
 
@@ -4880,14 +4973,14 @@ msgstr "文章对象"
 
 #: includes/fields/class-acf-field-relationship.php:676
 msgid "Maximum Posts"
-msgstr ""
+msgstr "最大文章数"
 
 #: includes/fields/class-acf-field-relationship.php:666
 msgid "Minimum Posts"
-msgstr ""
+msgstr "最小文章数"
 
 #: includes/admin/views/acf-field-group/options.php:181
-#: includes/admin/views/acf-post-type/advanced-settings.php:25
+#: includes/admin/views/acf-post-type/advanced-settings.php:29
 #: includes/fields/class-acf-field-relationship.php:701
 msgid "Featured Image"
 msgstr "特色图像"
@@ -4909,7 +5002,7 @@ msgstr "分类法"
 
 #: includes/fields/class-acf-field-relationship.php:629
 #: includes/locations/class-acf-location-post-type.php:22
-#: includes/post-types/class-acf-post-type.php:91
+#: includes/post-types/class-acf-post-type.php:92
 msgid "Post Type"
 msgstr "文章类型"
 
@@ -4980,7 +5073,7 @@ msgstr "用英文逗号分隔开，留空则为全部类型"
 #: includes/fields/class-acf-field-file.php:290
 #: includes/fields/class-acf-field-image.php:316
 msgid "Allowed File Types"
-msgstr ""
+msgstr "允许的文件类型"
 
 #: includes/fields/class-acf-field-file.php:278
 #: includes/fields/class-acf-field-image.php:280
@@ -5088,7 +5181,7 @@ msgid "Edit"
 msgstr "编辑"
 
 #: includes/fields/class-acf-field-image.php:70 includes/media.php:55
-#: assets/build/js/acf-input.js:6803 assets/build/js/acf-input.js:7286
+#: assets/build/js/acf-input.js:6822 assets/build/js/acf-input.js:7302
 msgid "All images"
 msgstr "所有图片"
 
@@ -5224,7 +5317,7 @@ msgstr "打开文本"
 #: includes/fields/class-acf-field-select.php:450
 #: includes/fields/class-acf-field-true_false.php:199
 msgid "Stylized UI"
-msgstr ""
+msgstr "风格化的用户界面"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:361
@@ -5238,7 +5331,7 @@ msgstr ""
 #: includes/fields/class-acf-field-textarea.php:103
 #: includes/fields/class-acf-field-true_false.php:147
 #: includes/fields/class-acf-field-url.php:101
-#: includes/fields/class-acf-field-wysiwyg.php:318
+#: includes/fields/class-acf-field-wysiwyg.php:311
 msgid "Default Value"
 msgstr "默认值"
 
@@ -5266,7 +5359,7 @@ msgstr "是"
 
 #: includes/fields/class-acf-field-true_false.php:25
 msgid "True / False"
-msgstr "真 / 假 (开关/切换)"
+msgstr "真 / 假 (开关)"
 
 #: includes/fields/class-acf-field-group.php:474
 msgid "Row"
@@ -5276,7 +5369,7 @@ msgstr "行"
 msgid "Table"
 msgstr "表"
 
-#: includes/admin/post-types/admin-field-group.php:132
+#: includes/admin/post-types/admin-field-group.php:140
 #: includes/fields/class-acf-field-group.php:472
 msgid "Block"
 msgstr "区块"
@@ -5399,90 +5492,90 @@ msgid "Time Picker"
 msgstr "时间选择"
 
 #. translators: counts for inactive field groups
-#: acf.php:497
+#: acf.php:499
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
-msgstr[0] ""
+msgstr[0] "已停用 <span class=\"count\">(%s)</span>"
 
-#: acf.php:456
+#: acf.php:458
 msgid "No Fields found in Trash"
 msgstr "回收站里没有字段"
 
-#: acf.php:455
+#: acf.php:457
 msgid "No Fields found"
 msgstr "没找到字段"
 
-#: acf.php:454
+#: acf.php:456
 msgid "Search Fields"
 msgstr "搜索字段"
 
-#: acf.php:453
+#: acf.php:455
 msgid "View Field"
 msgstr "视图字段"
 
-#: acf.php:452 includes/admin/views/acf-field-group/fields.php:115
+#: acf.php:454 includes/admin/views/acf-field-group/fields.php:115
 msgid "New Field"
 msgstr "新字段"
 
-#: acf.php:451
+#: acf.php:453
 msgid "Edit Field"
 msgstr "编辑字段"
 
-#: acf.php:450
+#: acf.php:452
 msgid "Add New Field"
 msgstr "添加新字段"
 
-#: acf.php:448
+#: acf.php:450
 msgid "Field"
 msgstr "字段"
 
-#: acf.php:447 includes/admin/post-types/admin-field-group.php:155
+#: acf.php:449 includes/admin/post-types/admin-field-group.php:163
 #: includes/admin/post-types/admin-field-groups.php:119
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "字段"
 
-#: acf.php:422
+#: acf.php:424
 msgid "No Field Groups found in Trash"
 msgstr "回收站中没有找到字段组"
 
-#: acf.php:421
+#: acf.php:423
 msgid "No Field Groups found"
 msgstr "没有找到字段组"
 
-#: acf.php:420
+#: acf.php:422
 msgid "Search Field Groups"
 msgstr "搜索字段组"
 
-#: acf.php:419
+#: acf.php:421
 msgid "View Field Group"
 msgstr "查看字段组"
 
-#: acf.php:418
+#: acf.php:420
 msgid "New Field Group"
 msgstr "新建字段组"
 
-#: acf.php:417
+#: acf.php:419
 msgid "Edit Field Group"
 msgstr "编辑字段组"
 
-#: acf.php:416
+#: acf.php:418
 msgid "Add New Field Group"
 msgstr "添加字段组"
 
-#: acf.php:415 acf.php:449
-#: includes/admin/views/acf-post-type/advanced-settings.php:215
-#: includes/admin/views/acf-post-type/advanced-settings.php:217
-#: includes/post-types/class-acf-post-type.php:92
+#: acf.php:417 acf.php:451
+#: includes/admin/views/acf-post-type/advanced-settings.php:219
+#: includes/admin/views/acf-post-type/advanced-settings.php:221
+#: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "新建"
 
-#: acf.php:414
+#: acf.php:416
 msgid "Field Group"
 msgstr "字段组"
 
-#: acf.php:413 includes/admin/post-types/admin-field-groups.php:78
+#: acf.php:415 includes/admin/post-types/admin-field-groups.php:78
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"
@@ -5490,14 +5583,14 @@ msgstr "字段组"
 
 #. Description of the plugin
 msgid "Customize WordPress with powerful, professional and intuitive fields."
-msgstr "【高级自定义字段】使用强大、专业和直观的字段自定义WordPress。"
+msgstr "【高级自定义字段 ACF】使用强大、专业和直观的字段自定义WordPress。"
 
 #. Plugin URI of the plugin
 msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php:92
+#: acf.php:94
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
 

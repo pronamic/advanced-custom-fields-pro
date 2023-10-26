@@ -1368,7 +1368,7 @@
     },
 
     listenForSavedMetaBoxes: function () {
-      if (!acf.isGutenberg() || !this.get('pagination')) {
+      if (!acf.isGutenbergPostEditor() || !this.get('pagination')) {
         return;
       }
       let checkedMetaBoxes = true;

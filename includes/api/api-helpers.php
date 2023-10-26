@@ -1,36 +1,25 @@
 <?php
 
-/*
-*  acf_is_array
-*
-*  This function will return true for a non empty array
-*
-*  @type    function
-*  @date    6/07/2016
-*  @since   5.4.0
-*
-*  @param   $array (array)
-*  @return  (boolean)
-*/
-
+/**
+ *  This function will return true for a non empty array
+ *
+ *  @since   5.4.0
+ *
+ *  @param   mixed $array The variable to test.
+ *  @return  boolean
+ */
 function acf_is_array( $array ) {
-
 	return ( is_array( $array ) && ! empty( $array ) );
-
 }
 
 /**
- *  acf_has_setting
+ *  Alias of acf()->has_setting()
  *
- *  alias of acf()->has_setting()
- *
- *  @date    2/2/18
  *  @since   5.6.5
  *
- *  @param   n/a
- *  @return  n/a
+ *  @param   string $name Name of the setting to check for.
+ *  @return  boolean
  */
-
 function acf_has_setting( $name = '' ) {
 	return acf()->has_setting( $name );
 }
@@ -47,7 +36,6 @@ function acf_has_setting( $name = '' ) {
  *  @param   n/a
  *  @return  n/a
  */
-
 function acf_raw_setting( $name = '' ) {
 	return acf()->get_setting( $name );
 }
@@ -66,13 +54,11 @@ function acf_raw_setting( $name = '' ) {
 *  @param   $value (mixed)
 *  @return  n/a
 */
-
 function acf_update_setting( $name, $value ) {
-
-	// validate name
+	// validate name.
 	$name = acf_validate_setting( $name );
 
-	// update
+	// update.
 	return acf()->update_setting( $name, $value );
 }
 
@@ -88,39 +74,31 @@ function acf_update_setting( $name, $value ) {
  *  @param   n/a
  *  @return  n/a
  */
-
 function acf_validate_setting( $name = '' ) {
 	return apply_filters( 'acf/validate_setting', $name );
 }
 
 
-/*
-*  acf_get_setting
-*
-*  alias of acf()->get_setting()
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * Alias of acf()->get_setting()
+ *
+ * @since   5.0.0
+ *
+ * @param   string $name The name of the setting to test.
+ * @param string $value An optional default value for the setting if it doesn't exist.
+ * @return  n/a
+ */
 function acf_get_setting( $name, $value = null ) {
-
-	// validate name
 	$name = acf_validate_setting( $name );
 
-	// check settings
+	// replace default setting value if it exists.
 	if ( acf_has_setting( $name ) ) {
 		$value = acf_raw_setting( $name );
 	}
 
-	// filter
+	// filter.
 	$value = apply_filters( "acf/settings/{$name}", $value );
 
-	// return
 	return $value;
 }
 
@@ -203,11 +181,11 @@ function acf_set_data( $name, $value ) {
 /**
  * Appends data to an existing key.
  *
- * @date    11/06/2020
  * @since   5.9.0
  *
- * @param   string $name The data name.
- * @return  array $data The data array.
+ * @param string $name The data name.
+ * @param mixed  $data The data to append to name.
+ * @return void
  */
 function acf_append_data( $name, $data ) {
 	$prev_data = acf()->get_data( $name );
@@ -217,23 +195,13 @@ function acf_append_data( $name, $data ) {
 	acf()->set_data( $name, $data );
 }
 
-/*
-*  acf_init
-*
-*  alias of acf()->init()
-*
-*  @type    function
-*  @date    28/09/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ *  Alias of acf()->init() - the core ACF init function.
+ *
+ *  @since   5.0.0
+ */
 function acf_init() {
-
 	acf()->init();
-
 }
 
 
@@ -265,116 +233,87 @@ function acf_has_done( $name ) {
 
 
 
-/*
-*  acf_get_external_path
-*
-*  This function will return the path to a file within an external folder
-*
-*  @type    function
-*  @date    22/2/17
-*  @since   5.5.8
-*
-*  @param   $file (string)
-*  @param   $path (string)
-*  @return  (string)
-*/
-
+/**
+ * This function will return the path to a file within an external folder
+ *
+ *  @since   5.5.8
+ *
+ *  @param   string $file Directory path.
+ *  @param   string $path Optional file path.
+ *  @return  string File path.
+ */
 function acf_get_external_path( $file, $path = '' ) {
-
 	return plugin_dir_path( $file ) . $path;
-
-}
-
-
-/*
-*  acf_get_external_dir
-*
-*  This function will return the url to a file within an external folder
-*
-*  @type    function
-*  @date    22/2/17
-*  @since   5.5.8
-*
-*  @param   $file (string)
-*  @param   $path (string)
-*  @return  (string)
-*/
-
-function acf_get_external_dir( $file, $path = '' ) {
-
-	return acf_plugin_dir_url( $file ) . $path;
-
 }
 
 
 /**
- *  acf_plugin_dir_url
+ * This function will return the url to a file within an internal ACF folder
  *
+ *  @since   5.5.8
+ *
+ *  @param   string $file Directory path.
+ *  @param   string $path Optional file path.
+ *  @return  string File path.
+ */
+function acf_get_external_dir( $file, $path = '' ) {
+	return acf_plugin_dir_url( $file ) . $path;
+}
+
+
+/**
  *  This function will calculate the url to a plugin folder.
  *  Different to the WP plugin_dir_url(), this function can calculate for urls outside of the plugins folder (theme include).
  *
  *  @date    13/12/17
  *  @since   5.6.8
  *
- *  @param   type $var Description. Default.
- *  @return  type Description.
+ *  @param   string $file A file path inside the ACF plugin to get the plugin directory path from.
+ *  @return  string The plugin directory path.
  */
-
 function acf_plugin_dir_url( $file ) {
-
-	// vars
 	$path = plugin_dir_path( $file );
 	$path = wp_normalize_path( $path );
 
-	// check plugins
+	// check plugins.
 	$check_path = wp_normalize_path( realpath( WP_PLUGIN_DIR ) );
 	if ( strpos( $path, $check_path ) === 0 ) {
 		return str_replace( $check_path, plugins_url(), $path );
 	}
 
-	// check wp-content
+	// check wp-content.
 	$check_path = wp_normalize_path( realpath( WP_CONTENT_DIR ) );
 	if ( strpos( $path, $check_path ) === 0 ) {
 		return str_replace( $check_path, content_url(), $path );
 	}
 
-	// check root
+	// check root.
 	$check_path = wp_normalize_path( realpath( ABSPATH ) );
 	if ( strpos( $path, $check_path ) === 0 ) {
 		return str_replace( $check_path, site_url( '/' ), $path );
 	}
 
-	// return
+	// return.
 	return plugin_dir_url( $file );
-
 }
 
 
-/*
-*  acf_parse_args
-*
-*  This function will merge together 2 arrays and also convert any numeric values to ints
-*
-*  @type    function
-*  @date    18/10/13
-*  @since   5.0.0
-*
-*  @param   $args (array)
-*  @param   $defaults (array)
-*  @return  $args (array)
-*/
-
+/**
+ *  This function will merge together 2 arrays and also convert any numeric values to ints
+ *
+ *  @since   5.0.0
+ *
+ *  @param   array $args The configured arguments array.
+ *  @param   array $defaults The default properties for the passed args to inherit.
+ *  @return  array $args Parsed arguments with defaults applied.
+ */
 function acf_parse_args( $args, $defaults = array() ) {
-
-	// parse args
 	$args = wp_parse_args( $args, $defaults );
 
 	// parse types
 	$args = acf_parse_types( $args );
 
-	// return
 	return $args;
-
 }
 
 
@@ -494,89 +433,62 @@ function acf_merge_atts( $atts, $extra = array() ) {
 		}
 	}
 
-	// return
 	return $atts;
-
 }
 
 
-/*
-*  acf_nonce_input
-*
-*  This function will create a basic nonce input
-*
-*  @type    function
-*  @date    24/5/17
-*  @since   5.6.0
-*
-*  @param   $post_id (int)
-*  @return  $post_id (int)
-*/
-
+/**
+ * This function will create and echo a basic nonce input
+ *
+ *  @since   5.6.0
+ *
+ *  @param string $nonce The nonce parameter string.
+ *  @return void
+ */
 function acf_nonce_input( $nonce = '' ) {
-
 	echo '<input type="hidden" name="_acf_nonce" value="' . wp_create_nonce( $nonce ) . '" />';
-
 }
 
 
-/*
-*  acf_extract_var
-*
-*  This function will remove the var from the array, and return the var
-*
-*  @type    function
-*  @date    2/10/13
-*  @since   5.0.0
-*
-*  @param   $array (array)
-*  @param   $key (string)
-*  @return  (mixed)
-*/
+/**
+ * This function will remove the var from the array, and return the var
+ *
+ * @since   5.0.0
+ *
+ * @param array  $extract_array an array passed as reference to be extracted.
+ * @param string $key The key to extract from the array.
+ * @param mixed  $default_value The default value if it doesn't exist in the extract array.
+ * @return mixed Extracted var or default.
+ */
+function acf_extract_var( &$extract_array, $key, $default_value = null ) {
+	// check if exists - uses array_key_exists to extract NULL values (isset will fail).
+	if ( is_array( $extract_array ) && array_key_exists( $key, $extract_array ) ) {
 
-function acf_extract_var( &$array, $key, $default = null ) {
+		// store and unset value.
+		$v = $extract_array[ $key ];
+		unset( $extract_array[ $key ] );
 
-	// check if exists
-	// - uses array_key_exists to extract NULL values (isset will fail)
-	if ( is_array( $array ) && array_key_exists( $key, $array ) ) {
-
-		// store value
-		$v = $array[ $key ];
-
-		// unset
-		unset( $array[ $key ] );
-
-		// return
 		return $v;
-
 	}
 
-	// return
-	return $default;
+	return $default_value;
 }
 
 
-/*
-*  acf_extract_vars
-*
-*  This function will remove the vars from the array, and return the vars
-*
-*  @type    function
-*  @date    8/10/13
-*  @since   5.0.0
-*
-*  @param   $post_id (int)
-*  @return  $post_id (int)
-*/
-
-function acf_extract_vars( &$array, $keys ) {
-
+/**
+ * This function will remove the vars from the array, and return the vars
+ *
+ * @since   5.0.0
+ *
+ * @param array $extract_array an array passed as reference to be extracted.
+ * @param array $keys An array of keys to extract from the original array.
+ * @return array An array of extracted values.
+ */
+function acf_extract_vars( &$extract_array, $keys ) {
 	$r = array();
 
 	foreach ( $keys as $key ) {
-
-		$r[ $key ] = acf_extract_var( $array, $key );
-
+		$r[ $key ] = acf_extract_var( $extract_array, $key );
 	}
 
 	return $r;
@@ -607,7 +519,6 @@ function acf_get_sub_array( $array, $keys ) {
 	}
 
 	return $r;
-
 }
 
 
@@ -681,7 +592,7 @@ function acf_get_pretty_post_types( $post_types = array() ) {
 
 		}
 
-		$ref[ $label ]++;
+		++$ref[ $label ];
 	}
 
 	// get slugs
@@ -699,7 +610,6 @@ function acf_get_pretty_post_types( $post_types = array() ) {
 
 	// return
 	return $r;
-
 }
 
 /**
@@ -753,7 +663,7 @@ function acf_get_pretty_post_statuses( $post_statuses = array() ) {
 			$ref[ $label ] = 0;
 		}
 
-		$ref[ $label ]++;
+		++$ref[ $label ];
 	}
 
 	foreach ( array_keys( $result ) as $i ) {
@@ -796,7 +706,6 @@ function acf_get_post_type_label( $post_type ) {
 
 	// return
 	return $label;
-
 }
 
 
@@ -849,7 +758,6 @@ function acf_verify_nonce( $value ) {
 
 	// return
 	return true;
-
 }
 
 
@@ -949,7 +857,6 @@ function acf_get_image_sizes() {
 
 	// return
 	return $sizes;
-
 }
 
 function acf_get_image_size( $s = '' ) {
@@ -968,7 +875,6 @@ function acf_get_image_size( $s = '' ) {
 
 	// return
 	return $data;
-
 }
 
 /**
@@ -1021,7 +927,6 @@ function acf_get_full_version( $version = '1' ) {
 
 	// return
 	return $version;
-
 }
 
 
@@ -1118,7 +1023,6 @@ function acf_get_taxonomy_terms( $taxonomies = array() ) {
 
 	// return
 	return $r;
-
 }
 
 
@@ -1167,7 +1071,6 @@ function acf_decode_taxonomy_terms( $strings = false ) {
 
 	// return
 	return $terms;
-
 }
 
 
@@ -1245,7 +1148,6 @@ function acf_decode_taxonomy_term( $value ) {
 
 	// return
 	return $data;
-
 }
 
 /**
@@ -1311,7 +1213,6 @@ function acf_get_array( $var = false, $delimiter = '' ) {
 
 	// place in array
 	return (array) $var;
-
 }
 
 
@@ -1354,7 +1255,6 @@ function acf_get_numeric( $value = '' ) {
 
 	// return
 	return $numbers;
-
 }
 
 
@@ -1426,7 +1326,6 @@ function acf_get_posts( $args = array() ) {
 		array_multisort( $order, $posts );
 	}
 
-
 	/**
 	 * Filters the results found in the `acf_get_posts()` function.
 	 *
@@ -1483,7 +1382,6 @@ function _acf_query_remove_post_type( $sql ) {
 
 	// return
 	return $sql;
-
 }
 
 
@@ -1617,7 +1515,6 @@ function acf_get_grouped_posts( $args ) {
 
 	// return
 	return $data;
-
 }
 
 
@@ -1639,7 +1536,6 @@ function _acf_orderby_post_type( $ordeby, $wp_query ) {
 
 	// return
 	return $ordeby;
-
 }
 
 
@@ -1710,7 +1606,6 @@ function acf_get_post_title( $post = 0, $is_search = false ) {
 
 	// return
 	return $title;
-
 }
 
 
@@ -1744,7 +1639,7 @@ function acf_order_by_search( $array, $search ) {
 			// increase weight if match starts at begining of string
 			if ( $strpos == 0 ) {
 
-				$weight++;
+				++$weight;
 
 			}
 		}
@@ -1804,7 +1699,6 @@ function acf_get_pretty_user_roles( $allowed = false ) {
 
 	// return
 	return $roles;
-
 }
 
 
@@ -1920,7 +1814,7 @@ function acf_get_grouped_users( $args = array() ) {
 			$user = acf_extract_var( $users, $key );
 
 			// increase
-			$i++;
+			++$i;
 
 			// bail early if too low
 			if ( $min && $i < $min ) {
@@ -1949,7 +1843,6 @@ function acf_get_grouped_users( $args = array() ) {
 
 	// return
 	return $r;
-
 }
 
 /**
@@ -2057,7 +1950,6 @@ function acf_debug() {
 function acf_debug_start() {
 
 	acf_update_setting( 'debug_start', memory_get_usage() );
-
 }
 
 function acf_debug_end() {
@@ -2066,7 +1958,6 @@ function acf_debug_end() {
 	$end   = memory_get_usage();
 
 	return $end - $start;
-
 }
 
 
@@ -2120,7 +2011,6 @@ function acf_encode_choices( $array = array(), $show_keys = true ) {
 
 	// return
 	return $string;
-
 }
 
 function acf_decode_choices( $string = '', $array_keys = false ) {
@@ -2184,7 +2074,6 @@ function acf_decode_choices( $string = '', $array_keys = false ) {
 
 	// return
 	return $array;
-
 }
 
 
@@ -2234,7 +2123,6 @@ function acf_str_replace( $string = '', $search_replace = array() ) {
 
 	// return
 	return $string;
-
 }
 
 
@@ -2350,7 +2238,6 @@ function acf_split_date_time( $date_time = '' ) {
 
 	// return
 	return $data;
-
 }
 
 
@@ -2375,7 +2262,6 @@ function acf_convert_date_to_php( $date = '' ) {
 
 	// return
 	return acf_str_replace( $date, $js_to_php );
-
 }
 
 /*
@@ -2398,7 +2284,6 @@ function acf_convert_date_to_js( $date = '' ) {
 
 	// return
 	return acf_str_replace( $date, $php_to_js );
-
 }
 
 
@@ -2423,7 +2308,6 @@ function acf_convert_time_to_php( $time = '' ) {
 
 	// return
 	return acf_str_replace( $time, $js_to_php );
-
 }
 
 
@@ -2447,7 +2331,6 @@ function acf_convert_time_to_js( $time = '' ) {
 
 	// return
 	return acf_str_replace( $time, $php_to_js );
-
 }
 
 
@@ -2489,7 +2372,6 @@ function acf_update_user_setting( $name, $value ) {
 
 	// update user data
 	return update_metadata( 'user', $user_id, 'acf_user_settings', $settings );
-
 }
 
 
@@ -2524,7 +2406,6 @@ function acf_get_user_setting( $name = '', $default = false ) {
 
 	// return
 	return $settings[ $name ];
-
 }
 
 
@@ -2550,7 +2431,6 @@ function acf_in_array( $value = '', $array = false ) {
 
 	// find value in array
 	return in_array( $value, $array );
-
 }
 
 
@@ -2649,7 +2529,6 @@ function acf_get_valid_post_id( $post_id = 0 ) {
 
 	// return
 	return $post_id;
-
 }
 
 
@@ -2730,7 +2609,6 @@ function acf_get_post_id_info( $post_id = 0 ) {
 
 	// return
 	return $info;
-
 }
 
 
@@ -2784,7 +2662,6 @@ function acf_isset_termmeta( $taxonomy = '' ) {
 
 	// return
 	return true;
-
 }
 
 /**
@@ -2849,7 +2726,6 @@ function acf_upload_files( $ancestors = array() ) {
 	// update $_POST
 	array_unshift( $ancestors, 'acf' );
 	acf_update_nested_array( $_POST, $ancestors, $attachment_id );
-
 }
 
 /*
@@ -2910,7 +2786,6 @@ function acf_upload_file( $uploaded_file ) {
 
 	// return new ID
 	return $id;
-
 }
 
 
@@ -3012,19 +2887,16 @@ function acf_is_screen( $id = '' ) {
 function acf_maybe_get( $array = array(), $key = 0, $default = null ) {
 
 	return isset( $array[ $key ] ) ? $array[ $key ] : $default;
-
 }
 
 function acf_maybe_get_POST( $key = '', $default = null ) {
 
 	return isset( $_POST[ $key ] ) ? acf_sanitize_request_args( $_POST[ $key ] ) : $default; // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing -- Checked elsewhere.
-
 }
 
 function acf_maybe_get_GET( $key = '', $default = null ) {
 
 	return isset( $_GET[ $key ] ) ? acf_sanitize_request_args( $_GET[ $key ] ) : $default; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Checked elsewhere.
-
 }
 
 /**
@@ -3091,8 +2963,22 @@ function acf_get_attachment( $attachment ) {
 	// Append filesize data.
 	if ( isset( $meta['filesize'] ) ) {
 		$response['filesize'] = $meta['filesize'];
-	} elseif ( file_exists( $attached_file ) ) {
-		$response['filesize'] = filesize( $attached_file );
+	} else {
+		/**
+		 * Allows shortcutting our ACF's `filesize` call to prevent us making filesystem calls.
+		 * Mostly useful for third party plugins which may offload media to other services, and filesize calls will induce a remote download.
+		 *
+		 * @since 6.2.2
+		 *
+		 * @param int|null The default filesize.
+		 * @param WP_Post $attachment The attachment post object we're looking for the filesize for.
+		 */
+		$shortcut_filesize = apply_filters( 'acf/filesize', null, $attachment );
+		if ( $shortcut_filesize ) {
+			$response['filesize'] = intval( $shortcut_filesize );
+		} elseif ( file_exists( $attached_file ) ) {
+			$response['filesize'] = filesize( $attached_file );
+		}
 	}
 
 	// Restrict the loading of image "sizes".
@@ -3200,7 +3086,6 @@ function acf_current_user_can_admin() {
 
 	// return
 	return false;
-
 }
 
 
@@ -3250,7 +3135,6 @@ function acf_get_filesize( $size = 1 ) {
 
 	// return
 	return $bytes;
-
 }
 
 
@@ -3294,7 +3178,6 @@ function acf_format_filesize( $size = 1 ) {
 
 	// return
 	return $bytes . ' B';
-
 }
 
 
@@ -3341,7 +3224,6 @@ function acf_get_valid_terms( $terms = false, $taxonomy = 'category' ) {
 
 	// return
 	return $terms;
-
 }
 
 
@@ -3515,7 +3397,6 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 
 	// return
 	return $errors;
-
 }
 
 
@@ -3650,7 +3531,6 @@ function acf_translate( $string ) {
 
 	// vars
 	return __( $string, $textdomain );
-
 }
 
 
@@ -3681,7 +3561,6 @@ function acf_maybe_add_action( $tag, $function_to_add, $priority = 10, $accepted
 		add_action( $tag, $function_to_add, $priority, $accepted_args );
 
 	}
-
 }
 
 
@@ -3720,7 +3599,6 @@ function acf_is_row_collapsed( $field_key = '', $row_index = 0 ) {
 
 	// collapsed class
 	return in_array( $row_index, $collapsed );
-
 }
 
 
@@ -3750,7 +3628,6 @@ function acf_get_attachment_image( $attachment_id = 0, $size = 'thumbnail' ) {
 
 	// return
 	$value = '<img src="' . $url . '" alt="' . $alt . '" />';
-
 }
 
 
@@ -3823,7 +3700,6 @@ function acf_get_post_thumbnail( $post = null, $size = 'thumbnail' ) {
 
 	// return
 	return $data;
-
 }
 
 /**
@@ -3899,7 +3775,6 @@ function acf_is_ajax( $action = '' ) {
 
 	// return
 	return $is_ajax;
-
 }
 
 
@@ -3941,7 +3816,6 @@ function acf_format_date( $value, $format ) {
 
 	// return
 	return date_i18n( $format, $unixtimestamp );
-
 }
 
 /**
@@ -4032,7 +3906,6 @@ function acf_doing( $event = '', $context = '' ) {
 
 	acf_update_setting( 'doing', $event );
 	acf_update_setting( 'doing_context', $context );
-
 }
 
 
@@ -4071,7 +3944,6 @@ function acf_is_doing( $event = '', $context = '' ) {
 
 	// return
 	return $doing;
-
 }
 
 
@@ -4104,7 +3976,6 @@ function acf_is_plugin_active() {
 
 	// return
 	return is_plugin_active( $basename );
-
 }
 
 /*
@@ -4141,7 +4012,7 @@ function acf_send_ajax_results( $response ) {
 		foreach ( $response['results'] as $result ) {
 
 			// parent
-			$total++;
+			++$total;
 
 			// children
 			if ( ! empty( $result['children'] ) ) {
@@ -4161,7 +4032,6 @@ function acf_send_ajax_results( $response ) {
 
 	// return
 	wp_send_json( $response );
-
 }
 
 
@@ -4197,7 +4067,6 @@ function acf_is_sequential_array( $array ) {
 
 	// return
 	return true;
-
 }
 
 
@@ -4233,7 +4102,6 @@ function acf_is_associative_array( $array ) {
 
 	// return
 	return false;
-
 }
 
 
@@ -4267,7 +4135,6 @@ function acf_add_array_key_prefix( $array, $prefix ) {
 
 	// return
 	return $array2;
-
 }
 
 
@@ -4302,7 +4169,6 @@ function acf_remove_array_key_prefix( $array, $prefix ) {
 
 	// return
 	return $array2;
-
 }
 
 
@@ -4325,7 +4191,6 @@ function acf_strip_protocol( $url ) {
 
 	// strip the protical
 	return str_replace( array( 'http://', 'https://' ), '', $url );
-
 }
 
 
@@ -4426,7 +4291,6 @@ function acf_encrypt( $data = '' ) {
 
 	// The $iv is just as important as the key for decrypting, so save it with our encrypted data using a unique separator (::)
 	return base64_encode( $encrypted_data . '::' . $iv );
-
 }
 
 
@@ -4459,7 +4323,6 @@ function acf_decrypt( $data = '' ) {
 
 	// decrypt
 	return openssl_decrypt( $encrypted_data, 'aes-256-cbc', $key, 0, $iv );
-
 }
 
 /**
@@ -4557,7 +4420,7 @@ function acf_convert_rules_to_groups( $rules, $anyorall = 'any' ) {
 
 			// use $anyorall to determine if a new group is needed
 			if ( $anyorall == 'any' ) {
-				$index++;
+				++$index;
 			}
 		}
 

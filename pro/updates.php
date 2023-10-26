@@ -8,48 +8,33 @@ if ( ! class_exists( 'acf_pro_updates' ) ) :
 
 	class acf_pro_updates {
 
-
 		/**
-		 *  __construct
+		 * Initialize filters, action, variables and includes
 		 *
-		 *  Initialize filters, action, variables and includes
-		 *
-		 *  @type    function
-		 *  @date    23/06/12
-		 *  @since   5.0.0
+		 * @date  23/06/12
+		 * @since 5.0.0
 		 */
-
-		function __construct() {
-
-			// actions
+		public function __construct() {
 			add_action( 'init', array( $this, 'init' ), 20 );
-
 		}
 
-
 		/**
-		 *  init
+		 * Initializes the ACF PRO updates functionality.
 		 *
-		 *  description
-		 *
-		 *  @type    function
 		 *  @date    10/4/17
 		 *  @since   5.5.10
 		 */
-
-		function init() {
-
-			// bail early if no show_updates.
+		public function init() {
+			// Bail early if no show_updates.
 			if ( ! acf_get_setting( 'show_updates' ) ) {
 				return;
 			}
 
-			// bail early if not a plugin (included in theme).
+			// Bail early if not a plugin (included in theme).
 			if ( ! acf_is_plugin_active() ) {
 				return;
 			}
 
-			// register update
 			acf_register_plugin_update(
 				array(
 					'id'       => 'pro',
@@ -63,41 +48,29 @@ if ( ! class_exists( 'acf_pro_updates' ) ) :
 			add_action( 'admin_init', 'acf_pro_check_defined_license', 20 );
 			add_action( 'current_screen', 'acf_pro_display_activation_error', 30 );
 
-			// admin
 			if ( is_admin() ) {
-
 				add_action( 'in_plugin_update_message-' . acf_get_setting( 'basename' ), array( $this, 'modify_plugin_update_message' ), 10, 2 );
-
 			}
-
 		}
 
-
-		/*
-		*  modify_plugin_update_message
-		*
-		*  Displays an update message for plugin list screens.
-		*
-		*  @type    function
-		*  @date    14/06/2016
-		*  @since   5.3.8
-		*
-		*  @param   $message (string)
-		*  @param   $plugin_data (array)
-		*  @param   $r (object)
-		*  @return  $message
-		*/
-
-		function modify_plugin_update_message( $plugin_data, $response ) {
-
-			// bail early if has key
+		/**
+		 * Displays an update message for plugin list screens.
+		 *
+		 * @date    14/06/2016
+		 * @since   5.3.8
+		 *
+		 * @param array  $plugin_data An array of plugin metadata.
+		 * @param object $response    An object of metadata about the available plugin update.
+		 * @return void
+		 */
+		public function modify_plugin_update_message( $plugin_data, $response ) {
+			// Bail early if we have a key.
 			if ( acf_pro_get_license_key() ) {
 				return;
 			}
 
-			// display message
+			// Display message.
 			echo '<br />' . sprintf( __( 'To enable updates, please enter your license key on the <a href="%1$s">Updates</a> page. If you don\'t have a licence key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' ), admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' ), acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'updates' ) );
-
 		}
 
 	}
@@ -481,8 +454,13 @@ function acf_pro_activate_license( $license_key, $silent = false ) {
 	// On success.
 	if ( $response['status'] == 1 ) {
 
-		// Update license.
+		// Update license and clear out existing license status.
 		acf_pro_update_license( $response['license'] );
+		acf_pro_remove_license_status();
+
+		if ( ! empty( $response['license_status'] ) ) {
+			acf_pro_update_license_status( $response['license_status'] );
+		}
 
 		// Refresh plugins transient to fetch new update data.
 		acf_updates()->refresh_plugins_transient();
@@ -551,8 +529,9 @@ function acf_pro_deactivate_license( $silent = false ) {
 		return $response;
 	}
 
-	// Remove license key from DB.
+	// Remove license key and status from DB.
 	acf_pro_update_license( '' );
+	acf_pro_remove_license_status();
 
 	// Refresh plugins transient to fetch new update data.
 	acf_updates()->refresh_plugins_transient();
@@ -595,4 +574,151 @@ function display_wp_activation_error( $wp_error ) {
 			'type' => 'error',
 		)
 	);
+}
+
+/**
+ * Returns the status of the current ACF PRO license.
+ *
+ * @since 6.2.2
+ *
+ * @param bool $force_check If we should force a call to the API.
+ * @return array
+ */
+function acf_pro_get_license_status( $force_check = false ) {
+	$license    = acf_pro_get_license_key( true );
+	$status     = get_option( 'acf_pro_license_status', array() );
+	$next_check = isset( $status['next_check'] ) ? (int) $status['next_check'] : 0;
+
+	// Call the API if necessary, if we have a license.
+	if ( ( empty( $status ) || $force_check || time() > $next_check ) && $license ) {
+		$post = array(
+			'acf_license' => $license,
+			'wp_url'      => acf_get_home_url(),
+		);
+
+		$response   = acf_updates()->request( 'v2/plugins/validate?p=pro', $post );
+		$expiration = acf_updates()->get_expiration( $response, DAY_IN_SECONDS, MONTH_IN_SECONDS );
+
+		if ( is_array( $response ) ) {
+			if ( ! empty( $response['license_status'] ) ) {
+				$status = $response['license_status'];
+			}
+
+			// Handle errors from connect.
+			if ( ! empty( $response['code'] ) && 'activation_not_found' === $response['code'] ) {
+				$status['error_msg'] = sprintf(
+					/* translators: %s - URL to ACF updates page */
+					__( 'Your ACF PRO license key is valid but not activated on this site. Please <a href="%s">deactivate</a> and then reactivate the license.', 'acf' ),
+					esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#deactivate-license' ) )
+				);
+			} elseif ( ! empty( $response['message'] ) ) {
+				$status['error_msg'] = acf_esc_html( $response['message'] );
+			}
+		}
+
+		$status['next_check'] = time() + $expiration;
+		acf_pro_update_license_status( $status );
+	}
+
+	return acf_pro_parse_license_status( $status );
+}
+
+/**
+ * Makes sure the ACF PRO license status is in a format we expect.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status The license status.
+ * @return array
+ */
+function acf_pro_parse_license_status( $status = array() ) {
+	$status  = is_array( $status ) ? $status : array();
+	$default = array(
+		'status'                  => '',
+		'created'                 => 0,
+		'expiry'                  => 0,
+		'name'                    => '',
+		'lifetime'                => false,
+		'refunded'                => false,
+		'view_licenses_url'       => '',
+		'manage_subscription_url' => '',
+		'error_msg'               => '',
+		'next_check'              => 0,
+	);
+
+	return wp_parse_args( $status, $default );
+}
+
+/**
+ * Updates the ACF PRO license status.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status The current license status.
+ * @return bool True if the value was set, false otherwise.
+ */
+function acf_pro_update_license_status( $status ) {
+	return update_option(
+		'acf_pro_license_status',
+		acf_pro_parse_license_status( $status )
+	);
+}
+
+/**
+ * Removes the ACF PRO license status.
+ *
+ * @since 6.2
+ *
+ * @return bool True if the transient was deleted, false otherwise.
+ */
+function acf_pro_remove_license_status() {
+	return delete_option( 'acf_pro_license_status' );
+}
+
+/**
+ * Checks if the current license is active.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status Optional license status array.
+ * @return bool True if active, false if not.
+ */
+function acf_pro_is_license_active( $status = array() ) {
+	if ( empty( $status ) ) {
+		$status = acf_pro_get_license_status();
+	}
+
+	return 'active' === $status['status'];
+}
+
+/**
+ * Checks if the current license is expired.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status Optional license status array.
+ * @return bool True if expired, false if not.
+ */
+function acf_pro_is_license_expired( $status = array() ) {
+	if ( empty( $status ) ) {
+		$status = acf_pro_get_license_status();
+	}
+
+	return in_array( $status['status'], array( 'expired', 'cancelled' ), true );
+}
+
+/**
+ * Checks if the current license was refunded.
+ *
+ * @since 6.2.2
+ *
+ * @param array $status Optional license status array.
+ * @return bool True if refunded, false if not.
+ */
+function acf_pro_was_license_refunded( $status = array() ) {
+	if ( empty( $status ) ) {
+		$status = acf_pro_get_license_status();
+	}
+
+	return ! empty( $status['refunded'] );
 }

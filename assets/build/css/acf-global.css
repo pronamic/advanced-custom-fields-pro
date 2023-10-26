@@ -2285,18 +2285,27 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner h2,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner h2,
+.acf-no-field-groups-wrapper .acf-options-preview-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner h2,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner h2,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner h2,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-post-types-wrapper .acf-no-post-types-inner h2,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner h2,
+.acf-no-post-types-wrapper .acf-options-preview-inner h2,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner h2,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner h2,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner h2, .acf-page-title, .acf-admin-page h2,
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner h2,
+.acf-no-options-pages-wrapper .acf-options-preview-inner h2,
+.acf-options-preview-wrapper .acf-no-field-groups-inner h2,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner h2,
+.acf-options-preview-wrapper .acf-no-post-types-inner h2,
+.acf-options-preview-wrapper .acf-no-options-pages-inner h2,
+.acf-options-preview-wrapper .acf-options-preview-inner h2, .acf-page-title, .acf-admin-page h2,
 .acf-headerbar h2 {
   font-size: 18px;
   font-weight: 400;
@@ -2331,6 +2340,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-post-types-inner .acf-admin-page p,
 .acf-admin-page .acf-no-field-groups-wrapper .acf-no-options-pages-inner p,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner .acf-admin-page p,
+.acf-admin-page .acf-no-field-groups-wrapper .acf-options-preview-inner p,
+.acf-no-field-groups-wrapper .acf-options-preview-inner .acf-admin-page p,
 .acf-admin-page .acf-no-taxonomies-wrapper .acf-no-field-groups-inner p,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner .acf-admin-page p,
 .acf-admin-page .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner p,
@@ -2339,6 +2350,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner .acf-admin-page p,
 .acf-admin-page .acf-no-taxonomies-wrapper .acf-no-options-pages-inner p,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner .acf-admin-page p,
+.acf-admin-page .acf-no-taxonomies-wrapper .acf-options-preview-inner p,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner .acf-admin-page p,
 .acf-admin-page .acf-no-post-types-wrapper .acf-no-field-groups-inner p,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner .acf-admin-page p,
 .acf-admin-page .acf-no-post-types-wrapper .acf-no-taxonomies-inner p,
@@ -2347,6 +2360,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-post-types-wrapper .acf-no-post-types-inner .acf-admin-page p,
 .acf-admin-page .acf-no-post-types-wrapper .acf-no-options-pages-inner p,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner .acf-admin-page p,
+.acf-admin-page .acf-no-post-types-wrapper .acf-options-preview-inner p,
+.acf-no-post-types-wrapper .acf-options-preview-inner .acf-admin-page p,
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-field-groups-inner p,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner .acf-admin-page p,
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-taxonomies-inner p,
@@ -2354,7 +2369,19 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-post-types-inner p,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner .acf-admin-page p,
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-options-pages-inner p,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner .acf-admin-page p, .acf-admin-page #acf-admin-tools .acf-meta-box-wrap .acf-fields .acf-label, #acf-admin-tools .acf-meta-box-wrap .acf-fields .acf-admin-page .acf-label {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner .acf-admin-page p,
+.acf-admin-page .acf-no-options-pages-wrapper .acf-options-preview-inner p,
+.acf-no-options-pages-wrapper .acf-options-preview-inner .acf-admin-page p,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-field-groups-inner p,
+.acf-options-preview-wrapper .acf-no-field-groups-inner .acf-admin-page p,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-taxonomies-inner p,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner .acf-admin-page p,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-post-types-inner p,
+.acf-options-preview-wrapper .acf-no-post-types-inner .acf-admin-page p,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-options-pages-inner p,
+.acf-options-preview-wrapper .acf-no-options-pages-inner .acf-admin-page p,
+.acf-admin-page .acf-options-preview-wrapper .acf-options-preview-inner p,
+.acf-options-preview-wrapper .acf-options-preview-inner .acf-admin-page p, .acf-admin-page #acf-admin-tools .acf-meta-box-wrap .acf-fields .acf-label, #acf-admin-tools .acf-meta-box-wrap .acf-fields .acf-admin-page .acf-label {
   font-size: 14px;
 }
 .acf-admin-page .p3, .acf-admin-page .acf-internal-post-type .wp-list-table .post-state, .acf-internal-post-type .wp-list-table .acf-admin-page .post-state, .acf-admin-page .subtitle {
@@ -2362,7 +2389,7 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 }
 .acf-admin-page .p4, .acf-admin-page .acf-admin-toolbar a.acf-admin-toolbar-upgrade-btn p, .acf-admin-toolbar a.acf-admin-toolbar-upgrade-btn .acf-admin-page p, .acf-admin-page #acf-update-information .form-table th, #acf-update-information .form-table .acf-admin-page th,
 .acf-admin-page #acf-update-information .form-table td,
-#acf-update-information .form-table .acf-admin-page td, .acf-admin-page #acf-admin-tools.tool-export .acf-panel h3, #acf-admin-tools.tool-export .acf-panel .acf-admin-page h3, .acf-admin-page .acf-btn.acf-btn-sm, .acf-admin-page .acf-admin-toolbar .acf-tab, .acf-admin-toolbar .acf-admin-page .acf-tab, .acf-admin-page .acf-internal-post-type .subsubsub li, .acf-internal-post-type .subsubsub .acf-admin-page li, .acf-admin-page .acf-internal-post-type .wp-list-table tbody th, .acf-internal-post-type .wp-list-table tbody .acf-admin-page th,
+#acf-update-information .form-table .acf-admin-page td, .acf-admin-page #acf-admin-tools.tool-export .acf-panel h3, #acf-admin-tools.tool-export .acf-panel .acf-admin-page h3, .acf-admin-page .acf-btn.acf-btn-sm, .acf-admin-page .acf-admin-toolbar .acf-tab, .acf-admin-toolbar .acf-admin-page .acf-tab, .acf-admin-page .acf-options-preview .acf-options-pages-preview-upgrade-button p, .acf-options-preview .acf-options-pages-preview-upgrade-button .acf-admin-page p, .acf-admin-page .acf-internal-post-type .subsubsub li, .acf-internal-post-type .subsubsub .acf-admin-page li, .acf-admin-page .acf-internal-post-type .wp-list-table tbody th, .acf-internal-post-type .wp-list-table tbody .acf-admin-page th,
 .acf-admin-page .acf-internal-post-type .wp-list-table tbody td,
 .acf-internal-post-type .wp-list-table tbody .acf-admin-page td, .acf-admin-page .acf-internal-post-type .wp-list-table thead th, .acf-internal-post-type .wp-list-table thead .acf-admin-page th, .acf-admin-page .acf-internal-post-type .wp-list-table thead td, .acf-internal-post-type .wp-list-table thead .acf-admin-page td,
 .acf-admin-page .acf-internal-post-type .wp-list-table tfoot th,
@@ -2387,6 +2414,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-post-types-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-field-groups-wrapper .acf-no-options-pages-inner p.acf-small,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-no-field-groups-wrapper .acf-options-preview-inner p.acf-small,
+.acf-no-field-groups-wrapper .acf-options-preview-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-taxonomies-wrapper .acf-no-field-groups-inner p.acf-small,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner p.acf-small,
@@ -2395,6 +2424,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-taxonomies-wrapper .acf-no-options-pages-inner p.acf-small,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-no-taxonomies-wrapper .acf-options-preview-inner p.acf-small,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-post-types-wrapper .acf-no-field-groups-inner p.acf-small,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-post-types-wrapper .acf-no-taxonomies-inner p.acf-small,
@@ -2403,6 +2434,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-post-types-wrapper .acf-no-post-types-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-post-types-wrapper .acf-no-options-pages-inner p.acf-small,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-no-post-types-wrapper .acf-options-preview-inner p.acf-small,
+.acf-no-post-types-wrapper .acf-options-preview-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-field-groups-inner p.acf-small,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-taxonomies-inner p.acf-small,
@@ -2410,7 +2443,19 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-post-types-inner p.acf-small,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner .acf-admin-page p.acf-small,
 .acf-admin-page .acf-no-options-pages-wrapper .acf-no-options-pages-inner p.acf-small,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner .acf-admin-page p.acf-small, .acf-admin-page .acf-internal-post-type .row-actions, .acf-internal-post-type .acf-admin-page .row-actions, .acf-admin-page .acf-small {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-no-options-pages-wrapper .acf-options-preview-inner p.acf-small,
+.acf-no-options-pages-wrapper .acf-options-preview-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-field-groups-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-field-groups-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-taxonomies-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-post-types-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-post-types-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-options-preview-wrapper .acf-no-options-pages-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-options-pages-inner .acf-admin-page p.acf-small,
+.acf-admin-page .acf-options-preview-wrapper .acf-options-preview-inner p.acf-small,
+.acf-options-preview-wrapper .acf-options-preview-inner .acf-admin-page p.acf-small, .acf-admin-page .acf-internal-post-type .row-actions, .acf-internal-post-type .acf-admin-page .row-actions, .acf-admin-page .acf-small {
   font-size: 12px;
 }
 .acf-admin-page .p7, .acf-admin-page .acf-tooltip, .acf-admin-page .acf-notice p.help,
@@ -3715,7 +3760,8 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper,
 .acf-no-taxonomies-wrapper,
 .acf-no-post-types-wrapper,
-.acf-no-options-pages-wrapper {
+.acf-no-options-pages-wrapper,
+.acf-options-preview-wrapper {
   display: flex;
   justify-content: center;
   padding-top: 48px;
@@ -3725,25 +3771,34 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner,
+.acf-no-field-groups-wrapper .acf-options-preview-inner,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner,
 .acf-no-post-types-wrapper .acf-no-post-types-inner,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner,
+.acf-no-post-types-wrapper .acf-options-preview-inner,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner,
+.acf-no-options-pages-wrapper .acf-options-preview-inner,
+.acf-options-preview-wrapper .acf-no-field-groups-inner,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner,
+.acf-options-preview-wrapper .acf-no-post-types-inner,
+.acf-options-preview-wrapper .acf-no-options-pages-inner,
+.acf-options-preview-wrapper .acf-options-preview-inner {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   align-items: flex-start;
   text-align: center;
-  max-width: 380px;
+  max-width: 420px;
   min-height: 320px;
 }
 .acf-no-field-groups-wrapper .acf-no-field-groups-inner img,
@@ -3758,6 +3813,9 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner img,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner h2,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner p,
+.acf-no-field-groups-wrapper .acf-options-preview-inner img,
+.acf-no-field-groups-wrapper .acf-options-preview-inner h2,
+.acf-no-field-groups-wrapper .acf-options-preview-inner p,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner img,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner p,
@@ -3770,6 +3828,9 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner img,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner p,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner img,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner h2,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner p,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner img,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner h2,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner p,
@@ -3782,6 +3843,9 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-post-types-wrapper .acf-no-options-pages-inner img,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner h2,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner p,
+.acf-no-post-types-wrapper .acf-options-preview-inner img,
+.acf-no-post-types-wrapper .acf-options-preview-inner h2,
+.acf-no-post-types-wrapper .acf-options-preview-inner p,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner img,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner h2,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner p,
@@ -3793,46 +3857,83 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-options-pages-wrapper .acf-no-post-types-inner p,
 .acf-no-options-pages-wrapper .acf-no-options-pages-inner img,
 .acf-no-options-pages-wrapper .acf-no-options-pages-inner h2,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner p {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner p,
+.acf-no-options-pages-wrapper .acf-options-preview-inner img,
+.acf-no-options-pages-wrapper .acf-options-preview-inner h2,
+.acf-no-options-pages-wrapper .acf-options-preview-inner p,
+.acf-options-preview-wrapper .acf-no-field-groups-inner img,
+.acf-options-preview-wrapper .acf-no-field-groups-inner h2,
+.acf-options-preview-wrapper .acf-no-field-groups-inner p,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner img,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner h2,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner p,
+.acf-options-preview-wrapper .acf-no-post-types-inner img,
+.acf-options-preview-wrapper .acf-no-post-types-inner h2,
+.acf-options-preview-wrapper .acf-no-post-types-inner p,
+.acf-options-preview-wrapper .acf-no-options-pages-inner img,
+.acf-options-preview-wrapper .acf-no-options-pages-inner h2,
+.acf-options-preview-wrapper .acf-no-options-pages-inner p,
+.acf-options-preview-wrapper .acf-options-preview-inner img,
+.acf-options-preview-wrapper .acf-options-preview-inner h2,
+.acf-options-preview-wrapper .acf-options-preview-inner p {
   flex: 1 0 100%;
 }
 .acf-no-field-groups-wrapper .acf-no-field-groups-inner h2,
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner h2,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner h2,
+.acf-no-field-groups-wrapper .acf-options-preview-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner h2,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner h2,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner h2,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner h2,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-post-types-wrapper .acf-no-post-types-inner h2,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner h2,
+.acf-no-post-types-wrapper .acf-options-preview-inner h2,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner h2,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner h2,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner h2,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner h2 {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner h2,
+.acf-no-options-pages-wrapper .acf-options-preview-inner h2,
+.acf-options-preview-wrapper .acf-no-field-groups-inner h2,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner h2,
+.acf-options-preview-wrapper .acf-no-post-types-inner h2,
+.acf-options-preview-wrapper .acf-no-options-pages-inner h2,
+.acf-options-preview-wrapper .acf-options-preview-inner h2 {
   margin-top: 32px;
   margin-bottom: 0;
   padding: 0;
   color: #344054;
+  line-height: 1.6rem;
 }
 .acf-no-field-groups-wrapper .acf-no-field-groups-inner p,
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner p,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner p,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner p,
+.acf-no-field-groups-wrapper .acf-options-preview-inner p,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner p,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner p,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner p,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner p,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner p,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner p,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner p,
 .acf-no-post-types-wrapper .acf-no-post-types-inner p,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner p,
+.acf-no-post-types-wrapper .acf-options-preview-inner p,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner p,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner p,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner p,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner p {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner p,
+.acf-no-options-pages-wrapper .acf-options-preview-inner p,
+.acf-options-preview-wrapper .acf-no-field-groups-inner p,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner p,
+.acf-options-preview-wrapper .acf-no-post-types-inner p,
+.acf-options-preview-wrapper .acf-no-options-pages-inner p,
+.acf-options-preview-wrapper .acf-options-preview-inner p {
   margin-top: 12px;
   margin-bottom: 0;
   padding: 0;
@@ -3842,18 +3943,27 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner p.acf-small,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner p.acf-small,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner p.acf-small,
+.acf-no-field-groups-wrapper .acf-options-preview-inner p.acf-small,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner p.acf-small,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner p.acf-small,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner p.acf-small,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner p.acf-small,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner p.acf-small,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner p.acf-small,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner p.acf-small,
 .acf-no-post-types-wrapper .acf-no-post-types-inner p.acf-small,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner p.acf-small,
+.acf-no-post-types-wrapper .acf-options-preview-inner p.acf-small,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner p.acf-small,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner p.acf-small,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner p.acf-small,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner p.acf-small {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner p.acf-small,
+.acf-no-options-pages-wrapper .acf-options-preview-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-field-groups-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-post-types-inner p.acf-small,
+.acf-options-preview-wrapper .acf-no-options-pages-inner p.acf-small,
+.acf-options-preview-wrapper .acf-options-preview-inner p.acf-small {
   display: block;
   position: relative;
   margin-top: 32px;
@@ -3862,18 +3972,27 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner img,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner img,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner img,
+.acf-no-field-groups-wrapper .acf-options-preview-inner img,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner img,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner img,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner img,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner img,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner img,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner img,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner img,
 .acf-no-post-types-wrapper .acf-no-post-types-inner img,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner img,
+.acf-no-post-types-wrapper .acf-options-preview-inner img,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner img,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner img,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner img,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner img {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner img,
+.acf-no-options-pages-wrapper .acf-options-preview-inner img,
+.acf-options-preview-wrapper .acf-no-field-groups-inner img,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner img,
+.acf-options-preview-wrapper .acf-no-post-types-inner img,
+.acf-options-preview-wrapper .acf-no-options-pages-inner img,
+.acf-options-preview-wrapper .acf-options-preview-inner img {
   max-width: 284px;
   margin-bottom: 0;
 }
@@ -3881,18 +4000,27 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner .acf-btn,
 .acf-no-field-groups-wrapper .acf-no-post-types-inner .acf-btn,
 .acf-no-field-groups-wrapper .acf-no-options-pages-inner .acf-btn,
+.acf-no-field-groups-wrapper .acf-options-preview-inner .acf-btn,
 .acf-no-taxonomies-wrapper .acf-no-field-groups-inner .acf-btn,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner .acf-btn,
 .acf-no-taxonomies-wrapper .acf-no-post-types-inner .acf-btn,
 .acf-no-taxonomies-wrapper .acf-no-options-pages-inner .acf-btn,
+.acf-no-taxonomies-wrapper .acf-options-preview-inner .acf-btn,
 .acf-no-post-types-wrapper .acf-no-field-groups-inner .acf-btn,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner .acf-btn,
 .acf-no-post-types-wrapper .acf-no-post-types-inner .acf-btn,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner .acf-btn,
+.acf-no-post-types-wrapper .acf-options-preview-inner .acf-btn,
 .acf-no-options-pages-wrapper .acf-no-field-groups-inner .acf-btn,
 .acf-no-options-pages-wrapper .acf-no-taxonomies-inner .acf-btn,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner .acf-btn,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner .acf-btn {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner .acf-btn,
+.acf-no-options-pages-wrapper .acf-options-preview-inner .acf-btn,
+.acf-options-preview-wrapper .acf-no-field-groups-inner .acf-btn,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner .acf-btn,
+.acf-options-preview-wrapper .acf-no-post-types-inner .acf-btn,
+.acf-options-preview-wrapper .acf-no-options-pages-inner .acf-btn,
+.acf-options-preview-wrapper .acf-options-preview-inner .acf-btn {
   margin-top: 32px;
 }
 .acf-no-field-groups-wrapper .acf-no-post-types-inner img,
@@ -3902,14 +4030,17 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-post-types-wrapper .acf-no-post-types-inner img,
 .acf-no-post-types-wrapper .acf-no-options-pages-inner img,
 .acf-no-options-pages-wrapper .acf-no-post-types-inner img,
-.acf-no-options-pages-wrapper .acf-no-options-pages-inner img {
+.acf-no-options-pages-wrapper .acf-no-options-pages-inner img,
+.acf-options-preview-wrapper .acf-no-post-types-inner img,
+.acf-options-preview-wrapper .acf-no-options-pages-inner img {
   width: 106px;
   height: 88px;
 }
 .acf-no-field-groups-wrapper .acf-no-taxonomies-inner img,
 .acf-no-taxonomies-wrapper .acf-no-taxonomies-inner img,
 .acf-no-post-types-wrapper .acf-no-taxonomies-inner img,
-.acf-no-options-pages-wrapper .acf-no-taxonomies-inner img {
+.acf-no-options-pages-wrapper .acf-no-taxonomies-inner img,
+.acf-options-preview-wrapper .acf-no-taxonomies-inner img {
   width: 98px;
   height: 88px;
 }
@@ -3948,9 +4079,81 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-no-options-pages .wp-list-table tfoot {
   display: none;
 }
+.acf-no-field-groups .wp-list-table a.acf-btn,
+.acf-no-post-types .wp-list-table a.acf-btn,
+.acf-no-taxonomies .wp-list-table a.acf-btn,
+.acf-no-options-pages .wp-list-table a.acf-btn {
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  box-shadow: none;
+}
 
 .acf-internal-post-type #the-list .no-items td {
   vertical-align: middle;
+}
+
+/*---------------------------------------------------------------------------------------------
+*
+*  Options Page Preview
+*
+*---------------------------------------------------------------------------------------------*/
+.acf-options-preview .acf-btn {
+  margin-left: 8px;
+}
+.acf-options-preview .disabled {
+  background-color: #F2F4F7 !important;
+  color: #98A2B3 !important;
+  border: 1px #D0D5DD solid;
+  cursor: default !important;
+}
+.acf-options-preview .acf-options-pages-preview-upgrade-button {
+  height: 48px;
+  padding: 8px 48px 8px 48px !important;
+  border-radius: 6px;
+  border: 1px;
+  gap: 6px;
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+  background: linear-gradient(90.52deg, #3E8BFF 0.44%, #A45CFF 113.3%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  background-size: 180% 80%;
+  background-position: 100% 0;
+  transition: background-position 0.5s;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.acf-options-preview .acf-options-pages-preview-upgrade-button:hover {
+  background-position: 0 0;
+}
+.acf-options-preview .acf-options-pages-preview-upgrade-button:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+.acf-options-preview .acf-options-pages-preview-upgrade-button p {
+  margin: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-weight: normal;
+  text-transform: none;
+  color: #fff;
+}
+.acf-options-preview .acf-options-pages-preview-upgrade-button .acf-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+  margin-left: -2px;
+  background-color: #F9FAFB;
+}
+.acf-options-preview .acf_options_preview_wrap a.acf-btn i {
+  margin-right: -2px !important;
+  margin-left: 0px !important;
+}
+.acf-options-preview .acf-pro-label {
+  vertical-align: middle;
+}
+.acf-options-preview .acf_options_preview_wrap img {
+  max-height: 88px;
 }
 
 /*---------------------------------------------------------------------------------------------
@@ -4352,8 +4555,12 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   align-items: center;
   justify-content: space-between;
   max-width: 1440px;
+  gap: 8px;
 }
 .acf-headerbar .acf-page-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-top: 0;
   margin-right: 16px;
   margin-bottom: 0;
@@ -4365,6 +4572,10 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 }
 .acf-headerbar .acf-page-title .acf-duplicated-from {
   color: #98A2B3;
+}
+.acf-headerbar .acf-page-title .acf-pro-label {
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 880px) {
   .acf-headerbar {
@@ -4548,6 +4759,18 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 }
 .acf-btn.acf-btn-secondary:hover {
   background-color: #f3f9fc;
+}
+.acf-btn.acf-btn-muted {
+  background-color: #667085;
+  color: white;
+  height: 48px;
+  padding: 8px 28px 8px 28px !important;
+  border-radius: 6px;
+  border: 1px;
+  gap: 6px;
+}
+.acf-btn.acf-btn-muted:hover {
+  background-color: #475467 !important;
 }
 .acf-btn.acf-btn-tertiary {
   background-color: transparent;
@@ -5440,14 +5663,91 @@ h3.acf-sub-field-list-title:before,
   flex: 1 1 65%;
   margin-right: 32px;
 }
+#acf-license-information .inner {
+  padding: 0;
+}
+#acf-license-information .inner .acf-license-defined {
+  padding: 24px;
+  margin: 0;
+}
+#acf-license-information .inner .acf-retry-activation {
+  padding: 0 24px 24px 24px;
+}
+#acf-license-information .inner .acf-activation-form {
+  padding: 24px;
+}
+#acf-license-information .inner .acf-activation-form .acf-manage-license-btn {
+  float: right;
+  line-height: 40px;
+  align-items: center;
+  display: inline-flex;
+}
+#acf-license-information .inner .acf-activation-form .acf-manage-license-btn.acf-renew-subscription {
+  float: none;
+  line-height: initial;
+}
+#acf-license-information .inner .acf-activation-form .acf-manage-license-btn i {
+  margin: 0 0 0 5px;
+  width: 19px;
+  height: 19px;
+}
+#acf-license-information .inner .acf-activation-form .acf-recheck-license {
+  float: right;
+  line-height: 40px;
+}
+#acf-license-information .inner .acf-activation-form .acf-recheck-license i {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+#acf-license-information .inner .acf-license-status-wrap {
+  background: #F9FAFB;
+  border-top: 1px solid #EAECF0;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-license-status-table {
+  font-size: 14px;
+  padding: 24px 24px 16px 24px;
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-license-status-table th {
+  width: 160px;
+  font-weight: 500;
+  text-align: left;
+  padding-bottom: 16px;
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-license-status-table td {
+  padding-bottom: 16px;
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-license-status-table td .acf-license-status {
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 100px;
+  background: #EAECF0;
+  padding: 0 13px 1px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #667085;
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-license-status-table td .acf-license-status.active {
+  background: rgba(18, 183, 106, 0.15);
+  border: 1px solid rgba(18, 183, 106, 0.24);
+  color: rgb(18, 183, 106);
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-license-status-table td .acf-license-status.expired, #acf-license-information .inner .acf-license-status-wrap .acf-license-status-table td .acf-license-status.cancelled {
+  background: rgba(209, 55, 55, 0.24);
+  border: 1px solid rgba(209, 55, 55, 0.24);
+  color: rgb(209, 55, 55);
+}
+#acf-license-information .inner .acf-license-status-wrap .acf-no-license-view-pricing {
+  padding: 12px 24px;
+  border-top: 1px solid #EAECF0;
+  color: #667085;
+}
 @media screen and (max-width: 1024px) {
   #acf-license-information {
     margin-right: 0;
     margin-bottom: 32px;
   }
-}
-#acf-license-information .acf-activation-form {
-  margin-top: 24px;
 }
 #acf-license-information label {
   font-weight: 500;

@@ -32,7 +32,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 				'enable_opacity' => false,
 				'return_format'  => 'string', // 'string'|'array'
 			);
-
 		}
 
 
@@ -116,10 +115,9 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		*/
 
 		function render_field( $field ) {
-
-			// vars
-			$text_input   = acf_get_sub_array( $field, array( 'id', 'class', 'name', 'value' ) );
-			$hidden_input = acf_get_sub_array( $field, array( 'name', 'value' ) );
+			$text_input                             = acf_get_sub_array( $field, array( 'id', 'class', 'name', 'value' ) );
+			$hidden_input                           = acf_get_sub_array( $field, array( 'name', 'value' ) );
+			$text_input['data-alpha-skip-debounce'] = true;
 
 			// Color picker alpha library requires a specific data attribute to exist.
 			if ( $field['enable_opacity'] ) {
@@ -190,7 +188,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 					),
 				)
 			);
-
 		}
 
 		/**
@@ -287,7 +284,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 				'alpha' => (float) 0,
 			);
 		}
-
 	}
 
 	// initialize

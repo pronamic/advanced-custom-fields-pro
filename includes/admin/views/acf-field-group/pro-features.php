@@ -12,7 +12,7 @@ $acf_wpengine_logo_link             = acf_add_url_utm_tags( 'https://wpengine.co
 			<h1 class="acf-field-group-pro-features-title"><?php echo esc_html( $acf_field_group_pro_features_title ); ?> <div class="acf-pro-label">PRO</div></h1>
 			<p class="acf-field-group-pro-features-desc"><?php esc_html_e( 'Speed up your workflow and develop better websites with features like ACF Blocks and Options Pages, and sophisticated field types like Repeater, Flexible Content, Clone, and Gallery.', 'acf' ); ?></p>
 			<div class="acf-field-group-pro-features-actions">
-				<a target="_blank" href="<?php echo $acf_learn_more_link; ?>" class="acf-btn acf-pro-features-learn-more"><?php esc_html_e( 'Learn More', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a>
+				<a target="_blank" href="<?php echo $acf_learn_more_link; ?>" class="acf-btn acf-btn-muted acf-pro-features-learn-more"><?php esc_html_e( 'Learn More', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a>
 				<a target="_blank" href="<?php echo $acf_pricing_link; ?>" class="acf-btn acf-pro-features-upgrade"><?php esc_html_e( 'View Pricing & Upgrade', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a>
 			</div>
 		</div>

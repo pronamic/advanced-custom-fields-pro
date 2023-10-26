@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: WP Engine <support@advancedcustomfields.com>\n"
-"POT-Creation-Date: 2023-09-07 15:05+0000\n"
+"POT-Creation-Date: 2023-10-25 08:59+0000\n"
 "Report-Msgid-Bugs-To: https://support.advancedcustomfields.com\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -29,29 +29,29 @@ msgstr ""
 msgid "Block type \"%s\" is already registered."
 msgstr ""
 
-#: pro/blocks.php:723
+#: pro/blocks.php:728
 msgid "Switch to Edit"
 msgstr ""
 
-#: pro/blocks.php:724
+#: pro/blocks.php:729
 msgid "Switch to Preview"
 msgstr ""
 
-#: pro/blocks.php:725
+#: pro/blocks.php:730
 msgid "Change content alignment"
 msgstr ""
 
 #. translators: %s: Block type title
-#: pro/blocks.php:728
+#: pro/blocks.php:733
 msgid "%s settings"
 msgstr ""
 
-#: pro/blocks.php:936
+#: pro/blocks.php:941
 msgid "This block contains no editable fields."
 msgstr ""
 
 #. translators: %s: an admin URL to the field group edit screen
-#: pro/blocks.php:942
+#: pro/blocks.php:947
 msgid "Assign a <a href=\"%s\" target=\"_blank\">field group</a> to add fields to this block."
 msgstr ""
 
@@ -67,32 +67,37 @@ msgstr ""
 msgid "Options Updated"
 msgstr ""
 
-#: pro/updates.php:99
+#: pro/updates.php:73
 msgid "To enable updates, please enter your license key on the <a href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see <a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
 msgstr ""
 
-#: pro/updates.php:159
+#: pro/updates.php:132
 msgid "<b>ACF Activation Error</b>. Your defined license key has changed, but an error occurred when deactivating your old licence"
 msgstr ""
 
-#: pro/updates.php:154
+#: pro/updates.php:127
 msgid "<b>ACF Activation Error</b>. Your defined license key has changed, but an error occurred when connecting to activation server"
 msgstr ""
 
-#: pro/updates.php:192
+#: pro/updates.php:165
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
+#: pro/updates.php:160
 msgid "<b>ACF Activation Error</b>. An error occurred when connecting to activation server"
 msgstr ""
 
-#: pro/updates.php:279
+#: pro/updates.php:252
 msgid "Check Again"
 msgstr ""
 
-#: pro/updates.php:594
+#: pro/updates.php:573
 msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
+msgstr ""
+
+#. translators: %s - URL to ACF updates page
+#: pro/updates.php:611
+msgid "Your ACF PRO license key is valid but not activated on this site. Please <a href=\"%s\">deactivate</a> and then reactivate the license."
 msgstr ""
 
 #: pro/admin/admin-options-page.php:203
@@ -111,20 +116,20 @@ msgstr ""
 msgid "<b>Error</b>. Could not connect to update server"
 msgstr ""
 
-#: pro/admin/admin-updates.php:122, pro/admin/admin-updates.php:122, pro/admin/views/html-settings-updates.php:12
+#: pro/admin/admin-updates.php:122, pro/admin/admin-updates.php:122, pro/admin/views/html-settings-updates.php:139
 msgid "Updates"
 msgstr ""
 
 #. translators: %s the version of WordPress required for this ACF update
-#: pro/admin/admin-updates.php:200
+#: pro/admin/admin-updates.php:201
 msgid "An update to ACF is available, but it is not compatible with your version of WordPress. Please upgrade to WordPress %s or newer to update ACF."
 msgstr ""
 
-#: pro/admin/admin-updates.php:223
+#: pro/admin/admin-updates.php:224
 msgid "<b>Error</b>. Could not authenticate update package. Please check again or deactivate and reactivate your ACF PRO license."
 msgstr ""
 
-#: pro/admin/admin-updates.php:212
+#: pro/admin/admin-updates.php:213
 msgid "<b>Error</b>. Your license for this site has expired or been deactivated. Please reactivate your ACF PRO license."
 msgstr ""
 
@@ -635,7 +640,7 @@ msgstr ""
 msgid "Select options page..."
 msgstr ""
 
-#: pro/locations/class-acf-location-options-page.php:73, pro/post-types/acf-ui-options-page.php:95, pro/admin/post-types/admin-ui-options-page.php:483
+#: pro/locations/class-acf-location-options-page.php:74, pro/post-types/acf-ui-options-page.php:95, pro/admin/post-types/admin-ui-options-page.php:483
 msgid "Add New Options Page"
 msgstr ""
 
@@ -808,79 +813,144 @@ msgid_plural "%s options pages synchronized."
 msgstr[0] ""
 msgstr[1] ""
 
-#: pro/admin/views/html-settings-updates.php:6
+#: pro/admin/views/html-settings-updates.php:9
 msgid "Deactivate License"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:6
+#: pro/admin/views/html-settings-updates.php:9
 msgid "Activate License"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:16
-msgid "License Information"
+#: pro/admin/views/html-settings-updates.php:26
+msgctxt "license status"
+msgid "Inactive"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:34
-msgid "To unlock updates, please enter your license key below. If you don't have a licence key, please see <a href=\"%s\" target=\"_blank\">details & pricing</a>."
+msgctxt "license status"
+msgid "Cancelled"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:37
+#: pro/admin/views/html-settings-updates.php:32
+msgctxt "license status"
+msgid "Expired"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:30
+msgctxt "license status"
+msgid "Active"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:47
+msgid "Subscription Status"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:45
+msgid "License Status"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:60
+msgid "Subscription Type"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:58
+msgid "License Type"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:67
+msgid "Lifetime - "
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:81
+msgid "Subscription Expires"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:79
+msgid "Subscription Expired"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:113
+msgid "Manage License"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:125
+msgid "Renew Subscription"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:143
+msgid "License Information"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:161
 msgid "License Key"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:22
+#: pro/admin/views/html-settings-updates.php:181
+msgid "Recheck License"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:149
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
+#: pro/admin/views/html-settings-updates.php:155
 msgid "Retry Activation"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:61
+#: pro/admin/views/html-settings-updates.php:201
+msgid "View pricing & purchase"
+msgstr ""
+
+#. translators: %s - link to ACF website
+#: pro/admin/views/html-settings-updates.php:209
+msgid "Don't have an ACF PRO license? %s"
+msgstr ""
+
+#: pro/admin/views/html-settings-updates.php:223
 msgid "Update Information"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:68
+#: pro/admin/views/html-settings-updates.php:230
 msgid "Current Version"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:76
+#: pro/admin/views/html-settings-updates.php:238
 msgid "Latest Version"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:84
+#: pro/admin/views/html-settings-updates.php:246
 msgid "Update Available"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:91
+#: pro/admin/views/html-settings-updates.php:253
 msgid "No"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:89
+#: pro/admin/views/html-settings-updates.php:251
 msgid "Yes"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:98
+#: pro/admin/views/html-settings-updates.php:260
 msgid "Upgrade Notice"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:128
+#: pro/admin/views/html-settings-updates.php:287
 msgid "Check For Updates"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:123
+#: pro/admin/views/html-settings-updates.php:284
 msgid "Enter your license key to unlock updates"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:121
+#: pro/admin/views/html-settings-updates.php:282
 msgid "Update Plugin"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:119
+#: pro/admin/views/html-settings-updates.php:280
 msgid "Please reactivate your license to unlock updates"
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:117
+#: pro/admin/views/html-settings-updates.php:278
 msgid "Please upgrade WordPress to update ACF"
 msgstr ""
 

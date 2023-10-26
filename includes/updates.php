@@ -244,7 +244,6 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 		 */
 
 		function get_plugin_updates( $force_check = false ) {
-
 			// var
 			$transient_name = 'acf_plugin_updates';
 
@@ -301,6 +300,11 @@ if ( ! class_exists( 'ACF_Updates' ) ) :
 			// append checked reference
 			if ( is_array( $response ) ) {
 				$response['checked'] = $checked;
+
+				if ( isset( $response['license_status'] ) && function_exists( 'acf_pro_update_license_status' ) ) {
+					acf_pro_update_license_status( $response['license_status'] );
+					unset( $response['license_status'] );
+				}
 			}
 
 			// allow json to include expiration but force minimum and max for safety

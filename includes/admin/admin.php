@@ -216,6 +216,8 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			if ( isset( $screen->base ) && 'post' === $screen->base ) {
 				acf_get_view( 'global/form-top' );
 			}
+
+			do_action( 'acf/in_admin_header' );
 		}
 
 		/**

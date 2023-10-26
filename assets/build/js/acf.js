@@ -3965,14 +3965,25 @@
    *
    *  Returns true if the Gutenberg editor is being used.
    *
-   *  @date	14/11/18
    *  @since	5.8.0
    *
-   *  @param	vois
    *  @return	bool
    */
   acf.isGutenberg = function () {
     return !!(window.wp && wp.data && wp.data.select && wp.data.select('core/editor'));
+  };
+
+  /**
+   *  acf.isGutenbergPostEditor
+   *
+   *  Returns true if the Gutenberg post editor is being used.
+   *
+   *  @since	6.2.2
+   *
+   *  @return	bool
+   */
+  acf.isGutenbergPostEditor = function () {
+    return !!(window.wp && wp.data && wp.data.select && wp.data.select('core/edit-post'));
   };
 
   /**

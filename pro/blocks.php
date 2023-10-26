@@ -495,6 +495,11 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
 		$is_preview = true;
 	}
 
+	// If ACF's block save method hasn't been called yet, try to initialize a default block.
+	if ( empty( $attributes['name'] ) && ! empty( $wp_block->name ) ) {
+		$attributes['name'] = $wp_block->name;
+	}
+
 	// Return rendered block HTML.
 	return acf_rendered_block( $attributes, $content, $is_preview, $post_id, $wp_block );
 }

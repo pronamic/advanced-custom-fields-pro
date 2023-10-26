@@ -71,6 +71,10 @@ if ( isset( $submenu[ $parent_slug ] ) ) {
 			$acf_more_items[] = $menu_item;
 		} else {
 			// Third party tabs placed into the "More" menu.
+			if ( 'acf_options_preview' === $menu_item['class'] ) {
+				continue;
+			}
+
 			$more_items[] = $menu_item;
 		}
 	}
@@ -78,9 +82,9 @@ if ( isset( $submenu[ $parent_slug ] ) ) {
 
 if ( ! acf_get_setting( 'pro' ) ) {
 	$acf_more_items[] = array(
-		'url'    => acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'more-menu', 'options-pages' ),
+		'url'    => 'edit.php?post_type=acf-field-group&page=acf_options_preview',
 		'text'   => __( 'Options Pages', 'acf' ) . '<span class="acf-requires-pro">' . __( 'PRO', 'acf' ) . '</span>',
-		'target' => '_blank',
+		'target' => '_self',
 	);
 }
 
@@ -224,6 +228,8 @@ if ( ! in_array( $screen->id, acf_get_internal_post_types(), true ) ) {
 		$acf_page_title = __( 'Tools', 'acf' );
 	} elseif ( $plugin_page == 'acf-settings-updates' ) {
 		$acf_page_title = __( 'Updates', 'acf' );
+	} elseif ( $plugin_page == 'acf_options_preview' && ! acf_is_pro() ) {
+		$acf_page_title = __( 'Options Pages', 'acf' );
 	}
 	acf_get_view( 'global/header' );
 }

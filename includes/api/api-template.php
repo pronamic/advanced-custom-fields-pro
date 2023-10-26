@@ -124,7 +124,7 @@ function get_field_object( $selector, $post_id = false, $format_value = true, $l
 *  @date    4/08/2015
 *  @since   5.2.3
 *
-*  @param   $selector (mixed) identifyer of field. Can be an ID, key, name or post object
+*  @param   $selector (mixed) identifier of field. Can be an ID, key, name or post object
 *  @param   $post_id (mixed) the post_id of which the value is saved against
 *  @param   $strict (boolean) if true, return a field only when a field key is found.
 *  @return  $field (array)

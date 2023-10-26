@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-09-07T15:02:44+00:00\n"
+"PO-Revision-Date: 2023-10-25T08:59:42+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
@@ -21,75 +21,83 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/views/acf-post-type/advanced-settings.php:703
+msgid "In the editor used as the placeholder of the title."
+msgstr "제목의 자리 표시자로 사용되는 편집기에서."
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:702
+msgid "Title Placeholder"
+msgstr "제목 자리 표시자"
+
 #: includes/admin/views/global/navigation.php:93
 msgid "4 Months Free"
-msgstr ""
+msgstr "4개월 무료"
 
 #. translators: %s - A singular label for a post type or taxonomy.
 #: includes/admin/views/global/form-top.php:56
 msgid " (Duplicated from %s)"
-msgstr ""
+msgstr " (%s에서 복제됨)"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:298
 msgid "Select Options Pages"
-msgstr ""
+msgstr "옵션 페이지 선택"
 
 #: includes/admin/post-types/admin-taxonomy.php:107
 msgid "Duplicate taxonomy"
-msgstr ""
+msgstr "중복 분류"
 
 #: includes/admin/post-types/admin-post-type.php:106
 #: includes/admin/post-types/admin-taxonomy.php:106
 msgid "Create taxonomy"
-msgstr ""
+msgstr "분류 체계 만들기"
 
 #: includes/admin/post-types/admin-post-type.php:105
 msgid "Duplicate post type"
-msgstr ""
+msgstr "중복 글 유형"
 
 #: includes/admin/post-types/admin-post-type.php:104
 #: includes/admin/post-types/admin-taxonomy.php:108
 msgid "Create post type"
-msgstr ""
+msgstr "글 유형 만들기"
 
 #: includes/admin/post-types/admin-post-type.php:103
 #: includes/admin/post-types/admin-taxonomy.php:105
 msgid "Link field groups"
-msgstr ""
+msgstr "필드 그룹 연결"
 
 #: includes/admin/post-types/admin-post-type.php:102
 #: includes/admin/post-types/admin-taxonomy.php:104
 msgid "Add fields"
-msgstr ""
+msgstr "필드 추가"
 
 #: includes/admin/post-types/admin-field-group.php:121
-#: assets/build/js/acf-field-group.js:2744
+#: assets/build/js/acf-field-group.js:2745
 #: assets/build/js/acf-field-group.js:3220
 msgid "This Field"
-msgstr ""
+msgstr "이 필드"
 
 #: includes/admin/admin.php:265
 msgid "ACF PRO"
-msgstr ""
+msgstr "ACF PRO"
 
 #: includes/admin/admin.php:263
 msgid "Feedback"
-msgstr ""
+msgstr "피드백"
 
 #: includes/admin/admin.php:261
 msgid "Support"
-msgstr ""
+msgstr "지원"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:236
 msgid "is developed and maintained by"
-msgstr ""
+msgstr "에 의해 개발 및 유지 관리됩니다."
 
 #. translators: %s - either "post type" or "taxonomy"
 #: includes/admin/admin-internal-post-type.php:321
 msgid "Add this %s to the location rules of the selected field groups."
-msgstr ""
+msgstr "선택한 필드 그룹의 위치 규칙에 이 %s를 추가합니다."
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
 #: includes/acf-bidirectional-functions.php:271
@@ -100,6 +108,10 @@ msgid ""
 "information, please read the <a href=\"%s\" target=\"_blank\">documentation</"
 "a>."
 msgstr ""
+"양방향 설정을 활성화하면 이 필드에 대해 선택한 각 값에 대해 대상 필드에서 값"
+"을 업데이트하고 업데이트할 항목의 글 ID, 분류 ID 또는 사용자 ID를 추가하거나 "
+"제거할 수 있습니다. 자세한 내용은 <a href=\"%s\" target=\"_blank\">문서</a>"
+"를 참조하세요."
 
 #: includes/acf-bidirectional-functions.php:247
 msgid ""
@@ -108,23 +120,26 @@ msgid ""
 "field is being displayed. For example, if this field is displayed on a "
 "Taxonomy, your target field should be of type Taxonomy"
 msgstr ""
+"업데이트 중인 항목에 대한 참조를 다시 저장할 필드를 선택합니다. 이 필드를 선"
+"택할 수 있습니다. 대상 필드는 이 필드가 표시되는 위치와 호환되어야 합니다. 예"
+"를 들어 이 필드가 분류에 표시되는 경우 대상 필드는 분류 유형이어야 합니다."
 
 #: includes/acf-bidirectional-functions.php:246
 msgid "Target Field"
-msgstr ""
+msgstr "대상 필드"
 
 #: includes/acf-bidirectional-functions.php:220
 msgid "Update a field on the selected values, referencing back to this ID"
-msgstr ""
+msgstr "이 ID를 다시 참조하여 선택한 값의 필드를 업데이트합니다."
 
 #: includes/acf-bidirectional-functions.php:219
 msgid "Bidirectional"
-msgstr ""
+msgstr "양방향"
 
 #. translators: %s A field type name, such as "Relationship"
 #: includes/acf-bidirectional-functions.php:192
 msgid "%s Field"
-msgstr ""
+msgstr "%s 필드"
 
 #: includes/fields/class-acf-field-page_link.php:517
 #: includes/fields/class-acf-field-post_object.php:426
@@ -142,39 +157,39 @@ msgid "Lower case letters, underscores and dashes only, Max 32 characters."
 msgstr ""
 "소문자, 밑줄 및 대시만 입력할 수 있으며 최대 32자까지 입력할 수 있습니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1132
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1136
 msgid "The capability name for assigning terms of this taxonomy."
 msgstr "이 택소노미의 용어를 할당하기 위한 기능 이름입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1131
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1135
 msgid "Assign Terms Capability"
 msgstr "용어 할당 가능"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1115
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1119
 msgid "The capability name for deleting terms of this taxonomy."
 msgstr "이 택소노미의 용어를 삭제하기 위한 기능 이름입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1114
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1118
 msgid "Delete Terms Capability"
 msgstr "약관 삭제 가능"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1098
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1102
 msgid "The capability name for editing terms of this taxonomy."
 msgstr "이 택소노미의 용어를 편집하기 위한 기능 이름입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1097
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1101
 msgid "Edit Terms Capability"
 msgstr "약관 편집 가능"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1081
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1085
 msgid "The capability name for managing terms of this taxonomy."
 msgstr "이 택소노미의 용어를 관리하기 위한 기능 이름입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1080
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1084
 msgid "Manage Terms Capability"
 msgstr "약관 관리 가능"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:866
+#: includes/admin/views/acf-post-type/advanced-settings.php:886
 msgid ""
 "Sets whether posts should be excluded from search results and taxonomy "
 "archive pages."
@@ -309,35 +324,35 @@ msgstr "택소노미 편집"
 msgid "Add New Taxonomy"
 msgstr "새 택소노미 추가"
 
-#: includes/post-types/class-acf-post-type.php:99
+#: includes/post-types/class-acf-post-type.php:100
 msgid "No Post Types found in Trash"
 msgstr "휴지통에서 게시물 유형을 찾을 수 없습니다."
 
-#: includes/post-types/class-acf-post-type.php:98
+#: includes/post-types/class-acf-post-type.php:99
 msgid "No Post Types found"
 msgstr "게시물 유형을 찾을 수 없습니다."
 
-#: includes/post-types/class-acf-post-type.php:97
+#: includes/post-types/class-acf-post-type.php:98
 msgid "Search Post Types"
 msgstr "게시물 유형 검색"
 
-#: includes/post-types/class-acf-post-type.php:96
+#: includes/post-types/class-acf-post-type.php:97
 msgid "View Post Type"
 msgstr "게시물 유형 보기"
 
-#: includes/post-types/class-acf-post-type.php:95
+#: includes/post-types/class-acf-post-type.php:96
 msgid "New Post Type"
 msgstr "새 게시물 유형"
 
-#: includes/post-types/class-acf-post-type.php:94
+#: includes/post-types/class-acf-post-type.php:95
 msgid "Edit Post Type"
 msgstr "게시물 유형 편집"
 
-#: includes/post-types/class-acf-post-type.php:93
+#: includes/post-types/class-acf-post-type.php:94
 msgid "Add New Post Type"
 msgstr "새 게시물 유형 추가"
 
-#: includes/post-types/class-acf-post-type.php:338
+#: includes/post-types/class-acf-post-type.php:361
 msgid ""
 "This post type key is already in use by another post type registered outside "
 "of ACF and cannot be used."
@@ -345,7 +360,7 @@ msgstr ""
 "이 게시물 유형 키는 ACF 외부에 등록된 다른 게시물 유형에서 이미 사용 중이므"
 "로 사용할 수 없습니다."
 
-#: includes/post-types/class-acf-post-type.php:333
+#: includes/post-types/class-acf-post-type.php:356
 msgid ""
 "This post type key is already in use by another post type in ACF and cannot "
 "be used."
@@ -354,7 +369,7 @@ msgstr ""
 "없습니다."
 
 #. translators: %s a link to WordPress.org's Reserved Terms page
-#: includes/post-types/class-acf-post-type.php:312
+#: includes/post-types/class-acf-post-type.php:335
 #: includes/post-types/class-acf-taxonomy.php:258
 msgid ""
 "This field must not be a WordPress <a href=\"%s\" target=\"_blank\">reserved "
@@ -363,14 +378,14 @@ msgstr ""
 "이 필드는 워드프레스 <a href=\"%s\" target=\"_blank\">예약어</a>가 아니어야 "
 "합니다."
 
-#: includes/post-types/class-acf-post-type.php:306
+#: includes/post-types/class-acf-post-type.php:329
 msgid ""
 "The post type key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
 msgstr ""
 "게시물 유형 키에는 소문자 영숫자 문자, 밑줄 또는 대시만 포함해야 합니다."
 
-#: includes/post-types/class-acf-post-type.php:301
+#: includes/post-types/class-acf-post-type.php:324
 msgid "The post type key must be under 20 characters."
 msgstr "게시물 유형 키는 20자 미만이어야 합니다."
 
@@ -756,20 +771,20 @@ msgstr "장르"
 msgid "Genres"
 msgstr "장르"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1207
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1211
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Terms_Controller `."
 msgstr "`WP_REST_Terms_Controller` 대신 사용할 선택적 사용자 정의 컨트롤러."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1151
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1155
 msgid "Expose this post type in the REST API."
 msgstr "REST API에서 이 게시물 유형을 노출합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1051
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1055
 msgid "Customize the query variable name"
 msgstr "쿼리 변수 이름 사용자 지정"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1024
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
 msgid ""
 "Terms can be accessed using the non-pretty permalink, e.g., {query_var}"
 "={term_slug}."
@@ -777,61 +792,61 @@ msgstr ""
 "{query_var}={term_slug}와 같이 예쁘지 않은 퍼머링크를 사용하여 용어에 액세스"
 "할 수 있습니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:977
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:981
 msgid "Parent-child terms in URLs for hierarchical taxonomies."
 msgstr "계층적 택소노미에 대한 URL의 상위-하위 용어."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:937
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:941
 msgid "Customize the slug used in the URL"
 msgstr "URL에 사용된 슬러그 사용자 정의"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:920
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:924
 msgid "Permalinks for this taxonomy are disabled."
 msgstr "이 택소노미에 대한 퍼머링크가 비활성화되었습니다."
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:917
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:921
 msgid ""
 "Rewrite the URL using the taxonomy key as the slug. Your permalink structure "
 "will be"
 msgstr ""
 "택소노미 키를 슬러그로 사용하여 URL을 다시 작성합니다. 귀하의 퍼머링크 구조는"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:909
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1026
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:913
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1030
 #: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
 msgstr "택소노미 키"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:907
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:911
 msgid "Select the type of permalink to use for this taxonomy."
 msgstr "이 택소노미에 사용할 퍼머링크 유형을 선택하십시오."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:892
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:896
 msgid "Display a column for the taxonomy on post type listing screens."
 msgstr "게시물 유형 목록 화면에 택소노미에 대한 열을 표시합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:891
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:895
 msgid "Show Admin Column"
 msgstr "관리 열 표시"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:878
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:882
 msgid "Show the taxonomy in the quick/bulk edit panel."
 msgstr "빠른/일괄 편집 패널에 택소노미를 표시합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:877
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:881
 msgid "Quick Edit"
 msgstr "빠른 편집"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:864
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:868
 msgid "List the taxonomy in the Tag Cloud Widget controls."
 msgstr "Tag Cloud Widget 컨트롤에 택소노미를 나열합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:863
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:867
 msgid "Tag Cloud"
 msgstr "태그 클라우드"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:820
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:824
 msgid ""
 "A PHP function name to be called for sanitizing taxonomy data saved from a "
 "meta box."
@@ -839,30 +854,30 @@ msgstr ""
 "메타박스에서 저장된 택소노미 데이터를 정리하기 위해 호출할 PHP 함수 이름입니"
 "다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:819
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:823
 msgid "Meta Box Sanitization Callback"
 msgstr "메타 박스 정리 콜백"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:801
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:805
 msgid ""
 "A PHP function name to be called to handle the content of a meta box on your "
 "taxonomy."
 msgstr ""
 "택소노미에서 메타 상자의 내용을 처리하기 위해 호출할 PHP 함수 이름입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:800
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:804
 msgid "Register Meta Box Callback"
 msgstr "메타박스 콜백 등록"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:759
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:763
 msgid "No Meta Box"
 msgstr "메타박스 없음"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:758
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:762
 msgid "Custom Meta Box"
 msgstr "커스텀 메타 박스"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:754
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:758
 msgid ""
 "Controls the meta box on the content editor screen. By default, the "
 "Categories meta box is shown for hierarchical taxonomies, and the Tags meta "
@@ -871,97 +886,97 @@ msgstr ""
 "콘텐츠 에디터 화면의 메타박스를 제어합니다. 기본적으로 계층적 택소노미에는 범"
 "주 메타 상자가 표시되고 비계층적 택소노미에는 태그 메타 상자가 표시됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:753
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:757
 msgid "Meta Box"
 msgstr "메타박스"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:742
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:763
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:746
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:767
 msgid "Categories Meta Box"
 msgstr "카테고리 메타박스"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:741
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:762
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:745
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:766
 msgid "Tags Meta Box"
 msgstr "태그 메타박스"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:700
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:704
 msgid "A link to a tag"
 msgstr "태그에 대한 링크"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:699
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:703
 msgid "Describes a navigation link block variation used in the block editor."
 msgstr "블록 편집기에서 사용되는 탐색 링크 블록 변형에 대해 설명합니다."
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:694
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:698
 msgid "A link to a %s"
 msgstr "%s에 대한 링크"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:679
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:683
 msgid "Tag Link"
 msgstr "태그 링크"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:678
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:682
 msgid ""
 "Assigns a title for navigation link block variation used in the block editor."
 msgstr "블록 편집기에서 사용되는 탐색 링크 블록 변형에 대한 제목을 지정합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:659
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:663
 msgid "← Go to tags"
 msgstr "← 태그로 이동"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:658
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:662
 msgid ""
 "Assigns the text used to link back to the main index after updating a term."
 msgstr ""
 "용어를 업데이트한 후 기본 인덱스로 다시 연결하는 데 사용되는 텍스트를 할당합"
 "니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:657
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:661
 msgid "Back To Items"
 msgstr "항목으로 돌아가기"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:653
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:657
 msgid "← Go to %s"
 msgstr "← %s로 이동"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:638
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:642
 msgid "Tags list"
 msgstr "태그 목록"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:637
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:641
 msgid "Assigns text to the table hidden heading."
 msgstr "테이블의 숨겨진 제목에 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:618
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:622
 msgid "Tags list navigation"
 msgstr "태그 목록 탐색"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:617
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:621
 msgid "Assigns text to the table pagination hidden heading."
 msgstr "테이블 페이지 매김 숨겨진 제목에 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:593
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:597
 msgid "Filter by category"
 msgstr "카테고리별로 필터링"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:592
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:596
 msgid "Assigns text to the filter button in the posts lists table."
 msgstr "게시물 목록 테이블의 필터 버튼에 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:591
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:595
 msgid "Filter By Item"
 msgstr "항목별로 필터링"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:587
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:591
 msgid "Filter by %s"
 msgstr "%s로 필터링"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:571
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:572
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:575
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:576
 msgid ""
 "The description is not prominent by default; however, some themes may show "
 "it."
@@ -969,16 +984,16 @@ msgstr ""
 "설명은 기본적으로 눈에 띄지 않습니다. 그러나 일부 테마에서는 이를 표시할 수 "
 "있습니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:570
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:574
 msgid "Describes the Description field on the Edit Tags screen."
 msgstr "태그 편집 화면의 설명 필드에 대해 설명합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:569
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:573
 msgid "Description Field Description"
 msgstr "설명 필드 설명"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:550
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:551
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:554
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:555
 msgid ""
 "Assign a parent term to create a hierarchy. The term Jazz, for example, "
 "would be the parent of Bebop and Big Band"
@@ -986,16 +1001,16 @@ msgstr ""
 "계층 구조를 만들 상위 용어를 할당합니다. 예를 들어 재즈라는 용어는 Bebop과 "
 "Big Band의 부모입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:549
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:553
 msgid "Describes the Parent field on the Edit Tags screen."
 msgstr "태그 편집 화면의 상위 필드를 설명합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:548
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:552
 msgid "Parent Field Description"
 msgstr "상위 필드 설명"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:534
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:535
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:538
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:539
 msgid ""
 "The \"slug\" is the URL-friendly version of the name. It is usually all "
 "lower case and contains only letters, numbers, and hyphens."
@@ -1003,32 +1018,32 @@ msgstr ""
 "\"slug\"는 이름의 URL 친화적 버전입니다. 일반적으로 모두 소문자이며 문자, 숫"
 "자 및 하이픈만 포함합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:533
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:537
 msgid "Describes the Slug field on the Edit Tags screen."
 msgstr "태그 편집 화면의 Slug 필드에 대해 설명합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:532
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:536
 msgid "Slug Field Description"
 msgstr "슬러그 필드 설명"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:518
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:519
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:522
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:523
 msgid "The name is how it appears on your site"
 msgstr "이름은 사이트에 표시되는 방식입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:517
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:521
 msgid "Describes the Name field on the Edit Tags screen."
 msgstr "태그 편집 화면의 이름 필드를 설명합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:516
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:520
 msgid "Name Field Description"
 msgstr "이름 필드 설명"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:503
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:507
 msgid "No tags"
 msgstr "태그 없음"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:502
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:506
 msgid ""
 "Assigns the text displayed in the posts and media list tables when no tags "
 "or categories are available."
@@ -1036,20 +1051,20 @@ msgstr ""
 "태그 또는 카테고리를 사용할 수 없을 때 게시물 및 미디어 목록 테이블에 표시되"
 "는 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:501
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:505
 msgid "No Terms"
 msgstr "용어 없음"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:497
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:501
 msgid "No %s"
 msgstr "%s 없음"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:482
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:486
 msgid "No tags found"
 msgstr "태그를 찾을 수 없습니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:481
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:485
 msgid ""
 "Assigns the text displayed when clicking the 'choose from most used' text in "
 "the taxonomy meta box when no tags are available, and assigns the text used "
@@ -1059,25 +1074,25 @@ msgstr ""
 "에서 선택' 텍스트를 클릭할 때 표시되는 텍스트를 지정하고, 택소노미 항목이 없"
 "는 경우 용어 목록 테이블에 사용되는 텍스트를 지정합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:480
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:484
 msgid "Not Found"
 msgstr "찾을 수 없음"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:459
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:463
 msgid "Assigns text to the Title field of the Most Used tab."
 msgstr "자주 사용됨 탭의 제목 필드에 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:458
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:460
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:461
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:462
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:464
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:465
 msgid "Most Used"
 msgstr "가장 많이 사용"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:440
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:444
 msgid "Choose from the most used tags"
 msgstr "가장 많이 사용되는 태그 중에서 선택"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:439
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:443
 msgid ""
 "Assigns the 'choose from most used' text used in the meta box when "
 "JavaScript is disabled. Only used on non-hierarchical taxonomies."
@@ -1085,20 +1100,20 @@ msgstr ""
 "JavaScript가 비활성화된 경우 메타 상자에 사용되는 '가장 많이 사용되는 항목에"
 "서 선택' 텍스트를 지정합니다. 비계층적 택소노미에만 사용됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:438
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:442
 msgid "Choose From Most Used"
 msgstr "가장 많이 사용하는 것 중에서 선택"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:434
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:438
 msgid "Choose from the most used %s"
 msgstr "가장 많이 사용된 %s에서 선택"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:414
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:418
 msgid "Add or remove tags"
 msgstr "태그 추가 또는 제거"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:413
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:417
 msgid ""
 "Assigns the add or remove items text used in the meta box when JavaScript is "
 "disabled. Only used on non-hierarchical taxonomies"
@@ -1106,20 +1121,20 @@ msgstr ""
 "JavaScript가 비활성화된 경우 메타 상자에 사용되는 항목 추가 또는 제거 텍스트"
 "를 할당합니다. 비계층적 택소노미에만 사용됨"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:412
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:416
 msgid "Add Or Remove Items"
 msgstr "항목 추가 또는 제거"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:408
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:412
 msgid "Add or remove %s"
 msgstr "%s 추가 또는 제거"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:388
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:392
 msgid "Separate tags with commas"
 msgstr "쉼표로 태그 구분"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:387
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:391
 msgid ""
 "Assigns the separate item with commas text used in the taxonomy meta box. "
 "Only used on non-hierarchical taxonomies."
@@ -1127,176 +1142,176 @@ msgstr ""
 "택소노미 메타 상자에 사용되는 쉼표 텍스트로 별도의 항목을 할당합니다. 비계층"
 "적 택소노미에만 사용됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:386
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:390
 msgid "Separate Items With Commas"
 msgstr "쉼표로 항목 구분"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:382
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:386
 msgid "Separate %s with commas"
 msgstr "%s를 쉼표로 구분"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:362
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:366
 msgid "Popular Tags"
 msgstr "인기 태그"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:361
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:365
 msgid "Assigns popular items text. Only used for non-hierarchical taxonomies."
 msgstr "인기 항목 텍스트를 할당합니다. 비계층적 택소노미에만 사용됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:360
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:364
 msgid "Popular Items"
 msgstr "인기 상품"
 
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:357
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:361
 msgid "Popular %s"
 msgstr "인기 있는 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:343
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:347
 msgid "Search Tags"
 msgstr "검색 태그"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:342
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:346
 msgid "Assigns search items text."
 msgstr "검색 항목 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:319
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:323
 msgid "Parent Category:"
 msgstr "상위 카테고리:"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:318
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:322
 msgid "Assigns parent item text, but with a colon (:) added to the end."
 msgstr "부모 항목 텍스트를 할당하지만 끝에 콜론(:)이 추가됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:317
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:321
 msgid "Parent Item With Colon"
 msgstr "콜론이 있는 상위 항목"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:294
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:298
 msgid "Parent Category"
 msgstr "상위 카테고리"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:293
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:297
 msgid "Assigns parent item text. Only used on hierarchical taxonomies."
 msgstr "상위 항목 텍스트를 지정합니다. 계층적 택소노미에만 사용됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:292
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:296
 msgid "Parent Item"
 msgstr "상위 항목"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:289
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:293
 msgid "Parent %s"
 msgstr "부모 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:274
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:278
 msgid "New Tag Name"
 msgstr "새 태그 이름"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:273
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:277
 msgid "Assigns the new item name text."
 msgstr "새 항목 이름 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:272
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:276
 msgid "New Item Name"
 msgstr "새 항목 이름"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:269
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:273
 msgid "New %s Name"
 msgstr "새 %s 이름"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:254
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:258
 msgid "Add New Tag"
 msgstr "새 태그 추가"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:253
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:257
 msgid "Assigns the add new item text."
 msgstr "새 항목 추가 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:234
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:238
 msgid "Update Tag"
 msgstr "태그 업데이트"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:233
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:237
 msgid "Assigns the update item text."
 msgstr "업데이트 항목 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:232
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:236
 msgid "Update Item"
 msgstr "항목 업데이트"
 
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:229
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:233
 msgid "Update %s"
 msgstr "업데이트 %s"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:214
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:218
 msgid "View Tag"
 msgstr "태그 보기"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:213
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:217
 msgid "In the admin bar to view term during editing."
 msgstr "편집하는 동안 용어를 보려면 관리 표시줄에서."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:194
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:198
 msgid "Edit Tag"
 msgstr "태그 편집"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:193
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:197
 msgid "At the top of the editor screen when editing a term."
 msgstr "용어를 편집할 때 편집기 화면 상단에 있습니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:174
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:178
 msgid "All Tags"
 msgstr "모든 태그"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:173
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:177
 msgid "Assigns the all items text."
 msgstr "모든 항목 텍스트를 지정합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:154
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:158
 msgid "Assigns the menu name text."
 msgstr "메뉴 이름 텍스트를 할당합니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:153
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:157
 msgid "Menu Label"
 msgstr "메뉴 레이블"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:127
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:131
 msgid "Active taxonomies are enabled and registered with WordPress."
 msgstr "활성 택소노미가 활성화되고 워드프레스에 등록됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:111
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:115
 msgid "A descriptive summary of the taxonomy."
 msgstr "택소노미에 대한 설명 요약입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:91
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:95
 msgid "A descriptive summary of the term."
 msgstr "용어에 대한 설명 요약입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:90
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:94
 msgid "Term Description"
 msgstr "용어 설명"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:72
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:76
 msgid "Single word, no spaces. Underscores and dashes allowed."
 msgstr "한 단어, 공백 없음. 밑줄과 대시가 허용됩니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:71
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:75
 msgid "Term Slug"
 msgstr "용어 슬러그"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:52
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:56
 msgid "The name of the default term."
 msgstr "기본 용어의 이름입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:51
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:55
 msgid "Term Name"
 msgstr "용어 이름"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:37
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:41
 msgid ""
 "Create a term for the taxonomy that cannot be deleted. It will not be "
 "selected for posts by default."
@@ -1304,11 +1319,11 @@ msgstr ""
 "삭제할 수 없는 택소노미에 대한 용어를 만듭니다. 기본적으로 게시물에 대해 선택"
 "되지 않습니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:36
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:40
 msgid "Default Term"
 msgstr "기본 용어"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:24
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:28
 msgid ""
 "Whether terms in this taxonomy should be sorted in the order they are "
 "provided to `wp_set_object_terms()`."
@@ -1316,7 +1331,7 @@ msgstr ""
 "이 택소노미의 용어를 `wp_set_object_terms()`에 제공된 순서대로 정렬해야 하는"
 "지 여부입니다."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:23
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:27
 msgid "Sort Terms"
 msgstr "용어 정렬"
 
@@ -1351,7 +1366,7 @@ msgid "Hierarchical post types can have descendants (like pages)."
 msgstr "계층적 게시물 유형은 페이지와 같은 하위 항목을 가질 수 있습니다."
 
 #: includes/admin/views/acf-post-type/basic-settings.php:122
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:976
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:980
 #: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
 msgstr "계층적"
@@ -1394,68 +1409,68 @@ msgstr "동영상"
 msgid "Plural Label"
 msgstr "복수 라벨"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1250
+#: includes/admin/views/acf-post-type/advanced-settings.php:1270
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Posts_Controller`."
 msgstr "`WP_REST_Posts_Controller` 대신 사용할 선택적 사용자 정의 컨트롤러."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1249
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1206
+#: includes/admin/views/acf-post-type/advanced-settings.php:1269
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
 msgid "Controller Class"
 msgstr "컨트롤러 클래스"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1231
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1187
+#: includes/admin/views/acf-post-type/advanced-settings.php:1251
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1191
 msgid "The namespace part of the REST API URL."
 msgstr "REST API URL의 네임스페이스 부분입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1230
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1186
+#: includes/admin/views/acf-post-type/advanced-settings.php:1250
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1190
 msgid "Namespace Route"
 msgstr "네임스페이스 경로"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1212
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1168
+#: includes/admin/views/acf-post-type/advanced-settings.php:1232
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1172
 msgid "The base URL for the post type REST API URLs."
 msgstr "게시물 유형 REST API URL의 기본 URL입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1211
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1167
+#: includes/admin/views/acf-post-type/advanced-settings.php:1231
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1171
 msgid "Base URL"
 msgstr "기본 URL"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1197
+#: includes/admin/views/acf-post-type/advanced-settings.php:1217
 msgid ""
 "Exposes this post type in the REST API. Required to use the block editor."
 msgstr ""
 "REST API에서 이 게시물 유형을 노출합니다. 블록 편집기를 사용하는 데 필요합니"
 "다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1196
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1150
+#: includes/admin/views/acf-post-type/advanced-settings.php:1216
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1154
 msgid "Show In REST API"
 msgstr "REST API에 표시"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1175
+#: includes/admin/views/acf-post-type/advanced-settings.php:1195
 msgid "Customize the query variable name."
 msgstr "쿼리 변수 이름을 사용자 지정합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1174
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1050
+#: includes/admin/views/acf-post-type/advanced-settings.php:1194
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1054
 msgid "Query Variable"
 msgstr "쿼리 변수"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1152
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
+#: includes/admin/views/acf-post-type/advanced-settings.php:1172
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1032
 msgid "No Query Variable Support"
 msgstr "쿼리 변수 지원 없음"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1151
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
+#: includes/admin/views/acf-post-type/advanced-settings.php:1171
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1031
 msgid "Custom Query Variable"
 msgstr "맞춤 쿼리 변수"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1148
+#: includes/admin/views/acf-post-type/advanced-settings.php:1168
 msgid ""
 "Items can be accessed using the non-pretty permalink, eg. {post_type}"
 "={post_slug}."
@@ -1463,85 +1478,85 @@ msgstr ""
 "항목은 예를 들어 non-pretty permalink를 사용하여 액세스할 수 있습니다. "
 "{post_type}={post_slug}."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1147
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1023
+#: includes/admin/views/acf-post-type/advanced-settings.php:1167
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
 msgid "Query Variable Support"
 msgstr "쿼리 변수 지원"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1122
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:999
+#: includes/admin/views/acf-post-type/advanced-settings.php:1142
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1003
 msgid "URLs for an item and items can be accessed with a query string."
 msgstr "항목 및 항목에 대한 URL은 쿼리 문자열을 사용하여 액세스할 수 있습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1121
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:998
+#: includes/admin/views/acf-post-type/advanced-settings.php:1141
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1002
 msgid "Publicly Queryable"
 msgstr "공개적으로 쿼리 가능"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1100
+#: includes/admin/views/acf-post-type/advanced-settings.php:1120
 msgid "Custom slug for the Archive URL."
 msgstr "아카이브 URL에 대한 사용자 지정 슬러그입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1099
+#: includes/admin/views/acf-post-type/advanced-settings.php:1119
 msgid "Archive Slug"
 msgstr "아카이브 슬러그"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1086
+#: includes/admin/views/acf-post-type/advanced-settings.php:1106
 msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
 msgstr ""
 "테마의 아카이브 템플릿 파일로 사용자 정의할 수 있는 항목 아카이브가 있습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1085
+#: includes/admin/views/acf-post-type/advanced-settings.php:1105
 msgid "Archive"
 msgstr "아카이브"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1065
+#: includes/admin/views/acf-post-type/advanced-settings.php:1085
 msgid "Pagination support for the items URLs such as the archives."
 msgstr "아카이브와 같은 항목 URL에 대한 페이지 매김 지원."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1064
+#: includes/admin/views/acf-post-type/advanced-settings.php:1084
 msgid "Pagination"
 msgstr "쪽수 매기기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1047
+#: includes/admin/views/acf-post-type/advanced-settings.php:1067
 msgid "RSS feed URL for the post type items."
 msgstr "게시물 유형 항목에 대한 RSS 피드 URL입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1046
+#: includes/admin/views/acf-post-type/advanced-settings.php:1066
 msgid "Feed URL"
 msgstr "피드 URL"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1028
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:957
+#: includes/admin/views/acf-post-type/advanced-settings.php:1048
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:961
 msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
 msgstr ""
 "URL에 `WP_Rewrite::$front` 접두사를 추가하도록 퍼머링크 구조를 변경합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1027
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:956
+#: includes/admin/views/acf-post-type/advanced-settings.php:1047
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:960
 msgid "Front URL Prefix"
 msgstr "프런트 URL 프리픽스"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1008
+#: includes/admin/views/acf-post-type/advanced-settings.php:1028
 msgid "Customize the slug used in the URL."
 msgstr "URL에 사용된 슬러그를 사용자 지정합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1007
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:936
+#: includes/admin/views/acf-post-type/advanced-settings.php:1027
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:940
 msgid "URL Slug"
 msgstr "URL 슬러그"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:991
+#: includes/admin/views/acf-post-type/advanced-settings.php:1011
 msgid "Permalinks for this post type are disabled."
 msgstr "이 게시물 유형에 대한 퍼머링크가 비활성화되었습니다."
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:990
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:919
+#: includes/admin/views/acf-post-type/advanced-settings.php:1010
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:923
 msgid ""
 "Rewrite the URL using a custom slug defined in the input below. Your "
 "permalink structure will be"
@@ -1549,25 +1564,25 @@ msgstr ""
 "아래 입력에 정의된 사용자 지정 슬러그를 사용하여 URL을 다시 작성합니다. 귀하"
 "의 퍼머링크 구조는"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:982
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:911
+#: includes/admin/views/acf-post-type/advanced-settings.php:1002
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:915
 msgid "No Permalink (prevent URL rewriting)"
 msgstr "퍼머링크 없음(URL 재작성 방지)"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:981
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:910
+#: includes/admin/views/acf-post-type/advanced-settings.php:1001
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:914
 msgid "Custom Permalink"
 msgstr "맞춤 퍼머링크"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:980
-#: includes/admin/views/acf-post-type/advanced-settings.php:1150
+#: includes/admin/views/acf-post-type/advanced-settings.php:1000
+#: includes/admin/views/acf-post-type/advanced-settings.php:1170
 #: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
 msgstr "게시물 유형 키"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:978
-#: includes/admin/views/acf-post-type/advanced-settings.php:988
+#: includes/admin/views/acf-post-type/advanced-settings.php:998
+#: includes/admin/views/acf-post-type/advanced-settings.php:1008
 msgid ""
 "Rewrite the URL using the post type key as the slug. Your permalink "
 "structure will be"
@@ -1575,45 +1590,45 @@ msgstr ""
 "게시물 유형 키를 슬러그로 사용하여 URL을 다시 작성하십시오. 귀하의 퍼머링크 "
 "구조는"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:976
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:906
+#: includes/admin/views/acf-post-type/advanced-settings.php:996
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:910
 msgid "Permalink Rewrite"
 msgstr "퍼머링크 재작성"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:962
+#: includes/admin/views/acf-post-type/advanced-settings.php:982
 msgid "Delete items by a user when that user is deleted."
 msgstr "해당 사용자가 삭제되면 해당 사용자가 항목을 삭제합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:961
+#: includes/admin/views/acf-post-type/advanced-settings.php:981
 msgid "Delete With User"
 msgstr "사용자와 함께 삭제"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:947
+#: includes/admin/views/acf-post-type/advanced-settings.php:967
 msgid "Allow the post type to be exported from 'Tools' > 'Export'."
 msgstr "게시물 유형을 '도구' > '내보내기'에서 내보낼 수 있도록 허용합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:946
+#: includes/admin/views/acf-post-type/advanced-settings.php:966
 msgid "Can Export"
 msgstr "내보내기 가능"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:915
+#: includes/admin/views/acf-post-type/advanced-settings.php:935
 msgid "Optionally provide a plural to be used in capabilities."
 msgstr "기능에 사용할 복수형을 선택적으로 제공합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:914
+#: includes/admin/views/acf-post-type/advanced-settings.php:934
 msgid "Plural Capability Name"
 msgstr "복수 기능 이름"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:896
+#: includes/admin/views/acf-post-type/advanced-settings.php:916
 msgid "Choose another post type to base the capabilities for this post type."
 msgstr ""
 "이 게시물 유형의 기능을 기반으로 하려면 다른 게시물 유형을 선택하십시오."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:895
+#: includes/admin/views/acf-post-type/advanced-settings.php:915
 msgid "Singular Capability Name"
 msgstr "단일 기능 이름"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:881
+#: includes/admin/views/acf-post-type/advanced-settings.php:901
 msgid ""
 "By default the capabilities of the post type will inherit the 'Post' "
 "capability names, eg. edit_post, delete_posts. Enable to use post type "
@@ -1623,16 +1638,16 @@ msgstr ""
 "delete_posts. 예를 들어 게시물 유형별 기능을 사용하도록 설정합니다. "
 "edit_{singular}, delete_{plural}."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:880
+#: includes/admin/views/acf-post-type/advanced-settings.php:900
 msgid "Rename Capabilities"
 msgstr "기능 이름 바꾸기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:865
+#: includes/admin/views/acf-post-type/advanced-settings.php:885
 msgid "Exclude From Search"
 msgstr "검색에서 제외"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:852
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:850
+#: includes/admin/views/acf-post-type/advanced-settings.php:872
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:854
 msgid ""
 "Allow items to be added to menus in the 'Appearance' > 'Menus' screen. Must "
 "be turned on in 'Screen options'."
@@ -1640,42 +1655,42 @@ msgstr ""
 "'모양' > '메뉴' 화면에서 항목을 메뉴에 추가할 수 있도록 허용합니다. '화면 옵"
 "션'에서 켜야 합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:851
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:849
+#: includes/admin/views/acf-post-type/advanced-settings.php:871
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:853
 msgid "Appearance Menus Support"
 msgstr "모양 메뉴 지원"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:833
+#: includes/admin/views/acf-post-type/advanced-settings.php:853
 msgid "Appears as an item in the 'New' menu in the admin bar."
 msgstr "관리 표시줄의 '새로 만들기' 메뉴에 항목으로 나타납니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:832
+#: includes/admin/views/acf-post-type/advanced-settings.php:852
 msgid "Show In Admin Bar"
 msgstr "관리 표시줄에 표시"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:801
+#: includes/admin/views/acf-post-type/advanced-settings.php:821
 msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen."
 msgstr "편집 화면의 메타박스 설정 시 호출할 PHP 함수명."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:800
+#: includes/admin/views/acf-post-type/advanced-settings.php:820
 msgid "Custom Meta Box Callback"
 msgstr "커스텀 메타 박스 콜백"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:780
+#: includes/admin/views/acf-post-type/advanced-settings.php:800
 msgid "Menu Icon"
 msgstr "메뉴 아이콘"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:762
+#: includes/admin/views/acf-post-type/advanced-settings.php:782
 msgid "The position in the sidebar menu in the admin dashboard."
 msgstr "관리 알림판의 사이드바 메뉴에 있는 위치입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:761
+#: includes/admin/views/acf-post-type/advanced-settings.php:781
 msgid "Menu Position"
 msgstr "메뉴 위치"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:743
+#: includes/admin/views/acf-post-type/advanced-settings.php:763
 msgid ""
 "By default the post type will get a new top level item in the admin menu. If "
 "an existing top level item is supplied here, the post type will be added as "
@@ -1685,13 +1700,13 @@ msgstr ""
 "기에 기존 최상위 항목이 제공되면 게시물 유형이 그 아래 하위 메뉴 항목으로 추"
 "가됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:742
+#: includes/admin/views/acf-post-type/advanced-settings.php:762
 msgid "Admin Menu Parent"
 msgstr "관리자 메뉴 부모"
 
 #. translators: %s = "dashicon class name", link to the WordPress dashicon
 #. documentation.
-#: includes/admin/views/acf-post-type/advanced-settings.php:730
+#: includes/admin/views/acf-post-type/advanced-settings.php:750
 msgid ""
 "The icon used for the post type menu item in the admin dashboard. Can be a "
 "URL or %s to use for the icon."
@@ -1699,178 +1714,178 @@ msgstr ""
 "관리자 알림판의 게시물 유형 메뉴 항목에 사용되는 아이콘입니다. 아이콘에 사용"
 "할 URL 또는 %s일 수 있습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:725
+#: includes/admin/views/acf-post-type/advanced-settings.php:745
 msgid "Dashicon class name"
 msgstr "Dashicon 클래스 이름"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:714
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:730
+#: includes/admin/views/acf-post-type/advanced-settings.php:734
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:734
 msgid "Admin editor navigation in the sidebar menu."
 msgstr "사이드바 메뉴의 관리 편집기 탐색."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:713
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:729
+#: includes/admin/views/acf-post-type/advanced-settings.php:733
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:733
 msgid "Show In Admin Menu"
 msgstr "관리자 메뉴에 표시"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:700
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:715
+#: includes/admin/views/acf-post-type/advanced-settings.php:720
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:719
 msgid "Items can be edited and managed in the admin dashboard."
 msgstr "어드민 알림판에서 항목을 수정하고 관리할 수 있습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:699
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:714
+#: includes/admin/views/acf-post-type/advanced-settings.php:719
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:718
 msgid "Show In UI"
 msgstr "UI에 표시"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:685
+#: includes/admin/views/acf-post-type/advanced-settings.php:689
 msgid "A link to a post."
 msgstr "게시물에 대한 링크입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:684
+#: includes/admin/views/acf-post-type/advanced-settings.php:688
 msgid "Description for a navigation link block variation."
 msgstr "탐색 링크 블록 변형에 대한 설명입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:683
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:698
+#: includes/admin/views/acf-post-type/advanced-settings.php:687
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:702
 msgid "Item Link Description"
 msgstr "항목 링크 설명"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:679
+#: includes/admin/views/acf-post-type/advanced-settings.php:683
 msgid "A link to a %s."
 msgstr "%s에 대한 링크입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:664
+#: includes/admin/views/acf-post-type/advanced-settings.php:668
 msgid "Post Link"
 msgstr "링크 게시"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:663
+#: includes/admin/views/acf-post-type/advanced-settings.php:667
 msgid "Title for a navigation link block variation."
 msgstr "탐색 링크 블록 변형의 제목입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:662
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:677
+#: includes/admin/views/acf-post-type/advanced-settings.php:666
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:681
 msgid "Item Link"
 msgstr "항목 링크"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:659
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:674
+#: includes/admin/views/acf-post-type/advanced-settings.php:663
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:678
 msgid "%s Link"
 msgstr "%s 링크"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:644
+#: includes/admin/views/acf-post-type/advanced-settings.php:648
 msgid "Post updated."
 msgstr "게시물이 업데이트되었습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:643
+#: includes/admin/views/acf-post-type/advanced-settings.php:647
 msgid "In the editor notice after an item is updated."
 msgstr "항목이 업데이트된 후 편집기 알림에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:642
+#: includes/admin/views/acf-post-type/advanced-settings.php:646
 msgid "Item Updated"
 msgstr "항목 업데이트됨"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:639
+#: includes/admin/views/acf-post-type/advanced-settings.php:643
 msgid "%s updated."
 msgstr "%s 업데이트되었습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:624
+#: includes/admin/views/acf-post-type/advanced-settings.php:628
 msgid "Post scheduled."
 msgstr "게시물 예정."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:623
+#: includes/admin/views/acf-post-type/advanced-settings.php:627
 msgid "In the editor notice after scheduling an item."
 msgstr "항목 예약 후 편집자 공지에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:622
+#: includes/admin/views/acf-post-type/advanced-settings.php:626
 msgid "Item Scheduled"
 msgstr "예약된 항목"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:619
+#: includes/admin/views/acf-post-type/advanced-settings.php:623
 msgid "%s scheduled."
 msgstr "%s 예약됨."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:604
+#: includes/admin/views/acf-post-type/advanced-settings.php:608
 msgid "Post reverted to draft."
 msgstr "게시물이 초안으로 돌아갔습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:603
+#: includes/admin/views/acf-post-type/advanced-settings.php:607
 msgid "In the editor notice after reverting an item to draft."
 msgstr "항목을 초안으로 되돌린 후 편집자 알림에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:602
+#: includes/admin/views/acf-post-type/advanced-settings.php:606
 msgid "Item Reverted To Draft"
 msgstr "초안으로 되돌린 항목"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:599
+#: includes/admin/views/acf-post-type/advanced-settings.php:603
 msgid "%s reverted to draft."
 msgstr "%s이(가) 초안으로 되돌아갔습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:584
+#: includes/admin/views/acf-post-type/advanced-settings.php:588
 msgid "Post published privately."
 msgstr "게시물이 비공개로 게시되었습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:583
+#: includes/admin/views/acf-post-type/advanced-settings.php:587
 msgid "In the editor notice after publishing a private item."
 msgstr "비공개 항목 게시 후 편집자 공지에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:582
+#: includes/admin/views/acf-post-type/advanced-settings.php:586
 msgid "Item Published Privately"
 msgstr "비공개로 게시된 항목"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:579
+#: includes/admin/views/acf-post-type/advanced-settings.php:583
 msgid "%s published privately."
 msgstr "%s은(는) 비공개로 게시되었습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:564
+#: includes/admin/views/acf-post-type/advanced-settings.php:568
 msgid "Post published."
 msgstr "게시물이 게시되었습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:563
+#: includes/admin/views/acf-post-type/advanced-settings.php:567
 msgid "In the editor notice after publishing an item."
 msgstr "항목을 게시한 후 편집자 알림에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:562
+#: includes/admin/views/acf-post-type/advanced-settings.php:566
 msgid "Item Published"
 msgstr "게시된 항목"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:559
+#: includes/admin/views/acf-post-type/advanced-settings.php:563
 msgid "%s published."
 msgstr "%s이(가) 게시되었습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:544
+#: includes/admin/views/acf-post-type/advanced-settings.php:548
 msgid "Posts list"
 msgstr "게시물 목록"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:543
+#: includes/admin/views/acf-post-type/advanced-settings.php:547
 msgid "Used by screen readers for the items list on the post type list screen."
 msgstr "게시물 유형 목록 화면의 항목 목록에 대한 화면 판독기에서 사용됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:542
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:636
+#: includes/admin/views/acf-post-type/advanced-settings.php:546
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:640
 msgid "Items List"
 msgstr "항목 목록"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:539
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:633
+#: includes/admin/views/acf-post-type/advanced-settings.php:543
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:637
 msgid "%s list"
 msgstr "%s 목록"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:524
+#: includes/admin/views/acf-post-type/advanced-settings.php:528
 msgid "Posts list navigation"
 msgstr "게시물 목록 탐색"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:523
+#: includes/admin/views/acf-post-type/advanced-settings.php:527
 msgid ""
 "Used by screen readers for the filter list pagination on the post type list "
 "screen."
@@ -1878,23 +1893,23 @@ msgstr ""
 "게시물 유형 목록 화면에서 필터 목록 페이지 매김을 위해 스크린 리더에서 사용됩"
 "니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:522
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:616
+#: includes/admin/views/acf-post-type/advanced-settings.php:526
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:620
 msgid "Items List Navigation"
 msgstr "항목 목록 탐색"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:519
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:613
+#: includes/admin/views/acf-post-type/advanced-settings.php:523
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:617
 msgid "%s list navigation"
 msgstr "%s 목록 탐색"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:503
+#: includes/admin/views/acf-post-type/advanced-settings.php:507
 msgid "Filter posts by date"
 msgstr "날짜별로 게시물 필터링"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:502
+#: includes/admin/views/acf-post-type/advanced-settings.php:506
 msgid ""
 "Used by screen readers for the filter by date heading on the post type list "
 "screen."
@@ -1902,136 +1917,136 @@ msgstr ""
 "게시물 유형 목록 화면에서 날짜 제목으로 필터링하기 위해 화면 판독기에서 사용"
 "됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:501
+#: includes/admin/views/acf-post-type/advanced-settings.php:505
 msgid "Filter Items By Date"
 msgstr "날짜별로 항목 필터링"
 
 #. translators: %s Plural form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:497
+#: includes/admin/views/acf-post-type/advanced-settings.php:501
 msgid "Filter %s by date"
 msgstr "날짜별로 %s 필터링"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:482
+#: includes/admin/views/acf-post-type/advanced-settings.php:486
 msgid "Filter posts list"
 msgstr "게시물 목록 필터링"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:481
+#: includes/admin/views/acf-post-type/advanced-settings.php:485
 msgid ""
 "Used by screen readers for the filter links heading on the post type list "
 "screen."
 msgstr ""
 "게시물 유형 목록 화면의 필터 링크 제목에 대해 스크린 리더에서 사용됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:480
+#: includes/admin/views/acf-post-type/advanced-settings.php:484
 msgid "Filter Items List"
 msgstr "항목 목록 필터링"
 
 #. translators: %s Plural form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:476
+#: includes/admin/views/acf-post-type/advanced-settings.php:480
 msgid "Filter %s list"
 msgstr "%s 목록 필터링"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:460
+#: includes/admin/views/acf-post-type/advanced-settings.php:464
 msgid "In the media modal showing all media uploaded to this item."
 msgstr "이 항목에 업로드된 모든 미디어를 표시하는 미디어 모달에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:459
+#: includes/admin/views/acf-post-type/advanced-settings.php:463
 msgid "Uploaded To This Item"
 msgstr "이 항목에 업로드됨"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:455
+#: includes/admin/views/acf-post-type/advanced-settings.php:459
 msgid "Uploaded to this %s"
 msgstr "이 %s에 업로드됨"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:440
+#: includes/admin/views/acf-post-type/advanced-settings.php:444
 msgid "Insert into post"
 msgstr "게시물에 삽입"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:439
+#: includes/admin/views/acf-post-type/advanced-settings.php:443
 msgid "As the button label when adding media to content."
 msgstr "콘텐츠에 미디어를 추가할 때 버튼 레이블로 사용합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:438
+#: includes/admin/views/acf-post-type/advanced-settings.php:442
 msgid "Insert Into Media Button"
 msgstr "미디어에 삽입 버튼"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:434
+#: includes/admin/views/acf-post-type/advanced-settings.php:438
 msgid "Insert into %s"
 msgstr "%s에 삽입"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:419
+#: includes/admin/views/acf-post-type/advanced-settings.php:423
 msgid "Use as featured image"
 msgstr "추천 이미지로 사용"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:418
+#: includes/admin/views/acf-post-type/advanced-settings.php:422
 msgid ""
 "As the button label for selecting to use an image as the featured image."
 msgstr "이미지를 추천 이미지로 사용하도록 선택하기 위한 버튼 레이블로."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:417
+#: includes/admin/views/acf-post-type/advanced-settings.php:421
 msgid "Use Featured Image"
 msgstr "추천 이미지 사용"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:404
+#: includes/admin/views/acf-post-type/advanced-settings.php:408
 msgid "Remove featured image"
 msgstr "추천 이미지 삭제"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:403
+#: includes/admin/views/acf-post-type/advanced-settings.php:407
 msgid "As the button label when removing the featured image."
 msgstr "추천 이미지를 제거할 때 버튼 레이블로."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:402
+#: includes/admin/views/acf-post-type/advanced-settings.php:406
 msgid "Remove Featured Image"
 msgstr "추천 이미지 제거"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:389
+#: includes/admin/views/acf-post-type/advanced-settings.php:393
 msgid "Set featured image"
 msgstr "추천 이미지 설정"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:388
+#: includes/admin/views/acf-post-type/advanced-settings.php:392
 msgid "As the button label when setting the featured image."
 msgstr "추천 이미지를 설정할 때 버튼 레이블로."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:387
+#: includes/admin/views/acf-post-type/advanced-settings.php:391
 msgid "Set Featured Image"
 msgstr "추천 이미지 설정"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:374
+#: includes/admin/views/acf-post-type/advanced-settings.php:378
 msgid "Featured image"
 msgstr "나타난 그림"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:373
+#: includes/admin/views/acf-post-type/advanced-settings.php:377
 msgid "In the editor used for the title of the featured image meta box."
 msgstr "추천 이미지 메타 상자의 제목에 사용되는 편집기에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:372
+#: includes/admin/views/acf-post-type/advanced-settings.php:376
 msgid "Featured Image Meta Box"
 msgstr "추천 이미지 메타 상자"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:359
+#: includes/admin/views/acf-post-type/advanced-settings.php:363
 msgid "Post Attributes"
 msgstr "게시물 속성"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:358
+#: includes/admin/views/acf-post-type/advanced-settings.php:362
 msgid "In the editor used for the title of the post attributes meta box."
 msgstr "게시물 속성 메타 상자의 제목에 사용되는 편집기에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:357
+#: includes/admin/views/acf-post-type/advanced-settings.php:361
 msgid "Attributes Meta Box"
 msgstr "속성 메타박스"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:354
+#: includes/admin/views/acf-post-type/advanced-settings.php:358
 msgid "%s Attributes"
 msgstr "%s 속성"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:339
+#: includes/admin/views/acf-post-type/advanced-settings.php:343
 msgid "Post Archives"
 msgstr "게시물 아카이브"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:338
+#: includes/admin/views/acf-post-type/advanced-settings.php:342
 msgid ""
 "Adds 'Post Type Archive' items with this label to the list of posts shown "
 "when adding items to an existing menu in a CPT with archives enabled. Only "
@@ -2043,130 +2058,130 @@ msgstr ""
 "기' 모드에서 메뉴를 편집하고 사용자 정의 아카이브 슬러그가 제공되었을 때만 나"
 "타납니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:337
+#: includes/admin/views/acf-post-type/advanced-settings.php:341
 msgid "Archives Nav Menu"
 msgstr "아카이브 탐색 메뉴"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:334
+#: includes/admin/views/acf-post-type/advanced-settings.php:338
 msgid "%s Archives"
 msgstr "%s 아카이브"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:319
+#: includes/admin/views/acf-post-type/advanced-settings.php:323
 msgid "No posts found in Trash"
 msgstr "휴지통에 게시물이 없습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:318
+#: includes/admin/views/acf-post-type/advanced-settings.php:322
 msgid ""
 "At the top of the post type list screen when there are no posts in the trash."
 msgstr "휴지통에 게시물이 없을 때 게시물 유형 목록 화면 상단에 표시됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:317
+#: includes/admin/views/acf-post-type/advanced-settings.php:321
 msgid "No Items Found in Trash"
 msgstr "휴지통에 항목이 없습니다."
 
 #. translators: %s Plural form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:313
+#: includes/admin/views/acf-post-type/advanced-settings.php:317
 msgid "No %s found in Trash"
 msgstr "휴지통에서 %s을(를) 찾을 수 없습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:298
+#: includes/admin/views/acf-post-type/advanced-settings.php:302
 msgid "No posts found"
 msgstr "게시물이 없습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:297
+#: includes/admin/views/acf-post-type/advanced-settings.php:301
 msgid ""
 "At the top of the post type list screen when there are no posts to display."
 msgstr "표시할 게시물이 없을 때 게시물 유형 목록 화면 상단에 표시됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:296
+#: includes/admin/views/acf-post-type/advanced-settings.php:300
 msgid "No Items Found"
 msgstr "제품을 찾지 못했습니다"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:292
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:476
+#: includes/admin/views/acf-post-type/advanced-settings.php:296
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:480
 msgid "No %s found"
 msgstr "%s 없음"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:277
+#: includes/admin/views/acf-post-type/advanced-settings.php:281
 msgid "Search Posts"
 msgstr "게시물 검색"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:276
+#: includes/admin/views/acf-post-type/advanced-settings.php:280
 msgid "At the top of the items screen when searching for an item."
 msgstr "항목 검색 시 항목 화면 상단"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:275
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:341
+#: includes/admin/views/acf-post-type/advanced-settings.php:279
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:345
 msgid "Search Items"
 msgstr "항목 검색"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:272
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:338
+#: includes/admin/views/acf-post-type/advanced-settings.php:276
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:342
 msgid "Search %s"
 msgstr "%s 검색"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:257
+#: includes/admin/views/acf-post-type/advanced-settings.php:261
 msgid "Parent Page:"
 msgstr "상위 페이지:"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:256
+#: includes/admin/views/acf-post-type/advanced-settings.php:260
 msgid "For hierarchical types in the post type list screen."
 msgstr "게시물 유형 목록 화면의 계층적 유형의 경우."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:255
+#: includes/admin/views/acf-post-type/advanced-settings.php:259
 msgid "Parent Item Prefix"
 msgstr "상위 품목 접두어"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:252
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:314
+#: includes/admin/views/acf-post-type/advanced-settings.php:256
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:318
 msgid "Parent %s:"
 msgstr "부모 %s:"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:237
+#: includes/admin/views/acf-post-type/advanced-settings.php:241
 msgid "New Post"
 msgstr "새로운 게시물"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:235
+#: includes/admin/views/acf-post-type/advanced-settings.php:239
 msgid "New Item"
 msgstr "새로운 물품"
 
 #. translators: %s Singular form of post type name
-#: includes/admin/views/acf-post-type/advanced-settings.php:232
+#: includes/admin/views/acf-post-type/advanced-settings.php:236
 msgid "New %s"
 msgstr "신규 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:202
+#: includes/admin/views/acf-post-type/advanced-settings.php:206
 msgid "Add New Post"
 msgstr "새 게시물 추가"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:201
+#: includes/admin/views/acf-post-type/advanced-settings.php:205
 msgid "At the top of the editor screen when adding a new item."
 msgstr "새 항목을 추가할 때 편집기 화면 상단에 있습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:200
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:252
+#: includes/admin/views/acf-post-type/advanced-settings.php:204
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:256
 msgid "Add New Item"
 msgstr "새 항목 추가"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:197
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:249
+#: includes/admin/views/acf-post-type/advanced-settings.php:201
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:253
 msgid "Add New %s"
 msgstr "새 %s 추가"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:182
+#: includes/admin/views/acf-post-type/advanced-settings.php:186
 msgid "View Posts"
 msgstr "게시물 보기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:181
+#: includes/admin/views/acf-post-type/advanced-settings.php:185
 msgid ""
 "Appears in the admin bar in the 'All Posts' view, provided the post type "
 "supports archives and the home page is not an archive of that post type."
@@ -2174,117 +2189,117 @@ msgstr ""
 "게시물 유형이 아카이브를 지원하고 홈 페이지가 해당 게시물 유형의 아카이브가 "
 "아닌 경우 '모든 게시물' 보기의 관리 표시줄에 나타납니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:180
+#: includes/admin/views/acf-post-type/advanced-settings.php:184
 msgid "View Items"
 msgstr "항목 보기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:162
+#: includes/admin/views/acf-post-type/advanced-settings.php:166
 msgid "View Post"
 msgstr "게시물 보기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:161
+#: includes/admin/views/acf-post-type/advanced-settings.php:165
 msgid "In the admin bar to view item when editing it."
 msgstr "항목을 편집할 때 관리 표시줄에서 항목을 봅니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:160
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:212
+#: includes/admin/views/acf-post-type/advanced-settings.php:164
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:216
 msgid "View Item"
 msgstr "항목 보기"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:157
-#: includes/admin/views/acf-post-type/advanced-settings.php:177
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:209
+#: includes/admin/views/acf-post-type/advanced-settings.php:161
+#: includes/admin/views/acf-post-type/advanced-settings.php:181
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:213
 msgid "View %s"
 msgstr "%s 보기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:142
+#: includes/admin/views/acf-post-type/advanced-settings.php:146
 msgid "Edit Post"
 msgstr "게시물 수정"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:141
+#: includes/admin/views/acf-post-type/advanced-settings.php:145
 msgid "At the top of the editor screen when editing an item."
 msgstr "항목을 편집할 때 편집기 화면 상단에 있습니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:140
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:192
+#: includes/admin/views/acf-post-type/advanced-settings.php:144
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:196
 msgid "Edit Item"
 msgstr "항목 편집"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:137
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:189
+#: includes/admin/views/acf-post-type/advanced-settings.php:141
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:193
 msgid "Edit %s"
 msgstr "%s 편집"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:122
+#: includes/admin/views/acf-post-type/advanced-settings.php:126
 msgid "All Posts"
 msgstr "모든 게시물"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:121
-#: includes/admin/views/acf-post-type/advanced-settings.php:216
-#: includes/admin/views/acf-post-type/advanced-settings.php:236
+#: includes/admin/views/acf-post-type/advanced-settings.php:125
+#: includes/admin/views/acf-post-type/advanced-settings.php:220
+#: includes/admin/views/acf-post-type/advanced-settings.php:240
 msgid "In the post type submenu in the admin dashboard."
 msgstr "관리 알림판의 게시물 유형 하위 메뉴에서."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:120
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:172
+#: includes/admin/views/acf-post-type/advanced-settings.php:124
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:176
 msgid "All Items"
 msgstr "모든 항목"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
-#: includes/admin/views/acf-post-type/advanced-settings.php:117
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:169
+#: includes/admin/views/acf-post-type/advanced-settings.php:121
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:173
 msgid "All %s"
 msgstr "모든 %s"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:101
+#: includes/admin/views/acf-post-type/advanced-settings.php:105
 msgid "Admin menu name for the post type."
 msgstr "게시물 유형의 관리자 메뉴 이름입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:100
+#: includes/admin/views/acf-post-type/advanced-settings.php:104
 msgid "Menu Name"
 msgstr "메뉴명"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:86
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:138
+#: includes/admin/views/acf-post-type/advanced-settings.php:90
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:142
 msgid "Regenerate all labels using the Singular and Plural labels"
 msgstr "단일 및 복수 레이블을 사용하여 모든 레이블 재생성"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:84
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:136
+#: includes/admin/views/acf-post-type/advanced-settings.php:88
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:140
 msgid "Regenerate"
 msgstr "재생하다"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:75
+#: includes/admin/views/acf-post-type/advanced-settings.php:79
 msgid "Active post types are enabled and registered with WordPress."
 msgstr "활성 게시물 유형이 활성화되고 워드프레스에 등록됩니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:59
+#: includes/admin/views/acf-post-type/advanced-settings.php:63
 msgid "A descriptive summary of the post type."
 msgstr "게시물 유형에 대한 설명 요약입니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:44
+#: includes/admin/views/acf-post-type/advanced-settings.php:48
 msgid "Add Custom"
 msgstr "맞춤 추가"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:38
+#: includes/admin/views/acf-post-type/advanced-settings.php:42
 msgid "Enable various features in the content editor."
 msgstr "콘텐츠 편집기에서 다양한 기능을 활성화합니다."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:27
+#: includes/admin/views/acf-post-type/advanced-settings.php:31
 msgid "Post Formats"
 msgstr "게시물 형식"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:21
+#: includes/admin/views/acf-post-type/advanced-settings.php:25
 msgid "Editor"
 msgstr "편집자"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:20
+#: includes/admin/views/acf-post-type/advanced-settings.php:24
 msgid "Trackbacks"
 msgstr "트랙백"
 
@@ -2488,7 +2503,7 @@ msgstr[0] "%s 게시물 유형이 활성화되었습니다."
 #: includes/admin/post-types/admin-taxonomies.php:137
 #: includes/admin/tools/class-acf-admin-tool-import.php:82
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
-#: includes/post-types/class-acf-post-type.php:90
+#: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
 msgstr "게시물 유형"
 
@@ -2665,7 +2680,7 @@ msgstr "가시성"
 msgid "Labels"
 msgstr "레이블"
 
-#: includes/admin/post-types/admin-field-group.php:261
+#: includes/admin/post-types/admin-field-group.php:269
 msgid "Field Settings Tabs"
 msgstr "필드 설정 탭"
 
@@ -2682,7 +2697,7 @@ msgid "[ACF shortcode value disabled for preview]"
 msgstr "[미리보기에 사용할 수 없는 ACF 쇼트코드 값]"
 
 #: includes/admin/admin-internal-post-type.php:298
-#: includes/admin/post-types/admin-field-group.php:563
+#: includes/admin/post-types/admin-field-group.php:571
 msgid "Close Modal"
 msgstr "모달 닫기"
 
@@ -2751,6 +2766,7 @@ msgstr "변경 사항을 저장하다"
 msgid "Field Group Title"
 msgstr "필드 그룹 제목"
 
+#: includes/admin/views/acf-post-type/advanced-settings.php:704
 #: includes/admin/views/global/form-top.php:3
 msgid "Add title"
 msgstr "제목 추가"
@@ -2911,13 +2927,13 @@ msgid "Activate this item"
 msgstr "이 항목 활성화"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2803
+#: assets/build/js/acf-field-group.js:2804
 #: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr "필드 그룹을 휴지통으로 이동하시겠습니까?"
 
-#: acf.php:491 includes/admin/admin-internal-post-type-list.php:248
-#: includes/admin/post-types/admin-field-group.php:289
+#: acf.php:493 includes/admin/admin-internal-post-type-list.php:248
+#: includes/admin/post-types/admin-field-group.php:297
 #: includes/admin/post-types/admin-post-type.php:295
 #: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
@@ -2928,7 +2944,7 @@ msgstr "비활성"
 msgid "WP Engine"
 msgstr "WP 엔진"
 
-#: acf.php:549
+#: acf.php:551
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2936,7 +2952,7 @@ msgstr ""
 "고급 사용자 정의 필드와 고급 사용자 정의 필드 프로는 동시에 활성화되어서는 "
 "안 됩니다. 고급 사용자 정의 필드 프로를 자동으로 비활성화했습니다."
 
-#: acf.php:547
+#: acf.php:549
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -3016,7 +3032,7 @@ msgstr "16진수 문자열"
 msgid "Upgrade to PRO"
 msgstr "프로로 업그레이드"
 
-#: includes/admin/post-types/admin-field-group.php:289
+#: includes/admin/post-types/admin-field-group.php:297
 #: includes/admin/post-types/admin-post-type.php:295
 #: includes/admin/post-types/admin-taxonomy.php:297
 msgctxt "post status"
@@ -3076,7 +3092,7 @@ msgstr "택소노미"
 #: includes/acf-wp-functions.php:41
 #: includes/admin/post-types/admin-post-type.php:126
 #: includes/admin/post-types/admin-post-types.php:139
-#: includes/admin/views/acf-post-type/advanced-settings.php:102
+#: includes/admin/views/acf-post-type/advanced-settings.php:106
 #: assets/build/js/acf-internal-post-type.js:173
 #: assets/build/js/acf-internal-post-type.js:247
 msgid "Posts"
@@ -3425,7 +3441,7 @@ msgstr "%1$s v%2$s로 업데이트해주셔서 감사합니다!"
 msgid "Database Upgrade Required"
 msgstr "데이터베이스 업그래이드가 필요합니다"
 
-#: includes/admin/post-types/admin-field-group.php:133
+#: includes/admin/post-types/admin-field-group.php:141
 #: includes/admin/views/upgrade/notice.php:18
 msgid "Options Page"
 msgstr "옵션 페이지"
@@ -3468,7 +3484,7 @@ msgstr "트랙백 보내기"
 
 #: includes/admin/post-types/admin-taxonomy.php:128
 #: includes/admin/views/acf-field-group/options.php:183
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:155
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:159
 #: assets/build/js/acf-internal-post-type.js:180
 #: assets/build/js/acf-internal-post-type.js:254
 msgid "Tags"
@@ -3482,7 +3498,7 @@ msgid "Categories"
 msgstr "카테고리"
 
 #: includes/admin/views/acf-field-group/options.php:180
-#: includes/admin/views/acf-post-type/advanced-settings.php:24
+#: includes/admin/views/acf-post-type/advanced-settings.php:28
 msgid "Page Attributes"
 msgstr "페이지 속성"
 
@@ -3491,7 +3507,7 @@ msgid "Format"
 msgstr "형식"
 
 #: includes/admin/views/acf-field-group/options.php:178
-#: includes/admin/views/acf-post-type/advanced-settings.php:18
+#: includes/admin/views/acf-post-type/advanced-settings.php:22
 msgid "Author"
 msgstr "작성자"
 
@@ -3500,13 +3516,13 @@ msgid "Slug"
 msgstr "슬러그"
 
 #: includes/admin/views/acf-field-group/options.php:176
-#: includes/admin/views/acf-post-type/advanced-settings.php:23
+#: includes/admin/views/acf-post-type/advanced-settings.php:27
 msgid "Revisions"
 msgstr "개정"
 
 #: includes/acf-wp-functions.php:63
 #: includes/admin/views/acf-field-group/options.php:175
-#: includes/admin/views/acf-post-type/advanced-settings.php:19
+#: includes/admin/views/acf-post-type/advanced-settings.php:23
 msgid "Comments"
 msgstr "코멘트"
 
@@ -3515,7 +3531,7 @@ msgid "Discussion"
 msgstr "논의"
 
 #: includes/admin/views/acf-field-group/options.php:172
-#: includes/admin/views/acf-post-type/advanced-settings.php:22
+#: includes/admin/views/acf-post-type/advanced-settings.php:26
 msgid "Excerpt"
 msgstr "요약문"
 
@@ -3781,11 +3797,11 @@ msgstr ""
 msgid "Rules"
 msgstr "규칙"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:506
+#: includes/admin/tools/class-acf-admin-tool-export.php:510
 msgid "Copied"
 msgstr "복사했습니다"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:482
+#: includes/admin/tools/class-acf-admin-tool-export.php:486
 msgid "Copy to clipboard"
 msgstr "클립보드에 복사하기"
 
@@ -3861,7 +3877,7 @@ msgstr "복제하기"
 msgid "Duplicate this item"
 msgstr "이 항목 복제하기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:37
+#: includes/admin/views/acf-post-type/advanced-settings.php:41
 msgid "Supports"
 msgstr "지원"
 
@@ -3873,8 +3889,8 @@ msgstr "문서화"
 #: includes/admin/post-types/admin-post-types.php:135
 #: includes/admin/post-types/admin-taxonomies.php:135
 #: includes/admin/views/acf-field-group/options.php:247
-#: includes/admin/views/acf-post-type/advanced-settings.php:58
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:110
+#: includes/admin/views/acf-post-type/advanced-settings.php:62
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:114
 #: includes/admin/views/upgrade/network.php:38
 #: includes/admin/views/upgrade/network.php:49
 msgid "Description"
@@ -3914,41 +3930,41 @@ msgid "Upgrade Database"
 msgstr "데이터베이스 업그래이드하기"
 
 #: includes/admin/views/acf-field-group/options.php:173
-#: includes/admin/views/acf-post-type/advanced-settings.php:26
+#: includes/admin/views/acf-post-type/advanced-settings.php:30
 msgid "Custom Fields"
 msgstr "사용자 정의 필드"
 
-#: includes/admin/post-types/admin-field-group.php:608
+#: includes/admin/post-types/admin-field-group.php:616
 msgid "Move Field"
 msgstr "필드 이동하기"
 
-#: includes/admin/post-types/admin-field-group.php:597
-#: includes/admin/post-types/admin-field-group.php:601
+#: includes/admin/post-types/admin-field-group.php:605
+#: includes/admin/post-types/admin-field-group.php:609
 msgid "Please select the destination for this field"
 msgstr "이 필드의 대상을 선택하십시오"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:559
+#: includes/admin/post-types/admin-field-group.php:567
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "%1$s 필드는 이제 %2$s 필드 그룹에서 찾을 수 있습니다."
 
-#: includes/admin/post-types/admin-field-group.php:556
+#: includes/admin/post-types/admin-field-group.php:564
 msgid "Move Complete."
 msgstr "이동완료."
 
 #: includes/admin/views/acf-field-group/field.php:35
 #: includes/admin/views/acf-field-group/options.php:215
-#: includes/admin/views/acf-post-type/advanced-settings.php:74
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:126
+#: includes/admin/views/acf-post-type/advanced-settings.php:78
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:130
 msgid "Active"
 msgstr "활동적인"
 
-#: includes/admin/post-types/admin-field-group.php:258
+#: includes/admin/post-types/admin-field-group.php:266
 msgid "Field Keys"
 msgstr "필드 키"
 
-#: includes/admin/post-types/admin-field-group.php:156
+#: includes/admin/post-types/admin-field-group.php:164
 #: includes/admin/tools/class-acf-admin-tool-export.php:342
 msgid "Settings"
 msgstr "설정"
@@ -3963,7 +3979,7 @@ msgid "Null"
 msgstr "빈값"
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: includes/class-acf-internal-post-type.php:733
+#: includes/class-acf-internal-post-type.php:730
 #: includes/post-types/class-acf-field-group.php:345
 #: assets/build/js/acf-field-group.js:1502
 #: assets/build/js/acf-field-group.js:1810
@@ -4112,13 +4128,13 @@ msgstr "이매일 확인하기"
 msgid "Content"
 msgstr "콘텐츠"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:17
+#: includes/admin/views/acf-post-type/advanced-settings.php:21
 #: includes/forms/form-front.php:40
 msgid "Title"
 msgstr "제목"
 
 #: includes/assets.php:372 includes/forms/form-comment.php:160
-#: assets/build/js/acf-input.js:7348 assets/build/js/acf-input.js:7934
+#: assets/build/js/acf-input.js:7367 assets/build/js/acf-input.js:7950
 msgid "Edit field group"
 msgstr "필드 그룹 편집하기"
 
@@ -4185,50 +4201,50 @@ msgstr "취소하기"
 msgid "Are you sure?"
 msgstr "확실합니까?"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9408
-#: assets/build/js/acf-input.js:10259
+#: includes/assets.php:369 assets/build/js/acf-input.js:9427
+#: assets/build/js/acf-input.js:10275
 msgid "%d fields require attention"
 msgstr "%d개의 필드에 주의가 필요합니다."
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9406
-#: assets/build/js/acf-input.js:10255
+#: includes/assets.php:368 assets/build/js/acf-input.js:9425
+#: assets/build/js/acf-input.js:10271
 msgid "1 field requires attention"
 msgstr "주의가 필요한 필드 1개"
 
 #: includes/assets.php:367 includes/validation.php:288
-#: includes/validation.php:298 assets/build/js/acf-input.js:9401
-#: assets/build/js/acf-input.js:10250
+#: includes/validation.php:298 assets/build/js/acf-input.js:9420
+#: assets/build/js/acf-input.js:10266
 msgid "Validation failed"
 msgstr "검증에 실패했습니다"
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9569
-#: assets/build/js/acf-input.js:10438
+#: includes/assets.php:366 assets/build/js/acf-input.js:9588
+#: assets/build/js/acf-input.js:10454
 msgid "Validation successful"
 msgstr "유효성 검사 성공"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7176
-#: assets/build/js/acf-input.js:7738
+#: includes/media.php:54 assets/build/js/acf-input.js:7195
+#: assets/build/js/acf-input.js:7754
 msgid "Restricted"
 msgstr "제한했습니다"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:6991
-#: assets/build/js/acf-input.js:7502
+#: includes/media.php:53 assets/build/js/acf-input.js:7010
+#: assets/build/js/acf-input.js:7518
 msgid "Collapse Details"
 msgstr "세부 정보 접기"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:6991
-#: assets/build/js/acf-input.js:7499
+#: includes/media.php:52 assets/build/js/acf-input.js:7010
+#: assets/build/js/acf-input.js:7515
 msgid "Expand Details"
 msgstr "세부정보 확장하기"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:461
-#: includes/media.php:51 assets/build/js/acf-input.js:6858
-#: assets/build/js/acf-input.js:7347
+#: includes/admin/views/acf-post-type/advanced-settings.php:465
+#: includes/media.php:51 assets/build/js/acf-input.js:6877
+#: assets/build/js/acf-input.js:7363
 msgid "Uploaded to this post"
 msgstr "이 게시물에 업로드됨"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6897
-#: assets/build/js/acf-input.js:7386
+#: includes/media.php:50 assets/build/js/acf-input.js:6916
+#: assets/build/js/acf-input.js:7402
 msgctxt "verb"
 msgid "Update"
 msgstr "업대이트하기"
@@ -4238,12 +4254,12 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "편집하기"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9178
-#: assets/build/js/acf-input.js:10021
+#: includes/assets.php:363 assets/build/js/acf-input.js:9197
+#: assets/build/js/acf-input.js:10037
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "페이지를 벗어나면 변경 한 내용이 손실 됩니다"
 
-#: includes/api/api-helpers.php:3499
+#: includes/api/api-helpers.php:3494
 msgid "File type must be %s."
 msgstr "파일 유형은 %s여야 합니다."
 
@@ -4252,38 +4268,38 @@ msgstr "파일 유형은 %s여야 합니다."
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3495 assets/build/js/acf-field-group.js:771
+#: includes/api/api-helpers.php:3490 assets/build/js/acf-field-group.js:771
 #: assets/build/js/acf-field-group.js:2377
 #: assets/build/js/acf-field-group.js:933
 #: assets/build/js/acf-field-group.js:2791
 msgid "or"
 msgstr "또는"
 
-#: includes/api/api-helpers.php:3468
+#: includes/api/api-helpers.php:3463
 msgid "File size must not exceed %s."
 msgstr "파일 크기는 %s를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3463
+#: includes/api/api-helpers.php:3458
 msgid "File size must be at least %s."
 msgstr "파일 크기는 %s 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:3448
+#: includes/api/api-helpers.php:3443
 msgid "Image height must not exceed %dpx."
 msgstr "이미지 높이는 %dpx를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3443
+#: includes/api/api-helpers.php:3438
 msgid "Image height must be at least %dpx."
 msgstr "이미지 높이는 %dpx 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:3429
+#: includes/api/api-helpers.php:3424
 msgid "Image width must not exceed %dpx."
 msgstr "이미지 너비는 %dpx를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3424
+#: includes/api/api-helpers.php:3419
 msgid "Image width must be at least %dpx."
 msgstr "이미지 너비는 %dpx 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:1670 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1665 includes/api/api-term.php:147
 msgid "(no title)"
 msgstr "(제목 없음)"
 
@@ -4573,7 +4589,7 @@ msgid "Enter each default value on a new line"
 msgstr "새로운 줄에 기본 값 입력하기"
 
 #: includes/fields/class-acf-field-select.php:252 includes/media.php:48
-#: assets/build/js/acf-input.js:6756 assets/build/js/acf-input.js:7232
+#: assets/build/js/acf-input.js:6775 assets/build/js/acf-input.js:7248
 msgctxt "verb"
 msgid "Select"
 msgstr "선택하기"
@@ -4684,8 +4700,8 @@ msgstr "색상 선택하기"
 msgid "Default"
 msgstr "기본"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:85
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:137
+#: includes/admin/views/acf-post-type/advanced-settings.php:89
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:141
 #: includes/fields/class-acf-field-color_picker.php:72
 msgid "Clear"
 msgstr "정리"
@@ -4924,48 +4940,48 @@ msgstr "Null 값 허용"
 msgid "Parent"
 msgstr "부모"
 
-#: includes/fields/class-acf-field-wysiwyg.php:397
+#: includes/fields/class-acf-field-wysiwyg.php:390
 msgid "TinyMCE will not be initialized until field is clicked"
 msgstr "TinyMCE는 필드를 클릭할 때까지 초기화되지 않습니다."
 
-#: includes/fields/class-acf-field-wysiwyg.php:396
+#: includes/fields/class-acf-field-wysiwyg.php:389
 msgid "Delay Initialization"
 msgstr "초기화 지연"
 
-#: includes/fields/class-acf-field-wysiwyg.php:385
+#: includes/fields/class-acf-field-wysiwyg.php:378
 msgid "Show Media Upload Buttons"
 msgstr "미디어 업로드 버튼 표시"
 
-#: includes/fields/class-acf-field-wysiwyg.php:369
+#: includes/fields/class-acf-field-wysiwyg.php:362
 msgid "Toolbar"
 msgstr "툴바"
 
-#: includes/fields/class-acf-field-wysiwyg.php:361
+#: includes/fields/class-acf-field-wysiwyg.php:354
 msgid "Text Only"
 msgstr "텍스트만"
 
-#: includes/fields/class-acf-field-wysiwyg.php:360
+#: includes/fields/class-acf-field-wysiwyg.php:353
 msgid "Visual Only"
 msgstr "비주얼 전용"
 
-#: includes/fields/class-acf-field-wysiwyg.php:359
+#: includes/fields/class-acf-field-wysiwyg.php:352
 msgid "Visual & Text"
 msgstr "비주얼 및 텍스트"
 
-#: includes/fields/class-acf-field-wysiwyg.php:354
+#: includes/fields/class-acf-field-wysiwyg.php:347
 msgid "Tabs"
 msgstr "탭"
 
-#: includes/fields/class-acf-field-wysiwyg.php:292
+#: includes/fields/class-acf-field-wysiwyg.php:285
 msgid "Click to initialize TinyMCE"
 msgstr "TinyMCE를 초기화하려면 클릭하십시오."
 
-#: includes/fields/class-acf-field-wysiwyg.php:286
+#: includes/fields/class-acf-field-wysiwyg.php:279
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "텍스트"
 
-#: includes/fields/class-acf-field-wysiwyg.php:285
+#: includes/fields/class-acf-field-wysiwyg.php:278
 msgid "Visual"
 msgstr "비주얼"
 
@@ -5042,7 +5058,7 @@ msgstr "자리표시자 텍스트"
 #: includes/fields/class-acf-field-text.php:98
 #: includes/fields/class-acf-field-textarea.php:104
 #: includes/fields/class-acf-field-url.php:102
-#: includes/fields/class-acf-field-wysiwyg.php:319
+#: includes/fields/class-acf-field-wysiwyg.php:312
 msgid "Appears when creating a new post"
 msgstr "새 게시물을 작성할 때 나타납니다."
 
@@ -5075,7 +5091,7 @@ msgid "Minimum Posts"
 msgstr "최소 게시물"
 
 #: includes/admin/views/acf-field-group/options.php:181
-#: includes/admin/views/acf-post-type/advanced-settings.php:25
+#: includes/admin/views/acf-post-type/advanced-settings.php:29
 #: includes/fields/class-acf-field-relationship.php:701
 msgid "Featured Image"
 msgstr "특성 이미지"
@@ -5097,7 +5113,7 @@ msgstr "택소노미"
 
 #: includes/fields/class-acf-field-relationship.php:629
 #: includes/locations/class-acf-location-post-type.php:22
-#: includes/post-types/class-acf-post-type.php:91
+#: includes/post-types/class-acf-post-type.php:92
 msgid "Post Type"
 msgstr "게시물 유형"
 
@@ -5276,7 +5292,7 @@ msgid "Edit"
 msgstr "편집하기"
 
 #: includes/fields/class-acf-field-image.php:70 includes/media.php:55
-#: assets/build/js/acf-input.js:6803 assets/build/js/acf-input.js:7286
+#: assets/build/js/acf-input.js:6822 assets/build/js/acf-input.js:7302
 msgid "All images"
 msgstr "모든 이미지"
 
@@ -5426,7 +5442,7 @@ msgstr "양식에 일치하는 UI"
 #: includes/fields/class-acf-field-textarea.php:103
 #: includes/fields/class-acf-field-true_false.php:147
 #: includes/fields/class-acf-field-url.php:101
-#: includes/fields/class-acf-field-wysiwyg.php:318
+#: includes/fields/class-acf-field-wysiwyg.php:311
 msgid "Default Value"
 msgstr "기본값"
 
@@ -5464,7 +5480,7 @@ msgstr "열"
 msgid "Table"
 msgstr "태이블"
 
-#: includes/admin/post-types/admin-field-group.php:132
+#: includes/admin/post-types/admin-field-group.php:140
 #: includes/fields/class-acf-field-group.php:472
 msgid "Block"
 msgstr "블록"
@@ -5587,90 +5603,90 @@ msgid "Time Picker"
 msgstr "시간 선택기"
 
 #. translators: counts for inactive field groups
-#: acf.php:497
+#: acf.php:499
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "비활성 <span class=\"count\">(%s)</span>"
 
-#: acf.php:456
+#: acf.php:458
 msgid "No Fields found in Trash"
 msgstr "휴지통에서 필드를 찾을 수 없습니다."
 
-#: acf.php:455
+#: acf.php:457
 msgid "No Fields found"
 msgstr "필드를 찾을 수 없음"
 
-#: acf.php:454
+#: acf.php:456
 msgid "Search Fields"
 msgstr "필드 검색하기"
 
-#: acf.php:453
+#: acf.php:455
 msgid "View Field"
 msgstr "필드보기"
 
-#: acf.php:452 includes/admin/views/acf-field-group/fields.php:115
+#: acf.php:454 includes/admin/views/acf-field-group/fields.php:115
 msgid "New Field"
 msgstr "새 필드"
 
-#: acf.php:451
+#: acf.php:453
 msgid "Edit Field"
 msgstr "필드 편집하기"
 
-#: acf.php:450
+#: acf.php:452
 msgid "Add New Field"
 msgstr "새로운 필드 추가하기"
 
-#: acf.php:448
+#: acf.php:450
 msgid "Field"
 msgstr "필드"
 
-#: acf.php:447 includes/admin/post-types/admin-field-group.php:155
+#: acf.php:449 includes/admin/post-types/admin-field-group.php:163
 #: includes/admin/post-types/admin-field-groups.php:119
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "필드"
 
-#: acf.php:422
+#: acf.php:424
 msgid "No Field Groups found in Trash"
 msgstr "휴지통에서 필드 그룹을 찾을 수 없습니다."
 
-#: acf.php:421
+#: acf.php:423
 msgid "No Field Groups found"
 msgstr "필드 그룹을 찾을 수 없음"
 
-#: acf.php:420
+#: acf.php:422
 msgid "Search Field Groups"
 msgstr "필드 그룹 검색하기"
 
-#: acf.php:419
+#: acf.php:421
 msgid "View Field Group"
 msgstr "필드 그룹 보기"
 
-#: acf.php:418
+#: acf.php:420
 msgid "New Field Group"
 msgstr "새 필드 그룹"
 
-#: acf.php:417
+#: acf.php:419
 msgid "Edit Field Group"
 msgstr "필드 그룹 편집하기"
 
-#: acf.php:416
+#: acf.php:418
 msgid "Add New Field Group"
 msgstr "새 필드 그룹 추가하기"
 
-#: acf.php:415 acf.php:449
-#: includes/admin/views/acf-post-type/advanced-settings.php:215
-#: includes/admin/views/acf-post-type/advanced-settings.php:217
-#: includes/post-types/class-acf-post-type.php:92
+#: acf.php:417 acf.php:451
+#: includes/admin/views/acf-post-type/advanced-settings.php:219
+#: includes/admin/views/acf-post-type/advanced-settings.php:221
+#: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "새로 추가하기"
 
-#: acf.php:414
+#: acf.php:416
 msgid "Field Group"
 msgstr "필드 그룹"
 
-#: acf.php:413 includes/admin/post-types/admin-field-groups.php:78
+#: acf.php:415 includes/admin/post-types/admin-field-groups.php:78
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"
@@ -5685,6 +5701,6 @@ msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php:92
+#: acf.php:94
 msgid "Advanced Custom Fields"
 msgstr "고급 사용자 정의 필드"

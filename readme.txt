@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
 Tested up to: 6.3
 Requires PHP: 7.0
-Stable tag: 6.2.1.1
+Stable tag: 6.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,19 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.2 =
+*Release Date 25th October 2023*
+
+* Enhancement - ACF Blocks which have not been initialized by the editor will now render correctly
+* Enhancement - Added a new `acf/filesize` filter to allow third party media plugins to bypass ACF calling `filesize()` on attachments with uncached file sizes, which may result in a remote download if offloaded
+* Enhancement - ACF PRO license status and subscription expiry dates are now displayed on the “Updates” page
+* Fix - Product pages for WooCommerce version 8.2 or newer now correctly support field group location rules
+* Fix - Relationship field items can now be removed on mobile devices
+* Fix - Color picker fields no longer autocomplete immediately after typing 3 valid hex characters
+* Fix - Field settings no longer appear misaligned when the viewport is something other than 100%
+* Fix - Select fields without an aria-label no longer throw a warning
+* Fix - CPTs and Taxonomies with a custom text domain now export correctly when using PHP export
 
 = 6.2.1.1 =
 *Release Date 8th September 2023*
