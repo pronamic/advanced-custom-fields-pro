@@ -187,11 +187,36 @@ if ( ! class_exists( 'acf_pro' ) ) :
 		 * @return void
 		 */
 		public function maybe_show_license_status_error() {
-			$status = acf_pro_get_license_status();
+			$license_status         = acf_pro_get_license_status();
+			$defined_license_errors = acf_pro_get_activation_failure_transient();
+			$manage_url             = false;
 
-			if ( ! empty( $status['error_msg'] ) ) {
-				acf_add_admin_notice( $status['error_msg'], 'warning', false );
+			if ( ! acf_pro_get_license_key( true ) && ! defined( 'ACF_PRO_LICENSE' ) ) {
+				$error_msg  = __( 'Activate your license to enable access to updates, support &amp; PRO features.', 'acf' );
+				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
+			} elseif ( acf_pro_is_license_expired( $license_status ) ) {
+				$error_msg  = __( 'Your license has expired. Please renew to continue to have access to updates, support &amp; PRO features.', 'acf' );
+				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+			} elseif ( ! empty( $defined_license_errors ) ) {
+				$error_msg = $defined_license_errors['error'];
+			} elseif ( ! empty( $license_status['error_msg'] ) ) {
+				$error_msg = $license_status['error_msg'];
+			} else {
+				// No errors to show.
+				return;
 			}
+
+			if ( ! empty( $manage_url ) && 'acf-settings-updates' !== acf_request_arg( 'page' ) ) {
+				$manage_link = sprintf(
+					'<a href="%1$s">%2$s</a>',
+					esc_url( $manage_url ),
+					__( 'Manage License', 'acf' )
+				);
+
+				$error_msg .= ' ' . $manage_link;
+			}
+
+			acf_add_admin_notice( $error_msg, 'warning', false );
 		}
 
 		/**

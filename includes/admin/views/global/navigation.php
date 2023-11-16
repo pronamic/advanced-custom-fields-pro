@@ -174,7 +174,7 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 		<div class="acf-nav-wrap">
 			<a href="<?php echo admin_url( 'edit.php?post_type=acf-field-group' ); ?>" class="acf-logo">
 				<img src="<?php echo acf_get_url( 'assets/images/acf-logo.svg' ); ?>" alt="<?php esc_attr_e( 'Advanced Custom Fields logo', 'acf' ); ?>">
-				<?php if ( acf_is_pro() ) { ?>
+				<?php if ( acf_is_pro() && acf_pro_is_license_active() ) { ?>
 					<div class="acf-pro-label">PRO</div>
 				<?php } ?>
 			</a>
@@ -205,12 +205,30 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 			<?php } ?>
 		</div>
 		<div class="acf-nav-upgrade-wrap">
-			<?php if ( ! acf_is_pro() ) : ?>
-				<a target="_blank" href="<?php echo acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'header' ); ?>" class="btn-upgrade acf-admin-toolbar-upgrade-btn">
+			<?php
+			if ( ! acf_is_pro() || ! acf_pro_is_license_active() ) {
+				$unlock_url    = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'header' );
+				$unlock_target = '_blank';
+				$unlock_text   = __( 'Unlock Extra Features with ACF PRO', 'acf' );
+
+				if ( acf_is_pro() ) {
+					$unlock_url    = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
+					$unlock_target = '';
+
+					if ( acf_pro_is_license_expired() ) {
+						$unlock_url    = acf_add_url_utm_tags( acf_pro_get_manage_license_url(), 'ACF renewal', 'header' );
+						$unlock_target = '_blank';
+						$unlock_text   = __( 'Renew ACF PRO License', 'acf' );
+					}
+				}
+				?>
+				<a target="<?php echo esc_attr( $unlock_target ); ?>" href="<?php echo esc_url( $unlock_url ); ?>" class="btn-upgrade acf-admin-toolbar-upgrade-btn">
 					<i class="acf-icon acf-icon-stars"></i>
-					<p><?php esc_html_e( 'Unlock Extra Features with ACF PRO', 'acf' ); ?></p>
+					<p><?php echo esc_html( $unlock_text ); ?></p>
 				</a>
-			<?php endif; ?>
+				<?php
+			}
+			?>
 			<a href="<?php echo $acf_wpengine_logo_link; ?>" target="_blank" class="acf-nav-wpengine-logo">
 				<img src="<?php echo esc_url( acf_get_url( 'assets/images/wp-engine-horizontal-white.svg' ) ); ?>" alt="<?php esc_html_e( 'WP Engine logo', 'acf' ); ?>" />
 			</a>

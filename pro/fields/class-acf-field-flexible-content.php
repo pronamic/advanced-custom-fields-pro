@@ -49,7 +49,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 			$this->add_field_filter( 'acf/get_sub_field', array( $this, 'get_sub_field' ), 10, 3 );
 			$this->add_field_filter( 'acf/prepare_field_for_export', array( $this, 'prepare_field_for_export' ) );
 			$this->add_field_filter( 'acf/prepare_field_for_import', array( $this, 'prepare_field_for_import' ) );
-
 		}
 
 
@@ -348,7 +347,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 </div>
 			<?php
-
 		}
 
 
@@ -516,7 +514,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 </div>
 			<?php
-
 		}
 
 		/**
@@ -552,10 +549,14 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 				$layout_prefix = "{$field['prefix']}[layouts][{$layout['key']}]";
 
 				?>
-				<div class="acf-field acf-field-setting-fc_layout" data-name="fc_layout" data-setting="flexible_content" data-layout-label="<?php echo esc_attr( $layout['label'] ); ?>" data-id="<?php echo esc_attr( $layout['key'] ); ?>">
+				<div class="acf-field acf-field-setting-fc_layout" data-name="fc_layout" data-setting="flexible_content" data-layout-label="<?php echo esc_attr( $layout['label'] ); ?>" data-layout-name="<?php echo esc_attr( $layout['name'] ); ?>" data-id="<?php echo esc_attr( $layout['key'] ); ?>">
 					<div class="acf-label acf-field-settings-fc_head">
 						<div class="acf-fc_draggable">
-							<label class="acf-fc-layout-name reorder-layout" ><?php esc_attr_e( 'Layout', 'acf' ); ?></label>
+							<label class="acf-fc-layout-label reorder-layout"><?php esc_attr_e( 'Layout', 'acf' ); ?></label>
+						</div>
+
+						<div class="acf-fc-layout-name copyable">
+							<span class="layout-name"></span>
 						</div>
 
 						<ul class="acf-bl acf-fl-actions">
@@ -596,17 +597,18 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 							?>
 						</li>
-						<li class="acf-fc-meta-name acf-fc-meta-right">
+						<li class="acf-fc-meta-name acf-fc-meta-right copyable input-copyable">
 								<?php
 
 								acf_render_field(
 									array(
-										'type'    => 'text',
-										'name'    => 'name',
-										'class'   => 'layout-name',
-										'prefix'  => $layout_prefix,
-										'value'   => $layout['name'],
-										'prepend' => __( 'Name', 'acf' ),
+										'type'       => 'text',
+										'name'       => 'name',
+										'class'      => 'layout-name',
+										'input-data' => array( '1p-ignore' => 'true' ),
+										'prefix'     => $layout_prefix,
+										'value'      => $layout['name'],
+										'prepend'    => __( 'Name', 'acf' ),
 									)
 								);
 
@@ -730,7 +732,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					'name'         => 'button_label',
 				)
 			);
-
 		}
 
 
@@ -817,7 +818,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $rows;
-
 		}
 
 
@@ -980,7 +980,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					}
 
 					// increase count
-					$layouts[ $l ]['count']++;
+					++$layouts[ $l ]['count'];
 
 					// bail if no sub fields
 					if ( empty( $layouts[ $l ]['sub_fields'] ) ) {
@@ -1064,7 +1064,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return false;
-
 		}
 
 
@@ -1110,7 +1109,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return true;
-
 		}
 
 		/**
@@ -1202,7 +1200,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 				// loop through rows
 				foreach ( $value as $row ) {
-					$i++;
+					++$i;
 
 					// bail early if no layout reference
 					if ( ! is_array( $row ) || ! isset( $row['acf_fc_layout'] ) ) {
@@ -1247,7 +1245,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $new_value;
-
 		}
 
 
@@ -1281,7 +1278,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 				$this->delete_row( $i, $field, $post_id );
 
 			}
-
 		}
 
 
@@ -1405,7 +1401,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 
@@ -1454,7 +1449,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 			// echo
 			echo $title;
 			die;
-
 		}
 
 
@@ -1493,7 +1487,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $title;
-
 		}
 
 
@@ -1526,7 +1519,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 
@@ -1557,7 +1549,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 		function prepare_any_field_for_export( $field ) {
@@ -1567,7 +1558,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 
@@ -1653,7 +1643,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 
@@ -1687,7 +1676,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 		/**
@@ -1847,7 +1835,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			return $value;
 		}
-
 	}
 
 

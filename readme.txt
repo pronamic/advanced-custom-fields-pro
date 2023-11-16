@@ -2,9 +2,9 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
-Tested up to: 6.3
+Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 6.2.2
+Stable tag: 6.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,10 +42,10 @@ Over 10 plus years of vibrant community contribution alongside an ongoing commit
 * Millions of Users
 
 = Links =
-* [Website](https://advancedcustomfields.com/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
-* [Documentation](https://advancedcustomfields.com/resources/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
+* [Website](https://www.advancedcustomfields.com/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
+* [Documentation](https://www.advancedcustomfields.com/resources/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
 * [Support](https://support.advancedcustomfields.com)
-* [ACF PRO](https://advancedcustomfields.com/pro/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
+* [ACF PRO](https://www.advancedcustomfields.com/pro/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
 
 = PRO =
 The Advanced Custom Fields plugin is also available in a professional version which includes more fields, more functionality, and more flexibility. The ACF PRO plugin features:
@@ -57,7 +57,7 @@ The Advanced Custom Fields plugin is also available in a professional version wh
 * Build fully customisable image galleries with the [Gallery Field](https://www.advancedcustomfields.com/resources/gallery/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade).
 * Unlock a more efficient workflow for managing field settings by reusing existing fields and field groups on demand with the [Clone Field](https://www.advancedcustomfields.com/resources/clone/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade).
 
-[Upgrade to ACF PRO](https://advancedcustomfields.com/pro/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
+[Upgrade to ACF PRO](https://www.advancedcustomfields.com/pro/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Pro%20Upgrade)
 
 == Installation ==
 
@@ -67,7 +67,7 @@ From your WordPress dashboard
 2. **Search** for "Advanced Custom Fields" or “ACF”
 3. **Install and Activate** Advanced Custom Fields from your Plugins page
 4. **Click** on the new menu item "ACF" and create your first custom field group, or register a custom post type or taxonomy.
-5. **Read** the documentation to [get started](https://advancedcustomfields.com/resources/getting-started-with-acf/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
+5. **Read** the documentation to [get started](https://www.advancedcustomfields.com/resources/getting-started-with-acf/?utm_source=wordpress.org&utm_medium=free%20plugin%20listing&utm_campaign=ACF%20Website)
 
 
 == Frequently Asked Questions ==
@@ -91,6 +91,22 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.3 =
+*Release Date 15th November 2023*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-6-2-3/)
+* New - An ACF Blocks specific JSON schema for block.json is now available on [GitHub](https://github.com/AdvancedCustomFields/schemas)
+* New - Flexible Content fields now show the layout name in the layout's header bar and supports click-to-copy
+* New - Duplicating Flexible Content layouts now appends "Copy" to their name and label, matching the behavior of field group duplication
+* Enhancement - ACF PRO will now automatically attempt license reactivation when the site URL changes, e.g. after a site migration. This resolves issues where updates may fail
+* Enhancement - Presentation setting for "High" placement of the Field Group made clear that it's not supported in the block editor
+* Fix - `acf_format_date` now ensures the date parameter is valid to prevent fatal errors if other data types are passed in
+* Fix - CPTs with a custom icon URL now display the posts icon in the location column of the field groups screen
+* Fix - The ACF JSON import form will now disable on first submit resolving an issue where you could submit the form twice
+* Fix - The "Add Row" button in the Flexible Content field now displays correctly when using nested layouts
+* Fix - Warning and Error notices no longer flicker on ACF admin pages load
+* i18n - ACF PRO license activation success and error messages are now translatable
 
 = 6.2.2 =
 *Release Date 25th October 2023*

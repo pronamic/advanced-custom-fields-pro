@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-10-25T08:59:42+00:00\n"
+"PO-Revision-Date: 2023-11-14T11:51:05+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/admin/views/options-page-preview.php:30
+msgid "Upgrade to ACF PRO"
+msgstr ""
+
+#. translators: %s URL to ACF options pages documentation
+#: includes/admin/views/options-page-preview.php:7
+msgid ""
+"ACF <a href=\"%s\" target=\"_blank\">options pages</a> are custom admin "
+"pages for managing global settings via fields. You can create multiple pages "
+"and sub-pages."
+msgstr ""
+
+#: includes/admin/views/global/header.php:35
+msgid "Add Options Page"
+msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:703
 msgid "In the editor used as the placeholder of the title."
@@ -29,7 +45,7 @@ msgstr ""
 msgid "Title Placeholder"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:93
+#: includes/admin/views/global/navigation.php:97
 msgid "4 Months Free"
 msgstr ""
 
@@ -76,21 +92,21 @@ msgstr ""
 msgid "This Field"
 msgstr ""
 
-#: includes/admin/admin.php:265
+#: includes/admin/admin.php:267
 msgid "ACF PRO"
 msgstr ""
 
-#: includes/admin/admin.php:263
+#: includes/admin/admin.php:265
 msgid "Feedback"
 msgstr ""
 
-#: includes/admin/admin.php:261
+#: includes/admin/admin.php:263
 msgid "Support"
 msgstr ""
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:236
+#: includes/admin/admin.php:238
 msgid "is developed and maintained by"
 msgstr ""
 
@@ -141,7 +157,7 @@ msgstr ""
 msgid "Select Multiple"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:211
+#: includes/admin/views/global/navigation.php:215
 msgid "WP Engine logo"
 msgstr ""
 
@@ -201,6 +217,7 @@ msgid "View Pricing & Upgrade"
 msgstr ""
 
 #: includes/admin/views/acf-field-group/pro-features.php:15
+#: includes/admin/views/options-page-preview.php:29
 msgid "Learn More"
 msgstr ""
 
@@ -585,7 +602,7 @@ msgctxt "noun"
 msgid "Clone"
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:82 includes/fields.php:357
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:357
 msgid "PRO"
 msgstr ""
 
@@ -609,7 +626,7 @@ msgstr ""
 msgid "Invalid post type selected for review."
 msgstr ""
 
-#: includes/admin/views/global/navigation.php:182
+#: includes/admin/views/global/navigation.php:186
 msgid "More"
 msgstr ""
 
@@ -2456,7 +2473,7 @@ msgid ""
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:48 includes/admin/admin.php:265
+#: includes/admin/admin.php:48 includes/admin/admin.php:267
 msgid "ACF"
 msgstr ""
 
@@ -2602,11 +2619,11 @@ msgstr ""
 "Οι προσαρμοσμένες τιμές των checkbox δεν επιτρέπεται να είναι κενές. "
 "Αποεπιλέξετε τις κενές τιμές."
 
-#: includes/admin/views/global/navigation.php:226
+#: includes/admin/views/global/navigation.php:230
 msgid "Updates"
 msgstr "Ανανεώσεις"
 
-#: includes/admin/views/global/navigation.php:172
+#: includes/admin/views/global/navigation.php:176
 msgid "Advanced Custom Fields logo"
 msgstr "Λογότυπος Advanced Custom Fields"
 
@@ -2627,12 +2644,13 @@ msgstr "Προσθήκη τίτλου"
 #: includes/admin/views/acf-field-group/list-empty.php:20
 #: includes/admin/views/acf-post-type/list-empty.php:12
 #: includes/admin/views/acf-taxonomy/list-empty.php:12
+#: includes/admin/views/options-page-preview.php:13
 msgid ""
 "New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting "
 "started guide</a>."
 msgstr ""
-"Είστε καινούριοι στο ACF; Κάνετε μια περιήγηση στον <a href=\"%s\" "
-"target=\"_blank\">οδηγό εκκίνησης για νέους</a>."
+"Είστε καινούριοι στο ACF; Κάνετε μια περιήγηση στον <a href=\"%s\" target="
+"\"_blank\">οδηγό εκκίνησης για νέους</a>."
 
 #: includes/admin/views/acf-field-group/list-empty.php:15
 msgid "Add Field Group"
@@ -2652,8 +2670,10 @@ msgstr ""
 msgid "Add Your First Field Group"
 msgstr "Προσθέστε την Πρώτη σας Ομάδα Πεδίων"
 
+#: includes/admin/admin-options-pages-preview.php:28
 #: includes/admin/views/acf-field-group/pro-features.php:39
-#: includes/admin/views/global/navigation.php:82
+#: includes/admin/views/global/navigation.php:86
+#: includes/admin/views/global/navigation.php:232
 msgid "Options Pages"
 msgstr "Σελίδες Ρυθμίσεων"
 
@@ -2673,7 +2693,7 @@ msgstr "Πεδίο Flexible Content"
 msgid "Repeater Field"
 msgstr "Πεδίο Repeater"
 
-#: includes/admin/views/global/navigation.php:207
+#: includes/admin/views/global/navigation.php:211
 msgid "Unlock Extra Features with ACF PRO"
 msgstr "Ξεκλειδώστε Επιπλέον Δυνατότητες με το ACF PRO"
 
@@ -2700,8 +2720,8 @@ msgid ""
 "Choose from over 30 field types. <a href=\"%s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
-"Επιλέξτε από περισσότερους από 30 τύπους πεδίων. <a href=\"%s\" "
-"target=\"_blank\">Μάθετε περισσότερα</a>."
+"Επιλέξτε από περισσότερους από 30 τύπους πεδίων. <a href=\"%s\" target="
+"\"_blank\">Μάθετε περισσότερα</a>."
 
 #: includes/admin/views/acf-field-group/fields.php:65
 msgid ""
@@ -2787,7 +2807,7 @@ msgstr "Ενεργοποιήστε αυτό το αντικείμενο"
 msgid "Move field group to trash?"
 msgstr "Να μεταφερθεί αυτή η ομάδα πεδίων στον κάδο;"
 
-#: acf.php:493 includes/admin/admin-internal-post-type-list.php:248
+#: acf.php:497 includes/admin/admin-internal-post-type-list.php:248
 #: includes/admin/post-types/admin-field-group.php:297
 #: includes/admin/post-types/admin-post-type.php:295
 #: includes/admin/post-types/admin-taxonomy.php:297
@@ -2799,13 +2819,13 @@ msgstr "Ανενεργό"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:551
+#: acf.php:555
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
 msgstr ""
 
-#: acf.php:549
+#: acf.php:553
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2815,13 +2835,13 @@ msgstr ""
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" "
-"target=\"_blank\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
+"\">Learn how to fix this</a>."
 msgstr ""
 "<strong>%1$s</strong> - Ανιχνεύθηκαν μία ή περισσότερες κλήσεις για ανάκτηση "
 "τιμών πεδίων ACF προτού το ACF αρχικοποιηθεί. Αυτό δεν υποστηρίζεται και "
-"μπορεί να καταλήξει σε παραποιημένα ή κενά. <a href=\"%2$s\" "
-"target=\"_blank\">Μάθετε πώς να το διορθώσετε</a>."
+"μπορεί να καταλήξει σε παραποιημένα ή κενά. <a href=\"%2$s\" target=\"_blank"
+"\">Μάθετε πώς να το διορθώσετε</a>."
 
 #: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
@@ -2866,20 +2886,20 @@ msgstr "Το %s απαιτεί ένα έγκυρο attachment ID."
 msgid "Show in REST API"
 msgstr "Να εμφανίζεται στο REST API"
 
-#: includes/fields/class-acf-field-color_picker.php:170
+#: includes/fields/class-acf-field-color_picker.php:168
 msgid "Enable Transparency"
 msgstr "Ενεργοποίηση Διαφάνειας"
 
-#: includes/fields/class-acf-field-color_picker.php:189
+#: includes/fields/class-acf-field-color_picker.php:187
 msgid "RGBA Array"
 msgstr "RGBA Array"
 
-#: includes/fields/class-acf-field-color_picker.php:99
+#: includes/fields/class-acf-field-color_picker.php:98
 msgid "RGBA String"
 msgstr "RGBA String"
 
-#: includes/fields/class-acf-field-color_picker.php:98
-#: includes/fields/class-acf-field-color_picker.php:188
+#: includes/fields/class-acf-field-color_picker.php:97
+#: includes/fields/class-acf-field-color_picker.php:186
 msgid "Hex String"
 msgstr "Hex String"
 
@@ -2898,15 +2918,15 @@ msgstr "Ενεργό"
 msgid "'%s' is not a valid email address"
 msgstr "Το '%s' δεν είναι έγκυρη διεύθυνση email."
 
-#: includes/fields/class-acf-field-color_picker.php:77
+#: includes/fields/class-acf-field-color_picker.php:76
 msgid "Color value"
 msgstr "Τιμή χρώματος"
 
-#: includes/fields/class-acf-field-color_picker.php:75
+#: includes/fields/class-acf-field-color_picker.php:74
 msgid "Select default color"
 msgstr "Επιλέξτε το προεπιλεγμένο χρώμα"
 
-#: includes/fields/class-acf-field-color_picker.php:73
+#: includes/fields/class-acf-field-color_picker.php:72
 msgid "Clear color"
 msgstr "Εκκαθάριση χρώματος"
 
@@ -3745,7 +3765,7 @@ msgstr "Δημιουργία αντιγράφου αυτού του στοιχε
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/admin.php:259 includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:261 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
 msgstr "Τεκμηρίωση"
 
@@ -3927,7 +3947,7 @@ msgid "Field group updated."
 msgstr "Το field group ενημερώθηκε."
 
 #: includes/admin/admin-tools.php:118
-#: includes/admin/views/global/navigation.php:224
+#: includes/admin/views/global/navigation.php:228
 #: includes/admin/views/tools/tools.php:21
 msgid "Tools"
 msgstr "Εργαλεία"
@@ -4004,7 +4024,7 @@ msgid "Title"
 msgstr "Τίτλος"
 
 #: includes/assets.php:372 includes/forms/form-comment.php:160
-#: assets/build/js/acf-input.js:7367 assets/build/js/acf-input.js:7950
+#: assets/build/js/acf-input.js:7382 assets/build/js/acf-input.js:7968
 msgid "Edit field group"
 msgstr "Επεξεργασία field group"
 
@@ -4071,50 +4091,50 @@ msgstr "Ακύρωση"
 msgid "Are you sure?"
 msgstr "Είστε σίγουροι;"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9427
-#: assets/build/js/acf-input.js:10275
+#: includes/assets.php:369 assets/build/js/acf-input.js:9442
+#: assets/build/js/acf-input.js:10294
 msgid "%d fields require attention"
 msgstr "%d πεδία χρήζουν προσοχής"
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9425
-#: assets/build/js/acf-input.js:10271
+#: includes/assets.php:368 assets/build/js/acf-input.js:9440
+#: assets/build/js/acf-input.js:10290
 msgid "1 field requires attention"
 msgstr "1 πεδίο χρήζει προσοχής"
 
 #: includes/assets.php:367 includes/validation.php:288
-#: includes/validation.php:298 assets/build/js/acf-input.js:9420
-#: assets/build/js/acf-input.js:10266
+#: includes/validation.php:298 assets/build/js/acf-input.js:9435
+#: assets/build/js/acf-input.js:10285
 msgid "Validation failed"
 msgstr "Ο έλεγχος απέτυχε"
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9588
-#: assets/build/js/acf-input.js:10454
+#: includes/assets.php:366 assets/build/js/acf-input.js:9603
+#: assets/build/js/acf-input.js:10473
 msgid "Validation successful"
 msgstr "Ο έλεγχος πέτυχε"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7195
-#: assets/build/js/acf-input.js:7754
+#: includes/media.php:54 assets/build/js/acf-input.js:7210
+#: assets/build/js/acf-input.js:7772
 msgid "Restricted"
 msgstr "Περιορισμένος"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:7010
-#: assets/build/js/acf-input.js:7518
+#: includes/media.php:53 assets/build/js/acf-input.js:7025
+#: assets/build/js/acf-input.js:7536
 msgid "Collapse Details"
 msgstr "Σύμπτυξη Λεπτομερειών"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:7010
-#: assets/build/js/acf-input.js:7515
+#: includes/media.php:52 assets/build/js/acf-input.js:7025
+#: assets/build/js/acf-input.js:7533
 msgid "Expand Details"
 msgstr "Ανάπτυξη Λεπτομερειών"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:465
-#: includes/media.php:51 assets/build/js/acf-input.js:6877
-#: assets/build/js/acf-input.js:7363
+#: includes/media.php:51 assets/build/js/acf-input.js:6892
+#: assets/build/js/acf-input.js:7381
 msgid "Uploaded to this post"
 msgstr "Να έχουν μεταφορτωθεί σε αυτή την ανάρτηση"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6916
-#: assets/build/js/acf-input.js:7402
+#: includes/media.php:50 assets/build/js/acf-input.js:6931
+#: assets/build/js/acf-input.js:7420
 msgctxt "verb"
 msgid "Update"
 msgstr "Ενημέρωση"
@@ -4124,12 +4144,12 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Επεξεργασία"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9197
-#: assets/build/js/acf-input.js:10037
+#: includes/assets.php:363 assets/build/js/acf-input.js:9212
+#: assets/build/js/acf-input.js:10056
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Οι αλλαγές που έχετε κάνει θα χαθούν αν φύγετε από αυτή τη σελίδα."
 
-#: includes/api/api-helpers.php:3494
+#: includes/api/api-helpers.php:3376
 msgid "File type must be %s."
 msgstr "Ο τύπος του πεδίου πρέπει να είναι %s."
 
@@ -4138,54 +4158,54 @@ msgstr "Ο τύπος του πεδίου πρέπει να είναι %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3490 assets/build/js/acf-field-group.js:771
+#: includes/api/api-helpers.php:3372 assets/build/js/acf-field-group.js:771
 #: assets/build/js/acf-field-group.js:2377
 #: assets/build/js/acf-field-group.js:933
 #: assets/build/js/acf-field-group.js:2791
 msgid "or"
 msgstr "ή"
 
-#: includes/api/api-helpers.php:3463
+#: includes/api/api-helpers.php:3345
 msgid "File size must not exceed %s."
 msgstr "Το μέγεθος του αρχείου πρέπει να το πολύ %s."
 
-#: includes/api/api-helpers.php:3458
+#: includes/api/api-helpers.php:3340
 msgid "File size must be at least %s."
 msgstr "Το μέγεθος το αρχείου πρέπει να είναι τουλάχιστον %s."
 
-#: includes/api/api-helpers.php:3443
+#: includes/api/api-helpers.php:3325
 msgid "Image height must not exceed %dpx."
 msgstr "Το ύψος της εικόνας πρέπει να είναι το πολύ %dpx."
 
-#: includes/api/api-helpers.php:3438
+#: includes/api/api-helpers.php:3320
 msgid "Image height must be at least %dpx."
 msgstr "Το ύψος της εικόνας πρέπει να είναι τουλάχιστον %dpx."
 
-#: includes/api/api-helpers.php:3424
+#: includes/api/api-helpers.php:3306
 msgid "Image width must not exceed %dpx."
 msgstr "Το πλάτος της εικόνας πρέπει να είναι το πολύ %dpx."
 
-#: includes/api/api-helpers.php:3419
+#: includes/api/api-helpers.php:3301
 msgid "Image width must be at least %dpx."
 msgstr "Το πλάτος της εικόνας πρέπει να είναι τουλάχιστον %dpx."
 
-#: includes/api/api-helpers.php:1665 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1561 includes/api/api-term.php:147
 msgid "(no title)"
 msgstr "(χωρίς τίτλο)"
 
-#: includes/api/api-helpers.php:945
+#: includes/api/api-helpers.php:853
 msgid "Full Size"
 msgstr "Πλήρες μέγεθος"
 
-#: includes/api/api-helpers.php:904
+#: includes/api/api-helpers.php:812
 msgid "Large"
 msgstr "Μεγάλο"
 
-#: includes/api/api-helpers.php:903
+#: includes/api/api-helpers.php:811
 msgid "Medium"
 msgstr "Μεσαίο"
 
-#: includes/api/api-helpers.php:902
+#: includes/api/api-helpers.php:810
 msgid "Thumbnail"
 msgstr "Μικρογραφία"
 
@@ -4356,7 +4376,7 @@ msgstr "Αποθήκευση των \"άλλων\" τιμών στις επιλ�
 msgid "Add 'other' choice to allow for custom values"
 msgstr "Προσθήκη επιλογής \"άλλο\" ώστε να επιτρέπονται προσαρμοσμένες τιμές"
 
-#: includes/admin/views/global/navigation.php:192
+#: includes/admin/views/global/navigation.php:196
 msgid "Other"
 msgstr "Άλλο"
 
@@ -4460,7 +4480,7 @@ msgid "Enter each default value on a new line"
 msgstr "Εισαγάγετε την κάθε προεπιλεγμένη τιμή σε μια νέα γραμμή"
 
 #: includes/fields/class-acf-field-select.php:252 includes/media.php:48
-#: assets/build/js/acf-input.js:6775 assets/build/js/acf-input.js:7248
+#: assets/build/js/acf-input.js:6790 assets/build/js/acf-input.js:7266
 msgctxt "verb"
 msgid "Select"
 msgstr "Επιλέξτε"
@@ -4561,13 +4581,13 @@ msgstr "Χρήστης"
 msgid "Separator"
 msgstr "Διαχωριστικό"
 
-#: includes/fields/class-acf-field-color_picker.php:76
+#: includes/fields/class-acf-field-color_picker.php:75
 msgid "Select Color"
 msgstr "Επιλογή Χρώματος"
 
 #: includes/admin/post-types/admin-post-type.php:129
 #: includes/admin/post-types/admin-taxonomy.php:131
-#: includes/fields/class-acf-field-color_picker.php:74
+#: includes/fields/class-acf-field-color_picker.php:73
 #: assets/build/js/acf-internal-post-type.js:72
 #: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
@@ -4575,7 +4595,7 @@ msgstr "Προεπιλογή"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:89
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:141
-#: includes/fields/class-acf-field-color_picker.php:72
+#: includes/fields/class-acf-field-color_picker.php:71
 msgid "Clear"
 msgstr "Καθαρισμός"
 
@@ -5033,17 +5053,17 @@ msgid "Select post type"
 msgstr "Επιλογή τύπου άρθρου"
 
 #: includes/fields/class-acf-field-relationship.php:61
-#: assets/build/js/acf-input.js:3925 assets/build/js/acf-input.js:4208
+#: assets/build/js/acf-input.js:3930 assets/build/js/acf-input.js:4214
 msgid "No matches found"
 msgstr "Δεν βρέθηκαν αντιστοιχίες"
 
 #: includes/fields/class-acf-field-relationship.php:60
-#: assets/build/js/acf-input.js:3908 assets/build/js/acf-input.js:4187
+#: assets/build/js/acf-input.js:3913 assets/build/js/acf-input.js:4193
 msgid "Loading"
 msgstr "Φόρτωση"
 
 #: includes/fields/class-acf-field-relationship.php:59
-#: assets/build/js/acf-input.js:3817 assets/build/js/acf-input.js:4083
+#: assets/build/js/acf-input.js:3818 assets/build/js/acf-input.js:4084
 msgid "Maximum values reached ( {max} values )"
 msgstr "Αγγίξατε το μέγιστο πλήθος τιμών ( {max} τιμές )"
 
@@ -5167,7 +5187,7 @@ msgid "Edit"
 msgstr "Επεξεργασία"
 
 #: includes/fields/class-acf-field-image.php:70 includes/media.php:55
-#: assets/build/js/acf-input.js:6822 assets/build/js/acf-input.js:7302
+#: assets/build/js/acf-input.js:6837 assets/build/js/acf-input.js:7320
 msgid "All images"
 msgstr "Όλες οι εικόνες"
 
@@ -5309,7 +5329,7 @@ msgstr "Στυλιζαρισμένο"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:361
-#: includes/fields/class-acf-field-color_picker.php:158
+#: includes/fields/class-acf-field-color_picker.php:156
 #: includes/fields/class-acf-field-email.php:117
 #: includes/fields/class-acf-field-number.php:128
 #: includes/fields/class-acf-field-radio.php:202
@@ -5445,7 +5465,7 @@ msgstr "Χάρτης Google"
 msgid "The format returned via template functions"
 msgstr "Ο τύπος που επιστρέφεται μέσω των template functions"
 
-#: includes/fields/class-acf-field-color_picker.php:182
+#: includes/fields/class-acf-field-color_picker.php:180
 #: includes/fields/class-acf-field-date_picker.php:211
 #: includes/fields/class-acf-field-date_time_picker.php:200
 #: includes/fields/class-acf-field-image.php:187
@@ -5483,79 +5503,79 @@ msgid "Time Picker"
 msgstr "Επιλογέας Ώρας"
 
 #. translators: counts for inactive field groups
-#: acf.php:499
+#: acf.php:503
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Ανενεργό <span class=\"count\">(%s)</span>"
 msgstr[1] "Ανενεργά <span class=\"count\">(%s)</span>"
 
-#: acf.php:458
+#: acf.php:462
 msgid "No Fields found in Trash"
 msgstr "Δεν βρέθηκαν Πεδία στα Διεγραμμένα"
 
-#: acf.php:457
+#: acf.php:461
 msgid "No Fields found"
 msgstr "Δεν βρέθηκαν Πεδία"
 
-#: acf.php:456
+#: acf.php:460
 msgid "Search Fields"
 msgstr "Αναζήτηση Πεδίων"
 
-#: acf.php:455
+#: acf.php:459
 msgid "View Field"
 msgstr "Προβολή Πεδίων"
 
-#: acf.php:454 includes/admin/views/acf-field-group/fields.php:115
+#: acf.php:458 includes/admin/views/acf-field-group/fields.php:115
 msgid "New Field"
 msgstr "Νέο Πεδίο"
 
-#: acf.php:453
+#: acf.php:457
 msgid "Edit Field"
 msgstr "Επεξεργασία Πεδίου"
 
-#: acf.php:452
+#: acf.php:456
 msgid "Add New Field"
 msgstr "Προσθήκη Νέου Πεδίου"
 
-#: acf.php:450
+#: acf.php:454
 msgid "Field"
 msgstr "Πεδίο"
 
-#: acf.php:449 includes/admin/post-types/admin-field-group.php:163
+#: acf.php:453 includes/admin/post-types/admin-field-group.php:163
 #: includes/admin/post-types/admin-field-groups.php:119
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Πεδία"
 
-#: acf.php:424
+#: acf.php:428
 msgid "No Field Groups found in Trash"
 msgstr "Δεν βρέθηκαν Ομάδες Πεδίων στα Διεγραμμένα"
 
-#: acf.php:423
+#: acf.php:427
 msgid "No Field Groups found"
 msgstr "Δεν βρέθηκαν Ομάδες Πεδίων"
 
-#: acf.php:422
+#: acf.php:426
 msgid "Search Field Groups"
 msgstr "Αναζήτηση Ομάδων Πεδίων "
 
-#: acf.php:421
+#: acf.php:425
 msgid "View Field Group"
 msgstr "Προβολή Ομάδας Πεδίων"
 
-#: acf.php:420
+#: acf.php:424
 msgid "New Field Group"
 msgstr "Νέα Ομάδα Πεδίων"
 
-#: acf.php:419
+#: acf.php:423
 msgid "Edit Field Group"
 msgstr "Επεξεργασίας Ομάδας Πεδίων"
 
-#: acf.php:418
+#: acf.php:422
 msgid "Add New Field Group"
 msgstr "Προσθήκη Νέας Ομάδας Πεδίων"
 
-#: acf.php:417 acf.php:451
+#: acf.php:421 acf.php:455
 #: includes/admin/views/acf-post-type/advanced-settings.php:219
 #: includes/admin/views/acf-post-type/advanced-settings.php:221
 #: includes/post-types/class-acf-post-type.php:93
@@ -5563,11 +5583,11 @@ msgstr "Προσθήκη Νέας Ομάδας Πεδίων"
 msgid "Add New"
 msgstr "Προσθήκη Νέου"
 
-#: acf.php:416
+#: acf.php:420
 msgid "Field Group"
 msgstr "Ομάδα Πεδίου"
 
-#: acf.php:415 includes/admin/post-types/admin-field-groups.php:78
+#: acf.php:419 includes/admin/post-types/admin-field-groups.php:78
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"

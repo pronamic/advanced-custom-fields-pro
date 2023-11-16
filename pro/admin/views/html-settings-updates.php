@@ -109,17 +109,10 @@ function acf_pro_render_manage_license_button( $status ) {
 		return;
 	}
 
-	$url   = 'https://www.advancedcustomfields.com/my-account/view-licenses/';
+	$url   = acf_pro_get_manage_license_url( $status );
+	$url   = acf_add_url_utm_tags( $url, 'updates page', 'manage license button' );
 	$text  = __( 'Manage License', 'acf' );
 	$class = '';
-
-	if ( ! empty( $status['manage_subscription_url'] ) ) {
-		$url = $status['manage_subscription_url'];
-	} elseif ( ! empty( $status['view_licenses_url'] ) ) {
-		$url = $status['view_licenses_url'];
-	}
-
-	$url = acf_add_url_utm_tags( $url, 'updates page', 'manage license button' );
 
 	if ( acf_pro_is_license_expired( $status ) ) {
 		$text  = __( 'Renew Subscription', 'acf' );
@@ -150,10 +143,26 @@ function acf_pro_render_manage_license_button( $status ) {
 				</p>
 
 				<?php if ( ! $active ) : ?>
-					<form class="acf-retry-activation" action="" method="post">
-						<?php acf_nonce_input( 'acf_delete_activation_transient' ); ?>
-						<input type="submit" value="<?php echo esc_attr( __( 'Retry Activation', 'acf' ) ); ?>" class="button button-primary">
-					</form>
+					<div class="acf-retry-activation">
+						<?php
+						$acf_recheck_class = ' acf-btn acf-btn-secondary';
+
+						if ( acf_pro_is_license_expired( $license_status ) ) {
+							acf_pro_render_manage_license_button( $license_status );
+							$acf_recheck_class = '';
+						}
+
+						$acf_recheck_nonce = wp_create_nonce( 'acf_retry_activation' );
+						$acf_recheck_url   = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates&acf_retry_nonce=' . $nonce );
+						$acf_recheck_text  = __( 'Recheck License', 'acf' );
+						printf(
+							'<a class="acf-recheck-license%1$s" href="%2$s"><i class="acf-icon acf-icon-regenerate"></i>%3$s</a>',
+							esc_attr( $acf_recheck_class ),
+							esc_url( $acf_recheck_url ),
+							esc_html( $acf_recheck_text )
+						);
+						?>
+					</div>
 				<?php endif; ?>
 			<?php else : // License is not defined. ?>
 				<form action="" method="post" class="acf-activation-form">
@@ -193,7 +202,7 @@ function acf_pro_render_manage_license_button( $status ) {
 				<?php
 				acf_pro_render_license_status_table( $license_status );
 
-				if ( ! $active ) :
+				if ( ! $active && ! defined( 'ACF_PRO_LICENSE' ) ) :
 					?>
 					<div class="acf-no-license-view-pricing">
 						<span>

@@ -99,7 +99,7 @@ foreach ( acf_get_combined_field_group_settings_tabs() as $tab_key => $tab_label
 			acf_render_field_wrap(
 				array(
 					'label'         => __( 'Position', 'acf' ),
-					'instructions'  => '',
+					'instructions'  => __( "'High' position not supported in the Block Editor", 'acf' ),
 					'type'          => 'button_group',
 					'name'          => 'position',
 					'prefix'        => 'acf_field_group',
@@ -110,7 +110,9 @@ foreach ( acf_get_combined_field_group_settings_tabs() as $tab_key => $tab_label
 						'side'            => __( 'Side', 'acf' ),
 					),
 					'default_value' => 'normal',
-				)
+				),
+				'div',
+				'field'
 			);
 
 

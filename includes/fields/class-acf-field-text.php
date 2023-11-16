@@ -33,7 +33,6 @@ if ( ! class_exists( 'acf_field_text' ) ) :
 				'prepend'       => '',
 				'append'        => '',
 			);
-
 		}
 
 
@@ -71,6 +70,13 @@ if ( ! class_exists( 'acf_field_text' ) ) :
 					$input_attrs[ $k ] = $field[ $k ];
 				}
 			}
+
+			if ( isset( $field['input-data'] ) && is_array( $field['input-data'] ) ) {
+				foreach ( $field['input-data'] as $name => $attr ) {
+					$input_attrs[ 'data-' . $name ] = $attr;
+				}
+			}
+
 			$html .= '<div class="acf-input-wrap">' . acf_get_text_input( acf_filter_attrs( $input_attrs ) ) . '</div>';
 
 			// Display.
@@ -209,5 +215,3 @@ if ( ! class_exists( 'acf_field_text' ) ) :
 	acf_register_field_type( 'acf_field_text' );
 
 endif; // class_exists check
-
-

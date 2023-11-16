@@ -2868,6 +2868,25 @@ function acf_is_screen( $id = '' ) {
 	}
 }
 
+/**
+ * Check if we're in an ACF admin screen
+ *
+ * @since  6.2.2
+ *
+ * @return boolean Returns true if the current screen is an ACF admin screen.
+ */
+function acf_is_acf_admin_screen() {
+	if ( ! is_admin() || ! function_exists( 'get_current_screen' ) ) {
+		return false;
+	}
+	$screen = get_current_screen();
+	if ( $screen && ! empty( $screen->post_type ) && substr( $screen->post_type, 0, 4 ) === 'acf-' ) {
+		return true;
+	}
+
+	return false;
+}
+
 
 /*
 *  acf_maybe_get
@@ -3777,44 +3796,28 @@ function acf_is_ajax( $action = '' ) {
 	return $is_ajax;
 }
 
-
-
-
-/*
-*  acf_format_date
-*
-*  This function will accept a date value and return it in a formatted string
-*
-*  @type    function
-*  @date    16/06/2016
-*  @since   5.3.8
-*
-*  @param   $value (string)
-*  @return  $format (string)
-*/
-
+/**
+ * Returns a date value in a formatted string.
+ *
+ * @since 5.3.8
+ *
+ * @param string $value  The date value to format.
+ * @param string $format The format to use.
+ * @return string
+ */
 function acf_format_date( $value, $format ) {
-
-	// bail early if no value
-	if ( ! $value ) {
+	// Bail early if no value or value is not what we expect.
+	if ( ! $value || ( ! is_string( $value ) && ! is_int( $value ) ) ) {
 		return $value;
 	}
 
-	// vars
-	$unixtimestamp = 0;
-
-	// numeric (either unix or YYYYMMDD)
+	// Numeric (either unix or YYYYMMDD).
 	if ( is_numeric( $value ) && strlen( $value ) !== 8 ) {
-
 		$unixtimestamp = $value;
-
 	} else {
-
 		$unixtimestamp = strtotime( $value );
-
 	}
 
-	// return
 	return date_i18n( $format, $unixtimestamp );
 }
 

@@ -264,29 +264,27 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 
 
 		/**
-		 *  meta_box_html
+		 * Output the metabox HTML for specific tools
 		 *
-		 *  description
+		 * @since 5.6.3
 		 *
-		 *  @date    10/10/17
-		 *  @since   5.6.3
+		 * @param mixed $post    The post this metabox is being displayed on, should be an empty string always for us on a tools page.
+		 * @param array $metabox An array of the metabox attributes.
 		 *
-		 *  @param   n/a
-		 *  @return  n/a
+		 * @return void
 		 */
+		public function metabox_html( $post, $metabox ) {
+			$tool       = $this->get_tool( $metabox['args']['tool'] );
+			$form_attrs = array( 'method' => 'post' );
 
-		function metabox_html( $post, $metabox ) {
+			if ( $metabox['args']['tool'] === 'import' ) {
+				$form_attrs['onsubmit'] = 'acf.disableForm(event)';
+			}
 
-			// vars
-			$tool = $this->get_tool( $metabox['args']['tool'] );
-
-			?>
-		<form method="post">
-			<?php $tool->html(); ?>
-			<?php acf_nonce_input( $tool->name ); ?>
-		</form>
-			<?php
-
+			printf( '<form %s>', acf_esc_attrs( $form_attrs ) );
+			$tool->html();
+			acf_nonce_input( $tool->name );
+			echo '</form>';
 		}
 
 	}
@@ -355,6 +353,3 @@ function acf_get_admin_tool_url( $tool = '' ) {
 	return acf_get_admin_tools_url() . '&tool=' . $tool;
 
 }
-
-
-?>

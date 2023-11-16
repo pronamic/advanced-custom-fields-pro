@@ -33,7 +33,10 @@ function acf_get_object_type( $object_type, $object_subtype = '' ) {
 				$post_type = get_post_type_object( $object_subtype );
 				if ( $post_type ) {
 					$props['label'] = $post_type->labels->name;
-					$props['icon']  = acf_with_default( $post_type->menu_icon, 'dashicons-admin-post' );
+					if ( is_string( $post_type->menu_icon ) && ! preg_match( '/^[\w\-]+$/', $post_type->menu_icon ) ) {
+						$post_type->menu_icon = false;
+					}
+					$props['icon'] = acf_with_default( $post_type->menu_icon, 'dashicons-admin-post' );
 				} else {
 					return false;
 				}

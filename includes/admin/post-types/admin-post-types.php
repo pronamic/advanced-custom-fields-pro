@@ -56,7 +56,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Types' ) ) :
 		 */
 		public function include_pro_features() {
 			// Bail if on PRO.
-			if ( acf_is_pro() ) {
+			if ( acf_is_pro() && acf_pro_is_license_active() ) {
 				return;
 			}
 

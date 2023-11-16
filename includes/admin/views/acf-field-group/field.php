@@ -25,6 +25,10 @@ if ( isset( $field['endpoint'] ) && $field['endpoint'] ) {
 $field_label      = acf_get_field_label( $field, 'admin' );
 $field_type_label = acf_get_field_type_label( $field['type'] );
 
+if ( acf_is_pro() && acf_get_field_type_prop( $field['type'], 'pro' ) && ! acf_pro_is_license_active() ) {
+	$field_type_label .= '<span class="acf-pro-label acf-pro-label-field-type">PRO</span>';
+}
+
 if ( ! isset( $num_field_groups ) ) {
 	$num_field_groups = 0;
 }

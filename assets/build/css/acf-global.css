@@ -2122,6 +2122,19 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 .acf-admin-page #lost-connection-notice:after {
   background-color: #D13737;
 }
+.acf-admin-page .notice.notice-warning {
+  background: linear-gradient(0deg, rgba(247, 144, 9, 0.08), rgba(247, 144, 9, 0.08)), #FFFFFF;
+  border: 1px solid rgba(247, 144, 9, 0.32);
+  color: #344054;
+}
+.acf-admin-page .notice.notice-warning:before {
+  -webkit-mask-image: url("../../images/icons/icon-alert-triangle.svg");
+  mask-image: url("../../images/icons/icon-alert-triangle.svg");
+  background: #f56e28;
+}
+.acf-admin-page .notice.notice-warning:after {
+  content: none;
+}
 
 .acf-admin-single-taxonomy .notice-success .acf-item-saved-text,
 .acf-admin-single-post-type .notice-success .acf-item-saved-text,
@@ -4521,6 +4534,9 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 *  Hide WP default controls
 *
 *---------------------------------------------------------------------------------------------*/
+.acf-admin-page #wpbody-content > .notice:not(.inline, .below-h2) {
+  display: none;
+}
 .acf-admin-page h1.wp-heading-inline {
   display: none;
 }
@@ -4737,13 +4753,17 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   transition: all 0.2s ease-in-out;
   transition-property: background, border, box-shadow;
 }
-.acf-btn:disabled {
-  background-color: red;
-}
 .acf-btn:hover {
   background-color: #066998;
   color: #fff;
   cursor: pointer;
+}
+.acf-btn:disabled, .acf-btn.disabled {
+  background-color: #F2F4F7;
+  border-color: #EAECF0;
+  color: #98A2B3 !important;
+  transition: none;
+  pointer-events: none;
 }
 .acf-btn.acf-btn-sm {
   min-height: 32px;
@@ -5112,7 +5132,7 @@ h3.acf-sub-field-list-title:before,
   mask-image: url("../../images/icons/icon-post-type.svg");
 }
 
-.acf-field-setting-fc_layout .acf-field-settings-fc_head:hover .reorder-layout:before {
+.acf-field-setting-fc_layout .acf-field-settings-fc_head .acf-fc_draggable:hover .reorder-layout:before {
   width: 20px;
   height: 11px;
   background-color: #475467 !important;
@@ -5670,32 +5690,49 @@ h3.acf-sub-field-list-title:before,
   padding: 24px;
   margin: 0;
 }
+#acf-license-information .inner .acf-activation-form,
 #acf-license-information .inner .acf-retry-activation {
-  padding: 0 24px 24px 24px;
-}
-#acf-license-information .inner .acf-activation-form {
   padding: 24px;
 }
-#acf-license-information .inner .acf-activation-form .acf-manage-license-btn {
+#acf-license-information .inner .acf-activation-form.acf-retry-activation,
+#acf-license-information .inner .acf-retry-activation.acf-retry-activation {
+  padding-top: 0;
+  min-height: 40px;
+}
+#acf-license-information .inner .acf-activation-form.acf-retry-activation .acf-recheck-license.acf-btn,
+#acf-license-information .inner .acf-retry-activation.acf-retry-activation .acf-recheck-license.acf-btn {
+  float: none;
+  line-height: initial;
+}
+#acf-license-information .inner .acf-activation-form.acf-retry-activation .acf-recheck-license.acf-btn i,
+#acf-license-information .inner .acf-retry-activation.acf-retry-activation .acf-recheck-license.acf-btn i {
+  display: none;
+}
+#acf-license-information .inner .acf-activation-form .acf-manage-license-btn,
+#acf-license-information .inner .acf-retry-activation .acf-manage-license-btn {
   float: right;
   line-height: 40px;
   align-items: center;
   display: inline-flex;
 }
-#acf-license-information .inner .acf-activation-form .acf-manage-license-btn.acf-renew-subscription {
+#acf-license-information .inner .acf-activation-form .acf-manage-license-btn.acf-renew-subscription,
+#acf-license-information .inner .acf-retry-activation .acf-manage-license-btn.acf-renew-subscription {
   float: none;
   line-height: initial;
 }
-#acf-license-information .inner .acf-activation-form .acf-manage-license-btn i {
+#acf-license-information .inner .acf-activation-form .acf-manage-license-btn i,
+#acf-license-information .inner .acf-retry-activation .acf-manage-license-btn i {
   margin: 0 0 0 5px;
   width: 19px;
   height: 19px;
 }
-#acf-license-information .inner .acf-activation-form .acf-recheck-license {
+#acf-license-information .inner .acf-activation-form .acf-recheck-license,
+#acf-license-information .inner .acf-retry-activation .acf-recheck-license {
   float: right;
   line-height: 40px;
 }
-#acf-license-information .inner .acf-activation-form .acf-recheck-license i {
+#acf-license-information .inner .acf-activation-form .acf-recheck-license i,
+#acf-license-information .inner .acf-retry-activation .acf-recheck-license i {
   margin-right: 8px;
   vertical-align: middle;
 }

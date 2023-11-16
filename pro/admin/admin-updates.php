@@ -49,7 +49,7 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 			// Create new notice.
 			acf_new_admin_notice(
 				array(
-					'text' => __( '<b>Error</b>. Could not connect to update server', 'acf' ) . ' <span class="description">(' . esc_html( $wp_error->get_error_message() ) . ').</span>',
+					'text' => __( '<strong>Error</strong>. Could not connect to the update server', 'acf' ) . ' <span class="description">(' . esc_html( $wp_error->get_error_message() ) . ').</span>',
 					'type' => 'error',
 				)
 			);
@@ -210,7 +210,7 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 						$this->view['license_error'] = true;
 						acf_new_admin_notice(
 							array(
-								'text' => __( '<b>Error</b>. Your license for this site has expired or been deactivated. Please reactivate your ACF PRO license.', 'acf' ),
+								'text' => __( '<strong>Error</strong>. Your license for this site has expired or been deactivated. Please reactivate your ACF PRO license.', 'acf' ),
 								'type' => 'error',
 							)
 						);
@@ -221,7 +221,7 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 							$this->view['license_error'] = true;
 							acf_new_admin_notice(
 								array(
-									'text' => __( '<b>Error</b>. Could not authenticate update package. Please check again or deactivate and reactivate your ACF PRO license.', 'acf' ),
+									'text' => __( '<strong>Error</strong>. Could not authenticate update package. Please check again or deactivate and reactivate your ACF PRO license.', 'acf' ),
 									'type' => 'error',
 								)
 							);
