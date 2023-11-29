@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
-
 	#[AllowDynamicProperties]
 	class ACF_Admin_Field_Groups extends ACF_Admin_Internal_Post_Type_List {
 
@@ -386,10 +385,8 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 
 			return $text;
 		}
-
 	}
 
 	// Instantiate.
 	acf_new_instance( 'ACF_Admin_Field_Groups' );
-
 endif; // Class exists check.

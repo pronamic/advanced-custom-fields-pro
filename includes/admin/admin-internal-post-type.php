@@ -356,7 +356,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 				)
 			);
 		}
-
 	}
 
 endif; // Class exists check.

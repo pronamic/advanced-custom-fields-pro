@@ -79,5 +79,4 @@ if ( ! class_exists( 'ACF_Location_Page_Template' ) ) :
 
 	// Register.
 	acf_register_location_type( 'ACF_Location_Page_Template' );
-
 endif; // class_exists check.

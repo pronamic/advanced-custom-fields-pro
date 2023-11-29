@@ -116,10 +116,10 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Pages' ) ) :
 			}
 
 			$columns = array(
-				'cb'               => $_columns['cb'],
-				'title'            => $_columns['title'],
-				'acf-description'  => __( 'Description', 'acf' ),
-				'acf-key'          => __( 'Key', 'acf' ),
+				'cb'              => $_columns['cb'],
+				'title'           => $_columns['title'],
+				'acf-description' => __( 'Description', 'acf' ),
+				'acf-key'         => __( 'Key', 'acf' ),
 			);
 
 			if ( acf_get_local_json_files( $this->post_type ) ) {
@@ -209,10 +209,8 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Pages' ) ) :
 
 			return $text;
 		}
-
 	}
 
 	// Instantiate.
 	acf_new_instance( 'ACF_Admin_UI_Options_Pages' );
-
 endif; // Class exists check.

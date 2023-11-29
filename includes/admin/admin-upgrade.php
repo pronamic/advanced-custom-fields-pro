@@ -76,7 +76,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		 */
 		function network_admin_menu() {
 			$network_upgrade_needed = get_site_transient( $this->network_upgrade_needed_transient );
-			
+
 			// No transient value exists, so run the upgrade check.
 			if ( $network_upgrade_needed === false ) {
 				$network_upgrade_needed = $this->check_for_network_upgrades();
@@ -103,7 +103,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		/**
 		 * Checks if an ACF database upgrade is required on any site in the
 		 * multisite network.
-		 * 
+		 *
 		 * Stores the result in `$this->network_upgrade_needed_transient`,
 		 * which is version-linked to ACF_UPGRADE_VERSION: the highest ACF
 		 * version that requires an upgrade function to run. Bumping
@@ -119,7 +119,7 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 		public function check_for_network_upgrades() {
 			$network_upgrade_needed = 'no';
 
-			$sites = get_sites( 
+			$sites = get_sites(
 				array(
 					'number' => 0,
 					'fields' => 'ids', // Reduces PHP memory usage.
@@ -293,5 +293,4 @@ if ( ! class_exists( 'ACF_Admin_Upgrade' ) ) :
 
 	// instantiate
 	acf_new_instance( 'ACF_Admin_Upgrade' );
-
 endif; // class_exists check

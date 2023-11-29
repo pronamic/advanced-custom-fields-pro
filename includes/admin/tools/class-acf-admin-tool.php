@@ -110,7 +110,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 
 			// initialize
 			$this->initialize();
-
 		}
 
 
@@ -129,7 +128,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		function initialize() {
 
 			/* do nothing */
-
 		}
 
 
@@ -149,7 +147,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		function load() {
 
 			/* do nothing */
-
 		}
 
 
@@ -166,7 +163,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 */
 
 		function html() {
-
 		}
 
 
@@ -183,12 +179,7 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 */
 
 		function submit() {
-
 		}
-
-
 	}
 
 endif; // class_exists check
-
-

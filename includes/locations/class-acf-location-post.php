@@ -90,5 +90,4 @@ if ( ! class_exists( 'ACF_Location_Post' ) ) :
 
 	// initialize
 	acf_register_location_type( 'ACF_Location_Post' );
-
 endif; // class_exists check

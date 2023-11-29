@@ -303,10 +303,8 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			}
 			return $submenu_file;
 		}
-
 	}
 
 	// Instantiate.
 	acf_new_instance( 'ACF_Admin' );
-
 endif; // class_exists check

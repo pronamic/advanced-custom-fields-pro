@@ -62,7 +62,6 @@ if ( ! class_exists( 'ACF_Admin_Options_Preview' ) ) :
 			$view   = array( 'screen_id' => $screen->id );
 			acf_get_view( 'options-page-preview', $view );
 		}
-
 	}
 
 	new ACF_Admin_Options_Preview();

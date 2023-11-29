@@ -109,7 +109,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 
 			// has value?
 			if ( $field['value'] ) {
-
 				$attachment = acf_get_attachment( $field['value'] );
 				if ( $attachment ) {
 
@@ -190,7 +189,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 	</div>
 </div>
 			<?php
-
 		}
 
 		/*
@@ -254,7 +252,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 			);
 
 			foreach ( $clear as $k ) {
-
 				if ( empty( $field[ $k ] ) ) {
 					$field[ $k ] = '';
 				}
@@ -328,11 +325,8 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 
 			// format
 			if ( $field['return_format'] == 'url' ) {
-
 				return wp_get_attachment_url( $value );
-
 			} elseif ( $field['return_format'] == 'array' ) {
-
 				return acf_get_attachment( $value );
 			}
 
@@ -358,7 +352,6 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 
 			$vars['send'] = true;
 			return( $vars );
-
 		}
 
 
@@ -540,13 +533,11 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_file' );
-
 endif; // class_exists check
 
 ?>

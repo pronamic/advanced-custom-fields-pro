@@ -37,7 +37,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			// extra
 			add_action( 'wp_ajax_acf/fields/oembed/search', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/oembed/search', array( $this, 'ajax_query' ) );
-
 		}
 
 
@@ -66,7 +65,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 		/**
@@ -125,7 +123,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 			// return
 			wp_send_json( $response );
-
 		}
 
 
@@ -170,7 +167,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 			// return
 			return $response;
-
 		}
 
 
@@ -242,7 +238,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 	
 </div>
 			<?php
-
 		}
 
 
@@ -333,7 +328,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field_oembed' );
-
 endif; // class_exists check
 
 ?>

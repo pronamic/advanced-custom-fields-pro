@@ -67,5 +67,4 @@ if ( ! class_exists( 'ACF_Location_Nav_Menu_Item' ) ) :
 
 	// Register.
 	acf_register_location_type( 'ACF_Location_Nav_Menu_Item' );
-
 endif; // class_exists check

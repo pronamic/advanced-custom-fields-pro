@@ -309,7 +309,6 @@ function acf_translate_field( $field = array() ) {
 
 	// Translate field settings if textdomain is set.
 	if ( $l10n && $l10n_textdomain ) {
-
 		$field['label']        = acf_translate( $field['label'] );
 		$field['instructions'] = acf_translate( $field['instructions'] );
 
@@ -470,7 +469,7 @@ function acf_get_field_count( $parent ) {
 	 * @since   5.0.0
 	 *
 	 * @param   int $count The number of fields.
-	  * @param  array $parent The field group or field array.
+	 * @param  array $parent The field group or field array.
 	 */
 	return apply_filters( 'acf/get_field_count', count( $raw_fields ), $parent );
 }
@@ -604,7 +603,6 @@ function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = '
 	// Loop over and render fields.
 	if ( $fields ) {
 		foreach ( $fields as $field ) {
-
 			$field = apply_filters( 'acf/pre_render_field', $field, $post_id );
 
 			// Load value if not already loaded.
@@ -1323,7 +1321,6 @@ function acf_get_sub_field( $id, $field ) {
 
 	// return
 	return $sub_field;
-
 }
 
 // Register variation.
@@ -1588,7 +1585,7 @@ function acf_prepare_fields_for_import( $fields = array() ) {
 		}
 
 		// Iterate.
-		$i++;
+		++$i;
 	}
 
 	/**

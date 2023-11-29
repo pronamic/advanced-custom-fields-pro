@@ -104,7 +104,4 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 	}
 
 	acf_new_instance( 'ACF_Ajax_Check_Screen' );
-
 endif; // class_exists check
-
-

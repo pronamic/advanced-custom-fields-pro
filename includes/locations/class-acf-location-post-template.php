@@ -122,5 +122,4 @@ if ( ! class_exists( 'ACF_Location_Post_Template' ) ) :
 
 	// initialize
 	acf_register_location_type( 'ACF_Location_Post_Template' );
-
 endif; // class_exists check

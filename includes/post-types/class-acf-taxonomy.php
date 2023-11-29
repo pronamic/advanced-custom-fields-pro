@@ -263,13 +263,13 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 				$post_id    = (int) acf_sanitize_request_args( $_POST['post_id'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 				$matches    = array_filter(
 					$store->get_data(),
-					function( $item ) use ( $taxonomy_key ) {
+					function ( $item ) use ( $taxonomy_key ) {
 						return $item['taxonomy'] === $taxonomy_key && empty( $item['not_registered'] );
 					}
 				);
 				$duplicates = array_filter(
 					$matches,
-					function( $item ) use ( $post_id ) {
+					function ( $item ) use ( $post_id ) {
 						return $item['ID'] !== $post_id;
 					}
 				);
@@ -744,7 +744,6 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 
 			return $this->import_post( $acf_args );
 		}
-
 	}
 
 }

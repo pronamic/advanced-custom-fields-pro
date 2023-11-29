@@ -78,5 +78,4 @@ if ( ! class_exists( 'ACF_Location_Block' ) ) :
 
 	// initialize
 	acf_register_location_type( 'ACF_Location_Block' );
-
 endif; // class_exists check

@@ -626,11 +626,9 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'ACF_Field_User' );
-
 endif; // class_exists check

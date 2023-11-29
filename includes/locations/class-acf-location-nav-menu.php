@@ -99,5 +99,4 @@ if ( ! class_exists( 'ACF_Location_Nav_Menu' ) ) :
 
 	// Register.
 	acf_register_location_type( 'ACF_Location_Nav_Menu' );
-
 endif; // class_exists check

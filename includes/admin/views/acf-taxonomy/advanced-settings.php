@@ -1034,7 +1034,7 @@ foreach ( acf_get_combined_taxonomy_settings_tabs() as $tab_key => $tab_label ) 
 					'default'      => 1,
 					'hide_search'  => true,
 					'class'        => 'query_var',
-					'conditions' => array(
+					'conditions'   => array(
 						'field'    => 'publicly_queryable',
 						'operator' => '==',
 						'value'    => 1,

@@ -150,7 +150,6 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 			<?php acf_text_input( $text_input ); ?>
 		</div>
 			<?php
-
 		}
 
 
@@ -245,7 +244,6 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 		function format_value( $value, $post_id, $field ) {
 
 			return acf_format_date( $value, $field['return_format'] );
-
 		}
 
 
@@ -286,13 +284,11 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 				'required'    => ! empty( $field['required'] ),
 			);
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_date_and_time_picker' );
-
 endif; // class_exists check
 
 ?>

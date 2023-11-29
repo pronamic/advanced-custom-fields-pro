@@ -87,7 +87,6 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 			if ( isset( $args['users_per_page'] ) ) {
 				$this->per_page = intval( $args['users_per_page'] );
 				unset( $args['users_per_page'] );
-
 			} elseif ( isset( $args['number'] ) ) {
 				$this->per_page = intval( $args['number'] );
 			}
@@ -271,5 +270,4 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 	}
 
 	acf_new_instance( 'ACF_Ajax_Query_Users' );
-
 endif; // class_exists check

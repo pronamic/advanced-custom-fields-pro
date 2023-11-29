@@ -299,8 +299,8 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 			}
 
 			$num_terms = wp_count_terms(
-				$taxonomy['taxonomy'],
 				array(
+					'taxonomy'   => $taxonomy['taxonomy'],
 					'hide_empty' => false,
 					'parent'     => 0,
 				)
@@ -377,10 +377,8 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 			__( 'This taxonomy could not be registered because its key is in use by another taxonomy registered by another plugin or theme.', 'acf' ) .
 			'"></span> ' . _x( 'Registration Failed', 'post status', 'acf' );
 		}
-
 	}
 
 	// Instantiate.
 	acf_new_instance( 'ACF_Admin_Taxonomies' );
-
 endif; // Class exists check.

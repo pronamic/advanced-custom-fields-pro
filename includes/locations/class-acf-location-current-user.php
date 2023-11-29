@@ -77,5 +77,4 @@ if ( ! class_exists( 'ACF_Location_Current_User' ) ) :
 
 	// Register.
 	acf_register_location_type( 'ACF_Location_Current_User' );
-
 endif; // class_exists check

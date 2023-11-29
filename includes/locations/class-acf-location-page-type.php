@@ -118,5 +118,4 @@ if ( ! class_exists( 'ACF_Location_Page_Type' ) ) :
 
 	// initialize
 	acf_register_location_type( 'ACF_Location_Page_Type' );
-
 endif; // class_exists check

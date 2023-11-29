@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'ACF_Legacy_Location' ) ) :
-
 	abstract class ACF_Legacy_Location {
 
 		/**

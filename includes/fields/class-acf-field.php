@@ -1,7 +1,6 @@
 <?php
 
 if ( ! class_exists( 'acf_field' ) ) :
-
 	#[AllowDynamicProperties]
 	class acf_field {
 
@@ -105,7 +104,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 		function initialize() {
 
 			/* do nothing */
-
 		}
 
 
@@ -134,7 +132,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// add
 			add_filter( $tag, $function_to_add, $priority, $accepted_args );
-
 		}
 
 
@@ -161,7 +158,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// add
 			$this->add_filter( $tag, $function_to_add, $priority, $accepted_args );
-
 		}
 
 
@@ -190,7 +186,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// add
 			add_action( $tag, $function_to_add, $priority, $accepted_args );
-
 		}
 
 
@@ -217,7 +212,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// add
 			$this->add_action( $tag, $function_to_add, $priority, $accepted_args );
-
 		}
 
 
@@ -243,7 +237,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// merge in defaults but keep order of $field keys
 			foreach ( $this->defaults as $k => $v ) {
-
 				if ( ! isset( $field[ $k ] ) ) {
 					$field[ $k ] = $v;
 				}
@@ -251,7 +244,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// return
 			return $field;
-
 		}
 
 
@@ -280,7 +272,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 
 			// return
 			return $l10n;
-
 		}
 
 		/**
@@ -355,9 +346,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return $value;
 		}
-
 	}
 
 endif; // class_exists check
-
-

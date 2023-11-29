@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-14T11:51:05+00:00\n"
+"PO-Revision-Date: 2023-11-28T09:14:32+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -21,9 +21,25 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/views/global/navigation.php:221
+msgid "Renew ACF PRO License"
+msgstr "Renova la llicència ACF PRO"
+
+#: includes/admin/views/acf-field-group/pro-features.php:17
+msgid "Renew License"
+msgstr "Renova la llicència"
+
+#: includes/admin/views/acf-field-group/pro-features.php:14
+msgid "Manage License"
+msgstr "Gestiona la llicència"
+
+#: includes/admin/views/acf-field-group/options.php:102
+msgid "'High' position not supported in the Block Editor"
+msgstr ""
+
 #: includes/admin/views/options-page-preview.php:30
 msgid "Upgrade to ACF PRO"
-msgstr ""
+msgstr "Actualitza a ACF PRO"
 
 #. translators: %s URL to ACF options pages documentation
 #: includes/admin/views/options-page-preview.php:7
@@ -32,54 +48,57 @@ msgid ""
 "pages for managing global settings via fields. You can create multiple pages "
 "and sub-pages."
 msgstr ""
+"Les <a href=\"%s\" target=\"_blank\">pàgines d'opcions</a> d'ACF són pàgines "
+"d'administració personalitzades per a gestionar la configuració global "
+"mitjançant camps. Podeu crear diverses pàgines i subpàgines."
 
 #: includes/admin/views/global/header.php:35
 msgid "Add Options Page"
-msgstr ""
+msgstr "Afegeix una pàgina d'opcions"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:703
 msgid "In the editor used as the placeholder of the title."
-msgstr ""
+msgstr "A l'editor s'utilitza com a marcador de posició del títol."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:702
 msgid "Title Placeholder"
-msgstr ""
+msgstr "Marcador de posició del títol"
 
 #: includes/admin/views/global/navigation.php:97
 msgid "4 Months Free"
-msgstr ""
+msgstr "4 mesos gratuïts"
 
 #. translators: %s - A singular label for a post type or taxonomy.
 #: includes/admin/views/global/form-top.php:56
 msgid " (Duplicated from %s)"
-msgstr ""
+msgstr " (Duplicat de %s)"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:298
 msgid "Select Options Pages"
-msgstr ""
+msgstr "Selecciona les pàgines d'opcions"
 
 #: includes/admin/post-types/admin-taxonomy.php:107
 msgid "Duplicate taxonomy"
-msgstr ""
+msgstr "Duplica la taxonomia"
 
 #: includes/admin/post-types/admin-post-type.php:106
 #: includes/admin/post-types/admin-taxonomy.php:106
 msgid "Create taxonomy"
-msgstr ""
+msgstr "Crea una taxonomia"
 
 #: includes/admin/post-types/admin-post-type.php:105
 msgid "Duplicate post type"
-msgstr ""
+msgstr "Duplica el tipus d'entrada"
 
 #: includes/admin/post-types/admin-post-type.php:104
 #: includes/admin/post-types/admin-taxonomy.php:108
 msgid "Create post type"
-msgstr ""
+msgstr "Crea un tipus de contingut"
 
 #: includes/admin/post-types/admin-post-type.php:103
 #: includes/admin/post-types/admin-taxonomy.php:105
 msgid "Link field groups"
-msgstr ""
+msgstr "Enllaça grups de camps"
 
 #: includes/admin/post-types/admin-post-type.php:102
 #: includes/admin/post-types/admin-taxonomy.php:104
@@ -87,10 +106,10 @@ msgid "Add fields"
 msgstr "Afegeix camps"
 
 #: includes/admin/post-types/admin-field-group.php:121
-#: assets/build/js/acf-field-group.js:2745
-#: assets/build/js/acf-field-group.js:3220
+#: assets/build/js/acf-field-group.js:2753
+#: assets/build/js/acf-field-group.js:3236
 msgid "This Field"
-msgstr ""
+msgstr "Aquest camp"
 
 #: includes/admin/admin.php:267
 msgid "ACF PRO"
@@ -98,7 +117,7 @@ msgstr "ACF PRO"
 
 #: includes/admin/admin.php:265
 msgid "Feedback"
-msgstr ""
+msgstr "Opinions"
 
 #: includes/admin/admin.php:263
 msgid "Support"
@@ -108,7 +127,7 @@ msgstr "Suport"
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:238
 msgid "is developed and maintained by"
-msgstr ""
+msgstr "és desenvolupat i mantingut per"
 
 #. translators: %s - either "post type" or "taxonomy"
 #: includes/admin/admin-internal-post-type.php:321
@@ -135,7 +154,7 @@ msgstr ""
 
 #: includes/acf-bidirectional-functions.php:246
 msgid "Target Field"
-msgstr ""
+msgstr "Camp de destinació"
 
 #: includes/acf-bidirectional-functions.php:220
 msgid "Update a field on the selected values, referencing back to this ID"
@@ -143,23 +162,23 @@ msgstr ""
 
 #: includes/acf-bidirectional-functions.php:219
 msgid "Bidirectional"
-msgstr ""
+msgstr "Bidireccional"
 
 #. translators: %s A field type name, such as "Relationship"
 #: includes/acf-bidirectional-functions.php:192
 msgid "%s Field"
-msgstr ""
+msgstr "Camp %s"
 
 #: includes/fields/class-acf-field-page_link.php:517
 #: includes/fields/class-acf-field-post_object.php:426
 #: includes/fields/class-acf-field-select.php:407
 #: includes/fields/class-acf-field-user.php:82
 msgid "Select Multiple"
-msgstr ""
+msgstr "Selecciona múltiples"
 
-#: includes/admin/views/global/navigation.php:215
+#: includes/admin/views/global/navigation.php:233
 msgid "WP Engine logo"
-msgstr ""
+msgstr "Logotip de WP Engine"
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:58
 msgid "Lower case letters, underscores and dashes only, Max 32 characters."
@@ -171,7 +190,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1135
 msgid "Assign Terms Capability"
-msgstr ""
+msgstr "Capacitat d'assignar termes"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1119
 msgid "The capability name for deleting terms of this taxonomy."
@@ -179,7 +198,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1118
 msgid "Delete Terms Capability"
-msgstr ""
+msgstr "Capacitat de suprimir termes"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1102
 msgid "The capability name for editing terms of this taxonomy."
@@ -187,7 +206,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1101
 msgid "Edit Terms Capability"
-msgstr ""
+msgstr "Capacitat d'editar termes"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1085
 msgid "The capability name for managing terms of this taxonomy."
@@ -195,7 +214,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1084
 msgid "Manage Terms Capability"
-msgstr ""
+msgstr "Gestiona la capacitat dels termes"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:886
 msgid ""
@@ -203,25 +222,25 @@ msgid ""
 "archive pages."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:59
+#: includes/admin/views/acf-field-group/pro-features.php:74
 msgid "More Tools from WP Engine"
-msgstr ""
+msgstr "Més eines de WP Engine"
 
 #. translators: %s - WP Engine logo
-#: includes/admin/views/acf-field-group/pro-features.php:54
+#: includes/admin/views/acf-field-group/pro-features.php:69
 msgid "Built for those that build with WordPress, by the team at %s"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:16
+#: includes/admin/views/acf-field-group/pro-features.php:6
 msgid "View Pricing & Upgrade"
-msgstr ""
+msgstr "Mostra els preus i actualitzacions"
 
-#: includes/admin/views/acf-field-group/pro-features.php:15
+#: includes/admin/views/acf-field-group/pro-features.php:3
 #: includes/admin/views/options-page-preview.php:29
 msgid "Learn More"
 msgstr "Més informació"
 
-#: includes/admin/views/acf-field-group/pro-features.php:13
+#: includes/admin/views/acf-field-group/pro-features.php:28
 msgid ""
 "Speed up your workflow and develop better websites with features like ACF "
 "Blocks and Options Pages, and sophisticated field types like Repeater, "
@@ -841,7 +860,7 @@ msgstr ""
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1030
 #: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
-msgstr ""
+msgstr "Clau de la taxonomia"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:911
 msgid "Select the type of permalink to use for this taxonomy."
@@ -852,6 +871,8 @@ msgstr ""
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:896
 msgid "Display a column for the taxonomy on post type listing screens."
 msgstr ""
+"Mostra una columna per a la taxonomia a les pantalles de llista de tipus de "
+"contingut."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:895
 msgid "Show Admin Column"
@@ -1054,7 +1075,7 @@ msgstr ""
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:522
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:523
 msgid "The name is how it appears on your site"
-msgstr ""
+msgstr "El nom és tal com apareix al lloc web"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:521
 msgid "Describes the Name field on the Edit Tags screen."
@@ -1062,7 +1083,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:520
 msgid "Name Field Description"
-msgstr ""
+msgstr "Descripció del camp nom"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:507
 msgid "No tags"
@@ -1076,7 +1097,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:505
 msgid "No Terms"
-msgstr ""
+msgstr "No hi ha termes"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:501
@@ -1158,16 +1179,16 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:390
 msgid "Separate Items With Commas"
-msgstr ""
+msgstr "Separa elements amb comes"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:386
 msgid "Separate %s with commas"
-msgstr ""
+msgstr "Separa %s amb comes"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:366
 msgid "Popular Tags"
-msgstr ""
+msgstr "Etiquetes populars"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:365
 msgid "Assigns popular items text. Only used for non-hierarchical taxonomies."
@@ -1175,20 +1196,20 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:364
 msgid "Popular Items"
-msgstr ""
+msgstr "Elements populars"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:361
 msgid "Popular %s"
-msgstr ""
+msgstr "%s populars"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:347
 msgid "Search Tags"
-msgstr ""
+msgstr "Cerca etiquetes"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:346
 msgid "Assigns search items text."
-msgstr ""
+msgstr "Assigna el text de cercar elements."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:323
 msgid "Parent Category:"
@@ -1197,10 +1218,11 @@ msgstr ""
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:322
 msgid "Assigns parent item text, but with a colon (:) added to the end."
 msgstr ""
+"Assigna el text de l'element pare, però afegint dos punts (:) al final."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:321
 msgid "Parent Item With Colon"
-msgstr ""
+msgstr "Element pare amb dos punts"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:298
 msgid "Parent Category"
@@ -1209,6 +1231,8 @@ msgstr ""
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:297
 msgid "Assigns parent item text. Only used on hierarchical taxonomies."
 msgstr ""
+"Assigna el text de l'element pare. Només s'utilitza en taxonomies "
+"jeràrquiques."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:296
 msgid "Parent Item"
@@ -1217,15 +1241,15 @@ msgstr ""
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:293
 msgid "Parent %s"
-msgstr ""
+msgstr "%s pare"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:278
 msgid "New Tag Name"
-msgstr ""
+msgstr "Nom de l'etiqueta nova"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:277
 msgid "Assigns the new item name text."
-msgstr ""
+msgstr "Assigna el text del nom de l'element nou."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:276
 msgid "New Item Name"
@@ -1238,11 +1262,11 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:258
 msgid "Add New Tag"
-msgstr ""
+msgstr "Afegeix una etiqueta nova"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:257
 msgid "Assigns the add new item text."
-msgstr ""
+msgstr "Assigna el text d'afegir un element nou."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:238
 msgid "Update Tag"
@@ -1250,11 +1274,11 @@ msgstr "Actualitza l'etiqueta"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:237
 msgid "Assigns the update item text."
-msgstr ""
+msgstr "Assigna el text d'actualitzar un element."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:236
 msgid "Update Item"
-msgstr ""
+msgstr "Actualiza l'element"
 
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:233
@@ -1307,7 +1331,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:94
 msgid "Term Description"
-msgstr ""
+msgstr "Descripció del terme"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:76
 msgid "Single word, no spaces. Underscores and dashes allowed."
@@ -1319,11 +1343,11 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:56
 msgid "The name of the default term."
-msgstr ""
+msgstr "El nom del terme per defecte."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:55
 msgid "Term Name"
-msgstr ""
+msgstr "Nom del terme"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:41
 msgid ""
@@ -1333,7 +1357,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:40
 msgid "Default Term"
-msgstr ""
+msgstr "Terme per defecte"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:28
 msgid ""
@@ -1343,7 +1367,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:27
 msgid "Sort Terms"
-msgstr ""
+msgstr "Ordena termes"
 
 #: includes/admin/views/acf-post-type/list-empty.php:7
 msgid "Add Post Type"
@@ -1357,7 +1381,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/list-empty.php:5
 msgid "Add Your First Post Type"
-msgstr ""
+msgstr "Afegiu el vostre primer tipus de contingut"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:136
 #: includes/admin/views/acf-taxonomy/basic-settings.php:135
@@ -1377,7 +1401,7 @@ msgstr ""
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:980
 #: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
-msgstr ""
+msgstr "Jeràrquica"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:107
 msgid "Visible on the frontend and in the admin dashboard."
@@ -1405,7 +1429,7 @@ msgstr "Pel·lícula"
 #: includes/admin/views/acf-post-type/basic-settings.php:39
 #: includes/admin/views/acf-taxonomy/basic-settings.php:40
 msgid "Singular Label"
-msgstr ""
+msgstr "Etiqueta singular"
 
 #. translators: example post type
 #: includes/admin/views/acf-post-type/basic-settings.php:24
@@ -1415,7 +1439,7 @@ msgstr "Pel·lícules"
 #: includes/admin/views/acf-post-type/basic-settings.php:22
 #: includes/admin/views/acf-taxonomy/basic-settings.php:23
 msgid "Plural Label"
-msgstr ""
+msgstr "Etiqueta plural"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1270
 msgid ""
@@ -1425,7 +1449,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:1269
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
 msgid "Controller Class"
-msgstr ""
+msgstr "Classe de controlador"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1251
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1191
@@ -1435,7 +1459,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:1250
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1190
 msgid "Namespace Route"
-msgstr ""
+msgstr "Ruta de l'espai de noms"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1232
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1172
@@ -1455,7 +1479,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:1216
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1154
 msgid "Show In REST API"
-msgstr ""
+msgstr "Mostra a l'API REST"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1195
 msgid "Customize the query variable name."
@@ -1464,7 +1488,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:1194
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1054
 msgid "Query Variable"
-msgstr ""
+msgstr "Variable de consulta"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1172
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1032
@@ -1525,7 +1549,7 @@ msgstr "Paginació"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1067
 msgid "RSS feed URL for the post type items."
-msgstr ""
+msgstr "URL del canal RSS per als elements del tipus de contingut."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1066
 msgid "Feed URL"
@@ -1537,11 +1561,13 @@ msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
 msgstr ""
+"Altera l'estructura d'enllaços permanents per afegir el prefix `WP_Rewrite::"
+"$front` a les URLs."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1047
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:960
 msgid "Front URL Prefix"
-msgstr ""
+msgstr "Prefix de les URLs"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1028
 msgid "Customize the slug used in the URL."
@@ -1554,7 +1580,7 @@ msgstr "Àlies d'URL"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1011
 msgid "Permalinks for this post type are disabled."
-msgstr ""
+msgstr "Els enllaços permanents d'aquest tipus de contingut estan desactivats."
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-post-type/advanced-settings.php:1010
@@ -1567,18 +1593,18 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:1002
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:915
 msgid "No Permalink (prevent URL rewriting)"
-msgstr ""
+msgstr "Sense enllaç permanent (evita la reescriptura de URL)"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1001
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:914
 msgid "Custom Permalink"
-msgstr ""
+msgstr "Enllaç permanent personalitzat"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1000
 #: includes/admin/views/acf-post-type/advanced-settings.php:1170
 #: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
-msgstr ""
+msgstr "Clau del tipus de contingut"
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-post-type/advanced-settings.php:998
@@ -1591,11 +1617,11 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:996
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:910
 msgid "Permalink Rewrite"
-msgstr ""
+msgstr "Reescriptura d'enllaç permanent"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:982
 msgid "Delete items by a user when that user is deleted."
-msgstr ""
+msgstr "Suprimeix els elements d'un usuari quan se suprimeixi."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:981
 msgid "Delete With User"
@@ -1680,7 +1706,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:781
 msgid "Menu Position"
-msgstr ""
+msgstr "Posició en el menú"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:763
 msgid ""
@@ -1691,7 +1717,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:762
 msgid "Admin Menu Parent"
-msgstr ""
+msgstr "Menú d'administració pare"
 
 #. translators: %s = "dashicon class name", link to the WordPress dashicon
 #. documentation.
@@ -2283,7 +2309,7 @@ msgstr "Retroenllaços"
 msgid "Select existing taxonomies to classify items of the post type."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:141
+#: includes/admin/views/acf-field-group/field.php:145
 msgid "Browse Fields"
 msgstr ""
 
@@ -2435,15 +2461,15 @@ msgstr[1] ""
 #: includes/admin/post-types/admin-taxonomies.php:345
 msgid "Taxonomy deactivated."
 msgid_plural "%s taxonomies deactivated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Taxonomia desactivada."
+msgstr[1] "%s taxonomies desactivades."
 
 #. translators: %s number of taxonomies activated
 #: includes/admin/post-types/admin-taxonomies.php:338
 msgid "Taxonomy activated."
 msgid_plural "%s taxonomies activated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Taxonomia activada."
+msgstr[1] "%s taxonomies activades."
 
 #: includes/admin/post-types/admin-taxonomies.php:139
 msgid "Terms"
@@ -2453,15 +2479,15 @@ msgstr "Termes"
 #: includes/admin/post-types/admin-post-types.php:352
 msgid "Post type synchronized."
 msgid_plural "%s post types synchronized."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tipus de contingut sincronitzat."
+msgstr[1] "%s tipus de continguts sincronitzats."
 
 #. translators: %s number of post types duplicated
 #: includes/admin/post-types/admin-post-types.php:345
 msgid "Post type duplicated."
 msgid_plural "%s post types duplicated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tipus de contingut duplicat."
+msgstr[1] "%s tipus de continguts duplicats."
 
 #. translators: %s number of post types deactivated
 #: includes/admin/post-types/admin-post-types.php:338
@@ -2520,16 +2546,16 @@ msgstr ""
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:78
 msgid "Add fields to %s"
-msgstr ""
+msgstr "Afegeix camps a %s"
 
 #. translators: %s post type name
 #: includes/admin/post-types/admin-post-type.php:76
 msgid "%s post type updated"
-msgstr ""
+msgstr "Tipus de contingut %s actualitzat"
 
 #: includes/admin/post-types/admin-post-type.php:56
 msgid "Post type draft updated."
-msgstr ""
+msgstr "S'ha actualitzat l'esborrany del tipus de contingut."
 
 #: includes/admin/post-types/admin-post-type.php:55
 msgid "Post type scheduled for."
@@ -2537,33 +2563,33 @@ msgstr ""
 
 #: includes/admin/post-types/admin-post-type.php:54
 msgid "Post type submitted."
-msgstr ""
+msgstr "Tipus de contingut enviat."
 
 #: includes/admin/post-types/admin-post-type.php:53
 msgid "Post type saved."
-msgstr ""
+msgstr "Tipus de contingut desat."
 
 #: includes/admin/post-types/admin-post-type.php:50
 msgid "Post type updated."
-msgstr ""
+msgstr "Tipus de contingut actualitzat."
 
 #: includes/admin/post-types/admin-post-type.php:49
 msgid "Post type deleted."
-msgstr ""
+msgstr "Tipus de contingut suprimit."
 
 #: includes/admin/post-types/admin-field-group.php:120
 #: assets/build/js/acf-field-group.js:1146
 #: assets/build/js/acf-field-group.js:1366
 msgid "Type to search..."
-msgstr ""
+msgstr "Tecleja per cercar..."
 
 #: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-field-group.js:1172
-#: assets/build/js/acf-field-group.js:2311
+#: assets/build/js/acf-field-group.js:2319
 #: assets/build/js/acf-field-group.js:1414
-#: assets/build/js/acf-field-group.js:2711
+#: assets/build/js/acf-field-group.js:2727
 msgid "PRO Only"
-msgstr ""
+msgstr "Només a PRO"
 
 #: includes/admin/post-types/admin-field-group.php:97
 #: assets/build/js/acf-internal-post-type.js:308
@@ -2596,7 +2622,7 @@ msgstr "Fet"
 
 #: includes/admin/admin-internal-post-type.php:332
 msgid "Field Group(s)"
-msgstr ""
+msgstr "Grup(s) de camp(s)"
 
 #: includes/admin/admin-internal-post-type.php:331
 msgid "Select one or many field groups..."
@@ -2604,20 +2630,20 @@ msgstr ""
 
 #: includes/admin/admin-internal-post-type.php:330
 msgid "Please select the field groups to link."
-msgstr ""
+msgstr "Selecciona els grups de camps a enllaçar."
 
 #: includes/admin/admin-internal-post-type.php:288
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Grup de camps enllaçat correctament."
+msgstr[1] "Grups de camps enllaçats correctament."
 
 #: includes/admin/admin-internal-post-type-list.php:261
 #: includes/admin/post-types/admin-post-types.php:371
 #: includes/admin/post-types/admin-taxonomies.php:378
 msgctxt "post status"
 msgid "Registration Failed"
-msgstr ""
+msgstr "Error de registre"
 
 #: includes/admin/admin-internal-post-type-list.php:260
 msgid ""
@@ -2634,7 +2660,7 @@ msgstr "API REST"
 #: includes/acf-internal-post-type-functions.php:510
 #: includes/acf-internal-post-type-functions.php:537
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: includes/acf-internal-post-type-functions.php:480
 #: includes/acf-internal-post-type-functions.php:509
@@ -2673,13 +2699,13 @@ msgid "Close Modal"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:1662
-#: assets/build/js/acf-field-group.js:1982
+#: assets/build/js/acf-field-group.js:1670
+#: assets/build/js/acf-field-group.js:1993
 msgid "Field moved to other group"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf.js:1441 assets/build/js/acf.js:1522
+#: assets/build/js/acf.js:1437 assets/build/js/acf.js:1517
 msgid "Close modal"
 msgstr ""
 
@@ -2722,7 +2748,7 @@ msgstr ""
 "Els valors personalitzats de les caselles de selecció no poden estar buits. "
 "Desmarqueu els valors buits."
 
-#: includes/admin/views/global/navigation.php:230
+#: includes/admin/views/global/navigation.php:248
 msgid "Updates"
 msgstr "Actualitzacions"
 
@@ -2774,38 +2800,38 @@ msgid "Add Your First Field Group"
 msgstr "Afegiu el vostre primer grup de camps"
 
 #: includes/admin/admin-options-pages-preview.php:28
-#: includes/admin/views/acf-field-group/pro-features.php:39
+#: includes/admin/views/acf-field-group/pro-features.php:54
 #: includes/admin/views/global/navigation.php:86
-#: includes/admin/views/global/navigation.php:232
+#: includes/admin/views/global/navigation.php:250
 msgid "Options Pages"
 msgstr "Pàgines d'opcions"
 
-#: includes/admin/views/acf-field-group/pro-features.php:35
+#: includes/admin/views/acf-field-group/pro-features.php:50
 msgid "ACF Blocks"
 msgstr "Blocs ACF"
 
-#: includes/admin/views/acf-field-group/pro-features.php:43
+#: includes/admin/views/acf-field-group/pro-features.php:58
 msgid "Gallery Field"
 msgstr "Camp de galeria"
 
-#: includes/admin/views/acf-field-group/pro-features.php:23
+#: includes/admin/views/acf-field-group/pro-features.php:38
 msgid "Flexible Content Field"
 msgstr "Camp de contingut flexible"
 
-#: includes/admin/views/acf-field-group/pro-features.php:27
+#: includes/admin/views/acf-field-group/pro-features.php:42
 msgid "Repeater Field"
 msgstr "Camp repetible"
 
-#: includes/admin/views/global/navigation.php:211
+#: includes/admin/views/global/navigation.php:212
 msgid "Unlock Extra Features with ACF PRO"
 msgstr "Desbloquegeu característiques addicionals amb l'ACF PRO"
 
-#: includes/admin/views/acf-field-group/options.php:265
+#: includes/admin/views/acf-field-group/options.php:267
 msgid "Delete Field Group"
 msgstr "Suprimeix el grup de camps"
 
 #. translators: 1: Post creation date 2: Post creation time
-#: includes/admin/views/acf-field-group/options.php:259
+#: includes/admin/views/acf-field-group/options.php:261
 msgid "Created on %1$s at %2$s"
 msgstr "Creat el %1$s a les %2$s"
 
@@ -2905,8 +2931,8 @@ msgid "Activate this item"
 msgstr "Activa aquest element"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2804
-#: assets/build/js/acf-field-group.js:3297
+#: assets/build/js/acf-field-group.js:2812
+#: assets/build/js/acf-field-group.js:3313
 msgid "Move field group to trash?"
 msgstr "Voleu moure el grup de camps a la paperera?"
 
@@ -2989,7 +3015,7 @@ msgstr "%1$s ha de tenir un identificador d'entrada vàlid."
 msgid "%s requires a valid attachment ID."
 msgstr "%s requereix un identificador d'adjunt vàlid."
 
-#: includes/admin/views/acf-field-group/options.php:231
+#: includes/admin/views/acf-field-group/options.php:233
 msgid "Show in REST API"
 msgstr "Mostra a l'API REST"
 
@@ -3037,31 +3063,31 @@ msgstr "Seleccioneu el color per defecte"
 msgid "Clear color"
 msgstr "Neteja el color"
 
-#: includes/acf-wp-functions.php:87
+#: includes/acf-wp-functions.php:90
 msgid "Blocks"
 msgstr "Blocs"
 
-#: includes/acf-wp-functions.php:83
+#: includes/acf-wp-functions.php:86
 msgid "Options"
 msgstr "Opcions"
 
-#: includes/acf-wp-functions.php:79
+#: includes/acf-wp-functions.php:82
 msgid "Users"
 msgstr "Usuaris"
 
-#: includes/acf-wp-functions.php:75
+#: includes/acf-wp-functions.php:78
 msgid "Menu items"
 msgstr "Elements del menú"
 
-#: includes/acf-wp-functions.php:67
+#: includes/acf-wp-functions.php:70
 msgid "Widgets"
 msgstr "Ginys"
 
-#: includes/acf-wp-functions.php:59
+#: includes/acf-wp-functions.php:62
 msgid "Attachments"
 msgstr "Adjunts"
 
-#: includes/acf-wp-functions.php:54
+#: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:137
 #: includes/admin/post-types/admin-taxonomies.php:112
 #: includes/admin/tools/class-acf-admin-tool-import.php:93
@@ -3071,7 +3097,7 @@ msgstr "Adjunts"
 msgid "Taxonomies"
 msgstr "Taxonomies"
 
-#: includes/acf-wp-functions.php:41
+#: includes/acf-wp-functions.php:44
 #: includes/admin/post-types/admin-post-type.php:126
 #: includes/admin/post-types/admin-post-types.php:139
 #: includes/admin/views/acf-post-type/advanced-settings.php:106
@@ -3279,7 +3305,7 @@ msgstr "Element del menú"
 msgid "Post Status"
 msgstr "Estat de l'entrada"
 
-#: includes/acf-wp-functions.php:71
+#: includes/acf-wp-functions.php:74
 #: includes/locations/class-acf-location-nav-menu.php:89
 msgid "Menus"
 msgstr "Menús"
@@ -3394,7 +3420,7 @@ msgid "Show this field if"
 msgstr "Mostra aquest camp si"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:26
-#: includes/admin/views/acf-field-group/field.php:105 includes/fields.php:411
+#: includes/admin/views/acf-field-group/field.php:109 includes/fields.php:411
 msgid "Conditional Logic"
 msgstr "Lògica condicional"
 
@@ -3409,7 +3435,7 @@ msgstr "i"
 msgid "Local JSON"
 msgstr "JSON local"
 
-#: includes/admin/views/acf-field-group/pro-features.php:31
+#: includes/admin/views/acf-field-group/pro-features.php:46
 msgid "Clone Field"
 msgstr "Clona el camp"
 
@@ -3456,7 +3482,7 @@ msgstr "Repetible"
 msgid "Back to all tools"
 msgstr "Torna a totes les eines"
 
-#: includes/admin/views/acf-field-group/options.php:193
+#: includes/admin/views/acf-field-group/options.php:195
 msgid ""
 "If multiple field groups appear on an edit screen, the first field group's "
 "options will be used (the one with the lowest order number)"
@@ -3464,21 +3490,21 @@ msgstr ""
 "Si hi ha diversos grups de camps a la pantalla d'edició, s'utilitzaran les "
 "opcions del primer grup de camps (el que tingui el nombre d'ordre més baix)"
 
-#: includes/admin/views/acf-field-group/options.php:193
+#: includes/admin/views/acf-field-group/options.php:195
 msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
 msgstr ""
 "<b>Seleccioneu</b> els elements a <b>amagar</b>de la pantalla d'edició."
 
-#: includes/admin/views/acf-field-group/options.php:192
+#: includes/admin/views/acf-field-group/options.php:194
 msgid "Hide on screen"
 msgstr "Amaga a la pantalla"
 
-#: includes/admin/views/acf-field-group/options.php:184
+#: includes/admin/views/acf-field-group/options.php:186
 msgid "Send Trackbacks"
 msgstr "Envia retroenllaços"
 
 #: includes/admin/post-types/admin-taxonomy.php:128
-#: includes/admin/views/acf-field-group/options.php:183
+#: includes/admin/views/acf-field-group/options.php:185
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:159
 #: assets/build/js/acf-internal-post-type.js:180
 #: assets/build/js/acf-internal-post-type.js:254
@@ -3486,83 +3512,83 @@ msgid "Tags"
 msgstr "Etiquetes"
 
 #: includes/admin/post-types/admin-taxonomy.php:130
-#: includes/admin/views/acf-field-group/options.php:182
+#: includes/admin/views/acf-field-group/options.php:184
 #: assets/build/js/acf-internal-post-type.js:183
 #: assets/build/js/acf-internal-post-type.js:257
 msgid "Categories"
 msgstr "Categories"
 
-#: includes/admin/views/acf-field-group/options.php:180
+#: includes/admin/views/acf-field-group/options.php:182
 #: includes/admin/views/acf-post-type/advanced-settings.php:28
 msgid "Page Attributes"
 msgstr "Atributs de la pàgina"
 
-#: includes/admin/views/acf-field-group/options.php:179
+#: includes/admin/views/acf-field-group/options.php:181
 msgid "Format"
 msgstr "Format"
 
-#: includes/admin/views/acf-field-group/options.php:178
+#: includes/admin/views/acf-field-group/options.php:180
 #: includes/admin/views/acf-post-type/advanced-settings.php:22
 msgid "Author"
 msgstr "Autor"
 
-#: includes/admin/views/acf-field-group/options.php:177
+#: includes/admin/views/acf-field-group/options.php:179
 msgid "Slug"
 msgstr "Àlies"
 
-#: includes/admin/views/acf-field-group/options.php:176
+#: includes/admin/views/acf-field-group/options.php:178
 #: includes/admin/views/acf-post-type/advanced-settings.php:27
 msgid "Revisions"
 msgstr "Revisions"
 
-#: includes/acf-wp-functions.php:63
-#: includes/admin/views/acf-field-group/options.php:175
+#: includes/acf-wp-functions.php:66
+#: includes/admin/views/acf-field-group/options.php:177
 #: includes/admin/views/acf-post-type/advanced-settings.php:23
 msgid "Comments"
 msgstr "Comentaris"
 
-#: includes/admin/views/acf-field-group/options.php:174
+#: includes/admin/views/acf-field-group/options.php:176
 msgid "Discussion"
 msgstr "Debats"
 
-#: includes/admin/views/acf-field-group/options.php:172
+#: includes/admin/views/acf-field-group/options.php:174
 #: includes/admin/views/acf-post-type/advanced-settings.php:26
 msgid "Excerpt"
 msgstr "Extracte"
 
-#: includes/admin/views/acf-field-group/options.php:171
+#: includes/admin/views/acf-field-group/options.php:173
 msgid "Content Editor"
 msgstr "Editor de contingut"
 
-#: includes/admin/views/acf-field-group/options.php:170
+#: includes/admin/views/acf-field-group/options.php:172
 msgid "Permalink"
 msgstr "Enllaç permanent"
 
-#: includes/admin/views/acf-field-group/options.php:248
+#: includes/admin/views/acf-field-group/options.php:250
 msgid "Shown in field group list"
 msgstr "Es mostra a la llista de grups de camps"
 
-#: includes/admin/views/acf-field-group/options.php:155
+#: includes/admin/views/acf-field-group/options.php:157
 msgid "Field groups with a lower order will appear first"
 msgstr "Els grups de camps amb un ordre més baix apareixeran primer"
 
-#: includes/admin/views/acf-field-group/options.php:154
+#: includes/admin/views/acf-field-group/options.php:156
 msgid "Order No."
 msgstr "Núm. d’ordre"
 
-#: includes/admin/views/acf-field-group/options.php:145
+#: includes/admin/views/acf-field-group/options.php:147
 msgid "Below fields"
 msgstr "Sota els camps"
 
-#: includes/admin/views/acf-field-group/options.php:144
+#: includes/admin/views/acf-field-group/options.php:146
 msgid "Below labels"
 msgstr "Sota les etiquetes"
 
-#: includes/admin/views/acf-field-group/options.php:137
+#: includes/admin/views/acf-field-group/options.php:139
 msgid "Instruction Placement"
 msgstr "Posició de les instruccions"
 
-#: includes/admin/views/acf-field-group/options.php:120
+#: includes/admin/views/acf-field-group/options.php:122
 msgid "Label Placement"
 msgstr "Posició de les etiquetes"
 
@@ -3611,92 +3637,92 @@ msgstr "Clau"
 msgid "Order"
 msgstr "Ordre"
 
-#: includes/admin/views/acf-field-group/field.php:318
+#: includes/admin/views/acf-field-group/field.php:322
 msgid "Close Field"
 msgstr "Tanca el camp"
 
-#: includes/admin/views/acf-field-group/field.php:249
+#: includes/admin/views/acf-field-group/field.php:253
 msgid "id"
 msgstr "id"
 
-#: includes/admin/views/acf-field-group/field.php:233
+#: includes/admin/views/acf-field-group/field.php:237
 msgid "class"
 msgstr "classe"
 
-#: includes/admin/views/acf-field-group/field.php:275
+#: includes/admin/views/acf-field-group/field.php:279
 msgid "width"
 msgstr "amplada"
 
-#: includes/admin/views/acf-field-group/field.php:269
+#: includes/admin/views/acf-field-group/field.php:273
 msgid "Wrapper Attributes"
 msgstr "Atributs del contenidor"
 
-#: includes/admin/views/acf-field-group/field.php:192
+#: includes/admin/views/acf-field-group/field.php:196
 msgid "Required"
 msgstr "Obligatori"
 
-#: includes/admin/views/acf-field-group/field.php:217
+#: includes/admin/views/acf-field-group/field.php:221
 msgid "Instructions for authors. Shown when submitting data"
 msgstr "Instruccions per als autors. Es mostren en enviar les dades"
 
-#: includes/admin/views/acf-field-group/field.php:216
+#: includes/admin/views/acf-field-group/field.php:220
 msgid "Instructions"
 msgstr "Instruccions"
 
-#: includes/admin/views/acf-field-group/field.php:125
+#: includes/admin/views/acf-field-group/field.php:129
 msgid "Field Type"
 msgstr "Tipus de camp"
 
-#: includes/admin/views/acf-field-group/field.php:166
+#: includes/admin/views/acf-field-group/field.php:170
 msgid "Single word, no spaces. Underscores and dashes allowed"
 msgstr "Una sola paraula, sense espais. S’admeten barres baixes i guions"
 
-#: includes/admin/views/acf-field-group/field.php:165
+#: includes/admin/views/acf-field-group/field.php:169
 msgid "Field Name"
 msgstr "Nom del camp"
 
-#: includes/admin/views/acf-field-group/field.php:153
+#: includes/admin/views/acf-field-group/field.php:157
 msgid "This is the name which will appear on the EDIT page"
 msgstr "Aquest és el nom que apareixerà a la pàgina d'edició"
 
-#: includes/admin/views/acf-field-group/field.php:152
+#: includes/admin/views/acf-field-group/field.php:156
 #: includes/admin/views/browse-fields-modal.php:59
 msgid "Field Label"
 msgstr "Etiqueta del camp"
 
-#: includes/admin/views/acf-field-group/field.php:77
+#: includes/admin/views/acf-field-group/field.php:81
 msgid "Delete"
 msgstr "Suprimeix"
 
-#: includes/admin/views/acf-field-group/field.php:77
+#: includes/admin/views/acf-field-group/field.php:81
 msgid "Delete field"
 msgstr "Suprimeix el camp"
 
-#: includes/admin/views/acf-field-group/field.php:75
+#: includes/admin/views/acf-field-group/field.php:79
 msgid "Move"
 msgstr "Mou"
 
-#: includes/admin/views/acf-field-group/field.php:75
+#: includes/admin/views/acf-field-group/field.php:79
 msgid "Move field to another group"
 msgstr "Mou el camp a un altre grup"
 
-#: includes/admin/views/acf-field-group/field.php:73
+#: includes/admin/views/acf-field-group/field.php:77
 msgid "Duplicate field"
 msgstr "Duplica el camp"
 
-#: includes/admin/views/acf-field-group/field.php:69
-#: includes/admin/views/acf-field-group/field.php:72
+#: includes/admin/views/acf-field-group/field.php:73
+#: includes/admin/views/acf-field-group/field.php:76
 msgid "Edit field"
 msgstr "Edita el camp"
 
-#: includes/admin/views/acf-field-group/field.php:65
+#: includes/admin/views/acf-field-group/field.php:69
 msgid "Drag to reorder"
 msgstr "Arrossegueu per reordenar"
 
 #: includes/admin/post-types/admin-field-group.php:103
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2339
-#: assets/build/js/acf-field-group.js:2747
+#: assets/build/js/acf-field-group.js:2347
+#: assets/build/js/acf-field-group.js:2763
 msgid "Show this field group if"
 msgstr "Mostra aquest grup de camps si"
 
@@ -3867,7 +3893,7 @@ msgstr "Selecciona %s"
 
 #: includes/admin/admin-internal-post-type-list.php:442
 #: includes/admin/admin-internal-post-type-list.php:474
-#: includes/admin/views/acf-field-group/field.php:73
+#: includes/admin/views/acf-field-group/field.php:77
 msgid "Duplicate"
 msgstr "Duplica"
 
@@ -3886,7 +3912,7 @@ msgstr ""
 #: includes/admin/post-types/admin-field-groups.php:116
 #: includes/admin/post-types/admin-post-types.php:135
 #: includes/admin/post-types/admin-taxonomies.php:135
-#: includes/admin/views/acf-field-group/options.php:247
+#: includes/admin/views/acf-field-group/options.php:249
 #: includes/admin/views/acf-post-type/advanced-settings.php:62
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:114
 #: includes/admin/views/upgrade/network.php:38
@@ -3930,7 +3956,7 @@ msgstr "Revisa els llocs web i actualitza"
 msgid "Upgrade Database"
 msgstr "Actualitza la base de dades"
 
-#: includes/admin/views/acf-field-group/options.php:173
+#: includes/admin/views/acf-field-group/options.php:175
 #: includes/admin/views/acf-post-type/advanced-settings.php:30
 msgid "Custom Fields"
 msgstr "Camps personalitzats"
@@ -3954,8 +3980,8 @@ msgstr "El camp %1$s ara es pot trobar al grup de camps %2$s"
 msgid "Move Complete."
 msgstr "S’ha completat el moviment."
 
-#: includes/admin/views/acf-field-group/field.php:35
-#: includes/admin/views/acf-field-group/options.php:215
+#: includes/admin/views/acf-field-group/field.php:39
+#: includes/admin/views/acf-field-group/options.php:217
 #: includes/admin/views/acf-post-type/advanced-settings.php:78
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:130
 msgid "Active"
@@ -3982,8 +4008,8 @@ msgstr "Nul"
 #: includes/admin/post-types/admin-field-group.php:101
 #: includes/class-acf-internal-post-type.php:730
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1502
-#: assets/build/js/acf-field-group.js:1810
+#: assets/build/js/acf-field-group.js:1510
+#: assets/build/js/acf-field-group.js:1821
 msgid "copy"
 msgstr "copia"
 
@@ -4000,8 +4026,8 @@ msgid "Checked"
 msgstr "Marcat"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-field-group.js:1607
-#: assets/build/js/acf-field-group.js:1922
+#: assets/build/js/acf-field-group.js:1615
+#: assets/build/js/acf-field-group.js:1933
 msgid "Move Custom Field"
 msgstr "Mou el grup de camps"
 
@@ -4016,14 +4042,14 @@ msgid "Field group title is required"
 msgstr "El títol del grup de camps és obligatori"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1596
-#: assets/build/js/acf-field-group.js:1908
+#: assets/build/js/acf-field-group.js:1604
+#: assets/build/js/acf-field-group.js:1919
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Aquest camp no es pot moure fins que no se n’hagin desat els canvis"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:1406
-#: assets/build/js/acf-field-group.js:1705
+#: assets/build/js/acf-field-group.js:1414
+#: assets/build/js/acf-field-group.js:1716
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "La cadena «field_» no es pot utilitzar al principi del nom d'un camp"
 
@@ -4058,7 +4084,7 @@ msgid "Field group updated."
 msgstr "S'ha actualitzat el grup de camps."
 
 #: includes/admin/admin-tools.php:118
-#: includes/admin/views/global/navigation.php:228
+#: includes/admin/views/global/navigation.php:246
 #: includes/admin/views/tools/tools.php:21
 msgid "Tools"
 msgstr "Eines"
@@ -4193,12 +4219,12 @@ msgstr "Té algun valor"
 
 #: includes/admin/admin-internal-post-type.php:345
 #: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:353
-#: assets/build/js/acf.js:1568 assets/build/js/acf.js:1663
+#: assets/build/js/acf.js:1564 assets/build/js/acf.js:1658
 msgid "Cancel"
 msgstr "Cancel·la"
 
-#: includes/assets.php:349 assets/build/js/acf.js:1742
-#: assets/build/js/acf.js:1860
+#: includes/assets.php:349 assets/build/js/acf.js:1738
+#: assets/build/js/acf.js:1855
 msgid "Are you sure?"
 msgstr "N'esteu segur?"
 
@@ -4260,7 +4286,7 @@ msgstr "Edita"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Perdreu els canvis que heu fet si abandoneu aquesta pàgina"
 
-#: includes/api/api-helpers.php:3376
+#: includes/api/api-helpers.php:3395
 msgid "File type must be %s."
 msgstr "El tipus de fitxer ha de ser %s."
 
@@ -4269,34 +4295,34 @@ msgstr "El tipus de fitxer ha de ser %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:36
-#: includes/api/api-helpers.php:3372 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2377
+#: includes/api/api-helpers.php:3391 assets/build/js/acf-field-group.js:771
+#: assets/build/js/acf-field-group.js:2385
 #: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2791
+#: assets/build/js/acf-field-group.js:2807
 msgid "or"
 msgstr "o"
 
-#: includes/api/api-helpers.php:3345
+#: includes/api/api-helpers.php:3364
 msgid "File size must not exceed %s."
 msgstr "La mida del fitxer no ha de superar %s."
 
-#: includes/api/api-helpers.php:3340
+#: includes/api/api-helpers.php:3359
 msgid "File size must be at least %s."
 msgstr "La mida del fitxer ha de ser almenys %s."
 
-#: includes/api/api-helpers.php:3325
+#: includes/api/api-helpers.php:3344
 msgid "Image height must not exceed %dpx."
 msgstr "L'alçada de la imatge no pot ser superior a %dpx."
 
-#: includes/api/api-helpers.php:3320
+#: includes/api/api-helpers.php:3339
 msgid "Image height must be at least %dpx."
 msgstr "L'alçada de la imatge ha de ser almenys de %dpx."
 
-#: includes/api/api-helpers.php:3306
+#: includes/api/api-helpers.php:3325
 msgid "Image width must not exceed %dpx."
 msgstr "L'amplada de la imatge no pot ser superior a %dpx."
 
-#: includes/api/api-helpers.php:3301
+#: includes/api/api-helpers.php:3320
 msgid "Image width must be at least %dpx."
 msgstr "L'amplada de la imatge ha de ser almenys de %dpx."
 
@@ -4798,12 +4824,12 @@ msgstr "Selector de data i hora"
 msgid "Endpoint"
 msgstr "Punt final"
 
-#: includes/admin/views/acf-field-group/options.php:128
+#: includes/admin/views/acf-field-group/options.php:130
 #: includes/fields/class-acf-field-tab.php:115
 msgid "Left aligned"
 msgstr "Alineat a l'esquerra"
 
-#: includes/admin/views/acf-field-group/options.php:127
+#: includes/admin/views/acf-field-group/options.php:129
 #: includes/fields/class-acf-field-tab.php:114
 msgid "Top aligned"
 msgstr "Alineat a la part superior"
@@ -4992,17 +5018,17 @@ msgstr "Text"
 msgid "Visual"
 msgstr "Visual"
 
-#: includes/fields/class-acf-field-text.php:183
+#: includes/fields/class-acf-field-text.php:189
 #: includes/fields/class-acf-field-textarea.php:236
 msgid "Value must not exceed %d characters"
 msgstr "El valor no ha de superar els %d caràcters"
 
-#: includes/fields/class-acf-field-text.php:118
+#: includes/fields/class-acf-field-text.php:124
 #: includes/fields/class-acf-field-textarea.php:124
 msgid "Leave blank for no limit"
 msgstr "Deixeu-lo en blanc per no establir cap límit"
 
-#: includes/fields/class-acf-field-text.php:117
+#: includes/fields/class-acf-field-text.php:123
 #: includes/fields/class-acf-field-textarea.php:123
 msgid "Character Limit"
 msgstr "Límit de caràcters"
@@ -5011,7 +5037,7 @@ msgstr "Límit de caràcters"
 #: includes/fields/class-acf-field-number.php:209
 #: includes/fields/class-acf-field-password.php:105
 #: includes/fields/class-acf-field-range.php:239
-#: includes/fields/class-acf-field-text.php:158
+#: includes/fields/class-acf-field-text.php:164
 msgid "Appears after the input"
 msgstr "Apareix després del camp"
 
@@ -5019,7 +5045,7 @@ msgstr "Apareix després del camp"
 #: includes/fields/class-acf-field-number.php:208
 #: includes/fields/class-acf-field-password.php:104
 #: includes/fields/class-acf-field-range.php:238
-#: includes/fields/class-acf-field-text.php:157
+#: includes/fields/class-acf-field-text.php:163
 msgid "Append"
 msgstr "Afegeix al final"
 
@@ -5027,7 +5053,7 @@ msgstr "Afegeix al final"
 #: includes/fields/class-acf-field-number.php:199
 #: includes/fields/class-acf-field-password.php:95
 #: includes/fields/class-acf-field-range.php:229
-#: includes/fields/class-acf-field-text.php:148
+#: includes/fields/class-acf-field-text.php:154
 msgid "Appears before the input"
 msgstr "Apareix abans del camp"
 
@@ -5035,14 +5061,14 @@ msgstr "Apareix abans del camp"
 #: includes/fields/class-acf-field-number.php:198
 #: includes/fields/class-acf-field-password.php:94
 #: includes/fields/class-acf-field-range.php:228
-#: includes/fields/class-acf-field-text.php:147
+#: includes/fields/class-acf-field-text.php:153
 msgid "Prepend"
 msgstr "Afegeix al principi"
 
 #: includes/fields/class-acf-field-email.php:138
 #: includes/fields/class-acf-field-number.php:179
 #: includes/fields/class-acf-field-password.php:85
-#: includes/fields/class-acf-field-text.php:138
+#: includes/fields/class-acf-field-text.php:144
 #: includes/fields/class-acf-field-textarea.php:156
 #: includes/fields/class-acf-field-url.php:122
 msgid "Appears within the input"
@@ -5051,7 +5077,7 @@ msgstr "Apareix a dins del camp"
 #: includes/fields/class-acf-field-email.php:137
 #: includes/fields/class-acf-field-number.php:178
 #: includes/fields/class-acf-field-password.php:84
-#: includes/fields/class-acf-field-text.php:137
+#: includes/fields/class-acf-field-text.php:143
 #: includes/fields/class-acf-field-textarea.php:155
 #: includes/fields/class-acf-field-url.php:121
 msgid "Placeholder Text"
@@ -5062,7 +5088,7 @@ msgstr "Text de mostra"
 #: includes/fields/class-acf-field-number.php:129
 #: includes/fields/class-acf-field-radio.php:203
 #: includes/fields/class-acf-field-range.php:165
-#: includes/fields/class-acf-field-text.php:98
+#: includes/fields/class-acf-field-text.php:104
 #: includes/fields/class-acf-field-textarea.php:104
 #: includes/fields/class-acf-field-url.php:102
 #: includes/fields/class-acf-field-wysiwyg.php:312
@@ -5098,7 +5124,7 @@ msgstr "Màxim d'entrades"
 msgid "Minimum Posts"
 msgstr "Mínim d'entrades"
 
-#: includes/admin/views/acf-field-group/options.php:181
+#: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-post-type/advanced-settings.php:29
 #: includes/fields/class-acf-field-relationship.php:701
 msgid "Featured Image"
@@ -5287,12 +5313,12 @@ msgstr "No s'ha seleccionat cap imatge"
 
 #: includes/assets.php:352 includes/fields/class-acf-field-file.php:162
 #: includes/fields/class-acf-field-image.php:142
-#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1567
-#: assets/build/js/acf.js:1662
+#: includes/fields/class-acf-field-link.php:145 assets/build/js/acf.js:1563
+#: assets/build/js/acf.js:1657
 msgid "Remove"
 msgstr "Suprimeix"
 
-#: includes/admin/views/acf-field-group/field.php:72
+#: includes/admin/views/acf-field-group/field.php:76
 #: includes/fields/class-acf-field-file.php:160
 #: includes/fields/class-acf-field-image.php:140
 #: includes/fields/class-acf-field-link.php:145
@@ -5448,7 +5474,7 @@ msgstr "IU estilitzada"
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-range.php:164
 #: includes/fields/class-acf-field-select.php:380
-#: includes/fields/class-acf-field-text.php:97
+#: includes/fields/class-acf-field-text.php:103
 #: includes/fields/class-acf-field-textarea.php:103
 #: includes/fields/class-acf-field-true_false.php:147
 #: includes/fields/class-acf-field-url.php:101
@@ -5468,13 +5494,13 @@ msgstr "Missatge"
 
 #: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:86
 #: includes/fields/class-acf-field-true_false.php:187
-#: assets/build/js/acf.js:1744 assets/build/js/acf.js:1862
+#: assets/build/js/acf.js:1740 assets/build/js/acf.js:1857
 msgid "No"
 msgstr "No"
 
 #: includes/assets.php:350 includes/fields/class-acf-field-true_false.php:83
 #: includes/fields/class-acf-field-true_false.php:171
-#: assets/build/js/acf.js:1743 assets/build/js/acf.js:1861
+#: assets/build/js/acf.js:1739 assets/build/js/acf.js:1856
 msgid "Yes"
 msgstr "Sí"
 

@@ -135,7 +135,6 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 
 					// Add the meta box.
 					add_meta_box( $id, acf_esc_html( $title ), array( $this, 'render_meta_box' ), $post_type, $context, $priority, array( 'field_group' => $field_group ) );
-
 				}
 
 				// Set style from first field group.
@@ -339,7 +338,4 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 	}
 
 	acf_new_instance( 'ACF_Form_Post' );
-
 endif;
-
-

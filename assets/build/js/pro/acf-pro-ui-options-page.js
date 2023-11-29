@@ -88,7 +88,7 @@
         const fieldGroupTitle = $('.acf-headerbar-title-field').val();
         const ajaxData = {
           action: 'acf/create_options_page',
-          acf_parent_page_choices: this.acf.data.acfParentPageChoices ? this.acf.data.acfParentPageChoices : []
+          acf_parent_page_choices: this.acf.data.optionPageParentOptions ? this.acf.data.optionPageParentOptions : []
         };
         if (fieldGroupTitle.length) {
           ajaxData.field_group_title = fieldGroupTitle;

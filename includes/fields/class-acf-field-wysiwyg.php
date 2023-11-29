@@ -124,7 +124,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 
 			// return
 			return $toolbars;
-
 		}
 
 
@@ -200,32 +199,25 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 
 			// detect mode
 			if ( ! user_can_richedit() ) {
-
 				$show_tabs = false;
-
 			} elseif ( $field['tabs'] == 'visual' ) {
 
 				// case: visual tab only
 				$default_editor = 'tinymce';
 				$show_tabs      = false;
-
 			} elseif ( $field['tabs'] == 'text' ) {
 
 				// case: text tab only
 				$show_tabs = false;
-
 			} elseif ( wp_default_editor() == 'tinymce' ) {
 
 				// case: both tabs
 				$default_editor = 'tinymce';
-
 			}
 
 			// must be logged in to upload
 			if ( ! current_user_can( 'upload_files' ) ) {
-
 				$field['media_upload'] = 0;
-
 			}
 
 			// mode
@@ -288,7 +280,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			</div>
 		</div>
 			<?php
-
 		}
 
 
@@ -314,7 +305,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 					'name'         => 'default_value',
 				)
 			);
-
 		}
 
 		/**
@@ -330,9 +320,7 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			$choices  = array();
 
 			if ( ! empty( $toolbars ) ) {
-
 				foreach ( $toolbars as $k => $v ) {
-
 					$label = $k;
 					$name  = sanitize_title( $label );
 					$name  = str_replace( '-', '_', $name );
@@ -424,13 +412,11 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 			// Follow the_content function in /wp-includes/post-template.php
 			return str_replace( ']]>', ']]&gt;', $value );
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_wysiwyg' );
-
 endif; // class_exists check
 
 ?>

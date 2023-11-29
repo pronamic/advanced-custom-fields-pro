@@ -213,5 +213,4 @@ if ( ! class_exists( 'acf_field_text' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field_text' );
-
 endif; // class_exists check

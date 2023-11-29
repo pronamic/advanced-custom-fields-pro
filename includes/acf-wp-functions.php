@@ -257,7 +257,6 @@ function acf_get_object_id( $object ) {
 		}
 	} elseif ( isset( $object['id'] ) ) {
 		return (int) $object['id'];
-
 	} elseif ( isset( $object['ID'] ) ) {
 		return (int) $object['ID'];
 	}

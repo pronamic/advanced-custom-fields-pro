@@ -9,7 +9,7 @@ $acf_more_tools_link                = acf_add_url_utm_tags( 'https://wpengine.co
 $acf_wpengine_logo_link             = acf_add_url_utm_tags( 'https://wpengine.com/', 'bx_prod_referral', 'acf_free_plugin_cta_panel_logo', false, 'acf_plugin', 'referral' );
 
 if ( acf_is_pro() ) {
-	if ( ! acf_pro_get_license_key() ) {
+	if ( ! acf_pro_get_license_key() && acf_is_updates_page_visible() ) {
 		$acf_learn_more_target = '';
 		$acf_learn_more_text   = __( 'Manage License', 'acf' );
 		$acf_learn_more_link   = esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' ) );

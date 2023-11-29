@@ -32,7 +32,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 			// extra
 			add_action( 'wp_ajax_acf/fields/post_object/query', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/post_object/query', array( $this, 'ajax_query' ) );
-
 		}
 
 
@@ -61,7 +60,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 			// return
 			acf_send_ajax_results( $response );
-
 		}
 
 
@@ -116,29 +114,20 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 				// update vars
 				$args['s'] = $s;
 				$is_search = true;
-
 			}
 
 			// post_type
 			if ( ! empty( $field['post_type'] ) ) {
-
 				$args['post_type'] = acf_get_array( $field['post_type'] );
-
 			} else {
-
 				$args['post_type'] = acf_get_post_types();
-
 			}
 
 			// post status
 			if ( ! empty( $options['post_status'] ) ) {
-
 				$args['post_status'] = acf_get_array( $options['post_status'] );
-
 			} elseif ( ! empty( $field['post_status'] ) ) {
-
 				$args['post_status'] = acf_get_array( $field['post_status'] );
-
 			}
 
 			// taxonomy
@@ -152,13 +141,11 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 				// now create the tax queries
 				foreach ( $terms as $k => $v ) {
-
 					$args['tax_query'][] = array(
 						'taxonomy' => $k,
 						'field'    => 'slug',
 						'terms'    => $v,
 					);
-
 				}
 			}
 
@@ -189,28 +176,21 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 				// convert post objects to post titles
 				foreach ( array_keys( $posts ) as $post_id ) {
-
 					$posts[ $post_id ] = $this->get_post_title( $posts[ $post_id ], $field, $options['post_id'], $is_search );
-
 				}
 
 				// order posts by search
 				if ( $is_search && empty( $args['orderby'] ) && isset( $args['s'] ) ) {
-
 					$posts = acf_order_by_search( $posts, $args['s'] );
-
 				}
 
 				// append to $data
 				foreach ( array_keys( $posts ) as $post_id ) {
-
 					$data['children'][] = $this->get_post_result( $post_id, $posts[ $post_id ] );
-
 				}
 
 				// append to $results
 				$results[] = $data;
-
 			}
 
 			// optgroup or single
@@ -227,7 +207,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 			// return
 			return $response;
-
 		}
 
 
@@ -258,15 +237,12 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 			$pos    = strpos( $text, $search );
 
 			if ( $pos !== false ) {
-
 				$result['description'] = substr( $text, $pos + 2 );
 				$result['text']        = substr( $text, 0, $pos );
-
 			}
 
 			// return
 			return $result;
-
 		}
 
 
@@ -329,7 +305,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 			$posts = $this->get_posts( $field['value'], $field );
 
 			if ( $posts ) {
-
 				foreach ( array_keys( $posts ) as $i ) {
 
 					// vars
@@ -337,13 +312,11 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 					// append to choices
 					$field['choices'][ $post->ID ] = $this->get_post_title( $post, $field );
-
 				}
 			}
 
 			// render
 			acf_render_field( $field );
-
 		}
 
 
@@ -430,7 +403,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 					'ui'           => 1,
 				)
 			);
-
 		}
 
 		/**
@@ -490,7 +462,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 			// return
 			return $value;
-
 		}
 
 
@@ -522,21 +493,16 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 			// load posts if needed
 			if ( $field['return_format'] == 'object' ) {
-
 				$value = $this->get_posts( $value, $field );
-
 			}
 
 			// convert back from array if neccessary
 			if ( ! $field['multiple'] && is_array( $value ) ) {
-
 				$value = current( $value );
-
 			}
 
 			// return value
 			return $value;
-
 		}
 
 
@@ -610,7 +576,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 			// return
 			return $posts;
-
 		}
 
 		/**
@@ -785,13 +750,9 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_post_object' );
-
 endif; // class_exists check
-
-

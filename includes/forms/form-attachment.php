@@ -37,7 +37,6 @@ if ( ! class_exists( 'acf_form_attachment' ) ) :
 
 			// save
 			add_filter( 'attachment_fields_to_save', array( $this, 'save_attachment' ), 10, 2 );
-
 		}
 
 
@@ -107,7 +106,6 @@ acf.unload.active = 0;
 
 </script>
 			<?php
-
 		}
 
 
@@ -163,13 +161,11 @@ acf.unload.active = 0;
 
 						// override instruction placement for modal
 					if ( ! $is_page ) {
-
 						$field_group['instruction_placement'] = 'field';
 					}
 
 						// render
 						acf_render_fields( $fields, $post_id, $el, $field_group['instruction_placement'] );
-
 				}
 
 				// close
@@ -184,12 +180,10 @@ acf.unload.active = 0;
 					'input' => 'html',
 					'html'  => $html,
 				);
-
 			}
 
 			// return
 			return $form_fields;
-
 		}
 
 
@@ -225,12 +219,9 @@ acf.unload.active = 0;
 			// return
 			return $post;
 		}
-
-
 	}
 
 	new acf_form_attachment();
-
 endif;
 
 ?>

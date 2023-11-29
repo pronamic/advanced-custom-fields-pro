@@ -52,5 +52,4 @@ if ( ! class_exists( 'ACF_Ajax_Upgrade' ) ) :
 	}
 
 	acf_new_instance( 'ACF_Ajax_Upgrade' );
-
 endif; // class_exists check

@@ -4,7 +4,6 @@
 $plugins = array();
 
 if ( ! acf_get_setting( 'pro' ) ) {
-
 	if ( is_plugin_active( 'acf-repeater/acf-repeater.php' ) ) {
 		$plugins[] = __( 'Repeater', 'acf' );
 	}

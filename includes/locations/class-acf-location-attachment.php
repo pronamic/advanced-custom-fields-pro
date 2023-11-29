@@ -92,5 +92,4 @@ if ( ! class_exists( 'ACF_Location_Attachment' ) ) :
 
 	// Register.
 	acf_register_location_type( 'ACF_Location_Attachment' );
-
 endif; // class_exists check

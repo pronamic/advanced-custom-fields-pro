@@ -34,7 +34,6 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 			add_filter( '_wp_post_revision_fields', array( $this, 'wp_preview_post_fields' ), 10, 2 );
 			add_filter( '_wp_post_revision_fields', array( $this, 'wp_post_revision_fields' ), 10, 2 );
 			add_filter( 'acf/validate_post_id', array( $this, 'acf_validate_post_id' ), 10, 2 );
-
 		}
 
 
@@ -62,14 +61,11 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 			// add to fields if ACF has changed
 			if ( acf_maybe_get_POST( '_acf_changed' ) ) {
-
 				$fields['_acf_changed'] = 'different than 1';
-
 			}
 
 			// return
 			return $fields;
-
 		}
 
 
@@ -97,7 +93,6 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 			// return
 			return $return;
-
 		}
 
 
@@ -126,12 +121,10 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 				}
 
 				// allow
-
 			} else {
 
 				// bail early (most likely saving a post)
 				return $fields;
-
 			}
 
 			// vars
@@ -141,10 +134,8 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 			// compatibility with WP < 4.5 (test)
 			if ( ! $post_id ) {
-
 				global $post;
 				$post_id = $post->ID;
-
 			}
 
 			// get all postmeta
@@ -191,7 +182,6 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 					// update vars
 					$field_title = str_repeat( '- ', $count ) . $field_title;
 					$field_order = $oldest['menu_order'] . '.1';
-
 				}
 
 				// append
@@ -200,7 +190,6 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 				// hook into specific revision field filter and return local value
 				add_filter( "_wp_post_revision_field_{$name}", array( $this, 'wp_post_revision_field' ), 10, 4 );
-
 			}
 
 			// append
@@ -221,12 +210,10 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 				// append
 				$fields = $fields + $append;
-
 			}
 
 			// return
 			return $fields;
-
 		}
 
 
@@ -300,9 +287,7 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 				// copy postmeta from revision to latest revision (potentialy may be the same, but most likely are different)
 				acf_copy_postmeta( $revision_id, $revision->ID );
-
 			}
-
 		}
 
 
@@ -344,17 +329,11 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 			// validate
 			if ( isset( $_GET['preview_id'] ) ) {
-
 				$preview_id = (int) $_GET['preview_id'];
-
 			} elseif ( isset( $_GET['p'] ) ) {
-
 				$preview_id = (int) $_GET['p'];
-
 			} elseif ( isset( $_GET['page_id'] ) ) {
-
 				$preview_id = (int) $_GET['page_id'];
-
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -368,9 +347,7 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 			// save
 			if ( $revision && $revision->post_parent == $post_id ) {
-
 				$post_id = (int) $revision->ID;
-
 			}
 
 			// set cache
@@ -378,14 +355,11 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 
 			// return
 			return $post_id;
-
 		}
-
 	}
 
 	// initialize
 	acf()->revisions = new acf_revisions();
-
 endif; // class_exists check
 
 
@@ -409,11 +383,8 @@ function acf_save_post_revision( $post_id = 0 ) {
 
 	// save
 	if ( $revision ) {
-
 		acf_copy_postmeta( $post_id, $revision->ID );
-
 	}
-
 }
 
 
@@ -440,8 +411,4 @@ function acf_get_post_latest_revision( $post_id ) {
 
 	// return
 	return $revision;
-
 }
-
-
-

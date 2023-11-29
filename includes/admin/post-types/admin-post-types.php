@@ -370,10 +370,8 @@ if ( ! class_exists( 'ACF_Admin_Post_Types' ) ) :
 			__( 'This post type could not be registered because its key is in use by another post type registered by another plugin or theme.', 'acf' ) .
 			'"></span> ' . _x( 'Registration Failed', 'post status', 'acf' );
 		}
-
 	}
 
 	// Instantiate.
 	acf_new_instance( 'ACF_Admin_Post_Types' );
-
 endif; // Class exists check.

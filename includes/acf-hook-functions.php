@@ -220,4 +220,3 @@ function _acf_apply_deprecated_hook() {
 	// Return first arg.
 	return $args[0];
 }
-

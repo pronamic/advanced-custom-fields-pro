@@ -248,5 +248,4 @@ class ACF_Rest_Request {
 
 		return null;
 	}
-
 }

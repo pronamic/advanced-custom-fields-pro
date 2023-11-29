@@ -21,8 +21,7 @@
 						'rule' => $rule,
 					)
 				);
-
-			 endforeach;
+			endforeach;
 			?>
 		</tbody>
 	</table>

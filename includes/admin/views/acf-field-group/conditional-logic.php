@@ -5,7 +5,6 @@ $disabled = false;
 
 // empty
 if ( empty( $field['conditional_logic'] ) ) {
-
 	$disabled                   = true;
 	$field['conditional_logic'] = array(
 
@@ -43,7 +42,13 @@ if ( empty( $field['conditional_logic'] ) ) {
 
 		</div>
 	</div>
-	<div class="rule-groups" <?php if ( $disabled ) echo ' style="display:none"'; ?>>
+	<div class="rule-groups" 
+	<?php
+	if ( $disabled ) {
+		echo ' style="display:none"';
+	}
+	?>
+	>
 		<?php
 		foreach ( $field['conditional_logic'] as $group_id => $group ) :
 

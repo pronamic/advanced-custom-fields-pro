@@ -64,7 +64,6 @@ if ( ! class_exists( 'ACF_Legacy_Locations' ) ) :
 					return call_user_func_array( 'acf_get_location_type', $arguments );
 				case 'get_locations':
 					return call_user_func_array( 'acf_get_location_rule_types', $arguments );
-
 			}
 		}
 	}

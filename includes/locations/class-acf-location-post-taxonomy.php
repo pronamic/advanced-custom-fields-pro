@@ -112,5 +112,4 @@ if ( ! class_exists( 'ACF_Location_Post_Taxonomy' ) ) :
 
 	// initialize
 	acf_register_location_type( 'ACF_Location_Post_Taxonomy' );
-
 endif; // class_exists check

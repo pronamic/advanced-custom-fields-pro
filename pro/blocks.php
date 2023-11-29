@@ -538,10 +538,8 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 				if ( $cached_block['form'] ) {
 					return $cached_block['html'];
 				}
-			} else {
-				if ( ! $cached_block['form'] ) {
+			} elseif ( ! $cached_block['form'] ) {
 					return $cached_block['html'];
-				}
 			}
 		}
 	}
@@ -736,7 +734,7 @@ function acf_enqueue_block_assets() {
 
 	// Get block types.
 	$block_types = array_map(
-		function( $block ) {
+		function ( $block ) {
 			// Render Callback may contain a incompatible class for JSON encoding. Turn it into a boolean for the frontend.
 			$block['render_callback'] = ! empty( $block['render_callback'] );
 			return $block;
@@ -972,7 +970,6 @@ function acf_parse_save_blocks( $text = '' ) {
 			stripslashes( $text )
 		)
 	);
-
 }
 
 // Hook into saving process.

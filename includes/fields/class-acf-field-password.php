@@ -31,7 +31,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 				'prepend'     => '',
 				'append'      => '',
 			);
-
 		}
 
 
@@ -50,7 +49,6 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 		function render_field( $field ) {
 
 			acf_get_field_type( 'text' )->render_field( $field );
-
 		}
 
 		/*
@@ -108,13 +106,9 @@ if ( ! class_exists( 'acf_field_password' ) ) :
 				)
 			);
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_password' );
-
 endif; // class_exists check
-
-

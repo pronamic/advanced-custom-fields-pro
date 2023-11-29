@@ -30,7 +30,6 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 				'default_value' => '',
 				'placeholder'   => '',
 			);
-
 		}
 
 
@@ -78,7 +77,6 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 
 			// return
 			echo $html;
-
 		}
 
 
@@ -144,28 +142,21 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 
 			// bail early if empty
 			if ( empty( $value ) ) {
-
 				return $valid;
-
 			}
 
 			if ( strpos( $value, '://' ) !== false ) {
 
 				// url
-
 			} elseif ( strpos( $value, '//' ) === 0 ) {
 
 				// protocol relative url
-
 			} else {
-
 				$valid = __( 'Value must be a valid URL', 'acf' );
-
 			}
 
 			// return
 			return $valid;
-
 		}
 
 		/**
@@ -180,13 +171,9 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 
 			return $schema;
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_url' );
-
 endif; // class_exists check
-
-

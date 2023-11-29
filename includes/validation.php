@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'acf_validation' ) ) :
-
 	#[AllowDynamicProperties]
 	class acf_validation {
 
@@ -32,7 +31,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 			add_action( 'wp_ajax_acf/validate_save_post', array( $this, 'ajax_validate_save_post' ) );
 			add_action( 'wp_ajax_nopriv_acf/validate_save_post', array( $this, 'ajax_validate_save_post' ) );
 			add_action( 'acf/validate_save_post', array( $this, 'acf_validate_save_post' ), 5 );
-
 		}
 
 
@@ -57,7 +55,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 				'input'   => $input,
 				'message' => $message,
 			);
-
 		}
 
 
@@ -83,7 +80,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 
 			// loop
 			foreach ( $this->errors as $error ) {
-
 				if ( $error['input'] === $input ) {
 					return $error;
 				}
@@ -91,7 +87,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 
 			// return
 			return false;
-
 		}
 
 
@@ -117,7 +112,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 
 			// return
 			return $this->errors;
-
 		}
 
 
@@ -137,7 +131,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		function reset_errors() {
 
 			$this->errors = array();
-
 		}
 
 
@@ -169,9 +162,7 @@ if ( ! class_exists( 'acf_validation' ) ) :
 
 			// success
 			if ( acf_validate_save_post() ) {
-
 				wp_send_json_success( $json );
-
 			}
 
 			// update vars
@@ -180,7 +171,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 
 			// return
 			wp_send_json_success( $json );
-
 		}
 
 		/**
@@ -209,12 +199,10 @@ if ( ! class_exists( 'acf_validation' ) ) :
 			}
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
 		}
-
 	}
 
 	// initialize
 	acf()->validation = new acf_validation();
-
 endif; // class_exists check
 
 
@@ -234,25 +222,21 @@ endif; // class_exists check
 function acf_add_validation_error( $input, $message = '' ) {
 
 	return acf()->validation->add_error( $input, $message );
-
 }
 
 function acf_get_validation_errors() {
 
 	return acf()->validation->get_errors();
-
 }
 
 function acf_get_validation_error() {
 
 	return acf()->validation->get_error( $input );
-
 }
 
 function acf_reset_validation_errors() {
 
 	return acf()->validation->reset_errors();
-
 }
 
 
@@ -284,24 +268,19 @@ function acf_validate_save_post( $show_errors = false ) {
 
 	// show errors
 	if ( $show_errors ) {
-
 		$message  = '<h2>' . __( 'Validation failed', 'acf' ) . '</h2>';
 		$message .= '<ul>';
 		foreach ( $errors as $error ) {
-
 			$message .= '<li>' . $error['message'] . '</li>';
-
 		}
 		$message .= '</ul>';
 
 		// die
 		wp_die( $message, __( 'Validation failed', 'acf' ) );
-
 	}
 
 	// return
 	return false;
-
 }
 
 
@@ -340,9 +319,7 @@ function acf_validate_values( $values, $input_prefix = '' ) {
 
 		// validate
 		acf_validate_value( $value, $field, $input );
-
 	}
-
 }
 
 
@@ -370,9 +347,7 @@ function acf_validate_value( $value, $field, $input ) {
 
 		// valid is set to false if the value is empty, but allow 0 as a valid value
 		if ( empty( $value ) && ! is_numeric( $value ) ) {
-
 			$valid = false;
-
 		}
 	}
 
@@ -394,20 +369,15 @@ function acf_validate_value( $value, $field, $input ) {
 
 	// allow $valid to be a custom error message
 	if ( ! empty( $valid ) && is_string( $valid ) ) {
-
 		$message = $valid;
 		$valid   = false;
-
 	}
 
 	if ( ! $valid ) {
-
 		acf_add_validation_error( $input, $message );
 		return false;
-
 	}
 
 	// return
 	return true;
-
 }

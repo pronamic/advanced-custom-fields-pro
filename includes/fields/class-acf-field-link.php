@@ -30,7 +30,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 			$this->defaults      = array(
 				'return_format' => 'array',
 			);
-
 		}
 
 
@@ -58,25 +57,20 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 
 			// array (ACF 5.6.0)
 			if ( is_array( $value ) ) {
-
 				$link = array_merge( $link, $value );
 
 				// post id (ACF < 5.6.0)
 			} elseif ( is_numeric( $value ) ) {
-
 				$link['title'] = get_the_title( $value );
 				$link['url']   = get_permalink( $value );
 
 				// string (ACF < 5.6.0)
 			} elseif ( is_string( $value ) ) {
-
 				$link['url'] = $value;
-
 			}
 
 			// return
 			return $link;
-
 		}
 
 
@@ -147,7 +141,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 	
 </div>
 			<?php
-
 		}
 
 
@@ -178,7 +171,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 					),
 				)
 			);
-
 		}
 
 		/*
@@ -209,14 +201,11 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 
 			// format value
 			if ( $field['return_format'] == 'url' ) {
-
 				return $link['url'];
-
 			}
 
 			// return link
 			return $link;
-
 		}
 
 
@@ -242,14 +231,11 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 
 			// URL is required
 			if ( empty( $value ) || empty( $value['url'] ) ) {
-
 				return false;
-
 			}
 
 			// return
 			return $valid;
-
 		}
 
 
@@ -310,7 +296,6 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field_link' );
-
 endif; // class_exists check
 
 ?>

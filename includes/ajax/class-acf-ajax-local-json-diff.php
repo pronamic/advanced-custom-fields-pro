@@ -95,5 +95,4 @@ if ( ! class_exists( 'ACF_Ajax_Local_JSON_Diff' ) ) :
 	}
 
 	acf_new_instance( 'ACF_Ajax_Local_JSON_Diff' );
-
 endif; // class_exists check

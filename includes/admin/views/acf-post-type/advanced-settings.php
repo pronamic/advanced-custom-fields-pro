@@ -216,9 +216,14 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'key'          => 'add_new',
 					'prefix'       => 'acf_post_type[labels]',
 					'value'        => $acf_post_type['labels']['add_new'],
+					'data'         => array(
+						/* translators: %s Singular form of post type name */
+						'label'   => __( 'Add New %s', 'acf' ),
+						'replace' => 'singular',
+					),
 					'label'        => __( 'Add New', 'acf' ),
 					'instructions' => __( 'In the post type submenu in the admin dashboard.', 'acf' ),
-					'placeholder'  => __( 'Add New', 'acf' ),
+					'placeholder'  => __( 'Add New Post', 'acf' ),
 				),
 				'div',
 				'field'
@@ -1285,4 +1290,3 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 
 	echo '</div>';
 }
-

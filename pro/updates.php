@@ -21,17 +21,16 @@ if ( ! class_exists( 'acf_pro_updates' ) ) :
 		/**
 		 * Initializes the ACF PRO updates functionality.
 		 *
-		 *  @date    10/4/17
-		 *  @since   5.5.10
+		 * @since 5.5.10
 		 */
 		public function init() {
-			// Bail early if no show_updates.
-			if ( ! acf_get_setting( 'show_updates' ) ) {
-				return;
-			}
+			// Enable defined license activation regardless of `show_updates` setting.
+			add_action( 'admin_init', 'acf_pro_check_defined_license', 20 );
+			add_action( 'admin_init', 'acf_pro_maybe_reactivate_license', 25 );
+			add_action( 'current_screen', 'acf_pro_display_activation_error', 30 );
 
-			// Bail early if not a plugin (included in theme).
-			if ( ! acf_is_plugin_active() ) {
+			// Bail early if the updates page is not visible.
+			if ( ! acf_is_updates_page_visible() ) {
 				return;
 			}
 
@@ -44,10 +43,6 @@ if ( ! class_exists( 'acf_pro_updates' ) ) :
 					'version'  => acf_get_setting( 'version' ),
 				)
 			);
-
-			add_action( 'admin_init', 'acf_pro_check_defined_license', 20 );
-			add_action( 'admin_init', 'acf_pro_maybe_reactivate_license', 25 );
-			add_action( 'current_screen', 'acf_pro_display_activation_error', 30 );
 
 			if ( is_admin() ) {
 				add_action( 'in_plugin_update_message-' . acf_get_setting( 'basename' ), array( $this, 'modify_plugin_update_message' ), 10, 2 );
@@ -70,13 +65,22 @@ if ( ! class_exists( 'acf_pro_updates' ) ) :
 				return;
 			}
 
+			if ( is_multisite() ) {
+				/* translators: %1 A link to the updates page. %2 link to the pricing page */
+				$message           = __( 'To enable updates, please enter your license key on the <a href="%1$s">Updates</a> page of the main site. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' );
+				$updates_page_link = get_admin_url( get_main_site_id(), 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+			} else {
+				/* translators: %1 A link to the updates page. %2 link to the pricing page */
+				$message           = __( 'To enable updates, please enter your license key on the <a href="%1$s">Updates</a> page. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' );
+				$updates_page_link = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+			}
+
 			// Display message.
-			echo '<br />' . sprintf( __( 'To enable updates, please enter your license key on the <a href="%1$s">Updates</a> page. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' ), admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' ), acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'updates' ) );
+			echo '<br />' . wp_kses_post( sprintf( $message, $updates_page_link, acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'updates' ) ) );
 		}
 	}
 
 	new acf_pro_updates();
-
 endif; // class_exists check
 
 /**
@@ -87,6 +91,11 @@ endif; // class_exists check
  * @since 5.11.0
  */
 function acf_pro_check_defined_license() {
+
+	// Bail early if we're doing an AJAX call.
+	if ( acf_is_ajax() ) {
+		return;
+	}
 
 	// Bail early if the license is not defined in wp-config.
 	if ( ! defined( 'ACF_PRO_LICENSE' ) || empty( ACF_PRO_LICENSE ) || ! is_string( ACF_PRO_LICENSE ) ) {
@@ -233,19 +242,31 @@ function acf_pro_get_translated_connect_message( $text ) {
 			__( 'View your licenses', 'acf' )
 		);
 
-		$nonce       = wp_create_nonce( 'acf_retry_activation' );
+		// Check again on the updates page if shown, or the field group page if not.
+		$nonce    = wp_create_nonce( 'acf_retry_activation' );
+		$base_url = 'edit.php?post_type=acf-field-group';
+		if ( acf_is_updates_page_visible() ) {
+			$base_url .= '&page=acf-settings-updates';
+		}
+
 		$check_again = sprintf(
 			'<a href="%1$s">%2$s</a>',
-			admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates&acf_retry_nonce=' . $nonce ),
+			admin_url( $base_url . '&acf_retry_nonce=' . $nonce ),
 			__( 'check again', 'acf' )
 		);
 
 		/* translators: %1$s - link to view licenses, %2$s - link to try activating license again */
 		$text .= ' ' . sprintf( __( '%1$s or %2$s.', 'acf' ), $view_license, $check_again );
+
 		return $text;
+	} elseif ( strpos( $text, 'scheduled maintenance' ) !== false ) {
+		return __( 'The ACF activation server is temporarily unavailable for scheduled maintenance. Please try again later.', 'acf' );
+	} elseif ( strpos( $text, 'Something went wrong' ) !== false ) {
+		return __( 'An internal error occurred when trying to check your license key. Please try again later.', 'acf' );
 	}
 
-	return $text;
+	/* translators: %s an untranslatable internal upstream error message */
+	return sprintf( __( 'An unknown error occurred while trying to validate your license: %s.', 'acf' ), $text );
 }
 
 /**
@@ -289,8 +310,8 @@ function acf_pro_get_activation_failure_transient() {
  * @since   5.11.0
  */
 function acf_pro_display_activation_error( $screen ) {
-	// Return if we're not in admin.
-	if ( ! is_admin() ) {
+	// Return if we're not in admin, or are doing an AJAX request.
+	if ( ! is_admin() || acf_is_ajax() ) {
 		return;
 	}
 
@@ -324,9 +345,12 @@ function acf_pro_display_activation_error( $screen ) {
 	// Append a retry link if we're not already on the settings page and we don't already have a link from upstream.
 	if ( ! acf_is_screen( 'acf_page_acf-settings-updates' ) ) {
 		if ( strpos( $activation_data['error'], 'http' ) === false ) {
-			$nonce                    = wp_create_nonce( 'acf_retry_activation' );
-			$check_again_url          = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates&acf_retry_nonce=' . $nonce );
-			$activation_data['error'] = $activation_data['error'] . ' <a href="' . $check_again_url . '">' . __( 'Check again', 'acf' ) . '</a>';
+			$nonce           = wp_create_nonce( 'acf_retry_activation' );
+			$check_again_url = 'edit.php?post_type=acf-field-group';
+			if ( acf_is_updates_page_visible() ) {
+				$check_again_url .= '&page=acf-settings-updates';
+			}
+			$activation_data['error'] = $activation_data['error'] . ' <a href="' . admin_url( $check_again_url . '&acf_retry_nonce=' . $nonce ) . '">' . __( 'Check again', 'acf' ) . '</a>';
 		}
 	}
 
@@ -401,6 +425,17 @@ function acf_license_ml_intercept( $home_url, $url ) {
 }
 
 /**
+ * Is the updates page visible.
+ *
+ * @since 6.2.4
+ *
+ * @return boolean true if the updates page should be hidden as we're not the primary multisite site.
+ */
+function acf_is_updates_page_visible() {
+	return acf_get_setting( 'show_updates' );
+}
+
+/**
  * Returns the license key.
  *
  * @since 5.4.0
@@ -450,7 +485,6 @@ function acf_pro_update_license( $key = '' ) {
 
 		// encode
 		$value = base64_encode( maybe_serialize( $data ) );
-
 	}
 
 	// re-register update (key has changed)
@@ -857,8 +891,8 @@ function acf_pro_maybe_reactivate_license() {
 		return;
 	}
 
-	// Bail if we tried this recently.
-	if ( get_transient( 'acf_pro_license_reactivated' ) ) {
+	// Bail if we're in an AJAX request, or tried this recently.
+	if ( acf_is_ajax() || get_transient( 'acf_pro_license_reactivated' ) ) {
 		return;
 	}
 

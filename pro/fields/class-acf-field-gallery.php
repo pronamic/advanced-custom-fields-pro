@@ -54,7 +54,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 			add_action( 'wp_ajax_acf/fields/gallery/get_sort_order', array( $this, 'ajax_get_sort_order' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/gallery/get_sort_order', array( $this, 'ajax_get_sort_order' ) );
-
 		}
 
 		/*
@@ -147,16 +146,12 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 			// validate nonce
 			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'acf_nonce' ) ) {
-
 				wp_send_json_error();
-
 			}
 
 			// bail early if no attachments
 			if ( empty( $_POST['attachments'] ) ) {
-
 				wp_send_json_error();
-
 			}
 
 			// loop over attachments
@@ -203,12 +198,10 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 				// save meta
 				acf_save_post( $id );
-
 			}
 
 			// return
 			wp_send_json_success();
-
 		}
 
 
@@ -242,24 +235,18 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 			// validate
 			if ( ! wp_verify_nonce( $args['nonce'], 'acf_nonce' ) ) {
-
 				wp_send_json_error();
-
 			}
 
 			// reverse
 			if ( $args['sort'] == 'reverse' ) {
-
 				$ids = array_reverse( $args['ids'] );
 
 				wp_send_json_success( $ids );
-
 			}
 
 			if ( $args['sort'] == 'title' ) {
-
 				$order = 'ASC';
-
 			}
 
 			// find attachments (DISTINCT POSTS)
@@ -277,14 +264,11 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 			// success
 			if ( ! empty( $ids ) ) {
-
 				wp_send_json_success( $ids );
-
 			}
 
 			// failure
 			wp_send_json_error();
-
 		}
 
 		/**
@@ -533,7 +517,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 	</div>
 </div>
 			<?php
-
 		}
 
 
@@ -835,20 +818,15 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		function validate_value( $valid, $value, $field, $input ) {
 
 			if ( empty( $value ) || ! is_array( $value ) ) {
-
 				$value = array();
-
 			}
 
 			if ( count( $value ) < $field['min'] ) {
-
 				$valid = _n( '%1$s requires at least %2$s selection', '%1$s requires at least %2$s selections', $field['min'], 'acf' );
 				$valid = sprintf( $valid, $field['label'], $field['min'] );
-
 			}
 
 			return $valid;
-
 		}
 
 
@@ -886,7 +864,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 			// Return value.
 			return $value;
-
 		}
 
 		/**
@@ -981,7 +958,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field_gallery' );
-
 endif; // class_exists check
 
 ?>

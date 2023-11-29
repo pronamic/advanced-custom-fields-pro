@@ -935,7 +935,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 				acf_delete_internal_post_type( $post_id, $this->post_type );
 			}
 		}
-
 	}
 
 endif; // Class exists check.

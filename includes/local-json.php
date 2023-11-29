@@ -512,7 +512,6 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 
 	// Initialize.
 	acf_new_instance( 'ACF_Local_JSON' );
-
 endif; // class_exists check
 
 /**

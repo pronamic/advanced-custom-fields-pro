@@ -288,7 +288,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field_color_picker' );
-
 endif; // class_exists check
 
 ?>

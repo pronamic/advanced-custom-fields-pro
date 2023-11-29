@@ -212,8 +212,10 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 				$unlock_text   = __( 'Unlock Extra Features with ACF PRO', 'acf' );
 
 				if ( acf_is_pro() ) {
-					$unlock_url    = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
-					$unlock_target = '';
+					if ( acf_is_updates_page_visible() ) {
+						$unlock_url    = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
+						$unlock_target = '';
+					}
 
 					if ( acf_pro_is_license_expired() ) {
 						$unlock_url    = acf_add_url_utm_tags( acf_pro_get_manage_license_url(), 'ACF renewal', 'header' );

@@ -122,17 +122,17 @@ function acf_load_textdomain( $domain = 'acf' ) {
 	return load_textdomain( $domain, acf_get_path( 'lang/' . $mofile ) );
 }
 
- /**
-  * _acf_apply_language_cache_key
-  *
-  * Applies the current language to the cache key.
-  *
-  * @date    23/1/19
-  * @since   5.7.11
-  *
-  * @param   string $key The cache key.
-  * @return  string
-  */
+/**
+ * _acf_apply_language_cache_key
+ *
+ * Applies the current language to the cache key.
+ *
+ * @date    23/1/19
+ * @since   5.7.11
+ *
+ * @param   string $key The cache key.
+ * @return  string
+ */
 function _acf_apply_language_cache_key( $key ) {
 
 	// Get current language.

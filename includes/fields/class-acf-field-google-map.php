@@ -42,7 +42,7 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 		}
 
 
-		 /*
+		/*
 		*  input_admin_enqueue_scripts
 		*
 		*  description
@@ -169,7 +169,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 	
 </div>
 			<?php
-
 		}
 
 
@@ -239,7 +238,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 					'placeholder'  => $this->default_values['height'],
 				)
 			);
-
 		}
 
 		/**
@@ -385,7 +383,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 
 	// initialize
 	acf_register_field_type( 'acf_field_google_map' );
-
 endif; // class_exists check
 
 ?>

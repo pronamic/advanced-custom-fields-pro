@@ -364,7 +364,6 @@ if ( ! class_exists( 'ACF_Admin_Taxonomy' ) ) :
 		public function mb_advanced_settings() {
 			acf_get_view( $this->post_type . '/advanced-settings' );
 		}
-
 	}
 
 	new ACF_Admin_Taxonomy();

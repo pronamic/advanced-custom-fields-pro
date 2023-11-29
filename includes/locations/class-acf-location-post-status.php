@@ -46,7 +46,7 @@ if ( ! class_exists( 'ACF_Location_Post_Status' ) ) :
 				return false;
 			}
 
-			 // Treat "auto-draft" as "draft".
+			// Treat "auto-draft" as "draft".
 			if ( $post_status === 'auto-draft' ) {
 				$post_status = 'draft';
 			}
@@ -80,5 +80,4 @@ if ( ! class_exists( 'ACF_Location_Post_Status' ) ) :
 
 	// initialize
 	acf_register_location_type( 'ACF_Location_Post_Status' );
-
 endif; // class_exists check

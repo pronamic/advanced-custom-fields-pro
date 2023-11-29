@@ -68,5 +68,4 @@ if ( ! class_exists( 'ACF_Location_Page_Parent' ) ) :
 
 	// Register.
 	acf_register_location_type( 'ACF_Location_Page_Parent' );
-
 endif; // class_exists check

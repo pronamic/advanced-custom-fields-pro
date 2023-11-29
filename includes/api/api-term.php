@@ -113,7 +113,7 @@ function acf_get_taxonomy_labels( $taxonomies = array() ) {
 		if ( ! isset( $ref[ $label ] ) ) {
 			$ref[ $label ] = 0;
 		}
-		$ref[ $label ]++;
+		++$ref[ $label ];
 	}
 
 	// show taxonomy name next to label for shared labels

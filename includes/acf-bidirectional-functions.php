@@ -10,10 +10,10 @@
  *
  * @since 6.2
  *
- * @param array        $target_item_ids The post, user or term IDs which should be updated with the origin item ID.
- * @param int|string   $post_id The ACF encoded origin post, user or term ID.
- * @param array        $field The field being updated on the origin post, user or term ID.
- * @param string|false $target_prefix The ACF prefix for a post, user or term ID required for the update_field call for this field type.
+ * @param array          $target_item_ids The post, user or term IDs which should be updated with the origin item ID.
+ * @param integer|string $post_id         The ACF encoded origin post, user or term ID.
+ * @param array          $field           The field being updated on the origin post, user or term ID.
+ * @param string|false   $target_prefix   The ACF prefix for a post, user or term ID required for the update_field call for this field type.
  */
 function acf_update_bidirectional_values( $target_item_ids, $post_id, $field, $target_prefix = false ) {
 
@@ -57,7 +57,7 @@ function acf_update_bidirectional_values( $target_item_ids, $post_id, $field, $t
 
 		// Prefix additions and subtractions for destinations which aren't posts.
 		if ( ! empty( $target_prefix ) ) {
-			$mapper       = function( $v ) use ( $target_prefix ) {
+			$mapper       = function ( $v ) use ( $target_prefix ) {
 				return $target_prefix . '_' . $v;
 			};
 			$additions    = array_map( $mapper, $additions );
@@ -89,6 +89,7 @@ function acf_update_bidirectional_values( $target_item_ids, $post_id, $field, $t
  * @since 6.2
  *
  * @param string $object_type The object type that will be updated on the target field, such as 'term', 'user' or 'post'.
+ *
  * @return array An array of valid field type names (slugs) for the target of the bidirectional field.
  */
 function acf_get_valid_bidirectional_target_types( $object_type ) {
@@ -153,7 +154,7 @@ function acf_build_bidirectional_relationship_field_target_args( $results, $opti
 
 	$field_groups = array_filter(
 		acf_get_field_groups(),
-		function( $field_group ) {
+		function ( $field_group ) {
 			return $field_group['active'];
 		}
 	);

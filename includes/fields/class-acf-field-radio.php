@@ -36,7 +36,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 				'allow_null'        => 0,
 				'return_format'     => 'value',
 			);
-
 		}
 
 
@@ -372,7 +371,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 
 					// save
 					acf_update_field( $field );
-
 				}
 			}
 
@@ -401,14 +399,11 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 
 			// must be single value
 			if ( is_array( $value ) ) {
-
 				$value = array_pop( $value );
-
 			}
 
 			// return
 			return $value;
-
 		}
 
 
@@ -428,7 +423,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		function translate_field( $field ) {
 
 			return acf_get_field_type( 'select' )->translate_field( $field );
-
 		}
 
 
@@ -451,7 +445,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		function format_value( $value, $post_id, $field ) {
 
 			return acf_get_field_type( 'select' )->format_value( $value, $post_id, $field );
-
 		}
 
 		/**
@@ -480,13 +473,9 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 
 			return $schema;
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_radio' );
-
 endif; // class_exists check
-
-

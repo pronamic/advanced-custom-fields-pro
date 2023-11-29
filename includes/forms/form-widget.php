@@ -11,7 +11,6 @@
 */
 
 if ( ! class_exists( 'acf_form_widget' ) ) :
-
 	#[AllowDynamicProperties]
 	class acf_form_widget {
 
@@ -43,7 +42,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 			// filters
 			add_filter( 'widget_update_callback', array( $this, 'save_widget' ), 10, 4 );
-
 		}
 
 
@@ -67,11 +65,8 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 			if ( acf_is_screen( 'widgets' ) || acf_is_screen( 'customize' ) ) {
 
 				// valid
-
 			} else {
-
 				return;
-
 			}
 
 			// load acf scripts
@@ -79,7 +74,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 			// actions
 			add_action( 'acf/input/admin_footer', array( $this, 'admin_footer' ), 1 );
-
 		}
 
 
@@ -139,9 +133,7 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 			// get id
 			if ( $widget->number !== '__i__' ) {
-
 				$post_id = "widget_{$widget->id}";
-
 			}
 
 			// get field groups
@@ -184,7 +176,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 						// render
 						acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'] );
-
 				}
 
 				// wrap
@@ -202,9 +193,7 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 			</script>
 					<?php
 			endif;
-
 			}
-
 		}
 
 
@@ -244,7 +233,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 
 			// return
 			return $instance;
-
 		}
 
 
@@ -324,12 +312,10 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 })(jQuery);	
 </script>
 			<?php
-
 		}
 	}
 
 	new acf_form_widget();
-
 endif;
 
 ?>

@@ -87,7 +87,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 
 			if ( $sub_fields ) {
 				$field['sub_fields'] = array_map(
-					function( $sub_field ) use ( $field ) {
+					function ( $sub_field ) use ( $field ) {
 						$sub_field['parent_repeater'] = $field['key'];
 						return $sub_field;
 					},
@@ -703,7 +703,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 					}
 
 					$this->update_row( $row, $new_row_num, $field, $post_id );
-					$new_row_num++;
+					++$new_row_num;
 				}
 
 				// Calculate the total number of rows that will be saved after this update.
@@ -712,7 +712,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 				$i = -1;
 
 				foreach ( $value as $row ) {
-					$i++;
+					++$i;
 
 					// Bail early if no row.
 					if ( ! is_array( $row ) ) {
@@ -720,7 +720,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 					}
 
 					$this->update_row( $row, $i, $field, $post_id );
-					$new_value++;
+					++$new_value;
 				}
 			}
 
@@ -1099,7 +1099,6 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 
 			wp_send_json_success( $response );
 		}
-
 	}
 
 	// initialize

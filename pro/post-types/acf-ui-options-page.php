@@ -56,7 +56,7 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 		/**
 		 * Constructs the class and any parent classes.
 		 *
-		 * @since 5.0.0
+		 * @since 6.2
 		 */
 		public function __construct() {
 			$this->register_post_type();
@@ -397,7 +397,6 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 
 			return apply_filters( 'acf/ui_options_page/registration_args', $args, $post );
 		}
-
 	}
 
 }

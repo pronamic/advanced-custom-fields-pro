@@ -2,11 +2,10 @@
 /**
  * ACF Admin Post Type Class
  *
- * @class ACF_Admin_Post_Type
- *
  * @package    ACF
  * @subpackage Admin
  */
+
 if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 
 	/**
@@ -37,13 +36,14 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'wp_ajax_acf/create_options_page', array( $this, 'ajax_create_options_page' ) );
+			add_action( 'acf/field_group/admin_enqueue_scripts', array( $this, 'add_js_parent_choices' ) );
 			parent::__construct();
 		}
 
 		/**
 		 * This function will customize the message shown when editing a post type.
 		 *
-		 * @since 5.0.0
+		 * @since 6.2
 		 *
 		 * @param array $messages Post type messages.
 		 * @return array
@@ -71,7 +71,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		 *
 		 * @since 6.1
 		 *
-		 * @param bool $created True if the options page was just created.
+		 * @param boolean $created True if the options page was just created.
 		 * @return string
 		 */
 		public function options_page_created_message( $created = false ) {
@@ -106,11 +106,22 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		}
 
 		/**
+		 * Allow other pages to get available option page parents.
+		 *
+		 * @since 6.2
+		 */
+		public function add_js_parent_choices() {
+			acf_localize_data(
+				array(
+					'optionPageParentOptions' => $this->get_parent_page_choices(),
+				)
+			);
+		}
+
+		/**
 		 * Enqueues any scripts necessary for internal post type.
 		 *
-		 * @since 5.0.0
-		 *
-		 * @return void
+		 * @since 6.2
 		 */
 		public function admin_enqueue_scripts() {
 			wp_enqueue_style( 'acf-field-group' );
@@ -234,9 +245,9 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		/**
 		 * Sets the "Edit Post Type" screen to use a one-column layout.
 		 *
-		 * @param int $columns Number of columns for layout.
+		 * @param integer $columns Number of columns for layout.
 		 *
-		 * @return int
+		 * @return integer
 		 */
 		public function screen_layout( $columns = 0 ) {
 			return 1;
@@ -295,10 +306,10 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param int     $post_id The post ID.
+		 * @param integer $post_id The post ID.
 		 * @param WP_Post $post    The post object.
 		 *
-		 * @return int $post_id
+		 * @return integer $post_id
 		 */
 		public function save_post( $post_id, $post ) {
 			if ( ! $this->verify_save_post( $post_id, $post ) ) {
@@ -324,30 +335,32 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		/**
 		 * Renders HTML for the basic settings metabox.
 		 *
-		 * @since 5.0.0
+		 * @since 6.2
 		 *
 		 * @return void
 		 */
 		public function mb_basic_settings() {
-			global $acf_ui_options_page;
+			global $acf_ui_options_page, $acf_parent_page_options;
 
 			if ( ! acf_is_internal_post_type_key( $acf_ui_options_page['key'], 'acf-ui-options-page' ) ) {
 				$acf_ui_options_page['key'] = uniqid( 'ui_options_page_' );
 			}
 
-			acf_get_view( dirname( __FILE__ ) . '/../views/acf-ui-options-page/basic-settings.php' );
+			$acf_parent_page_options = $this->get_parent_page_choices( (int) $acf_ui_options_page['ID'] );
+
+			acf_get_view( __DIR__ . '/../views/acf-ui-options-page/basic-settings.php' );
 		}
 
 
 		/**
 		 * Renders the HTML for the advanced settings metabox.
 		 *
-		 * @since 5.0.0
+		 * @since 6.2
 		 *
 		 * @return void
 		 */
 		public function mb_advanced_settings() {
-			acf_get_view( dirname( __FILE__ ) . '/../views/acf-ui-options-page/advanced-settings.php' );
+			acf_get_view( __DIR__ . '/../views/acf-ui-options-page/advanced-settings.php' );
 		}
 
 		/**
@@ -355,13 +368,14 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		 *
 		 * @since 6.2
 		 *
-		 * @param string $menu_slug Optional menu_slug of an existing options page.
+		 * @param integer $post_id The post ID of a current ACF UI options page used to prevent selection of itself as a child.
 		 * @return array
 		 */
-		public static function get_parent_page_choices( $current_slug = '' ) {
+		public function get_parent_page_choices( int $post_id = 0 ) {
 			global $menu;
 			$acf_all_options_pages   = acf_get_options_pages();
 			$acf_parent_page_choices = array( 'None' => array( 'none' => __( 'No Parent', 'acf' ) ) );
+
 			if ( is_array( $acf_all_options_pages ) ) {
 				foreach ( $acf_all_options_pages as $options_page ) {
 					// Can't assign to child pages.
@@ -370,7 +384,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 					}
 
 					// Can't be a child of itself.
-					if ( $current_slug === $options_page['menu_slug'] ) {
+					if ( isset( $options_page['ID'] ) && $post_id === $options_page['ID'] ) {
 						continue;
 					}
 
@@ -390,11 +404,6 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 					$page_name      = $item[0];
 					$markup         = '/<[^>]+>.*<\/[^>]+>/';
 					$sanitized_name = preg_replace( $markup, '', $page_name );
-
-					// Can't be a child of itself.
-					if ( $current_slug === $item[2] ) {
-						continue;
-					}
 
 					// Ensure that the current item is not an ACF page or that ACF pages are an empty array before adding to others.
 					if ( ! empty( $acf_parent_page_choices['acfOptionsPages'] ) && ! in_array( $page_name, $acf_parent_page_choices['acfOptionsPages'], true ) || empty( $acf_parent_page_choices['acfOptionsPages'] ) ) {
@@ -469,7 +478,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 			// Render the form.
 			ob_start();
 			acf_get_view(
-				dirname( __FILE__ ) . '/../views/acf-ui-options-page/create-options-page-modal.php',
+				__DIR__ . '/../views/acf-ui-options-page/create-options-page-modal.php',
 				array(
 					'field_group_title'       => $args['field_group_title'],
 					'acf_parent_page_choices' => $args['acf_parent_page_choices'],
@@ -484,7 +493,6 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 				)
 			);
 		}
-
 	}
 
 	new ACF_Admin_UI_Options_Page();

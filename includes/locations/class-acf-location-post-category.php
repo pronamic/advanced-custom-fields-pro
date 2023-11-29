@@ -72,5 +72,4 @@ if ( ! class_exists( 'ACF_Location_Post_Category' ) ) :
 
 	// initialize
 	acf_register_location_rule( 'ACF_Location_Post_Category' );
-
 endif; // class_exists check

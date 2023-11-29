@@ -186,5 +186,4 @@ if ( ! class_exists( 'ACF_Form_Gutenberg' ) ) :
 	}
 
 	acf_new_instance( 'ACF_Form_Gutenberg' );
-
 endif;

@@ -32,7 +32,6 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 				'prepend'       => '',
 				'append'        => '',
 			);
-
 		}
 
 
@@ -58,18 +57,14 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 
 			// prepend
 			if ( $field['prepend'] !== '' ) {
-
 				$field['class'] .= ' acf-is-prepended';
 				$html           .= '<div class="acf-input-prepend">' . acf_esc_html( $field['prepend'] ) . '</div>';
-
 			}
 
 			// append
 			if ( $field['append'] !== '' ) {
-
 				$field['class'] .= ' acf-is-appended';
 				$html           .= '<div class="acf-input-append">' . acf_esc_html( $field['append'] ) . '</div>';
-
 			}
 
 			// atts (value="123")
@@ -94,7 +89,6 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 
 			// return
 			echo $html;
-
 		}
 
 
@@ -196,13 +190,9 @@ if ( ! class_exists( 'acf_field_email' ) ) :
 
 			return $schema;
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_email' );
-
 endif; // class_exists check
-
-

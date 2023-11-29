@@ -33,7 +33,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 			// extra
 			add_action( 'wp_ajax_acf/fields/relationship/query', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/relationship/query', array( $this, 'ajax_query' ) );
-
 		}
 
 
@@ -89,7 +88,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// return
 			acf_send_ajax_results( $response );
-
 		}
 
 
@@ -146,33 +144,22 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				// update vars
 				$args['s'] = $s;
 				$is_search = true;
-
 			}
 
 			// post_type
 			if ( ! empty( $options['post_type'] ) ) {
-
 				$args['post_type'] = acf_get_array( $options['post_type'] );
-
 			} elseif ( ! empty( $field['post_type'] ) ) {
-
 				$args['post_type'] = acf_get_array( $field['post_type'] );
-
 			} else {
-
 				$args['post_type'] = acf_get_post_types();
-
 			}
 
 			// post status
 			if ( ! empty( $options['post_status'] ) ) {
-
 				$args['post_status'] = acf_get_array( $options['post_status'] );
-
 			} elseif ( ! empty( $field['post_status'] ) ) {
-
 				$args['post_status'] = acf_get_array( $field['post_status'] );
-
 			}
 
 			// taxonomy
@@ -190,7 +177,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 					'field'    => 'slug',
 					'terms'    => $term['term'],
 				);
-
 			} elseif ( ! empty( $field['taxonomy'] ) ) {
 
 				// vars
@@ -203,13 +189,11 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 				// now create the tax queries
 				foreach ( $terms as $k => $v ) {
-
 					$args['tax_query'][] = array(
 						'taxonomy' => $k,
 						'field'    => 'slug',
 						'terms'    => $v,
 					);
-
 				}
 			}
 
@@ -240,35 +224,26 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 				// convert post objects to post titles
 				foreach ( array_keys( $posts ) as $post_id ) {
-
 					$posts[ $post_id ] = $this->get_post_title( $posts[ $post_id ], $field, $options['post_id'] );
-
 				}
 
 				// order posts by search
 				if ( $is_search && empty( $args['orderby'] ) && isset( $args['s'] ) ) {
-
 					$posts = acf_order_by_search( $posts, $args['s'] );
-
 				}
 
 				// append to $data
 				foreach ( array_keys( $posts ) as $post_id ) {
-
 					$data['children'][] = $this->get_post_result( $post_id, $posts[ $post_id ] );
-
 				}
 
 				// append to $results
 				$results[] = $data;
-
 			}
 
 			// add as optgroup or results
 			if ( count( $args['post_type'] ) == 1 ) {
-
 				$results = $results[0]['children'];
-
 			}
 
 			// vars
@@ -279,7 +254,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// return
 			return $response;
-
 		}
 
 
@@ -307,7 +281,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// return
 			return $result;
-
 		}
 
 
@@ -345,14 +318,11 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 				// icon
 				if ( $thumbnail['type'] == 'icon' ) {
-
 					$class .= ' -' . $thumbnail['type'];
-
 				}
 
 				// append
 				$title = '<div class="' . $class . '">' . $thumbnail['html'] . '</div>' . $title;
-
 			}
 
 			// filters
@@ -362,7 +332,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// return
 			return $title;
-
 		}
 
 
@@ -392,7 +361,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// post_type filter
 			if ( in_array( 'post_type', $filters ) ) {
-
 				$filter_post_type_choices = array(
 					'' => __( 'Select post type', 'acf' ),
 				) + acf_get_pretty_post_types( $post_type );
@@ -400,7 +368,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// taxonomy filter
 			if ( in_array( 'taxonomy', $filters ) ) {
-
 				$term_choices            = array();
 				$filter_taxonomy_choices = array(
 					'' => __( 'Select taxonomy', 'acf' ),
@@ -431,7 +398,6 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 				// append term choices
 				$filter_taxonomy_choices = $filter_taxonomy_choices + $term_choices;
-
 			}
 
 			// div attributes
@@ -736,9 +702,7 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// bail early if no value
 			if ( empty( $value ) ) {
-
 				return $value;
-
 			}
 
 			// force value to array
@@ -757,12 +721,10 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 						'post_type' => $field['post_type'],
 					)
 				);
-
 			}
 
 			// return
 			return $value;
-
 		}
 
 
@@ -783,22 +745,17 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 
 			// default
 			if ( empty( $value ) || ! is_array( $value ) ) {
-
 				$value = array();
-
 			}
 
 			// min
 			if ( count( $value ) < $field['min'] ) {
-
 				$valid = _n( '%1$s requires at least %2$s selection', '%1$s requires at least %2$s selections', $field['min'], 'acf' );
 				$valid = sprintf( $valid, $field['label'], $field['min'] );
-
 			}
 
 			// return
 			return $valid;
-
 		}
 
 
@@ -922,13 +879,11 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_relationship' );
-
 endif; // class_exists check
 
 ?>

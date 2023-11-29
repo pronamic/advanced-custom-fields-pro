@@ -29,7 +29,6 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 
 			// add menu items
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 99, 0 );
-
 		}
 
 
@@ -63,20 +62,15 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 				$slug = '';
 				// parent
 				if ( empty( $page['parent_slug'] ) ) {
-
 					$slug = add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $page['icon_url'], $page['position'] );
 					// child
 				} else {
-
 					$slug = add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $page['position'] );
-
 				}
 
 				// actions
 				add_action( "load-{$slug}", array( $this, 'admin_load' ) );
-
 			}
-
 		}
 
 
@@ -129,7 +123,6 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 					// redirect
 					wp_redirect( add_query_arg( array( 'message' => '1' ) ) );
 					exit;
-
 				}
 			}
 
@@ -148,7 +141,6 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 					'default' => 2,
 				)
 			);
-
 		}
 
 
@@ -168,7 +160,6 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		function admin_enqueue_scripts() {
 
 			wp_enqueue_script( 'post' );
-
 		}
 
 
@@ -203,11 +194,8 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 			add_meta_box( 'submitdiv', __( 'Publish', 'acf' ), array( $this, 'postbox_submitdiv' ), 'acf_options_page', 'side', 'high' );
 
 			if ( empty( $field_groups ) ) {
-
 				acf_add_admin_notice( sprintf( __( 'No Custom Field Groups found for this options page. <a href="%s">Create a Custom Field Group</a>', 'acf' ), admin_url( 'post-new.php?post_type=acf-field-group' ) ), 'warning' );
-
 			} else {
-
 				foreach ( $field_groups as $i => $field_group ) {
 
 					// vars
@@ -219,13 +207,9 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 
 					// tweaks to vars
 					if ( $context == 'acf_after_title' ) {
-
 						$context = 'normal';
-
 					} elseif ( $context == 'side' ) {
-
 						$priority = 'core';
-
 					}
 
 					// filter for 3rd party customization
@@ -233,10 +217,8 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 
 					// add meta box
 					add_meta_box( $id, acf_esc_html( $title ), array( $this, 'postbox_acf' ), 'acf_options_page', $context, $priority, $args );
-
 				}
 				// foreach
-
 			}
 			// if
 		}
@@ -320,9 +302,7 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 
 			// edit_url
 			if ( $field_group['ID'] && acf_current_user_can_admin() ) {
-
 				$o['editLink'] = admin_url( 'post.php?post=' . $field_group['ID'] . '&action=edit' );
-
 			}
 
 			// load fields
@@ -354,17 +334,13 @@ if( typeof acf !== 'undefined' ) {
 		function html() {
 
 			// load view
-			acf_get_view( dirname( __FILE__ ) . '/views/html-options-page.php', $this->page );
-
+			acf_get_view( __DIR__ . '/views/html-options-page.php', $this->page );
 		}
-
-
 	}
 
 
 	// initialize
 	new acf_admin_options_page();
-
 endif;
 
 ?>

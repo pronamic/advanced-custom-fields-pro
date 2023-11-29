@@ -23,7 +23,7 @@
 	
 	<h1><?php _e( 'Upgrade Database', 'acf' ); ?></h1>
 	
-	<p><?php echo sprintf( __( 'The following sites require a DB upgrade. Check the ones you want to update and then click %s.', 'acf' ), '"' . __( 'Upgrade Sites', 'acf' ) . '"' ); ?></p>
+	<p><?php printf( __( 'The following sites require a DB upgrade. Check the ones you want to update and then click %s.', 'acf' ), '"' . __( 'Upgrade Sites', 'acf' ) . '"' ); ?></p>
 	<p><input type="submit" name="upgrade" value="<?php _e( 'Upgrade Sites', 'acf' ); ?>" class="button" id="upgrade-sites"></p>
 	
 	<table class="wp-list-table widefat">
@@ -64,7 +64,7 @@
 				<?php
 				if ( $i % 2 == 0 ) :
 					?>
-				 class="alternate"<?php endif; ?>>
+				class="alternate"<?php endif; ?>>
 				<th class="check-column" scope="row">
 				<?php if ( acf_has_upgrade() ) : ?>
 					<input type="checkbox" value="<?php echo $site['blog_id']; ?>" name="checked[]">
@@ -85,7 +85,6 @@
 
 				// restore
 				restore_current_blog();
-
 		endforeach;
 		endif;
 
@@ -94,7 +93,7 @@
 	</table>
 	
 	<p><input type="submit" name="upgrade" value="<?php _e( 'Upgrade Sites', 'acf' ); ?>" class="button" id="upgrade-sites-2"></p>
-	<p class="show-on-complete"><?php echo sprintf( __( 'Database Upgrade complete. <a href="%s">Return to network dashboard</a>', 'acf' ), network_admin_url() ); ?></p>
+	<p class="show-on-complete"><?php printf( __( 'Database Upgrade complete. <a href="%s">Return to network dashboard</a>', 'acf' ), network_admin_url() ); ?></p>
 	
 	<script type="text/javascript">
 	(function($) {

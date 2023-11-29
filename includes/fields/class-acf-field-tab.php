@@ -32,7 +32,6 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 				'placement' => 'top',
 				'endpoint'  => 0, // added in 5.2.8
 			);
-
 		}
 
 
@@ -66,7 +65,6 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 			?>
 		<a <?php echo acf_esc_attrs( $atts ); ?>><?php echo acf_esc_html( $field['label'] ); ?></a>
 			<?php
-
 		}
 
 
@@ -128,7 +126,6 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 					'ui'           => 1,
 				)
 			);
-
 		}
 
 
@@ -161,15 +158,12 @@ if ( ! class_exists( 'acf_field_tab' ) ) :
 
 			// return
 			return $field;
-
 		}
-
 	}
 
 
 	// initialize
 	acf_register_field_type( 'acf_field_tab' );
-
 endif; // class_exists check
 
 ?>

@@ -30,6 +30,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			acf_include( 'pro/blocks.php' );
 			acf_include( 'pro/options-page.php' );
 			acf_include( 'pro/acf-ui-options-page-functions.php' );
+			acf_include( 'pro/class-acf-updates.php' );
 			acf_include( 'pro/updates.php' );
 
 			if ( is_admin() ) {
@@ -113,7 +114,6 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			acf_include( 'pro/locations/class-acf-location-block.php' );
 			acf_include( 'pro/locations/class-acf-location-options-page.php' );
-
 		}
 
 		/**
@@ -155,7 +155,6 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			wp_enqueue_script( 'acf-pro-input' );
 			wp_enqueue_script( 'acf-pro-ui-options-page' );
 			wp_enqueue_style( 'acf-pro-input' );
-
 		}
 
 
@@ -176,7 +175,6 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			wp_enqueue_script( 'acf-pro-field-group' );
 			wp_enqueue_style( 'acf-pro-field-group' );
-
 		}
 
 		/**
@@ -206,7 +204,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 				return;
 			}
 
-			if ( ! empty( $manage_url ) && 'acf-settings-updates' !== acf_request_arg( 'page' ) ) {
+			if ( acf_is_updates_page_visible() && ! empty( $manage_url ) && 'acf-settings-updates' !== acf_request_arg( 'page' ) ) {
 				$manage_link = sprintf(
 					'<a href="%1$s">%2$s</a>',
 					esc_url( $manage_url ),
@@ -240,7 +238,6 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			return $where;
 		}
-
 	}
 
 
@@ -250,5 +247,3 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 	// end class
 endif;
-
-

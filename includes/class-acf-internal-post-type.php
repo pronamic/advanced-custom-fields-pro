@@ -445,7 +445,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 			if ( ! empty( $args['active'] ) ) {
 				$posts = array_filter(
 					$posts,
-					function( $post ) {
+					function ( $post ) {
 						return $post['active'];
 					}
 				);
@@ -927,7 +927,6 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 
 			return $post;
 		}
-
 	}
 
 }

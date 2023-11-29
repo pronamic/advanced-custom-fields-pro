@@ -547,7 +547,6 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 
 	// instantiate
 	acf_new_instance( 'ACF_Assets' );
-
 endif; // class_exists check
 
 /**

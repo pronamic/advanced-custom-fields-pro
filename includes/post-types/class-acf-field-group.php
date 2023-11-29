@@ -539,7 +539,6 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 
 			return $post;
 		}
-
 	}
 
 }

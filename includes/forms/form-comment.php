@@ -42,7 +42,6 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 			// save
 			add_action( 'edit_comment', array( $this, 'save_comment' ), 10, 1 );
 			add_action( 'comment_post', array( $this, 'save_comment' ), 10, 1 );
-
 		}
 
 
@@ -66,9 +65,7 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 			// validate page
 			if ( $pagenow == 'comment.php' ) {
-
 				return true;
-
 			}
 
 			// return
@@ -94,9 +91,7 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 			// validate page
 			if ( ! $this->validate_page() ) {
-
 				return;
-
 			}
 
 			// load acf scripts
@@ -105,7 +100,6 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 			// actions
 			add_action( 'admin_footer', array( $this, 'admin_footer' ), 10, 1 );
 			add_action( 'add_meta_boxes_comment', array( $this, 'edit_comment' ), 10, 1 );
-
 		}
 
 
@@ -163,9 +157,7 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 						// edit_url
 						if ( $field_group['ID'] && acf_current_user_can_admin() ) {
-
 							$o['edit_url'] = admin_url( 'post.php?post=' . $field_group['ID'] . '&action=edit' );
-
 						}
 
 						?>
@@ -186,7 +178,6 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 				}
 			}
-
 		}
 
 
@@ -240,11 +231,9 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 				echo '<div class="acf-comment-fields acf-fields -clear">';
 
 			foreach ( $field_groups as $field_group ) {
-
 				$fields = acf_get_fields( $field_group );
 
 				acf_render_fields( $fields, $post_id, 'p', $field_group['instruction_placement'] );
-
 			}
 
 				echo '</div>';
@@ -255,7 +244,6 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 			// return
 			return $html;
-
 		}
 
 
@@ -288,7 +276,6 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 			if ( acf_validate_save_post( true ) ) {
 				acf_save_post( "comment_{$comment_id}" );
 			}
-
 		}
 
 
@@ -330,13 +317,10 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 })(jQuery);	
 </script>
 			<?php
-
 		}
-
 	}
 
 	new acf_form_comment();
-
 endif;
 
 ?>
