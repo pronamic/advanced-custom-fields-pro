@@ -28,11 +28,14 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-oembed.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/oembed/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'width'  => '',
-				'height' => '',
+				'width'     => '',
+				'height'    => '',
 			);
 			$this->width         = 640;
 			$this->height        = 390;
+			$this->supports      = array(
+				'escaping_html' => true, // The OEmbed field only produces html safe content from format_value.
+			);
 
 			// extra
 			add_action( 'wp_ajax_acf/fields/oembed/search', array( $this, 'ajax_query' ) );
@@ -281,19 +284,16 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 		/**
-		 *  format_value()
+		 * This filter is appied to the $value after it is loaded from the db and before it is returned to the template.
 		 *
-		 *  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+		 * @type    filter
+		 * @since   3.6
 		 *
-		 *  @type    filter
-		 *  @since   3.6
-		 *  @date    23/01/13
+		 * @param mixed $value   The value which was loaded from the database.
+		 * @param mixed $post_id The $post_id from which the value was loaded.
+		 * @param array $field   The field array holding all the field options.
 		 *
-		 *  @param   $value (mixed) the value which was loaded from the database
-		 *  @param   $post_id (mixed) the post_id from which the value was loaded
-		 *  @param   $field (array) the field array holding all the field options
-		 *
-		 *  @return  $value (mixed) the modified value
+		 * @return mixed the modified value
 		 */
 		function format_value( $value, $post_id, $field ) {
 			// bail early if no value

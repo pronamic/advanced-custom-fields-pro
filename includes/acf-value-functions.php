@@ -12,7 +12,7 @@ acf_register_store( 'values' )->prop( 'multisite', true );
  * @since   5.6.5
  *
  * @param   string $field_name The name of the field. eg 'sub_heading'.
- * @param   mixed  $post_id The post_id of which the value is saved against.
+ * @param   mixed  $post_id    The post_id of which the value is saved against.
  * @return  string The field key.
  */
 function acf_get_reference( $field_name, $post_id ) {
@@ -45,8 +45,8 @@ function acf_get_reference( $field_name, $post_id ) {
  * @date    28/09/13
  * @since   5.0.0
  *
- * @param   int|string $post_id The post id.
- * @param   array      $field The field array.
+ * @param   integer|string $post_id The post id.
+ * @param   array          $field   The field array.
  * @return  mixed
  */
 function acf_get_value( $post_id, $field ) {
@@ -134,45 +134,47 @@ acf_add_filter_variations( 'acf/load_value', array( 'type', 'name', 'key' ), 2 )
  *
  * Returns a formatted version of the provided value.
  *
- * @date    28/09/13
  * @since   5.0.0
  *
- * @param   mixed        $value The field value.
- * @param   (int|string) $post_id The post id.
- * @param   array        $field The field array.
- * @return  mixed.
+ * @param mixed          $value     The field value.
+ * @param integer|string $post_id   The post id.
+ * @param array          $field     The field array.
+ * @param boolean        $escape_html Ask the field for a HTML safe version of it's output.
+ * @return mixed
  */
-function acf_format_value( $value, $post_id, $field ) {
+function acf_format_value( $value, $post_id, $field, $escape_html = false ) {
 
 	// Allow filter to short-circuit load_value logic.
-	$check = apply_filters( 'acf/pre_format_value', null, $value, $post_id, $field );
+	$check = apply_filters( 'acf/pre_format_value', null, $value, $post_id, $field, $escape_html );
 	if ( $check !== null ) {
 		return $check;
 	}
 
 	// Get field name.
 	$field_name = $field['name'];
+	$cache_name = $escape_html ? "$post_id:$field_name:escaped" : "$post_id:$field_name:formatted";
 
 	// Check store.
 	$store = acf_get_store( 'values' );
-	if ( $store->has( "$post_id:$field_name:formatted" ) ) {
-		return $store->get( "$post_id:$field_name:formatted" );
+	if ( $store->has( $cache_name ) ) {
+		return $store->get( $cache_name );
 	}
 
 	/**
 	 * Filters the $value for use in a template function.
 	 *
-	 * @date    28/09/13
 	 * @since   5.0.0
 	 *
-	 * @param   mixed $value The value to preview.
-	 * @param   string $post_id The post ID for this value.
-	 * @param   array $field The field array.
+	 * @param mixed   $value       The value to preview.
+	 * @param string  $post_id     The post ID for this value.
+	 * @param array   $field       The field array.
+	 * @param boolean $escape_html Ask the field for a HTML safe version of it's output.
+	 *                             This parameter will not guarantee the result is escaped, only if the field type supports it.
 	 */
-	$value = apply_filters( 'acf/format_value', $value, $post_id, $field );
+	$value = apply_filters( 'acf/format_value', $value, $post_id, $field, $escape_html );
 
 	// Update store.
-	$store->set( "$post_id:$field_name:formatted", $value );
+	$store->set( $cache_name, $value );
 
 	// Return value.
 	return $value;
@@ -189,10 +191,10 @@ acf_add_filter_variations( 'acf/format_value', array( 'type', 'name', 'key' ), 2
  * @date    28/09/13
  * @since   5.0.0
  *
- * @param   mixed        $value The new value.
+ * @param   mixed        $value   The new value.
  * @param   (int|string) $post_id The post id.
- * @param   array        $field The field array.
- * @return  bool.
+ * @param   array        $field   The field array.
+ * @return  boolean
  */
 function acf_update_value( $value, $post_id, $field ) {
 
@@ -271,7 +273,7 @@ function acf_update_values( $values, $post_id ) {
  * @date    22/1/19
  * @since   5.7.10
  *
- * @param   (int|string) $post_id The post id.
+ * @param   (int|string) $post_id    The post id.
  * @param   string       $field_name The field name.
  * @return  void
  */
@@ -280,7 +282,8 @@ function acf_flush_value_cache( $post_id = 0, $field_name = '' ) {
 	// Delete stored data.
 	acf_get_store( 'values' )
 		->remove( "$post_id:$field_name" )
-		->remove( "$post_id:$field_name:formatted" );
+		->remove( "$post_id:$field_name:formatted" )
+		->remove( "$post_id:$field_name:escaped" );
 }
 
 /**
@@ -292,8 +295,8 @@ function acf_flush_value_cache( $post_id = 0, $field_name = '' ) {
  * @since   5.0.0
  *
  * @param   (int|string) $post_id The post id.
- * @param   array        $field The field array.
- * @return  bool.
+ * @param   array        $field   The field array.
+ * @return  boolean
  */
 function acf_delete_value( $post_id, $field ) {
 
@@ -333,10 +336,10 @@ acf_add_filter_variations( 'acf/delete_value', array( 'type', 'name', 'key' ), 2
  * @date    28/09/13
  * @since   5.0.0
  *
- * @param   mixed        $value The new value.
+ * @param   mixed        $value   The new value.
  * @param   (int|string) $post_id The post id.
- * @param   array        $field The field array.
- * @return  bool.
+ * @param   array        $field   The field array.
+ * @return  boolean
  */
 function acf_preview_value( $value, $post_id, $field ) {
 

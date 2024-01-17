@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 6.2.4
+Stable tag: 6.2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,13 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.5 =
+*Release Date 16th January 2024*
+
+* Security Fix - The ACF shortcode will now run all output through `wp_kses`, escaping unsafe HTML. This may be a breaking change to your site but is required for security, a message will be shown in WordPress admin if you are affected. Please see the [blog post for this release for more information.](https://www.advancedcustomfields.com/blog/acf-6-2-5-security-release/) Thanks to Francesco Carlucci via Wordfence for the responsible disclosure
+* Security - ACF now warns via an admin message, when upcoming changes to `the_field` and `the_sub_field` may require theme changes to your site to avoid stripping unsafe HTML. Please see the [blog post for this release for more information](https://www.advancedcustomfields.com/blog/acf-6-2-5-security-release/)
+* Security - Users may opt in to automatically escaping unsafe HTML via a new filter `acf/the_field/escape_html_optin` when using `the_field` and `the_sub_field` before this becomes default in an upcoming ACF release.
 
 = 6.2.4 =
 *Release Date 28th November 2023*
@@ -510,3 +517,5 @@ From your WordPress dashboard
 [View the full changelog](https://www.advancedcustomfields.com/changelog/)
 
 == Upgrade Notice ==
+= 6.2.5 =
+From ACF 6.2.5, the shortcode will now escape unsafe HTML automatically. This may be a breaking change. Please view [our release blog](https://www.advancedcustomfields.com/blog/acf-6-2-5-security-release/) for more information.

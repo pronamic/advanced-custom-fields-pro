@@ -11,18 +11,17 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @date    23/06/12
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
-		 * @param   void
-		 * @return  void
+		 * @return void
 		 */
-		function __construct() {
-			// Add actions.
+		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 			add_action( 'current_screen', array( $this, 'current_screen' ) );
+			add_action( 'admin_notices', array( $this, 'maybe_show_escaped_html_notice' ) );
+			add_action( 'wp_ajax_acf/dismiss_escaped_html_notice', array( $this, 'dismiss_escaped_html_notice' ) );
 			add_filter( 'parent_file', array( $this, 'ensure_menu_selection' ) );
 			add_filter( 'submenu_file', array( $this, 'ensure_submenu_selection' ) );
 		}
@@ -51,14 +50,23 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 		/**
 		 * Enqueues global admin styling.
 		 *
-		 * @date    28/09/13
 		 * @since   5.0.0
 		 *
-		 * @param   void
-		 * @return  void
+		 * @return void
 		 */
-		function admin_enqueue_scripts() {
+		public function admin_enqueue_scripts() {
 			wp_enqueue_style( 'acf-global' );
+			wp_enqueue_script( 'acf-escaped-html-notice' );
+
+			wp_localize_script(
+				'acf-escaped-html-notice',
+				'acf_escaped_html_notice',
+				array(
+					'nonce'        => wp_create_nonce( 'acf/dismiss_escaped_html_notice' ),
+					'show_details' => __( 'Show details', 'acf' ),
+					'hide_details' => __( 'Hide details', 'acf' ),
+				)
+			);
 		}
 
 		/**
@@ -197,6 +205,63 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			);
 
 			acf_add_admin_notice( $text, 'success', true, true );
+		}
+
+		/**
+		 * Notifies the user that fields rendered via shortcode or the_field() have
+		 * had HTML removed/altered due to unsafe HTML being escaped.
+		 *
+		 * @since 6.2.5
+		 *
+		 * @return void
+		 */
+		public function maybe_show_escaped_html_notice() {
+			// Only show to editors and above.
+			if ( ! current_user_can( 'edit_others_posts' ) ) {
+				return;
+			}
+
+			// Allow opting-out of the notice.
+			if ( apply_filters( 'acf/admin/prevent_escaped_html_notice', false ) ) {
+				return;
+			}
+
+			$escaped = _acf_get_escaped_html_log();
+
+			// Notice for when HTML has already been escaped.
+			if ( ! empty( $escaped ) ) {
+				acf_get_view( 'escaped-html-notice', array( 'acf_escaped' => $escaped ) );
+			}
+
+			// Throw a separate notice for HTML that will be escaped in future releases.
+			if ( ! apply_filters( 'acf/the_field/escape_html_optin', false ) ) {
+				$will_escape = _acf_get_will_escape_html_log();
+
+				if ( ! empty( $will_escape ) ) {
+					acf_get_view( 'escaped-html-notice', array( 'acf_will_escape' => $will_escape ) );
+				}
+			}
+		}
+
+		/**
+		 * Dismisses the escaped unsafe HTML notice by clearing the stored log.
+		 *
+		 * @since 6.2.5
+		 */
+		public function dismiss_escaped_html_notice() {
+			if (
+				! check_admin_referer( 'acf/dismiss_escaped_html_notice', 'nonce' ) ||
+				! current_user_can( acf_get_setting( 'capability' ) ) ) {
+				return;
+			}
+
+			$to_dismiss = acf_request_arg( 'notice', 'escaped_html' );
+
+			if ( 'escaped_html' === $to_dismiss ) {
+				_acf_delete_escaped_html_log();
+			} else {
+				_acf_delete_will_escape_html_log();
+			}
 		}
 
 		/**
