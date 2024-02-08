@@ -11,7 +11,7 @@ $activate_deactivate_btn = $active ? __( 'Deactivate License', 'acf' ) : __( 'Ac
 /**
  * Renders the license status table.
  *
- * @since 6.?
+ * @since 6.2.3
  *
  * @param array $status The current license status array.
  * @return void
@@ -98,7 +98,7 @@ function acf_pro_render_license_status_table( $status ) {
 /**
  * Renders the "Manage License"/"Renew Subscription" button.
  *
- * @since 6.?
+ * @since 6.2.3
  *
  * @param array $status The current license status.
  * @return void

@@ -324,17 +324,18 @@ function acf_get_field_type_label( $name = '' ) {
  *
  * @since 6.2.5
  *
- * @param string $name The name of the field type.
- * @param string $prop The name of the supports property.
+ * @param string $name    The name of the field type.
+ * @param string $prop    The name of the supports property.
+ * @param mixed  $default The default value if the property is not set.
  *
- * @return mixed The value of the supports property which may be false, or false on failure.
+ * @return mixed The value of the supports property which may be false, or $default on failure.
  */
-function acf_field_type_supports( $name = '', $prop = '' ) {
+function acf_field_type_supports( $name = '', $prop = '', $default = false ) {
 	$supports = acf_get_field_type_prop( $name, 'supports' );
 	if ( ! is_array( $supports ) ) {
-		return false;
+		return $default;
 	}
-	return isset( $supports[ $prop ] ) ? $supports[ $prop ] : false;
+	return isset( $supports[ $prop ] ) ? $supports[ $prop ] : $default;
 }
 
 

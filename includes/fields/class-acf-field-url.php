@@ -2,24 +2,18 @@
 
 if ( ! class_exists( 'acf_field_url' ) ) :
 
+	/**
+	 * The URL field class.
+	 */
 	class acf_field_url extends acf_field {
 
 
-		/*
-		*  initialize
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function initialize() {
-
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @since 5.0.0
+		 */
+		public function initialize() {
 			// vars
 			$this->name          = 'url';
 			$this->label         = __( 'URL', 'acf' );
@@ -30,24 +24,20 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 				'default_value' => '',
 				'placeholder'   => '',
 			);
+			$this->supports      = array(
+				'escaping_html' => true,
+			);
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
-
-		function render_field( $field ) {
-
-			// vars
+		/**
+		 * Create the HTML interface for your field
+		 *
+		 * @since 3.6
+		 *
+		 * @param array $field An array holding all the field's data.
+		 */
+		public function render_field( $field ) {
 			$atts  = array();
 			$keys  = array( 'type', 'id', 'class', 'name', 'value', 'placeholder', 'pattern' );
 			$keys2 = array( 'readonly', 'disabled', 'required' );
@@ -80,19 +70,15 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field  - an array holding all the field's data
-		*/
-		function render_field_settings( $field ) {
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @since 3.6
+		 *
+		 * @param array $field An array holding all the field's data.
+		 */
+		public function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -112,7 +98,7 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		 * @param array $field The field settings array.
 		 * @return void
 		 */
-		function render_field_presentation_settings( $field ) {
+		public function render_field_presentation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -125,20 +111,19 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		}
 
 
-		/*
-		*  validate_value
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    11/02/2014
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
-
-		function validate_value( $valid, $value, $field, $input ) {
+		/**
+		 * Validate the fields value is correctly formatted as a URL
+		 *
+		 * @since   5.0.0
+		 *
+		 * @param mixed  $valid The current validity of the field value. Boolean true if valid, a validation error message string if not.
+		 * @param string $value The value of the field.
+		 * @param array  $field Field object array.
+		 * @param string $input The form input name for this field.
+		 *
+		 * @return mixed Boolean true if valid, a validation error message string if not.
+		 */
+		public function validate_value( $valid, $value, $field, $input ) {
 
 			// bail early if empty
 			if ( empty( $value ) ) {
@@ -160,9 +145,29 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		}
 
 		/**
+		 * This filter is applied to the $value after it is loaded from the db, and before it is returned to the template
+		 *
+		 * @since 6.2.6
+		 *
+		 * @param mixed   $value       The value which was loaded from the database.
+		 * @param mixed   $post_id     The $post_id from which the value was loaded.
+		 * @param array   $field       The field array holding all the field options.
+		 * @param boolean $escape_html Should the field return a HTML safe formatted value.
+		 *
+		 * @return mixed $value The modified value
+		 */
+		public function format_value( $value, $post_id, $field, $escape_html ) {
+			if ( $escape_html ) {
+				return esc_url( $value );
+			}
+			return $value;
+		}
+
+		/**
 		 * Return the schema array for the REST API.
 		 *
-		 * @param array $field
+		 * @param array $field The field object.
+		 *
 		 * @return array
 		 */
 		public function get_rest_schema( array $field ) {

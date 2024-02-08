@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-01-12T11:58:55+00:00\n"
+"PO-Revision-Date: 2024-02-05T19:27:11+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#. translators: %1$s - The selector used  %2$s The field name  3%$s The parent
+#. function name
+#: includes/admin/views/escaped-html-notice.php:59
+msgid "%1$s (%2$s) - rendered via %3$s"
+msgstr ""
+
+#. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
+#. %3$s - Link to show more details about the error
+#: includes/admin/views/escaped-html-notice.php:41
+msgid ""
+"%1$s ACF now automatically escapes unsafe HTML when rendered by the ACF "
+"shortcode. We've detected the output of some of your fields will be modified "
+"by this change. %2$s. %3$s"
+msgstr ""
+
+#. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
+#. %3$s - Link to show more details about the error
+#: includes/admin/views/escaped-html-notice.php:33
+msgid ""
+"%1$s ACF now automatically escapes unsafe HTML when rendered by "
+"<code>the_field</code> or the ACF shortcode. We've detected the output of "
+"some of your fields will be modified by this change. %2$s. %3$s"
+msgstr ""
+
+#. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
+#. %3$s - Link to show more details about the error
+#: includes/admin/views/escaped-html-notice.php:22
+msgid ""
+"%1$s ACF will soon escape unsafe HTML that is rendered by <code>the_field()</"
+"code>. We've detected the output of some of your fields will be modified by "
+"this change. %2$s. %3$s"
+msgstr ""
+
+#: includes/admin/views/escaped-html-notice.php:14
+msgid "Please contact your site admin for more details."
+msgstr ""
+
+#: includes/admin/views/escaped-html-notice.php:5
+msgid "Learn how to fix"
+msgstr ""
+
+#: includes/admin/admin.php:67
+msgid "Hide details"
+msgstr ""
+
+#: includes/admin/admin.php:66 includes/admin/views/escaped-html-notice.php:11
+msgid "Show details"
+msgstr ""
 
 #: includes/admin/views/global/navigation.php:223
 msgid "Renew ACF PRO License"
@@ -103,26 +152,26 @@ msgid "Add fields"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:121
-#: assets/build/js/acf-field-group.js:2753
+#: assets/build/js/acf-field-group.js:2752
 #: assets/build/js/acf-field-group.js:3236
 msgid "This Field"
 msgstr ""
 
-#: includes/admin/admin.php:267
+#: includes/admin/admin.php:332
 msgid "ACF PRO"
 msgstr ""
 
-#: includes/admin/admin.php:265
+#: includes/admin/admin.php:330
 msgid "Feedback"
 msgstr ""
 
-#: includes/admin/admin.php:263
+#: includes/admin/admin.php:328
 msgid "Support"
 msgstr ""
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:238
+#: includes/admin/admin.php:303
 msgid "is developed and maintained by"
 msgstr ""
 
@@ -606,14 +655,14 @@ msgid ""
 "are shown while editing content. Useful for keeping large datasets tidy."
 msgstr ""
 
-#: includes/fields.php:474
+#: includes/fields.php:492
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
 "can be repeated again and again."
 msgstr ""
 
-#: includes/fields.php:464
+#: includes/fields.php:482
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -621,14 +670,14 @@ msgid ""
 "and the minimum/maximum number of attachments allowed."
 msgstr ""
 
-#: includes/fields.php:454
+#: includes/fields.php:472
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
 "control by using layouts and subfields to design the available blocks."
 msgstr ""
 
-#: includes/fields.php:444
+#: includes/fields.php:462
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -636,16 +685,16 @@ msgid ""
 "or display the selected fields as a group of subfields."
 msgstr ""
 
-#: includes/fields.php:441
+#: includes/fields.php:459
 msgctxt "noun"
 msgid "Clone"
 msgstr "کپی (هیچ)"
 
-#: includes/admin/views/global/navigation.php:86 includes/fields.php:356
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:374
 msgid "PRO"
 msgstr ""
 
-#: includes/fields.php:354 includes/fields.php:411
+#: includes/fields.php:372 includes/fields.php:429
 msgid "Advanced"
 msgstr ""
 
@@ -2479,14 +2528,14 @@ msgid "Post type deleted."
 msgstr "نوع پست حذف شد"
 
 #: includes/admin/post-types/admin-field-group.php:120
-#: assets/build/js/acf-field-group.js:1146
+#: assets/build/js/acf-field-group.js:1145
 #: assets/build/js/acf-field-group.js:1366
 msgid "Type to search..."
 msgstr "برای جستجو تایپ کنید...."
 
 #: includes/admin/post-types/admin-field-group.php:105
-#: assets/build/js/acf-field-group.js:1172
-#: assets/build/js/acf-field-group.js:2319
+#: assets/build/js/acf-field-group.js:1171
+#: assets/build/js/acf-field-group.js:2318
 #: assets/build/js/acf-field-group.js:1414
 #: assets/build/js/acf-field-group.js:2727
 msgid "PRO Only"
@@ -2499,13 +2548,13 @@ msgid "Field groups linked successfully."
 msgstr ""
 
 #. translators: %s - URL to ACF tools page.
-#: includes/admin/admin.php:195
+#: includes/admin/admin.php:203
 msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:48 includes/admin/admin.php:267
+#: includes/admin/admin.php:47 includes/admin/admin.php:332
 msgid "ACF"
 msgstr "ACF"
 
@@ -2593,7 +2642,7 @@ msgstr ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
-#: includes/api/api-template.php:835
+#: includes/api/api-template.php:1051
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[مقدار کد کوتاه ACF برای پیش نمایش غیرفعال است]"
 
@@ -2603,7 +2652,7 @@ msgid "Close Modal"
 msgstr "بستن صفحه"
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:1670
+#: assets/build/js/acf-field-group.js:1669
 #: assets/build/js/acf-field-group.js:1993
 msgid "Field moved to other group"
 msgstr "زمینه به یک گروه دیگر منتقل شد"
@@ -2773,16 +2822,16 @@ msgstr "#"
 msgid "Add Field"
 msgstr "افزودن زمینه"
 
-#: includes/acf-field-group-functions.php:496 includes/fields.php:409
+#: includes/acf-field-group-functions.php:496 includes/fields.php:427
 msgid "Presentation"
 msgstr "نمایش"
 
-#: includes/fields.php:408
+#: includes/fields.php:426
 msgid "Validation"
 msgstr "اعتبارسنجی"
 
 #: includes/acf-internal-post-type-functions.php:477
-#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:407
+#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:425
 msgid "General"
 msgstr "عمومی"
 
@@ -2825,7 +2874,7 @@ msgid "Activate this item"
 msgstr "فعال کردن این مورد"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2812
+#: assets/build/js/acf-field-group.js:2811
 #: assets/build/js/acf-field-group.js:3313
 msgid "Move field group to trash?"
 msgstr "انتقال گروه زمینه به زباله‌دان؟"
@@ -2858,17 +2907,17 @@ msgstr ""
 "افزونه زمینه های سفارشی و افزونه زمینه های سفارشی پیشرفته نباید همزمان فعال "
 "باشند. ما به طور خودکار فیلدهای سفارشی پیشرفته را غیرفعال کرده ایم."
 
-#: includes/acf-value-functions.php:374
+#: includes/acf-value-functions.php:377
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
-"\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" "
+"target=\"_blank\">Learn how to fix this</a>."
 msgstr ""
 "<strong>%1$s</strong> - قبل از شروع اولیه ACF، یک یا چند تماس را برای "
 "بازیابی مقادیر فیلد ACF شناسایی کرده‌ایم. این مورد پشتیبانی نمی‌شود و می‌تواند "
-"منجر به داده‌های ناقص یا از دست رفته شود. <a href=\"%2$s\" target=\"_blank"
-"\">با نحوه رفع این مشکل آشنا شوید</a>."
+"منجر به داده‌های ناقص یا از دست رفته شود. <a href=\"%2$s\" "
+"target=\"_blank\">با نحوه رفع این مشکل آشنا شوید</a>."
 
 #: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
@@ -3054,23 +3103,23 @@ msgstr "بارگذاری تفاوت"
 msgid "Review local JSON changes"
 msgstr "بررسی تغییرات JSON محلی"
 
-#: includes/admin/admin.php:170
+#: includes/admin/admin.php:178
 msgid "Visit website"
 msgstr "بازدید وب سایت"
 
-#: includes/admin/admin.php:169
+#: includes/admin/admin.php:177
 msgid "View details"
 msgstr "نمایش جزییات"
 
-#: includes/admin/admin.php:168
+#: includes/admin/admin.php:176
 msgid "Version %s"
 msgstr "نگارش %s"
 
-#: includes/admin/admin.php:167
+#: includes/admin/admin.php:175
 msgid "Information"
 msgstr "اطلاعات"
 
-#: includes/admin/admin.php:158
+#: includes/admin/admin.php:166
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
@@ -3078,7 +3127,7 @@ msgstr ""
 "کمک <a href=\"%s\" target=\"_blank\">ميز</a>. حرفه ای پشتیبانی در میز کمک ما "
 "با بیشتر خود را در عمق کمک, چالش های فنی."
 
-#: includes/admin/admin.php:154
+#: includes/admin/admin.php:162
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
 "friendly community on our Community Forums who may be able to help you "
@@ -3088,7 +3137,7 @@ msgstr ""
 "انجمن های جامعه ما که ممکن است قادر به کمک به شما کشف کردن 'چگونه بازی یا "
 "بازی' از جهان ACF."
 
-#: includes/admin/admin.php:150
+#: includes/admin/admin.php:158
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
 "documentation contains references and guides for most situations you may "
@@ -3097,7 +3146,7 @@ msgstr ""
 "مستندات <a href=\"%s\" target=\"_blank\">.</a> مستندات گسترده ما شامل مراجع "
 "و راهنماهایی برای اکثر موقعیت هایی است که ممکن است با آن مواجه شوند."
 
-#: includes/admin/admin.php:147
+#: includes/admin/admin.php:155
 msgid ""
 "We are fanatical about support, and want you to get the best out of your "
 "website with ACF. If you run into any difficulties, there are several places "
@@ -3107,11 +3156,11 @@ msgstr ""
 "بهترین بهره را از وب سایت خود ببرید. اگر به مشکلی برخوردید ، چندین مکان وجود "
 "دارد که می توانید کمک کنید:"
 
-#: includes/admin/admin.php:144 includes/admin/admin.php:146
+#: includes/admin/admin.php:152 includes/admin/admin.php:154
 msgid "Help & Support"
 msgstr "کمک و پشتیبانی"
 
-#: includes/admin/admin.php:135
+#: includes/admin/admin.php:143
 msgid ""
 "Please use the Help & Support tab to get in touch should you find yourself "
 "requiring assistance."
@@ -3119,7 +3168,7 @@ msgstr ""
 "لطفا از زبانه پشتیبانی برای تماس استفاده کنید باید خودتان را پیدا کنید که "
 "نیاز به کمک دارد."
 
-#: includes/admin/admin.php:132
+#: includes/admin/admin.php:140
 msgid ""
 "Before creating your first Field Group, we recommend first reading our <a "
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
@@ -3129,7 +3178,7 @@ msgstr ""
 "ما توصیه می کنیم برای اولین بار خواندن راهنمای شروع به کار ما برای آشنایی با "
 "فلسفه پلاگین و بهترین تمرین."
 
-#: includes/admin/admin.php:130
+#: includes/admin/admin.php:138
 msgid ""
 "The Advanced Custom Fields plugin provides a visual form builder to "
 "customize WordPress edit screens with extra fields, and an intuitive API to "
@@ -3139,7 +3188,7 @@ msgstr ""
 "کردن وردپرس ویرایش صفحه نمایش با زمینه های اضافی، و API بصری برای نمایش ارزش "
 "های زمینه سفارشی در هر فایل قالب تم."
 
-#: includes/admin/admin.php:127 includes/admin/admin.php:129
+#: includes/admin/admin.php:135 includes/admin/admin.php:137
 msgid "Overview"
 msgstr "مرور کلی"
 
@@ -3159,7 +3208,7 @@ msgstr "کلید نامعتبر است"
 msgid "Error loading field."
 msgstr "خطا در بارگزاری زمینه"
 
-#: assets/build/js/acf-input.js:2750 assets/build/js/acf-input.js:2819
+#: assets/build/js/acf-input.js:2748 assets/build/js/acf-input.js:2817
 #: assets/build/js/acf-input.js:2926 assets/build/js/acf-input.js:3000
 msgid "Location not found: %s"
 msgstr "موقعیتی یافت نشد: %s"
@@ -3307,7 +3356,7 @@ msgid "Show this field if"
 msgstr "نمایش این گروه فیلد اگر"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:25
-#: includes/admin/views/acf-field-group/field.php:109 includes/fields.php:410
+#: includes/admin/views/acf-field-group/field.php:109 includes/fields.php:428
 msgid "Conditional Logic"
 msgstr "منطق شرطی"
 
@@ -3351,15 +3400,15 @@ msgstr "به روزرسانی دیتابیس لازم است"
 msgid "Options Page"
 msgstr "برگه تنظیمات"
 
-#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:461
+#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:479
 msgid "Gallery"
 msgstr "گالری"
 
-#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:451
+#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:469
 msgid "Flexible Content"
 msgstr "محتوای انعطاف پذیر"
 
-#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:471
+#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:489
 msgid "Repeater"
 msgstr "زمینه تکرار کننده"
 
@@ -3605,7 +3654,7 @@ msgstr "گرفتن و کشیدن برای مرتب سازی"
 
 #: includes/admin/post-types/admin-field-group.php:103
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2347
+#: assets/build/js/acf-field-group.js:2346
 #: assets/build/js/acf-field-group.js:2763
 msgid "Show this field group if"
 msgstr "نمایش این گروه زمینه اگر"
@@ -3777,7 +3826,7 @@ msgstr "تکثیر این زمینه"
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/admin.php:261 includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:326 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
 msgstr "مستندات"
 
@@ -3877,7 +3926,7 @@ msgstr "خالی (null)"
 #: includes/admin/post-types/admin-field-group.php:101
 #: includes/class-acf-internal-post-type.php:730
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1510
+#: assets/build/js/acf-field-group.js:1509
 #: assets/build/js/acf-field-group.js:1821
 msgid "copy"
 msgstr "کپی"
@@ -3895,7 +3944,7 @@ msgid "Checked"
 msgstr "انتخاب شده"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-field-group.js:1615
+#: assets/build/js/acf-field-group.js:1614
 #: assets/build/js/acf-field-group.js:1933
 msgid "Move Custom Field"
 msgstr "جابجایی زمینه دلخواه"
@@ -3911,13 +3960,13 @@ msgid "Field group title is required"
 msgstr "عنوان گروه زمینه ضروری است"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1604
+#: assets/build/js/acf-field-group.js:1603
 #: assets/build/js/acf-field-group.js:1919
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "این زمینه قبل از اینکه ذخیره شود نمی تواند جابجا شود"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:1414
+#: assets/build/js/acf-field-group.js:1413
 #: assets/build/js/acf-field-group.js:1716
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "کلمه متنی \"field_\" نباید در ابتدای نام فیلد استفاده شود"
@@ -3984,15 +4033,15 @@ msgstr "برگه"
 msgid "Post"
 msgstr "نوشته"
 
-#: includes/fields.php:353
+#: includes/fields.php:371
 msgid "Relational"
 msgstr "رابطه"
 
-#: includes/fields.php:352
+#: includes/fields.php:370
 msgid "Choice"
 msgstr "انتخاب"
 
-#: includes/fields.php:350
+#: includes/fields.php:368
 msgid "Basic"
 msgstr "پایه"
 
@@ -4020,7 +4069,7 @@ msgstr "بروزرسانی"
 msgid "Validate Email"
 msgstr "اعتبار سنجی ایمیل"
 
-#: includes/fields.php:351 includes/forms/form-front.php:49
+#: includes/fields.php:369 includes/forms/form-front.php:49
 msgid "Content"
 msgstr "محتوا"
 
@@ -4029,8 +4078,8 @@ msgstr "محتوا"
 msgid "Title"
 msgstr "عنوان"
 
-#: includes/assets.php:372 includes/forms/form-comment.php:154
-#: assets/build/js/acf-input.js:7372 assets/build/js/acf-input.js:7956
+#: includes/assets.php:373 includes/forms/form-comment.php:154
+#: assets/build/js/acf-input.js:7370 assets/build/js/acf-input.js:7956
 msgid "Edit field group"
 msgstr "ویرایش گروه زمینه"
 
@@ -4087,59 +4136,59 @@ msgid "Has any value"
 msgstr "هر نوع مقدار"
 
 #: includes/admin/admin-internal-post-type.php:345
-#: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:353
+#: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:354
 #: assets/build/js/acf.js:1564 assets/build/js/acf.js:1658
 msgid "Cancel"
 msgstr "لغو"
 
-#: includes/assets.php:349 assets/build/js/acf.js:1738
+#: includes/assets.php:350 assets/build/js/acf.js:1738
 #: assets/build/js/acf.js:1855
 msgid "Are you sure?"
 msgstr "اطمینان دارید؟"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9432
+#: includes/assets.php:370 assets/build/js/acf-input.js:9430
 #: assets/build/js/acf-input.js:10282
 msgid "%d fields require attention"
 msgstr "%d گزینه نیاز به بررسی دارد"
 
-#: includes/assets.php:368 assets/build/js/acf-input.js:9430
+#: includes/assets.php:369 assets/build/js/acf-input.js:9428
 #: assets/build/js/acf-input.js:10278
 msgid "1 field requires attention"
 msgstr "یکی از گزینه ها نیاز به بررسی دارد"
 
-#: includes/assets.php:367 includes/validation.php:271
-#: includes/validation.php:279 assets/build/js/acf-input.js:9425
+#: includes/assets.php:368 includes/validation.php:271
+#: includes/validation.php:279 assets/build/js/acf-input.js:9423
 #: assets/build/js/acf-input.js:10273
 msgid "Validation failed"
 msgstr "مشکل در اعتبار سنجی"
 
-#: includes/assets.php:366 assets/build/js/acf-input.js:9593
+#: includes/assets.php:367 assets/build/js/acf-input.js:9591
 #: assets/build/js/acf-input.js:10461
 msgid "Validation successful"
 msgstr "اعتبار سنجی موفق بود"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7200
+#: includes/media.php:54 assets/build/js/acf-input.js:7198
 #: assets/build/js/acf-input.js:7760
 msgid "Restricted"
 msgstr "ممنوع"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:7015
+#: includes/media.php:53 assets/build/js/acf-input.js:7013
 #: assets/build/js/acf-input.js:7524
 msgid "Collapse Details"
 msgstr "عدم نمایش جزئیات"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:7015
+#: includes/media.php:52 assets/build/js/acf-input.js:7013
 #: assets/build/js/acf-input.js:7521
 msgid "Expand Details"
 msgstr "نمایش جزئیات"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:470
-#: includes/media.php:51 assets/build/js/acf-input.js:6882
+#: includes/media.php:51 assets/build/js/acf-input.js:6880
 #: assets/build/js/acf-input.js:7369
 msgid "Uploaded to this post"
 msgstr "بارگذاری شده در این نوشته"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6921
+#: includes/media.php:50 assets/build/js/acf-input.js:6919
 #: assets/build/js/acf-input.js:7408
 msgctxt "verb"
 msgid "Update"
@@ -4150,7 +4199,7 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: includes/assets.php:363 assets/build/js/acf-input.js:9202
+#: includes/assets.php:364 assets/build/js/acf-input.js:9200
 #: assets/build/js/acf-input.js:10044
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "اگر از صفحه جاری خارج شوید ، تغییرات شما ذخیره نخواهند شد"
@@ -4165,7 +4214,7 @@ msgstr "نوع فایل باید %s باشد."
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
 #: includes/api/api-helpers.php:2964 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2385
+#: assets/build/js/acf-field-group.js:2384
 #: assets/build/js/acf-field-group.js:933
 #: assets/build/js/acf-field-group.js:2807
 msgid "or"
@@ -4217,7 +4266,7 @@ msgstr "تصویر بندانگشتی"
 
 #: includes/acf-field-functions.php:852
 #: includes/admin/post-types/admin-field-group.php:99
-#: assets/build/js/acf-field-group.js:1077
+#: assets/build/js/acf-field-group.js:1076
 #: assets/build/js/acf-field-group.js:1260
 msgid "(no label)"
 msgstr "(بدون برچسب)"
@@ -4449,18 +4498,18 @@ msgid "File name"
 msgstr "نام فایل"
 
 #: includes/fields/class-acf-field-file.php:63
-#: assets/build/js/acf-input.js:2474 assets/build/js/acf-input.js:2625
+#: assets/build/js/acf-input.js:2472 assets/build/js/acf-input.js:2625
 msgid "Update File"
 msgstr "بروزرسانی پرونده"
 
 #: includes/fields/class-acf-field-file.php:62
-#: assets/build/js/acf-input.js:2473 assets/build/js/acf-input.js:2624
+#: assets/build/js/acf-input.js:2471 assets/build/js/acf-input.js:2624
 msgid "Edit File"
 msgstr "ویرایش پرونده"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:57
 #: includes/fields/class-acf-field-file.php:61
-#: assets/build/js/acf-input.js:2447 assets/build/js/acf-input.js:2597
+#: assets/build/js/acf-input.js:2445 assets/build/js/acf-input.js:2597
 msgid "Select File"
 msgstr "انتخاب پرونده"
 
@@ -4486,7 +4535,7 @@ msgid "Enter each default value on a new line"
 msgstr "هر مقدار پیش فرض را در یک خط جدید وارد کنید"
 
 #: includes/fields/class-acf-field-select.php:243 includes/media.php:48
-#: assets/build/js/acf-input.js:6780 assets/build/js/acf-input.js:7254
+#: assets/build/js/acf-input.js:6778 assets/build/js/acf-input.js:7254
 msgctxt "verb"
 msgid "Select"
 msgstr "انتخاب"
@@ -4838,48 +4887,48 @@ msgstr ""
 msgid "Parent"
 msgstr "مادر"
 
-#: includes/fields/class-acf-field-wysiwyg.php:378
+#: includes/fields/class-acf-field-wysiwyg.php:381
 msgid "TinyMCE will not be initialized until field is clicked"
 msgstr "تا زمانی که روی فیلد کلیک نشود TinyMCE اجرا نخواهد شد"
 
-#: includes/fields/class-acf-field-wysiwyg.php:377
+#: includes/fields/class-acf-field-wysiwyg.php:380
 msgid "Delay Initialization"
 msgstr ""
 
-#: includes/fields/class-acf-field-wysiwyg.php:366
+#: includes/fields/class-acf-field-wysiwyg.php:369
 msgid "Show Media Upload Buttons"
 msgstr ""
 
-#: includes/fields/class-acf-field-wysiwyg.php:350
+#: includes/fields/class-acf-field-wysiwyg.php:353
 msgid "Toolbar"
 msgstr "نوار ابزار"
 
-#: includes/fields/class-acf-field-wysiwyg.php:342
+#: includes/fields/class-acf-field-wysiwyg.php:345
 msgid "Text Only"
 msgstr "فقط متن"
 
-#: includes/fields/class-acf-field-wysiwyg.php:341
+#: includes/fields/class-acf-field-wysiwyg.php:344
 msgid "Visual Only"
 msgstr "فقط بصری"
 
-#: includes/fields/class-acf-field-wysiwyg.php:340
+#: includes/fields/class-acf-field-wysiwyg.php:343
 msgid "Visual & Text"
 msgstr "بصری و متنی"
 
-#: includes/fields/class-acf-field-wysiwyg.php:335
+#: includes/fields/class-acf-field-wysiwyg.php:338
 msgid "Tabs"
 msgstr "تب ها"
 
-#: includes/fields/class-acf-field-wysiwyg.php:277
+#: includes/fields/class-acf-field-wysiwyg.php:280
 msgid "Click to initialize TinyMCE"
 msgstr "برای اجرای TinyMCE کلیک کنید"
 
-#: includes/fields/class-acf-field-wysiwyg.php:271
+#: includes/fields/class-acf-field-wysiwyg.php:274
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "متن"
 
-#: includes/fields/class-acf-field-wysiwyg.php:270
+#: includes/fields/class-acf-field-wysiwyg.php:273
 msgid "Visual"
 msgstr "بصری"
 
@@ -4956,7 +5005,7 @@ msgstr "نگهدارنده مکان متن"
 #: includes/fields/class-acf-field-text.php:104
 #: includes/fields/class-acf-field-textarea.php:102
 #: includes/fields/class-acf-field-url.php:100
-#: includes/fields/class-acf-field-wysiwyg.php:303
+#: includes/fields/class-acf-field-wysiwyg.php:306
 msgid "Appears when creating a new post"
 msgstr "هنگام ایجاد یک نوشته جدید نمایش داده می شود"
 
@@ -5056,17 +5105,17 @@ msgid "Select post type"
 msgstr "انتحاب نوع نوشته"
 
 #: includes/fields/class-acf-field-relationship.php:60
-#: assets/build/js/acf-input.js:3930 assets/build/js/acf-input.js:4214
+#: assets/build/js/acf-input.js:3928 assets/build/js/acf-input.js:4214
 msgid "No matches found"
 msgstr "مطابقتی یافت نشد"
 
 #: includes/fields/class-acf-field-relationship.php:59
-#: assets/build/js/acf-input.js:3913 assets/build/js/acf-input.js:4193
+#: assets/build/js/acf-input.js:3911 assets/build/js/acf-input.js:4193
 msgid "Loading"
 msgstr "درحال خواندن"
 
 #: includes/fields/class-acf-field-relationship.php:58
-#: assets/build/js/acf-input.js:3818 assets/build/js/acf-input.js:4084
+#: assets/build/js/acf-input.js:3816 assets/build/js/acf-input.js:4084
 msgid "Maximum values reached ( {max} values )"
 msgstr "مقادیر به حداکثر رسیده اند ( {max} آیتم )"
 
@@ -5175,7 +5224,7 @@ msgstr "افزودن تصویر"
 msgid "No image selected"
 msgstr "هیچ تصویری انتخاب نشده"
 
-#: includes/assets.php:352 includes/fields/class-acf-field-file.php:161
+#: includes/assets.php:353 includes/fields/class-acf-field-file.php:161
 #: includes/fields/class-acf-field-image.php:141
 #: includes/fields/class-acf-field-link.php:139 assets/build/js/acf.js:1563
 #: assets/build/js/acf.js:1657
@@ -5190,22 +5239,22 @@ msgid "Edit"
 msgstr "ویرایش"
 
 #: includes/fields/class-acf-field-image.php:69 includes/media.php:55
-#: assets/build/js/acf-input.js:6827 assets/build/js/acf-input.js:7308
+#: assets/build/js/acf-input.js:6825 assets/build/js/acf-input.js:7308
 msgid "All images"
 msgstr "تمام تصاویر"
 
 #: includes/fields/class-acf-field-image.php:68
-#: assets/build/js/acf-input.js:3181 assets/build/js/acf-input.js:3399
+#: assets/build/js/acf-input.js:3179 assets/build/js/acf-input.js:3399
 msgid "Update Image"
 msgstr "بروزرسانی تصویر"
 
 #: includes/fields/class-acf-field-image.php:67
-#: assets/build/js/acf-input.js:3180 assets/build/js/acf-input.js:3398
+#: assets/build/js/acf-input.js:3178 assets/build/js/acf-input.js:3398
 msgid "Edit Image"
 msgstr "ویرایش تصویر"
 
 #: includes/fields/class-acf-field-image.php:66
-#: assets/build/js/acf-input.js:3156 assets/build/js/acf-input.js:3373
+#: assets/build/js/acf-input.js:3154 assets/build/js/acf-input.js:3373
 msgid "Select Image"
 msgstr "انتخاب تصویر"
 
@@ -5290,16 +5339,16 @@ msgstr "تاریخ"
 
 #: includes/fields/class-acf-field-image.php:247
 #: includes/fields/class-acf-field-image.php:283
-#: includes/fields/class-acf-field-oembed.php:263
+#: includes/fields/class-acf-field-oembed.php:266
 msgid "Width"
 msgstr "عرض"
 
-#: includes/fields/class-acf-field-oembed.php:260
-#: includes/fields/class-acf-field-oembed.php:272
+#: includes/fields/class-acf-field-oembed.php:263
+#: includes/fields/class-acf-field-oembed.php:275
 msgid "Embed Size"
 msgstr "اندازه جانمایی"
 
-#: includes/fields/class-acf-field-oembed.php:218
+#: includes/fields/class-acf-field-oembed.php:221
 msgid "Enter URL"
 msgstr "آدرس را وارد کنید"
 
@@ -5340,7 +5389,7 @@ msgstr ""
 #: includes/fields/class-acf-field-textarea.php:101
 #: includes/fields/class-acf-field-true_false.php:144
 #: includes/fields/class-acf-field-url.php:99
-#: includes/fields/class-acf-field-wysiwyg.php:302
+#: includes/fields/class-acf-field-wysiwyg.php:305
 msgid "Default Value"
 msgstr "مقدار پیش فرض"
 
@@ -5354,13 +5403,13 @@ msgstr "نمایش متن همراه انتخاب"
 msgid "Message"
 msgstr "پیام"
 
-#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:85
+#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:85
 #: includes/fields/class-acf-field-true_false.php:184
 #: assets/build/js/acf.js:1740 assets/build/js/acf.js:1857
 msgid "No"
 msgstr "خیر"
 
-#: includes/assets.php:350 includes/fields/class-acf-field-true_false.php:82
+#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:82
 #: includes/fields/class-acf-field-true_false.php:168
 #: assets/build/js/acf.js:1739 assets/build/js/acf.js:1856
 msgid "Yes"
@@ -5370,31 +5419,31 @@ msgstr "بله"
 msgid "True / False"
 msgstr "صحیح / غلط"
 
-#: includes/fields/class-acf-field-group.php:444
+#: includes/fields/class-acf-field-group.php:440
 msgid "Row"
 msgstr "سطر"
 
-#: includes/fields/class-acf-field-group.php:443
+#: includes/fields/class-acf-field-group.php:439
 msgid "Table"
 msgstr "جدول"
 
 #: includes/admin/post-types/admin-field-group.php:132
-#: includes/fields/class-acf-field-group.php:442
+#: includes/fields/class-acf-field-group.php:438
 msgid "Block"
 msgstr "بلوک"
 
-#: includes/fields/class-acf-field-group.php:437
+#: includes/fields/class-acf-field-group.php:433
 msgid "Specify the style used to render the selected fields"
 msgstr "استایل جهت نمایش فیلد انتخابی"
 
-#: includes/fields.php:355 includes/fields/class-acf-field-button-group.php:210
+#: includes/fields.php:373 includes/fields/class-acf-field-button-group.php:210
 #: includes/fields/class-acf-field-checkbox.php:424
-#: includes/fields/class-acf-field-group.php:436
+#: includes/fields/class-acf-field-group.php:432
 #: includes/fields/class-acf-field-radio.php:285
 msgid "Layout"
 msgstr "چیدمان"
 
-#: includes/fields/class-acf-field-group.php:420
+#: includes/fields/class-acf-field-group.php:416
 msgid "Sub Fields"
 msgstr "زمینه‌های زیرمجموعه"
 
@@ -5409,7 +5458,7 @@ msgstr "سفارشی سازی ارتفاع نقشه"
 #: includes/fields/class-acf-field-google-map.php:233
 #: includes/fields/class-acf-field-image.php:258
 #: includes/fields/class-acf-field-image.php:294
-#: includes/fields/class-acf-field-oembed.php:275
+#: includes/fields/class-acf-field-oembed.php:278
 msgid "Height"
 msgstr "ارتفاع"
 
@@ -5449,7 +5498,7 @@ msgid "Search"
 msgstr "جستجو"
 
 #: includes/fields/class-acf-field-google-map.php:63
-#: assets/build/js/acf-input.js:2840 assets/build/js/acf-input.js:3026
+#: assets/build/js/acf-input.js:2838 assets/build/js/acf-input.js:3026
 msgid "Sorry, this browser does not support geolocation"
 msgstr "با عرض پوزش، این مرورگر از موقعیت یابی جغرافیایی پشتیبانی نمی کند"
 
@@ -5649,9 +5698,9 @@ msgstr "تنظیمات به روز شدند"
 
 #: pro/updates.php:99
 msgid ""
-"To enable updates, please enter your license key on the <a href=\"%1$s"
-"\">Updates</a> page. If you don't have a licence key, please see <a href="
-"\"%2$s\" target=\"_blank\">details & pricing</a>."
+"To enable updates, please enter your license key on the <a "
+"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
+"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
 msgstr ""
 
 #: pro/updates.php:159
@@ -6115,8 +6164,8 @@ msgid ""
 "licence key, please see <a href=\"%s\" target=\"_blank\">details & pricing</"
 "a>."
 msgstr ""
-"برای به روزرسانی لطفا کد لایسنس را وارد  کنید. <a href=\"%s\" target=\"_blank"
-"\">قیمت ها</a>."
+"برای به روزرسانی لطفا کد لایسنس را وارد  کنید. <a href=\"%s\" "
+"target=\"_blank\">قیمت ها</a>."
 
 #: pro/admin/views/html-settings-updates.php:37
 msgid "License Key"

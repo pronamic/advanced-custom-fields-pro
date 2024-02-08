@@ -738,16 +738,21 @@ html[dir=rtl] .acf-block-component .acf-block-fields {
 .acf-block-body .acf-fields > .acf-field.acf-accordion .acf-accordion-title {
   padding: 16px 20px;
 }
-.acf-block-body .acf-button, .acf-block-body .acf-link a.button {
+.acf-block-body .acf-button, .acf-block-body .acf-link a.button, .acf-block-body .acf-add-checkbox {
   color: #2271b1 !important;
-  border-color: #2271b1;
-  background: #f6f7f7;
+  border-color: #2271b1 !important;
+  background: #f6f7f7 !important;
   vertical-align: top;
 }
-.acf-block-body .acf-button.button-primary:hover, .acf-block-body .acf-link a.button.button-primary:hover {
+.acf-block-body .acf-button.button-primary:hover, .acf-block-body .acf-link a.button.button-primary:hover, .acf-block-body .acf-add-checkbox.button-primary:hover {
   color: white !important;
+  background: #2271b1 !important;
 }
-.acf-block-body .acf-button:hover, .acf-block-body .acf-link a.button:hover {
+.acf-block-body .acf-button:focus, .acf-block-body .acf-link a.button:focus, .acf-block-body .acf-add-checkbox:focus {
+  outline: none !important;
+  background: #f6f7f7 !important;
+}
+.acf-block-body .acf-button:hover, .acf-block-body .acf-link a.button:hover, .acf-block-body .acf-add-checkbox:hover {
   color: #0a4b78 !important;
 }
 .acf-block-body .acf-block-preview {

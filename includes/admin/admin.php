@@ -63,8 +63,8 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 				'acf_escaped_html_notice',
 				array(
 					'nonce'        => wp_create_nonce( 'acf/dismiss_escaped_html_notice' ),
-					'show_details' => __( 'Show details', 'acf' ),
-					'hide_details' => __( 'Hide details', 'acf' ),
+					'show_details' => __( 'Show&nbsp;details', 'acf' ),
+					'hide_details' => __( 'Hide&nbsp;details', 'acf' ),
 				)
 			);
 		}

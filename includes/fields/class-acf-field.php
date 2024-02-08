@@ -19,27 +19,22 @@ if ( ! class_exists( 'acf_field' ) ) :
 		public $show_in_rest  = true;
 		public $supports      = array(
 			'escaping_html' => false, // Set true when a field handles its own HTML escaping in format_value
+			'required'      => true,
 		);
 
-		/*
-		*  __construct
-		*
-		*  This function will initialize the field type
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function __construct() {
-
-			// initialize
+		/**
+		 * Initializes the `acf_field` class. To initialize a field type that is
+		 * extending this class, use the `initialize()` method in the child class instead.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @return void
+		 */
+		public function __construct() {
+			// Initialize the field type.
 			$this->initialize();
 
-			// register info
+			// Register info about the field type.
 			acf_register_field_type_info(
 				array(
 					'label'         => $this->label,
@@ -85,206 +80,155 @@ if ( ! class_exists( 'acf_field' ) ) :
 			$this->add_action( 'acf/field_group/admin_head', array( $this, 'field_group_admin_head' ), 10, 0 );
 			$this->add_action( 'acf/field_group/admin_footer', array( $this, 'field_group_admin_footer' ), 10, 0 );
 
+			// Most fields can use the "Required" validation setting as well as most presentation settings.
+			$this->add_field_action( 'acf/field_group/render_field_settings_tab/validation', array( $this, 'render_required_setting' ), 5 );
+
 			foreach ( acf_get_combined_field_type_settings_tabs() as $tab_key => $tab_label ) {
 				$this->add_field_action( "acf/field_group/render_field_settings_tab/{$tab_key}", array( $this, "render_field_{$tab_key}_settings" ), 9, 1 );
 			}
 		}
 
-
-		/*
-		*  initialize
-		*
-		*  This function will initialize the field type
-		*
-		*  @type    function
-		*  @date    27/6/17
-		*  @since   5.6.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function initialize() {
-
+		/**
+		 * Initializes the field type. Overridden in child classes.
+		 *
+		 * @since 5.6.0
+		 *
+		 * @return void
+		 */
+		public function initialize() {
 			/* do nothing */
 		}
 
-
-		/*
-		*  add_filter
-		*
-		*  This function checks if the function is_callable before adding the filter
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   $tag (string)
-		*  @param   $function_to_add (string)
-		*  @param   $priority (int)
-		*  @param   $accepted_args (int)
-		*  @return  n/a
-		*/
-
-		function add_filter( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
-
-			// bail early if no callable
+		/**
+		 * Checks a function `is_callable()` before adding the filter, since
+		 * classes that extend `acf_field` might not implement all filters.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param string  $tag             The name of the filter to add the callback to.
+		 * @param string  $function_to_add The callback to be run when the filter is applied.
+		 * @param integer $priority        The priority to add the filter on.
+		 * @param integer $accepted_args   The number of args to pass to the function.
+		 * @return void
+		 */
+		public function add_filter( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
+			// Bail early if not callable.
 			if ( ! is_callable( $function_to_add ) ) {
 				return;
 			}
 
-			// add
 			add_filter( $tag, $function_to_add, $priority, $accepted_args );
 		}
 
-
-		/*
-		*  add_field_filter
-		*
-		*  This function will add a field type specific filter
-		*
-		*  @type    function
-		*  @date    29/09/2016
-		*  @since   5.4.0
-		*
-		*  @param   $tag (string)
-		*  @param   $function_to_add (string)
-		*  @param   $priority (int)
-		*  @param   $accepted_args (int)
-		*  @return  n/a
-		*/
-
-		function add_field_filter( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
-
-			// append
+		/**
+		 * Adds a filter specific to the current field type.
+		 *
+		 * @since 5.4.0
+		 *
+		 * @param string  $tag             The name of the filter to add the callback to.
+		 * @param string  $function_to_add The callback to be run when the filter is applied.
+		 * @param integer $priority        The priority to add the filter on.
+		 * @param integer $accepted_args   The number of args to pass to the function.
+		 * @return void
+		 */
+		public function add_field_filter( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
+			// Append the field type name to the tag before adding the filter.
 			$tag .= '/type=' . $this->name;
-
-			// add
 			$this->add_filter( $tag, $function_to_add, $priority, $accepted_args );
 		}
 
-
-		/*
-		*  add_action
-		*
-		*  This function checks if the function is_callable before adding the action
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   $tag (string)
-		*  @param   $function_to_add (string)
-		*  @param   $priority (int)
-		*  @param   $accepted_args (int)
-		*  @return  n/a
-		*/
-
-		function add_action( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
-
-			// bail early if no callable
+		/**
+		 * Checks a function `is_callable()` before adding the action, since
+		 * classes that extend `acf_field` might not implement all actions.
+		 *
+		 * @since 5.0.0
+		 *
+		 * @param string  $tag             The name of the action to add the callback to.
+		 * @param string  $function_to_add The callback to be run when the action is ran.
+		 * @param integer $priority        The priority to add the action on.
+		 * @param integer $accepted_args   The number of args to pass to the function.
+		 * @return void
+		 */
+		public function add_action( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
+			// Bail early if not callable
 			if ( ! is_callable( $function_to_add ) ) {
 				return;
 			}
 
-			// add
 			add_action( $tag, $function_to_add, $priority, $accepted_args );
 		}
 
-
-		/*
-		*  add_field_action
-		*
-		*  This function will add a field type specific filter
-		*
-		*  @type    function
-		*  @date    29/09/2016
-		*  @since   5.4.0
-		*
-		*  @param   $tag (string)
-		*  @param   $function_to_add (string)
-		*  @param   $priority (int)
-		*  @param   $accepted_args (int)
-		*  @return  n/a
-		*/
-
-		function add_field_action( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
-
-			// append
+		/**
+		 * Adds an action specific to the current field type.
+		 *
+		 * @since 5.4.0
+		 *
+		 * @param string  $tag             The name of the action to add the callback to.
+		 * @param string  $function_to_add The callback to be run when the action is ran.
+		 * @param integer $priority        The priority to add the action on.
+		 * @param integer $accepted_args   The number of args to pass to the function.
+		 * @return void
+		 */
+		public function add_field_action( $tag = '', $function_to_add = '', $priority = 10, $accepted_args = 1 ) {
+			// Append the field type name to the tag before adding the action.
 			$tag .= '/type=' . $this->name;
-
-			// add
 			$this->add_action( $tag, $function_to_add, $priority, $accepted_args );
 		}
 
-
-		/*
-		*  validate_field
-		*
-		*  This function will append default settings to a field
-		*
-		*  @type    filter ("acf/validate_field/type={$this->name}")
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field (array)
-		*  @return  $field (array)
-		*/
-
-		function validate_field( $field ) {
-
-			// bail early if no defaults
+		/**
+		 * Appends default settings to a field.
+		 * Runs on `acf/validate_field/type={$this->name}`.
+		 *
+		 * @since 3.6
+		 *
+		 * @param array $field The field array.
+		 * @return array $field
+		 */
+		public function validate_field( $field ) {
+			// Bail early if no defaults.
 			if ( ! is_array( $this->defaults ) ) {
 				return $field;
 			}
 
-			// merge in defaults but keep order of $field keys
+			// Merge in defaults but keep order of $field keys.
 			foreach ( $this->defaults as $k => $v ) {
 				if ( ! isset( $field[ $k ] ) ) {
 					$field[ $k ] = $v;
 				}
 			}
 
-			// return
 			return $field;
 		}
 
-
-		/*
-		*  admin_l10n
-		*
-		*  This function will append l10n text translations to an array which is later passed to JS
-		*
-		*  @type    filter ("acf/input/admin_l10n")
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $l10n (array)
-		*  @return  $l10n (array)
-		*/
-
-		function input_admin_l10n( $l10n ) {
-
-			// bail early if no defaults
+		/**
+		 * Append l10n text translations to an array which is later passed to JS.
+		 * Runs on `acf/input/admin_l10n`.
+		 *
+		 * @since 3.6
+		 *
+		 * @param array $l10n
+		 * @return array $l10n
+		 */
+		public function input_admin_l10n( $l10n ) {
+			// Bail early if no defaults.
 			if ( empty( $this->l10n ) ) {
 				return $l10n;
 			}
 
-			// append
+			// Append.
 			$l10n[ $this->name ] = $this->l10n;
 
-			// return
 			return $l10n;
 		}
 
 		/**
 		 * Add additional validation for fields being updated via the REST API.
 		 *
-		 * @param bool  $valid
-		 * @param mixed $value
-		 * @param array $field
+		 * @param boolean $valid
+		 * @param mixed   $value
+		 * @param array   $field
 		 *
-		 * @return bool|WP_Error
+		 * @return boolean|WP
 		 */
 		public function validate_rest_value( $valid, $value, $field ) {
 			return $valid;
@@ -329,9 +273,9 @@ if ( ! class_exists( 'acf_field' ) ) :
 		 *        ],
 		 *    ]
 		 *
-		 * @param mixed      $value The raw (unformatted) field value.
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param mixed          $value   The raw (unformatted) field value.
+		 * @param string|integer $post_id
+		 * @param array          $field
 		 * @return array
 		 */
 		public function get_rest_links( $value, $post_id, array $field ) {
@@ -341,13 +285,43 @@ if ( ! class_exists( 'acf_field' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param mixed          $value
+		 * @param string|integer $post_id
+		 * @param array          $field
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return $value;
+		}
+
+		/**
+		 * Renders the "Required" setting on the field type "Validation" settings tab.
+		 *
+		 * @since 6.2.5
+		 *
+		 * @param array $field The field type being rendered.
+		 * @return void
+		 */
+		public function render_required_setting( $field ) {
+			$supports_required = acf_field_type_supports( $field['type'], 'required', true );
+
+			// Only prevent rendering if explicitly disabled.
+			if ( ! $supports_required ) {
+				return;
+			}
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Required', 'acf' ),
+					'instructions' => '',
+					'type'         => 'true_false',
+					'name'         => 'required',
+					'ui'           => 1,
+					'class'        => 'field-required',
+				),
+				true
+			);
 		}
 	}
 

@@ -21,9 +21,11 @@ if ( isset( $field['endpoint'] ) && $field['endpoint'] ) {
 	$div_attrs['class'] .= ' acf-field-is-endpoint';
 }
 
+
 // Misc template vars.
-$field_label      = acf_get_field_label( $field, 'admin' );
-$field_type_label = acf_get_field_type_label( $field['type'] );
+$field_label         = acf_get_field_label( $field, 'admin' );
+$field_type_label    = acf_get_field_type_label( $field['type'] );
+$field_type_supports = acf_get_field_type_prop( $field['type'], 'supports' );
 
 if ( acf_is_pro() && acf_get_field_type_prop( $field['type'], 'pro' ) && ! acf_pro_is_license_active() ) {
 	$field_type_label .= '<span class="acf-pro-label acf-pro-label-field-type">PRO</span>';
@@ -189,20 +191,6 @@ if ( isset( $field['conditional_logic'] ) && is_array( $field['conditional_logic
 								<?php
 								break;
 							case 'validation':
-								// required
-								acf_render_field_setting(
-									$field,
-									array(
-										'label'        => __( 'Required', 'acf' ),
-										'instructions' => '',
-										'type'         => 'true_false',
-										'name'         => 'required',
-										'ui'           => 1,
-										'class'        => 'field-required',
-									),
-									true
-								);
-
 								do_action( "acf/field_group/render_field_settings_tab/{$tab_key}", $field );
 								?>
 								<div class="acf-field-type-settings" data-parent-tab="<?php echo esc_attr( $tab_key ); ?>">
