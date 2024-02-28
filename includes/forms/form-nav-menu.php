@@ -8,18 +8,16 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 	class acf_form_nav_menu {
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the class functionality
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the class functionality
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function __construct() {
 
@@ -35,19 +33,17 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 		}
 
 
-		/*
-		*  admin_enqueue_scripts
-		*
-		*  This action is run after post query but before any admin script / head actions.
-		*  It is a good place to register all actions.
-		*
-		*  @type    action (admin_enqueue_scripts)
-		*  @date    26/01/13
-		*  @since   3.6.0
-		*
-		*  @param   N/A
-		*  @return  N/A
-		*/
+		/**
+		 * This action is run after post query but before any admin script / head actions.
+		 * It is a good place to register all actions.
+		 *
+		 * @type    action (admin_enqueue_scripts)
+		 * @date    26/01/13
+		 * @since   3.6.0
+		 *
+		 * @param   N/A
+		 * @return  N/A
+		 */
 
 		function admin_enqueue_scripts() {
 
@@ -65,15 +61,15 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 
 		/**
-		 *  wp_nav_menu_item_custom_fields
+		 * wp_nav_menu_item_custom_fields
 		 *
-		 *  description
+		 * description
 		 *
-		 *  @date    30/7/18
-		 *  @since   5.6.9
+		 * @date    30/7/18
+		 * @since   5.6.9
 		 *
-		 *  @param   type $var Description. Default.
-		 *  @return  type Description.
+		 * @param   type $var Description. Default.
+		 * @return  type Description.
 		 */
 
 		function wp_nav_menu_item_custom_fields( $item_id, $item, $depth, $args, $id = '' ) {
@@ -121,7 +117,7 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				if ( acf_is_ajax( 'add-menu-item' ) ) : ?>
 			<script type="text/javascript">
 			(function($) {
-				acf.doAction('append', $('#menu-item-settings-<?php echo $item_id; ?>') );
+				acf.doAction('append', $('#menu-item-settings-<?php echo esc_attr( $item_id ); ?>') );
 			})(jQuery);
 			</script>
 					<?php
@@ -130,18 +126,16 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 		}
 
 
-		/*
-		*  update_nav_menu
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    26/5/17
-		*  @since   5.6.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    26/5/17
+		 * @since   5.6.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function update_nav_menu( $menu_id ) {
 
@@ -164,18 +158,16 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 		}
 
 
-		/*
-		*  update_nav_menu_items
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    26/5/17
-		*  @since   5.6.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    26/5/17
+		 * @since   5.6.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function update_nav_menu_items( $menu_id ) {
 
@@ -194,17 +186,17 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 
 
 		/**
-		 *  wp_get_nav_menu_items
+		 * wp_get_nav_menu_items
 		 *
-		 *  WordPress does not provide an easy way to find the current menu being edited.
-		 *  This function listens to when a menu's items are loaded and stores the menu.
-		 *  Needed on nav-menus.php page for new menu with no items
+		 * WordPress does not provide an easy way to find the current menu being edited.
+		 * This function listens to when a menu's items are loaded and stores the menu.
+		 * Needed on nav-menus.php page for new menu with no items
 		 *
-		 *  @date    23/2/18
-		 *  @since   5.6.9
+		 * @date    23/2/18
+		 * @since   5.6.9
 		 *
-		 *  @param   type $var Description. Default.
-		 *  @return  type Description.
+		 * @param   type $var Description. Default.
+		 * @return  type Description.
 		 */
 
 		function wp_get_nav_menu_items( $items, $menu, $args ) {
@@ -219,8 +211,8 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 		 * @date    26/5/17
 		 * @since   5.6.0
 		 *
-		 * @param   string $class The walker class to use. Default 'Walker_Nav_Menu_Edit'.
-		 * @param   int    $menu_id ID of the menu being rendered.
+		 * @param   string  $class   The walker class to use. Default 'Walker_Nav_Menu_Edit'.
+		 * @param   integer $menu_id ID of the menu being rendered.
 		 * @return  string
 		 */
 		function wp_edit_nav_menu_walker( $class, $menu_id = 0 ) {
@@ -233,18 +225,16 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 		}
 
 
-		/*
-		*  acf_validate_save_post
-		*
-		*  This function will loop over $_POST data and validate
-		*
-		*  @type    action 'acf/validate_save_post' 5
-		*  @date    7/09/2016
-		*  @since   5.4.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will loop over $_POST data and validate
+		 *
+		 * @type    action 'acf/validate_save_post' 5
+		 * @date    7/09/2016
+		 * @since   5.4.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function acf_validate_save_post() {
 
@@ -266,18 +256,16 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 			// phpcs:enable // phpcs:disable WordPress.Security.NonceVerification.Missing
 		}
 
-		/*
-		*  admin_footer
-		*
-		*  This function will add some custom HTML to the footer of the edit page
-		*
-		*  @type    function
-		*  @date    11/06/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will add some custom HTML to the footer of the edit page
+		 *
+		 * @type    function
+		 * @date    11/06/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function admin_footer() {
 
@@ -312,9 +300,9 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				foreach ( $field_groups as $field_group ) {
 					$fields = acf_get_fields( $field_group );
 
-					echo '<div class="acf-menu-settings -' . $field_group['style'] . '">';
+					echo '<div class="acf-menu-settings -' . esc_attr( $field_group['style'] ) . '">';
 
-					echo '<h2>' . $field_group['title'] . '</h2>';
+					echo '<h2>' . esc_html( $field_group['title'] ) . '</h2>';
 
 					echo '<div class="acf-fields -left -clear">';
 

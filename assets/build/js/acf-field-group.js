@@ -1406,6 +1406,10 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
     onChangeName: function (e, $el) {
       // set
       var name = $el.val();
+
+      // strip any invalid characters.
+      name = name.replace(/[^A-Za-zŽžÀ-ÿ0-9_-]+/g, '-');
+      $el.val(name);
       this.set('name', name);
 
       // error

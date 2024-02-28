@@ -12,36 +12,32 @@ if ( ! class_exists( 'acf_fields' ) ) :
 		var $types = array();
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the class functionality
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.4.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the class functionality
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.4.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function __construct() {
 			/* do nothing */
 		}
 
 
-		/*
-		*  register_field_type
-		*
-		*  This function will register a field type instance
-		*
-		*  @type    function
-		*  @date    6/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $class (string)
-		*  @return  n/a
-		*/
+		/**
+		 * This function will register a field type instance
+		 *
+		 * @type    function
+		 * @date    6/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $class (string)
+		 * @return  n/a
+		 */
 
 		function register_field_type( $class ) {
 
@@ -57,56 +53,49 @@ if ( ! class_exists( 'acf_fields' ) ) :
 		}
 
 
-		/*
-		*  get_field_type
-		*
-		*  This function will return a field type instance
-		*
-		*  @type    function
-		*  @date    6/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $name (string)
-		*  @return  (mixed)
-		*/
+		/**
+		 * This function will return a field type instance
+		 *
+		 * @type    function
+		 * @date    6/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $name (string)
+		 * @return  (mixed)
+		 */
 
 		function get_field_type( $name ) {
 			return isset( $this->types[ $name ] ) ? $this->types[ $name ] : null;
 		}
 
 
-		/*
-		*  is_field_type
-		*
-		*  This function will return true if a field type exists
-		*
-		*  @type    function
-		*  @date    6/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $name (string)
-		*  @return  (mixed)
-		*/
+		/**
+		 * This function will return true if a field type exists
+		 *
+		 * @type    function
+		 * @date    6/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $name (string)
+		 * @return  (mixed)
+		 */
 
 		function is_field_type( $name ) {
 			return isset( $this->types[ $name ] );
 		}
 
 
-		/*
-		*  register_field_type_info
-		*
-		*  This function will store a basic array of info about the field type
-		*  to later be overriden by the above register_field_type function
-		*
-		*  @type    function
-		*  @date    29/5/17
-		*  @since   5.6.0
-		*
-		*  @param   $info (array)
-		*  @return  n/a
-		*/
-
+		/**
+		 * This function will store a basic array of info about the field type
+		 * to later be overriden by the above register_field_type function
+		 *
+		 * @type    function
+		 * @date    29/5/17
+		 * @since   5.6.0
+		 *
+		 * @param   $info (array)
+		 * @return  n/a
+		 */
 		function register_field_type_info( $info ) {
 
 			// convert to object
@@ -115,19 +104,16 @@ if ( ! class_exists( 'acf_fields' ) ) :
 		}
 
 
-		/*
-		*  get_field_types
-		*
-		*  This function will return an array of all field types
-		*
-		*  @type    function
-		*  @date    6/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $name (string)
-		*  @return  (mixed)
-		*/
-
+		/**
+		 * This function will return an array of all field types
+		 *
+		 * @type    function
+		 * @date    6/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $name (string)
+		 * @return  (mixed)
+		 */
 		function get_field_types() {
 			return $this->types;
 		}
@@ -139,73 +125,61 @@ if ( ! class_exists( 'acf_fields' ) ) :
 endif; // class_exists check
 
 
-/*
-*  acf_register_field_type
-*
-*  alias of acf()->fields->register_field_type()
-*
-*  @type    function
-*  @date    31/5/17
-*  @since   5.6.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * alias of acf()->fields->register_field_type()
+ *
+ * @type    function
+ * @date    31/5/17
+ * @since   5.6.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_register_field_type( $class ) {
 	return acf()->fields->register_field_type( $class );
 }
 
 
-/*
-*  acf_register_field_type_info
-*
-*  alias of acf()->fields->register_field_type_info()
-*
-*  @type    function
-*  @date    31/5/17
-*  @since   5.6.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * alias of acf()->fields->register_field_type_info()
+ *
+ * @type    function
+ * @date    31/5/17
+ * @since   5.6.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_register_field_type_info( $info ) {
 	return acf()->fields->register_field_type_info( $info );
 }
 
 
-/*
-*  acf_get_field_type
-*
-*  alias of acf()->fields->get_field_type()
-*
-*  @type    function
-*  @date    31/5/17
-*  @since   5.6.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * alias of acf()->fields->get_field_type()
+ *
+ * @type    function
+ * @date    31/5/17
+ * @since   5.6.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_get_field_type( $name ) {
 	return acf()->fields->get_field_type( $name );
 }
 
 
-/*
-*  acf_get_field_types
-*
-*  alias of acf()->fields->get_field_types()
-*
-*  @type    function
-*  @date    31/5/17
-*  @since   5.6.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * alias of acf()->fields->get_field_types()
+ *
+ * @type    function
+ * @date    31/5/17
+ * @since   5.6.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_get_field_types( $args = array() ) {
 
 	// default
@@ -225,17 +199,16 @@ function acf_get_field_types( $args = array() ) {
 
 
 /**
- *  acf_get_field_types_info
+ * acf_get_field_types_info
  *
- *  Returns an array containing information about each field type
+ * Returns an array containing information about each field type
  *
- *  @date    18/6/18
- *  @since   5.6.9
+ * @date    18/6/18
+ * @since   5.6.9
  *
- *  @param   type $var Description. Default.
- *  @return  type Description.
+ * @param   type $var Description. Default.
+ * @return  type Description.
  */
-
 function acf_get_field_types_info( $args = array() ) {
 
 	// vars
@@ -264,56 +237,47 @@ function acf_get_field_types_info( $args = array() ) {
 }
 
 
-/*
-*  acf_is_field_type
-*
-*  alias of acf()->fields->is_field_type()
-*
-*  @type    function
-*  @date    31/5/17
-*  @since   5.6.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * alias of acf()->fields->is_field_type()
+ *
+ * @type    function
+ * @date    31/5/17
+ * @since   5.6.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_is_field_type( $name = '' ) {
 	return acf()->fields->is_field_type( $name );
 }
 
 
-/*
-*  acf_get_field_type_prop
-*
-*  This function will return a field type's property
-*
-*  @type    function
-*  @date    1/10/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  (array)
-*/
-
+/**
+ * This function will return a field type's property
+ *
+ * @type    function
+ * @date    1/10/13
+ * @since   5.0.0
+ *
+ * @param   n/a
+ * @return  (array)
+ */
 function acf_get_field_type_prop( $name = '', $prop = '' ) {
 	$type = acf_get_field_type( $name );
 	return ( $type && isset( $type->$prop ) ) ? $type->$prop : null;
 }
 
 
-/*
-*  acf_get_field_type_label
-*
-*  This function will return the label of a field type
-*
-*  @type    function
-*  @date    1/10/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  (array)
-*/
-
+/**
+ * This function will return the label of a field type
+ *
+ * @type    function
+ * @date    1/10/13
+ * @since   5.0.0
+ *
+ * @param   n/a
+ * @return  (array)
+ */
 function acf_get_field_type_label( $name = '' ) {
 	$label = acf_get_field_type_prop( $name, 'label' );
 	return $label ? $label : '<span class="acf-tooltip-js" title="' . __( 'Field type does not exist', 'acf' ) . '">' . __( 'Unknown', 'acf' ) . '</span>';
@@ -339,19 +303,18 @@ function acf_field_type_supports( $name = '', $prop = '', $default = false ) {
 }
 
 
-/*
-*  acf_field_type_exists (deprecated)
-*
-*  deprecated in favour of acf_is_field_type()
-*
-*  @type    function
-*  @date    1/10/13
-*  @since   5.0.0
-*
-*  @param   $type (string)
-*  @return  (boolean)
-*/
-
+/**
+ *
+ * @deprecated
+ * @see acf_is_field_type()
+ *
+ * @type    function
+ * @date    1/10/13
+ * @since   5.0.0
+ *
+ * @param   $type (string)
+ * @return  (boolean)
+ */
 function acf_field_type_exists( $type = '' ) {
 	return acf_is_field_type( $type );
 }
@@ -380,11 +343,11 @@ function acf_get_field_categories_i18n() {
 
 
 /**
- *  Returns an multi-dimentional array of field types "name => label" grouped by category
+ * Returns an multi-dimentional array of field types "name => label" grouped by category
  *
- *  @since   5.0.0
+ * @since   5.0.0
  *
- *  @return  array
+ * @return  array
  */
 function acf_get_grouped_field_types() {
 
@@ -412,14 +375,14 @@ function acf_get_grouped_field_types() {
 }
 
 /**
- *  Returns an array of tabs for a field type.
- *  We combine a list of default tabs with filtered tabs.
- *  I.E. Default tabs should be static and should not be changed by the
- *  filtered tabs.
+ * Returns an array of tabs for a field type.
+ * We combine a list of default tabs with filtered tabs.
+ * I.E. Default tabs should be static and should not be changed by the
+ * filtered tabs.
  *
- *  @since   6.1
+ * @since   6.1
  *
- *  @return array Key/value array of the default settings tabs for field type settings.
+ * @return array Key/value array of the default settings tabs for field type settings.
  */
 function acf_get_combined_field_type_settings_tabs() {
 	$default_field_type_settings_tabs = array(

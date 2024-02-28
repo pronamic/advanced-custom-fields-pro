@@ -138,7 +138,7 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
  * @since 6.0.0
  *
  * @param array $metadata The raw block metadata array.
- * @return bool
+ * @return boolean
  */
 function acf_is_acf_block_json( $metadata ) {
 	return ( isset( $metadata['acf'] ) && $metadata['acf'] );
@@ -231,7 +231,7 @@ function acf_register_block( $block ) {
  * @since   5.7.12
  *
  * @param   string $name The block type name.
- * @return  bool
+ * @return  boolean
  */
 function acf_has_block_type( $name ) {
 	return acf_get_store( 'block-types' )->has( $name );
@@ -482,8 +482,8 @@ function acf_get_block_back_compat_attribute_key_array() {
  * @since   5.9.2
  *
  * @param   array    $attributes The block attributes.
- * @param   string   $content The block content.
- * @param   WP_Block $wp_block The block instance (since WP 5.5).
+ * @param   string   $content    The block content.
+ * @param   WP_Block $wp_block   The block instance (since WP 5.5).
  * @return  string The block HTML.
  */
 function acf_render_block_callback( $attributes, $content = '', $wp_block = null ) {
@@ -511,11 +511,11 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
  * @since   5.7.13
  *
  * @param   array    $attributes The block attributes.
- * @param   string   $content The block content.
- * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
- * @param   int      $post_id The current post being edited or viewed.
- * @param   WP_Block $wp_block The block instance (since WP 5.5).
- * @param   array    $context The block context array.
+ * @param   string   $content    The block content.
+ * @param   boolean  $is_preview Whether or not the block is being rendered for editing preview.
+ * @param   integer  $post_id    The current post being edited or viewed.
+ * @param   WP_Block $wp_block   The block instance (since WP 5.5).
+ * @param   array    $context    The block context array.
  * @return  string   The block HTML.
  */
 function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
@@ -548,7 +548,6 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 
 	if ( $form ) {
 		// Load the block form since we're in edit mode.
-
 		// Set flag for post REST cleanup of media enqueue count during preloads.
 		acf_set_data( 'acf_did_render_block_form', true );
 
@@ -614,11 +613,11 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
  * @since   5.7.12
  *
  * @param   array    $attributes The block attributes.
- * @param   string   $content The block content.
- * @param   bool     $is_preview Whether or not the block is being rendered for editing preview.
- * @param   int      $post_id The current post being edited or viewed.
- * @param   WP_Block $wp_block The block instance (since WP 5.5).
- * @param   array    $context The block context array.
+ * @param   string   $content    The block content.
+ * @param   boolean  $is_preview Whether or not the block is being rendered for editing preview.
+ * @param   integer  $post_id    The current post being edited or viewed.
+ * @param   WP_Block $wp_block   The block instance (since WP 5.5).
+ * @param   array    $context    The block context array.
  * @return  void|string
  */
 function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
@@ -1026,7 +1025,7 @@ function acf_parse_save_blocks_callback( $matches ) {
  * @since 6.0.0
  *
  * @param array $attributes A block attributes array.
- * @param array $context The block context array, defaults to an empty array.
+ * @param array $context    The block context array, defaults to an empty array.
  * @return string A block ID.
  */
 function acf_get_block_id( $attributes, $context = array() ) {

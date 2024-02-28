@@ -41,7 +41,6 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 			$atts  = array();
 			$keys  = array( 'type', 'id', 'class', 'name', 'value', 'placeholder', 'pattern' );
 			$keys2 = array( 'readonly', 'disabled', 'required' );
-			$html  = '';
 
 			// atts (value="123")
 			foreach ( $keys as $k ) {
@@ -61,12 +60,12 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 			$atts = acf_clean_atts( $atts );
 
 			// render
-			$html .= '<div class="acf-input-wrap acf-url">';
+			$html  = '<div class="acf-input-wrap acf-url">';
 			$html .= '<i class="acf-icon -globe -small"></i>' . acf_get_text_input( $atts );
 			$html .= '</div>';
 
 			// return
-			echo $html;
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- safe HTML, escaped by acf_get_text_input.
 		}
 
 
@@ -116,11 +115,10 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		 *
 		 * @since   5.0.0
 		 *
-		 * @param mixed  $valid The current validity of the field value. Boolean true if valid, a validation error message string if not.
-		 * @param string $value The value of the field.
-		 * @param array  $field Field object array.
-		 * @param string $input The form input name for this field.
-		 *
+		 * @param  mixed  $valid The current validity of the field value. Boolean true if valid, a validation error message string if not.
+		 * @param  string $value The value of the field.
+		 * @param  array  $field Field object array.
+		 * @param  string $input The form input name for this field.
 		 * @return mixed Boolean true if valid, a validation error message string if not.
 		 */
 		public function validate_value( $valid, $value, $field, $input ) {
@@ -149,11 +147,10 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		 *
 		 * @since 6.2.6
 		 *
-		 * @param mixed   $value       The value which was loaded from the database.
-		 * @param mixed   $post_id     The $post_id from which the value was loaded.
-		 * @param array   $field       The field array holding all the field options.
-		 * @param boolean $escape_html Should the field return a HTML safe formatted value.
-		 *
+		 * @param  mixed   $value       The value which was loaded from the database.
+		 * @param  mixed   $post_id     The $post_id from which the value was loaded.
+		 * @param  array   $field       The field array holding all the field options.
+		 * @param  boolean $escape_html Should the field return a HTML safe formatted value.
 		 * @return mixed $value The modified value
 		 */
 		public function format_value( $value, $post_id, $field, $escape_html ) {
@@ -166,8 +163,7 @@ if ( ! class_exists( 'acf_field_url' ) ) :
 		/**
 		 * Return the schema array for the REST API.
 		 *
-		 * @param array $field The field object.
-		 *
+		 * @param  array $field The field object.
 		 * @return array
 		 */
 		public function get_rest_schema( array $field ) {

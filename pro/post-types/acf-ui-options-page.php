@@ -185,10 +185,14 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 		 *
 		 * @since 6.2
 		 *
-		 * @return bool validity status
+		 * @return boolean validity status
 		 */
 		public function ajax_validate_values() {
-			$to_validate = acf_sanitize_request_args( $_POST['acf_ui_options_page'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+			if ( empty( $_POST['acf_ui_options_page'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+				return false;
+			}
+
+			$to_validate = acf_sanitize_request_args( wp_unslash( $_POST['acf_ui_options_page'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 			$post_id     = acf_request_arg( 'post_id' );
 			$valid       = true;
 			$menu_slug   = (string) $to_validate['menu_slug'];
@@ -280,8 +284,6 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 		 * Includes all local JSON options pages.
 		 *
 		 * @since 6.1
-		 *
-		 * @return void
 		 */
 		public function include_json_options_pages() {
 			$local_json = acf_get_instance( 'ACF_Local_JSON' );

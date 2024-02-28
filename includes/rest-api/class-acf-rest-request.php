@@ -12,10 +12,6 @@ if ( class_exists( 'ACF_Rest_Request' ) ) {
 
 /**
  * Class ACF_Rest_Request
- *
- * @property-read string $object_sub_type
- * @property-read string $object_type
- * @property-read string $http_method
  */
 class ACF_Rest_Request {
 

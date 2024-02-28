@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 	class acf_field_oembed extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -28,8 +26,8 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-oembed.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/oembed/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'width'     => '',
-				'height'    => '',
+				'width'  => '',
+				'height' => '',
 			);
 			$this->width         = 640;
 			$this->height        = 390;
@@ -43,18 +41,16 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 
-		/*
-		*  prepare_field
-		*
-		*  This function will prepare the field for input
-		*
-		*  @type    function
-		*  @date    14/2/17
-		*  @since   5.5.8
-		*
-		*  @param   $field (array)
-		*  @return  (int)
-		*/
+		/**
+		 * This function will prepare the field for input
+		 *
+		 * @type    function
+		 * @date    14/2/17
+		 * @since   5.5.8
+		 *
+		 * @param   $field (array)
+		 * @return  (int)
+		 */
 
 		function prepare_field( $field ) {
 
@@ -76,9 +72,9 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		 * @date    24/01/2014
 		 * @since   5.0.0
 		 *
-		 * @param string     $url    The URL that should be embedded.
-		 * @param int|string $width  Optional maxwidth value passed to the provider URL.
-		 * @param int|string $height Optional maxheight value passed to the provider URL.
+		 * @param string         $url    The URL that should be embedded.
+		 * @param integer|string $width  Optional maxwidth value passed to the provider URL.
+		 * @param integer|string $height Optional maxheight value passed to the provider URL.
 		 * @return string|false The embedded HTML on success, false on failure.
 		 */
 		function wp_oembed_get( $url = '', $width = 0, $height = 0 ) {
@@ -101,18 +97,16 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			return $embed;
 		}
 
-		/*
-		*  ajax_query
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    24/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    24/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function ajax_query() {
 
@@ -129,18 +123,16 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 
-		/*
-		*  get_ajax_query
-		*
-		*  This function will return an array of data formatted for use in a select2 AJAX response
-		*
-		*  @type    function
-		*  @date    15/10/2014
-		*  @since   5.0.9
-		*
-		*  @param   $options (array)
-		*  @return  (array)
-		*/
+		/**
+		 * This function will return an array of data formatted for use in a select2 AJAX response
+		 *
+		 * @type    function
+		 * @date    15/10/2014
+		 * @since   5.0.9
+		 *
+		 * @param   $options (array)
+		 * @return  (array)
+		 */
 
 		function get_ajax_query( $args = array() ) {
 
@@ -173,17 +165,17 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
+		/**
+		 * render_field()
+		 *
+		 * Create the HTML interface for your field
+		 *
+		 * @param   $field - an array holding all the field's data
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 */
 
 		function render_field( $field ) {
 
@@ -193,7 +185,6 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			);
 
 			// <strong><?php _e("Error.", 'acf'); </strong> _e("No embed found for the given URL.", 'acf');
-
 			// value
 			if ( $field['value'] ) {
 				$atts['class'] .= ' has-value';
@@ -232,7 +223,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		<div class="canvas-media">
 			<?php
 			if ( $field['value'] ) {
-				echo $this->wp_oembed_get( $field['value'], $field['width'], $field['height'] );
+				echo $this->wp_oembed_get( $field['value'], $field['width'], $field['height'] ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- wp_ombed_get generates HTML safe output.
 			}
 			?>
 		</div>
@@ -244,18 +235,16 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @param   $field  - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @param   $field  - an array holding all the field's data
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 */
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,
@@ -289,13 +278,12 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		 * @type    filter
 		 * @since   3.6
 		 *
-		 * @param mixed $value   The value which was loaded from the database.
-		 * @param mixed $post_id The $post_id from which the value was loaded.
-		 * @param array $field   The field array holding all the field options.
-		 *
+		 * @param  mixed $value   The value which was loaded from the database.
+		 * @param  mixed $post_id The $post_id from which the value was loaded.
+		 * @param  array $field   The field array holding all the field options.
 		 * @return mixed the modified value
 		 */
-		function format_value( $value, $post_id, $field ) {
+		public function format_value( $value, $post_id, $field ) {
 			// bail early if no value
 			if ( empty( $value ) ) {
 				return $value;

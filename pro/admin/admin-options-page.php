@@ -12,40 +12,23 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		var $page;
 
 
-		/*
-		*  __construct
-		*
-		*  Initialize filters, action, variables and includes
-		*
-		*  @type    function
-		*  @date    23/06/12
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function __construct() {
-
+		/**
+		 * Initialize filters, action, variables and includes
+		 *
+		 * @since   5.0.0
+		 */
+		public function __construct() {
 			// add menu items
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 99, 0 );
 		}
 
 
-		/*
-		*  admin_menu
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    24/02/2014
-		*  @since   5.0.0
-		*
-		*  @param
-		*  @return
-		*/
-
-		function admin_menu() {
+		/**
+		 * description
+		 *
+		 * @since   5.0.0
+		 */
+		public function admin_menu() {
 
 			// vars
 			$pages = acf_get_options_pages();
@@ -74,18 +57,16 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		}
 
 
-		/*
-		*  load
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    2/02/13
-		*  @since   3.6
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    2/02/13
+		 * @since   3.6
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function admin_load() {
 
@@ -121,7 +102,7 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 					do_action( 'acf/options_page/save', $this->page['post_id'], $this->page['menu_slug'] );
 
 					// redirect
-					wp_redirect( add_query_arg( array( 'message' => '1' ) ) );
+					wp_safe_redirect( add_query_arg( array( 'message' => '1' ) ) );
 					exit;
 				}
 			}
@@ -144,39 +125,24 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		}
 
 
-		/*
-		*  admin_enqueue_scripts
-		*
-		*  This function will enqueue the 'post.js' script which adds support for 'Screen Options' column toggle
-		*
-		*  @type    function
-		*  @date    23/03/2016
-		*  @since   5.3.2
-		*
-		*  @param
-		*  @return
-		*/
-
-		function admin_enqueue_scripts() {
+		/**
+		 * This function will enqueue the 'post.js' script which adds support for 'Screen Options' column toggle
+		 *
+		 * @since   5.3.2
+		 */
+		public function admin_enqueue_scripts() {
 
 			wp_enqueue_script( 'post' );
 		}
 
 
-		/*
-		*  admin_head
-		*
-		*  This action will find and add field groups to the current edit page
-		*
-		*  @type    action (admin_head)
-		*  @date    23/06/12
-		*  @since   3.1.8
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
-
-		function admin_head() {
+		/**
+		 * This action will find and add field groups to the current edit page
+		 *
+		 * @type    action (admin_head)
+		 * @since   3.1.8
+		 */
+		public function admin_head() {
 
 			// get field groups
 			$field_groups = acf_get_field_groups(
@@ -224,28 +190,26 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		}
 
 
-		/*
-		*  postbox_submitdiv
-		*
-		*  This function will render the submitdiv metabox
-		*
-		*  @type    function
-		*  @date    23/03/2016
-		*  @since   5.3.2
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will render the submitdiv metabox
+		 *
+		 * @type    function
+		 * @date    23/03/2016
+		 * @since   5.3.2
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function postbox_submitdiv( $post, $args ) {
 
 			/**
-			*   Fires before the major-publishing-actions div.
+			*  Fires before the major-publishing-actions div.
 			*
-			*  @date    24/9/18
-			*  @since   5.7.7
+			* @date    24/9/18
+			* @since   5.7.7
 			*
-			*  @param array $page The current options page.
+			* @param array $page The current options page.
 			*/
 			do_action( 'acf/options_page/submitbox_before_major_actions', $this->page );
 			?>
@@ -253,17 +217,17 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 
 			<div id="publishing-action">
 				<span class="spinner"></span>
-				<input type="submit" accesskey="p" value="<?php echo $this->page['update_button']; ?>" class="button button-primary button-large" id="publish" name="publish">
+				<input type="submit" accesskey="p" value="<?php echo esc_attr( $this->page['update_button'] ); ?>" class="button button-primary button-large" id="publish" name="publish">
 			</div>
 			
 			<?php
 			/**
-			 *   Fires before the major-publishing-actions div.
+			 *  Fires before the major-publishing-actions div.
 			 *
-			 *  @date    24/9/18
-			 *  @since   5.7.7
+			 * @date    24/9/18
+			 * @since   5.7.7
 			 *
-			 *  @param array $page The current options page.
+			 * @param array $page The current options page.
 			 */
 			do_action( 'acf/options_page/submitbox_major_actions', $this->page );
 			?>
@@ -277,15 +241,12 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		/**
 		 * Renders a postbox on an ACF options page.
 		 *
-		 * @date    24/02/2014
 		 * @since   5.0.0
 		 *
-		 * @param object $post
-		 * @param array  $args
-		 *
-		 * @return void
+		 * @param object $post The post object
+		 * @param array  $args The metabox arguments
 		 */
-		function postbox_acf( $post, $args ) {
+		public function postbox_acf( $post, $args ) {
 			$id          = $args['id'];
 			$field_group = $args['args']['field_group'];
 
@@ -323,14 +284,11 @@ if( typeof acf !== 'undefined' ) {
 		}
 
 
-		/*
-		*  html
-		*
-		*  @description:
-		*  @since: 2.0.4
-		*  @created: 5/12/12
-		*/
-
+		/**
+		 * description
+		 *
+		 * @since 2.0.4
+		 */
 		function html() {
 
 			// load view

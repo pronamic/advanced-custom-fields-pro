@@ -1,15 +1,14 @@
 <?php
 
-/*
-*  ACF Taxonomy Form Class
-*
-*  All the logic for adding fields to taxonomy terms
-*
-*  @class       acf_form_taxonomy
-*  @package     ACF
-*  @subpackage  Forms
-*/
-
+/**
+ * ACF Taxonomy Form Class
+ *
+ * All the logic for adding fields to taxonomy terms
+ *
+ * @class       acf_form_taxonomy
+ * @package     ACF
+ * @subpackage  Forms
+ */
 if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 
 	class acf_form_taxonomy {
@@ -17,18 +16,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		var $view = 'add';
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the class functionality
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the class functionality
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function __construct() {
 
@@ -44,18 +41,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  validate_page
-		*
-		*  This function will check if the current page is for a post/page edit form
-		*
-		*  @type    function
-		*  @date    23/06/12
-		*  @since   3.1.8
-		*
-		*  @param   n/a
-		*  @return  (boolean)
-		*/
+		/**
+		 * This function will check if the current page is for a post/page edit form
+		 *
+		 * @type    function
+		 * @date    23/06/12
+		 * @since   3.1.8
+		 *
+		 * @param   n/a
+		 * @return  (boolean)
+		 */
 
 		function validate_page() {
 
@@ -72,19 +67,17 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  admin_enqueue_scripts
-		*
-		*  This action is run after post query but before any admin script / head actions.
-		*  It is a good place to register all actions.
-		*
-		*  @type    action (admin_enqueue_scripts)
-		*  @date    26/01/13
-		*  @since   3.6.0
-		*
-		*  @param   N/A
-		*  @return  N/A
-		*/
+		/**
+		 * This action is run after post query but before any admin script / head actions.
+		 * It is a good place to register all actions.
+		 *
+		 * @type    action (admin_enqueue_scripts)
+		 * @date    26/01/13
+		 * @since   3.6.0
+		 *
+		 * @param   N/A
+		 * @return  N/A
+		 */
 
 		function admin_enqueue_scripts() {
 
@@ -107,18 +100,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  add_term
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    8/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    8/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function add_term( $taxonomy ) {
 
@@ -161,18 +152,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  edit_term
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    8/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    8/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function edit_term( $term, $taxonomy ) {
 
@@ -202,7 +191,7 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 
 						// title
 					if ( $field_group['style'] == 'default' ) {
-						echo '<h2>' . $field_group['title'] . '</h2>';
+						echo '<h2>' . esc_html( $field_group['title'] ) . '</h2>';
 					}
 
 						// fields
@@ -215,18 +204,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  admin_footer
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    27/03/2015
-		*  @since   5.1.5
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    27/03/2015
+		 * @since   5.1.5
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function admin_footer() {
 
@@ -235,7 +222,7 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 (function($) {
 	
 	// Define vars.
-	var view = '<?php echo $this->view; ?>';
+	var view = '<?php echo esc_attr( $this->view ); ?>';
 	var $form = $('#' + view + 'tag');
 	var $submit = $('#' + view + 'tag input[type="submit"]:last');
 	
@@ -312,18 +299,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  save_term
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    8/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    8/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function save_term( $term_id, $tt_id, $taxonomy ) {
 
@@ -343,18 +328,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		}
 
 
-		/*
-		*  delete_term
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    15/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    15/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function delete_term( $term, $tt_id, $taxonomy, $deleted_term ) {
 

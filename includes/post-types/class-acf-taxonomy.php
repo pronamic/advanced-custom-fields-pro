@@ -235,10 +235,14 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @return bool validity status
+		 * @return boolean validity status
 		 */
 		public function ajax_validate_values() {
-			$taxonomy_key = acf_sanitize_request_args( $_POST['acf_taxonomy']['taxonomy'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+			if ( empty( $_POST['acf_taxonomy'] ) || empty( $_POST['acf_taxonomy']['taxonomy'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+				return false;
+			}
+
+			$taxonomy_key = acf_sanitize_request_args( wp_unslash( $_POST['acf_taxonomy']['taxonomy'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
 			$taxonomy_key = is_string( $taxonomy_key ) ? $taxonomy_key : '';
 			$valid        = true;
 
@@ -259,8 +263,9 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 				acf_add_internal_post_type_validation_error( 'taxonomy', $message );
 			} else {
 				// Check if this post key exists in the ACF store for registered post types, excluding those which failed registration.
-				$store      = acf_get_store( $this->store );
-				$post_id    = (int) acf_sanitize_request_args( $_POST['post_id'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+				$store   = acf_get_store( $this->store );
+				$post_id = (int) acf_maybe_get_POST( 'post_id', 0 );
+
 				$matches    = array_filter(
 					$store->get_data(),
 					function ( $item ) use ( $taxonomy_key ) {
@@ -277,12 +282,10 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 				if ( $duplicates ) {
 					$valid = false;
 					acf_add_internal_post_type_validation_error( 'taxonomy', __( 'This taxonomy key is already in use by another taxonomy in ACF and cannot be used.', 'acf' ) );
-				} else {
 					// If we're not already in use with another ACF taxonomy, check if we're registered, but not by ACF.
-					if ( empty( $matches ) && taxonomy_exists( $taxonomy_key ) ) {
-						$valid = false;
-						acf_add_internal_post_type_validation_error( 'taxonomy', __( 'This taxonomy key is already in use by another taxonomy registered outside of ACF and cannot be used.', 'acf' ) );
-					}
+				} elseif ( empty( $matches ) && taxonomy_exists( $taxonomy_key ) ) {
+					$valid = false;
+					acf_add_internal_post_type_validation_error( 'taxonomy', __( 'This taxonomy key is already in use by another taxonomy registered outside of ACF and cannot be used.', 'acf' ) );
 				}
 			}
 
@@ -300,7 +303,7 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param  array   $post The main ACF taxonomy settings array.
+		 * @param  array   $post          The main ACF taxonomy settings array.
 		 * @param  boolean $escape_labels Determines if the label values should be escaped.
 		 * @return array
 		 */

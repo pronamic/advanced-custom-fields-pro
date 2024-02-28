@@ -1,4 +1,10 @@
 <?php
+/**
+ * The empty list state for an ACF Options Page
+ *
+ * @package ACF
+ */
+
 $acf_options_pages_desc = sprintf(
 	/* translators: %s URL to ACF options pages documentation */
 	__( 'ACF <a href="%s" target="_blank">options pages</a> are custom admin pages for managing global settings via fields. You can create multiple pages and sub-pages.', 'acf' ),

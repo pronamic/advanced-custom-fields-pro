@@ -36,7 +36,7 @@ if ( ! class_exists( 'ACF_Legacy_Location' ) ) :
 		 * @date    10/4/20
 		 * @since   5.9.0
 		 *
-		 * @param   string $name The method name.
+		 * @param   string $name      The method name.
 		 * @param   array  $arguments The array of arguments.
 		 * @return  mixed
 		 */

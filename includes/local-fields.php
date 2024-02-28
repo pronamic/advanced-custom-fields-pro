@@ -50,7 +50,7 @@ function acf_disable_local() {
  * @since   5.7.10
  *
  * @param   void
- * @return  bool
+ * @return  boolean
  */
 function acf_is_local_enabled() {
 	return ( acf_is_filter_enabled( 'local' ) && acf_get_setting( 'local' ) );
@@ -179,7 +179,7 @@ function acf_count_local_field_groups() {
  * @since   5.7.10
  *
  * @param   array $field_group The field group array.
- * @return  bool
+ * @return  boolean
  */
 function acf_add_local_field_group( $field_group ) {
 	// Apply default properties needed for import.
@@ -232,7 +232,7 @@ function acf_add_local_field_group( $field_group ) {
  *
  * @param array  $post      The main ACF post array.
  * @param string $post_type The post type being added.
- * @return bool
+ * @return boolean
  */
 function acf_add_local_internal_post_type( $post, $post_type ) {
 	// Apply default properties needed for import.
@@ -283,7 +283,7 @@ function register_field_group( $field_group ) {
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  bool
+ * @return  boolean
  */
 function acf_remove_local_field_group( $key = '' ) {
 	return acf_remove_local_internal_post_type( $key, 'acf-field-group' );
@@ -296,7 +296,7 @@ function acf_remove_local_field_group( $key = '' ) {
  *
  * @param string $key       The ACF key.
  * @param string $post_type The ACF post type.
- * @return bool
+ * @return boolean
  */
 function acf_remove_local_internal_post_type( $key = '', $post_type = 'acf-field-group' ) {
 	return acf_get_local_store( '', $post_type )->remove( $key );
@@ -311,7 +311,7 @@ function acf_remove_local_internal_post_type( $key = '', $post_type = 'acf-field
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_local_field_group( $key = '' ) {
 	return acf_get_local_store( 'groups' )->has( $key );
@@ -325,7 +325,7 @@ function acf_is_local_field_group( $key = '' ) {
  *
  * @param string $key       The ACF key.
  * @param string $post_type The ACF post type.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_local_internal_post_type( $key = '', $post_type = 'acf-field-group' ) {
 	return acf_get_local_store( '', $post_type )->has( $key );
@@ -340,7 +340,7 @@ function acf_is_local_internal_post_type( $key = '', $post_type = 'acf-field-gro
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_local_field_group_key( $key = '' ) {
 	return acf_is_local_internal_post_type_key( $key, 'acf-field-group' );
@@ -353,7 +353,7 @@ function acf_is_local_field_group_key( $key = '' ) {
  *
  * @param string $key       The ACF post key.
  * @param string $post_type The post type to check.
- * @return bool
+ * @return boolean
  */
 function acf_is_local_internal_post_type_key( $key = '', $post_type = '' ) {
 	return acf_get_local_store( '', $post_type )->is( $key );
@@ -445,7 +445,7 @@ function acf_get_local_fields( $parent = '' ) {
  * @since   5.7.10
  *
  * @param   string $parent The parent key.
- * @return  bool
+ * @return  boolean
  */
 function acf_have_local_fields( $parent = '' ) {
 	return acf_get_local_fields( $parent ) ? true : false;
@@ -460,7 +460,7 @@ function acf_have_local_fields( $parent = '' ) {
  * @since   5.7.10
  *
  * @param   string $parent The parent key.
- * @return  int
+ * @return  integer
  */
 function acf_count_local_fields( $parent = '' ) {
 	return count( acf_get_local_fields( $parent ) );
@@ -474,8 +474,8 @@ function acf_count_local_fields( $parent = '' ) {
  * @date    22/1/19
  * @since   5.7.10
  *
- * @param   array $field The field array.
- * @param   bool  $prepared Whether or not the field has already been prepared for import.
+ * @param   array   $field    The field array.
+ * @param   boolean $prepared Whether or not the field has already been prepared for import.
  * @return  void
  */
 function acf_add_local_field( $field, $prepared = false ) {
@@ -528,7 +528,7 @@ function acf_add_local_field( $field, $prepared = false ) {
  * @since   5.7.10
  *
  * @param   string $key The field key.
- * @return  bool
+ * @return  boolean
  */
 function _acf_generate_local_key( $field ) {
 	return "{$field['key']}:{$field['parent']}";
@@ -543,7 +543,7 @@ function _acf_generate_local_key( $field ) {
  * @since   5.7.10
  *
  * @param   string $key The field key.
- * @return  bool
+ * @return  boolean
  */
 function acf_remove_local_field( $key = '' ) {
 	return acf_get_local_store( 'fields' )->remove( $key );
@@ -558,7 +558,7 @@ function acf_remove_local_field( $key = '' ) {
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_local_field( $key = '' ) {
 	return acf_get_local_store( 'fields' )->has( $key );
@@ -573,7 +573,7 @@ function acf_is_local_field( $key = '' ) {
  * @since   5.7.10
  *
  * @param   string $key The field group key.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_local_field_key( $key = '' ) {
 	return acf_get_local_store( 'fields' )->is( $key );
@@ -662,9 +662,9 @@ add_filter( 'acf/load_ui_options_pages', '_acf_apply_get_local_internal_posts', 
  * @date    23/1/19
  * @since   5.7.10
  *
- * @param   bool   $bool The result.
- * @param   string $id The identifier.
- * @return  bool
+ * @param   boolean $bool The result.
+ * @param   string  $id   The identifier.
+ * @return  boolean
  */
 function _acf_apply_is_local_field_key( $bool, $id ) {
 	return acf_is_local_field_key( $id );
@@ -681,9 +681,9 @@ add_filter( 'acf/is_field_key', '_acf_apply_is_local_field_key', 20, 2 );
  * @date    23/1/19
  * @since   5.7.10
  *
- * @param   bool   $bool The result.
- * @param   string $id The identifier.
- * @return  bool
+ * @param   boolean $bool The result.
+ * @param   string  $id   The identifier.
+ * @return  boolean
  */
 function _acf_apply_is_local_field_group_key( $bool, $id ) {
 	return acf_is_local_field_group_key( $id );
@@ -694,10 +694,10 @@ function _acf_apply_is_local_field_group_key( $bool, $id ) {
  *
  * @since 6.1
  *
- * @param bool   $bool      The result.
- * @param string $id        The identifier.
- * @param string $post_type The post type.
- * @return bool
+ * @param boolean $bool      The result.
+ * @param string  $id        The identifier.
+ * @param string  $post_type The post type.
+ * @return boolean
  */
 function _acf_apply_is_local_internal_post_type_key( $bool, $id, $post_type = 'acf-field-group' ) {
 	return acf_is_local_internal_post_type_key( $id, $post_type );

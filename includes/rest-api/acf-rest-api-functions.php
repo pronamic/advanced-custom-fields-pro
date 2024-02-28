@@ -35,8 +35,8 @@ acf_add_filter_variations( 'acf/rest/get_field_schema', array( 'type', 'name', '
  * @see \acf_field::get_rest_links()
  * @see https://developer.wordpress.org/rest-api/using-the-rest-api/linking-and-embedding/
  *
- * @param string|int $post_id
- * @param array      $field
+ * @param string|integer $post_id
+ * @param array          $field
  * @return array
  */
 function acf_get_field_rest_links( $post_id, array $field ) {

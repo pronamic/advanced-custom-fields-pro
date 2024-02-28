@@ -9,15 +9,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 	class ACF_Compatibility {
 
 		/**
-		 *  __construct
+		 * __construct
 		 *
-		 *  Sets up the class functionality.
+		 * Sets up the class functionality.
 		 *
-		 *  @date    30/04/2014
-		 *  @since   5.0.0
+		 * @date    30/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function __construct() {
 
@@ -75,7 +75,7 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		 * @since   5.7.10
 		 *
 		 * @param   array $wrapper The wrapper attributes array.
-		 * @param   array $field The field array.
+		 * @param   array $field   The field array.
 		 */
 		function field_wrapper_attributes( $wrapper, $field ) {
 
@@ -92,15 +92,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_field
+		 * validate_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.0.0
+		 * @date    23/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_field( $field ) {
 
@@ -121,15 +121,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_textarea_field
+		 * validate_textarea_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.0.0
+		 * @date    23/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_textarea_field( $field ) {
 
@@ -144,15 +144,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_relationship_field
+		 * validate_relationship_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.0.0
+		 * @date    23/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_relationship_field( $field ) {
 
@@ -176,15 +176,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_image_field
+		 * validate_image_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.0.0
+		 * @date    23/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_image_field( $field ) {
 
@@ -203,15 +203,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_wysiwyg_field
+		 * validate_wysiwyg_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.0.0
+		 * @date    23/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_wysiwyg_field( $field ) {
 
@@ -227,15 +227,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_date_picker_field
+		 * validate_date_picker_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.0.0
+		 * @date    23/04/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_date_picker_field( $field ) {
 
@@ -262,15 +262,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_taxonomy_field
+		 * validate_taxonomy_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.2.7
+		 * @date    23/04/2014
+		 * @since   5.2.7
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_taxonomy_field( $field ) {
 
@@ -284,15 +284,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_date_time_picker_field
+		 * validate_date_time_picker_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.2.7
+		 * @date    23/04/2014
+		 * @since   5.2.7
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_date_time_picker_field( $field ) {
 
@@ -324,15 +324,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_user_field
+		 * validate_user_field
 		 *
-		 *  Adds compatibility with deprecated settings
+		 * Adds compatibility with deprecated settings
 		 *
-		 *  @date    23/04/2014
-		 *  @since   5.2.7
+		 * @date    23/04/2014
+		 * @since   5.2.7
 		 *
-		 *  @param   array $field The field array.
-		 *  @return  array $field
+		 * @param   array $field The field array.
+		 * @return  array $field
 		 */
 		function validate_user_field( $field ) {
 
@@ -357,18 +357,16 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 			return $field;
 		}
 
-		/*
-		*  validate_field_group
-		*
-		*  This function will provide compatibility with ACF4 field groups
-		*
-		*  @type    function
-		*  @date    23/04/2014
-		*  @since   5.0.0
-		*
-		*  @param   $field_group (array)
-		*  @return  $field_group
-		*/
+		/**
+		 * This function will provide compatibility with ACF4 field groups
+		 *
+		 * @type    function
+		 * @date    23/04/2014
+		 * @since   5.0.0
+		 *
+		 * @param   $field_group (array)
+		 * @return  $field_group
+		 */
 		function validate_field_group( $field_group ) {
 
 			// vars
@@ -441,15 +439,15 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 		}
 
 		/**
-		 *  validate_post_taxonomy_location_rule
+		 * validate_post_taxonomy_location_rule
 		 *
-		 *  description
+		 * description
 		 *
-		 *  @date    27/8/18
-		 *  @since   5.7.4
+		 * @date    27/8/18
+		 * @since   5.7.4
 		 *
-		 *  @param   type $var Description. Default.
-		 *  @return  type Description.
+		 * @param   type $var Description. Default.
+		 * @return  type Description.
 		 */
 		function validate_post_taxonomy_location_rule( $rule ) {
 
@@ -470,16 +468,14 @@ if ( ! class_exists( 'ACF_Compatibility' ) ) :
 	acf_new_instance( 'ACF_Compatibility' );
 endif; // class_exists check
 
-/*
- * acf_get_compatibility
- *
+/**
  * Returns true if compatibility is enabled for the given component.
  *
  * @date    20/1/15
  * @since   5.1.5
  *
  * @param   string $name The name of the component to check.
- * @return  bool
+ * @return  boolean
  */
 function acf_get_compatibility( $name ) {
 	return apply_filters( "acf/compatibility/{$name}", false );

@@ -1,6 +1,6 @@
 <div class="wrap acf-settings-wrap">
 	
-	<h1><?php echo $page_title; ?></h1>
+	<h1><?php echo esc_html( $page_title ); ?></h1>
 	
 	<form id="post" method="post" name="post">
 		

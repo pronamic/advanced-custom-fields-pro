@@ -305,6 +305,10 @@
     },
     onChangeName: function (e, $el) {
       var name = $el.val();
+
+      // strip any invalid characters.
+      name = name.replace(/[^A-Za-zŽžÀ-ÿ0-9_-]+/g, '-');
+      $el.val(name);
       this.set('layoutName', name);
       this.$el.attr('data-layout-name', name);
     },

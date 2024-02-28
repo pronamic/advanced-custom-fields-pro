@@ -11,7 +11,7 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 		/** @var string The AJAX action name. */
 		var $action = 'acf/ajax/check_screen';
 
-		/** @var bool Prevents access for non-logged in users. */
+		/** @var boolean Prevents access for non-logged in users. */
 		var $public = false;
 
 		/**

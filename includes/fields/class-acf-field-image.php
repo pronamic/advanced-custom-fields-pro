@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 	class acf_field_image extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -45,18 +43,16 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		}
 
 
-		/*
-		*  input_admin_enqueue_scripts
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    16/12/2015
-		*  @since   5.3.2
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    16/12/2015
+		 * @since   5.3.2
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function input_admin_enqueue_scripts() {
 
@@ -136,9 +132,9 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		<img <?php echo acf_esc_attrs( $img_attrs ); ?> />
 		<div class="acf-actions -hover">
 			<?php if ( $uploader !== 'basic' ) : ?>
-			<a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php _e( 'Edit', 'acf' ); ?>"></a>
+			<a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php esc_attr_e( 'Edit', 'acf' ); ?>"></a>
 			<?php endif; ?>
-			<a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php _e( 'Remove', 'acf' ); ?>"></a>
+			<a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php esc_attr_e( 'Remove', 'acf' ); ?>"></a>
 		</div>
 	</div>
 	<div class="hide-if-value">
@@ -158,7 +154,7 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 				?>
 			</label>
 		<?php else : ?>
-			<p><?php _e( 'No image selected', 'acf' ); ?> <a data-name="add" class="acf-button button" href="#"><?php _e( 'Add Image', 'acf' ); ?></a></p>
+			<p><?php esc_html_e( 'No image selected', 'acf' ); ?> <a data-name="add" class="acf-button button" href="#"><?php esc_html_e( 'Add Image', 'acf' ); ?></a></p>
 		<?php endif; ?>
 	</div>
 </div>
@@ -166,18 +162,16 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field  - an array holding all the field's data
-		*/
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field  - an array holding all the field's data
+		 */
 
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
@@ -341,21 +335,19 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 			);
 		}
 
-		/*
-		*  format_value()
-		*
-		*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value (mixed) the value which was loaded from the database
-		*  @param   $post_id (mixed) the $post_id from which the value was loaded
-		*  @param   $field (array) the field array holding all the field options
-		*
-		*  @return  $value (mixed) the modified value
-		*/
+		/**
+		 * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value (mixed) the value which was loaded from the database
+		 * @param   $post_id (mixed) the post_id from which the value was loaded
+		 * @param   $field (array) the field array holding all the field options
+		 *
+		 * @return  $value (mixed) the modified value
+		 */
 
 		function format_value( $value, $post_id, $field ) {
 
@@ -384,18 +376,16 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		}
 
 
-		/*
-		*  get_media_item_args
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    27/01/13
-		*  @since   3.6.0
-		*
-		*  @param   $vars (array)
-		*  @return  $vars
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    27/01/13
+		 * @since   3.6.0
+		 *
+		 * @param   $vars (array)
+		 * @return  $vars
+		 */
 
 		function get_media_item_args( $vars ) {
 
@@ -404,21 +394,19 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		}
 
 
-		/*
-		*  update_value()
-		*
-		*  This filter is appied to the $value before it is updated in the db
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value - the value which will be saved in the database
-		*  @param   $post_id - the $post_id of which the value will be saved
-		*  @param   $field - the field array holding all the field options
-		*
-		*  @return  $value - the modified value
-		*/
+		/**
+		 * This filter is appied to the $value before it is updated in the db
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value - the value which will be saved in the database
+		 * @param   $post_id - the post_id of which the value will be saved
+		 * @param   $field - the field array holding all the field options
+		 *
+		 * @return  $value - the modified value
+		 */
 
 		function update_value( $value, $post_id, $field ) {
 
@@ -427,29 +415,28 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 
 
 		/**
-		 *  validate_value
+		 * This function will validate a basic file input
 		 *
-		 *  This function will validate a basic file input
+		 * @type    function
+		 * @since   5.0.0
 		 *
-		 *  @type    function
-		 *  @date    11/02/2014
-		 *  @since   5.0.0
-		 *
-		 *  @param   $post_id (int)
-		 *  @return  $post_id (int)
+		 * @param  boolean $valid The current validity status.
+		 * @param  mixed   $value The field value.
+		 * @param  array   $field The field array.
+		 * @param  string  $input The name of the input in the POST object.
+		 * @return boolean The validity status.
 		 */
-		function validate_value( $valid, $value, $field, $input ) {
+		public function validate_value( $valid, $value, $field, $input ) {
 			return acf_get_field_type( 'file' )->validate_value( $valid, $value, $field, $input );
 		}
 
 		/**
 		 * Additional validation for the image field when submitted via REST.
 		 *
-		 * @param bool  $valid
-		 * @param int   $value
-		 * @param array $field
-		 *
-		 * @return bool|WP_Error
+		 * @param  boolean $valid The current validity booleean
+		 * @param  integer $value The value of the field
+		 * @param  array   $field The field array
+		 * @return boolean|WP_Error
 		 */
 		public function validate_rest_value( $valid, $value, $field ) {
 			return acf_get_field_type( 'file' )->validate_rest_value( $valid, $value, $field );
@@ -458,7 +445,7 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		/**
 		 * Return the schema array for the REST API.
 		 *
-		 * @param array $field
+		 * @param  array $field The field array
 		 * @return array
 		 */
 		public function get_rest_schema( array $field ) {
@@ -468,9 +455,9 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param  mixed          $value   The field value
+		 * @param  string|integer $post_id The post ID
+		 * @param  array          $field   The field array
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

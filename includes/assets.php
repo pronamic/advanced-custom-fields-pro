@@ -28,7 +28,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * List of enqueue flags.
 		 *
 		 * @since 5.9.0
-		 * @var bool
+		 * @var boolean
 		 */
 		private $enqueue = array();
 
@@ -51,7 +51,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * @date    10/4/20
 		 * @since   5.9.0
 		 *
-		 * @param   string $name The method name.
+		 * @param   string $name      The method name.
 		 * @param   array  $arguments The array of arguments.
 		 * @return  mixed
 		 */
@@ -190,10 +190,10 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * @date    28/4/20
 		 * @since   5.9.0
 		 *
-		 * @param   string $action The action name.
-		 * @param   string $method The method name.
-		 * @param   int    $priority See add_action().
-		 * @param   int    $accepted_args See add_action().
+		 * @param   string  $action        The action name.
+		 * @param   string  $method        The method name.
+		 * @param   integer $priority      See add_action().
+		 * @param   integer $accepted_args See add_action().
 		 * @return  void
 		 */
 		public function add_action( $action, $method, $priority = 10, $accepted_args = 1 ) {
@@ -261,7 +261,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 * @since   5.9.0
 		 *
 		 * @param   array $args {
-		 *      @type bool $uploader Whether or not to enqueue uploader scripts.
+		 * @type bool $uploader Whether or not to enqueue uploader scripts.
 		 * }
 		 * @return  void
 		 */

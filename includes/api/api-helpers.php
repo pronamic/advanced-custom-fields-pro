@@ -396,7 +396,7 @@ function acf_merge_atts( $atts, $extra = array() ) {
  * @param string $nonce The nonce parameter string.
  */
 function acf_nonce_input( $nonce = '' ) {
-	echo '<input type="hidden" name="_acf_nonce" value="' . wp_create_nonce( $nonce ) . '" />';
+	echo '<input type="hidden" name="_acf_nonce" value="' . esc_attr( wp_create_nonce( $nonce ) ) . '" />';
 }
 
 /**
@@ -1411,7 +1411,6 @@ function acf_get_post_title( $post = 0, $is_search = false ) {
 		// get ancestors
 		$ancestors = get_ancestors( $post->ID, $post->post_type );
 		$prepend  .= str_repeat( '- ', count( $ancestors ) );
-
 	}
 
 	// merge
@@ -1672,62 +1671,42 @@ function acf_str_exists( $needle, $haystack ) {
 }
 
 /**
- * acf_debug
+ * A legacy function designed for developer debugging.
  *
- * description
+ * @deprecated 6.2.6 Removed for security, but keeping the definition in case third party devs have it in their code.
+ * @since 5.0.0
  *
- * @since   5.0.0
- *
- * @param   $post_id (int)
- * @return  $post_id (int)
+ * @return false
  */
 function acf_debug() {
-
-	// vars
-	$args = func_get_args();
-	$s    = array_shift( $args );
-	$o    = '';
-	$nl   = "\r\n";
-
-	// start script
-	$o .= '<script type="text/javascript">' . $nl;
-
-	$o .= 'console.log("' . $s . '"';
-
-	if ( ! empty( $args ) ) {
-		foreach ( $args as $arg ) {
-			if ( is_object( $arg ) || is_array( $arg ) ) {
-				$arg = json_encode( $arg );
-			} elseif ( is_bool( $arg ) ) {
-				$arg = $arg ? 'true' : 'false';
-			} elseif ( is_string( $arg ) ) {
-				$arg = '"' . $arg . '"';
-			}
-
-			$o .= ', ' . $arg;
-		}
-	}
-
-	$o .= ');' . $nl;
-
-	// end script
-	$o .= '</script>' . $nl;
-
-	// echo
-	echo $o;
+	_deprecated_function( __FUNCTION__, '6.2.7' );
+	return false;
 }
 
+/**
+ * A legacy function designed for developer debugging.
+ *
+ * @deprecated 6.2.6 Removed for security, but keeping the definition in case third party devs have it in their code.
+ * @since 5.0.0
+ *
+ * @return false
+ */
 function acf_debug_start() {
-
-	acf_update_setting( 'debug_start', memory_get_usage() );
+	_deprecated_function( __FUNCTION__, '6.2.7' );
+	return false;
 }
 
+/**
+ * A legacy function designed for developer debugging.
+ *
+ * @deprecated 6.2.6 Removed for security, but keeping the definition in case third party devs have it in their code.
+ * @since 5.0.0
+ *
+ * @return false
+ */
 function acf_debug_end() {
-
-	$start = acf_get_setting( 'debug_start' );
-	$end   = memory_get_usage();
-
-	return $end - $start;
+	_deprecated_function( __FUNCTION__, '6.2.7' );
+	return false;
 }
 
 /**
@@ -2328,6 +2307,10 @@ function acf_isset_termmeta( $taxonomy = '' ) {
  * @param array $ancestors An internal parameter, not required.
  */
 function acf_upload_files( $ancestors = array() ) {
+
+	if ( empty( $_FILES['acf'] ) ) {
+		return;
+	}
 
 	$file = acf_sanitize_files_array( $_FILES['acf'] ); // phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified upstream.
 
@@ -3305,17 +3288,14 @@ function acf_format_date( $value, $format ) {
 }
 
 /**
- * acf_clear_log
+ * Previously, deletes the debug.log file.
  *
- * Deletes the debug.log file.
- *
- * @since   5.7.10
- *
- * @param   type $var Description. Default.
- * @return  type Description.
+ * @since      5.7.10
+ * @deprecated 6.2.7
  */
 function acf_clear_log() {
-	unlink( WP_CONTENT_DIR . '/debug.log' );
+	_deprecated_function( __FUNCTION__, '6.2.7' );
+	return false;
 }
 
 /**

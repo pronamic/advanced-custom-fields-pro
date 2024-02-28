@@ -1,3 +1,11 @@
+<?php
+/**
+ * The empty list state for an ACF taxonomy.
+ *
+ * @package ACF
+ */
+
+?>
 <script>document.body.classList.add('acf-no-taxonomies');</script>
 <div class="acf-no-taxonomies-wrapper">
 	<div class="acf-no-taxonomies-inner">
@@ -7,10 +15,12 @@
 		<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=acf-taxonomy' ) ); ?>" class="acf-btn"><i class="acf-icon acf-icon-plus"></i> <?php esc_html_e( 'Add Taxonomy', 'acf' ); ?></a>
 		<p class="acf-small">
 			<?php
-			printf(
+			echo acf_esc_html(
+				sprintf(
 				/* translators: %s url to getting started guide */
-				__( 'New to ACF? Take a look at our <a href="%s" target="_blank">getting started guide</a>.', 'acf' ),
-				acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/getting-started-with-acf/', 'docs', 'no-taxonomies' )
+					__( 'New to ACF? Take a look at our <a href="%s" target="_blank">getting started guide</a>.', 'acf' ),
+					acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/getting-started-with-acf/', 'docs', 'no-taxonomies' )
+				)
 			);
 			?>
 		</p>

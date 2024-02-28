@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 	class acf_field_date_picker extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -35,18 +33,16 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		}
 
 
-		/*
-		*  input_admin_enqueue_scripts
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    16/12/2015
-		*  @since   5.3.2
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    16/12/2015
+		 * @since   5.3.2
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function input_admin_enqueue_scripts() {
 
@@ -82,17 +78,15 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
+		/**
+		 * Create the HTML interface for your field
+		 *
+		 * @param   $field - an array holding all the field's data
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 */
 
 		function render_field( $field ) {
 
@@ -153,18 +147,16 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field  - an array holding all the field's data
-		*/
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field  - an array holding all the field's data
+		 */
 		function render_field_settings( $field ) {
 			global $wp_locale;
 
@@ -238,21 +230,19 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			);
 		}
 
-		/*
-		*  format_value()
-		*
-		*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value (mixed) the value which was loaded from the database
-		*  @param   $post_id (mixed) the $post_id from which the value was loaded
-		*  @param   $field (array) the field array holding all the field options
-		*
-		*  @return  $value (mixed) the modified value
-		*/
+		/**
+		 * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value (mixed) the value which was loaded from the database
+		 * @param   $post_id (mixed) the post_id from which the value was loaded
+		 * @param   $field (array) the field array holding all the field options
+		 *
+		 * @return  $value (mixed) the modified value
+		 */
 
 		function format_value( $value, $post_id, $field ) {
 
@@ -267,18 +257,17 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 
 		/**
-		 *  This filter is applied to the $field after it is loaded from the database
-		 *  and ensures the return and display values are set.
+		 * This filter is applied to the $field after it is loaded from the database
+		 * and ensures the return and display values are set.
 		 *
-		 *  @type    filter
-		 *  @since   5.11.0
-		 *  @date    28/09/21
+		 * @type    filter
+		 * @since   5.11.0
+		 * @date    28/09/21
 		 *
-		 *  @param array $field The field array holding all the field options.
-		 *
-		 *  @return array
+		 * @param  array $field The field array holding all the field options.
+		 * @return array
 		 */
-		function load_field( $field ) {
+		public function load_field( $field ) {
 			if ( empty( $field['display_format'] ) ) {
 				$field['display_format'] = $this->defaults['display_format'];
 			}
@@ -293,7 +282,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		/**
 		 * Return the schema array for the REST API.
 		 *
-		 * @param array $field
+		 * @param  array $field The field array
 		 * @return array
 		 */
 		public function get_rest_schema( array $field ) {
@@ -307,9 +296,9 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param mixed          $value
+		 * @param string|integer $post_id
+		 * @param array          $field
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

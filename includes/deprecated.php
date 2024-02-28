@@ -58,16 +58,14 @@ function acf_render_field_wrap_description( $field ) {
 	acf_render_field_instructions( $field );
 }
 
-/*
- * acf_get_fields_by_id
- *
+/**
  * Returns and array of fields for the given $parent_id.
  *
  * @date    27/02/2014
  * @since   5.0.0.
  * @deprecated  5.7.11
  *
- * @param   int $parent_id The parent ID.
+ * @param   integer $parent_id The parent ID.
  * @return  array
  */
 function acf_get_fields_by_id( $parent_id = 0 ) {
@@ -93,10 +91,10 @@ function acf_get_fields_by_id( $parent_id = 0 ) {
  * @since   5.0.0
  * @deprecated  5.7.11
  *
- * @param   string $option The option name.
- * @param   string $value The option value.
+ * @param   string $option   The option name.
+ * @param   string $value    The option value.
  * @param   string $autoload An optional autoload value.
- * @return  bool
+ * @return  boolean
  */
 function acf_update_option( $option = '', $value = '', $autoload = null ) {
 

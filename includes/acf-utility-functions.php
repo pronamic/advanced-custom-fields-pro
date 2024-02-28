@@ -89,7 +89,7 @@ function acf_get_store( $name = '' ) {
  * @date    13/2/19
  * @since   5.7.11
  *
- * @param   int                           $site_id New blog ID.
+ * @param   integer                       $site_id New blog ID.
  * @param   int prev_blog_id Prev blog ID.
  * @return  void
  */
@@ -137,9 +137,7 @@ function acf_get_url( $filename = '' ) {
 	return ACF_URL . ltrim( $filename, '/' );
 }
 
-/*
- * acf_include
- *
+/**
  * Includes a file within the ACF plugin.
  *
  * @date    10/3/14

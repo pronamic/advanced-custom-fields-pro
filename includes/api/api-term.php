@@ -1,17 +1,14 @@
 <?php
 
-/*
-*  acf_get_taxonomies
-*
-*  Returns an array of taxonomy names.
-*
-*  @date    7/10/13
-*  @since   5.0.0
-*
-*  @param   array $args An array of args used in the get_taxonomies() function.
-*  @return  array An array of taxonomy names.
-*/
-
+/**
+ * Returns an array of taxonomy names.
+ *
+ * @date    7/10/13
+ * @since   5.0.0
+ *
+ * @param   array $args An array of args used in the get_taxonomies() function.
+ * @return  array An array of taxonomy names.
+ */
 function acf_get_taxonomies( $args = array() ) {
 
 	// vars
@@ -46,15 +43,15 @@ function acf_get_taxonomies( $args = array() ) {
 }
 
 /**
- *  acf_get_taxonomies_for_post_type
+ * acf_get_taxonomies_for_post_type
  *
- *  Returns an array of taxonomies for a given post type(s)
+ * Returns an array of taxonomies for a given post type(s)
  *
- *  @date    7/9/18
- *  @since   5.7.5
+ * @date    7/9/18
+ * @since   5.7.5
  *
- *  @param   string|array $post_types The post types to compare against.
- *  @return  array
+ * @param   string|array $post_types The post types to compare against.
+ * @return  array
  */
 function acf_get_taxonomies_for_post_type( $post_types = 'post' ) {
 
@@ -76,18 +73,15 @@ function acf_get_taxonomies_for_post_type( $post_types = 'post' ) {
 	return $taxonomies;
 }
 
-/*
-*  acf_get_taxonomy_labels
-*
-*  Returns an array of taxonomies in the format "name => label" for use in a select field.
-*
-*  @date    3/8/18
-*  @since   5.7.2
-*
-*  @param   array $taxonomies Optional. An array of specific taxonomies to return.
-*  @return  array
-*/
-
+/**
+ * Returns an array of taxonomies in the format "name => label" for use in a select field.
+ *
+ * @date    3/8/18
+ * @since   5.7.2
+ *
+ * @param   array $taxonomies Optional. An array of specific taxonomies to return.
+ * @return  array
+ */
 function acf_get_taxonomy_labels( $taxonomies = array() ) {
 
 	// default
@@ -128,17 +122,16 @@ function acf_get_taxonomy_labels( $taxonomies = array() ) {
 }
 
 /**
- *  acf_get_term_title
+ * acf_get_term_title
  *
- *  Returns the title for this term object.
+ * Returns the title for this term object.
  *
- *  @date    10/9/18
- *  @since   5.0.0
+ * @date    10/9/18
+ * @since   5.0.0
  *
- *  @param   object $term The WP_Term object.
- *  @return  string
+ * @param   object $term The WP_Term object.
+ * @return  string
  */
-
 function acf_get_term_title( $term ) {
 	$title = $term->name;
 
@@ -157,17 +150,16 @@ function acf_get_term_title( $term ) {
 }
 
 /**
- *  acf_get_grouped_terms
+ * acf_get_grouped_terms
  *
- *  Returns an array of terms for the given query $args and groups by taxonomy name.
+ * Returns an array of terms for the given query $args and groups by taxonomy name.
  *
- *  @date    2/8/18
- *  @since   5.7.2
+ * @date    2/8/18
+ * @since   5.7.2
  *
- *  @param   array $args An array of args used in the get_terms() function.
- *  @return  array
+ * @param   array $args An array of args used in the get_terms() function.
+ * @return  array
  */
-
 function acf_get_grouped_terms( $args ) {
 
 	// vars
@@ -274,19 +266,18 @@ function acf_get_grouped_terms( $args ) {
 }
 
 /**
- *  _acf_terms_clauses
+ * _acf_terms_clauses
  *
- *  Used in the 'terms_clauses' filter to order terms by taxonomy name.
+ * Used in the 'terms_clauses' filter to order terms by taxonomy name.
  *
- *  @date    2/8/18
- *  @since   5.7.2
+ * @date    2/8/18
+ * @since   5.7.2
  *
- *  @param   array $pieces     Terms query SQL clauses.
- *  @param   array $taxonomies An array of taxonomies.
- *  @param   array $args       An array of terms query arguments.
- *  @return  array $pieces
+ * @param   array $pieces     Terms query SQL clauses.
+ * @param   array $taxonomies An array of taxonomies.
+ * @param   array $args       An array of terms query arguments.
+ * @return  array $pieces
  */
-
 function _acf_terms_clauses( $pieces, $taxonomies, $args ) {
 
 	// prepend taxonomy to 'orderby' SQL
@@ -300,32 +291,30 @@ function _acf_terms_clauses( $pieces, $taxonomies, $args ) {
 }
 
 /**
- *  acf_get_pretty_taxonomies
+ * acf_get_pretty_taxonomies
  *
- *  Deprecated in favor of acf_get_taxonomy_labels() function.
+ * Deprecated in favor of acf_get_taxonomy_labels() function.
  *
- *  @date        7/10/13
- *  @since       5.0.0
- *  @deprecated  5.7.2
+ * @date        7/10/13
+ * @since       5.0.0
+ * @deprecated  5.7.2
  */
-
 function acf_get_pretty_taxonomies( $taxonomies = array() ) {
 	return acf_get_taxonomy_labels( $taxonomies );
 }
 
 /**
- *  acf_get_term
+ * acf_get_term
  *
- *  Similar to get_term() but with some extra functionality.
+ * Similar to get_term() but with some extra functionality.
  *
- *  @date    19/8/18
- *  @since   5.7.3
+ * @date    19/8/18
+ * @since   5.7.3
  *
- *  @param   mixed  $term_id The term ID or a string of "taxonomy:slug".
- *  @param   string $taxonomy The taxonomyname.
- *  @return  WP_Term
+ * @param   mixed  $term_id  The term ID or a string of "taxonomy:slug".
+ * @param   string $taxonomy The taxonomyname.
+ * @return  WP_Term
  */
-
 function acf_get_term( $term_id, $taxonomy = '' ) {
 
 	// allow $term_id parameter to be a string of "taxonomy:slug" or "taxonomy:id"
@@ -342,30 +331,30 @@ function acf_get_term( $term_id, $taxonomy = '' ) {
 }
 
 /**
- *  acf_encode_term
+ * acf_encode_term
  *
- *  Returns a "taxonomy:slug" string for a given WP_Term.
+ * Returns a "taxonomy:slug" string for a given WP_Term.
  *
- *  @date    27/8/18
- *  @since   5.7.4
+ * @date    27/8/18
+ * @since   5.7.4
  *
- *  @param   WP_Term $term The term object.
- *  @return  string
+ * @param   WP_Term $term The term object.
+ * @return  string
  */
 function acf_encode_term( $term ) {
 	return "{$term->taxonomy}:{$term->slug}";
 }
 
 /**
- *  acf_decode_term
+ * acf_decode_term
  *
- *  Decodes a "taxonomy:slug" string into an array of taxonomy and slug.
+ * Decodes a "taxonomy:slug" string into an array of taxonomy and slug.
  *
- *  @date    27/8/18
- *  @since   5.7.4
+ * @date    27/8/18
+ * @since   5.7.4
  *
- *  @param   WP_Term $term The term object.
- *  @return  string
+ * @param   WP_Term $term The term object.
+ * @return  string
  */
 function acf_decode_term( $string ) {
 	if ( is_string( $string ) && strpos( $string, ':' ) ) {
@@ -376,15 +365,15 @@ function acf_decode_term( $string ) {
 }
 
 /**
- *  acf_get_encoded_terms
+ * acf_get_encoded_terms
  *
- *  Returns an array of WP_Term objects from an array of encoded strings
+ * Returns an array of WP_Term objects from an array of encoded strings
  *
- *  @date    9/9/18
- *  @since   5.7.5
+ * @date    9/9/18
+ * @since   5.7.5
  *
- *  @param   array $values The array of encoded strings.
- *  @return  array
+ * @param   array $values The array of encoded strings.
+ * @return  array
  */
 function acf_get_encoded_terms( $values ) {
 
@@ -408,16 +397,16 @@ function acf_get_encoded_terms( $values ) {
 }
 
 /**
- *  acf_get_choices_from_terms
+ * acf_get_choices_from_terms
  *
- *  Returns an array of choices from the terms provided.
+ * Returns an array of choices from the terms provided.
  *
- *  @date    8/9/18
- *  @since   5.7.5
+ * @date    8/9/18
+ * @since   5.7.5
  *
- *  @param   array  $values and array of WP_Terms objects or encoded strings.
- *  @param   string $format The value format (term_id, slug).
- *  @return  array
+ * @param   array  $values and array of WP_Terms objects or encoded strings.
+ * @param   string $format The value format (term_id, slug).
+ * @return  array
  */
 function acf_get_choices_from_terms( $terms, $format = 'term_id' ) {
 
@@ -445,16 +434,16 @@ function acf_get_choices_from_terms( $terms, $format = 'term_id' ) {
 }
 
 /**
- *  acf_get_choices_from_grouped_terms
+ * acf_get_choices_from_grouped_terms
  *
- *  Returns an array of choices from the grouped terms provided.
+ * Returns an array of choices from the grouped terms provided.
  *
- *  @date    8/9/18
- *  @since   5.7.5
+ * @date    8/9/18
+ * @since   5.7.5
  *
- *  @param   array  $value A grouped array of WP_Terms objects.
- *  @param   string $format The value format (term_id, slug).
- *  @return  array
+ * @param   array  $value  A grouped array of WP_Terms objects.
+ * @param   string $format The value format (term_id, slug).
+ * @return  array
  */
 function acf_get_choices_from_grouped_terms( $value, $format = 'term_id' ) {
 
@@ -475,16 +464,16 @@ function acf_get_choices_from_grouped_terms( $value, $format = 'term_id' ) {
 }
 
 /**
- *  acf_get_choice_from_term
+ * acf_get_choice_from_term
  *
- *  Returns an array containing the id and text for this item.
+ * Returns an array containing the id and text for this item.
  *
- *  @date    10/9/18
- *  @since   5.7.6
+ * @date    10/9/18
+ * @since   5.7.6
  *
- *  @param   object $item The item object such as WP_Post or WP_Term.
- *  @param   string $format The value format (term_id, slug)
- *  @return  array
+ * @param   object $item   The item object such as WP_Post or WP_Term.
+ * @param   string $format The value format (term_id, slug)
+ * @return  array
  */
 function acf_get_choice_from_term( $term, $format = 'term_id' ) {
 

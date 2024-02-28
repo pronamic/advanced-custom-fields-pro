@@ -28,8 +28,8 @@ function acf_get_internal_post_type_instance( $post_type = 'acf-field-group' ) {
 /**
  * Get an ACF CPT object as an array
  *
- * @param int    $id        The post ID being queried.
- * @param string $post_type The post type being queried.
+ * @param integer $id        The post ID being queried.
+ * @param string  $post_type The post type being queried.
  * @return array|false The post type object.
  */
 function acf_get_internal_post_type( $id, $post_type ) {
@@ -47,8 +47,8 @@ function acf_get_internal_post_type( $id, $post_type ) {
  *
  * @since   6.1
  *
- * @param   int|string $id        The post ID.
- * @param   string     $post_type The post type name.
+ * @param   integer|string $id        The post ID.
+ * @param   string         $post_type The post type name.
  * @return  array|false The internal post type array.
  */
 function acf_get_raw_internal_post_type( $id, $post_type ) {
@@ -66,9 +66,9 @@ function acf_get_raw_internal_post_type( $id, $post_type ) {
  *
  * @since 6.1
  *
- * @param int|string $id        The post ID, key, or name.
- * @param string     $post_type The post type name.
- * @return object|bool The post object, or false on failure.
+ * @param integer|string $id        The post ID, key, or name.
+ * @param string         $post_type The post type name.
+ * @return object|boolean The post object, or false on failure.
  */
 function acf_get_internal_post_type_post( $id, $post_type ) {
 	$instance = acf_get_internal_post_type_instance( $post_type );
@@ -87,7 +87,7 @@ function acf_get_internal_post_type_post( $id, $post_type ) {
  *
  * @param string $id        The identifier.
  * @param string $post_type The ACF post type the key is for.
- * @return bool
+ * @return boolean
  */
 function acf_is_internal_post_type_key( $id = '', $post_type = 'acf-field-group' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type );
@@ -105,7 +105,7 @@ function acf_is_internal_post_type_key( $id = '', $post_type = 'acf-field-group'
  *
  * @param array  $internal_post_type The internal post type array.
  * @param string $post_type_name     The post type name.
- * @return array|bool
+ * @return array|boolean
  */
 function acf_validate_internal_post_type( $internal_post_type, $post_type_name ) {
 	$instance = acf_get_internal_post_type_instance( $post_type_name );
@@ -237,9 +237,9 @@ function acf_flush_internal_post_type_cache( $post, $post_type ) {
  *
  * @since 6.1
  *
- * @param int|string $id             The internal post type ID, key or name.
- * @param string     $post_type_name The post type to be deleted.
- * @return bool True if field group was deleted.
+ * @param integer|string $id             The internal post type ID, key or name.
+ * @param string         $post_type_name The post type to be deleted.
+ * @return boolean True if field group was deleted.
  */
 function acf_delete_internal_post_type( $id = 0, $post_type_name = '' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type_name );
@@ -256,9 +256,9 @@ function acf_delete_internal_post_type( $id = 0, $post_type_name = '' ) {
  *
  * @since 6.1
  *
- * @param int|string $id             The internal post type ID, key, or name.
- * @param string     $post_type_name The post type being trashed.
- * @return bool True if post was trashed.
+ * @param integer|string $id             The internal post type ID, key, or name.
+ * @param string         $post_type_name The post type being trashed.
+ * @return boolean True if post was trashed.
  */
 function acf_trash_internal_post_type( $id = 0, $post_type_name = '' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type_name );
@@ -275,9 +275,9 @@ function acf_trash_internal_post_type( $id = 0, $post_type_name = '' ) {
  *
  * @since 6.1
  *
- * @param int|string $id             The internal post type ID, key, or name.
- * @param string     $post_type_name The post type being untrashed.
- * @return bool True if post was untrashed.
+ * @param integer|string $id             The internal post type ID, key, or name.
+ * @param string         $post_type_name The post type being untrashed.
+ * @return boolean True if post was untrashed.
  */
 function acf_untrash_internal_post_type( $id = 0, $post_type_name = '' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type_name );
@@ -296,7 +296,7 @@ function acf_untrash_internal_post_type( $id = 0, $post_type_name = '' ) {
  *
  * @param array  $post      The ACF post array.
  * @param string $post_type The ACF post type.
- * @return bool
+ * @return boolean
  */
 function acf_is_internal_post_type( $post, $post_type ) {
 	$instance = acf_get_internal_post_type_instance( $post_type );
@@ -313,10 +313,10 @@ function acf_is_internal_post_type( $post, $post_type ) {
  *
  * @since 6.1
  *
- * @param int|string $id          The field_group ID, key or name.
- * @param int        $new_post_id Optional ID to override.
- * @param string     $post_type   The post type of the post being duplicated.
- * @return array|bool The new ACF post, or false on failure.
+ * @param integer|string $id          The field_group ID, key or name.
+ * @param integer        $new_post_id Optional ID to override.
+ * @param string         $post_type   The post type of the post being duplicated.
+ * @return array|boolean The new ACF post, or false on failure.
  */
 function acf_duplicate_internal_post_type( $id = 0, $new_post_id = 0, $post_type = 'acf-field-group' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type );
@@ -331,10 +331,10 @@ function acf_duplicate_internal_post_type( $id = 0, $new_post_id = 0, $post_type
 /**
  * Activates or deactivates an ACF post.
  *
- * @param int|string $id        The field_group ID, key or name.
- * @param bool       $activate  True if the post should be activated.
- * @param string     $post_type The post type being activated/deactivated.
- * @return bool
+ * @param integer|string $id        The field_group ID, key or name.
+ * @param boolean        $activate  True if the post should be activated.
+ * @param string         $post_type The post type being activated/deactivated.
+ * @return boolean
  */
 function acf_update_internal_post_type_active_status( $id, $activate = true, $post_type = 'acf-field-group' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type );
@@ -351,8 +351,8 @@ function acf_update_internal_post_type_active_status( $id, $activate = true, $po
  *
  * @since 6.1
  *
- * @param int    $post_id   The ACF post ID.
- * @param string $post_type The ACF post type to get the edit link for.
+ * @param integer $post_id   The ACF post ID.
+ * @param string  $post_type The ACF post type to get the edit link for.
  * @return string
  */
 function acf_get_internal_post_type_edit_link( $post_id, $post_type ) {
@@ -391,7 +391,7 @@ function acf_prepare_internal_post_type_for_export( $post = array(), $post_type 
  *
  * @param array  $post      The ACF post array.
  * @param string $post_type The post type of the ACF post being exported.
- * @return string|bool
+ * @return string|boolean
  */
 function acf_export_internal_post_type_as_php( $post, $post_type = 'acf-field-group' ) {
 	$instance = acf_get_internal_post_type_instance( $post_type );
@@ -445,7 +445,7 @@ function acf_import_internal_post_type( $post, $post_type ) {
  * Tries to determine the ACF post type for the provided key.
  *
  * @param string $key The key to check.
- * @return string|bool
+ * @return string|boolean
  */
 function acf_determine_internal_post_type( $key ) {
 	$store      = acf_get_store( 'internal-post-types' );
@@ -623,7 +623,7 @@ function acf_add_internal_post_type_validation_error( $name, $message = '', $pos
  * @since 6.1.5
  *
  * @param string $action The action being performed.
- * @return array|bool
+ * @return array|boolean
  */
 function acf_get_post_type_from_request_args( $action = '' ) {
 	$acf_use_post_type = (int) acf_request_arg( 'use_post_type', 0 );
@@ -641,7 +641,7 @@ function acf_get_post_type_from_request_args( $action = '' ) {
  * @since 6.1.5
  *
  * @param string $action The action being performed.
- * @return array|bool
+ * @return array|boolean
  */
 function acf_get_taxonomy_from_request_args( $action = '' ) {
 	$acf_use_taxonomy = (int) acf_request_arg( 'use_taxonomy', 0 );
@@ -659,7 +659,7 @@ function acf_get_taxonomy_from_request_args( $action = '' ) {
  * @since 6.2
  *
  * @param string $action The action being performed.
- * @return array|bool
+ * @return array|boolean
  */
 function acf_get_ui_options_page_from_request_args( $action = '' ) {
 	$acf_use_options_page = (int) acf_request_arg( 'use_options_page', 0 );

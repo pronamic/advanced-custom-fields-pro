@@ -52,9 +52,7 @@ if ( ! function_exists( 'determine_locale' ) ) :
 	}
 endif;
 
-/*
- * acf_get_locale
- *
+/**
  * Returns the current locale.
  *
  * @date    16/12/16

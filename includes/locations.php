@@ -22,8 +22,9 @@ function acf_register_location_type( $class_name ) {
 
 	// Check class exists.
 	if ( ! class_exists( $class_name ) ) {
+		/* translators: %s class name for a location that could not be found */
 		$message = sprintf( __( 'Class "%s" does not exist.', 'acf' ), $class_name );
-		_doing_it_wrong( __FUNCTION__, $message, '5.9.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html( $message ), '5.9.0' );
 		return false;
 	}
 
@@ -33,8 +34,9 @@ function acf_register_location_type( $class_name ) {
 
 	// Check location type is unique.
 	if ( $store->has( $name ) ) {
+		/* translators: %s the name of the location type */
 		$message = sprintf( __( 'Location type "%s" is already registered.', 'acf' ), $name );
-		_doing_it_wrong( __FUNCTION__, $message, '5.9.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html( $message ), '5.9.0' );
 		return false;
 	}
 
@@ -238,10 +240,10 @@ function acf_get_location_rule_values( $rule ) {
  * @date    30/5/17
  * @since   5.6.0
  *
- * @param   array $rule The location rule.
+ * @param   array $rule   The location rule.
  * @param   array $screen The screen args.
- * @param   array $field The field group array.
- * @return  bool
+ * @param   array $field  The field group array.
+ * @return  boolean
  */
 function acf_match_location_rule( $rule, $screen, $field_group ) {
 	$result = false;
@@ -276,7 +278,7 @@ function acf_match_location_rule( $rule, $screen, $field_group ) {
  * @date    8/4/20
  * @since   5.9.0
  *
- * @param   array $screen The screen args.
+ * @param   array $screen     The screen args.
  * @param   array $deprecated The field group array.
  * @return  array
  */

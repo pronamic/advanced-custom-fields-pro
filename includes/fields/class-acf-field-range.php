@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 	class acf_field_range extends acf_field_number {
 
 
-		/*
-		*  initialize
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -37,17 +35,15 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
+		/**
+		 * Create the HTML interface for your field
+		 *
+		 * @param   $field - an array holding all the field's data
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 */
 
 		function render_field( $field ) {
 
@@ -55,7 +51,6 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 			$atts  = array();
 			$keys  = array( 'type', 'id', 'class', 'name', 'value', 'min', 'max', 'step' );
 			$keys2 = array( 'readonly', 'disabled', 'required' );
-			$html  = '';
 
 			// step
 			if ( ! $field['step'] ) {
@@ -97,7 +92,7 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 			$atts = acf_clean_atts( $atts );
 
 			// open
-			$html .= '<div class="acf-range-wrap">';
+			$html = '<div class="acf-range-wrap">';
 
 			// prepend
 			if ( $field['prepend'] !== '' ) {
@@ -139,22 +134,20 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 			$html .= '</div>';
 
 			// return
-			echo $html;
+			echo $html; //phpcs:ignore WordPress.Security.EscapeOutput -- Only populated with already escaped HTML.
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field  - an array holding all the field's data
-		*/
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field  - an array holding all the field's data
+		 */
 
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
@@ -266,9 +259,9 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param mixed          $value
+		 * @param string|integer $post_id
+		 * @param array          $field
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

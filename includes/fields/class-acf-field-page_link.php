@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 	class acf_field_page_link extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -41,18 +39,16 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  ajax_query
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    24/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    24/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function ajax_query() {
 
@@ -216,19 +212,17 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  get_post_result
-		*
-		*  This function will return an array containing id, text and maybe description data
-		*
-		*  @type    function
-		*  @date    7/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $id (mixed)
-		*  @param   $text (string)
-		*  @return  (array)
-		*/
+		/**
+		 * This function will return an array containing id, text and maybe description data
+		 *
+		 * @type    function
+		 * @date    7/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $id (mixed)
+		 * @param   $text (string)
+		 * @return  (array)
+		 */
 
 		function get_post_result( $id, $text ) {
 
@@ -252,20 +246,18 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  get_post_title
-		*
-		*  This function returns the HTML for a result
-		*
-		*  @type    function
-		*  @date    1/11/2013
-		*  @since   5.0.0
-		*
-		*  @param   $post (object)
-		*  @param   $field (array)
-		*  @param   $post_id (int) the post_id to which this value is saved to
-		*  @return  (string)
-		*/
+		/**
+		 * This function returns the HTML for a result
+		 *
+		 * @type    function
+		 * @date    1/11/2013
+		 * @since   5.0.0
+		 *
+		 * @param   $post (object)
+		 * @param   $field (array)
+		 * @param   $post_id (int) the post_id to which this value is saved to
+		 * @return  (string)
+		 */
 
 		function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
 
@@ -287,18 +279,16 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  get_posts
-		*
-		*  This function will return an array of posts for a given field value
-		*
-		*  @type    function
-		*  @date    13/06/2014
-		*  @since   5.0.0
-		*
-		*  @param   $value (array)
-		*  @return  $value
-		*/
+		/**
+		 * This function will return an array of posts for a given field value
+		 *
+		 * @type    function
+		 * @date    13/06/2014
+		 * @since   5.0.0
+		 *
+		 * @param   $value (array)
+		 * @return  $value
+		 */
 
 		function get_posts( $value, $field ) {
 
@@ -353,17 +343,15 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
+		/**
+		 * Create the HTML interface for your field
+		 *
+		 * @param   $field - an array holding all the field's data
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 */
 
 		function render_field( $field ) {
 
@@ -404,18 +392,16 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field  - an array holding all the field's data
-		*/
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field  - an array holding all the field's data
+		 */
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,
@@ -506,21 +492,19 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 			);
 		}
 
-		/*
-		*  format_value()
-		*
-		*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value (mixed) the value which was loaded from the database
-		*  @param   $post_id (mixed) the $post_id from which the value was loaded
-		*  @param   $field (array) the field array holding all the field options
-		*
-		*  @return  $value (mixed) the modified value
-		*/
+		/**
+		 * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value (mixed) the value which was loaded from the database
+		 * @param   $post_id (mixed) the post_id from which the value was loaded
+		 * @param   $field (array) the field array holding all the field options
+		 *
+		 * @return  $value (mixed) the modified value
+		 */
 
 		function format_value( $value, $post_id, $field ) {
 
@@ -562,21 +546,19 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 
-		/*
-		*  update_value()
-		*
-		*  This filter is appied to the $value before it is updated in the db
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value - the value which will be saved in the database
-		*  @param   $post_id - the $post_id of which the value will be saved
-		*  @param   $field - the field array holding all the field options
-		*
-		*  @return  $value - the modified value
-		*/
+		/**
+		 * This filter is appied to the $value before it is updated in the db
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value - the value which will be saved in the database
+		 * @param   $post_id - the post_id of which the value will be saved
+		 * @param   $field - the field array holding all the field options
+		 *
+		 * @return  $value - the modified value
+		 */
 
 		function update_value( $value, $post_id, $field ) {
 
@@ -604,11 +586,10 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		/**
 		 * Validates page link fields updated via the REST API.
 		 *
-		 * @param bool  $valid
-		 * @param int   $value
-		 * @param array $field
-		 *
-		 * @return bool|WP_Error
+		 * @param  boolean $valid The current validity booleean
+		 * @param  integer $value The value of the field
+		 * @param  array   $field The field array
+		 * @return boolean|WP_Error
 		 */
 		public function validate_rest_value( $valid, $value, $field ) {
 			return acf_get_field_type( 'post_object' )->validate_rest_value( $valid, $value, $field );
@@ -647,9 +628,9 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 
 		/**
 		 * @see \acf_field::get_rest_links()
-		 * @param mixed      $value The raw (unformatted) field value.
-		 * @param int|string $post_id
-		 * @param array      $field
+		 * @param mixed          $value   The raw (unformatted) field value.
+		 * @param integer|string $post_id
+		 * @param array          $field
 		 * @return array
 		 */
 		public function get_rest_links( $value, $post_id, array $field ) {
@@ -677,9 +658,9 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param mixed          $value
+		 * @param string|integer $post_id
+		 * @param array          $field
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

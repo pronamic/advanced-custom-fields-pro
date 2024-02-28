@@ -86,11 +86,10 @@ function acf_esc_html( $string = '' ) {
  * @date    16/4/21
  * @since   5.9.6
  *
- * @param   array  $tags An array of allowed tags.
+ * @param   array  $tags    An array of allowed tags.
  * @param   string $context The context name.
  * @return  array.
  */
-
 function _acf_kses_allowed_html( $tags, $context ) {
 	global $allowedposttags;
 
@@ -129,7 +128,7 @@ add_filter( 'wp_kses_allowed_html', '_acf_kses_allowed_html', 0, 2 );
  * @return  string
  */
 function acf_hidden_input( $attrs = array() ) {
-	echo acf_get_hidden_input( $attrs );
+	echo acf_get_hidden_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -159,7 +158,7 @@ function acf_get_hidden_input( $attrs = array() ) {
  * @return  string
  */
 function acf_text_input( $attrs = array() ) {
-	echo acf_get_text_input( $attrs );
+	echo acf_get_text_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -198,7 +197,7 @@ function acf_get_text_input( $attrs = array() ) {
  * @return  string
  */
 function acf_file_input( $attrs = array() ) {
-	echo acf_get_file_input( $attrs );
+	echo acf_get_file_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -263,7 +262,7 @@ function acf_get_file_input( $attrs = array() ) {
  * @return  string
  */
 function acf_textarea_input( $attrs = array() ) {
-	echo acf_get_textarea_input( $attrs );
+	echo acf_get_textarea_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -298,7 +297,7 @@ function acf_get_textarea_input( $attrs = array() ) {
  * @return  string
  */
 function acf_checkbox_input( $attrs = array() ) {
-	echo acf_get_checkbox_input( $attrs );
+	echo acf_get_checkbox_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -331,7 +330,7 @@ function acf_get_checkbox_input( $attrs = array() ) {
 
 	// Render.
 	$checked = isset( $attrs['checked'] );
-	return '<label' . ( $checked ? ' class="selected"' : '' ) . '><input ' . acf_esc_attr( $attrs ) . '/> ' . acf_esc_html( $label ) . '</label>';
+	return '<label' . ( $checked ? ' class="selected"' : '' ) . '><input ' . acf_esc_attrs( $attrs ) . '/> ' . acf_esc_html( $label ) . '</label>';
 }
 
 /**
@@ -346,7 +345,7 @@ function acf_get_checkbox_input( $attrs = array() ) {
  * @return  string
  */
 function acf_radio_input( $attrs = array() ) {
-	echo acf_get_radio_input( $attrs );
+	echo acf_get_radio_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -377,7 +376,7 @@ function acf_get_radio_input( $attrs = array() ) {
  * @return  string
  */
 function acf_select_input( $attrs = array() ) {
-	echo acf_get_select_input( $attrs );
+	echo acf_get_select_input( $attrs ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by input generation function.
 }
 
 /**
@@ -410,8 +409,8 @@ function acf_get_select_input( $attrs = array() ) {
  * @since   5.6.0
  *
  * @param   array $choices The choices to walk through.
- * @param   array $values The selected choices.
- * @param   array $depth The current walk depth.
+ * @param   array $values  The selected choices.
+ * @param   array $depth   The current walk depth.
  * @return  string
  */
 function acf_walk_select_input( $choices = array(), $values = array(), $depth = 0 ) {
@@ -446,7 +445,7 @@ function acf_walk_select_input( $choices = array(), $values = array(), $depth = 
 					$attrs['selected'] = 'selected';
 					$attrs['data-i']   = $pos;
 				}
-				$html .= sprintf( '<option %s>%s</option>', acf_esc_attr( $attrs ), esc_html( $label ) );
+				$html .= sprintf( '<option %s>%s</option>', acf_esc_attrs( $attrs ), esc_html( $label ) );
 			}
 		}
 	}
@@ -486,11 +485,10 @@ function acf_esc_atts( $attrs ) {
 /**
  * acf_esc_attr
  *
- * See acf_esc_attrs().
- *
  * @date    13/6/19
  * @since   5.8.1
  * @deprecated  5.6.0
+ * @see acf_esc_attrs().
  *
  * @param   array $attrs The array of attrs.
  * @return  string
@@ -509,7 +507,6 @@ function acf_esc_attr( $attrs ) {
  * @deprecated  5.6.0
  *
  * @param   array $attrs The array of attrs.
- * @return  string
  */
 function acf_esc_attr_e( $attrs ) {
 	echo acf_esc_attrs( $attrs );
@@ -525,7 +522,6 @@ function acf_esc_attr_e( $attrs ) {
  * @deprecated  5.6.0
  *
  * @param   array $attrs The array of attrs.
- * @return  string
  */
 function acf_esc_atts_e( $attrs ) {
 	echo acf_esc_attrs( $attrs );

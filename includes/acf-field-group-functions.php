@@ -54,7 +54,7 @@ function acf_get_field_group_post( $id = 0 ) {
  * @since   5.0.0
  *
  * @param   string $id The identifier.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_field_group_key( $id = '' ) {
 	return acf_is_internal_post_type_key( $id, 'acf-field-group' );
@@ -142,7 +142,7 @@ function acf_get_raw_field_groups() {
  * @since   5.0.0
  *
  * @param   array $field_groups An array of field groups.
- * @param   array $args An array of location args.
+ * @param   array $args         An array of location args.
  * @return  array
  */
 function acf_filter_field_groups( $field_groups, $args = array() ) {
@@ -158,8 +158,8 @@ function acf_filter_field_groups( $field_groups, $args = array() ) {
  * @since   5.0.0
  *
  * @param   array $field_groups An array of field groups.
- * @param   array $args An array of location args.
- * @return  bool
+ * @param   array $args         An array of location args.
+ * @return  boolean
  */
 function acf_get_field_group_visibility( $field_group, $args = array() ) {
 
@@ -225,12 +225,12 @@ function acf_update_field_group( $field_group ) {
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param string $slug          The post slug.
- * @param int    $post_ID       Post ID.
- * @param string $post_status   The post status.
- * @param string $post_type     Post type.
- * @param int    $post_parent   Post parent ID
- * @param string $original_slug The original post slug.
+ * @param string  $slug          The post slug.
+ * @param integer $post_ID       Post ID.
+ * @param string  $post_status   The post status.
+ * @param string  $post_type     Post type.
+ * @param integer $post_parent   Post parent ID
+ * @param string  $original_slug The original post slug.
  */
 function _acf_apply_unique_field_group_slug( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
 
@@ -267,7 +267,7 @@ function acf_flush_field_group_cache( $field_group ) {
  * @since   5.7.10
  *
  * @param   (int|string) $id The field group ID, key or name.
- * @return  bool True if field group was deleted.
+ * @return  boolean True if field group was deleted.
  */
 function acf_delete_field_group( $id = 0 ) {
 	return acf_delete_internal_post_type( $id, 'acf-field-group' );
@@ -282,7 +282,7 @@ function acf_delete_field_group( $id = 0 ) {
  * @since   5.0.0
  *
  * @param   (int|string) $id The field group ID, key or name.
- * @return  bool True if field group was trashed.
+ * @return  boolean True if field group was trashed.
  */
 function acf_trash_field_group( $id = 0 ) {
 	return acf_trash_internal_post_type( $id, 'acf-field-group' );
@@ -297,7 +297,7 @@ function acf_trash_field_group( $id = 0 ) {
  * @since   5.0.0
  *
  * @param   (int|string) $id The field_group ID, key or name.
- * @return  bool True if field_group was trashed.
+ * @return  boolean True if field_group was trashed.
  */
 function acf_untrash_field_group( $id = 0 ) {
 	return acf_untrash_internal_post_type( $id, 'acf-field-group' );
@@ -310,9 +310,9 @@ function acf_untrash_field_group( $id = 0 ) {
  *
  * @since 5.9.5
  *
- * @param string $new_status      The new status of the post being restored.
- * @param int    $post_id         The ID of the post being restored.
- * @param string $previous_status The status of the post at the point where it was trashed.
+ * @param string  $new_status      The new status of the post being restored.
+ * @param integer $post_id         The ID of the post being restored.
+ * @param string  $previous_status The status of the post at the point where it was trashed.
  * @return string.
  */
 function _acf_untrash_field_group_post_status( $new_status, $post_id, $previous_status ) {
@@ -328,8 +328,8 @@ function _acf_untrash_field_group_post_status( $new_status, $post_id, $previous_
  * @since   5.7.10
  *
  * @param   array $field_group The field group array.
- * @param   mixed $id An optional identifier to search for.
- * @return  bool
+ * @param   mixed $id          An optional identifier to search for.
+ * @return  boolean
  */
 function acf_is_field_group( $field_group = false ) {
 	return acf_is_internal_post_type( $field_group, 'acf-field-group' );
@@ -343,8 +343,8 @@ function acf_is_field_group( $field_group = false ) {
  * @date    16/06/2014
  * @since   5.0.0
  *
- * @param   (int|string) $id The field_group ID, key or name.
- * @param   int          $new_post_id Optional post ID to override.
+ * @param   (int|string) $id          The field_group ID, key or name.
+ * @param   integer      $new_post_id Optional post ID to override.
  * @return  array The new field group.
  */
 function acf_duplicate_field_group( $id = 0, $new_post_id = 0 ) {
@@ -354,9 +354,9 @@ function acf_duplicate_field_group( $id = 0, $new_post_id = 0 ) {
 /**
  * Activates or deactivates a field group.
  *
- * @param int|string $id       The field_group ID, key or name.
- * @param bool       $activate True if the post should be activated.
- * @return bool
+ * @param integer|string $id       The field_group ID, key or name.
+ * @param boolean        $activate True if the post should be activated.
+ * @return boolean
  */
 function acf_update_field_group_active_status( $id, $activate = true ) {
 	return acf_update_internal_post_type_active_status( $id, $activate, 'acf-field-group' );
@@ -428,7 +428,7 @@ function acf_get_field_group_style( $field_group ) {
  * @date    23/9/18
  * @since   5.7.7
  *
- * @param   int $post_id The field group ID.
+ * @param   integer $post_id The field group ID.
  * @return  string
  */
 function acf_get_field_group_edit_link( $post_id ) {
@@ -481,14 +481,14 @@ function acf_import_field_group( $field_group ) {
 }
 
 /**
- *  Returns an array of tabs for the field group settings.
- *  We combine a list of default tabs with filtered tabs.
- *  I.E. Default tabs should be static and should not be changed by the
- *  filtered tabs.
+ * Returns an array of tabs for the field group settings.
+ * We combine a list of default tabs with filtered tabs.
+ * I.E. Default tabs should be static and should not be changed by the
+ * filtered tabs.
  *
- *  @since 6.1
+ * @since 6.1
  *
- *  @return array Key/value array of the default settings tabs for field group settings.
+ * @return array Key/value array of the default settings tabs for field group settings.
  */
 function acf_get_combined_field_group_settings_tabs() {
 	$default_field_group_settings_tabs = array(

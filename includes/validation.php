@@ -9,18 +9,16 @@ if ( ! class_exists( 'acf_validation' ) ) :
 	class acf_validation {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the class functionality
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the class functionality
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function __construct() {
 
@@ -34,19 +32,17 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		}
 
 
-		/*
-		*  add_error
-		*
-		*  This function will add an error message for a field
-		*
-		*  @type    function
-		*  @date    25/11/2013
-		*  @since   5.0.0
-		*
-		*  @param   $input (string) name attribute of DOM elmenet
-		*  @param   $message (string) error message
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * This function will add an error message for a field
+		 *
+		 * @type    function
+		 * @date    25/11/2013
+		 * @since   5.0.0
+		 *
+		 * @param   $input (string) name attribute of DOM elmenet
+		 * @param   $message (string) error message
+		 * @return  $post_id (int)
+		 */
 
 		function add_error( $input, $message ) {
 
@@ -58,18 +54,16 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		}
 
 
-		/*
-		*  get_error
-		*
-		*  This function will return an error for a given input
-		*
-		*  @type    function
-		*  @date    5/03/2016
-		*  @since   5.3.2
-		*
-		*  @param   $input (string) name attribute of DOM elmenet
-		*  @return  (mixed)
-		*/
+		/**
+		 * This function will return an error for a given input
+		 *
+		 * @type    function
+		 * @date    5/03/2016
+		 * @since   5.3.2
+		 *
+		 * @param   $input (string) name attribute of DOM elmenet
+		 * @return  (mixed)
+		 */
 
 		function get_error( $input ) {
 
@@ -90,18 +84,16 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		}
 
 
-		/*
-		*  get_errors
-		*
-		*  This function will return validation errors
-		*
-		*  @type    function
-		*  @date    25/11/2013
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  (array|boolean)
-		*/
+		/**
+		 * This function will return validation errors
+		 *
+		 * @type    function
+		 * @date    25/11/2013
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  (array|boolean)
+		 */
 
 		function get_errors() {
 
@@ -115,18 +107,16 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		}
 
 
-		/*
-		*  reset_errors
-		*
-		*  This function will remove all errors
-		*
-		*  @type    function
-		*  @date    4/03/2016
-		*  @since   5.3.2
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will remove all errors
+		 *
+		 * @type    function
+		 * @date    4/03/2016
+		 * @since   5.3.2
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function reset_errors() {
 
@@ -134,18 +124,16 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		}
 
 
-		/*
-		*  ajax_validate_save_post
-		*
-		*  This function will validate the $_POST data via AJAX
-		*
-		*  @type    function
-		*  @date    27/10/2014
-		*  @since   5.0.9
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will validate the $_POST data via AJAX
+		 *
+		 * @type    function
+		 * @date    27/10/2014
+		 * @since   5.0.9
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function ajax_validate_save_post() {
 
@@ -177,8 +165,6 @@ if ( ! class_exists( 'acf_validation' ) ) :
 		 * Loops over $_POST data and validates ACF values.
 		 *
 		 * @since   5.4.0
-		 *
-		 * @return  void
 		 */
 		public function acf_validate_save_post() {
 			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
@@ -206,19 +192,18 @@ if ( ! class_exists( 'acf_validation' ) ) :
 endif; // class_exists check
 
 
-/*
-*  Public functions
-*
-*  alias of acf()->validation->function()
-*
-*  @type    function
-*  @date    6/10/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * Public functions
+ *
+ * alias of acf()->validation->function()
+ *
+ * @type    function
+ * @date    6/10/13
+ * @since   5.0.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_add_validation_error( $input, $message = '' ) {
 
 	return acf()->validation->add_error( $input, $message );
@@ -240,19 +225,16 @@ function acf_reset_validation_errors() {
 }
 
 
-/*
-*  acf_validate_save_post
-*
-*  This function will validate $_POST data and add errors
-*
-*  @type    function
-*  @date    25/11/2013
-*  @since   5.0.0
-*
-*  @param   $show_errors (boolean) if true, errors will be shown via a wp_die screen
-*  @return  (boolean)
-*/
-
+/**
+ * This function will validate $_POST data and add errors
+ *
+ * @type    function
+ * @date    25/11/2013
+ * @since   5.0.0
+ *
+ * @param   $show_errors (boolean) if true, errors will be shown via a wp_die screen
+ * @return  (boolean)
+ */
 function acf_validate_save_post( $show_errors = false ) {
 
 	// action
@@ -276,7 +258,7 @@ function acf_validate_save_post( $show_errors = false ) {
 		$message .= '</ul>';
 
 		// die
-		wp_die( $message, __( 'Validation failed', 'acf' ) );
+		wp_die( acf_esc_html( $message ), esc_html__( 'Validation failed', 'acf' ) );
 	}
 
 	// return
@@ -284,20 +266,17 @@ function acf_validate_save_post( $show_errors = false ) {
 }
 
 
-/*
-*  acf_validate_values
-*
-*  This function will validate an array of field values
-*
-*  @type    function
-*  @date    6/10/13
-*  @since   5.0.0
-*
-*  @param   values (array)
-*  @param   $input_prefix (string)
-*  @return  n/a
-*/
-
+/**
+ * This function will validate an array of field values
+ *
+ * @type    function
+ * @date    6/10/13
+ * @since   5.0.0
+ *
+ * @param   values (array)
+ * @param   $input_prefix (string)
+ * @return  n/a
+ */
 function acf_validate_values( $values, $input_prefix = '' ) {
 
 	// bail early if empty
@@ -323,19 +302,16 @@ function acf_validate_values( $values, $input_prefix = '' ) {
 }
 
 
-/*
-*  acf_validate_value
-*
-*  This function will validate a field's value
-*
-*  @type    function
-*  @date    6/10/13
-*  @since   5.0.0
-*
-*  @param   n/a
-*  @return  n/a
-*/
-
+/**
+ * This function will validate a field's value
+ *
+ * @type    function
+ * @date    6/10/13
+ * @since   5.0.0
+ *
+ * @param   n/a
+ * @return  n/a
+ */
 function acf_validate_value( $value, $field, $input ) {
 
 	// vars
@@ -352,15 +328,15 @@ function acf_validate_value( $value, $field, $input ) {
 	}
 
 	/**
-	*  Filters whether the value is valid.
+	* Filters whether the value is valid.
 	*
-	*  @date    28/09/13
-	*  @since   5.0.0
+	* @date    28/09/13
+	* @since   5.0.0
 	*
-	*  @param   bool $valid The valid status. Return a string to display a custom error message.
-	*  @param   mixed $value The value.
-	*  @param   array $field The field array.
-	*  @param   string $input The input element's name attribute.
+	* @param   bool $valid The valid status. Return a string to display a custom error message.
+	* @param   mixed $value The value.
+	* @param   array $field The field array.
+	* @param   string $input The input element's name attribute.
 	*/
 	$valid = apply_filters( "acf/validate_value/type={$field['type']}", $valid, $value, $field, $input );
 	$valid = apply_filters( "acf/validate_value/name={$field['_name']}", $valid, $value, $field, $input );

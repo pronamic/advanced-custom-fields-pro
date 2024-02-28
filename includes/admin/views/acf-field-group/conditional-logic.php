@@ -22,7 +22,7 @@ if ( empty( $field['conditional_logic'] ) ) {
 	<div class="acf-conditional-toggle">
 		<div class="acf-label">
 			<?php $acf_label_for = acf_idify( $field['prefix'] . '[conditional_logic]' ); ?>
-			<label for="<?php echo esc_attr( $acf_label_for ); ?>"><?php _e( 'Conditional Logic', 'acf' ); ?></label>
+			<label for="<?php echo esc_attr( $acf_label_for ); ?>"><?php esc_html_e( 'Conditional Logic', 'acf' ); ?></label>
 		</div>
 		<div class="acf-input">
 			<?php
@@ -64,9 +64,9 @@ if ( empty( $field['conditional_logic'] ) ) {
 			$h4       = ( $group_id == 'group_0' ) ? __( 'Show this field if', 'acf' ) : __( 'or', 'acf' );
 
 			?>
-			<div class="rule-group" data-id="<?php echo $group_id; ?>">
+			<div class="rule-group" data-id="<?php echo esc_attr( $group_id ); ?>">
 
-				<h4><?php echo $h4; ?></h4>
+				<h4><?php echo esc_html( $h4 ); ?></h4>
 
 				<table class="acf-table -clear">
 					<tbody>
@@ -158,7 +158,7 @@ if ( empty( $field['conditional_logic'] ) ) {
 								?>
 							</td>
 							<td class="add">
-								<a href="#" class="button add-conditional-rule"><?php _e( 'and', 'acf' ); ?></a>
+								<a href="#" class="button add-conditional-rule"><?php esc_html_e( 'and', 'acf' ); ?></a>
 							</td>
 							<td class="remove">
 								<a href="#" class="acf-icon -minus remove-conditional-rule"></a>
@@ -171,8 +171,8 @@ if ( empty( $field['conditional_logic'] ) ) {
 			</div>
 		<?php endforeach; ?>
 
-		<h4><?php _e( 'or', 'acf' ); ?></h4>
+		<h4><?php esc_html_e( 'or', 'acf' ); ?></h4>
 
-		<a href="#" class="button add-conditional-group"><?php _e( 'Add rule group', 'acf' ); ?></a>
+		<a href="#" class="button add-conditional-group"><?php esc_html_e( 'Add rule group', 'acf' ); ?></a>
 	</div>							
 </div>

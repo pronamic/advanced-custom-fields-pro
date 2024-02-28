@@ -55,9 +55,9 @@ if ( ! class_exists( 'ACF_Taxonomy_Field_Walker' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param string $output Used to append additional content (passed by reference).
-		 * @param int    $depth  Depth of category. Used for tab indentation.
-		 * @param array  $args   An array of arguments. @see wp_terms_checklist()
+		 * @param string  $output Used to append additional content (passed by reference).
+		 * @param integer $depth  Depth of category. Used for tab indentation.
+		 * @param array   $args   An array of arguments. @see wp_terms_checklist()
 		 */
 		public function start_lvl( &$output, $depth = 0, $args = array() ) {
 			$indent  = str_repeat( "\t", $depth );
@@ -71,9 +71,9 @@ if ( ! class_exists( 'ACF_Taxonomy_Field_Walker' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param string $output Used to append additional content (passed by reference).
-		 * @param int    $depth  Depth of category. Used for tab indentation.
-		 * @param array  $args   An array of arguments. @see wp_terms_checklist()
+		 * @param string  $output Used to append additional content (passed by reference).
+		 * @param integer $depth  Depth of category. Used for tab indentation.
+		 * @param array   $args   An array of arguments. @see wp_terms_checklist()
 		 */
 		public function end_lvl( &$output, $depth = 0, $args = array() ) {
 			$indent  = str_repeat( "\t", $depth );
@@ -87,11 +87,11 @@ if ( ! class_exists( 'ACF_Taxonomy_Field_Walker' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param string  $output   Used to append additional content (passed by reference).
-		 * @param WP_Term $term     The current term object.
-		 * @param int     $depth    Depth of the term in reference to parents. Default 0.
-		 * @param array   $args     An array of arguments. @see wp_terms_checklist()
-		 * @param int     $id       ID of the current term.
+		 * @param string  $output Used to append additional content (passed by reference).
+		 * @param WP_Term $term   The current term object.
+		 * @param integer $depth  Depth of the term in reference to parents. Default 0.
+		 * @param array   $args   An array of arguments. @see wp_terms_checklist()
+		 * @param integer $id     ID of the current term.
 		 */
 		public function start_el( &$output, $term, $depth = 0, $args = array(), $id = 0 ) {
 			$is_selected = in_array( $term->term_id, $this->field['value'] );
@@ -122,7 +122,7 @@ if ( ! class_exists( 'ACF_Taxonomy_Field_Walker' ) ) :
 		 *
 		 * @param string  $output   Used to append additional content (passed by reference).
 		 * @param WP_Term $category The current term object.
-		 * @param int     $depth    Depth of the term in reference to parents. Default 0.
+		 * @param integer $depth    Depth of the term in reference to parents. Default 0.
 		 * @param array   $args     An array of arguments. @see wp_terms_checklist()
 		 */
 		public function end_el( &$output, $category, $depth = 0, $args = array() ) {

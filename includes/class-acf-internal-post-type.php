@@ -81,8 +81,8 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|WP_Post $id The post ID being queried.
-		 * @return array|bool The main ACF array for the post, or false on failure.
+		 * @param integer|WP_Post $id The post ID being queried.
+		 * @return array|boolean The main ACF array for the post, or false on failure.
 		 */
 		public function get_post( $id = 0 ) {
 			// Allow WP_Post to be passed.
@@ -131,7 +131,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The field ID, key or name.
+		 * @param integer|string $id The field ID, key or name.
 		 * @return array|false The field group array, or false on failure.
 		 */
 		public function get_raw_post( $id = 0 ) {
@@ -164,7 +164,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The post ID, key, or name.
+		 * @param integer|string $id The post ID, key, or name.
 		 * @return WP_Post|bool The post object, or false on failure.
 		 */
 		public function get_post_object( $id = 0 ) {
@@ -224,7 +224,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 * @since 6.1
 		 *
 		 * @param string $id The identifier.
-		 * @return bool
+		 * @return boolean
 		 */
 		public function is_post_key( $id = '' ) {
 			// Check if $id is a string starting with $this->post_key.
@@ -287,8 +287,6 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 * Errors are added to the form using acf_add_internal_post_type_validation_error().
 		 *
 		 * @since 6.1
-		 *
-		 * @return bool
 		 */
 		public function ajax_validate_values() {}
 
@@ -533,12 +531,12 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param string $slug          The post slug.
-		 * @param int    $post_ID       Post ID.
-		 * @param string $post_status   The post status.
-		 * @param string $post_type     Post type.
-		 * @param int    $post_parent   Post parent ID.
-		 * @param string $original_slug The original post slug.
+		 * @param string  $slug          The post slug.
+		 * @param integer $post_ID       Post ID.
+		 * @param string  $post_status   The post status.
+		 * @param string  $post_type     Post type.
+		 * @param integer $post_parent   Post parent ID.
+		 * @param string  $original_slug The original post slug.
 		 * @return string
 		 */
 		public function apply_unique_post_slug( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
@@ -574,8 +572,8 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The ID of the ACF post to delete.
-		 * @return bool
+		 * @param integer|string $id The ID of the ACF post to delete.
+		 * @return boolean
 		 */
 		public function delete_post( $id = 0 ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -611,8 +609,8 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The ID of the ACF post to trash.
-		 * @return bool
+		 * @param integer|string $id The ID of the ACF post to trash.
+		 * @return boolean
 		 */
 		public function trash_post( $id = 0 ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -644,8 +642,8 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The ID of the ACF post to untrash.
-		 * @return bool
+		 * @param integer|string $id The ID of the ACF post to untrash.
+		 * @return boolean
 		 */
 		public function untrash_post( $id = 0 ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -678,9 +676,9 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param string $new_status      The new status of the post being restored.
-		 * @param int    $post_id         The ID of the post being restored.
-		 * @param string $previous_status The status of the post at the point where it was trashed.
+		 * @param string  $new_status      The new status of the post being restored.
+		 * @param integer $post_id         The ID of the post being restored.
+		 * @param string  $previous_status The status of the post at the point where it was trashed.
 		 * @return string
 		 */
 		public function untrash_post_status( $new_status, $post_id, $previous_status ) {
@@ -693,7 +691,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 * @since 6.1
 		 *
 		 * @param array $post The post array to check.
-		 * @return bool
+		 * @return boolean
 		 */
 		public function is_post( $post = false ) {
 			return (
@@ -708,8 +706,8 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id          The ID of the post to duplicate.
-		 * @param int        $new_post_id Optional post ID to override.
+		 * @param integer|string $id          The ID of the post to duplicate.
+		 * @param integer        $new_post_id Optional post ID to override.
 		 * @return array The new ACF post array.
 		 */
 		public function duplicate_post( $id = 0, $new_post_id = 0 ) {
@@ -756,9 +754,9 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id       The ID of the ACF post to activate/deactivate.
-		 * @param bool       $activate True if the post should be activated.
-		 * @return bool
+		 * @param integer|string $id       The ID of the ACF post to activate/deactivate.
+		 * @param boolean        $activate True if the post should be activated.
+		 * @return boolean
 		 */
 		public function update_post_active_status( $id, $activate = true ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -793,7 +791,7 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int $post_id The ACF post ID.
+		 * @param integer $post_id The ACF post ID.
 		 * @return string
 		 */
 		public function get_post_edit_link( $post_id ) {

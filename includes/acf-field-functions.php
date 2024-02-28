@@ -176,7 +176,7 @@ function acf_get_field_post( $id = 0 ) {
  * @since   5.0.0
  *
  * @param   string $id The identifier.
- * @return  bool
+ * @return  boolean
  */
 function acf_is_field_key( $id = '' ) {
 
@@ -394,7 +394,7 @@ function acf_get_fields( $parent ) {
  * @date    18/1/19
  * @since   5.7.10
  *
- * @param   int $id The field group or field id.
+ * @param   integer $id The field group or field id.
  * @return  array
  */
 function acf_get_raw_fields( $id = 0 ) {
@@ -449,7 +449,7 @@ function acf_get_raw_fields( $id = 0 ) {
  * @since   5.0.0
  *
  * @param   array $parent The field group or field array.
- * @return  int
+ * @return  integer
  */
 function acf_get_field_count( $parent ) {
 
@@ -482,7 +482,7 @@ function acf_get_field_count( $parent ) {
  * @date    8/03/2016
  * @since   5.3.2
  *
- * @param   array $field The field being cloned.
+ * @param   array $field       The field being cloned.
  * @param   array $clone_field The clone field.
  * @return  array
  */
@@ -571,9 +571,9 @@ acf_add_filter_variations( 'acf/prepare_field', array( 'type', 'name', 'key' ), 
  * @since   5.0.0
  * @since   5.6.9 Changed parameter order.
  *
- * @param   array        $fields An array of fields.
- * @param   (int|string) $post_id The post ID to load values from.
- * @param   string       $element The wrapping element type.
+ * @param   array        $fields      An array of fields.
+ * @param   (int|string) $post_id     The post ID to load values from.
+ * @param   string       $element     The wrapping element type.
  * @param   string       $instruction The instruction render position (label|field).
  * @return  void
  */
@@ -616,10 +616,10 @@ function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = '
 	}
 
 	/**
-	*  Fires after fields have been rendered.
+	* Fires after fields have been rendered.
 	*
-	*  @date    12/02/2014
-	*  @since   5.0.0
+	* @date    12/02/2014
+	* @since   5.0.0
 	*
 	* @param    array $fields An array of fields.
 	* @param    (int|string) $post_id The post ID to load values from.
@@ -632,10 +632,10 @@ function acf_render_fields( $fields, $post_id = 0, $el = 'div', $instruction = '
  *
  * @since   5.0.0
  *
- * @param   array  $field         The field array.
- * @param   string $element       The wrapping element type.
- * @param   string $instruction   The instruction render position (label|field).
- * @param   bool   $field_setting If a field setting is being rendered.
+ * @param   array   $field         The field array.
+ * @param   string  $element       The wrapping element type.
+ * @param   string  $instruction   The instruction render position (label|field).
+ * @param   boolean $field_setting If a field setting is being rendered.
  * @return  void
  */
 function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label', $field_setting = false ) {
@@ -744,30 +744,32 @@ function acf_render_field_wrap( $field, $element = 'div', $instruction = 'label'
 		$wrapper['data-conditions'] = $field['conditions'];
 	}
 
-	// Vars for render.
+	// Escaped vars for render.
 	$attributes_html = acf_esc_attrs( $wrapper );
+	$element         = esc_attr( $element );
+	$inner_element   = esc_attr( $inner_element );
 
 	// Render HTML
-	echo "<$element $attributes_html>" . "\n";
+	echo "<$element $attributes_html>\n"; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 	if ( $element !== 'td' ) {
-		echo "<$inner_element class=\"acf-label\">" . "\n";
+		echo "<$inner_element class=\"acf-label\">\n"; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 			acf_render_field_label( $field );
 		if ( $instruction == 'label' ) {
 			acf_render_field_instructions( $field, $field_setting );
 		}
-			echo "</$inner_element>" . "\n";
+			echo "</$inner_element>\n"; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 	}
-		echo "<$inner_element class=\"acf-input\">" . "\n";
+		echo "<$inner_element class=\"acf-input\">\n"; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 			acf_render_field( $field );
 	if ( ! $field_setting && $instruction == 'field' ) {
 		acf_render_field_instructions( $field );
 	}
-		echo "</$inner_element>" . "\n";
+		echo "</$inner_element>\n"; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 
-	if ( $field_setting && $instruction == 'field' ) {
+	if ( $field_setting && $instruction === 'field' ) {
 		acf_render_field_instructions( $field );
 	}
-	echo "</$element>" . "\n";
+	echo "</$element>\n";  //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 }
 
 /**
@@ -838,7 +840,7 @@ function acf_render_field_label( $field ) {
  * @date    4/11/2013
  * @since   5.0.0
  *
- * @param   array  $field The field array.
+ * @param   array  $field   The field array.
  * @param   string $context The output context (admin).
  * @return  string The field label in HTML format.
  */
@@ -887,13 +889,13 @@ function acf_render_field_instructions( $field, $tooltip = false ) {
 		$instructions = acf_esc_html( $field['instructions'] );
 
 		if ( $tooltip ) {
-			printf( '<div class="acf-tip"><i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="%s">?</i></div>', $instructions );
+			printf( '<div class="acf-tip"><i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="%s">?</i></div>', $instructions ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 		} else {
-			printf( '<p class="description">%s</p>', $instructions );
+			printf( '<p class="description">%s</p>', $instructions ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 		}
 	} elseif ( ! empty( $field['hint'] ) ) {
 		$instructions = acf_esc_html( $field['hint'] );
-		printf( '<p class="description">%s</p>', $instructions );
+		printf( '<p class="description">%s</p>', $instructions ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 	}
 }
 
@@ -905,9 +907,9 @@ function acf_render_field_instructions( $field, $tooltip = false ) {
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   array $field The field array.
- * @param   array $setting The settings field array.
- * @param   bool  $global Whether this setting is a global or field type specific one.
+ * @param   array   $field   The field array.
+ * @param   array   $setting The settings field array.
+ * @param   boolean $global  Whether this setting is a global or field type specific one.
  * @return  void
  */
 function acf_render_field_setting( $field, $setting, $global = false ) {
@@ -971,7 +973,7 @@ function acf_render_field_setting( $field, $setting, $global = false ) {
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   array $field The field array.
+ * @param   array $field    The field array.
  * @param   array $specific An array of specific field attributes to update.
  * @return  array
  */
@@ -1077,12 +1079,12 @@ acf_add_filter_variations( 'acf/update_field', array( 'type', 'name', 'key' ), 0
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param string $slug          The post slug.
- * @param int    $post_ID       Post ID.
- * @param string $post_status   The post status.
- * @param string $post_type     Post type.
- * @param int    $post_parent   Post parent ID
- * @param string $original_slug The original post slug.
+ * @param string  $slug          The post slug.
+ * @param integer $post_ID       Post ID.
+ * @param string  $post_status   The post status.
+ * @param string  $post_type     Post type.
+ * @param integer $post_parent   Post parent ID
+ * @param string  $original_slug The original post slug.
  */
 function _acf_apply_unique_field_slug( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
 
@@ -1131,7 +1133,7 @@ function acf_flush_field_cache( $field ) {
  * @since   5.7.10
  *
  * @param   (int|string) $id The field ID, key or name.
- * @return  bool True if field was deleted.
+ * @return  boolean True if field was deleted.
  */
 function acf_delete_field( $id = 0 ) {
 
@@ -1175,7 +1177,7 @@ acf_add_action_variations( 'acf/delete_field', array( 'type', 'name', 'key' ), 0
  * @since   5.0.0
  *
  * @param   (int|string) $id The field ID, key or name.
- * @return  bool True if field was trashed.
+ * @return  boolean True if field was trashed.
  */
 function acf_trash_field( $id = 0 ) {
 
@@ -1213,7 +1215,7 @@ function acf_trash_field( $id = 0 ) {
  * @since   5.0.0
  *
  * @param   (int|string) $id The field ID, key or name.
- * @return  bool True if field was trashed.
+ * @return  boolean True if field was trashed.
  */
 function acf_untrash_field( $id = 0 ) {
 
@@ -1252,9 +1254,9 @@ function acf_untrash_field( $id = 0 ) {
  *
  * @since 5.9.5
  *
- * @param string $new_status      The new status of the post being restored.
- * @param int    $post_id         The ID of the post being restored.
- * @param string $previous_status The status of the post at the point where it was trashed.
+ * @param string  $new_status      The new status of the post being restored.
+ * @param integer $post_id         The ID of the post being restored.
+ * @param string  $previous_status The status of the post at the point where it was trashed.
  * @return string.
  */
 function _acf_untrash_field_post_status( $new_status, $post_id, $previous_status ) {
@@ -1293,7 +1295,7 @@ function acf_prefix_fields( &$fields, $prefix = 'acf' ) {
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   (int|string) $id The field ID, key or name.
+ * @param   (int|string) $id    The field ID, key or name.
  * @param   array        $field The parent field array.
  * @return  (array|false)
  */
@@ -1334,7 +1336,7 @@ acf_add_filter_variations( 'acf/get_sub_field', array( 'type' ), 2 );
  * @date    12/2/19
  * @since   5.7.11
  *
- * @param   (int|string) $id The field ID, key or name.
+ * @param   (int|string) $id       The field ID, key or name.
  * @param   array        $haystack The array of fields.
  * @return  (int|false)
  */
@@ -1365,8 +1367,8 @@ function acf_search_fields( $id, $fields ) {
  * @since   5.7.10
  *
  * @param   array $field The field array.
- * @param   mixed $id An optional identifier to search for.
- * @return  bool
+ * @param   mixed $id    An optional identifier to search for.
+ * @return  boolean
  */
 function acf_is_field( $field = false, $id = '' ) {
 	return (
@@ -1409,8 +1411,8 @@ function acf_get_field_ancestors( $field ) {
  * @date    16/06/2014
  * @since   5.0.0
  *
- * @param   array $fields An array of fields.
- * @param   int   $parent_id The new parent ID.
+ * @param   array   $fields    An array of fields.
+ * @param   integer $parent_id The new parent ID.
  * @return  array
  */
 function acf_duplicate_fields( $fields = array(), $parent_id = 0 ) {
@@ -1445,9 +1447,9 @@ function acf_duplicate_fields( $fields = array(), $parent_id = 0 ) {
  * @date    16/06/2014
  * @since   5.0.0
  *
- * @param   (int|string) $id The field ID, key or name.
- * @param   int          $parent_id The new parent ID.
- * @return  bool True if field was duplicated.
+ * @param   (int|string) $id        The field ID, key or name.
+ * @param   integer      $parent_id The new parent ID.
+ * @return  boolean True if field was duplicated.
  */
 function acf_duplicate_field( $id = 0, $parent_id = 0 ) {
 

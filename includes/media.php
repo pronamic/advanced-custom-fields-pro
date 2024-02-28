@@ -70,7 +70,7 @@ if ( ! class_exists( 'ACF_Media' ) ) :
 		 * @date    24/10/2014
 		 * @since   5.0.9
 		 *
-		 * @param   string|int $post_id The post ID being saved.
+		 * @param   string|integer $post_id The post ID being saved.
 		 * @return  void
 		 */
 		public function save_files( $post_id = 0 ) {
@@ -183,9 +183,9 @@ if ( ! class_exists( 'ACF_Media' ) ) :
 		 * @date    31/8/21
 		 * @since   5.10.2
 		 *
-		 * @param   array       $response Array of prepared attachment data.
+		 * @param   array       $response   Array of prepared attachment data.
 		 * @param   WP_Post     $attachment Attachment object.
-		 * @param   array|false $meta Array of attachment meta data, or false if there is none.
+		 * @param   array|false $meta       Array of attachment meta data, or false if there is none.
 		 * @return  array
 		 */
 		function clear_acf_errors_for_core_requests( $response, $attachment, $meta ) {
@@ -199,9 +199,9 @@ if ( ! class_exists( 'ACF_Media' ) ) :
 		 * @date    21/5/21
 		 * @since   5.9.7
 		 *
-		 * @param   array       $response Array of prepared attachment data.
+		 * @param   array       $response   Array of prepared attachment data.
 		 * @param   WP_Post     $attachment Attachment object.
-		 * @param   array|false $meta Array of attachment meta data, or false if there is none.
+		 * @param   array|false $meta       Array of attachment meta data, or false if there is none.
 		 * @return  array
 		 */
 		function wp_prepare_attachment_for_js( $response, $attachment, $meta ) {

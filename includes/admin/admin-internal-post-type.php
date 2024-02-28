@@ -54,9 +54,9 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 *
 		 * @since   5.8.0
 		 *
-		 * @param bool   $use_block_editor Whether the post type can be edited or not. Default true.
-		 * @param string $post_type        The post type being checked.
-		 * @return bool
+		 * @param boolean $use_block_editor Whether the post type can be edited or not. Default true.
+		 * @param string  $post_type        The post type being checked.
+		 * @return boolean
 		 */
 		public function use_block_editor_for_post_type( $use_block_editor, $post_type ) {
 			if ( $post_type === $this->post_type ) {
@@ -82,8 +82,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 * This function is fired when loading the admin page before HTML has been rendered.
 		 *
 		 * @since 5.0.0
-		 *
-		 * @return void
 		 */
 		public function current_screen() {
 			if ( ! acf_is_screen( $this->post_type ) ) {
@@ -118,8 +116,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 * Enqueues any scripts necessary for internal post type.
 		 *
 		 * @since 5.0.0
-		 *
-		 * @return void
 		 */
 		public function admin_enqueue_scripts() {
 			wp_enqueue_script( 'acf-internal-post-type' );
@@ -133,8 +129,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 * Set up functionality for the field group edit page.
 		 *
 		 * @since 3.1.8
-		 *
-		 * @return void
 		 */
 		public function admin_head() {
 			// Override as necessary.
@@ -143,10 +137,10 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		/**
 		 * Adds extra HTML to the acf form data element.
 		 *
-		 *  @since 5.3.8
+		 * @since 5.3.8
 		 *
-		 *  @param array $args Arguments array to pass through to action.
-		 *  @return void
+		 * @param array $args Arguments array to pass through to action.
+		 * @return void
 		 */
 		public function form_data( $args ) {
 			// Override as necessary.
@@ -156,8 +150,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 * Admin footer third party hook support
 		 *
 		 * @since 5.3.2
-		 *
-		 * @return void
 		 */
 		public function admin_footer() {
 			// Override as necessary.
@@ -180,10 +172,9 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 *
 		 * @since 6.1
 		 *
-		 * @param int     $post_id The ID of the post being saved.
+		 * @param integer $post_id The ID of the post being saved.
 		 * @param WP_Post $post    The post object.
-		 *
-		 * @return bool
+		 * @return boolean
 		 */
 		public function verify_save_post( $post_id, $post ) {
 			// Do not save if this is an auto save routine.
@@ -224,8 +215,6 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 * Powers the modal for linking field groups to newly-created CPTs/taxonomies.
 		 *
 		 * @since 6.1
-		 *
-		 * @return void
 		 */
 		public function ajax_link_field_groups() {
 			// Disable filters to ensure ACF loads raw data from DB.

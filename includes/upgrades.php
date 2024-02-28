@@ -1,15 +1,15 @@
 <?php
 
 /**
- *  acf_has_upgrade
+ * acf_has_upgrade
  *
- *  Returns true if this site has an upgrade avaialble.
+ * Returns true if this site has an upgrade avaialble.
  *
- *  @date    24/8/18
- *  @since   5.7.4
+ * @date    24/8/18
+ * @since   5.7.4
  *
- *  @param   void
- *  @return  bool
+ * @param   void
+ * @return  boolean
  */
 function acf_has_upgrade() {
 	$db_version = acf_get_db_version();
@@ -26,10 +26,10 @@ function acf_has_upgrade() {
 }
 
 /**
- *  Runs upgrade routines if this site has an upgrade available.
+ * Runs upgrade routines if this site has an upgrade available.
  *
- *  @date  24/8/18
- *  @since 5.7.4
+ * @date  24/8/18
+ * @since 5.7.4
  */
 function acf_upgrade_all() {
 	// Increase time limit if possible.
@@ -75,45 +75,43 @@ function acf_upgrade_all() {
 }
 
 /**
- *  acf_get_db_version
+ * acf_get_db_version
  *
- *  Returns the ACF DB version.
+ * Returns the ACF DB version.
  *
- *  @date    10/09/2016
- *  @since   5.4.0
+ * @date    10/09/2016
+ * @since   5.4.0
  *
- *  @param   void
- *  @return  string
+ * @param   void
+ * @return  string
  */
 function acf_get_db_version() {
 	return get_option( 'acf_version' );
 }
 
-/*
-*  acf_update_db_version
-*
-*  Updates the ACF DB version.
-*
-*  @date    10/09/2016
-*  @since   5.4.0
-*
-*  @param   string $version The new version.
-*  @return  void
-*/
+/**
+ * Updates the ACF DB version.
+ *
+ * @date    10/09/2016
+ * @since   5.4.0
+ *
+ * @param   string $version The new version.
+ * @return  void
+ */
 function acf_update_db_version( $version = '' ) {
 	update_option( 'acf_version', $version );
 }
 
 /**
- *  acf_upgrade_500
+ * acf_upgrade_500
  *
- *  Version 5 introduces new post types for field groups and fields.
+ * Version 5 introduces new post types for field groups and fields.
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   void
- *  @return  void
+ * @param   void
+ * @return  void
  */
 function acf_upgrade_500() {
 
@@ -131,15 +129,15 @@ function acf_upgrade_500() {
 }
 
 /**
- *  acf_upgrade_500_field_groups
+ * acf_upgrade_500_field_groups
  *
- *  Upgrades all ACF4 field groups to ACF5
+ * Upgrades all ACF4 field groups to ACF5
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   void
- *  @return  void
+ * @param   void
+ * @return  void
  */
 function acf_upgrade_500_field_groups() {
 
@@ -166,15 +164,15 @@ function acf_upgrade_500_field_groups() {
 }
 
 /**
- *  acf_upgrade_500_field_group
+ * acf_upgrade_500_field_group
  *
- *  Upgrades a ACF4 field group to ACF5
+ * Upgrades a ACF4 field group to ACF5
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   object $ofg The old field group post object.
- *  @return  array $nfg  The new field group array.
+ * @param   object $ofg The old field group post object.
+ * @return  array $nfg  The new field group array.
  */
 function acf_upgrade_500_field_group( $ofg ) {
 
@@ -236,16 +234,16 @@ function acf_upgrade_500_field_group( $ofg ) {
 }
 
 /**
- *  acf_upgrade_500_fields
+ * acf_upgrade_500_fields
  *
- *  Upgrades all ACF4 fields to ACF5 from a specific field group
+ * Upgrades all ACF4 fields to ACF5 from a specific field group
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   object $ofg The old field group post object.
- *  @param   array  $nfg  The new field group array.
- *  @return  void
+ * @param   object $ofg The old field group post object.
+ * @param   array  $nfg The new field group array.
+ * @return  void
  */
 function acf_upgrade_500_fields( $ofg, $nfg ) {
 
@@ -288,15 +286,15 @@ function acf_upgrade_500_fields( $ofg, $nfg ) {
 }
 
 /**
- *  acf_upgrade_500_field
+ * acf_upgrade_500_field
  *
- *  Upgrades a ACF4 field to ACF5
+ * Upgrades a ACF4 field to ACF5
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   array $field The old field.
- *  @return  array $field The new field.
+ * @param   array $field The old field.
+ * @return  array $field The new field.
  */
 function acf_upgrade_500_field( $field ) {
 
@@ -372,15 +370,15 @@ function acf_upgrade_500_field( $field ) {
 }
 
 /**
- *  acf_upgrade_550
+ * acf_upgrade_550
  *
- *  Version 5.5 adds support for the wp_termmeta table added in WP 4.4.
+ * Version 5.5 adds support for the wp_termmeta table added in WP 4.4.
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   void
- *  @return  void
+ * @param   void
+ * @return  void
  */
 function acf_upgrade_550() {
 
@@ -398,15 +396,15 @@ function acf_upgrade_550() {
 }
 
 /**
- *  acf_upgrade_550_termmeta
+ * acf_upgrade_550_termmeta
  *
- *  Upgrades all ACF4 termmeta saved in wp_options to the wp_termmeta table.
+ * Upgrades all ACF4 termmeta saved in wp_options to the wp_termmeta table.
  *
- *  @date    23/8/18
- *  @since   5.7.4
+ * @date    23/8/18
+ * @since   5.7.4
  *
- *  @param   void
- *  @return  void
+ * @param   void
+ * @return  void
  */
 function acf_upgrade_550_termmeta() {
 
@@ -432,18 +430,16 @@ function acf_upgrade_550_termmeta() {
 	do_action( 'acf/upgrade_550_termmeta' );
 }
 
-/*
-*  acf_wp_upgrade_550_termmeta
-*
-*  When the database is updated to support term meta, migrate ACF term meta data across.
-*
-*  @date    23/8/18
-*  @since   5.7.4
-*
-*  @param   string $wp_db_version The new $wp_db_version.
-*  @param   string $wp_current_db_version The old (current) $wp_db_version.
-*  @return  void
-*/
+/**
+ * When the database is updated to support term meta, migrate ACF term meta data across.
+ *
+ * @date    23/8/18
+ * @since   5.7.4
+ *
+ * @param   string $wp_db_version         The new $wp_db_version.
+ * @param   string $wp_current_db_version The old (current) $wp_db_version.
+ * @return  void
+ */
 function acf_wp_upgrade_550_termmeta( $wp_db_version, $wp_current_db_version ) {
 	if ( $wp_db_version >= 34370 && $wp_current_db_version < 34370 ) {
 		if ( acf_version_compare( acf_get_db_version(), '>', '5.5.0' ) ) {
@@ -454,15 +450,15 @@ function acf_wp_upgrade_550_termmeta( $wp_db_version, $wp_current_db_version ) {
 add_action( 'wp_upgrade', 'acf_wp_upgrade_550_termmeta', 10, 2 );
 
 /**
- *  acf_upgrade_550_taxonomy
+ * acf_upgrade_550_taxonomy
  *
- *  Upgrades all ACF4 termmeta for a specific taxonomy.
+ * Upgrades all ACF4 termmeta for a specific taxonomy.
  *
- *  @date    24/8/18
- *  @since   5.7.4
+ * @date    24/8/18
+ * @since   5.7.4
  *
- *  @param   string $taxonomy The taxonomy name.
- *  @return  void
+ * @param   string $taxonomy The taxonomy name.
+ * @return  void
  */
 function acf_upgrade_550_taxonomy( $taxonomy ) {
 
@@ -499,15 +495,15 @@ function acf_upgrade_550_taxonomy( $taxonomy ) {
 	if ( $rows ) {
 		foreach ( $rows as $row ) {
 
-			/*
-			Use regex to find "(_)taxonomy_(term_id)_(field_name)" and populate $matches:
-			Array
-			(
-			[0] => _category_3_color
-			[1] => _
-			[2] => 3
-			[3] => color
-			)
+			/**
+			*  Use regex to find "(_)taxonomy_(term_id)_(field_name)" and populate $matches:
+			*  Array
+			*  (
+			*  [0] => _category_3_color
+			*  [1] => _
+			*  [2] => 3
+			*  [3] => color
+			*  )
 			*/
 			if ( ! preg_match( "/^(_?){$taxonomy}_(\d+)_(.+)/", is_null( $row['option_name'] ) ? '' : $row['option_name'], $matches ) ) {
 				continue;

@@ -170,8 +170,8 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @date    1/11/2013
 		 * @since   5.0.0
 		 *
-		 * @param   WP_User      $user The WP_User object.
-		 * @param   array        $field The ACF field related to this query.
+		 * @param   WP_User      $user    The WP_User object.
+		 * @param   array        $field   The ACF field related to this query.
 		 * @param   (int|string) $post_id The post_id being edited.
 		 * @return  string
 		 */
@@ -202,9 +202,9 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @date    23/01/13
 		 * @since   3.6.0
 		 *
-		 * @param   mixed $value The field value.
+		 * @param   mixed $value   The field value.
 		 * @param   mixed $post_id The post ID where the value is saved.
-		 * @param   array $field The field array containing all settings.
+		 * @param   array $field   The field array containing all settings.
 		 * @return  mixed
 		 */
 		function load_value( $value, $post_id, $field ) {
@@ -222,9 +222,9 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @date    23/01/13
 		 * @since   3.6.0
 		 *
-		 * @param   mixed $value The field value.
+		 * @param   mixed $value   The field value.
 		 * @param   mixed $post_id The post ID where the value is saved.
-		 * @param   array $field The field array containing all settings.
+		 * @param   array $field   The field array containing all settings.
 		 * @return  mixed
 		 */
 		function format_value( $value, $post_id, $field ) {
@@ -296,11 +296,10 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 *
 		 * @since   3.6.0
 		 *
-		 * @param   mixed $value The field value.
-		 * @param   mixed $post_id The post ID where the value is saved.
-		 * @param   array $field The field array containing all settings.
-		 *
-		 * @return mixed $value The modified value.
+		 * @param  mixed $value   The field value.
+		 * @param  mixed $post_id The post ID where the value is saved.
+		 * @param  array $field   The field array containing all settings.
+		 * @return mixed $value   The modified value.
 		 */
 		public function update_value( $value, $post_id, $field ) {
 
@@ -366,7 +365,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @since   5.8.8
 		 *
 		 * @param   array          $request The query request.
-		 * @param   ACF_Ajax_Query $query The query object.
+		 * @param   ACF_Ajax_Query $query   The query object.
 		 * @return  void
 		 */
 		function ajax_query_init( $request, $query ) {
@@ -387,9 +386,9 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @date    9/3/20
 		 * @since   5.8.8
 		 *
-		 * @param   array          $args The query args.
+		 * @param   array          $args    The query args.
 		 * @param   array          $request The query request.
-		 * @param   ACF_Ajax_Query $query The query object.
+		 * @param   ACF_Ajax_Query $query   The query object.
 		 * @return  array
 		 */
 		function ajax_query_args( $args, $request, $query ) {
@@ -418,8 +417,8 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @date    9/3/20
 		 * @since   5.8.8
 		 *
-		 * @param   array         $columns An array of column names to be searched.
-		 * @param   string        $search The search term.
+		 * @param   array         $columns       An array of column names to be searched.
+		 * @param   string        $search        The search term.
 		 * @param   WP_User_Query $WP_User_Query The WP_User_Query instance.
 		 * @return  array
 		 */
@@ -445,8 +444,8 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @date    9/3/20
 		 * @since   5.8.8
 		 *
-		 * @param   array          $item The choice id and text.
-		 * @param   WP_User        $user The user object.
+		 * @param   array          $item  The choice id and text.
+		 * @param   WP_User        $user  The user object.
 		 * @param   ACF_Ajax_Query $query The query object.
 		 * @return  array
 		 */
@@ -489,8 +488,8 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		 * @since   5.0.9
 		 * @deprecated 5.8.9
 		 *
-		 * @param   array         $columns An array of column names to be searched.
-		 * @param   string        $search The search term.
+		 * @param   array         $columns       An array of column names to be searched.
+		 * @param   string        $search        The search term.
 		 * @param   WP_User_Query $WP_User_Query The WP_User_Query instance.
 		 * @return  array
 		 */
@@ -502,11 +501,10 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		/**
 		 * Validates user fields updated via the REST API.
 		 *
-		 * @param bool  $valid
-		 * @param int   $value
-		 * @param array $field
-		 *
-		 * @return bool|WP_Error
+		 * @param  boolean $valid The current validity booleean
+		 * @param  integer $value The value of the field
+		 * @param  array   $field The field array
+		 * @return boolean|WP_Error
 		 */
 		public function validate_rest_value( $valid, $value, $field ) {
 			if ( is_null( $value ) ) {
@@ -592,9 +590,9 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 
 		/**
 		 * @see \acf_field::get_rest_links()
-		 * @param mixed      $value The raw (unformatted) field value.
-		 * @param int|string $post_id
-		 * @param array      $field
+		 * @param mixed          $value   The raw (unformatted) field value.
+		 * @param integer|string $post_id
+		 * @param array          $field
 		 * @return array
 		 */
 		public function get_rest_links( $value, $post_id, array $field ) {
@@ -618,9 +616,9 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param string|int $post_id
-		 * @param array      $field
+		 * @param mixed          $value
+		 * @param string|integer $post_id
+		 * @param array          $field
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

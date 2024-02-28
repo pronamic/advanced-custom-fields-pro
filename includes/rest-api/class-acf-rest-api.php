@@ -147,7 +147,7 @@ class ACF_Rest_Api {
 	 * @param \WP_REST_Request $request
 	 * @param string           $param
 	 *
-	 * @return bool|WP_Error
+	 * @return boolean|WP_Error
 	 */
 	public function validate_rest_arg( $value, $request, $param ) {
 		// Validate all fields with default WordPress validation first.
@@ -187,11 +187,11 @@ class ACF_Rest_Api {
 	 * Load field values into the requested object. This method is not a part of any public API and is only public as
 	 * it is required by WordPress.
 	 *
-	 * @param array           $object An array representation of the post, term, or user object.
+	 * @param array           $object          An array representation of the post, term, or user object.
 	 * @param string          $field_name
 	 * @param WP_REST_Request $request
 	 * @param string          $object_sub_type Note that this isn't the same as $this->object_type. This variable is
-	 *                                           more specific and can be a post type or taxonomy.
+	 *                                          more specific and can be a post type or taxonomy.
 	 * @return array
 	 */
 	public function load_fields( $object, $field_name, $request, $object_sub_type ) {
@@ -253,10 +253,10 @@ class ACF_Rest_Api {
 	 *
 	 * @param array                   $data
 	 * @param WP_Post|WP_Term|WP_User $object
-	 * @param string                  $property 'acf'
+	 * @param string                  $property        'acf'
 	 * @param WP_REST_Request         $request
 	 * @param string                  $object_sub_type This will be the post type, the taxonomy, or 'user'.
-	 * @return bool|WP_Error
+	 * @return boolean|WP_Error
 	 */
 	public function update_fields( $data, $object, $property, $request, $object_sub_type ) {
 		// If 'acf' data object is empty, don't do anything.
@@ -293,7 +293,6 @@ class ACF_Rest_Api {
 		//
 		// return true;
 		// }
-
 		// todo - consider/discuss handling this in the request object instead
 		// If the incoming data defines field group keys, extract it from the data. This is used to scope the
 		// field lookup in \ACF_Rest_Api::get_field_groups_by_id();
@@ -346,8 +345,8 @@ class ACF_Rest_Api {
 	/**
 	 * Make the ACF identifier string for the given object.
 	 *
-	 * @param int    $object_id
-	 * @param string $object_type 'user', 'term', or 'post'
+	 * @param integer $object_id
+	 * @param string  $object_type 'user', 'term', or 'post'
 	 * @return string
 	 */
 	private function make_identifier( $object_id, $object_type ) {
@@ -369,7 +368,7 @@ class ACF_Rest_Api {
 	 * @param array  $field_group    The field group to check.
 	 * @param array  $location_types An array of location types.
 	 *
-	 * @return bool
+	 * @return boolean
 	 */
 	private function object_type_has_field_group( $object_type, $field_group, $location_types = array() ) {
 		if ( ! isset( $field_group['location'] ) || ! is_array( $field_group['location'] ) ) {
@@ -436,7 +435,7 @@ class ACF_Rest_Api {
 	/**
 	 * Get all field groups for the provided object type.
 	 *
-	 * @param string $object_type  'user', 'term', or 'post'
+	 * @param string $object_type 'user', 'term', or 'post'
 	 *
 	 * @return array An array of field groups that display for that location type.
 	 */
@@ -461,10 +460,10 @@ class ACF_Rest_Api {
 	/**
 	 * Get all field groups for a given object.
 	 *
-	 * @param int         $object_id
-	 * @param string      $object_type 'user', 'term', or 'post'
+	 * @param integer     $object_id
+	 * @param string      $object_type     'user', 'term', or 'post'
 	 * @param string|null $object_sub_type The post type or taxonomy. When an $object_type of 'user' is in play, this can be ignored.
-	 * @param array       $scope Field group keys to limit the returned set of field groups to. This is used to scope field lookups to specific groups.
+	 * @param array       $scope           Field group keys to limit the returned set of field groups to. This is used to scope field lookups to specific groups.
 	 * @return array An array of matching field groups.
 	 */
 	private function get_field_groups_by_id( $object_id, $object_type, $object_sub_type = null, $scope = array() ) {
@@ -519,9 +518,9 @@ class ACF_Rest_Api {
 	/**
 	 * Get all ACF fields for a given field group and allow third party filtering.
 	 *
-	 * @param array    $field_group This could technically be other possible values supported by acf_get_fields() but in this
-	 *                           context, we're only using the field group arrays.
-	 * @param null|int $object_id The ID of the object being prepared.
+	 * @param array        $field_group This could technically be other possible values supported by acf_get_fields() but in this
+	 *                              context, we're only using the field group arrays.
+	 * @param null|integer $object_id   The ID of the object being prepared.
 	 * @return array
 	 */
 	private function get_fields( $field_group, $object_id = null ) {

@@ -42,9 +42,9 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @date    8/10/18
 		 * @since   5.8.0
 		 *
-		 * @param   array $meta An array of metdata to store.
-		 * @param   mixed $post_id The post_id for this data.
-		 * @param   bool  $is_main Makes this postmeta visible to get_field() without a $post_id value.
+		 * @param   array   $meta    An array of metdata to store.
+		 * @param   mixed   $post_id The post_id for this data.
+		 * @param   boolean $is_main Makes this postmeta visible to get_field() without a $post_id value.
 		 * @return  array
 		 */
 		function add( $meta = array(), $post_id = 0, $is_main = false ) {
@@ -75,7 +75,7 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @since   5.7.14
 		 *
 		 * @param   array $meta An array of metdata to check.
-		 * @return  bool
+		 * @return  boolean
 		 */
 		function is_request( $meta = array() ) {
 			return acf_is_field_key( key( $meta ) );
@@ -90,7 +90,7 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @date    26/2/19
 		 * @since   5.7.13
 		 *
-		 * @param   array $values An array of raw values.
+		 * @param   array $values  An array of raw values.
 		 * @param   mixed $post_id The post_id for this data.
 		 * @return  array
 		 */
@@ -122,11 +122,11 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @date    26/2/19
 		 * @since   5.7.13
 		 *
-		 * @param   null         $null .
+		 * @param   null         $null    .
 		 * @param   (int|string) $post_id The post id.
-		 * @param   string       $name The meta name.
-		 * @param   mixed        $value The meta value.
-		 * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+		 * @param   string       $name    The meta name.
+		 * @param   mixed        $value   The meta value.
+		 * @param   boolean      $hidden  If the meta is hidden (starts with an underscore).
 		 * @return  false.
 		 */
 		function capture_update_metadata( $null, $post_id, $name, $value, $hidden ) {
@@ -167,7 +167,7 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @date    8/10/18
 		 * @since   5.8.0
 		 *
-		 * @param   null  $null An empty parameter. Return a non null value to short-circuit the function.
+		 * @param   null  $null    An empty parameter. Return a non null value to short-circuit the function.
 		 * @param   mixed $post_id The post_id for this data.
 		 * @return  mixed
 		 */
@@ -186,10 +186,10 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @date    8/10/18
 		 * @since   5.8.0
 		 *
-		 * @param   null         $null An empty parameter. Return a non null value to short-circuit the function.
+		 * @param   null         $null    An empty parameter. Return a non null value to short-circuit the function.
 		 * @param   (int|string) $post_id The post id.
-		 * @param   string       $name The meta name.
-		 * @param   bool         $hidden If the meta is hidden (starts with an underscore).
+		 * @param   string       $name    The meta name.
+		 * @param   boolean      $hidden  If the meta is hidden (starts with an underscore).
 		 * @return  mixed
 		 */
 		function pre_load_metadata( $null, $post_id, $name, $hidden ) {
@@ -211,7 +211,7 @@ if ( ! class_exists( 'ACF_Local_Meta' ) ) :
 		 * @date    8/10/18
 		 * @since   5.8.0
 		 *
-		 * @param   null  $null An empty parameter. Return a non null value to short-circuit the function.
+		 * @param   null  $null    An empty parameter. Return a non null value to short-circuit the function.
 		 * @param   mixed $post_id The post_id for this data.
 		 * @return  mixed
 		 */

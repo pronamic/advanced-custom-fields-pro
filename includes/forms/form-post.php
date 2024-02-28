@@ -12,15 +12,15 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 		var $style = '';
 
 		/**
-		 *  __construct
+		 * __construct
 		 *
-		 *  Sets up the class functionality.
+		 * Sets up the class functionality.
 		 *
-		 *  @date    5/03/2014
-		 *  @since   5.0.0
+		 * @date    5/03/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function __construct() {
 
@@ -35,15 +35,15 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 
 
 		/**
-		 *  initialize
+		 * initialize
 		 *
-		 *  Sets up Form functionality.
+		 * Sets up Form functionality.
 		 *
-		 *  @date    19/9/18
-		 *  @since   5.7.6
+		 * @date    19/9/18
+		 * @since   5.7.6
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function initialize() {
 
@@ -74,16 +74,16 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 		}
 
 		/**
-		 *  add_meta_boxes
+		 * add_meta_boxes
 		 *
-		 *  Adds ACF metaboxes for the given $post_type and $post.
+		 * Adds ACF metaboxes for the given $post_type and $post.
 		 *
-		 *  @date    19/9/18
-		 *  @since   5.7.6
+		 * @date    19/9/18
+		 * @since   5.7.6
 		 *
-		 *  @param   string  $post_type The post type.
-		 *  @param   WP_Post $post The post being edited.
-		 *  @return  void
+		 * @param   string  $post_type The post type.
+		 * @param   WP_Post $post      The post being edited.
+		 * @return  void
 		 */
 		function add_meta_boxes( $post_type, $post ) {
 
@@ -157,30 +157,25 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 			add_action( 'edit_form_after_title', array( $this, 'edit_form_after_title' ) );
 
 			/**
-			*  Fires after metaboxes have been added.
+			* Fires after metaboxes have been added.
 			*
-			*  @date    13/12/18
-			*  @since   5.8.0
+			* @date    13/12/18
+			* @since   5.8.0
 			*
-			*  @param   string $post_type The post type.
-			*  @param   WP_Post $post The post being edited.
-			*  @param   array $field_groups The field groups added.
+			* @param   string $post_type The post type.
+			* @param   WP_Post $post The post being edited.
+			* @param   array $field_groups The field groups added.
 			*/
 			do_action( 'acf/add_meta_boxes', $post_type, $post, $field_groups );
 		}
 
 		/**
-		 *  edit_form_after_title
+		 * Called after the title and before the content editor to render the after title metaboxes.
+		 * Also renders the CSS required to hide the "hide-on-screen" elements on the page based on the field group settings.
 		 *
-		 *  Called after the title adn before the content editor.
-		 *
-		 *  @date    19/9/18
-		 *  @since   5.7.6
-		 *
-		 *  @param   void
-		 *  @return  void
+		 * @since 5.7.6
 		 */
-		function edit_form_after_title() {
+		public function edit_form_after_title() {
 
 			// globals
 			global $post, $wp_meta_boxes;
@@ -196,21 +191,23 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 			// render 'acf_after_title' metaboxes
 			do_meta_boxes( get_current_screen(), 'acf_after_title', $post );
 
-			// render dynamic field group style
-			echo '<style type="text/css" id="acf-style">' . $this->style . '</style>';
+			if ( ! empty( $this->style ) ) {
+				// render dynamic field group style, using wp_strip_all_tags as this is filterable, but should only contain valid styles and no html.
+				echo '<style type="text/css" id="acf-style">' . wp_strip_all_tags( $this->style ) . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS only, escaped by wp_strip_all_tags.
+			}
 		}
 
 		/**
-		 *  render_meta_box
+		 * render_meta_box
 		 *
-		 *  Renders the ACF metabox HTML.
+		 * Renders the ACF metabox HTML.
 		 *
-		 *  @date    19/9/18
-		 *  @since   5.7.6
+		 * @date    19/9/18
+		 * @since   5.7.6
 		 *
-		 *  @param   WP_Post                               $post The post being edited.
-		 *  @param   array metabox The add_meta_box() args.
-		 *  @return  void
+		 * @param   WP_Post                               $post The post being edited.
+		 * @param   array metabox The add_meta_box() args.
+		 * @return  void
 		 */
 		function render_meta_box( $post, $metabox ) {
 
@@ -224,16 +221,16 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 		}
 
 		/**
-		 *  wp_insert_post_empty_content
+		 * wp_insert_post_empty_content
 		 *
-		 *  Allows WP to insert a new post without title or post_content if ACF data exists.
+		 * Allows WP to insert a new post without title or post_content if ACF data exists.
 		 *
-		 *  @date    16/07/2014
-		 *  @since   5.0.1
+		 * @date    16/07/2014
+		 * @since   5.0.1
 		 *
-		 *  @param   bool  $maybe_empty Whether the post should be considered "empty".
-		 *  @param   array $postarr Array of post data.
-		 *  @return  bool
+		 * @param   boolean $maybe_empty Whether the post should be considered "empty".
+		 * @param   array   $postarr     Array of post data.
+		 * @return  boolean
 		 */
 		function wp_insert_post_empty_content( $maybe_empty, $postarr ) {
 
@@ -246,19 +243,17 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 			return $maybe_empty;
 		}
 
-		/*
-		*  allow_save_post
-		*
-		*  Checks if the $post is allowed to be saved.
-		*  Used to avoid triggering "acf/save_post" on dynamically created posts during save.
-		*
-		*  @type    function
-		*  @date    26/06/2016
-		*  @since   5.3.8
-		*
-		*  @param   WP_Post $post The post to check.
-		*  @return  bool
-		*/
+		/**
+		 * Checks if the $post is allowed to be saved.
+		 * Used to avoid triggering "acf/save_post" on dynamically created posts during save.
+		 *
+		 * @type    function
+		 * @date    26/06/2016
+		 * @since   5.3.8
+		 *
+		 * @param   WP_Post $post The post to check.
+		 * @return  boolean
+		 */
 		function allow_save_post( $post ) {
 
 			// vars

@@ -101,8 +101,8 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|WP_Post $id The post ID being queried.
-		 * @return array|bool The main ACF array for the post, or false on failure.
+		 * @param integer|WP_Post $id The post ID being queried.
+		 * @return array|boolean The main ACF array for the post, or false on failure.
 		 */
 		public function get_post( $id = 0 ) {
 			// Allow WP_Post to be passed.
@@ -194,8 +194,8 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The ID of the field group to delete.
-		 * @return bool
+		 * @param integer|string $id The ID of the field group to delete.
+		 * @return boolean
 		 */
 		public function delete_post( $id = 0 ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -239,8 +239,8 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The ID of the field group to trash.
-		 * @return bool
+		 * @param integer|string $id The ID of the field group to trash.
+		 * @return boolean
 		 */
 		public function trash_post( $id = 0 ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -280,8 +280,8 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id The ID of the ACF post to untrash.
-		 * @return bool
+		 * @param integer|string $id The ID of the ACF post to untrash.
+		 * @return boolean
 		 */
 		public function untrash_post( $id = 0 ) {
 			// Disable filters to ensure ACF loads data from DB.
@@ -320,8 +320,8 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 		 *
 		 * @since 6.1
 		 *
-		 * @param int|string $id          The ID of the post to duplicate.
-		 * @param int        $new_post_id Optional post ID to override.
+		 * @param integer|string $id          The ID of the post to duplicate.
+		 * @param integer        $new_post_id Optional post ID to override.
 		 * @return array The new ACF post array.
 		 */
 		public function duplicate_post( $id = 0, $new_post_id = 0 ) {

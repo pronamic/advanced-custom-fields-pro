@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-02-05T19:27:11+00:00\n"
+"PO-Revision-Date: 2024-02-26T11:26:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fa_IR\n"
 "MIME-Version: 1.0\n"
@@ -21,10 +21,17 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
-#. translators: %1$s - The selector used  %2$s The field name  3%$s The parent
-#. function name
-#: includes/admin/views/escaped-html-notice.php:59
-msgid "%1$s (%2$s) - rendered via %3$s"
+#: includes/api/api-template.php:461 includes/api/api-template.php:515
+msgid ""
+"Returning escaped HTML values is only possible when format_value is also "
+"true. The field values have not been returned for security."
+msgstr ""
+
+#: includes/api/api-template.php:46 includes/api/api-template.php:327
+#: includes/api/api-template.php:1026
+msgid ""
+"Returning an escaped HTML value is only possible when format_value is also "
+"true. The field value has not been returned for security."
 msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
@@ -32,8 +39,8 @@ msgstr ""
 #: includes/admin/views/escaped-html-notice.php:41
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by the ACF "
-"shortcode. We've detected the output of some of your fields will be modified "
-"by this change. %2$s. %3$s"
+"shortcode. We've detected the output of some of your fields has been "
+"modified by this change, but this may not be a breaking change. %2$s. %3$s."
 msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
@@ -42,7 +49,8 @@ msgstr ""
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by "
 "<code>the_field</code> or the ACF shortcode. We've detected the output of "
-"some of your fields will be modified by this change. %2$s. %3$s"
+"some of your fields has been modified by this change, but this may not be a "
+"breaking change. %2$s. %3$s."
 msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
@@ -51,23 +59,29 @@ msgstr ""
 msgid ""
 "%1$s ACF will soon escape unsafe HTML that is rendered by <code>the_field()</"
 "code>. We've detected the output of some of your fields will be modified by "
-"this change. %2$s. %3$s"
+"this change, but this may not be a breaking change. %2$s. %3$s."
 msgstr ""
 
 #: includes/admin/views/escaped-html-notice.php:14
-msgid "Please contact your site admin for more details."
+msgid "Please contact your site administrator or developer for more details."
 msgstr ""
 
 #: includes/admin/views/escaped-html-notice.php:5
-msgid "Learn how to fix"
+msgid "Learn&nbsp;more"
 msgstr ""
 
 #: includes/admin/admin.php:67
-msgid "Hide details"
+msgid "Hide&nbsp;details"
 msgstr ""
 
 #: includes/admin/admin.php:66 includes/admin/views/escaped-html-notice.php:11
-msgid "Show details"
+msgid "Show&nbsp;details"
+msgstr ""
+
+#. translators: %1$s - The selector used  %2$s The field name  3%$s The parent
+#. function name
+#: includes/admin/views/escaped-html-notice.php:59
+msgid "%1$s (%2$s) - rendered via %3$s"
 msgstr ""
 
 #: includes/admin/views/global/navigation.php:223
@@ -153,7 +167,7 @@ msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:121
 #: assets/build/js/acf-field-group.js:2752
-#: assets/build/js/acf-field-group.js:3236
+#: assets/build/js/acf-field-group.js:3237
 msgid "This Field"
 msgstr ""
 
@@ -485,11 +499,11 @@ msgstr ""
 "اجازه میدهد که یک یا چند کاربر را انتخاب کنید که می تواند برای ایجاد رابطه "
 "بین داده های آبجکت ها مورد استفاده قرار گیرد."
 
-#: includes/fields/class-acf-field-url.php:26
+#: includes/fields/class-acf-field-url.php:20
 msgid "A text input specifically designed for storing web addresses."
 msgstr "یک ورودی متنی که به طور خاص برای ذخیره آدرس های وب طراحی شده است."
 
-#: includes/fields/class-acf-field-url.php:25
+#: includes/fields/class-acf-field-url.php:19
 msgid "URL"
 msgstr "نشانی وب"
 
@@ -655,14 +669,14 @@ msgid ""
 "are shown while editing content. Useful for keeping large datasets tidy."
 msgstr ""
 
-#: includes/fields.php:492
+#: includes/fields.php:493
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
 "can be repeated again and again."
 msgstr ""
 
-#: includes/fields.php:482
+#: includes/fields.php:483
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -670,14 +684,14 @@ msgid ""
 "and the minimum/maximum number of attachments allowed."
 msgstr ""
 
-#: includes/fields.php:472
+#: includes/fields.php:473
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
 "control by using layouts and subfields to design the available blocks."
 msgstr ""
 
-#: includes/fields.php:462
+#: includes/fields.php:463
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -685,16 +699,16 @@ msgid ""
 "or display the selected fields as a group of subfields."
 msgstr ""
 
-#: includes/fields.php:459
+#: includes/fields.php:460
 msgctxt "noun"
 msgid "Clone"
 msgstr "کپی (هیچ)"
 
-#: includes/admin/views/global/navigation.php:86 includes/fields.php:374
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:375
 msgid "PRO"
 msgstr ""
 
-#: includes/fields.php:372 includes/fields.php:429
+#: includes/fields.php:373 includes/fields.php:430
 msgid "Advanced"
 msgstr ""
 
@@ -2270,7 +2284,7 @@ msgstr ""
 msgid "Select existing taxonomies to classify items of the post type."
 msgstr "طبقه‌بندی‌های موجود را برای دسته‌بندی کردن آیتم‌های نوع پست انتخاب نمایید."
 
-#: includes/admin/views/acf-field-group/field.php:145
+#: includes/admin/views/acf-field-group/field.php:147
 msgid "Browse Fields"
 msgstr ""
 
@@ -2536,8 +2550,8 @@ msgstr "برای جستجو تایپ کنید...."
 #: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-field-group.js:1171
 #: assets/build/js/acf-field-group.js:2318
-#: assets/build/js/acf-field-group.js:1414
-#: assets/build/js/acf-field-group.js:2727
+#: assets/build/js/acf-field-group.js:1415
+#: assets/build/js/acf-field-group.js:2728
 msgid "PRO Only"
 msgstr "فقط نسخه حرفه ای"
 
@@ -2587,14 +2601,14 @@ msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] ""
 
-#: includes/admin/admin-internal-post-type-list.php:261
+#: includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-post-types.php:371
 #: includes/admin/post-types/admin-taxonomies.php:378
 msgctxt "post status"
 msgid "Registration Failed"
 msgstr "ثبت نام انجام نشد"
 
-#: includes/admin/admin-internal-post-type-list.php:260
+#: includes/admin/admin-internal-post-type-list.php:263
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
@@ -2642,7 +2656,7 @@ msgstr ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
-#: includes/api/api-template.php:1051
+#: includes/api/api-template.php:1102
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[مقدار کد کوتاه ACF برای پیش نمایش غیرفعال است]"
 
@@ -2653,7 +2667,7 @@ msgstr "بستن صفحه"
 
 #: includes/admin/post-types/admin-field-group.php:96
 #: assets/build/js/acf-field-group.js:1669
-#: assets/build/js/acf-field-group.js:1993
+#: assets/build/js/acf-field-group.js:1994
 msgid "Field moved to other group"
 msgstr "زمینه به یک گروه دیگر منتقل شد"
 
@@ -2662,11 +2676,11 @@ msgstr "زمینه به یک گروه دیگر منتقل شد"
 msgid "Close modal"
 msgstr "بستن صفحه"
 
-#: includes/fields/class-acf-field-tab.php:123
+#: includes/fields/class-acf-field-tab.php:124
 msgid "Start a new group of tabs at this tab."
 msgstr "شروع گروه جدید زبانه‌ها در این زبانه"
 
-#: includes/fields/class-acf-field-tab.php:122
+#: includes/fields/class-acf-field-tab.php:123
 msgid "New Tab Group"
 msgstr "گروه زبانه جدید"
 
@@ -2822,16 +2836,16 @@ msgstr "#"
 msgid "Add Field"
 msgstr "افزودن زمینه"
 
-#: includes/acf-field-group-functions.php:496 includes/fields.php:427
+#: includes/acf-field-group-functions.php:496 includes/fields.php:428
 msgid "Presentation"
 msgstr "نمایش"
 
-#: includes/fields.php:426
+#: includes/fields.php:427
 msgid "Validation"
 msgstr "اعتبارسنجی"
 
 #: includes/acf-internal-post-type-functions.php:477
-#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:425
+#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:426
 msgid "General"
 msgstr "عمومی"
 
@@ -2855,31 +2869,31 @@ msgid "Field group activated."
 msgid_plural "%s field groups activated."
 msgstr[0] ""
 
-#: includes/admin/admin-internal-post-type-list.php:452
-#: includes/admin/admin-internal-post-type-list.php:478
+#: includes/admin/admin-internal-post-type-list.php:455
+#: includes/admin/admin-internal-post-type-list.php:481
 msgid "Deactivate"
 msgstr "غیرفعال کردن"
 
-#: includes/admin/admin-internal-post-type-list.php:452
+#: includes/admin/admin-internal-post-type-list.php:455
 msgid "Deactivate this item"
 msgstr "غیرفعال کردن این مورد"
 
-#: includes/admin/admin-internal-post-type-list.php:448
-#: includes/admin/admin-internal-post-type-list.php:477
+#: includes/admin/admin-internal-post-type-list.php:451
+#: includes/admin/admin-internal-post-type-list.php:480
 msgid "Activate"
 msgstr "فعال کردن"
 
-#: includes/admin/admin-internal-post-type-list.php:448
+#: includes/admin/admin-internal-post-type-list.php:451
 msgid "Activate this item"
 msgstr "فعال کردن این مورد"
 
 #: includes/admin/post-types/admin-field-group.php:92
 #: assets/build/js/acf-field-group.js:2811
-#: assets/build/js/acf-field-group.js:3313
+#: assets/build/js/acf-field-group.js:3314
 msgid "Move field group to trash?"
 msgstr "انتقال گروه زمینه به زباله‌دان؟"
 
-#: acf.php:496 includes/admin/admin-internal-post-type-list.php:248
+#: acf.php:493 includes/admin/admin-internal-post-type-list.php:251
 #: includes/admin/post-types/admin-field-group.php:289
 #: includes/admin/post-types/admin-post-type.php:295
 #: includes/admin/post-types/admin-taxonomy.php:297
@@ -2891,7 +2905,7 @@ msgstr "غیرفعال"
 msgid "WP Engine"
 msgstr ""
 
-#: acf.php:554
+#: acf.php:551
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2899,7 +2913,7 @@ msgstr ""
 "افزونه زمینه های سفارشی و افزونه زمینه های سفارشی پیشرفته نباید همزمان فعال "
 "باشند. ما به طور خودکار افزونه زمینه های سفارشی پیشرفته را غیرفعال کردیم."
 
-#: acf.php:552
+#: acf.php:549
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2907,17 +2921,17 @@ msgstr ""
 "افزونه زمینه های سفارشی و افزونه زمینه های سفارشی پیشرفته نباید همزمان فعال "
 "باشند. ما به طور خودکار فیلدهای سفارشی پیشرفته را غیرفعال کرده ایم."
 
-#: includes/acf-value-functions.php:377
+#: includes/acf-value-functions.php:375
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" "
-"target=\"_blank\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
+"\">Learn how to fix this</a>."
 msgstr ""
 "<strong>%1$s</strong> - قبل از شروع اولیه ACF، یک یا چند تماس را برای "
 "بازیابی مقادیر فیلد ACF شناسایی کرده‌ایم. این مورد پشتیبانی نمی‌شود و می‌تواند "
-"منجر به داده‌های ناقص یا از دست رفته شود. <a href=\"%2$s\" "
-"target=\"_blank\">با نحوه رفع این مشکل آشنا شوید</a>."
+"منجر به داده‌های ناقص یا از دست رفته شود. <a href=\"%2$s\" target=\"_blank"
+"\">با نحوه رفع این مشکل آشنا شوید</a>."
 
 #: includes/fields/class-acf-field-user.php:551
 msgid "%1$s must have a user with the %2$s role."
@@ -3057,32 +3071,32 @@ msgstr ""
 msgid "Invalid field group parameter(s)."
 msgstr "پارامتر(ها) گروه فیلد نامعتبر است"
 
-#: includes/admin/admin-internal-post-type-list.php:413
+#: includes/admin/admin-internal-post-type-list.php:416
 msgid "Awaiting save"
 msgstr "در انتظار ذخیره"
 
-#: includes/admin/admin-internal-post-type-list.php:410
+#: includes/admin/admin-internal-post-type-list.php:413
 msgid "Saved"
 msgstr "ذخیره شده"
 
-#: includes/admin/admin-internal-post-type-list.php:406
+#: includes/admin/admin-internal-post-type-list.php:409
 #: includes/admin/tools/class-acf-admin-tool-import.php:48
 msgid "Import"
 msgstr "درون‌ریزی"
 
-#: includes/admin/admin-internal-post-type-list.php:402
+#: includes/admin/admin-internal-post-type-list.php:405
 msgid "Review changes"
 msgstr "تغییرات مرور شد"
 
-#: includes/admin/admin-internal-post-type-list.php:378
+#: includes/admin/admin-internal-post-type-list.php:381
 msgid "Located in: %s"
 msgstr "قرار گرفته در: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:375
+#: includes/admin/admin-internal-post-type-list.php:378
 msgid "Located in plugin: %s"
 msgstr "قرار گرفته در پلاگین: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:372
+#: includes/admin/admin-internal-post-type-list.php:375
 msgid "Located in theme: %s"
 msgstr "قرار گرفته در قالب: %s"
 
@@ -3090,16 +3104,16 @@ msgstr "قرار گرفته در قالب: %s"
 msgid "Various"
 msgstr "مختلف"
 
-#: includes/admin/admin-internal-post-type-list.php:216
-#: includes/admin/admin-internal-post-type-list.php:485
+#: includes/admin/admin-internal-post-type-list.php:219
+#: includes/admin/admin-internal-post-type-list.php:488
 msgid "Sync changes"
 msgstr "همگام‌سازی تغییرات"
 
-#: includes/admin/admin-internal-post-type-list.php:215
+#: includes/admin/admin-internal-post-type-list.php:218
 msgid "Loading diff"
 msgstr "بارگذاری تفاوت"
 
-#: includes/admin/admin-internal-post-type-list.php:214
+#: includes/admin/admin-internal-post-type-list.php:217
 msgid "Review local JSON changes"
 msgstr "بررسی تغییرات JSON محلی"
 
@@ -3356,7 +3370,7 @@ msgid "Show this field if"
 msgstr "نمایش این گروه فیلد اگر"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:25
-#: includes/admin/views/acf-field-group/field.php:109 includes/fields.php:428
+#: includes/admin/views/acf-field-group/field.php:111 includes/fields.php:429
 msgid "Conditional Logic"
 msgstr "منطق شرطی"
 
@@ -3400,15 +3414,15 @@ msgstr "به روزرسانی دیتابیس لازم است"
 msgid "Options Page"
 msgstr "برگه تنظیمات"
 
-#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:479
+#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:480
 msgid "Gallery"
 msgstr "گالری"
 
-#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:469
+#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:470
 msgid "Flexible Content"
 msgstr "محتوای انعطاف پذیر"
 
-#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:489
+#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:490
 msgid "Repeater"
 msgstr "زمینه تکرار کننده"
 
@@ -3570,92 +3584,92 @@ msgstr "کلید"
 msgid "Order"
 msgstr "ترتیب"
 
-#: includes/admin/views/acf-field-group/field.php:322
+#: includes/admin/views/acf-field-group/field.php:310
 msgid "Close Field"
 msgstr "بستن فیلد "
 
-#: includes/admin/views/acf-field-group/field.php:253
+#: includes/admin/views/acf-field-group/field.php:241
 msgid "id"
 msgstr "شناسه"
 
-#: includes/admin/views/acf-field-group/field.php:237
+#: includes/admin/views/acf-field-group/field.php:225
 msgid "class"
 msgstr "کلاس"
 
-#: includes/admin/views/acf-field-group/field.php:279
+#: includes/admin/views/acf-field-group/field.php:267
 msgid "width"
 msgstr "عرض"
 
-#: includes/admin/views/acf-field-group/field.php:273
+#: includes/admin/views/acf-field-group/field.php:261
 msgid "Wrapper Attributes"
 msgstr "مشخصات پوشش فیلد"
 
-#: includes/admin/views/acf-field-group/field.php:196
+#: includes/fields/class-acf-field.php:316
 msgid "Required"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:221
+#: includes/admin/views/acf-field-group/field.php:209
 msgid "Instructions for authors. Shown when submitting data"
 msgstr "دستورالعمل هایی برای نویسندگان. هنگام ارسال داده ها نمایش داده می شوند"
 
-#: includes/admin/views/acf-field-group/field.php:220
+#: includes/admin/views/acf-field-group/field.php:208
 msgid "Instructions"
 msgstr "دستورالعمل ها"
 
-#: includes/admin/views/acf-field-group/field.php:129
+#: includes/admin/views/acf-field-group/field.php:131
 msgid "Field Type"
 msgstr "نوع فیلد "
 
-#: includes/admin/views/acf-field-group/field.php:170
+#: includes/admin/views/acf-field-group/field.php:172
 msgid "Single word, no spaces. Underscores and dashes allowed"
 msgstr "تک کلمه، بدون فاصله. خط زیرین و خط تیره ها مجازاند"
 
-#: includes/admin/views/acf-field-group/field.php:169
+#: includes/admin/views/acf-field-group/field.php:171
 msgid "Field Name"
 msgstr "نام فیلد "
 
-#: includes/admin/views/acf-field-group/field.php:157
+#: includes/admin/views/acf-field-group/field.php:159
 msgid "This is the name which will appear on the EDIT page"
 msgstr "این نامی است که در صفحه \"ویرایش\" نمایش داده خواهد شد"
 
-#: includes/admin/views/acf-field-group/field.php:156
+#: includes/admin/views/acf-field-group/field.php:158
 #: includes/admin/views/browse-fields-modal.php:59
 msgid "Field Label"
 msgstr "برچسب فیلد "
 
-#: includes/admin/views/acf-field-group/field.php:81
+#: includes/admin/views/acf-field-group/field.php:83
 msgid "Delete"
 msgstr "حذف"
 
-#: includes/admin/views/acf-field-group/field.php:81
+#: includes/admin/views/acf-field-group/field.php:83
 msgid "Delete field"
 msgstr "حذف زمینه"
 
-#: includes/admin/views/acf-field-group/field.php:79
+#: includes/admin/views/acf-field-group/field.php:81
 msgid "Move"
 msgstr "انتقال"
 
-#: includes/admin/views/acf-field-group/field.php:79
+#: includes/admin/views/acf-field-group/field.php:81
 msgid "Move field to another group"
 msgstr "انتقال زمینه ها به گروه دیگر"
 
-#: includes/admin/views/acf-field-group/field.php:77
+#: includes/admin/views/acf-field-group/field.php:79
 msgid "Duplicate field"
 msgstr "تکثیر زمینه"
 
-#: includes/admin/views/acf-field-group/field.php:73
-#: includes/admin/views/acf-field-group/field.php:76
+#: includes/admin/views/acf-field-group/field.php:75
+#: includes/admin/views/acf-field-group/field.php:78
 msgid "Edit field"
 msgstr "ویرایش زمینه"
 
-#: includes/admin/views/acf-field-group/field.php:69
+#: includes/admin/views/acf-field-group/field.php:71
 msgid "Drag to reorder"
 msgstr "گرفتن و کشیدن برای مرتب سازی"
 
 #: includes/admin/post-types/admin-field-group.php:103
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: assets/build/js/acf-field-group.js:2346
-#: assets/build/js/acf-field-group.js:2763
+#: assets/build/js/acf-field-group.js:2764
 msgid "Show this field group if"
 msgstr "نمایش این گروه زمینه اگر"
 
@@ -3804,21 +3818,21 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr "وارد کردن گروه های زمینه"
 
-#: includes/admin/admin-internal-post-type-list.php:401
+#: includes/admin/admin-internal-post-type-list.php:404
 msgid "Sync"
 msgstr "هماهنگ"
 
-#: includes/admin/admin-internal-post-type-list.php:858
+#: includes/admin/admin-internal-post-type-list.php:861
 msgid "Select %s"
 msgstr "انتخاب %s"
 
-#: includes/admin/admin-internal-post-type-list.php:442
-#: includes/admin/admin-internal-post-type-list.php:474
-#: includes/admin/views/acf-field-group/field.php:77
+#: includes/admin/admin-internal-post-type-list.php:445
+#: includes/admin/admin-internal-post-type-list.php:477
+#: includes/admin/views/acf-field-group/field.php:79
 msgid "Duplicate"
 msgstr "تکثیر"
 
-#: includes/admin/admin-internal-post-type-list.php:442
+#: includes/admin/admin-internal-post-type-list.php:445
 msgid "Duplicate this item"
 msgstr "تکثیر این زمینه"
 
@@ -3841,8 +3855,8 @@ msgstr "مستندات"
 msgid "Description"
 msgstr "توضیحات"
 
-#: includes/admin/admin-internal-post-type-list.php:398
-#: includes/admin/admin-internal-post-type-list.php:747
+#: includes/admin/admin-internal-post-type-list.php:401
+#: includes/admin/admin-internal-post-type-list.php:750
 msgid "Sync available"
 msgstr "هماهنگ سازی موجود است"
 
@@ -3858,7 +3872,7 @@ msgid "Field group duplicated."
 msgid_plural "%s field groups duplicated."
 msgstr[0] "%s گروه زمینه تکثیر شدند."
 
-#: includes/admin/admin-internal-post-type-list.php:137
+#: includes/admin/admin-internal-post-type-list.php:140
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "فعال <span class=\"count\">(%s)</span>"
@@ -3898,7 +3912,7 @@ msgstr ""
 msgid "Move Complete."
 msgstr "انتقال کامل شد."
 
-#: includes/admin/views/acf-field-group/field.php:39
+#: includes/admin/views/acf-field-group/field.php:41
 #: includes/admin/views/acf-field-group/options.php:217
 #: includes/admin/views/acf-post-type/advanced-settings.php:78
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:130
@@ -3927,7 +3941,7 @@ msgstr "خالی (null)"
 #: includes/class-acf-internal-post-type.php:730
 #: includes/post-types/class-acf-field-group.php:345
 #: assets/build/js/acf-field-group.js:1509
-#: assets/build/js/acf-field-group.js:1821
+#: assets/build/js/acf-field-group.js:1822
 msgid "copy"
 msgstr "کپی"
 
@@ -3945,7 +3959,7 @@ msgstr "انتخاب شده"
 
 #: includes/admin/post-types/admin-field-group.php:94
 #: assets/build/js/acf-field-group.js:1614
-#: assets/build/js/acf-field-group.js:1933
+#: assets/build/js/acf-field-group.js:1934
 msgid "Move Custom Field"
 msgstr "جابجایی زمینه دلخواه"
 
@@ -3961,13 +3975,13 @@ msgstr "عنوان گروه زمینه ضروری است"
 
 #: includes/admin/post-types/admin-field-group.php:90
 #: assets/build/js/acf-field-group.js:1603
-#: assets/build/js/acf-field-group.js:1919
+#: assets/build/js/acf-field-group.js:1920
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "این زمینه قبل از اینکه ذخیره شود نمی تواند جابجا شود"
 
 #: includes/admin/post-types/admin-field-group.php:89
 #: assets/build/js/acf-field-group.js:1413
-#: assets/build/js/acf-field-group.js:1716
+#: assets/build/js/acf-field-group.js:1717
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "کلمه متنی \"field_\" نباید در ابتدای نام فیلد استفاده شود"
 
@@ -4033,15 +4047,15 @@ msgstr "برگه"
 msgid "Post"
 msgstr "نوشته"
 
-#: includes/fields.php:371
+#: includes/fields.php:372
 msgid "Relational"
 msgstr "رابطه"
 
-#: includes/fields.php:370
+#: includes/fields.php:371
 msgid "Choice"
 msgstr "انتخاب"
 
-#: includes/fields.php:368
+#: includes/fields.php:369
 msgid "Basic"
 msgstr "پایه"
 
@@ -4069,7 +4083,7 @@ msgstr "بروزرسانی"
 msgid "Validate Email"
 msgstr "اعتبار سنجی ایمیل"
 
-#: includes/fields.php:369 includes/forms/form-front.php:49
+#: includes/fields.php:370 includes/forms/form-front.php:49
 msgid "Content"
 msgstr "محتوا"
 
@@ -4079,7 +4093,7 @@ msgid "Title"
 msgstr "عنوان"
 
 #: includes/assets.php:373 includes/forms/form-comment.php:154
-#: assets/build/js/acf-input.js:7370 assets/build/js/acf-input.js:7956
+#: assets/build/js/acf-input.js:7391 assets/build/js/acf-input.js:7979
 msgid "Edit field group"
 msgstr "ویرایش گروه زمینه"
 
@@ -4146,50 +4160,50 @@ msgstr "لغو"
 msgid "Are you sure?"
 msgstr "اطمینان دارید؟"
 
-#: includes/assets.php:370 assets/build/js/acf-input.js:9430
-#: assets/build/js/acf-input.js:10282
+#: includes/assets.php:370 assets/build/js/acf-input.js:9451
+#: assets/build/js/acf-input.js:10305
 msgid "%d fields require attention"
 msgstr "%d گزینه نیاز به بررسی دارد"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9428
-#: assets/build/js/acf-input.js:10278
+#: includes/assets.php:369 assets/build/js/acf-input.js:9449
+#: assets/build/js/acf-input.js:10301
 msgid "1 field requires attention"
 msgstr "یکی از گزینه ها نیاز به بررسی دارد"
 
 #: includes/assets.php:368 includes/validation.php:271
-#: includes/validation.php:279 assets/build/js/acf-input.js:9423
-#: assets/build/js/acf-input.js:10273
+#: includes/validation.php:279 assets/build/js/acf-input.js:9444
+#: assets/build/js/acf-input.js:10296
 msgid "Validation failed"
 msgstr "مشکل در اعتبار سنجی"
 
-#: includes/assets.php:367 assets/build/js/acf-input.js:9591
-#: assets/build/js/acf-input.js:10461
+#: includes/assets.php:367 assets/build/js/acf-input.js:9612
+#: assets/build/js/acf-input.js:10484
 msgid "Validation successful"
 msgstr "اعتبار سنجی موفق بود"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7198
-#: assets/build/js/acf-input.js:7760
+#: includes/media.php:54 assets/build/js/acf-input.js:7219
+#: assets/build/js/acf-input.js:7783
 msgid "Restricted"
 msgstr "ممنوع"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:7013
-#: assets/build/js/acf-input.js:7524
+#: includes/media.php:53 assets/build/js/acf-input.js:7034
+#: assets/build/js/acf-input.js:7547
 msgid "Collapse Details"
 msgstr "عدم نمایش جزئیات"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:7013
-#: assets/build/js/acf-input.js:7521
+#: includes/media.php:52 assets/build/js/acf-input.js:7034
+#: assets/build/js/acf-input.js:7544
 msgid "Expand Details"
 msgstr "نمایش جزئیات"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:470
-#: includes/media.php:51 assets/build/js/acf-input.js:6880
-#: assets/build/js/acf-input.js:7369
+#: includes/media.php:51 assets/build/js/acf-input.js:6901
+#: assets/build/js/acf-input.js:7392
 msgid "Uploaded to this post"
 msgstr "بارگذاری شده در این نوشته"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6919
-#: assets/build/js/acf-input.js:7408
+#: includes/media.php:50 assets/build/js/acf-input.js:6940
+#: assets/build/js/acf-input.js:7431
 msgctxt "verb"
 msgid "Update"
 msgstr "بروزرسانی"
@@ -4199,8 +4213,8 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: includes/assets.php:364 assets/build/js/acf-input.js:9200
-#: assets/build/js/acf-input.js:10044
+#: includes/assets.php:364 assets/build/js/acf-input.js:9221
+#: assets/build/js/acf-input.js:10067
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "اگر از صفحه جاری خارج شوید ، تغییرات شما ذخیره نخواهند شد"
 
@@ -4216,7 +4230,7 @@ msgstr "نوع فایل باید %s باشد."
 #: includes/api/api-helpers.php:2964 assets/build/js/acf-field-group.js:771
 #: assets/build/js/acf-field-group.js:2384
 #: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2807
+#: assets/build/js/acf-field-group.js:2808
 msgid "or"
 msgstr "یا"
 
@@ -4439,7 +4453,7 @@ msgstr "دیگر"
 msgid "Radio Button"
 msgstr "دکمه رادیویی"
 
-#: includes/fields/class-acf-field-accordion.php:106
+#: includes/fields/class-acf-field-accordion.php:107
 msgid ""
 "Define an endpoint for the previous accordion to stop. This accordion will "
 "not be visible."
@@ -4447,19 +4461,19 @@ msgstr ""
 "یک نقطه پایانی برای توقف آکاردئون قبلی تعریف کنید. این آکاردئون مخفی خواهد "
 "بود."
 
-#: includes/fields/class-acf-field-accordion.php:95
+#: includes/fields/class-acf-field-accordion.php:96
 msgid "Allow this accordion to open without closing others."
 msgstr "اجازه دهید این آکوردئون بدون بستن دیگر آکاردئون‌ها باز شود."
 
-#: includes/fields/class-acf-field-accordion.php:94
+#: includes/fields/class-acf-field-accordion.php:95
 msgid "Multi-Expand"
 msgstr ""
 
-#: includes/fields/class-acf-field-accordion.php:84
+#: includes/fields/class-acf-field-accordion.php:85
 msgid "Display this accordion as open on page load."
 msgstr "نمایش آکوردئون این به عنوان باز در بارگذاری صفحات."
 
-#: includes/fields/class-acf-field-accordion.php:83
+#: includes/fields/class-acf-field-accordion.php:84
 msgid "Open"
 msgstr "باز"
 
@@ -4535,7 +4549,7 @@ msgid "Enter each default value on a new line"
 msgstr "هر مقدار پیش فرض را در یک خط جدید وارد کنید"
 
 #: includes/fields/class-acf-field-select.php:243 includes/media.php:48
-#: assets/build/js/acf-input.js:6778 assets/build/js/acf-input.js:7254
+#: assets/build/js/acf-input.js:6799 assets/build/js/acf-input.js:7277
 msgctxt "verb"
 msgid "Select"
 msgstr "انتخاب"
@@ -4736,21 +4750,21 @@ msgstr "انتخاب زمان"
 msgid "Date Time Picker"
 msgstr "انتخاب کننده زمان و تاریخ"
 
-#: includes/fields/class-acf-field-accordion.php:105
+#: includes/fields/class-acf-field-accordion.php:106
 msgid "Endpoint"
 msgstr "نقطه پایانی"
 
 #: includes/admin/views/acf-field-group/options.php:130
-#: includes/fields/class-acf-field-tab.php:113
+#: includes/fields/class-acf-field-tab.php:114
 msgid "Left aligned"
 msgstr "سمت چپ"
 
 #: includes/admin/views/acf-field-group/options.php:129
-#: includes/fields/class-acf-field-tab.php:112
+#: includes/fields/class-acf-field-tab.php:113
 msgid "Top aligned"
 msgstr "سمت بالا"
 
-#: includes/fields/class-acf-field-tab.php:108
+#: includes/fields/class-acf-field-tab.php:109
 msgid "Placement"
 msgstr "جانمایی"
 
@@ -4758,7 +4772,7 @@ msgstr "جانمایی"
 msgid "Tab"
 msgstr "تب"
 
-#: includes/fields/class-acf-field-url.php:155
+#: includes/fields/class-acf-field-url.php:140
 msgid "Value must be a valid URL"
 msgstr "مقدار باید یک آدرس صحیح باشد"
 
@@ -4984,7 +4998,7 @@ msgstr "پیشوند"
 #: includes/fields/class-acf-field-password.php:83
 #: includes/fields/class-acf-field-text.php:144
 #: includes/fields/class-acf-field-textarea.php:154
-#: includes/fields/class-acf-field-url.php:120
+#: includes/fields/class-acf-field-url.php:106
 msgid "Appears within the input"
 msgstr "در داخل ورودی نمایش داده می شود"
 
@@ -4993,7 +5007,7 @@ msgstr "در داخل ورودی نمایش داده می شود"
 #: includes/fields/class-acf-field-password.php:82
 #: includes/fields/class-acf-field-text.php:143
 #: includes/fields/class-acf-field-textarea.php:153
-#: includes/fields/class-acf-field-url.php:119
+#: includes/fields/class-acf-field-url.php:105
 msgid "Placeholder Text"
 msgstr "نگهدارنده مکان متن"
 
@@ -5004,7 +5018,7 @@ msgstr "نگهدارنده مکان متن"
 #: includes/fields/class-acf-field-range.php:164
 #: includes/fields/class-acf-field-text.php:104
 #: includes/fields/class-acf-field-textarea.php:102
-#: includes/fields/class-acf-field-url.php:100
+#: includes/fields/class-acf-field-url.php:86
 #: includes/fields/class-acf-field-wysiwyg.php:306
 msgid "Appears when creating a new post"
 msgstr "هنگام ایجاد یک نوشته جدید نمایش داده می شود"
@@ -5231,7 +5245,7 @@ msgstr "هیچ تصویری انتخاب نشده"
 msgid "Remove"
 msgstr "حذف"
 
-#: includes/admin/views/acf-field-group/field.php:76
+#: includes/admin/views/acf-field-group/field.php:78
 #: includes/fields/class-acf-field-file.php:159
 #: includes/fields/class-acf-field-image.php:139
 #: includes/fields/class-acf-field-link.php:139
@@ -5239,7 +5253,7 @@ msgid "Edit"
 msgstr "ویرایش"
 
 #: includes/fields/class-acf-field-image.php:69 includes/media.php:55
-#: assets/build/js/acf-input.js:6825 assets/build/js/acf-input.js:7308
+#: assets/build/js/acf-input.js:6846 assets/build/js/acf-input.js:7331
 msgid "All images"
 msgstr "تمام تصاویر"
 
@@ -5262,35 +5276,35 @@ msgstr "انتخاب تصویر"
 msgid "Image"
 msgstr "تصویر"
 
-#: includes/fields/class-acf-field-message.php:117
+#: includes/fields/class-acf-field-message.php:118
 msgid "Allow HTML markup to display as visible text instead of rendering"
 msgstr "اجازه نمایش کدهای HTML به عنوان متن به جای اعمال آنها"
 
-#: includes/fields/class-acf-field-message.php:116
+#: includes/fields/class-acf-field-message.php:117
 msgid "Escape HTML"
 msgstr "حذف HTML"
 
-#: includes/fields/class-acf-field-message.php:108
+#: includes/fields/class-acf-field-message.php:109
 #: includes/fields/class-acf-field-textarea.php:170
 msgid "No Formatting"
 msgstr "بدون قالب بندی"
 
-#: includes/fields/class-acf-field-message.php:107
+#: includes/fields/class-acf-field-message.php:108
 #: includes/fields/class-acf-field-textarea.php:169
 msgid "Automatically add &lt;br&gt;"
 msgstr "اضافه کردن خودکار &lt;br&gt;"
 
-#: includes/fields/class-acf-field-message.php:106
+#: includes/fields/class-acf-field-message.php:107
 #: includes/fields/class-acf-field-textarea.php:168
 msgid "Automatically add paragraphs"
 msgstr "پاراگراف ها خودکار اضافه شوند"
 
-#: includes/fields/class-acf-field-message.php:102
+#: includes/fields/class-acf-field-message.php:103
 #: includes/fields/class-acf-field-textarea.php:164
 msgid "Controls how new lines are rendered"
 msgstr "تنظیم کنید که خطوط جدید چگونه نمایش داده شوند"
 
-#: includes/fields/class-acf-field-message.php:101
+#: includes/fields/class-acf-field-message.php:102
 #: includes/fields/class-acf-field-textarea.php:163
 msgid "New Lines"
 msgstr "خطوط جدید"
@@ -5388,7 +5402,7 @@ msgstr ""
 #: includes/fields/class-acf-field-text.php:103
 #: includes/fields/class-acf-field-textarea.php:101
 #: includes/fields/class-acf-field-true_false.php:144
-#: includes/fields/class-acf-field-url.php:99
+#: includes/fields/class-acf-field-url.php:85
 #: includes/fields/class-acf-field-wysiwyg.php:305
 msgid "Default Value"
 msgstr "مقدار پیش فرض"
@@ -5398,7 +5412,7 @@ msgid "Displays text alongside the checkbox"
 msgstr "نمایش متن همراه انتخاب"
 
 #: includes/fields/class-acf-field-message.php:26
-#: includes/fields/class-acf-field-message.php:91
+#: includes/fields/class-acf-field-message.php:92
 #: includes/fields/class-acf-field-true_false.php:134
 msgid "Message"
 msgstr "پیام"
@@ -5436,7 +5450,7 @@ msgstr "بلوک"
 msgid "Specify the style used to render the selected fields"
 msgstr "استایل جهت نمایش فیلد انتخابی"
 
-#: includes/fields.php:373 includes/fields/class-acf-field-button-group.php:210
+#: includes/fields.php:374 includes/fields/class-acf-field-button-group.php:210
 #: includes/fields/class-acf-field-checkbox.php:424
 #: includes/fields/class-acf-field-group.php:432
 #: includes/fields/class-acf-field-radio.php:285
@@ -5550,89 +5564,89 @@ msgid "Time Picker"
 msgstr "انتخاب زمان"
 
 #. translators: counts for inactive field groups
-#: acf.php:502
+#: acf.php:499
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 
-#: acf.php:461
+#: acf.php:458
 msgid "No Fields found in Trash"
 msgstr "گروه زمینه ای در زباله دان یافت نشد"
 
-#: acf.php:460
+#: acf.php:457
 msgid "No Fields found"
 msgstr "گروه زمینه ای یافت نشد"
 
-#: acf.php:459
+#: acf.php:456
 msgid "Search Fields"
 msgstr "جستجوی گروه های زمینه"
 
-#: acf.php:458
+#: acf.php:455
 msgid "View Field"
 msgstr "نمایش زمینه"
 
-#: acf.php:457 includes/admin/views/acf-field-group/fields.php:111
+#: acf.php:454 includes/admin/views/acf-field-group/fields.php:111
 msgid "New Field"
 msgstr "زمینه جدید"
 
-#: acf.php:456
+#: acf.php:453
 msgid "Edit Field"
 msgstr "ویرایش زمینه"
 
-#: acf.php:455
+#: acf.php:452
 msgid "Add New Field"
 msgstr "زمینه جدید"
 
-#: acf.php:453
+#: acf.php:450
 msgid "Field"
 msgstr "زمینه"
 
-#: acf.php:452 includes/admin/post-types/admin-field-group.php:155
+#: acf.php:449 includes/admin/post-types/admin-field-group.php:155
 #: includes/admin/post-types/admin-field-groups.php:118
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "زمینه ها"
 
-#: acf.php:427
+#: acf.php:424
 msgid "No Field Groups found in Trash"
 msgstr "گروه زمینه ای در زباله دان یافت نشد"
 
-#: acf.php:426
+#: acf.php:423
 msgid "No Field Groups found"
 msgstr "گروه زمینه ای یافت نشد"
 
-#: acf.php:425
+#: acf.php:422
 msgid "Search Field Groups"
 msgstr "جستجوی گروه های زمینه"
 
-#: acf.php:424
+#: acf.php:421
 msgid "View Field Group"
 msgstr "مشاهده گروه زمینه"
 
-#: acf.php:423
+#: acf.php:420
 msgid "New Field Group"
 msgstr "گروه زمینه جدید"
 
-#: acf.php:422
+#: acf.php:419
 msgid "Edit Field Group"
 msgstr "ویرایش گروه زمینه"
 
-#: acf.php:421
+#: acf.php:418
 msgid "Add New Field Group"
 msgstr "افزودن گروه زمینه جدید"
 
-#: acf.php:420 acf.php:454
+#: acf.php:417 acf.php:451
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "افزودن"
 
-#: acf.php:419
+#: acf.php:416
 msgid "Field Group"
 msgstr "گروه زمینه"
 
-#: acf.php:418 includes/admin/post-types/admin-field-groups.php:77
+#: acf.php:415 includes/admin/post-types/admin-field-groups.php:77
 #: includes/admin/post-types/admin-post-types.php:138
 #: includes/admin/post-types/admin-taxonomies.php:138
 msgid "Field Groups"
@@ -5647,7 +5661,7 @@ msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php:94
+#: acf.php:97
 msgid "Advanced Custom Fields"
 msgstr "زمینه‌های سفارشی پیشرفته"
 
@@ -5698,9 +5712,9 @@ msgstr "تنظیمات به روز شدند"
 
 #: pro/updates.php:99
 msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
+"To enable updates, please enter your license key on the <a href=\"%1$s"
+"\">Updates</a> page. If you don't have a licence key, please see <a href="
+"\"%2$s\" target=\"_blank\">details & pricing</a>."
 msgstr ""
 
 #: pro/updates.php:159
@@ -6164,8 +6178,8 @@ msgid ""
 "licence key, please see <a href=\"%s\" target=\"_blank\">details & pricing</"
 "a>."
 msgstr ""
-"برای به روزرسانی لطفا کد لایسنس را وارد  کنید. <a href=\"%s\" "
-"target=\"_blank\">قیمت ها</a>."
+"برای به روزرسانی لطفا کد لایسنس را وارد  کنید. <a href=\"%s\" target=\"_blank"
+"\">قیمت ها</a>."
 
 #: pro/admin/views/html-settings-updates.php:37
 msgid "License Key"

@@ -144,12 +144,12 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 	foreach ( $menu_items as $menu_item ) {
 		$class    = ! empty( $menu_item['class'] ) ? $menu_item['class'] : $menu_item['text'];
 		$target   = ! empty( $menu_item['target'] ) ? ' target="' . esc_attr( $menu_item['target'] ) . '"' : '';
-		$li_class = ! empty( $menu_item['li_class'] ) ? $menu_item['li_class'] : '';
+		$li_class = ! empty( $menu_item['li_class'] ) ? esc_attr( $menu_item['li_class'] ) : '';
 
 		$html = sprintf(
 			'<a class="acf-tab%s %s" href="%s"%s><i class="acf-icon"></i>%s</a>',
 			! empty( $menu_item['is_active'] ) ? ' is-active' : '',
-			'acf-header-tab-' . acf_slugify( $class ),
+			'acf-header-tab-' . esc_attr( acf_slugify( $class ) ),
 			esc_url( $menu_item['url'] ),
 			$target,
 			acf_esc_html( $menu_item['text'] )
@@ -166,20 +166,20 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 		$section_html .= $html;
 	}
 
-	echo $section_html;
+	echo $section_html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- safely built and escaped HTML above.
 }
 ?>
 <div class="acf-admin-toolbar">
 	<div class="acf-admin-toolbar-inner">
 		<div class="acf-nav-wrap">
-			<a href="<?php echo admin_url( 'edit.php?post_type=acf-field-group' ); ?>" class="acf-logo">
-				<img src="<?php echo acf_get_url( 'assets/images/acf-logo.svg' ); ?>" alt="<?php esc_attr_e( 'Advanced Custom Fields logo', 'acf' ); ?>">
+			<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=acf-field-group' ) ); ?>" class="acf-logo">
+				<img src="<?php echo esc_url( acf_get_url( 'assets/images/acf-logo.svg' ) ); ?>" alt="<?php esc_attr_e( 'Advanced Custom Fields logo', 'acf' ); ?>">
 				<?php if ( acf_is_pro() && acf_pro_is_license_active() ) { ?>
 					<div class="acf-pro-label">PRO</div>
 				<?php } ?>
 			</a>
 
-			<h2><?php echo acf_get_setting( 'name' ); ?></h2>
+			<h2><?php echo esc_html( acf_get_setting( 'name' ) ); ?></h2>
 			<?php acf_print_menu_section( $core_tabs, 'core' ); ?>
 			<?php if ( $acf_more_items || $more_items ) { ?>
 				<div class="acf-more acf-header-tab-acf-more" tabindex="0">
@@ -231,7 +231,7 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 				<?php
 			}
 			?>
-			<a href="<?php echo $acf_wpengine_logo_link; ?>" target="_blank" class="acf-nav-wpengine-logo">
+			<a href="<?php echo $acf_wpengine_logo_link; ?>" target="_blank" class="acf-nav-wpengine-logo"><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
 				<img src="<?php echo esc_url( acf_get_url( 'assets/images/wp-engine-horizontal-white.svg' ) ); ?>" alt="<?php esc_html_e( 'WP Engine logo', 'acf' ); ?>" />
 			</a>
 		</div>

@@ -37,11 +37,7 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 
 		/**
 		 * Constructor.
-		 *
-		 * @date    5/03/2014
-		 * @since   6.2
-		 *
-		 * @return  void
+		 * @since 6.2
 		 */
 		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 9 );
@@ -51,8 +47,6 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 
 		/**
 		 * Renders HTML for the ACF PRO features upgrade notice.
-		 *
-		 * @return void
 		 */
 		public function include_pro_features() {
 			// Bail if on PRO.
@@ -71,9 +65,7 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 		/**
 		 * Current screen actions for the taxonomies list admin page.
 		 *
-		 * @since   6.1
-		 *
-		 * @return  void
+		 * @since 6.1
 		 */
 		public function current_screen() {
 			// Bail early if not post types admin page.
@@ -323,8 +315,8 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 		 *
 		 * @since 6.1
 		 *
-		 * @param string $action The action being performed.
-		 * @param int    $count  The number of items the action was performed on.
+		 * @param string  $action The action being performed.
+		 * @param integer $count  The number of items the action was performed on.
 		 * @return string
 		 */
 		public function get_action_notice_text( $action, $count = 1 ) {
@@ -368,9 +360,9 @@ if ( ! class_exists( 'ACF_Admin_Taxonomies' ) ) :
 		/**
 		 * Returns the registration error state.
 		 *
-		 * @since   6.1
+		 * @since 6.1
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_registration_error_state() {
 			return '<span class="acf-js-tooltip dashicons dashicons-warning" title="' .

@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 	class acf_field__group extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -39,19 +37,17 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  load_field()
-		*
-		*  This filter is appied to the $field after it is loaded from the database
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field - the field array holding all the field options
-		*
-		*  @return  $field - the field array holding all the field options
-		*/
+		/**
+		 * This filter is appied to the $field after it is loaded from the database
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field - the field array holding all the field options
+		 *
+		 * @return  $field - the field array holding all the field options
+		 */
 
 		function load_field( $field ) {
 
@@ -68,20 +64,18 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  load_value()
-		*
-		*  This filter is applied to the $value after it is loaded from the db
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value (mixed) the value found in the database
-		*  @param   $post_id (mixed) the $post_id from which the value was loaded
-		*  @param   $field (array) the field array holding all the field options
-		*  @return  $value
-		*/
+		/**
+		 * This filter is applied to the $value after it is loaded from the db
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value (mixed) the value found in the database
+		 * @param   $post_id (mixed) the post_id from which the value was loaded
+		 * @param   $field (array) the field array holding all the field options
+		 * @return  $value
+		 */
 
 		function load_value( $value, $post_id, $field ) {
 
@@ -114,11 +108,10 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		 * @type    filter
 		 * @since   3.6
 		 *
-		 * @param mixed   $value       The value which was loaded from the database.
-		 * @param mixed   $post_id     The $post_id from which the value was loaded.
-		 * @param array   $field       The field array holding all the field options.
-		 * @param boolean $escape_html Should the field return a HTML safe formatted value.
-		 *
+		 * @param  mixed   $value       The value which was loaded from the database.
+		 * @param  mixed   $post_id     The $post_id from which the value was loaded.
+		 * @param  array   $field       The field array holding all the field options.
+		 * @param  boolean $escape_html Should the field return a HTML safe formatted value.
 		 * @return mixed the modified value
 		 */
 		public function format_value( $value, $post_id, $field, $escape_html = false ) {
@@ -148,21 +141,19 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  update_value()
-		*
-		*  This filter is appied to the $value before it is updated in the db
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $value - the value which will be saved in the database
-		*  @param   $field - the field array holding all the field options
-		*  @param   $post_id - the $post_id of which the value will be saved
-		*
-		*  @return  $value - the modified value
-		*/
+		/**
+		 * This filter is appied to the $value before it is updated in the db
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $value - the value which will be saved in the database
+		 * @param   $field - the field array holding all the field options
+		 * @param   $post_id - the post_id of which the value will be saved
+		 *
+		 * @return  $value - the modified value
+		 */
 
 		function update_value( $value, $post_id, $field ) {
 
@@ -209,18 +200,16 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  prepare_field_for_db
-		*
-		*  This function will modify sub fields ready for update / load
-		*
-		*  @type    function
-		*  @date    4/11/16
-		*  @since   5.5.0
-		*
-		*  @param   $field (array)
-		*  @return  $field
-		*/
+		/**
+		 * This function will modify sub fields ready for update / load
+		 *
+		 * @type    function
+		 * @date    4/11/16
+		 * @since   5.5.0
+		 *
+		 * @param   $field (array)
+		 * @return  $field
+		 */
 
 		function prepare_field_for_db( $field ) {
 
@@ -241,17 +230,15 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field - an array holding all the field's data
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*/
+		/**
+		 * Create the HTML interface for your field
+		 *
+		 * @param   $field - an array holding all the field's data
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 */
 
 		function render_field( $field ) {
 
@@ -292,18 +279,16 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  render_field_block
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    12/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    12/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function render_field_block( $field ) {
 
@@ -311,7 +296,7 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 			$label_placement = ( $field['layout'] == 'block' ) ? 'top' : 'left';
 
 			// html
-			echo '<div class="acf-fields -' . $label_placement . ' -border">';
+			echo '<div class="acf-fields -' . esc_attr( $label_placement ) . ' -border">';
 
 			foreach ( $field['sub_fields'] as $sub_field ) {
 				acf_render_field_wrap( $sub_field );
@@ -321,18 +306,16 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  render_field_table
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    12/07/2016
-		*  @since   5.4.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    12/07/2016
+		 * @since   5.4.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function render_field_table( $field ) {
 
@@ -388,18 +371,16 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  render_field_settings()
-		*
-		*  Create extra options for your field. This is rendered when editing a field.
-		*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field  - an array holding all the field's data
-		*/
+		/**
+		 * Create extra options for your field. This is rendered when editing a field.
+		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field  - an array holding all the field's data
+		 */
 
 		function render_field_settings( $field ) {
 
@@ -413,7 +394,7 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 			?>
 			<div class="acf-field acf-field-setting-sub_fields" data-setting="group" data-name="sub_fields">
 				<div class="acf-label">
-					<label><?php _e( 'Sub Fields', 'acf' ); ?></label>	
+					<label><?php esc_html_e( 'Sub Fields', 'acf' ); ?></label>	
 				</div>
 				<div class="acf-input acf-input-sub">
 					<?php
@@ -444,18 +425,16 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  validate_value
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    11/02/2014
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    11/02/2014
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function validate_value( $valid, $value, $field, $input ) {
 
@@ -494,19 +473,17 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  duplicate_field()
-		*
-		*  This filter is appied to the $field before it is duplicated and saved to the database
-		*
-		*  @type    filter
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field - the field array holding all the field options
-		*
-		*  @return  $field - the modified field
-		*/
+		/**
+		 * This filter is appied to the $field before it is duplicated and saved to the database
+		 *
+		 * @type    filter
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field - the field array holding all the field options
+		 *
+		 * @return  $field - the modified field
+		 */
 
 		function duplicate_field( $field ) {
 
@@ -573,19 +550,17 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 
-		/*
-		*  delete_value
-		*
-		*  Called when deleting this field's value.
-		*
-		*  @date    1/07/2015
-		*  @since   5.2.3
-		*
-		*  @param   mixed $post_id The post ID being saved
-		*  @param   string $meta_key The field name as seen by the DB
-		*  @param   array $field The field settings
-		*  @return  void
-		*/
+		/**
+		 * Called when deleting this field's value.
+		 *
+		 * @date    1/07/2015
+		 * @since   5.2.3
+		 *
+		 * @param   mixed  $post_id  The post ID being saved
+		 * @param   string $meta_key The field name as seen by the DB
+		 * @param   array  $field    The field settings
+		 * @return  void
+		 */
 
 		function delete_value( $post_id, $meta_key, $field ) {
 
@@ -604,15 +579,15 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		}
 
 		/**
-		 *  delete_field
+		 * delete_field
 		 *
-		 *  Called when deleting a field of this type.
+		 * Called when deleting a field of this type.
 		 *
-		 *  @date    8/11/18
-		 *  @since   5.8.0
+		 * @date    8/11/18
+		 * @since   5.8.0
 		 *
-		 *  @param   arra $field The field settings.
-		 *  @return  void
+		 * @param   arra $field The field settings.
+		 * @return  void
 		 */
 		function delete_field( $field ) {
 
@@ -649,9 +624,9 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed      $value
-		 * @param int|string $post_id
-		 * @param array      $field
+		 * @param mixed          $value
+		 * @param integer|string $post_id
+		 * @param array          $field
 		 * @return array|mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

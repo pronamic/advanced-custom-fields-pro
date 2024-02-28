@@ -8,22 +8,22 @@ if ( ! class_exists( 'ACF_Ajax_Query' ) ) :
 
 	class ACF_Ajax_Query extends ACF_Ajax {
 
-		/** @var bool Prevents access for non-logged in users. */
+		/** @var boolean Prevents access for non-logged in users. */
 		var $public = true;
 
-		/** @var int The page of results to return. */
+		/** @var integer The page of results to return. */
 		var $page = 1;
 
-		/** @var int The number of results per page. */
+		/** @var integer The number of results per page. */
 		var $per_page = 20;
 
-		/** @var bool Signifies whether or not this AJAX query has more pages to load. */
+		/** @var boolean Signifies whether or not this AJAX query has more pages to load. */
 		var $more = false;
 
 		/** @var string The searched term. */
 		var $search = '';
 
-		/** @var bool Signifies whether the current query is a search. */
+		/** @var boolean Signifies whether the current query is a search. */
 		var $is_search = false;
 
 		/** @var (int|string) The post_id being edited. */

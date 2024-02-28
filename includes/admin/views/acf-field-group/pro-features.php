@@ -27,8 +27,12 @@ if ( acf_is_pro() ) {
 			<h1 class="acf-field-group-pro-features-title"><?php echo esc_html( $acf_field_group_pro_features_title ); ?> <div class="acf-pro-label">PRO</div></h1>
 			<p class="acf-field-group-pro-features-desc"><?php esc_html_e( 'Speed up your workflow and develop better websites with features like ACF Blocks and Options Pages, and sophisticated field types like Repeater, Flexible Content, Clone, and Gallery.', 'acf' ); ?></p>
 			<div class="acf-field-group-pro-features-actions">
-				<a target="<?php echo $acf_learn_more_target; ?>" href="<?php echo $acf_learn_more_link; ?>" class="acf-btn acf-btn-muted acf-pro-features-learn-more"><?php echo esc_html( $acf_learn_more_text ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a>
-				<a target="_blank" href="<?php echo $acf_pricing_link; ?>" class="acf-btn acf-pro-features-upgrade"><?php echo esc_html( $acf_pricing_text ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a>
+				<a target="<?php echo esc_attr( $acf_learn_more_target ); ?>" href="<?php echo $acf_learn_more_link; ?>" class="acf-btn acf-btn-muted acf-pro-features-learn-more"><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
+					<?php echo esc_html( $acf_learn_more_text ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i>
+				</a>
+				<a target="_blank" href="<?php echo $acf_pricing_link; ?>" class="acf-btn acf-pro-features-upgrade"><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
+					<?php echo esc_html( $acf_pricing_text ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i>
+				</a>
 			</div>
 		</div>
 
@@ -71,7 +75,7 @@ if ( acf_is_pro() ) {
 				?>
 			</div>
 			<div class="acf-more-tools-from-wpengine">
-				<a href="<?php echo $acf_more_tools_link; ?>" target="_blank"><?php esc_html_e( 'More Tools from WP Engine', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a>
+				<a href="<?php echo $acf_more_tools_link; ?>" target="_blank"><?php esc_html_e( 'More Tools from WP Engine', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
 			</div>
 		</div>
 	</div>

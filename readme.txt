@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
 Tested up to: 6.4.3
 Requires PHP: 7.0
-Stable tag: 6.2.6.1
+Stable tag: 6.2.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,16 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.7 =
+*Release Date 27th February 2024*
+
+* Security Fix - `the_field` now escapes potentially unsafe HTML as notified since ACF 6.2.5. For full information, please read [the release blog post](https://www.advancedcustomfields.com/blog/acf-6-2-7-security-release/)
+* Security Fix - Field and Layout names are now enforced to alphanumeric characters, resolving a potential XSS issue
+* Security Fix - The default render template for select2 fields no longer allows HTML to be rendered resolving a potential XSS issue
+* Security Enhancement - A `acf/shortcode/prevent_access` filter is now available to limit what data the ACF shortcode is allowed to access
+* Security Enhancement - i18n translated strings are now escaped on output
+* Enhancement - ACF now universally uses WordPress file system functions rather than native PHP functions
 
 = 6.2.6.1 =
 *Release Date 7th February 2024*

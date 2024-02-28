@@ -9,15 +9,15 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 	class ACF_WPML_Compatibility {
 
 		/**
-		 *  __construct
+		 * __construct
 		 *
-		 *  Sets up the class functionality.
+		 * Sets up the class functionality.
 		 *
-		 *  @date    23/06/12
-		 *  @since   3.1.8
+		 * @date    23/06/12
+		 * @since   3.1.8
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function __construct() {
 
@@ -55,16 +55,16 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		}
 
 		/**
-		 *  is_translatable
+		 * is_translatable
 		 *
-		 *  Returns true if the acf-field-group post type is translatable.
-		 *  Also adds compatibility with ACF4 settings
+		 * Returns true if the acf-field-group post type is translatable.
+		 * Also adds compatibility with ACF4 settings
 		 *
-		 *  @date    10/04/2015
-		 *  @since   5.2.3
+		 * @date    10/04/2015
+		 * @since   5.2.3
 		 *
-		 *  @param   void
-		 *  @return  bool
+		 * @param   void
+		 * @return  boolean
 		 */
 		function is_translatable() {
 
@@ -102,16 +102,16 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		}
 
 		/**
-		 *  upgrade_500_field_group
+		 * upgrade_500_field_group
 		 *
-		 *  Update the icl_translations table data when creating the field groups.
+		 * Update the icl_translations table data when creating the field groups.
 		 *
-		 *  @date    10/04/2015
-		 *  @since   5.2.3
+		 * @date    10/04/2015
+		 * @since   5.2.3
 		 *
-		 *  @param   array  $field_group The new field group array.
-		 *  @param   object $ofg The old field group WP_Post object.
-		 *  @return  void
+		 * @param   array  $field_group The new field group array.
+		 * @param   object $ofg         The old field group WP_Post object.
+		 * @return  void
 		 */
 		function upgrade_500_field_group( $field_group, $ofg ) {
 
@@ -181,20 +181,20 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		}
 
 		/**
-		 *  settings_save_json
+		 * settings_save_json
 		 *
-		 *  Modifies the json path.
+		 * Modifies the json path.
 		 *
-		 *  @date    19/05/2014
-		 *  @since   5.0.0
+		 * @date    19/05/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   string $path The json save path.
-		 *  @return  string
+		 * @param   string $path The json save path.
+		 * @return  string
 		 */
 		function settings_save_json( $path ) {
 
 			// bail early if dir does not exist
-			if ( ! is_writable( $path ) ) {
+			if ( ! wp_is_writable( $path ) ) {
 				return $path;
 			}
 
@@ -203,7 +203,7 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 
 			// make dir if does not exist
 			if ( ! file_exists( $path ) ) {
-				mkdir( $path, 0777, true );
+				mkdir( $path, 0777, true ); //phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_mkdir -- Allow legacy mkdir call as this may fire outside admin.
 			}
 
 			// return
@@ -211,15 +211,15 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		}
 
 		/**
-		 *  settings_load_json
+		 * settings_load_json
 		 *
-		 *  Modifies the json path.
+		 * Modifies the json path.
 		 *
-		 *  @date    19/05/2014
-		 *  @since   5.0.0
+		 * @date    19/05/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   string $path The json save path.
-		 *  @return  string
+		 * @param   string $path The json save path.
+		 * @return  string
 		 */
 		function settings_load_json( $paths ) {
 
@@ -235,15 +235,15 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		}
 
 		/**
-		 *  icl_make_duplicate
+		 * icl_make_duplicate
 		 *
-		 *  description
+		 * description
 		 *
-		 *  @date    26/02/2014
-		 *  @since   5.0.0
+		 * @date    26/02/2014
+		 * @since   5.0.0
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function icl_make_duplicate( $master_post_id, $lang, $postarr, $id ) {
 
@@ -267,16 +267,16 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 
 
 		/**
-		 *  verify_ajax
+		 * verify_ajax
 		 *
-		 *  Sets the correct language during AJAX requests.
+		 * Sets the correct language during AJAX requests.
 		 *
-		 *  @type    function
-		 *  @date    7/08/2015
-		 *  @since   5.2.3
+		 * @type    function
+		 * @date    7/08/2015
+		 * @since   5.2.3
 		 *
-		 *  @param   void
-		 *  @return  void
+		 * @param   void
+		 * @return  void
 		 */
 		function verify_ajax() {
 
@@ -291,16 +291,16 @@ if ( ! class_exists( 'ACF_WPML_Compatibility' ) ) :
 		}
 
 		/**
-		 *  get_translatable_documents
+		 * get_translatable_documents
 		 *
-		 *  Removes 'acf-field' from the available post types for translation.
+		 * Removes 'acf-field' from the available post types for translation.
 		 *
-		 *  @type    function
-		 *  @date    17/8/17
-		 *  @since   5.6.0
+		 * @type    function
+		 * @date    17/8/17
+		 * @since   5.6.0
 		 *
-		 *  @param   array $icl_post_types The array of post types.
-		 *  @return  array
+		 * @param   array $icl_post_types The array of post types.
+		 * @return  array
 		 */
 		function get_translatable_documents( $icl_post_types ) {
 

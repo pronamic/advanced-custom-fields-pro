@@ -8,7 +8,7 @@
 /**
  * Get an ACF taxonomy as an array
  *
- * @param int|string $id The post ID being queried.
+ * @param integer|string $id The post ID being queried.
  * @return array|false The taxonomy object.
  */
 function acf_get_taxonomy( $id ) {
@@ -20,7 +20,7 @@ function acf_get_taxonomy( $id ) {
  *
  * @since   6.1
  *
- * @param   int|string $id        The post ID.
+ * @param   integer|string $id The post ID.
  * @return  array|false The taxonomy array.
  */
 function acf_get_raw_taxonomy( $id ) {
@@ -32,8 +32,8 @@ function acf_get_raw_taxonomy( $id ) {
  *
  * @since 6.1
  *
- * @param int|string $id The post ID, key, or name.
- * @return object|bool The post object, or false on failure.
+ * @param integer|string $id The post ID, key, or name.
+ * @return object|boolean The post object, or false on failure.
  */
 function acf_get_taxonomy_post( $id ) {
 	return acf_get_internal_post_type_post( $id, 'acf-taxonomy' );
@@ -45,7 +45,7 @@ function acf_get_taxonomy_post( $id ) {
  * @since 6.1
  *
  * @param string $id The identifier.
- * @return bool
+ * @return boolean
  */
 function acf_is_taxonomy_key( $id ) {
 	return acf_is_internal_post_type_key( $id, 'acf-taxonomy' );
@@ -57,7 +57,7 @@ function acf_is_taxonomy_key( $id ) {
  * @since 6.1
  *
  * @param array $taxonomy The ACF taxonomy array.
- * @return array|bool
+ * @return array|boolean
  */
 function acf_validate_taxonomy( array $taxonomy = array() ) {
 	return acf_validate_internal_post_type( $taxonomy, 'acf-taxonomy' );
@@ -140,8 +140,8 @@ function acf_flush_taxonomy_cache( array $taxonomy ) {
  *
  * @since 6.1
  *
- * @param int|string $id The ACF taxonomy ID, key or name.
- * @return bool True if taxonomy was deleted.
+ * @param integer|string $id The ACF taxonomy ID, key or name.
+ * @return boolean True if taxonomy was deleted.
  */
 function acf_delete_taxonomy( $id = 0 ) {
 	return acf_delete_internal_post_type( $id, 'acf-taxonomy' );
@@ -152,8 +152,8 @@ function acf_delete_taxonomy( $id = 0 ) {
  *
  * @since 6.1
  *
- * @param int|string $id The taxonomy ID, key, or name.
- * @return bool True if taxonomy was trashed.
+ * @param integer|string $id The taxonomy ID, key, or name.
+ * @return boolean True if taxonomy was trashed.
  */
 function acf_trash_taxonomy( $id = 0 ) {
 	return acf_trash_internal_post_type( $id, 'acf-taxonomy' );
@@ -164,8 +164,8 @@ function acf_trash_taxonomy( $id = 0 ) {
  *
  * @since 6.1
  *
- * @param int|string $id The taxonomy ID, key, or name.
- * @return bool True if taxonomy was untrashed.
+ * @param integer|string $id The taxonomy ID, key, or name.
+ * @return boolean True if taxonomy was untrashed.
  */
 function acf_untrash_taxonomy( $id = 0 ) {
 	return acf_untrash_internal_post_type( $id, 'acf-taxonomy' );
@@ -177,7 +177,7 @@ function acf_untrash_taxonomy( $id = 0 ) {
  * @since 6.1
  *
  * @param array $taxonomy The ACF taxonomy array.
- * @return bool
+ * @return boolean
  */
 function acf_is_taxonomy( $taxonomy ) {
 	return acf_is_internal_post_type( $taxonomy, 'acf-taxonomy' );
@@ -188,9 +188,9 @@ function acf_is_taxonomy( $taxonomy ) {
  *
  * @since 6.1
  *
- * @param int|string $id          The ACF taxonomy ID, key or name.
- * @param int        $new_post_id Optional ID to override.
- * @return array|bool The new ACF taxonomy, or false on failure.
+ * @param integer|string $id          The ACF taxonomy ID, key or name.
+ * @param integer        $new_post_id Optional ID to override.
+ * @return array|boolean The new ACF taxonomy, or false on failure.
  */
 function acf_duplicate_taxonomy( $id = 0, $new_post_id = 0 ) {
 	return acf_duplicate_internal_post_type( $id, $new_post_id, 'acf-taxonomy' );
@@ -199,9 +199,9 @@ function acf_duplicate_taxonomy( $id = 0, $new_post_id = 0 ) {
 /**
  * Activates or deactivates an ACF taxonomy.
  *
- * @param int|string $id        The ACF taxonomy ID, key or name.
- * @param bool       $activate  True if the taxonomy should be activated.
- * @return bool
+ * @param integer|string $id       The ACF taxonomy ID, key or name.
+ * @param boolean        $activate True if the taxonomy should be activated.
+ * @return boolean
  */
 function acf_update_taxonomy_active_status( $id, $activate = true ) {
 	return acf_update_internal_post_type_active_status( $id, $activate, 'acf-taxonomy' );
@@ -212,7 +212,7 @@ function acf_update_taxonomy_active_status( $id, $activate = true ) {
  *
  * @since 6.1
  *
- * @param int $post_id The ACF taxonomy ID.
+ * @param integer $post_id The ACF taxonomy ID.
  * @return string
  */
 function acf_get_taxonomy_edit_link( $post_id ) {
@@ -237,7 +237,7 @@ function acf_prepare_taxonomy_for_export( array $taxonomy = array() ) {
  * @since 6.1
  *
  * @param array $taxonomy The ACF taxonomy array.
- * @return string|bool
+ * @return string|boolean
  */
 function acf_export_taxonomy_as_php( array $taxonomy ) {
 	return acf_export_internal_post_type_as_php( $taxonomy, 'acf-taxonomy' );

@@ -14,7 +14,7 @@ if ( ! class_exists( 'ACF_Ajax' ) ) :
 		/** @var array The $_REQUEST data. */
 		var $request;
 
-		/** @var bool Prevents access for non-logged in users. */
+		/** @var boolean Prevents access for non-logged in users. */
 		var $public = false;
 
 		/**
@@ -69,7 +69,7 @@ if ( ! class_exists( 'ACF_Ajax' ) ) :
 		 * @date    31/7/18
 		 * @since   5.7.2
 		 *
-		 * @param   string $key The data key.
+		 * @param   string $key   The data key.
 		 * @param   mixed  $value The data value.
 		 * @return  ACF_Ajax
 		 */

@@ -116,9 +116,9 @@ function acf_get_option_meta( $prefix = '' ) {
  * @date    16/10/2015
  * @since   5.2.3
  *
- * @param   int|string $post_id The post id.
- * @param   string     $name    The meta name.
- * @param   bool       $hidden  If the meta is hidden (starts with an underscore).
+ * @param   integer|string $post_id The post id.
+ * @param   string         $name    The meta name.
+ * @param   boolean        $hidden  If the meta is hidden (starts with an underscore).
  *
  * @return  mixed
  */
@@ -159,12 +159,12 @@ function acf_get_metadata( $post_id = 0, $name = '', $hidden = false ) {
  * @date    16/10/2015
  * @since   5.2.3
  *
- * @param   int|string $post_id The post id.
- * @param   string     $name    The meta name.
- * @param   mixed      $value   The meta value.
- * @param   bool       $hidden  If the meta is hidden (starts with an underscore).
+ * @param   integer|string $post_id The post id.
+ * @param   string         $name    The meta name.
+ * @param   mixed          $value   The meta value.
+ * @param   boolean        $hidden  If the meta is hidden (starts with an underscore).
  *
- * @return  int|bool Meta ID if the key didn't exist, true on successful update, false on failure.
+ * @return  integer|boolean Meta ID if the key didn't exist, true on successful update, false on failure.
  */
 function acf_update_metadata( $post_id = 0, $name = '', $value = '', $hidden = false ) {
 	// Allow filter to short-circuit logic.
@@ -204,11 +204,11 @@ function acf_update_metadata( $post_id = 0, $name = '', $value = '', $hidden = f
  * @date    16/10/2015
  * @since   5.2.3
  *
- * @param   int|string $post_id The post id.
- * @param   string     $name The meta name.
- * @param   bool       $hidden If the meta is hidden (starts with an underscore).
+ * @param   integer|string $post_id The post id.
+ * @param   string         $name    The meta name.
+ * @param   boolean        $hidden  If the meta is hidden (starts with an underscore).
  *
- * @return  bool
+ * @return  boolean
  */
 function acf_delete_metadata( $post_id = 0, $name = '', $hidden = false ) {
 	// Allow filter to short-circuit logic.
@@ -249,7 +249,7 @@ function acf_delete_metadata( $post_id = 0, $name = '', $hidden = false ) {
  * @since   5.3.8
  *
  * @param   (int|string) $from_post_id The post id to copy from.
- * @param   (int|string) $to_post_id The post id to paste to.
+ * @param   (int|string) $to_post_id   The post id to paste to.
  * @return  void
  */
 function acf_copy_metadata( $from_post_id = 0, $to_post_id = 0 ) {
@@ -279,8 +279,8 @@ function acf_copy_metadata( $from_post_id = 0, $to_post_id = 0 ) {
  * @since   5.3.8
  * @deprecated 5.7.11
  *
- * @param   int $from_post_id The post id to copy from.
- * @param   int $to_post_id The post id to paste to.
+ * @param   integer $from_post_id The post id to copy from.
+ * @param   integer $to_post_id   The post id to paste to.
  * @return  void
  */
 function acf_copy_postmeta( $from_post_id = 0, $to_post_id = 0 ) {
@@ -296,7 +296,7 @@ function acf_copy_postmeta( $from_post_id = 0, $to_post_id = 0 ) {
  * @date    21/1/19
  * @since   5.7.10
  *
- * @param   string       $key The meta name (field name).
+ * @param   string       $key     The meta name (field name).
  * @param   (int|string) $post_id The post_id where this field's value is saved.
  * @return  (array|false) The field array.
  */
@@ -327,7 +327,7 @@ function acf_get_meta_field( $key = 0, $post_id = 0 ) {
  *
  * @param   (int|string)                                   $post_id The post id.
  * @param   string type The reference type (fields|groups).
- * @param   string                                         $name An optional specific name
+ * @param   string                                         $name    An optional specific name
  * @return  mixed
  */
 function acf_get_metaref( $post_id = 0, $type = 'fields', $name = '' ) {
@@ -358,7 +358,7 @@ function acf_get_metaref( $post_id = 0, $type = 'fields', $name = '' ) {
  * @date    16/10/2015
  * @since   5.2.3
  *
- * @param   (int|string)                                   $post_id The post id.
+ * @param   (int|string)                                   $post_id    The post id.
  * @param   string type The reference type (fields|groups).
  * @param   array                                          $references An array of references.
  * @return  (int|bool) Meta ID if the key didn't exist, true on successful update, false on failure.

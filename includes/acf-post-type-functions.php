@@ -8,7 +8,7 @@
 /**
  * Get an ACF CPT as an array
  *
- * @param int|string $id The post ID being queried.
+ * @param integer|string $id The post ID being queried.
  * @return array|false The post type object.
  */
 function acf_get_post_type( $id ) {
@@ -20,7 +20,7 @@ function acf_get_post_type( $id ) {
  *
  * @since   6.1
  *
- * @param   int|string $id        The post ID.
+ * @param   integer|string $id The post ID.
  * @return  array|false The internal post type array.
  */
 function acf_get_raw_post_type( $id ) {
@@ -32,8 +32,8 @@ function acf_get_raw_post_type( $id ) {
  *
  * @since 6.1
  *
- * @param int|string $id The post ID, key, or name.
- * @return object|bool The post object, or false on failure.
+ * @param integer|string $id The post ID, key, or name.
+ * @return object|boolean The post object, or false on failure.
  */
 function acf_get_post_type_post( $id ) {
 	return acf_get_internal_post_type_post( $id, 'acf-post-type' );
@@ -45,7 +45,7 @@ function acf_get_post_type_post( $id ) {
  * @since 6.1
  *
  * @param string $id The identifier.
- * @return bool
+ * @return boolean
  */
 function acf_is_post_type_key( $id ) {
 	return acf_is_internal_post_type_key( $id, 'acf-post-type' );
@@ -57,7 +57,7 @@ function acf_is_post_type_key( $id ) {
  * @since 6.1
  *
  * @param array $post_type The ACF post type array.
- * @return array|bool
+ * @return array|boolean
  */
 function acf_validate_post_type( array $post_type = array() ) {
 	return acf_validate_internal_post_type( $post_type, 'acf-post-type' );
@@ -140,8 +140,8 @@ function acf_flush_post_type_cache( array $post_type ) {
  *
  * @since 6.1
  *
- * @param int|string $id The ACF post type ID, key or name.
- * @return bool True if post type was deleted.
+ * @param integer|string $id The ACF post type ID, key or name.
+ * @return boolean True if post type was deleted.
  */
 function acf_delete_post_type( $id = 0 ) {
 	return acf_delete_internal_post_type( $id, 'acf-post-type' );
@@ -152,8 +152,8 @@ function acf_delete_post_type( $id = 0 ) {
  *
  * @since 6.1
  *
- * @param int|string $id The post type ID, key, or name.
- * @return bool True if post was trashed.
+ * @param integer|string $id The post type ID, key, or name.
+ * @return boolean True if post was trashed.
  */
 function acf_trash_post_type( $id = 0 ) {
 	return acf_trash_internal_post_type( $id, 'acf-post-type' );
@@ -164,8 +164,8 @@ function acf_trash_post_type( $id = 0 ) {
  *
  * @since 6.1
  *
- * @param int|string $id The post type ID, key, or name.
- * @return bool True if post was untrashed.
+ * @param integer|string $id The post type ID, key, or name.
+ * @return boolean True if post was untrashed.
  */
 function acf_untrash_post_type( $id = 0 ) {
 	return acf_untrash_internal_post_type( $id, 'acf-post-type' );
@@ -177,7 +177,7 @@ function acf_untrash_post_type( $id = 0 ) {
  * @since 6.1
  *
  * @param array $post_type The ACF post type array.
- * @return bool
+ * @return boolean
  */
 function acf_is_post_type( $post_type ) {
 	return acf_is_internal_post_type( $post_type, 'acf-post-type' );
@@ -188,9 +188,9 @@ function acf_is_post_type( $post_type ) {
  *
  * @since 6.1
  *
- * @param int|string $id          The ACF post type ID, key or name.
- * @param int        $new_post_id Optional ID to override.
- * @return array|bool The new ACF post type, or false on failure.
+ * @param integer|string $id          The ACF post type ID, key or name.
+ * @param integer        $new_post_id Optional ID to override.
+ * @return array|boolean The new ACF post type, or false on failure.
  */
 function acf_duplicate_post_type( $id = 0, $new_post_id = 0 ) {
 	return acf_duplicate_internal_post_type( $id, $new_post_id, 'acf-post-type' );
@@ -199,9 +199,9 @@ function acf_duplicate_post_type( $id = 0, $new_post_id = 0 ) {
 /**
  * Activates or deactivates an ACF post type.
  *
- * @param int|string $id        The ACF post type ID, key or name.
- * @param bool       $activate  True if the post type should be activated.
- * @return bool
+ * @param integer|string $id       The ACF post type ID, key or name.
+ * @param boolean        $activate True if the post type should be activated.
+ * @return boolean
  */
 function acf_update_post_type_active_status( $id, $activate = true ) {
 	return acf_update_internal_post_type_active_status( $id, $activate, 'acf-post-type' );
@@ -212,7 +212,7 @@ function acf_update_post_type_active_status( $id, $activate = true ) {
  *
  * @since 6.1
  *
- * @param int $post_id The ACF post type ID.
+ * @param integer $post_id The ACF post type ID.
  * @return string
  */
 function acf_get_post_type_edit_link( $post_id ) {
@@ -237,7 +237,7 @@ function acf_prepare_post_type_for_export( array $post_type = array() ) {
  * @since 6.1
  *
  * @param array $post_type The ACF post type array.
- * @return string|bool
+ * @return string|boolean
  */
 function acf_export_post_type_as_php( array $post_type ) {
 	return acf_export_internal_post_type_as_php( $post_type, 'acf-post-type' );

@@ -1,31 +1,29 @@
 <?php
 
-/*
-*  ACF Attachment Form Class
-*
-*  All the logic for adding fields to attachments
-*
-*  @class       acf_form_attachment
-*  @package     ACF
-*  @subpackage  Forms
-*/
+/**
+ * ACF Attachment Form Class
+ *
+ * All the logic for adding fields to attachments
+ *
+ * @class       acf_form_attachment
+ * @package     ACF
+ * @subpackage  Forms
+ */
 
 if ( ! class_exists( 'acf_form_attachment' ) ) :
 
 	class acf_form_attachment {
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the class functionality
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the class functionality
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function __construct() {
 
@@ -40,19 +38,17 @@ if ( ! class_exists( 'acf_form_attachment' ) ) :
 		}
 
 
-		/*
-		*  admin_enqueue_scripts
-		*
-		*  This action is run after post query but before any admin script / head actions.
-		*  It is a good place to register all actions.
-		*
-		*  @type    action (admin_enqueue_scripts)
-		*  @date    26/01/13
-		*  @since   3.6.0
-		*
-		*  @param   N/A
-		*  @return  N/A
-		*/
+		/**
+		 * This action is run after post query but before any admin script / head actions.
+		 * It is a good place to register all actions.
+		 *
+		 * @type    action (admin_enqueue_scripts)
+		 * @date    26/01/13
+		 * @since   3.6.0
+		 *
+		 * @param   N/A
+		 * @return  N/A
+		 */
 
 		function admin_enqueue_scripts() {
 
@@ -75,18 +71,16 @@ if ( ! class_exists( 'acf_form_attachment' ) ) :
 		}
 
 
-		/*
-		*  admin_footer
-		*
-		*  This function will add acf_form_data to the WP 4.0 attachment grid
-		*
-		*  @type    action (admin_footer)
-		*  @date    11/09/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will add acf_form_data to the WP 4.0 attachment grid
+		 *
+		 * @type    action (admin_footer)
+		 * @date    11/09/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function admin_footer() {
 
@@ -109,18 +103,16 @@ acf.unload.active = 0;
 		}
 
 
-		/*
-		*  edit_attachment
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    8/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    8/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function edit_attachment( $form_fields, $post ) {
 
@@ -187,18 +179,16 @@ acf.unload.active = 0;
 		}
 
 
-		/*
-		*  save_attachment
-		*
-		*  description
-		*
-		*  @type    function
-		*  @date    8/10/13
-		*  @since   5.0.0
-		*
-		*  @param   $post_id (int)
-		*  @return  $post_id (int)
-		*/
+		/**
+		 * description
+		 *
+		 * @type    function
+		 * @date    8/10/13
+		 * @since   5.0.0
+		 *
+		 * @param   $post_id (int)
+		 * @return  $post_id (int)
+		 */
 
 		function save_attachment( $post, $attachment ) {
 

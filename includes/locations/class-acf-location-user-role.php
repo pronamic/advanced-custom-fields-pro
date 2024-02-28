@@ -32,10 +32,10 @@ if ( ! class_exists( 'ACF_Location_User_Role' ) ) :
 		 * @date    9/4/20
 		 * @since   5.9.0
 		 *
-		 * @param   array $rule The location rule.
-		 * @param   array $screen The screen args.
+		 * @param   array $rule        The location rule.
+		 * @param   array $screen      The screen args.
 		 * @param   array $field_group The field group settings.
-		 * @return  bool
+		 * @return  boolean
 		 */
 		public function match( $rule, $screen, $field_group ) {
 

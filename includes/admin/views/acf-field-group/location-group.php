@@ -1,6 +1,6 @@
-<div class="rule-group" data-id="<?php echo $group_id; ?>">
+<div class="rule-group" data-id="<?php echo esc_attr( $group_id ); ?>">
 
-	<h4><?php echo ( $group_id == 'group_0' ) ? __( 'Show this field group if', 'acf' ) : __( 'or', 'acf' ); ?></h4>
+	<h4><?php echo ( $group_id == 'group_0' ) ? esc_html__( 'Show this field group if', 'acf' ) : esc_html__( 'or', 'acf' ); ?></h4>
 	
 	<table class="acf-table -clear">
 		<tbody>

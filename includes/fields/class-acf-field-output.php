@@ -5,18 +5,16 @@ if ( ! class_exists( 'acf_field_output' ) ) :
 	class acf_field_output extends acf_field {
 
 
-		/*
-		*  __construct
-		*
-		*  This function will setup the field type data
-		*
-		*  @type    function
-		*  @date    5/03/2014
-		*  @since   5.0.0
-		*
-		*  @param   n/a
-		*  @return  n/a
-		*/
+		/**
+		 * This function will setup the field type data
+		 *
+		 * @type    function
+		 * @date    5/03/2014
+		 * @since   5.0.0
+		 *
+		 * @param   n/a
+		 * @return  n/a
+		 */
 
 		function initialize() {
 
@@ -30,20 +28,18 @@ if ( ! class_exists( 'acf_field_output' ) ) :
 		}
 
 
-		/*
-		*  render_field()
-		*
-		*  Create the HTML interface for your field
-		*
-		*  @param   $field (array) the $field being rendered
-		*
-		*  @type    action
-		*  @since   3.6
-		*  @date    23/01/13
-		*
-		*  @param   $field (array) the $field being edited
-		*  @return  n/a
-		*/
+		/**
+		 * Create the HTML interface for your field
+		 *
+		 * @param   $field (array) the $field being rendered
+		 *
+		 * @type    action
+		 * @since   3.6
+		 * @date    23/01/13
+		 *
+		 * @param   $field (array) the $field being edited
+		 * @return  n/a
+		 */
 
 		function render_field( $field ) {
 
@@ -54,7 +50,7 @@ if ( ! class_exists( 'acf_field_output' ) ) :
 
 			// html
 			if ( is_string( $field['html'] ) && ! function_exists( $field['html'] ) ) {
-				echo $field['html'];
+				echo acf_esc_html( $field['html'] );
 
 				// function
 			} else {

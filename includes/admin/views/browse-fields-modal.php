@@ -62,7 +62,7 @@ $browse_fields_tabs = $browse_fields_tabs + acf_get_field_categories_i18n();
 					<button class="button acf-cancel acf-modal-close"><?php esc_html_e( 'Cancel', 'acf' ); ?></button>
 					<button class="acf-btn acf-select-field"><?php esc_html_e( 'Select Field', 'acf' ); ?></button>
 					<a target="_blank" data-url-base="<?php echo esc_attr( acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'field-type-modal', '' ) ); ?>" class="acf-btn acf-btn-pro">
-						<?php _e( 'Upgrade to PRO', 'acf' ); ?>
+						<?php esc_html_e( 'Upgrade to PRO', 'acf' ); ?>
 					</a>
 				</div>
 			</div>
@@ -72,7 +72,7 @@ $browse_fields_tabs = $browse_fields_tabs + acf_get_field_categories_i18n();
 				<h2 class="field-type-name"></h2>
 				<a target="_blank" data-url-base="<?php echo esc_attr( acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'field-type-modal', '' ) ); ?>" class="field-type-upgrade-to-unlock">
 					<i class="acf-icon acf-icon-lock"></i>
-					<?php _e( 'Available with ACF PRO', 'acf' ); ?>
+					<?php esc_html_e( 'Available with ACF PRO', 'acf' ); ?>
 				</a>
 				<p class="field-type-desc"></p>
 				<div class="field-type-preview-container">

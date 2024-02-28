@@ -27,8 +27,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 		 * extending this class, use the `initialize()` method in the child class instead.
 		 *
 		 * @since 5.0.0
-		 *
-		 * @return void
 		 */
 		public function __construct() {
 			// Initialize the field type.
@@ -92,8 +90,6 @@ if ( ! class_exists( 'acf_field' ) ) :
 		 * Initializes the field type. Overridden in child classes.
 		 *
 		 * @since 5.6.0
-		 *
-		 * @return void
 		 */
 		public function initialize() {
 			/* do nothing */
@@ -224,11 +220,10 @@ if ( ! class_exists( 'acf_field' ) ) :
 		/**
 		 * Add additional validation for fields being updated via the REST API.
 		 *
-		 * @param boolean $valid
-		 * @param mixed   $value
-		 * @param array   $field
-		 *
-		 * @return boolean|WP
+		 * @param  boolean $valid The current validity booleean
+		 * @param  integer $value The value of the field
+		 * @param  array   $field The field array
+		 * @return boolean|WP_Error
 		 */
 		public function validate_rest_value( $valid, $value, $field ) {
 			return $valid;
@@ -260,18 +255,18 @@ if ( ! class_exists( 'acf_field' ) ) :
 		 * under the `_embedded` response property.
 		 *
 		 * e.g;
-		 *    [
-		 *        [
-		 *            'rel' => 'acf:post',
-		 *            'href' => 'https://example.com/wp-json/wp/v2/posts/497',
-		 *            'embeddable' => true,
-		 *        ],
-		 *        [
-		 *            'rel' => 'acf:user',
-		 *            'href' => 'https://example.com/wp-json/wp/v2/users/2',
-		 *            'embeddable' => true,
-		 *        ],
-		 *    ]
+		 *   [
+		 *       [
+		 *           'rel' => 'acf:post',
+		 *           'href' => 'https://example.com/wp-json/wp/v2/posts/497',
+		 *           'embeddable' => true,
+		 *       ],
+		 *       [
+		 *           'rel' => 'acf:user',
+		 *           'href' => 'https://example.com/wp-json/wp/v2/users/2',
+		 *           'embeddable' => true,
+		 *       ],
+		 *   ]
 		 *
 		 * @param mixed          $value   The raw (unformatted) field value.
 		 * @param string|integer $post_id

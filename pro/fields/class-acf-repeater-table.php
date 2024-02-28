@@ -4,10 +4,7 @@
  *
  * Helper class for rendering repeater tables.
  *
- * @package ACF
- * @since 6.0.0
  */
-
 class ACF_Repeater_Table {
 
 	/**
@@ -34,21 +31,21 @@ class ACF_Repeater_Table {
 	/**
 	 * If we should show the "Add Row" button.
 	 *
-	 * @var bool
+	 * @var boolean
 	 */
 	private $show_add = true;
 
 	/**
 	 * If we should show the "Remove Row" button.
 	 *
-	 * @var bool
+	 * @var boolean
 	 */
 	private $show_remove = true;
 
 	/**
 	 * If we should show the order of the fields.
 	 *
-	 * @var bool
+	 * @var boolean
 	 */
 	private $show_order = true;
 
@@ -255,7 +252,7 @@ class ACF_Repeater_Table {
 	 *
 	 * @since 6.0.0
 	 *
-	 * @param bool $return If we should return the rows or render them.
+	 * @param boolean $return If we should return the rows or render them.
 	 * @return array|void
 	 */
 	public function rows( $return = false ) {
@@ -274,7 +271,7 @@ class ACF_Repeater_Table {
 			return $rows;
 		}
 
-		echo implode( PHP_EOL, $rows );
+		echo implode( PHP_EOL, $rows ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HTML already escaped by generating functions.
 	}
 
 	/**
@@ -282,9 +279,9 @@ class ACF_Repeater_Table {
 	 *
 	 * @since 6.0.0
 	 *
-	 * @param int   $i      The row number.
-	 * @param array $row    An array containing the row values.
-	 * @param bool  $return If we should return the row or render it.
+	 * @param integer $i      The row number.
+	 * @param array   $row    An array containing the row values.
+	 * @param boolean $return If we should return the row or render it.
 	 * @return string|void
 	 */
 	public function row( $i, $row, $return = false ) {
@@ -322,7 +319,7 @@ class ACF_Repeater_Table {
 
 		$this->row_handle( $i );
 
-		echo $before_fields;
+		echo $before_fields; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string only contains guarenteed safe HTML.
 
 		foreach ( $this->sub_fields as $sub_field ) {
 			if ( isset( $row[ $sub_field['key'] ] ) ) {
@@ -337,7 +334,7 @@ class ACF_Repeater_Table {
 			acf_render_field_wrap( $sub_field, $el );
 		}
 
-		echo $after_fields;
+		echo $after_fields; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string only contains guarenteed safe HTML.
 
 		$this->row_actions();
 
@@ -353,7 +350,7 @@ class ACF_Repeater_Table {
 	 *
 	 * @since 6.0.0
 	 *
-	 * @param int $i The current row number.
+	 * @param integer $i The current row number.
 	 * @return void
 	 */
 	public function row_handle( $i ) {
@@ -366,7 +363,7 @@ class ACF_Repeater_Table {
 		$title        = __( 'Drag to reorder', 'acf' );
 		$row_num_html = sprintf(
 			'<span class="acf-row-number" title="%s">%d</span>',
-			__( 'Click to reorder', 'acf' ),
+			esc_html__( 'Click to reorder', 'acf' ),
 			$hr_row_num
 		);
 
@@ -377,11 +374,11 @@ class ACF_Repeater_Table {
 			$row_num_html = '<div class="acf-order-input-wrap">' . $input . $row_num_html . '</div>';
 		}
 		?>
-		<td class="<?php echo $classes; ?>" title="<?php echo $title; ?>">
+		<td class="<?php echo esc_attr( $classes ); ?>" title="<?php echo esc_attr( $title ); ?>">
 			<?php if ( $this->field['collapsed'] ) : ?>
-				<a class="acf-icon -collapse small" href="#" data-event="collapse-row" title="<?php _e( 'Click to toggle', 'acf' ); ?>"></a>
+				<a class="acf-icon -collapse small" href="#" data-event="collapse-row" title="<?php esc_attr_e( 'Click to toggle', 'acf' ); ?>"></a>
 			<?php endif; ?>
-			<?php echo $row_num_html; ?>
+			<?php echo $row_num_html; ?><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped where necessary on generation. ?>
 		</td>
 		<?php
 	}
@@ -399,9 +396,9 @@ class ACF_Repeater_Table {
 		}
 		?>
 		<td class="acf-row-handle remove">
-			<a class="acf-icon -plus small acf-js-tooltip hide-on-shift" href="#" data-event="add-row" title="<?php _e( 'Add row', 'acf' ); ?>"></a>
-			<a class="acf-icon -duplicate small acf-js-tooltip show-on-shift" href="#" data-event="duplicate-row" title="<?php _e( 'Duplicate row', 'acf' ); ?>"></a>
-			<a class="acf-icon -minus small acf-js-tooltip" href="#" data-event="remove-row" title="<?php _e( 'Remove row', 'acf' ); ?>"></a>
+			<a class="acf-icon -plus small acf-js-tooltip hide-on-shift" href="#" data-event="add-row" title="<?php esc_attr_e( 'Add row', 'acf' ); ?>"></a>
+			<a class="acf-icon -duplicate small acf-js-tooltip show-on-shift" href="#" data-event="duplicate-row" title="<?php esc_attr_e( 'Duplicate row', 'acf' ); ?>"></a>
+			<a class="acf-icon -minus small acf-js-tooltip" href="#" data-event="remove-row" title="<?php esc_attr_e( 'Remove row', 'acf' ); ?>"></a>
 		</td>
 		<?php
 	}
@@ -467,9 +464,9 @@ class ACF_Repeater_Table {
 				<?php
 				printf(
 					/* translators: 1: Current page, 2: Total pages. */
-					_x( '%1$s of %2$s', 'paging' ),
-					$html_current_page,
-					$html_total_pages
+					esc_html_x( '%1$s of %2$s', 'paging', 'acf' ),
+					$html_current_page, //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escape not necessary.
+					$html_total_pages //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escape not necessary.
 				);
 				?>
 				</span>

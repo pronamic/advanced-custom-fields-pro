@@ -6,7 +6,7 @@
  * @date    1/4/20
  * @since   5.9.0
  *
- * @param   string $object_type The object type (post, term, user, etc).
+ * @param   string $object_type    The object type (post, term, user, etc).
  * @param   string $object_subtype Optional object subtype (post type, taxonomy).
  * @return  object
  */
@@ -242,7 +242,7 @@ function acf_get_object_type_rest_base( $type_object ) {
  * load_fields() callbacks.
  *
  * @param WP_Post|WP_User|WP_Term|WP_Comment|array $object
- * @return int|mixed|null
+ * @return integer|mixed|null
  */
 function acf_get_object_id( $object ) {
 	if ( is_object( $object ) ) {
