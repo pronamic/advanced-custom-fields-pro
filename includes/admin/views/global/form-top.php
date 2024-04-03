@@ -53,7 +53,7 @@ if ( 'acf-field-group' === $acf_post_type ) {
 
 	if ( ! empty( $acf_duplicated_from_label ) ) {
 		/* translators: %s - A singular label for a post type or taxonomy. */
-		$acf_duplicated_from = sprintf( __( ' (Duplicated from %s)', 'acf' ), $acf_duplicated_from_label );
+		$acf_duplicated_from = ' ' . sprintf( __( '(Duplicated from %s)', 'acf' ), $acf_duplicated_from_label );
 	}
 }
 ?>

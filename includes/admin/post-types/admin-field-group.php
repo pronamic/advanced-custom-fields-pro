@@ -47,9 +47,9 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 		}
 
 		/**
-		 * This function will customize the message shown when editing a field group
+		 * Customizes the messages shown when editing a field group.
 		 *
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
 		 * @param array $messages Post type messages.
 		 * @return array
@@ -82,39 +82,39 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 
 			acf_localize_text(
 				array(
-					'The string "field_" may not be used at the start of a field name' => __( 'The string "field_" may not be used at the start of a field name', 'acf' ),
-					'This field cannot be moved until its changes have been saved' => __( 'This field cannot be moved until its changes have been saved', 'acf' ),
-					'Field group title is required'     => __( 'Field group title is required', 'acf' ),
-					'Move field group to trash?'        => __( 'Move field group to trash?', 'acf' ),
-					'No toggle fields available'        => __( 'No toggle fields available', 'acf' ),
-					'Move Custom Field'                 => __( 'Move Custom Field', 'acf' ),
-					'Close modal'                       => __( 'Close modal', 'acf' ),
-					'Field moved to other group'        => __( 'Field moved to other group', 'acf' ),
-					'Field groups linked successfully.' => __( 'Field groups linked successfully.', 'acf' ),
-					'Checked'                           => __( 'Checked', 'acf' ),
-					'(no label)'                        => __( '(no label)', 'acf' ),
-					'(this field)'                      => __( '(this field)', 'acf' ),
-					'copy'                              => __( 'copy', 'acf' ),
-					'or'                                => __( 'or', 'acf' ),
-					'Show this field group if'          => __( 'Show this field group if', 'acf' ),
-					'Null'                              => __( 'Null', 'acf' ),
-					'PRO Only'                          => __( 'PRO Only', 'acf' ),
+					'The string "field_" may not be used at the start of a field name' => esc_html__( 'The string "field_" may not be used at the start of a field name', 'acf' ),
+					'This field cannot be moved until its changes have been saved' => esc_html__( 'This field cannot be moved until its changes have been saved', 'acf' ),
+					'Field group title is required'     => esc_html__( 'Field group title is required', 'acf' ),
+					'Move field group to trash?'        => esc_html__( 'Move field group to trash?', 'acf' ),
+					'No toggle fields available'        => esc_html__( 'No toggle fields available', 'acf' ),
+					'Move Custom Field'                 => esc_html__( 'Move Custom Field', 'acf' ),
+					'Close modal'                       => esc_html__( 'Close modal', 'acf' ),
+					'Field moved to other group'        => esc_html__( 'Field moved to other group', 'acf' ),
+					'Field groups linked successfully.' => esc_html__( 'Field groups linked successfully.', 'acf' ),
+					'Checked'                           => esc_html__( 'Checked', 'acf' ),
+					'(no label)'                        => esc_html__( '(no label)', 'acf' ),
+					'(this field)'                      => esc_html__( '(this field)', 'acf' ),
+					'copy'                              => esc_html__( 'copy', 'acf' ),
+					'or'                                => esc_html__( 'or', 'acf' ),
+					'Show this field group if'          => esc_html__( 'Show this field group if', 'acf' ),
+					'Null'                              => esc_html__( 'Null', 'acf' ),
+					'PRO Only'                          => esc_html__( 'PRO Only', 'acf' ),
 
 					// Conditions.
-					'Has any value'                     => __( 'Has any value', 'acf' ),
-					'Has no value'                      => __( 'Has no value', 'acf' ),
-					'Value is equal to'                 => __( 'Value is equal to', 'acf' ),
-					'Value is not equal to'             => __( 'Value is not equal to', 'acf' ),
-					'Value matches pattern'             => __( 'Value matches pattern', 'acf' ),
-					'Value contains'                    => __( 'Value contains', 'acf' ),
-					'Value is greater than'             => __( 'Value is greater than', 'acf' ),
-					'Value is less than'                => __( 'Value is less than', 'acf' ),
-					'Selection is greater than'         => __( 'Selection is greater than', 'acf' ),
-					'Selection is less than'            => __( 'Selection is less than', 'acf' ),
+					'Has any value'                     => esc_html__( 'Has any value', 'acf' ),
+					'Has no value'                      => esc_html__( 'Has no value', 'acf' ),
+					'Value is equal to'                 => esc_html__( 'Value is equal to', 'acf' ),
+					'Value is not equal to'             => esc_html__( 'Value is not equal to', 'acf' ),
+					'Value matches pattern'             => esc_html__( 'Value matches pattern', 'acf' ),
+					'Value contains'                    => esc_html__( 'Value contains', 'acf' ),
+					'Value is greater than'             => esc_html__( 'Value is greater than', 'acf' ),
+					'Value is less than'                => esc_html__( 'Value is less than', 'acf' ),
+					'Selection is greater than'         => esc_html__( 'Selection is greater than', 'acf' ),
+					'Selection is less than'            => esc_html__( 'Selection is less than', 'acf' ),
 
 					// Custom Select2 templates.
-					'Type to search...'                 => __( 'Type to search...', 'acf' ),
-					'This Field'                        => __( 'This Field', 'acf' ),
+					'Type to search...'                 => esc_html__( 'Type to search...', 'acf' ),
+					'This Field'                        => esc_html__( 'This Field', 'acf' ),
 				)
 			);
 
@@ -125,8 +125,8 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 					'PROUpgradeURL'       => acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'field-type-selection' ),
 					'PROFieldTypes'       => acf_get_pro_field_types(),
 					'PROLocationTypes'    => array(
-						'block'        => __( 'Block', 'acf' ),
-						'options_page' => __( 'Options Page', 'acf' ),
+						'block'        => esc_html__( 'Block', 'acf' ),
+						'options_page' => esc_html__( 'Options Page', 'acf' ),
 					),
 				)
 			);

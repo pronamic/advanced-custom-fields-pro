@@ -42,25 +42,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Types' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'admin_menu' ), 8 );
-			add_action( 'admin_footer', array( $this, 'include_pro_features' ) );
 			parent::__construct();
-		}
-
-		/**
-		 * Renders HTML for the ACF PRO features upgrade notice.
-		 */
-		public function include_pro_features() {
-			// Bail if on PRO.
-			if ( acf_is_pro() && acf_pro_is_license_active() ) {
-				return;
-			}
-
-			// Bail if not the edit post types screen.
-			if ( ! acf_is_screen( 'edit-acf-post-type' ) ) {
-				return;
-			}
-
-			acf_get_view( 'acf-field-group/pro-features' );
 		}
 
 		/**
@@ -209,7 +191,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Types' ) ) :
 			$text          = implode( ', ', $shown_labels );
 
 			if ( ! empty( $hidden_labels ) ) {
-				$text .= ', <span class="acf-more-items acf-tooltip-js" title="' . implode( ', ', $hidden_labels ) . '">+' . count( $hidden_labels ) . '</span>';
+				$text .= ', <span class="acf-more-items acf-js-tooltip" title="' . implode( ', ', $hidden_labels ) . '">+' . count( $hidden_labels ) . '</span>';
 			}
 
 			echo acf_esc_html( $text );
@@ -263,7 +245,7 @@ if ( ! class_exists( 'ACF_Admin_Post_Types' ) ) :
 			$text          = implode( ', ', $shown_labels );
 
 			if ( ! empty( $hidden_labels ) ) {
-				$text .= ', <span class="acf-more-items acf-tooltip-js" title="' . implode( ', ', $hidden_labels ) . '">+' . count( $hidden_labels ) . '</span>';
+				$text .= ', <span class="acf-more-items acf-js-tooltip" title="' . implode( ', ', $hidden_labels ) . '">+' . count( $hidden_labels ) . '</span>';
 			}
 
 			echo acf_esc_html( $text );

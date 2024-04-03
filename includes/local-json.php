@@ -407,7 +407,7 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			}
 
 			foreach ( $paths as $path ) {
-				if ( ! wp_is_writable( $path ) ) {
+				if ( ! is_writable( $path ) ) { //phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable -- non-compatible function for this purpose.
 					continue;
 				}
 

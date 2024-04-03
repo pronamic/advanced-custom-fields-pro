@@ -510,3 +510,34 @@ function acf_get_combined_field_group_settings_tabs() {
 
 	return $combined_field_group_settings_tabs;
 }
+
+/**
+ * Checks if a field group has the provided location rule.
+ *
+ * @since 6.2.8
+ *
+ * @param integer $post_id  The post ID of the field group.
+ * @param string  $location The location type to check for.
+ * @return boolean
+ */
+function acf_field_group_has_location_type( int $post_id, string $location ) {
+	if ( empty( $post_id ) || empty( $location ) ) {
+		return false;
+	}
+
+	$field_group = acf_get_field_group( (int) $post_id );
+
+	if ( empty( $field_group['location'] ) ) {
+		return false;
+	}
+
+	foreach ( $field_group['location'] as $rule_group ) {
+		$params = array_column( $rule_group, 'param' );
+
+		if ( in_array( $location, $params, true ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}

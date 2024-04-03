@@ -37,7 +37,17 @@ if ( $page_title ) {
 	<?php } ?>
 	<?php
 	if ( ! empty( $post_type_object ) && current_user_can( $post_type_object->cap->create_posts ) ) {
-		echo ' <a href="' . esc_url( admin_url( $post_new_file ) ) . '" class="acf-btn acf-btn-sm"><i class="acf-icon acf-icon-plus"></i>' . esc_html( $post_type_object->labels->add_new ) . '</a>';
+		$class = 'acf-btn acf-btn-sm';
+		if ( 'acf-ui-options-page' === $post_type && acf_is_pro() && ! acf_pro_is_license_active() ) {
+			$class .= ' disabled';
+		}
+
+		printf(
+			'<a href="%1$s" class="%2$s"><i class="acf-icon acf-icon-plus"></i>%3$s</a>',
+			esc_url( admin_url( $post_new_file ) ),
+			esc_attr( $class ),
+			esc_html( $post_type_object->labels->add_new )
+		);
 	}
 	?>
 

@@ -25,7 +25,7 @@ $acf_getting_started = sprintf(
 							<img src="<?php echo esc_url( acf_get_url( 'assets/images/empty-post-types.svg' ) ); ?>" />
 								<h2><?php echo acf_esc_html( 'Upgrade to ACF PRO to create options pages in just a few clicks', 'acf' ); ?></h2>
 								<p><?php echo acf_esc_html( $acf_options_pages_desc ); ?></p>
-								<div class="acf-field-group-pro-features-actions">
+								<div class="acf-ui-options-page-pro-features-actions">
 									<a target="_blank" href="<?php echo $acf_learn_more_link; ?>" class="acf-btn acf-btn-muted"><?php esc_html_e( 'Learn More', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
 									<a target="_blank" href="<?php echo $acf_upgrade_button; ?>" class="acf-btn acf-options-pages-preview-upgrade-button"> <?php esc_html_e( 'Upgrade to ACF PRO', 'acf' ); ?> <i class="acf-icon acf-icon-arrow-up-right"></i></a><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
 								</div>

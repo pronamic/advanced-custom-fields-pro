@@ -458,23 +458,23 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			}
 
 			// Localize data.
-			acf_localize_data(
-				array(
-					'admin_url'   => admin_url(),
-					'ajaxurl'     => admin_url( 'admin-ajax.php' ),
-					'nonce'       => wp_create_nonce( 'acf_nonce' ),
-					'acf_version' => acf_get_setting( 'version' ),
-					'wp_version'  => $wp_version,
-					'browser'     => acf_get_browser(),
-					'locale'      => acf_get_locale(),
-					'rtl'         => is_rtl(),
-					'screen'      => acf_get_form_data( 'screen' ),
-					'post_id'     => acf_get_form_data( 'post_id' ),
-					'validation'  => acf_get_form_data( 'validation' ),
-					'editor'      => acf_is_block_editor() ? 'block' : 'classic',
-					'is_pro'      => acf_is_pro(),
-				)
+			$data_to_localize = array(
+				'admin_url'   => admin_url(),
+				'ajaxurl'     => admin_url( 'admin-ajax.php' ),
+				'nonce'       => wp_create_nonce( 'acf_nonce' ),
+				'acf_version' => acf_get_setting( 'version' ),
+				'wp_version'  => $wp_version,
+				'browser'     => acf_get_browser(),
+				'locale'      => acf_get_locale(),
+				'rtl'         => is_rtl(),
+				'screen'      => acf_get_form_data( 'screen' ),
+				'post_id'     => acf_get_form_data( 'post_id' ),
+				'validation'  => acf_get_form_data( 'validation' ),
+				'editor'      => acf_is_block_editor() ? 'block' : 'classic',
+				'is_pro'      => acf_is_pro(),
 			);
+
+			acf_localize_data( $data_to_localize );
 
 			// Print inline script.
 			printf( "<script>\n%s\n</script>\n", 'acf.data = ' . wp_json_encode( $this->data ) . ';' );
@@ -496,9 +496,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				/**
 				 * Fires during "admin_footer" when ACF scripts are enqueued.
 				 *
-				 * @since   5.6.9
-				 *
-				 * @param   void
+				 * @since 5.6.9
 				 */
 				do_action( 'acf/input/admin_footer' );
 				do_action( 'acf/input/admin_print_footer_scripts' );

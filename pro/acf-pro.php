@@ -10,10 +10,9 @@ if ( ! class_exists( 'acf_pro' ) ) :
 		/**
 		 * Main ACF PRO constructor
 		 *
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 */
 		public function __construct() {
-
 			// constants
 			acf()->define( 'ACF_PRO', true );
 
@@ -42,9 +41,13 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			add_action( 'acf/input/admin_enqueue_scripts', array( $this, 'input_admin_enqueue_scripts' ) );
 			add_action( 'acf/field_group/admin_enqueue_scripts', array( $this, 'field_group_admin_enqueue_scripts' ) );
 			add_action( 'acf/in_admin_header', array( $this, 'maybe_show_license_status_error' ) );
+			add_action( 'acf/internal_post_type/current_screen', array( $this, 'invalid_license_redirect' ) );
+			add_action( 'acf/internal_post_type_list/current_screen', array( $this, 'invalid_license_redirect_notice' ) );
 
 			// Add filters.
 			add_filter( 'posts_where', array( $this, 'posts_where' ), 10, 2 );
+			add_filter( 'acf/internal_post_type/admin_body_classes', array( $this, 'admin_body_classes' ) );
+			add_filter( 'acf/internal_post_type_list/admin_body_classes', array( $this, 'admin_body_classes' ) );
 		}
 
 		/**
@@ -79,10 +82,11 @@ if ( ! class_exists( 'acf_pro' ) ) :
 		/**
 		 * Includes any files necessary for field types.
 		 *
-		 * @date  21/10/2015
 		 * @since 5.2.3
+		 *
+		 * @return void
 		 */
-		function include_field_types() {
+		public function include_field_types() {
 			acf_include( 'pro/fields/class-acf-repeater-table.php' );
 			acf_include( 'pro/fields/class-acf-field-repeater.php' );
 			acf_include( 'pro/fields/class-acf-field-flexible-content.php' );
@@ -91,18 +95,13 @@ if ( ! class_exists( 'acf_pro' ) ) :
 		}
 
 		/**
-		 * description
+		 * Includes location rules for ACF PRO.
 		 *
-		 * @type    function
-		 * @date    10/6/17
-		 * @since   5.6.0
+		 * @since 5.6.0
 		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @return void
 		 */
-
-		function include_location_rules() {
-
+		public function include_location_rules() {
 			acf_include( 'pro/locations/class-acf-location-block.php' );
 			acf_include( 'pro/locations/class-acf-location-options-page.php' );
 		}
@@ -124,42 +123,32 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			// Register styles.
 			wp_register_style( 'acf-pro-input', acf_get_url( 'assets/build/css/pro/acf-pro-input.css' ), array( 'acf-input' ), $version );
 			wp_register_style( 'acf-pro-field-group', acf_get_url( 'assets/build/css/pro/acf-pro-field-group.css' ), array( 'acf-input' ), $version );
+
+			$to_localize = array(
+				'isLicenseActive'  => acf_pro_is_license_active(),
+				'isLicenseExpired' => acf_pro_is_license_expired(),
+			);
+
+			acf_localize_data( $to_localize );
 		}
 
 		/**
-		 * input_admin_enqueue_scripts
+		 * Enqueue the PRO admin screen scripts and styles
 		 *
-		 * description
-		 *
-		 * @type    function
-		 * @date    4/11/2013
-		 * @since   5.0.0
-		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @since 5.0.0
 		 */
-
-		function input_admin_enqueue_scripts() {
-
+		public function input_admin_enqueue_scripts() {
 			wp_enqueue_script( 'acf-pro-input' );
 			wp_enqueue_script( 'acf-pro-ui-options-page' );
 			wp_enqueue_style( 'acf-pro-input' );
 		}
 
-
 		/**
-		 * description
+		 * Enqueue the PRO field group scripts and styles
 		 *
-		 * @type    function
-		 * @date    4/11/2013
-		 * @since   5.0.0
-		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @since 5.0.0
 		 */
-
-		function field_group_admin_enqueue_scripts() {
-
+		public function field_group_admin_enqueue_scripts() {
 			wp_enqueue_script( 'acf-pro-field-group' );
 			wp_enqueue_style( 'acf-pro-field-group' );
 		}
@@ -180,6 +169,9 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			} elseif ( acf_pro_is_license_expired( $license_status ) ) {
 				$error_msg  = __( 'Your license has expired. Please renew to continue to have access to updates, support &amp; PRO features.', 'acf' );
 				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+			} elseif ( acf_pro_was_license_refunded( $license_status ) ) {
+				$error_msg  = __( 'Your ACF PRO license is no longer active. Please renew to continue to have access to updates, support, & PRO features.', 'acf' );
+				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
 			} elseif ( ! empty( $defined_license_errors ) ) {
 				$error_msg = $defined_license_errors['error'];
 			} elseif ( ! empty( $license_status['error_msg'] ) ) {
@@ -189,7 +181,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 				return;
 			}
 
-			if ( acf_is_updates_page_visible() && ! empty( $manage_url ) && 'acf-settings-updates' !== acf_request_arg( 'page' ) ) {
+			if ( acf_pro_is_updates_page_visible() && ! empty( $manage_url ) && 'acf-settings-updates' !== acf_request_arg( 'page' ) ) {
 				$manage_link = sprintf(
 					'<a href="%1$s">%2$s</a>',
 					esc_url( $manage_url ),
@@ -200,6 +192,69 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			}
 
 			acf_add_admin_notice( $error_msg, 'warning', false );
+		}
+
+		/**
+		 * Redirects back to the list table when editing an unauthorized item with an invalid license.
+		 *
+		 * @since 6.2.8
+		 *
+		 * @param string $post_type The post type being edited.
+		 * @return void
+		 */
+		public function invalid_license_redirect( string $post_type ) {
+			if ( ! in_array( $post_type, array( 'acf-field-group', 'acf-ui-options-page' ), true ) ) {
+				return;
+			}
+
+			// Active licenses have no restrictions.
+			if ( acf_pro_is_license_active() ) {
+				return;
+			}
+
+			// The post being edited.
+			$current_post = (int) acf_request_arg( 'post', 0 );
+
+			if ( 'acf-ui-options-page' === $post_type ) {
+				// Only existing options pages can be edited with an expired license.
+				if ( $current_post && acf_pro_is_license_expired() ) {
+					return;
+				}
+			} elseif ( 'acf-field-group' === $post_type ) {
+				// Expired licenses can edit new/existing field groups regardless of block locations.
+				if ( acf_pro_is_license_expired() ) {
+					return;
+				}
+
+				// No block locations, should still be able to edit.
+				if ( ! acf_field_group_has_location_type( $current_post, 'block' ) ) {
+					return;
+				}
+			}
+
+			// Redirect back to field groups list table.
+			wp_safe_redirect( admin_url( 'edit.php?acf_invalid_license=true&post_type=' . $post_type ) );
+			exit;
+		}
+
+		/**
+		 * Adds a notice if a user has attempted to edit an ACF item without a valid license.
+		 *
+		 * @since 6.2.8
+		 *
+		 * @param string $post_type The post type being edited.
+		 * @return void
+		 */
+		public function invalid_license_redirect_notice( string $post_type ) {
+			if ( ! acf_request_arg( 'acf_invalid_license', false ) ) {
+				return;
+			}
+
+			if ( 'acf-field-group' === $post_type ) {
+				acf_add_admin_notice( __( 'A valid license is required to edit field groups assigned to a block.', 'acf' ), 'error' );
+			} elseif ( 'acf-ui-options-page' === $post_type ) {
+				acf_add_admin_notice( __( 'A valid license is required to edit options pages.', 'acf' ), 'error' );
+			}
 		}
 
 		/**
@@ -222,6 +277,24 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			}
 
 			return $where;
+		}
+
+		/**
+		 * Adds admin body classes to ACF post types and post type list pages.
+		 *
+		 * @since 6.2.5
+		 *
+		 * @param string $classes The existing body classes.
+		 * @return string
+		 */
+		public function admin_body_classes( $classes ) {
+			if ( acf_pro_is_license_expired() ) {
+				$classes .= ' acf-pro-expired-license';
+			} elseif ( ! acf_pro_is_license_active() ) {
+				$classes .= ' acf-pro-inactive-license';
+			}
+
+			return $classes;
 		}
 	}
 

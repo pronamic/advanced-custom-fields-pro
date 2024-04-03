@@ -3,6 +3,16 @@
 
 $browse_fields_tabs = array( 'popular' => __( 'Popular', 'acf' ) );
 $browse_fields_tabs = $browse_fields_tabs + acf_get_field_categories_i18n();
+
+if ( acf_is_pro() && acf_pro_is_license_expired() ) {
+	$acf_upgrade_text     = __( 'Renew PRO License', 'acf' );
+	$acf_upgrade_link     = acf_add_url_utm_tags( acf_pro_get_manage_license_url(), 'field-type-modal', '' );
+	$acf_pro_feature_text = __( 'Renew PRO to Unlock', 'acf' );
+} else {
+	$acf_upgrade_text     = __( 'Upgrade to PRO', 'acf' );
+	$acf_upgrade_link     = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'field-type-modal', '' );
+	$acf_pro_feature_text = __( 'ACF PRO Feature', 'acf' );
+}
 ?>
 <div class="acf-browse-fields-modal-wrap">
 	<div class="acf-modal acf-browse-fields-modal">
@@ -61,8 +71,8 @@ $browse_fields_tabs = $browse_fields_tabs + acf_get_field_categories_i18n();
 				<div class="acf-field-picker-actions">
 					<button class="button acf-cancel acf-modal-close"><?php esc_html_e( 'Cancel', 'acf' ); ?></button>
 					<button class="acf-btn acf-select-field"><?php esc_html_e( 'Select Field', 'acf' ); ?></button>
-					<a target="_blank" data-url-base="<?php echo esc_attr( acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'field-type-modal', '' ) ); ?>" class="acf-btn acf-btn-pro">
-						<?php esc_html_e( 'Upgrade to PRO', 'acf' ); ?>
+					<a target="_blank" data-url-base="<?php echo esc_attr( $acf_upgrade_link ); ?>" class="acf-btn acf-btn-pro">
+						<?php echo esc_html( $acf_upgrade_text ); ?>
 					</a>
 				</div>
 			</div>
@@ -70,9 +80,9 @@ $browse_fields_tabs = $browse_fields_tabs + acf_get_field_categories_i18n();
 		<div class="acf-field-type-preview">
 			<div class="field-type-info">
 				<h2 class="field-type-name"></h2>
-				<a target="_blank" data-url-base="<?php echo esc_attr( acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'field-type-modal', '' ) ); ?>" class="field-type-upgrade-to-unlock">
+				<a target="_blank" data-url-base="<?php echo esc_attr( $acf_upgrade_link ); ?>" class="field-type-upgrade-to-unlock">
 					<i class="acf-icon acf-icon-lock"></i>
-					<?php esc_html_e( 'Available with ACF PRO', 'acf' ); ?>
+					<?php echo esc_html( $acf_pro_feature_text ); ?>
 				</a>
 				<p class="field-type-desc"></p>
 				<div class="field-type-preview-container">

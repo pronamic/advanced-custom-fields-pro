@@ -212,7 +212,7 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 				$unlock_text   = __( 'Unlock Extra Features with ACF PRO', 'acf' );
 
 				if ( acf_is_pro() ) {
-					if ( acf_is_updates_page_visible() ) {
+					if ( acf_pro_is_updates_page_visible() ) {
 						$unlock_url    = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
 						$unlock_target = '';
 					}

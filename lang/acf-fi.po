@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-02-26T11:26:19+00:00\n"
+"PO-Revision-Date: 2024-03-29T21:10:52+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -21,14 +21,14 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
-#: includes/api/api-template.php:461 includes/api/api-template.php:515
+#: includes/api/api-template.php:376 includes/api/api-template.php:430
 msgid ""
 "Returning escaped HTML values is only possible when format_value is also "
 "true. The field values have not been returned for security."
 msgstr ""
 
-#: includes/api/api-template.php:46 includes/api/api-template.php:327
-#: includes/api/api-template.php:1026
+#: includes/api/api-template.php:46 includes/api/api-template.php:242
+#: includes/api/api-template.php:934
 msgid ""
 "Returning an escaped HTML value is only possible when format_value is also "
 "true. The field value has not been returned for security."
@@ -36,30 +36,12 @@ msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
 #. %3$s - Link to show more details about the error
-#: includes/admin/views/escaped-html-notice.php:41
-msgid ""
-"%1$s ACF now automatically escapes unsafe HTML when rendered by the ACF "
-"shortcode. We've detected the output of some of your fields has been "
-"modified by this change, but this may not be a breaking change. %2$s. %3$s."
-msgstr ""
-
-#. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
-#. %3$s - Link to show more details about the error
-#: includes/admin/views/escaped-html-notice.php:33
+#: includes/admin/views/escaped-html-notice.php:19
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by "
 "<code>the_field</code> or the ACF shortcode. We've detected the output of "
 "some of your fields has been modified by this change, but this may not be a "
 "breaking change. %2$s. %3$s."
-msgstr ""
-
-#. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
-#. %3$s - Link to show more details about the error
-#: includes/admin/views/escaped-html-notice.php:22
-msgid ""
-"%1$s ACF will soon escape unsafe HTML that is rendered by <code>the_field()</"
-"code>. We've detected the output of some of your fields will be modified by "
-"this change, but this may not be a breaking change. %2$s. %3$s."
 msgstr ""
 
 #: includes/admin/views/escaped-html-notice.php:14
@@ -70,17 +52,17 @@ msgstr ""
 msgid "Learn&nbsp;more"
 msgstr ""
 
-#: includes/admin/admin.php:67
+#: includes/admin/admin.php:63
 msgid "Hide&nbsp;details"
 msgstr ""
 
-#: includes/admin/admin.php:66 includes/admin/views/escaped-html-notice.php:11
+#: includes/admin/admin.php:62 includes/admin/views/escaped-html-notice.php:11
 msgid "Show&nbsp;details"
 msgstr ""
 
 #. translators: %1$s - The selector used  %2$s The field name  3%$s The parent
 #. function name
-#: includes/admin/views/escaped-html-notice.php:59
+#: includes/admin/views/escaped-html-notice.php:34
 msgid "%1$s (%2$s) - rendered via %3$s"
 msgstr ""
 
@@ -136,7 +118,7 @@ msgstr "4 kuukautta maksutta"
 msgid " (Duplicated from %s)"
 msgstr " (Monistettu %s)"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:286
+#: includes/admin/tools/class-acf-admin-tool-export.php:283
 msgid "Select Options Pages"
 msgstr "Valitse asetussivut"
 
@@ -168,32 +150,32 @@ msgstr "Linkitä kenttäryhmä"
 msgid "Add fields"
 msgstr "Lisää kenttiä"
 
-#: includes/admin/post-types/admin-field-group.php:121
-#: assets/build/js/acf-field-group.js:2752
-#: assets/build/js/acf-field-group.js:3237
+#: includes/admin/post-types/admin-field-group.php:117
+#: assets/build/js/acf-field-group.js:2756
+#: assets/build/js/acf-field-group.js:3242
 msgid "This Field"
 msgstr "Tämä kenttä"
 
-#: includes/admin/admin.php:332
+#: includes/admin/admin.php:311
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:330
+#: includes/admin/admin.php:309
 msgid "Feedback"
 msgstr "Palaute"
 
-#: includes/admin/admin.php:328
+#: includes/admin/admin.php:307
 msgid "Support"
 msgstr "Tuki"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:303
+#: includes/admin/admin.php:282
 msgid "is developed and maintained by"
 msgstr "kehittää ja ylläpitää"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:321
+#: includes/admin/admin-internal-post-type.php:310
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "Aseta tämä %s valittujen kenttäryhmien sijaintiasetuksiin."
 
@@ -241,9 +223,9 @@ msgstr "Kaksisuuntainen"
 msgid "%s Field"
 msgstr "%s kenttä"
 
-#: includes/fields/class-acf-field-page_link.php:479
-#: includes/fields/class-acf-field-post_object.php:399
-#: includes/fields/class-acf-field-select.php:396
+#: includes/fields/class-acf-field-page_link.php:465
+#: includes/fields/class-acf-field-post_object.php:387
+#: includes/fields/class-acf-field-select.php:386
 #: includes/fields/class-acf-field-user.php:82
 msgid "Select Multiple"
 msgstr "Valitse useita"
@@ -297,12 +279,12 @@ msgstr ""
 "Määrittää piilotetaanko artikkelit hakutuloksista ja taksonomian "
 "arkistosivuilta."
 
-#: includes/admin/views/acf-field-group/pro-features.php:74
+#: includes/admin/views/acf-field-group/pro-features.php:78
 msgid "More Tools from WP Engine"
 msgstr "Lisää työkaluja WP Engineltä"
 
 #. translators: %s - WP Engine logo
-#: includes/admin/views/acf-field-group/pro-features.php:69
+#: includes/admin/views/acf-field-group/pro-features.php:73
 msgid "Built for those that build with WordPress, by the team at %s"
 msgstr "Tehty niille jotka tekevät WordPressillä, %s tiimin toimesta"
 
@@ -334,44 +316,44 @@ msgstr "Avaa lisäominaisuudet ja luo vielä enemmän ACF PRO:n avulla"
 msgid "%s fields"
 msgstr "%s kentät"
 
-#: includes/admin/post-types/admin-taxonomies.php:293
+#: includes/admin/post-types/admin-taxonomies.php:285
 msgid "No terms"
 msgstr "Ei termejä"
 
-#: includes/admin/post-types/admin-taxonomies.php:266
+#: includes/admin/post-types/admin-taxonomies.php:258
 msgid "No post types"
 msgstr "Ei sisältötyyppejä"
 
-#: includes/admin/post-types/admin-post-types.php:289
+#: includes/admin/post-types/admin-post-types.php:282
 msgid "No posts"
 msgstr "Ei artikkeleita"
 
-#: includes/admin/post-types/admin-post-types.php:263
+#: includes/admin/post-types/admin-post-types.php:256
 msgid "No taxonomies"
 msgstr "Ei taksonomioita"
 
-#: includes/admin/post-types/admin-post-types.php:208
-#: includes/admin/post-types/admin-taxonomies.php:208
+#: includes/admin/post-types/admin-post-types.php:201
+#: includes/admin/post-types/admin-taxonomies.php:200
 msgid "No field groups"
 msgstr "Ei kenttäryhmiä"
 
-#: includes/admin/post-types/admin-field-groups.php:280
+#: includes/admin/post-types/admin-field-groups.php:272
 msgid "No fields"
 msgstr "Ei kenttiä"
 
-#: includes/admin/post-types/admin-field-groups.php:153
-#: includes/admin/post-types/admin-post-types.php:172
-#: includes/admin/post-types/admin-taxonomies.php:172
+#: includes/admin/post-types/admin-field-groups.php:145
+#: includes/admin/post-types/admin-post-types.php:165
+#: includes/admin/post-types/admin-taxonomies.php:164
 msgid "No description"
 msgstr "Ei kuvausta"
 
-#: includes/fields/class-acf-field-page_link.php:446
-#: includes/fields/class-acf-field-post_object.php:362
-#: includes/fields/class-acf-field-relationship.php:567
+#: includes/fields/class-acf-field-page_link.php:432
+#: includes/fields/class-acf-field-post_object.php:350
+#: includes/fields/class-acf-field-relationship.php:553
 msgid "Any post status"
 msgstr "Mikä tahansa artikkelin tila"
 
-#: includes/post-types/class-acf-taxonomy.php:284
+#: includes/post-types/class-acf-taxonomy.php:288
 msgid ""
 "This taxonomy key is already in use by another taxonomy registered outside "
 "of ACF and cannot be used."
@@ -379,7 +361,7 @@ msgstr ""
 "Tämän taksonomian avain on jo käytössä toisella taksonomialla ACF:n "
 "ulkopuolella, eikä sitä voida käyttää."
 
-#: includes/post-types/class-acf-taxonomy.php:279
+#: includes/post-types/class-acf-taxonomy.php:284
 msgid ""
 "This taxonomy key is already in use by another taxonomy in ACF and cannot be "
 "used."
@@ -387,7 +369,7 @@ msgstr ""
 "Tämän taksonomian avain on jo käytössä toisella taksonomialla ACF:ssä, eikä "
 "sitä voida käyttää."
 
-#: includes/post-types/class-acf-taxonomy.php:252
+#: includes/post-types/class-acf-taxonomy.php:256
 msgid ""
 "The taxonomy key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
@@ -395,7 +377,7 @@ msgstr ""
 "Taksonomian avaimen tulee sisältää ainoastaan pieniä kirjaimia, numeroita, "
 "alaviivoja tai väliviivoja."
 
-#: includes/post-types/class-acf-taxonomy.php:247
+#: includes/post-types/class-acf-taxonomy.php:251
 msgid "The taxonomy key must be under 32 characters."
 msgstr "Taksonomian avaimen tulee olla alle 20 merkkiä pitkä."
 
@@ -455,7 +437,7 @@ msgstr "Muokkaa sisältötyyppiä"
 msgid "Add New Post Type"
 msgstr "Lisää uusi sisältötyyppi"
 
-#: includes/post-types/class-acf-post-type.php:361
+#: includes/post-types/class-acf-post-type.php:366
 msgid ""
 "This post type key is already in use by another post type registered outside "
 "of ACF and cannot be used."
@@ -463,7 +445,7 @@ msgstr ""
 "Tämä sisältötyyppi on jo käytössä sisältötyypillä joka on rekisteröity ACF "
 "ulkopuolella, eikä sitä voida käyttää."
 
-#: includes/post-types/class-acf-post-type.php:356
+#: includes/post-types/class-acf-post-type.php:361
 msgid ""
 "This post type key is already in use by another post type in ACF and cannot "
 "be used."
@@ -472,16 +454,16 @@ msgstr ""
 "käyttää."
 
 #. translators: %s a link to WordPress.org's Reserved Terms page
-#: includes/post-types/class-acf-post-type.php:335
-#: includes/post-types/class-acf-taxonomy.php:258
+#: includes/post-types/class-acf-post-type.php:339
+#: includes/post-types/class-acf-taxonomy.php:262
 msgid ""
 "This field must not be a WordPress <a href=\"%s\" target=\"_blank\">reserved "
 "term</a>."
 msgstr ""
-"Tämän kentän ei tule olla WordPressin <a href=\"%s\" target=\"_blank"
-"\">varattu termi</a>."
+"Tämän kentän ei tule olla WordPressin <a href=\"%s\" "
+"target=\"_blank\">varattu termi</a>."
 
-#: includes/post-types/class-acf-post-type.php:329
+#: includes/post-types/class-acf-post-type.php:333
 msgid ""
 "The post type key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
@@ -489,15 +471,15 @@ msgstr ""
 "Sisältötyypin avaimen tulee sisältää vain pieniä kirjaimia, numeroita, "
 "alaviivoja ja väliviivoja."
 
-#: includes/post-types/class-acf-post-type.php:324
+#: includes/post-types/class-acf-post-type.php:328
 msgid "The post type key must be under 20 characters."
 msgstr "Sisältötyypin avaimen tulee olla alle 20 merkkiä pitkä."
 
-#: includes/fields/class-acf-field-wysiwyg.php:27
+#: includes/fields/class-acf-field-wysiwyg.php:25
 msgid "We do not recommend using this field in ACF Blocks."
 msgstr "Emme suosittele tämän kentän käyttämistä ACF-lohkoissa."
 
-#: includes/fields/class-acf-field-wysiwyg.php:27
+#: includes/fields/class-acf-field-wysiwyg.php:25
 msgid ""
 "Displays the WordPress WYSIWYG editor as seen in Posts and Pages allowing "
 "for a rich text-editing experience that also allows for multimedia content."
@@ -506,7 +488,7 @@ msgstr ""
 "mahdollistaen monipuolisemman tekstin muokkauskokemuksen, joka mahdollistaa "
 "myös multimediasisällön."
 
-#: includes/fields/class-acf-field-wysiwyg.php:25
+#: includes/fields/class-acf-field-wysiwyg.php:23
 msgid "WYSIWYG Editor"
 msgstr "WYSIWYG-editori"
 
@@ -526,7 +508,7 @@ msgstr "Tekstikenttä erityisesti verkko-osoitteiden tallentamiseksi."
 msgid "URL"
 msgstr "URL"
 
-#: includes/fields/class-acf-field-true_false.php:27
+#: includes/fields/class-acf-field-true_false.php:25
 msgid ""
 "A toggle that allows you to pick a value of 1 or 0 (on or off, true or "
 "false, etc). Can be presented as a stylized switch or checkbox."
@@ -534,7 +516,7 @@ msgstr ""
 "Kytkin joka sallii 1 tai 0 arvon valitsemisen (päälle tai pois, tosi tai "
 "epätosi, jne.). Voidaan esittää tyyliteltynä kytkimenä tai valintaruutuna."
 
-#: includes/fields/class-acf-field-time_picker.php:27
+#: includes/fields/class-acf-field-time_picker.php:25
 msgid ""
 "An interactive UI for picking a time. The time format can be customized "
 "using the field settings."
@@ -542,11 +524,11 @@ msgstr ""
 "Interaktiivinen käyttölittymä ajan valitsemiseen. Aikamuotoa voidaan muokata "
 "kentän asetuksissa."
 
-#: includes/fields/class-acf-field-textarea.php:26
+#: includes/fields/class-acf-field-textarea.php:24
 msgid "A basic textarea input for storing paragraphs of text."
 msgstr "Yksinkertainen tekstialue tekstikappaleiden tallentamiseen."
 
-#: includes/fields/class-acf-field-text.php:26
+#: includes/fields/class-acf-field-text.php:24
 msgid "A basic text input, useful for storing single string values."
 msgstr ""
 "Yksinkertainen tekstikenttä, hyödyllinen yksittäisten merkkijonojen arvojen "
@@ -560,7 +542,7 @@ msgstr ""
 "Mahdollistaa yhden tai useamman taksonomiatermin valitsemisen kentän "
 "asetuksissa asetettujen kriteerien ja asetusten perusteella."
 
-#: includes/fields/class-acf-field-tab.php:28
+#: includes/fields/class-acf-field-tab.php:26
 msgid ""
 "Allows you to group fields into tabbed sections in the edit screen. Useful "
 "for keeping fields organized and structured."
@@ -569,7 +551,7 @@ msgstr ""
 "muokkausnäkymässä. Hyödyllinen kenttien pitämiseen järjestyksessä ja "
 "jäsenneltynä."
 
-#: includes/fields/class-acf-field-select.php:27
+#: includes/fields/class-acf-field-select.php:25
 msgid "A dropdown list with a selection of choices that you specify."
 msgstr "Pudotusvalikko joka listaa määrittelemäsi vaihtoehdot."
 
@@ -580,7 +562,7 @@ msgid ""
 "editing. Includes options to search and filter."
 msgstr ""
 
-#: includes/fields/class-acf-field-range.php:26
+#: includes/fields/class-acf-field-range.php:24
 msgid ""
 "An input for selecting a numerical value within a specified range using a "
 "range slider element."
@@ -588,7 +570,7 @@ msgstr ""
 "Kenttä numeroarvon valitsemiseksi määritetyllä asteikolla hyödyntäen "
 "liukuvalitsinelementtiä."
 
-#: includes/fields/class-acf-field-radio.php:27
+#: includes/fields/class-acf-field-radio.php:25
 msgid ""
 "A group of radio button inputs that allows the user to make a single "
 "selection from values that you specify."
@@ -605,33 +587,33 @@ msgstr ""
 "artikkelin, sivun tai artikkelityyppikohteen valitsemiseksi, "
 "hakumahdollisuudella. "
 
-#: includes/fields/class-acf-field-password.php:26
+#: includes/fields/class-acf-field-password.php:24
 msgid "An input for providing a password using a masked field."
 msgstr "Kenttä salasanan antamiseen peitetyn kentän avulla."
 
-#: includes/fields/class-acf-field-page_link.php:438
-#: includes/fields/class-acf-field-post_object.php:354
-#: includes/fields/class-acf-field-relationship.php:559
+#: includes/fields/class-acf-field-page_link.php:424
+#: includes/fields/class-acf-field-post_object.php:342
+#: includes/fields/class-acf-field-relationship.php:545
 msgid "Filter by Post Status"
 msgstr "Suodata artikkelin tilan mukaan"
 
-#: includes/fields/class-acf-field-page_link.php:27
+#: includes/fields/class-acf-field-page_link.php:25
 msgid ""
 "An interactive dropdown to select one or more posts, pages, custom post type "
 "items or archive URLs, with the option to search."
 msgstr ""
 
-#: includes/fields/class-acf-field-oembed.php:27
+#: includes/fields/class-acf-field-oembed.php:25
 msgid ""
 "An interactive component for embedding videos, images, tweets, audio and "
 "other content by making use of the native WordPress oEmbed functionality."
 msgstr ""
 
-#: includes/fields/class-acf-field-number.php:26
+#: includes/fields/class-acf-field-number.php:24
 msgid "An input limited to numerical values."
 msgstr "Numeroarvoihin rajoitettu kenttä."
 
-#: includes/fields/class-acf-field-message.php:28
+#: includes/fields/class-acf-field-message.php:26
 msgid ""
 "Used to display a message to editors alongside other fields. Useful for "
 "providing additional context or instructions around your fields."
@@ -639,7 +621,7 @@ msgstr ""
 "Käytetään viestin esittämiseksi muiden kenttien rinnalla. Kätevä "
 "lisäkontekstin tai -ohjeiden tarjoamiseen kenttien ympärillä."
 
-#: includes/fields/class-acf-field-link.php:27
+#: includes/fields/class-acf-field-link.php:25
 msgid ""
 "Allows you to specify a link and its properties such as title and target "
 "using the WordPress native link picker."
@@ -647,12 +629,12 @@ msgstr ""
 "Sallii linkin ja sen ominaisuuksien, kuten otsikon ja kohteen, määrittämisen "
 "hyödyntäen WordPressin omaa linkinvalitsinta."
 
-#: includes/fields/class-acf-field-image.php:27
+#: includes/fields/class-acf-field-image.php:25
 msgid "Uses the native WordPress media picker to upload, or choose images."
 msgstr ""
 "Käyttää WordPressin omaa mediavalitsinta kuvien lisäämisen tai valitsemiseen."
 
-#: includes/fields/class-acf-field-group.php:27
+#: includes/fields/class-acf-field-group.php:25
 msgid ""
 "Provides a way to structure fields into groups to better organize the data "
 "and the edit screen."
@@ -660,7 +642,7 @@ msgstr ""
 "Antaa tavan jäsentää kenttiä ryhmiin tietojen ja muokkausnäkymän "
 "järjestämiseksi paremmin."
 
-#: includes/fields/class-acf-field-google-map.php:27
+#: includes/fields/class-acf-field-google-map.php:25
 msgid ""
 "An interactive UI for selecting a location using Google Maps. Requires a "
 "Google Maps API key and additional configuration to display correctly."
@@ -668,17 +650,17 @@ msgstr ""
 "Interaktiivinen käyttöliittymä sijainnin lisäämiseksi Google Maps:in avulla. "
 "Vaatii Google Maps API -avaimen sekä lisämäärityksiä näkyäkseen oikein."
 
-#: includes/fields/class-acf-field-file.php:27
+#: includes/fields/class-acf-field-file.php:25
 msgid "Uses the native WordPress media picker to upload, or choose files."
 msgstr ""
 "Käyttää WordPressin omaa mediavalitsinta tiedostojen lisäämiseen ja "
 "valitsemiseen."
 
-#: includes/fields/class-acf-field-email.php:26
+#: includes/fields/class-acf-field-email.php:24
 msgid "A text input specifically designed for storing email addresses."
 msgstr "Tekstikenttä erityisesti sähköpostiosoitteiden tallentamiseksi."
 
-#: includes/fields/class-acf-field-date_time_picker.php:27
+#: includes/fields/class-acf-field-date_time_picker.php:25
 msgid ""
 "An interactive UI for picking a date and time. The date return format can be "
 "customized using the field settings."
@@ -686,7 +668,7 @@ msgstr ""
 "Interaktiivinen käyttöliittymä päivämäärän ja kellonajan valitsemiseen. "
 "Päivämäärän palautusmuotoa voidaan muokata kentän asetuksissa."
 
-#: includes/fields/class-acf-field-date_picker.php:27
+#: includes/fields/class-acf-field-date_picker.php:25
 msgid ""
 "An interactive UI for picking a date. The date return format can be "
 "customized using the field settings."
@@ -694,13 +676,13 @@ msgstr ""
 "Interaktiivinen käyttöliittymä päivämäärän valitsemiseen. Päivämäärän "
 "palautusmuotoa voidaan muokata kentän asetuksissa."
 
-#: includes/fields/class-acf-field-color_picker.php:27
+#: includes/fields/class-acf-field-color_picker.php:25
 msgid "An interactive UI for selecting a color, or specifying a Hex value."
 msgstr ""
 "Interaktiivinen käyttöliittymä värin valitsemiseksi, tai hex-arvon "
 "määrittämiseksi."
 
-#: includes/fields/class-acf-field-checkbox.php:27
+#: includes/fields/class-acf-field-checkbox.php:25
 msgid ""
 "A group of checkbox inputs that allow the user to select one, or multiple "
 "values that you specify."
@@ -725,7 +707,7 @@ msgstr ""
 "esitetään sisällön muokkaamisen yhteydessä. Kätevä suurten tietojoukkojen "
 "siistinä pitämiseen."
 
-#: includes/fields.php:493
+#: includes/fields.php:456
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
@@ -735,7 +717,7 @@ msgstr ""
 "toimintakehotekorttien toistamiseen. Toimii ylätasona alakentille, jotka "
 "voidaan toistaa uudestaan ja uudestaan."
 
-#: includes/fields.php:483
+#: includes/fields.php:446
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -747,14 +729,14 @@ msgstr ""
 "mahdollistavat uusien liitteiden sijoituspaikan määrittämiseen galleriassa, "
 "sekä sallitun minimi- ja maksimiliitemäärien asettamiseksi."
 
-#: includes/fields.php:473
+#: includes/fields.php:436
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
 "control by using layouts and subfields to design the available blocks."
 msgstr ""
 
-#: includes/fields.php:463
+#: includes/fields.php:426
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -762,16 +744,16 @@ msgid ""
 "or display the selected fields as a group of subfields."
 msgstr ""
 
-#: includes/fields.php:460
+#: includes/fields.php:423
 msgctxt "noun"
 msgid "Clone"
 msgstr "Klooni"
 
-#: includes/admin/views/global/navigation.php:86 includes/fields.php:375
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:338
 msgid "PRO"
 msgstr ""
 
-#: includes/fields.php:373 includes/fields.php:430
+#: includes/fields.php:336 includes/fields.php:393
 msgid "Advanced"
 msgstr ""
 
@@ -833,15 +815,15 @@ msgstr ""
 msgid "Popular"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/list-empty.php:7
+#: includes/admin/views/acf-taxonomy/list-empty.php:15
 msgid "Add Taxonomy"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/list-empty.php:6
+#: includes/admin/views/acf-taxonomy/list-empty.php:14
 msgid "Create custom taxonomies to classify post type content"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/list-empty.php:5
+#: includes/admin/views/acf-taxonomy/list-empty.php:13
 msgid "Add Your First Taxonomy"
 msgstr ""
 
@@ -1405,17 +1387,17 @@ msgstr ""
 msgid "Sort Terms"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/list-empty.php:7
+#: includes/admin/views/acf-post-type/list-empty.php:14
 msgid "Add Post Type"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/list-empty.php:6
+#: includes/admin/views/acf-post-type/list-empty.php:13
 msgid ""
 "Expand the functionality of WordPress beyond standard posts and pages with "
 "custom post types."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/list-empty.php:5
+#: includes/admin/views/acf-post-type/list-empty.php:12
 msgid "Add Your First Post Type"
 msgstr ""
 
@@ -2349,34 +2331,34 @@ msgstr ""
 msgid "Browse Fields"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:290
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:285
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr ""
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:276
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:260
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:242
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:231
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:207
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] ""
@@ -2394,7 +2376,7 @@ msgstr ""
 msgid "Import from Custom Post Type UI"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:398
+#: includes/admin/tools/class-acf-admin-tool-export.php:349
 msgid ""
 "The following code can be used to register a local version of the selected "
 "items. Storing field groups, post types, or taxonomies locally can provide "
@@ -2404,19 +2386,19 @@ msgid ""
 "the items from the ACF admin."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:397
+#: includes/admin/tools/class-acf-admin-tool-export.php:348
 msgid "Export - Generate PHP"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:371
+#: includes/admin/tools/class-acf-admin-tool-export.php:325
 msgid "Export"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:264
+#: includes/admin/tools/class-acf-admin-tool-export.php:261
 msgid "Select Taxonomies"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:242
+#: includes/admin/tools/class-acf-admin-tool-export.php:239
 msgid "Select Post Types"
 msgstr ""
 
@@ -2426,13 +2408,13 @@ msgid_plural "Exported %s items."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/post-types/admin-taxonomy.php:129
+#: includes/admin/post-types/admin-taxonomy.php:127
 #: assets/build/js/acf-internal-post-type.js:182
 #: assets/build/js/acf-internal-post-type.js:256
 msgid "Category"
 msgstr ""
 
-#: includes/admin/post-types/admin-taxonomy.php:127
+#: includes/admin/post-types/admin-taxonomy.php:125
 #: assets/build/js/acf-internal-post-type.js:179
 #: assets/build/js/acf-internal-post-type.js:253
 msgid "Tag"
@@ -2472,105 +2454,105 @@ msgstr ""
 msgid "Taxonomy updated."
 msgstr ""
 
-#: includes/admin/post-types/admin-taxonomies.php:377
-#: includes/admin/post-types/admin-taxonomy.php:157
+#: includes/admin/post-types/admin-taxonomies.php:369
+#: includes/admin/post-types/admin-taxonomy.php:153
 msgid ""
 "This taxonomy could not be registered because its key is in use by another "
 "taxonomy registered by another plugin or theme."
 msgstr ""
 
 #. translators: %s number of taxonomies synchronized
-#: includes/admin/post-types/admin-taxonomies.php:359
+#: includes/admin/post-types/admin-taxonomies.php:351
 msgid "Taxonomy synchronized."
 msgid_plural "%s taxonomies synchronized."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of taxonomies duplicated
-#: includes/admin/post-types/admin-taxonomies.php:352
+#: includes/admin/post-types/admin-taxonomies.php:344
 msgid "Taxonomy duplicated."
 msgid_plural "%s taxonomies duplicated."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of taxonomies deactivated
-#: includes/admin/post-types/admin-taxonomies.php:345
+#: includes/admin/post-types/admin-taxonomies.php:337
 msgid "Taxonomy deactivated."
 msgid_plural "%s taxonomies deactivated."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of taxonomies activated
-#: includes/admin/post-types/admin-taxonomies.php:338
+#: includes/admin/post-types/admin-taxonomies.php:330
 msgid "Taxonomy activated."
 msgid_plural "%s taxonomies activated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/post-types/admin-taxonomies.php:139
+#: includes/admin/post-types/admin-taxonomies.php:131
 msgid "Terms"
 msgstr ""
 
 #. translators: %s number of post types synchronized
-#: includes/admin/post-types/admin-post-types.php:352
+#: includes/admin/post-types/admin-post-types.php:345
 msgid "Post type synchronized."
 msgid_plural "%s post types synchronized."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of post types duplicated
-#: includes/admin/post-types/admin-post-types.php:345
+#: includes/admin/post-types/admin-post-types.php:338
 msgid "Post type duplicated."
 msgid_plural "%s post types duplicated."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of post types deactivated
-#: includes/admin/post-types/admin-post-types.php:338
+#: includes/admin/post-types/admin-post-types.php:331
 msgid "Post type deactivated."
 msgid_plural "%s post types deactivated."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of post types activated
-#: includes/admin/post-types/admin-post-types.php:331
+#: includes/admin/post-types/admin-post-types.php:324
 msgid "Post type activated."
 msgid_plural "%s post types activated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/post-types/admin-post-types.php:112
-#: includes/admin/post-types/admin-taxonomies.php:137
+#: includes/admin/post-types/admin-post-types.php:105
+#: includes/admin/post-types/admin-taxonomies.php:129
 #: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:162
-#: includes/admin/post-types/admin-taxonomy.php:164
+#: includes/admin/post-types/admin-post-type.php:158
+#: includes/admin/post-types/admin-taxonomy.php:160
 msgid "Advanced Settings"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:161
-#: includes/admin/post-types/admin-taxonomy.php:163
+#: includes/admin/post-types/admin-post-type.php:157
+#: includes/admin/post-types/admin-taxonomy.php:159
 msgid "Basic Settings"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:155
-#: includes/admin/post-types/admin-post-types.php:370
+#: includes/admin/post-types/admin-post-type.php:151
+#: includes/admin/post-types/admin-post-types.php:363
 msgid ""
 "This post type could not be registered because its key is in use by another "
 "post type registered by another plugin or theme."
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:128
+#: includes/admin/post-types/admin-post-type.php:126
 #: assets/build/js/acf-internal-post-type.js:176
 #: assets/build/js/acf-internal-post-type.js:250
 msgid "Pages"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:355
+#: includes/admin/admin-internal-post-type.php:344
 msgid "Link Existing Field Groups"
 msgstr ""
 
@@ -2613,75 +2595,75 @@ msgstr ""
 msgid "Post type deleted."
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:120
+#: includes/admin/post-types/admin-field-group.php:116
 #: assets/build/js/acf-field-group.js:1145
 #: assets/build/js/acf-field-group.js:1366
 msgid "Type to search..."
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:105
+#: includes/admin/post-types/admin-field-group.php:101
 #: assets/build/js/acf-field-group.js:1171
-#: assets/build/js/acf-field-group.js:2318
+#: assets/build/js/acf-field-group.js:2322
 #: assets/build/js/acf-field-group.js:1415
-#: assets/build/js/acf-field-group.js:2728
+#: assets/build/js/acf-field-group.js:2733
 msgid "PRO Only"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:97
+#: includes/admin/post-types/admin-field-group.php:93
 #: assets/build/js/acf-internal-post-type.js:308
 #: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
 msgstr ""
 
 #. translators: %s - URL to ACF tools page.
-#: includes/admin/admin.php:203
+#: includes/admin/admin.php:199
 msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:47 includes/admin/admin.php:332
+#: includes/admin/admin.php:45 includes/admin/admin.php:311
 msgid "ACF"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:311
 msgid "taxonomy"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:311
 msgid "post type"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:346
+#: includes/admin/admin-internal-post-type.php:335
 msgid "Done"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:332
+#: includes/admin/admin-internal-post-type.php:321
 msgid "Field Group(s)"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:331
+#: includes/admin/admin-internal-post-type.php:320
 msgid "Select one or many field groups..."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:330
+#: includes/admin/admin-internal-post-type.php:319
 msgid "Please select the field groups to link."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:288
+#: includes/admin/admin-internal-post-type.php:277
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:264
-#: includes/admin/post-types/admin-post-types.php:371
-#: includes/admin/post-types/admin-taxonomies.php:378
+#: includes/admin/admin-internal-post-type-list.php:255
+#: includes/admin/post-types/admin-post-types.php:364
+#: includes/admin/post-types/admin-taxonomies.php:370
 msgctxt "post status"
 msgid "Registration Failed"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:263
+#: includes/admin/admin-internal-post-type-list.php:254
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
@@ -2715,70 +2697,71 @@ msgstr ""
 msgid "Labels"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:261
+#: includes/admin/post-types/admin-field-group.php:249
 msgid "Field Settings Tabs"
 msgstr ""
 
 #. Author URI of the plugin
+#: acf.php
 msgid ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 msgstr ""
 
-#: includes/api/api-template.php:1102
+#: includes/api/api-template.php:1010
 msgid "[ACF shortcode value disabled for preview]"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:298
-#: includes/admin/post-types/admin-field-group.php:563
+#: includes/admin/admin-internal-post-type.php:287
+#: includes/admin/post-types/admin-field-group.php:538
 msgid "Close Modal"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:1669
-#: assets/build/js/acf-field-group.js:1994
+#: includes/admin/post-types/admin-field-group.php:92
+#: assets/build/js/acf-field-group.js:1673
+#: assets/build/js/acf-field-group.js:1999
 msgid "Field moved to other group"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:95
+#: includes/admin/post-types/admin-field-group.php:91
 #: assets/build/js/acf.js:1437 assets/build/js/acf.js:1517
 msgid "Close modal"
 msgstr ""
 
-#: includes/fields/class-acf-field-tab.php:124
+#: includes/fields/class-acf-field-tab.php:118
 msgid "Start a new group of tabs at this tab."
 msgstr ""
 
-#: includes/fields/class-acf-field-tab.php:123
+#: includes/fields/class-acf-field-tab.php:117
 msgid "New Tab Group"
 msgstr ""
 
-#: includes/fields/class-acf-field-select.php:439
-#: includes/fields/class-acf-field-true_false.php:197
+#: includes/fields/class-acf-field-select.php:429
+#: includes/fields/class-acf-field-true_false.php:190
 msgid "Use a stylized checkbox using select2"
 msgstr ""
 
-#: includes/fields/class-acf-field-radio.php:259
+#: includes/fields/class-acf-field-radio.php:253
 msgid "Save Other Choice"
 msgstr ""
 
-#: includes/fields/class-acf-field-radio.php:248
+#: includes/fields/class-acf-field-radio.php:242
 msgid "Allow Other Choice"
 msgstr ""
 
-#: includes/fields/class-acf-field-checkbox.php:439
+#: includes/fields/class-acf-field-checkbox.php:425
 msgid "Add Toggle All"
 msgstr ""
 
-#: includes/fields/class-acf-field-checkbox.php:398
+#: includes/fields/class-acf-field-checkbox.php:384
 msgid "Save Custom Values"
 msgstr ""
 
-#: includes/fields/class-acf-field-checkbox.php:387
+#: includes/fields/class-acf-field-checkbox.php:373
 msgid "Allow Custom Values"
 msgstr ""
 
-#: includes/fields/class-acf-field-checkbox.php:145
+#: includes/fields/class-acf-field-checkbox.php:137
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
 msgstr ""
 
@@ -2804,50 +2787,50 @@ msgid "Add title"
 msgstr ""
 
 #. translators: %s url to getting started guide
-#: includes/admin/views/acf-field-group/list-empty.php:20
-#: includes/admin/views/acf-post-type/list-empty.php:12
-#: includes/admin/views/acf-taxonomy/list-empty.php:12
+#: includes/admin/views/acf-field-group/list-empty.php:30
+#: includes/admin/views/acf-post-type/list-empty.php:20
+#: includes/admin/views/acf-taxonomy/list-empty.php:21
 #: includes/admin/views/options-page-preview.php:13
 msgid ""
 "New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting "
 "started guide</a>."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/list-empty.php:15
+#: includes/admin/views/acf-field-group/list-empty.php:24
 msgid "Add Field Group"
 msgstr ""
 
 #. translators: %s url to creating a field group page
-#: includes/admin/views/acf-field-group/list-empty.php:10
+#: includes/admin/views/acf-field-group/list-empty.php:18
 msgid ""
 "ACF uses <a href=\"%s\" target=\"_blank\">field groups</a> to group custom "
 "fields together, and then attach those fields to edit screens."
 msgstr ""
 
-#: includes/admin/views/acf-field-group/list-empty.php:5
+#: includes/admin/views/acf-field-group/list-empty.php:12
 msgid "Add Your First Field Group"
 msgstr ""
 
 #: includes/admin/admin-options-pages-preview.php:28
-#: includes/admin/views/acf-field-group/pro-features.php:54
+#: includes/admin/views/acf-field-group/pro-features.php:58
 #: includes/admin/views/global/navigation.php:86
 #: includes/admin/views/global/navigation.php:252
 msgid "Options Pages"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:50
+#: includes/admin/views/acf-field-group/pro-features.php:54
 msgid "ACF Blocks"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:58
+#: includes/admin/views/acf-field-group/pro-features.php:62
 msgid "Gallery Field"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:38
+#: includes/admin/views/acf-field-group/pro-features.php:42
 msgid "Flexible Content Field"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:42
+#: includes/admin/views/acf-field-group/pro-features.php:46
 msgid "Repeater Field"
 msgstr ""
 
@@ -2873,7 +2856,7 @@ msgid "Location Rules"
 msgstr ""
 
 #. translators: %s url to field types list
-#: includes/admin/views/acf-field-group/fields.php:72
+#: includes/admin/views/acf-field-group/fields.php:73
 msgid ""
 "Choose from over 30 field types. <a href=\"%s\" target=\"_blank\">Learn "
 "more</a>."
@@ -2897,21 +2880,21 @@ msgstr ""
 
 #: includes/admin/views/acf-field-group/fields.php:33
 #: includes/admin/views/acf-field-group/fields.php:67
-#: includes/admin/views/acf-field-group/fields.php:99
+#: includes/admin/views/acf-field-group/fields.php:101
 #: includes/admin/views/global/form-top.php:85
 msgid "Add Field"
 msgstr ""
 
-#: includes/acf-field-group-functions.php:496 includes/fields.php:428
+#: includes/acf-field-group-functions.php:496 includes/fields.php:391
 msgid "Presentation"
 msgstr ""
 
-#: includes/fields.php:427
+#: includes/fields.php:390
 msgid "Validation"
 msgstr ""
 
 #: includes/acf-internal-post-type-functions.php:477
-#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:426
+#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:389
 msgid "General"
 msgstr ""
 
@@ -2919,61 +2902,62 @@ msgstr ""
 msgid "Import JSON"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:379
+#: includes/admin/tools/class-acf-admin-tool-export.php:333
 msgid "Export As JSON"
 msgstr ""
 
 #. translators: %s number of field groups deactivated
-#: includes/admin/post-types/admin-field-groups.php:366
+#: includes/admin/post-types/admin-field-groups.php:358
 msgid "Field group deactivated."
 msgid_plural "%s field groups deactivated."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of field groups activated
-#: includes/admin/post-types/admin-field-groups.php:359
+#: includes/admin/post-types/admin-field-groups.php:351
 msgid "Field group activated."
 msgid_plural "%s field groups activated."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/admin-internal-post-type-list.php:455
-#: includes/admin/admin-internal-post-type-list.php:481
+#: includes/admin/admin-internal-post-type-list.php:446
+#: includes/admin/admin-internal-post-type-list.php:472
 msgid "Deactivate"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:455
+#: includes/admin/admin-internal-post-type-list.php:446
 msgid "Deactivate this item"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:451
-#: includes/admin/admin-internal-post-type-list.php:480
+#: includes/admin/admin-internal-post-type-list.php:442
+#: includes/admin/admin-internal-post-type-list.php:471
 msgid "Activate"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type-list.php:451
+#: includes/admin/admin-internal-post-type-list.php:442
 msgid "Activate this item"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:2811
-#: assets/build/js/acf-field-group.js:3314
+#: includes/admin/post-types/admin-field-group.php:88
+#: assets/build/js/acf-field-group.js:2815
+#: assets/build/js/acf-field-group.js:3319
 msgid "Move field group to trash?"
 msgstr ""
 
-#: acf.php:493 includes/admin/admin-internal-post-type-list.php:251
-#: includes/admin/post-types/admin-field-group.php:289
-#: includes/admin/post-types/admin-post-type.php:295
-#: includes/admin/post-types/admin-taxonomy.php:297
+#: acf.php:483 includes/admin/admin-internal-post-type-list.php:242
+#: includes/admin/post-types/admin-field-group.php:274
+#: includes/admin/post-types/admin-post-type.php:282
+#: includes/admin/post-types/admin-taxonomy.php:284
 msgctxt "post status"
 msgid "Inactive"
 msgstr ""
 
 #. Author of the plugin
+#: acf.php
 msgid "WP Engine"
 msgstr ""
 
-#: acf.php:551
+#: acf.php:541
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2982,7 +2966,7 @@ msgstr ""
 "olla käytössä yhtäaikaa. Suljimme Advanced Custom Fields PRO -lisäosan "
 "automaattisesti."
 
-#: acf.php:549
+#: acf.php:539
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2991,53 +2975,54 @@ msgstr ""
 "olla käytössä yhtäaikaa. Suljimme Advanced Custom Fields -lisäosan "
 "automaattisesti."
 
-#: includes/acf-value-functions.php:375
+#. translators: %1 plugin name, %2 the URL to the documentation on this error
+#: includes/acf-value-functions.php:376
 msgid ""
 "<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
 "field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" target=\"_blank"
-"\">Learn how to fix this</a>."
+"result in malformed or missing data. <a href=\"%2$s\" "
+"target=\"_blank\">Learn how to fix this</a>."
 msgstr ""
 "<strong>%1$s</strong> - Olemme havainneet yhden tai useamman kutsun ACF-"
 "kenttäarvojen noutamiseksi ennen ACF:n alustamista. Tätä ei tueta ja se voi "
 "johtaa väärin muotoiltuihin tai puuttuviin tietoihin. <a href=\"%2$s\" "
 "target=\"_blank\">Lue lisää tämän korjaamisesta</a>."
 
-#: includes/fields/class-acf-field-user.php:551
+#: includes/fields/class-acf-field-user.php:549
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] "%1$s:lla pitää olla käyttäjä roolilla %2$s."
 msgstr[1] "%1$s:lla pitää olla käyttäjä jollakin näistä rooleista: %2$s"
 
-#: includes/fields/class-acf-field-user.php:542
+#: includes/fields/class-acf-field-user.php:540
 msgid "%1$s must have a valid user ID."
 msgstr "%1$s:lla on oltava kelvollinen käyttäjätunnus."
 
-#: includes/fields/class-acf-field-user.php:380
+#: includes/fields/class-acf-field-user.php:379
 msgid "Invalid request."
 msgstr "Virheellinen pyyntö."
 
-#: includes/fields/class-acf-field-select.php:667
+#: includes/fields/class-acf-field-select.php:646
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s ei ole yksi näistä: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:665
+#: includes/fields/class-acf-field-post_object.php:645
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s:lla pitää olla termi %2$s."
 msgstr[1] "%1$s:lla pitää olla jokin seuraavista termeistä: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:649
+#: includes/fields/class-acf-field-post_object.php:629
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s pitää olla artikkelityyppiä %2$s."
 msgstr[1] "%1$s pitää olla joku seuraavista artikkelityypeistä: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:640
+#: includes/fields/class-acf-field-post_object.php:620
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s:lla on oltava kelvollinen artikkelitunnus (post ID)."
 
-#: includes/fields/class-acf-field-file.php:468
+#: includes/fields/class-acf-field-file.php:453
 msgid "%s requires a valid attachment ID."
 msgstr "%s edellyttää kelvollista liitetunnusta (ID)."
 
@@ -3045,20 +3030,20 @@ msgstr "%s edellyttää kelvollista liitetunnusta (ID)."
 msgid "Show in REST API"
 msgstr "Näytä REST API:ssa"
 
-#: includes/fields/class-acf-field-color_picker.php:168
+#: includes/fields/class-acf-field-color_picker.php:160
 msgid "Enable Transparency"
 msgstr "Ota läpinäkyvyys käyttöön"
 
-#: includes/fields/class-acf-field-color_picker.php:187
+#: includes/fields/class-acf-field-color_picker.php:179
 msgid "RGBA Array"
 msgstr "RGBA-taulukko"
 
-#: includes/fields/class-acf-field-color_picker.php:98
+#: includes/fields/class-acf-field-color_picker.php:94
 msgid "RGBA String"
 msgstr "RGBA-merkkijono"
 
-#: includes/fields/class-acf-field-color_picker.php:97
-#: includes/fields/class-acf-field-color_picker.php:186
+#: includes/fields/class-acf-field-color_picker.php:93
+#: includes/fields/class-acf-field-color_picker.php:178
 msgid "Hex String"
 msgstr "Heksamerkkijono"
 
@@ -3066,26 +3051,26 @@ msgstr "Heksamerkkijono"
 msgid "Upgrade to PRO"
 msgstr "Päivitä Pro-versioon"
 
-#: includes/admin/post-types/admin-field-group.php:289
-#: includes/admin/post-types/admin-post-type.php:295
-#: includes/admin/post-types/admin-taxonomy.php:297
+#: includes/admin/post-types/admin-field-group.php:274
+#: includes/admin/post-types/admin-post-type.php:282
+#: includes/admin/post-types/admin-taxonomy.php:284
 msgctxt "post status"
 msgid "Active"
 msgstr "Käytössä"
 
-#: includes/fields/class-acf-field-email.php:175
+#: includes/fields/class-acf-field-email.php:168
 msgid "'%s' is not a valid email address"
 msgstr "'%s' ei ole kelvollinen sähköpostiosoite"
 
-#: includes/fields/class-acf-field-color_picker.php:76
+#: includes/fields/class-acf-field-color_picker.php:72
 msgid "Color value"
 msgstr "Väriarvo"
 
-#: includes/fields/class-acf-field-color_picker.php:74
+#: includes/fields/class-acf-field-color_picker.php:70
 msgid "Select default color"
 msgstr "Valitse oletusväri"
 
-#: includes/fields/class-acf-field-color_picker.php:72
+#: includes/fields/class-acf-field-color_picker.php:68
 msgid "Clear color"
 msgstr "Tyhjennä väri"
 
@@ -3114,8 +3099,8 @@ msgid "Attachments"
 msgstr "Liitteet"
 
 #: includes/acf-wp-functions.php:57
-#: includes/admin/post-types/admin-post-types.php:137
-#: includes/admin/post-types/admin-taxonomies.php:112
+#: includes/admin/post-types/admin-post-types.php:130
+#: includes/admin/post-types/admin-taxonomies.php:104
 #: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
@@ -3124,8 +3109,8 @@ msgid "Taxonomies"
 msgstr "Taksonomiat"
 
 #: includes/acf-wp-functions.php:44
-#: includes/admin/post-types/admin-post-type.php:126
-#: includes/admin/post-types/admin-post-types.php:139
+#: includes/admin/post-types/admin-post-type.php:124
+#: includes/admin/post-types/admin-post-types.php:132
 #: includes/admin/views/acf-post-type/advanced-settings.php:106
 #: assets/build/js/acf-internal-post-type.js:173
 #: assets/build/js/acf-internal-post-type.js:247
@@ -3145,69 +3130,69 @@ msgstr ""
 msgid "Invalid field group parameter(s)."
 msgstr "Virheelliset kenttäryhmän parametrit."
 
-#: includes/admin/admin-internal-post-type-list.php:416
+#: includes/admin/admin-internal-post-type-list.php:407
 msgid "Awaiting save"
 msgstr "Odottaa tallentamista"
 
-#: includes/admin/admin-internal-post-type-list.php:413
+#: includes/admin/admin-internal-post-type-list.php:404
 msgid "Saved"
 msgstr "Tallennettu"
 
-#: includes/admin/admin-internal-post-type-list.php:409
+#: includes/admin/admin-internal-post-type-list.php:400
 #: includes/admin/tools/class-acf-admin-tool-import.php:48
 msgid "Import"
 msgstr "Tuo"
 
-#: includes/admin/admin-internal-post-type-list.php:405
+#: includes/admin/admin-internal-post-type-list.php:396
 msgid "Review changes"
 msgstr "Tarkista muutokset"
 
-#: includes/admin/admin-internal-post-type-list.php:381
+#: includes/admin/admin-internal-post-type-list.php:372
 msgid "Located in: %s"
 msgstr "Sijaitsee: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:378
+#: includes/admin/admin-internal-post-type-list.php:369
 msgid "Located in plugin: %s"
 msgstr "Lisäosalla: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:375
+#: includes/admin/admin-internal-post-type-list.php:366
 msgid "Located in theme: %s"
 msgstr "Teemalla: %s"
 
-#: includes/admin/post-types/admin-field-groups.php:260
+#: includes/admin/post-types/admin-field-groups.php:252
 msgid "Various"
 msgstr "Sekalaisia"
 
-#: includes/admin/admin-internal-post-type-list.php:219
-#: includes/admin/admin-internal-post-type-list.php:488
+#: includes/admin/admin-internal-post-type-list.php:210
+#: includes/admin/admin-internal-post-type-list.php:479
 msgid "Sync changes"
 msgstr "Synkronoi muutokset"
 
-#: includes/admin/admin-internal-post-type-list.php:218
+#: includes/admin/admin-internal-post-type-list.php:209
 msgid "Loading diff"
 msgstr "Ladataan diff"
 
-#: includes/admin/admin-internal-post-type-list.php:217
+#: includes/admin/admin-internal-post-type-list.php:208
 msgid "Review local JSON changes"
 msgstr "Tarkista paikalliset JSON-muutokset"
 
-#: includes/admin/admin.php:178
+#: includes/admin/admin.php:174
 msgid "Visit website"
 msgstr "Siirry verkkosivuille"
 
-#: includes/admin/admin.php:177
+#: includes/admin/admin.php:173
 msgid "View details"
 msgstr "Näytä tarkemmat tiedot"
 
-#: includes/admin/admin.php:176
+#: includes/admin/admin.php:172
 msgid "Version %s"
 msgstr "Versio %s"
 
-#: includes/admin/admin.php:175
+#: includes/admin/admin.php:171
 msgid "Information"
 msgstr "Tiedot"
 
-#: includes/admin/admin.php:166
+#: includes/admin/admin.php:162
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
@@ -3215,7 +3200,7 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\">Tukipalvelu</a>. Tukipalvelumme "
 "ammattilaiset auttavat syvällisemmissä teknisissä haasteissasi."
 
-#: includes/admin/admin.php:162
+#: includes/admin/admin.php:158
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
 "friendly community on our Community Forums who may be able to help you "
@@ -3225,7 +3210,7 @@ msgstr ""
 "aktiivinen ja ystävällinen yhteisö, joka voi ehkä auttaa sinua selvittämään "
 "ACF-maailman ihmeellisyyksiä."
 
-#: includes/admin/admin.php:158
+#: includes/admin/admin.php:154
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
 "documentation contains references and guides for most situations you may "
@@ -3234,7 +3219,7 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\">Dokumentaatio</a>. Laaja dokumentaatiomme "
 "sisältää viittauksia ja oppaita useimpiin kohtaamiisi tilanteisiin."
 
-#: includes/admin/admin.php:155
+#: includes/admin/admin.php:151
 msgid ""
 "We are fanatical about support, and want you to get the best out of your "
 "website with ACF. If you run into any difficulties, there are several places "
@@ -3244,11 +3229,11 @@ msgstr ""
 "irti verkkosivustostasi ACF:n avulla. Jos kohtaat ongelmia, apua löytyy "
 "useista paikoista:"
 
-#: includes/admin/admin.php:152 includes/admin/admin.php:154
+#: includes/admin/admin.php:148 includes/admin/admin.php:150
 msgid "Help & Support"
 msgstr "Ohjeet & tukipalvelut"
 
-#: includes/admin/admin.php:143
+#: includes/admin/admin.php:139
 msgid ""
 "Please use the Help & Support tab to get in touch should you find yourself "
 "requiring assistance."
@@ -3256,17 +3241,17 @@ msgstr ""
 "Ota yhteyttä Ohjeet & tukipalvelut -välilehdessä, jos huomaat tarvitsevasi "
 "apua."
 
-#: includes/admin/admin.php:140
+#: includes/admin/admin.php:136
 msgid ""
 "Before creating your first Field Group, we recommend first reading our <a "
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
 "yourself with the plugin's philosophy and best practises."
 msgstr ""
-"Ennen kuin luot ensimmäisen kenttäryhmäsi, suosittelemme lukemaan <a href="
-"\"%s\" target=\"_blank\">aloitusoppaamme</a>, jossa tutustutaan lisäosan "
-"filosofiaan ja parhaisiin käytäntöihin."
+"Ennen kuin luot ensimmäisen kenttäryhmäsi, suosittelemme lukemaan <a "
+"href=\"%s\" target=\"_blank\">aloitusoppaamme</a>, jossa tutustutaan "
+"lisäosan filosofiaan ja parhaisiin käytäntöihin."
 
-#: includes/admin/admin.php:138
+#: includes/admin/admin.php:134
 msgid ""
 "The Advanced Custom Fields plugin provides a visual form builder to "
 "customize WordPress edit screens with extra fields, and an intuitive API to "
@@ -3277,15 +3262,17 @@ msgstr ""
 "intuitiivisen API:n mukautettujen kenttäarvojen näyttämiseksi missä tahansa "
 "teeman mallitiedostossa."
 
-#: includes/admin/admin.php:135 includes/admin/admin.php:137
+#: includes/admin/admin.php:131 includes/admin/admin.php:133
 msgid "Overview"
 msgstr "Yleiskatsaus"
 
-#: includes/locations.php:36
+#. translators: %s the name of the location type
+#: includes/locations.php:38
 msgid "Location type \"%s\" is already registered."
 msgstr "Sijaintityyppi \"%s\" on jo rekisteröity."
 
-#: includes/locations.php:25
+#. translators: %s class name for a location that could not be found
+#: includes/locations.php:26
 msgid "Class \"%s\" does not exist."
 msgstr "Luokkaa \"%s\" ei ole."
 
@@ -3293,7 +3280,7 @@ msgstr "Luokkaa \"%s\" ei ole."
 msgid "Invalid nonce."
 msgstr "Virheellinen nonce."
 
-#: includes/fields/class-acf-field-user.php:375
+#: includes/fields/class-acf-field-user.php:374
 msgid "Error loading field."
 msgstr "Virhe ladattaessa kenttää."
 
@@ -3302,7 +3289,7 @@ msgstr "Virhe ladattaessa kenttää."
 msgid "Location not found: %s"
 msgstr "Sijaintia ei löytynyt: %s"
 
-#: includes/forms/form-user.php:352
+#: includes/forms/form-user.php:337
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Virhe</strong>: %s"
 
@@ -3436,7 +3423,7 @@ msgstr "Kaikki %s muodot"
 msgid "Attachment"
 msgstr "Liite"
 
-#: includes/validation.php:343
+#: includes/validation.php:319
 msgid "%s value is required"
 msgstr "%s arvo on pakollinen"
 
@@ -3445,7 +3432,7 @@ msgid "Show this field if"
 msgstr "Näytä tämä kenttä, jos"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:25
-#: includes/admin/views/acf-field-group/field.php:111 includes/fields.php:429
+#: includes/admin/views/acf-field-group/field.php:111 includes/fields.php:392
 msgid "Conditional Logic"
 msgstr "Ehdollinen logiikka"
 
@@ -3454,30 +3441,32 @@ msgstr "Ehdollinen logiikka"
 msgid "and"
 msgstr "ja"
 
-#: includes/admin/post-types/admin-field-groups.php:122
-#: includes/admin/post-types/admin-post-types.php:143
-#: includes/admin/post-types/admin-taxonomies.php:143
+#: includes/admin/post-types/admin-field-groups.php:114
+#: includes/admin/post-types/admin-post-types.php:136
+#: includes/admin/post-types/admin-taxonomies.php:135
 msgid "Local JSON"
 msgstr "Paikallinen JSON"
 
-#: includes/admin/views/acf-field-group/pro-features.php:46
+#: includes/admin/views/acf-field-group/pro-features.php:50
 msgid "Clone Field"
 msgstr ""
 
-#: includes/admin/views/upgrade/notice.php:29
+#. translators: %s a list of plugin
+#: includes/admin/views/upgrade/notice.php:32
 msgid ""
 "Please also check all premium add-ons (%s) are updated to the latest version."
 msgstr ""
 "Varmista myös, että kaikki premium-lisäosat (%s) on päivitetty uusimpaan "
 "versioon."
 
-#: includes/admin/views/upgrade/notice.php:27
+#: includes/admin/views/upgrade/notice.php:29
 msgid ""
 "This version contains improvements to your database and requires an upgrade."
 msgstr ""
 "Tämä versio sisältää parannuksia tietokantaan ja edellyttää päivitystä."
 
-#: includes/admin/views/upgrade/notice.php:27
+#. translators: %1 plugin name, %2 version number
+#: includes/admin/views/upgrade/notice.php:28
 msgid "Thank you for updating to %1$s v%2$s!"
 msgstr "Kiitos päivityksestä: %1$s v%2$s!"
 
@@ -3485,24 +3474,24 @@ msgstr "Kiitos päivityksestä: %1$s v%2$s!"
 msgid "Database Upgrade Required"
 msgstr "Tietokanta on päivitettävä"
 
-#: includes/admin/post-types/admin-field-group.php:133
+#: includes/admin/post-types/admin-field-group.php:129
 #: includes/admin/views/upgrade/notice.php:17
 msgid "Options Page"
 msgstr "Asetukset-sivu"
 
-#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:480
+#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:443
 msgid "Gallery"
 msgstr "Galleria"
 
-#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:470
+#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:433
 msgid "Flexible Content"
 msgstr "Joustava sisältö"
 
-#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:490
+#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:453
 msgid "Repeater"
 msgstr "Toista rivejä"
 
-#: includes/admin/views/tools/tools.php:24
+#: includes/admin/views/tools/tools.php:16
 msgid "Back to all tools"
 msgstr "Takaisin kaikkiin työkaluihin"
 
@@ -3526,7 +3515,7 @@ msgstr "Piilota näytöltä"
 msgid "Send Trackbacks"
 msgstr "Lähetä paluuviitteet"
 
-#: includes/admin/post-types/admin-taxonomy.php:128
+#: includes/admin/post-types/admin-taxonomy.php:126
 #: includes/admin/views/acf-field-group/options.php:185
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:159
 #: assets/build/js/acf-internal-post-type.js:180
@@ -3534,7 +3523,7 @@ msgstr "Lähetä paluuviitteet"
 msgid "Tags"
 msgstr "Avainsanat"
 
-#: includes/admin/post-types/admin-taxonomy.php:130
+#: includes/admin/post-types/admin-taxonomy.php:128
 #: includes/admin/views/acf-field-group/options.php:184
 #: assets/build/js/acf-internal-post-type.js:183
 #: assets/build/js/acf-internal-post-type.js:257
@@ -3648,9 +3637,9 @@ msgstr "Tyyli"
 msgid "Type"
 msgstr "Tyyppi"
 
-#: includes/admin/post-types/admin-field-groups.php:116
-#: includes/admin/post-types/admin-post-types.php:136
-#: includes/admin/post-types/admin-taxonomies.php:136
+#: includes/admin/post-types/admin-field-groups.php:108
+#: includes/admin/post-types/admin-post-types.php:129
+#: includes/admin/post-types/admin-taxonomies.php:128
 #: includes/admin/views/acf-field-group/fields.php:54
 msgid "Key"
 msgstr "Avain"
@@ -3681,7 +3670,7 @@ msgstr "leveys"
 msgid "Wrapper Attributes"
 msgstr "Kääreen määritteet"
 
-#: includes/fields/class-acf-field.php:316
+#: includes/fields/class-acf-field.php:311
 msgid "Required"
 msgstr "Pakollinen?"
 
@@ -3743,42 +3732,45 @@ msgstr "Muokkaa kenttää"
 msgid "Drag to reorder"
 msgstr "Muuta järjestystä vetämällä ja pudottamalla"
 
-#: includes/admin/post-types/admin-field-group.php:103
+#: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2346
-#: assets/build/js/acf-field-group.js:2764
+#: assets/build/js/acf-field-group.js:2350
+#: assets/build/js/acf-field-group.js:2769
 msgid "Show this field group if"
 msgstr "Näytä tämä kenttäryhmä, jos"
 
-#: includes/admin/views/upgrade/upgrade.php:94
+#: includes/admin/views/upgrade/upgrade.php:93
 #: includes/ajax/class-acf-ajax-upgrade.php:34
 msgid "No updates available."
 msgstr "Päivityksiä ei ole saatavilla."
 
-#: includes/admin/views/upgrade/upgrade.php:33
+#. translators: %s the url to the field group page.
+#: includes/admin/views/upgrade/upgrade.php:32
 msgid "Database upgrade complete. <a href=\"%s\">See what's new</a>"
 msgstr "Tietokannan päivitys on valmis. <a href=\"%s\">Katso mikä on uutta</a>"
 
-#: includes/admin/views/upgrade/upgrade.php:30
+#: includes/admin/views/upgrade/upgrade.php:27
 msgid "Reading upgrade tasks..."
 msgstr "Luetaan päivitystehtäviä..."
 
-#: includes/admin/views/upgrade/network.php:164
-#: includes/admin/views/upgrade/upgrade.php:65
+#: includes/admin/views/upgrade/network.php:165
+#: includes/admin/views/upgrade/upgrade.php:64
 msgid "Upgrade failed."
 msgstr "Päivitys epäonnistui."
 
-#: includes/admin/views/upgrade/network.php:161
+#: includes/admin/views/upgrade/network.php:162
 msgid "Upgrade complete."
 msgstr "Päivitys valmis."
 
-#: includes/admin/views/upgrade/network.php:147
-#: includes/admin/views/upgrade/upgrade.php:31
+#. translators: %s the version being upgraded to.
+#. translators: %s the new ACF version
+#: includes/admin/views/upgrade/network.php:148
+#: includes/admin/views/upgrade/upgrade.php:29
 msgid "Upgrading data to version %s"
 msgstr "Päivitetään data versioon %s"
 
 #: includes/admin/views/upgrade/network.php:120
-#: includes/admin/views/upgrade/notice.php:43
+#: includes/admin/views/upgrade/notice.php:46
 msgid ""
 "It is strongly recommended that you backup your database before proceeding. "
 "Are you sure you wish to run the updater now?"
@@ -3790,6 +3782,7 @@ msgstr ""
 msgid "Please select at least one site to upgrade."
 msgstr "Valitse vähintään yksi päivitettävä sivusto."
 
+#. translators: %s admin dashboard url page
 #: includes/admin/views/upgrade/network.php:96
 msgid ""
 "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
@@ -3797,26 +3790,29 @@ msgstr ""
 "Tietokanta on päivitetty. <a href=\"%s\">Palaa verkon hallinnan "
 "ohjausnäkymään</a>"
 
-#: includes/admin/views/upgrade/network.php:80
+#: includes/admin/views/upgrade/network.php:79
 msgid "Site is up to date"
 msgstr "Sivusto on ajan tasalla"
 
-#: includes/admin/views/upgrade/network.php:78
+#. translators: %1 current db version, %2 available db version
+#: includes/admin/views/upgrade/network.php:77
 msgid "Site requires database upgrade from %1$s to %2$s"
 msgstr "Sivusto edellyttää tietokannan päivityksen (%1$s -> %2$s)"
 
-#: includes/admin/views/upgrade/network.php:36
-#: includes/admin/views/upgrade/network.php:47
+#: includes/admin/views/upgrade/network.php:34
+#: includes/admin/views/upgrade/network.php:45
 msgid "Site"
 msgstr "Sivusto"
 
-#: includes/admin/views/upgrade/network.php:26
-#: includes/admin/views/upgrade/network.php:27
-#: includes/admin/views/upgrade/network.php:95
+#. translators: %s The button label name, translated seperately
+#: includes/admin/views/upgrade/network.php:24
+#: includes/admin/views/upgrade/network.php:25
+#: includes/admin/views/upgrade/network.php:94
 msgid "Upgrade Sites"
 msgstr "Päivitä sivustot"
 
-#: includes/admin/views/upgrade/network.php:26
+#. translators: %s The button label name, translated seperately
+#: includes/admin/views/upgrade/network.php:24
 msgid ""
 "The following sites require a DB upgrade. Check the ones you want to update "
 "and then click %s."
@@ -3840,15 +3836,15 @@ msgstr ""
 msgid "Rules"
 msgstr "Säännöt"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:496
+#: includes/admin/tools/class-acf-admin-tool-export.php:444
 msgid "Copied"
 msgstr "Kopioitu"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:472
+#: includes/admin/tools/class-acf-admin-tool-export.php:420
 msgid "Copy to clipboard"
 msgstr "Kopioi leikepöydälle"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:372
+#: includes/admin/tools/class-acf-admin-tool-export.php:326
 msgid ""
 "Select the items you would like to export and then select your export "
 "method. Export As JSON to export to a .json file which you can then import "
@@ -3860,7 +3856,7 @@ msgstr ""
 "toisessa ACF asennuksessa. Käytä Generoi-painiketta luodaksesi PHP koodia, "
 "jonka voit sijoittaa teemaasi."
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:221
+#: includes/admin/tools/class-acf-admin-tool-export.php:218
 msgid "Select Field Groups"
 msgstr "Valitse kenttäryhmät"
 
@@ -3870,8 +3866,8 @@ msgid "No field groups selected"
 msgstr "Ei kenttäryhmää valittu"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:39
-#: includes/admin/tools/class-acf-admin-tool-export.php:380
-#: includes/admin/tools/class-acf-admin-tool-export.php:407
+#: includes/admin/tools/class-acf-admin-tool-export.php:334
+#: includes/admin/tools/class-acf-admin-tool-export.php:358
 msgid "Generate PHP"
 msgstr "Luo PHP-koodi"
 
@@ -3879,15 +3875,15 @@ msgstr "Luo PHP-koodi"
 msgid "Export Field Groups"
 msgstr "Vie kenttäryhmiä"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:175
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
 msgstr "Tuotu tiedosto on tyhjä"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:166
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
 msgstr "Virheellinen tiedostomuoto"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:161
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
 msgstr "Virhe tiedostoa ladattaessa. Yritä uudelleen"
 
@@ -3903,21 +3899,22 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr "Tuo kenttäryhmiä"
 
-#: includes/admin/admin-internal-post-type-list.php:404
+#: includes/admin/admin-internal-post-type-list.php:395
 msgid "Sync"
 msgstr "Synkronointi"
 
-#: includes/admin/admin-internal-post-type-list.php:861
+#. translators: %s: field group title
+#: includes/admin/admin-internal-post-type-list.php:849
 msgid "Select %s"
 msgstr "Valitse %s"
 
-#: includes/admin/admin-internal-post-type-list.php:445
-#: includes/admin/admin-internal-post-type-list.php:477
+#: includes/admin/admin-internal-post-type-list.php:436
+#: includes/admin/admin-internal-post-type-list.php:468
 #: includes/admin/views/acf-field-group/field.php:79
 msgid "Duplicate"
 msgstr "Monista"
 
-#: includes/admin/admin-internal-post-type-list.php:445
+#: includes/admin/admin-internal-post-type-list.php:436
 msgid "Duplicate this item"
 msgstr "Monista tämä kohde"
 
@@ -3925,54 +3922,54 @@ msgstr "Monista tämä kohde"
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/admin.php:326 includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:305 includes/admin/views/browse-fields-modal.php:92
 msgid "Documentation"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-groups.php:115
-#: includes/admin/post-types/admin-post-types.php:135
-#: includes/admin/post-types/admin-taxonomies.php:135
+#: includes/admin/post-types/admin-field-groups.php:107
+#: includes/admin/post-types/admin-post-types.php:128
+#: includes/admin/post-types/admin-taxonomies.php:127
 #: includes/admin/views/acf-field-group/options.php:249
 #: includes/admin/views/acf-post-type/advanced-settings.php:62
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:114
-#: includes/admin/views/upgrade/network.php:38
-#: includes/admin/views/upgrade/network.php:49
+#: includes/admin/views/upgrade/network.php:36
+#: includes/admin/views/upgrade/network.php:47
 msgid "Description"
 msgstr "Kuvaus"
 
-#: includes/admin/admin-internal-post-type-list.php:401
-#: includes/admin/admin-internal-post-type-list.php:750
+#: includes/admin/admin-internal-post-type-list.php:392
+#: includes/admin/admin-internal-post-type-list.php:735
 msgid "Sync available"
 msgstr "Synkronointi saatavissa"
 
 #. translators: %s number of field groups synchronized
-#: includes/admin/post-types/admin-field-groups.php:380
+#: includes/admin/post-types/admin-field-groups.php:372
 msgid "Field group synchronized."
 msgid_plural "%s field groups synchronized."
 msgstr[0] "Kenttäryhmä synkronoitu."
 msgstr[1] "%s kenttäryhmää synkronoitu."
 
 #. translators: %s number of field groups duplicated
-#: includes/admin/post-types/admin-field-groups.php:373
+#: includes/admin/post-types/admin-field-groups.php:365
 msgid "Field group duplicated."
 msgid_plural "%s field groups duplicated."
 msgstr[0] "Kenttäryhmä monistettu."
 msgstr[1] "%s kenttäryhmää monistettu."
 
-#: includes/admin/admin-internal-post-type-list.php:140
+#: includes/admin/admin-internal-post-type-list.php:137
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "Käytössä <span class=\"count\">(%s)</span>"
 msgstr[1] "Käytössä <span class=\"count\">(%s)</span>"
 
-#: includes/admin/admin-upgrade.php:254
+#: includes/admin/admin-upgrade.php:251
 msgid "Review sites & upgrade"
 msgstr "Tarkastele sivuja & päivitä"
 
-#: includes/admin/admin-upgrade.php:59 includes/admin/admin-upgrade.php:93
-#: includes/admin/admin-upgrade.php:94 includes/admin/admin-upgrade.php:230
-#: includes/admin/views/upgrade/network.php:24
-#: includes/admin/views/upgrade/upgrade.php:26
+#: includes/admin/admin-upgrade.php:59 includes/admin/admin-upgrade.php:90
+#: includes/admin/admin-upgrade.php:91 includes/admin/admin-upgrade.php:227
+#: includes/admin/views/upgrade/network.php:21
+#: includes/admin/views/upgrade/upgrade.php:23
 msgid "Upgrade Database"
 msgstr "Päivitä tietokanta"
 
@@ -3981,22 +3978,22 @@ msgstr "Päivitä tietokanta"
 msgid "Custom Fields"
 msgstr "Lisäkentät"
 
-#: includes/admin/post-types/admin-field-group.php:608
+#: includes/admin/post-types/admin-field-group.php:583
 msgid "Move Field"
 msgstr "Siirrä kenttä"
 
-#: includes/admin/post-types/admin-field-group.php:597
-#: includes/admin/post-types/admin-field-group.php:601
+#: includes/admin/post-types/admin-field-group.php:572
+#: includes/admin/post-types/admin-field-group.php:576
 msgid "Please select the destination for this field"
 msgstr "Valitse kohde kentälle"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:559
+#: includes/admin/post-types/admin-field-group.php:534
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "Kenttä %1$s löytyy nyt kenttäryhmästä %2$s"
 
-#: includes/admin/post-types/admin-field-group.php:556
+#: includes/admin/post-types/admin-field-group.php:531
 msgid "Move Complete."
 msgstr "Siirto valmis."
 
@@ -4007,105 +4004,104 @@ msgstr "Siirto valmis."
 msgid "Active"
 msgstr "Käytössä"
 
-#: includes/admin/post-types/admin-field-group.php:258
+#: includes/admin/post-types/admin-field-group.php:246
 msgid "Field Keys"
 msgstr "Kenttäavaimet"
 
-#: includes/admin/post-types/admin-field-group.php:156
-#: includes/admin/tools/class-acf-admin-tool-export.php:330
+#: includes/admin/post-types/admin-field-group.php:150
 msgid "Settings"
 msgstr "Asetukset"
 
-#: includes/admin/post-types/admin-field-groups.php:117
+#: includes/admin/post-types/admin-field-groups.php:109
 msgid "Location"
 msgstr "Sijainti"
 
-#: includes/admin/post-types/admin-field-group.php:104
+#: includes/admin/post-types/admin-field-group.php:100
 #: assets/build/js/acf-input.js:983 assets/build/js/acf-input.js:1075
 msgid "Null"
 msgstr "Tyhjä"
 
-#: includes/admin/post-types/admin-field-group.php:101
-#: includes/class-acf-internal-post-type.php:730
+#: includes/admin/post-types/admin-field-group.php:97
+#: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1509
-#: assets/build/js/acf-field-group.js:1822
+#: assets/build/js/acf-field-group.js:1513
+#: assets/build/js/acf-field-group.js:1827
 msgid "copy"
 msgstr "kopio"
 
-#: includes/admin/post-types/admin-field-group.php:100
+#: includes/admin/post-types/admin-field-group.php:96
 #: assets/build/js/acf-field-group.js:623
 #: assets/build/js/acf-field-group.js:778
 msgid "(this field)"
 msgstr "(tämä kenttä)"
 
-#: includes/admin/post-types/admin-field-group.php:98
+#: includes/admin/post-types/admin-field-group.php:94
 #: assets/build/js/acf-input.js:918 assets/build/js/acf-input.js:943
 #: assets/build/js/acf-input.js:1002 assets/build/js/acf-input.js:1030
 msgid "Checked"
 msgstr "Valittu"
 
-#: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-field-group.js:1614
-#: assets/build/js/acf-field-group.js:1934
+#: includes/admin/post-types/admin-field-group.php:90
+#: assets/build/js/acf-field-group.js:1618
+#: assets/build/js/acf-field-group.js:1939
 msgid "Move Custom Field"
 msgstr "Siirrä muokattua kenttää"
 
-#: includes/admin/post-types/admin-field-group.php:93
+#: includes/admin/post-types/admin-field-group.php:89
 #: assets/build/js/acf-field-group.js:649
 #: assets/build/js/acf-field-group.js:804
 msgid "No toggle fields available"
 msgstr "Ei vaihtokenttiä saatavilla"
 
-#: includes/admin/post-types/admin-field-group.php:91
+#: includes/admin/post-types/admin-field-group.php:87
 msgid "Field group title is required"
 msgstr "Kenttäryhmän otsikko on pakollinen"
 
-#: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1603
-#: assets/build/js/acf-field-group.js:1920
+#: includes/admin/post-types/admin-field-group.php:86
+#: assets/build/js/acf-field-group.js:1607
+#: assets/build/js/acf-field-group.js:1925
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Tätä kenttää ei voi siirtää ennen kuin muutokset on talletettu"
 
-#: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:1413
-#: assets/build/js/acf-field-group.js:1717
+#: includes/admin/post-types/admin-field-group.php:85
+#: assets/build/js/acf-field-group.js:1417
+#: assets/build/js/acf-field-group.js:1722
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "Merkkijonoa \"field_\" ei saa käyttää kentän nimen alussa"
 
-#: includes/admin/post-types/admin-field-group.php:71
+#: includes/admin/post-types/admin-field-group.php:69
 msgid "Field group draft updated."
 msgstr "Luonnos kenttäryhmästä päivitetty."
 
-#: includes/admin/post-types/admin-field-group.php:70
+#: includes/admin/post-types/admin-field-group.php:68
 msgid "Field group scheduled for."
 msgstr "Kenttäryhmä ajoitettu."
 
-#: includes/admin/post-types/admin-field-group.php:69
+#: includes/admin/post-types/admin-field-group.php:67
 msgid "Field group submitted."
 msgstr "Kenttäryhmä lähetetty."
 
-#: includes/admin/post-types/admin-field-group.php:68
+#: includes/admin/post-types/admin-field-group.php:66
 msgid "Field group saved."
 msgstr "Kenttäryhmä tallennettu."
 
-#: includes/admin/post-types/admin-field-group.php:67
+#: includes/admin/post-types/admin-field-group.php:65
 msgid "Field group published."
 msgstr "Kenttäryhmä julkaistu."
 
-#: includes/admin/post-types/admin-field-group.php:64
+#: includes/admin/post-types/admin-field-group.php:62
 msgid "Field group deleted."
 msgstr "Kenttäryhmä poistettu."
 
-#: includes/admin/post-types/admin-field-group.php:62
+#: includes/admin/post-types/admin-field-group.php:60
+#: includes/admin/post-types/admin-field-group.php:61
 #: includes/admin/post-types/admin-field-group.php:63
-#: includes/admin/post-types/admin-field-group.php:65
 msgid "Field group updated."
 msgstr "Kenttäryhmä päivitetty."
 
-#: includes/admin/admin-tools.php:114
+#: includes/admin/admin-tools.php:112
 #: includes/admin/views/global/navigation.php:248
-#: includes/admin/views/tools/tools.php:21
+#: includes/admin/views/tools/tools.php:13
 msgid "Tools"
 msgstr "Työkalut"
 
@@ -4117,127 +4113,127 @@ msgstr "ei ole sama kuin"
 msgid "is equal to"
 msgstr "on sama kuin"
 
-#: includes/locations.php:102
+#: includes/locations.php:104
 msgid "Forms"
 msgstr "Lomakkeet"
 
-#: includes/admin/post-types/admin-post-type.php:127 includes/locations.php:100
+#: includes/admin/post-types/admin-post-type.php:125 includes/locations.php:102
 #: includes/locations/class-acf-location-page.php:22
 #: assets/build/js/acf-internal-post-type.js:175
 #: assets/build/js/acf-internal-post-type.js:249
 msgid "Page"
 msgstr "Sivu"
 
-#: includes/admin/post-types/admin-post-type.php:125 includes/locations.php:99
+#: includes/admin/post-types/admin-post-type.php:123 includes/locations.php:101
 #: includes/locations/class-acf-location-post.php:22
 #: assets/build/js/acf-internal-post-type.js:172
 #: assets/build/js/acf-internal-post-type.js:246
 msgid "Post"
 msgstr "Artikkeli"
 
-#: includes/fields.php:372
+#: includes/fields.php:335
 msgid "Relational"
 msgstr "Relationaalinen"
 
-#: includes/fields.php:371
+#: includes/fields.php:334
 msgid "Choice"
 msgstr "Valintakentät"
 
-#: includes/fields.php:369
+#: includes/fields.php:332
 msgid "Basic"
 msgstr "Perus"
 
-#: includes/fields.php:319
+#: includes/fields.php:283
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: includes/fields.php:319
+#: includes/fields.php:283
 msgid "Field type does not exist"
 msgstr "Kenttätyyppi ei ole olemassa"
 
-#: includes/forms/form-front.php:229
+#: includes/forms/form-front.php:219
 msgid "Spam Detected"
 msgstr "Roskapostia havaittu"
 
-#: includes/forms/form-front.php:106
+#: includes/forms/form-front.php:102
 msgid "Post updated"
 msgstr "Artikkeli päivitetty"
 
-#: includes/forms/form-front.php:105
+#: includes/forms/form-front.php:101
 msgid "Update"
 msgstr "Päivitä"
 
-#: includes/forms/form-front.php:57
+#: includes/forms/form-front.php:55
 msgid "Validate Email"
 msgstr "Validoi sähköposti"
 
-#: includes/fields.php:370 includes/forms/form-front.php:49
+#: includes/fields.php:333 includes/forms/form-front.php:47
 msgid "Content"
 msgstr "Sisältö"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
-#: includes/forms/form-front.php:40
+#: includes/forms/form-front.php:38
 msgid "Title"
 msgstr "Otsikko"
 
-#: includes/assets.php:373 includes/forms/form-comment.php:154
-#: assets/build/js/acf-input.js:7391 assets/build/js/acf-input.js:7979
+#: includes/assets.php:373 includes/forms/form-comment.php:144
+#: assets/build/js/acf-input.js:7395 assets/build/js/acf-input.js:7984
 msgid "Edit field group"
 msgstr "Muokkaa kenttäryhmää"
 
-#: includes/admin/post-types/admin-field-group.php:117
+#: includes/admin/post-types/admin-field-group.php:113
 #: assets/build/js/acf-input.js:1125 assets/build/js/acf-input.js:1230
 msgid "Selection is less than"
 msgstr "Valinta on pienempi kuin"
 
-#: includes/admin/post-types/admin-field-group.php:116
+#: includes/admin/post-types/admin-field-group.php:112
 #: assets/build/js/acf-input.js:1106 assets/build/js/acf-input.js:1202
 msgid "Selection is greater than"
 msgstr "Valinta on suurempi kuin"
 
-#: includes/admin/post-types/admin-field-group.php:115
+#: includes/admin/post-types/admin-field-group.php:111
 #: assets/build/js/acf-input.js:1075 assets/build/js/acf-input.js:1170
 msgid "Value is less than"
 msgstr "Arvo on pienempi kuin"
 
-#: includes/admin/post-types/admin-field-group.php:114
+#: includes/admin/post-types/admin-field-group.php:110
 #: assets/build/js/acf-input.js:1045 assets/build/js/acf-input.js:1139
 msgid "Value is greater than"
 msgstr "Arvo on suurempi kuin"
 
-#: includes/admin/post-types/admin-field-group.php:113
+#: includes/admin/post-types/admin-field-group.php:109
 #: assets/build/js/acf-input.js:888 assets/build/js/acf-input.js:960
 msgid "Value contains"
 msgstr "Arvo sisältää"
 
-#: includes/admin/post-types/admin-field-group.php:112
+#: includes/admin/post-types/admin-field-group.php:108
 #: assets/build/js/acf-input.js:862 assets/build/js/acf-input.js:926
 msgid "Value matches pattern"
 msgstr "Arvo vastaa kaavaa"
 
-#: includes/admin/post-types/admin-field-group.php:111
+#: includes/admin/post-types/admin-field-group.php:107
 #: assets/build/js/acf-input.js:840 assets/build/js/acf-input.js:1023
 #: assets/build/js/acf-input.js:903 assets/build/js/acf-input.js:1116
 msgid "Value is not equal to"
 msgstr "Arvo ei ole sama kuin"
 
-#: includes/admin/post-types/admin-field-group.php:110
+#: includes/admin/post-types/admin-field-group.php:106
 #: assets/build/js/acf-input.js:810 assets/build/js/acf-input.js:964
 #: assets/build/js/acf-input.js:864 assets/build/js/acf-input.js:1053
 msgid "Value is equal to"
 msgstr "Arvo on sama kuin"
 
-#: includes/admin/post-types/admin-field-group.php:109
+#: includes/admin/post-types/admin-field-group.php:105
 #: assets/build/js/acf-input.js:788 assets/build/js/acf-input.js:841
 msgid "Has no value"
 msgstr "Ei ole arvoa"
 
-#: includes/admin/post-types/admin-field-group.php:108
+#: includes/admin/post-types/admin-field-group.php:104
 #: assets/build/js/acf-input.js:758 assets/build/js/acf-input.js:783
 msgid "Has any value"
 msgstr "On mitään arvoa"
 
-#: includes/admin/admin-internal-post-type.php:345
+#: includes/admin/admin-internal-post-type.php:334
 #: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:354
 #: assets/build/js/acf.js:1564 assets/build/js/acf.js:1658
 msgid "Cancel"
@@ -4248,50 +4244,50 @@ msgstr "Peruuta"
 msgid "Are you sure?"
 msgstr "Oletko varma?"
 
-#: includes/assets.php:370 assets/build/js/acf-input.js:9451
-#: assets/build/js/acf-input.js:10305
+#: includes/assets.php:370 assets/build/js/acf-input.js:9455
+#: assets/build/js/acf-input.js:10310
 msgid "%d fields require attention"
 msgstr "%d kenttää vaativat huomiota"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9449
-#: assets/build/js/acf-input.js:10301
+#: includes/assets.php:369 assets/build/js/acf-input.js:9453
+#: assets/build/js/acf-input.js:10306
 msgid "1 field requires attention"
 msgstr "Yksi kenttä vaatii huomiota"
 
-#: includes/assets.php:368 includes/validation.php:271
-#: includes/validation.php:279 assets/build/js/acf-input.js:9444
-#: assets/build/js/acf-input.js:10296
+#: includes/assets.php:368 includes/validation.php:253
+#: includes/validation.php:261 assets/build/js/acf-input.js:9448
+#: assets/build/js/acf-input.js:10301
 msgid "Validation failed"
 msgstr "Lisäkentän validointi epäonnistui"
 
-#: includes/assets.php:367 assets/build/js/acf-input.js:9612
-#: assets/build/js/acf-input.js:10484
+#: includes/assets.php:367 assets/build/js/acf-input.js:9616
+#: assets/build/js/acf-input.js:10489
 msgid "Validation successful"
 msgstr "Kenttäryhmän validointi onnistui"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7219
-#: assets/build/js/acf-input.js:7783
+#: includes/media.php:54 assets/build/js/acf-input.js:7223
+#: assets/build/js/acf-input.js:7788
 msgid "Restricted"
 msgstr "Rajoitettu"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:7034
-#: assets/build/js/acf-input.js:7547
+#: includes/media.php:53 assets/build/js/acf-input.js:7038
+#: assets/build/js/acf-input.js:7552
 msgid "Collapse Details"
 msgstr "Vähemmän tietoja"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:7034
-#: assets/build/js/acf-input.js:7544
+#: includes/media.php:52 assets/build/js/acf-input.js:7038
+#: assets/build/js/acf-input.js:7549
 msgid "Expand Details"
 msgstr "Enemmän tietoja"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:470
-#: includes/media.php:51 assets/build/js/acf-input.js:6901
-#: assets/build/js/acf-input.js:7392
+#: includes/media.php:51 assets/build/js/acf-input.js:6905
+#: assets/build/js/acf-input.js:7397
 msgid "Uploaded to this post"
 msgstr "Tähän kenttäryhmään ladatut kuvat"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6940
-#: assets/build/js/acf-input.js:7431
+#: includes/media.php:50 assets/build/js/acf-input.js:6944
+#: assets/build/js/acf-input.js:7436
 msgctxt "verb"
 msgid "Update"
 msgstr "Päivitä"
@@ -4301,52 +4297,52 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: includes/assets.php:364 assets/build/js/acf-input.js:9221
-#: assets/build/js/acf-input.js:10067
+#: includes/assets.php:364 assets/build/js/acf-input.js:9225
+#: assets/build/js/acf-input.js:10072
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Tekemäsi muutokset menetetään, jos siirryt pois tältä sivulta"
 
-#: includes/api/api-helpers.php:2967
+#: includes/api/api-helpers.php:2950
 msgid "File type must be %s."
 msgstr "Tiedoston koko täytyy olla %s."
 
-#: includes/admin/post-types/admin-field-group.php:102
+#: includes/admin/post-types/admin-field-group.php:98
 #: includes/admin/views/acf-field-group/conditional-logic.php:64
 #: includes/admin/views/acf-field-group/conditional-logic.php:174
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2964 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2384
+#: includes/api/api-helpers.php:2947 assets/build/js/acf-field-group.js:771
+#: assets/build/js/acf-field-group.js:2388
 #: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2808
+#: assets/build/js/acf-field-group.js:2813
 msgid "or"
 msgstr "tai"
 
-#: includes/api/api-helpers.php:2940
+#: includes/api/api-helpers.php:2923
 msgid "File size must not exceed %s."
 msgstr "Tiedoston koko ei saa ylittää %s."
 
-#: includes/api/api-helpers.php:2936
+#: includes/api/api-helpers.php:2919
 msgid "File size must be at least %s."
 msgstr "Tiedoston koko täytyy olla vähintään %s."
 
-#: includes/api/api-helpers.php:2923
+#: includes/api/api-helpers.php:2906
 msgid "Image height must not exceed %dpx."
 msgstr "Kuvan korkeus ei saa ylittää %dpx."
 
-#: includes/api/api-helpers.php:2919
+#: includes/api/api-helpers.php:2902
 msgid "Image height must be at least %dpx."
 msgstr "Kuvan korkeus täytyy olla vähintään %dpx."
 
-#: includes/api/api-helpers.php:2907
+#: includes/api/api-helpers.php:2890
 msgid "Image width must not exceed %dpx."
 msgstr "Kuvan leveys ei saa ylittää %dpx."
 
-#: includes/api/api-helpers.php:2903
+#: includes/api/api-helpers.php:2886
 msgid "Image width must be at least %dpx."
 msgstr "Kuvan leveys täytyy olla vähintään %dpx."
 
-#: includes/api/api-helpers.php:1400 includes/api/api-term.php:147
+#: includes/api/api-helpers.php:1400 includes/api/api-term.php:140
 msgid "(no title)"
 msgstr "(ei otsikkoa)"
 
@@ -4366,171 +4362,171 @@ msgstr "Keskikokoinen"
 msgid "Thumbnail"
 msgstr "Pienoiskuva"
 
-#: includes/acf-field-functions.php:852
-#: includes/admin/post-types/admin-field-group.php:99
+#: includes/acf-field-functions.php:854
+#: includes/admin/post-types/admin-field-group.php:95
 #: assets/build/js/acf-field-group.js:1076
 #: assets/build/js/acf-field-group.js:1260
 msgid "(no label)"
 msgstr "(ei nimiötä)"
 
-#: includes/fields/class-acf-field-textarea.php:143
+#: includes/fields/class-acf-field-textarea.php:137
 msgid "Sets the textarea height"
 msgstr "Aseta tekstialueen koko"
 
-#: includes/fields/class-acf-field-textarea.php:142
+#: includes/fields/class-acf-field-textarea.php:136
 msgid "Rows"
 msgstr "Rivit"
 
-#: includes/fields/class-acf-field-textarea.php:25
+#: includes/fields/class-acf-field-textarea.php:23
 msgid "Text Area"
 msgstr "Tekstialue"
 
-#: includes/fields/class-acf-field-checkbox.php:440
+#: includes/fields/class-acf-field-checkbox.php:426
 msgid "Prepend an extra checkbox to toggle all choices"
 msgstr "Näytetäänkö ”Valitse kaikki” -valintaruutu"
 
-#: includes/fields/class-acf-field-checkbox.php:402
+#: includes/fields/class-acf-field-checkbox.php:388
 msgid "Save 'custom' values to the field's choices"
 msgstr ""
 "Tallenna 'Muu’-kentän arvo kentän valinta vaihtoehdoksi tulevaisuudessa"
 
-#: includes/fields/class-acf-field-checkbox.php:391
+#: includes/fields/class-acf-field-checkbox.php:377
 msgid "Allow 'custom' values to be added"
 msgstr "Salli käyttäjän syöttää omia arvojaan"
 
-#: includes/fields/class-acf-field-checkbox.php:38
+#: includes/fields/class-acf-field-checkbox.php:36
 msgid "Add new choice"
 msgstr "Lisää uusi valinta"
 
-#: includes/fields/class-acf-field-checkbox.php:171
+#: includes/fields/class-acf-field-checkbox.php:161
 msgid "Toggle All"
 msgstr "Valitse kaikki"
 
-#: includes/fields/class-acf-field-page_link.php:468
+#: includes/fields/class-acf-field-page_link.php:454
 msgid "Allow Archives URLs"
 msgstr "Salli arkistojen URL-osoitteita"
 
-#: includes/fields/class-acf-field-page_link.php:167
+#: includes/fields/class-acf-field-page_link.php:163
 msgid "Archives"
 msgstr "Arkistot"
 
-#: includes/fields/class-acf-field-page_link.php:25
+#: includes/fields/class-acf-field-page_link.php:23
 msgid "Page Link"
 msgstr "Sivun URL"
 
-#: includes/fields/class-acf-field-taxonomy.php:894
+#: includes/fields/class-acf-field-taxonomy.php:873
 #: includes/locations/class-acf-location-user-form.php:72
 msgid "Add"
 msgstr "Lisää"
 
 #: includes/admin/views/acf-field-group/fields.php:53
-#: includes/fields/class-acf-field-taxonomy.php:864
+#: includes/fields/class-acf-field-taxonomy.php:843
 msgid "Name"
 msgstr "Nimi"
 
-#: includes/fields/class-acf-field-taxonomy.php:849
+#: includes/fields/class-acf-field-taxonomy.php:828
 msgid "%s added"
 msgstr "%s lisättiin"
 
-#: includes/fields/class-acf-field-taxonomy.php:813
+#: includes/fields/class-acf-field-taxonomy.php:792
 msgid "%s already exists"
 msgstr "%s on jo olemassa"
 
-#: includes/fields/class-acf-field-taxonomy.php:801
+#: includes/fields/class-acf-field-taxonomy.php:780
 msgid "User unable to add new %s"
 msgstr "Käyttäjä ei voi lisätä uutta %s"
 
-#: includes/fields/class-acf-field-taxonomy.php:699
+#: includes/fields/class-acf-field-taxonomy.php:680
 msgid "Term ID"
 msgstr "Ehdon ID"
 
-#: includes/fields/class-acf-field-taxonomy.php:698
+#: includes/fields/class-acf-field-taxonomy.php:679
 msgid "Term Object"
 msgstr "Ehto"
 
-#: includes/fields/class-acf-field-taxonomy.php:683
+#: includes/fields/class-acf-field-taxonomy.php:664
 msgid "Load value from posts terms"
 msgstr "Lataa arvo artikkelin ehdoista"
 
-#: includes/fields/class-acf-field-taxonomy.php:682
+#: includes/fields/class-acf-field-taxonomy.php:663
 msgid "Load Terms"
 msgstr "Lataa ehdot"
 
-#: includes/fields/class-acf-field-taxonomy.php:672
+#: includes/fields/class-acf-field-taxonomy.php:653
 msgid "Connect selected terms to the post"
 msgstr "Yhdistä valitut ehdot artikkeliin"
 
-#: includes/fields/class-acf-field-taxonomy.php:671
+#: includes/fields/class-acf-field-taxonomy.php:652
 msgid "Save Terms"
 msgstr "Tallenna ehdot"
 
-#: includes/fields/class-acf-field-taxonomy.php:661
+#: includes/fields/class-acf-field-taxonomy.php:642
 msgid "Allow new terms to be created whilst editing"
 msgstr "Salli uusien ehtojen luominen samalla kun muokataan"
 
-#: includes/fields/class-acf-field-taxonomy.php:660
+#: includes/fields/class-acf-field-taxonomy.php:641
 msgid "Create Terms"
 msgstr "Uusien ehtojen luominen"
 
-#: includes/fields/class-acf-field-taxonomy.php:719
+#: includes/fields/class-acf-field-taxonomy.php:700
 msgid "Radio Buttons"
 msgstr "Valintanappi"
 
-#: includes/fields/class-acf-field-taxonomy.php:718
+#: includes/fields/class-acf-field-taxonomy.php:699
 msgid "Single Value"
 msgstr "Yksi arvo"
 
-#: includes/fields/class-acf-field-taxonomy.php:716
+#: includes/fields/class-acf-field-taxonomy.php:697
 msgid "Multi Select"
 msgstr "Valitse useita"
 
-#: includes/fields/class-acf-field-checkbox.php:25
-#: includes/fields/class-acf-field-taxonomy.php:715
+#: includes/fields/class-acf-field-checkbox.php:23
+#: includes/fields/class-acf-field-taxonomy.php:696
 msgid "Checkbox"
 msgstr "Valintaruutu"
 
-#: includes/fields/class-acf-field-taxonomy.php:714
+#: includes/fields/class-acf-field-taxonomy.php:695
 msgid "Multiple Values"
 msgstr "Useita arvoja"
 
-#: includes/fields/class-acf-field-taxonomy.php:709
+#: includes/fields/class-acf-field-taxonomy.php:690
 msgid "Select the appearance of this field"
 msgstr "Valitse ulkoasu tälle kenttälle"
 
-#: includes/fields/class-acf-field-taxonomy.php:708
+#: includes/fields/class-acf-field-taxonomy.php:689
 msgid "Appearance"
 msgstr "Ulkoasu"
 
-#: includes/fields/class-acf-field-taxonomy.php:650
+#: includes/fields/class-acf-field-taxonomy.php:631
 msgid "Select the taxonomy to be displayed"
 msgstr "Valitse taksonomia, joka näytetään"
 
-#: includes/fields/class-acf-field-taxonomy.php:612
+#: includes/fields/class-acf-field-taxonomy.php:595
 msgctxt "No Terms"
 msgid "No %s"
 msgstr "Ei %s"
 
-#: includes/fields/class-acf-field-number.php:252
+#: includes/fields/class-acf-field-number.php:244
 msgid "Value must be equal to or lower than %d"
 msgstr "Arvon täytyy olla sama tai pienempi kuin %d"
 
-#: includes/fields/class-acf-field-number.php:247
+#: includes/fields/class-acf-field-number.php:239
 msgid "Value must be equal to or higher than %d"
 msgstr "Arvon täytyy olla sama tai suurempi kuin %d"
 
-#: includes/fields/class-acf-field-number.php:235
+#: includes/fields/class-acf-field-number.php:227
 msgid "Value must be a number"
 msgstr "Arvon täytyy olla numero"
 
-#: includes/fields/class-acf-field-number.php:25
+#: includes/fields/class-acf-field-number.php:23
 msgid "Number"
 msgstr "Numero"
 
-#: includes/fields/class-acf-field-radio.php:263
+#: includes/fields/class-acf-field-radio.php:257
 msgid "Save 'other' values to the field's choices"
 msgstr "Tallenna 'muu'-kentän arvo kentän valinnaksi"
 
-#: includes/fields/class-acf-field-radio.php:252
+#: includes/fields/class-acf-field-radio.php:246
 msgid "Add 'other' choice to allow for custom values"
 msgstr "Lisää 'muu' vaihtoehto salliaksesi mukautettuja arvoja"
 
@@ -4538,30 +4534,30 @@ msgstr "Lisää 'muu' vaihtoehto salliaksesi mukautettuja arvoja"
 msgid "Other"
 msgstr "Muu"
 
-#: includes/fields/class-acf-field-radio.php:25
+#: includes/fields/class-acf-field-radio.php:23
 msgid "Radio Button"
 msgstr "Valintanappi"
 
-#: includes/fields/class-acf-field-accordion.php:107
+#: includes/fields/class-acf-field-accordion.php:105
 msgid ""
 "Define an endpoint for the previous accordion to stop. This accordion will "
 "not be visible."
 msgstr ""
 "Määritä päätepiste aiemmalle haitarille. Tämä haitari ei tule näkyviin."
 
-#: includes/fields/class-acf-field-accordion.php:96
+#: includes/fields/class-acf-field-accordion.php:94
 msgid "Allow this accordion to open without closing others."
 msgstr "Salli tämän haitarin avautua sulkematta muita."
 
-#: includes/fields/class-acf-field-accordion.php:95
+#: includes/fields/class-acf-field-accordion.php:93
 msgid "Multi-Expand"
 msgstr "Avaa useita"
 
-#: includes/fields/class-acf-field-accordion.php:85
+#: includes/fields/class-acf-field-accordion.php:83
 msgid "Display this accordion as open on page load."
 msgstr "Näytä tämä haitari avoimena sivun latautuessa."
 
-#: includes/fields/class-acf-field-accordion.php:84
+#: includes/fields/class-acf-field-accordion.php:82
 msgid "Open"
 msgstr "Avoinna"
 
@@ -4569,143 +4565,143 @@ msgstr "Avoinna"
 msgid "Accordion"
 msgstr "Haitari (Accordion)"
 
-#: includes/fields/class-acf-field-file.php:264
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:256
+#: includes/fields/class-acf-field-file.php:268
 msgid "Restrict which files can be uploaded"
 msgstr "Määritä tiedoston koko"
 
-#: includes/fields/class-acf-field-file.php:218
+#: includes/fields/class-acf-field-file.php:210
 msgid "File ID"
 msgstr "Tiedoston ID"
 
-#: includes/fields/class-acf-field-file.php:217
+#: includes/fields/class-acf-field-file.php:209
 msgid "File URL"
 msgstr "Tiedoston URL"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:208
 msgid "File Array"
 msgstr "Tiedosto"
 
-#: includes/fields/class-acf-field-file.php:185
+#: includes/fields/class-acf-field-file.php:179
 msgid "Add File"
 msgstr "Lisää tiedosto"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:154
-#: includes/fields/class-acf-field-file.php:185
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:179
 msgid "No file selected"
 msgstr "Ei valittua tiedostoa"
 
-#: includes/fields/class-acf-field-file.php:149
+#: includes/fields/class-acf-field-file.php:143
 msgid "File name"
 msgstr "Tiedoston nimi"
 
-#: includes/fields/class-acf-field-file.php:63
+#: includes/fields/class-acf-field-file.php:59
 #: assets/build/js/acf-input.js:2472 assets/build/js/acf-input.js:2625
 msgid "Update File"
 msgstr "Päivitä tiedosto"
 
-#: includes/fields/class-acf-field-file.php:62
+#: includes/fields/class-acf-field-file.php:58
 #: assets/build/js/acf-input.js:2471 assets/build/js/acf-input.js:2624
 msgid "Edit File"
 msgstr "Muokkaa tiedostoa"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:57
-#: includes/fields/class-acf-field-file.php:61
+#: includes/fields/class-acf-field-file.php:57
 #: assets/build/js/acf-input.js:2445 assets/build/js/acf-input.js:2597
 msgid "Select File"
 msgstr "Valitse tiedosto"
 
-#: includes/fields/class-acf-field-file.php:25
+#: includes/fields/class-acf-field-file.php:23
 msgid "File"
 msgstr "Tiedosto"
 
-#: includes/fields/class-acf-field-password.php:25
+#: includes/fields/class-acf-field-password.php:23
 msgid "Password"
 msgstr "Salasana"
 
-#: includes/fields/class-acf-field-select.php:381
+#: includes/fields/class-acf-field-select.php:371
 msgid "Specify the value returned"
 msgstr "Määritä palautetun arvon muoto"
 
-#: includes/fields/class-acf-field-select.php:449
+#: includes/fields/class-acf-field-select.php:439
 msgid "Use AJAX to lazy load choices?"
 msgstr "Haluatko ladata valinnat laiskasti (käyttää AJAXia)?"
 
-#: includes/fields/class-acf-field-checkbox.php:352
-#: includes/fields/class-acf-field-select.php:370
+#: includes/fields/class-acf-field-checkbox.php:338
+#: includes/fields/class-acf-field-select.php:360
 msgid "Enter each default value on a new line"
 msgstr "Syötä jokainen oletusarvo uudelle riville"
 
-#: includes/fields/class-acf-field-select.php:243 includes/media.php:48
-#: assets/build/js/acf-input.js:6799 assets/build/js/acf-input.js:7277
+#: includes/fields/class-acf-field-select.php:235 includes/media.php:48
+#: assets/build/js/acf-input.js:6803 assets/build/js/acf-input.js:7282
 msgctxt "verb"
 msgid "Select"
 msgstr "Valitse"
 
-#: includes/fields/class-acf-field-select.php:115
+#: includes/fields/class-acf-field-select.php:111
 msgctxt "Select2 JS load_fail"
 msgid "Loading failed"
 msgstr "Lataus epäonnistui"
 
-#: includes/fields/class-acf-field-select.php:114
+#: includes/fields/class-acf-field-select.php:110
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
 msgstr "Etsii&hellip;"
 
-#: includes/fields/class-acf-field-select.php:113
+#: includes/fields/class-acf-field-select.php:109
 msgctxt "Select2 JS load_more"
 msgid "Loading more results&hellip;"
 msgstr "Lataa lisää tuloksia &hellip;"
 
-#: includes/fields/class-acf-field-select.php:112
+#: includes/fields/class-acf-field-select.php:108
 msgctxt "Select2 JS selection_too_long_n"
 msgid "You can only select %d items"
 msgstr "Voit valita vain %d kohdetta"
 
-#: includes/fields/class-acf-field-select.php:111
+#: includes/fields/class-acf-field-select.php:107
 msgctxt "Select2 JS selection_too_long_1"
 msgid "You can only select 1 item"
 msgstr "Voit valita vain yhden kohteen"
 
-#: includes/fields/class-acf-field-select.php:110
+#: includes/fields/class-acf-field-select.php:106
 msgctxt "Select2 JS input_too_long_n"
 msgid "Please delete %d characters"
 msgstr "Poista %d merkkiä"
 
-#: includes/fields/class-acf-field-select.php:109
+#: includes/fields/class-acf-field-select.php:105
 msgctxt "Select2 JS input_too_long_1"
 msgid "Please delete 1 character"
 msgstr "Poista 1 merkki"
 
-#: includes/fields/class-acf-field-select.php:108
+#: includes/fields/class-acf-field-select.php:104
 msgctxt "Select2 JS input_too_short_n"
 msgid "Please enter %d or more characters"
 msgstr "Kirjoita %d tai useampi merkkiä"
 
-#: includes/fields/class-acf-field-select.php:107
+#: includes/fields/class-acf-field-select.php:103
 msgctxt "Select2 JS input_too_short_1"
 msgid "Please enter 1 or more characters"
 msgstr "Kirjoita yksi tai useampi merkki"
 
-#: includes/fields/class-acf-field-select.php:106
+#: includes/fields/class-acf-field-select.php:102
 msgctxt "Select2 JS matches_0"
 msgid "No matches found"
 msgstr "Osumia ei löytynyt"
 
-#: includes/fields/class-acf-field-select.php:105
+#: includes/fields/class-acf-field-select.php:101
 msgctxt "Select2 JS matches_n"
 msgid "%d results are available, use up and down arrow keys to navigate."
 msgstr ""
 "%d tulosta on saatavilla. Voit navigoida tuloksian välillä käyttämällä "
 "”ylös” ja ”alas” -näppäimiä."
 
-#: includes/fields/class-acf-field-select.php:104
+#: includes/fields/class-acf-field-select.php:100
 msgctxt "Select2 JS matches_1"
 msgid "One result is available, press enter to select it."
 msgstr "Yksi tulos on saatavilla. Valitse se painamalla enter-näppäintä."
 
-#: includes/fields/class-acf-field-select.php:25
-#: includes/fields/class-acf-field-taxonomy.php:720
+#: includes/fields/class-acf-field-select.php:23
+#: includes/fields/class-acf-field-taxonomy.php:701
 msgctxt "noun"
 msgid "Select"
 msgstr "Valintalista"
@@ -4730,21 +4726,21 @@ msgstr "Kaikki käyttäjäroolit"
 msgid "Filter by Role"
 msgstr "Suodata roolin mukaan"
 
-#: includes/fields/class-acf-field-user.php:15 includes/locations.php:101
+#: includes/fields/class-acf-field-user.php:15 includes/locations.php:103
 msgid "User"
 msgstr "Käyttäjä"
 
-#: includes/fields/class-acf-field-separator.php:25
+#: includes/fields/class-acf-field-separator.php:23
 msgid "Separator"
 msgstr "Erotusmerkki"
 
-#: includes/fields/class-acf-field-color_picker.php:75
+#: includes/fields/class-acf-field-color_picker.php:71
 msgid "Select Color"
 msgstr "Valitse väri"
 
-#: includes/admin/post-types/admin-post-type.php:129
-#: includes/admin/post-types/admin-taxonomy.php:131
-#: includes/fields/class-acf-field-color_picker.php:73
+#: includes/admin/post-types/admin-post-type.php:127
+#: includes/admin/post-types/admin-taxonomy.php:129
+#: includes/fields/class-acf-field-color_picker.php:69
 #: assets/build/js/acf-internal-post-type.js:72
 #: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
@@ -4752,221 +4748,221 @@ msgstr "Oletus"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:89
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:141
-#: includes/fields/class-acf-field-color_picker.php:71
+#: includes/fields/class-acf-field-color_picker.php:67
 msgid "Clear"
 msgstr "Tyhjennä"
 
-#: includes/fields/class-acf-field-color_picker.php:25
+#: includes/fields/class-acf-field-color_picker.php:23
 msgid "Color Picker"
 msgstr "Värinvalitsin"
 
-#: includes/fields/class-acf-field-date_time_picker.php:88
+#: includes/fields/class-acf-field-date_time_picker.php:84
 msgctxt "Date Time Picker JS pmTextShort"
 msgid "P"
 msgstr "P"
 
-#: includes/fields/class-acf-field-date_time_picker.php:87
+#: includes/fields/class-acf-field-date_time_picker.php:83
 msgctxt "Date Time Picker JS pmText"
 msgid "PM"
 msgstr "PM"
 
-#: includes/fields/class-acf-field-date_time_picker.php:84
+#: includes/fields/class-acf-field-date_time_picker.php:80
 msgctxt "Date Time Picker JS amTextShort"
 msgid "A"
 msgstr "A"
 
-#: includes/fields/class-acf-field-date_time_picker.php:83
+#: includes/fields/class-acf-field-date_time_picker.php:79
 msgctxt "Date Time Picker JS amText"
 msgid "AM"
 msgstr "AM"
 
-#: includes/fields/class-acf-field-date_time_picker.php:81
+#: includes/fields/class-acf-field-date_time_picker.php:77
 msgctxt "Date Time Picker JS selectText"
 msgid "Select"
 msgstr "Valitse"
 
-#: includes/fields/class-acf-field-date_time_picker.php:80
+#: includes/fields/class-acf-field-date_time_picker.php:76
 msgctxt "Date Time Picker JS closeText"
 msgid "Done"
 msgstr "Sulje"
 
-#: includes/fields/class-acf-field-date_time_picker.php:79
+#: includes/fields/class-acf-field-date_time_picker.php:75
 msgctxt "Date Time Picker JS currentText"
 msgid "Now"
 msgstr "Nyt"
 
-#: includes/fields/class-acf-field-date_time_picker.php:78
+#: includes/fields/class-acf-field-date_time_picker.php:74
 msgctxt "Date Time Picker JS timezoneText"
 msgid "Time Zone"
 msgstr "Aikavyöhyke"
 
-#: includes/fields/class-acf-field-date_time_picker.php:77
+#: includes/fields/class-acf-field-date_time_picker.php:73
 msgctxt "Date Time Picker JS microsecText"
 msgid "Microsecond"
 msgstr "Mikrosekunti"
 
-#: includes/fields/class-acf-field-date_time_picker.php:76
+#: includes/fields/class-acf-field-date_time_picker.php:72
 msgctxt "Date Time Picker JS millisecText"
 msgid "Millisecond"
 msgstr "Millisekunti"
 
-#: includes/fields/class-acf-field-date_time_picker.php:75
+#: includes/fields/class-acf-field-date_time_picker.php:71
 msgctxt "Date Time Picker JS secondText"
 msgid "Second"
 msgstr "Sekunti"
 
-#: includes/fields/class-acf-field-date_time_picker.php:74
+#: includes/fields/class-acf-field-date_time_picker.php:70
 msgctxt "Date Time Picker JS minuteText"
 msgid "Minute"
 msgstr "Minuutti"
 
-#: includes/fields/class-acf-field-date_time_picker.php:73
+#: includes/fields/class-acf-field-date_time_picker.php:69
 msgctxt "Date Time Picker JS hourText"
 msgid "Hour"
 msgstr "Tunti"
 
-#: includes/fields/class-acf-field-date_time_picker.php:72
+#: includes/fields/class-acf-field-date_time_picker.php:68
 msgctxt "Date Time Picker JS timeText"
 msgid "Time"
 msgstr "Aika"
 
-#: includes/fields/class-acf-field-date_time_picker.php:71
+#: includes/fields/class-acf-field-date_time_picker.php:67
 msgctxt "Date Time Picker JS timeOnlyTitle"
 msgid "Choose Time"
 msgstr "Valitse aika"
 
-#: includes/fields/class-acf-field-date_time_picker.php:25
+#: includes/fields/class-acf-field-date_time_picker.php:23
 msgid "Date Time Picker"
 msgstr "Päivämäärä- ja kellonaikavalitsin"
 
-#: includes/fields/class-acf-field-accordion.php:106
+#: includes/fields/class-acf-field-accordion.php:104
 msgid "Endpoint"
 msgstr "Päätepiste"
 
 #: includes/admin/views/acf-field-group/options.php:130
-#: includes/fields/class-acf-field-tab.php:114
+#: includes/fields/class-acf-field-tab.php:108
 msgid "Left aligned"
 msgstr "Tasaa vasemmalle"
 
 #: includes/admin/views/acf-field-group/options.php:129
-#: includes/fields/class-acf-field-tab.php:113
+#: includes/fields/class-acf-field-tab.php:107
 msgid "Top aligned"
 msgstr "Tasaa ylös"
 
-#: includes/fields/class-acf-field-tab.php:109
+#: includes/fields/class-acf-field-tab.php:103
 msgid "Placement"
 msgstr "Sijainti"
 
-#: includes/fields/class-acf-field-tab.php:26
+#: includes/fields/class-acf-field-tab.php:24
 msgid "Tab"
 msgstr "Välilehti"
 
-#: includes/fields/class-acf-field-url.php:140
+#: includes/fields/class-acf-field-url.php:138
 msgid "Value must be a valid URL"
 msgstr "Arvon täytyy olla validi URL"
 
-#: includes/fields/class-acf-field-link.php:170
+#: includes/fields/class-acf-field-link.php:155
 msgid "Link URL"
 msgstr "Linkin URL-osoite"
 
-#: includes/fields/class-acf-field-link.php:169
+#: includes/fields/class-acf-field-link.php:154
 msgid "Link Array"
 msgstr "Linkkitaulukko (array)"
 
-#: includes/fields/class-acf-field-link.php:139
+#: includes/fields/class-acf-field-link.php:126
 msgid "Opens in a new window/tab"
 msgstr "Avaa uuteen ikkunaan/välilehteen"
 
-#: includes/fields/class-acf-field-link.php:134
+#: includes/fields/class-acf-field-link.php:121
 msgid "Select Link"
 msgstr "Valitse linkki"
 
-#: includes/fields/class-acf-field-link.php:25
+#: includes/fields/class-acf-field-link.php:23
 msgid "Link"
 msgstr "Linkki"
 
-#: includes/fields/class-acf-field-email.php:25
+#: includes/fields/class-acf-field-email.php:23
 msgid "Email"
 msgstr "Sähköposti"
 
-#: includes/fields/class-acf-field-number.php:182
-#: includes/fields/class-acf-field-range.php:216
+#: includes/fields/class-acf-field-number.php:176
+#: includes/fields/class-acf-field-range.php:209
 msgid "Step Size"
 msgstr "Askelluksen koko"
 
-#: includes/fields/class-acf-field-number.php:152
-#: includes/fields/class-acf-field-range.php:194
+#: includes/fields/class-acf-field-number.php:146
+#: includes/fields/class-acf-field-range.php:187
 msgid "Maximum Value"
 msgstr "Maksimiarvo"
 
-#: includes/fields/class-acf-field-number.php:142
-#: includes/fields/class-acf-field-range.php:183
+#: includes/fields/class-acf-field-number.php:136
+#: includes/fields/class-acf-field-range.php:176
 msgid "Minimum Value"
 msgstr "Minimiarvo"
 
-#: includes/fields/class-acf-field-range.php:25
+#: includes/fields/class-acf-field-range.php:23
 msgid "Range"
 msgstr "Liukusäädin"
 
-#: includes/fields/class-acf-field-button-group.php:171
-#: includes/fields/class-acf-field-checkbox.php:369
-#: includes/fields/class-acf-field-radio.php:219
-#: includes/fields/class-acf-field-select.php:388
+#: includes/fields/class-acf-field-button-group.php:166
+#: includes/fields/class-acf-field-checkbox.php:355
+#: includes/fields/class-acf-field-radio.php:213
+#: includes/fields/class-acf-field-select.php:378
 msgid "Both (Array)"
 msgstr "Molemmat (palautusmuoto on tällöin taulukko)"
 
 #: includes/admin/views/acf-field-group/fields.php:52
-#: includes/fields/class-acf-field-button-group.php:170
-#: includes/fields/class-acf-field-checkbox.php:368
-#: includes/fields/class-acf-field-radio.php:218
-#: includes/fields/class-acf-field-select.php:387
+#: includes/fields/class-acf-field-button-group.php:165
+#: includes/fields/class-acf-field-checkbox.php:354
+#: includes/fields/class-acf-field-radio.php:212
+#: includes/fields/class-acf-field-select.php:377
 msgid "Label"
 msgstr "Nimiö"
 
-#: includes/fields/class-acf-field-button-group.php:169
-#: includes/fields/class-acf-field-checkbox.php:367
-#: includes/fields/class-acf-field-radio.php:217
-#: includes/fields/class-acf-field-select.php:386
+#: includes/fields/class-acf-field-button-group.php:164
+#: includes/fields/class-acf-field-checkbox.php:353
+#: includes/fields/class-acf-field-radio.php:211
+#: includes/fields/class-acf-field-select.php:376
 msgid "Value"
 msgstr "Arvo"
 
-#: includes/fields/class-acf-field-button-group.php:217
-#: includes/fields/class-acf-field-checkbox.php:430
-#: includes/fields/class-acf-field-radio.php:291
+#: includes/fields/class-acf-field-button-group.php:212
+#: includes/fields/class-acf-field-checkbox.php:416
+#: includes/fields/class-acf-field-radio.php:285
 msgid "Vertical"
 msgstr "Pystysuuntainen"
 
-#: includes/fields/class-acf-field-button-group.php:216
-#: includes/fields/class-acf-field-checkbox.php:431
-#: includes/fields/class-acf-field-radio.php:292
+#: includes/fields/class-acf-field-button-group.php:211
+#: includes/fields/class-acf-field-checkbox.php:417
+#: includes/fields/class-acf-field-radio.php:286
 msgid "Horizontal"
 msgstr "Vaakasuuntainen"
 
-#: includes/fields/class-acf-field-button-group.php:144
-#: includes/fields/class-acf-field-checkbox.php:342
-#: includes/fields/class-acf-field-radio.php:192
-#: includes/fields/class-acf-field-select.php:359
+#: includes/fields/class-acf-field-button-group.php:139
+#: includes/fields/class-acf-field-checkbox.php:328
+#: includes/fields/class-acf-field-radio.php:186
+#: includes/fields/class-acf-field-select.php:349
 msgid "red : Red"
 msgstr "koira_istuu : Koira istuu"
 
-#: includes/fields/class-acf-field-button-group.php:144
-#: includes/fields/class-acf-field-checkbox.php:342
-#: includes/fields/class-acf-field-radio.php:192
-#: includes/fields/class-acf-field-select.php:359
+#: includes/fields/class-acf-field-button-group.php:139
+#: includes/fields/class-acf-field-checkbox.php:328
+#: includes/fields/class-acf-field-radio.php:186
+#: includes/fields/class-acf-field-select.php:349
 msgid "For more control, you may specify both a value and label like this:"
 msgstr "Halutessasi voit määrittää sekä arvon että nimiön tähän tapaan:"
 
-#: includes/fields/class-acf-field-button-group.php:144
-#: includes/fields/class-acf-field-checkbox.php:342
-#: includes/fields/class-acf-field-radio.php:192
-#: includes/fields/class-acf-field-select.php:359
+#: includes/fields/class-acf-field-button-group.php:139
+#: includes/fields/class-acf-field-checkbox.php:328
+#: includes/fields/class-acf-field-radio.php:186
+#: includes/fields/class-acf-field-select.php:349
 msgid "Enter each choice on a new line."
 msgstr "Syötä jokainen valinta uudelle riville."
 
-#: includes/fields/class-acf-field-button-group.php:143
-#: includes/fields/class-acf-field-checkbox.php:341
-#: includes/fields/class-acf-field-radio.php:191
-#: includes/fields/class-acf-field-select.php:358
+#: includes/fields/class-acf-field-button-group.php:138
+#: includes/fields/class-acf-field-checkbox.php:327
+#: includes/fields/class-acf-field-radio.php:185
+#: includes/fields/class-acf-field-select.php:348
 msgid "Choices"
 msgstr "Valinnat"
 
@@ -4974,251 +4970,251 @@ msgstr "Valinnat"
 msgid "Button Group"
 msgstr "Painikeryhmä"
 
-#: includes/fields/class-acf-field-button-group.php:189
-#: includes/fields/class-acf-field-page_link.php:500
-#: includes/fields/class-acf-field-post_object.php:420
-#: includes/fields/class-acf-field-radio.php:237
-#: includes/fields/class-acf-field-select.php:417
-#: includes/fields/class-acf-field-taxonomy.php:729
+#: includes/fields/class-acf-field-button-group.php:184
+#: includes/fields/class-acf-field-page_link.php:486
+#: includes/fields/class-acf-field-post_object.php:408
+#: includes/fields/class-acf-field-radio.php:231
+#: includes/fields/class-acf-field-select.php:407
+#: includes/fields/class-acf-field-taxonomy.php:710
 #: includes/fields/class-acf-field-user.php:103
 msgid "Allow Null"
 msgstr "Salli tyhjä?"
 
-#: includes/fields/class-acf-field-page_link.php:242
-#: includes/fields/class-acf-field-post_object.php:236
-#: includes/fields/class-acf-field-taxonomy.php:882
+#: includes/fields/class-acf-field-page_link.php:236
+#: includes/fields/class-acf-field-post_object.php:230
+#: includes/fields/class-acf-field-taxonomy.php:861
 msgid "Parent"
 msgstr "Vanhempi"
 
-#: includes/fields/class-acf-field-wysiwyg.php:381
+#: includes/fields/class-acf-field-wysiwyg.php:371
 msgid "TinyMCE will not be initialized until field is clicked"
 msgstr "TinyMCE:tä ei alusteta ennen kuin kenttää napsautetaan"
 
-#: includes/fields/class-acf-field-wysiwyg.php:380
+#: includes/fields/class-acf-field-wysiwyg.php:370
 msgid "Delay Initialization"
 msgstr "Viivytä alustusta?"
 
-#: includes/fields/class-acf-field-wysiwyg.php:369
+#: includes/fields/class-acf-field-wysiwyg.php:359
 msgid "Show Media Upload Buttons"
 msgstr "Näytä Lisää media -painike?"
 
-#: includes/fields/class-acf-field-wysiwyg.php:353
+#: includes/fields/class-acf-field-wysiwyg.php:343
 msgid "Toolbar"
 msgstr "Työkalupalkki"
 
-#: includes/fields/class-acf-field-wysiwyg.php:345
+#: includes/fields/class-acf-field-wysiwyg.php:335
 msgid "Text Only"
 msgstr "Vain teksti"
 
-#: includes/fields/class-acf-field-wysiwyg.php:344
+#: includes/fields/class-acf-field-wysiwyg.php:334
 msgid "Visual Only"
 msgstr "Vain graafinen"
 
-#: includes/fields/class-acf-field-wysiwyg.php:343
+#: includes/fields/class-acf-field-wysiwyg.php:333
 msgid "Visual & Text"
 msgstr "Graafinen ja teksti"
 
-#: includes/fields/class-acf-field-wysiwyg.php:338
+#: includes/fields/class-acf-field-wysiwyg.php:328
 msgid "Tabs"
 msgstr "Välilehdet"
 
-#: includes/fields/class-acf-field-wysiwyg.php:280
+#: includes/fields/class-acf-field-wysiwyg.php:272
 msgid "Click to initialize TinyMCE"
 msgstr "Klikkaa ottaaksesi käyttöön graafisen editorin"
 
-#: includes/fields/class-acf-field-wysiwyg.php:274
+#: includes/fields/class-acf-field-wysiwyg.php:266
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "Teksti"
 
-#: includes/fields/class-acf-field-wysiwyg.php:273
+#: includes/fields/class-acf-field-wysiwyg.php:265
 msgid "Visual"
 msgstr "Graafinen"
 
-#: includes/fields/class-acf-field-text.php:189
-#: includes/fields/class-acf-field-textarea.php:228
+#: includes/fields/class-acf-field-text.php:183
+#: includes/fields/class-acf-field-textarea.php:220
 msgid "Value must not exceed %d characters"
 msgstr "Arvo ei saa olla suurempi kuin %d merkkiä"
 
-#: includes/fields/class-acf-field-text.php:124
-#: includes/fields/class-acf-field-textarea.php:122
+#: includes/fields/class-acf-field-text.php:118
+#: includes/fields/class-acf-field-textarea.php:116
 msgid "Leave blank for no limit"
 msgstr "Jos et halua rajoittaa, jätä tyhjäksi"
 
-#: includes/fields/class-acf-field-text.php:123
-#: includes/fields/class-acf-field-textarea.php:121
+#: includes/fields/class-acf-field-text.php:117
+#: includes/fields/class-acf-field-textarea.php:115
 msgid "Character Limit"
 msgstr "Merkkirajoitus"
 
-#: includes/fields/class-acf-field-email.php:152
-#: includes/fields/class-acf-field-number.php:203
-#: includes/fields/class-acf-field-password.php:103
-#: includes/fields/class-acf-field-range.php:238
-#: includes/fields/class-acf-field-text.php:164
+#: includes/fields/class-acf-field-email.php:146
+#: includes/fields/class-acf-field-number.php:197
+#: includes/fields/class-acf-field-password.php:97
+#: includes/fields/class-acf-field-range.php:231
+#: includes/fields/class-acf-field-text.php:158
 msgid "Appears after the input"
 msgstr "Näkyy input-kentän jälkeen"
 
-#: includes/fields/class-acf-field-email.php:151
-#: includes/fields/class-acf-field-number.php:202
-#: includes/fields/class-acf-field-password.php:102
-#: includes/fields/class-acf-field-range.php:237
-#: includes/fields/class-acf-field-text.php:163
+#: includes/fields/class-acf-field-email.php:145
+#: includes/fields/class-acf-field-number.php:196
+#: includes/fields/class-acf-field-password.php:96
+#: includes/fields/class-acf-field-range.php:230
+#: includes/fields/class-acf-field-text.php:157
 msgid "Append"
 msgstr "Loppuliite"
 
-#: includes/fields/class-acf-field-email.php:142
-#: includes/fields/class-acf-field-number.php:193
-#: includes/fields/class-acf-field-password.php:93
-#: includes/fields/class-acf-field-range.php:228
-#: includes/fields/class-acf-field-text.php:154
+#: includes/fields/class-acf-field-email.php:136
+#: includes/fields/class-acf-field-number.php:187
+#: includes/fields/class-acf-field-password.php:87
+#: includes/fields/class-acf-field-range.php:221
+#: includes/fields/class-acf-field-text.php:148
 msgid "Appears before the input"
 msgstr "Näkyy ennen input-kenttää"
 
-#: includes/fields/class-acf-field-email.php:141
-#: includes/fields/class-acf-field-number.php:192
-#: includes/fields/class-acf-field-password.php:92
-#: includes/fields/class-acf-field-range.php:227
-#: includes/fields/class-acf-field-text.php:153
+#: includes/fields/class-acf-field-email.php:135
+#: includes/fields/class-acf-field-number.php:186
+#: includes/fields/class-acf-field-password.php:86
+#: includes/fields/class-acf-field-range.php:220
+#: includes/fields/class-acf-field-text.php:147
 msgid "Prepend"
 msgstr "Etuliite"
 
-#: includes/fields/class-acf-field-email.php:132
-#: includes/fields/class-acf-field-number.php:173
-#: includes/fields/class-acf-field-password.php:83
-#: includes/fields/class-acf-field-text.php:144
-#: includes/fields/class-acf-field-textarea.php:154
-#: includes/fields/class-acf-field-url.php:106
+#: includes/fields/class-acf-field-email.php:126
+#: includes/fields/class-acf-field-number.php:167
+#: includes/fields/class-acf-field-password.php:77
+#: includes/fields/class-acf-field-text.php:138
+#: includes/fields/class-acf-field-textarea.php:148
+#: includes/fields/class-acf-field-url.php:105
 msgid "Appears within the input"
 msgstr "Näkyy input-kentän sisällä"
 
-#: includes/fields/class-acf-field-email.php:131
-#: includes/fields/class-acf-field-number.php:172
-#: includes/fields/class-acf-field-password.php:82
-#: includes/fields/class-acf-field-text.php:143
-#: includes/fields/class-acf-field-textarea.php:153
-#: includes/fields/class-acf-field-url.php:105
+#: includes/fields/class-acf-field-email.php:125
+#: includes/fields/class-acf-field-number.php:166
+#: includes/fields/class-acf-field-password.php:76
+#: includes/fields/class-acf-field-text.php:137
+#: includes/fields/class-acf-field-textarea.php:147
+#: includes/fields/class-acf-field-url.php:104
 msgid "Placeholder Text"
 msgstr "Täyteteksti"
 
-#: includes/fields/class-acf-field-button-group.php:154
-#: includes/fields/class-acf-field-email.php:112
-#: includes/fields/class-acf-field-number.php:123
-#: includes/fields/class-acf-field-radio.php:202
-#: includes/fields/class-acf-field-range.php:164
-#: includes/fields/class-acf-field-text.php:104
-#: includes/fields/class-acf-field-textarea.php:102
-#: includes/fields/class-acf-field-url.php:86
-#: includes/fields/class-acf-field-wysiwyg.php:306
+#: includes/fields/class-acf-field-button-group.php:149
+#: includes/fields/class-acf-field-email.php:106
+#: includes/fields/class-acf-field-number.php:117
+#: includes/fields/class-acf-field-radio.php:196
+#: includes/fields/class-acf-field-range.php:157
+#: includes/fields/class-acf-field-text.php:98
+#: includes/fields/class-acf-field-textarea.php:96
+#: includes/fields/class-acf-field-url.php:85
+#: includes/fields/class-acf-field-wysiwyg.php:296
 msgid "Appears when creating a new post"
 msgstr "Kentän oletusarvo"
 
-#: includes/fields/class-acf-field-text.php:25
+#: includes/fields/class-acf-field-text.php:23
 msgid "Text"
 msgstr "Teksti"
 
-#: includes/fields/class-acf-field-relationship.php:753
+#: includes/fields/class-acf-field-relationship.php:735
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s vaatii vähintään %2$s valinnan"
 msgstr[1] "%1$s vaatii vähintään %2$s valintaa"
 
-#: includes/fields/class-acf-field-post_object.php:390
-#: includes/fields/class-acf-field-relationship.php:610
+#: includes/fields/class-acf-field-post_object.php:378
+#: includes/fields/class-acf-field-relationship.php:596
 msgid "Post ID"
 msgstr "Artikkelin ID"
 
 #: includes/fields/class-acf-field-post_object.php:17
-#: includes/fields/class-acf-field-post_object.php:389
-#: includes/fields/class-acf-field-relationship.php:609
+#: includes/fields/class-acf-field-post_object.php:377
+#: includes/fields/class-acf-field-relationship.php:595
 msgid "Post Object"
 msgstr "Artikkeliolio"
 
-#: includes/fields/class-acf-field-relationship.php:642
+#: includes/fields/class-acf-field-relationship.php:628
 msgid "Maximum Posts"
 msgstr "Maksimimäärä artikkeleita"
 
-#: includes/fields/class-acf-field-relationship.php:632
+#: includes/fields/class-acf-field-relationship.php:618
 msgid "Minimum Posts"
 msgstr "Vähimmäismäärä artikkeleita"
 
 #: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-post-type/advanced-settings.php:29
-#: includes/fields/class-acf-field-relationship.php:667
+#: includes/fields/class-acf-field-relationship.php:653
 msgid "Featured Image"
 msgstr "Artikkelikuva"
 
-#: includes/fields/class-acf-field-relationship.php:663
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Selected elements will be displayed in each result"
 msgstr "Valitut elementit näytetään jokaisessa tuloksessa"
 
-#: includes/fields/class-acf-field-relationship.php:662
+#: includes/fields/class-acf-field-relationship.php:648
 msgid "Elements"
 msgstr "Elementit"
 
-#: includes/fields/class-acf-field-relationship.php:596
+#: includes/fields/class-acf-field-relationship.php:582
 #: includes/fields/class-acf-field-taxonomy.php:20
-#: includes/fields/class-acf-field-taxonomy.php:649
+#: includes/fields/class-acf-field-taxonomy.php:630
 #: includes/locations/class-acf-location-taxonomy.php:22
 msgid "Taxonomy"
 msgstr "Taksonomia"
 
-#: includes/fields/class-acf-field-relationship.php:595
+#: includes/fields/class-acf-field-relationship.php:581
 #: includes/locations/class-acf-location-post-type.php:22
 #: includes/post-types/class-acf-post-type.php:92
 msgid "Post Type"
 msgstr "Artikkelityyppi"
 
-#: includes/fields/class-acf-field-relationship.php:589
+#: includes/fields/class-acf-field-relationship.php:575
 msgid "Filters"
 msgstr "Suodattimet"
 
-#: includes/fields/class-acf-field-page_link.php:461
-#: includes/fields/class-acf-field-post_object.php:377
-#: includes/fields/class-acf-field-relationship.php:582
+#: includes/fields/class-acf-field-page_link.php:447
+#: includes/fields/class-acf-field-post_object.php:365
+#: includes/fields/class-acf-field-relationship.php:568
 msgid "All taxonomies"
 msgstr "Kaikki taksonomiat"
 
-#: includes/fields/class-acf-field-page_link.php:453
-#: includes/fields/class-acf-field-post_object.php:369
-#: includes/fields/class-acf-field-relationship.php:574
+#: includes/fields/class-acf-field-page_link.php:439
+#: includes/fields/class-acf-field-post_object.php:357
+#: includes/fields/class-acf-field-relationship.php:560
 msgid "Filter by Taxonomy"
 msgstr "Suodata taksonomian mukaan"
 
-#: includes/fields/class-acf-field-page_link.php:431
-#: includes/fields/class-acf-field-post_object.php:347
-#: includes/fields/class-acf-field-relationship.php:552
+#: includes/fields/class-acf-field-page_link.php:417
+#: includes/fields/class-acf-field-post_object.php:335
+#: includes/fields/class-acf-field-relationship.php:538
 msgid "All post types"
 msgstr "Kaikki artikkelityypit"
 
-#: includes/fields/class-acf-field-page_link.php:423
-#: includes/fields/class-acf-field-post_object.php:339
-#: includes/fields/class-acf-field-relationship.php:544
+#: includes/fields/class-acf-field-page_link.php:409
+#: includes/fields/class-acf-field-post_object.php:327
+#: includes/fields/class-acf-field-relationship.php:530
 msgid "Filter by Post Type"
 msgstr "Suodata tyypin mukaan"
 
-#: includes/fields/class-acf-field-relationship.php:442
+#: includes/fields/class-acf-field-relationship.php:430
 msgid "Search..."
 msgstr "Etsi..."
 
-#: includes/fields/class-acf-field-relationship.php:373
+#: includes/fields/class-acf-field-relationship.php:361
 msgid "Select taxonomy"
 msgstr "Valitse taksonomia"
 
-#: includes/fields/class-acf-field-relationship.php:365
+#: includes/fields/class-acf-field-relationship.php:353
 msgid "Select post type"
 msgstr "Valitse artikkelityyppi"
 
-#: includes/fields/class-acf-field-relationship.php:60
+#: includes/fields/class-acf-field-relationship.php:58
 #: assets/build/js/acf-input.js:3928 assets/build/js/acf-input.js:4214
 msgid "No matches found"
 msgstr "Ei yhtään osumaa"
 
-#: includes/fields/class-acf-field-relationship.php:59
+#: includes/fields/class-acf-field-relationship.php:57
 #: assets/build/js/acf-input.js:3911 assets/build/js/acf-input.js:4193
 msgid "Loading"
 msgstr "Ladataan"
 
-#: includes/fields/class-acf-field-relationship.php:58
+#: includes/fields/class-acf-field-relationship.php:56
 #: assets/build/js/acf-input.js:3816 assets/build/js/acf-input.js:4084
 msgid "Maximum values reached ( {max} values )"
 msgstr "Maksimiarvo saavutettu ( {max} artikkelia )"
@@ -5227,46 +5223,46 @@ msgstr "Maksimiarvo saavutettu ( {max} artikkelia )"
 msgid "Relationship"
 msgstr "Suodata artikkeleita"
 
-#: includes/fields/class-acf-field-file.php:288
-#: includes/fields/class-acf-field-image.php:316
+#: includes/fields/class-acf-field-file.php:280
+#: includes/fields/class-acf-field-image.php:310
 msgid "Comma separated list. Leave blank for all types"
 msgstr "Erota pilkulla. Jätä tyhjäksi, jos haluat sallia kaikki tiedostyypit"
 
-#: includes/fields/class-acf-field-file.php:287
-#: includes/fields/class-acf-field-image.php:315
+#: includes/fields/class-acf-field-file.php:279
+#: includes/fields/class-acf-field-image.php:309
 msgid "Allowed File Types"
 msgstr "Sallitut tiedostotyypit"
 
-#: includes/fields/class-acf-field-file.php:275
-#: includes/fields/class-acf-field-image.php:279
+#: includes/fields/class-acf-field-file.php:267
+#: includes/fields/class-acf-field-image.php:273
 msgid "Maximum"
 msgstr "Maksimiarvo(t)"
 
-#: includes/fields/class-acf-field-file.php:153
-#: includes/fields/class-acf-field-file.php:267
-#: includes/fields/class-acf-field-file.php:279
-#: includes/fields/class-acf-field-image.php:270
-#: includes/fields/class-acf-field-image.php:306
+#: includes/fields/class-acf-field-file.php:147
+#: includes/fields/class-acf-field-file.php:259
+#: includes/fields/class-acf-field-file.php:271
+#: includes/fields/class-acf-field-image.php:264
+#: includes/fields/class-acf-field-image.php:300
 msgid "File size"
 msgstr "Tiedoston koko"
 
-#: includes/fields/class-acf-field-image.php:244
-#: includes/fields/class-acf-field-image.php:280
+#: includes/fields/class-acf-field-image.php:238
+#: includes/fields/class-acf-field-image.php:274
 msgid "Restrict which images can be uploaded"
 msgstr "Määritä millaisia kuvia voidaan ladata"
 
-#: includes/fields/class-acf-field-file.php:263
-#: includes/fields/class-acf-field-image.php:243
+#: includes/fields/class-acf-field-file.php:255
+#: includes/fields/class-acf-field-image.php:237
 msgid "Minimum"
 msgstr "Minimiarvo(t)"
 
-#: includes/fields/class-acf-field-file.php:233
-#: includes/fields/class-acf-field-image.php:209
+#: includes/fields/class-acf-field-file.php:225
+#: includes/fields/class-acf-field-image.php:203
 msgid "Uploaded to post"
 msgstr "Vain tähän artikkeliin ladatut"
 
-#: includes/fields/class-acf-field-file.php:232
-#: includes/fields/class-acf-field-image.php:208
+#: includes/fields/class-acf-field-file.php:224
+#: includes/fields/class-acf-field-image.php:202
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
 #: includes/locations/class-acf-location-nav-menu.php:74
@@ -5277,483 +5273,485 @@ msgstr "Vain tähän artikkeliin ladatut"
 msgid "All"
 msgstr "Kaikki"
 
-#: includes/fields/class-acf-field-file.php:227
-#: includes/fields/class-acf-field-image.php:203
+#: includes/fields/class-acf-field-file.php:219
+#: includes/fields/class-acf-field-image.php:197
 msgid "Limit the media library choice"
 msgstr "Rajoita valintaa mediakirjastosta"
 
-#: includes/fields/class-acf-field-file.php:226
-#: includes/fields/class-acf-field-image.php:202
+#: includes/fields/class-acf-field-file.php:218
+#: includes/fields/class-acf-field-image.php:196
 msgid "Library"
 msgstr "Kirjasto"
 
-#: includes/fields/class-acf-field-image.php:335
+#: includes/fields/class-acf-field-image.php:329
 msgid "Preview Size"
 msgstr "Esikatselukuvan koko"
 
-#: includes/fields/class-acf-field-image.php:194
+#: includes/fields/class-acf-field-image.php:188
 msgid "Image ID"
 msgstr "Kuvan ID"
 
-#: includes/fields/class-acf-field-image.php:193
+#: includes/fields/class-acf-field-image.php:187
 msgid "Image URL"
 msgstr "Kuvan URL"
 
-#: includes/fields/class-acf-field-image.php:192
+#: includes/fields/class-acf-field-image.php:186
 msgid "Image Array"
 msgstr "Kuva"
 
-#: includes/fields/class-acf-field-button-group.php:164
-#: includes/fields/class-acf-field-checkbox.php:362
-#: includes/fields/class-acf-field-file.php:211
-#: includes/fields/class-acf-field-link.php:164
-#: includes/fields/class-acf-field-radio.php:212
+#: includes/fields/class-acf-field-button-group.php:159
+#: includes/fields/class-acf-field-checkbox.php:348
+#: includes/fields/class-acf-field-file.php:203
+#: includes/fields/class-acf-field-link.php:149
+#: includes/fields/class-acf-field-radio.php:206
 msgid "Specify the returned value on front end"
 msgstr "Määritä palautettu arvo front endiin"
 
-#: includes/fields/class-acf-field-button-group.php:163
-#: includes/fields/class-acf-field-checkbox.php:361
-#: includes/fields/class-acf-field-file.php:210
-#: includes/fields/class-acf-field-link.php:163
-#: includes/fields/class-acf-field-radio.php:211
-#: includes/fields/class-acf-field-taxonomy.php:693
+#: includes/fields/class-acf-field-button-group.php:158
+#: includes/fields/class-acf-field-checkbox.php:347
+#: includes/fields/class-acf-field-file.php:202
+#: includes/fields/class-acf-field-link.php:148
+#: includes/fields/class-acf-field-radio.php:205
+#: includes/fields/class-acf-field-taxonomy.php:674
 msgid "Return Value"
 msgstr "Palauta arvo"
 
-#: includes/fields/class-acf-field-image.php:161
+#: includes/fields/class-acf-field-image.php:157
 msgid "Add Image"
 msgstr "Lisää kuva"
 
-#: includes/fields/class-acf-field-image.php:161
+#: includes/fields/class-acf-field-image.php:157
 msgid "No image selected"
 msgstr "Ei kuvia valittu"
 
-#: includes/assets.php:353 includes/fields/class-acf-field-file.php:161
-#: includes/fields/class-acf-field-image.php:141
-#: includes/fields/class-acf-field-link.php:139 assets/build/js/acf.js:1563
+#: includes/assets.php:353 includes/fields/class-acf-field-file.php:155
+#: includes/fields/class-acf-field-image.php:137
+#: includes/fields/class-acf-field-link.php:126 assets/build/js/acf.js:1563
 #: assets/build/js/acf.js:1657
 msgid "Remove"
 msgstr "Poista"
 
 #: includes/admin/views/acf-field-group/field.php:78
-#: includes/fields/class-acf-field-file.php:159
-#: includes/fields/class-acf-field-image.php:139
-#: includes/fields/class-acf-field-link.php:139
+#: includes/fields/class-acf-field-file.php:153
+#: includes/fields/class-acf-field-image.php:135
+#: includes/fields/class-acf-field-link.php:126
 msgid "Edit"
 msgstr "Muokkaa"
 
-#: includes/fields/class-acf-field-image.php:69 includes/media.php:55
-#: assets/build/js/acf-input.js:6846 assets/build/js/acf-input.js:7331
+#: includes/fields/class-acf-field-image.php:65 includes/media.php:55
+#: assets/build/js/acf-input.js:6850 assets/build/js/acf-input.js:7336
 msgid "All images"
 msgstr "Kaikki kuvat"
 
-#: includes/fields/class-acf-field-image.php:68
+#: includes/fields/class-acf-field-image.php:64
 #: assets/build/js/acf-input.js:3179 assets/build/js/acf-input.js:3399
 msgid "Update Image"
 msgstr "Päivitä kuva"
 
-#: includes/fields/class-acf-field-image.php:67
+#: includes/fields/class-acf-field-image.php:63
 #: assets/build/js/acf-input.js:3178 assets/build/js/acf-input.js:3398
 msgid "Edit Image"
 msgstr "Muokkaa kuvaa"
 
-#: includes/fields/class-acf-field-image.php:66
+#: includes/fields/class-acf-field-image.php:62
 #: assets/build/js/acf-input.js:3154 assets/build/js/acf-input.js:3373
 msgid "Select Image"
 msgstr "Valitse kuva"
 
-#: includes/fields/class-acf-field-image.php:25
+#: includes/fields/class-acf-field-image.php:23
 msgid "Image"
 msgstr "Kuva"
 
-#: includes/fields/class-acf-field-message.php:118
+#: includes/fields/class-acf-field-message.php:112
 msgid "Allow HTML markup to display as visible text instead of rendering"
 msgstr "Salli HTML-muotoilun näkyminen tekstinä renderöinnin sijaan"
 
-#: includes/fields/class-acf-field-message.php:117
+#: includes/fields/class-acf-field-message.php:111
 msgid "Escape HTML"
 msgstr "Escape HTML"
 
-#: includes/fields/class-acf-field-message.php:109
-#: includes/fields/class-acf-field-textarea.php:170
+#: includes/fields/class-acf-field-message.php:103
+#: includes/fields/class-acf-field-textarea.php:164
 msgid "No Formatting"
 msgstr "Ei muotoilua"
 
-#: includes/fields/class-acf-field-message.php:108
-#: includes/fields/class-acf-field-textarea.php:169
+#: includes/fields/class-acf-field-message.php:102
+#: includes/fields/class-acf-field-textarea.php:163
 msgid "Automatically add &lt;br&gt;"
 msgstr "Lisää automaattisesti &lt;br&gt;"
 
-#: includes/fields/class-acf-field-message.php:107
-#: includes/fields/class-acf-field-textarea.php:168
+#: includes/fields/class-acf-field-message.php:101
+#: includes/fields/class-acf-field-textarea.php:162
 msgid "Automatically add paragraphs"
 msgstr "Lisää automaattisesti kappale"
 
-#: includes/fields/class-acf-field-message.php:103
-#: includes/fields/class-acf-field-textarea.php:164
+#: includes/fields/class-acf-field-message.php:97
+#: includes/fields/class-acf-field-textarea.php:158
 msgid "Controls how new lines are rendered"
 msgstr "Määrittää kuinka uudet rivit muotoillaan"
 
-#: includes/fields/class-acf-field-message.php:102
-#: includes/fields/class-acf-field-textarea.php:163
+#: includes/fields/class-acf-field-message.php:96
+#: includes/fields/class-acf-field-textarea.php:157
 msgid "New Lines"
 msgstr "Uudet rivit"
 
-#: includes/fields/class-acf-field-date_picker.php:232
-#: includes/fields/class-acf-field-date_time_picker.php:219
+#: includes/fields/class-acf-field-date_picker.php:224
+#: includes/fields/class-acf-field-date_time_picker.php:211
 msgid "Week Starts On"
 msgstr "Viikon ensimmäinen päivä"
 
-#: includes/fields/class-acf-field-date_picker.php:201
+#: includes/fields/class-acf-field-date_picker.php:193
 msgid "The format used when saving a value"
 msgstr "Arvo tallennetaan tähän muotoon"
 
-#: includes/fields/class-acf-field-date_picker.php:200
+#: includes/fields/class-acf-field-date_picker.php:192
 msgid "Save Format"
 msgstr "Tallennusmuoto"
 
-#: includes/fields/class-acf-field-date_picker.php:67
+#: includes/fields/class-acf-field-date_picker.php:63
 msgctxt "Date Picker JS weekHeader"
 msgid "Wk"
 msgstr "Vk"
 
-#: includes/fields/class-acf-field-date_picker.php:66
+#: includes/fields/class-acf-field-date_picker.php:62
 msgctxt "Date Picker JS prevText"
 msgid "Prev"
 msgstr "Edellinen"
 
-#: includes/fields/class-acf-field-date_picker.php:65
+#: includes/fields/class-acf-field-date_picker.php:61
 msgctxt "Date Picker JS nextText"
 msgid "Next"
 msgstr "Seuraava"
 
-#: includes/fields/class-acf-field-date_picker.php:64
+#: includes/fields/class-acf-field-date_picker.php:60
 msgctxt "Date Picker JS currentText"
 msgid "Today"
 msgstr "Tänään"
 
-#: includes/fields/class-acf-field-date_picker.php:63
+#: includes/fields/class-acf-field-date_picker.php:59
 msgctxt "Date Picker JS closeText"
 msgid "Done"
 msgstr "Sulje"
 
-#: includes/fields/class-acf-field-date_picker.php:25
+#: includes/fields/class-acf-field-date_picker.php:23
 msgid "Date Picker"
 msgstr "Päivämäärävalitsin"
 
-#: includes/fields/class-acf-field-image.php:247
-#: includes/fields/class-acf-field-image.php:283
-#: includes/fields/class-acf-field-oembed.php:266
+#: includes/fields/class-acf-field-image.php:241
+#: includes/fields/class-acf-field-image.php:277
+#: includes/fields/class-acf-field-oembed.php:255
 msgid "Width"
 msgstr "Leveys"
 
-#: includes/fields/class-acf-field-oembed.php:263
-#: includes/fields/class-acf-field-oembed.php:275
+#: includes/fields/class-acf-field-oembed.php:252
+#: includes/fields/class-acf-field-oembed.php:264
 msgid "Embed Size"
 msgstr "Upotuksen koko"
 
-#: includes/fields/class-acf-field-oembed.php:221
+#: includes/fields/class-acf-field-oembed.php:212
 msgid "Enter URL"
 msgstr "Syötä URL"
 
-#: includes/fields/class-acf-field-oembed.php:25
+#: includes/fields/class-acf-field-oembed.php:23
 msgid "oEmbed"
 msgstr "oEmbed"
 
-#: includes/fields/class-acf-field-true_false.php:181
+#: includes/fields/class-acf-field-true_false.php:174
 msgid "Text shown when inactive"
 msgstr "Teksti, joka näytetään kun valinta ei ole aktiivinen"
 
-#: includes/fields/class-acf-field-true_false.php:180
+#: includes/fields/class-acf-field-true_false.php:173
 msgid "Off Text"
 msgstr "Pois päältä -teksti"
 
-#: includes/fields/class-acf-field-true_false.php:165
+#: includes/fields/class-acf-field-true_false.php:158
 msgid "Text shown when active"
 msgstr "Teksti, joka näytetään kun valinta on aktiivinen"
 
-#: includes/fields/class-acf-field-true_false.php:164
+#: includes/fields/class-acf-field-true_false.php:157
 msgid "On Text"
 msgstr "Päällä -teksti"
 
-#: includes/fields/class-acf-field-select.php:438
-#: includes/fields/class-acf-field-true_false.php:196
+#: includes/fields/class-acf-field-select.php:428
+#: includes/fields/class-acf-field-true_false.php:189
 msgid "Stylized UI"
 msgstr "Tyylikäs käyttöliittymä"
 
-#: includes/fields/class-acf-field-button-group.php:153
-#: includes/fields/class-acf-field-checkbox.php:351
-#: includes/fields/class-acf-field-color_picker.php:156
-#: includes/fields/class-acf-field-email.php:111
-#: includes/fields/class-acf-field-number.php:122
-#: includes/fields/class-acf-field-radio.php:201
-#: includes/fields/class-acf-field-range.php:163
-#: includes/fields/class-acf-field-select.php:369
-#: includes/fields/class-acf-field-text.php:103
-#: includes/fields/class-acf-field-textarea.php:101
-#: includes/fields/class-acf-field-true_false.php:144
-#: includes/fields/class-acf-field-url.php:85
-#: includes/fields/class-acf-field-wysiwyg.php:305
+#: includes/fields/class-acf-field-button-group.php:148
+#: includes/fields/class-acf-field-checkbox.php:337
+#: includes/fields/class-acf-field-color_picker.php:148
+#: includes/fields/class-acf-field-email.php:105
+#: includes/fields/class-acf-field-number.php:116
+#: includes/fields/class-acf-field-radio.php:195
+#: includes/fields/class-acf-field-range.php:156
+#: includes/fields/class-acf-field-select.php:359
+#: includes/fields/class-acf-field-text.php:97
+#: includes/fields/class-acf-field-textarea.php:95
+#: includes/fields/class-acf-field-true_false.php:137
+#: includes/fields/class-acf-field-url.php:84
+#: includes/fields/class-acf-field-wysiwyg.php:295
 msgid "Default Value"
 msgstr "Oletusarvo"
 
-#: includes/fields/class-acf-field-true_false.php:135
+#: includes/fields/class-acf-field-true_false.php:128
 msgid "Displays text alongside the checkbox"
 msgstr "Näytä teksti valintaruudun rinnalla"
 
-#: includes/fields/class-acf-field-message.php:26
-#: includes/fields/class-acf-field-message.php:92
-#: includes/fields/class-acf-field-true_false.php:134
+#: includes/fields/class-acf-field-message.php:24
+#: includes/fields/class-acf-field-message.php:86
+#: includes/fields/class-acf-field-true_false.php:127
 msgid "Message"
 msgstr "Viesti"
 
-#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:85
-#: includes/fields/class-acf-field-true_false.php:184
+#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:81
+#: includes/fields/class-acf-field-true_false.php:177
 #: assets/build/js/acf.js:1740 assets/build/js/acf.js:1857
 msgid "No"
 msgstr "Ei"
 
-#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:82
-#: includes/fields/class-acf-field-true_false.php:168
+#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:78
+#: includes/fields/class-acf-field-true_false.php:161
 #: assets/build/js/acf.js:1739 assets/build/js/acf.js:1856
 msgid "Yes"
 msgstr "Kyllä"
 
-#: includes/fields/class-acf-field-true_false.php:25
+#: includes/fields/class-acf-field-true_false.php:23
 msgid "True / False"
 msgstr "”Tosi / Epätosi” -valinta"
 
-#: includes/fields/class-acf-field-group.php:440
+#: includes/fields/class-acf-field-group.php:421
 msgid "Row"
 msgstr "Rivi"
 
-#: includes/fields/class-acf-field-group.php:439
+#: includes/fields/class-acf-field-group.php:420
 msgid "Table"
 msgstr "Taulukko"
 
-#: includes/admin/post-types/admin-field-group.php:132
-#: includes/fields/class-acf-field-group.php:438
+#: includes/admin/post-types/admin-field-group.php:128
+#: includes/fields/class-acf-field-group.php:419
 msgid "Block"
 msgstr "Lohko"
 
-#: includes/fields/class-acf-field-group.php:433
+#: includes/fields/class-acf-field-group.php:414
 msgid "Specify the style used to render the selected fields"
 msgstr "Määritä tyyli, jota käytetään valittujen kenttien luomisessa"
 
-#: includes/fields.php:374 includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-checkbox.php:424
-#: includes/fields/class-acf-field-group.php:432
-#: includes/fields/class-acf-field-radio.php:285
+#: includes/fields.php:337 includes/fields/class-acf-field-button-group.php:205
+#: includes/fields/class-acf-field-checkbox.php:410
+#: includes/fields/class-acf-field-group.php:413
+#: includes/fields/class-acf-field-radio.php:279
 msgid "Layout"
 msgstr "Asettelu"
 
-#: includes/fields/class-acf-field-group.php:416
+#: includes/fields/class-acf-field-group.php:397
 msgid "Sub Fields"
 msgstr "Alakentät"
 
-#: includes/fields/class-acf-field-group.php:25
+#: includes/fields/class-acf-field-group.php:23
 msgid "Group"
 msgstr "Ryhmä"
 
-#: includes/fields/class-acf-field-google-map.php:234
+#: includes/fields/class-acf-field-google-map.php:226
 msgid "Customize the map height"
 msgstr "Kartan korkeuden mukauttaminen"
 
-#: includes/fields/class-acf-field-google-map.php:233
-#: includes/fields/class-acf-field-image.php:258
-#: includes/fields/class-acf-field-image.php:294
-#: includes/fields/class-acf-field-oembed.php:278
+#: includes/fields/class-acf-field-google-map.php:225
+#: includes/fields/class-acf-field-image.php:252
+#: includes/fields/class-acf-field-image.php:288
+#: includes/fields/class-acf-field-oembed.php:267
 msgid "Height"
 msgstr "Korkeus"
 
-#: includes/fields/class-acf-field-google-map.php:222
+#: includes/fields/class-acf-field-google-map.php:214
 msgid "Set the initial zoom level"
 msgstr "Aseta oletuszoomaus"
 
-#: includes/fields/class-acf-field-google-map.php:221
+#: includes/fields/class-acf-field-google-map.php:213
 msgid "Zoom"
 msgstr "Zoomaus"
 
-#: includes/fields/class-acf-field-google-map.php:195
-#: includes/fields/class-acf-field-google-map.php:208
+#: includes/fields/class-acf-field-google-map.php:187
+#: includes/fields/class-acf-field-google-map.php:200
 msgid "Center the initial map"
 msgstr "Kartan oletussijainti"
 
-#: includes/fields/class-acf-field-google-map.php:194
-#: includes/fields/class-acf-field-google-map.php:207
+#: includes/fields/class-acf-field-google-map.php:186
+#: includes/fields/class-acf-field-google-map.php:199
 msgid "Center"
 msgstr "Sijainti"
 
-#: includes/fields/class-acf-field-google-map.php:163
+#: includes/fields/class-acf-field-google-map.php:157
 msgid "Search for address..."
 msgstr "Etsi osoite..."
 
-#: includes/fields/class-acf-field-google-map.php:160
+#: includes/fields/class-acf-field-google-map.php:154
 msgid "Find current location"
 msgstr "Etsi nykyinen sijainti"
 
-#: includes/fields/class-acf-field-google-map.php:159
+#: includes/fields/class-acf-field-google-map.php:153
 msgid "Clear location"
 msgstr "Tyhjennä paikkatieto"
 
-#: includes/fields/class-acf-field-google-map.php:158
-#: includes/fields/class-acf-field-relationship.php:594
+#: includes/fields/class-acf-field-google-map.php:152
+#: includes/fields/class-acf-field-relationship.php:580
 msgid "Search"
 msgstr "Etsi"
 
-#: includes/fields/class-acf-field-google-map.php:63
+#: includes/fields/class-acf-field-google-map.php:59
 #: assets/build/js/acf-input.js:2838 assets/build/js/acf-input.js:3026
 msgid "Sorry, this browser does not support geolocation"
 msgstr "Pahoittelut, tämä selain ei tue paikannusta"
 
-#: includes/fields/class-acf-field-google-map.php:25
+#: includes/fields/class-acf-field-google-map.php:23
 msgid "Google Map"
 msgstr "Google-kartta"
 
-#: includes/fields/class-acf-field-date_picker.php:212
-#: includes/fields/class-acf-field-date_time_picker.php:200
-#: includes/fields/class-acf-field-time_picker.php:130
+#: includes/fields/class-acf-field-date_picker.php:204
+#: includes/fields/class-acf-field-date_time_picker.php:192
+#: includes/fields/class-acf-field-time_picker.php:124
 msgid "The format returned via template functions"
 msgstr "Sivupohjan funktioiden palauttama päivämäärän muoto"
 
-#: includes/fields/class-acf-field-color_picker.php:180
-#: includes/fields/class-acf-field-date_picker.php:211
-#: includes/fields/class-acf-field-date_time_picker.php:199
-#: includes/fields/class-acf-field-image.php:186
-#: includes/fields/class-acf-field-post_object.php:384
-#: includes/fields/class-acf-field-relationship.php:604
-#: includes/fields/class-acf-field-select.php:380
-#: includes/fields/class-acf-field-time_picker.php:129
+#: includes/fields/class-acf-field-color_picker.php:172
+#: includes/fields/class-acf-field-date_picker.php:203
+#: includes/fields/class-acf-field-date_time_picker.php:191
+#: includes/fields/class-acf-field-image.php:180
+#: includes/fields/class-acf-field-post_object.php:372
+#: includes/fields/class-acf-field-relationship.php:590
+#: includes/fields/class-acf-field-select.php:370
+#: includes/fields/class-acf-field-time_picker.php:123
 #: includes/fields/class-acf-field-user.php:66
 msgid "Return Format"
 msgstr "Palautusmuoto"
 
-#: includes/fields/class-acf-field-date_picker.php:190
-#: includes/fields/class-acf-field-date_picker.php:221
-#: includes/fields/class-acf-field-date_time_picker.php:191
-#: includes/fields/class-acf-field-date_time_picker.php:209
-#: includes/fields/class-acf-field-time_picker.php:121
-#: includes/fields/class-acf-field-time_picker.php:137
+#: includes/fields/class-acf-field-date_picker.php:182
+#: includes/fields/class-acf-field-date_picker.php:213
+#: includes/fields/class-acf-field-date_time_picker.php:183
+#: includes/fields/class-acf-field-date_time_picker.php:201
+#: includes/fields/class-acf-field-time_picker.php:115
+#: includes/fields/class-acf-field-time_picker.php:131
 msgid "Custom:"
 msgstr "Mukautettu:"
 
-#: includes/fields/class-acf-field-date_picker.php:182
-#: includes/fields/class-acf-field-date_time_picker.php:182
-#: includes/fields/class-acf-field-time_picker.php:114
+#: includes/fields/class-acf-field-date_picker.php:174
+#: includes/fields/class-acf-field-date_time_picker.php:174
+#: includes/fields/class-acf-field-time_picker.php:108
 msgid "The format displayed when editing a post"
 msgstr "Päivämäärän muoto muokkausnäkymässä"
 
-#: includes/fields/class-acf-field-date_picker.php:181
-#: includes/fields/class-acf-field-date_time_picker.php:181
-#: includes/fields/class-acf-field-time_picker.php:113
+#: includes/fields/class-acf-field-date_picker.php:173
+#: includes/fields/class-acf-field-date_time_picker.php:173
+#: includes/fields/class-acf-field-time_picker.php:107
 msgid "Display Format"
 msgstr "Muokkausnäkymän muoto"
 
-#: includes/fields/class-acf-field-time_picker.php:25
+#: includes/fields/class-acf-field-time_picker.php:23
 msgid "Time Picker"
 msgstr "Kellonaikavalitsin"
 
 #. translators: counts for inactive field groups
-#: acf.php:499
+#: acf.php:489
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Poistettu käytöstä <span class=\"count\">(%s)</span>"
 msgstr[1] "Poistettu käytöstä <span class=\"count\">(%s)</span>"
 
-#: acf.php:458
+#: acf.php:450
 msgid "No Fields found in Trash"
 msgstr "Kenttiä ei löytynyt roskakorista"
 
-#: acf.php:457
+#: acf.php:449
 msgid "No Fields found"
 msgstr "Ei löytynyt kenttiä"
 
-#: acf.php:456
+#: acf.php:448
 msgid "Search Fields"
 msgstr "Etsi kenttiä"
 
-#: acf.php:455
+#: acf.php:447
 msgid "View Field"
 msgstr "Näytä kenttä"
 
-#: acf.php:454 includes/admin/views/acf-field-group/fields.php:111
+#: acf.php:446 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Uusi kenttä"
 
-#: acf.php:453
+#: acf.php:445
 msgid "Edit Field"
 msgstr "Muokkaa kenttää"
 
-#: acf.php:452
+#: acf.php:444
 msgid "Add New Field"
 msgstr "Lisää uusi kenttä"
 
-#: acf.php:450
+#: acf.php:442
 msgid "Field"
 msgstr "Kenttä"
 
-#: acf.php:449 includes/admin/post-types/admin-field-group.php:155
-#: includes/admin/post-types/admin-field-groups.php:118
+#: acf.php:441 includes/admin/post-types/admin-field-group.php:149
+#: includes/admin/post-types/admin-field-groups.php:110
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Kentät"
 
-#: acf.php:424
+#: acf.php:416
 msgid "No Field Groups found in Trash"
 msgstr "Kenttäryhmiä ei löytynyt roskakorista"
 
-#: acf.php:423
+#: acf.php:415
 msgid "No Field Groups found"
 msgstr "Kenttäryhmiä ei löytynyt"
 
-#: acf.php:422
+#: acf.php:414
 msgid "Search Field Groups"
 msgstr "Etsi kenttäryhmiä"
 
-#: acf.php:421
+#: acf.php:413
 msgid "View Field Group"
 msgstr "Katso kenttäryhmää"
 
-#: acf.php:420
+#: acf.php:412
 msgid "New Field Group"
 msgstr "Lisää uusi kenttäryhmä"
 
-#: acf.php:419
+#: acf.php:411
 msgid "Edit Field Group"
 msgstr "Muokkaa kenttäryhmää"
 
-#: acf.php:418
+#: acf.php:410
 msgid "Add New Field Group"
 msgstr "Lisää uusi kenttäryhmä"
 
-#: acf.php:417 acf.php:451
+#: acf.php:409 acf.php:443
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Lisää uusi"
 
-#: acf.php:416
+#: acf.php:408
 msgid "Field Group"
 msgstr "Kenttäryhmä"
 
-#: acf.php:415 includes/admin/post-types/admin-field-groups.php:77
-#: includes/admin/post-types/admin-post-types.php:138
-#: includes/admin/post-types/admin-taxonomies.php:138
+#: acf.php:407 includes/admin/post-types/admin-field-groups.php:72
+#: includes/admin/post-types/admin-post-types.php:131
+#: includes/admin/post-types/admin-taxonomies.php:130
 msgid "Field Groups"
 msgstr "Kenttäryhmät"
 
 #. Description of the plugin
+#: acf.php
 msgid "Customize WordPress with powerful, professional and intuitive fields."
 msgstr ""
 "Mukauta WordPressiä tehokkailla, ammattimaisilla ja intuitiivisilla kentillä."
 
 #. Plugin URI of the plugin
+#: acf.php
 msgid "https://www.advancedcustomfields.com"
 msgstr "http://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php:97
+#: acf.php acf.php:93
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
 
@@ -5804,13 +5802,13 @@ msgstr "Asetukset päivitetty"
 
 #: pro/updates.php:99
 msgid ""
-"To enable updates, please enter your license key on the <a href=\"%1$s"
-"\">Updates</a> page. If you don't have a licence key, please see <a href="
-"\"%2$s\" target=\"_blank\">details & pricing</a>."
+"To enable updates, please enter your license key on the <a "
+"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
+"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
 msgstr ""
-"Ottaaksesi käyttöön päivitykset, syötä lisenssiavaimesi <a href=\"%1$s"
-"\">Päivitykset</a> -sivulle. Jos sinulla ei ole lisenssiavainta, katso <a "
-"href=\"%2$s\" target=\"_blank\">tiedot ja hinnoittelu</a>."
+"Ottaaksesi käyttöön päivitykset, syötä lisenssiavaimesi <a "
+"href=\"%1$s\">Päivitykset</a> -sivulle. Jos sinulla ei ole lisenssiavainta, "
+"katso <a href=\"%2$s\" target=\"_blank\">tiedot ja hinnoittelu</a>."
 
 #: pro/updates.php:159
 msgid ""

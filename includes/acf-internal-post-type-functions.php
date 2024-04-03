@@ -466,6 +466,33 @@ function acf_determine_internal_post_type( $key ) {
 }
 
 /**
+ * Check if the provided key is an identifiable ACF post type.
+ *
+ * @since 6.2.8
+ *
+ * @param string $key The key to check.
+ * @return boolean
+ */
+function acf_is_valid_internal_post_type_key( string $key ) {
+	return (bool) acf_determine_internal_post_type( $key );
+}
+
+/**
+ * Check if the provided post type object contains a valid internal post type key.
+ *
+ * @since 6.2.8
+ *
+ * @param array $internal_post_type The post type object array to check it's key.
+ * @return boolean
+ */
+function acf_internal_post_object_contains_valid_key( array $internal_post_type ) {
+	if ( ! is_array( $internal_post_type ) || empty( $internal_post_type['key'] ) || ! is_string( $internal_post_type['key'] ) ) {
+		return false;
+	}
+	return acf_is_valid_internal_post_type_key( $internal_post_type['key'] );
+}
+
+/**
  * Returns an array of tabs for the post type advanced settings.
  *
  * @since 6.1

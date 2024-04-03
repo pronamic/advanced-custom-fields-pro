@@ -41,7 +41,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 		}
 
 		/**
-		 * This function will customize the message shown when editing a post type.
+		 * Customizes the messages shown when editing a UI options page.
 		 *
 		 * @since 6.2
 		 *
@@ -359,6 +359,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 			global $menu;
 			$acf_all_options_pages   = acf_get_options_pages();
 			$acf_parent_page_choices = array( 'None' => array( 'none' => __( 'No Parent', 'acf' ) ) );
+			$self_slug               = false;
 
 			if ( is_array( $acf_all_options_pages ) ) {
 				foreach ( $acf_all_options_pages as $options_page ) {
@@ -369,6 +370,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 
 					// Can't be a child of itself.
 					if ( isset( $options_page['ID'] ) && $post_id === $options_page['ID'] ) {
+						$self_slug = $options_page['menu_slug'];
 						continue;
 					}
 
@@ -388,6 +390,11 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 					$page_name      = $item[0];
 					$markup         = '/<[^>]+>.*<\/[^>]+>/';
 					$sanitized_name = preg_replace( $markup, '', $page_name );
+
+					// Prevent options pages being parents of themselves.
+					if ( ! empty( $item[2] ) && $item[2] === $self_slug ) {
+						continue;
+					}
 
 					// Ensure that the current item is not an ACF page or that ACF pages are an empty array before adding to others.
 					if ( ! empty( $acf_parent_page_choices['acfOptionsPages'] ) && ! in_array( $page_name, $acf_parent_page_choices['acfOptionsPages'], true ) || empty( $acf_parent_page_choices['acfOptionsPages'] ) ) {

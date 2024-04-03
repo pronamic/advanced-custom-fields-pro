@@ -304,13 +304,10 @@
       }
     },
     onChangeName: function (e, $el) {
-      var name = $el.val();
-
-      // strip any invalid characters.
-      name = name.replace(/[^A-Za-zŽžÀ-ÿ0-9_-]+/g, '-');
-      $el.val(name);
-      this.set('layoutName', name);
-      this.$el.attr('data-layout-name', name);
+      const sanitizedName = acf.strSanitize($el.val());
+      $el.val(sanitizedName);
+      this.set('layoutName', sanitizedName);
+      this.$el.attr('data-layout-name', sanitizedName);
     },
     onClickAdd: function (e, $el) {
       e.preventDefault();

@@ -59,7 +59,7 @@
         }
         const $parentSelect = $(selection.element.parentElement);
         const $selection = $('<span class="acf-selection"></span>');
-        $selection.html(acf.escHtml(selection.element.innerHTML));
+        $selection.html(acf.strEscape(selection.element.innerHTML));
         let isDefault = false;
         if ($parentSelect.filter('.acf-taxonomy-manage_terms, .acf-taxonomy-edit_terms, .acf-taxonomy-delete_terms').length && selection.id === 'manage_categories') {
           isDefault = true;

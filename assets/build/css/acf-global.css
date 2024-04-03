@@ -2402,7 +2402,9 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 }
 .acf-admin-page .p4, .acf-admin-page .acf-admin-toolbar a.acf-admin-toolbar-upgrade-btn p, .acf-admin-toolbar a.acf-admin-toolbar-upgrade-btn .acf-admin-page p, .acf-admin-page #acf-update-information .form-table th, #acf-update-information .form-table .acf-admin-page th,
 .acf-admin-page #acf-update-information .form-table td,
-#acf-update-information .form-table .acf-admin-page td, .acf-admin-page #acf-admin-tools.tool-export .acf-panel h3, #acf-admin-tools.tool-export .acf-panel .acf-admin-page h3, .acf-admin-page .acf-btn.acf-btn-sm, .acf-admin-page .acf-admin-toolbar .acf-tab, .acf-admin-toolbar .acf-admin-page .acf-tab, .acf-admin-page .acf-options-preview .acf-options-pages-preview-upgrade-button p, .acf-options-preview .acf-options-pages-preview-upgrade-button .acf-admin-page p, .acf-admin-page .acf-internal-post-type .subsubsub li, .acf-internal-post-type .subsubsub .acf-admin-page li, .acf-admin-page .acf-internal-post-type .wp-list-table tbody th, .acf-internal-post-type .wp-list-table tbody .acf-admin-page th,
+#acf-update-information .form-table .acf-admin-page td, .acf-admin-page #acf-admin-tools.tool-export .acf-panel h3, #acf-admin-tools.tool-export .acf-panel .acf-admin-page h3, .acf-admin-page .acf-btn.acf-btn-sm, .acf-admin-page .acf-admin-toolbar .acf-tab, .acf-admin-toolbar .acf-admin-page .acf-tab, .acf-admin-page .acf-options-preview .acf-options-pages-preview-upgrade-button p, .acf-options-preview .acf-options-pages-preview-upgrade-button .acf-admin-page p,
+.acf-admin-page .acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button p,
+.acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button .acf-admin-page p, .acf-admin-page .acf-internal-post-type .subsubsub li, .acf-internal-post-type .subsubsub .acf-admin-page li, .acf-admin-page .acf-internal-post-type .wp-list-table tbody th, .acf-internal-post-type .wp-list-table tbody .acf-admin-page th,
 .acf-admin-page .acf-internal-post-type .wp-list-table tbody td,
 .acf-internal-post-type .wp-list-table tbody .acf-admin-page td, .acf-admin-page .acf-internal-post-type .wp-list-table thead th, .acf-internal-post-type .wp-list-table thead .acf-admin-page th, .acf-admin-page .acf-internal-post-type .wp-list-table thead td, .acf-internal-post-type .wp-list-table thead .acf-admin-page td,
 .acf-admin-page .acf-internal-post-type .wp-list-table tfoot th,
@@ -4109,16 +4111,19 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
 *  Options Page Preview
 *
 *---------------------------------------------------------------------------------------------*/
-.acf-options-preview .acf-btn {
+.acf-options-preview .acf-btn,
+.acf-no-options-pages-wrapper .acf-btn {
   margin-left: 8px;
 }
-.acf-options-preview .disabled {
+.acf-options-preview .disabled,
+.acf-no-options-pages-wrapper .disabled {
   background-color: #F2F4F7 !important;
   color: #98A2B3 !important;
   border: 1px #D0D5DD solid;
   cursor: default !important;
 }
-.acf-options-preview .acf-options-pages-preview-upgrade-button {
+.acf-options-preview .acf-options-pages-preview-upgrade-button,
+.acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button {
   height: 48px;
   padding: 8px 48px 8px 48px !important;
   border-radius: 6px;
@@ -4135,15 +4140,18 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   border-radius: 6px;
   text-decoration: none;
 }
-.acf-options-preview .acf-options-pages-preview-upgrade-button:hover {
+.acf-options-preview .acf-options-pages-preview-upgrade-button:hover,
+.acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button:hover {
   background-position: 0 0;
 }
-.acf-options-preview .acf-options-pages-preview-upgrade-button:focus {
+.acf-options-preview .acf-options-pages-preview-upgrade-button:focus,
+.acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button:focus {
   border: none;
   outline: none;
   box-shadow: none;
 }
-.acf-options-preview .acf-options-pages-preview-upgrade-button p {
+.acf-options-preview .acf-options-pages-preview-upgrade-button p,
+.acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button p {
   margin: 0;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -4151,21 +4159,25 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   text-transform: none;
   color: #fff;
 }
-.acf-options-preview .acf-options-pages-preview-upgrade-button .acf-icon {
+.acf-options-preview .acf-options-pages-preview-upgrade-button .acf-icon,
+.acf-no-options-pages-wrapper .acf-options-pages-preview-upgrade-button .acf-icon {
   width: 20px;
   height: 20px;
   margin-right: 6px;
   margin-left: -2px;
   background-color: #F9FAFB;
 }
-.acf-options-preview .acf_options_preview_wrap a.acf-btn i {
+.acf-options-preview .acf-ui-options-page-pro-features-actions a.acf-btn i,
+.acf-no-options-pages-wrapper .acf-ui-options-page-pro-features-actions a.acf-btn i {
   margin-right: -2px !important;
   margin-left: 0px !important;
 }
-.acf-options-preview .acf-pro-label {
+.acf-options-preview .acf-pro-label,
+.acf-no-options-pages-wrapper .acf-pro-label {
   vertical-align: middle;
 }
-.acf-options-preview .acf_options_preview_wrap img {
+.acf-options-preview .acf_options_preview_wrap img,
+.acf-no-options-pages-wrapper .acf_options_preview_wrap img {
   max-height: 88px;
 }
 
@@ -4213,6 +4225,62 @@ html[dir=rtl] .acf-table > tbody > tr > td.order + td {
   .acf-internal-post-type .widefat tfoot td input[type=checkbox] {
     margin-bottom: 0;
   }
+}
+
+/*---------------------------------------------------------------------------------------------
+*
+*  Invalid license states
+*
+*---------------------------------------------------------------------------------------------*/
+.acf-internal-post-type.acf-pro-inactive-license.acf-admin-options-pages .row-title {
+  color: #667085;
+  pointer-events: none;
+  display: inline-flex;
+  vertical-align: middle;
+  gap: 6px;
+}
+.acf-internal-post-type.acf-pro-inactive-license.acf-admin-options-pages .row-title:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-color: #667085;
+  display: inline-block;
+  align-self: center;
+  -webkit-mask-image: url("../../images/icons/icon-lock.svg");
+  mask-image: url("../../images/icons/icon-lock.svg");
+}
+.acf-internal-post-type.acf-pro-inactive-license.acf-admin-options-pages .row-actions {
+  display: none;
+}
+.acf-internal-post-type.acf-pro-inactive-license.acf-admin-options-pages .column-title .acf-js-tooltip {
+  display: inline-block;
+}
+.acf-internal-post-type.acf-pro-inactive-license tr.acf-has-block-location .row-title {
+  color: #667085;
+  pointer-events: none;
+  display: inline-flex;
+  vertical-align: middle;
+  gap: 6px;
+}
+.acf-internal-post-type.acf-pro-inactive-license tr.acf-has-block-location .row-title:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background-color: #667085;
+  display: inline-block;
+  align-self: center;
+  -webkit-mask-image: url("../../images/icons/icon-lock.svg");
+  mask-image: url("../../images/icons/icon-lock.svg");
+}
+.acf-internal-post-type.acf-pro-inactive-license tr.acf-has-block-location .acf-count a {
+  color: #667085;
+  pointer-events: none;
+}
+.acf-internal-post-type.acf-pro-inactive-license tr.acf-has-block-location .row-actions {
+  display: none;
+}
+.acf-internal-post-type.acf-pro-inactive-license tr.acf-has-block-location .column-title .acf-js-tooltip {
+  display: inline-block;
 }
 
 /*---------------------------------------------------------------------------------------------
@@ -6803,15 +6871,16 @@ h3.acf-sub-field-list-title:before,
   align-items: center;
   min-height: 24px;
   margin-bottom: 12px;
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
   background: linear-gradient(90.52deg, #3E8BFF 0.44%, #A45CFF 113.3%);
   background-size: 140% 20%;
   background-position: 100% 0;
   border-radius: 100px;
   color: white;
   text-decoration: none;
-  font-size: 11px;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 .acf-modal.acf-browse-fields-modal .acf-field-type-preview .field-type-info .field-type-upgrade-to-unlock i.acf-icon {
   width: 14px;

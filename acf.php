@@ -9,7 +9,7 @@
  * Plugin Name:       Advanced Custom Fields PRO
  * Plugin URI:        https://www.advancedcustomfields.com
  * Description:       Customize WordPress with powerful, professional and intuitive fields.
- * Version:           6.2.7
+ * Version:           6.2.8
  * Author:            WP Engine
  * Author URI:        https://wpengine.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields
  * Update URI:        https://www.advancedcustomfields.com/pro
@@ -36,7 +36,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '6.2.7';
+		public $version = '6.2.8';
 
 		/**
 		 * The plugin settings array.
@@ -129,6 +129,7 @@ if ( ! class_exists( 'ACF' ) ) {
 				'preload_blocks'          => true,
 				'enable_shortcode'        => true,
 				'enable_bidirection'      => true,
+				'enable_block_bindings'   => true,
 			);
 
 			// Include utility functions.
@@ -379,6 +380,12 @@ if ( ! class_exists( 'ACF' ) ) {
 			 * @param int ACF_MAJOR_VERSION The major version of ACF.
 			 */
 			do_action( 'acf/include_taxonomies', ACF_MAJOR_VERSION );
+
+			// If we're on 6.5 or newer, load block bindings. This will move to an autoloader in 6.3.
+			if ( version_compare( get_bloginfo( 'version' ), '6.5-beta1', '>=' ) ) {
+				acf_include( 'includes/Blocks/Bindings.php' );
+				new ACF\Blocks\Bindings();
+			}
 
 			/**
 			 * Fires after ACF is completely "initialized".

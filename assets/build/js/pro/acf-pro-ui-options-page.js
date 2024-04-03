@@ -20,14 +20,14 @@
     if ('acfOptionsPages' === selection.text) {
       selection.text = acf.__('Options Pages');
     }
-    return $('<span class="acf-selection"></span>').data('element', selection.element).html(acf.escHtml(selection.text));
+    return $('<span class="acf-selection"></span>').data('element', selection.element).html(acf.strEscape(selection.text));
   };
   const defaultPillTemplate = function (selection) {
     if ('undefined' === typeof selection.element) {
       return selection;
     }
     const $selection = $('<span class="acf-selection"></span>');
-    $selection.html(acf.escHtml(selection.element.innerHTML));
+    $selection.html(acf.strEscape(selection.element.innerHTML));
     if (selection.id === 'options' || selection.id === 'edit_posts') {
       $selection.append('<span class="acf-select2-default-pill">' + acf.__('Default') + '</span>');
     }

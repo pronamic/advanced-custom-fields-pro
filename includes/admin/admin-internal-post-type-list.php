@@ -68,11 +68,29 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'current_screen', array( $this, 'current_screen' ) );
+			add_action( 'admin_footer', array( $this, 'include_pro_features' ) );
 
 			// Handle post status change events.
 			add_action( 'trashed_post', array( $this, 'trashed_post' ) );
 			add_action( 'untrashed_post', array( $this, 'untrashed_post' ) );
 			add_action( 'deleted_post', array( $this, 'deleted_post' ) );
+		}
+
+		/**
+		 * Renders HTML for the ACF PRO features upgrade notice.
+		 */
+		public function include_pro_features() {
+			// Bail if not the edit screen
+			if ( ! acf_is_screen( 'edit-' . $this->post_type ) ) {
+				return;
+			}
+
+			// Bail if on PRO.
+			if ( acf_is_pro() && acf_pro_is_license_active() ) {
+				return;
+			}
+
+			acf_get_view( 'acf-field-group/pro-features' );
 		}
 
 		/**
@@ -155,6 +173,8 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 			if ( $this->view === 'sync' ) {
 				add_action( 'admin_footer', array( $this, 'admin_footer__sync' ), 1 );
 			}
+
+			do_action( 'acf/internal_post_type_list/current_screen', $this->post_type );
 		}
 
 		/**
@@ -205,9 +225,11 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 
 			acf_localize_text(
 				array(
-					'Review local JSON changes' => __( 'Review local JSON changes', 'acf' ),
-					'Loading diff'              => __( 'Loading diff', 'acf' ),
-					'Sync changes'              => __( 'Sync changes', 'acf' ),
+					'Review local JSON changes' => esc_html__( 'Review local JSON changes', 'acf' ),
+					'Loading diff'              => esc_html__( 'Loading diff', 'acf' ),
+					'Sync changes'              => esc_html__( 'Sync changes', 'acf' ),
+					'Please activate your ACF PRO license to edit this options page.' => esc_html__( 'Please activate your ACF PRO license to edit this options page.', 'acf' ),
+					'Please activate your ACF PRO license to edit field groups assigned to an ACF Block.' => esc_html__( 'Please activate your ACF PRO license to edit field groups assigned to an ACF Block.', 'acf' ),
 				)
 			);
 		}
@@ -228,7 +250,7 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 				$classes .= ' view-' . esc_attr( $this->view );
 			}
 
-			return $classes;
+			return apply_filters( 'acf/internal_post_type_list/admin_body_classes', $classes, $this->post_type );
 		}
 
 		/**
@@ -789,6 +811,20 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 								}
 							});
 					}
+
+					$ (document ).on( 'ready', function( e ) {
+						if ( ! acf.get( 'is_pro' ) || acf.get( 'isLicenseActive' ) || acf.get( 'isLicenseExpired' ) ) {
+							return;
+						}
+
+						$( '.acf-has-block-location .column-title strong' )
+							.addClass( 'acf-js-tooltip' )
+							.attr( 'title', acf.__( 'Field groups for blocks cannot be edited without a license.', 'acf' ) );
+
+						$( '.acf-admin-options-pages .column-title strong' )
+							.addClass( 'acf-js-tooltip' )
+							.attr( 'title', acf.__( 'Options pages cannot be edited without a license.', 'acf' ) );
+					} );
 
 					// Add event listener.
 					$(document).on('click', 'a[data-event="review-sync"]', function( e ){

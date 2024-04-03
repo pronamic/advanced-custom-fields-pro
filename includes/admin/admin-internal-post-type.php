@@ -98,6 +98,8 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 			add_action( 'acf/input/admin_footer', array( $this, 'admin_footer' ) );
 
 			add_filter( 'acf/input/admin_l10n', array( $this, 'admin_l10n' ) );
+
+			do_action( 'acf/internal_post_type/current_screen', $this->post_type );
 		}
 
 		/**
@@ -109,7 +111,8 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type' ) ) :
 		 * @return string
 		 */
 		public function admin_body_class( $classes ) {
-			return $classes . ' acf-admin-page acf-internal-post-type ' . esc_attr( $this->admin_body_class );
+			$classes .= ' acf-admin-page acf-internal-post-type ' . esc_attr( $this->admin_body_class );
+			return apply_filters( 'acf/internal_post_type/admin_body_classes', $classes, $this->post_type );
 		}
 
 		/**

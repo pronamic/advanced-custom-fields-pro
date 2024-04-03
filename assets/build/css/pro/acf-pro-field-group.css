@@ -141,4 +141,22 @@
   display: none;
 }
 
+/*----------------------------------------------------------------------------
+*
+*  Pro fields with inactive licenses.
+*
+*----------------------------------------------------------------------------*/
+.acf-pro-inactive-license .acf-pro-field-object .li-field-label:before {
+  -webkit-mask-image: url("../../../images/icons/icon-lock.svg") !important;
+  mask-image: url("../../../images/icons/icon-lock.svg") !important;
+  pointer-events: none;
+}
+.acf-pro-inactive-license .acf-pro-field-object .edit-field {
+  pointer-events: none;
+  color: #667085;
+}
+.acf-pro-inactive-license .acf-pro-field-object .row-options {
+  display: none;
+}
+
 /*# sourceMappingURL=acf-pro-field-group.css.map*/
