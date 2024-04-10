@@ -1425,7 +1425,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
       }
     },
     onChangeName: function (e, $el) {
-      const sanitizedName = acf.strSanitize($el.val());
+      const sanitizedName = acf.strSanitize($el.val(), false);
       $el.val(sanitizedName);
       this.set('name', sanitizedName);
       if (sanitizedName.startsWith('field_')) {

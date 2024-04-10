@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 5.8
 Tested up to: 6.5
 Requires PHP: 7.0
-Stable tag: 6.2.8
+Stable tag: 6.2.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,14 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.2.9 =
+*Release Date 8th April 2024*
+
+* Enhancement - The Select2 escapeMarkup function can now be overridden when initializing a custom Select2
+* Fix - “Hide on Screen” settings are now correctly applied when using conditionally loaded field groups
+* Fix - Field names are no longer converted to lowercase when editing the name
+* Fix - Field group titles will no longer convert HTML entities into their encoded form
 
 = 6.2.8 =
 *Release Date 2nd April 2024*

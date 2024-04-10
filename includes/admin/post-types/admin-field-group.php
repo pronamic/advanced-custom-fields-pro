@@ -353,11 +353,12 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 			}
 
 			$_POST['acf_field_group']['ID'] = $post_id;
-			// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized when saved.
-			$_POST['acf_field_group']['title'] = acf_maybe_get_POST( 'post_title', '' );
+			// phpcs:disable WordPress.Security.ValidatedSanitizedInput
+			$_POST['acf_field_group']['title'] = isset( $_POST['post_title'] ) ? $_POST['post_title'] : ''; // Post title is stored unsafe like WordPress, escaped on output.
 
 			// save field group.
-			acf_update_field_group( $_POST['acf_field_group'] ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+			acf_update_field_group( $_POST['acf_field_group'] );
+			// phpcs:enable WordPress.Security.ValidatedSanitizedInput
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			return $post_id;

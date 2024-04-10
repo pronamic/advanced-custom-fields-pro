@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-03-29T21:10:52+00:00\n"
+"PO-Revision-Date: 2024-04-08T08:54:42+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fa_AF\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/Blocks/Bindings.php:35
+msgctxt "The core ACF block binding source name for fields on the current page"
+msgid "ACF Fields"
+msgstr ""
+
+#: includes/admin/views/escaped-html-notice.php:5
+msgid "Learn how to fix this"
+msgstr ""
+
+#: includes/admin/views/browse-fields-modal.php:14
+msgid "ACF PRO Feature"
+msgstr ""
+
+#: includes/admin/views/browse-fields-modal.php:10
+msgid "Renew PRO to Unlock"
+msgstr ""
+
+#: includes/admin/views/browse-fields-modal.php:8
+msgid "Renew PRO License"
+msgstr ""
+
+#: includes/admin/views/acf-field-group/field.php:41
+msgid "PRO fields cannot be edited without an active license."
+msgstr ""
+
+#: includes/admin/admin-internal-post-type-list.php:232
+msgid ""
+"Please activate your ACF PRO license to edit field groups assigned to an ACF "
+"Block."
+msgstr ""
+
+#: includes/admin/admin-internal-post-type-list.php:231
+msgid "Please activate your ACF PRO license to edit this options page."
+msgstr ""
 
 #: includes/api/api-template.php:376 includes/api/api-template.php:430
 msgid ""
@@ -46,10 +81,6 @@ msgstr ""
 
 #: includes/admin/views/escaped-html-notice.php:14
 msgid "Please contact your site administrator or developer for more details."
-msgstr ""
-
-#: includes/admin/views/escaped-html-notice.php:5
-msgid "Learn&nbsp;more"
 msgstr ""
 
 #: includes/admin/admin.php:63
@@ -112,10 +143,10 @@ msgstr ""
 
 #. translators: %s - A singular label for a post type or taxonomy.
 #: includes/admin/views/global/form-top.php:56
-msgid " (Duplicated from %s)"
+msgid "(Duplicated from %s)"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:283
+#: includes/admin/tools/class-acf-admin-tool-export.php:289
 msgid "Select Options Pages"
 msgstr ""
 
@@ -148,8 +179,8 @@ msgid "Add fields"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:117
-#: assets/build/js/acf-field-group.js:2756
-#: assets/build/js/acf-field-group.js:3242
+#: assets/build/js/acf-field-group.js:2782
+#: assets/build/js/acf-field-group.js:3272
 msgid "This Field"
 msgstr ""
 
@@ -172,7 +203,7 @@ msgid "is developed and maintained by"
 msgstr ""
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:310
+#: includes/admin/admin-internal-post-type.php:313
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr ""
 
@@ -298,34 +329,34 @@ msgstr ""
 msgid "%s fields"
 msgstr ""
 
-#: includes/admin/post-types/admin-taxonomies.php:285
+#: includes/admin/post-types/admin-taxonomies.php:267
 msgid "No terms"
 msgstr ""
 
-#: includes/admin/post-types/admin-taxonomies.php:258
+#: includes/admin/post-types/admin-taxonomies.php:240
 msgid "No post types"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-types.php:282
+#: includes/admin/post-types/admin-post-types.php:264
 msgid "No posts"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-types.php:256
+#: includes/admin/post-types/admin-post-types.php:238
 msgid "No taxonomies"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-types.php:201
-#: includes/admin/post-types/admin-taxonomies.php:200
+#: includes/admin/post-types/admin-post-types.php:183
+#: includes/admin/post-types/admin-taxonomies.php:182
 msgid "No field groups"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-groups.php:272
+#: includes/admin/post-types/admin-field-groups.php:255
 msgid "No fields"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-groups.php:145
-#: includes/admin/post-types/admin-post-types.php:165
-#: includes/admin/post-types/admin-taxonomies.php:164
+#: includes/admin/post-types/admin-field-groups.php:128
+#: includes/admin/post-types/admin-post-types.php:147
+#: includes/admin/post-types/admin-taxonomies.php:146
 msgid "No description"
 msgstr ""
 
@@ -714,37 +745,33 @@ msgstr ""
 msgid "More"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:86
+#: includes/admin/views/browse-fields-modal.php:96
 msgid "Tutorial"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:75
-msgid "Available with ACF PRO"
-msgstr ""
-
-#: includes/admin/views/browse-fields-modal.php:63
+#: includes/admin/views/browse-fields-modal.php:73
 msgid "Select Field"
 msgstr ""
 
 #. translators: %s: A link to the popular fields used in ACF
-#: includes/admin/views/browse-fields-modal.php:50
+#: includes/admin/views/browse-fields-modal.php:60
 msgid "Try a different search term or browse %s"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:47
+#: includes/admin/views/browse-fields-modal.php:57
 msgid "Popular fields"
 msgstr ""
 
 #. translators: %s: The invalid search term
-#: includes/admin/views/browse-fields-modal.php:40
+#: includes/admin/views/browse-fields-modal.php:50
 msgid "No search results for '%s'"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:13
+#: includes/admin/views/browse-fields-modal.php:23
 msgid "Search fields..."
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:11
+#: includes/admin/views/browse-fields-modal.php:21
 msgid "Select Field Type"
 msgstr ""
 
@@ -2266,7 +2293,7 @@ msgstr ""
 msgid "Select existing taxonomies to classify items of the post type."
 msgstr "طبقه‌بندی‌های موجود را برای دسته‌بندی کردن آیتم‌های نوع پست انتخاب نمایید."
 
-#: includes/admin/views/acf-field-group/field.php:147
+#: includes/admin/views/acf-field-group/field.php:158
 msgid "Browse Fields"
 msgstr ""
 
@@ -2313,7 +2340,7 @@ msgstr ""
 msgid "Import from Custom Post Type UI"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:349
+#: includes/admin/tools/class-acf-admin-tool-export.php:354
 msgid ""
 "The following code can be used to register a local version of the selected "
 "items. Storing field groups, post types, or taxonomies locally can provide "
@@ -2323,15 +2350,15 @@ msgid ""
 "the items from the ACF admin."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:348
+#: includes/admin/tools/class-acf-admin-tool-export.php:353
 msgid "Export - Generate PHP"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:325
+#: includes/admin/tools/class-acf-admin-tool-export.php:330
 msgid "Export"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:261
+#: includes/admin/tools/class-acf-admin-tool-export.php:264
 msgid "Select Taxonomies"
 msgstr ""
 
@@ -2339,7 +2366,7 @@ msgstr ""
 msgid "Select Post Types"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:160
+#: includes/admin/tools/class-acf-admin-tool-export.php:155
 msgid "Exported 1 item."
 msgid_plural "Exported %s items."
 msgstr[0] ""
@@ -2390,7 +2417,7 @@ msgstr ""
 msgid "Taxonomy updated."
 msgstr ""
 
-#: includes/admin/post-types/admin-taxonomies.php:369
+#: includes/admin/post-types/admin-taxonomies.php:351
 #: includes/admin/post-types/admin-taxonomy.php:153
 msgid ""
 "This taxonomy could not be registered because its key is in use by another "
@@ -2398,59 +2425,59 @@ msgid ""
 msgstr ""
 
 #. translators: %s number of taxonomies synchronized
-#: includes/admin/post-types/admin-taxonomies.php:351
+#: includes/admin/post-types/admin-taxonomies.php:333
 msgid "Taxonomy synchronized."
 msgid_plural "%s taxonomies synchronized."
 msgstr[0] ""
 
 #. translators: %s number of taxonomies duplicated
-#: includes/admin/post-types/admin-taxonomies.php:344
+#: includes/admin/post-types/admin-taxonomies.php:326
 msgid "Taxonomy duplicated."
 msgid_plural "%s taxonomies duplicated."
 msgstr[0] ""
 
 #. translators: %s number of taxonomies deactivated
-#: includes/admin/post-types/admin-taxonomies.php:337
+#: includes/admin/post-types/admin-taxonomies.php:319
 msgid "Taxonomy deactivated."
 msgid_plural "%s taxonomies deactivated."
 msgstr[0] ""
 
 #. translators: %s number of taxonomies activated
-#: includes/admin/post-types/admin-taxonomies.php:330
+#: includes/admin/post-types/admin-taxonomies.php:312
 msgid "Taxonomy activated."
 msgid_plural "%s taxonomies activated."
 msgstr[0] ""
 
-#: includes/admin/post-types/admin-taxonomies.php:131
+#: includes/admin/post-types/admin-taxonomies.php:113
 msgid "Terms"
 msgstr "شرایط"
 
 #. translators: %s number of post types synchronized
-#: includes/admin/post-types/admin-post-types.php:345
+#: includes/admin/post-types/admin-post-types.php:327
 msgid "Post type synchronized."
 msgid_plural "%s post types synchronized."
 msgstr[0] ""
 
 #. translators: %s number of post types duplicated
-#: includes/admin/post-types/admin-post-types.php:338
+#: includes/admin/post-types/admin-post-types.php:320
 msgid "Post type duplicated."
 msgid_plural "%s post types duplicated."
 msgstr[0] ""
 
 #. translators: %s number of post types deactivated
-#: includes/admin/post-types/admin-post-types.php:331
+#: includes/admin/post-types/admin-post-types.php:313
 msgid "Post type deactivated."
 msgid_plural "%s post types deactivated."
 msgstr[0] ""
 
 #. translators: %s number of post types activated
-#: includes/admin/post-types/admin-post-types.php:324
+#: includes/admin/post-types/admin-post-types.php:306
 msgid "Post type activated."
 msgid_plural "%s post types activated."
 msgstr[0] ""
 
-#: includes/admin/post-types/admin-post-types.php:105
-#: includes/admin/post-types/admin-taxonomies.php:129
+#: includes/admin/post-types/admin-post-types.php:87
+#: includes/admin/post-types/admin-taxonomies.php:111
 #: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
@@ -2468,7 +2495,7 @@ msgid "Basic Settings"
 msgstr "تنظیمات پایه"
 
 #: includes/admin/post-types/admin-post-type.php:151
-#: includes/admin/post-types/admin-post-types.php:363
+#: includes/admin/post-types/admin-post-types.php:345
 msgid ""
 "This post type could not be registered because its key is in use by another "
 "post type registered by another plugin or theme."
@@ -2480,7 +2507,7 @@ msgstr ""
 msgid "Pages"
 msgstr "صفحات"
 
-#: includes/admin/admin-internal-post-type.php:344
+#: includes/admin/admin-internal-post-type.php:347
 msgid "Link Existing Field Groups"
 msgstr ""
 
@@ -2524,16 +2551,16 @@ msgid "Post type deleted."
 msgstr "نوع پست حذف شد"
 
 #: includes/admin/post-types/admin-field-group.php:116
-#: assets/build/js/acf-field-group.js:1145
-#: assets/build/js/acf-field-group.js:1366
+#: assets/build/js/acf-field-group.js:1146
+#: assets/build/js/acf-field-group.js:1367
 msgid "Type to search..."
 msgstr "برای جستجو تایپ کنید...."
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: assets/build/js/acf-field-group.js:1171
-#: assets/build/js/acf-field-group.js:2322
-#: assets/build/js/acf-field-group.js:1415
-#: assets/build/js/acf-field-group.js:2733
+#: assets/build/js/acf-field-group.js:1173
+#: assets/build/js/acf-field-group.js:2336
+#: assets/build/js/acf-field-group.js:1413
+#: assets/build/js/acf-field-group.js:2745
 msgid "PRO Only"
 msgstr "فقط نسخه حرفه ای"
 
@@ -2554,43 +2581,43 @@ msgstr ""
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:311
+#: includes/admin/admin-internal-post-type.php:314
 msgid "taxonomy"
 msgstr "طبقه‌بندی"
 
-#: includes/admin/admin-internal-post-type.php:311
+#: includes/admin/admin-internal-post-type.php:314
 msgid "post type"
 msgstr "نوع نوشته"
 
-#: includes/admin/admin-internal-post-type.php:335
+#: includes/admin/admin-internal-post-type.php:338
 msgid "Done"
 msgstr "پایان"
 
-#: includes/admin/admin-internal-post-type.php:321
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Field Group(s)"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:320
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Select one or many field groups..."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:319
+#: includes/admin/admin-internal-post-type.php:322
 msgid "Please select the field groups to link."
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:277
+#: includes/admin/admin-internal-post-type.php:280
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] ""
 
-#: includes/admin/admin-internal-post-type-list.php:255
-#: includes/admin/post-types/admin-post-types.php:364
-#: includes/admin/post-types/admin-taxonomies.php:370
+#: includes/admin/admin-internal-post-type-list.php:277
+#: includes/admin/post-types/admin-post-types.php:346
+#: includes/admin/post-types/admin-taxonomies.php:352
 msgctxt "post status"
 msgid "Registration Failed"
 msgstr "ثبت نام انجام نشد"
 
-#: includes/admin/admin-internal-post-type-list.php:254
+#: includes/admin/admin-internal-post-type-list.php:276
 msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
@@ -2598,31 +2625,31 @@ msgstr ""
 "این مورد ثبت نشد زیرا کلید آن توسط مورد دیگری که توسط افزونه یا طرح زمینه "
 "دیگری ثبت شده است استفاده می شود."
 
-#: includes/acf-internal-post-type-functions.php:482
-#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:509
+#: includes/acf-internal-post-type-functions.php:538
 msgid "REST API"
 msgstr "REST API"
 
-#: includes/acf-internal-post-type-functions.php:481
-#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:508
 #: includes/acf-internal-post-type-functions.php:537
+#: includes/acf-internal-post-type-functions.php:564
 msgid "Permissions"
 msgstr "دسترسی‌ها"
 
-#: includes/acf-internal-post-type-functions.php:480
-#: includes/acf-internal-post-type-functions.php:509
+#: includes/acf-internal-post-type-functions.php:507
+#: includes/acf-internal-post-type-functions.php:536
 msgid "URLs"
 msgstr "پیوندها"
 
-#: includes/acf-internal-post-type-functions.php:479
-#: includes/acf-internal-post-type-functions.php:508
+#: includes/acf-internal-post-type-functions.php:506
 #: includes/acf-internal-post-type-functions.php:535
+#: includes/acf-internal-post-type-functions.php:562
 msgid "Visibility"
 msgstr "نمایش"
 
-#: includes/acf-internal-post-type-functions.php:478
-#: includes/acf-internal-post-type-functions.php:507
-#: includes/acf-internal-post-type-functions.php:536
+#: includes/acf-internal-post-type-functions.php:505
+#: includes/acf-internal-post-type-functions.php:534
+#: includes/acf-internal-post-type-functions.php:563
 msgid "Labels"
 msgstr "برچسب‌ها"
 
@@ -2643,14 +2670,14 @@ msgstr ""
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[مقدار کد کوتاه ACF برای پیش نمایش غیرفعال است]"
 
-#: includes/admin/admin-internal-post-type.php:287
+#: includes/admin/admin-internal-post-type.php:290
 #: includes/admin/post-types/admin-field-group.php:538
 msgid "Close Modal"
 msgstr "بستن صفحه"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:1673
-#: assets/build/js/acf-field-group.js:1999
+#: assets/build/js/acf-field-group.js:1688
+#: assets/build/js/acf-field-group.js:2016
 msgid "Field moved to other group"
 msgstr "زمینه به یک گروه دیگر منتقل شد"
 
@@ -2827,8 +2854,8 @@ msgstr "نمایش"
 msgid "Validation"
 msgstr "اعتبارسنجی"
 
-#: includes/acf-internal-post-type-functions.php:477
-#: includes/acf-internal-post-type-functions.php:506 includes/fields.php:389
+#: includes/acf-internal-post-type-functions.php:504
+#: includes/acf-internal-post-type-functions.php:533 includes/fields.php:389
 msgid "General"
 msgstr "عمومی"
 
@@ -2836,47 +2863,47 @@ msgstr "عمومی"
 msgid "Import JSON"
 msgstr "درون ریزی JSON"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:333
+#: includes/admin/tools/class-acf-admin-tool-export.php:338
 msgid "Export As JSON"
 msgstr "برون بری با JSON"
 
 #. translators: %s number of field groups deactivated
-#: includes/admin/post-types/admin-field-groups.php:358
+#: includes/admin/post-types/admin-field-groups.php:360
 msgid "Field group deactivated."
 msgid_plural "%s field groups deactivated."
 msgstr[0] ""
 
 #. translators: %s number of field groups activated
-#: includes/admin/post-types/admin-field-groups.php:351
+#: includes/admin/post-types/admin-field-groups.php:353
 msgid "Field group activated."
 msgid_plural "%s field groups activated."
 msgstr[0] ""
 
-#: includes/admin/admin-internal-post-type-list.php:446
-#: includes/admin/admin-internal-post-type-list.php:472
+#: includes/admin/admin-internal-post-type-list.php:468
+#: includes/admin/admin-internal-post-type-list.php:494
 msgid "Deactivate"
 msgstr "غیرفعال کردن"
 
-#: includes/admin/admin-internal-post-type-list.php:446
+#: includes/admin/admin-internal-post-type-list.php:468
 msgid "Deactivate this item"
 msgstr "غیرفعال کردن این مورد"
 
-#: includes/admin/admin-internal-post-type-list.php:442
-#: includes/admin/admin-internal-post-type-list.php:471
+#: includes/admin/admin-internal-post-type-list.php:464
+#: includes/admin/admin-internal-post-type-list.php:493
 msgid "Activate"
 msgstr "فعال کردن"
 
-#: includes/admin/admin-internal-post-type-list.php:442
+#: includes/admin/admin-internal-post-type-list.php:464
 msgid "Activate this item"
 msgstr "فعال کردن این مورد"
 
 #: includes/admin/post-types/admin-field-group.php:88
-#: assets/build/js/acf-field-group.js:2815
-#: assets/build/js/acf-field-group.js:3319
+#: assets/build/js/acf-field-group.js:2841
+#: assets/build/js/acf-field-group.js:3349
 msgid "Move field group to trash?"
 msgstr "انتقال گروه زمینه به زباله‌دان؟"
 
-#: acf.php:483 includes/admin/admin-internal-post-type-list.php:242
+#: acf.php:490 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:274
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -2889,7 +2916,7 @@ msgstr "غیرفعال"
 msgid "WP Engine"
 msgstr ""
 
-#: acf.php:541
+#: acf.php:548
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2897,7 +2924,7 @@ msgstr ""
 "افزونه زمینه های سفارشی و افزونه زمینه های سفارشی پیشرفته نباید همزمان فعال "
 "باشند. ما به طور خودکار افزونه زمینه های سفارشی پیشرفته را غیرفعال کردیم."
 
-#: acf.php:539
+#: acf.php:546
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2974,7 +3001,7 @@ msgstr ""
 msgid "Hex String"
 msgstr ""
 
-#: includes/admin/views/browse-fields-modal.php:65
+#: includes/admin/views/browse-fields-modal.php:12
 msgid "Upgrade to PRO"
 msgstr "‫ارتقا به نسخه حرفه ای"
 
@@ -3026,8 +3053,8 @@ msgid "Attachments"
 msgstr "پیوست‌ها"
 
 #: includes/acf-wp-functions.php:57
-#: includes/admin/post-types/admin-post-types.php:130
-#: includes/admin/post-types/admin-taxonomies.php:104
+#: includes/admin/post-types/admin-post-types.php:112
+#: includes/admin/post-types/admin-taxonomies.php:86
 #: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
@@ -3037,7 +3064,7 @@ msgstr "طبقه‌بندی‌ها"
 
 #: includes/acf-wp-functions.php:44
 #: includes/admin/post-types/admin-post-type.php:124
-#: includes/admin/post-types/admin-post-types.php:132
+#: includes/admin/post-types/admin-post-types.php:114
 #: includes/admin/views/acf-post-type/advanced-settings.php:106
 #: assets/build/js/acf-internal-post-type.js:173
 #: assets/build/js/acf-internal-post-type.js:247
@@ -3056,49 +3083,49 @@ msgstr ""
 msgid "Invalid field group parameter(s)."
 msgstr "پارامتر(ها) گروه فیلد نامعتبر است"
 
-#: includes/admin/admin-internal-post-type-list.php:407
+#: includes/admin/admin-internal-post-type-list.php:429
 msgid "Awaiting save"
 msgstr "در انتظار ذخیره"
 
-#: includes/admin/admin-internal-post-type-list.php:404
+#: includes/admin/admin-internal-post-type-list.php:426
 msgid "Saved"
 msgstr "ذخیره شده"
 
-#: includes/admin/admin-internal-post-type-list.php:400
+#: includes/admin/admin-internal-post-type-list.php:422
 #: includes/admin/tools/class-acf-admin-tool-import.php:48
 msgid "Import"
 msgstr "درون‌ریزی"
 
-#: includes/admin/admin-internal-post-type-list.php:396
+#: includes/admin/admin-internal-post-type-list.php:418
 msgid "Review changes"
 msgstr "تغییرات مرور شد"
 
-#: includes/admin/admin-internal-post-type-list.php:372
+#: includes/admin/admin-internal-post-type-list.php:394
 msgid "Located in: %s"
 msgstr "قرار گرفته در: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:369
+#: includes/admin/admin-internal-post-type-list.php:391
 msgid "Located in plugin: %s"
 msgstr "قرار گرفته در پلاگین: %s"
 
-#: includes/admin/admin-internal-post-type-list.php:366
+#: includes/admin/admin-internal-post-type-list.php:388
 msgid "Located in theme: %s"
 msgstr "قرار گرفته در قالب: %s"
 
-#: includes/admin/post-types/admin-field-groups.php:252
+#: includes/admin/post-types/admin-field-groups.php:235
 msgid "Various"
 msgstr "مختلف"
 
-#: includes/admin/admin-internal-post-type-list.php:210
-#: includes/admin/admin-internal-post-type-list.php:479
+#: includes/admin/admin-internal-post-type-list.php:230
+#: includes/admin/admin-internal-post-type-list.php:501
 msgid "Sync changes"
 msgstr "همگام‌سازی تغییرات"
 
-#: includes/admin/admin-internal-post-type-list.php:209
+#: includes/admin/admin-internal-post-type-list.php:229
 msgid "Loading diff"
 msgstr "بارگذاری تفاوت"
 
-#: includes/admin/admin-internal-post-type-list.php:208
+#: includes/admin/admin-internal-post-type-list.php:228
 msgid "Review local JSON changes"
 msgstr "بررسی تغییرات JSON محلی"
 
@@ -3357,7 +3384,7 @@ msgid "Show this field if"
 msgstr "نمایش این گروه فیلد اگر"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:25
-#: includes/admin/views/acf-field-group/field.php:111 includes/fields.php:392
+#: includes/admin/views/acf-field-group/field.php:122 includes/fields.php:392
 msgid "Conditional Logic"
 msgstr "منطق شرطی"
 
@@ -3366,9 +3393,9 @@ msgstr "منطق شرطی"
 msgid "and"
 msgstr "و"
 
-#: includes/admin/post-types/admin-field-groups.php:114
-#: includes/admin/post-types/admin-post-types.php:136
-#: includes/admin/post-types/admin-taxonomies.php:135
+#: includes/admin/post-types/admin-field-groups.php:97
+#: includes/admin/post-types/admin-post-types.php:118
+#: includes/admin/post-types/admin-taxonomies.php:117
 msgid "Local JSON"
 msgstr "JSON های لوکال"
 
@@ -3560,9 +3587,9 @@ msgstr "شیوه نمایش"
 msgid "Type"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-groups.php:108
-#: includes/admin/post-types/admin-post-types.php:129
-#: includes/admin/post-types/admin-taxonomies.php:128
+#: includes/admin/post-types/admin-field-groups.php:91
+#: includes/admin/post-types/admin-post-types.php:111
+#: includes/admin/post-types/admin-taxonomies.php:110
 #: includes/admin/views/acf-field-group/fields.php:54
 msgid "Key"
 msgstr "کلید"
@@ -3573,23 +3600,23 @@ msgstr "کلید"
 msgid "Order"
 msgstr "ترتیب"
 
-#: includes/admin/views/acf-field-group/field.php:310
+#: includes/admin/views/acf-field-group/field.php:321
 msgid "Close Field"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:241
+#: includes/admin/views/acf-field-group/field.php:252
 msgid "id"
 msgstr "شناسه"
 
-#: includes/admin/views/acf-field-group/field.php:225
+#: includes/admin/views/acf-field-group/field.php:236
 msgid "class"
 msgstr "کلاس"
 
-#: includes/admin/views/acf-field-group/field.php:267
+#: includes/admin/views/acf-field-group/field.php:278
 msgid "width"
 msgstr "عرض"
 
-#: includes/admin/views/acf-field-group/field.php:261
+#: includes/admin/views/acf-field-group/field.php:272
 msgid "Wrapper Attributes"
 msgstr "مشخصات پوشش فیلد"
 
@@ -3597,68 +3624,68 @@ msgstr "مشخصات پوشش فیلد"
 msgid "Required"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:209
+#: includes/admin/views/acf-field-group/field.php:220
 msgid "Instructions for authors. Shown when submitting data"
 msgstr "دستورالعمل هایی برای نویسندگان. هنگام ارسال داده ها نمایش داده می شوند"
 
-#: includes/admin/views/acf-field-group/field.php:208
+#: includes/admin/views/acf-field-group/field.php:219
 msgid "Instructions"
 msgstr "دستورالعمل ها"
 
-#: includes/admin/views/acf-field-group/field.php:131
+#: includes/admin/views/acf-field-group/field.php:142
 msgid "Field Type"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:172
+#: includes/admin/views/acf-field-group/field.php:183
 msgid "Single word, no spaces. Underscores and dashes allowed"
 msgstr "تک کلمه، بدون فاصله. خط زیرین و خط تیره ها مجازاند"
 
-#: includes/admin/views/acf-field-group/field.php:171
+#: includes/admin/views/acf-field-group/field.php:182
 msgid "Field Name"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:159
+#: includes/admin/views/acf-field-group/field.php:170
 msgid "This is the name which will appear on the EDIT page"
 msgstr "این نامی است که در صفحه \"ویرایش\" نمایش داده خواهد شد"
 
-#: includes/admin/views/acf-field-group/field.php:158
-#: includes/admin/views/browse-fields-modal.php:59
+#: includes/admin/views/acf-field-group/field.php:169
+#: includes/admin/views/browse-fields-modal.php:69
 msgid "Field Label"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/field.php:83
+#: includes/admin/views/acf-field-group/field.php:94
 msgid "Delete"
 msgstr "حذف"
 
-#: includes/admin/views/acf-field-group/field.php:83
+#: includes/admin/views/acf-field-group/field.php:94
 msgid "Delete field"
 msgstr "حذف زمینه"
 
-#: includes/admin/views/acf-field-group/field.php:81
+#: includes/admin/views/acf-field-group/field.php:92
 msgid "Move"
 msgstr "انتقال"
 
-#: includes/admin/views/acf-field-group/field.php:81
+#: includes/admin/views/acf-field-group/field.php:92
 msgid "Move field to another group"
 msgstr "انتقال زمینه ها به گروه دیگر"
 
-#: includes/admin/views/acf-field-group/field.php:79
+#: includes/admin/views/acf-field-group/field.php:90
 msgid "Duplicate field"
 msgstr "تکثیر زمینه"
 
-#: includes/admin/views/acf-field-group/field.php:75
-#: includes/admin/views/acf-field-group/field.php:78
+#: includes/admin/views/acf-field-group/field.php:86
+#: includes/admin/views/acf-field-group/field.php:89
 msgid "Edit field"
 msgstr "ویرایش زمینه"
 
-#: includes/admin/views/acf-field-group/field.php:71
+#: includes/admin/views/acf-field-group/field.php:82
 msgid "Drag to reorder"
 msgstr "گرفتن و کشیدن برای مرتب سازی"
 
 #: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2350
-#: assets/build/js/acf-field-group.js:2769
+#: assets/build/js/acf-field-group.js:2374
+#: assets/build/js/acf-field-group.js:2796
 msgid "Show this field group if"
 msgstr "نمایش این گروه زمینه اگر"
 
@@ -3757,15 +3784,15 @@ msgstr ""
 msgid "Rules"
 msgstr "قوانین"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:444
+#: includes/admin/tools/class-acf-admin-tool-export.php:449
 msgid "Copied"
 msgstr "کپی شد"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:420
+#: includes/admin/tools/class-acf-admin-tool-export.php:425
 msgid "Copy to clipboard"
 msgstr "درج در حافظه موقت"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:326
+#: includes/admin/tools/class-acf-admin-tool-export.php:331
 msgid ""
 "Select the items you would like to export and then select your export "
 "method. Export As JSON to export to a .json file which you can then import "
@@ -3773,22 +3800,22 @@ msgid ""
 "can place in your theme."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:218
+#: includes/admin/tools/class-acf-admin-tool-export.php:215
 msgid "Select Field Groups"
 msgstr "انتخاب گروه های زمینه"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:91
-#: includes/admin/tools/class-acf-admin-tool-export.php:125
+#: includes/admin/tools/class-acf-admin-tool-export.php:88
+#: includes/admin/tools/class-acf-admin-tool-export.php:121
 msgid "No field groups selected"
 msgstr "گروه زمینه ای انتخاب نشده است"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:39
-#: includes/admin/tools/class-acf-admin-tool-export.php:334
-#: includes/admin/tools/class-acf-admin-tool-export.php:358
+#: includes/admin/tools/class-acf-admin-tool-export.php:38
+#: includes/admin/tools/class-acf-admin-tool-export.php:339
+#: includes/admin/tools/class-acf-admin-tool-export.php:363
 msgid "Generate PHP"
 msgstr "تولید کد PHP"
 
-#: includes/admin/tools/class-acf-admin-tool-export.php:35
+#: includes/admin/tools/class-acf-admin-tool-export.php:34
 msgid "Export Field Groups"
 msgstr "برون بری گروه های زمینه"
 
@@ -3814,22 +3841,22 @@ msgstr ""
 msgid "Import Field Groups"
 msgstr "وارد کردن گروه های زمینه"
 
-#: includes/admin/admin-internal-post-type-list.php:395
+#: includes/admin/admin-internal-post-type-list.php:417
 msgid "Sync"
 msgstr "هماهنگ"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:849
+#: includes/admin/admin-internal-post-type-list.php:885
 msgid "Select %s"
 msgstr "انتخاب %s"
 
-#: includes/admin/admin-internal-post-type-list.php:436
-#: includes/admin/admin-internal-post-type-list.php:468
-#: includes/admin/views/acf-field-group/field.php:79
+#: includes/admin/admin-internal-post-type-list.php:458
+#: includes/admin/admin-internal-post-type-list.php:490
+#: includes/admin/views/acf-field-group/field.php:90
 msgid "Duplicate"
 msgstr "تکثیر"
 
-#: includes/admin/admin-internal-post-type-list.php:436
+#: includes/admin/admin-internal-post-type-list.php:458
 msgid "Duplicate this item"
 msgstr "تکثیر این زمینه"
 
@@ -3837,13 +3864,14 @@ msgstr "تکثیر این زمینه"
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/admin.php:305 includes/admin/views/browse-fields-modal.php:92
+#: includes/admin/admin.php:305
+#: includes/admin/views/browse-fields-modal.php:102
 msgid "Documentation"
 msgstr "مستندات"
 
-#: includes/admin/post-types/admin-field-groups.php:107
-#: includes/admin/post-types/admin-post-types.php:128
-#: includes/admin/post-types/admin-taxonomies.php:127
+#: includes/admin/post-types/admin-field-groups.php:90
+#: includes/admin/post-types/admin-post-types.php:110
+#: includes/admin/post-types/admin-taxonomies.php:109
 #: includes/admin/views/acf-field-group/options.php:249
 #: includes/admin/views/acf-post-type/advanced-settings.php:62
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:114
@@ -3852,24 +3880,24 @@ msgstr "مستندات"
 msgid "Description"
 msgstr "توضیحات"
 
-#: includes/admin/admin-internal-post-type-list.php:392
-#: includes/admin/admin-internal-post-type-list.php:735
+#: includes/admin/admin-internal-post-type-list.php:414
+#: includes/admin/admin-internal-post-type-list.php:757
 msgid "Sync available"
 msgstr "هماهنگ سازی موجود است"
 
 #. translators: %s number of field groups synchronized
-#: includes/admin/post-types/admin-field-groups.php:372
+#: includes/admin/post-types/admin-field-groups.php:374
 msgid "Field group synchronized."
 msgid_plural "%s field groups synchronized."
 msgstr[0] ""
 
 #. translators: %s number of field groups duplicated
-#: includes/admin/post-types/admin-field-groups.php:365
+#: includes/admin/post-types/admin-field-groups.php:367
 msgid "Field group duplicated."
 msgid_plural "%s field groups duplicated."
 msgstr[0] "%s گروه زمینه تکثیر شدند."
 
-#: includes/admin/admin-internal-post-type-list.php:137
+#: includes/admin/admin-internal-post-type-list.php:155
 msgid "Active <span class=\"count\">(%s)</span>"
 msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "فعال <span class=\"count\">(%s)</span>"
@@ -3909,7 +3937,7 @@ msgstr ""
 msgid "Move Complete."
 msgstr "انتقال کامل شد."
 
-#: includes/admin/views/acf-field-group/field.php:41
+#: includes/admin/views/acf-field-group/field.php:52
 #: includes/admin/views/acf-field-group/options.php:217
 #: includes/admin/views/acf-post-type/advanced-settings.php:78
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:130
@@ -3924,7 +3952,7 @@ msgstr "کلیدهای زمینه"
 msgid "Settings"
 msgstr "تنظیمات"
 
-#: includes/admin/post-types/admin-field-groups.php:109
+#: includes/admin/post-types/admin-field-groups.php:92
 msgid "Location"
 msgstr "مکان"
 
@@ -3936,14 +3964,14 @@ msgstr "خالی (null)"
 #: includes/admin/post-types/admin-field-group.php:97
 #: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1513
-#: assets/build/js/acf-field-group.js:1827
+#: assets/build/js/acf-field-group.js:1528
+#: assets/build/js/acf-field-group.js:1844
 msgid "copy"
 msgstr "کپی"
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:623
-#: assets/build/js/acf-field-group.js:778
+#: assets/build/js/acf-field-group.js:624
+#: assets/build/js/acf-field-group.js:779
 msgid "(this field)"
 msgstr "(این گزینه)"
 
@@ -3954,14 +3982,14 @@ msgid "Checked"
 msgstr "انتخاب شده"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1618
-#: assets/build/js/acf-field-group.js:1939
+#: assets/build/js/acf-field-group.js:1633
+#: assets/build/js/acf-field-group.js:1956
 msgid "Move Custom Field"
 msgstr "جابجایی زمینه دلخواه"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:649
-#: assets/build/js/acf-field-group.js:804
+#: assets/build/js/acf-field-group.js:650
+#: assets/build/js/acf-field-group.js:805
 msgid "No toggle fields available"
 msgstr "هیچ زمینه شرط پذیری موجود نیست"
 
@@ -3970,14 +3998,14 @@ msgid "Field group title is required"
 msgstr "عنوان گروه زمینه ضروری است"
 
 #: includes/admin/post-types/admin-field-group.php:86
-#: assets/build/js/acf-field-group.js:1607
-#: assets/build/js/acf-field-group.js:1925
+#: assets/build/js/acf-field-group.js:1622
+#: assets/build/js/acf-field-group.js:1942
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "این زمینه قبل از اینکه ذخیره شود نمی تواند جابجا شود"
 
 #: includes/admin/post-types/admin-field-group.php:85
-#: assets/build/js/acf-field-group.js:1417
-#: assets/build/js/acf-field-group.js:1722
+#: assets/build/js/acf-field-group.js:1432
+#: assets/build/js/acf-field-group.js:1739
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "کلمه متنی \"field_\" نباید در ابتدای نام فیلد استفاده شود"
 
@@ -4145,8 +4173,8 @@ msgstr "بدون مقدار"
 msgid "Has any value"
 msgstr "هر نوع مقدار"
 
-#: includes/admin/admin-internal-post-type.php:334
-#: includes/admin/views/browse-fields-modal.php:62 includes/assets.php:354
+#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/views/browse-fields-modal.php:72 includes/assets.php:354
 #: assets/build/js/acf.js:1564 assets/build/js/acf.js:1658
 msgid "Cancel"
 msgstr "لغو"
@@ -4156,24 +4184,24 @@ msgstr "لغو"
 msgid "Are you sure?"
 msgstr "اطمینان دارید؟"
 
-#: includes/assets.php:370 assets/build/js/acf-input.js:9455
-#: assets/build/js/acf-input.js:10310
+#: includes/assets.php:370 assets/build/js/acf-input.js:9458
+#: assets/build/js/acf-input.js:10325
 msgid "%d fields require attention"
 msgstr "%d گزینه نیاز به بررسی دارد"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9453
-#: assets/build/js/acf-input.js:10306
+#: includes/assets.php:369 assets/build/js/acf-input.js:9456
+#: assets/build/js/acf-input.js:10321
 msgid "1 field requires attention"
 msgstr "یکی از گزینه ها نیاز به بررسی دارد"
 
 #: includes/assets.php:368 includes/validation.php:253
-#: includes/validation.php:261 assets/build/js/acf-input.js:9448
-#: assets/build/js/acf-input.js:10301
+#: includes/validation.php:261 assets/build/js/acf-input.js:9451
+#: assets/build/js/acf-input.js:10316
 msgid "Validation failed"
 msgstr "مشکل در اعتبار سنجی"
 
-#: includes/assets.php:367 assets/build/js/acf-input.js:9616
-#: assets/build/js/acf-input.js:10489
+#: includes/assets.php:367 assets/build/js/acf-input.js:9619
+#: assets/build/js/acf-input.js:10504
 msgid "Validation successful"
 msgstr "اعتبار سنجی موفق بود"
 
@@ -4209,8 +4237,8 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: includes/assets.php:364 assets/build/js/acf-input.js:9225
-#: assets/build/js/acf-input.js:10072
+#: includes/assets.php:364 assets/build/js/acf-input.js:9228
+#: assets/build/js/acf-input.js:10087
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "اگر از صفحه جاری خارج شوید ، تغییرات شما ذخیره نخواهند شد"
 
@@ -4223,10 +4251,10 @@ msgstr "نوع فایل باید %s باشد."
 #: includes/admin/views/acf-field-group/conditional-logic.php:174
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2947 assets/build/js/acf-field-group.js:771
-#: assets/build/js/acf-field-group.js:2388
-#: assets/build/js/acf-field-group.js:933
-#: assets/build/js/acf-field-group.js:2813
+#: includes/api/api-helpers.php:2947 assets/build/js/acf-field-group.js:772
+#: assets/build/js/acf-field-group.js:2414
+#: assets/build/js/acf-field-group.js:934
+#: assets/build/js/acf-field-group.js:2843
 msgid "or"
 msgstr "یا"
 
@@ -4276,8 +4304,8 @@ msgstr "تصویر بندانگشتی"
 
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf-field-group.js:1076
-#: assets/build/js/acf-field-group.js:1260
+#: assets/build/js/acf-field-group.js:1077
+#: assets/build/js/acf-field-group.js:1261
 msgid "(no label)"
 msgstr "(بدون برچسب)"
 
@@ -5241,7 +5269,7 @@ msgstr "هیچ تصویری انتخاب نشده"
 msgid "Remove"
 msgstr "حذف"
 
-#: includes/admin/views/acf-field-group/field.php:78
+#: includes/admin/views/acf-field-group/field.php:89
 #: includes/fields/class-acf-field-file.php:153
 #: includes/fields/class-acf-field-image.php:135
 #: includes/fields/class-acf-field-link.php:126
@@ -5560,91 +5588,91 @@ msgid "Time Picker"
 msgstr "انتخاب زمان"
 
 #. translators: counts for inactive field groups
-#: acf.php:489
+#: acf.php:496
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 
-#: acf.php:450
+#: acf.php:457
 msgid "No Fields found in Trash"
 msgstr "گروه زمینه ای در زباله دان یافت نشد"
 
-#: acf.php:449
+#: acf.php:456
 msgid "No Fields found"
 msgstr "گروه زمینه ای یافت نشد"
 
-#: acf.php:448
+#: acf.php:455
 msgid "Search Fields"
 msgstr "جستجوی گروه های زمینه"
 
-#: acf.php:447
+#: acf.php:454
 msgid "View Field"
 msgstr "نمایش زمینه"
 
-#: acf.php:446 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:453 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "زمینه جدید"
 
-#: acf.php:445
+#: acf.php:452
 msgid "Edit Field"
 msgstr "ویرایش زمینه"
 
-#: acf.php:444
+#: acf.php:451
 msgid "Add New Field"
 msgstr "زمینه جدید"
 
-#: acf.php:442
+#: acf.php:449
 msgid "Field"
 msgstr "زمینه"
 
-#: acf.php:441 includes/admin/post-types/admin-field-group.php:149
-#: includes/admin/post-types/admin-field-groups.php:110
+#: acf.php:448 includes/admin/post-types/admin-field-group.php:149
+#: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "زمینه ها"
 
-#: acf.php:416
+#: acf.php:423
 msgid "No Field Groups found in Trash"
 msgstr "گروه زمینه ای در زباله دان یافت نشد"
 
-#: acf.php:415
+#: acf.php:422
 msgid "No Field Groups found"
 msgstr "گروه زمینه ای یافت نشد"
 
-#: acf.php:414
+#: acf.php:421
 msgid "Search Field Groups"
 msgstr "جستجوی گروه های زمینه"
 
-#: acf.php:413
+#: acf.php:420
 msgid "View Field Group"
 msgstr "مشاهده گروه زمینه"
 
-#: acf.php:412
+#: acf.php:419
 msgid "New Field Group"
 msgstr "گروه زمینه جدید"
 
-#: acf.php:411
+#: acf.php:418
 msgid "Edit Field Group"
 msgstr "ویرایش گروه زمینه"
 
-#: acf.php:410
+#: acf.php:417
 msgid "Add New Field Group"
 msgstr "افزودن گروه زمینه جدید"
 
-#: acf.php:409 acf.php:443
+#: acf.php:416 acf.php:450
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "افزودن"
 
-#: acf.php:408
+#: acf.php:415
 msgid "Field Group"
 msgstr "گروه زمینه"
 
-#: acf.php:407 includes/admin/post-types/admin-field-groups.php:72
-#: includes/admin/post-types/admin-post-types.php:131
-#: includes/admin/post-types/admin-taxonomies.php:130
+#: acf.php:414 includes/admin/post-types/admin-field-groups.php:55
+#: includes/admin/post-types/admin-post-types.php:113
+#: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"
 msgstr "گروه‌های زمینه"
 

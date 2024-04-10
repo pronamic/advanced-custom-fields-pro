@@ -191,10 +191,13 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 			// render 'acf_after_title' metaboxes
 			do_meta_boxes( get_current_screen(), 'acf_after_title', $post );
 
-			if ( ! empty( $this->style ) ) {
-				// render dynamic field group style, using wp_strip_all_tags as this is filterable, but should only contain valid styles and no html.
-				echo '<style type="text/css" id="acf-style">' . wp_strip_all_tags( $this->style ) . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS only, escaped by wp_strip_all_tags.
+			$style = '';
+			if ( is_string( $this->style ) ) {
+				$style = $this->style;
 			}
+
+			// Render dynamic field group style, using wp_strip_all_tags as this is filterable, but should only contain valid styles and no html.
+			echo '<style type="text/css" id="acf-style">' . wp_strip_all_tags( $style ) . '</style>'; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSS only, escaped by wp_strip_all_tags.
 		}
 
 		/**
