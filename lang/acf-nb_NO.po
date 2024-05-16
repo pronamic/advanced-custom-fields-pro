@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-04-08T08:54:42+00:00\n"
+"PO-Revision-Date: 2024-05-15T10:34:56+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: includes/Blocks/Bindings.php:35
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
-msgstr ""
+msgstr "ACF-felter"
 
 #: includes/admin/views/escaped-html-notice.php:5
 msgid "Learn how to fix this"
@@ -176,13 +176,13 @@ msgstr ""
 #: includes/admin/post-types/admin-post-type.php:102
 #: includes/admin/post-types/admin-taxonomy.php:104
 msgid "Add fields"
-msgstr ""
+msgstr "Legg til felter"
 
 #: includes/admin/post-types/admin-field-group.php:117
 #: assets/build/js/acf-field-group.js:2782
 #: assets/build/js/acf-field-group.js:3272
 msgid "This Field"
-msgstr ""
+msgstr "Dette feltet"
 
 #: includes/admin/admin.php:311
 msgid "ACF PRO"
@@ -2654,7 +2654,7 @@ msgid "[ACF shortcode value disabled for preview]"
 msgstr ""
 
 #: includes/admin/admin-internal-post-type.php:290
-#: includes/admin/post-types/admin-field-group.php:538
+#: includes/admin/post-types/admin-field-group.php:539
 msgid "Close Modal"
 msgstr ""
 
@@ -2903,12 +2903,16 @@ msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
 msgstr ""
+"Advanced Custom Fields og Advanced Custom Fields PRO bør ikke være aktiverte "
+"samtidig. Vi har automatisk deaktivert Advanced Custom Fields PRO."
 
 #: acf.php:546
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
 msgstr ""
+"Advanced Custom Fields og Advanced Custom Fields PRO bør ikke være aktiverte "
+"samtidig. Vi har automatisk deaktivert Advanced Custom Fields."
 
 #. translators: %1 plugin name, %2 the URL to the documentation on this error
 #: includes/acf-value-functions.php:376
@@ -2980,7 +2984,7 @@ msgstr ""
 
 #: includes/admin/views/browse-fields-modal.php:12
 msgid "Upgrade to PRO"
-msgstr ""
+msgstr "Oppgrader til Pro"
 
 #: includes/admin/post-types/admin-field-group.php:274
 #: includes/admin/post-types/admin-post-type.php:282
@@ -3497,7 +3501,7 @@ msgstr "Feltgrupper med en lavere rekkefølge vil vises først"
 
 #: includes/admin/views/acf-field-group/options.php:156
 msgid "Order No."
-msgstr "Ordre Nr."
+msgstr "Rekkefølgenr"
 
 #: includes/admin/views/acf-field-group/options.php:147
 msgid "Below fields"
@@ -3509,11 +3513,11 @@ msgstr "Under etiketter"
 
 #: includes/admin/views/acf-field-group/options.php:139
 msgid "Instruction Placement"
-msgstr ""
+msgstr "Instruksjonsplassering"
 
 #: includes/admin/views/acf-field-group/options.php:122
 msgid "Label Placement"
-msgstr ""
+msgstr "Etikettplassering"
 
 #: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
@@ -3763,6 +3767,10 @@ msgid ""
 "to another ACF installation. Generate PHP to export to PHP code which you "
 "can place in your theme."
 msgstr ""
+"Velg de feltgruppene du ønsker å eksportere og velgs så din eksportmetode. "
+"Eksporter som JSON til en json-fil som du senere kan importere til en annen "
+"ACF-installasjon. Bruk Generer PHP-knappen til å eksportere til PHP-kode som "
+"du kan sette inn i ditt tema."
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:215
 msgid "Select Field Groups"
@@ -3800,6 +3808,8 @@ msgid ""
 "Select the Advanced Custom Fields JSON file you would like to import. When "
 "you click the import button below, ACF will import the items in that file."
 msgstr ""
+"Velg den ACF JSON-fil du ønsker å importere. Når du klikker på import-"
+"knappen nedenfor vil ACF importere elementene i den filen."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:27
 msgid "Import Field Groups"
@@ -3826,7 +3836,7 @@ msgstr "Dupliser dette elementet"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:41
 msgid "Supports"
-msgstr ""
+msgstr "Brukerstøtte"
 
 #: includes/admin/admin.php:305
 #: includes/admin/views/browse-fields-modal.php:102
@@ -3853,8 +3863,8 @@ msgstr "Synk tilgjengelig"
 #: includes/admin/post-types/admin-field-groups.php:374
 msgid "Field group synchronized."
 msgid_plural "%s field groups synchronized."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Feltgruppe synkronisert."
+msgstr[1] "%s feltgrupper synkronisert."
 
 #. translators: %s number of field groups duplicated
 #: includes/admin/post-types/admin-field-groups.php:367
@@ -3885,22 +3895,22 @@ msgstr "Oppgrader database"
 msgid "Custom Fields"
 msgstr "Egendefinerte felt"
 
-#: includes/admin/post-types/admin-field-group.php:583
+#: includes/admin/post-types/admin-field-group.php:584
 msgid "Move Field"
 msgstr "Flytt felt"
 
-#: includes/admin/post-types/admin-field-group.php:572
-#: includes/admin/post-types/admin-field-group.php:576
+#: includes/admin/post-types/admin-field-group.php:573
+#: includes/admin/post-types/admin-field-group.php:577
 msgid "Please select the destination for this field"
 msgstr "Vennligst velg destinasjon for dette feltet"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:534
+#: includes/admin/post-types/admin-field-group.php:535
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "%1$s feltet kan nå bli funnet i feltgruppen %2$s"
 
-#: includes/admin/post-types/admin-field-group.php:531
+#: includes/admin/post-types/admin-field-group.php:532
 msgid "Move Complete."
 msgstr "Flytting fullført."
 
@@ -4151,24 +4161,24 @@ msgstr "Avbryt"
 msgid "Are you sure?"
 msgstr "Er du sikker?"
 
-#: includes/assets.php:370 assets/build/js/acf-input.js:9458
-#: assets/build/js/acf-input.js:10325
+#: includes/assets.php:370 assets/build/js/acf-input.js:9464
+#: assets/build/js/acf-input.js:10331
 msgid "%d fields require attention"
 msgstr "%d felt krever oppmerksomhet"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9456
-#: assets/build/js/acf-input.js:10321
+#: includes/assets.php:369 assets/build/js/acf-input.js:9462
+#: assets/build/js/acf-input.js:10327
 msgid "1 field requires attention"
 msgstr "1 felt krever oppmerksomhet"
 
 #: includes/assets.php:368 includes/validation.php:253
-#: includes/validation.php:261 assets/build/js/acf-input.js:9451
-#: assets/build/js/acf-input.js:10316
+#: includes/validation.php:261 assets/build/js/acf-input.js:9457
+#: assets/build/js/acf-input.js:10322
 msgid "Validation failed"
 msgstr "Validering feilet"
 
-#: includes/assets.php:367 assets/build/js/acf-input.js:9619
-#: assets/build/js/acf-input.js:10504
+#: includes/assets.php:367 assets/build/js/acf-input.js:9625
+#: assets/build/js/acf-input.js:10510
 msgid "Validation successful"
 msgstr "Validering vellykket"
 
@@ -4204,8 +4214,8 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Rediger"
 
-#: includes/assets.php:364 assets/build/js/acf-input.js:9228
-#: assets/build/js/acf-input.js:10087
+#: includes/assets.php:364 assets/build/js/acf-input.js:9234
+#: assets/build/js/acf-input.js:10093
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 "Endringene du har gjort vil gå tapt om du navigerer bort fra denne siden."
@@ -4459,7 +4469,7 @@ msgstr "Tillat dette trekkspillet å åpne uten å lukke andre."
 
 #: includes/fields/class-acf-field-accordion.php:93
 msgid "Multi-Expand"
-msgstr ""
+msgstr "Fler-utvid"
 
 #: includes/fields/class-acf-field-accordion.php:83
 msgid "Display this accordion as open on page load."
@@ -4631,7 +4641,7 @@ msgstr "Alle brukerroller"
 
 #: includes/fields/class-acf-field-user.php:51
 msgid "Filter by Role"
-msgstr ""
+msgstr "Filtrer etter rolle"
 
 #: includes/fields/class-acf-field-user.php:15 includes/locations.php:103
 msgid "User"
@@ -4886,7 +4896,7 @@ msgstr "Knappegruppe"
 #: includes/fields/class-acf-field-taxonomy.php:710
 #: includes/fields/class-acf-field-user.php:103
 msgid "Allow Null"
-msgstr ""
+msgstr "Tillat null?"
 
 #: includes/fields/class-acf-field-page_link.php:236
 #: includes/fields/class-acf-field-post_object.php:230
@@ -4900,11 +4910,11 @@ msgstr "TinyMCE vil ikke bli initialisert før dette feltet er klikket"
 
 #: includes/fields/class-acf-field-wysiwyg.php:370
 msgid "Delay Initialization"
-msgstr ""
+msgstr "Forsinke initialisering"
 
 #: includes/fields/class-acf-field-wysiwyg.php:359
 msgid "Show Media Upload Buttons"
-msgstr ""
+msgstr "Vis opplastingsknapper for mediefiler"
 
 #: includes/fields/class-acf-field-wysiwyg.php:343
 msgid "Toolbar"
@@ -5039,11 +5049,11 @@ msgstr "Innleggsobjekt"
 
 #: includes/fields/class-acf-field-relationship.php:628
 msgid "Maximum Posts"
-msgstr ""
+msgstr "Maksimum antall innlegg"
 
 #: includes/fields/class-acf-field-relationship.php:618
 msgid "Minimum Posts"
-msgstr ""
+msgstr "Minimum antall innlegg"
 
 #: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-post-type/advanced-settings.php:29
@@ -5139,7 +5149,7 @@ msgstr "Kommaseparert liste. La være tom for alle typer"
 #: includes/fields/class-acf-field-file.php:279
 #: includes/fields/class-acf-field-image.php:309
 msgid "Allowed File Types"
-msgstr ""
+msgstr "Tillatte filtyper"
 
 #: includes/fields/class-acf-field-file.php:267
 #: includes/fields/class-acf-field-image.php:273

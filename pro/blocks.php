@@ -425,6 +425,18 @@ function acf_prepare_block( $block ) {
 		return false;
 	}
 
+	// Prevent protected attributes being overridden.
+	$protected = array(
+		'render_template',
+		'render_callback',
+		'enqueue_script',
+		'enqueue_style',
+		'enqueue_assets',
+		'post_types',
+		'use_post_meta',
+	);
+	$block     = array_diff_key( $block, array_flip( $protected ) );
+
 	// Generate default attributes.
 	$attributes = array();
 	foreach ( acf_get_block_type_default_attributes( $block_type ) as $k => $v ) {
