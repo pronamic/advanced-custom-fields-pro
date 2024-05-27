@@ -40,17 +40,22 @@ $data_plugins = [
 		'key'      => $acf_pro_license,
 		'slug'     => 'advanced-custom-fields-pro',
 		'basename' => $basename,
-		'version'  => '1.0.0',
+		'version'  => '6.2',
 	]
 ];
 
 $data_wp = [
-	'wp_name'    => 'acf',
-	'wp_version' => '6.3',
+	'wp_name'      => 'acf',
+	'wp_url'       => 'http://acf.local',
+	'wp_version'   => '6.3',
+	'wp_language'  => 'en-US',
+	'wp_timezone'  => '',
+	'wp_multisite' => 0,
+	'php_version'  => '8',
 ];
 
 $data_acf = [
-	'acf_version' => '1.0.0',
+	'acf_version' => '6.2',
 	'acf_pro'     => true,
 	'block_count' => 0,
 ];
