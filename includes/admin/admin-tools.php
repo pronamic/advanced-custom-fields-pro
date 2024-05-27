@@ -28,7 +28,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// actions
@@ -46,7 +45,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   string $class
 		 * @return  n/a
 		 */
-
 		function register_tool( $class ) {
 
 			$instance                       = new $class();
@@ -65,7 +63,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   string $name
 		 * @return  n/a
 		 */
-
 		function get_tool( $name ) {
 
 			return isset( $this->tools[ $name ] ) ? $this->tools[ $name ] : null;
@@ -83,7 +80,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  array
 		 */
-
 		function get_tools() {
 
 			return $this->tools;
@@ -100,7 +96,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function admin_menu() {
 
 			// bail early if no show_admin
@@ -127,7 +122,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function load() {
 
 			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
@@ -169,7 +163,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function include_tools() {
 
 			// include
@@ -193,7 +186,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function check_submit() {
 
 			// loop
@@ -221,7 +213,6 @@ if ( ! class_exists( 'acf_admin_tools' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function html() {
 
 			// vars

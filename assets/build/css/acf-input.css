@@ -2437,8 +2437,8 @@ tr.acf-accordion + tr.acf-accordion {
 .block-editor .edit-post-sidebar .acf-fields > .acf-field {
   border-width: 0;
   border-color: #e2e4e7;
-  margin: 16px;
-  padding: 0;
+  margin: 0px;
+  padding: 10px 16px;
   width: auto !important;
   min-height: 0 !important;
   float: none !important;
@@ -2470,6 +2470,27 @@ tr.acf-accordion + tr.acf-accordion {
 }
 .block-editor .edit-post-sidebar .acf-fields > .acf-field.acf-accordion .acf-accordion-content > .acf-fields {
   border-top-width: 0;
+}
+.block-editor .edit-post-sidebar .block-editor-block-inspector .acf-fields > .acf-notice {
+  display: grid;
+  grid-template-columns: 1fr 25px;
+  padding: 10px;
+  margin: 0;
+}
+.block-editor .edit-post-sidebar .block-editor-block-inspector .acf-fields > .acf-notice p:last-of-type {
+  margin: 0;
+}
+.block-editor .edit-post-sidebar .block-editor-block-inspector .acf-fields > .acf-notice > .acf-notice-dismiss {
+  position: relative;
+  top: unset;
+  right: unset;
+}
+.block-editor .edit-post-sidebar .block-editor-block-inspector .acf-fields .acf-field .acf-notice {
+  margin: 0;
+  padding: 0;
+}
+.block-editor .edit-post-sidebar .block-editor-block-inspector .acf-fields .acf-error {
+  margin-bottom: 10px;
 }
 
 /*-----------------------------------------------------------------------------

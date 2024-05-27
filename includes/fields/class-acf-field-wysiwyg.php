@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -54,7 +53,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function add_filters() {
 
 			// WordPress 5.5 introduced new function for applying image tags.
@@ -89,7 +87,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		 * @param   n/a
 		 * @return  (array)
 		 */
-
 		function get_toolbars() {
 
 			// vars
@@ -134,7 +131,6 @@ if ( ! class_exists( 'acf_field_wysiwyg' ) ) :
 		 * @param   void
 		 * @return  void
 		 */
-
 		function acf_enqueue_uploader() {
 
 			// vars

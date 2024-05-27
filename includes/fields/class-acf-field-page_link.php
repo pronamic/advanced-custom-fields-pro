@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -36,8 +35,29 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 			// extra
 			add_action( 'wp_ajax_acf/fields/page_link/query', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/page_link/query', array( $this, 'ajax_query' ) );
+			add_filter( 'acf/conditional_logic/choices', array( $this, 'render_field_page_link_conditional_choices' ), 10, 3 );
 		}
 
+		/**
+		 * Filters choices in page link conditions.
+		 *
+		 * @since 6.3
+		 *
+		 * @param array  $choices           The selected choice.
+		 * @param array  $conditional_field The conditional field settings object.
+		 * @param string $rule_value        The rule value.
+		 * @return array
+		 */
+		public function render_field_page_link_conditional_choices( $choices, $conditional_field, $rule_value ) {
+			if ( ! is_array( $conditional_field ) || $conditional_field['type'] !== 'page_link' ) {
+				return $choices;
+			}
+			if ( ! empty( $rule_value ) ) {
+				$post_title = get_the_title( $rule_value );
+				$choices    = array( $rule_value => $post_title );
+			}
+			return $choices;
+		}
 
 		/**
 		 * description
@@ -49,7 +69,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function ajax_query() {
 
 			// validate
@@ -65,6 +84,7 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 					's'         => '',
 					'field_key' => '',
 					'paged'     => 1,
+					'include'   => '',
 				)
 			);
 
@@ -128,6 +148,10 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				}
 			}
 
+			if ( ! empty( $options['include'] ) ) {
+				$args['include'] = $options['include'];
+			}
+
 			// filters
 			$args = apply_filters( 'acf/fields/page_link/query', $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/page_link/query/name=' . $field['name'], $args, $field, $options['post_id'] );
@@ -164,6 +188,11 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 						'children' => $children,
 					);
 				}
+			}
+
+			// If there is an include set, we will unset search to avoid attempting to further filter by the search term.
+			if ( isset( $args['include'] ) ) {
+				unset( $args['s'] );
 			}
 
 			// get posts grouped by post type
@@ -223,7 +252,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 * @param   $text (string)
 		 * @return  (array)
 		 */
-
 		function get_post_result( $id, $text ) {
 
 			// vars
@@ -258,7 +286,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 * @param   $post_id (int) the post_id to which this value is saved to
 		 * @return  (string)
 		 */
-
 		function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
 
 			// get post_id
@@ -289,7 +316,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 * @param   $value (array)
 		 * @return  $value
 		 */
-
 		function get_posts( $value, $field ) {
 
 			// force value to array
@@ -352,7 +378,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// Change Field into a select
@@ -505,7 +530,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 *
 		 * @return  $value (mixed) the modified value
 		 */
-
 		function format_value( $value, $post_id, $field ) {
 
 			// ACF4 null
@@ -559,7 +583,6 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		 *
 		 * @return  $value - the modified value
 		 */
-
 		function update_value( $value, $post_id, $field ) {
 
 			// Bail early if no value.

@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -64,7 +63,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function input_admin_enqueue_scripts() {
 
 			// localize
@@ -87,7 +85,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function ajax_get_attachment() {
 
 			// Validate requrest.
@@ -133,7 +130,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function ajax_update_attachment() {
 
 			if ( ! isset( $_POST['nonce'] ) ) {
@@ -211,7 +207,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function ajax_get_sort_order() {
 
 			// vars
@@ -392,7 +387,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// Enqueue uploader assets.
@@ -522,7 +516,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,
@@ -734,7 +727,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 *
 		 * @return  $value (mixed) the modified value
 		 */
-
 		function format_value( $value, $post_id, $field ) {
 
 			// Bail early if no value.
@@ -800,7 +792,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function validate_value( $valid, $value, $field, $input ) {
 
 			if ( empty( $value ) || ! is_array( $value ) ) {
@@ -829,7 +820,6 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		 *
 		 * @return  $value - the modified value
 		 */
-
 		function update_value( $value, $post_id, $field ) {
 
 			// Bail early if no value.

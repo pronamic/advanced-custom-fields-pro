@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -44,7 +43,6 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -148,7 +146,6 @@ if ( ! class_exists( 'acf_field_range' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,

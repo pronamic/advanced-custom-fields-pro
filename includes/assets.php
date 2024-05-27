@@ -112,7 +112,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 
 			// Register scripts.
 			wp_register_script( 'acf', acf_get_url( 'assets/build/js/acf' . $suffix . '.js' ), array( 'jquery' ), $version );
-			wp_register_script( 'acf-input', acf_get_url( 'assets/build/js/acf-input' . $suffix . '.js' ), array( 'jquery', 'jquery-ui-sortable', 'jquery-ui-resizable', 'acf' ), $version );
+			wp_register_script( 'acf-input', acf_get_url( 'assets/build/js/acf-input' . $suffix . '.js' ), array( 'jquery', 'jquery-ui-sortable', 'jquery-ui-resizable', 'acf', 'wp-a11y' ), $version );
 			wp_register_script( 'acf-field-group', acf_get_url( 'assets/build/js/acf-field-group' . $suffix . '.js' ), array( 'acf-input' ), $version );
 			wp_register_script( 'acf-internal-post-type', acf_get_url( 'assets/build/js/acf-internal-post-type' . $suffix . '.js' ), array( 'acf-input' ), $version );
 			wp_register_script( 'acf-escaped-html-notice', acf_get_url( 'assets/build/js/acf-escaped-html-notice' . $suffix . '.js' ), array( 'jquery' ), $version, true );
@@ -369,6 +369,9 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 						'1 field requires attention'  => __( '1 field requires attention', 'acf' ),
 						'%d fields require attention' => __( '%d fields require attention', 'acf' ),
 
+						// Block Validation
+						'An ACF Block on this page requires attention before you can save.' => __( 'An ACF Block on this page requires attention before you can save.', 'acf' ),
+
 						// Other
 						'Edit field group'            => __( 'Edit field group', 'acf' ),
 					)
@@ -472,6 +475,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				'validation'  => acf_get_form_data( 'validation' ),
 				'editor'      => acf_is_block_editor() ? 'block' : 'classic',
 				'is_pro'      => acf_is_pro(),
+				'debug'       => acf_is_beta() || defined( SCRIPT_DEBUG ) && SCRIPT_DEBUG,
 			);
 
 			acf_localize_data( $data_to_localize );

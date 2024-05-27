@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -50,7 +49,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function input_admin_enqueue_scripts() {
 
 			// localize
@@ -107,7 +105,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// Apply defaults.
@@ -176,7 +173,6 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 
 			// center_lat

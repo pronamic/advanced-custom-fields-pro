@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -43,7 +42,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -180,7 +178,6 @@ if ( ! class_exists( 'acf_field_textarea' ) ) :
 		 *
 		 * @return  $value (mixed) the modified value
 		 */
-
 		function format_value( $value, $post_id, $field ) {
 
 			// bail early if no value or not for template

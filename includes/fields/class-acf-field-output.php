@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_output' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -40,7 +39,6 @@ if ( ! class_exists( 'acf_field_output' ) ) :
 		 * @param   $field (array) the $field being edited
 		 * @return  n/a
 		 */
-
 		function render_field( $field ) {
 
 			// bail early if no html

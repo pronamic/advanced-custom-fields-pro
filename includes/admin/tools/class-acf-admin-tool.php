@@ -36,7 +36,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function get_name() {
 			return $this->name;
 		}
@@ -53,7 +52,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function get_title() {
 			return $this->title;
 		}
@@ -70,7 +68,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function get_url() {
 			return acf_get_admin_tool_url( $this->name );
 		}
@@ -87,7 +84,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  boolean
 		 */
-
 		function is_active() {
 			return acf_maybe_get_GET( 'tool' ) === $this->name;
 		}
@@ -103,7 +99,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// initialize
@@ -122,7 +117,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			/* do nothing */
@@ -141,7 +135,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function load() {
 
 			/* do nothing */
@@ -159,7 +152,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function html() {
 		}
 
@@ -175,7 +167,6 @@ if ( ! class_exists( 'ACF_Admin_Tool' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function submit() {
 		}
 	}

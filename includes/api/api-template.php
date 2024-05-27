@@ -142,6 +142,11 @@ function _acf_log_escaped_html( $function, $selector, $field, $post_id ) {
 		return;
 	}
 
+	// If the notice has been dismissed, don't log further errors.
+	if ( get_option( 'acf_escaped_html_notice_dismissed' ) ) {
+		return;
+	}
+
 	// If the field isn't set, we've output a non-ACF field, so don't log anything.
 	if ( ! is_array( $field ) ) {
 		return;
@@ -191,7 +196,7 @@ function _acf_get_escaped_html_log() {
  * @return boolean True on success, or false on failure.
  */
 function _acf_update_escaped_html_log( $escaped = array() ) {
-	return update_option( 'acf_escaped_html_log', (array) $escaped, true );
+	return update_option( 'acf_escaped_html_log', (array) $escaped, false );
 }
 
 /**

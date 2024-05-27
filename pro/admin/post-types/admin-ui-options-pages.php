@@ -144,7 +144,7 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Pages' ) ) :
 
 				// Description.
 				case 'acf-description':
-					if ( ! empty( $post['description'] ) && is_string( $post['description'] ) ) {
+					if ( ! empty( $post['description'] ) && ( is_string( $post['description'] ) || is_numeric( $post['description'] ) ) ) {
 						echo '<span class="acf-description">' . acf_esc_html( $post['description'] ) . '</span>';
 					} else {
 						echo '<span class="acf-emdash" aria-hidden="true">—</span>';

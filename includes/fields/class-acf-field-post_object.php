@@ -8,8 +8,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * This function will setup the field type data
 		 *
-		 * @type    function
-		 * @date    5/03/2014
 		 * @since   5.0.0
 		 */
 		public function initialize() {
@@ -32,23 +30,36 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 			// extra
 			add_action( 'wp_ajax_acf/fields/post_object/query', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/post_object/query', array( $this, 'ajax_query' ) );
+			add_filter( 'acf/conditional_logic/choices', array( $this, 'render_field_post_object_conditional_choices' ), 10, 3 );
 		}
 
+		/**
+		 * Filters choices in post object conditions.
+		 *
+		 * @since 6.3
+		 *
+		 * @param array  $choices           The selected choice.
+		 * @param array  $conditional_field The conditional field settings object.
+		 * @param string $rule_value        The rule value.
+		 * @return array
+		 */
+		public function render_field_post_object_conditional_choices( $choices, $conditional_field, $rule_value ) {
+			if ( ! is_array( $conditional_field ) || $conditional_field['type'] !== 'post_object' ) {
+				return $choices;
+			}
+			if ( ! empty( $rule_value ) ) {
+				$post_title = get_the_title( $rule_value );
+				$choices    = array( $rule_value => $post_title );
+			}
+			return $choices;
+		}
 
 		/**
-		 * description
+		 * AJAX query handler for post object fields.
 		 *
-		 * @type    function
-		 * @date    24/10/13
 		 * @since   5.0.0
-		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
 		 */
-
-		function ajax_query() {
-
-			// validate
+		public function ajax_query() {
 			if ( ! acf_verify_ajax() ) {
 				die();
 			}
@@ -64,15 +75,12 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * This function will return an array of data formatted for use in a select2 AJAX response
 		 *
-		 * @type    function
-		 * @date    15/10/2014
 		 * @since   5.0.9
 		 *
-		 * @param   $options (array)
-		 * @return  (array)
+		 * @param   array $options The options being queried for the ajax request.
+		 * @return  array The AJAX response array.
 		 */
-
-		function get_ajax_query( $options = array() ) {
+		public function get_ajax_query( $options = array() ) {
 
 			// defaults
 			$options = acf_parse_args(
@@ -82,6 +90,7 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 					's'         => '',
 					'field_key' => '',
 					'paged'     => 1,
+					'include'   => '',
 				)
 			);
 
@@ -112,6 +121,10 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 				$is_search = true;
 			}
 
+			if ( ! empty( $options['include'] ) ) {
+				$args['include'] = $options['include'];
+			}
+
 			// post_type
 			if ( ! empty( $field['post_type'] ) ) {
 				$args['post_type'] = acf_get_array( $field['post_type'] );
@@ -124,6 +137,11 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 				$args['post_status'] = acf_get_array( $options['post_status'] );
 			} elseif ( ! empty( $field['post_status'] ) ) {
 				$args['post_status'] = acf_get_array( $field['post_status'] );
+			}
+
+			// If there is an include set, we will unset search to avoid attempting to further filter by the search term.
+			if ( isset( $args['include'] ) ) {
+				unset( $args['s'] );
 			}
 
 			// taxonomy
@@ -172,7 +190,7 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 				// convert post objects to post titles
 				foreach ( array_keys( $posts ) as $post_id ) {
-					$posts[ $post_id ] = $this->get_post_title( $posts[ $post_id ], $field, $options['post_id'], $is_search );
+					$posts[ $post_id ] = $this->get_post_title( $posts[ $post_id ], $field, $options['post_id'], $is_search, true );
 				}
 
 				// order posts by search
@@ -209,16 +227,13 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * This function will return an array containing id, text and maybe description data
 		 *
-		 * @type    function
-		 * @date    7/07/2016
 		 * @since   5.4.0
 		 *
-		 * @param   $id (mixed)
-		 * @param   $text (string)
-		 * @return  (array)
+		 * @param   mixed  $id   The ID of the post result.
+		 * @param   string $text The text for the response item.
+		 * @return  array The combined result array.
 		 */
-
-		function get_post_result( $id, $text ) {
+		public function get_post_result( $id, $text ) {
 
 			// vars
 			$result = array(
@@ -241,19 +256,18 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 
 		/**
-		 * This function returns the HTML for a result
+		 * This function post object's filtered output post title
 		 *
-		 * @type    function
-		 * @date    1/11/2013
 		 * @since   5.0.0
 		 *
-		 * @param   $post (object)
-		 * @param   $field (array)
-		 * @param   $post_id (int) the post_id to which this value is saved to
-		 * @return  (string)
+		 * @param   WP_Post $post      The WordPress post.
+		 * @param   array   $field     The field being output.
+		 * @param   integer $post_id   The post_id to which this value is saved to.
+		 * @param   integer $is_search An int-as-boolean value for whether we're performing a search.
+		 * @param   boolean $unescape  Should we return an unescaped post title.
+		 * @return  string A potentially user filtered post title for the post, which may contain unsafe HTML.
 		 */
-
-		function get_post_title( $post, $field, $post_id = 0, $is_search = 0 ) {
+		public function get_post_title( $post, $field, $post_id = 0, $is_search = 0, $unescape = false ) {
 
 			// get post_id
 			if ( ! $post_id ) {
@@ -263,27 +277,29 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 			// vars
 			$title = acf_get_post_title( $post, $is_search );
 
+			// unescape for select2 output which handles the escaping.
+			if ( $unescape ) {
+				$title = html_entity_decode( $title );
+			}
+
 			// filters
 			$title = apply_filters( 'acf/fields/post_object/result', $title, $post, $field, $post_id );
 			$title = apply_filters( 'acf/fields/post_object/result/name=' . $field['_name'], $title, $post, $field, $post_id );
 			$title = apply_filters( 'acf/fields/post_object/result/key=' . $field['key'], $title, $post, $field, $post_id );
 
-			// return
+			// return untrusted output.
 			return $title;
 		}
 
 
 		/**
-		 * Create the HTML interface for your field
+		 * Create the HTML interface for the post object field.
 		 *
-		 * @param   $field - an array holding all the field's data
+		 * @since 3.6
 		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @param array $field An array holding all the field's data.
 		 */
-
-		function render_field( $field ) {
+		public function render_field( $field ) {
 
 			// Change Field into a select
 			$field['type']    = 'select';
@@ -311,16 +327,14 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 
 		/**
-		 * Create extra options for your field. This is rendered when editing a field.
-		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 * Create extra options for post object field. This is rendered when editing.
+		 * The value of $field['name'] can be used (like below) to save extra data to the $field.
 		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @since 3.6
 		 *
-		 * @param   $field  - an array holding all the field's data
+		 * @param array $field An array holding all the field's data.
 		 */
-		function render_field_settings( $field ) {
+		public function render_field_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -401,7 +415,7 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		 * @param array $field The field settings array.
 		 * @return void
 		 */
-		function render_field_validation_settings( $field ) {
+		public function render_field_validation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -429,17 +443,14 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * This filter is applied to the $value after it is loaded from the db
 		 *
-		 * @type    filter
 		 * @since   3.6
-		 * @date    23/01/13
 		 *
-		 * @param   $value (mixed) the value found in the database
-		 * @param   $post_id (mixed) the post_id from which the value was loaded
-		 * @param   $field (array) the field array holding all the field options
-		 * @return  $value
+		 * @param  mixed $value   The value found in the database
+		 * @param  mixed $post_id The post_id from which the value was loaded
+		 * @param  array $field   The field array holding all the field options
+		 * @return mixed $value
 		 */
-
-		function load_value( $value, $post_id, $field ) {
+		public function load_value( $value, $post_id, $field ) {
 
 			// ACF4 null
 			if ( $value === 'null' ) {
@@ -454,20 +465,14 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
 		 *
-		 * @type    filter
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @since 3.6
 		 *
-		 * @param   $value (mixed) the value which was loaded from the database
-		 * @param   $post_id (mixed) the post_id from which the value was loaded
-		 * @param   $field (array) the field array holding all the field options
-		 *
-		 * @return  $value (mixed) the modified value
+		 * @param  mixed $value   The value found in the database
+		 * @param  mixed $post_id The post_id from which the value was loaded
+		 * @param  array $field   The field array holding all the field options
+		 * @return mixed $value
 		 */
-
-		function format_value( $value, $post_id, $field ) {
-
-			// numeric
+		public function format_value( $value, $post_id, $field ) {
 			$value = acf_get_numeric( $value );
 
 			// bail early if no value
@@ -529,15 +534,13 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * This function will return an array of posts for a given field value
 		 *
-		 * @type    function
-		 * @date    13/06/2014
-		 * @since   5.0.0
+		 * @since 5.0
 		 *
-		 * @param   $value (array)
-		 * @return  $value
+		 * @param  mixed $value The value of the field.
+		 * @param  array $field The field array holding all the field options.
+		 * @return array $value An array of post objects.
 		 */
-
-		function get_posts( $value, $field ) {
+		public function get_posts( $value, $field ) {
 
 			// numeric
 			$value = acf_get_numeric( $value );
@@ -561,6 +564,8 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 
 		/**
 		 * Validates post object fields updated via the REST API.
+		 *
+		 * @since 5.11
 		 *
 		 * @param  boolean $valid The current validity booleean
 		 * @param  integer $value The value of the field
@@ -662,7 +667,9 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * Return the schema array for the REST API.
 		 *
-		 * @param array $field
+		 * @since 5.11
+		 *
+		 * @param array $field The field array.
 		 * @return array
 		 */
 		public function get_rest_schema( array $field ) {
@@ -686,10 +693,14 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		}
 
 		/**
+		 * REST link attributes generator for this field.
+		 *
+		 * @since 5.11
 		 * @see \acf_field::get_rest_links()
+		 *
 		 * @param mixed          $value   The raw (unformatted) field value.
-		 * @param integer|string $post_id
-		 * @param array          $field
+		 * @param integer|string $post_id The post ID being queried.
+		 * @param array          $field   The field array.
 		 * @return array
 		 */
 		public function get_rest_links( $value, $post_id, array $field ) {
@@ -722,9 +733,11 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		/**
 		 * Apply basic formatting to prepare the value for default REST output.
 		 *
-		 * @param mixed          $value
-		 * @param string|integer $post_id
-		 * @param array          $field
+		 * @since 5.11
+		 *
+		 * @param mixed          $value   The raw (unformatted) field value.
+		 * @param integer|string $post_id The post ID being queried.
+		 * @param array          $field   The field array.
 		 * @return mixed
 		 */
 		public function format_value_for_rest( $value, $post_id, array $field ) {

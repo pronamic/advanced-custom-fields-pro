@@ -1153,7 +1153,7 @@ function acf_get_posts( $args = array() ) {
 		$args['post_status'] = acf_get_post_stati();
 	}
 
-	// Check if specifc post ID's have been provided.
+	// Check if specific post IDs have been provided.
 	if ( $args['post__in'] ) {
 
 		// Clean value into an array of IDs.

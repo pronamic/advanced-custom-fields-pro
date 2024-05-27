@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -52,7 +51,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function input_admin_enqueue_scripts() {
 
 			// bail early if no enqueue
@@ -125,7 +123,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function ajax_query() {
 
 			// validate
@@ -223,7 +220,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// convert
@@ -334,7 +330,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 
 			// encode choices (convert from array)
@@ -490,7 +485,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 *
 		 * @return  $field - the modified field
 		 */
-
 		function update_field( $field ) {
 
 			// decode choices (convert to array)
@@ -520,7 +514,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 *
 		 * @return  $value - the modified value
 		 */
-
 		function update_value( $value, $post_id, $field ) {
 
 			// Bail early if no value.
@@ -549,7 +542,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @param   $field (array)
 		 * @return  $field
 		 */
-
 		function translate_field( $field ) {
 
 			// translate

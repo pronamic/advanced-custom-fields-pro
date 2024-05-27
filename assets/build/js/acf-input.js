@@ -716,7 +716,18 @@
   var isEqualTo = function (v1, v2) {
     return parseString(v1).toLowerCase() === parseString(v2).toLowerCase();
   };
+
+  /**
+   * Checks if rule and selection are equal numbers.
+   *
+   * @param {string} v1 - The rule value to expect.
+   * @param {number|string|Array} v2 - The selected value to compare.
+   * @returns {boolean} Returns true if the values are equal numbers, otherwise returns false.
+   */
   var isEqualToNumber = function (v1, v2) {
+    if (v2 instanceof Array) {
+      return v2.length === 1 && isEqualToNumber(v1, v2[0]);
+    }
     return parseFloat(v1) === parseFloat(v2);
   };
   var isGreaterThan = function (v1, v2) {
@@ -739,11 +750,730 @@
     var regexp = new RegExp(parseString(pattern), 'gi');
     return parseString(v1).match(regexp);
   };
+  const conditionalSelect2 = function (field, type) {
+    const $select = $('<select></select>');
+    let queryAction = `acf/fields/${type}/query`;
+    if (type === 'user') {
+      queryAction = 'acf/ajax/query_users';
+    }
+    const ajaxData = {
+      action: queryAction,
+      field_key: field.data.key,
+      s: '',
+      type: field.data.key
+    };
+    const typeAttr = acf.escAttr(type);
+    const template = function (selection) {
+      return `<span class="acf-${typeAttr}-select-name acf-conditional-select-name">` + acf.escHtml(selection.text) + '</span>';
+    };
+    const resultsTemplate = function (results) {
+      let classes = results.text.startsWith('- ') ? `acf-${typeAttr}-select-name acf-${typeAttr}-select-sub-item` : `acf-${typeAttr}-select-name`;
+      return '<span class="' + classes + '">' + acf.escHtml(results.text) + '</span>' + `<span class="acf-${typeAttr}-select-id acf-conditional-select-id">` + (results.id ? results.id : '') + '</span>';
+    };
+    const select2Props = {
+      field: false,
+      ajax: true,
+      ajaxAction: queryAction,
+      ajaxData: function (data) {
+        ajaxData.paged = data.paged;
+        ajaxData.s = data.s;
+        ajaxData.include = $.isNumeric(data.s) ? Number(data.s) : '';
+        return acf.prepareForAjax(ajaxData);
+      },
+      escapeMarkup: function (markup) {
+        return acf.escHtml(markup);
+      },
+      templateSelection: template,
+      templateResult: resultsTemplate
+    };
+    $select.data('acfSelect2Props', select2Props);
+    return $select;
+  };
+  /**
+   *  Adds condition for Page Link having Page Link equal to.
+   *
+   *  @since 6.3
+   */
+  var HasPageLink = acf.Condition.extend({
+    type: 'hasPageLink',
+    operator: '==',
+    label: __('Page is equal to'),
+    fieldTypes: ['page_link'],
+    match: function (rule, field) {
+      return isEqualTo(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'page_link');
+    }
+  });
+  acf.registerConditionType(HasPageLink);
+
+  /**
+   *  Adds condition for Page Link not equal to.
+   *
+   *  @since 6.3
+   */
+  var HasPageLinkNotEqual = acf.Condition.extend({
+    type: 'hasPageLinkNotEqual',
+    operator: '!==',
+    label: __('Page is not equal to'),
+    fieldTypes: ['page_link'],
+    match: function (rule, field) {
+      return !isEqualTo(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'page_link');
+    }
+  });
+  acf.registerConditionType(HasPageLinkNotEqual);
+
+  /**
+   *  Adds condition for Page Link containing a specific Page Link.
+   *
+   *  @since 6.3
+   */
+  var containsPageLink = acf.Condition.extend({
+    type: 'containsPageLink',
+    operator: '==contains',
+    label: __('Pages contain'),
+    fieldTypes: ['page_link'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = false;
+      if (val instanceof Array) {
+        match = val.includes(ruleVal);
+      } else {
+        match = val === ruleVal;
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'page_link');
+    }
+  });
+  acf.registerConditionType(containsPageLink);
+
+  /**
+   *  Adds condition for Page Link not containing a specific Page Link.
+   *
+   *  @since 6.3
+   */
+  var containsNotPageLink = acf.Condition.extend({
+    type: 'containsNotPageLink',
+    operator: '!=contains',
+    label: __('Pages do not contain'),
+    fieldTypes: ['page_link'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = true;
+      if (val instanceof Array) {
+        match = !val.includes(ruleVal);
+      } else {
+        match = val !== ruleVal;
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'page_link');
+    }
+  });
+  acf.registerConditionType(containsNotPageLink);
+
+  /**
+   *  Adds condition for when any page link is selected.
+   *
+   *  @since 6.3
+   */
+  var HasAnyPageLink = acf.Condition.extend({
+    type: 'hasAnyPageLink',
+    operator: '!=empty',
+    label: __('Has any page selected'),
+    fieldTypes: ['page_link'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !!val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasAnyPageLink);
+
+  /**
+   *  Adds condition for when no page link is selected.
+   *
+   *  @since 6.3
+   */
+  var HasNoPageLink = acf.Condition.extend({
+    type: 'hasNoPageLink',
+    operator: '==empty',
+    label: __('Has no page selected'),
+    fieldTypes: ['page_link'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasNoPageLink);
+
+  /**
+   *  Adds condition for user field having user equal to.
+   *
+   *  @since 6.3
+   */
+  var HasUser = acf.Condition.extend({
+    type: 'hasUser',
+    operator: '==',
+    label: __('User is equal to'),
+    fieldTypes: ['user'],
+    match: function (rule, field) {
+      return isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'user');
+    }
+  });
+  acf.registerConditionType(HasUser);
+
+  /**
+   *  Adds condition for user field having user not equal to.
+   *
+   *  @since 6.3
+   */
+  var HasUserNotEqual = acf.Condition.extend({
+    type: 'hasUserNotEqual',
+    operator: '!==',
+    label: __('User is not equal to'),
+    fieldTypes: ['user'],
+    match: function (rule, field) {
+      return !isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'user');
+    }
+  });
+  acf.registerConditionType(HasUserNotEqual);
+
+  /**
+   *  Adds condition for user field containing a specific user.
+   *
+   *  @since 6.3
+   */
+  var containsUser = acf.Condition.extend({
+    type: 'containsUser',
+    operator: '==contains',
+    label: __('Users contain'),
+    fieldTypes: ['user'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = false;
+      if (val instanceof Array) {
+        match = val.includes(ruleVal);
+      } else {
+        match = val === ruleVal;
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'user');
+    }
+  });
+  acf.registerConditionType(containsUser);
+
+  /**
+   *  Adds condition for user field not containing a specific user.
+   *
+   *  @since 6.3
+   */
+  var containsNotUser = acf.Condition.extend({
+    type: 'containsNotUser',
+    operator: '!=contains',
+    label: __('Users do not contain'),
+    fieldTypes: ['user'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = true;
+      if (val instanceof Array) {
+        match = !val.includes(ruleVal);
+      } else {
+        match = !val === ruleVal;
+      }
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'user');
+    }
+  });
+  acf.registerConditionType(containsNotUser);
+
+  /**
+   *  Adds condition for when any user is selected.
+   *
+   *  @since 6.3
+   */
+  var HasAnyUser = acf.Condition.extend({
+    type: 'hasAnyUser',
+    operator: '!=empty',
+    label: __('Has any user selected'),
+    fieldTypes: ['user'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !!val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasAnyUser);
+
+  /**
+   *  Adds condition for when no user is selected.
+   *
+   *  @since 6.3
+   */
+  var HasNoUser = acf.Condition.extend({
+    type: 'hasNoUser',
+    operator: '==empty',
+    label: __('Has no user selected'),
+    fieldTypes: ['user'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasNoUser);
+
+  /**
+   *  Adds condition for Relationship having Relationship equal to.
+   *
+   *  @since	6.3
+   */
+  var HasRelationship = acf.Condition.extend({
+    type: 'hasRelationship',
+    operator: '==',
+    label: __('Relationship is equal to'),
+    fieldTypes: ['relationship'],
+    match: function (rule, field) {
+      return isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'relationship');
+    }
+  });
+  acf.registerConditionType(HasRelationship);
+
+  /**
+   *  Adds condition for selection having Relationship not equal to.
+   *
+   *  @since	6.3
+   */
+  var HasRelationshipNotEqual = acf.Condition.extend({
+    type: 'hasRelationshipNotEqual',
+    operator: '!==',
+    label: __('Relationship is not equal to'),
+    fieldTypes: ['relationship'],
+    match: function (rule, field) {
+      return !isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'relationship');
+    }
+  });
+  acf.registerConditionType(HasRelationshipNotEqual);
+
+  /**
+   *  Adds condition for Relationship containing a specific Relationship.
+   *
+   *  @since	6.3
+   */
+  var containsRelationship = acf.Condition.extend({
+    type: 'containsRelationship',
+    operator: '==contains',
+    label: __('Relationships contain'),
+    fieldTypes: ['relationship'],
+    match: function (rule, field) {
+      const val = field.val();
+      // Relationships are stored as strings, use float to compare to field's rule value.
+      const ruleVal = parseInt(rule.value);
+      let match = false;
+      if (val instanceof Array) {
+        match = val.includes(ruleVal);
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'relationship');
+    }
+  });
+  acf.registerConditionType(containsRelationship);
+
+  /**
+   *  Adds condition for Relationship not containing a specific Relationship.
+   *
+   *  @since	6.3
+   */
+  var containsNotRelationship = acf.Condition.extend({
+    type: 'containsNotRelationship',
+    operator: '!=contains',
+    label: __('Relationships do not contain'),
+    fieldTypes: ['relationship'],
+    match: function (rule, field) {
+      const val = field.val();
+      // Relationships are stored as strings, use float to compare to field's rule value.
+      const ruleVal = parseInt(rule.value);
+      let match = true;
+      if (val instanceof Array) {
+        match = !val.includes(ruleVal);
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'relationship');
+    }
+  });
+  acf.registerConditionType(containsNotRelationship);
+
+  /**
+   *  Adds condition for when any relation is selected.
+   *
+   *  @since 6.3
+   */
+  var HasAnyRelation = acf.Condition.extend({
+    type: 'hasAnyRelation',
+    operator: '!=empty',
+    label: __('Has any relationship selected'),
+    fieldTypes: ['relationship'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !!val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasAnyRelation);
+
+  /**
+   *  Adds condition for when no relation is selected.
+   *
+   *  @since 6.3
+   */
+  var HasNoRelation = acf.Condition.extend({
+    type: 'hasNoRelation',
+    operator: '==empty',
+    label: __('Has no relationship selected'),
+    fieldTypes: ['relationship'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasNoRelation);
+
+  /**
+   *  Adds condition for having post equal to.
+   *
+   *  @since 6.3
+   */
+  var HasPostObject = acf.Condition.extend({
+    type: 'hasPostObject',
+    operator: '==',
+    label: __('Post is equal to'),
+    fieldTypes: ['post_object'],
+    match: function (rule, field) {
+      return isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'post_object');
+    }
+  });
+  acf.registerConditionType(HasPostObject);
+
+  /**
+   *  Adds condition for selection having post not equal to.
+   *
+   *  @since 6.3
+   */
+  var HasPostObjectNotEqual = acf.Condition.extend({
+    type: 'hasPostObjectNotEqual',
+    operator: '!==',
+    label: __('Post is not equal to'),
+    fieldTypes: ['post_object'],
+    match: function (rule, field) {
+      return !isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'post_object');
+    }
+  });
+  acf.registerConditionType(HasPostObjectNotEqual);
+
+  /**
+   *  Adds condition for Relationship containing a specific Relationship.
+   *
+   *  @since 6.3
+   */
+  var containsPostObject = acf.Condition.extend({
+    type: 'containsPostObject',
+    operator: '==contains',
+    label: __('Posts contain'),
+    fieldTypes: ['post_object'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = false;
+      if (val instanceof Array) {
+        match = val.includes(ruleVal);
+      } else {
+        match = val === ruleVal;
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'post_object');
+    }
+  });
+  acf.registerConditionType(containsPostObject);
+
+  /**
+   *  Adds condition for Relationship not containing a specific Relationship.
+   *
+   *  @since 6.3
+   */
+  var containsNotPostObject = acf.Condition.extend({
+    type: 'containsNotPostObject',
+    operator: '!=contains',
+    label: __('Posts do not contain'),
+    fieldTypes: ['post_object'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = true;
+      if (val instanceof Array) {
+        match = !val.includes(ruleVal);
+      } else {
+        match = val !== ruleVal;
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'post_object');
+    }
+  });
+  acf.registerConditionType(containsNotPostObject);
+
+  /**
+   *  Adds condition for when any post is selected.
+   *
+   *  @since 6.3
+   */
+  var HasAnyPostObject = acf.Condition.extend({
+    type: 'hasAnyPostObject',
+    operator: '!=empty',
+    label: __('Has any post selected'),
+    fieldTypes: ['post_object'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !!val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasAnyPostObject);
+
+  /**
+   *  Adds condition for when no post is selected.
+   *
+   *  @since 6.3
+   */
+  var HasNoPostObject = acf.Condition.extend({
+    type: 'hasNoPostObject',
+    operator: '==empty',
+    label: __('Has no post selected'),
+    fieldTypes: ['post_object'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasNoPostObject);
+
+  /**
+   *  Adds condition for taxonomy having term equal to.
+   *
+   *  @since	6.3
+   */
+  var HasTerm = acf.Condition.extend({
+    type: 'hasTerm',
+    operator: '==',
+    label: __('Term is equal to'),
+    fieldTypes: ['taxonomy'],
+    match: function (rule, field) {
+      return isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'taxonomy');
+    }
+  });
+  acf.registerConditionType(HasTerm);
+
+  /**
+   *  Adds condition for taxonomy having term not equal to.
+   *
+   *  @since	6.3
+   */
+  var hasTermNotEqual = acf.Condition.extend({
+    type: 'hasTermNotEqual',
+    operator: '!==',
+    label: __('Term is not equal to'),
+    fieldTypes: ['taxonomy'],
+    match: function (rule, field) {
+      return !isEqualToNumber(rule.value, field.val());
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'taxonomy');
+    }
+  });
+  acf.registerConditionType(hasTermNotEqual);
+
+  /**
+   *  Adds condition for taxonomy containing a specific term.
+   *
+   *  @since	6.3
+   */
+  var containsTerm = acf.Condition.extend({
+    type: 'containsTerm',
+    operator: '==contains',
+    label: __('Terms contain'),
+    fieldTypes: ['taxonomy'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = false;
+      if (val instanceof Array) {
+        match = val.includes(ruleVal);
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'taxonomy');
+    }
+  });
+  acf.registerConditionType(containsTerm);
+
+  /**
+   *  Adds condition for taxonomy not containing a specific term.
+   *
+   *  @since	6.3
+   */
+  var containsNotTerm = acf.Condition.extend({
+    type: 'containsNotTerm',
+    operator: '!=contains',
+    label: __('Terms do not contain'),
+    fieldTypes: ['taxonomy'],
+    match: function (rule, field) {
+      const val = field.val();
+      const ruleVal = rule.value;
+      let match = true;
+      if (val instanceof Array) {
+        match = !val.includes(ruleVal);
+      }
+      return match;
+    },
+    choices: function (fieldObject) {
+      return conditionalSelect2(fieldObject, 'taxonomy');
+    }
+  });
+  acf.registerConditionType(containsNotTerm);
+
+  /**
+   *  Adds condition for when any term is selected.
+   *
+   *  @since	6.3
+   */
+  var HasAnyTerm = acf.Condition.extend({
+    type: 'hasAnyTerm',
+    operator: '!=empty',
+    label: __('Has any term selected'),
+    fieldTypes: ['taxonomy'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !!val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasAnyTerm);
+
+  /**
+   *  Adds condition for when no term is selected.
+   *
+   *  @since	6.3
+   */
+  var HasNoTerm = acf.Condition.extend({
+    type: 'hasNoTerm',
+    operator: '==empty',
+    label: __('Has no term selected'),
+    fieldTypes: ['taxonomy'],
+    match: function (rule, field) {
+      let val = field.val();
+      if (val instanceof Array) {
+        val = val.length;
+      }
+      return !val;
+    },
+    choices: function () {
+      return '<input type="text" disabled />';
+    }
+  });
+  acf.registerConditionType(HasNoTerm);
 
   /**
    *  hasValue
-   *
-   *  description
    *
    *  @date	1/2/18
    *  @since	5.6.5
@@ -751,12 +1481,11 @@
    *  @param	void
    *  @return	void
    */
-
   var HasValue = acf.Condition.extend({
     type: 'hasValue',
     operator: '!=empty',
     label: __('Has any value'),
-    fieldTypes: ['text', 'textarea', 'number', 'range', 'email', 'url', 'password', 'image', 'file', 'wysiwyg', 'oembed', 'select', 'checkbox', 'radio', 'button_group', 'link', 'post_object', 'page_link', 'relationship', 'taxonomy', 'user', 'google_map', 'date_picker', 'date_time_picker', 'time_picker', 'color_picker'],
+    fieldTypes: ['text', 'textarea', 'number', 'range', 'email', 'url', 'password', 'image', 'file', 'wysiwyg', 'oembed', 'select', 'checkbox', 'radio', 'button_group', 'link', 'google_map', 'date_picker', 'date_time_picker', 'time_picker', 'color_picker', 'icon_picker'],
     match: function (rule, field) {
       let val = field.val();
       if (val instanceof Array) {
@@ -765,7 +1494,7 @@
       return val ? true : false;
     },
     choices: function (fieldObject) {
-      return '<input type="text" disabled="" />';
+      return '<input type="text" disabled />';
     }
   });
   acf.registerConditionType(HasValue);
@@ -773,15 +1502,12 @@
   /**
    *  hasValue
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var HasNoValue = HasValue.extend({
     type: 'hasNoValue',
     operator: '==empty',
@@ -795,15 +1521,12 @@
   /**
    *  EqualTo
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var EqualTo = acf.Condition.extend({
     type: 'equalTo',
     operator: '==',
@@ -825,15 +1548,12 @@
   /**
    *  NotEqualTo
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var NotEqualTo = EqualTo.extend({
     type: 'notEqualTo',
     operator: '!=',
@@ -847,15 +1567,12 @@
   /**
    *  PatternMatch
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var PatternMatch = acf.Condition.extend({
     type: 'patternMatch',
     operator: '==pattern',
@@ -873,15 +1590,12 @@
   /**
    *  Contains
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var Contains = acf.Condition.extend({
     type: 'contains',
     operator: '==contains',
@@ -899,15 +1613,12 @@
   /**
    *  TrueFalseEqualTo
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var TrueFalseEqualTo = EqualTo.extend({
     type: 'trueFalseEqualTo',
     choiceType: 'select',
@@ -924,15 +1635,12 @@
   /**
    *  TrueFalseNotEqualTo
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var TrueFalseNotEqualTo = NotEqualTo.extend({
     type: 'trueFalseNotEqualTo',
     choiceType: 'select',
@@ -949,15 +1657,12 @@
   /**
    *  SelectEqualTo
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var SelectEqualTo = acf.Condition.extend({
     type: 'selectEqualTo',
     operator: '==',
@@ -1008,15 +1713,12 @@
   /**
    *  SelectNotEqualTo
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var SelectNotEqualTo = SelectEqualTo.extend({
     type: 'selectNotEqualTo',
     operator: '!=',
@@ -1030,15 +1732,12 @@
   /**
    *  GreaterThan
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var GreaterThan = acf.Condition.extend({
     type: 'greaterThan',
     operator: '>',
@@ -1060,15 +1759,12 @@
   /**
    *  LessThan
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var LessThan = GreaterThan.extend({
     type: 'lessThan',
     operator: '<',
@@ -1092,15 +1788,12 @@
   /**
    *  SelectedGreaterThan
    *
-   *  description
-   *
    *  @date	1/2/18
    *  @since	5.6.5
    *
    *  @param	void
    *  @return	void
    */
-
   var SelectionGreaterThan = GreaterThan.extend({
     type: 'selectionGreaterThan',
     label: __('Selection is greater than'),
@@ -1109,9 +1802,7 @@
   acf.registerConditionType(SelectionGreaterThan);
 
   /**
-   *  SelectedGreaterThan
-   *
-   *  description
+   *  SelectionLessThan
    *
    *  @date	1/2/18
    *  @since	5.6.5
@@ -1119,7 +1810,6 @@
    *  @param	void
    *  @return	void
    */
-
   var SelectionLessThan = LessThan.extend({
     type: 'selectionLessThan',
     label: __('Selection is less than'),
@@ -3035,6 +3725,326 @@
 
 /***/ }),
 
+/***/ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-icon-picker.js":
+/*!********************************************************************************!*\
+  !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-icon-picker.js ***!
+  \********************************************************************************/
+/***/ (() => {
+
+(function ($, undefined) {
+  const Field = acf.Field.extend({
+    type: 'icon_picker',
+    wait: 'load',
+    events: {
+      removeField: 'onRemove',
+      duplicateField: 'onDuplicate',
+      showField: 'scrollToSelectedDashicon',
+      'input .acf-icon_url': 'onUrlChange',
+      'click .acf-icon-picker-dashicon': 'onDashiconClick',
+      'focus .acf-icon-picker-dashicon-radio': 'onDashiconRadioFocus',
+      'blur .acf-icon-picker-dashicon-radio': 'onDashiconRadioBlur',
+      'keydown .acf-icon-picker-dashicon-radio': 'onDashiconKeyDown',
+      'input .acf-dashicons-search-input': 'onDashiconSearch',
+      'keydown .acf-dashicons-search-input': 'onDashiconSearchKeyDown',
+      'click .acf-icon-picker-media-library-button': 'onMediaLibraryButtonClick',
+      'click .acf-icon-picker-media-library-preview': 'onMediaLibraryButtonClick'
+    },
+    $typeInput() {
+      return this.$('input[type="hidden"][data-hidden-type="type"]:first');
+    },
+    $valueInput() {
+      return this.$('input[type="hidden"][data-hidden-type="value"]:first');
+    },
+    $tabButton() {
+      return this.$('.acf-tab-button');
+    },
+    $selectedIcon() {
+      return this.$('.acf-icon-picker-dashicon.active');
+    },
+    $selectedRadio() {
+      return this.$('.acf-icon-picker-dashicon.active input');
+    },
+    $dashiconsList() {
+      return this.$('.acf-dashicons-list');
+    },
+    $mediaLibraryButton() {
+      return this.$('.acf-icon-picker-media-library-button');
+    },
+    initialize() {
+      // Set up actions hook callbacks.
+      this.addActions();
+
+      // Initialize the state of the icon picker.
+      let typeAndValue = {};
+      this.$tabButton().each((index, tabButton) => {
+        // If the previously-saved type matches this tab, assign the value to that type.
+        if (tabButton.dataset.uniqueTabKey === this.$typeInput().val()) {
+          typeAndValue = {
+            type: tabButton.dataset.uniqueTabKey,
+            value: this.$valueInput().val()
+          };
+        }
+      });
+
+      // Store the type and value object.
+      this.set('typeAndValue', typeAndValue);
+
+      // Any time any acf tab is clicked, we will re-scroll to the selected dashicon.
+      $('.acf-tab-button').on('click', () => {
+        this.initializeDashiconsTab(this.get('typeAndValue'));
+      });
+
+      // Fire the action which lets people know the state has been updated.
+      acf.doAction(this.get('name') + '/type_and_value_change', typeAndValue);
+      this.initializeDashiconsTab(typeAndValue);
+      this.alignMediaLibraryTabToCurrentValue(typeAndValue);
+    },
+    addActions() {
+      // Set up an action listener for when the type and value changes.
+      acf.addAction(this.get('name') + '/type_and_value_change', newTypeAndValue => {
+        // Align the visual state of each tab to the current value.
+        this.alignDashiconsTabToCurrentValue(newTypeAndValue);
+        this.alignMediaLibraryTabToCurrentValue(newTypeAndValue);
+        this.alignUrlTabToCurrentValue(newTypeAndValue);
+      });
+    },
+    updateTypeAndValue(type, value) {
+      const typeAndValue = {
+        type,
+        value
+      };
+
+      // Update the values in the hidden fields, which are what will actually be saved.
+      acf.val(this.$typeInput(), type);
+      acf.val(this.$valueInput(), value);
+
+      // Fire an action to let each tab set itself according to the typeAndValue state.
+      acf.doAction(this.get('name') + '/type_and_value_change', typeAndValue);
+
+      // Set the state.
+      this.set('typeAndValue', typeAndValue);
+    },
+    scrollToSelectedDashicon() {
+      const innerElement = this.$selectedIcon();
+
+      // If no icon is selected, do nothing.
+      if (innerElement.length === 0) {
+        return;
+      }
+      const scrollingDiv = this.$dashiconsList();
+      scrollingDiv.scrollTop(0);
+      const distance = innerElement.position().top - 50;
+      if (distance === 0) {
+        return;
+      }
+      scrollingDiv.scrollTop(distance);
+    },
+    initializeDashiconsTab(typeAndValue) {
+      const dashicons = this.getDashiconsList() || [];
+      this.set('dashicons', dashicons);
+      this.renderDashiconList();
+      this.initializeSelectedDashicon(typeAndValue);
+    },
+    initializeSelectedDashicon(typeAndValue) {
+      if (typeAndValue.type !== 'dashicons') {
+        return;
+      }
+      // Select the correct dashicon.
+      this.selectDashicon(typeAndValue.value, false).then(() => {
+        // Scroll to the selected dashicon.
+        this.scrollToSelectedDashicon();
+      });
+    },
+    alignDashiconsTabToCurrentValue(typeAndValue) {
+      if (typeAndValue.type !== 'dashicons') {
+        this.unselectDashicon();
+      }
+    },
+    renderDashiconHTML(dashicon) {
+      const id = `${this.get('name')}-${dashicon.key}`;
+      return `<div class="dashicons ${acf.strEscape(dashicon.key)} acf-icon-picker-dashicon" data-icon="${acf.strEscape(dashicon.key)}">
+				<label for="${acf.strEscape(id)}">${acf.strEscape(dashicon.label)}</label>
+				<input id="${acf.strEscape(id)}" type="radio" class="acf-icon-picker-dashicon-radio" name="acf-icon-picker-dashicon-radio" value="${acf.strEscape(dashicon.key)}">
+			</div>`;
+    },
+    renderDashiconList() {
+      const dashicons = this.get('dashicons');
+      this.$dashiconsList().empty();
+      dashicons.forEach(dashicon => {
+        this.$dashiconsList().append(this.renderDashiconHTML(dashicon));
+      });
+    },
+    getDashiconsList() {
+      const iconPickeri10n = acf.get('iconPickeri10n') || [];
+      const dashicons = Object.entries(iconPickeri10n).map(([key, value]) => {
+        return {
+          key,
+          label: value
+        };
+      });
+      return dashicons;
+    },
+    getDashiconsBySearch(searchTerm) {
+      const lowercaseSearchTerm = searchTerm.toLowerCase();
+      const dashicons = this.getDashiconsList();
+      const filteredDashicons = dashicons.filter(function (icon) {
+        const lowercaseIconLabel = icon.label.toLowerCase();
+        return lowercaseIconLabel.indexOf(lowercaseSearchTerm) > -1;
+      });
+      return filteredDashicons;
+    },
+    selectDashicon(dashicon, setFocus = true) {
+      this.set('selectedDashicon', dashicon);
+
+      // Select the new one.
+      const $newIcon = this.$dashiconsList().find('.acf-icon-picker-dashicon[data-icon="' + dashicon + '"]');
+      $newIcon.addClass('active');
+      const $input = $newIcon.find('input');
+      const thePromise = $input.prop('checked', true).promise();
+      if (setFocus) {
+        $input.trigger('focus');
+      }
+      this.updateTypeAndValue('dashicons', dashicon);
+      return thePromise;
+    },
+    unselectDashicon() {
+      // Remove the currently active dashicon, if any.
+      this.$dashiconsList().find('.acf-icon-picker-dashicon').removeClass('active');
+      this.set('selectedDashicon', false);
+    },
+    onDashiconRadioFocus(e) {
+      const dashicon = e.target.value;
+      const $newIcon = this.$dashiconsList().find('.acf-icon-picker-dashicon[data-icon="' + dashicon + '"]');
+      $newIcon.addClass('focus');
+
+      // If this is a different icon than previously selected, select it.
+      if (this.get('selectedDashicon') !== dashicon) {
+        this.unselectDashicon();
+        this.selectDashicon(dashicon);
+      }
+    },
+    onDashiconRadioBlur(e) {
+      const icon = this.$(e.target);
+      const iconParent = icon.parent();
+      iconParent.removeClass('focus');
+    },
+    onDashiconClick(e) {
+      e.preventDefault();
+      const icon = this.$(e.target);
+      const dashicon = icon.find('input').val();
+      const $newIcon = this.$dashiconsList().find('.acf-icon-picker-dashicon[data-icon="' + dashicon + '"]');
+
+      // By forcing focus on the input, we fire onDashiconRadioFocus.
+      $newIcon.find('input').prop('checked', true).trigger('focus');
+    },
+    onDashiconSearch(e) {
+      const searchTerm = e.target.value;
+      const filteredDashicons = this.getDashiconsBySearch(searchTerm);
+      if (filteredDashicons.length > 0 || !searchTerm) {
+        this.set('dashicons', filteredDashicons);
+        this.$('.acf-dashicons-list-empty').hide();
+        this.$('.acf-dashicons-list ').show();
+        this.renderDashiconList();
+
+        // Announce change of data to screen readers.
+        wp.a11y.speak(acf.get('iconPickerA11yStrings').newResultsFoundForSearchTerm, 'polite');
+      } else {
+        // Truncate the search term if it's too long.
+        const visualSearchTerm = searchTerm.length > 30 ? searchTerm.substring(0, 30) + '&hellip;' : searchTerm;
+        this.$('.acf-dashicons-list ').hide();
+        this.$('.acf-dashicons-list-empty').find('.acf-invalid-dashicon-search-term').text(visualSearchTerm);
+        this.$('.acf-dashicons-list-empty').css('display', 'flex');
+        this.$('.acf-dashicons-list-empty').show();
+
+        // Announce change of data to screen readers.
+        wp.a11y.speak(acf.get('iconPickerA11yStrings').noResultsForSearchTerm, 'polite');
+      }
+    },
+    onDashiconSearchKeyDown(e) {
+      // Check if the pressed key is Enter (key code 13)
+      if (e.which === 13) {
+        // Prevent submitting the entire form if someone presses enter after searching.
+        e.preventDefault();
+      }
+    },
+    onDashiconKeyDown(e) {
+      if (e.which === 13) {
+        // If someone presses enter while an icon is focused, prevent the form from submitting.
+        e.preventDefault();
+      }
+    },
+    alignMediaLibraryTabToCurrentValue(typeAndValue) {
+      const type = typeAndValue.type;
+      const value = typeAndValue.value;
+      if (type !== 'media_library' && type !== 'dashicons') {
+        // Hide the preview container on the media library tab.
+        this.$('.acf-icon-picker-media-library-preview').hide();
+      }
+      if (type === 'media_library') {
+        const previewUrl = this.get('mediaLibraryPreviewUrl');
+        // Set the image file preview src.
+        this.$('.acf-icon-picker-media-library-preview-img img').attr('src', previewUrl);
+
+        // Hide the dashicon preview.
+        this.$('.acf-icon-picker-media-library-preview-dashicon').hide();
+
+        // Show the image file preview.
+        this.$('.acf-icon-picker-media-library-preview-img').show();
+
+        // Show the preview container (it may have been hidden if nothing was ever selected yet).
+        this.$('.acf-icon-picker-media-library-preview').show();
+      }
+      if (type === 'dashicons') {
+        // Set the dashicon preview class.
+        this.$('.acf-icon-picker-media-library-preview-dashicon .dashicons').attr('class', 'dashicons ' + value);
+
+        // Hide the image file preview.
+        this.$('.acf-icon-picker-media-library-preview-img').hide();
+
+        // Show the dashicon preview.
+        this.$('.acf-icon-picker-media-library-preview-dashicon').show();
+
+        // Show the preview container (it may have been hidden if nothing was ever selected yet).
+        this.$('.acf-icon-picker-media-library-preview').show();
+      }
+    },
+    async onMediaLibraryButtonClick(e) {
+      e.preventDefault();
+      await this.selectAndReturnAttachment().then(attachment => {
+        // When an attachment is selected, update the preview and the hidden fields.
+        this.set('mediaLibraryPreviewUrl', attachment.attributes.url);
+        this.updateTypeAndValue('media_library', attachment.id);
+      });
+    },
+    selectAndReturnAttachment() {
+      return new Promise(resolve => {
+        acf.newMediaPopup({
+          mode: 'select',
+          type: 'image',
+          title: acf.__('Select Image'),
+          field: this.get('key'),
+          multiple: false,
+          library: 'all',
+          allowedTypes: 'image',
+          select: resolve
+        });
+      });
+    },
+    alignUrlTabToCurrentValue(typeAndValue) {
+      if (typeAndValue.type !== 'url') {
+        this.$('.acf-icon_url').val('');
+      }
+    },
+    onUrlChange(event) {
+      const currentValue = event.target.value;
+      this.updateTypeAndValue('url', currentValue);
+    }
+  });
+  acf.registerFieldType(Field);
+})(jQuery);
+
+/***/ }),
+
 /***/ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-image.js":
 /*!**************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/_acf-field-image.js ***!
@@ -3786,6 +4796,12 @@
 
       // update attr
       this.set(filter, val);
+      if (filter === 's') {
+        // If val is numeric, limit results to include.
+        if (parseInt(val)) {
+          this.set('include', val);
+        }
+      }
 
       // reset paged
       this.set('paged', 1);
@@ -4115,6 +5131,9 @@
         case 'acf_browse_fields_tabs':
           filter = '.acf-field-types-tab';
           break;
+        case 'acf_icon_picker_tabs':
+          filter = '.acf-icon-picker-tabs';
+          break;
         case 'acf_post_type_tabs':
           filter = '.acf-post-type-advanced-settings';
           break;
@@ -4302,19 +5321,27 @@
       if ('acf_field_settings_tabs' === this.get('key') && $('#acf-field-group-fields').hasClass('hide-tabs')) {
         return;
       }
+      var tab = false;
 
-      // find first visible tab
-      var tab = this.getVisible().shift();
-
-      // remember previous tab state
-      var order = acf.getPreference('this.tabs') || [];
-      var groupIndex = this.get('index');
-      var tabIndex = order[groupIndex];
-      if (this.tabs[tabIndex] && this.tabs[tabIndex].isVisible()) {
-        tab = this.tabs[tabIndex];
+      // check if we've got a saved default tab.
+      var order = acf.getPreference('this.tabs') || false;
+      if (order) {
+        var groupIndex = this.get('index');
+        var tabIndex = order[groupIndex];
+        if (this.tabs[tabIndex] && this.tabs[tabIndex].isVisible()) {
+          tab = this.tabs[tabIndex];
+        }
       }
 
-      // select
+      // If we've got a defaultTab provided by configuration, use that.
+      if (!tab && this.data.defaultTab && this.data.defaultTab.isVisible()) {
+        tab = this.data.defaultTab;
+      }
+
+      // find first visible tab as our default.
+      if (!tab) {
+        tab = this.getVisible().shift();
+      }
       if (tab) {
         this.selectTab(tab);
       } else {
@@ -4383,8 +5410,10 @@
       var $li = $('<li>' + $a.outerHTML() + '</li>');
 
       // add settings type class.
-      var classes = $a.attr('class').replace('acf-tab-button', '');
-      $li.addClass(classes);
+      var settingsType = $a.data('settings-type');
+      if (settingsType) {
+        $li.addClass('acf-settings-type-' + settingsType);
+      }
 
       // append
       this.$('ul').append($li);
@@ -4398,6 +5427,9 @@
 
       // store
       this.tabs.push(tab);
+      if ($a.data('selected')) {
+        this.data.defaultTab = tab;
+      }
 
       // return
       return tab;
@@ -5086,11 +6118,11 @@
   });
   acf.registerFieldType(Field);
   acf.addFilter('select2_ajax_data', function (data, args, $input, field, select2) {
-    if (!field) {
+    if (!field || 'user' !== field.get('type')) {
       return data;
     }
     const query_nonce = field.get('queryNonce');
-    if (query_nonce && query_nonce.length) {
+    if (query_nonce && query_nonce.toString().length) {
       data.user_query_nonce = query_nonce;
     }
     return data;
@@ -5531,7 +6563,7 @@
         this.notice = false;
       }
     },
-    showError: function (message) {
+    showError: function (message, location = 'before') {
       // add class
       this.$el.addClass('acf-error');
 
@@ -5540,7 +6572,8 @@
         this.showNotice({
           text: message,
           type: 'error',
-          dismiss: false
+          dismiss: false,
+          location: location
         });
       }
 
@@ -8382,7 +9415,6 @@
         var field = this.get('field');
         options = acf.applyFilters('select2_args', options, $select, this.data, field || false, this);
       }
-
       // add select2
       $select.select2(options);
 
@@ -8503,7 +9535,6 @@
           }
         }
       };
-
       // get hidden input
       var $input = $select.siblings('input');
       if (!$input.length) {
@@ -8652,7 +9683,6 @@
       // filter
       var field = this.get('field');
       params = acf.applyFilters('select2_ajax_data', params, this.data, this.$el, field || false, this);
-
       // return
       return Select2.prototype.getAjaxData.apply(this, [params]);
     }
@@ -9400,13 +10430,12 @@
      *
      *  Displays all errors for this form.
      *
-     *  @date	4/9/18
      *  @since	5.7.5
      *
-     *  @param	void
+     *  @param	{string} [location=before] - The location to add the error, before or after the input. Default before. Since 6.3.
      *  @return	void
      */
-    showErrors: function () {
+    showErrors: function (location = 'before') {
       // bail early if no errors
       if (!this.hasErrors()) {
         return;
@@ -9445,7 +10474,7 @@
         ensureFieldPostBoxIsVisible(field.$el);
 
         // show error
-        field.showError(error.message);
+        field.showError(error.message, location);
 
         // set $scrollTo
         if (!$scrollTo) {
@@ -9728,18 +10757,26 @@
   };
 
   /**
-   *  acf.validateForm
+   *  A helper function to generate a Validator for a block form, so .addErrors can be run via block logic.
    *
+   *  @since	6.3
+   *
+   *  @param $el The jQuery block form wrapper element.
+   *  @return bool
+   */
+  acf.getBlockFormValidator = function ($el) {
+    return getValidator($el);
+  };
+
+  /**
    *  A helper function for the Validator.validate() function.
    *  Returns true if form is valid, or fetches a validation request and returns false.
    *
-   *  @date	4/4/18
    *  @since	5.6.9
    *
    *  @param	object args A list of settings to customize the validation process.
    *  @return	bool
    */
-
   acf.validateForm = function (args) {
     return getValidator(args.form).validate(args);
   };
@@ -9987,7 +11024,6 @@
     events: {
       'click input[type="submit"]': 'onClickSubmit',
       'click button[type="submit"]': 'onClickSubmit',
-      //'click #editor .editor-post-publish-button': 'onClickSubmitGutenberg',
       'click #save-post': 'onClickSave',
       'submit form#post': 'onSubmitPost',
       'submit form': 'onSubmit'
@@ -10146,37 +11182,6 @@
       this.set('ignore', true);
     },
     /**
-     *  onClickSubmitGutenberg
-     *
-     *  Custom validation event for the gutenberg editor.
-     *
-     *  @date	29/10/18
-     *  @since	5.8.0
-     *
-     *  @param	object e The event object.
-     *  @param	jQuery $el The input element.
-     *  @return	void
-     */
-    onClickSubmitGutenberg: function (e, $el) {
-      // validate
-      var valid = acf.validateForm({
-        form: $('#editor'),
-        event: e,
-        reset: true,
-        failure: function ($form, validator) {
-          var $notice = validator.get('notice').$el;
-          $notice.appendTo('.components-notice-list');
-          $notice.find('.acf-notice-dismiss').removeClass('small');
-        }
-      });
-
-      // if not valid, stop event and allow validation to continue
-      if (!valid) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-      }
-    },
-    /**
      * onSubmitPost
      *
      * Callback when the 'post' form is submit.
@@ -10305,6 +11310,25 @@
           // Bail early if validation is not needed.
           if (!useValidation) {
             return resolve('Validation ignored (draft).');
+          }
+
+          // Check if we've currently got an ACF block selected which is failing validation, but might not be presented yet.
+          if ('undefined' !== typeof acf.blockInstances) {
+            const selectedBlockId = wp.data.select('core/block-editor').getSelectedBlockClientId();
+            if (selectedBlockId && selectedBlockId in acf.blockInstances) {
+              const acfBlockState = acf.blockInstances[selectedBlockId];
+              if (acfBlockState.validation_errors) {
+                // Deselect the block to show the error and lock the save.
+                console.log('Rejecting save because the block editor has a invalid ACF block selected.');
+                notices.createErrorNotice(acf.__('An ACF Block on this page requires attention before you can save.'), {
+                  id: 'acf-validation',
+                  isDismissible: true
+                });
+                wp.data.dispatch('core/editor').lockPostSaving('acf/block/' + selectedBlockId);
+                wp.data.dispatch('core/block-editor').selectBlock(false);
+                return reject('ACF Validation failed for selected block.');
+              }
+            }
           }
 
           // Validate the editor form.
@@ -10456,64 +11480,67 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _acf_field_date_time_picker_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_acf_field_date_time_picker_js__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _acf_field_google_map_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./_acf-field-google-map.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-google-map.js");
 /* harmony import */ var _acf_field_google_map_js__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_acf_field_google_map_js__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _acf_field_image_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_acf-field-image.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-image.js");
-/* harmony import */ var _acf_field_image_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_acf_field_image_js__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _acf_field_file_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_acf-field-file.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-file.js");
-/* harmony import */ var _acf_field_file_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_acf_field_file_js__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _acf_field_link_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_acf-field-link.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-link.js");
-/* harmony import */ var _acf_field_link_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_acf_field_link_js__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _acf_field_oembed_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_acf-field-oembed.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-oembed.js");
-/* harmony import */ var _acf_field_oembed_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_acf_field_oembed_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _acf_field_radio_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_acf-field-radio.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-radio.js");
-/* harmony import */ var _acf_field_radio_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_acf_field_radio_js__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _acf_field_range_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./_acf-field-range.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-range.js");
-/* harmony import */ var _acf_field_range_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_acf_field_range_js__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _acf_field_relationship_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./_acf-field-relationship.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-relationship.js");
-/* harmony import */ var _acf_field_relationship_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_acf_field_relationship_js__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _acf_field_select_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./_acf-field-select.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-select.js");
-/* harmony import */ var _acf_field_select_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_acf_field_select_js__WEBPACK_IMPORTED_MODULE_16__);
-/* harmony import */ var _acf_field_tab_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./_acf-field-tab.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-tab.js");
-/* harmony import */ var _acf_field_tab_js__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_acf_field_tab_js__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var _acf_field_post_object_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_acf-field-post-object.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-post-object.js");
-/* harmony import */ var _acf_field_post_object_js__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_acf_field_post_object_js__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _acf_field_page_link_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./_acf-field-page-link.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-page-link.js");
-/* harmony import */ var _acf_field_page_link_js__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_acf_field_page_link_js__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _acf_field_user_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./_acf-field-user.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-user.js");
-/* harmony import */ var _acf_field_user_js__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_acf_field_user_js__WEBPACK_IMPORTED_MODULE_20__);
-/* harmony import */ var _acf_field_taxonomy_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./_acf-field-taxonomy.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-taxonomy.js");
-/* harmony import */ var _acf_field_taxonomy_js__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_acf_field_taxonomy_js__WEBPACK_IMPORTED_MODULE_21__);
-/* harmony import */ var _acf_field_time_picker_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./_acf-field-time-picker.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-time-picker.js");
-/* harmony import */ var _acf_field_time_picker_js__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_acf_field_time_picker_js__WEBPACK_IMPORTED_MODULE_22__);
-/* harmony import */ var _acf_field_true_false_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./_acf-field-true-false.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-true-false.js");
-/* harmony import */ var _acf_field_true_false_js__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_acf_field_true_false_js__WEBPACK_IMPORTED_MODULE_23__);
-/* harmony import */ var _acf_field_url_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./_acf-field-url.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-url.js");
-/* harmony import */ var _acf_field_url_js__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_acf_field_url_js__WEBPACK_IMPORTED_MODULE_24__);
-/* harmony import */ var _acf_field_wysiwyg_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./_acf-field-wysiwyg.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-wysiwyg.js");
-/* harmony import */ var _acf_field_wysiwyg_js__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_acf_field_wysiwyg_js__WEBPACK_IMPORTED_MODULE_25__);
-/* harmony import */ var _acf_condition_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./_acf-condition.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-condition.js");
-/* harmony import */ var _acf_condition_js__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_acf_condition_js__WEBPACK_IMPORTED_MODULE_26__);
-/* harmony import */ var _acf_conditions_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./_acf-conditions.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-conditions.js");
-/* harmony import */ var _acf_conditions_js__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_acf_conditions_js__WEBPACK_IMPORTED_MODULE_27__);
-/* harmony import */ var _acf_condition_types_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./_acf-condition-types.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-condition-types.js");
-/* harmony import */ var _acf_condition_types_js__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_acf_condition_types_js__WEBPACK_IMPORTED_MODULE_28__);
-/* harmony import */ var _acf_unload_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./_acf-unload.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-unload.js");
-/* harmony import */ var _acf_unload_js__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(_acf_unload_js__WEBPACK_IMPORTED_MODULE_29__);
-/* harmony import */ var _acf_postbox_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./_acf-postbox.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-postbox.js");
-/* harmony import */ var _acf_postbox_js__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_acf_postbox_js__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var _acf_media_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./_acf-media.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-media.js");
-/* harmony import */ var _acf_media_js__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_acf_media_js__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var _acf_screen_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./_acf-screen.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-screen.js");
-/* harmony import */ var _acf_screen_js__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_acf_screen_js__WEBPACK_IMPORTED_MODULE_32__);
-/* harmony import */ var _acf_select2_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./_acf-select2.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-select2.js");
-/* harmony import */ var _acf_select2_js__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_acf_select2_js__WEBPACK_IMPORTED_MODULE_33__);
-/* harmony import */ var _acf_tinymce_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./_acf-tinymce.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-tinymce.js");
-/* harmony import */ var _acf_tinymce_js__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_acf_tinymce_js__WEBPACK_IMPORTED_MODULE_34__);
-/* harmony import */ var _acf_validation_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./_acf-validation.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-validation.js");
-/* harmony import */ var _acf_validation_js__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_acf_validation_js__WEBPACK_IMPORTED_MODULE_35__);
-/* harmony import */ var _acf_helpers_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./_acf-helpers.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-helpers.js");
-/* harmony import */ var _acf_helpers_js__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(_acf_helpers_js__WEBPACK_IMPORTED_MODULE_36__);
-/* harmony import */ var _acf_compatibility_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./_acf-compatibility.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-compatibility.js");
-/* harmony import */ var _acf_compatibility_js__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(_acf_compatibility_js__WEBPACK_IMPORTED_MODULE_37__);
+/* harmony import */ var _acf_field_icon_picker_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./_acf-field-icon-picker.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-icon-picker.js");
+/* harmony import */ var _acf_field_icon_picker_js__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_acf_field_icon_picker_js__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _acf_field_image_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./_acf-field-image.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-image.js");
+/* harmony import */ var _acf_field_image_js__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_acf_field_image_js__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _acf_field_file_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./_acf-field-file.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-file.js");
+/* harmony import */ var _acf_field_file_js__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_acf_field_file_js__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _acf_field_link_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_acf-field-link.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-link.js");
+/* harmony import */ var _acf_field_link_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_acf_field_link_js__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _acf_field_oembed_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_acf-field-oembed.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-oembed.js");
+/* harmony import */ var _acf_field_oembed_js__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_acf_field_oembed_js__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var _acf_field_radio_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./_acf-field-radio.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-radio.js");
+/* harmony import */ var _acf_field_radio_js__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_acf_field_radio_js__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var _acf_field_range_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./_acf-field-range.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-range.js");
+/* harmony import */ var _acf_field_range_js__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(_acf_field_range_js__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _acf_field_relationship_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./_acf-field-relationship.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-relationship.js");
+/* harmony import */ var _acf_field_relationship_js__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_acf_field_relationship_js__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var _acf_field_select_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./_acf-field-select.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-select.js");
+/* harmony import */ var _acf_field_select_js__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_acf_field_select_js__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _acf_field_tab_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./_acf-field-tab.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-tab.js");
+/* harmony import */ var _acf_field_tab_js__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_acf_field_tab_js__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _acf_field_post_object_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./_acf-field-post-object.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-post-object.js");
+/* harmony import */ var _acf_field_post_object_js__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_acf_field_post_object_js__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var _acf_field_page_link_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./_acf-field-page-link.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-page-link.js");
+/* harmony import */ var _acf_field_page_link_js__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(_acf_field_page_link_js__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var _acf_field_user_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./_acf-field-user.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-user.js");
+/* harmony import */ var _acf_field_user_js__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(_acf_field_user_js__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _acf_field_taxonomy_js__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./_acf-field-taxonomy.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-taxonomy.js");
+/* harmony import */ var _acf_field_taxonomy_js__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_acf_field_taxonomy_js__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _acf_field_time_picker_js__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./_acf-field-time-picker.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-time-picker.js");
+/* harmony import */ var _acf_field_time_picker_js__WEBPACK_IMPORTED_MODULE_23___default = /*#__PURE__*/__webpack_require__.n(_acf_field_time_picker_js__WEBPACK_IMPORTED_MODULE_23__);
+/* harmony import */ var _acf_field_true_false_js__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./_acf-field-true-false.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-true-false.js");
+/* harmony import */ var _acf_field_true_false_js__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(_acf_field_true_false_js__WEBPACK_IMPORTED_MODULE_24__);
+/* harmony import */ var _acf_field_url_js__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./_acf-field-url.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-url.js");
+/* harmony import */ var _acf_field_url_js__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(_acf_field_url_js__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _acf_field_wysiwyg_js__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./_acf-field-wysiwyg.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-field-wysiwyg.js");
+/* harmony import */ var _acf_field_wysiwyg_js__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(_acf_field_wysiwyg_js__WEBPACK_IMPORTED_MODULE_26__);
+/* harmony import */ var _acf_condition_js__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./_acf-condition.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-condition.js");
+/* harmony import */ var _acf_condition_js__WEBPACK_IMPORTED_MODULE_27___default = /*#__PURE__*/__webpack_require__.n(_acf_condition_js__WEBPACK_IMPORTED_MODULE_27__);
+/* harmony import */ var _acf_conditions_js__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./_acf-conditions.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-conditions.js");
+/* harmony import */ var _acf_conditions_js__WEBPACK_IMPORTED_MODULE_28___default = /*#__PURE__*/__webpack_require__.n(_acf_conditions_js__WEBPACK_IMPORTED_MODULE_28__);
+/* harmony import */ var _acf_condition_types_js__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./_acf-condition-types.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-condition-types.js");
+/* harmony import */ var _acf_condition_types_js__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(_acf_condition_types_js__WEBPACK_IMPORTED_MODULE_29__);
+/* harmony import */ var _acf_unload_js__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./_acf-unload.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-unload.js");
+/* harmony import */ var _acf_unload_js__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(_acf_unload_js__WEBPACK_IMPORTED_MODULE_30__);
+/* harmony import */ var _acf_postbox_js__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./_acf-postbox.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-postbox.js");
+/* harmony import */ var _acf_postbox_js__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(_acf_postbox_js__WEBPACK_IMPORTED_MODULE_31__);
+/* harmony import */ var _acf_media_js__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./_acf-media.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-media.js");
+/* harmony import */ var _acf_media_js__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(_acf_media_js__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var _acf_screen_js__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./_acf-screen.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-screen.js");
+/* harmony import */ var _acf_screen_js__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(_acf_screen_js__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var _acf_select2_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./_acf-select2.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-select2.js");
+/* harmony import */ var _acf_select2_js__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(_acf_select2_js__WEBPACK_IMPORTED_MODULE_34__);
+/* harmony import */ var _acf_tinymce_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./_acf-tinymce.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-tinymce.js");
+/* harmony import */ var _acf_tinymce_js__WEBPACK_IMPORTED_MODULE_35___default = /*#__PURE__*/__webpack_require__.n(_acf_tinymce_js__WEBPACK_IMPORTED_MODULE_35__);
+/* harmony import */ var _acf_validation_js__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./_acf-validation.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-validation.js");
+/* harmony import */ var _acf_validation_js__WEBPACK_IMPORTED_MODULE_36___default = /*#__PURE__*/__webpack_require__.n(_acf_validation_js__WEBPACK_IMPORTED_MODULE_36__);
+/* harmony import */ var _acf_helpers_js__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./_acf-helpers.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-helpers.js");
+/* harmony import */ var _acf_helpers_js__WEBPACK_IMPORTED_MODULE_37___default = /*#__PURE__*/__webpack_require__.n(_acf_helpers_js__WEBPACK_IMPORTED_MODULE_37__);
+/* harmony import */ var _acf_compatibility_js__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./_acf-compatibility.js */ "./src/advanced-custom-fields-pro/assets/src/js/_acf-compatibility.js");
+/* harmony import */ var _acf_compatibility_js__WEBPACK_IMPORTED_MODULE_38___default = /*#__PURE__*/__webpack_require__.n(_acf_compatibility_js__WEBPACK_IMPORTED_MODULE_38__);
+
 
 
 

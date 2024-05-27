@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -43,7 +42,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function input_admin_enqueue_scripts() {
 
 			// Register scripts for non-admin.
@@ -107,7 +105,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 			$text_input                             = acf_get_sub_array( $field, array( 'id', 'class', 'name', 'value' ) );
 			$hidden_input                           = acf_get_sub_array( $field, array( 'name', 'value' ) );
@@ -138,7 +135,6 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 
 			// display_format

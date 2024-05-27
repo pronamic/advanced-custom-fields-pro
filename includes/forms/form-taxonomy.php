@@ -26,7 +26,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// actions
@@ -51,7 +50,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   n/a
 		 * @return  (boolean)
 		 */
-
 		function validate_page() {
 
 			// global
@@ -78,7 +76,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   N/A
 		 * @return  N/A
 		 */
-
 		function admin_enqueue_scripts() {
 
 			// validate page
@@ -110,7 +107,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function add_term( $taxonomy ) {
 
 			// vars
@@ -162,7 +158,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function edit_term( $term, $taxonomy ) {
 
 			// vars
@@ -214,7 +209,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function admin_footer() {
 
 			?>
@@ -309,7 +303,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function save_term( $term_id, $tt_id, $taxonomy ) {
 
 			// vars
@@ -338,7 +331,6 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function delete_term( $term, $tt_id, $taxonomy, $deleted_term ) {
 
 			// bail early if termmeta table exists

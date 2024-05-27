@@ -24,7 +24,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// vars
@@ -53,7 +52,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		 * @param   N/A
 		 * @return  N/A
 		 */
-
 		function admin_enqueue_scripts() {
 
 			// validate screen
@@ -109,7 +107,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		 * @param   $instance (object)
 		 * @return  $post_id (int)
 		 */
-
 		function edit_widget( $widget, $return, $instance ) {
 
 			// vars
@@ -195,7 +192,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		 * @param   $widget (object) widget info
 		 * @return  $instance
 		 */
-
 		function save_widget( $instance, $new_instance, $old_instance, $widget ) {
 
 			// validate nonce if we're not a REST API request.
@@ -229,7 +225,6 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function admin_footer() {
 			?>
 <script type="text/javascript">

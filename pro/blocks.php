@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || exit;
 // Register store.
 acf_register_store( 'block-types' );
 acf_register_store( 'block-cache' );
+acf_register_store( 'block-meta-values' );
 
 // Register block.json support handlers.
 add_filter( 'block_type_metadata', 'acf_add_block_namespace' );
@@ -65,6 +66,8 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 			'attributes'        => array(),
 			'acf_block_version' => 2,
 			'api_version'       => 2,
+			'validate'          => true,
+			'use_post_meta'     => false,
 		)
 	);
 
@@ -78,10 +81,11 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 	$settings['supports'] = wp_parse_args(
 		$settings['supports'],
 		array(
-			'align' => true,
-			'html'  => false,
-			'mode'  => true,
-			'jsx'   => true,
+			'align'    => true,
+			'html'     => false,
+			'mode'     => true,
+			'jsx'      => true,
+			'multiple' => true,
 		)
 	);
 
@@ -105,6 +109,8 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 		'mode'           => 'mode',
 		'blockVersion'   => 'acf_block_version',
 		'postTypes'      => 'post_types',
+		'validate'       => 'validate',
+		'usePostMeta'    => 'use_post_meta',
 	);
 	$textdomain        = ! empty( $metadata['textdomain'] ) ? $metadata['textdomain'] : 'acf';
 	$i18n_schema       = get_block_metadata_i18n_schema();
@@ -122,6 +128,12 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 	// Add the block name and registration path to settings.
 	$settings['name'] = $metadata['name'];
 	$settings['path'] = dirname( $metadata['file'] );
+
+	// Prevent blocks that usePostMeta from being nested or saving multiple.
+	if ( ! empty( $settings['use_post_meta'] ) ) {
+		$settings['parent']               = array( 'core/post-content' );
+		$settings['supports']['multiple'] = false;
+	}
 
 	acf_get_store( 'block-types' )->set( $metadata['name'], $settings );
 	add_action( 'enqueue_block_editor_assets', 'acf_enqueue_block_assets' );
@@ -410,14 +422,16 @@ function acf_validate_block_type( $block ) {
  * @since   5.8.0
  *
  * @param   array $block The block props.
- * @return  array
+ * @return  array|boolean
  */
 function acf_prepare_block( $block ) {
-
 	// Bail early if no name.
 	if ( ! isset( $block['name'] ) ) {
 		return false;
 	}
+
+	// Ensure a block ID is always prefixed with `block_` for meta.
+	$block['id'] = acf_ensure_block_id_prefix( $block['id'] );
 
 	// Get block type and return false if doesn't exist.
 	$block_type = acf_get_block_type( $block['name'] );
@@ -522,15 +536,16 @@ function acf_render_block_callback( $attributes, $content = '', $wp_block = null
  * @date    28/2/19
  * @since   5.7.13
  *
- * @param   array    $attributes The block attributes.
- * @param   string   $content    The block content.
- * @param   boolean  $is_preview Whether or not the block is being rendered for editing preview.
- * @param   integer  $post_id    The current post being edited or viewed.
- * @param   WP_Block $wp_block   The block instance (since WP 5.5).
- * @param   array    $context    The block context array.
+ * @param   array    $attributes     The block attributes.
+ * @param   string   $content        The block content.
+ * @param   boolean  $is_preview     Whether or not the block is being rendered for editing preview.
+ * @param   integer  $post_id        The current post being edited or viewed.
+ * @param   WP_Block $wp_block       The block instance (since WP 5.5).
+ * @param   array    $context        The block context array.
+ * @param   boolean  $is_ajax_render Whether or not this is an ACF AJAX render.
  * @return  string   The block HTML.
  */
-function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
+function acf_rendered_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false, $is_ajax_render = false ) {
 	$mode = isset( $attributes['mode'] ) ? $attributes['mode'] : 'auto';
 	$form = ( 'edit' === $mode && $is_preview );
 
@@ -540,7 +555,11 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 	}
 
 	// Check if we need to generate a block ID.
-	$attributes['id'] = acf_get_block_id( $attributes, $context );
+	$force_new_id = false;
+	if ( acf_block_uses_post_meta( $attributes ) && ! empty( $attributes['id'] ) && empty( $attributes['data'] ) ) {
+		$force_new_id = true;
+	}
+	$attributes['id'] = acf_get_block_id( $attributes, $context, $force_new_id );
 
 	// Check if we've already got a cache of this block ID and return it to save rendering if we're in the backend.
 	if ( $is_preview ) {
@@ -558,19 +577,27 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 
 	ob_start();
 
+	$validation = false;
+
 	if ( $form ) {
 		// Load the block form since we're in edit mode.
 		// Set flag for post REST cleanup of media enqueue count during preloads.
 		acf_set_data( 'acf_did_render_block_form', true );
 
 		$block = acf_prepare_block( $attributes );
+		$block = acf_add_block_meta_values( $block, $post_id );
 		acf_setup_meta( $block['data'], $block['id'], true );
+
+		if ( ! empty( $block['validate'] ) ) {
+			$validation = acf_get_block_validation_state( $block );
+		}
+
 		$fields = acf_get_block_fields( $block );
 		if ( $fields ) {
 			acf_prefix_fields( $fields, "acf-{$block['id']}" );
 
-			echo '<div class="acf-block-fields acf-fields">';
-			acf_render_fields( $fields, $block['id'], 'div', 'field' );
+			echo '<div class="acf-block-fields acf-fields" data-block-id="' . esc_attr( $block['id'] ) . '">';
+			acf_render_fields( $fields, acf_ensure_block_id_prefix( $block['id'] ), 'div', 'field' );
 			echo '</div>';
 		} else {
 			echo acf_get_empty_block_form_html( $attributes['name'] ); //phpcs:ignore -- escaped in function.
@@ -578,6 +605,19 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 	} else {
 		// Capture block render output.
 		acf_render_block( $attributes, $content, $is_preview, $post_id, $wp_block, $context );
+
+		if ( $is_preview && ! $is_ajax_render ) {
+			/**
+			 * If we're in preloaded preview, we need to get the validation state for a preview too.
+			 * Because the block render resets meta once it's finished to not pollute $post_id, we need to redo that process here.
+			 */
+			$block = acf_prepare_block( $attributes );
+			$block = acf_add_block_meta_values( $block, $post_id );
+			acf_setup_meta( $block['data'], $block['id'], true );
+			if ( ! empty( $block['validate'] ) ) {
+				$validation = acf_get_block_validation_state( $block );
+			}
+		}
 	}
 
 	$html = ob_get_clean();
@@ -602,13 +642,20 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 		$html = preg_replace( '/<InnerBlocks([\S\s]*?)\/>/', $content, $html );
 	}
 
+	$block_cache = array(
+		'form' => $form,
+		'html' => $html,
+	);
+
+	if ( $is_preview && $validation ) {
+		// If we're in the preview, also store the validation status in the block cache.
+		$block_cache['validation'] = $validation;
+	}
+
 	// Store in cache for preloading if we're in the backend.
 	acf_get_store( 'block-cache' )->set(
 		$attributes['id'],
-		array(
-			'form' => $form,
-			'html' => $html,
-		)
+		$block_cache
 	);
 
 	// Prevent edit forms being output to rest endpoints.
@@ -633,7 +680,6 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
  * @return  void|string
  */
 function acf_render_block( $attributes, $content = '', $is_preview = false, $post_id = 0, $wp_block = null, $context = false ) {
-
 	// Prepare block ensuring all settings and attributes exist.
 	$block = acf_prepare_block( $attributes );
 	if ( ! $block ) {
@@ -648,8 +694,7 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
 	// Enqueue block type assets.
 	acf_enqueue_block_type_assets( $block );
 
-	// Ensure block ID is prefixed for render.
-	$block['id'] = acf_ensure_block_id_prefix( $block['id'] );
+	$block = acf_add_block_meta_values( $block, $post_id );
 
 	// Setup postdata allowing get_field() to work.
 	acf_setup_meta( $block['data'], $block['id'], true );
@@ -700,9 +745,12 @@ function acf_block_render_template( $block, $content, $is_preview, $post_id, $wp
  * @return  array
  */
 function acf_get_block_fields( $block ) {
-
-	// Vars.
 	$fields = array();
+
+	// We need at least a block name to check.
+	if ( empty( $block['name'] ) ) {
+		return $fields;
+	}
 
 	// Get field groups for this block.
 	$field_groups = acf_get_field_groups(
@@ -718,7 +766,6 @@ function acf_get_block_fields( $block ) {
 		}
 	}
 
-	// Return fields.
 	return $fields;
 }
 
@@ -870,20 +917,24 @@ function acf_ajax_fetch_block() {
 
 	// Prepare block ensuring all settings and attributes exist.
 	$block = acf_prepare_block( $block );
+	$block = acf_add_block_meta_values( $block, $post_id );
+
 	if ( ! $block ) {
 		wp_send_json_error();
 	}
 
 	// Load field defaults when first previewing a block.
+	$first_preview = false;
 	if ( ! empty( $query['preview'] ) && ! $block['data'] ) {
 		$fields = acf_get_block_fields( $block );
 		foreach ( $fields as $field ) {
 			$block['data'][ "_{$field['name']}" ] = $field['key'];
 		}
+		$first_preview = true;
 	}
 
 	// Setup postdata allowing form to load meta.
-	acf_setup_meta( $block['data'], acf_ensure_block_id_prefix( $block['id'] ), true );
+	acf_setup_meta( $block['data'], $block['id'], true );
 
 	// Setup main postdata for post_id.
 	global $post;
@@ -893,6 +944,11 @@ function acf_ajax_fetch_block() {
 
 	// Vars.
 	$response = array( 'clientId' => $client_id );
+
+	$query['validate'] = ( ! empty( $query['validate'] ) && ( $query['validate'] === 'true' || $query['validate'] === true ) );
+	if ( ! empty( $query['validate'] ) || ! empty( $block['validate'] ) ) {
+		$response['validation'] = acf_get_block_validation_state( $block, $first_preview );
+	}
 
 	// Query form.
 	if ( ! empty( $query['form'] ) ) {
@@ -908,8 +964,8 @@ function acf_ajax_fetch_block() {
 			ob_start();
 
 			// Render.
-			echo '<div class="acf-block-fields acf-fields">';
-				acf_render_fields( $fields, acf_ensure_block_id_prefix( $block['id'] ), 'div', 'field' );
+			echo '<div class="acf-block-fields acf-fields" data-block-id="' . esc_attr( $block['id'] ) . '">';
+				acf_render_fields( $fields, $block['id'], 'div', 'field' );
 			echo '</div>';
 
 			// Store Capture.
@@ -927,7 +983,7 @@ function acf_ajax_fetch_block() {
 		$is_preview = true;
 
 		// Render and store HTML.
-		$response['preview'] = acf_rendered_block( $block, $content, $is_preview, $post_id, null, $context );
+		$response['preview'] = acf_rendered_block( $block, $content, $is_preview, $post_id, null, $context, true );
 	}
 
 	// Send response.
@@ -995,7 +1051,6 @@ add_filter( 'content_save_pre', 'acf_parse_save_blocks', 5, 1 );
  * @return  string
  */
 function acf_parse_save_blocks_callback( $matches ) {
-
 	// Defaults.
 	$name  = isset( $matches['name'] ) ? $matches['name'] : '';
 	$attrs = isset( $matches['attrs'] ) ? json_decode( $matches['attrs'], true ) : '';
@@ -1007,21 +1062,32 @@ function acf_parse_save_blocks_callback( $matches ) {
 	}
 
 	// Check if we need to generate a block ID.
-	$block_id = acf_get_block_id( $attrs );
+	$block_id = acf_ensure_block_id_prefix( acf_get_block_id( $attrs ) );
 
-	// Convert "data" to "meta".
-	// No need to check if already in meta format. Local Meta will do this for us.
-	if ( isset( $attrs['data'] ) ) {
-		$attrs['data'] = acf_setup_meta( $attrs['data'], acf_ensure_block_id_prefix( $block_id ) );
+	if ( ! empty( $attrs['data'] ) ) {
+		if ( acf_block_uses_post_meta( $attrs ) ) {
+			// Block ID is used later to retrieve & save values.
+			$attrs['id'] = $block_id;
+
+			// Cache the values until we have a post ID and can save.
+			$store = acf_get_store( 'block-meta-values' );
+			$store->set( $block_id, $attrs['data'] );
+
+			// No need to store values in post content.
+			unset( $attrs['data'] );
+		} else {
+			// Convert "data" to "meta".
+			// No need to check if already in meta format. Local Meta will do this for us.
+			$attrs['data'] = acf_setup_meta( $attrs['data'], $block_id );
+		}
 	}
 
 	/**
 	 * Filters the block attributes before saving.
 	 *
-	 * @date    18/3/19
-	 * @since   5.7.14
+	 * @since 5.7.14
 	 *
-	 * @param   array $attrs The block attributes.
+	 * @param array $attrs The block attributes.
 	 */
 	$attrs = apply_filters( 'acf/pre_save_block', $attrs );
 
@@ -1036,13 +1102,14 @@ function acf_parse_save_blocks_callback( $matches ) {
  *
  * @since 6.0.0
  *
- * @param array $attributes A block attributes array.
- * @param array $context    The block context array, defaults to an empty array.
+ * @param array   $attributes A block attributes array.
+ * @param array   $context    The block context array, defaults to an empty array.
+ * @param boolean $force      If we should generate a new block ID even if one exists.
  * @return string A block ID.
  */
-function acf_get_block_id( $attributes, $context = array() ) {
+function acf_get_block_id( $attributes, $context = array(), $force = false ) {
 	$attributes['_acf_context'] = $context;
-	if ( empty( $attributes['id'] ) ) {
+	if ( empty( $attributes['id'] ) || $force ) {
 		unset( $attributes['id'] );
 
 		// Remove all empty string values as they're not present in JS hash building.
@@ -1107,6 +1174,64 @@ function acf_serialize_block_attributes( $block_attributes ) {
 }
 
 /**
+ * Handle validating a block's fields and return the validity, and any errors.
+ *
+ * This function uses the values loaded into Local Meta, which means they have to be
+ * converted back to the data format because they can be validated.
+ *
+ * @since 6.3
+ *
+ * @param array   $block          An array of the block's data attribute.
+ * @param boolean $using_defaults True if the block is currently being generated with default values. Default false.
+ * @return array An array containing a valid boolean, and an errors array.
+ */
+function acf_get_block_validation_state( $block, $using_defaults = false ) {
+	$block_id = $block['id'];
+
+	if ( $using_defaults || empty( $block['data'] ) ) {
+		// If data is empty or it's first preview, load the default fields for this block so we can get a required validation state from the current field set.
+		$field_objects = acf_get_block_fields( $block );
+	} else {
+		$field_objects = get_field_objects( $block_id );
+	}
+
+	if ( empty( $field_objects ) ) {
+		return false;
+	}
+
+	$response = array(
+		'valid'  => true,
+		'errors' => array(),
+	);
+
+	$skip_conditional_fields = false;
+	if ( acf_get_data( $block_id . '_loaded_meta_values' ) ) {
+		$skip_conditional_fields = true;
+	}
+
+	acf_reset_validation_errors();
+	foreach ( $field_objects as $field ) {
+		/**
+		 * Skips validation of conditional fields in post meta blocks when
+		 * preloading or during the first AJAX render if preloading is disabled.
+		 */
+		if ( $skip_conditional_fields && ! empty( $field['conditional_logic'] ) ) {
+			continue;
+		}
+
+		$key   = $field['key'];
+		$value = $field['value'];
+		$valid = acf_validate_value( $value, $field, "acf-{$block_id}[{$key}]" );
+		if ( ! $valid ) {
+			$response['valid'] = false;
+		}
+	}
+	$response['errors'] = acf_get_validation_errors();
+
+	return $response;
+}
+
+/**
  * Set ACF data before a rest call if media scripts have not been enqueued yet for after REST reset.
  *
  * @date    07/06/22
@@ -1146,3 +1271,148 @@ function acf_reset_media_enqueue_after_rest( $response ) {
 	return $response;
 }
 add_filter( 'rest_request_after_callbacks', 'acf_reset_media_enqueue_after_rest' );
+
+/**
+ * Checks if the provided block is configured to save/load post meta.
+ *
+ * @since 6.3
+ *
+ * @param array $block The block to check.
+ * @return boolean
+ */
+function acf_block_uses_post_meta( $block ): bool {
+	if ( ! empty( $block['name'] ) && ! isset( $block['use_post_meta'] ) ) {
+		$block = acf_get_block_type( $block['name'] );
+	}
+
+	return ! empty( $block['use_post_meta'] );
+}
+
+/**
+ * Loads ACF field values from the post meta if the block is configured to do so.
+ *
+ * @since 6.3
+ *
+ * @param array   $block   The block to get values for.
+ * @param integer $post_id The ID of the post to retrieve meta from.
+ * @return array
+ */
+function acf_add_block_meta_values( $block, $post_id ) {
+	// Bail if the block already has data (i.e. previewing an update).
+	if ( ! is_array( $block ) || ! empty( $block['data'] ) ) {
+		return $block;
+	}
+
+	// Bail if block doesn't load from meta.
+	if ( ! acf_block_uses_post_meta( $block ) ) {
+		return $block;
+	}
+
+	// Bail if we don't have a post ID or block ID.
+	if ( empty( $post_id ) || empty( $block['id'] ) ) {
+		return $block;
+	}
+
+	$fields = acf_get_block_fields( $block );
+
+	if ( empty( $fields ) ) {
+		return $block;
+	}
+
+	$values   = array();
+	$store    = acf_get_store( 'values' );
+	$block_id = acf_ensure_block_id_prefix( $block['id'] );
+
+	foreach ( $fields as $field ) {
+		$value = acf_get_value( $post_id, $field );
+
+		// Make sure we got a value (i.e. $allow_load = true).
+		if ( ! $store->has( "{$post_id}:{$field['name']}" ) ) {
+			continue;
+		}
+
+		$store->set( "{$block_id}:{$field['name']}", $value );
+
+		$values[ $field['name'] ]       = $value;
+		$values[ '_' . $field['name'] ] = $field['key']; // TODO: Is there a better way to generate this?
+	}
+
+	$block['data'] = $values;
+
+	acf_set_data( $block_id . '_loaded_meta_values', true );
+
+	return $block;
+}
+
+/**
+ * Stores ACF field values in post meta for any blocks configured to do so.
+ *
+ * @since 6.3
+ *
+ * @param integer $post_id The ID of the post being saved.
+ * @param WP_Post $post    The post object.
+ * @return void
+ */
+function acf_save_block_meta_values( $post_id, $post ) {
+	$meta_values = acf_get_block_meta_values_to_save( $post->post_content );
+
+	if ( empty( $meta_values ) ) {
+		return;
+	}
+
+	// Save values for any post meta blocks.
+	acf_save_post( $post_id, $meta_values );
+}
+add_action( 'save_post', 'acf_save_block_meta_values', 10, 2 );
+
+/**
+ * Iterates over blocks in post content and retrieves values
+ * that need to be saved to post meta.
+ *
+ * @since 6.3
+ *
+ * @param string $content The content saved for the post.
+ * @return array An array containing the field values that need to be saved.
+ */
+function acf_get_block_meta_values_to_save( $content = '' ) {
+	$meta_values = array();
+
+	// Bail early if not in a format we expect or if it has no blocks.
+	if ( ! is_string( $content ) || empty( $content ) || ! has_blocks( $content ) ) {
+		return $meta_values;
+	}
+
+	$blocks = parse_blocks( $content );
+
+	// Bail if no blocks to save.
+	if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+		return $meta_values;
+	}
+
+	foreach ( $blocks as $block ) {
+		// Verify this is an ACF block that should save to meta.
+		if ( ! acf_block_uses_post_meta( $block['attrs'] ) ) {
+			continue;
+		}
+
+		// We need a block ID to retrieve the values from cache.
+		$block_id = ! empty( $block['attrs']['id'] ) ? $block['attrs']['id'] : false;
+		if ( ! $block_id ) {
+			continue;
+		}
+
+		// Verify that we have values for this block.
+		$store = acf_get_store( 'block-meta-values' );
+		if ( ! $store->has( $block_id ) ) {
+			continue;
+		}
+
+		// Get the values and remove from cache.
+		$block_values = $store->get( $block_id );
+		$store->remove( $block_id );
+
+		$meta_values = array_merge( $meta_values, $block_values );
+	}
+
+	return $meta_values;
+}

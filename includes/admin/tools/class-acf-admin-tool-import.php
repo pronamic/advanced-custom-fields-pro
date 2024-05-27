@@ -19,7 +19,6 @@ if ( ! class_exists( 'ACF_Admin_Tool_Import' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -40,7 +39,6 @@ if ( ! class_exists( 'ACF_Admin_Tool_Import' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function html() {
 
 			?>

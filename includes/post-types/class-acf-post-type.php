@@ -233,7 +233,7 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 				'rename_capabilities'      => false,
 				'singular_capability_name' => 'post',
 				'plural_capability_name'   => 'posts',
-				'supports'                 => array( 'title', 'editor', 'thumbnail' ),
+				'supports'                 => array( 'title', 'editor', 'thumbnail', 'custom-fields' ),
 				'taxonomies'               => array(),
 				'has_archive'              => false,
 				'has_archive_slug'         => '',
@@ -481,10 +481,21 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 				$args['menu_position'] = $menu_position;
 			}
 
-			// WordPress defaults to the same icon as the posts icon.
-			$menu_icon = (string) $post['menu_icon'];
-			if ( ! empty( $menu_icon ) ) {
-				$args['menu_icon'] = $menu_icon;
+			// Set the default for the icon.
+			$args['menu_icon'] = 'dashicons-admin-post';
+
+			// Override that default if a value is provided.
+			if ( ! empty( $post['menu_icon'] ) ) {
+				if ( is_string( $post['menu_icon'] ) ) {
+					$args['menu_icon'] = $post['menu_icon'];
+				}
+				if ( is_array( $post['menu_icon'] ) ) {
+					if ( $post['menu_icon']['type'] === 'media_library' ) {
+						$args['menu_icon'] = wp_get_attachment_image_url( $post['menu_icon']['value'] );
+					} else {
+						$args['menu_icon'] = $post['menu_icon']['value'];
+					}
+				}
 			}
 
 			// WordPress defaults to "post" for `$args['capability_type']`, but can also take an array.

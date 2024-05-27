@@ -16,7 +16,6 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -43,7 +42,6 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -127,7 +125,6 @@ if ( ! class_exists( 'acf_field_message' ) ) :
 		 * @param   $field (array)
 		 * @return  $field
 		 */
-
 		function translate_field( $field ) {
 
 			// translate

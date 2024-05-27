@@ -24,7 +24,6 @@ if ( ! class_exists( 'acf_form_attachment' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// actions
@@ -49,7 +48,6 @@ if ( ! class_exists( 'acf_form_attachment' ) ) :
 		 * @param   N/A
 		 * @return  N/A
 		 */
-
 		function admin_enqueue_scripts() {
 
 			// bail early if not valid screen
@@ -81,7 +79,6 @@ if ( ! class_exists( 'acf_form_attachment' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function admin_footer() {
 
 			// render post data
@@ -113,7 +110,6 @@ acf.unload.active = 0;
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function edit_attachment( $form_fields, $post ) {
 
 			// vars
@@ -189,7 +185,6 @@ acf.unload.active = 0;
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function save_attachment( $post, $attachment ) {
 
 			// bail early if not valid nonce

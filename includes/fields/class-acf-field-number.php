@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_number' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -45,7 +44,6 @@ if ( ! class_exists( 'acf_field_number' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -106,7 +104,6 @@ if ( ! class_exists( 'acf_field_number' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 
 			// default_value
@@ -211,7 +208,6 @@ if ( ! class_exists( 'acf_field_number' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function validate_value( $valid, $value, $field, $input ) {
 
 			// remove ','
@@ -262,7 +258,6 @@ if ( ! class_exists( 'acf_field_number' ) ) :
 		 *
 		 * @return  $value - the modified value
 		 */
-
 		function update_value( $value, $post_id, $field ) {
 
 			// no formatting needed for empty value

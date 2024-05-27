@@ -29,10 +29,39 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			acf_add_filter_variations( 'acf/fields/user/query', array( 'name', 'key' ), 1 );
 			acf_add_filter_variations( 'acf/fields/user/result', array( 'name', 'key' ), 2 );
 			acf_add_filter_variations( 'acf/fields/user/search_columns', array( 'name', 'key' ), 3 );
+			add_filter( 'acf/conditional_logic/choices', array( $this, 'render_field_user_conditional_choices' ), 10, 3 );
 
 			// Add AJAX query.
 			add_action( 'wp_ajax_acf/fields/user/query', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/user/query', array( $this, 'ajax_query' ) );
+		}
+
+		/**
+		 * Filters choices in user conditions.
+		 *
+		 * @since 6.3
+		 *
+		 * @param array  $choices           The selected choice.
+		 * @param array  $conditional_field The conditional field settings object.
+		 * @param string $rule_value        The rule value.
+		 * @return array
+		 */
+		public function render_field_user_conditional_choices( $choices, $conditional_field, $rule_value ) {
+			if ( ! is_array( $conditional_field ) || $conditional_field['type'] !== 'user' ) {
+				return $choices;
+			}
+			if ( ! empty( $rule_value ) ) {
+				$user = acf_get_users(
+					array(
+						'include' => array( $rule_value ),
+					)
+				);
+
+				$user_result = acf_get_user_result( $user[0] );
+				$choices     = array( $user_result['id'] => $user_result['text'] );
+			}
+
+			return $choices;
 		}
 
 		/**
@@ -165,7 +194,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		}
 
 		/**
-		 * Returns the result text for a fiven WP_User object.
+		 * Returns the result text for a given WP_User object.
 		 *
 		 * @date    1/11/2013
 		 * @since   5.0.0
@@ -353,7 +382,6 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			add_filter( 'acf/ajax/query_users/args', array( $this, 'ajax_query_args' ), 10, 3 );
 			add_filter( 'acf/ajax/query_users/result', array( $this, 'ajax_query_result' ), 10, 3 );
 			add_filter( 'acf/ajax/query_users/search_columns', array( $this, 'ajax_query_search_columns' ), 10, 4 );
-
 			// Simulate AJAX request.
 			acf_get_instance( 'ACF_Ajax_Query_Users' )->request();
 		}

@@ -19,7 +19,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// vars
@@ -48,7 +47,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   N/A
 		 * @return  N/A
 		 */
-
 		function customize_controls_init() {
 
 			// load acf scripts
@@ -76,7 +74,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   $widget (object) widget info
 		 * @return  $instance
 		 */
-
 		function save_widget( $instance, $new_instance, $old_instance, $widget ) {
 
 			// bail early if not valid (customize + acf values + nonce)
@@ -128,7 +125,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   $customizer (object)
 		 * @return  $value (mixed)
 		 */
-
 		function settings( $customizer ) {
 
 			// vars
@@ -188,7 +184,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   $customizer (object)
 		 * @return  n/a
 		 */
-
 		function customize_preview_init( $customizer ) {
 
 			// get customizer settings (widgets)
@@ -231,7 +226,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   type $var Description. Default.
 		 * @return  type Description.
 		 */
-
 		function pre_load_value( $value, $post_id, $field ) {
 
 			// check
@@ -254,7 +248,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   type $var Description. Default.
 		 * @return  type Description.
 		 */
-
 		function pre_load_reference( $field_key, $field_name, $post_id ) {
 
 			// check
@@ -279,7 +272,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   $customizer (object)
 		 * @return  n/a
 		 */
-
 		function customize_save( $customizer ) {
 
 			// get customizer settings (widgets)
@@ -316,7 +308,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function pre_update_option( $value, $option, $old_value ) {
 
 			// bail early if no value
@@ -352,7 +343,6 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function admin_footer() {
 
 			?>

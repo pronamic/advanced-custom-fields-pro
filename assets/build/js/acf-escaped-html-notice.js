@@ -3,24 +3,9 @@ var __webpack_exports__ = {};
 /*!*********************************************************************************!*\
   !*** ./src/advanced-custom-fields-pro/assets/src/js/acf-escaped-html-notice.js ***!
   \*********************************************************************************/
-(function ($, undefined) {
+/* global, acf_escaped_html_notice */
+(function ($) {
   const $notice = $('.acf-escaped-html-notice');
-  $notice.on('click', '.notice-dismiss', function (e) {
-    const $target = $(e.target).closest('.acf-escaped-html-notice');
-    let to_dismiss = 'escaped_html';
-    if ($target.hasClass('acf-will-escape')) {
-      to_dismiss = 'to_be_escaped';
-    }
-    $.ajax({
-      url: ajaxurl,
-      data: {
-        'action': 'acf/dismiss_escaped_html_notice',
-        'nonce': acf_escaped_html_notice.nonce,
-        'notice': to_dismiss
-      },
-      type: 'post'
-    });
-  });
   $notice.on('click', '.acf-show-more-details', function (e) {
     e.preventDefault();
     const $link = $(e.target);

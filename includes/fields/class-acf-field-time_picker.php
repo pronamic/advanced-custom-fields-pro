@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -41,7 +40,6 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// Set value.

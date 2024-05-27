@@ -365,20 +365,16 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		}
 
 		/**
-		 * Saves an ACF JSON file.
+		 * Gets the filename for an ACF JSON file.
 		 *
-		 * @date 17/4/20
-		 * @since 5.9.0
+		 * @since 6.3
 		 *
 		 * @param string $key  The ACF post key.
 		 * @param array  $post The main ACF post array.
-		 * @return boolean
+		 * @return string|boolean
 		 */
-		public function save_file( $key, $post ) {
-			$paths          = $this->get_save_paths( $key, $post );
-			$file           = false;
-			$first_writable = false;
-			$load_path      = '';
+		public function get_filename( $key, $post ) {
+			$load_path = '';
 
 			if ( is_array( $this->files ) && isset( $this->files[ $key ] ) ) {
 				$load_path = $this->files[ $key ];
@@ -403,6 +399,29 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 
 			// sanitize_file_name() can potentially remove all characters.
 			if ( empty( $filename ) ) {
+				return false;
+			}
+
+			return $filename;
+		}
+
+		/**
+		 * Saves an ACF JSON file.
+		 *
+		 * @date 17/4/20
+		 * @since 5.9.0
+		 *
+		 * @param string $key  The ACF post key.
+		 * @param array  $post The main ACF post array.
+		 * @return boolean
+		 */
+		public function save_file( $key, $post ) {
+			$paths          = $this->get_save_paths( $key, $post );
+			$filename       = $this->get_filename( $key, $post );
+			$file           = false;
+			$first_writable = false;
+
+			if ( ! $filename ) {
 				return false;
 			}
 
@@ -462,12 +481,17 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		 * @return boolean
 		 */
 		public function delete_file( $key, $post = array() ) {
-			$paths = $this->get_save_paths( $key, $post );
+			$paths    = $this->get_save_paths( $key, $post );
+			$filename = $this->get_filename( $key, $post );
+
+			if ( ! $filename ) {
+				return false;
+			}
 
 			foreach ( $paths as $path_to_check ) {
-				$file = untrailingslashit( $path_to_check ) . '/' . $key . '.json';
+				$file = untrailingslashit( $path_to_check ) . '/' . $filename;
 
-				if ( wp_is_writable( $file ) ) {
+				if ( is_writable( $file ) ) { //phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable -- non-compatible function for this purpose.
 					wp_delete_file( $file );
 				}
 			}

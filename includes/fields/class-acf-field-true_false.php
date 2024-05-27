@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -44,7 +43,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -209,7 +207,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		 *
 		 * @return  $value (mixed) the modified value
 		 */
-
 		function format_value( $value, $post_id, $field ) {
 
 			return empty( $value ) ? false : true;
@@ -226,7 +223,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function validate_value( $valid, $value, $field, $input ) {
 
 			// bail early if not required
@@ -254,7 +250,6 @@ if ( ! class_exists( 'acf_field_true_false' ) ) :
 		 * @param   $field (array)
 		 * @return  $field
 		 */
-
 		function translate_field( $field ) {
 
 			// translate

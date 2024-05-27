@@ -147,7 +147,7 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 			// Check if we should force check the license status.
 			$force_get_license_status = false;
 			$retry_license_nonce      = acf_request_arg( 'acf_retry_nonce' );
-			if ( wp_verify_nonce( $retry_license_nonce, 'acf_recheck_status' ) ) {
+			if ( wp_verify_nonce( $retry_license_nonce, 'acf_recheck_status' ) || ! empty( $_GET['force-license-check'] ) ) {
 				$force_get_license_status = true;
 			}
 

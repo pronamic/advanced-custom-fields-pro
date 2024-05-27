@@ -67,7 +67,6 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function admin_load() {
 
 			// globals
@@ -200,7 +199,6 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function postbox_submitdiv( $post, $args ) {
 
 			/**

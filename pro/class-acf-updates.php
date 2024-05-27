@@ -129,12 +129,27 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 				acf_log( $url, $body );
 			}
 
+			$license_key = acf_pro_get_license_key();
+			if ( ! $license_key ) {
+				$license_key = '';
+			}
+
+			$site_url = acf_pro_get_home_url();
+			if ( ! $site_url ) {
+				$site_url = '';
+			}
+
 			// Make request.
 			$raw_response = wp_remote_post(
 				$url,
 				array(
-					'timeout' => 10,
+					'timeout' => 28,
 					'body'    => $body,
+					'headers' => array(
+						'X-ACF-Version' => ACF_VERSION,
+						'X-ACF-License' => $license_key,
+						'X-ACF-URL'     => $site_url,
+					),
 				)
 			);
 
@@ -186,7 +201,7 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 			}
 
 			// allow json to include expiration but force minimum and max for safety.
-			$expiration = $this->get_expiration( $response, DAY_IN_SECONDS, MONTH_IN_SECONDS );
+			$expiration = $this->get_expiration( $response, DAY_IN_SECONDS );
 
 			// update transient.
 			set_transient( $transient_name, $response, $expiration );
@@ -314,7 +329,7 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 			}
 
 			// Allow json to include expiration but force minimum and max for safety.
-			$expiration = $this->get_expiration( $response, DAY_IN_SECONDS, MONTH_IN_SECONDS );
+			$expiration = $this->get_expiration( $response );
 
 			// Update transient and return.
 			set_transient( $transient_name, $response, $expiration );
@@ -327,11 +342,11 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 		 * @since   5.6.9
 		 *
 		 * @param   mixed   $response The response from the server. Default false.
-		 * @param   integer $min      The minimum expiration limit. Default 0.
-		 * @param   integer $max      The maximum expiration limit. Default 0.
+		 * @param   integer $min      The minimum expiration limit. Default 3 hours.
+		 * @param   integer $max      The maximum expiration limit. Default 7 days.
 		 * @return  integer
 		 */
-		public function get_expiration( $response = false, $min = 0, $max = 0 ) {
+		public function get_expiration( $response = false, $min = 10800, $max = 604800 ) {
 			$expiration = 0;
 
 			// Check possible error conditions.

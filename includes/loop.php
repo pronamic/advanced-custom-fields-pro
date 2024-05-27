@@ -19,7 +19,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function __construct() {
 
 			// vars
@@ -37,7 +36,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   n/a
 		 * @return  (boolean)
 		 */
-
 		function is_empty() {
 
 			return empty( $this->loops );
@@ -54,7 +52,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   $i (int)
 		 * @return  (boolean)
 		 */
-
 		function is_loop( $i = 0 ) {
 
 			return isset( $this->loops[ $i ] );
@@ -71,7 +68,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   $i (mixed)
 		 * @return  (int)
 		 */
-
 		function get_i( $i = 0 ) {
 
 			// 'active'
@@ -104,7 +100,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   $loop (array)
 		 * @return  n/a
 		 */
-
 		function add_loop( $loop = array() ) {
 
 			// defaults
@@ -150,7 +145,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   $value (mixed) the loop setting value
 		 * @return  (boolean) true on success
 		 */
-
 		function update_loop( $i = 'active', $key = null, $value = null ) {
 
 			// i
@@ -180,7 +174,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   $key (string) the loop setting name
 		 * @return  (mixed) false on failure
 		 */
-
 		function get_loop( $i = 'active', $key = null ) {
 
 			// i
@@ -211,7 +204,6 @@ if ( ! class_exists( 'acf_loop' ) ) :
 		 * @param   $i (mixed)
 		 * @return  (boolean) true on success
 		 */
-
 		function remove_loop( $i = 'active' ) {
 
 			// i

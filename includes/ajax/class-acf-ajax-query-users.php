@@ -141,12 +141,13 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 				// Determine if more results exist.
 				// As this query does not return grouped results, the calculation can be exact (">").
 				$this->more = ( $total_users > count( $users ) + $args['offset'] );
-
 				// Otherwise, group results via role.
 			} else {
 
 				// Unset args that will interfer with query results.
 				unset( $args['role__in'], $args['role__not_in'] );
+
+				$args['search'] = $this->search ? $this->search : '';
 
 				// Loop over each role.
 				foreach ( $roles as $role => $role_label ) {

@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -49,7 +48,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 * @param   $field (array) the $field being edited
 		 * @return  n/a
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -174,7 +172,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 *
 		 * @param   $field  - an array holding all the field's data
 		 */
-
 		function render_field_settings( $field ) {
 			// Encode choices (convert from array).
 			$field['choices'] = acf_encode_choices( $field['choices'] );
@@ -301,7 +298,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 *
 		 * @return  $field - the modified field
 		 */
-
 		function update_field( $field ) {
 
 			// decode choices (convert to array)
@@ -326,7 +322,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 *
 		 * @return  $value - the modified value
 		 */
-
 		function update_value( $value, $post_id, $field ) {
 
 			// bail early if no value (allow 0 to be saved)
@@ -382,7 +377,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 *
 		 * @return  $value - the value to be saved in te database
 		 */
-
 		function load_value( $value, $post_id, $field ) {
 
 			// must be single value
@@ -405,7 +399,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 * @param   $field (array)
 		 * @return  $field
 		 */
-
 		function translate_field( $field ) {
 
 			return acf_get_field_type( 'select' )->translate_field( $field );
@@ -425,7 +418,6 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 		 *
 		 * @return  $value (mixed) the modified value
 		 */
-
 		function format_value( $value, $post_id, $field ) {
 
 			return acf_get_field_type( 'select' )->format_value( $value, $post_id, $field );

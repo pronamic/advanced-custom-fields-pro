@@ -168,6 +168,7 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 				'position'               => null,
 				'redirect'               => false,
 				'description'            => '',
+				'menu_icon'              => array(),
 				// Labels tab.
 				'update_button'          => __( 'Update', 'acf' ),
 				'updated_message'        => __( 'Options Updated', 'acf' ),
@@ -336,6 +337,27 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 		}
 
 		/**
+		 * This function returns whether the value was saved prior to the icon picker field or not.
+		 *
+		 * @since 6.3
+		 *
+		 * @param mixed $args The args for the icon field.
+		 * @return boolean
+		 */
+		public function value_was_saved_prior_to_icon_picker_field( $args ) {
+			if (
+				! empty( $args['menu_icon'] ) &&
+				is_array( $args['menu_icon'] ) &&
+				! empty( $args['menu_icon']['type'] ) &&
+				! empty( $args['menu_icon']['value'] )
+			) {
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
 		 * Parses ACF options page settings and returns an array of args
 		 * to be handled by `acf_add_options_page()`.
 		 *
@@ -395,6 +417,20 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 				}
 
 				$args[ $setting ] = $value;
+			}
+
+			// Override the icon_url if the value was saved after the icon picker was added to ACF in 6.3.
+			if ( ! $this->value_was_saved_prior_to_icon_picker_field( $args ) ) {
+				if ( $args['menu_icon']['type'] === 'url' ) {
+					$args['icon_url'] = $args['menu_icon']['value'];
+				}
+				if ( $args['menu_icon']['type'] === 'media_library' ) {
+					$image_url        = wp_get_attachment_image_url($args['menu_icon']['value']);
+					$args['icon_url'] = $image_url;
+				}
+				if ( $args['menu_icon']['type'] === 'dashicons' ) {
+					$args['icon_url'] = $args['menu_icon']['value'];
+				}
 			}
 
 			return apply_filters( 'acf/ui_options_page/registration_args', $args, $post );

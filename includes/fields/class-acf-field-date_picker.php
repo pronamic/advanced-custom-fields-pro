@@ -15,7 +15,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		 * @param   n/a
 		 * @return  n/a
 		 */
-
 		function initialize() {
 
 			// vars
@@ -43,7 +42,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		 * @param   $post_id (int)
 		 * @return  $post_id (int)
 		 */
-
 		function input_admin_enqueue_scripts() {
 
 			// bail early if no enqueue
@@ -87,7 +85,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-
 		function render_field( $field ) {
 
 			// vars
@@ -243,7 +240,6 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 		 *
 		 * @return  $value (mixed) the modified value
 		 */
-
 		function format_value( $value, $post_id, $field ) {
 
 			// save_format - compatibility with ACF < 5.0.0

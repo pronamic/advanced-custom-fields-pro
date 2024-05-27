@@ -217,7 +217,7 @@ if ( isset( $field['conditional_logic'] ) && is_array( $field['conditional_logic
 									$field,
 									array(
 										'label'        => __( 'Instructions', 'acf' ),
-										'instructions' => __( 'Instructions for authors. Shown when submitting data', 'acf' ),
+										'instructions' => __( 'Instructions for content editors. Shown when submitting data.', 'acf' ),
 										'type'         => 'textarea',
 										'name'         => 'instructions',
 										'rows'         => 5,

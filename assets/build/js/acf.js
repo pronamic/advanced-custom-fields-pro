@@ -1238,6 +1238,7 @@
       timeout: 0,
       dismiss: true,
       target: false,
+      location: 'before',
       close: function () {}
     },
     events: {
@@ -1289,8 +1290,13 @@
     },
     show: function () {
       var $target = this.get('target');
+      var location = this.get('location');
       if ($target) {
-        $target.prepend(this.$el);
+        if (location === 'after') {
+          $target.append(this.$el);
+        } else {
+          $target.prepend(this.$el);
+        }
       }
     },
     hide: function () {
@@ -3323,7 +3329,6 @@
 
     // filter for 3rd party customization
     data = acf.applyFilters('prepare_for_ajax', data);
-
     // return
     return data;
   };
@@ -3869,7 +3874,6 @@
           itemsHtml += '<option value="' + acf.escAttr(id) + '"' + (item.disabled ? ' disabled="disabled"' : '') + '>' + acf.strEscape(text) + '</option>';
         }
       });
-
       // return
       return itemsHtml;
     };
@@ -4348,6 +4352,15 @@
     $(window).trigger('acfrefresh');
     acf.doAction('refresh');
   }, 0);
+
+  /**
+   * Log something to console if we're in debug mode.
+   *
+   * @since 6.3
+   */
+  acf.debug = function () {
+    if (acf.get('debug')) console.log.apply(null, arguments);
+  };
 
   // Set up actions from events
   $(document).ready(function () {
