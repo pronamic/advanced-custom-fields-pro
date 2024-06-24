@@ -22,9 +22,9 @@ if ( acf_is_pro() ) {
 ?>
 <div id="tmpl-acf-field-group-pro-features">
 	<div class="acf-field-group-pro-features-wrapper">
-		<h1 class="acf-field-group-pro-features-title-sm"><?php echo esc_html( $acf_field_group_pro_features_title ); ?> <div class="acf-pro-label">PRO</div></h1>
+		<h1 class="acf-field-group-pro-features-title-sm"><?php echo esc_html( $acf_field_group_pro_features_title ); ?> <div class="acf-pro-label"><img src="<?php echo esc_url( acf_get_url( 'assets/images/pro-chip.svg' ) ); ?>" alt="<?php esc_attr_e( 'ACF PRO logo', 'acf' ); ?>"></div></h1>
 		<div class="acf-field-group-pro-features-content">
-			<h1 class="acf-field-group-pro-features-title"><?php echo esc_html( $acf_field_group_pro_features_title ); ?> <div class="acf-pro-label">PRO</div></h1>
+			<h1 class="acf-field-group-pro-features-title"><?php echo esc_html( $acf_field_group_pro_features_title ); ?> <div class="acf-pro-label"><img src="<?php echo esc_url( acf_get_url( 'assets/images/pro-chip.svg' ) ); ?>" alt="<?php esc_attr_e( 'ACF PRO logo', 'acf' ); ?>"></div></h1>
 			<p class="acf-field-group-pro-features-desc"><?php esc_html_e( 'Speed up your workflow and develop better websites with features like ACF Blocks and Options Pages, and sophisticated field types like Repeater, Flexible Content, Clone, and Gallery.', 'acf' ); ?></p>
 			<div class="acf-field-group-pro-features-actions">
 				<a target="<?php echo esc_attr( $acf_learn_more_target ); ?>" href="<?php echo $acf_learn_more_link; ?>" class="acf-btn acf-btn-muted acf-pro-features-learn-more"><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>

@@ -453,6 +453,8 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 				$duplicate_action_url = wp_nonce_url( admin_url( 'post-new.php?post_type=acf-post-type&use_post_type=' . $post->ID ), 'acfduplicate-' . $post->ID );
 			} elseif ( 'acf-taxonomy' === $this->post_type ) {
 				$duplicate_action_url = wp_nonce_url( admin_url( 'post-new.php?post_type=acf-taxonomy&use_taxonomy=' . $post->ID ), 'acfduplicate-' . $post->ID );
+			} elseif ( 'acf-ui-options-page' === $this->post_type ) {
+				$duplicate_action_url = wp_nonce_url( admin_url( 'post-new.php?post_type=acf-ui-options-page&use_options_page=' . $post->ID ), 'acfduplicate-' . $post->ID );
 			}
 
 			$actions['acfduplicate'] = '<a href="' . esc_url( $duplicate_action_url ) . '" aria-label="' . esc_attr__( 'Duplicate this item', 'acf' ) . '">' . __( 'Duplicate', 'acf' ) . '</a>';

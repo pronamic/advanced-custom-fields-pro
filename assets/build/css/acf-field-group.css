@@ -89,10 +89,16 @@
     display: none;
   }
 }
+#acf-field-group-fields .li-field-type .field-type-label {
+  display: flex;
+}
 #acf-field-group-fields .li-field-type .acf-pro-label-field-type {
-  margin-left: 5px;
-  display: inline;
-  padding: 4px 8px;
+  position: relative;
+  top: -3px;
+  margin-left: 8px;
+}
+#acf-field-group-fields .li-field-type .acf-pro-label-field-type img {
+  max-width: 34px;
 }
 #acf-field-group-fields .li-field-order {
   width: 64px;

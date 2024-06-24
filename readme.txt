@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
 Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 6.3.0.1
+Stable tag: 6.3.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,11 +92,40 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 6.3.1.2 =
+*Release Date 6th June 2024*
+
+* Fix - ACF Blocks in widget areas no longer cause a fatal error when no context is available
+* Fix - ACF Blocks with no fields assigned no longer show a gap in the sidebar where the form would render
+
+= 6.3.1.1 =
+*Release Date 6th June 2024*
+
+* Fix - Repeater and Flexible Content fields no longer error when duplicating or removing rows containing Icon Picker subfields
+* Fix - ACF Blocks containing Flexible Content fields now correctly load their edit form
+* Fix - ACF Blocks no longer have a race condition where the data store is not initialized when read
+* Fix - ACF Blocks no longer trigger a JS error for blocks without fields and with an empty no-fields message
+* Fix - ACF Block preloading now works correctly for fields consuming custom block context
+* Fix - ACF Block JavaScript debug messages now correctly appear when SCRIPT_DEBUG is true
+
+= 6.3.1 =
+*Release Date 4th June 2024*
+
+* Enhancement - Options Pages registered in the UI can now be duplicated
+* Fix - ACF Block validation now correctly validates Repeater, Group, and Flexible Content fields
+* Fix - ACF Block validation now correctly validates when a field is using a non-default return type
+* Fix - Fields moved between field groups now correctly updates both JSON files
+* Fix - Icon Picker fields now render correctly when using left-aligned labels
+* Fix - Icon Picker fields no longer renders tabs if only one tab is selected for display
+* Fix - Icon Picker fields no longer crash the post editor if no icon picker tabs are selected for displayed
+* Fix - True/False field now better handles longer On/Off labels
+* Fix - Select2 results loaded by AJAX for multi-select Taxonomy fields no longer double encode HTML entities
+
 = 6.3.0.1 =
 *Release Date 22nd May 2024*
 
-* Fix: A possible fatal error no longer occurs in the new site health functionality for ACF PRO users
-* Fix: A possible undefined index error no longer occurs in ACF Blocks for ACF PRO users
+* Fix - A possible fatal error no longer occurs in the new site health functionality for ACF PRO users
+* Fix - A possible undefined index error no longer occurs in ACF Blocks for ACF PRO users
 
 = 6.3.0 =
 *Release Date 22nd May 2024*

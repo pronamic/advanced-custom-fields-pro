@@ -104,7 +104,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
       const iconName = fieldType.name.replaceAll('_', '-');
       return `
 			<a href="#" class="acf-field-type" data-field-type="${fieldType.name}">
-				${fieldType.pro && !acf.get('is_pro') ? '<span class="field-type-requires-pro"><i class="acf-icon acf-icon-lock"></i>PRO</span>' : fieldType.pro ? '<span class="field-type-requires-pro">PRO</span>' : ''}
+				${fieldType.pro && !acf.get('is_pro') ? '<span class="field-type-requires-pro not-pro"></span>' : fieldType.pro ? '<span class="field-type-requires-pro"></span>' : ''}
 				<i class="field-type-icon field-type-icon-${iconName}"></i>
 				<span class="field-type-label">${fieldType.label}</span>
 			</a>

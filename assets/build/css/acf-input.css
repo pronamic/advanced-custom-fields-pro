@@ -1153,7 +1153,10 @@ html[dir=rtl] .acf-button-group label:last-child {
 *
 *-----------------------------------------------------------------------------*/
 .acf-switch {
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: fit-content;
+  max-width: 100%;
   border-radius: 5px;
   cursor: pointer;
   position: relative;
@@ -1184,6 +1187,10 @@ html[dir=rtl] .acf-button-group label:last-child {
 .acf-switch .acf-switch-on {
   color: #fff;
   text-shadow: #007cba 0 1px 0;
+  overflow: hidden;
+}
+.acf-switch .acf-switch-off {
+  overflow: hidden;
 }
 .acf-switch .acf-switch-slider {
   position: absolute;

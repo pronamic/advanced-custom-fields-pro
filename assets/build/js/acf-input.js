@@ -3736,8 +3736,6 @@
     type: 'icon_picker',
     wait: 'load',
     events: {
-      removeField: 'onRemove',
-      duplicateField: 'onDuplicate',
       showField: 'scrollToSelectedDashicon',
       'input .acf-icon_url': 'onUrlChange',
       'click .acf-icon-picker-dashicon': 'onDashiconClick',
@@ -3775,16 +3773,10 @@
       this.addActions();
 
       // Initialize the state of the icon picker.
-      let typeAndValue = {};
-      this.$tabButton().each((index, tabButton) => {
-        // If the previously-saved type matches this tab, assign the value to that type.
-        if (tabButton.dataset.uniqueTabKey === this.$typeInput().val()) {
-          typeAndValue = {
-            type: tabButton.dataset.uniqueTabKey,
-            value: this.$valueInput().val()
-          };
-        }
-      });
+      let typeAndValue = {
+        type: this.$typeInput().val(),
+        value: this.$valueInput().val()
+      };
 
       // Store the type and value object.
       this.set('typeAndValue', typeAndValue);

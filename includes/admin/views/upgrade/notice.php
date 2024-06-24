@@ -22,7 +22,7 @@ if ( ! acf_get_setting( 'pro' ) ) {
 <div id="acf-upgrade-notice" class="notice">
 	<div class="notice-container">
 		<div class="col-content">
-			<img src="<?php echo esc_url( acf_get_url( 'assets/images/acf-logo.png' ) ); ?>" />
+			<img src="<?php echo esc_url( acf_get_url( 'assets/images/acf-logo.svg' ) ); ?>" />
 			<h2><?php esc_html_e( 'Database Upgrade Required', 'acf' ); ?></h2>
 			<?php // translators: %1 plugin name, %2 version number ?>
 			<p><?php echo acf_esc_html( sprintf( __( 'Thank you for updating to %1$s v%2$s!', 'acf' ), acf_get_setting( 'name' ), acf_get_setting( 'version' ) ) ); ?><br />

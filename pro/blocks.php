@@ -945,9 +945,19 @@ function acf_ajax_fetch_block() {
 	// Vars.
 	$response = array( 'clientId' => $client_id );
 
+	// Check if we've recieved serialised form data
+	$use_post_data = false;
+	if ( ! empty( $block['data'] ) && is_array( $block['data'] ) ) {
+		// Ensure we've got field keys posted.
+		$valid_field_keys = array_filter( array_keys( $block['data'] ), 'acf_is_field_key' );
+		if ( ! empty( $valid_field_keys ) ) {
+			$use_post_data = true;
+		}
+	}
+
 	$query['validate'] = ( ! empty( $query['validate'] ) && ( $query['validate'] === 'true' || $query['validate'] === true ) );
 	if ( ! empty( $query['validate'] ) || ! empty( $block['validate'] ) ) {
-		$response['validation'] = acf_get_block_validation_state( $block, $first_preview );
+		$response['validation'] = acf_get_block_validation_state( $block, $first_preview, $use_post_data );
 	}
 
 	// Query form.
@@ -1016,7 +1026,15 @@ function acf_get_empty_block_form_html( $block_name ) {
 
 	$message = apply_filters( 'acf/blocks/no_fields_assigned_message', $message, $block_name );
 
-	return empty( $message ) ? '' : acf_esc_html( '<div class="acf-block-fields acf-fields acf-empty-block-fields">' . $message . '</div>' );
+	if ( ! is_string( $message ) ) {
+		$message = '';
+	}
+
+	if ( empty( $message ) ) {
+		return acf_esc_html( '<div class="acf-empty-block-fields"></div>' );
+	} else {
+		return acf_esc_html( '<div class="acf-block-fields acf-fields acf-empty-block-fields">' . $message . '</div>' );
+	}
 }
 
 /**
@@ -1108,6 +1126,9 @@ function acf_parse_save_blocks_callback( $matches ) {
  * @return string A block ID.
  */
 function acf_get_block_id( $attributes, $context = array(), $force = false ) {
+	$context = is_array( $context ) ? $context : array();
+
+	ksort( $context );
 	$attributes['_acf_context'] = $context;
 	if ( empty( $attributes['id'] ) || $force ) {
 		unset( $attributes['id'] );
@@ -1183,26 +1204,58 @@ function acf_serialize_block_attributes( $block_attributes ) {
  *
  * @param array   $block          An array of the block's data attribute.
  * @param boolean $using_defaults True if the block is currently being generated with default values. Default false.
+ * @param boolean $use_post_data  True if we should validate the POSTed data rather than local meta values. Default false.
  * @return array An array containing a valid boolean, and an errors array.
  */
-function acf_get_block_validation_state( $block, $using_defaults = false ) {
+function acf_get_block_validation_state( $block, $using_defaults = false, $use_post_data = false ) {
 	$block_id = $block['id'];
 
-	if ( $using_defaults || empty( $block['data'] ) ) {
+	if ( $use_post_data ) {
+		$errors = acf_validate_block_from_post_data( $block );
+	} elseif ( $using_defaults || empty( $block['data'] ) ) {
 		// If data is empty or it's first preview, load the default fields for this block so we can get a required validation state from the current field set.
-		$field_objects = acf_get_block_fields( $block );
+		$errors = acf_validate_block_from_local_meta( $block_id, acf_get_block_fields( $block ) );
 	} else {
-		$field_objects = get_field_objects( $block_id );
+		$errors = acf_validate_block_from_local_meta( $block_id, get_field_objects( $block_id, false ) );
 	}
 
+	return array(
+		'valid'  => empty( $errors ),
+		'errors' => $errors,
+	);
+}
+
+/**
+ * Handle the specific validation for a block from POSTed values.
+ *
+ * @since 6.3.1
+ *
+ * @param array $block The block object containing the POSTed values and other block data
+ * @return array|boolean An array containing the validation errors, or false if there are no errors.
+ */
+function acf_validate_block_from_post_data( $block ) {
+	acf_reset_validation_errors();
+	acf_validate_values( $block['data'], "acf-{$block['id']}" );
+	$errors = acf_get_validation_errors();
+	return $errors;
+}
+
+/**
+ * Handle the specific validation for a block from local meta.
+ *
+ * This function uses the values loaded into Local Meta, which means they have to be
+ * converted back to the data format because they can be validated.
+ *
+ * @since 6.3.1
+ *
+ * @param string $block_id      The block ID
+ * @param array  $field_objects The field objects in local meta to be validated.
+ * @return array|boolean An array containing the validation errors, or false if there are no errors.
+ */
+function acf_validate_block_from_local_meta( $block_id, $field_objects ) {
 	if ( empty( $field_objects ) ) {
 		return false;
 	}
-
-	$response = array(
-		'valid'  => true,
-		'errors' => array(),
-	);
 
 	$skip_conditional_fields = false;
 	if ( acf_get_data( $block_id . '_loaded_meta_values' ) ) {
@@ -1221,14 +1274,10 @@ function acf_get_block_validation_state( $block, $using_defaults = false ) {
 
 		$key   = $field['key'];
 		$value = $field['value'];
-		$valid = acf_validate_value( $value, $field, "acf-{$block_id}[{$key}]" );
-		if ( ! $valid ) {
-			$response['valid'] = false;
-		}
+		acf_validate_value( $value, $field, "acf-{$block_id}[{$key}]" );
 	}
-	$response['errors'] = acf_get_validation_errors();
 
-	return $response;
+	return acf_get_validation_errors();
 }
 
 /**
