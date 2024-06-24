@@ -25,6 +25,14 @@ if ( empty( $acf_pro_license ) ) {
 	exit( 1 );
 }
 
+$acf_pro_url = getenv( 'ACF_PRO_URL' );
+
+if ( empty( $acf_pro_url ) ) {
+	echo 'ACF PRO license URL not defined in `ACF_PRO_URL` environment variable.';
+
+	exit( 1 );
+}
+
 /**
  * Request info.
  */
@@ -46,7 +54,7 @@ $data_plugins = [
 
 $data_wp = [
 	'wp_name'      => 'acf',
-	'wp_url'       => 'http://acf.local',
+	'wp_url'       => $acf_pro_url,
 	'wp_version'   => '6.3',
 	'wp_language'  => 'en-US',
 	'wp_timezone'  => '',
@@ -71,8 +79,6 @@ $data = run(
 );
 
 $result = json_decode( $data );
-
-var_dump( $result );
 
 if ( ! is_object( $result ) ) {
 	throw new Exception(
@@ -110,6 +116,12 @@ if ( ! property_exists( $plugin, 'new_version' ) ) {
 $version = $plugin->new_version;
 
 $url = $plugin->package;
+
+if ( '' === $url ) {
+	echo 'Package URL is empty';
+
+	exit( 1 );
+}
 
 line(
 	sprintf(
