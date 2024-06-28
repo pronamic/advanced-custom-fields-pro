@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-22T11:47:45+00:00\n"
+"PO-Revision-Date: 2024-06-27T14:24:00+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -21,14 +21,1418 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/ajax/class-acf-ajax-upgrade.php:24
+msgid "Sorry, you don't have permission to do that."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-query-users.php:24
+msgid "Invalid request args."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-local-json-diff.php:37
+msgid "Sorry, you are not allowed to do that."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-check-screen.php:27
+#: includes/ajax/class-acf-ajax-user-setting.php:38
+msgid "Sorry, you do not have permission to do that."
+msgstr ""
+
+#: includes/class-acf-site-health.php:643
+msgid "Blocks Using Post Meta"
+msgstr ""
+
+#: includes/admin/views/acf-field-group/pro-features.php:25
+#: includes/admin/views/acf-field-group/pro-features.php:27
+#: includes/admin/views/global/header.php:27
+msgid "ACF PRO logo"
+msgstr ""
+
+#: includes/admin/views/acf-field-group/field.php:37
+msgid "ACF PRO Logo"
+msgstr ""
+
+#. translators: %s - field/param name
+#: includes/fields/class-acf-field-icon_picker.php:683
+msgid "%s requires a valid attachment ID when type is set to media_library."
+msgstr "当类型设置为 media_library 时，%s 需要有效的附件 ID。"
+
+#. translators: %s - field name
+#: includes/fields/class-acf-field-icon_picker.php:667
+msgid "%s is a required property of acf."
+msgstr "%s 是 acf 的必需属性。"
+
+#: includes/fields/class-acf-field-icon_picker.php:643
+msgid "The value of icon to save."
+msgstr "要保存的图标的值。"
+
+#: includes/fields/class-acf-field-icon_picker.php:637
+msgid "The type of icon to save."
+msgstr "要保存的图标的类型。"
+
+#: includes/fields/class-acf-field-icon_picker.php:617
+msgid "Yes icon"
+msgstr "是的图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:616
+msgid "Wordpress-alt icon"
+msgstr "Wordpress-alt 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:615
+msgid "Wordpress icon"
+msgstr "Wordpress 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:614
+msgid "Welcome write-blog icon"
+msgstr "欢迎写博客图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:613
+msgid "Welcome widgets-menus icon"
+msgstr "欢迎小部件菜单图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:612
+msgid "Welcome view-site icon"
+msgstr "欢迎查看站点图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:611
+msgid "Welcome learn-more icon"
+msgstr "欢迎了解更多图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:610
+msgid "Welcome comments icon"
+msgstr "欢迎评论图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:609
+msgid "Welcome add-page icon"
+msgstr "欢迎添加页面图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:608
+msgid "Warning icon"
+msgstr "警告图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:607
+msgid "Visibility icon"
+msgstr "可见性图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:606
+msgid "Video-alt3 icon"
+msgstr "Video-alt3 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:605
+msgid "Video-alt2 icon"
+msgstr "Video-alt2 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:604
+msgid "Video-alt icon"
+msgstr "Video-alt 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:603
+msgid "Vault icon"
+msgstr "Vault 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:602
+msgid "Upload icon"
+msgstr "上传图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:601
+msgid "Update icon"
+msgstr "更新图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:600
+msgid "Unlock icon"
+msgstr "解锁图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:599
+msgid "Universal access alternative icon"
+msgstr "通用访问替代图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:598
+msgid "Universal access icon"
+msgstr "通用访问图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:597
+msgid "Undo icon"
+msgstr "撤消图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:596
+msgid "Twitter icon"
+msgstr "Twitter 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:595
+msgid "Trash icon"
+msgstr "回收站图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:594
+msgid "Translation icon"
+msgstr "翻译图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:593
+msgid "Tickets alternative icon"
+msgstr "Tickets alternative 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:592
+msgid "Tickets icon"
+msgstr "Tickets 图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:591
+msgid "Thumbs-up icon"
+msgstr "点赞图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:590
+msgid "Thumbs-down icon"
+msgstr "点踩图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:589
+msgid "Text icon"
+msgstr "文本图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:588
+msgid "Testimonial icon"
+msgstr "感言图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:587
+msgid "Tagcloud icon"
+msgstr "标签云图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:586
+msgid "Tag icon"
+msgstr "标签图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:585
+msgid "Tablet icon"
+msgstr "平板电脑图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:584
+msgid "Store icon"
+msgstr "商店图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:583
+msgid "Sticky icon"
+msgstr "置顶图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:582
+msgid "Star-half icon"
+msgstr "半星图标"
+
+#: includes/fields/class-acf-field-icon_picker.php:581
+msgid "Star-filled icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:580
+msgid "Star-empty icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:579
+msgid "Sos icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:578
+msgid "Sort icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:577
+msgid "Smiley icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:576
+msgid "Smartphone icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:575
+msgid "Slides icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:574
+msgid "Shield-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:573
+msgid "Shield icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:572
+msgid "Share-alt2 icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:571
+msgid "Share-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:570
+msgid "Share icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:569
+msgid "Search icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:568
+msgid "Screenoptions icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:567
+msgid "Schedule icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:566
+msgid "Rss icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:565
+msgid "Redo icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:564
+msgid "Randomize icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:563
+msgid "Products icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:562
+msgid "Pressthis icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:561
+msgid "Post-status icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:560
+msgid "Portfolio icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:559
+msgid "Plus-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:558
+msgid "Plus icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:557
+msgid "Playlist-video icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:556
+msgid "Playlist-audio icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:555
+msgid "Phone icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:554
+msgid "Performance icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:553
+msgid "Paperclip icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:552
+msgid "Palmtree icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:551
+msgid "No alternative icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:550
+msgid "No icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:549
+msgid "Networking icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:548
+msgid "Nametag icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:547
+msgid "Move icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:546
+msgid "Money icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:545
+msgid "Minus icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:544
+msgid "Migrate icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:543
+msgid "Microphone icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:542
+msgid "Menu icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:541
+msgid "Megaphone icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:540
+msgid "Media video icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:539
+msgid "Media text icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:538
+msgid "Media spreadsheet icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:537
+msgid "Media interactive icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:536
+msgid "Media document icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:535
+msgid "Media default icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:534
+msgid "Media code icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:533
+msgid "Media audio icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:532
+msgid "Media archive icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:531
+msgid "Marker icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:530
+msgid "Lock icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:529
+msgid "Location-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:528
+msgid "Location icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:527
+msgid "List-view icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:526
+msgid "Lightbulb icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:525
+msgid "Leftright icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:524
+msgid "Layout icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:523
+msgid "Laptop icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:522
+msgid "Info icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:521
+msgid "Index-card icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:520
+msgid "Images-alt2 icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:519
+msgid "Images-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:518
+msgid "Image rotate-right icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:517
+msgid "Image rotate-left icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:516
+msgid "Image rotate icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:515
+msgid "Image flip-vertical icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:514
+msgid "Image flip-horizontal icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:513
+msgid "Image filter icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:512
+msgid "Image crop icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:511
+msgid "Id-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:510
+msgid "Id icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:509
+msgid "Hidden icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:508
+msgid "Heart icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:507
+msgid "Hammer icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:506
+msgid "Groups icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:505
+msgid "Grid-view icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:504
+msgid "Googleplus icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:503
+msgid "Forms icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:502
+msgid "Format video icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:501
+msgid "Format status icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:500
+msgid "Format quote icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:499
+msgid "Format image icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:498
+msgid "Format gallery icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:497
+msgid "Format chat icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:496
+msgid "Format audio icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:495
+msgid "Format aside icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:494
+msgid "Flag icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:493
+msgid "Filter icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:492
+msgid "Feedback icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:491
+msgid "Facebook alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:490
+msgid "Facebook icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:489
+msgid "External icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:488
+msgid "Exerpt-view icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:487
+msgid "Email alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:486
+msgid "Email icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:485
+msgid "Video icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:484
+msgid "Unlink icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:483
+msgid "Underline icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:482
+msgid "Ul icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:481
+msgid "Textcolor icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:480
+msgid "Table icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:479
+msgid "Strikethrough icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:478
+msgid "Spellcheck icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:477
+msgid "Rtl icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:476
+msgid "Removeformatting icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:475
+msgid "Quote icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:474
+msgid "Paste word icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:473
+msgid "Paste text icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:472
+msgid "Paragraph icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:471
+msgid "Outdent icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:470
+msgid "Ol icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:469
+msgid "Kitchensink icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:468
+msgid "Justify icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:467
+msgid "Italic icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:466
+msgid "Insertmore icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:465
+msgid "Indent icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:464
+msgid "Help icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:463
+msgid "Expand icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:462
+msgid "Customchar icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:461
+msgid "Contract icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:460
+msgid "Code icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:459
+msgid "Break icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:458
+msgid "Bold icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:457
+msgid "alignright icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:456
+msgid "alignleft icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:455
+msgid "aligncenter icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:454
+msgid "Edit icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:453
+msgid "Download icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:452
+msgid "Dismiss icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:451
+msgid "Desktop icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:450
+msgid "Dashboard icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:449
+msgid "Controls volumeon icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:448
+msgid "Controls volumeoff icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:447
+msgid "Controls skipforward icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:446
+msgid "Controls skipback icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:445
+msgid "Controls repeat icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:444
+msgid "Controls play icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:443
+msgid "Controls pause icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:442
+msgid "Controls forward icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:441
+msgid "Controls back icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:440
+msgid "Cloud icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:439
+msgid "Clock icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:438
+msgid "Clipboard icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:437
+msgid "Chart pie icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:436
+msgid "Chart line icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:435
+msgid "Chart bar icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:434
+msgid "Chart area icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:433
+msgid "Category icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:432
+msgid "Cart icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:431
+msgid "Carrot icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:430
+msgid "Camera icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:429
+msgid "Calendar alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:428
+msgid "Calendar icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:427
+msgid "Businessman icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:426
+msgid "Building icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:425
+msgid "Book alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:424
+msgid "Book icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:423
+msgid "Backup icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:422
+msgid "Awards icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:421
+msgid "Art icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:420
+msgid "Arrow up-alt2 icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:419
+msgid "Arrow up-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:418
+msgid "Arrow up icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:417
+msgid "Arrow right-alt2 icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:416
+msgid "Arrow right-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:415
+msgid "Arrow right icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:414
+msgid "Arrow left-alt2 icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:413
+msgid "Arrow left-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:412
+msgid "Arrow left icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:411
+msgid "Arrow down-alt2 icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:410
+msgid "Arrow down-alt icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:409
+msgid "Arrow down icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:408
+msgid "Archive icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:407
+msgid "Analytics icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:406
+msgid "Align-right icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:405
+msgid "Align-none icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:404
+msgid "Align-left icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:403
+msgid "Align-center icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:402
+msgid "Album icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:401
+msgid "Users icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:400
+msgid "Tools icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:399
+msgid "Site icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:398
+msgid "Settings icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:397
+msgid "Post icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:396
+msgid "Plugins icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:395
+msgid "Page icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:394
+msgid "Network icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:393
+msgid "Multisite icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:392
+msgid "Media icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:391
+msgid "Links icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:390
+msgid "Home icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:389
+msgid "Customizer icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:388
+msgid "Comments icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:387
+msgid "Collapse icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:386
+msgid "Appearance icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:385
+msgid "Generic icon"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:321
+msgid "Icon picker requires a value."
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:316
+msgid "Icon picker requires an icon type."
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:285
+msgid ""
+"The available icons matching your search query have been updated in the icon "
+"picker below."
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:284
+msgid "No results found for that search term"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:266
+msgid "Array"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:265
+msgid "String"
+msgstr ""
+
+#. translators: %s - link to documentation
+#: includes/fields/class-acf-field-icon_picker.php:253
+msgid "Specify the return format for the icon. %s"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:238
+msgid "Select where content editors can choose the icon from."
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:211
+msgid "The URL to the icon you'd like to use, or svg as Data URI"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:194
+msgid "Browse Media Library"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:185
+msgid "The currently selected image preview"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:176
+msgid "Click to change the icon in the Media Library"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:142
+msgid "Search icons..."
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:53
+msgid "Media Library"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:49
+msgid "Dashicons"
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:26
+msgid ""
+"An interactive UI for selecting an icon. Select from Dashicons, the media "
+"library, or a standalone URL input."
+msgstr ""
+
+#: includes/fields/class-acf-field-icon_picker.php:23
+msgid "Icon Picker"
+msgstr ""
+
+#: includes/class-acf-site-health.php:704
+msgid "JSON Load Paths"
+msgstr ""
+
+#: includes/class-acf-site-health.php:698
+msgid "JSON Save Paths"
+msgstr ""
+
+#: includes/class-acf-site-health.php:689
+msgid "Registered ACF Forms"
+msgstr ""
+
+#: includes/class-acf-site-health.php:683
+msgid "Shortcode Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:675
+msgid "Field Settings Tabs Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:667
+msgid "Field Type Modal Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:659
+msgid "Admin UI Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:650
+msgid "Block Preloading Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:638
+msgid "Blocks Per ACF Block Version"
+msgstr ""
+
+#: includes/class-acf-site-health.php:633
+msgid "Blocks Per API Version"
+msgstr ""
+
+#: includes/class-acf-site-health.php:606
+msgid "Registered ACF Blocks"
+msgstr ""
+
+#: includes/class-acf-site-health.php:600
+msgid "Light"
+msgstr ""
+
+#: includes/class-acf-site-health.php:600
+msgid "Standard"
+msgstr ""
+
+#: includes/class-acf-site-health.php:599
+msgid "REST API Format"
+msgstr ""
+
+#: includes/class-acf-site-health.php:591
+msgid "Registered Options Pages (PHP)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:577
+msgid "Registered Options Pages (JSON)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:572
+msgid "Registered Options Pages (UI)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:542
+msgid "Options Pages UI Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:534
+msgid "Registered Taxonomies (JSON)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:522
+msgid "Registered Taxonomies (UI)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:510
+msgid "Registered Post Types (JSON)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:498
+msgid "Registered Post Types (UI)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:485
+msgid "Post Types and Taxonomies Enabled"
+msgstr ""
+
+#: includes/class-acf-site-health.php:478
+msgid "Number of Third Party Fields by Field Type"
+msgstr ""
+
+#: includes/class-acf-site-health.php:473
+msgid "Number of Fields by Field Type"
+msgstr ""
+
+#: includes/class-acf-site-health.php:440
+msgid "Field Groups Enabled for GraphQL"
+msgstr ""
+
+#: includes/class-acf-site-health.php:427
+msgid "Field Groups Enabled for REST API"
+msgstr ""
+
+#: includes/class-acf-site-health.php:415
+msgid "Registered Field Groups (JSON)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:403
+msgid "Registered Field Groups (PHP)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:391
+msgid "Registered Field Groups (UI)"
+msgstr ""
+
+#: includes/class-acf-site-health.php:379
+msgid "Active Plugins"
+msgstr ""
+
+#: includes/class-acf-site-health.php:353
+msgid "Parent Theme"
+msgstr ""
+
+#: includes/class-acf-site-health.php:342
+msgid "Active Theme"
+msgstr ""
+
+#: includes/class-acf-site-health.php:333
+msgid "Is Multisite"
+msgstr ""
+
+#: includes/class-acf-site-health.php:328
+msgid "MySQL Version"
+msgstr ""
+
+#: includes/class-acf-site-health.php:323
+msgid "WordPress Version"
+msgstr ""
+
+#: includes/class-acf-site-health.php:316
+msgid "Subscription Expiry Date"
+msgstr ""
+
+#: includes/class-acf-site-health.php:308
+msgid "License Status"
+msgstr ""
+
+#: includes/class-acf-site-health.php:303
+msgid "License Type"
+msgstr ""
+
+#: includes/class-acf-site-health.php:298
+msgid "Licensed URL"
+msgstr ""
+
+#: includes/class-acf-site-health.php:292
+msgid "License Activated"
+msgstr ""
+
+#: includes/class-acf-site-health.php:286
+msgid "Free"
+msgstr ""
+
+#: includes/class-acf-site-health.php:285
+msgid "Plugin Type"
+msgstr ""
+
+#: includes/class-acf-site-health.php:280
+msgid "Plugin Version"
+msgstr ""
+
+#: includes/class-acf-site-health.php:251
+msgid ""
+"This section contains debug information about your ACF configuration which "
+"can be useful to provide to support."
+msgstr ""
+
+#: includes/assets.php:373 assets/build/js/acf-input.js:11311
+#: assets/build/js/acf-input.js:12393
+msgid "An ACF Block on this page requires attention before you can save."
+msgstr ""
+
+#. translators: %s - The clear log button opening HTML tag. %s - The closing
+#. HTML tag.
+#: includes/admin/views/escaped-html-notice.php:63
+msgid ""
+"This data is logged as we detect values that have been changed during "
+"output. %1$sClear log and dismiss%2$s after escaping the values in your "
+"code. The notice will reappear if we detect changed values again."
+msgstr ""
+
+#: includes/admin/views/escaped-html-notice.php:25
+msgid "Dismiss permanently"
+msgstr ""
+
+#: includes/admin/views/acf-field-group/field.php:220
+msgid "Instructions for content editors. Shown when submitting data."
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:143
+#: assets/build/js/acf-input.js:1460 assets/build/js/acf-input.js:1558
+msgid "Has no term selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:142
+#: assets/build/js/acf-input.js:1437 assets/build/js/acf-input.js:1534
+msgid "Has any term selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:141
+#: assets/build/js/acf-input.js:1412 assets/build/js/acf-input.js:1507
+msgid "Terms do not contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:140
+#: assets/build/js/acf-input.js:1387 assets/build/js/acf-input.js:1481
+msgid "Terms contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:139
+#: assets/build/js/acf-input.js:1368 assets/build/js/acf-input.js:1461
+msgid "Term is not equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:138
+#: assets/build/js/acf-input.js:1349 assets/build/js/acf-input.js:1441
+msgid "Term is equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:137
+#: assets/build/js/acf-input.js:1052 assets/build/js/acf-input.js:1116
+msgid "Has no user selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:136
+#: assets/build/js/acf-input.js:1029 assets/build/js/acf-input.js:1092
+msgid "Has any user selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:135
+#: assets/build/js/acf-input.js:1003 assets/build/js/acf-input.js:1064
+msgid "Users do not contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:134
+#: assets/build/js/acf-input.js:976 assets/build/js/acf-input.js:1035
+msgid "Users contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:133
+#: assets/build/js/acf-input.js:957 assets/build/js/acf-input.js:1015
+msgid "User is not equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:132
+#: assets/build/js/acf-input.js:938 assets/build/js/acf-input.js:995
+msgid "User is equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:131
+#: assets/build/js/acf-input.js:915 assets/build/js/acf-input.js:971
+msgid "Has no page selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:130
+#: assets/build/js/acf-input.js:892 assets/build/js/acf-input.js:947
+msgid "Has any page selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:129
+#: assets/build/js/acf-input.js:865 assets/build/js/acf-input.js:918
+msgid "Pages do not contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:128
+#: assets/build/js/acf-input.js:838 assets/build/js/acf-input.js:889
+msgid "Pages contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:127
+#: assets/build/js/acf-input.js:819 assets/build/js/acf-input.js:869
+msgid "Page is not equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:126
+#: assets/build/js/acf-input.js:800 assets/build/js/acf-input.js:849
+msgid "Page is equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:125
+#: assets/build/js/acf-input.js:1188 assets/build/js/acf-input.js:1259
+msgid "Has no relationship selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:124
+#: assets/build/js/acf-input.js:1165 assets/build/js/acf-input.js:1235
+msgid "Has any relationship selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:123
+#: assets/build/js/acf-input.js:1326 assets/build/js/acf-input.js:1415
+msgid "Has no post selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:122
+#: assets/build/js/acf-input.js:1303 assets/build/js/acf-input.js:1389
+msgid "Has any post selected"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:121
+#: assets/build/js/acf-input.js:1276 assets/build/js/acf-input.js:1358
+msgid "Posts do not contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:120
+#: assets/build/js/acf-input.js:1249 assets/build/js/acf-input.js:1327
+msgid "Posts contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:119
+#: assets/build/js/acf-input.js:1230 assets/build/js/acf-input.js:1305
+msgid "Post is not equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:118
+#: assets/build/js/acf-input.js:1211 assets/build/js/acf-input.js:1283
+msgid "Post is equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:117
+#: assets/build/js/acf-input.js:1139 assets/build/js/acf-input.js:1207
+msgid "Relationships do not contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:116
+#: assets/build/js/acf-input.js:1113 assets/build/js/acf-input.js:1180
+msgid "Relationships contain"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:115
+#: assets/build/js/acf-input.js:1094 assets/build/js/acf-input.js:1160
+msgid "Relationship is not equal to"
+msgstr ""
+
+#: includes/admin/post-types/admin-field-group.php:114
+#: assets/build/js/acf-input.js:1075 assets/build/js/acf-input.js:1140
+msgid "Relationship is equal to"
+msgstr ""
+
 #: includes/Blocks/Bindings.php:35
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
 msgstr "ACF 字段"
-
-#: includes/admin/views/escaped-html-notice.php:5
-msgid "Learn how to fix this"
-msgstr "了解如何解决此问题"
 
 #: includes/admin/views/browse-fields-modal.php:14
 msgid "ACF PRO Feature"
@@ -56,7 +1460,7 @@ msgstr "请激活您的 ACF PRO 许可证以编辑分配给 ACF 块的字段组�
 msgid "Please activate your ACF PRO license to edit this options page."
 msgstr "请激活您的 ACF PRO 许可证才能编辑此选项页面。"
 
-#: includes/api/api-template.php:376 includes/api/api-template.php:430
+#: includes/api/api-template.php:381 includes/api/api-template.php:435
 msgid ""
 "Returning escaped HTML values is only possible when format_value is also "
 "true. The field values have not been returned for security."
@@ -64,8 +1468,8 @@ msgstr ""
 "仅当 format_value 也为 true 时，才可以返回转义的 HTML 值。为了安全起见，字段"
 "值尚未返回。"
 
-#: includes/api/api-template.php:46 includes/api/api-template.php:242
-#: includes/api/api-template.php:934
+#: includes/api/api-template.php:46 includes/api/api-template.php:247
+#: includes/api/api-template.php:939
 msgid ""
 "Returning an escaped HTML value is only possible when format_value is also "
 "true. The field value has not been returned for security."
@@ -75,36 +1479,37 @@ msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
 #. %3$s - Link to show more details about the error
-#: includes/admin/views/escaped-html-notice.php:19
+#: includes/admin/views/escaped-html-notice.php:32
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by "
 "<code>the_field</code> or the ACF shortcode. We've detected the output of "
 "some of your fields has been modified by this change, but this may not be a "
-"breaking change. %2$s. %3$s."
+"breaking change. %2$s."
 msgstr ""
-"%1$s ACF 现在在由 <code>the_field</code> 或 ACF 短代码呈现时自动转义不安全的 "
-"HTML。我们检测到您的某些字段的输出已被此更改修改，但这可能不是重大更改。 "
-"%2$s。 %3$s。"
 
-#: includes/admin/views/escaped-html-notice.php:14
+#: includes/admin/views/escaped-html-notice.php:27
 msgid "Please contact your site administrator or developer for more details."
 msgstr "请联系您的网站管理员或开发人员了解更多详细信息。"
+
+#: includes/admin/views/escaped-html-notice.php:5
+msgid "Learn&nbsp;more"
+msgstr "了解更多"
 
 #: includes/admin/admin.php:63
 msgid "Hide&nbsp;details"
 msgstr "隐藏详情"
 
-#: includes/admin/admin.php:62 includes/admin/views/escaped-html-notice.php:11
+#: includes/admin/admin.php:62 includes/admin/views/escaped-html-notice.php:24
 msgid "Show&nbsp;details"
 msgstr "显示详情"
 
 #. translators: %1$s - The selector used  %2$s The field name  3%$s The parent
 #. function name
-#: includes/admin/views/escaped-html-notice.php:34
+#: includes/admin/views/escaped-html-notice.php:49
 msgid "%1$s (%2$s) - rendered via %3$s"
 msgstr "%1$s (%2$s) - 通过 %3$s 呈现"
 
-#: includes/admin/views/global/navigation.php:223
+#: includes/admin/views/global/navigation.php:226
 msgid "Renew ACF PRO License"
 msgstr "续订 ACF PRO 许可证"
 
@@ -151,7 +1556,7 @@ msgid "4 Months Free"
 msgstr "4个月免费"
 
 #. translators: %s - A singular label for a post type or taxonomy.
-#: includes/admin/views/global/form-top.php:56
+#: includes/admin/views/global/form-top.php:59
 msgid "(Duplicated from %s)"
 msgstr " （复制自 %s）"
 
@@ -187,27 +1592,27 @@ msgstr "链接字段组"
 msgid "Add fields"
 msgstr "添加字段"
 
-#: includes/admin/post-types/admin-field-group.php:117
-#: assets/build/js/acf-field-group.js:2782
-#: assets/build/js/acf-field-group.js:3272
+#: includes/admin/post-types/admin-field-group.php:147
+#: assets/build/js/acf-field-group.js:2803
+#: assets/build/js/acf-field-group.js:3298
 msgid "This Field"
 msgstr "这个字段"
 
-#: includes/admin/admin.php:311
+#: includes/admin/admin.php:352
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:309
+#: includes/admin/admin.php:350
 msgid "Feedback"
 msgstr "反馈"
 
-#: includes/admin/admin.php:307
+#: includes/admin/admin.php:348
 msgid "Support"
 msgstr "支持"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:282
+#: includes/admin/admin.php:323
 msgid "is developed and maintained by"
 msgstr "开发和维护者"
 
@@ -256,14 +1661,14 @@ msgstr "双向"
 msgid "%s Field"
 msgstr "%s 字段"
 
-#: includes/fields/class-acf-field-page_link.php:465
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-select.php:386
-#: includes/fields/class-acf-field-user.php:82
+#: includes/fields/class-acf-field-page_link.php:487
+#: includes/fields/class-acf-field-post_object.php:400
+#: includes/fields/class-acf-field-select.php:380
+#: includes/fields/class-acf-field-user.php:111
 msgid "Select Multiple"
 msgstr "选择多个"
 
-#: includes/admin/views/global/navigation.php:235
+#: includes/admin/views/global/navigation.php:238
 msgid "WP Engine logo"
 msgstr "WP Engine logo"
 
@@ -303,7 +1708,7 @@ msgstr "用于管理该分类法的分类项的功能名称。"
 msgid "Manage Terms Capability"
 msgstr "管理分类项能力"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:891
+#: includes/admin/views/acf-post-type/advanced-settings.php:914
 msgid ""
 "Sets whether posts should be excluded from search results and taxonomy "
 "archive pages."
@@ -324,6 +1729,7 @@ msgstr "查看定价和升级"
 
 #: includes/admin/views/acf-field-group/pro-features.php:3
 #: includes/admin/views/options-page-preview.php:29
+#: includes/fields/class-acf-field-icon_picker.php:248
 msgid "Learn More"
 msgstr "了解更多"
 
@@ -376,9 +1782,9 @@ msgstr "无字段"
 msgid "No description"
 msgstr "无描述"
 
-#: includes/fields/class-acf-field-page_link.php:432
-#: includes/fields/class-acf-field-post_object.php:350
-#: includes/fields/class-acf-field-relationship.php:553
+#: includes/fields/class-acf-field-page_link.php:454
+#: includes/fields/class-acf-field-post_object.php:363
+#: includes/fields/class-acf-field-relationship.php:562
 msgid "Any post status"
 msgstr "任何文章状态"
 
@@ -491,11 +1897,11 @@ msgstr "帖子类型键只能包含小写字母数字字符、下划线或破折
 msgid "The post type key must be under 20 characters."
 msgstr "帖子类型键必须少于 20 个字符。"
 
-#: includes/fields/class-acf-field-wysiwyg.php:25
+#: includes/fields/class-acf-field-wysiwyg.php:24
 msgid "We do not recommend using this field in ACF Blocks."
 msgstr "我们不建议在 ACF 块中使用此字段。"
 
-#: includes/fields/class-acf-field-wysiwyg.php:25
+#: includes/fields/class-acf-field-wysiwyg.php:24
 msgid ""
 "Displays the WordPress WYSIWYG editor as seen in Posts and Pages allowing "
 "for a rich text-editing experience that also allows for multimedia content."
@@ -503,7 +1909,7 @@ msgstr ""
 "显示 WordPress 可视化编辑器，如文章和页面中所示，可提供丰富的文本编辑体验，还"
 "支持多媒体内容。"
 
-#: includes/fields/class-acf-field-wysiwyg.php:23
+#: includes/fields/class-acf-field-wysiwyg.php:22
 msgid "WYSIWYG Editor"
 msgstr "可视化编辑器"
 
@@ -517,11 +1923,12 @@ msgstr "允许选择一个或多个可用于在数据对象之间创建关系的
 msgid "A text input specifically designed for storing web addresses."
 msgstr "专门为存储网址而设计的文本输入。"
 
+#: includes/fields/class-acf-field-icon_picker.php:56
 #: includes/fields/class-acf-field-url.php:19
 msgid "URL"
 msgstr "URL"
 
-#: includes/fields/class-acf-field-true_false.php:25
+#: includes/fields/class-acf-field-true_false.php:24
 msgid ""
 "A toggle that allows you to pick a value of 1 or 0 (on or off, true or "
 "false, etc). Can be presented as a stylized switch or checkbox."
@@ -529,17 +1936,17 @@ msgstr ""
 "允许您选择值 1 或 0（打开或关闭、true 或 false 等）的切换开关。可以呈现为程式"
 "化的开关或复选框。"
 
-#: includes/fields/class-acf-field-time_picker.php:25
+#: includes/fields/class-acf-field-time_picker.php:24
 msgid ""
 "An interactive UI for picking a time. The time format can be customized "
 "using the field settings."
 msgstr "用于选择时间的交互式 UI。可以使用字段设置自定义时间格式。"
 
-#: includes/fields/class-acf-field-textarea.php:24
+#: includes/fields/class-acf-field-textarea.php:23
 msgid "A basic textarea input for storing paragraphs of text."
 msgstr "用于存储文本段落的基本文本区域输入。"
 
-#: includes/fields/class-acf-field-text.php:24
+#: includes/fields/class-acf-field-text.php:23
 msgid "A basic text input, useful for storing single string values."
 msgstr "基本文本输入，可用于存储单个字符串值。"
 
@@ -549,7 +1956,7 @@ msgid ""
 "options specified in the fields settings."
 msgstr "允许根据字段设置中指定的条件和选项选择一个或多个分类术语。"
 
-#: includes/fields/class-acf-field-tab.php:26
+#: includes/fields/class-acf-field-tab.php:25
 msgid ""
 "Allows you to group fields into tabbed sections in the edit screen. Useful "
 "for keeping fields organized and structured."
@@ -557,7 +1964,7 @@ msgstr ""
 "允许您将字段分组到编辑屏幕中的选项卡部分。对于保持字段的组织性和结构化很有"
 "用。"
 
-#: includes/fields/class-acf-field-select.php:25
+#: includes/fields/class-acf-field-select.php:24
 msgid "A dropdown list with a selection of choices that you specify."
 msgstr "包含您指定的选项的下拉列表。"
 
@@ -570,19 +1977,19 @@ msgstr ""
 "双栏界面，用于选择一个或多个帖子、页面或自定义帖子类型项目，以创建与您当前正"
 "在编辑的项目的关系。包括搜索和过滤选项。"
 
-#: includes/fields/class-acf-field-range.php:24
+#: includes/fields/class-acf-field-range.php:23
 msgid ""
 "An input for selecting a numerical value within a specified range using a "
 "range slider element."
 msgstr "用于使用范围滑块元素选择指定范围内的数值的输入。"
 
-#: includes/fields/class-acf-field-radio.php:25
+#: includes/fields/class-acf-field-radio.php:24
 msgid ""
 "A group of radio button inputs that allows the user to make a single "
 "selection from values that you specify."
 msgstr "一组单选按钮输入，允许用户从您指定的值中进行单一选择。"
 
-#: includes/fields/class-acf-field-post_object.php:19
+#: includes/fields/class-acf-field-post_object.php:17
 msgid ""
 "An interactive and customizable UI for picking one or many posts, pages or "
 "post type items with the option to search. "
@@ -590,17 +1997,17 @@ msgstr ""
 "一种交互式且可定制的用户界面，用于选择一个或多个帖子、页面或帖子类型项目，并"
 "提供搜索选项。 "
 
-#: includes/fields/class-acf-field-password.php:24
+#: includes/fields/class-acf-field-password.php:23
 msgid "An input for providing a password using a masked field."
 msgstr "使用屏蔽字段提供密码的输入。"
 
-#: includes/fields/class-acf-field-page_link.php:424
-#: includes/fields/class-acf-field-post_object.php:342
-#: includes/fields/class-acf-field-relationship.php:545
+#: includes/fields/class-acf-field-page_link.php:446
+#: includes/fields/class-acf-field-post_object.php:355
+#: includes/fields/class-acf-field-relationship.php:554
 msgid "Filter by Post Status"
 msgstr "按文章状态过滤"
 
-#: includes/fields/class-acf-field-page_link.php:25
+#: includes/fields/class-acf-field-page_link.php:24
 msgid ""
 "An interactive dropdown to select one or more posts, pages, custom post type "
 "items or archive URLs, with the option to search."
@@ -608,7 +2015,7 @@ msgstr ""
 "交互式下拉菜单，用于选择一个或多个帖子、页面、自定义帖子类型项目或存档 URL，"
 "并提供搜索选项。"
 
-#: includes/fields/class-acf-field-oembed.php:25
+#: includes/fields/class-acf-field-oembed.php:24
 msgid ""
 "An interactive component for embedding videos, images, tweets, audio and "
 "other content by making use of the native WordPress oEmbed functionality."
@@ -616,11 +2023,11 @@ msgstr ""
 "一个交互式组件，用于通过使用本机 WordPress oEmbed 功能来嵌入视频、图像、推"
 "文、音频和其他内容。"
 
-#: includes/fields/class-acf-field-number.php:24
+#: includes/fields/class-acf-field-number.php:23
 msgid "An input limited to numerical values."
 msgstr "输入仅限于数值。"
 
-#: includes/fields/class-acf-field-message.php:26
+#: includes/fields/class-acf-field-message.php:25
 msgid ""
 "Used to display a message to editors alongside other fields. Useful for "
 "providing additional context or instructions around your fields."
@@ -628,23 +2035,23 @@ msgstr ""
 "用于与其他字段一起向编辑者显示消息。对于提供有关您的字段的附加上下文或说明很"
 "有用。"
 
-#: includes/fields/class-acf-field-link.php:25
+#: includes/fields/class-acf-field-link.php:24
 msgid ""
 "Allows you to specify a link and its properties such as title and target "
 "using the WordPress native link picker."
 msgstr "允许您使用 WordPress 本机链接选择器指定链接及其属性，例如标题和目标。"
 
-#: includes/fields/class-acf-field-image.php:25
+#: includes/fields/class-acf-field-image.php:24
 msgid "Uses the native WordPress media picker to upload, or choose images."
 msgstr "使用本机 WordPress 媒体选择器上传或选择图像。"
 
-#: includes/fields/class-acf-field-group.php:25
+#: includes/fields/class-acf-field-group.php:24
 msgid ""
 "Provides a way to structure fields into groups to better organize the data "
 "and the edit screen."
 msgstr "提供一种将字段组织为组的方法，以更好地组织数据和编辑屏幕。"
 
-#: includes/fields/class-acf-field-google-map.php:25
+#: includes/fields/class-acf-field-google-map.php:24
 msgid ""
 "An interactive UI for selecting a location using Google Maps. Requires a "
 "Google Maps API key and additional configuration to display correctly."
@@ -652,43 +2059,43 @@ msgstr ""
 "用于使用 Google 地图选择位置的交互式 UI。需要 Google 地图 API 密钥和其他配置"
 "才能正确显示。"
 
-#: includes/fields/class-acf-field-file.php:25
+#: includes/fields/class-acf-field-file.php:24
 msgid "Uses the native WordPress media picker to upload, or choose files."
 msgstr "使用本机 WordPress 媒体选择器上传或选择文件。"
 
-#: includes/fields/class-acf-field-email.php:24
+#: includes/fields/class-acf-field-email.php:23
 msgid "A text input specifically designed for storing email addresses."
 msgstr "专门用于存储电子邮件地址的文本输入。"
 
-#: includes/fields/class-acf-field-date_time_picker.php:25
+#: includes/fields/class-acf-field-date_time_picker.php:24
 msgid ""
 "An interactive UI for picking a date and time. The date return format can be "
 "customized using the field settings."
 msgstr "用于选择日期和时间的交互式 UI。可以使用字段设置自定义日期返回格式。"
 
-#: includes/fields/class-acf-field-date_picker.php:25
+#: includes/fields/class-acf-field-date_picker.php:24
 msgid ""
 "An interactive UI for picking a date. The date return format can be "
 "customized using the field settings."
 msgstr "用于选择日期的交互式用户界面。可以使用字段设置自定义日期返回格式。"
 
-#: includes/fields/class-acf-field-color_picker.php:25
+#: includes/fields/class-acf-field-color_picker.php:24
 msgid "An interactive UI for selecting a color, or specifying a Hex value."
 msgstr "用于选择颜色或指定十六进制值的交互式 UI。"
 
-#: includes/fields/class-acf-field-checkbox.php:25
+#: includes/fields/class-acf-field-checkbox.php:24
 msgid ""
 "A group of checkbox inputs that allow the user to select one, or multiple "
 "values that you specify."
 msgstr "一组复选框输入，允许用户选择您指定的一个或多个值。"
 
-#: includes/fields/class-acf-field-button-group.php:26
+#: includes/fields/class-acf-field-button-group.php:25
 msgid ""
 "A group of buttons with values that you specify, users can choose one option "
 "from the values provided."
 msgstr "一组具有您指定的值的按钮，用户可以从提供的值中选择一个选项。"
 
-#: includes/fields/class-acf-field-accordion.php:27
+#: includes/fields/class-acf-field-accordion.php:26
 msgid ""
 "Allows you to group and organize custom fields into collapsable panels that "
 "are shown while editing content. Useful for keeping large datasets tidy."
@@ -696,7 +2103,7 @@ msgstr ""
 "允许您将自定义字段分组并组织到可折叠面板中，这些面板在编辑内容时显示。对于保"
 "持大型数据集整洁很有用。"
 
-#: includes/fields.php:456
+#: includes/fields.php:449
 msgid ""
 "This provides a solution for repeating content such as slides, team members, "
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
@@ -705,7 +2112,7 @@ msgstr ""
 "这提供了一种通过充当一组可以一次又一次重复的子字段的父字段来重复幻灯片、团队"
 "成员和号召性用语图块等内容的解决方案。"
 
-#: includes/fields.php:446
+#: includes/fields.php:439
 msgid ""
 "This provides an interactive interface for managing a collection of "
 "attachments. Most settings are similar to the Image field type. Additional "
@@ -715,7 +2122,7 @@ msgstr ""
 "这提供了用于管理附件集合的交互式界面。大多数设置与图像字段类型类似。其他设置"
 "允许您指定在库中添加新附件的位置以及允许的最小/最大附件数量。"
 
-#: includes/fields.php:436
+#: includes/fields.php:429
 msgid ""
 "This provides a simple, structured, layout-based editor. The Flexible "
 "Content field allows you to define, create and manage content with total "
@@ -724,7 +2131,7 @@ msgstr ""
 "这提供了一个简单、结构化、基于布局的编辑器。弹性内容字段允许您通过使用布局和"
 "子字段来设计可用块来定义、创建和管理具有完全控制的内容。"
 
-#: includes/fields.php:426
+#: includes/fields.php:419
 msgid ""
 "This allows you to select and display existing fields. It does not duplicate "
 "any fields in the database, but loads and displays the selected fields at "
@@ -735,36 +2142,37 @@ msgstr ""
 "显示所选字段。克隆字段可以用所选字段替换自身，也可以将所选字段显示为一组子字"
 "段。"
 
-#: includes/fields.php:423
+#: includes/fields.php:416
 msgctxt "noun"
 msgid "Clone"
 msgstr "克隆"
 
-#: includes/admin/views/global/navigation.php:86 includes/fields.php:338
+#: includes/admin/views/global/navigation.php:86
+#: includes/class-acf-site-health.php:286 includes/fields.php:331
 msgid "PRO"
 msgstr "PRO"
 
-#: includes/fields.php:336 includes/fields.php:393
+#: includes/fields.php:329 includes/fields.php:386
 msgid "Advanced"
 msgstr "高级"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:85
+#: includes/ajax/class-acf-ajax-local-json-diff.php:90
 msgid "JSON (newer)"
 msgstr "JSON (新)"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:81
+#: includes/ajax/class-acf-ajax-local-json-diff.php:86
 msgid "Original"
 msgstr "原始"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:55
+#: includes/ajax/class-acf-ajax-local-json-diff.php:60
 msgid "Invalid post ID."
 msgstr "文章 ID 无效。"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:47
+#: includes/ajax/class-acf-ajax-local-json-diff.php:52
 msgid "Invalid post type selected for review."
 msgstr "选择进行审核的帖子类型无效。"
 
-#: includes/admin/views/global/navigation.php:186
+#: includes/admin/views/global/navigation.php:189
 msgid "More"
 msgstr "更多"
 
@@ -787,6 +2195,7 @@ msgstr "热门字段"
 
 #. translators: %s: The invalid search term
 #: includes/admin/views/browse-fields-modal.php:50
+#: includes/fields/class-acf-field-icon_picker.php:155
 msgid "No search results for '%s'"
 msgstr "没有搜索到“%s”结果"
 
@@ -1456,215 +2865,215 @@ msgstr "电影"
 msgid "Plural Label"
 msgstr "复数标签"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1275
+#: includes/admin/views/acf-post-type/advanced-settings.php:1298
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Posts_Controller`."
 msgstr "使用可选的自定义控制器来代替“WP_REST_Posts_Controller”。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1274
+#: includes/admin/views/acf-post-type/advanced-settings.php:1297
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
 msgid "Controller Class"
 msgstr "控制器类"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1256
+#: includes/admin/views/acf-post-type/advanced-settings.php:1279
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1191
 msgid "The namespace part of the REST API URL."
 msgstr "REST API URL 的命名空间部分。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1255
+#: includes/admin/views/acf-post-type/advanced-settings.php:1278
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1190
 msgid "Namespace Route"
 msgstr "命名空间路由"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1237
+#: includes/admin/views/acf-post-type/advanced-settings.php:1260
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1172
 msgid "The base URL for the post type REST API URLs."
 msgstr "文章类型 REST API URL 的基本 URL。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1236
+#: includes/admin/views/acf-post-type/advanced-settings.php:1259
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1171
 msgid "Base URL"
 msgstr "基本网址"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1222
+#: includes/admin/views/acf-post-type/advanced-settings.php:1245
 msgid ""
 "Exposes this post type in the REST API. Required to use the block editor."
 msgstr "在 REST API 中公开此帖子类型。需要使用块编辑器。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1221
+#: includes/admin/views/acf-post-type/advanced-settings.php:1244
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1154
 msgid "Show In REST API"
 msgstr "在 REST API 中显示"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1200
+#: includes/admin/views/acf-post-type/advanced-settings.php:1223
 msgid "Customize the query variable name."
 msgstr "自定义查询变量名称。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1199
+#: includes/admin/views/acf-post-type/advanced-settings.php:1222
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1054
 msgid "Query Variable"
 msgstr "查询变量"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1177
+#: includes/admin/views/acf-post-type/advanced-settings.php:1200
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1032
 msgid "No Query Variable Support"
 msgstr "不支持查询变量"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1176
+#: includes/admin/views/acf-post-type/advanced-settings.php:1199
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1031
 msgid "Custom Query Variable"
 msgstr "自定义查询变量"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1173
+#: includes/admin/views/acf-post-type/advanced-settings.php:1196
 msgid ""
 "Items can be accessed using the non-pretty permalink, eg. {post_type}"
 "={post_slug}."
 msgstr "可以使用非漂亮的永久链接访问项目，例如。 {post_type}={post_slug}。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1172
+#: includes/admin/views/acf-post-type/advanced-settings.php:1195
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
 msgid "Query Variable Support"
 msgstr "查询变量支持"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1147
+#: includes/admin/views/acf-post-type/advanced-settings.php:1170
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1003
 msgid "URLs for an item and items can be accessed with a query string."
 msgstr "可以使用查询字符串访问一个或多个项目的 URL。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1146
+#: includes/admin/views/acf-post-type/advanced-settings.php:1169
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1002
 msgid "Publicly Queryable"
 msgstr "可公开查询"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1125
+#: includes/admin/views/acf-post-type/advanced-settings.php:1148
 msgid "Custom slug for the Archive URL."
 msgstr "存档 URL 的自定义 slug。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1124
+#: includes/admin/views/acf-post-type/advanced-settings.php:1147
 msgid "Archive Slug"
 msgstr "归档 Slug"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1111
+#: includes/admin/views/acf-post-type/advanced-settings.php:1134
 msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
 msgstr "拥有一个项目存档，可以使用主题中的存档模板文件进行自定义。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1110
+#: includes/admin/views/acf-post-type/advanced-settings.php:1133
 msgid "Archive"
 msgstr "归档"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1090
+#: includes/admin/views/acf-post-type/advanced-settings.php:1113
 msgid "Pagination support for the items URLs such as the archives."
 msgstr "对项目 URL（例如归档）的分页支持。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1089
+#: includes/admin/views/acf-post-type/advanced-settings.php:1112
 msgid "Pagination"
 msgstr "分页"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1072
+#: includes/admin/views/acf-post-type/advanced-settings.php:1095
 msgid "RSS feed URL for the post type items."
 msgstr "文章类型项目的 RSS 源 URL。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1071
+#: includes/admin/views/acf-post-type/advanced-settings.php:1094
 msgid "Feed URL"
 msgstr "Feed 网址"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1053
+#: includes/admin/views/acf-post-type/advanced-settings.php:1076
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:961
 msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
 msgstr "更改永久链接结构以将 `WP_Rewrite::$front` 前缀添加到 URL。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1052
+#: includes/admin/views/acf-post-type/advanced-settings.php:1075
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:960
 msgid "Front URL Prefix"
 msgstr "前面的 URL 前缀"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1033
+#: includes/admin/views/acf-post-type/advanced-settings.php:1056
 msgid "Customize the slug used in the URL."
 msgstr "自定义 URL 中使用的 slug。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1032
+#: includes/admin/views/acf-post-type/advanced-settings.php:1055
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:940
 msgid "URL Slug"
 msgstr "URL Slug"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1016
+#: includes/admin/views/acf-post-type/advanced-settings.php:1039
 msgid "Permalinks for this post type are disabled."
 msgstr "此文章类型的永久链接已禁用。"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:1015
+#: includes/admin/views/acf-post-type/advanced-settings.php:1038
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:923
 msgid ""
 "Rewrite the URL using a custom slug defined in the input below. Your "
 "permalink structure will be"
 msgstr "使用下面输入中定义的自定义 slug 重写 URL。您的永久链接结构将是"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1007
+#: includes/admin/views/acf-post-type/advanced-settings.php:1030
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:915
 msgid "No Permalink (prevent URL rewriting)"
 msgstr "无固定链接（防止 URL 重写）"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1006
+#: includes/admin/views/acf-post-type/advanced-settings.php:1029
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:914
 msgid "Custom Permalink"
 msgstr "自定义固定链接"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1005
-#: includes/admin/views/acf-post-type/advanced-settings.php:1175
+#: includes/admin/views/acf-post-type/advanced-settings.php:1028
+#: includes/admin/views/acf-post-type/advanced-settings.php:1198
 #: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
 msgstr "文章类型键"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:1003
-#: includes/admin/views/acf-post-type/advanced-settings.php:1013
+#: includes/admin/views/acf-post-type/advanced-settings.php:1026
+#: includes/admin/views/acf-post-type/advanced-settings.php:1036
 msgid ""
 "Rewrite the URL using the post type key as the slug. Your permalink "
 "structure will be"
 msgstr "使用文章类型键作为 slug 重写 URL。您的永久链接结构将是"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1001
+#: includes/admin/views/acf-post-type/advanced-settings.php:1024
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:910
 msgid "Permalink Rewrite"
 msgstr "永久链接重写"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:987
+#: includes/admin/views/acf-post-type/advanced-settings.php:1010
 msgid "Delete items by a user when that user is deleted."
 msgstr "删除用户后，删除该用户的项目。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:986
+#: includes/admin/views/acf-post-type/advanced-settings.php:1009
 msgid "Delete With User"
 msgstr "与用户一起删除"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:972
+#: includes/admin/views/acf-post-type/advanced-settings.php:995
 msgid "Allow the post type to be exported from 'Tools' > 'Export'."
 msgstr "允许从“工具”>“导出”导出文章类型。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:971
+#: includes/admin/views/acf-post-type/advanced-settings.php:994
 msgid "Can Export"
 msgstr "可以导出"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:940
+#: includes/admin/views/acf-post-type/advanced-settings.php:963
 msgid "Optionally provide a plural to be used in capabilities."
 msgstr "可以选择提供要在功能中使用的复数。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:939
+#: includes/admin/views/acf-post-type/advanced-settings.php:962
 msgid "Plural Capability Name"
 msgstr "复数能力名称"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:921
+#: includes/admin/views/acf-post-type/advanced-settings.php:944
 msgid "Choose another post type to base the capabilities for this post type."
 msgstr "选择另一个文章类型以基于此文章类型的功能。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:920
+#: includes/admin/views/acf-post-type/advanced-settings.php:943
 msgid "Singular Capability Name"
 msgstr "单一能力名称"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:906
+#: includes/admin/views/acf-post-type/advanced-settings.php:929
 msgid ""
 "By default the capabilities of the post type will inherit the 'Post' "
 "capability names, eg. edit_post, delete_posts. Enable to use post type "
@@ -1673,57 +3082,57 @@ msgstr ""
 "默认情况下，文章类型的功能将继承“文章”功能名称，例如。编辑帖子、删除帖子。允"
 "许使用文章类型特定的功能，例如。编辑_{单数}，删除_{复数}。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:905
+#: includes/admin/views/acf-post-type/advanced-settings.php:928
 msgid "Rename Capabilities"
 msgstr "重命名功能"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:890
+#: includes/admin/views/acf-post-type/advanced-settings.php:913
 msgid "Exclude From Search"
 msgstr "从搜索中排除"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:877
+#: includes/admin/views/acf-post-type/advanced-settings.php:900
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:854
 msgid ""
 "Allow items to be added to menus in the 'Appearance' > 'Menus' screen. Must "
 "be turned on in 'Screen options'."
 msgstr "允许将项目添加到“外观”>“菜单”屏幕中的菜单。必须在“屏幕选项”中打开。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:876
+#: includes/admin/views/acf-post-type/advanced-settings.php:899
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:853
 msgid "Appearance Menus Support"
 msgstr "外观菜单支持"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:858
+#: includes/admin/views/acf-post-type/advanced-settings.php:881
 msgid "Appears as an item in the 'New' menu in the admin bar."
 msgstr "显示为管理栏中“新建”菜单中的一个项目。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:857
+#: includes/admin/views/acf-post-type/advanced-settings.php:880
 msgid "Show In Admin Bar"
 msgstr "在管理栏中显示"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:826
+#: includes/admin/views/acf-post-type/advanced-settings.php:849
 msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen."
 msgstr "为编辑屏幕设置元框时要调用的 PHP 函数名称。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:825
+#: includes/admin/views/acf-post-type/advanced-settings.php:848
 msgid "Custom Meta Box Callback"
 msgstr "自定义 Meta Box 回调"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:805
+#: includes/admin/views/acf-post-type/advanced-settings.php:822
 msgid "Menu Icon"
 msgstr "菜单图标"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:787
+#: includes/admin/views/acf-post-type/advanced-settings.php:778
 msgid "The position in the sidebar menu in the admin dashboard."
 msgstr "管理仪表板侧边栏菜单中的位置。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:786
+#: includes/admin/views/acf-post-type/advanced-settings.php:777
 msgid "Menu Position"
 msgstr "菜单位置"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:768
+#: includes/admin/views/acf-post-type/advanced-settings.php:759
 msgid ""
 "By default the post type will get a new top level item in the admin menu. If "
 "an existing top level item is supplied here, the post type will be added as "
@@ -1732,21 +3141,9 @@ msgstr ""
 "默认情况下，文章类型将在管理菜单中获得一个新的顶级项目。如果此处提供了现有的"
 "顶级项目，则文章类型将作为其下的子菜单项添加。"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:767
+#: includes/admin/views/acf-post-type/advanced-settings.php:758
 msgid "Admin Menu Parent"
 msgstr "管理菜单父级"
-
-#. translators: %s = "dashicon class name", link to the WordPress dashicon
-#. documentation.
-#: includes/admin/views/acf-post-type/advanced-settings.php:755
-msgid ""
-"The icon used for the post type menu item in the admin dashboard. Can be a "
-"URL or %s to use for the icon."
-msgstr "用于管理仪表板中的文章类型菜单项的图标。可以是用于图标的 URL 或 %s。"
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:750
-msgid "Dashicon class name"
-msgstr "Dashicon 类名"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:739
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:734
@@ -2337,38 +3734,38 @@ msgstr "选择现有分类法对文章类型的项目进行分类。"
 msgid "Browse Fields"
 msgstr "浏览字段"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:289
+#: includes/admin/tools/class-acf-admin-tool-import.php:287
 msgid "Nothing to import"
 msgstr "没有什么可导入的"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:284
+#: includes/admin/tools/class-acf-admin-tool-import.php:282
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr "可以停用自定义文章类型 UI 插件。"
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:275
+#: includes/admin/tools/class-acf-admin-tool-import.php:273
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] "已从自定义文章类型 UI 导入 %d 项 -"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:259
+#: includes/admin/tools/class-acf-admin-tool-import.php:257
 msgid "Failed to import taxonomies."
 msgstr "导入分类法失败。"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:241
+#: includes/admin/tools/class-acf-admin-tool-import.php:239
 msgid "Failed to import post types."
 msgstr "导入文章类型失败。"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:230
+#: includes/admin/tools/class-acf-admin-tool-import.php:228
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr "自定义文章类型 UI 插件中没有选择导入。"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:206
+#: includes/admin/tools/class-acf-admin-tool-import.php:204
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] "已导入 %s 个项目"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:121
+#: includes/admin/tools/class-acf-admin-tool-import.php:119
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
@@ -2377,8 +3774,8 @@ msgstr ""
 "导入与现有文章类型或分类法具有相同键的文章类型或分类法将会用导入的设置覆盖现"
 "有文章类型或分类法的设置。"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:110
-#: includes/admin/tools/class-acf-admin-tool-import.php:126
+#: includes/admin/tools/class-acf-admin-tool-import.php:108
+#: includes/admin/tools/class-acf-admin-tool-import.php:124
 msgid "Import from Custom Post Type UI"
 msgstr "从自定义文章类型 UI 导入"
 
@@ -2525,7 +3922,7 @@ msgstr[0] "%s 个文章类型已激活。"
 
 #: includes/admin/post-types/admin-post-types.php:87
 #: includes/admin/post-types/admin-taxonomies.php:111
-#: includes/admin/tools/class-acf-admin-tool-import.php:81
+#: includes/admin/tools/class-acf-admin-tool-import.php:79
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -2598,17 +3995,17 @@ msgstr "文章类型已更新。"
 msgid "Post type deleted."
 msgstr "文章类型已删除。"
 
-#: includes/admin/post-types/admin-field-group.php:116
-#: assets/build/js/acf-field-group.js:1146
-#: assets/build/js/acf-field-group.js:1367
+#: includes/admin/post-types/admin-field-group.php:146
+#: assets/build/js/acf-field-group.js:1159
+#: assets/build/js/acf-field-group.js:1383
 msgid "Type to search..."
 msgstr "输入以搜索……"
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: assets/build/js/acf-field-group.js:1173
-#: assets/build/js/acf-field-group.js:2336
-#: assets/build/js/acf-field-group.js:1413
-#: assets/build/js/acf-field-group.js:2745
+#: assets/build/js/acf-field-group.js:1186
+#: assets/build/js/acf-field-group.js:2349
+#: assets/build/js/acf-field-group.js:1429
+#: assets/build/js/acf-field-group.js:2761
 msgid "PRO Only"
 msgstr "仅限专业版"
 
@@ -2627,7 +4024,8 @@ msgstr ""
 "导入使用自定义帖子类型 UI 注册的帖子类型和分类法并使用 ACF 进行管理。 <a "
 "href=\"%s\">开始使用</a>。"
 
-#: includes/admin/admin.php:45 includes/admin/admin.php:311
+#: includes/admin/admin.php:46 includes/admin/admin.php:352
+#: includes/class-acf-site-health.php:250
 msgid "ACF"
 msgstr "ACF"
 
@@ -2701,7 +4099,7 @@ msgstr "可见性"
 msgid "Labels"
 msgstr "标签"
 
-#: includes/admin/post-types/admin-field-group.php:249
+#: includes/admin/post-types/admin-field-group.php:279
 msgid "Field Settings Tabs"
 msgstr "字段设置选项卡"
 
@@ -2714,76 +4112,77 @@ msgstr ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
-#: includes/api/api-template.php:1010
+#: includes/api/api-template.php:1015
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[预览时禁用 ACF 短代码值]"
 
 #: includes/admin/admin-internal-post-type.php:290
-#: includes/admin/post-types/admin-field-group.php:539
+#: includes/admin/post-types/admin-field-group.php:572
 msgid "Close Modal"
 msgstr "关闭模态框"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:1688
-#: assets/build/js/acf-field-group.js:2016
+#: assets/build/js/acf-field-group.js:1701
+#: assets/build/js/acf-field-group.js:2032
 msgid "Field moved to other group"
 msgstr "字段移至其他组"
 
 #: includes/admin/post-types/admin-field-group.php:91
-#: assets/build/js/acf.js:1437 assets/build/js/acf.js:1517
+#: assets/build/js/acf.js:1443 assets/build/js/acf.js:1521
 msgid "Close modal"
 msgstr "关闭模态框"
 
-#: includes/fields/class-acf-field-tab.php:118
+#: includes/fields/class-acf-field-tab.php:119
 msgid "Start a new group of tabs at this tab."
 msgstr "在此选项卡上启动一组新选项卡。"
 
-#: includes/fields/class-acf-field-tab.php:117
+#: includes/fields/class-acf-field-tab.php:118
 msgid "New Tab Group"
 msgstr "新标签组"
 
-#: includes/fields/class-acf-field-select.php:429
-#: includes/fields/class-acf-field-true_false.php:190
+#: includes/fields/class-acf-field-select.php:423
+#: includes/fields/class-acf-field-true_false.php:188
 msgid "Use a stylized checkbox using select2"
 msgstr "使用 select2 使用程式化复选框"
 
-#: includes/fields/class-acf-field-radio.php:253
+#: includes/fields/class-acf-field-radio.php:250
 msgid "Save Other Choice"
 msgstr "保存其他选择"
 
-#: includes/fields/class-acf-field-radio.php:242
+#: includes/fields/class-acf-field-radio.php:239
 msgid "Allow Other Choice"
 msgstr "允许其他选择"
 
-#: includes/fields/class-acf-field-checkbox.php:425
+#: includes/fields/class-acf-field-checkbox.php:420
 msgid "Add Toggle All"
 msgstr "添加 全部切换"
 
-#: includes/fields/class-acf-field-checkbox.php:384
+#: includes/fields/class-acf-field-checkbox.php:379
 msgid "Save Custom Values"
 msgstr "保存自定义值"
 
-#: includes/fields/class-acf-field-checkbox.php:373
+#: includes/fields/class-acf-field-checkbox.php:368
 msgid "Allow Custom Values"
 msgstr "允许自定义值"
 
-#: includes/fields/class-acf-field-checkbox.php:137
+#: includes/fields/class-acf-field-checkbox.php:134
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
 msgstr "复选框自定义值不能为空。取消选中任何空值。"
 
-#: includes/admin/views/global/navigation.php:250
+#: includes/admin/views/global/navigation.php:253
 msgid "Updates"
 msgstr "更新"
 
-#: includes/admin/views/global/navigation.php:176
+#: includes/admin/views/global/navigation.php:177
+#: includes/admin/views/global/navigation.php:181
 msgid "Advanced Custom Fields logo"
 msgstr "高级自定义字段 LOGO"
 
-#: includes/admin/views/global/form-top.php:89
+#: includes/admin/views/global/form-top.php:92
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: includes/admin/views/global/form-top.php:76
+#: includes/admin/views/global/form-top.php:79
 msgid "Field Group Title"
 msgstr "字段组标题"
 
@@ -2822,7 +4221,7 @@ msgstr "添加您的第一个字段组"
 #: includes/admin/admin-options-pages-preview.php:28
 #: includes/admin/views/acf-field-group/pro-features.php:58
 #: includes/admin/views/global/navigation.php:86
-#: includes/admin/views/global/navigation.php:252
+#: includes/admin/views/global/navigation.php:255
 msgid "Options Pages"
 msgstr "选项页"
 
@@ -2842,7 +4241,7 @@ msgstr "弹性内容字段"
 msgid "Repeater Field"
 msgstr "循环字段"
 
-#: includes/admin/views/global/navigation.php:212
+#: includes/admin/views/global/navigation.php:215
 msgid "Unlock Extra Features with ACF PRO"
 msgstr "使用 ACF PRO 解锁额外功能"
 
@@ -2891,24 +4290,24 @@ msgstr "#"
 #: includes/admin/views/acf-field-group/fields.php:33
 #: includes/admin/views/acf-field-group/fields.php:67
 #: includes/admin/views/acf-field-group/fields.php:101
-#: includes/admin/views/global/form-top.php:85
+#: includes/admin/views/global/form-top.php:88
 msgid "Add Field"
 msgstr "添加字段"
 
-#: includes/acf-field-group-functions.php:496 includes/fields.php:391
+#: includes/acf-field-group-functions.php:496 includes/fields.php:384
 msgid "Presentation"
 msgstr "展示"
 
-#: includes/fields.php:390
+#: includes/fields.php:383
 msgid "Validation"
 msgstr "验证"
 
 #: includes/acf-internal-post-type-functions.php:504
-#: includes/acf-internal-post-type-functions.php:533 includes/fields.php:389
+#: includes/acf-internal-post-type-functions.php:533 includes/fields.php:382
 msgid "General"
 msgstr "常规"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:69
+#: includes/admin/tools/class-acf-admin-tool-import.php:67
 msgid "Import JSON"
 msgstr "导入 JSON"
 
@@ -2928,32 +4327,32 @@ msgid "Field group activated."
 msgid_plural "%s field groups activated."
 msgstr[0] "%s 个字段组已激活。"
 
-#: includes/admin/admin-internal-post-type-list.php:468
-#: includes/admin/admin-internal-post-type-list.php:494
+#: includes/admin/admin-internal-post-type-list.php:470
+#: includes/admin/admin-internal-post-type-list.php:496
 msgid "Deactivate"
 msgstr "停用"
 
-#: includes/admin/admin-internal-post-type-list.php:468
+#: includes/admin/admin-internal-post-type-list.php:470
 msgid "Deactivate this item"
 msgstr "停用此项目"
 
-#: includes/admin/admin-internal-post-type-list.php:464
-#: includes/admin/admin-internal-post-type-list.php:493
+#: includes/admin/admin-internal-post-type-list.php:466
+#: includes/admin/admin-internal-post-type-list.php:495
 msgid "Activate"
 msgstr "激活"
 
-#: includes/admin/admin-internal-post-type-list.php:464
+#: includes/admin/admin-internal-post-type-list.php:466
 msgid "Activate this item"
 msgstr "激活此项目"
 
 #: includes/admin/post-types/admin-field-group.php:88
-#: assets/build/js/acf-field-group.js:2841
-#: assets/build/js/acf-field-group.js:3349
+#: assets/build/js/acf-field-group.js:2862
+#: assets/build/js/acf-field-group.js:3375
 msgid "Move field group to trash?"
 msgstr "将字段组移至回收站？"
 
-#: acf.php:490 includes/admin/admin-internal-post-type-list.php:264
-#: includes/admin/post-types/admin-field-group.php:274
+#: acf.php:500 includes/admin/admin-internal-post-type-list.php:264
+#: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
 msgctxt "post status"
@@ -2965,7 +4364,7 @@ msgstr "停用"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:548
+#: acf.php:558
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -2973,7 +4372,7 @@ msgstr ""
 "高级自定义字段和高级自定义字段 PRO 不应同时处于活动状态。我们已自动停用高级自"
 "定义字段 PRO。"
 
-#: acf.php:546
+#: acf.php:556
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -2993,38 +4392,38 @@ msgstr ""
 "次调用。不支持此操作，并且可能会导致数据格式错误或丢失。 <a href=\"%2$s\" "
 "target=\"_blank\">了解如何解决此问题</a>。"
 
-#: includes/fields/class-acf-field-user.php:549
+#: includes/fields/class-acf-field-user.php:578
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] "%1$s 必须拥有具有以下角色之一的用户：%2$s"
 
-#: includes/fields/class-acf-field-user.php:540
+#: includes/fields/class-acf-field-user.php:569
 msgid "%1$s must have a valid user ID."
 msgstr "%1$s 必须具有有效的用户 ID。"
 
-#: includes/fields/class-acf-field-user.php:379
+#: includes/fields/class-acf-field-user.php:408
 msgid "Invalid request."
 msgstr "无效的请求。"
 
-#: includes/fields/class-acf-field-select.php:646
+#: includes/fields/class-acf-field-select.php:637
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s 不是 %2$s 之一。"
 
-#: includes/fields/class-acf-field-post_object.php:645
+#: includes/fields/class-acf-field-post_object.php:649
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s 必须具有以下分类项之一：%2$s"
 
-#: includes/fields/class-acf-field-post_object.php:629
+#: includes/fields/class-acf-field-post_object.php:633
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s 必须属于以下文章类型之一：%2$s"
 
-#: includes/fields/class-acf-field-post_object.php:620
+#: includes/fields/class-acf-field-post_object.php:624
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s 必须具有有效的文章 ID。"
 
-#: includes/fields/class-acf-field-file.php:453
+#: includes/fields/class-acf-field-file.php:447
 msgid "%s requires a valid attachment ID."
 msgstr "%s 需要有效的附件 ID。"
 
@@ -3032,20 +4431,20 @@ msgstr "%s 需要有效的附件 ID。"
 msgid "Show in REST API"
 msgstr "在 REST API 中显示"
 
-#: includes/fields/class-acf-field-color_picker.php:160
+#: includes/fields/class-acf-field-color_picker.php:156
 msgid "Enable Transparency"
 msgstr "启用透明度"
 
-#: includes/fields/class-acf-field-color_picker.php:179
+#: includes/fields/class-acf-field-color_picker.php:175
 msgid "RGBA Array"
 msgstr "RGBA 数组"
 
-#: includes/fields/class-acf-field-color_picker.php:94
+#: includes/fields/class-acf-field-color_picker.php:92
 msgid "RGBA String"
 msgstr "RGBA 字符串"
 
-#: includes/fields/class-acf-field-color_picker.php:93
-#: includes/fields/class-acf-field-color_picker.php:178
+#: includes/fields/class-acf-field-color_picker.php:91
+#: includes/fields/class-acf-field-color_picker.php:174
 msgid "Hex String"
 msgstr "十六进制字符串"
 
@@ -3053,26 +4452,26 @@ msgstr "十六进制字符串"
 msgid "Upgrade to PRO"
 msgstr "升级到专业版"
 
-#: includes/admin/post-types/admin-field-group.php:274
+#: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
 msgctxt "post status"
 msgid "Active"
 msgstr "启用"
 
-#: includes/fields/class-acf-field-email.php:168
+#: includes/fields/class-acf-field-email.php:166
 msgid "'%s' is not a valid email address"
 msgstr "“%s”不是有效的电子邮件地址"
 
-#: includes/fields/class-acf-field-color_picker.php:72
+#: includes/fields/class-acf-field-color_picker.php:70
 msgid "Color value"
 msgstr "颜色值"
 
-#: includes/fields/class-acf-field-color_picker.php:70
+#: includes/fields/class-acf-field-color_picker.php:68
 msgid "Select default color"
 msgstr "选择默认颜色"
 
-#: includes/fields/class-acf-field-color_picker.php:68
+#: includes/fields/class-acf-field-color_picker.php:66
 msgid "Clear color"
 msgstr "清除颜色"
 
@@ -3103,7 +4502,7 @@ msgstr "附件"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:112
 #: includes/admin/post-types/admin-taxonomies.php:86
-#: includes/admin/tools/class-acf-admin-tool-import.php:92
+#: includes/admin/tools/class-acf-admin-tool-import.php:90
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -3119,15 +4518,15 @@ msgstr "分类法"
 msgid "Posts"
 msgstr "文章"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:76
+#: includes/ajax/class-acf-ajax-local-json-diff.php:81
 msgid "Last updated: %s"
 msgstr "最后更新：%s"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:70
+#: includes/ajax/class-acf-ajax-local-json-diff.php:75
 msgid "Sorry, this post is unavailable for diff comparison."
 msgstr "抱歉，这篇文章无法进行差异比较。"
 
-#: includes/ajax/class-acf-ajax-local-json-diff.php:42
+#: includes/ajax/class-acf-ajax-local-json-diff.php:47
 msgid "Invalid field group parameter(s)."
 msgstr "无效的字段组参数。"
 
@@ -3140,7 +4539,7 @@ msgid "Saved"
 msgstr "已保存"
 
 #: includes/admin/admin-internal-post-type-list.php:422
-#: includes/admin/tools/class-acf-admin-tool-import.php:48
+#: includes/admin/tools/class-acf-admin-tool-import.php:46
 msgid "Import"
 msgstr "导入"
 
@@ -3165,7 +4564,7 @@ msgid "Various"
 msgstr "各种各样的"
 
 #: includes/admin/admin-internal-post-type-list.php:230
-#: includes/admin/admin-internal-post-type-list.php:501
+#: includes/admin/admin-internal-post-type-list.php:503
 msgid "Sync changes"
 msgstr "同步更改"
 
@@ -3271,20 +4670,21 @@ msgstr "位置类型“%s”已被注册。"
 msgid "Class \"%s\" does not exist."
 msgstr "Class“%s”不存在。"
 
+#: includes/ajax/class-acf-ajax-query-users.php:28
 #: includes/ajax/class-acf-ajax.php:157
 msgid "Invalid nonce."
 msgstr "无效的随机数。"
 
-#: includes/fields/class-acf-field-user.php:374
+#: includes/fields/class-acf-field-user.php:400
 msgid "Error loading field."
 msgstr "加载字段时出错。"
 
-#: assets/build/js/acf-input.js:2748 assets/build/js/acf-input.js:2817
-#: assets/build/js/acf-input.js:2926 assets/build/js/acf-input.js:3000
+#: assets/build/js/acf-input.js:3438 assets/build/js/acf-input.js:3507
+#: assets/build/js/acf-input.js:3686 assets/build/js/acf-input.js:3760
 msgid "Location not found: %s"
 msgstr "找不到位置：%s"
 
-#: includes/forms/form-user.php:337
+#: includes/forms/form-user.php:328
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>错误</strong>：%s"
 
@@ -3418,7 +4818,7 @@ msgstr "所有 %s 格式"
 msgid "Attachment"
 msgstr "附件"
 
-#: includes/validation.php:319
+#: includes/validation.php:313
 msgid "%s value is required"
 msgstr "%s 的值是必填项"
 
@@ -3427,11 +4827,11 @@ msgid "Show this field if"
 msgstr "显示此字段的条件"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:25
-#: includes/admin/views/acf-field-group/field.php:122 includes/fields.php:392
+#: includes/admin/views/acf-field-group/field.php:122 includes/fields.php:385
 msgid "Conditional Logic"
 msgstr "条件逻辑"
 
-#: includes/admin/views/acf-field-group/conditional-logic.php:161
+#: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-rule.php:84
 msgid "and"
 msgstr "与"
@@ -3466,20 +4866,20 @@ msgstr "感谢您更新到 %1$s v%2$s!"
 msgid "Database Upgrade Required"
 msgstr "需要升级数据库"
 
-#: includes/admin/post-types/admin-field-group.php:129
+#: includes/admin/post-types/admin-field-group.php:159
 #: includes/admin/views/upgrade/notice.php:17
 msgid "Options Page"
 msgstr "选项页面"
 
-#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:443
+#: includes/admin/views/upgrade/notice.php:14 includes/fields.php:436
 msgid "Gallery"
 msgstr "画廊"
 
-#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:433
+#: includes/admin/views/upgrade/notice.php:11 includes/fields.php:426
 msgid "Flexible Content"
 msgstr "弹性内容"
 
-#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:453
+#: includes/admin/views/upgrade/notice.php:8 includes/fields.php:446
 msgid "Repeater"
 msgstr "循环"
 
@@ -3665,10 +5065,6 @@ msgstr "包装属性"
 msgid "Required"
 msgstr "必填"
 
-#: includes/admin/views/acf-field-group/field.php:220
-msgid "Instructions for authors. Shown when submitting data"
-msgstr "显示给内容作者的说明文字，在提交数据时显示"
-
 #: includes/admin/views/acf-field-group/field.php:219
 msgid "Instructions"
 msgstr "说明"
@@ -3725,8 +5121,8 @@ msgstr "拖拽排序"
 
 #: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2374
-#: assets/build/js/acf-field-group.js:2796
+#: assets/build/js/acf-field-group.js:2387
+#: assets/build/js/acf-field-group.js:2812
 msgid "Show this field group if"
 msgstr "显示此字段组的条件"
 
@@ -3805,7 +5201,7 @@ msgid ""
 "and then click %s."
 msgstr "下面的网站需要升级数据库，点击 %s 。"
 
-#: includes/admin/views/acf-field-group/conditional-logic.php:176
+#: includes/admin/views/acf-field-group/conditional-logic.php:184
 #: includes/admin/views/acf-field-group/locations.php:37
 msgid "Add rule group"
 msgstr "添加规则组"
@@ -3858,19 +5254,19 @@ msgstr "生成 PHP"
 msgid "Export Field Groups"
 msgstr "导出字段组"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:174
+#: includes/admin/tools/class-acf-admin-tool-import.php:172
 msgid "Import file empty"
 msgstr "导入的文件是空白的"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:165
+#: includes/admin/tools/class-acf-admin-tool-import.php:163
 msgid "Incorrect file type"
 msgstr "文本类型不对"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:160
+#: includes/admin/tools/class-acf-admin-tool-import.php:158
 msgid "Error uploading file. Please try again"
 msgstr "文件上传失败，请重试"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:49
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
 msgid ""
 "Select the Advanced Custom Fields JSON file you would like to import. When "
 "you click the import button below, ACF will import the items in that file."
@@ -3878,7 +5274,7 @@ msgstr ""
 "选择您要导入的高级自定义字段 JSON 文件。当您单击下面的导入按钮时，ACF 将导入"
 "该文件中的项目。"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:27
+#: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
 msgstr "导入字段组"
 
@@ -3887,17 +5283,17 @@ msgid "Sync"
 msgstr "同步"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:885
+#: includes/admin/admin-internal-post-type-list.php:960
 msgid "Select %s"
 msgstr "选择 %s"
 
-#: includes/admin/admin-internal-post-type-list.php:458
-#: includes/admin/admin-internal-post-type-list.php:490
+#: includes/admin/admin-internal-post-type-list.php:460
+#: includes/admin/admin-internal-post-type-list.php:492
 #: includes/admin/views/acf-field-group/field.php:90
 msgid "Duplicate"
 msgstr "复制"
 
-#: includes/admin/admin-internal-post-type-list.php:458
+#: includes/admin/admin-internal-post-type-list.php:460
 msgid "Duplicate this item"
 msgstr "复制此项"
 
@@ -3905,7 +5301,7 @@ msgstr "复制此项"
 msgid "Supports"
 msgstr "支持"
 
-#: includes/admin/admin.php:305
+#: includes/admin/admin.php:346
 #: includes/admin/views/browse-fields-modal.php:102
 msgid "Documentation"
 msgstr "文档"
@@ -3922,7 +5318,7 @@ msgid "Description"
 msgstr "描述"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:757
+#: includes/admin/admin-internal-post-type-list.php:832
 msgid "Sync available"
 msgstr "有可用同步"
 
@@ -3959,22 +5355,22 @@ msgstr "升级数据库"
 msgid "Custom Fields"
 msgstr "字段"
 
-#: includes/admin/post-types/admin-field-group.php:584
+#: includes/admin/post-types/admin-field-group.php:609
 msgid "Move Field"
 msgstr "移动字段"
 
-#: includes/admin/post-types/admin-field-group.php:573
-#: includes/admin/post-types/admin-field-group.php:577
+#: includes/admin/post-types/admin-field-group.php:602
+#: includes/admin/post-types/admin-field-group.php:606
 msgid "Please select the destination for this field"
 msgstr "请选择这个字段的位置"
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
-#: includes/admin/post-types/admin-field-group.php:535
+#: includes/admin/post-types/admin-field-group.php:568
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "现在可以在 %2$s 字段组中找到 %1$s 字段"
 
-#: includes/admin/post-types/admin-field-group.php:532
+#: includes/admin/post-types/admin-field-group.php:565
 msgid "Move Complete."
 msgstr "移动完成。"
 
@@ -3985,11 +5381,11 @@ msgstr "移动完成。"
 msgid "Active"
 msgstr "激活"
 
-#: includes/admin/post-types/admin-field-group.php:246
+#: includes/admin/post-types/admin-field-group.php:276
 msgid "Field Keys"
 msgstr "字段 Keys"
 
-#: includes/admin/post-types/admin-field-group.php:150
+#: includes/admin/post-types/admin-field-group.php:180
 msgid "Settings"
 msgstr "设置"
 
@@ -3998,39 +5394,39 @@ msgid "Location"
 msgstr "位置"
 
 #: includes/admin/post-types/admin-field-group.php:100
-#: assets/build/js/acf-input.js:983 assets/build/js/acf-input.js:1075
+#: assets/build/js/acf-input.js:1688 assets/build/js/acf-input.js:1850
 msgid "Null"
 msgstr "Null"
 
 #: includes/admin/post-types/admin-field-group.php:97
 #: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1528
-#: assets/build/js/acf-field-group.js:1844
+#: assets/build/js/acf-field-group.js:1541
+#: assets/build/js/acf-field-group.js:1860
 msgid "copy"
 msgstr "复制"
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:624
-#: assets/build/js/acf-field-group.js:779
+#: assets/build/js/acf-field-group.js:627
+#: assets/build/js/acf-field-group.js:782
 msgid "(this field)"
 msgstr "(这个字段)"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-input.js:918 assets/build/js/acf-input.js:943
-#: assets/build/js/acf-input.js:1002 assets/build/js/acf-input.js:1030
+#: assets/build/js/acf-input.js:1629 assets/build/js/acf-input.js:1651
+#: assets/build/js/acf-input.js:1783 assets/build/js/acf-input.js:1808
 msgid "Checked"
 msgstr "已选中"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1633
-#: assets/build/js/acf-field-group.js:1956
+#: assets/build/js/acf-field-group.js:1646
+#: assets/build/js/acf-field-group.js:1972
 msgid "Move Custom Field"
 msgstr "移动自定义字段"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:650
-#: assets/build/js/acf-field-group.js:805
+#: assets/build/js/acf-field-group.js:653
+#: assets/build/js/acf-field-group.js:808
 msgid "No toggle fields available"
 msgstr "没有可用的切换字段"
 
@@ -4039,14 +5435,14 @@ msgid "Field group title is required"
 msgstr "字段组的标题是必填项"
 
 #: includes/admin/post-types/admin-field-group.php:86
-#: assets/build/js/acf-field-group.js:1622
-#: assets/build/js/acf-field-group.js:1942
+#: assets/build/js/acf-field-group.js:1635
+#: assets/build/js/acf-field-group.js:1958
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "保存这个字段的修改以后才能移动这个字段"
 
 #: includes/admin/post-types/admin-field-group.php:85
-#: assets/build/js/acf-field-group.js:1432
-#: assets/build/js/acf-field-group.js:1739
+#: assets/build/js/acf-field-group.js:1445
+#: assets/build/js/acf-field-group.js:1755
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "\"field_\" 这个字符串不能作为字段名字的开始部分"
 
@@ -4080,8 +5476,8 @@ msgstr "字段组已删除。"
 msgid "Field group updated."
 msgstr "字段组已更新。"
 
-#: includes/admin/admin-tools.php:112
-#: includes/admin/views/global/navigation.php:248
+#: includes/admin/admin-tools.php:107
+#: includes/admin/views/global/navigation.php:251
 #: includes/admin/views/tools/tools.php:13
 msgid "Tools"
 msgstr "工具"
@@ -4112,163 +5508,163 @@ msgstr "页面"
 msgid "Post"
 msgstr "文章"
 
-#: includes/fields.php:335
+#: includes/fields.php:328
 msgid "Relational"
 msgstr "关系"
 
-#: includes/fields.php:334
+#: includes/fields.php:327
 msgid "Choice"
 msgstr "选项"
 
-#: includes/fields.php:332
+#: includes/fields.php:325
 msgid "Basic"
 msgstr "基本"
 
-#: includes/fields.php:283
+#: includes/fields.php:276
 msgid "Unknown"
 msgstr "未知"
 
-#: includes/fields.php:283
+#: includes/fields.php:276
 msgid "Field type does not exist"
 msgstr "字段类型不存在"
 
-#: includes/forms/form-front.php:219
+#: includes/forms/form-front.php:217
 msgid "Spam Detected"
 msgstr "检测到垃圾邮件"
 
-#: includes/forms/form-front.php:102
+#: includes/forms/form-front.php:100
 msgid "Post updated"
 msgstr "文章已更新"
 
-#: includes/forms/form-front.php:101
+#: includes/forms/form-front.php:99
 msgid "Update"
 msgstr "更新"
 
-#: includes/forms/form-front.php:55
+#: includes/forms/form-front.php:54
 msgid "Validate Email"
 msgstr "验证邮箱"
 
-#: includes/fields.php:333 includes/forms/form-front.php:47
+#: includes/fields.php:326 includes/forms/form-front.php:46
 msgid "Content"
 msgstr "内容"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
-#: includes/forms/form-front.php:38
+#: includes/forms/form-front.php:37
 msgid "Title"
 msgstr "标题"
 
-#: includes/assets.php:373 includes/forms/form-comment.php:144
-#: assets/build/js/acf-input.js:7395 assets/build/js/acf-input.js:7984
+#: includes/assets.php:376 includes/forms/form-comment.php:140
+#: assets/build/js/acf-input.js:8413 assets/build/js/acf-input.js:9185
 msgid "Edit field group"
 msgstr "编辑字段组"
 
 #: includes/admin/post-types/admin-field-group.php:113
-#: assets/build/js/acf-input.js:1125 assets/build/js/acf-input.js:1230
+#: assets/build/js/acf-input.js:1815 assets/build/js/acf-input.js:1990
 msgid "Selection is less than"
 msgstr "选择小于"
 
 #: includes/admin/post-types/admin-field-group.php:112
-#: assets/build/js/acf-input.js:1106 assets/build/js/acf-input.js:1202
+#: assets/build/js/acf-input.js:1799 assets/build/js/acf-input.js:1965
 msgid "Selection is greater than"
 msgstr "选择大于"
 
 #: includes/admin/post-types/admin-field-group.php:111
-#: assets/build/js/acf-input.js:1075 assets/build/js/acf-input.js:1170
+#: assets/build/js/acf-input.js:1771 assets/build/js/acf-input.js:1936
 msgid "Value is less than"
 msgstr "值小于"
 
 #: includes/admin/post-types/admin-field-group.php:110
-#: assets/build/js/acf-input.js:1045 assets/build/js/acf-input.js:1139
+#: assets/build/js/acf-input.js:1744 assets/build/js/acf-input.js:1908
 msgid "Value is greater than"
 msgstr "值大于"
 
 #: includes/admin/post-types/admin-field-group.php:109
-#: assets/build/js/acf-input.js:888 assets/build/js/acf-input.js:960
+#: assets/build/js/acf-input.js:1602 assets/build/js/acf-input.js:1744
 msgid "Value contains"
 msgstr "值包含"
 
 #: includes/admin/post-types/admin-field-group.php:108
-#: assets/build/js/acf-input.js:862 assets/build/js/acf-input.js:926
+#: assets/build/js/acf-input.js:1579 assets/build/js/acf-input.js:1713
 msgid "Value matches pattern"
 msgstr "值匹配模式"
 
 #: includes/admin/post-types/admin-field-group.php:107
-#: assets/build/js/acf-input.js:840 assets/build/js/acf-input.js:1023
-#: assets/build/js/acf-input.js:903 assets/build/js/acf-input.js:1116
+#: assets/build/js/acf-input.js:1560 assets/build/js/acf-input.js:1725
+#: assets/build/js/acf-input.js:1693 assets/build/js/acf-input.js:1888
 msgid "Value is not equal to"
 msgstr "值不等于"
 
 #: includes/admin/post-types/admin-field-group.php:106
-#: assets/build/js/acf-input.js:810 assets/build/js/acf-input.js:964
-#: assets/build/js/acf-input.js:864 assets/build/js/acf-input.js:1053
+#: assets/build/js/acf-input.js:1533 assets/build/js/acf-input.js:1669
+#: assets/build/js/acf-input.js:1657 assets/build/js/acf-input.js:1828
 msgid "Value is equal to"
 msgstr "值等于"
 
 #: includes/admin/post-types/admin-field-group.php:105
-#: assets/build/js/acf-input.js:788 assets/build/js/acf-input.js:841
+#: assets/build/js/acf-input.js:1514 assets/build/js/acf-input.js:1637
 msgid "Has no value"
 msgstr "没有价值"
 
 #: includes/admin/post-types/admin-field-group.php:104
-#: assets/build/js/acf-input.js:758 assets/build/js/acf-input.js:783
+#: assets/build/js/acf-input.js:1487 assets/build/js/acf-input.js:1586
 msgid "Has any value"
 msgstr "有任何价值"
 
 #: includes/admin/admin-internal-post-type.php:337
 #: includes/admin/views/browse-fields-modal.php:72 includes/assets.php:354
-#: assets/build/js/acf.js:1564 assets/build/js/acf.js:1658
+#: assets/build/js/acf.js:1570 assets/build/js/acf.js:1662
 msgid "Cancel"
 msgstr "退出"
 
-#: includes/assets.php:350 assets/build/js/acf.js:1738
-#: assets/build/js/acf.js:1855
+#: includes/assets.php:350 assets/build/js/acf.js:1744
+#: assets/build/js/acf.js:1859
 msgid "Are you sure?"
 msgstr "确定吗?"
 
-#: includes/assets.php:370 assets/build/js/acf-input.js:9464
-#: assets/build/js/acf-input.js:10331
+#: includes/assets.php:370 assets/build/js/acf-input.js:10481
+#: assets/build/js/acf-input.js:11531
 msgid "%d fields require attention"
 msgstr "%d 个字段需要注意"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:9462
-#: assets/build/js/acf-input.js:10327
+#: includes/assets.php:369 assets/build/js/acf-input.js:10479
+#: assets/build/js/acf-input.js:11529
 msgid "1 field requires attention"
 msgstr "1 个字段需要注意"
 
-#: includes/assets.php:368 includes/validation.php:253
-#: includes/validation.php:261 assets/build/js/acf-input.js:9457
-#: assets/build/js/acf-input.js:10322
+#: includes/assets.php:368 includes/validation.php:247
+#: includes/validation.php:255 assets/build/js/acf-input.js:10474
+#: assets/build/js/acf-input.js:11524
 msgid "Validation failed"
 msgstr "验证失败"
 
-#: includes/assets.php:367 assets/build/js/acf-input.js:9625
-#: assets/build/js/acf-input.js:10510
+#: includes/assets.php:367 assets/build/js/acf-input.js:10642
+#: assets/build/js/acf-input.js:11702
 msgid "Validation successful"
 msgstr "验证成功"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:7223
-#: assets/build/js/acf-input.js:7788
+#: includes/media.php:54 assets/build/js/acf-input.js:8241
+#: assets/build/js/acf-input.js:8989
 msgid "Restricted"
 msgstr "限制"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:7038
-#: assets/build/js/acf-input.js:7552
+#: includes/media.php:53 assets/build/js/acf-input.js:8056
+#: assets/build/js/acf-input.js:8753
 msgid "Collapse Details"
 msgstr "折叠"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:7038
-#: assets/build/js/acf-input.js:7549
+#: includes/media.php:52 assets/build/js/acf-input.js:8056
+#: assets/build/js/acf-input.js:8750
 msgid "Expand Details"
 msgstr "展开"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:470
-#: includes/media.php:51 assets/build/js/acf-input.js:6905
-#: assets/build/js/acf-input.js:7397
+#: includes/media.php:51 assets/build/js/acf-input.js:7923
+#: assets/build/js/acf-input.js:8598
 msgid "Uploaded to this post"
 msgstr "上传到这个文章"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:6944
-#: assets/build/js/acf-input.js:7436
+#: includes/media.php:50 assets/build/js/acf-input.js:7962
+#: assets/build/js/acf-input.js:8637
 msgctxt "verb"
 msgid "Update"
 msgstr "更新"
@@ -4278,428 +5674,428 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "编辑"
 
-#: includes/assets.php:364 assets/build/js/acf-input.js:9234
-#: assets/build/js/acf-input.js:10093
+#: includes/assets.php:364 assets/build/js/acf-input.js:10252
+#: assets/build/js/acf-input.js:11296
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "如果浏览其它页面，会丢失当前所做的修改"
 
-#: includes/api/api-helpers.php:2950
+#: includes/api/api-helpers.php:2959
 msgid "File type must be %s."
 msgstr "字段类型必须是 %s。"
 
 #: includes/admin/post-types/admin-field-group.php:98
 #: includes/admin/views/acf-field-group/conditional-logic.php:64
-#: includes/admin/views/acf-field-group/conditional-logic.php:174
+#: includes/admin/views/acf-field-group/conditional-logic.php:182
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2947 assets/build/js/acf-field-group.js:772
-#: assets/build/js/acf-field-group.js:2414
-#: assets/build/js/acf-field-group.js:934
-#: assets/build/js/acf-field-group.js:2843
+#: includes/api/api-helpers.php:2956 assets/build/js/acf-field-group.js:781
+#: assets/build/js/acf-field-group.js:2427
+#: assets/build/js/acf-field-group.js:946
+#: assets/build/js/acf-field-group.js:2859
 msgid "or"
 msgstr "或"
 
-#: includes/api/api-helpers.php:2923
+#: includes/api/api-helpers.php:2932
 msgid "File size must not exceed %s."
 msgstr "文件尺寸最大不能超过 %s。"
 
-#: includes/api/api-helpers.php:2919
+#: includes/api/api-helpers.php:2928
 msgid "File size must be at least %s."
 msgstr "文件尺寸至少得是 %s。"
 
-#: includes/api/api-helpers.php:2906
+#: includes/api/api-helpers.php:2915
 msgid "Image height must not exceed %dpx."
 msgstr "图像高度最大不能超过 %dpx。"
 
-#: includes/api/api-helpers.php:2902
+#: includes/api/api-helpers.php:2911
 msgid "Image height must be at least %dpx."
 msgstr "图像高度至少得是 %dpx。"
 
-#: includes/api/api-helpers.php:2890
+#: includes/api/api-helpers.php:2899
 msgid "Image width must not exceed %dpx."
 msgstr "图像宽度最大不能超过 %dpx。"
 
-#: includes/api/api-helpers.php:2886
+#: includes/api/api-helpers.php:2895
 msgid "Image width must be at least %dpx."
 msgstr "图像宽度至少得是 %dpx。"
 
-#: includes/api/api-helpers.php:1400 includes/api/api-term.php:140
+#: includes/api/api-helpers.php:1409 includes/api/api-term.php:140
 msgid "(no title)"
 msgstr "(无标题)"
 
-#: includes/api/api-helpers.php:760
+#: includes/api/api-helpers.php:765
 msgid "Full Size"
 msgstr "原图"
 
-#: includes/api/api-helpers.php:725
+#: includes/api/api-helpers.php:730
 msgid "Large"
 msgstr "大"
 
-#: includes/api/api-helpers.php:724
+#: includes/api/api-helpers.php:729
 msgid "Medium"
 msgstr "中"
 
-#: includes/api/api-helpers.php:723
+#: includes/api/api-helpers.php:728
 msgid "Thumbnail"
 msgstr "缩略图"
 
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf-field-group.js:1077
-#: assets/build/js/acf-field-group.js:1261
+#: assets/build/js/acf-field-group.js:1090
+#: assets/build/js/acf-field-group.js:1277
 msgid "(no label)"
 msgstr "(无标签)"
 
-#: includes/fields/class-acf-field-textarea.php:137
+#: includes/fields/class-acf-field-textarea.php:135
 msgid "Sets the textarea height"
 msgstr "设置文本区域的高度"
 
-#: includes/fields/class-acf-field-textarea.php:136
+#: includes/fields/class-acf-field-textarea.php:134
 msgid "Rows"
 msgstr "行"
 
-#: includes/fields/class-acf-field-textarea.php:23
+#: includes/fields/class-acf-field-textarea.php:22
 msgid "Text Area"
 msgstr "文本区域"
 
-#: includes/fields/class-acf-field-checkbox.php:426
+#: includes/fields/class-acf-field-checkbox.php:421
 msgid "Prepend an extra checkbox to toggle all choices"
 msgstr "添加一个可以全选的复选框"
 
-#: includes/fields/class-acf-field-checkbox.php:388
+#: includes/fields/class-acf-field-checkbox.php:383
 msgid "Save 'custom' values to the field's choices"
 msgstr "将 \"自定义\" 值保存到字段的选择中"
 
-#: includes/fields/class-acf-field-checkbox.php:377
+#: includes/fields/class-acf-field-checkbox.php:372
 msgid "Allow 'custom' values to be added"
 msgstr "允许添加 \"自定义\" 值"
 
-#: includes/fields/class-acf-field-checkbox.php:36
+#: includes/fields/class-acf-field-checkbox.php:35
 msgid "Add new choice"
 msgstr "添加新选项"
 
-#: includes/fields/class-acf-field-checkbox.php:161
+#: includes/fields/class-acf-field-checkbox.php:157
 msgid "Toggle All"
 msgstr "全选"
 
-#: includes/fields/class-acf-field-page_link.php:454
+#: includes/fields/class-acf-field-page_link.php:476
 msgid "Allow Archives URLs"
 msgstr "允许存档 url"
 
-#: includes/fields/class-acf-field-page_link.php:163
+#: includes/fields/class-acf-field-page_link.php:185
 msgid "Archives"
 msgstr "存档"
 
-#: includes/fields/class-acf-field-page_link.php:23
+#: includes/fields/class-acf-field-page_link.php:22
 msgid "Page Link"
 msgstr "页面链接"
 
-#: includes/fields/class-acf-field-taxonomy.php:873
+#: includes/fields/class-acf-field-taxonomy.php:870
 #: includes/locations/class-acf-location-user-form.php:72
 msgid "Add"
 msgstr "添加"
 
 #: includes/admin/views/acf-field-group/fields.php:53
-#: includes/fields/class-acf-field-taxonomy.php:843
+#: includes/fields/class-acf-field-taxonomy.php:840
 msgid "Name"
 msgstr "名称"
 
-#: includes/fields/class-acf-field-taxonomy.php:828
+#: includes/fields/class-acf-field-taxonomy.php:825
 msgid "%s added"
 msgstr "%s 已添加"
 
-#: includes/fields/class-acf-field-taxonomy.php:792
+#: includes/fields/class-acf-field-taxonomy.php:789
 msgid "%s already exists"
 msgstr "%s 已存在"
 
-#: includes/fields/class-acf-field-taxonomy.php:780
+#: includes/fields/class-acf-field-taxonomy.php:777
 msgid "User unable to add new %s"
 msgstr "用户无法添加新的 %s"
 
-#: includes/fields/class-acf-field-taxonomy.php:680
+#: includes/fields/class-acf-field-taxonomy.php:664
 msgid "Term ID"
 msgstr "内容ID"
 
-#: includes/fields/class-acf-field-taxonomy.php:679
+#: includes/fields/class-acf-field-taxonomy.php:663
 msgid "Term Object"
 msgstr "对象缓存"
 
-#: includes/fields/class-acf-field-taxonomy.php:664
+#: includes/fields/class-acf-field-taxonomy.php:648
 msgid "Load value from posts terms"
 msgstr "从文章项目中加载值"
 
-#: includes/fields/class-acf-field-taxonomy.php:663
+#: includes/fields/class-acf-field-taxonomy.php:647
 msgid "Load Terms"
 msgstr "加载项目"
 
-#: includes/fields/class-acf-field-taxonomy.php:653
+#: includes/fields/class-acf-field-taxonomy.php:637
 msgid "Connect selected terms to the post"
 msgstr "连接所选项目到文章"
 
-#: includes/fields/class-acf-field-taxonomy.php:652
+#: includes/fields/class-acf-field-taxonomy.php:636
 msgid "Save Terms"
 msgstr "保存项目"
 
-#: includes/fields/class-acf-field-taxonomy.php:642
+#: includes/fields/class-acf-field-taxonomy.php:626
 msgid "Allow new terms to be created whilst editing"
 msgstr "在编辑时允许可以创建新的项目"
 
-#: includes/fields/class-acf-field-taxonomy.php:641
+#: includes/fields/class-acf-field-taxonomy.php:625
 msgid "Create Terms"
 msgstr "创建项目"
 
-#: includes/fields/class-acf-field-taxonomy.php:700
+#: includes/fields/class-acf-field-taxonomy.php:684
 msgid "Radio Buttons"
 msgstr "单选框"
 
-#: includes/fields/class-acf-field-taxonomy.php:699
+#: includes/fields/class-acf-field-taxonomy.php:683
 msgid "Single Value"
 msgstr "单个值"
 
-#: includes/fields/class-acf-field-taxonomy.php:697
+#: includes/fields/class-acf-field-taxonomy.php:681
 msgid "Multi Select"
 msgstr "多选"
 
-#: includes/fields/class-acf-field-checkbox.php:23
-#: includes/fields/class-acf-field-taxonomy.php:696
+#: includes/fields/class-acf-field-checkbox.php:22
+#: includes/fields/class-acf-field-taxonomy.php:680
 msgid "Checkbox"
 msgstr "复选框"
 
-#: includes/fields/class-acf-field-taxonomy.php:695
+#: includes/fields/class-acf-field-taxonomy.php:679
 msgid "Multiple Values"
 msgstr "多选"
 
-#: includes/fields/class-acf-field-taxonomy.php:690
+#: includes/fields/class-acf-field-taxonomy.php:674
 msgid "Select the appearance of this field"
 msgstr "为这个字段选择外观"
 
-#: includes/fields/class-acf-field-taxonomy.php:689
+#: includes/fields/class-acf-field-taxonomy.php:673
 msgid "Appearance"
 msgstr "外观"
 
-#: includes/fields/class-acf-field-taxonomy.php:631
+#: includes/fields/class-acf-field-taxonomy.php:615
 msgid "Select the taxonomy to be displayed"
 msgstr "选择要显示的分类法"
 
-#: includes/fields/class-acf-field-taxonomy.php:595
+#: includes/fields/class-acf-field-taxonomy.php:579
 msgctxt "No Terms"
 msgid "No %s"
 msgstr "无 %s"
 
-#: includes/fields/class-acf-field-number.php:244
+#: includes/fields/class-acf-field-number.php:240
 msgid "Value must be equal to or lower than %d"
 msgstr "值要小于等于 %d"
 
-#: includes/fields/class-acf-field-number.php:239
+#: includes/fields/class-acf-field-number.php:235
 msgid "Value must be equal to or higher than %d"
 msgstr "值要大于等于 %d"
 
-#: includes/fields/class-acf-field-number.php:227
+#: includes/fields/class-acf-field-number.php:223
 msgid "Value must be a number"
 msgstr "值必须是数字"
 
-#: includes/fields/class-acf-field-number.php:23
+#: includes/fields/class-acf-field-number.php:22
 msgid "Number"
 msgstr "数字"
 
-#: includes/fields/class-acf-field-radio.php:257
+#: includes/fields/class-acf-field-radio.php:254
 msgid "Save 'other' values to the field's choices"
 msgstr "存档为字段的选择的 'other' 的值"
 
-#: includes/fields/class-acf-field-radio.php:246
+#: includes/fields/class-acf-field-radio.php:243
 msgid "Add 'other' choice to allow for custom values"
 msgstr "为自定义值添加 'other' 选择"
 
-#: includes/admin/views/global/navigation.php:196
+#: includes/admin/views/global/navigation.php:199
 msgid "Other"
 msgstr "其他"
 
-#: includes/fields/class-acf-field-radio.php:23
+#: includes/fields/class-acf-field-radio.php:22
 msgid "Radio Button"
 msgstr "单选按钮"
 
-#: includes/fields/class-acf-field-accordion.php:105
+#: includes/fields/class-acf-field-accordion.php:103
 msgid ""
 "Define an endpoint for the previous accordion to stop. This accordion will "
 "not be visible."
 msgstr "定义上一个手风琴停止的端点。此手风琴将不可见。"
 
-#: includes/fields/class-acf-field-accordion.php:94
+#: includes/fields/class-acf-field-accordion.php:92
 msgid "Allow this accordion to open without closing others."
 msgstr "允许此手风琴打开而不关闭其他。"
 
-#: includes/fields/class-acf-field-accordion.php:93
+#: includes/fields/class-acf-field-accordion.php:91
 msgid "Multi-Expand"
 msgstr "多扩展"
 
-#: includes/fields/class-acf-field-accordion.php:83
+#: includes/fields/class-acf-field-accordion.php:81
 msgid "Display this accordion as open on page load."
 msgstr "将此手风琴显示为在页面加载时打开。"
 
-#: includes/fields/class-acf-field-accordion.php:82
+#: includes/fields/class-acf-field-accordion.php:80
 msgid "Open"
 msgstr "打开"
 
-#: includes/fields/class-acf-field-accordion.php:25
+#: includes/fields/class-acf-field-accordion.php:24
 msgid "Accordion"
 msgstr "手风琴"
 
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:253
+#: includes/fields/class-acf-field-file.php:265
 msgid "Restrict which files can be uploaded"
 msgstr "限制什么类型的文件可以上传"
 
-#: includes/fields/class-acf-field-file.php:210
+#: includes/fields/class-acf-field-file.php:207
 msgid "File ID"
 msgstr "文件ID"
 
-#: includes/fields/class-acf-field-file.php:209
+#: includes/fields/class-acf-field-file.php:206
 msgid "File URL"
 msgstr "文件URL"
 
-#: includes/fields/class-acf-field-file.php:208
+#: includes/fields/class-acf-field-file.php:205
 msgid "File Array"
 msgstr "文件数组"
 
-#: includes/fields/class-acf-field-file.php:179
+#: includes/fields/class-acf-field-file.php:176
 msgid "Add File"
 msgstr "添加文件"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:153
-#: includes/fields/class-acf-field-file.php:179
+#: includes/admin/tools/class-acf-admin-tool-import.php:151
+#: includes/fields/class-acf-field-file.php:176
 msgid "No file selected"
 msgstr "没选择文件"
 
-#: includes/fields/class-acf-field-file.php:143
+#: includes/fields/class-acf-field-file.php:140
 msgid "File name"
 msgstr "文件名"
 
-#: includes/fields/class-acf-field-file.php:59
-#: assets/build/js/acf-input.js:2472 assets/build/js/acf-input.js:2625
+#: includes/fields/class-acf-field-file.php:57
+#: assets/build/js/acf-input.js:3162 assets/build/js/acf-input.js:3385
 msgid "Update File"
 msgstr "更新文件"
 
-#: includes/fields/class-acf-field-file.php:58
-#: assets/build/js/acf-input.js:2471 assets/build/js/acf-input.js:2624
+#: includes/fields/class-acf-field-file.php:56
+#: assets/build/js/acf-input.js:3161 assets/build/js/acf-input.js:3384
 msgid "Edit File"
 msgstr "编辑文件"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:57
-#: includes/fields/class-acf-field-file.php:57
-#: assets/build/js/acf-input.js:2445 assets/build/js/acf-input.js:2597
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+#: includes/fields/class-acf-field-file.php:55
+#: assets/build/js/acf-input.js:3135 assets/build/js/acf-input.js:3357
 msgid "Select File"
 msgstr "选择文件"
 
-#: includes/fields/class-acf-field-file.php:23
+#: includes/fields/class-acf-field-file.php:22
 msgid "File"
 msgstr "文件"
 
-#: includes/fields/class-acf-field-password.php:23
+#: includes/fields/class-acf-field-password.php:22
 msgid "Password"
 msgstr "密码"
 
-#: includes/fields/class-acf-field-select.php:371
+#: includes/fields/class-acf-field-select.php:365
 msgid "Specify the value returned"
 msgstr "指定返回的值"
 
-#: includes/fields/class-acf-field-select.php:439
+#: includes/fields/class-acf-field-select.php:433
 msgid "Use AJAX to lazy load choices?"
 msgstr "使用 AJAX 惰性选择？"
 
-#: includes/fields/class-acf-field-checkbox.php:338
-#: includes/fields/class-acf-field-select.php:360
+#: includes/fields/class-acf-field-checkbox.php:333
+#: includes/fields/class-acf-field-select.php:354
 msgid "Enter each default value on a new line"
 msgstr "每行输入一个默认值"
 
-#: includes/fields/class-acf-field-select.php:235 includes/media.php:48
-#: assets/build/js/acf-input.js:6803 assets/build/js/acf-input.js:7282
+#: includes/fields/class-acf-field-select.php:229 includes/media.php:48
+#: assets/build/js/acf-input.js:7821 assets/build/js/acf-input.js:8483
 msgctxt "verb"
 msgid "Select"
 msgstr "选择"
 
-#: includes/fields/class-acf-field-select.php:111
+#: includes/fields/class-acf-field-select.php:109
 msgctxt "Select2 JS load_fail"
 msgid "Loading failed"
 msgstr "加载失败"
 
-#: includes/fields/class-acf-field-select.php:110
+#: includes/fields/class-acf-field-select.php:108
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
 msgstr "搜索中&hellip;"
 
-#: includes/fields/class-acf-field-select.php:109
+#: includes/fields/class-acf-field-select.php:107
 msgctxt "Select2 JS load_more"
 msgid "Loading more results&hellip;"
 msgstr "载入更多结果&hellip;"
 
-#: includes/fields/class-acf-field-select.php:108
+#: includes/fields/class-acf-field-select.php:106
 msgctxt "Select2 JS selection_too_long_n"
 msgid "You can only select %d items"
 msgstr "只能选择 %d 项"
 
-#: includes/fields/class-acf-field-select.php:107
+#: includes/fields/class-acf-field-select.php:105
 msgctxt "Select2 JS selection_too_long_1"
 msgid "You can only select 1 item"
 msgstr "您只能选择1项"
 
-#: includes/fields/class-acf-field-select.php:106
+#: includes/fields/class-acf-field-select.php:104
 msgctxt "Select2 JS input_too_long_n"
 msgid "Please delete %d characters"
 msgstr "请删除 %d 个字符"
 
-#: includes/fields/class-acf-field-select.php:105
+#: includes/fields/class-acf-field-select.php:103
 msgctxt "Select2 JS input_too_long_1"
 msgid "Please delete 1 character"
 msgstr "请删除1个字符"
 
-#: includes/fields/class-acf-field-select.php:104
+#: includes/fields/class-acf-field-select.php:102
 msgctxt "Select2 JS input_too_short_n"
 msgid "Please enter %d or more characters"
 msgstr "请输入 %d 或者更多字符"
 
-#: includes/fields/class-acf-field-select.php:103
+#: includes/fields/class-acf-field-select.php:101
 msgctxt "Select2 JS input_too_short_1"
 msgid "Please enter 1 or more characters"
 msgstr "请输入至少一个字符"
 
-#: includes/fields/class-acf-field-select.php:102
+#: includes/fields/class-acf-field-select.php:100
 msgctxt "Select2 JS matches_0"
 msgid "No matches found"
 msgstr "找不到匹配项"
 
-#: includes/fields/class-acf-field-select.php:101
+#: includes/fields/class-acf-field-select.php:99
 msgctxt "Select2 JS matches_n"
 msgid "%d results are available, use up and down arrow keys to navigate."
 msgstr "%d 结果可用, 请使用向上和向下箭头键进行导航。"
 
-#: includes/fields/class-acf-field-select.php:100
+#: includes/fields/class-acf-field-select.php:98
 msgctxt "Select2 JS matches_1"
 msgid "One result is available, press enter to select it."
 msgstr "一个结果是可用的，按回车选择它。"
 
-#: includes/fields/class-acf-field-select.php:23
-#: includes/fields/class-acf-field-taxonomy.php:701
+#: includes/fields/class-acf-field-select.php:22
+#: includes/fields/class-acf-field-taxonomy.php:685
 msgctxt "noun"
 msgid "Select"
 msgstr "下拉选择"
 
-#: includes/fields/class-acf-field-user.php:73
+#: includes/fields/class-acf-field-user.php:102
 msgid "User ID"
 msgstr "用户 ID"
 
-#: includes/fields/class-acf-field-user.php:72
+#: includes/fields/class-acf-field-user.php:101
 msgid "User Object"
 msgstr "用户对象"
 
-#: includes/fields/class-acf-field-user.php:71
+#: includes/fields/class-acf-field-user.php:100
 msgid "User Array"
 msgstr "數組"
 
-#: includes/fields/class-acf-field-user.php:59
+#: includes/fields/class-acf-field-user.php:88
 msgid "All user roles"
 msgstr "所有用户角色"
 
-#: includes/fields/class-acf-field-user.php:51
+#: includes/fields/class-acf-field-user.php:80
 msgid "Filter by Role"
 msgstr "按角色过滤"
 
@@ -4707,17 +6103,17 @@ msgstr "按角色过滤"
 msgid "User"
 msgstr "用户"
 
-#: includes/fields/class-acf-field-separator.php:23
+#: includes/fields/class-acf-field-separator.php:22
 msgid "Separator"
 msgstr "分隔线"
 
-#: includes/fields/class-acf-field-color_picker.php:71
+#: includes/fields/class-acf-field-color_picker.php:69
 msgid "Select Color"
 msgstr "选择颜色"
 
 #: includes/admin/post-types/admin-post-type.php:127
 #: includes/admin/post-types/admin-taxonomy.php:129
-#: includes/fields/class-acf-field-color_picker.php:69
+#: includes/fields/class-acf-field-color_picker.php:67
 #: assets/build/js/acf-internal-post-type.js:72
 #: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
@@ -4725,112 +6121,112 @@ msgstr "默认"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:89
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:141
-#: includes/fields/class-acf-field-color_picker.php:67
+#: includes/fields/class-acf-field-color_picker.php:65
 msgid "Clear"
 msgstr "清除"
 
-#: includes/fields/class-acf-field-color_picker.php:23
+#: includes/fields/class-acf-field-color_picker.php:22
 msgid "Color Picker"
 msgstr "颜色选择"
 
-#: includes/fields/class-acf-field-date_time_picker.php:84
+#: includes/fields/class-acf-field-date_time_picker.php:82
 msgctxt "Date Time Picker JS pmTextShort"
 msgid "P"
 msgstr "P"
 
-#: includes/fields/class-acf-field-date_time_picker.php:83
+#: includes/fields/class-acf-field-date_time_picker.php:81
 msgctxt "Date Time Picker JS pmText"
 msgid "PM"
 msgstr "下午"
 
-#: includes/fields/class-acf-field-date_time_picker.php:80
+#: includes/fields/class-acf-field-date_time_picker.php:78
 msgctxt "Date Time Picker JS amTextShort"
 msgid "A"
 msgstr "A"
 
-#: includes/fields/class-acf-field-date_time_picker.php:79
+#: includes/fields/class-acf-field-date_time_picker.php:77
 msgctxt "Date Time Picker JS amText"
 msgid "AM"
 msgstr "上午"
 
-#: includes/fields/class-acf-field-date_time_picker.php:77
+#: includes/fields/class-acf-field-date_time_picker.php:75
 msgctxt "Date Time Picker JS selectText"
 msgid "Select"
 msgstr "选择"
 
-#: includes/fields/class-acf-field-date_time_picker.php:76
+#: includes/fields/class-acf-field-date_time_picker.php:74
 msgctxt "Date Time Picker JS closeText"
 msgid "Done"
 msgstr "已完成"
 
-#: includes/fields/class-acf-field-date_time_picker.php:75
+#: includes/fields/class-acf-field-date_time_picker.php:73
 msgctxt "Date Time Picker JS currentText"
 msgid "Now"
 msgstr "现在"
 
-#: includes/fields/class-acf-field-date_time_picker.php:74
+#: includes/fields/class-acf-field-date_time_picker.php:72
 msgctxt "Date Time Picker JS timezoneText"
 msgid "Time Zone"
 msgstr "时区"
 
-#: includes/fields/class-acf-field-date_time_picker.php:73
+#: includes/fields/class-acf-field-date_time_picker.php:71
 msgctxt "Date Time Picker JS microsecText"
 msgid "Microsecond"
 msgstr "微秒"
 
-#: includes/fields/class-acf-field-date_time_picker.php:72
+#: includes/fields/class-acf-field-date_time_picker.php:70
 msgctxt "Date Time Picker JS millisecText"
 msgid "Millisecond"
 msgstr "毫秒"
 
-#: includes/fields/class-acf-field-date_time_picker.php:71
+#: includes/fields/class-acf-field-date_time_picker.php:69
 msgctxt "Date Time Picker JS secondText"
 msgid "Second"
 msgstr "秒"
 
-#: includes/fields/class-acf-field-date_time_picker.php:70
+#: includes/fields/class-acf-field-date_time_picker.php:68
 msgctxt "Date Time Picker JS minuteText"
 msgid "Minute"
 msgstr "分钟"
 
-#: includes/fields/class-acf-field-date_time_picker.php:69
+#: includes/fields/class-acf-field-date_time_picker.php:67
 msgctxt "Date Time Picker JS hourText"
 msgid "Hour"
 msgstr "小时"
 
-#: includes/fields/class-acf-field-date_time_picker.php:68
+#: includes/fields/class-acf-field-date_time_picker.php:66
 msgctxt "Date Time Picker JS timeText"
 msgid "Time"
 msgstr "时间"
 
-#: includes/fields/class-acf-field-date_time_picker.php:67
+#: includes/fields/class-acf-field-date_time_picker.php:65
 msgctxt "Date Time Picker JS timeOnlyTitle"
 msgid "Choose Time"
 msgstr "选择时间"
 
-#: includes/fields/class-acf-field-date_time_picker.php:23
+#: includes/fields/class-acf-field-date_time_picker.php:22
 msgid "Date Time Picker"
 msgstr "日期时间选择器"
 
-#: includes/fields/class-acf-field-accordion.php:104
+#: includes/fields/class-acf-field-accordion.php:102
 msgid "Endpoint"
 msgstr "端点"
 
 #: includes/admin/views/acf-field-group/options.php:130
-#: includes/fields/class-acf-field-tab.php:108
+#: includes/fields/class-acf-field-tab.php:109
 msgid "Left aligned"
 msgstr "左对齐"
 
 #: includes/admin/views/acf-field-group/options.php:129
-#: includes/fields/class-acf-field-tab.php:107
+#: includes/fields/class-acf-field-tab.php:108
 msgid "Top aligned"
 msgstr "顶部对齐"
 
-#: includes/fields/class-acf-field-tab.php:103
+#: includes/fields/class-acf-field-tab.php:104
 msgid "Placement"
 msgstr "位置"
 
-#: includes/fields/class-acf-field-tab.php:24
+#: includes/fields/class-acf-field-tab.php:23
 msgid "Tab"
 msgstr "选项卡"
 
@@ -4838,360 +6234,361 @@ msgstr "选项卡"
 msgid "Value must be a valid URL"
 msgstr "值必须是有效的地址"
 
-#: includes/fields/class-acf-field-link.php:155
+#: includes/fields/class-acf-field-link.php:153
 msgid "Link URL"
 msgstr "链接 URL"
 
-#: includes/fields/class-acf-field-link.php:154
+#: includes/fields/class-acf-field-link.php:152
 msgid "Link Array"
 msgstr "链接数组"
 
-#: includes/fields/class-acf-field-link.php:126
+#: includes/fields/class-acf-field-link.php:124
 msgid "Opens in a new window/tab"
 msgstr "在新窗口/选项卡中打开"
 
-#: includes/fields/class-acf-field-link.php:121
+#: includes/fields/class-acf-field-link.php:119
 msgid "Select Link"
 msgstr "选择链接"
 
-#: includes/fields/class-acf-field-link.php:23
+#: includes/fields/class-acf-field-link.php:22
 msgid "Link"
 msgstr "链接"
 
-#: includes/fields/class-acf-field-email.php:23
+#: includes/fields/class-acf-field-email.php:22
 msgid "Email"
 msgstr "电子邮件"
 
-#: includes/fields/class-acf-field-number.php:176
-#: includes/fields/class-acf-field-range.php:209
+#: includes/fields/class-acf-field-number.php:173
+#: includes/fields/class-acf-field-range.php:206
 msgid "Step Size"
 msgstr "步长"
 
-#: includes/fields/class-acf-field-number.php:146
-#: includes/fields/class-acf-field-range.php:187
+#: includes/fields/class-acf-field-number.php:143
+#: includes/fields/class-acf-field-range.php:184
 msgid "Maximum Value"
 msgstr "最大值"
 
-#: includes/fields/class-acf-field-number.php:136
-#: includes/fields/class-acf-field-range.php:176
+#: includes/fields/class-acf-field-number.php:133
+#: includes/fields/class-acf-field-range.php:173
 msgid "Minimum Value"
 msgstr "最小值"
 
-#: includes/fields/class-acf-field-range.php:23
+#: includes/fields/class-acf-field-range.php:22
 msgid "Range"
 msgstr "范围(滑块)"
 
-#: includes/fields/class-acf-field-button-group.php:166
-#: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-radio.php:213
-#: includes/fields/class-acf-field-select.php:378
+#: includes/fields/class-acf-field-button-group.php:165
+#: includes/fields/class-acf-field-checkbox.php:350
+#: includes/fields/class-acf-field-radio.php:210
+#: includes/fields/class-acf-field-select.php:372
 msgid "Both (Array)"
 msgstr "两个 (阵列)"
 
 #: includes/admin/views/acf-field-group/fields.php:52
-#: includes/fields/class-acf-field-button-group.php:165
-#: includes/fields/class-acf-field-checkbox.php:354
-#: includes/fields/class-acf-field-radio.php:212
-#: includes/fields/class-acf-field-select.php:377
+#: includes/fields/class-acf-field-button-group.php:164
+#: includes/fields/class-acf-field-checkbox.php:349
+#: includes/fields/class-acf-field-radio.php:209
+#: includes/fields/class-acf-field-select.php:371
 msgid "Label"
 msgstr "标签"
 
-#: includes/fields/class-acf-field-button-group.php:164
-#: includes/fields/class-acf-field-checkbox.php:353
-#: includes/fields/class-acf-field-radio.php:211
-#: includes/fields/class-acf-field-select.php:376
+#: includes/fields/class-acf-field-button-group.php:163
+#: includes/fields/class-acf-field-checkbox.php:348
+#: includes/fields/class-acf-field-radio.php:208
+#: includes/fields/class-acf-field-select.php:370
 msgid "Value"
 msgstr "值"
 
-#: includes/fields/class-acf-field-button-group.php:212
-#: includes/fields/class-acf-field-checkbox.php:416
-#: includes/fields/class-acf-field-radio.php:285
+#: includes/fields/class-acf-field-button-group.php:211
+#: includes/fields/class-acf-field-checkbox.php:411
+#: includes/fields/class-acf-field-radio.php:282
 msgid "Vertical"
 msgstr "垂直"
 
-#: includes/fields/class-acf-field-button-group.php:211
-#: includes/fields/class-acf-field-checkbox.php:417
-#: includes/fields/class-acf-field-radio.php:286
+#: includes/fields/class-acf-field-button-group.php:210
+#: includes/fields/class-acf-field-checkbox.php:412
+#: includes/fields/class-acf-field-radio.php:283
 msgid "Horizontal"
 msgstr "水平"
 
-#: includes/fields/class-acf-field-button-group.php:139
-#: includes/fields/class-acf-field-checkbox.php:328
-#: includes/fields/class-acf-field-radio.php:186
-#: includes/fields/class-acf-field-select.php:349
+#: includes/fields/class-acf-field-button-group.php:138
+#: includes/fields/class-acf-field-checkbox.php:323
+#: includes/fields/class-acf-field-radio.php:183
+#: includes/fields/class-acf-field-select.php:343
 msgid "red : Red"
 msgstr "red : Red"
 
-#: includes/fields/class-acf-field-button-group.php:139
-#: includes/fields/class-acf-field-checkbox.php:328
-#: includes/fields/class-acf-field-radio.php:186
-#: includes/fields/class-acf-field-select.php:349
+#: includes/fields/class-acf-field-button-group.php:138
+#: includes/fields/class-acf-field-checkbox.php:323
+#: includes/fields/class-acf-field-radio.php:183
+#: includes/fields/class-acf-field-select.php:343
 msgid "For more control, you may specify both a value and label like this:"
 msgstr "如果需要更多控制，您按照一下格式，定义一个值和标签对："
 
-#: includes/fields/class-acf-field-button-group.php:139
-#: includes/fields/class-acf-field-checkbox.php:328
-#: includes/fields/class-acf-field-radio.php:186
-#: includes/fields/class-acf-field-select.php:349
+#: includes/fields/class-acf-field-button-group.php:138
+#: includes/fields/class-acf-field-checkbox.php:323
+#: includes/fields/class-acf-field-radio.php:183
+#: includes/fields/class-acf-field-select.php:343
 msgid "Enter each choice on a new line."
 msgstr "输入选项，每行一个。"
 
-#: includes/fields/class-acf-field-button-group.php:138
-#: includes/fields/class-acf-field-checkbox.php:327
-#: includes/fields/class-acf-field-radio.php:185
-#: includes/fields/class-acf-field-select.php:348
+#: includes/fields/class-acf-field-button-group.php:137
+#: includes/fields/class-acf-field-checkbox.php:322
+#: includes/fields/class-acf-field-radio.php:182
+#: includes/fields/class-acf-field-select.php:342
 msgid "Choices"
 msgstr "选项"
 
-#: includes/fields/class-acf-field-button-group.php:24
+#: includes/fields/class-acf-field-button-group.php:23
 msgid "Button Group"
 msgstr "按钮组"
 
-#: includes/fields/class-acf-field-button-group.php:184
-#: includes/fields/class-acf-field-page_link.php:486
-#: includes/fields/class-acf-field-post_object.php:408
-#: includes/fields/class-acf-field-radio.php:231
-#: includes/fields/class-acf-field-select.php:407
-#: includes/fields/class-acf-field-taxonomy.php:710
-#: includes/fields/class-acf-field-user.php:103
+#: includes/fields/class-acf-field-button-group.php:183
+#: includes/fields/class-acf-field-page_link.php:508
+#: includes/fields/class-acf-field-post_object.php:421
+#: includes/fields/class-acf-field-radio.php:228
+#: includes/fields/class-acf-field-select.php:401
+#: includes/fields/class-acf-field-taxonomy.php:694
+#: includes/fields/class-acf-field-user.php:132
 msgid "Allow Null"
 msgstr "允许空值"
 
-#: includes/fields/class-acf-field-page_link.php:236
-#: includes/fields/class-acf-field-post_object.php:230
-#: includes/fields/class-acf-field-taxonomy.php:861
+#: includes/fields/class-acf-field-page_link.php:262
+#: includes/fields/class-acf-field-post_object.php:243
+#: includes/fields/class-acf-field-taxonomy.php:858
 msgid "Parent"
 msgstr "父级"
 
-#: includes/fields/class-acf-field-wysiwyg.php:371
+#: includes/fields/class-acf-field-wysiwyg.php:367
 msgid "TinyMCE will not be initialized until field is clicked"
 msgstr "TinyMCE 在栏位没有点击之前不会初始化"
 
-#: includes/fields/class-acf-field-wysiwyg.php:370
+#: includes/fields/class-acf-field-wysiwyg.php:366
 msgid "Delay Initialization"
 msgstr "延迟初始化"
 
-#: includes/fields/class-acf-field-wysiwyg.php:359
+#: includes/fields/class-acf-field-wysiwyg.php:355
 msgid "Show Media Upload Buttons"
 msgstr "显示媒体上传按钮"
 
-#: includes/fields/class-acf-field-wysiwyg.php:343
+#: includes/fields/class-acf-field-wysiwyg.php:339
 msgid "Toolbar"
 msgstr "工具条"
 
-#: includes/fields/class-acf-field-wysiwyg.php:335
+#: includes/fields/class-acf-field-wysiwyg.php:331
 msgid "Text Only"
 msgstr "纯文本"
 
-#: includes/fields/class-acf-field-wysiwyg.php:334
+#: includes/fields/class-acf-field-wysiwyg.php:330
 msgid "Visual Only"
 msgstr "只有显示"
 
-#: includes/fields/class-acf-field-wysiwyg.php:333
+#: includes/fields/class-acf-field-wysiwyg.php:329
 msgid "Visual & Text"
 msgstr "显示与文本"
 
-#: includes/fields/class-acf-field-wysiwyg.php:328
+#: includes/fields/class-acf-field-icon_picker.php:237
+#: includes/fields/class-acf-field-wysiwyg.php:324
 msgid "Tabs"
 msgstr "标签"
 
-#: includes/fields/class-acf-field-wysiwyg.php:272
+#: includes/fields/class-acf-field-wysiwyg.php:268
 msgid "Click to initialize TinyMCE"
 msgstr "点击初始化 TinyMCE 编辑器"
 
-#: includes/fields/class-acf-field-wysiwyg.php:266
+#: includes/fields/class-acf-field-wysiwyg.php:262
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "文本"
 
-#: includes/fields/class-acf-field-wysiwyg.php:265
+#: includes/fields/class-acf-field-wysiwyg.php:261
 msgid "Visual"
 msgstr "显示"
 
-#: includes/fields/class-acf-field-text.php:183
-#: includes/fields/class-acf-field-textarea.php:220
+#: includes/fields/class-acf-field-text.php:181
+#: includes/fields/class-acf-field-textarea.php:217
 msgid "Value must not exceed %d characters"
 msgstr "值不得超过%d个字符"
 
-#: includes/fields/class-acf-field-text.php:118
-#: includes/fields/class-acf-field-textarea.php:116
+#: includes/fields/class-acf-field-text.php:116
+#: includes/fields/class-acf-field-textarea.php:114
 msgid "Leave blank for no limit"
 msgstr "留空则不限制"
 
-#: includes/fields/class-acf-field-text.php:117
-#: includes/fields/class-acf-field-textarea.php:115
+#: includes/fields/class-acf-field-text.php:115
+#: includes/fields/class-acf-field-textarea.php:113
 msgid "Character Limit"
 msgstr "字符限制"
 
-#: includes/fields/class-acf-field-email.php:146
-#: includes/fields/class-acf-field-number.php:197
-#: includes/fields/class-acf-field-password.php:97
-#: includes/fields/class-acf-field-range.php:231
-#: includes/fields/class-acf-field-text.php:158
+#: includes/fields/class-acf-field-email.php:144
+#: includes/fields/class-acf-field-number.php:194
+#: includes/fields/class-acf-field-password.php:95
+#: includes/fields/class-acf-field-range.php:228
+#: includes/fields/class-acf-field-text.php:156
 msgid "Appears after the input"
 msgstr "在 input 后面显示"
 
-#: includes/fields/class-acf-field-email.php:145
-#: includes/fields/class-acf-field-number.php:196
-#: includes/fields/class-acf-field-password.php:96
-#: includes/fields/class-acf-field-range.php:230
-#: includes/fields/class-acf-field-text.php:157
+#: includes/fields/class-acf-field-email.php:143
+#: includes/fields/class-acf-field-number.php:193
+#: includes/fields/class-acf-field-password.php:94
+#: includes/fields/class-acf-field-range.php:227
+#: includes/fields/class-acf-field-text.php:155
 msgid "Append"
 msgstr "追加"
 
-#: includes/fields/class-acf-field-email.php:136
-#: includes/fields/class-acf-field-number.php:187
-#: includes/fields/class-acf-field-password.php:87
-#: includes/fields/class-acf-field-range.php:221
-#: includes/fields/class-acf-field-text.php:148
+#: includes/fields/class-acf-field-email.php:134
+#: includes/fields/class-acf-field-number.php:184
+#: includes/fields/class-acf-field-password.php:85
+#: includes/fields/class-acf-field-range.php:218
+#: includes/fields/class-acf-field-text.php:146
 msgid "Appears before the input"
 msgstr "在 input 前面显示"
 
-#: includes/fields/class-acf-field-email.php:135
-#: includes/fields/class-acf-field-number.php:186
-#: includes/fields/class-acf-field-password.php:86
-#: includes/fields/class-acf-field-range.php:220
-#: includes/fields/class-acf-field-text.php:147
+#: includes/fields/class-acf-field-email.php:133
+#: includes/fields/class-acf-field-number.php:183
+#: includes/fields/class-acf-field-password.php:84
+#: includes/fields/class-acf-field-range.php:217
+#: includes/fields/class-acf-field-text.php:145
 msgid "Prepend"
 msgstr "前置"
 
-#: includes/fields/class-acf-field-email.php:126
-#: includes/fields/class-acf-field-number.php:167
-#: includes/fields/class-acf-field-password.php:77
-#: includes/fields/class-acf-field-text.php:138
-#: includes/fields/class-acf-field-textarea.php:148
+#: includes/fields/class-acf-field-email.php:124
+#: includes/fields/class-acf-field-number.php:164
+#: includes/fields/class-acf-field-password.php:75
+#: includes/fields/class-acf-field-text.php:136
+#: includes/fields/class-acf-field-textarea.php:146
 #: includes/fields/class-acf-field-url.php:105
 msgid "Appears within the input"
 msgstr "在 input 内部显示"
 
-#: includes/fields/class-acf-field-email.php:125
-#: includes/fields/class-acf-field-number.php:166
-#: includes/fields/class-acf-field-password.php:76
-#: includes/fields/class-acf-field-text.php:137
-#: includes/fields/class-acf-field-textarea.php:147
+#: includes/fields/class-acf-field-email.php:123
+#: includes/fields/class-acf-field-number.php:163
+#: includes/fields/class-acf-field-password.php:74
+#: includes/fields/class-acf-field-text.php:135
+#: includes/fields/class-acf-field-textarea.php:145
 #: includes/fields/class-acf-field-url.php:104
 msgid "Placeholder Text"
 msgstr "占位符文本"
 
-#: includes/fields/class-acf-field-button-group.php:149
-#: includes/fields/class-acf-field-email.php:106
-#: includes/fields/class-acf-field-number.php:117
-#: includes/fields/class-acf-field-radio.php:196
-#: includes/fields/class-acf-field-range.php:157
-#: includes/fields/class-acf-field-text.php:98
-#: includes/fields/class-acf-field-textarea.php:96
+#: includes/fields/class-acf-field-button-group.php:148
+#: includes/fields/class-acf-field-email.php:104
+#: includes/fields/class-acf-field-number.php:114
+#: includes/fields/class-acf-field-radio.php:193
+#: includes/fields/class-acf-field-range.php:154
+#: includes/fields/class-acf-field-text.php:96
+#: includes/fields/class-acf-field-textarea.php:94
 #: includes/fields/class-acf-field-url.php:85
-#: includes/fields/class-acf-field-wysiwyg.php:296
+#: includes/fields/class-acf-field-wysiwyg.php:292
 msgid "Appears when creating a new post"
 msgstr "创建新文章的时候显示"
 
-#: includes/fields/class-acf-field-text.php:23
+#: includes/fields/class-acf-field-text.php:22
 msgid "Text"
 msgstr "文本"
 
-#: includes/fields/class-acf-field-relationship.php:735
+#: includes/fields/class-acf-field-relationship.php:742
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s 至少需要 %2$s 个选择"
 
-#: includes/fields/class-acf-field-post_object.php:378
-#: includes/fields/class-acf-field-relationship.php:596
+#: includes/fields/class-acf-field-post_object.php:391
+#: includes/fields/class-acf-field-relationship.php:605
 msgid "Post ID"
 msgstr "文章 ID"
 
-#: includes/fields/class-acf-field-post_object.php:17
-#: includes/fields/class-acf-field-post_object.php:377
-#: includes/fields/class-acf-field-relationship.php:595
+#: includes/fields/class-acf-field-post_object.php:15
+#: includes/fields/class-acf-field-post_object.php:390
+#: includes/fields/class-acf-field-relationship.php:604
 msgid "Post Object"
 msgstr "文章对象"
 
-#: includes/fields/class-acf-field-relationship.php:628
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "Maximum Posts"
 msgstr "最大文章数"
 
-#: includes/fields/class-acf-field-relationship.php:618
+#: includes/fields/class-acf-field-relationship.php:627
 msgid "Minimum Posts"
 msgstr "最小文章数"
 
 #: includes/admin/views/acf-field-group/options.php:183
 #: includes/admin/views/acf-post-type/advanced-settings.php:29
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-relationship.php:662
 msgid "Featured Image"
 msgstr "特色图像"
 
-#: includes/fields/class-acf-field-relationship.php:649
+#: includes/fields/class-acf-field-relationship.php:658
 msgid "Selected elements will be displayed in each result"
 msgstr "选择的元素将在每个结果中显示"
 
-#: includes/fields/class-acf-field-relationship.php:648
+#: includes/fields/class-acf-field-relationship.php:657
 msgid "Elements"
 msgstr "元素"
 
-#: includes/fields/class-acf-field-relationship.php:582
+#: includes/fields/class-acf-field-relationship.php:591
 #: includes/fields/class-acf-field-taxonomy.php:20
-#: includes/fields/class-acf-field-taxonomy.php:630
+#: includes/fields/class-acf-field-taxonomy.php:614
 #: includes/locations/class-acf-location-taxonomy.php:22
 msgid "Taxonomy"
 msgstr "分类法"
 
-#: includes/fields/class-acf-field-relationship.php:581
+#: includes/fields/class-acf-field-relationship.php:590
 #: includes/locations/class-acf-location-post-type.php:22
 #: includes/post-types/class-acf-post-type.php:92
 msgid "Post Type"
 msgstr "文章类型"
 
-#: includes/fields/class-acf-field-relationship.php:575
+#: includes/fields/class-acf-field-relationship.php:584
 msgid "Filters"
 msgstr "过滤器"
 
-#: includes/fields/class-acf-field-page_link.php:447
-#: includes/fields/class-acf-field-post_object.php:365
-#: includes/fields/class-acf-field-relationship.php:568
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:378
+#: includes/fields/class-acf-field-relationship.php:577
 msgid "All taxonomies"
 msgstr "所有分类法"
 
-#: includes/fields/class-acf-field-page_link.php:439
-#: includes/fields/class-acf-field-post_object.php:357
-#: includes/fields/class-acf-field-relationship.php:560
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:370
+#: includes/fields/class-acf-field-relationship.php:569
 msgid "Filter by Taxonomy"
 msgstr "按分类筛选"
 
-#: includes/fields/class-acf-field-page_link.php:417
-#: includes/fields/class-acf-field-post_object.php:335
-#: includes/fields/class-acf-field-relationship.php:538
+#: includes/fields/class-acf-field-page_link.php:439
+#: includes/fields/class-acf-field-post_object.php:348
+#: includes/fields/class-acf-field-relationship.php:547
 msgid "All post types"
 msgstr "所有文章类型"
 
-#: includes/fields/class-acf-field-page_link.php:409
-#: includes/fields/class-acf-field-post_object.php:327
-#: includes/fields/class-acf-field-relationship.php:530
+#: includes/fields/class-acf-field-page_link.php:431
+#: includes/fields/class-acf-field-post_object.php:340
+#: includes/fields/class-acf-field-relationship.php:539
 msgid "Filter by Post Type"
 msgstr "按文章类型筛选"
 
-#: includes/fields/class-acf-field-relationship.php:430
+#: includes/fields/class-acf-field-relationship.php:439
 msgid "Search..."
 msgstr "搜索..."
 
-#: includes/fields/class-acf-field-relationship.php:361
+#: includes/fields/class-acf-field-relationship.php:369
 msgid "Select taxonomy"
 msgstr "选择分类"
 
-#: includes/fields/class-acf-field-relationship.php:353
+#: includes/fields/class-acf-field-relationship.php:361
 msgid "Select post type"
 msgstr "选择文章类型"
 
-#: includes/fields/class-acf-field-relationship.php:58
-#: assets/build/js/acf-input.js:3928 assets/build/js/acf-input.js:4214
+#: includes/fields/class-acf-field-relationship.php:78
+#: assets/build/js/acf-input.js:4937 assets/build/js/acf-input.js:5402
 msgid "No matches found"
 msgstr "找不到匹配项"
 
-#: includes/fields/class-acf-field-relationship.php:57
-#: assets/build/js/acf-input.js:3911 assets/build/js/acf-input.js:4193
+#: includes/fields/class-acf-field-relationship.php:77
+#: assets/build/js/acf-input.js:4920 assets/build/js/acf-input.js:5381
 msgid "Loading"
 msgstr "加载"
 
-#: includes/fields/class-acf-field-relationship.php:56
-#: assets/build/js/acf-input.js:3816 assets/build/js/acf-input.js:4084
+#: includes/fields/class-acf-field-relationship.php:76
+#: assets/build/js/acf-input.js:4824 assets/build/js/acf-input.js:5271
 msgid "Maximum values reached ( {max} values )"
 msgstr "达到了最大值 ( {max} 值 )"
 
@@ -5199,46 +6596,46 @@ msgstr "达到了最大值 ( {max} 值 )"
 msgid "Relationship"
 msgstr "关系"
 
-#: includes/fields/class-acf-field-file.php:280
-#: includes/fields/class-acf-field-image.php:310
+#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr "用英文逗号分隔开，留空则为全部类型"
 
-#: includes/fields/class-acf-field-file.php:279
-#: includes/fields/class-acf-field-image.php:309
+#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
 msgstr "允许的文件类型"
 
-#: includes/fields/class-acf-field-file.php:267
-#: includes/fields/class-acf-field-image.php:273
+#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "最大"
 
-#: includes/fields/class-acf-field-file.php:147
-#: includes/fields/class-acf-field-file.php:259
-#: includes/fields/class-acf-field-file.php:271
-#: includes/fields/class-acf-field-image.php:264
-#: includes/fields/class-acf-field-image.php:300
+#: includes/fields/class-acf-field-file.php:144
+#: includes/fields/class-acf-field-file.php:256
+#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-image.php:261
+#: includes/fields/class-acf-field-image.php:297
 msgid "File size"
 msgstr "文件尺寸"
 
-#: includes/fields/class-acf-field-image.php:238
-#: includes/fields/class-acf-field-image.php:274
+#: includes/fields/class-acf-field-image.php:235
+#: includes/fields/class-acf-field-image.php:271
 msgid "Restrict which images can be uploaded"
 msgstr "限制可以上传的图像"
 
-#: includes/fields/class-acf-field-file.php:255
-#: includes/fields/class-acf-field-image.php:237
+#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "最小"
 
-#: includes/fields/class-acf-field-file.php:225
-#: includes/fields/class-acf-field-image.php:203
+#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "上传到文章"
 
-#: includes/fields/class-acf-field-file.php:224
-#: includes/fields/class-acf-field-image.php:202
+#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
 #: includes/locations/class-acf-location-nav-menu.php:74
@@ -5249,466 +6646,472 @@ msgstr "上传到文章"
 msgid "All"
 msgstr "所有"
 
-#: includes/fields/class-acf-field-file.php:219
-#: includes/fields/class-acf-field-image.php:197
+#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "限制媒体库的选择"
 
-#: includes/fields/class-acf-field-file.php:218
-#: includes/fields/class-acf-field-image.php:196
+#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "库"
 
-#: includes/fields/class-acf-field-image.php:329
+#: includes/fields/class-acf-field-image.php:326
 msgid "Preview Size"
 msgstr "预览图大小"
 
-#: includes/fields/class-acf-field-image.php:188
+#: includes/fields/class-acf-field-image.php:185
 msgid "Image ID"
 msgstr "图像ID"
 
-#: includes/fields/class-acf-field-image.php:187
+#: includes/fields/class-acf-field-image.php:184
 msgid "Image URL"
 msgstr "图像 URL"
 
-#: includes/fields/class-acf-field-image.php:186
+#: includes/fields/class-acf-field-image.php:183
 msgid "Image Array"
 msgstr "图像数组"
 
-#: includes/fields/class-acf-field-button-group.php:159
-#: includes/fields/class-acf-field-checkbox.php:348
-#: includes/fields/class-acf-field-file.php:203
-#: includes/fields/class-acf-field-link.php:149
-#: includes/fields/class-acf-field-radio.php:206
+#: includes/fields/class-acf-field-button-group.php:158
+#: includes/fields/class-acf-field-checkbox.php:343
+#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-link.php:147
+#: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
 msgstr "指定前端返回的值"
 
-#: includes/fields/class-acf-field-button-group.php:158
-#: includes/fields/class-acf-field-checkbox.php:347
-#: includes/fields/class-acf-field-file.php:202
-#: includes/fields/class-acf-field-link.php:148
-#: includes/fields/class-acf-field-radio.php:205
-#: includes/fields/class-acf-field-taxonomy.php:674
+#: includes/fields/class-acf-field-button-group.php:157
+#: includes/fields/class-acf-field-checkbox.php:342
+#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-link.php:146
+#: includes/fields/class-acf-field-radio.php:202
+#: includes/fields/class-acf-field-taxonomy.php:658
 msgid "Return Value"
 msgstr "返回值"
 
-#: includes/fields/class-acf-field-image.php:157
+#: includes/fields/class-acf-field-image.php:155
 msgid "Add Image"
 msgstr "添加图片"
 
-#: includes/fields/class-acf-field-image.php:157
+#: includes/fields/class-acf-field-image.php:155
 msgid "No image selected"
 msgstr "没有选择图片"
 
-#: includes/assets.php:353 includes/fields/class-acf-field-file.php:155
-#: includes/fields/class-acf-field-image.php:137
-#: includes/fields/class-acf-field-link.php:126 assets/build/js/acf.js:1563
-#: assets/build/js/acf.js:1657
+#: includes/assets.php:353 includes/fields/class-acf-field-file.php:152
+#: includes/fields/class-acf-field-image.php:135
+#: includes/fields/class-acf-field-link.php:124 assets/build/js/acf.js:1569
+#: assets/build/js/acf.js:1661
 msgid "Remove"
 msgstr "删除"
 
 #: includes/admin/views/acf-field-group/field.php:89
-#: includes/fields/class-acf-field-file.php:153
-#: includes/fields/class-acf-field-image.php:135
-#: includes/fields/class-acf-field-link.php:126
+#: includes/fields/class-acf-field-file.php:150
+#: includes/fields/class-acf-field-image.php:133
+#: includes/fields/class-acf-field-link.php:124
 msgid "Edit"
 msgstr "编辑"
 
-#: includes/fields/class-acf-field-image.php:65 includes/media.php:55
-#: assets/build/js/acf-input.js:6850 assets/build/js/acf-input.js:7336
+#: includes/fields/class-acf-field-image.php:63 includes/media.php:55
+#: assets/build/js/acf-input.js:7868 assets/build/js/acf-input.js:8537
 msgid "All images"
 msgstr "所有图片"
 
-#: includes/fields/class-acf-field-image.php:64
-#: assets/build/js/acf-input.js:3179 assets/build/js/acf-input.js:3399
+#: includes/fields/class-acf-field-image.php:62
+#: assets/build/js/acf-input.js:4181 assets/build/js/acf-input.js:4579
 msgid "Update Image"
 msgstr "更新图像"
 
-#: includes/fields/class-acf-field-image.php:63
-#: assets/build/js/acf-input.js:3178 assets/build/js/acf-input.js:3398
+#: includes/fields/class-acf-field-image.php:61
+#: assets/build/js/acf-input.js:4180 assets/build/js/acf-input.js:4578
 msgid "Edit Image"
 msgstr "编辑图片"
 
-#: includes/fields/class-acf-field-image.php:62
-#: assets/build/js/acf-input.js:3154 assets/build/js/acf-input.js:3373
+#: includes/fields/class-acf-field-image.php:60
+#: assets/build/js/acf-input.js:4016 assets/build/js/acf-input.js:4156
+#: assets/build/js/acf-input.js:4404 assets/build/js/acf-input.js:4553
 msgid "Select Image"
 msgstr "选择图像"
 
-#: includes/fields/class-acf-field-image.php:23
+#: includes/fields/class-acf-field-image.php:22
 msgid "Image"
 msgstr "图像"
 
-#: includes/fields/class-acf-field-message.php:112
+#: includes/fields/class-acf-field-message.php:110
 msgid "Allow HTML markup to display as visible text instead of rendering"
 msgstr "显示 HTML 文本，而不是渲染 HTML"
 
-#: includes/fields/class-acf-field-message.php:111
+#: includes/fields/class-acf-field-message.php:109
 msgid "Escape HTML"
 msgstr "转义 HTML"
 
-#: includes/fields/class-acf-field-message.php:103
-#: includes/fields/class-acf-field-textarea.php:164
+#: includes/fields/class-acf-field-message.php:101
+#: includes/fields/class-acf-field-textarea.php:162
 msgid "No Formatting"
 msgstr "无格式"
 
-#: includes/fields/class-acf-field-message.php:102
-#: includes/fields/class-acf-field-textarea.php:163
+#: includes/fields/class-acf-field-message.php:100
+#: includes/fields/class-acf-field-textarea.php:161
 msgid "Automatically add &lt;br&gt;"
 msgstr "自动添加 &lt;br&gt;"
 
-#: includes/fields/class-acf-field-message.php:101
-#: includes/fields/class-acf-field-textarea.php:162
+#: includes/fields/class-acf-field-message.php:99
+#: includes/fields/class-acf-field-textarea.php:160
 msgid "Automatically add paragraphs"
 msgstr "自动添加段落"
 
-#: includes/fields/class-acf-field-message.php:97
-#: includes/fields/class-acf-field-textarea.php:158
+#: includes/fields/class-acf-field-message.php:95
+#: includes/fields/class-acf-field-textarea.php:156
 msgid "Controls how new lines are rendered"
 msgstr "控制怎么显示新行"
 
-#: includes/fields/class-acf-field-message.php:96
-#: includes/fields/class-acf-field-textarea.php:157
+#: includes/fields/class-acf-field-message.php:94
+#: includes/fields/class-acf-field-textarea.php:155
 msgid "New Lines"
 msgstr "新行"
 
-#: includes/fields/class-acf-field-date_picker.php:224
-#: includes/fields/class-acf-field-date_time_picker.php:211
+#: includes/fields/class-acf-field-date_picker.php:221
+#: includes/fields/class-acf-field-date_time_picker.php:208
 msgid "Week Starts On"
 msgstr "每周开始于"
 
-#: includes/fields/class-acf-field-date_picker.php:193
+#: includes/fields/class-acf-field-date_picker.php:190
 msgid "The format used when saving a value"
 msgstr "保存值时使用的格式"
 
-#: includes/fields/class-acf-field-date_picker.php:192
+#: includes/fields/class-acf-field-date_picker.php:189
 msgid "Save Format"
 msgstr "保存格式"
 
-#: includes/fields/class-acf-field-date_picker.php:63
+#: includes/fields/class-acf-field-date_picker.php:61
 msgctxt "Date Picker JS weekHeader"
 msgid "Wk"
 msgstr "周"
 
-#: includes/fields/class-acf-field-date_picker.php:62
+#: includes/fields/class-acf-field-date_picker.php:60
 msgctxt "Date Picker JS prevText"
 msgid "Prev"
 msgstr "上一页"
 
-#: includes/fields/class-acf-field-date_picker.php:61
+#: includes/fields/class-acf-field-date_picker.php:59
 msgctxt "Date Picker JS nextText"
 msgid "Next"
 msgstr "下一个"
 
-#: includes/fields/class-acf-field-date_picker.php:60
+#: includes/fields/class-acf-field-date_picker.php:58
 msgctxt "Date Picker JS currentText"
 msgid "Today"
 msgstr "今日"
 
-#: includes/fields/class-acf-field-date_picker.php:59
+#: includes/fields/class-acf-field-date_picker.php:57
 msgctxt "Date Picker JS closeText"
 msgid "Done"
 msgstr "完成"
 
-#: includes/fields/class-acf-field-date_picker.php:23
+#: includes/fields/class-acf-field-date_picker.php:22
 msgid "Date Picker"
 msgstr "日期选择"
 
-#: includes/fields/class-acf-field-image.php:241
-#: includes/fields/class-acf-field-image.php:277
-#: includes/fields/class-acf-field-oembed.php:255
+#: includes/fields/class-acf-field-image.php:238
+#: includes/fields/class-acf-field-image.php:274
+#: includes/fields/class-acf-field-oembed.php:241
 msgid "Width"
 msgstr "宽度"
 
-#: includes/fields/class-acf-field-oembed.php:252
-#: includes/fields/class-acf-field-oembed.php:264
+#: includes/fields/class-acf-field-oembed.php:238
+#: includes/fields/class-acf-field-oembed.php:250
 msgid "Embed Size"
 msgstr "嵌入尺寸"
 
-#: includes/fields/class-acf-field-oembed.php:212
+#: includes/fields/class-acf-field-oembed.php:198
 msgid "Enter URL"
 msgstr "输入 URL"
 
-#: includes/fields/class-acf-field-oembed.php:23
+#: includes/fields/class-acf-field-oembed.php:22
 msgid "oEmbed"
 msgstr "oEmbed(嵌入)"
 
-#: includes/fields/class-acf-field-true_false.php:174
+#: includes/fields/class-acf-field-true_false.php:172
 msgid "Text shown when inactive"
 msgstr "非激活时显示的文字"
 
-#: includes/fields/class-acf-field-true_false.php:173
+#: includes/fields/class-acf-field-true_false.php:171
 msgid "Off Text"
 msgstr "关闭文本"
 
-#: includes/fields/class-acf-field-true_false.php:158
+#: includes/fields/class-acf-field-true_false.php:156
 msgid "Text shown when active"
 msgstr "激活时显示的文本"
 
-#: includes/fields/class-acf-field-true_false.php:157
+#: includes/fields/class-acf-field-true_false.php:155
 msgid "On Text"
 msgstr "打开文本"
 
-#: includes/fields/class-acf-field-select.php:428
-#: includes/fields/class-acf-field-true_false.php:189
+#: includes/fields/class-acf-field-select.php:422
+#: includes/fields/class-acf-field-true_false.php:187
 msgid "Stylized UI"
 msgstr "风格化的用户界面"
 
-#: includes/fields/class-acf-field-button-group.php:148
-#: includes/fields/class-acf-field-checkbox.php:337
-#: includes/fields/class-acf-field-color_picker.php:148
-#: includes/fields/class-acf-field-email.php:105
-#: includes/fields/class-acf-field-number.php:116
-#: includes/fields/class-acf-field-radio.php:195
-#: includes/fields/class-acf-field-range.php:156
-#: includes/fields/class-acf-field-select.php:359
-#: includes/fields/class-acf-field-text.php:97
-#: includes/fields/class-acf-field-textarea.php:95
-#: includes/fields/class-acf-field-true_false.php:137
+#: includes/fields/class-acf-field-button-group.php:147
+#: includes/fields/class-acf-field-checkbox.php:332
+#: includes/fields/class-acf-field-color_picker.php:144
+#: includes/fields/class-acf-field-email.php:103
+#: includes/fields/class-acf-field-number.php:113
+#: includes/fields/class-acf-field-radio.php:192
+#: includes/fields/class-acf-field-range.php:153
+#: includes/fields/class-acf-field-select.php:353
+#: includes/fields/class-acf-field-text.php:95
+#: includes/fields/class-acf-field-textarea.php:93
+#: includes/fields/class-acf-field-true_false.php:135
 #: includes/fields/class-acf-field-url.php:84
-#: includes/fields/class-acf-field-wysiwyg.php:295
+#: includes/fields/class-acf-field-wysiwyg.php:291
 msgid "Default Value"
 msgstr "默认值"
 
-#: includes/fields/class-acf-field-true_false.php:128
+#: includes/fields/class-acf-field-true_false.php:126
 msgid "Displays text alongside the checkbox"
 msgstr "在复选框旁边显示文本"
 
-#: includes/fields/class-acf-field-message.php:24
-#: includes/fields/class-acf-field-message.php:86
-#: includes/fields/class-acf-field-true_false.php:127
+#: includes/fields/class-acf-field-message.php:23
+#: includes/fields/class-acf-field-message.php:84
+#: includes/fields/class-acf-field-true_false.php:125
 msgid "Message"
 msgstr "消息"
 
-#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:81
-#: includes/fields/class-acf-field-true_false.php:177
-#: assets/build/js/acf.js:1740 assets/build/js/acf.js:1857
+#: includes/assets.php:352 includes/class-acf-site-health.php:277
+#: includes/class-acf-site-health.php:334
+#: includes/fields/class-acf-field-true_false.php:79
+#: includes/fields/class-acf-field-true_false.php:175
+#: assets/build/js/acf.js:1746 assets/build/js/acf.js:1861
 msgid "No"
 msgstr "否"
 
-#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:78
-#: includes/fields/class-acf-field-true_false.php:161
-#: assets/build/js/acf.js:1739 assets/build/js/acf.js:1856
+#: includes/assets.php:351 includes/class-acf-site-health.php:276
+#: includes/class-acf-site-health.php:334
+#: includes/fields/class-acf-field-true_false.php:76
+#: includes/fields/class-acf-field-true_false.php:159
+#: assets/build/js/acf.js:1745 assets/build/js/acf.js:1860
 msgid "Yes"
 msgstr "是"
 
-#: includes/fields/class-acf-field-true_false.php:23
+#: includes/fields/class-acf-field-true_false.php:22
 msgid "True / False"
 msgstr "真 / 假 (开关)"
 
-#: includes/fields/class-acf-field-group.php:421
+#: includes/fields/class-acf-field-group.php:412
 msgid "Row"
 msgstr "行"
 
-#: includes/fields/class-acf-field-group.php:420
+#: includes/fields/class-acf-field-group.php:411
 msgid "Table"
 msgstr "表"
 
-#: includes/admin/post-types/admin-field-group.php:128
-#: includes/fields/class-acf-field-group.php:419
+#: includes/admin/post-types/admin-field-group.php:158
+#: includes/fields/class-acf-field-group.php:410
 msgid "Block"
 msgstr "区块"
 
-#: includes/fields/class-acf-field-group.php:414
+#: includes/fields/class-acf-field-group.php:405
 msgid "Specify the style used to render the selected fields"
 msgstr "指定用于呈现所选字段的样式"
 
-#: includes/fields.php:337 includes/fields/class-acf-field-button-group.php:205
-#: includes/fields/class-acf-field-checkbox.php:410
-#: includes/fields/class-acf-field-group.php:413
-#: includes/fields/class-acf-field-radio.php:279
+#: includes/fields.php:330 includes/fields/class-acf-field-button-group.php:204
+#: includes/fields/class-acf-field-checkbox.php:405
+#: includes/fields/class-acf-field-group.php:404
+#: includes/fields/class-acf-field-radio.php:276
 msgid "Layout"
 msgstr "样式"
 
-#: includes/fields/class-acf-field-group.php:397
+#: includes/fields/class-acf-field-group.php:388
 msgid "Sub Fields"
 msgstr "子字段"
 
-#: includes/fields/class-acf-field-group.php:23
+#: includes/fields/class-acf-field-group.php:22
 msgid "Group"
 msgstr "分组"
 
-#: includes/fields/class-acf-field-google-map.php:226
+#: includes/fields/class-acf-field-google-map.php:222
 msgid "Customize the map height"
 msgstr "自定义地图高度"
 
-#: includes/fields/class-acf-field-google-map.php:225
-#: includes/fields/class-acf-field-image.php:252
-#: includes/fields/class-acf-field-image.php:288
-#: includes/fields/class-acf-field-oembed.php:267
+#: includes/fields/class-acf-field-google-map.php:221
+#: includes/fields/class-acf-field-image.php:249
+#: includes/fields/class-acf-field-image.php:285
+#: includes/fields/class-acf-field-oembed.php:253
 msgid "Height"
 msgstr "高度"
 
-#: includes/fields/class-acf-field-google-map.php:214
+#: includes/fields/class-acf-field-google-map.php:210
 msgid "Set the initial zoom level"
 msgstr "设置初始缩放级别"
 
-#: includes/fields/class-acf-field-google-map.php:213
+#: includes/fields/class-acf-field-google-map.php:209
 msgid "Zoom"
 msgstr "缩放"
 
-#: includes/fields/class-acf-field-google-map.php:187
-#: includes/fields/class-acf-field-google-map.php:200
+#: includes/fields/class-acf-field-google-map.php:183
+#: includes/fields/class-acf-field-google-map.php:196
 msgid "Center the initial map"
 msgstr "居中显示初始地图"
 
-#: includes/fields/class-acf-field-google-map.php:186
-#: includes/fields/class-acf-field-google-map.php:199
+#: includes/fields/class-acf-field-google-map.php:182
+#: includes/fields/class-acf-field-google-map.php:195
 msgid "Center"
 msgstr "居中"
 
-#: includes/fields/class-acf-field-google-map.php:157
+#: includes/fields/class-acf-field-google-map.php:154
 msgid "Search for address..."
 msgstr "搜索地址..."
 
-#: includes/fields/class-acf-field-google-map.php:154
+#: includes/fields/class-acf-field-google-map.php:151
 msgid "Find current location"
 msgstr "搜索当前位置"
 
-#: includes/fields/class-acf-field-google-map.php:153
+#: includes/fields/class-acf-field-google-map.php:150
 msgid "Clear location"
 msgstr "清除位置"
 
-#: includes/fields/class-acf-field-google-map.php:152
-#: includes/fields/class-acf-field-relationship.php:580
+#: includes/fields/class-acf-field-google-map.php:149
+#: includes/fields/class-acf-field-relationship.php:589
 msgid "Search"
 msgstr "搜索"
 
-#: includes/fields/class-acf-field-google-map.php:59
-#: assets/build/js/acf-input.js:2838 assets/build/js/acf-input.js:3026
+#: includes/fields/class-acf-field-google-map.php:57
+#: assets/build/js/acf-input.js:3528 assets/build/js/acf-input.js:3786
 msgid "Sorry, this browser does not support geolocation"
 msgstr "抱歉，浏览器不支持定位"
 
-#: includes/fields/class-acf-field-google-map.php:23
+#: includes/fields/class-acf-field-google-map.php:22
 msgid "Google Map"
 msgstr "谷歌地图"
 
-#: includes/fields/class-acf-field-date_picker.php:204
-#: includes/fields/class-acf-field-date_time_picker.php:192
-#: includes/fields/class-acf-field-time_picker.php:124
+#: includes/fields/class-acf-field-date_picker.php:201
+#: includes/fields/class-acf-field-date_time_picker.php:189
+#: includes/fields/class-acf-field-time_picker.php:122
 msgid "The format returned via template functions"
 msgstr "通过模板函数返回的格式"
 
-#: includes/fields/class-acf-field-color_picker.php:172
-#: includes/fields/class-acf-field-date_picker.php:203
-#: includes/fields/class-acf-field-date_time_picker.php:191
-#: includes/fields/class-acf-field-image.php:180
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:590
-#: includes/fields/class-acf-field-select.php:370
-#: includes/fields/class-acf-field-time_picker.php:123
-#: includes/fields/class-acf-field-user.php:66
+#: includes/fields/class-acf-field-color_picker.php:168
+#: includes/fields/class-acf-field-date_picker.php:200
+#: includes/fields/class-acf-field-date_time_picker.php:188
+#: includes/fields/class-acf-field-icon_picker.php:260
+#: includes/fields/class-acf-field-image.php:177
+#: includes/fields/class-acf-field-post_object.php:385
+#: includes/fields/class-acf-field-relationship.php:599
+#: includes/fields/class-acf-field-select.php:364
+#: includes/fields/class-acf-field-time_picker.php:121
+#: includes/fields/class-acf-field-user.php:95
 msgid "Return Format"
 msgstr "返回格式"
 
-#: includes/fields/class-acf-field-date_picker.php:182
-#: includes/fields/class-acf-field-date_picker.php:213
-#: includes/fields/class-acf-field-date_time_picker.php:183
-#: includes/fields/class-acf-field-date_time_picker.php:201
-#: includes/fields/class-acf-field-time_picker.php:115
-#: includes/fields/class-acf-field-time_picker.php:131
+#: includes/fields/class-acf-field-date_picker.php:179
+#: includes/fields/class-acf-field-date_picker.php:210
+#: includes/fields/class-acf-field-date_time_picker.php:180
+#: includes/fields/class-acf-field-date_time_picker.php:198
+#: includes/fields/class-acf-field-time_picker.php:113
+#: includes/fields/class-acf-field-time_picker.php:129
 msgid "Custom:"
 msgstr "自定义："
 
-#: includes/fields/class-acf-field-date_picker.php:174
-#: includes/fields/class-acf-field-date_time_picker.php:174
-#: includes/fields/class-acf-field-time_picker.php:108
+#: includes/fields/class-acf-field-date_picker.php:171
+#: includes/fields/class-acf-field-date_time_picker.php:171
+#: includes/fields/class-acf-field-time_picker.php:106
 msgid "The format displayed when editing a post"
 msgstr "编辑文章的时候显示的格式"
 
-#: includes/fields/class-acf-field-date_picker.php:173
-#: includes/fields/class-acf-field-date_time_picker.php:173
-#: includes/fields/class-acf-field-time_picker.php:107
+#: includes/fields/class-acf-field-date_picker.php:170
+#: includes/fields/class-acf-field-date_time_picker.php:170
+#: includes/fields/class-acf-field-time_picker.php:105
 msgid "Display Format"
 msgstr "显示格式"
 
-#: includes/fields/class-acf-field-time_picker.php:23
+#: includes/fields/class-acf-field-time_picker.php:22
 msgid "Time Picker"
 msgstr "时间选择"
 
 #. translators: counts for inactive field groups
-#: acf.php:496
+#: acf.php:506
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "已停用 <span class=\"count\">(%s)</span>"
 
-#: acf.php:457
+#: acf.php:467
 msgid "No Fields found in Trash"
 msgstr "回收站里没有字段"
 
-#: acf.php:456
+#: acf.php:466
 msgid "No Fields found"
 msgstr "没找到字段"
 
-#: acf.php:455
+#: acf.php:465
 msgid "Search Fields"
 msgstr "搜索字段"
 
-#: acf.php:454
+#: acf.php:464
 msgid "View Field"
 msgstr "视图字段"
 
-#: acf.php:453 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:463 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "新字段"
 
-#: acf.php:452
+#: acf.php:462
 msgid "Edit Field"
 msgstr "编辑字段"
 
-#: acf.php:451
+#: acf.php:461
 msgid "Add New Field"
 msgstr "添加新字段"
 
-#: acf.php:449
+#: acf.php:459
 msgid "Field"
 msgstr "字段"
 
-#: acf.php:448 includes/admin/post-types/admin-field-group.php:149
+#: acf.php:458 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "字段"
 
-#: acf.php:423
+#: acf.php:433
 msgid "No Field Groups found in Trash"
 msgstr "回收站中没有找到字段组"
 
-#: acf.php:422
+#: acf.php:432
 msgid "No Field Groups found"
 msgstr "没有找到字段组"
 
-#: acf.php:421
+#: acf.php:431
 msgid "Search Field Groups"
 msgstr "搜索字段组"
 
-#: acf.php:420
+#: acf.php:430
 msgid "View Field Group"
 msgstr "查看字段组"
 
-#: acf.php:419
+#: acf.php:429
 msgid "New Field Group"
 msgstr "新建字段组"
 
-#: acf.php:418
+#: acf.php:428
 msgid "Edit Field Group"
 msgstr "编辑字段组"
 
-#: acf.php:417
+#: acf.php:427
 msgid "Add New Field Group"
 msgstr "添加字段组"
 
-#: acf.php:416 acf.php:450
+#: acf.php:426 acf.php:460
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "新建"
 
-#: acf.php:415
+#: acf.php:425
 msgid "Field Group"
 msgstr "字段组"
 
-#: acf.php:414 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:424 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"

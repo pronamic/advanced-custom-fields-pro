@@ -12,17 +12,17 @@ if ( ! class_exists( 'ACF_Ajax_Upgrade' ) ) :
 		var $action = 'acf/ajax/upgrade';
 
 		/**
-		 * get_response
-		 *
 		 * Returns the response data to sent back.
 		 *
-		 * @date    31/7/18
-		 * @since   5.7.2
+		 * @since 5.7.2
 		 *
-		 * @param   array $request The request args.
-		 * @return  mixed The response data or WP_Error.
+		 * @param array $request The request args.
+		 * @return boolean|WP_Error True if successful, or WP_Error on failure.
 		 */
-		function get_response( $request ) {
+		public function get_response( $request ) {
+			if ( ! current_user_can( acf_get_setting( 'capability' ) ) ) {
+				return new WP_Error( 'upgrade_error', __( 'Sorry, you don\'t have permission to do that.', 'acf' ) );
+			}
 
 			// Switch blog.
 			if ( isset( $request['blog_id'] ) ) {
@@ -47,6 +47,7 @@ if ( ! class_exists( 'ACF_Ajax_Upgrade' ) ) :
 			if ( $error ) {
 				return new WP_Error( 'upgrade_error', $error );
 			}
+
 			return true;
 		}
 	}

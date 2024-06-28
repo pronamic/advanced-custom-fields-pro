@@ -453,6 +453,8 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 				$duplicate_action_url = wp_nonce_url( admin_url( 'post-new.php?post_type=acf-post-type&use_post_type=' . $post->ID ), 'acfduplicate-' . $post->ID );
 			} elseif ( 'acf-taxonomy' === $this->post_type ) {
 				$duplicate_action_url = wp_nonce_url( admin_url( 'post-new.php?post_type=acf-taxonomy&use_taxonomy=' . $post->ID ), 'acfduplicate-' . $post->ID );
+			} elseif ( 'acf-ui-options-page' === $this->post_type ) {
+				$duplicate_action_url = wp_nonce_url( admin_url( 'post-new.php?post_type=acf-ui-options-page&use_options_page=' . $post->ID ), 'acfduplicate-' . $post->ID );
 			}
 
 			$actions['acfduplicate'] = '<a href="' . esc_url( $duplicate_action_url ) . '" aria-label="' . esc_attr__( 'Duplicate this item', 'acf' ) . '">' . __( 'Duplicate', 'acf' ) . '</a>';
@@ -523,19 +525,35 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * @since 6.0
 		 */
 		public function check_activate() {
-            // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
-			// Display notice on success redirect.
-			if ( isset( $_GET['acfactivatecomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfactivatecomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
-                // phpcs:enable WordPress.Security.NonceVerification.Recommended
-				// Generate text.
-				$text = $this->get_action_notice_text( 'acfactivatecomplete', count( $ids ) );
+			// Verify capability.
+			if ( ! acf_current_user_can_admin() ) {
+				return;
+			}
 
-				// Append links to text.
-				$links = array();
-				foreach ( $ids as $id ) {
-					$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+			$args = acf_request_args(
+				array(
+					'acfactivatecomplete' => '',
+					'acfactivate'         => '',
+					'post'                => '',
+					'action2'             => '',
+				)
+			);
+
+			if ( ! empty( $args['acfactivatecomplete'] ) ) {
+				check_admin_referer( 'bulk-posts' );
+
+				$activated = array_map( 'intval', explode( ',', $args['acfactivatecomplete'] ) );
+				$text      = $this->get_action_notice_text( 'acfactivatecomplete', count( $activated ) );
+				$links     = array();
+
+				foreach ( $activated as $activated_id ) {
+					$links[] = sprintf(
+						'<a href="%1$s">%2$s</a>',
+						get_edit_post_link( $activated_id ),
+						get_the_title( $activated_id )
+					);
 				}
+
 				$text .= ' ' . implode( ', ', $links );
 
 				// Add notice.
@@ -544,26 +562,28 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 			}
 
 			// Find items to activate.
-			$ids = array();
-			if ( isset( $_GET['acfactivate'] ) ) {
-				$ids[] = intval( $_GET['acfactivate'] );
-			} elseif ( isset( $_GET['post'], $_GET['action2'] ) && $_GET['action2'] === 'acfactivate' ) {
-				$ids = array_map( 'intval', $_GET['post'] );
+			$to_activate = array();
+			if ( ! empty( $args['acfactivate'] ) ) {
+				$to_activate[] = intval( $args['acfactivate'] );
+			} elseif ( ! empty( $args['post'] ) && 'acfactivate' === $args['action2'] ) {
+				$to_activate = array_map( 'intval', $args['post'] );
 			}
 
-			if ( $ids ) {
+			if ( ! empty( $to_activate ) ) {
 				check_admin_referer( 'bulk-posts' );
 
-				// Activate the field groups and return an array of IDs that were activated.
-				$new_ids = array();
-				foreach ( $ids as $id ) {
+				$activated_ids = array();
+				$nonce         = wp_create_nonce( 'bulk-posts' );
+
+				foreach ( $to_activate as $id ) {
 					$post_type = get_post_type( $id );
+
 					if ( $post_type && acf_update_internal_post_type_active_status( $id, true, $post_type ) ) {
-						$new_ids[] = $id;
+						$activated_ids[] = $id;
 					}
 				}
 
-				wp_safe_redirect( $this->get_admin_url( '&acfactivatecomplete=' . implode( ',', $new_ids ) ) );
+				wp_safe_redirect( $this->get_admin_url( '&_wpnonce=' . $nonce . '&acfactivatecomplete=' . implode( ',', $activated_ids ) ) );
 				exit;
 			}
 		}
@@ -574,19 +594,36 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * @since 6.0
 		 */
 		public function check_deactivate() {
-            // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
-			// Display notice on success redirect.
-			if ( isset( $_GET['acfdeactivatecomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfdeactivatecomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
-                // phpcs:enable WordPress.Security.NonceVerification.Recommended
-				// Generate text.
-				$text = $this->get_action_notice_text( 'acfdeactivatecomplete', count( $ids ) );
+			// Verify capability.
+			if ( ! acf_current_user_can_admin() ) {
+				return;
+			}
 
-				// Append links to text.
-				$links = array();
-				foreach ( $ids as $id ) {
-					$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+			$args = acf_request_args(
+				array(
+					'acfdeactivatecomplete' => '',
+					'acfdeactivate'         => '',
+					'post'                  => '',
+					'action2'               => '',
+				)
+			);
+
+			// Display notice on success redirect.
+			if ( ! empty( $args['acfdeactivatecomplete'] ) ) {
+				check_admin_referer( 'bulk-posts' );
+
+				$deactivated = array_map( 'intval', explode( ',', $args['acfdeactivatecomplete'] ) );
+				$text        = $this->get_action_notice_text( 'acfdeactivatecomplete', count( $deactivated ) );
+				$links       = array();
+
+				foreach ( $deactivated as $deactivated_id ) {
+					$links[] = sprintf(
+						'<a href="%1$s">%2$s</a>',
+						get_edit_post_link( $deactivated_id ),
+						get_the_title( $deactivated_id )
+					);
 				}
+
 				$text .= ' ' . implode( ', ', $links );
 
 				// Add notice.
@@ -594,27 +631,28 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 				return;
 			}
 
-			// Find items to activate.
-			$ids = array();
-			if ( isset( $_GET['acfdeactivate'] ) ) {
-				$ids[] = intval( $_GET['acfdeactivate'] );
-			} elseif ( isset( $_GET['post'], $_GET['action2'] ) && $_GET['action2'] === 'acfdeactivate' ) {
-				$ids = array_map( 'intval', $_GET['post'] );
+			// Find items to deactivate.
+			$to_deactivate = array();
+			if ( ! empty( $args['acfdeactivate'] ) ) {
+				$to_deactivate[] = intval( $args['acfdeactivate'] );
+			} elseif ( ! empty( $args['post'] ) && 'acfdeactivate' === $args['action2'] ) {
+				$to_deactivate = array_map( 'intval', $args['post'] );
 			}
 
-			if ( $ids ) {
+			if ( ! empty( $to_deactivate ) ) {
 				check_admin_referer( 'bulk-posts' );
 
-				// Activate the field groups and return an array of IDs.
-				$new_ids = array();
-				foreach ( $ids as $id ) {
+				$deactivated_ids = array();
+				$nonce           = wp_create_nonce( 'bulk-posts' );
+
+				foreach ( $to_deactivate as $id ) {
 					$post_type = get_post_type( $id );
 					if ( $post_type && acf_update_internal_post_type_active_status( $id, false, $post_type ) ) {
-						$new_ids[] = $id;
+						$deactivated_ids[] = $id;
 					}
 				}
 
-				wp_safe_redirect( $this->get_admin_url( '&acfdeactivatecomplete=' . implode( ',', $new_ids ) ) );
+				wp_safe_redirect( $this->get_admin_url( '&_wpnonce=' . $nonce . '&acfdeactivatecomplete=' . implode( ',', $deactivated_ids ) ) );
 				exit;
 			}
 		}
@@ -625,46 +663,63 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * @since   5.9.0
 		 */
 		public function check_duplicate() {
-            // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Used for redirect notice.
-			// Display notice on success redirect.
-			if ( isset( $_GET['acfduplicatecomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfduplicatecomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
-                // phpcs:enable WordPress.Security.NonceVerification.Recommended
-				// Generate text.
-				$text = $this->get_action_notice_text( 'acfduplicatecomplete', count( $ids ) );
+			// Verify capability.
+			if ( ! acf_current_user_can_admin() ) {
+				return;
+			}
 
-				// Append links to text.
-				$links = array();
-				foreach ( $ids as $id ) {
-					$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+			$args = acf_request_args(
+				array(
+					'acfduplicatecomplete' => '',
+					'acfduplicate'         => '',
+					'post'                 => '',
+					'action2'              => '',
+				)
+			);
+
+			// Display notice on success redirect.
+			if ( ! empty( $args['acfduplicatecomplete'] ) ) {
+				check_admin_referer( 'bulk-posts' );
+
+				$duplicated = array_map( 'intval', explode( ',', $args['acfduplicatecomplete'] ) );
+				$text       = $this->get_action_notice_text( 'acfduplicatecomplete', count( $duplicated ) );
+				$links      = array();
+
+				foreach ( $duplicated as $duplicated_id ) {
+					$links[] = sprintf(
+						'<a href="%1$s">%2$s</a>',
+						get_edit_post_link( $duplicated_id ),
+						get_the_title( $duplicated_id )
+					);
 				}
+
 				$text .= ' ' . implode( ', ', $links );
 
-				// Add notice.
 				acf_add_admin_notice( $text, 'success' );
 				return;
 			}
 
 			// Find items to duplicate.
-			$ids = array();
-			if ( isset( $_GET['acfduplicate'] ) ) {
-				$ids[] = intval( $_GET['acfduplicate'] );
-			} elseif ( isset( $_GET['post'], $_GET['action2'] ) && $_GET['action2'] === 'acfduplicate' ) {
-				$ids = array_map( 'intval', $_GET['post'] );
+			$to_duplicate = array();
+			if ( ! empty( $args['acfduplicate'] ) ) {
+				$to_duplicate[] = intval( $args['acfduplicate'] );
+			} elseif ( ! empty( $args['post'] ) && 'acfduplicate' === $args['action2'] ) {
+				$to_duplicate = array_map( 'intval', $args['post'] );
 			}
 
-			if ( $ids ) {
+			if ( ! empty( $to_duplicate ) ) {
 				check_admin_referer( 'bulk-posts' );
 
-				// Duplicate field groups and generate array of new IDs.
-				$new_ids = array();
-				foreach ( $ids as $id ) {
-					$field_group = acf_duplicate_field_group( $id );
-					$new_ids[]   = $field_group['ID'];
+				$duplicated_ids = array();
+				$nonce          = wp_create_nonce( 'bulk-posts' );
+
+				foreach ( $to_duplicate as $id ) {
+					$field_group      = acf_duplicate_field_group( $id );
+					$duplicated_ids[] = $field_group['ID'];
 				}
 
 				// Redirect.
-				wp_safe_redirect( $this->get_admin_url( '&acfduplicatecomplete=' . implode( ',', $new_ids ) ) );
+				wp_safe_redirect( $this->get_admin_url( '&_wpnonce=' . $nonce . '&acfduplicatecomplete=' . implode( ',', $duplicated_ids ) ) );
 				exit;
 			}
 		}
@@ -675,19 +730,36 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 		 * @since   5.9.0
 		 */
 		public function check_sync() {
-            // phpcs:disable WordPress.Security.NonceVerification.Recommended
-			// Display notice on success redirect.
-			if ( isset( $_GET['acfsynccomplete'] ) ) {
-				$ids = array_map( 'intval', explode( ',', $_GET['acfsynccomplete'] ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with intval().
-                // phpcs:enable WordPress.Security.NonceVerification.Recommended
-				// Generate text.
-				$text = $this->get_action_notice_text( 'acfsynccomplete', count( $ids ) );
+			// Verify capability.
+			if ( ! acf_current_user_can_admin() ) {
+				return;
+			}
 
-				// Append links to text.
-				$links = array();
-				foreach ( $ids as $id ) {
-					$links[] = '<a href="' . get_edit_post_link( $id ) . '">' . get_the_title( $id ) . '</a>';
+			$args = acf_request_args(
+				array(
+					'acfsynccomplete' => '',
+					'acfsync'         => '',
+					'post'            => '',
+					'action2'         => '',
+				)
+			);
+
+			// Display notice on success redirect.
+			if ( ! empty( $args['acfsynccomplete'] ) ) {
+				check_admin_referer( 'bulk-posts' );
+
+				$synced = array_map( 'intval', explode( ',', $args['acfsynccomplete'] ) );
+				$text   = $this->get_action_notice_text( 'acfsynccomplete', count( $synced ) );
+				$links  = array();
+
+				foreach ( $synced as $synced_id ) {
+					$links[] = sprintf(
+						'<a href="%1$s">%2$s</a>',
+						get_edit_post_link( $synced_id ),
+						get_the_title( $synced_id )
+					);
 				}
+
 				$text .= ' ' . implode( ', ', $links );
 
 				// Add notice.
@@ -697,21 +769,23 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 
 			// Find items to sync.
 			$keys = array();
-			if ( isset( $_GET['acfsync'] ) ) {
-				$keys[] = sanitize_text_field( $_GET['acfsync'] );
-			} elseif ( isset( $_GET['post'], $_GET['action2'] ) && $_GET['action2'] === 'acfsync' ) {
-				$keys = array_map( 'sanitize_text_field', $_GET['post'] );
+			if ( ! empty( $args['acfsync'] ) ) {
+				$keys[] = sanitize_text_field( $args['acfsync'] );
+			} elseif ( ! empty( $args['post'] ) && 'acfsync' === $args['action2'] ) {
+				$keys = array_map( 'sanitize_text_field', $args['post'] );
 			}
 
 			if ( $keys && $this->sync ) {
 				check_admin_referer( 'bulk-posts' );
 
-				// Disabled "Local JSON" controller to prevent the .json file from being modified during import.
+				// Disable "Local JSON" controller to prevent the .json file from being modified during import.
 				acf_update_setting( 'json', false );
 
-				// Sync field groups and generate array of new IDs.
-				$files   = acf_get_local_json_files( $this->post_type );
-				$new_ids = array();
+				// Sync the items and generate array of new IDs.
+				$files  = acf_get_local_json_files( $this->post_type );
+				$nonce  = wp_create_nonce( 'bulk-posts' );
+				$synced = array();
+
 				foreach ( $this->sync as $key => $post ) {
 					if ( $post['key'] && in_array( $post['key'], $keys ) ) {
 						// Import.
@@ -721,14 +795,15 @@ if ( ! class_exists( 'ACF_Admin_Internal_Post_Type_List' ) ) :
 						// Ignore.
 						continue;
 					}
+
 					$local_post       = json_decode( file_get_contents( $files[ $key ] ), true );
 					$local_post['ID'] = $post['ID'];
 					$result           = acf_import_internal_post_type( $local_post, $this->post_type );
-					$new_ids[]        = $result['ID'];
+					$synced[]         = $result['ID'];
 				}
 
 				// Redirect.
-				wp_safe_redirect( $this->get_current_admin_url( '&acfsynccomplete=' . implode( ',', $new_ids ) ) );
+				wp_safe_redirect( $this->get_current_admin_url( '&_wpnonce=' . $nonce . '&acfsynccomplete=' . implode( ',', $synced ) ) );
 				exit;
 			}
 		}

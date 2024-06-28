@@ -15,65 +15,29 @@ function run( $command, &$result_code = null ) {
 }
 
 /**
- * ACF PRO license.
+ * Pronamic ACF authorization.
  */
-$acf_pro_license = getenv( 'ACF_PRO_LICENSE' );
+$pronamic_acf_authorization = getenv( 'PRONAMIC_ACF_AUTHORIZATION' );
 
-if ( empty( $acf_pro_license ) ) {
-	echo 'ACF PRO license not defined in `ACF_PRO_LICENSE` environment variable.';
-
-	exit( 1 );
-}
-
-$acf_pro_url = getenv( 'ACF_PRO_URL' );
-
-if ( empty( $acf_pro_url ) ) {
-	echo 'ACF PRO license URL not defined in `ACF_PRO_URL` environment variable.';
+if ( empty( $pronamic_acf_authorization ) ) {
+	echo 'Pronamic ACF authorization not defined in `PRONAMIC_ACF_AUTHORIZATION` environment variable.';
 
 	exit( 1 );
 }
+
+$header_authorization = 'Authorization: Bearer ' . $pronamic_acf_authorization;
 
 /**
  * Request info.
  */
 line( '::group::Check ACF' );
 
-$url = 'https://connect.advancedcustomfields.com/v2/plugins/update-check';
-
-$basename = 'advanced-custom-fields-pro/acf.php';
-
-$data_plugins = [
-	$basename => [
-		'id'       => 'pro',
-		'key'      => $acf_pro_license,
-		'slug'     => 'advanced-custom-fields-pro',
-		'basename' => $basename,
-		'version'  => '6.2',
-	]
-];
-
-$data_wp = [
-	'wp_name'      => 'acf',
-	'wp_url'       => $acf_pro_url,
-	'wp_version'   => '6.3',
-	'wp_language'  => 'en-US',
-	'wp_timezone'  => '',
-	'wp_multisite' => 0,
-	'php_version'  => '8',
-];
-
-$data_acf = [
-	'acf_version' => '6.2',
-	'acf_pro'     => true,
-	'block_count' => 0,
-];
+$url = 'https://acf-connect.pronamic.directory/version';
 
 $data = run(
 	sprintf(
-		'curl --data %s --data %s --data %s --request POST %s',
-		escapeshellarg( 'plugins=' . json_encode( $data_plugins ) ),
-		escapeshellarg( 'wp=' . json_encode( $data_wp ) ),
-		escapeshellarg( 'acf=' . json_encode( $data_acf ) ),
+		'curl --header %s --request GET %s',
+		escapeshellarg( $header_authorization ),
 		escapeshellarg( $url )
 	)
 );
@@ -91,37 +55,13 @@ if ( ! is_object( $result ) ) {
 	exit( 1 );
 }
 
-if ( ! property_exists( $result, 'plugins' ) ) {
-	echo 'No plugins';
+if ( ! property_exists( $result, 'version' ) ) {
+	echo 'No version';
 
 	exit( 1 );
 }
 
-$plugins = $result->plugins;
-
-if ( ! property_exists( $plugins, $basename ) ) {
-	echo 'No plugin';
-
-	exit( 1 );
-}
-
-$plugin = $plugins->{$basename};
-
-if ( ! property_exists( $plugin, 'new_version' ) ) {
-	echo 'Unknown version';
-
-	exit( 1 );
-}
-
-$version = $plugin->new_version;
-
-$url = $plugin->package;
-
-if ( '' === $url ) {
-	echo 'Package URL is empty';
-
-	exit( 1 );
-}
+$version = $result->version;
 
 line(
 	sprintf(
@@ -130,14 +70,42 @@ line(
 	)
 );
 
+line( '::endgroup::' );
+
+/**
+ * GitHub release view.
+ */
+line( '::group::Check GitHub release' );
+
+$tag = 'v' . $version;
+
+run(
+	sprintf(
+		'gh release view %s',
+		$tag
+	),
+	$result_code
+);
+
+$release_found = ( 0 === $result_code );
+
+line( '::endgroup::' );
+
+if ( $release_found ) {
+	return;
+}
+
+/**
+ * Download.
+ */
+$url = 'https://acf-connect.pronamic.directory/download';
+
 line(
 	sprintf(
 		'ACF ZIP URL: %s',
 		$url
 	)
 );
-
-line( '::endgroup::' );
 
 /**
  * Files.
@@ -165,7 +133,8 @@ line( '::group::Download ACF' );
 
 run(
 	sprintf(
-		'curl %s --output %s',
+		'curl --header %s --request GET %s --output %s',
+		escapeshellarg( $header_authorization ),
 		escapeshellarg( $url ),
 		$zip_file
 	)
@@ -255,33 +224,16 @@ run( 'gh auth status' );
 run( 'git push origin main' );
 
 /**
- * GitHub release view.
- */
-$tag = 'v' . $version;
-
-run(
-	sprintf(
-		'gh release view %s',
-		$tag
-	),
-	$result_code
-);
-
-$release_not_found = ( 1 === $result_code );
-
-/**
  * GitHub release.
  * 
  * @todo https://memberpress.com/wp-json/wp/v2/pages?slug=change-log
  * @link https://cli.github.com/manual/gh_release_create
  */
-if ( $release_not_found ) {
-	run(
-		sprintf(
-			'gh release create %s %s --title %s',
-			$tag,
-			$zip_file,
-			$version
-		)
-	);
-}
+run(
+	sprintf(
+		'gh release create %s %s --title %s',
+		$tag,
+		$zip_file,
+		$version
+	)
+);

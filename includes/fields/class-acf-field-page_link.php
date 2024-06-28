@@ -60,19 +60,28 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		}
 
 		/**
-		 * description
+		 * Returns AJAX results for the Page Link field.
 		 *
-		 * @type    function
-		 * @date    24/10/13
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @return void
 		 */
-		function ajax_query() {
+		public function ajax_query() {
+			$nonce             = acf_request_arg( 'nonce', '' );
+			$key               = acf_request_arg( 'field_key', '' );
+			$conditional_logic = (bool) acf_request_arg( 'conditional_logic', false );
 
-			// validate
-			if ( ! acf_verify_ajax() ) {
+			if ( $conditional_logic ) {
+				if ( ! acf_current_user_can_admin() ) {
+					die();
+				}
+
+				// Use the standard ACF admin nonce.
+				$nonce = '';
+				$key   = '';
+			}
+
+			if ( ! acf_verify_ajax( $nonce, $key ) ) {
 				die();
 			}
 
@@ -370,21 +379,20 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 
 
 		/**
-		 * Create the HTML interface for your field
+		 * Renders the Page Link field.
 		 *
-		 * @param   $field - an array holding all the field's data
+		 * @since 3.6
 		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @param array $field The field settings array.
+		 * @return void
 		 */
-		function render_field( $field ) {
-
+		public function render_field( $field ) {
 			// Change Field into a select
 			$field['type']    = 'select';
 			$field['ui']      = 1;
 			$field['ajax']    = 1;
 			$field['choices'] = array();
+			$field['nonce']   = wp_create_nonce( $field['key'] );
 
 			// populate choices if value exists
 			if ( ! empty( $field['value'] ) ) {

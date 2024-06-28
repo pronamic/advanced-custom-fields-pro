@@ -1002,9 +1002,9 @@
 
       // step 2
       var step2 = this.proxy(function () {
-        // ajax
-        var ajaxData = {
+        const ajaxData = {
           action: 'acf/fields/gallery/get_attachment',
+          nonce: this.get('nonce'),
           field_key: this.get('key'),
           id: id
         };
@@ -1086,9 +1086,9 @@
 
       // step 1
       var step1 = this.proxy(function () {
-        // vars
-        var ajaxData = {
+        const ajaxData = {
           action: 'acf/fields/gallery/get_sort_order',
+          nonce: this.get('nonce'),
           field_key: this.get('key'),
           ids: ids,
           sort: val
@@ -1134,14 +1134,16 @@
       }
 
       // serialize data
-      var ajaxData = acf.serialize(this.$sideData());
+      const ajaxData = acf.serialize(this.$sideData());
 
       // loading
       $submit.addClass('disabled');
       $submit.before('<i class="acf-loading"></i> ');
 
-      // append AJAX action
+      // Append AJAX action and nonce.
       ajaxData.action = 'acf/fields/gallery/update_attachment';
+      ajaxData.nonce = this.get('nonce');
+      ajaxData.field_key = this.get('key');
 
       // ajax
       $.ajax({
@@ -1876,7 +1878,8 @@
         field_key: this.get('key'),
         field_name: this.get('orig_name'),
         rows_per_page: parseInt(this.get('per_page')),
-        refresh: clearChanged
+        refresh: clearChanged,
+        nonce: this.get('nonce')
       });
       $.ajax({
         url: ajaxurl,

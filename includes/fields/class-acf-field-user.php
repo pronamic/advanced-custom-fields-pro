@@ -153,20 +153,18 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		/**
 		 * Renders the field input HTML.
 		 *
-		 * @date    23/01/13
 		 * @since   3.6.0
 		 *
 		 * @param   array $field The ACF field.
 		 * @return  void
 		 */
-		function render_field( $field ) {
-
+		public function render_field( $field ) {
 			// Change Field into a select.
-			$field['type']        = 'select';
-			$field['ui']          = 1;
-			$field['ajax']        = 1;
-			$field['choices']     = array();
-			$field['query_nonce'] = wp_create_nonce( 'acf/fields/user/query' . $field['key'] );
+			$field['type']    = 'select';
+			$field['ui']      = 1;
+			$field['ajax']    = 1;
+			$field['choices'] = array();
+			$field['nonce']   = wp_create_nonce( $field['key'] );
 
 			// Populate choices.
 			if ( $field['value'] ) {
@@ -403,7 +401,10 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			}
 
 			// Verify that this is a legitimate request using a separate nonce from the main AJAX nonce.
-			if ( ! isset( $_REQUEST['user_query_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( $_REQUEST['user_query_nonce'] ), 'acf/fields/user/query' . $query->field['key'] ) ) {
+			$nonce = acf_request_arg( 'nonce', '' );
+			$key   = acf_request_arg( 'field_key', '' );
+
+			if ( ! acf_verify_ajax( $nonce, $key ) ) {
 				$query->send( new WP_Error( 'acf_invalid_request', __( 'Invalid request.', 'acf' ), array( 'status' => 404 ) ) );
 			}
 		}

@@ -1034,11 +1034,6 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 		 * @return void|WP_Error
 		 */
 		public function ajax_get_rows() {
-			if ( ! acf_verify_ajax() ) {
-				$error = array( 'error' => __( 'Invalid nonce.', 'acf' ) );
-				wp_send_json_error( $error, 401 );
-			}
-
 			$args = acf_request_args(
 				array(
 					'field_name'    => '',
@@ -1046,8 +1041,14 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 					'post_id'       => 0,
 					'rows_per_page' => 0,
 					'refresh'       => false,
+					'nonce'         => '',
 				)
 			);
+
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'] ) ) {
+				$error = array( 'error' => __( 'Invalid nonce.', 'acf' ) );
+				wp_send_json_error( $error, 401 );
+			}
 
 			if ( '' === $args['field_name'] || '' === $args['field_key'] ) {
 				$error = array( 'error' => __( 'Invalid field key or name.', 'acf' ) );

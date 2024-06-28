@@ -731,6 +731,7 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 					'ajax'         => 1,
 					'ajax_action'  => 'acf/fields/clone/query',
 					'placeholder'  => '',
+					'nonce'        => wp_create_nonce( 'acf/fields/clone/query' ),
 				)
 			);
 
@@ -929,19 +930,16 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 
 
 		/**
-		 * description
+		 * AJAX handler for getting potential fields to clone.
 		 *
-		 * @type    function
-		 * @date    17/06/2016
-		 * @since   5.3.8
+		 * @since 5.3.8
 		 *
-		 * @param   $post_id (int)
-		 * @return  $post_id (int)
+		 * @return void
 		 */
-		function ajax_query() {
+		public function ajax_query() {
+			$nonce = acf_request_arg( 'nonce', '' );
 
-			// validate
-			if ( ! acf_verify_ajax() ) {
+			if ( ! acf_verify_ajax( $nonce, 'acf/fields/clone/query' ) ) {
 				die();
 			}
 

@@ -475,7 +475,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				'validation'  => acf_get_form_data( 'validation' ),
 				'editor'      => acf_is_block_editor() ? 'block' : 'classic',
 				'is_pro'      => acf_is_pro(),
-				'debug'       => acf_is_beta() || defined( SCRIPT_DEBUG ) && SCRIPT_DEBUG,
+				'debug'       => acf_is_beta() || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ),
 			);
 
 			acf_localize_data( $data_to_localize );

@@ -104,7 +104,7 @@ function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t =
       const iconName = fieldType.name.replaceAll('_', '-');
       return `
 			<a href="#" class="acf-field-type" data-field-type="${fieldType.name}">
-				${fieldType.pro && !acf.get('is_pro') ? '<span class="field-type-requires-pro"><i class="acf-icon acf-icon-lock"></i>PRO</span>' : fieldType.pro ? '<span class="field-type-requires-pro">PRO</span>' : ''}
+				${fieldType.pro && !acf.get('is_pro') ? '<span class="field-type-requires-pro not-pro"></span>' : fieldType.pro ? '<span class="field-type-requires-pro"></span>' : ''}
 				<i class="field-type-icon field-type-icon-${iconName}"></i>
 				<span class="field-type-label">${fieldType.label}</span>
 			</a>
@@ -3059,20 +3059,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _toPropertyKey_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toPropertyKey.js */ "./node_modules/@babel/runtime/helpers/esm/toPropertyKey.js");
 
-function _defineProperty(obj, key, value) {
-  key = (0,_toPropertyKey_js__WEBPACK_IMPORTED_MODULE_0__["default"])(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
+function _defineProperty(e, r, t) {
+  return (r = (0,_toPropertyKey_js__WEBPACK_IMPORTED_MODULE_0__["default"])(r)) in e ? Object.defineProperty(e, r, {
+    value: t,
+    enumerable: !0,
+    configurable: !0,
+    writable: !0
+  }) : e[r] = t, e;
 }
+
 
 /***/ }),
 
@@ -3100,6 +3095,7 @@ function toPrimitive(t, r) {
   return ("string" === r ? String : Number)(t);
 }
 
+
 /***/ }),
 
 /***/ "./node_modules/@babel/runtime/helpers/esm/toPropertyKey.js":
@@ -3121,6 +3117,7 @@ function toPropertyKey(t) {
   var i = (0,_toPrimitive_js__WEBPACK_IMPORTED_MODULE_1__["default"])(t, "string");
   return "symbol" == (0,_typeof_js__WEBPACK_IMPORTED_MODULE_0__["default"])(i) ? i : i + "";
 }
+
 
 /***/ }),
 
@@ -3144,6 +3141,7 @@ function _typeof(o) {
     return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
   }, _typeof(o);
 }
+
 
 /***/ })
 

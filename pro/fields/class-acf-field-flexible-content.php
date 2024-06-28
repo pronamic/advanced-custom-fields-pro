@@ -893,6 +893,10 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 				// loop rows
 				foreach ( $value as $i => $row ) {
+					// ensure row is an array
+					if ( ! is_array( $row ) ) {
+						continue;
+					}
 
 					// get layout
 					$l = $row['acf_fc_layout'];

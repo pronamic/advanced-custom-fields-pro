@@ -40,15 +40,18 @@ if ( 'acf-field-group' === $acf_post_type ) {
 	if ( empty( $acf_title ) && $acf_prefilled_title ) {
 		$acf_title = $acf_prefilled_title;
 	}
-} elseif ( in_array( $acf_post_type, array( 'acf-post-type', 'acf-taxonomy' ) ) ) {
-	$acf_duplicate_post_type   = acf_get_post_type_from_request_args( 'acfduplicate' );
-	$acf_duplicate_taxonomy    = acf_get_taxonomy_from_request_args( 'acfduplicate' );
-	$acf_duplicated_from_label = '';
+} elseif ( in_array( $acf_post_type, array( 'acf-post-type', 'acf-taxonomy', 'acf-ui-options-page' ), true ) ) {
+	$acf_duplicate_post_type       = acf_get_post_type_from_request_args( 'acfduplicate' );
+	$acf_duplicate_taxonomy        = acf_get_taxonomy_from_request_args( 'acfduplicate' );
+	$acf_duplicate_ui_options_page = acf_get_ui_options_page_from_request_args( 'acfduplicate' );
+	$acf_duplicated_from_label     = '';
 
 	if ( $acf_duplicate_post_type && ! empty( $acf_duplicate_post_type['labels']['singular_name'] ) ) {
 		$acf_duplicated_from_label = $acf_duplicate_post_type['labels']['singular_name'];
 	} elseif ( $acf_duplicate_taxonomy && ! empty( $acf_duplicate_taxonomy['labels']['singular_name'] ) ) {
 		$acf_duplicated_from_label = $acf_duplicate_taxonomy['labels']['singular_name'];
+	} elseif ( $acf_duplicate_ui_options_page && ! empty( $acf_duplicate_ui_options_page['page_title'] ) ) {
+		$acf_duplicated_from_label = $acf_duplicate_ui_options_page['page_title'];
 	}
 
 	if ( ! empty( $acf_duplicated_from_label ) ) {

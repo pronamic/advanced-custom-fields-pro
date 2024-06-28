@@ -889,7 +889,7 @@ function acf_render_field_instructions( $field, $tooltip = false ) {
 		$instructions = acf_esc_html( $field['instructions'] );
 
 		if ( $tooltip ) {
-			printf( '<div class="acf-tip"><i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="%s">?</i></div>', $instructions ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
+			printf( '<div class="acf-tip"><i tabindex="0" class="acf-icon acf-icon-help acf-js-tooltip" title="%s">?</i></div>', esc_attr( $instructions ) ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 		} else {
 			printf( '<p class="description">%s</p>', $instructions ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped earlier in function.
 		}

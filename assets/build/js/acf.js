@@ -3306,30 +3306,25 @@
   };
 
   /**
-   *  acf.prepareForAjax
+   * Prepares AJAX data prior to being sent.
    *
-   *  description
+   * @since 5.6.5
    *
-   *  @date	4/1/18
-   *  @since	5.6.5
-   *
-   *  @param	type $var Description. Default.
-   *  @return	type Description.
+   * @param {Object} data The data to prepare
+   * @return {Object} The prepared data.
    */
-
   acf.prepareForAjax = function (data) {
-    // required
-    data.nonce = acf.get('nonce');
+    // Set a default nonce if we don't have one already.
+    if ('undefined' === typeof data.nonce) {
+      data.nonce = acf.get('nonce');
+    }
     data.post_id = acf.get('post_id');
-
-    // language
     if (acf.has('language')) {
       data.lang = acf.get('language');
     }
 
-    // filter for 3rd party customization
+    // Filter for 3rd party customization.
     data = acf.applyFilters('prepare_for_ajax', data);
-    // return
     return data;
   };
 

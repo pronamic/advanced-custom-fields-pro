@@ -164,6 +164,7 @@ class ACF_Repeater_Table {
 			$div['data-per_page']   = $this->field['rows_per_page'];
 			$div['data-total_rows'] = $this->field['total_rows'];
 			$div['data-orig_name']  = $this->field['orig_name'];
+			$div['data-nonce']      = wp_create_nonce( $this->field['key'] );
 		}
 
 		if ( empty( $this->value ) ) {

@@ -124,12 +124,14 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			wp_register_style( 'acf-pro-input', acf_get_url( 'assets/build/css/pro/acf-pro-input.css' ), array( 'acf-input' ), $version );
 			wp_register_style( 'acf-pro-field-group', acf_get_url( 'assets/build/css/pro/acf-pro-field-group.css' ), array( 'acf-input' ), $version );
 
-			$to_localize = array(
-				'isLicenseActive'  => acf_pro_is_license_active(),
-				'isLicenseExpired' => acf_pro_is_license_expired(),
-			);
+			if ( is_admin() ) {
+				$to_localize = array(
+					'isLicenseActive'  => acf_pro_is_license_active(),
+					'isLicenseExpired' => acf_pro_is_license_expired(),
+				);
 
-			acf_localize_data( $to_localize );
+				acf_localize_data( $to_localize );
+			}
 		}
 
 		/**

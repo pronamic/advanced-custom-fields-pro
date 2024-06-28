@@ -509,12 +509,14 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 		}
 
 		/**
-		 * Move field AJAX function
+		 * Moves fields between field groups via AJAX.
 		 *
 		 * @since 5.0.0
+		 *
+		 * @return void
 		 */
 		public function ajax_move_field() {
-			// disable filters to ensure ACF loads raw data from DB.
+			// Disable filters to ensure ACF loads raw data from DB.
 			acf_disable_filters();
 
 			// phpcs:disable WordPress.Security.NonceVerification.Missing
@@ -529,34 +531,35 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 			);
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
-			// verify nonce.
+			// Verify nonce.
 			if ( ! wp_verify_nonce( $args['nonce'], 'acf_nonce' ) ) {
 				die();
 			}
 
-			// verify user capability.
+			// Verify user capability.
 			if ( ! acf_current_user_can_admin() ) {
 				die();
 			}
 
-			// confirm?
+			// Move the field if the user has confirmed.
 			if ( $args['field_id'] && $args['field_group_id'] ) {
+				$field           = acf_get_field( $args['field_id'] );
+				$old_field_group = acf_get_field_group( $args['post_id'] );
+				$new_field_group = acf_get_field_group( $args['field_group_id'] );
 
-				// vars.
-				$field       = acf_get_field( $args['field_id'] );
-				$field_group = acf_get_field_group( $args['field_group_id'] );
-
-				// update parent.
-				$field['parent'] = $field_group['ID'];
-
-				// remove conditional logic.
+				// Update the field parent and remove conditional logic.
+				$field['parent']            = $new_field_group['ID'];
 				$field['conditional_logic'] = 0;
 
-				// update field.
+				// Update the field in the database.
 				acf_update_field( $field );
 
+				// Fire `acf/update_field_group` action hook so JSON can sync if necessary.
+				do_action( 'acf/update_field_group', $old_field_group );
+				do_action( 'acf/update_field_group', $new_field_group );
+
 				// Output HTML.
-				$link = '<a href="' . admin_url( 'post.php?post=' . $field_group['ID'] . '&action=edit' ) . '" target="_blank">' . esc_html( $field_group['title'] ) . '</a>';
+				$link = '<a href="' . admin_url( 'post.php?post=' . $new_field_group['ID'] . '&action=edit' ) . '" target="_blank">' . esc_html( $new_field_group['title'] ) . '</a>';
 
 				echo '' .
 					'<p><strong>' . esc_html__( 'Move Complete.', 'acf' ) . '</strong></p>' .
@@ -570,22 +573,18 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 				die();
 			}
 
-			// get all field groups.
+			// Get all field groups.
 			$field_groups = acf_get_field_groups();
 			$choices      = array();
 
-			// check.
 			if ( ! empty( $field_groups ) ) {
-
-				// loop.
 				foreach ( $field_groups as $field_group ) {
-
-					// bail early if no ID.
+					// Bail early if no ID.
 					if ( ! $field_group['ID'] ) {
 						continue;
 					}
 
-					// bail early if is current.
+					// Bail early if is current.
 					if ( $field_group['ID'] == $args['post_id'] ) {
 						continue;
 					}
@@ -594,7 +593,7 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 				}
 			}
 
-			// render options.
+			// Render options.
 			$field = acf_get_valid_field(
 				array(
 					'type'       => 'select',
@@ -605,14 +604,9 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 			);
 
 			echo '<p>' . esc_html__( 'Please select the destination for this field', 'acf' ) . '</p>';
-
 			echo '<form id="acf-move-field-form">';
-
-				// render.
 				acf_render_field_wrap( $field );
-
 				echo '<button type="submit" class="acf-btn">' . esc_html__( 'Move Field', 'acf' ) . '</button>';
-
 			echo '</form>';
 
 			die();

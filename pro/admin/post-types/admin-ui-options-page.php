@@ -396,9 +396,8 @@ if ( ! class_exists( 'ACF_Admin_UI_Options_Page' ) ) :
 						continue;
 					}
 
-					// Ensure that the current item is not an ACF page or that ACF pages are an empty array before adding to others.
-					if ( ! empty( $acf_parent_page_choices['acfOptionsPages'] ) && ! in_array( $page_name, $acf_parent_page_choices['acfOptionsPages'], true ) || empty( $acf_parent_page_choices['acfOptionsPages'] ) ) {
-						// If matched menu slug is not in the list add it to others.
+					// If the current item is not an ACF-created options page, add it to the "Others" list.
+					if ( empty( $acf_parent_page_choices['acfOptionsPages'][ $item[2] ] ) ) {
 						$acf_parent_page_choices['Others'][ $item[2] ] = acf_esc_html( $sanitized_name );
 					}
 				}

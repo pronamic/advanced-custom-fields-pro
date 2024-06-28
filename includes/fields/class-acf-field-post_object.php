@@ -58,30 +58,40 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		 * AJAX query handler for post object fields.
 		 *
 		 * @since   5.0.0
+		 *
+		 * @return void
 		 */
 		public function ajax_query() {
-			if ( ! acf_verify_ajax() ) {
+			$nonce             = acf_request_arg( 'nonce', '' );
+			$key               = acf_request_arg( 'field_key', '' );
+			$conditional_logic = (bool) acf_request_arg( 'conditional_logic', false );
+
+			if ( $conditional_logic ) {
+				if ( ! acf_current_user_can_admin() ) {
+					die();
+				}
+
+				// Use the standard ACF admin nonce.
+				$nonce = '';
+				$key   = '';
+			}
+
+			if ( ! acf_verify_ajax( $nonce, $key ) ) {
 				die();
 			}
 
-			// get choices
-			$response = $this->get_ajax_query( $_POST );
-
-			// return
-			acf_send_ajax_results( $response );
+			acf_send_ajax_results( $this->get_ajax_query( $_POST ) );
 		}
-
 
 		/**
 		 * This function will return an array of data formatted for use in a select2 AJAX response
 		 *
-		 * @since   5.0.9
+		 * @since 5.0.9
 		 *
-		 * @param   array $options The options being queried for the ajax request.
-		 * @return  array The AJAX response array.
+		 * @param array $options The options being queried for the ajax request.
+		 * @return array|boolean The AJAX response array, or false on failure.
 		 */
 		public function get_ajax_query( $options = array() ) {
-
 			// defaults
 			$options = acf_parse_args(
 				$options,
@@ -223,7 +233,6 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 			return $response;
 		}
 
-
 		/**
 		 * This function will return an array containing id, text and maybe description data
 		 *
@@ -298,13 +307,14 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 		 * @since 3.6
 		 *
 		 * @param array $field An array holding all the field's data.
+		 * @return void
 		 */
 		public function render_field( $field ) {
-
 			// Change Field into a select
 			$field['type']    = 'select';
 			$field['ui']      = 1;
 			$field['ajax']    = 1;
+			$field['nonce']   = wp_create_nonce( $field['key'] );
 			$field['choices'] = array();
 
 			// load posts

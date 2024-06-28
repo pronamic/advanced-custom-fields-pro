@@ -2,20 +2,18 @@
 
 if ( ! class_exists( 'acf_field_output' ) ) :
 
+	/**
+	 * This class and field type has been deprecated since ACF 6.3.2 and will not output anything.
+	 */
 	class acf_field_output extends acf_field {
 
 
 		/**
 		 * This function will setup the field type data
 		 *
-		 * @type    function
-		 * @date    5/03/2014
 		 * @since   5.0.0
-		 *
-		 * @param   n/a
-		 * @return  n/a
 		 */
-		function initialize() {
+		public function initialize() {
 
 			// vars
 			$this->name     = 'output';
@@ -28,32 +26,16 @@ if ( ! class_exists( 'acf_field_output' ) ) :
 
 
 		/**
-		 * Create the HTML interface for your field
+		 * The render field call. Deprecated since ACF 6.3.2.
 		 *
-		 * @param   $field (array) the $field being rendered
-		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
-		 *
-		 * @param   $field (array) the $field being edited
-		 * @return  n/a
+		 * @param   array $field The $field being edited
+		 * @return  false
 		 */
-		function render_field( $field ) {
+		public function render_field( $field ) {
 
-			// bail early if no html
-			if ( ! $field['html'] ) {
-				return;
-			}
-
-			// html
-			if ( is_string( $field['html'] ) && ! function_exists( $field['html'] ) ) {
-				echo acf_esc_html( $field['html'] );
-
-				// function
-			} else {
-				call_user_func_array( $field['html'], array( $field ) );
-			}
+			// Deprecated since 6.3.2 and will be removed in a future release.
+			_deprecated_function( __FUNCTION__, '6.3.2' );
+			return false;
 		}
 	}
 

@@ -32,6 +32,11 @@ if ( ! class_exists( 'ACF_Ajax_Local_JSON_Diff' ) ) :
 		 * @return array|WP_Error The response data or WP_Error.
 		 */
 		public function get_response( $request ) {
+			// Bail early if the current user can't access the ACF admin.
+			if ( ! acf_current_user_can_admin() ) {
+				return new WP_Error( 'acf_not_allowed', __( 'Sorry, you are not allowed to do that.', 'acf' ), array( 'status' => 403 ) );
+			}
+
 			$json = array();
 
 			// Extract props.
