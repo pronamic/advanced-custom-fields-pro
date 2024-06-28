@@ -16,6 +16,5 @@ jobs:
     - name: Release
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        ACF_PRO_LICENSE: ${{ secrets.ACF_PRO_LICENSE }}
-        ACF_PRO_URL: ${{ secrets.ACF_PRO_URL }}
+        PRONAMIC_ACF_AUTHORIZATION: ${{ secrets.PRONAMIC_ACF_AUTHORIZATION }}
       run: php .github/scripts/release.php
