@@ -98,7 +98,7 @@ if ( $release_found ) {
 /**
  * Download.
  */
-$url = 'https://acf-connect.pronamic.directory/download';
+$url = 'https://acf-connect.pronamic.directory/package';
 
 line(
 	sprintf(
