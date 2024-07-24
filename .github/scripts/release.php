@@ -42,26 +42,7 @@ $data = run(
 	)
 );
 
-$result = json_decode( $data );
-
-if ( ! is_object( $result ) ) {
-	throw new Exception(
-		sprintf(
-			'Unknow response from: %s.',
-			$url 
-		)
-	);
-
-	exit( 1 );
-}
-
-if ( ! property_exists( $result, 'version' ) ) {
-	echo 'No version';
-
-	exit( 1 );
-}
-
-$version = $result->version;
+$version = $data;
 
 line(
 	sprintf(
