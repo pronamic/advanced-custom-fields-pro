@@ -2716,6 +2716,31 @@ function acf_current_user_can_admin() {
 }
 
 /**
+ * Wrapper function for current_user_can( 'edit_post', $post_id ).
+ *
+ * @since 6.3.4
+ *
+ * @param integer $post_id The post ID to check.
+ * @return boolean
+ */
+function acf_current_user_can_edit_post( int $post_id ): bool {
+	/**
+	 * The `edit_post` capability is a meta capability, which
+	 * gets converted to the correct post type object `edit_post`
+	 * equivalent.
+	 *
+	 * If the post type does not have `map_meta_cap` enabled and the user is
+	 * not manually mapping the `edit_post` capability, this will fail
+	 * unless the role has the `edit_post` capability added to a user/role.
+	 *
+	 * However, more (core) stuff will likely break in this scenario.
+	 */
+	$user_can_edit = current_user_can( 'edit_post', $post_id );
+
+	return (bool) apply_filters( 'acf/current_user_can_edit_post', $user_can_edit, $post_id );
+}
+
+/**
  * acf_get_filesize
  *
  * This function will return a numeric value of bytes for a given filesize string

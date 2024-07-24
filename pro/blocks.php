@@ -786,6 +786,8 @@ function acf_enqueue_block_assets() {
 			'Switch to Edit'           => __( 'Switch to Edit', 'acf' ),
 			'Switch to Preview'        => __( 'Switch to Preview', 'acf' ),
 			'Change content alignment' => __( 'Change content alignment', 'acf' ),
+			'Error previewing block'   => __( 'An error occurred when loading the preview for this block.', 'acf' ),
+			'Error loading block form' => __( 'An error occurred when loading the block in edit mode.', 'acf' ),
 
 			/* translators: %s: Block type title */
 			'%s settings'              => __( '%s settings', 'acf' ),
@@ -870,8 +872,7 @@ function acf_enqueue_block_type_assets( $block_type ) {
  */
 function acf_ajax_fetch_block() {
 	// Validate ajax request.
-	$render_capability = apply_filters( 'acf/blocks/render_capability', 'edit_posts' );
-	if ( ! acf_verify_ajax() || ! current_user_can( $render_capability ) ) {
+	if ( ! acf_verify_ajax() ) {
 		wp_send_json_error();
 	}
 
@@ -883,6 +884,21 @@ function acf_ajax_fetch_block() {
 			'query'    => array(),
 		)
 	);
+
+	// Verify capability.
+	if ( ! empty( $args['post_id'] ) && is_numeric( $args['post_id'] ) ) {
+		// Editing a normal post - we can verify if the user has access to that post.
+		if ( ! acf_current_user_can_edit_post( (int) $args['post_id'] ) ) {
+			wp_send_json_error();
+		}
+	} else {
+		// Could be editing a widget, using the site editor, etc.
+		$render_capability = apply_filters( 'acf/blocks/render_capability', 'edit_theme_options', $args['post_id'] );
+
+		if ( ! current_user_can( $render_capability ) ) {
+			wp_send_json_error();
+		}
+	}
 
 	$args['block']   = isset( $_REQUEST['block'] ) ? $_REQUEST['block'] : false; //phpcs:ignore -- requires auth; designed to contain unescaped html.
 	$args['context'] = isset( $_REQUEST['context'] ) ? $_REQUEST['context'] : array(); //phpcs:ignore -- requires auth; designed to contain unescaped html.
@@ -1272,6 +1288,11 @@ function acf_validate_block_from_local_meta( $block_id, $field_objects ) {
 		 * preloading or during the first AJAX render if preloading is disabled.
 		 */
 		if ( $skip_conditional_fields && ! empty( $field['conditional_logic'] ) ) {
+			continue;
+		}
+
+		// Skip for nested fields - these don't work correctly on initial load of a saved block.
+		if ( ! empty( $field['sub_fields'] ) ) {
 			continue;
 		}
 

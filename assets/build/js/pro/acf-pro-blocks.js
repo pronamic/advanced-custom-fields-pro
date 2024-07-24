@@ -1325,6 +1325,10 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
         data
       }) => {
         acf.debug('fetch block form promise');
+        if (!data) {
+          this.setHtml(`<div class="acf-block-fields acf-fields acf-empty-block-fields">${acf.__('Error loading block form')}</div>`);
+          return;
+        }
         if (data.form) {
           this.setHtml(acf.applyFilters('blocks/form/render', data.form.replaceAll(data.clientId, clientId), false));
         }
@@ -1492,6 +1496,10 @@ const md5 = __webpack_require__(/*! md5 */ "./node_modules/md5/md5.js");
       }).done(({
         data
       }) => {
+        if (!data) {
+          this.setHtml(`<div class="acf-block-fields acf-fields acf-empty-block-fields">${acf.__('Error previewing block')}</div>`);
+          return;
+        }
         let replaceHtml = data.preview.replaceAll(data.clientId, clientId);
         if (getBlockVersion(name) == 1) {
           replaceHtml = '<div class="acf-block-preview">' + replaceHtml + '</div>';

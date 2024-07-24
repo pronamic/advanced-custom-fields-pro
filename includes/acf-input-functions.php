@@ -77,6 +77,11 @@ function acf_esc_attrs( $attrs ) {
  * @return  string
  */
 function acf_esc_html( $string = '' ) {
+
+	if ( ! is_scalar( $string ) ) {
+		return false;
+	}
+
 	return wp_kses( (string) $string, 'acf' );
 }
 

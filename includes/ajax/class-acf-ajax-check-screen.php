@@ -23,11 +23,6 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 		 * @return array|WP_Error The response data or WP_Error.
 		 */
 		public function get_response( $request ) {
-			if ( ! current_user_can( 'edit_posts' ) ) {
-				return new WP_Error( 'acf_invalid_permissions', __( 'Sorry, you do not have permission to do that.', 'acf' ) );
-			}
-
-			// vars
 			$args = wp_parse_args(
 				$this->request,
 				array(
@@ -38,7 +33,10 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 				)
 			);
 
-			// vars
+			if ( ! acf_current_user_can_edit_post( (int) $args['post_id'] ) ) {
+				return new WP_Error( 'acf_invalid_permissions', __( 'Sorry, you do not have permission to do that.', 'acf' ) );
+			}
+
 			$response = array(
 				'results' => array(),
 				'style'   => '',

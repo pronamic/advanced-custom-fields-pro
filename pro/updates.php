@@ -628,6 +628,10 @@ function acf_pro_deactivate_license( $silent = false ) {
 	);
 	$response = acf_updates()->request( 'v2/plugins/deactivate?p=pro', $post );
 
+	// Remove license key and status from DB.
+	acf_pro_update_license( '' );
+	acf_pro_remove_license_status();
+
 	// Check response is expected JSON array (not string).
 	if ( is_string( $response ) ) {
 		$response = new WP_Error( 'server_error', esc_html( $response ) );
@@ -640,10 +644,6 @@ function acf_pro_deactivate_license( $silent = false ) {
 		}
 		return $response;
 	}
-
-	// Remove license key and status from DB.
-	acf_pro_update_license( '' );
-	acf_pro_remove_license_status();
 
 	// Refresh plugins transient to fetch new update data.
 	acf_updates()->refresh_plugins_transient();
