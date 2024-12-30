@@ -1,0 +1,31 @@
+name: Deploy to Pronamic WordPress directory
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to deploy'
+        type: string
+  release:
+    types: [released]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: Pronamic WordPress directory
+      url: https://wp.pronamic.directory/plugins/advanced-custom-fields-pro/
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Deploy
+        uses: pronamic/action-wp-pronamic-directory-plugin-deploy@main
+        with:
+          username: ${{ vars.WP_PRONAMIC_DIRECTORY_USERNAME }}
+          password: ${{ secrets.WP_PRONAMIC_DIRECTORY_PASSWORD }}
+          slug: advanced-custom-fields-pro
+          tag: ${{ inputs.tag || github.event.release.tag_name }}
