@@ -107,7 +107,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		 */
 		public function register_scripts() {
 			// Extract vars.
-			$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			$suffix  = defined( 'ACF_DEVELOPMENT_MODE' ) && ACF_DEVELOPMENT_MODE ? '' : '.min';
 			$version = acf_get_setting( 'version' );
 
 			// Register scripts.
@@ -118,9 +118,9 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			wp_register_script( 'acf-escaped-html-notice', acf_get_url( 'assets/build/js/acf-escaped-html-notice' . $suffix . '.js' ), array( 'jquery' ), $version, true );
 
 			// Register styles.
-			wp_register_style( 'acf-global', acf_get_url( 'assets/build/css/acf-global.css' ), array( 'dashicons' ), $version );
-			wp_register_style( 'acf-input', acf_get_url( 'assets/build/css/acf-input.css' ), array( 'acf-global' ), $version );
-			wp_register_style( 'acf-field-group', acf_get_url( 'assets/build/css/acf-field-group.css' ), array( 'acf-input' ), $version );
+			wp_register_style( 'acf-global', acf_get_url( 'assets/build/css/acf-global' . $suffix . '.css' ), array( 'dashicons' ), $version );
+			wp_register_style( 'acf-input', acf_get_url( 'assets/build/css/acf-input' . $suffix . '.css' ), array( 'acf-global' ), $version );
+			wp_register_style( 'acf-field-group', acf_get_url( 'assets/build/css/acf-field-group' . $suffix . '.css' ), array( 'acf-input' ), $version );
 
 			/**
 			 * Fires after core scripts and styles have been registered.
@@ -475,7 +475,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				'validation'  => acf_get_form_data( 'validation' ),
 				'editor'      => acf_is_block_editor() ? 'block' : 'classic',
 				'is_pro'      => acf_is_pro(),
-				'debug'       => acf_is_beta() || ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ),
+				'debug'       => acf_is_beta() || ( defined( 'ACF_DEVELOPMENT_MODE' ) && ACF_DEVELOPMENT_MODE ),
 			);
 
 			acf_localize_data( $data_to_localize );

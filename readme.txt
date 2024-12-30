@@ -2,9 +2,8 @@
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
-Tested up to: 6.6
+Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 6.3.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +92,70 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.3.11 =
+*Release Date 12th November 2024*
+
+* Enhancement - Field Group keys are now copyable on click
+* Fix - Repeater tables with fields hidden by conditional logic now render correctly
+* Fix - ACF Blocks now behave correctly in React StrictMode
+* Fix - Edit mode is no longer available to ACF Blocks with an WordPress Block API version of 3 as field editing is not supported in the iframe
+
+= 6.3.10.2 =
+*Release Date 29th October 2024*
+*Free Only Release*
+
+* Fix - ACF Free no longer causes a fatal error when any unsupported legacy ACF addons are active
+
+= 6.3.10.1 =
+*Release Date 29th October 2024*
+*Free Only Release*
+
+* Fix - ACF Free no longer causes a fatal error when WPML is active
+
+= 6.3.10 =
+*Release Date 29th October 2024*
+
+* Security - Setting a metabox callback for custom post types and taxonomies now requires being an admin, or super admin for multisite installs
+* Security - Field specific ACF nonces are now prefixed, resolving an issue where third party nonces could be treated as valid for AJAX calls
+* Enhancement - A new “Close and Add Field” option is now available when editing a field group, inserting a new field inline after the field being edited
+* Enhancement - ACF and ACF PRO now share the same plugin updater for improved reliability and performance
+* Fix - Exporting post types and taxonomies containing metabox callbacks now correctly exports the user defined callback
+
+= 6.3.9 =
+*Release Date 15th October 2024*
+
+* Security - Editing an ACF Field in the Field Group editor can no longer execute a stored XSS vulnerability. Thanks to Duc Luong Tran (janlele91) from Viettel Cyber Security for the responsible disclosure
+* Security - Post Type and Taxonomy metabox callbacks no longer have access to any superglobal values, hardening the original fix from 6.3.8 further
+* Fix - ACF fields now correctly validate when used in the block editor and attached to the sidebar
+
+= 6.3.8 =
+*Release Date 7th October 2024*
+
+* Security - ACF defined Post Type and Taxonomy metabox callbacks no longer have access to $_POST data. (Thanks to the Automattic Security Team for the disclosure)
+
+= 6.3.7 =
+*Release Date 2nd October 2024*
+
+* Security - ACF Free now uses its own update mechanism from WP Engine servers
+
+= 6.3.6 =
+*Release Date 28th August 2024*
+
+* Security - Newly added fields now have to be explicitly set to allow access in the content editor (when using the ACF shortcode or Block Bindings) to increase the security around field permissions. [See the release notes for more details](https://www.advancedcustomfields.com/blog/acf-6-3-6/#field-value-access-editor)
+* Security Fix - Field labels are now correctly escaped when rendered in the Field Group editor, to prevent a potential XSS issue. Thanks to Ryo Sotoyama of Mitsui Bussan Secure Directions, Inc. for the responsible disclosure
+* Fix - Validation and Block AJAX requests nonces will no longer be overridden by third party plugins
+* Fix - Detection of third party select2 libraries will now default to v4 rather than v3
+* Fix - Block previews will now display an error if the render template PHP file is not found
+
+= 6.3.5 =
+*Release Date 1st August 2024*
+
+* Fix - The ACF Shortcode now correctly outputs a comma separated list of values for arrays
+* Fix - ACF Blocks rendered in auto mode now correctly re-render their previews after editing fields
+* Fix - ACF Block validation no longer raises required validation messages if HTML will automatically select the first value when rendered
+* Fix - ACF Block validation no longer raises required validation messages if a default value will be rendered as the field value
+* Fix - ACF Block validation no longer raises required validation messages for fields hidden by conditional logic when adding a new block
 
 = 6.3.4 =
 *Release Date 18th July 2024*

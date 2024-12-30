@@ -838,24 +838,39 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 				'field'
 			);
 
-			acf_render_field_wrap(
-				array(
-					'type'         => 'text',
-					'name'         => 'register_meta_box_cb',
-					'key'          => 'register_meta_box_cb',
-					'prefix'       => 'acf_post_type',
-					'value'        => $acf_post_type['register_meta_box_cb'],
-					'label'        => __( 'Custom Meta Box Callback', 'acf' ),
-					'instructions' => __( 'A PHP function name to be called when setting up the meta boxes for the edit screen.', 'acf' ),
-					'conditions'   => array(
-						'field'    => 'show_ui',
-						'operator' => '==',
-						'value'    => '1',
+			$acf_enable_meta_box_cb_edit  = acf_get_setting( 'enable_meta_box_cb_edit' );
+			$acf_meta_box_cb_instructions = __( 'A PHP function name to be called when setting up the meta boxes for the edit screen. For security, this callback will be executed in a special context without access to any superglobals like $_POST or $_GET.', 'acf' );
+
+			// Only show if user is allowed to update, or if it already has a value.
+			if ( $acf_enable_meta_box_cb_edit || ! empty( $acf_post_type['register_meta_box_cb'] ) ) {
+				if ( ! $acf_enable_meta_box_cb_edit ) {
+					if ( is_multisite() ) {
+						$acf_meta_box_cb_instructions .= ' ' . __( 'By default only super admin users can edit this setting.', 'acf' );
+					} else {
+						$acf_meta_box_cb_instructions .= ' ' . __( 'By default only admin users can edit this setting.', 'acf' );
+					}
+				}
+
+				acf_render_field_wrap(
+					array(
+						'type'         => 'text',
+						'name'         => 'register_meta_box_cb',
+						'key'          => 'register_meta_box_cb',
+						'prefix'       => 'acf_post_type',
+						'value'        => $acf_post_type['register_meta_box_cb'],
+						'label'        => __( 'Custom Meta Box Callback', 'acf' ),
+						'instructions' => $acf_meta_box_cb_instructions,
+						'readonly'     => ! $acf_enable_meta_box_cb_edit,
+						'conditions'   => array(
+							'field'    => 'show_ui',
+							'operator' => '==',
+							'value'    => '1',
+						),
 					),
-				),
-				'div',
-				'field'
-			);
+					'div',
+					'field'
+				);
+			}
 
 			acf_render_field_wrap(
 				array(

@@ -745,6 +745,16 @@ foreach ( acf_get_combined_taxonomy_settings_tabs() as $tab_key => $tab_label ) 
 			$acf_tags_meta_box_text       = __( 'Tags Meta Box', 'acf' );
 			$acf_categories_meta_box_text = __( 'Categories Meta Box', 'acf' );
 			$acf_default_meta_box_text    = empty( $acf_taxonomy['hierarchical'] ) ? $acf_tags_meta_box_text : $acf_categories_meta_box_text;
+			$acf_enable_meta_box_cb_edit  = acf_get_setting( 'enable_meta_box_cb_edit' );
+			$acf_meta_box_choices         = array(
+				'default'  => $acf_default_meta_box_text,
+				'custom'   => __( 'Custom Meta Box', 'acf' ),
+				'disabled' => __( 'No Meta Box', 'acf' ),
+			);
+
+			if ( ! $acf_enable_meta_box_cb_edit && 'custom' !== $acf_taxonomy['meta_box'] ) {
+				unset( $acf_meta_box_choices['custom'] );
+			}
 
 			acf_render_field_wrap(
 				array(
@@ -757,11 +767,7 @@ foreach ( acf_get_combined_taxonomy_settings_tabs() as $tab_key => $tab_label ) 
 					'label'        => __( 'Meta Box', 'acf' ),
 					'instructions' => __( 'Controls the meta box on the content editor screen. By default, the Categories meta box is shown for hierarchical taxonomies, and the Tags meta box is shown for non-hierarchical taxonomies.', 'acf' ),
 					'hide_search'  => true,
-					'choices'      => array(
-						'default'  => $acf_default_meta_box_text,
-						'custom'   => __( 'Custom Meta Box', 'acf' ),
-						'disabled' => __( 'No Meta Box', 'acf' ),
-					),
+					'choices'      => $acf_meta_box_choices,
 					'data'         => array(
 						'tags_meta_box'       => __( 'Tags Meta Box', 'acf' ),
 						'categories_meta_box' => __( 'Categories Meta Box', 'acf' ),
@@ -794,54 +800,68 @@ foreach ( acf_get_combined_taxonomy_settings_tabs() as $tab_key => $tab_label ) 
 				)
 			);
 
-			acf_render_field_wrap(
-				array(
-					'type'         => 'text',
-					'name'         => 'meta_box_cb',
-					'key'          => 'meta_box_cb',
-					'prefix'       => 'acf_taxonomy',
-					'value'        => $acf_taxonomy['meta_box_cb'],
-					'label'        => __( 'Register Meta Box Callback', 'acf' ),
-					'instructions' => __( 'A PHP function name to be called to handle the content of a meta box on your taxonomy.', 'acf' ),
-					'conditions'   => array(
-						'field'    => 'meta_box',
-						'operator' => '==',
-						'value'    => 'custom',
-					),
-				),
-				'div',
-				'field'
-			);
+			if ( $acf_enable_meta_box_cb_edit || 'custom' === $acf_taxonomy['meta_box'] ) {
+				$acf_meta_box_cb_instructions = __( 'A PHP function name to be called to handle the content of a meta box on your taxonomy. For security, this callback will be executed in a special context without access to any superglobals like $_POST or $_GET.', 'acf' );
 
-			acf_render_field_wrap(
-				array(
-					'type'         => 'text',
-					'name'         => 'meta_box_sanitize_cb',
-					'key'          => 'meta_box_sanitize_cb',
-					'prefix'       => 'acf_taxonomy',
-					'value'        => $acf_taxonomy['meta_box_sanitize_cb'],
-					'label'        => __( 'Meta Box Sanitization Callback', 'acf' ),
-					'instructions' => __( 'A PHP function name to be called for sanitizing taxonomy data saved from a meta box.', 'acf' ),
-					'conditions'   => array(
-						'field'    => 'meta_box',
-						'operator' => '==',
-						'value'    => 'custom',
-					),
-				),
-				'div',
-				'field'
-			);
+				if ( ! $acf_enable_meta_box_cb_edit ) {
+					if ( is_multisite() ) {
+						$acf_meta_box_cb_instructions .= ' ' . __( 'By default only super admin users can edit this setting.', 'acf' );
+					} else {
+						$acf_meta_box_cb_instructions .= ' ' . __( 'By default only admin users can edit this setting.', 'acf' );
+					}
+				}
 
-			acf_render_field_wrap(
-				array(
-					'type'       => 'seperator',
-					'conditions' => array(
-						'field'    => 'meta_box',
-						'operator' => '==',
-						'value'    => 'custom',
+				acf_render_field_wrap(
+					array(
+						'type'         => 'text',
+						'name'         => 'meta_box_cb',
+						'key'          => 'meta_box_cb',
+						'prefix'       => 'acf_taxonomy',
+						'value'        => $acf_taxonomy['meta_box_cb'],
+						'label'        => __( 'Register Meta Box Callback', 'acf' ),
+						'instructions' => $acf_meta_box_cb_instructions,
+						'readonly'     => ! $acf_enable_meta_box_cb_edit,
+						'conditions'   => array(
+							'field'    => 'meta_box',
+							'operator' => '==',
+							'value'    => 'custom',
+						),
 					),
-				)
-			);
+					'div',
+					'field'
+				);
+
+				acf_render_field_wrap(
+					array(
+						'type'         => 'text',
+						'name'         => 'meta_box_sanitize_cb',
+						'key'          => 'meta_box_sanitize_cb',
+						'prefix'       => 'acf_taxonomy',
+						'value'        => $acf_taxonomy['meta_box_sanitize_cb'],
+						'label'        => __( 'Meta Box Sanitization Callback', 'acf' ),
+						'instructions' => __( 'A PHP function name to be called for sanitizing taxonomy data saved from a meta box.', 'acf' ),
+						'readonly'     => ! $acf_enable_meta_box_cb_edit,
+						'conditions'   => array(
+							'field'    => 'meta_box',
+							'operator' => '==',
+							'value'    => 'custom',
+						),
+					),
+					'div',
+					'field'
+				);
+
+				acf_render_field_wrap(
+					array(
+						'type'       => 'seperator',
+						'conditions' => array(
+							'field'    => 'meta_box',
+							'operator' => '==',
+							'value'    => 'custom',
+						),
+					)
+				);
+			}
 
 			acf_render_field_wrap(
 				array(

@@ -24,7 +24,6 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			acf_include( 'pro/blocks.php' );
 			acf_include( 'pro/options-page.php' );
 			acf_include( 'pro/acf-ui-options-page-functions.php' );
-			acf_include( 'pro/class-acf-updates.php' );
 			acf_include( 'pro/updates.php' );
 
 			if ( is_admin() ) {
@@ -113,7 +112,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 		 */
 		public function register_assets() {
 			$version = acf_get_setting( 'version' );
-			$min     = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+			$min     = defined( 'ACF_DEVELOPMENT_MODE' ) && ACF_DEVELOPMENT_MODE ? '' : '.min';
 
 			// Register scripts.
 			wp_register_script( 'acf-pro-input', acf_get_url( "assets/build/js/pro/acf-pro-input{$min}.js" ), array( 'acf-input' ), $version );
@@ -121,8 +120,8 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			wp_register_script( 'acf-pro-ui-options-page', acf_get_url( "assets/build/js/pro/acf-pro-ui-options-page{$min}.js" ), array( 'acf-input' ), $version );
 
 			// Register styles.
-			wp_register_style( 'acf-pro-input', acf_get_url( 'assets/build/css/pro/acf-pro-input.css' ), array( 'acf-input' ), $version );
-			wp_register_style( 'acf-pro-field-group', acf_get_url( 'assets/build/css/pro/acf-pro-field-group.css' ), array( 'acf-input' ), $version );
+			wp_register_style( 'acf-pro-input', acf_get_url( 'assets/build/css/pro/acf-pro-input' . $min . '.css' ), array( 'acf-input' ), $version );
+			wp_register_style( 'acf-pro-field-group', acf_get_url( 'assets/build/css/pro/acf-pro-field-group' . $min . '.css' ), array( 'acf-input' ), $version );
 
 			if ( is_admin() ) {
 				$to_localize = array(

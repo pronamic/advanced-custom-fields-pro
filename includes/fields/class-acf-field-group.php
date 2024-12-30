@@ -24,6 +24,9 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 			$this->description   = __( 'Provides a way to structure fields into groups to better organize the data and the edit screen.', 'acf' );
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-group.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/group/', 'docs', 'field-type-selection' );
+			$this->supports      = array(
+				'bindings' => false,
+			);
 			$this->defaults      = array(
 				'sub_fields' => array(),
 				'layout'     => 'block',

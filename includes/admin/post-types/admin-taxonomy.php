@@ -314,6 +314,29 @@ if ( ! class_exists( 'ACF_Admin_Taxonomy' ) ) :
 			$_POST['acf_taxonomy']['ID']    = $post_id;
 			$_POST['acf_taxonomy']['title'] = isset( $_POST['acf_taxonomy']['labels']['name'] ) ? $_POST['acf_taxonomy']['labels']['name'] : '';
 
+			if ( ! acf_get_setting( 'enable_meta_box_cb_edit' ) ) {
+				$_POST['acf_taxonomy']['meta_box_cb']          = '';
+				$_POST['acf_taxonomy']['meta_box_sanitize_cb'] = '';
+
+				if ( ! empty( $_POST['acf_taxonomy']['meta_box'] ) && 'custom' === $_POST['acf_taxonomy']['meta_box'] ) {
+					$_POST['acf_taxonomy']['meta_box'] = 'default';
+				}
+
+				$existing_post = acf_maybe_unserialize( $post->post_content );
+
+				if ( ! empty( $existing_post['meta_box'] ) ) {
+					$_POST['acf_taxonomy']['meta_box'] = $existing_post['meta_box'];
+				}
+
+				if ( ! empty( $existing_post['meta_box_cb'] ) ) {
+					$_POST['acf_taxonomy']['meta_box_cb'] = $existing_post['meta_box_cb'];
+				}
+
+				if ( ! empty( $existing_post['meta_box_sanitize_cb'] ) ) {
+					$_POST['acf_taxonomy']['meta_box_sanitize_cb'] = $existing_post['meta_box_sanitize_cb'];
+				}
+			}
+
 			// Save the taxonomy.
 			acf_update_internal_post_type( $_POST['acf_taxonomy'], $this->post_type ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Validated in verify_save_post
 			// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized

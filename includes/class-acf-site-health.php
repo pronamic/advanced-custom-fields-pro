@@ -287,6 +287,11 @@ if ( ! class_exists( 'ACF_Site_Health' ) ) {
 				'debug' => $is_pro ? 'PRO' : 'Free',
 			);
 
+			$fields['update_source'] = array(
+				'label' => __( 'Update Source', 'acf' ),
+				'value' => __( 'ACF Direct', 'acf' ),
+			);
+
 			if ( $is_pro ) {
 				$fields['activated'] = array(
 					'label' => __( 'License Activated', 'acf' ),

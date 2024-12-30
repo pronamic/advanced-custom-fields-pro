@@ -1008,7 +1008,7 @@ function acf_shortcode( $atts ) {
 	// Return if the ACF shortcode is disabled.
 	if ( ! acf_get_setting( 'enable_shortcode' ) ) {
 		if ( is_preview() ) {
-			return apply_filters( 'acf/shortcode/disabled_message', __( '[The ACF shortcode is disabled on this site]', 'acf' ) );
+			return apply_filters( 'acf/shortcode/disabled_message', esc_html__( '[The ACF shortcode is disabled on this site]', 'acf' ) );
 		} else {
 			return;
 		}
@@ -1024,7 +1024,7 @@ function acf_shortcode( $atts ) {
 	// Limit previews of ACF shortcode data for users without publish_posts permissions.
 	$preview_capability = apply_filters( 'acf/shortcode/preview_capability', 'publish_posts' );
 	if ( is_preview() && ! current_user_can( $preview_capability ) ) {
-		return apply_filters( 'acf/shortcode/preview_capability_message', __( '[ACF shortcode value disabled for preview]', 'acf' ) );
+		return apply_filters( 'acf/shortcode/preview_capability_message', esc_html__( '[ACF shortcode value disabled for preview]', 'acf' ) );
 	}
 
 	// Mitigate issue where some AJAX requests can return ACF field data.
@@ -1051,7 +1051,7 @@ function acf_shortcode( $atts ) {
 	if ( $decoded_post_id['type'] === 'post' ) {
 		if ( $atts['post_id'] !== false && ( (int) $atts['post_id'] !== (int) acf_get_valid_post_id() ) && ( ! is_post_publicly_viewable( $decoded_post_id['id'] ) ) && apply_filters( 'acf/shortcode/prevent_access_to_fields_on_non_public_posts', true ) ) {
 			if ( is_preview() ) {
-				return apply_filters( 'acf/shortcode/post_not_public_message', __( '[The ACF shortcode cannot display fields from non-public posts]', 'acf' ) );
+				return apply_filters( 'acf/shortcode/post_not_public_message', esc_html__( '[The ACF shortcode cannot display fields from non-public posts]', 'acf' ) );
 			} else {
 				return;
 			}
@@ -1072,8 +1072,28 @@ function acf_shortcode( $atts ) {
 
 	$field_type = is_array( $field ) && isset( $field['type'] ) ? $field['type'] : 'text';
 
+	if ( ! acf_field_type_supports( $field_type, 'bindings', true ) ) {
+		if ( is_preview() ) {
+			return apply_filters( 'acf/shortcode/field_not_supported_message', '[' . esc_html__( 'The requested ACF field type does not support output in bindings or the ACF Shortcode.', 'acf' ) . ']' );
+		} else {
+			return;
+		}
+	}
+
+	if ( isset( $field['allow_in_bindings'] ) && ! $field['allow_in_bindings'] ) {
+		if ( is_preview() ) {
+			return apply_filters( 'acf/shortcode/field_not_allowed_message', '[' . esc_html__( 'The requested ACF field is not allowed to be output in bindings or the ACF Shortcode.', 'acf' ) . ']' );
+		} else {
+			return;
+		}
+	}
+
 	if ( apply_filters( 'acf/shortcode/prevent_access', false, $atts, $decoded_post_id['id'], $decoded_post_id['type'], $field_type, $field ) ) {
 		return;
+	}
+
+	if ( is_array( $value ) ) {
+		$value = implode( ', ', $value );
 	}
 
 	// Temporarily always get the unescaped version for action comparison.

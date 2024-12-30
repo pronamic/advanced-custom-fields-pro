@@ -28,11 +28,12 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 			$this->name          = 'repeater';
 			$this->label         = __( 'Repeater', 'acf' );
 			$this->category      = 'layout';
-			$this->description   = __( 'Allows you to select and display existing fields. It does not duplicate any fields in the database, but loads and displays the selected fields at run-time. The Clone field can either replace itself with the selected fields or display the selected fields as a group of subfields.', 'acf' );
+			$this->description   = __( 'Provides a solution for repeating content such as slides, team members, and call-to-action tiles, by acting as a parent to a set of subfields which can be repeated again and again.', 'acf' );
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-repeater.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/repeater/', 'docs', 'field-type-selection' );
 			$this->tutorial_url  = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/repeater/how-to-use-the-repeater-field/', 'docs', 'field-type-selection' );
 			$this->pro           = true;
+			$this->supports      = array( 'bindings' => false );
 			$this->defaults      = array(
 				'sub_fields'    => array(),
 				'min'           => 0,
@@ -1045,7 +1046,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 				)
 			);
 
-			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'] ) ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
 				$error = array( 'error' => __( 'Invalid nonce.', 'acf' ) );
 				wp_send_json_error( $error, 401 );
 			}
@@ -1098,4 +1099,3 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 	// initialize
 	acf_register_field_type( 'acf_field_repeater' );
 endif; // class_exists check
-

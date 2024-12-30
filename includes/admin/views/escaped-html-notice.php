@@ -28,7 +28,7 @@ if ( current_user_can( acf_get_setting( 'capability' ) ) ) {
 }
 
 $acf_error_msg = sprintf(
-/* translators: %1$s - name of the ACF plugin. %2$s - Link to documentation. %3$s - Link to show more details about the error */
+	/* translators: %1$s - name of the ACF plugin. %2$s - Link to documentation. */
 	__( '%1$s ACF now automatically escapes unsafe HTML when rendered by <code>the_field</code> or the ACF shortcode. We\'ve detected the output of some of your fields has been modified by this change, but this may not be a breaking change. %2$s.', 'acf' ),
 	$acf_plugin_name,
 	$acf_learn_how_to_fix

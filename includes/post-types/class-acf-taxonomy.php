@@ -423,7 +423,7 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 			$meta_box = isset( $post['meta_box'] ) ? (string) $post['meta_box'] : 'default';
 
 			if ( 'custom' === $meta_box && ! empty( $post['meta_box_cb'] ) ) {
-				$args['meta_box_cb'] = (string) $post['meta_box_cb'];
+				$args['meta_box_cb'] = array( $this, 'build_safe_context_for_metabox_cb' );
 
 				if ( ! empty( $post['meta_box_sanitize_cb'] ) ) {
 					$args['meta_box_sanitize_cb'] = (string) $post['meta_box_sanitize_cb'];
@@ -505,6 +505,60 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 		}
 
 		/**
+		 * Ensure the metabox being called does not perform any unsafe operations.
+		 *
+		 * @since 6.3.8
+		 *
+		 * @param WP_Post $post The post being rendered.
+		 * @param array   $tax  The provided taxonomy information required for callback render.
+		 * @return mixed The callback result.
+		 */
+		public function build_safe_context_for_metabox_cb( $post, $tax ) {
+			$taxonomies = $this->get_posts();
+			$this_tax   = array_filter(
+				$taxonomies,
+				function ( $taxonomy ) use ( $tax ) {
+					return $taxonomy['taxonomy'] === $tax['args']['taxonomy'];
+				}
+			);
+			if ( empty( $this_tax ) || ! is_array( $this_tax ) ) {
+				// Unable to find the ACF taxonomy. Don't do anything.
+				return;
+			}
+			$acf_taxonomy = array_shift( $this_tax );
+			$original_cb  = isset( $acf_taxonomy['meta_box_cb'] ) ? $acf_taxonomy['meta_box_cb'] : false;
+
+			// Prevent access to any wp_ prefixed functions in a callback.
+			if ( apply_filters( 'acf/taxonomy/prevent_access_to_wp_functions_in_meta_box_cb', true ) && substr( strtolower( $original_cb ), 0, 3 ) === 'wp_' ) {
+				// Don't execute register meta box callbacks if an internal wp function by default.
+				return;
+			}
+
+			$unset     = array( '_POST', '_GET', '_REQUEST', '_COOKIE', '_SESSION', '_FILES', '_ENV', '_SERVER' );
+			$originals = array();
+
+			foreach ( $unset as $var ) {
+				if ( isset( $GLOBALS[ $var ] ) ) {
+					$originals[ $var ] = $GLOBALS[ $var ];
+					$GLOBALS[ $var ]   = array(); //phpcs:ignore -- used for building a safe context
+				}
+			}
+
+			$return = false;
+			if ( is_callable( $original_cb ) ) {
+				$return = call_user_func( $original_cb, $post, $tax );
+			}
+
+			foreach ( $unset as $var ) {
+				if ( isset( $originals[ $var ] ) ) {
+					$GLOBALS[ $var ] = $originals[ $var ]; //phpcs:ignore -- used for restoring the original context
+				}
+			}
+
+			return $return;
+		}
+
+		/**
 		 * Returns a string that can be used to create a taxonomy in PHP.
 		 *
 		 * @since 6.1
@@ -523,7 +577,13 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 			$objects      = (array) $post['object_type'];
 			$objects      = var_export( $objects, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions -- Used for PHP export.
 			$args         = $this->get_taxonomy_args( $post, false );
-			$args         = var_export( $args, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions -- Used for PHP export.
+
+			// Restore original metabox callback.
+			if ( ! empty( $args['meta_box_cb'] ) && ! empty( $post['meta_box_cb'] ) ) {
+				$args['meta_box_cb'] = $post['meta_box_cb'];
+			}
+
+			$args = var_export( $args, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions -- Used for PHP export.
 
 			if ( ! $args ) {
 				return $return;
@@ -598,6 +658,37 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 			}
 
 			return $post;
+		}
+
+		/**
+		 * Prepares an ACF taxonomy for import.
+		 *
+		 * @since 6.3.10
+		 *
+		 * @param array $post The ACF post array.
+		 * @return array
+		 */
+		public function prepare_post_for_import( $post ) {
+			if ( ! acf_get_setting( 'enable_meta_box_cb_edit' ) && ( ! empty( $post['meta_box_cb'] ) || ! empty( $post['meta_box_sanitize_cb'] ) ) ) {
+				$post['meta_box_cb']          = '';
+				$post['meta_box_sanitize_cb'] = '';
+
+				if ( ! empty( $post['meta_box'] ) && 'custom' === $post['meta_box'] ) {
+					$post['meta_box'] = 'default';
+				}
+
+				if ( ! empty( $post['ID'] ) ) {
+					$existing_post = $this->get_post( $post['ID'] );
+
+					if ( is_array( $existing_post ) ) {
+						$post['meta_box']             = ! empty( $existing_post['meta_box'] ) ? (string) $existing_post['meta_box'] : '';
+						$post['meta_box_cb']          = ! empty( $existing_post['meta_box_cb'] ) ? (string) $existing_post['meta_box_cb'] : '';
+						$post['meta_box_sanitize_cb'] = ! empty( $existing_post['meta_box_sanitize_cb'] ) ? (string) $existing_post['meta_box_sanitize_cb'] : '';
+					}
+				}
+			}
+
+			return parent::prepare_post_for_import( $post );
 		}
 
 		/**

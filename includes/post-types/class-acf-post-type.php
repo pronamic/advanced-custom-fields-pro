@@ -528,9 +528,9 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 				$args['supports'] = $supports;
 			}
 
-			// Handle register meta box callbacks if set from an import.
+			// Handle register meta box callbacks safely
 			if ( ! empty( $post['register_meta_box_cb'] ) ) {
-				$args['register_meta_box_cb'] = (string) $post['register_meta_box_cb'];
+				$args['register_meta_box_cb'] = array( $this, 'build_safe_context_for_metabox_cb' );
 			}
 
 			// WordPress doesn't register any default taxonomies.
@@ -620,6 +620,59 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 		}
 
 		/**
+		 * Ensure the metabox being called does not perform any unsafe operations.
+		 *
+		 * @since 6.3.8
+		 *
+		 * @param WP_Post $post The post being rendered.
+		 * @return mixed The callback result.
+		 */
+		public function build_safe_context_for_metabox_cb( $post ) {
+			$post_types = $this->get_posts();
+			$this_post  = array_filter(
+				$post_types,
+				function ( $post_type ) use ( $post ) {
+					return $post_type['post_type'] === $post->post_type;
+				}
+			);
+			if ( empty( $this_post ) || ! is_array( $this_post ) ) {
+				// Unable to find the ACF post type. Don't do anything.
+				return;
+			}
+			$acf_post_type = array_shift( $this_post );
+			$original_cb   = isset( $acf_post_type['register_meta_box_cb'] ) ? $acf_post_type['register_meta_box_cb'] : false;
+
+			// Prevent access to any wp_ prefixed functions in a callback.
+			if ( apply_filters( 'acf/post_type/prevent_access_to_wp_functions_in_meta_box_cb', true ) && substr( strtolower( $original_cb ), 0, 3 ) === 'wp_' ) {
+				// Don't execute register meta box callbacks if an internal wp function by default.
+				return;
+			}
+
+			$unset     = array( '_POST', '_GET', '_REQUEST', '_COOKIE', '_SESSION', '_FILES', '_ENV', '_SERVER' );
+			$originals = array();
+
+			foreach ( $unset as $var ) {
+				if ( isset( $GLOBALS[ $var ] ) ) {
+					$originals[ $var ] = $GLOBALS[ $var ];
+					$GLOBALS[ $var ]   = array(); //phpcs:ignore -- used for building a safe context
+				}
+			}
+
+			$return = false;
+			if ( is_callable( $original_cb ) ) {
+				$return = call_user_func( $original_cb, $post );
+			}
+
+			foreach ( $unset as $var ) {
+				if ( isset( $originals[ $var ] ) ) {
+					$GLOBALS[ $var ] = $originals[ $var ]; //phpcs:ignore -- used for restoring the original context
+				}
+			}
+
+			return $return;
+		}
+
+		/**
 		 * Returns a string that can be used to create a post type in PHP.
 		 *
 		 * @since 6.1
@@ -638,6 +691,12 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 			// Validate and prepare the post for export.
 			$post = $this->validate_post( $post );
 			$args = $this->get_post_type_args( $post, false );
+
+			// Restore original metabox callback.
+			if ( ! empty( $args['register_meta_box_cb'] ) && ! empty( $post['register_meta_box_cb'] ) ) {
+				$args['register_meta_box_cb'] = (string) $post['register_meta_box_cb'];
+			}
+
 			$code = var_export( $args, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions -- Used for PHP export.
 
 			if ( ! $code ) {
@@ -712,6 +771,30 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 			}
 
 			return $post;
+		}
+
+		/**
+		 * Prepares an ACF post type for import.
+		 *
+		 * @since 6.3.10
+		 *
+		 * @param array $post The ACF post array.
+		 * @return array
+		 */
+		public function prepare_post_for_import( $post ) {
+			if ( ! acf_get_setting( 'enable_meta_box_cb_edit' ) && ! empty( $post['register_meta_box_cb'] ) ) {
+				$post['register_meta_box_cb'] = '';
+
+				if ( ! empty( $post['ID'] ) ) {
+					$existing_post = $this->get_post( $post['ID'] );
+
+					if ( is_array( $existing_post ) ) {
+						$post['register_meta_box_cb'] = ! empty( $existing_post['register_meta_box_cb'] ) ? (string) $existing_post['register_meta_box_cb'] : '';
+					}
+				}
+			}
+
+			return parent::prepare_post_for_import( $post );
 		}
 
 		/**

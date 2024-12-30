@@ -70,11 +70,10 @@ function acf_esc_attrs( $attrs ) {
  *
  * This function emulates `wp_kses_post()` with a context of "acf" for extensibility.
  *
- * @date    16/4/21
- * @since   5.9.6
+ * @since  5.9.6
  *
- * @param   string $string
- * @return  string
+ * @param  string $string The string to be escaped
+ * @return string|false
  */
 function acf_esc_html( $string = '' ) {
 
@@ -88,12 +87,11 @@ function acf_esc_html( $string = '' ) {
 /**
  * Private callback for the "wp_kses_allowed_html" filter used to return allowed HTML for "acf" context.
  *
- * @date    16/4/21
  * @since   5.9.6
  *
- * @param   array  $tags    An array of allowed tags.
- * @param   string $context The context name.
- * @return  array.
+ * @param  array  $tags    An array of allowed tags.
+ * @param  string $context The context name.
+ * @return array
  */
 function _acf_kses_allowed_html( $tags, $context ) {
 	global $allowedposttags;

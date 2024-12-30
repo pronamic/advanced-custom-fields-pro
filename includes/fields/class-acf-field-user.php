@@ -164,7 +164,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			$field['ui']      = 1;
 			$field['ajax']    = 1;
 			$field['choices'] = array();
-			$field['nonce']   = wp_create_nonce( $field['key'] );
+			$field['nonce']   = wp_create_nonce( 'acf_field_' . $this->name . '_' . $field['key'] );
 
 			// Populate choices.
 			if ( $field['value'] ) {
@@ -404,7 +404,7 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 			$nonce = acf_request_arg( 'nonce', '' );
 			$key   = acf_request_arg( 'field_key', '' );
 
-			if ( ! acf_verify_ajax( $nonce, $key ) ) {
+			if ( ! acf_verify_ajax( $nonce, $key, true ) ) {
 				$query->send( new WP_Error( 'acf_invalid_request', __( 'Invalid request.', 'acf' ), array( 'status' => 404 ) ) );
 			}
 		}

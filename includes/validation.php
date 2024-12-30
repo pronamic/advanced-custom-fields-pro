@@ -118,40 +118,40 @@ if ( ! class_exists( 'acf_validation' ) ) :
 			$this->errors = array();
 		}
 
-
 		/**
-		 * This function will validate the $_POST data via AJAX
+		 * Validates $_POST data via AJAX prior to save.
 		 *
-		 * @type    function
-		 * @date    27/10/2014
 		 * @since   5.0.9
 		 *
-		 * @param   n/a
-		 * @return  n/a
+		 * @return void
 		 */
-		function ajax_validate_save_post() {
-
-			// validate
+		public function ajax_validate_save_post() {
 			if ( ! acf_verify_ajax() ) {
-				die();
+				wp_send_json_success(
+					array(
+						'valid'  => 0,
+						'errors' => array(
+							array(
+								'input'   => false,
+								'message' => __( 'ACF was unable to perform validation due to an invalid security nonce being provided.', 'acf' ),
+							),
+						),
+					)
+				);
 			}
 
-			// vars
 			$json = array(
 				'valid'  => 1,
 				'errors' => 0,
 			);
 
-			// success
 			if ( acf_validate_save_post() ) {
 				wp_send_json_success( $json );
 			}
 
-			// update vars
 			$json['valid']  = 0;
 			$json['errors'] = acf_get_validation_errors();
 
-			// return
 			wp_send_json_success( $json );
 		}
 

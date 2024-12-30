@@ -98,7 +98,7 @@ if ( $is_subfield ) {
 
 	<ul class="acf-hl acf-tfoot">
 		<li class="acf-fr">
-			<a href="#" class="acf-btn acf-btn-secondary add-field"><i class="acf-icon acf-icon-plus"></i><?php esc_html_e( 'Add Field', 'acf' ); ?></a>
+			<a href="#" class="acf-btn acf-btn-sm add-field"><i class="acf-icon acf-icon-plus"></i><?php esc_html_e( 'Add Field', 'acf' ); ?></a>
 		</li>
 	</ul>
 

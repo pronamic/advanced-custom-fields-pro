@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-07-18T08:39:03+00:00\n"
+"PO-Revision-Date: 2024-10-02T12:08:46+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:136
+msgid ""
+"ACF was unable to perform validation due to an invalid security nonce being "
+"provided."
+msgstr ""
+
+#: includes/fields/class-acf-field.php:359
+msgid "Allow Access to Value in Editor UI"
+msgstr ""
+
+#: includes/fields/class-acf-field.php:341
+msgid "Learn more."
+msgstr ""
+
+#. translators: %s A "Learn More" link to documentation explaining the setting
+#. further.
+#: includes/fields/class-acf-field.php:340
+msgid ""
+"Allow content editors to access and display the field value in the editor UI "
+"using Block Bindings or the ACF Shortcode. %s"
+msgstr ""
+
+#: includes/Blocks/Bindings.php:64
+msgid ""
+"The requested ACF field type does not support output in Block Bindings or "
+"the ACF shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1085 includes/Blocks/Bindings.php:72
+msgid ""
+"The requested ACF field is not allowed to be output in bindings or the ACF "
+"Shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1077
+msgid ""
+"The requested ACF field type does not support output in bindings or the ACF "
+"Shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1054
+msgid "[The ACF shortcode cannot display fields from non-public posts]"
+msgstr ""
+"[ACF kısa kodu herkese açık olmayan gönderilerdeki alanları görüntüleyemez]"
+
+#: includes/api/api-template.php:1011
+msgid "[The ACF shortcode is disabled on this site]"
+msgstr "[ACF kısa kodu bu sitede devre dışı bırakılmıştır]"
 
 #: includes/fields/class-acf-field-icon_picker.php:451
 msgid "Businessman Icon"
@@ -322,8 +371,8 @@ msgid "Crop Icon"
 msgstr "Kırpma simgesi"
 
 #: includes/fields/class-acf-field-icon_picker.php:574
-msgid "Id (alt) Icon"
-msgstr "Kimlik (alt) simgesi"
+msgid "ID (alt) Icon"
+msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:572
 msgid "HTML Icon"
@@ -575,8 +624,8 @@ msgid "Replies Icon"
 msgstr "Yanıtlar simgesi"
 
 #: includes/fields/class-acf-field-icon_picker.php:446
-msgid "Pm Icon"
-msgstr "Pm simgesi"
+msgid "PM Icon"
+msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:444
 msgid "Friends Icon"
@@ -591,8 +640,8 @@ msgid "BuddyPress Icon"
 msgstr "BuddyPress simgesi"
 
 #: includes/fields/class-acf-field-icon_picker.php:440
-msgid "BbPress Icon"
-msgstr "BbPress simgesi"
+msgid "bbPress Icon"
+msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:439
 msgid "Activity Icon"
@@ -692,20 +741,14 @@ msgstr ""
 "Sadece birkaç tıklamayla seçenek sayfaları oluşturmak için ACF PRO'ya "
 "yükseltin"
 
-#: includes/ajax/class-acf-ajax-upgrade.php:24
-msgid "Sorry, you don't have permission to do that."
-msgstr "Üzgünüm, bunu yapmak için izniniz yok."
-
 #: includes/ajax/class-acf-ajax-query-users.php:24
 msgid "Invalid request args."
 msgstr "Geçersiz istek argümanları."
 
+#: includes/ajax/class-acf-ajax-check-screen.php:37
 #: includes/ajax/class-acf-ajax-local-json-diff.php:37
-msgid "Sorry, you are not allowed to do that."
-msgstr "Üzgünüm, bunu yapmanıza izin verilmiyor."
-
-#: includes/ajax/class-acf-ajax-check-screen.php:27
 #: includes/ajax/class-acf-ajax-query-users.php:32
+#: includes/ajax/class-acf-ajax-upgrade.php:24
 #: includes/ajax/class-acf-ajax-user-setting.php:38
 msgid "Sorry, you do not have permission to do that."
 msgstr "Üzgünüm, bunu yapmak için izniniz yok."
@@ -1013,8 +1056,8 @@ msgid "Index Card Icon"
 msgstr "Dizin-kartı simgesi"
 
 #: includes/fields/class-acf-field-icon_picker.php:573
-msgid "Id Icon"
-msgstr "Kimlik simgesi"
+msgid "ID Icon"
+msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:570
 msgid "Hidden Icon"
@@ -1649,7 +1692,7 @@ msgstr ""
 "olabilecek hata ayıklama bilgilerini içerir."
 
 #: includes/assets.php:373 assets/build/js/acf-input.js:11312
-#: assets/build/js/acf-input.js:12394
+#: assets/build/js/acf-input.js:12396
 msgid "An ACF Block on this page requires attention before you can save."
 msgstr ""
 "Kaydetmeden önce bu sayfadaki bir ACF Bloğuna dikkat edilmesi gerekiyor."
@@ -1860,7 +1903,7 @@ msgstr ""
 "Bu seçenekler sayfasını düzenlemek için lütfen ACF PRO lisansınızı "
 "etkinleştirin."
 
-#: includes/api/api-template.php:381 includes/api/api-template.php:435
+#: includes/api/api-template.php:385 includes/api/api-template.php:439
 msgid ""
 "Returning escaped HTML values is only possible when format_value is also "
 "true. The field values have not been returned for security."
@@ -1868,8 +1911,8 @@ msgstr ""
 "Temizlenmiş HTML değerlerinin döndürülmesi yalnızca format_value da true "
 "olduğunda mümkündür. Alan değerleri güvenlik için döndürülmemiştir."
 
-#: includes/api/api-template.php:46 includes/api/api-template.php:247
-#: includes/api/api-template.php:939
+#: includes/api/api-template.php:46 includes/api/api-template.php:251
+#: includes/api/api-template.php:947
 msgid ""
 "Returning an escaped HTML value is only possible when format_value is also "
 "true. The field value has not been returned for security."
@@ -1878,7 +1921,6 @@ msgstr ""
 "olduğunda mümkündür. Alan değeri güvenlik için döndürülmemiştir."
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
-#. %3$s - Link to show more details about the error
 #: includes/admin/views/escaped-html-notice.php:32
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by "
@@ -2000,8 +2042,8 @@ msgid "Add fields"
 msgstr "Alan ekle"
 
 #: includes/admin/post-types/admin-field-group.php:147
-#: assets/build/js/acf-field-group.js:2803
-#: assets/build/js/acf-field-group.js:3298
+#: assets/build/js/acf-field-group.js:2804
+#: assets/build/js/acf-field-group.js:3220
 msgid "This Field"
 msgstr "Bu alan"
 
@@ -2074,7 +2116,7 @@ msgstr "%s alanı"
 
 #: includes/fields/class-acf-field-page_link.php:498
 #: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-select.php:380
+#: includes/fields/class-acf-field-select.php:372
 #: includes/fields/class-acf-field-user.php:111
 msgid "Select Multiple"
 msgstr "Birden çok seçin"
@@ -2456,86 +2498,117 @@ msgid ""
 "An interactive dropdown to select one or more posts, pages, custom post type "
 "items or archive URLs, with the option to search."
 msgstr ""
+"Arama seçeneğiyle birlikte bir veya daha fazla yazıyı, sayfayı, özel yazı "
+"tipi ögesini veya arşiv adresini seçmek için etkileşimli bir açılır menü."
 
 #: includes/fields/class-acf-field-oembed.php:24
 msgid ""
 "An interactive component for embedding videos, images, tweets, audio and "
 "other content by making use of the native WordPress oEmbed functionality."
 msgstr ""
+"Yerel WordPress oEmbed işlevselliğini kullanarak video, resim, tweet, ses ve "
+"diğer içerikleri gömmek için etkileşimli bir bileşen."
 
 #: includes/fields/class-acf-field-number.php:23
 msgid "An input limited to numerical values."
-msgstr ""
+msgstr "Sayısal değerlerle sınırlı bir giriş."
 
 #: includes/fields/class-acf-field-message.php:25
 msgid ""
 "Used to display a message to editors alongside other fields. Useful for "
 "providing additional context or instructions around your fields."
 msgstr ""
+"Diğer alanların yanında editörlere bir mesaj görüntülemek için kullanılır. "
+"Alanlarınızla ilgili ek bağlam veya talimatlar sağlamak için kullanışlıdır."
 
 #: includes/fields/class-acf-field-link.php:24
 msgid ""
 "Allows you to specify a link and its properties such as title and target "
 "using the WordPress native link picker."
 msgstr ""
+"WordPress yerel bağlantı seçiciyi kullanarak bir bağlantıyı ve onun başlık "
+"ve hedef gibi özelliklerini belirtmenize olanak tanır."
 
 #: includes/fields/class-acf-field-image.php:24
 msgid "Uses the native WordPress media picker to upload, or choose images."
 msgstr ""
+"Görselleri yüklemek veya seçmek için yerel WordPress ortam seçicisini "
+"kullanır."
 
 #: includes/fields/class-acf-field-group.php:24
 msgid ""
 "Provides a way to structure fields into groups to better organize the data "
 "and the edit screen."
 msgstr ""
+"Verileri ve düzenleme ekranını daha iyi organize etmek için alanları gruplar "
+"halinde yapılandırmanın bir yolunu sağlar."
 
 #: includes/fields/class-acf-field-google-map.php:24
 msgid ""
 "An interactive UI for selecting a location using Google Maps. Requires a "
 "Google Maps API key and additional configuration to display correctly."
 msgstr ""
+"Google Haritalar'ı kullanarak konum seçmek için etkileşimli bir kullanıcı "
+"arayüzü. Doğru şekilde görüntülenmesi için bir Google Haritalar API anahtarı "
+"ve ek yapılandırma gerekir."
 
 #: includes/fields/class-acf-field-file.php:24
 msgid "Uses the native WordPress media picker to upload, or choose files."
 msgstr ""
+"Dosyaları yüklemek veya seçmek için yerel WordPress ortam seçicisini "
+"kullanır."
 
 #: includes/fields/class-acf-field-email.php:23
 msgid "A text input specifically designed for storing email addresses."
 msgstr ""
+"E-posta adreslerini saklamak için özel olarak tasarlanmış bir metin girişi."
 
 #: includes/fields/class-acf-field-date_time_picker.php:24
 msgid ""
 "An interactive UI for picking a date and time. The date return format can be "
 "customized using the field settings."
 msgstr ""
+"Tarih ve saat seçmek için etkileşimli bir kullanıcı arayüzü. Tarih dönüş "
+"biçimi alan ayarları kullanılarak özelleştirilebilir."
 
 #: includes/fields/class-acf-field-date_picker.php:24
 msgid ""
 "An interactive UI for picking a date. The date return format can be "
 "customized using the field settings."
 msgstr ""
+"Tarih seçmek için etkileşimli bir kullanıcı arayüzü. Tarih dönüş biçimi alan "
+"ayarları kullanılarak özelleştirilebilir."
 
 #: includes/fields/class-acf-field-color_picker.php:24
 msgid "An interactive UI for selecting a color, or specifying a Hex value."
 msgstr ""
+"Bir renk seçmek veya Hex değerini belirtmek için etkileşimli bir kullanıcı "
+"arayüzü."
 
 #: includes/fields/class-acf-field-checkbox.php:24
 msgid ""
 "A group of checkbox inputs that allow the user to select one, or multiple "
 "values that you specify."
 msgstr ""
+"Kullanıcının belirttiğiniz bir veya daha fazla değeri seçmesine olanak "
+"tanıyan bir grup onay kutusu girişi."
 
 #: includes/fields/class-acf-field-button-group.php:25
 msgid ""
 "A group of buttons with values that you specify, users can choose one option "
 "from the values provided."
 msgstr ""
+"Belirlediğiniz değerlere sahip bir grup düğme, kullanıcılar sağlanan "
+"değerlerden bir seçeneği seçebilir."
 
 #: includes/fields/class-acf-field-accordion.php:26
 msgid ""
 "Allows you to group and organize custom fields into collapsable panels that "
 "are shown while editing content. Useful for keeping large datasets tidy."
 msgstr ""
+"Özel alanları, içeriği düzenlerken gösterilen daraltılabilir paneller "
+"halinde gruplandırmanıza ve düzenlemenize olanak tanır. Büyük veri "
+"kümelerini düzenli tutmak için kullanışlıdır."
 
 #: includes/fields.php:449
 msgid ""
@@ -2543,6 +2616,9 @@ msgid ""
 "and call-to-action tiles, by acting as a parent to a set of subfields which "
 "can be repeated again and again."
 msgstr ""
+"Bu, tekrar tekrar tekrarlanabilecek bir dizi alt alanın üst öğesi olarak "
+"hareket ederek slaytlar, ekip üyeleri ve harekete geçirici mesaj parçaları "
+"gibi yinelenen içeriklere yönelik bir çözüm sağlar."
 
 #: includes/fields.php:439
 msgid ""
@@ -2551,6 +2627,10 @@ msgid ""
 "settings allow you to specify where new attachments are added in the gallery "
 "and the minimum/maximum number of attachments allowed."
 msgstr ""
+"Bu, bir ek koleksiyonunu yönetmek için etkileşimli bir arayüz sağlar. Çoğu "
+"ayar görsel alanı türüne benzer. Ek ayarlar, galeride yeni eklerin nereye "
+"ekleneceğini ve izin verilen minimum/maksimum ek sayısını belirtmenize "
+"olanak tanır."
 
 #: includes/fields.php:429
 msgid ""
@@ -2558,6 +2638,10 @@ msgid ""
 "Content field allows you to define, create and manage content with total "
 "control by using layouts and subfields to design the available blocks."
 msgstr ""
+"Bu, basit, yapılandırılmış, yerleşim tabanlı bir düzenleyici sağlar. Esnek "
+"içerik alanı, mevcut blokları tasarlamak için yerleşimleri ve alt alanları "
+"kullanarak içeriği tam kontrolle tanımlamanıza, oluşturmanıza ve yönetmenize "
+"olanak tanır."
 
 #: includes/fields.php:419
 msgid ""
@@ -2566,6 +2650,11 @@ msgid ""
 "run-time. The Clone field can either replace itself with the selected fields "
 "or display the selected fields as a group of subfields."
 msgstr ""
+"Bu, mevcut alanları seçmenize ve görüntülemenize olanak tanır. "
+"Veritabanındaki hiçbir alanı çoğaltmaz, ancak seçilen alanları çalışma "
+"zamanında yükler ve görüntüler. Klon alanı kendisini seçilen alanlarla "
+"değiştirebilir veya seçilen alanları bir alt alan grubu olarak "
+"görüntüleyebilir."
 
 #: includes/fields.php:416
 msgctxt "noun"
@@ -2643,27 +2732,31 @@ msgstr "Sınıflandırma ekle"
 #: includes/admin/views/acf-taxonomy/list-empty.php:14
 msgid "Create custom taxonomies to classify post type content"
 msgstr ""
+"Yazı tipi içeriğini sınıflandırmak için özel sınıflandırmalar oluşturun"
 
 #: includes/admin/views/acf-taxonomy/list-empty.php:13
 msgid "Add Your First Taxonomy"
-msgstr ""
+msgstr "İlk sınıflandırmanızı ekleyin"
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:122
 msgid "Hierarchical taxonomies can have descendants (like categories)."
-msgstr ""
+msgstr "Hiyerarşik taksonomilerin alt ögeleri (kategoriler gibi) olabilir."
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:107
 msgid "Makes a taxonomy visible on the frontend and in the admin dashboard."
 msgstr ""
+"Ön uçta ve yönetici kontrol panelinde bir sınıflandırmayı görünür hale "
+"getirir."
 
 #: includes/admin/views/acf-taxonomy/basic-settings.php:91
 msgid "One or many post types that can be classified with this taxonomy."
 msgstr ""
+"Bu sınıflandırmayla sınıflandırılabilecek bir veya daha fazla yazı tipi."
 
 #. translators: example taxonomy
 #: includes/admin/views/acf-taxonomy/basic-settings.php:60
 msgid "genre"
-msgstr ""
+msgstr "tür"
 
 #. translators: example taxonomy
 #: includes/admin/views/acf-taxonomy/basic-settings.php:42
@@ -2673,38 +2766,41 @@ msgstr "Tür"
 #. translators: example taxonomy
 #: includes/admin/views/acf-taxonomy/basic-settings.php:25
 msgid "Genres"
-msgstr ""
+msgstr "Türler"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1211
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Terms_Controller `."
 msgstr ""
+"'WP_REST_Terms_Controller' yerine kullanılacak isteğe bağlı özel denetleyici."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1155
 msgid "Expose this post type in the REST API."
-msgstr ""
+msgstr "Bu yazı tipini REST API'sinde gösterin."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1055
 msgid "Customize the query variable name"
-msgstr ""
+msgstr "Sorgu değişkeni adını özelleştirin"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
 msgid ""
 "Terms can be accessed using the non-pretty permalink, e.g., {query_var}"
 "={term_slug}."
 msgstr ""
+"Terimlere, güzel olmayan kalıcı bağlantı kullanılarak erişilebilir, örneğin, "
+"{query_var}={term_slug}."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:981
 msgid "Parent-child terms in URLs for hierarchical taxonomies."
-msgstr ""
+msgstr "Hiyerarşik sınıflandırmalar için web adreslerindeki üst-alt terimler."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:941
 msgid "Customize the slug used in the URL"
-msgstr ""
+msgstr "Adreste kullanılan kısa ismi özelleştir"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:924
 msgid "Permalinks for this taxonomy are disabled."
-msgstr ""
+msgstr "Bu sınıflandırmaya ilişkin kalıcı bağlantılar devre dışı bırakıldı."
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:921
@@ -2712,28 +2808,31 @@ msgid ""
 "Rewrite the URL using the taxonomy key as the slug. Your permalink structure "
 "will be"
 msgstr ""
+"Kısa isim olarak sınıflandırma anahtarını kullanarak adresi yeniden yazın. "
+"Kalıcı bağlantı yapınız şöyle olacak"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:913
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1030
 #: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
-msgstr ""
+msgstr "Sınıflandırma anahtarı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:911
 msgid "Select the type of permalink to use for this taxonomy."
-msgstr ""
+msgstr "Bu sınıflandırma için kullanılacak kalıcı bağlantı türünü seçin."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:896
 msgid "Display a column for the taxonomy on post type listing screens."
 msgstr ""
+"Yazı tipi listeleme ekranlarında sınıflandırma için bir sütun görüntüleyin."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:895
 msgid "Show Admin Column"
-msgstr ""
+msgstr "Yönetici sütununu göster"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:882
 msgid "Show the taxonomy in the quick/bulk edit panel."
-msgstr ""
+msgstr "Hızlı/toplu düzenleme panelinde sınıflandırmayı göster."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:881
 msgid "Quick Edit"
@@ -2741,7 +2840,7 @@ msgstr "Hızlı düzenle"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:868
 msgid "List the taxonomy in the Tag Cloud Widget controls."
-msgstr ""
+msgstr "Etiket bulutu gereç kontrollerindeki sınıflandırmayı listele."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:867
 msgid "Tag Cloud"
@@ -2752,28 +2851,32 @@ msgid ""
 "A PHP function name to be called for sanitizing taxonomy data saved from a "
 "meta box."
 msgstr ""
+"Bir meta kutusundan kaydedilen sınıflandırma verilerinin temizlenmesi için "
+"çağrılacak bir PHP işlev adı."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:823
 msgid "Meta Box Sanitization Callback"
-msgstr ""
+msgstr "Meta kutusu temizleme geri çağrısı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:805
 msgid ""
 "A PHP function name to be called to handle the content of a meta box on your "
 "taxonomy."
 msgstr ""
+"Taksonominizdeki bir meta kutusunun içeriğini işlemek için çağrılacak bir "
+"PHP işlev adı."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:804
 msgid "Register Meta Box Callback"
-msgstr ""
+msgstr "Meta kutusu geri çağrısını kaydet"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:763
 msgid "No Meta Box"
-msgstr ""
+msgstr "Meta mutusu yok"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:762
 msgid "Custom Meta Box"
-msgstr ""
+msgstr "Özel meta kutusu"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:758
 msgid ""
@@ -2781,6 +2884,9 @@ msgid ""
 "Categories meta box is shown for hierarchical taxonomies, and the Tags meta "
 "box is shown for non-hierarchical taxonomies."
 msgstr ""
+"İçerik düzenleyici ekranındaki meta kutusunu kontrol eder. Varsayılan "
+"olarak, hiyerarşik sınıflandırmalar için Kategoriler meta kutusu gösterilir "
+"ve hiyerarşik olmayan sınıflandırmalar için Etiketler meta kutusu gösterilir."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:757
 msgid "Meta Box"
@@ -2789,7 +2895,7 @@ msgstr "Meta kutusu"
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:746
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:767
 msgid "Categories Meta Box"
-msgstr ""
+msgstr "Kategoriler meta kutusu"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:745
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:766
@@ -2848,7 +2954,7 @@ msgstr "Etiket listesi"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:641
 msgid "Assigns text to the table hidden heading."
-msgstr ""
+msgstr "Tablonun gizli başlığına metin atası yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:622
 msgid "Tags list navigation"
@@ -2856,7 +2962,7 @@ msgstr "Etiket listesi dolaşımı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:621
 msgid "Assigns text to the table pagination hidden heading."
-msgstr ""
+msgstr "Tablo sayfalandırma gizli başlığına metin ataması yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:597
 msgid "Filter by category"
@@ -2864,11 +2970,11 @@ msgstr "Kategoriye göre filtrele"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:596
 msgid "Assigns text to the filter button in the posts lists table."
-msgstr ""
+msgstr "Yazı listeleri tablosundaki filtre düğmesine metin ataması yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:595
 msgid "Filter By Item"
-msgstr ""
+msgstr "Ögeye göre filtrele"
 
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:591
@@ -2886,11 +2992,11 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:574
 msgid "Describes the Description field on the Edit Tags screen."
-msgstr ""
+msgstr "Etiketleri düzenle ekranındaki açıklama alanını tanımlar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:573
 msgid "Description Field Description"
-msgstr ""
+msgstr "Açıklama alanı tanımı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:554
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:555
@@ -2898,14 +3004,16 @@ msgid ""
 "Assign a parent term to create a hierarchy. The term Jazz, for example, "
 "would be the parent of Bebop and Big Band"
 msgstr ""
+"Hiyerarşi oluşturmak için bir üst terim atayın. Örneğin Jazz terimi Bebop ve "
+"Big Band'in üst öğesi olacaktır"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:553
 msgid "Describes the Parent field on the Edit Tags screen."
-msgstr ""
+msgstr "Etiketleri düzenle ekranındaki ana alanı açıklar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:552
 msgid "Parent Field Description"
-msgstr ""
+msgstr "Ana alan açıklaması"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:538
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:539
@@ -2913,27 +3021,29 @@ msgid ""
 "The \"slug\" is the URL-friendly version of the name. It is usually all "
 "lower case and contains only letters, numbers, and hyphens."
 msgstr ""
+"\"Kısa isim\", adın web adresi dostu sürümüdür. Genellikle tamamı küçük "
+"harftir ve yalnızca harf, sayı ve kısa çizgi içerir."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:537
 msgid "Describes the Slug field on the Edit Tags screen."
-msgstr ""
+msgstr "Etiketleri düzenle ekranındaki kısa isim alanını tanımlar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:536
 msgid "Slug Field Description"
-msgstr ""
+msgstr "Kısa isim alanı açıklaması"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:522
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:523
 msgid "The name is how it appears on your site"
-msgstr ""
+msgstr "Ad, sitenizde nasıl göründüğüdür"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:521
 msgid "Describes the Name field on the Edit Tags screen."
-msgstr ""
+msgstr "Etiketleri düzenle ekranındaki ad alanını açıklar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:520
 msgid "Name Field Description"
-msgstr ""
+msgstr "Ad alan açıklaması"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:507
 msgid "No tags"
@@ -2944,10 +3054,12 @@ msgid ""
 "Assigns the text displayed in the posts and media list tables when no tags "
 "or categories are available."
 msgstr ""
+"Hiçbir etiket veya kategori bulunmadığında gönderilerde ve ortam listesi "
+"tablolarında görüntülenen metni atar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:505
 msgid "No Terms"
-msgstr ""
+msgstr "Terim yok"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:501
@@ -2964,6 +3076,10 @@ msgid ""
 "the taxonomy meta box when no tags are available, and assigns the text used "
 "in the terms list table when there are no items for a taxonomy."
 msgstr ""
+"Hiçbir etiket mevcut olmadığında sınıflandırma meta kutusundaki 'en çok "
+"kullanılanlardan seç' metnine tıklandığında görüntülenen metnin atamasını "
+"yapar ve bir sınıflandırma için hiçbir öge olmadığında terimler listesi "
+"tablosunda kullanılan metnin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:484
 msgid "Not Found"
@@ -2971,7 +3087,7 @@ msgstr "Bulunamadı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:463
 msgid "Assigns text to the Title field of the Most Used tab."
-msgstr ""
+msgstr "En Çok Kullanılan sekmesinin başlık alanına metin atar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:462
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:464
@@ -2988,15 +3104,18 @@ msgid ""
 "Assigns the 'choose from most used' text used in the meta box when "
 "JavaScript is disabled. Only used on non-hierarchical taxonomies."
 msgstr ""
+"JavaScript devre dışı bırakıldığında meta kutusunda kullanılan 'en çok "
+"kullanılandan seç' metninin atamasını yapar. Yalnızca hiyerarşik olmayan "
+"sınıflandırmalarda kullanılır."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:442
 msgid "Choose From Most Used"
-msgstr ""
+msgstr "En çok kullanılanlardan seç"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:438
 msgid "Choose from the most used %s"
-msgstr ""
+msgstr "En çok kullanılan %s arasından seçim yapın"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:418
 msgid "Add or remove tags"
@@ -3007,15 +3126,18 @@ msgid ""
 "Assigns the add or remove items text used in the meta box when JavaScript is "
 "disabled. Only used on non-hierarchical taxonomies"
 msgstr ""
+"JavaScript devre dışı olduğunda meta kutusunda kullanılan öğe ekleme veya "
+"kaldırma metninin atamasını yapar. Sadece hiyerarşik olmayan "
+"sınıflandırmalarda kullanılır."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:416
 msgid "Add Or Remove Items"
-msgstr ""
+msgstr "Öğeleri ekle veya kaldır"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:412
 msgid "Add or remove %s"
-msgstr ""
+msgstr "%s ekle veya kaldır"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:392
 msgid "Separate tags with commas"
@@ -3026,15 +3148,17 @@ msgid ""
 "Assigns the separate item with commas text used in the taxonomy meta box. "
 "Only used on non-hierarchical taxonomies."
 msgstr ""
+"Ayrı öğeyi sınıflandırma meta kutusunda kullanılan virgül metniyle atar. "
+"Yalnızca hiyerarşik olmayan sınıflandırmalarda kullanılır."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:390
 msgid "Separate Items With Commas"
-msgstr ""
+msgstr "Ögeleri virgülle ayırın"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:386
 msgid "Separate %s with commas"
-msgstr ""
+msgstr "%s içeriklerini virgülle ayırın"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:366
 msgid "Popular Tags"
@@ -3043,15 +3167,17 @@ msgstr "Popüler etiketler"
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:365
 msgid "Assigns popular items text. Only used for non-hierarchical taxonomies."
 msgstr ""
+"Popüler ögeler metninin atamasını yapar. Yalnızca hiyerarşik olmayan "
+"sınıflandırmalar için kullanılır."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:364
 msgid "Popular Items"
-msgstr ""
+msgstr "Popüler ögeler"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:361
 msgid "Popular %s"
-msgstr ""
+msgstr "Popüler %s"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:347
 msgid "Search Tags"
@@ -3059,7 +3185,7 @@ msgstr "Etiketlerde ara"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:346
 msgid "Assigns search items text."
-msgstr ""
+msgstr "Arama öğeleri metninin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:323
 msgid "Parent Category:"
@@ -3068,10 +3194,11 @@ msgstr "Üst kategori:"
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:322
 msgid "Assigns parent item text, but with a colon (:) added to the end."
 msgstr ""
+"Üst öğe metninin atamasını yapar ancak sonuna iki nokta üst üste (:) eklenir."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:321
 msgid "Parent Item With Colon"
-msgstr ""
+msgstr "İki nokta üst üste ile ana öğe"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:298
 msgid "Parent Category"
@@ -3080,10 +3207,11 @@ msgstr "Üst kategori"
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:297
 msgid "Assigns parent item text. Only used on hierarchical taxonomies."
 msgstr ""
+"Üst öğe metnini belirler. Sadece hiyerarşik sınıflandırmalarda kullanılır."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:296
 msgid "Parent Item"
-msgstr ""
+msgstr "Ana öge"
 
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:293
@@ -3096,16 +3224,16 @@ msgstr "Yeni etiket ismi"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:277
 msgid "Assigns the new item name text."
-msgstr ""
+msgstr "Yeni öğe adı metninin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:276
 msgid "New Item Name"
-msgstr ""
+msgstr "Yeni öge adı"
 
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:273
 msgid "New %s Name"
-msgstr ""
+msgstr "Yeni %s adı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:258
 msgid "Add New Tag"
@@ -3113,7 +3241,7 @@ msgstr "Yeni etiket ekle"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:257
 msgid "Assigns the add new item text."
-msgstr ""
+msgstr "Yeni öğe ekleme metninin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:238
 msgid "Update Tag"
@@ -3121,7 +3249,7 @@ msgstr "Etiketi güncelle"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:237
 msgid "Assigns the update item text."
-msgstr ""
+msgstr "Güncelleme öğesi metninin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:236
 msgid "Update Item"
@@ -3138,7 +3266,7 @@ msgstr "Etiketi görüntüle"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:217
 msgid "In the admin bar to view term during editing."
-msgstr ""
+msgstr "Düzenleme sırasında terimi görüntülemek için yönetici çubuğunda."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:198
 msgid "Edit Tag"
@@ -3146,7 +3274,7 @@ msgstr "Etiketi düzenle"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:197
 msgid "At the top of the editor screen when editing a term."
-msgstr ""
+msgstr "Bir terimi düzenlerken editör ekranının üst kısmında."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:178
 msgid "All Tags"
@@ -3154,95 +3282,101 @@ msgstr "Tüm etiketler"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:177
 msgid "Assigns the all items text."
-msgstr ""
+msgstr "Tüm öğelerin metninin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:158
 msgid "Assigns the menu name text."
-msgstr ""
+msgstr "Menü adı metninin atamasını yapar."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:157
 msgid "Menu Label"
-msgstr ""
+msgstr "Menü etiketi"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:131
 msgid "Active taxonomies are enabled and registered with WordPress."
-msgstr ""
+msgstr "Aktif sınıflandırmalar WordPress'te etkinleştirilir ve kaydedilir."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:115
 msgid "A descriptive summary of the taxonomy."
-msgstr ""
+msgstr "Sınıflandırmanın açıklayıcı bir özeti."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:95
 msgid "A descriptive summary of the term."
-msgstr ""
+msgstr "Terimin açıklayıcı bir özeti."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:94
 msgid "Term Description"
-msgstr ""
+msgstr "Terim açıklaması"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:76
 msgid "Single word, no spaces. Underscores and dashes allowed."
-msgstr ""
+msgstr "Tek kelime, boşluksuz. Alt çizgi ve tireye izin var"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:75
 msgid "Term Slug"
-msgstr ""
+msgstr "Terim kısa adı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:56
 msgid "The name of the default term."
-msgstr ""
+msgstr "Varsayılan terimin adı."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:55
 msgid "Term Name"
-msgstr ""
+msgstr "Terim adı"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:41
 msgid ""
 "Create a term for the taxonomy that cannot be deleted. It will not be "
 "selected for posts by default."
 msgstr ""
+"Sınıflandırma için silinemeyecek bir terim oluşturun. Varsayılan olarak "
+"yazılar için seçilmeyecektir."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:40
 msgid "Default Term"
-msgstr ""
+msgstr "Varsayılan terim"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:28
 msgid ""
 "Whether terms in this taxonomy should be sorted in the order they are "
 "provided to `wp_set_object_terms()`."
 msgstr ""
+"Bu sınıflandırmadaki terimlerin `wp_set_object_terms()` işlevine "
+"sağlandıkları sıraya göre sıralanıp sıralanmayacağı."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:27
 msgid "Sort Terms"
-msgstr ""
+msgstr "Terimleri sırala"
 
 #: includes/admin/views/acf-post-type/list-empty.php:14
 msgid "Add Post Type"
-msgstr ""
+msgstr "Yazı tipi ekle"
 
 #: includes/admin/views/acf-post-type/list-empty.php:13
 msgid ""
 "Expand the functionality of WordPress beyond standard posts and pages with "
 "custom post types."
 msgstr ""
+"Özel yazı türleri ile WordPress'in işlevselliğini standart yazılar ve "
+"sayfaların ötesine genişletin."
 
 #: includes/admin/views/acf-post-type/list-empty.php:12
 msgid "Add Your First Post Type"
-msgstr ""
+msgstr "İlk yazı türünüzü ekleyin"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:136
 #: includes/admin/views/acf-taxonomy/basic-settings.php:135
 msgid "I know what I'm doing, show me all the options."
-msgstr ""
+msgstr "Ne yaptığımı biliyorum, baba tüm seçenekleri göster."
 
 #: includes/admin/views/acf-post-type/basic-settings.php:135
 #: includes/admin/views/acf-taxonomy/basic-settings.php:134
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Gelişmiş yapılandırma"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:123
 msgid "Hierarchical post types can have descendants (like pages)."
-msgstr ""
+msgstr "Hiyerarşik yazı türleri, alt öğelere (sayfalar gibi) sahip olabilir."
 
 #: includes/admin/views/acf-post-type/basic-settings.php:122
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:980
@@ -3252,7 +3386,7 @@ msgstr "Hiyerarşik"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:107
 msgid "Visible on the frontend and in the admin dashboard."
-msgstr ""
+msgstr "Kulanıcı görünümü ve yönetim panelinde görünür."
 
 #: includes/admin/views/acf-post-type/basic-settings.php:106
 #: includes/admin/views/acf-taxonomy/basic-settings.php:106
@@ -3266,7 +3400,7 @@ msgstr "film"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:57
 msgid "Lower case letters, underscores and dashes only, Max 20 characters."
-msgstr ""
+msgstr "Sadece küçük harfler, alt çizgi ve tireler, En fazla 20 karakter."
 
 #. translators: example post type
 #: includes/admin/views/acf-post-type/basic-settings.php:41
@@ -3323,65 +3457,71 @@ msgstr "Temel web adresi"
 msgid ""
 "Exposes this post type in the REST API. Required to use the block editor."
 msgstr ""
+"Bu yazı türünü REST API'de görünür hale getirir. Blok düzenleyiciyi "
+"kullanmak için gereklidir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1244
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1154
 msgid "Show In REST API"
-msgstr ""
+msgstr "REST API'de göster"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1223
 msgid "Customize the query variable name."
-msgstr ""
+msgstr "Sorgu değişken adını özelleştir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1222
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1054
 msgid "Query Variable"
-msgstr ""
+msgstr "Sorgu değişkeni"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1200
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1032
 msgid "No Query Variable Support"
-msgstr ""
+msgstr "Sorgu değişkeni desteği yok"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1199
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1031
 msgid "Custom Query Variable"
-msgstr ""
+msgstr "Özel sorgu değişkeni"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1196
 msgid ""
 "Items can be accessed using the non-pretty permalink, eg. {post_type}"
 "={post_slug}."
 msgstr ""
+"Ögelere güzel olmayan kalıcı bağlantı kullanılarak erişilebilir, örn. "
+"{post_type}={post_slug}."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1195
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
 msgid "Query Variable Support"
-msgstr ""
+msgstr "Sorgu değişken desteği"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1170
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1003
 msgid "URLs for an item and items can be accessed with a query string."
-msgstr ""
+msgstr "Bir öğe ve öğeler için adreslere bir sorgu dizesi ile erişilebilir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1169
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1002
 msgid "Publicly Queryable"
-msgstr ""
+msgstr "Herkese açık olarak sorgulanabilir"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1148
 msgid "Custom slug for the Archive URL."
-msgstr ""
+msgstr "Arşiv adresi için özel kısa isim"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1147
 msgid "Archive Slug"
-msgstr ""
+msgstr "Arşiv kısa ismi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1134
 msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
 msgstr ""
+"Temanızdaki bir arşiv şablon dosyası ile özelleştirilebilen bir öğe arşivine "
+"sahiptir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1133
 msgid "Archive"
@@ -3389,7 +3529,7 @@ msgstr "Arşiv"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1113
 msgid "Pagination support for the items URLs such as the archives."
-msgstr ""
+msgstr "Arşivler gibi öğe adresleri için sayfalama desteği."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1112
 msgid "Pagination"
@@ -3397,11 +3537,11 @@ msgstr "Sayfalama"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1095
 msgid "RSS feed URL for the post type items."
-msgstr ""
+msgstr "Yazı türü öğeleri için RSS akış adresi."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1094
 msgid "Feed URL"
-msgstr ""
+msgstr "Akış adresi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1076
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:961
@@ -3409,15 +3549,17 @@ msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
 msgstr ""
+"Adreslere WP_Rewrite::$front önekini eklemek için kalıcı bağlantı yapısını "
+"değiştirir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1075
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:960
 msgid "Front URL Prefix"
-msgstr ""
+msgstr "Ön adres öneki"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1056
 msgid "Customize the slug used in the URL."
-msgstr ""
+msgstr "Adreste kullanılan kısa ismi özelleştirin."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1055
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:940
@@ -3426,7 +3568,7 @@ msgstr "Adres kısa adı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1039
 msgid "Permalinks for this post type are disabled."
-msgstr ""
+msgstr "Bu yazı türü için kalıcı bağlantılar devre dışı bırakıldı."
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-post-type/advanced-settings.php:1038
@@ -3435,22 +3577,24 @@ msgid ""
 "Rewrite the URL using a custom slug defined in the input below. Your "
 "permalink structure will be"
 msgstr ""
+"Aşağıdaki girişte tanımlanan özel kısa ismi kullanarak adresi yeniden yazın. "
+"Kalıcı bağlantı yapınız şu şekilde olacaktır"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1030
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:915
 msgid "No Permalink (prevent URL rewriting)"
-msgstr ""
+msgstr "Kalıcı bağlantı yok (URL biçimlendirmeyi önle)"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1029
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:914
 msgid "Custom Permalink"
-msgstr ""
+msgstr "Özel kalıcı bağlantı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1028
 #: includes/admin/views/acf-post-type/advanced-settings.php:1198
 #: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
-msgstr ""
+msgstr "Yazı türü anahtarı"
 
 #. translators: this string will be appended with the new permalink structure.
 #: includes/admin/views/acf-post-type/advanced-settings.php:1026
@@ -3459,43 +3603,48 @@ msgid ""
 "Rewrite the URL using the post type key as the slug. Your permalink "
 "structure will be"
 msgstr ""
+"Yazı türü anahtarını kısa isim olarak kullanarak adresi yeniden yazın. "
+"Kalıcı bağlantı yapınız şu şekilde olacaktır"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1024
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:910
 msgid "Permalink Rewrite"
-msgstr ""
+msgstr "Kalıcı bağlantı yeniden yazım"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1010
 msgid "Delete items by a user when that user is deleted."
-msgstr ""
+msgstr "Bir kullanıcı silindiğinde öğelerini sil."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1009
 msgid "Delete With User"
-msgstr ""
+msgstr "Kullanıcı ile sil."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:995
 msgid "Allow the post type to be exported from 'Tools' > 'Export'."
 msgstr ""
+"Yazı türünün 'Araçlar' > 'Dışa Aktar' kısmından dışa aktarılmasına izin "
+"verir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:994
 msgid "Can Export"
-msgstr ""
+msgstr "Dışarı aktarılabilir"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:963
 msgid "Optionally provide a plural to be used in capabilities."
-msgstr ""
+msgstr "Yetkinliklerde kullanılacak bir çoğul ad sağlayın (isteğe bağlı)."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:962
 msgid "Plural Capability Name"
-msgstr ""
+msgstr "Çoğul yetkinlik adı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:944
 msgid "Choose another post type to base the capabilities for this post type."
 msgstr ""
+"Bu yazı türü için yeteneklerin temel alınacağı başka bir yazı türü seçin."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:943
 msgid "Singular Capability Name"
-msgstr ""
+msgstr "Tekil yetkinlik adı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:929
 msgid ""
@@ -3503,14 +3652,17 @@ msgid ""
 "capability names, eg. edit_post, delete_posts. Enable to use post type "
 "specific capabilities, eg. edit_{singular}, delete_{plural}."
 msgstr ""
+"Varsayılan olarak, yazı türünün yetenekleri 'Yazı' yetenek isimlerini "
+"devralacaktır, örneğin edit_post, delete_posts. Yazı türüne özgü yetenekleri "
+"kullanmak için etkinleştirin, örneğin edit_{singular}, delete_{plural}."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:928
 msgid "Rename Capabilities"
-msgstr ""
+msgstr "Yetkinlikleri yeniden adlandır"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:913
 msgid "Exclude From Search"
-msgstr ""
+msgstr "Aramadan hariç tut"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:900
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:854
@@ -3518,29 +3670,33 @@ msgid ""
 "Allow items to be added to menus in the 'Appearance' > 'Menus' screen. Must "
 "be turned on in 'Screen options'."
 msgstr ""
+"Öğelerin 'Görünüm' > 'Menüler' ekranında menülere eklenmesine izin verin. "
+"'Ekran seçenekleri'nde etkinleştirilmesi gerekir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:899
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:853
 msgid "Appearance Menus Support"
-msgstr ""
+msgstr "Görünüm menüleri desteği"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:881
 msgid "Appears as an item in the 'New' menu in the admin bar."
-msgstr ""
+msgstr "Yönetim çubuğundaki 'Yeni' menüsünde bir öğe olarak görünür."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:880
 msgid "Show In Admin Bar"
-msgstr ""
+msgstr "Yönetici araç çubuğunda göster"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:849
 msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen."
 msgstr ""
+"Düzenleme ekranı için meta kutuları ayarlanırken çağrılacak bir PHP işlev "
+"adı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:848
 msgid "Custom Meta Box Callback"
-msgstr ""
+msgstr "Özel meta kutusu geri çağrısı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:822
 #: includes/fields/class-acf-field-icon_picker.php:611
@@ -3549,11 +3705,11 @@ msgstr "Menü Simgesi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:778
 msgid "The position in the sidebar menu in the admin dashboard."
-msgstr ""
+msgstr "Yönetim panosundaki kenar çubuğu menüsündeki konum."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:777
 msgid "Menu Position"
-msgstr ""
+msgstr "Menü pozisyonu"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:759
 msgid ""
@@ -3561,30 +3717,33 @@ msgid ""
 "an existing top level item is supplied here, the post type will be added as "
 "a submenu item under it."
 msgstr ""
+"Varsayılan olarak, yazı türü yönetim menüsünde yeni bir üst düzey öğe olarak "
+"görünecektir. Buraya mevcut bir üst düzey öğe sağlanırsa, yazı türü onun alt "
+"menü öğesi olarak eklenir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:758
 msgid "Admin Menu Parent"
-msgstr ""
+msgstr "Admin menüsü üst ögesi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:739
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:734
 msgid "Admin editor navigation in the sidebar menu."
-msgstr ""
+msgstr "Kenar çubuğu menüsünde yönetici editörü dolaşımı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:738
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:733
 msgid "Show In Admin Menu"
-msgstr ""
+msgstr "Admin menüsünde göster"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:725
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:719
 msgid "Items can be edited and managed in the admin dashboard."
-msgstr ""
+msgstr "Öğeler yönetim panelinde düzenlenebilir ve yönetilebilir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:724
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:718
 msgid "Show In UI"
-msgstr ""
+msgstr "Kullanıcı arayüzünde göster"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:694
 msgid "A link to a post."
@@ -3592,17 +3751,17 @@ msgstr "Yazıya bir bağlantı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:693
 msgid "Description for a navigation link block variation."
-msgstr ""
+msgstr "Bir gezinme bağlantısı blok varyasyonu için açıklama."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:692
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:702
 msgid "Item Link Description"
-msgstr ""
+msgstr "Öğe listesi açıklaması"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:688
 msgid "A link to a %s."
-msgstr ""
+msgstr "%s yazı türüne bir bağlantı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:673
 msgid "Post Link"
@@ -3610,19 +3769,19 @@ msgstr "Yazı bağlantısı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:672
 msgid "Title for a navigation link block variation."
-msgstr ""
+msgstr "Bir gezinme bağlantısı blok varyasyonu için başlık."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:671
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:681
 msgid "Item Link"
-msgstr ""
+msgstr "Öğe bağlantısı"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:668
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:678
 msgid "%s Link"
-msgstr ""
+msgstr "%s bağlantısı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:653
 msgid "Post updated."
@@ -3630,11 +3789,11 @@ msgstr "Yazı güncellendi."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:652
 msgid "In the editor notice after an item is updated."
-msgstr ""
+msgstr "Bir öğe güncellendikten sonra düzenleyici bildiriminde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:651
 msgid "Item Updated"
-msgstr ""
+msgstr "Öğe güncellendi"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:648
@@ -3647,11 +3806,11 @@ msgstr "Yazı zamanlandı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:632
 msgid "In the editor notice after scheduling an item."
-msgstr ""
+msgstr "Bir öğe zamanlandıktan sonra düzenleyici bildiriminde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:631
 msgid "Item Scheduled"
-msgstr ""
+msgstr "Öğe zamanlandı"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:628
@@ -3664,11 +3823,11 @@ msgstr "Yazı taslağa geri dönüştürüldü."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:612
 msgid "In the editor notice after reverting an item to draft."
-msgstr ""
+msgstr "Bir öğe taslağa döndürüldükten sonra düzenleyici bildiriminde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:611
 msgid "Item Reverted To Draft"
-msgstr ""
+msgstr "Öğe taslağa döndürüldü."
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:608
@@ -3681,11 +3840,11 @@ msgstr "Yazı özel olarak yayımlandı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:592
 msgid "In the editor notice after publishing a private item."
-msgstr ""
+msgstr "Özel bir öğe yayımlandıktan sonra düzenleyici bildiriminde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:591
 msgid "Item Published Privately"
-msgstr ""
+msgstr "Öğe özel olarak yayımlandı."
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:588
@@ -3698,11 +3857,11 @@ msgstr "Yazı yayınlandı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:572
 msgid "In the editor notice after publishing an item."
-msgstr ""
+msgstr "Bir öğe yayımlandıktan sonra düzenleyici bildiriminde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:571
 msgid "Item Published"
-msgstr ""
+msgstr "Öğe yayımlandı."
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:568
@@ -3716,18 +3875,20 @@ msgstr "Yazı listesi"
 #: includes/admin/views/acf-post-type/advanced-settings.php:552
 msgid "Used by screen readers for the items list on the post type list screen."
 msgstr ""
+"Yazı türü liste ekranındaki öğeler listesi için ekran okuyucular tarafından "
+"kullanılır."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:551
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:640
 msgid "Items List"
-msgstr ""
+msgstr "Öğe listesi"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:548
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:637
 msgid "%s list"
-msgstr ""
+msgstr "%s listesi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:533
 msgid "Posts list navigation"
@@ -3738,37 +3899,41 @@ msgid ""
 "Used by screen readers for the filter list pagination on the post type list "
 "screen."
 msgstr ""
+"Yazı türü liste ekranındaki süzme listesi sayfalandırması için ekran "
+"okuyucular tarafından kullanılır."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:531
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:620
 msgid "Items List Navigation"
-msgstr ""
+msgstr "Öğe listesi gezinmesi"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-post-type/advanced-settings.php:528
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:617
 msgid "%s list navigation"
-msgstr ""
+msgstr "%s listesi gezinmesi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:512
 msgid "Filter posts by date"
-msgstr ""
+msgstr "Yazıları tarihe göre süz"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:511
 msgid ""
 "Used by screen readers for the filter by date heading on the post type list "
 "screen."
 msgstr ""
+"Yazı türü liste ekranındaki tarihe göre süzme başlığı için ekran okuyucular "
+"tarafından kullanılır."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:510
 msgid "Filter Items By Date"
-msgstr ""
+msgstr "Öğeleri tarihe göre süz"
 
 #. translators: %s Plural form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:506
 msgid "Filter %s by date"
-msgstr ""
+msgstr "%s öğelerini tarihe göre süz"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:491
 msgid "Filter posts list"
@@ -3779,28 +3944,31 @@ msgid ""
 "Used by screen readers for the filter links heading on the post type list "
 "screen."
 msgstr ""
+"Yazı türü liste ekranındaki süzme bağlantıları başlığı için ekran okuyucular "
+"tarafından kullanılır."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:489
 msgid "Filter Items List"
-msgstr ""
+msgstr "Öğe listesini süz"
 
 #. translators: %s Plural form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:485
 msgid "Filter %s list"
-msgstr ""
+msgstr "%s listesini süz"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:469
 msgid "In the media modal showing all media uploaded to this item."
 msgstr ""
+"Bu öğeye yüklenen tüm ortam dosyalraını gösteren ortam açılır ekranında."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:468
 msgid "Uploaded To This Item"
-msgstr ""
+msgstr "Bu öğeye yüklendi"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:464
 msgid "Uploaded to this %s"
-msgstr ""
+msgstr "Bu %s öğesine yüklendi"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:449
 msgid "Insert into post"
@@ -3808,16 +3976,16 @@ msgstr "Yazıya ekle"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:448
 msgid "As the button label when adding media to content."
-msgstr ""
+msgstr "İçeriğie ortam eklerken düğme etiketi olarak."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:447
 msgid "Insert Into Media Button"
-msgstr ""
+msgstr "Ortam düğmesine ekle"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:443
 msgid "Insert into %s"
-msgstr ""
+msgstr "%s içine ekle"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:428
 msgid "Use as featured image"
@@ -3826,11 +3994,11 @@ msgstr "Öne çıkan görsel olarak kullan"
 #: includes/admin/views/acf-post-type/advanced-settings.php:427
 msgid ""
 "As the button label for selecting to use an image as the featured image."
-msgstr ""
+msgstr "Bir görseli öne çıkan görsel olarak seçme düğmesi etiketi olarak."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:426
 msgid "Use Featured Image"
-msgstr ""
+msgstr "Öne çıkan görseli kullan"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:413
 msgid "Remove featured image"
@@ -3838,7 +4006,7 @@ msgstr "Öne çıkan görseli kaldır"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:412
 msgid "As the button label when removing the featured image."
-msgstr ""
+msgstr "Öne çıkan görseli kaldırma düğmesi etiketi olarak."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:411
 msgid "Remove Featured Image"
@@ -3850,7 +4018,7 @@ msgstr "Öne çıkan görsel seç"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:397
 msgid "As the button label when setting the featured image."
-msgstr ""
+msgstr "Öne çıkan görseli ayarlarken düğme etiketi olarak."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:396
 msgid "Set Featured Image"
@@ -3862,11 +4030,11 @@ msgstr "Öne çıkan görsel"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:382
 msgid "In the editor used for the title of the featured image meta box."
-msgstr ""
+msgstr "Öne çıkan görsel meta kutusunun başlığı için düzenleyicide kullanılır."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:381
 msgid "Featured Image Meta Box"
-msgstr ""
+msgstr "Öne çıkan görsel meta kutusu"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:368
 msgid "Post Attributes"
@@ -3875,15 +4043,16 @@ msgstr "Yazı özellikleri"
 #: includes/admin/views/acf-post-type/advanced-settings.php:367
 msgid "In the editor used for the title of the post attributes meta box."
 msgstr ""
+"Yazı öznitelikleri meta kutusunun başlığı için kullanılan düzenleyicide."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:366
 msgid "Attributes Meta Box"
-msgstr ""
+msgstr "Öznitelikler meta kutusu"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:363
 msgid "%s Attributes"
-msgstr ""
+msgstr "%s öznitelikleri"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:348
 msgid "Post Archives"
@@ -3896,10 +4065,14 @@ msgid ""
 "appears when editing menus in 'Live Preview' mode and a custom archive slug "
 "has been provided."
 msgstr ""
+"Arşivlerin etkin olduğu bir ÖYT'nde mevcut bir menüye öge eklerken "
+"gösterilen yazılar listesine bu etikete sahip 'Yazı tipi arşivi' ögelerini "
+"ekler. Yalnızca 'Canlı önizleme' modunda menüler düzenlenirken ve özel bir "
+"arşiv kısa adı sağlandığında görünür."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:346
 msgid "Archives Nav Menu"
-msgstr ""
+msgstr "Arşivler dolaşım menüsü"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:343
@@ -3908,16 +4081,16 @@ msgstr "%s arşivleri"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:328
 msgid "No posts found in Trash"
-msgstr ""
+msgstr "Çöp kutusunda yazı bulunamadı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:327
 msgid ""
 "At the top of the post type list screen when there are no posts in the trash."
-msgstr ""
+msgstr "Çöp kutusunda yazı olmadığında yazı türü liste ekranının üstünde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:326
 msgid "No Items Found in Trash"
-msgstr ""
+msgstr "Çöp kutusunda öğe bulunamadı."
 
 #. translators: %s Plural form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:322
@@ -3931,11 +4104,11 @@ msgstr "Yazı bulunamadı"
 #: includes/admin/views/acf-post-type/advanced-settings.php:306
 msgid ""
 "At the top of the post type list screen when there are no posts to display."
-msgstr ""
+msgstr "Gösterilecek yazı olmadığında yazı türü liste ekranının üstünde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:305
 msgid "No Items Found"
-msgstr ""
+msgstr "Öğe bulunamadı"
 
 #. translators: %s Plural form of post type name
 #. translators: %s Plural form of taxonomy name
@@ -3950,12 +4123,12 @@ msgstr "Yazılarda ara"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:285
 msgid "At the top of the items screen when searching for an item."
-msgstr ""
+msgstr "Bir öğe ararken öğeler ekranının üstünde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:284
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:345
 msgid "Search Items"
-msgstr ""
+msgstr "Öğeleri ara"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Plural form of taxonomy name
@@ -3970,11 +4143,11 @@ msgstr "Ebeveyn sayfa:"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:265
 msgid "For hierarchical types in the post type list screen."
-msgstr ""
+msgstr "Hiyerarşik türler için yazı türü liste ekranında."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:264
 msgid "Parent Item Prefix"
-msgstr ""
+msgstr "Üst öğe ön eki"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
@@ -4003,7 +4176,7 @@ msgstr "Yeni yazı ekle"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:205
 msgid "At the top of the editor screen when adding a new item."
-msgstr ""
+msgstr "Yeni bir öğe eklerken düzenleyici ekranının üstünde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:204
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:256
@@ -4027,6 +4200,8 @@ msgid ""
 "Appears in the admin bar in the 'All Posts' view, provided the post type "
 "supports archives and the home page is not an archive of that post type."
 msgstr ""
+"Yazı türü arşivleri destekliyorsa ve ana sayfa o yazı türünün bir arşivi "
+"değilse yönetim çubuğunda 'Tüm Yazılar' görünümünde görünür."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:184
 msgid "View Items"
@@ -4038,7 +4213,7 @@ msgstr "Yazıyı görüntüle"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:165
 msgid "In the admin bar to view item when editing it."
-msgstr ""
+msgstr "Öğeyi düzenlerken görüntülemek için yönetim çubuğunda."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:164
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:216
@@ -4060,7 +4235,7 @@ msgstr "Yazıyı düzenle"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:145
 msgid "At the top of the editor screen when editing an item."
-msgstr ""
+msgstr "Bir öğeyi düzenlerken düzenleyici ekranının üstünde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:144
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:196
@@ -4082,7 +4257,7 @@ msgstr "Tüm yazılar"
 #: includes/admin/views/acf-post-type/advanced-settings.php:225
 #: includes/admin/views/acf-post-type/advanced-settings.php:245
 msgid "In the post type submenu in the admin dashboard."
-msgstr ""
+msgstr "Başlangıç ekranında yazı türü alt menüsünde."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:124
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:176
@@ -4098,7 +4273,7 @@ msgstr "Tüm %s"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:105
 msgid "Admin menu name for the post type."
-msgstr ""
+msgstr "Yazı türü için yönetici menüsü adı."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:104
 msgid "Menu Name"
@@ -4107,7 +4282,7 @@ msgstr "Menü ismi"
 #: includes/admin/views/acf-post-type/advanced-settings.php:90
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:142
 msgid "Regenerate all labels using the Singular and Plural labels"
-msgstr ""
+msgstr "Tekil ve Çoğul etiketleri kullanarak tüm etiketleri yeniden oluşturun."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:88
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:140
@@ -4116,11 +4291,11 @@ msgstr "Yeniden oluştur"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:79
 msgid "Active post types are enabled and registered with WordPress."
-msgstr ""
+msgstr "Aktif yazı türleri etkinleştirilmiş ve WordPress'e kaydedilmiştir."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:63
 msgid "A descriptive summary of the post type."
-msgstr ""
+msgstr "Yazı türünün açıklayıcı bir özeti."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:48
 msgid "Add Custom"
@@ -4128,7 +4303,7 @@ msgstr "Özel ekle"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:42
 msgid "Enable various features in the content editor."
-msgstr ""
+msgstr "İçerik düzenleyicide çeşitli özellikleri etkinleştirin."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:31
 msgid "Post Formats"
@@ -4140,48 +4315,50 @@ msgstr "Editör"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:24
 msgid "Trackbacks"
-msgstr ""
+msgstr "Geri izlemeler"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:87
 msgid "Select existing taxonomies to classify items of the post type."
 msgstr ""
+"Yazı türü öğelerini sınıflandırmak için mevcut sınıflandırmalardan seçin."
 
 #: includes/admin/views/acf-field-group/field.php:158
 msgid "Browse Fields"
-msgstr ""
+msgstr "Alanlara Göz At"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:287
 msgid "Nothing to import"
-msgstr ""
+msgstr "İçeri aktarılacak bir şey yok"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:282
 msgid ". The Custom Post Type UI plugin can be deactivated."
-msgstr ""
+msgstr ". Custom Post Type UI eklentisi etkisizleştirilebilir."
 
 #. translators: %d - number of items imported from CPTUI
 #: includes/admin/tools/class-acf-admin-tool-import.php:273
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Custom Post Type UI'dan %d öğe içe aktarıldı -"
+msgstr[1] "Custom Post Type UI'dan %d öğe içe aktarıldı -"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:257
 msgid "Failed to import taxonomies."
-msgstr ""
+msgstr "Sınıflandırmalar içeri aktarılamadı."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:239
 msgid "Failed to import post types."
-msgstr ""
+msgstr "Yazı türleri içeri aktarılamadı."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:228
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr ""
+"Custom Post Type UI eklentisinden içe aktarmak için hiçbir şey seçilmedi."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:204
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bir öğe içeri aktarıldı"
+msgstr[1] "%s öğe içeri aktarıldı"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:119
 msgid ""
@@ -4189,11 +4366,14 @@ msgid ""
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
 "with those of the import."
 msgstr ""
+"Aynı anahtara sahip bir yazı türü veya sınıflandırmayı içe aktarmak, içe "
+"aktarılanın ayarlarının mevcut yazı türü veya sınıflandırma ayarlarının "
+"üzerine yazılmasına neden olacaktır."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:108
 #: includes/admin/tools/class-acf-admin-tool-import.php:124
 msgid "Import from Custom Post Type UI"
-msgstr ""
+msgstr "Custom Post Type UI'dan İçe Aktar"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:354
 msgid ""
@@ -4204,10 +4384,17 @@ msgid ""
 "php file or include it within an external file, then deactivate or delete "
 "the items from the ACF admin."
 msgstr ""
+"Aşağıdaki kod, seçilen öğelerin yerel bir sürümünü kaydetmek için "
+"kullanılabilir. Alan gruplarını, yazı türlerini veya sınıflandırmaları yerel "
+"olarak depolamak, daha hızlı yükleme süreleri, sürüm kontrolü ve dinamik "
+"alanlar/ayarlar gibi birçok avantaj sağlayabilir. Aşağıdaki kodu temanızın "
+"functions.php dosyasına kopyalayıp yapıştırmanız veya harici bir dosya "
+"içinde dahil etmeniz yeterlidir, ardından ACF yönetim panelinden öğeleri "
+"devre dışı bırakın veya silin."
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:353
 msgid "Export - Generate PHP"
-msgstr ""
+msgstr "Dışa Aktar - PHP Oluştur"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:330
 msgid "Export"
@@ -4215,17 +4402,17 @@ msgstr "Dışa aktar"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:264
 msgid "Select Taxonomies"
-msgstr ""
+msgstr "Sınıflandırmaları seç"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:239
 msgid "Select Post Types"
-msgstr ""
+msgstr "Yazı türlerini seç"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:155
 msgid "Exported 1 item."
 msgid_plural "Exported %s items."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bir öğe dışa aktarıldı."
+msgstr[1] "%s öğe dışa aktarıldı."
 
 #: includes/admin/post-types/admin-taxonomy.php:127
 #: assets/build/js/acf-internal-post-type.js:182
@@ -4279,6 +4466,8 @@ msgid ""
 "This taxonomy could not be registered because its key is in use by another "
 "taxonomy registered by another plugin or theme."
 msgstr ""
+"Bu sınıflandırma kaydedilemedi çünkü anahtarı başka bir eklenti veya tema "
+"tarafından kaydedilen başka bir sınıflandırma tarafından kullanılıyor."
 
 #. translators: %s number of taxonomies synchronized
 #: includes/admin/post-types/admin-taxonomies.php:333
@@ -4316,29 +4505,29 @@ msgstr "Terimler"
 #: includes/admin/post-types/admin-post-types.php:327
 msgid "Post type synchronized."
 msgid_plural "%s post types synchronized."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Yazı türü senkronize edildi."
+msgstr[1] "%s yazı türü senkronize edildi."
 
 #. translators: %s number of post types duplicated
 #: includes/admin/post-types/admin-post-types.php:320
 msgid "Post type duplicated."
 msgid_plural "%s post types duplicated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Yazı türü çoğaltıldı."
+msgstr[1] "%s yazı türü çoğaltıldı."
 
 #. translators: %s number of post types deactivated
 #: includes/admin/post-types/admin-post-types.php:313
 msgid "Post type deactivated."
 msgid_plural "%s post types deactivated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Yazı türü etkisizleştirildi."
+msgstr[1] "%s yazı türü etkisizleştirildi."
 
 #. translators: %s number of post types activated
 #: includes/admin/post-types/admin-post-types.php:306
 msgid "Post type activated."
 msgid_plural "%s post types activated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Yazı türü etkinleştirildi."
+msgstr[1] "%s yazı türü etkinleştirildi."
 
 #: includes/admin/post-types/admin-post-types.php:87
 #: includes/admin/post-types/admin-taxonomies.php:111
@@ -4364,6 +4553,8 @@ msgid ""
 "This post type could not be registered because its key is in use by another "
 "post type registered by another plugin or theme."
 msgstr ""
+"Bu yazı türü kaydedilemedi çünkü anahtarı başka bir eklenti veya tema "
+"tarafından kaydedilen başka bir yazı türü tarafından kullanılıyor."
 
 #: includes/admin/post-types/admin-post-type.php:126
 #: assets/build/js/acf-internal-post-type.js:176
@@ -4392,47 +4583,47 @@ msgstr "%s yazı tipi güncellendi"
 
 #: includes/admin/post-types/admin-post-type.php:56
 msgid "Post type draft updated."
-msgstr ""
+msgstr "Yazı türü taslağı güncellendi."
 
 #: includes/admin/post-types/admin-post-type.php:55
 msgid "Post type scheduled for."
-msgstr ""
+msgstr "Yazı türü zamanlandı."
 
 #: includes/admin/post-types/admin-post-type.php:54
 msgid "Post type submitted."
-msgstr ""
+msgstr "Yazı türü gönderildi."
 
 #: includes/admin/post-types/admin-post-type.php:53
 msgid "Post type saved."
-msgstr ""
+msgstr "Yazı türü kaydedildi"
 
 #: includes/admin/post-types/admin-post-type.php:50
 msgid "Post type updated."
-msgstr ""
+msgstr "Yazı türü güncellendi."
 
 #: includes/admin/post-types/admin-post-type.php:49
 msgid "Post type deleted."
-msgstr ""
+msgstr "Yazı türü silindi"
 
 #: includes/admin/post-types/admin-field-group.php:146
 #: assets/build/js/acf-field-group.js:1159
-#: assets/build/js/acf-field-group.js:1383
+#: assets/build/js/acf-field-group.js:1369
 msgid "Type to search..."
-msgstr ""
+msgstr "Aramak için yazın..."
 
 #: includes/admin/post-types/admin-field-group.php:101
 #: assets/build/js/acf-field-group.js:1186
-#: assets/build/js/acf-field-group.js:2349
-#: assets/build/js/acf-field-group.js:1429
-#: assets/build/js/acf-field-group.js:2761
+#: assets/build/js/acf-field-group.js:2350
+#: assets/build/js/acf-field-group.js:1404
+#: assets/build/js/acf-field-group.js:2683
 msgid "PRO Only"
-msgstr ""
+msgstr "Sadece PRO'da"
 
 #: includes/admin/post-types/admin-field-group.php:93
 #: assets/build/js/acf-internal-post-type.js:308
 #: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
-msgstr ""
+msgstr "Alan grubu başarıyla bağlandı."
 
 #. translators: %s - URL to ACF tools page.
 #: includes/admin/admin.php:199
@@ -4440,6 +4631,8 @@ msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
+"Custom Post Type UI ile kaydedilen yazı türleri ve sınıflandırmaları içeri "
+"aktarın ve ACF ile yönetin. <a href=\"%s\">Başlayın</a>."
 
 #: includes/admin/admin.php:46 includes/admin/admin.php:352
 #: includes/class-acf-site-health.php:250
@@ -4488,6 +4681,8 @@ msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
 msgstr ""
+"Bu öğe kaydedilemedi çünkü anahtarı başka bir eklenti veya tema tarafından "
+"kaydedilen başka bir öğe tarafından kullanılıyor."
 
 #: includes/acf-internal-post-type-functions.php:509
 #: includes/acf-internal-post-type-functions.php:538
@@ -4503,7 +4698,7 @@ msgstr "İzinler"
 #: includes/acf-internal-post-type-functions.php:507
 #: includes/acf-internal-post-type-functions.php:536
 msgid "URLs"
-msgstr ""
+msgstr "URL'ler"
 
 #: includes/acf-internal-post-type-functions.php:506
 #: includes/acf-internal-post-type-functions.php:535
@@ -4519,7 +4714,7 @@ msgstr "Etiketler"
 
 #: includes/admin/post-types/admin-field-group.php:279
 msgid "Field Settings Tabs"
-msgstr ""
+msgstr "Alan ayarı sekmeleri"
 
 #. Author URI of the plugin
 #: acf.php
@@ -4527,10 +4722,12 @@ msgid ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 msgstr ""
+"https://wpengine.com/?utm_source=wordpress."
+"org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
-#: includes/api/api-template.php:1015
+#: includes/api/api-template.php:1027
 msgid "[ACF shortcode value disabled for preview]"
-msgstr ""
+msgstr "[ACF kısa kod değeri ön izleme için devre dışı bırakıldı]"
 
 #: includes/admin/admin-internal-post-type.php:290
 #: includes/admin/post-types/admin-field-group.php:572
@@ -4538,52 +4735,53 @@ msgid "Close Modal"
 msgstr "Pencereyi kapat"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:1701
-#: assets/build/js/acf-field-group.js:2032
+#: assets/build/js/acf-field-group.js:1702
+#: assets/build/js/acf-field-group.js:1972
 msgid "Field moved to other group"
-msgstr ""
+msgstr "Alan başka bir gruba taşındı."
 
 #: includes/admin/post-types/admin-field-group.php:91
 #: assets/build/js/acf.js:1443 assets/build/js/acf.js:1521
 msgid "Close modal"
 msgstr "Modalı kapat"
 
-#: includes/fields/class-acf-field-tab.php:119
+#: includes/fields/class-acf-field-tab.php:122
 msgid "Start a new group of tabs at this tab."
-msgstr ""
+msgstr "Bu sekmede yeni bir sekme grubu başlatın."
 
-#: includes/fields/class-acf-field-tab.php:118
+#: includes/fields/class-acf-field-tab.php:121
 msgid "New Tab Group"
-msgstr ""
+msgstr "Yeni sekme grubu"
 
-#: includes/fields/class-acf-field-select.php:423
+#: includes/fields/class-acf-field-select.php:415
 #: includes/fields/class-acf-field-true_false.php:188
 msgid "Use a stylized checkbox using select2"
-msgstr ""
+msgstr "Select2 kullanarak biçimlendirilmiş bir seçim kutusu kullan"
 
 #: includes/fields/class-acf-field-radio.php:250
 msgid "Save Other Choice"
-msgstr ""
+msgstr "Diğer seçeneğini kaydet"
 
 #: includes/fields/class-acf-field-radio.php:239
 msgid "Allow Other Choice"
-msgstr ""
+msgstr "Diğer seçeneğine izin ver"
 
 #: includes/fields/class-acf-field-checkbox.php:420
 msgid "Add Toggle All"
-msgstr ""
+msgstr "Tümünü aç/kapat ekle"
 
 #: includes/fields/class-acf-field-checkbox.php:379
 msgid "Save Custom Values"
-msgstr ""
+msgstr "Özel değerleri kaydet"
 
 #: includes/fields/class-acf-field-checkbox.php:368
 msgid "Allow Custom Values"
-msgstr ""
+msgstr "Özel değerlere izin ver"
 
 #: includes/fields/class-acf-field-checkbox.php:134
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
 msgstr ""
+"Onay kutusu özel değerleri boş olamaz. Boş değerlerin seçimini kaldırın."
 
 #: includes/admin/views/global/navigation.php:253
 msgid "Updates"
@@ -4592,7 +4790,7 @@ msgstr "Güncellemeler"
 #: includes/admin/views/global/navigation.php:177
 #: includes/admin/views/global/navigation.php:181
 msgid "Advanced Custom Fields logo"
-msgstr ""
+msgstr "Advanced Custom Fields logosu"
 
 #: includes/admin/views/global/form-top.php:92
 msgid "Save Changes"
@@ -4600,7 +4798,7 @@ msgstr "Değişiklikleri kaydet"
 
 #: includes/admin/views/global/form-top.php:79
 msgid "Field Group Title"
-msgstr ""
+msgstr "Alan grubu başlığı"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:709
 #: includes/admin/views/global/form-top.php:3
@@ -4616,10 +4814,12 @@ msgid ""
 "New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting "
 "started guide</a>."
 msgstr ""
+"ACF'de yeni misiniz? <a href=\"%s\" target=\"_blank\">başlangıç "
+"kılavuzumuza</a> göz atın."
 
 #: includes/admin/views/acf-field-group/list-empty.php:24
 msgid "Add Field Group"
-msgstr ""
+msgstr "Alan grubu ekle"
 
 #. translators: %s url to creating a field group page
 #: includes/admin/views/acf-field-group/list-empty.php:18
@@ -4627,46 +4827,49 @@ msgid ""
 "ACF uses <a href=\"%s\" target=\"_blank\">field groups</a> to group custom "
 "fields together, and then attach those fields to edit screens."
 msgstr ""
+"ACF, özel alanları bir araya toplamak için <a href=\"%s\" "
+"target=\"_blank\">alan gruplarını</a> kullanır ve akabinde bu alanları "
+"düzenleme ekranlarına ekler."
 
 #: includes/admin/views/acf-field-group/list-empty.php:12
 msgid "Add Your First Field Group"
-msgstr ""
+msgstr "İlk alan grubunuzu ekleyin"
 
 #: includes/admin/admin-options-pages-preview.php:28
 #: includes/admin/views/acf-field-group/pro-features.php:58
 #: includes/admin/views/global/navigation.php:86
 #: includes/admin/views/global/navigation.php:255
 msgid "Options Pages"
-msgstr ""
+msgstr "Seçenekler sayfası"
 
 #: includes/admin/views/acf-field-group/pro-features.php:54
 msgid "ACF Blocks"
-msgstr ""
+msgstr "ACF blokları"
 
 #: includes/admin/views/acf-field-group/pro-features.php:62
 msgid "Gallery Field"
-msgstr ""
+msgstr "Galeri alanı"
 
 #: includes/admin/views/acf-field-group/pro-features.php:42
 msgid "Flexible Content Field"
-msgstr ""
+msgstr "Esnek içerik alanı"
 
 #: includes/admin/views/acf-field-group/pro-features.php:46
 msgid "Repeater Field"
-msgstr ""
+msgstr "Tekrarlayıcı alanı"
 
 #: includes/admin/views/global/navigation.php:215
 msgid "Unlock Extra Features with ACF PRO"
-msgstr ""
+msgstr "ACF PRO ile ek özelikler açın"
 
 #: includes/admin/views/acf-field-group/options.php:267
 msgid "Delete Field Group"
-msgstr ""
+msgstr "Alan grubunu sil"
 
 #. translators: 1: Post creation date 2: Post creation time
 #: includes/admin/views/acf-field-group/options.php:261
 msgid "Created on %1$s at %2$s"
-msgstr ""
+msgstr "%1$s tarihinde %2$s saatinde oluşturuldu"
 
 #: includes/acf-field-group-functions.php:497
 msgid "Group Settings"
@@ -4674,7 +4877,7 @@ msgstr "Grup ayarları"
 
 #: includes/acf-field-group-functions.php:495
 msgid "Location Rules"
-msgstr ""
+msgstr "Konum kuralları"
 
 #. translators: %s url to field types list
 #: includes/admin/views/acf-field-group/fields.php:73
@@ -4682,12 +4885,16 @@ msgid ""
 "Choose from over 30 field types. <a href=\"%s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"30'dan fazla alan türünden seçim yapın. <a href=\"%s\" "
+"target=\"_blank\">Daha fazla bilgi edinin</a>."
 
 #: includes/admin/views/acf-field-group/fields.php:65
 msgid ""
 "Get started creating new custom fields for your posts, pages, custom post "
 "types and other WordPress content."
 msgstr ""
+"Yazılarınız, sayfalarınız, özel yazı tipleriniz ve diğer WordPress "
+"içerikleriniz için yeni özel alanlar oluşturmaya başlayın."
 
 #: includes/admin/views/acf-field-group/fields.php:64
 msgid "Add Your First Field"
@@ -4760,8 +4967,8 @@ msgid "Activate this item"
 msgstr "Bu öğeyi etkinleştir"
 
 #: includes/admin/post-types/admin-field-group.php:88
-#: assets/build/js/acf-field-group.js:2862
-#: assets/build/js/acf-field-group.js:3375
+#: assets/build/js/acf-field-group.js:2863
+#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr "Alan grubu çöp kutusuna taşınsın mı?"
 
@@ -4823,7 +5030,7 @@ msgstr "%1$s geçerli bir kullanıcı kimliğine sahip olmalıdır."
 msgid "Invalid request."
 msgstr "Geçersiz istek."
 
-#: includes/fields/class-acf-field-select.php:637
+#: includes/fields/class-acf-field-select.php:629
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s bir %2$s değil"
 
@@ -5493,7 +5700,7 @@ msgstr "genişlik"
 msgid "Wrapper Attributes"
 msgstr "Kapsayıcı öznitelikleri"
 
-#: includes/fields/class-acf-field.php:311
+#: includes/fields/class-acf-field.php:312
 msgid "Required"
 msgstr "Gerekli"
 
@@ -5553,8 +5760,8 @@ msgstr "Yeniden düzenlemek için sürükleyin"
 
 #: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2387
-#: assets/build/js/acf-field-group.js:2812
+#: assets/build/js/acf-field-group.js:2388
+#: assets/build/js/acf-field-group.js:2734
 msgid "Show this field group if"
 msgstr "Bu alan grubunu şu koşulda göster"
 
@@ -5845,8 +6052,8 @@ msgstr "Boş"
 #: includes/admin/post-types/admin-field-group.php:97
 #: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1541
-#: assets/build/js/acf-field-group.js:1860
+#: assets/build/js/acf-field-group.js:1542
+#: assets/build/js/acf-field-group.js:1805
 msgid "copy"
 msgstr "kopyala"
 
@@ -5863,8 +6070,8 @@ msgid "Checked"
 msgstr "İşaretlendi"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1646
-#: assets/build/js/acf-field-group.js:1972
+#: assets/build/js/acf-field-group.js:1647
+#: assets/build/js/acf-field-group.js:1913
 msgid "Move Custom Field"
 msgstr "Özel alanı taşı"
 
@@ -5879,14 +6086,14 @@ msgid "Field group title is required"
 msgstr "Alan grubu başlığı gerekli"
 
 #: includes/admin/post-types/admin-field-group.php:86
-#: assets/build/js/acf-field-group.js:1635
-#: assets/build/js/acf-field-group.js:1958
+#: assets/build/js/acf-field-group.js:1636
+#: assets/build/js/acf-field-group.js:1902
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Bu alan, üzerinde yapılan değişiklikler kaydedilene kadar taşınamaz"
 
 #: includes/admin/post-types/admin-field-group.php:85
-#: assets/build/js/acf-field-group.js:1445
-#: assets/build/js/acf-field-group.js:1755
+#: assets/build/js/acf-field-group.js:1446
+#: assets/build/js/acf-field-group.js:1703
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "Artık alan isimlerinin başlangıcında “field_” kullanılmayacak"
 
@@ -5995,7 +6202,7 @@ msgstr "İçerik"
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
 #: includes/forms/form-front.php:37
 msgid "Title"
-msgstr "Ba&#351l&#305k"
+msgstr "Başlık"
 
 #: includes/assets.php:376 includes/forms/form-comment.php:140
 #: assets/build/js/acf-input.js:8414 assets/build/js/acf-input.js:9186
@@ -6124,7 +6331,7 @@ msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 "Bu sayfadan başka bir sayfaya geçerseniz yaptığınız değişiklikler kaybolacak"
 
-#: includes/api/api-helpers.php:2959
+#: includes/api/api-helpers.php:2984
 msgid "File type must be %s."
 msgstr "Dosya tipi %s olmalı."
 
@@ -6133,34 +6340,34 @@ msgstr "Dosya tipi %s olmalı."
 #: includes/admin/views/acf-field-group/conditional-logic.php:182
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2956 assets/build/js/acf-field-group.js:781
-#: assets/build/js/acf-field-group.js:2427
+#: includes/api/api-helpers.php:2981 assets/build/js/acf-field-group.js:781
+#: assets/build/js/acf-field-group.js:2428
 #: assets/build/js/acf-field-group.js:946
-#: assets/build/js/acf-field-group.js:2859
+#: assets/build/js/acf-field-group.js:2781
 msgid "or"
 msgstr "veya"
 
-#: includes/api/api-helpers.php:2932
+#: includes/api/api-helpers.php:2957
 msgid "File size must not exceed %s."
 msgstr "Dosya boyutu %s boyutunu geçmemeli."
 
-#: includes/api/api-helpers.php:2928
+#: includes/api/api-helpers.php:2953
 msgid "File size must be at least %s."
 msgstr "Dosya boyutu en az %s olmalı."
 
-#: includes/api/api-helpers.php:2915
+#: includes/api/api-helpers.php:2940
 msgid "Image height must not exceed %dpx."
 msgstr "Görsel yüksekliği %dpx değerini geçmemeli."
 
-#: includes/api/api-helpers.php:2911
+#: includes/api/api-helpers.php:2936
 msgid "Image height must be at least %dpx."
 msgstr "Görsel yüksekliği en az %dpx olmalı."
 
-#: includes/api/api-helpers.php:2899
+#: includes/api/api-helpers.php:2924
 msgid "Image width must not exceed %dpx."
 msgstr "Görsel genişliği %dpx değerini geçmemeli."
 
-#: includes/api/api-helpers.php:2895
+#: includes/api/api-helpers.php:2920
 msgid "Image width must be at least %dpx."
 msgstr "Görsel genişliği en az %dpx olmalı."
 
@@ -6187,7 +6394,7 @@ msgstr "Küçük resim"
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:95
 #: assets/build/js/acf-field-group.js:1090
-#: assets/build/js/acf-field-group.js:1277
+#: assets/build/js/acf-field-group.js:1274
 msgid "(no label)"
 msgstr "(etiket yok)"
 
@@ -6360,7 +6567,7 @@ msgstr "Diğer"
 msgid "Radio Button"
 msgstr "Radyo düğmesi"
 
-#: includes/fields/class-acf-field-accordion.php:103
+#: includes/fields/class-acf-field-accordion.php:106
 msgid ""
 "Define an endpoint for the previous accordion to stop. This accordion will "
 "not be visible."
@@ -6368,19 +6575,19 @@ msgstr ""
 "Önceki akordeonun durması için bir son nokta tanımlayın. Bu akordeon "
 "görüntülenmeyecek."
 
-#: includes/fields/class-acf-field-accordion.php:92
+#: includes/fields/class-acf-field-accordion.php:95
 msgid "Allow this accordion to open without closing others."
 msgstr "Bu akordeonun diğerlerini kapatmadan açılmasını sağla."
 
-#: includes/fields/class-acf-field-accordion.php:91
+#: includes/fields/class-acf-field-accordion.php:94
 msgid "Multi-Expand"
 msgstr "Çoklu genişletme"
 
-#: includes/fields/class-acf-field-accordion.php:81
+#: includes/fields/class-acf-field-accordion.php:84
 msgid "Display this accordion as open on page load."
 msgstr "Sayfa yüklemesi sırasında bu akordeonu açık olarak görüntüle."
 
-#: includes/fields/class-acf-field-accordion.php:80
+#: includes/fields/class-acf-field-accordion.php:83
 msgid "Open"
 msgstr "Açık"
 
@@ -6442,81 +6649,87 @@ msgstr "Dosya"
 msgid "Password"
 msgstr "Parola"
 
-#: includes/fields/class-acf-field-select.php:365
+#: includes/fields/class-acf-field-select.php:357
 msgid "Specify the value returned"
 msgstr "Dönecek değeri belirt"
 
-#: includes/fields/class-acf-field-select.php:433
+#: includes/fields/class-acf-field-select.php:425
 msgid "Use AJAX to lazy load choices?"
 msgstr "Seçimlerin tembel yüklenmesi için AJAX kullanılsın mı?"
 
 #: includes/fields/class-acf-field-checkbox.php:333
-#: includes/fields/class-acf-field-select.php:354
+#: includes/fields/class-acf-field-select.php:346
 msgid "Enter each default value on a new line"
 msgstr "Her satıra bir değer girin"
 
-#: includes/fields/class-acf-field-select.php:229 includes/media.php:48
+#: includes/fields/class-acf-field-select.php:221 includes/media.php:48
 #: assets/build/js/acf-input.js:7822 assets/build/js/acf-input.js:8484
 msgctxt "verb"
 msgid "Select"
 msgstr "Seçim"
 
-#: includes/fields/class-acf-field-select.php:109
+#: includes/fields/class-acf-field-select.php:101
 msgctxt "Select2 JS load_fail"
 msgid "Loading failed"
 msgstr "Yükleme başarısız oldu"
 
-#: includes/fields/class-acf-field-select.php:108
+#: includes/fields/class-acf-field-select.php:100
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
 msgstr "Aranıyor&hellip;"
 
-#: includes/fields/class-acf-field-select.php:107
+#: includes/fields/class-acf-field-select.php:99
 msgctxt "Select2 JS load_more"
 msgid "Loading more results&hellip;"
 msgstr "Daha fazla sonuç yükleniyor&hellip;"
 
-#: includes/fields/class-acf-field-select.php:106
+#. translators: %d - maximum number of items that can be selected in the select
+#. field
+#: includes/fields/class-acf-field-select.php:98
 msgctxt "Select2 JS selection_too_long_n"
 msgid "You can only select %d items"
 msgstr "Sadece %d öge seçebilirsiniz"
 
-#: includes/fields/class-acf-field-select.php:105
+#: includes/fields/class-acf-field-select.php:96
 msgctxt "Select2 JS selection_too_long_1"
 msgid "You can only select 1 item"
 msgstr "Sadece 1 öge seçebilirsiniz"
 
-#: includes/fields/class-acf-field-select.php:104
+#. translators: %d - number of characters that should be removed from select
+#. field
+#: includes/fields/class-acf-field-select.php:95
 msgctxt "Select2 JS input_too_long_n"
 msgid "Please delete %d characters"
 msgstr "Lütfen %d karakter silin"
 
-#: includes/fields/class-acf-field-select.php:103
+#: includes/fields/class-acf-field-select.php:93
 msgctxt "Select2 JS input_too_long_1"
 msgid "Please delete 1 character"
 msgstr "Lütfen 1 karakter silin"
 
-#: includes/fields/class-acf-field-select.php:102
+#. translators: %d - number of characters to enter into select field input
+#: includes/fields/class-acf-field-select.php:92
 msgctxt "Select2 JS input_too_short_n"
 msgid "Please enter %d or more characters"
 msgstr "Lütfen %d veya daha fazla karakter girin"
 
-#: includes/fields/class-acf-field-select.php:101
+#: includes/fields/class-acf-field-select.php:90
 msgctxt "Select2 JS input_too_short_1"
 msgid "Please enter 1 or more characters"
 msgstr "Lütfen 1 veya daha fazla karakter girin"
 
-#: includes/fields/class-acf-field-select.php:100
+#: includes/fields/class-acf-field-select.php:89
 msgctxt "Select2 JS matches_0"
 msgid "No matches found"
 msgstr "Eşleşme yok"
 
-#: includes/fields/class-acf-field-select.php:99
+#. translators: %d - number of results available in select field
+#: includes/fields/class-acf-field-select.php:88
 msgctxt "Select2 JS matches_n"
 msgid "%d results are available, use up and down arrow keys to navigate."
 msgstr "%d sonuç bulundu. Dolaşmak için yukarı ve aşağı okları kullanın."
 
-#: includes/fields/class-acf-field-select.php:98
+#: includes/fields/class-acf-field-select.php:86
 msgctxt "Select2 JS matches_1"
 msgid "One result is available, press enter to select it."
 msgstr "Bir sonuç bulundu, seçmek için enter tuşuna basın."
@@ -6656,21 +6869,21 @@ msgstr "Zamanı se"
 msgid "Date Time Picker"
 msgstr "Tarih zaman seçici"
 
-#: includes/fields/class-acf-field-accordion.php:102
+#: includes/fields/class-acf-field-accordion.php:105
 msgid "Endpoint"
 msgstr "Uç nokta"
 
 #: includes/admin/views/acf-field-group/options.php:130
-#: includes/fields/class-acf-field-tab.php:109
+#: includes/fields/class-acf-field-tab.php:112
 msgid "Left aligned"
 msgstr "Sola hizalı"
 
 #: includes/admin/views/acf-field-group/options.php:129
-#: includes/fields/class-acf-field-tab.php:108
+#: includes/fields/class-acf-field-tab.php:111
 msgid "Top aligned"
 msgstr "Üste hizalı"
 
-#: includes/fields/class-acf-field-tab.php:104
+#: includes/fields/class-acf-field-tab.php:107
 msgid "Placement"
 msgstr "Konumlandırma"
 
@@ -6728,7 +6941,7 @@ msgstr "Aralık"
 #: includes/fields/class-acf-field-button-group.php:165
 #: includes/fields/class-acf-field-checkbox.php:350
 #: includes/fields/class-acf-field-radio.php:210
-#: includes/fields/class-acf-field-select.php:372
+#: includes/fields/class-acf-field-select.php:364
 msgid "Both (Array)"
 msgstr "İkisi de (Dizi)"
 
@@ -6736,14 +6949,14 @@ msgstr "İkisi de (Dizi)"
 #: includes/fields/class-acf-field-button-group.php:164
 #: includes/fields/class-acf-field-checkbox.php:349
 #: includes/fields/class-acf-field-radio.php:209
-#: includes/fields/class-acf-field-select.php:371
+#: includes/fields/class-acf-field-select.php:363
 msgid "Label"
 msgstr "Etiket"
 
 #: includes/fields/class-acf-field-button-group.php:163
 #: includes/fields/class-acf-field-checkbox.php:348
 #: includes/fields/class-acf-field-radio.php:208
-#: includes/fields/class-acf-field-select.php:370
+#: includes/fields/class-acf-field-select.php:362
 msgid "Value"
 msgstr "Değer"
 
@@ -6762,14 +6975,14 @@ msgstr "Yatay"
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "red : Red"
 msgstr "kirmizi : Kırmızı"
 
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "For more control, you may specify both a value and label like this:"
 msgstr ""
 "Daha fazla kontrol için, hem bir değeri hem de bir etiketi şu şekilde "
@@ -6778,14 +6991,14 @@ msgstr ""
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "Enter each choice on a new line."
 msgstr "Her seçeneği yeni bir satıra girin."
 
 #: includes/fields/class-acf-field-button-group.php:137
 #: includes/fields/class-acf-field-checkbox.php:322
 #: includes/fields/class-acf-field-radio.php:182
-#: includes/fields/class-acf-field-select.php:342
+#: includes/fields/class-acf-field-select.php:334
 msgid "Choices"
 msgstr "Seçimler"
 
@@ -6797,7 +7010,7 @@ msgstr "Tuş grubu"
 #: includes/fields/class-acf-field-page_link.php:519
 #: includes/fields/class-acf-field-post_object.php:432
 #: includes/fields/class-acf-field-radio.php:228
-#: includes/fields/class-acf-field-select.php:401
+#: includes/fields/class-acf-field-select.php:393
 #: includes/fields/class-acf-field-taxonomy.php:705
 #: includes/fields/class-acf-field-user.php:132
 msgid "Allow Null"
@@ -7187,35 +7400,35 @@ msgstr "Resim Seç"
 msgid "Image"
 msgstr "Görsel"
 
-#: includes/fields/class-acf-field-message.php:110
+#: includes/fields/class-acf-field-message.php:113
 msgid "Allow HTML markup to display as visible text instead of rendering"
 msgstr "Görünür metin olarak HTML kodlamasının görüntülenmesine izin ver"
 
-#: includes/fields/class-acf-field-message.php:109
+#: includes/fields/class-acf-field-message.php:112
 msgid "Escape HTML"
 msgstr "HTML’i güvenli hale getir"
 
-#: includes/fields/class-acf-field-message.php:101
+#: includes/fields/class-acf-field-message.php:104
 #: includes/fields/class-acf-field-textarea.php:162
 msgid "No Formatting"
 msgstr "Biçimlendirme yok"
 
-#: includes/fields/class-acf-field-message.php:100
+#: includes/fields/class-acf-field-message.php:103
 #: includes/fields/class-acf-field-textarea.php:161
 msgid "Automatically add &lt;br&gt;"
 msgstr "Otomatik ekle &lt;br&gt;"
 
-#: includes/fields/class-acf-field-message.php:99
+#: includes/fields/class-acf-field-message.php:102
 #: includes/fields/class-acf-field-textarea.php:160
 msgid "Automatically add paragraphs"
 msgstr "Otomatik paragraf ekle"
 
-#: includes/fields/class-acf-field-message.php:95
+#: includes/fields/class-acf-field-message.php:98
 #: includes/fields/class-acf-field-textarea.php:156
 msgid "Controls how new lines are rendered"
 msgstr "Yeni satırların nasıl görüntüleneceğini denetler"
 
-#: includes/fields/class-acf-field-message.php:94
+#: includes/fields/class-acf-field-message.php:97
 #: includes/fields/class-acf-field-textarea.php:155
 msgid "New Lines"
 msgstr "Yeni satırlar"
@@ -7297,7 +7510,7 @@ msgstr "Etkinken görüntülenen metin"
 msgid "On Text"
 msgstr "Açık metni"
 
-#: includes/fields/class-acf-field-select.php:422
+#: includes/fields/class-acf-field-select.php:414
 #: includes/fields/class-acf-field-true_false.php:187
 msgid "Stylized UI"
 msgstr "Stilize edilmiş kullanıcı arabirimi"
@@ -7309,7 +7522,7 @@ msgstr "Stilize edilmiş kullanıcı arabirimi"
 #: includes/fields/class-acf-field-number.php:113
 #: includes/fields/class-acf-field-radio.php:192
 #: includes/fields/class-acf-field-range.php:153
-#: includes/fields/class-acf-field-select.php:353
+#: includes/fields/class-acf-field-select.php:345
 #: includes/fields/class-acf-field-text.php:95
 #: includes/fields/class-acf-field-textarea.php:93
 #: includes/fields/class-acf-field-true_false.php:135
@@ -7323,7 +7536,7 @@ msgid "Displays text alongside the checkbox"
 msgstr "İşaret kutusunun yanında görüntülenen metin"
 
 #: includes/fields/class-acf-field-message.php:23
-#: includes/fields/class-acf-field-message.php:84
+#: includes/fields/class-acf-field-message.php:87
 #: includes/fields/class-acf-field-true_false.php:125
 msgid "Message"
 msgstr "Mesaj"
@@ -7348,31 +7561,31 @@ msgstr "Evet"
 msgid "True / False"
 msgstr "Doğru / yanlış"
 
-#: includes/fields/class-acf-field-group.php:412
+#: includes/fields/class-acf-field-group.php:415
 msgid "Row"
 msgstr "Satır"
 
-#: includes/fields/class-acf-field-group.php:411
+#: includes/fields/class-acf-field-group.php:414
 msgid "Table"
 msgstr "Tablo"
 
 #: includes/admin/post-types/admin-field-group.php:158
-#: includes/fields/class-acf-field-group.php:410
+#: includes/fields/class-acf-field-group.php:413
 msgid "Block"
 msgstr "Blok"
 
-#: includes/fields/class-acf-field-group.php:405
+#: includes/fields/class-acf-field-group.php:408
 msgid "Specify the style used to render the selected fields"
 msgstr "Seçili alanları görüntülemek için kullanılacak stili belirtin"
 
 #: includes/fields.php:330 includes/fields/class-acf-field-button-group.php:204
 #: includes/fields/class-acf-field-checkbox.php:405
-#: includes/fields/class-acf-field-group.php:404
+#: includes/fields/class-acf-field-group.php:407
 #: includes/fields/class-acf-field-radio.php:276
 msgid "Layout"
 msgstr "Yerleşim"
 
-#: includes/fields/class-acf-field-group.php:388
+#: includes/fields/class-acf-field-group.php:391
 msgid "Sub Fields"
 msgstr "Alt alanlar"
 
@@ -7448,7 +7661,7 @@ msgstr "Tema işlevlerinden dönen biçim"
 #: includes/fields/class-acf-field-image.php:177
 #: includes/fields/class-acf-field-post_object.php:396
 #: includes/fields/class-acf-field-relationship.php:610
-#: includes/fields/class-acf-field-select.php:364
+#: includes/fields/class-acf-field-select.php:356
 #: includes/fields/class-acf-field-time_picker.php:121
 #: includes/fields/class-acf-field-user.php:95
 msgid "Return Format"

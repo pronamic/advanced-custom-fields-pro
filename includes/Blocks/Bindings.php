@@ -47,13 +47,35 @@ class Bindings {
 	 * @param array     $source_attrs   An array of the source attributes requested.
 	 * @param \WP_Block $block_instance The block instance.
 	 * @param string    $attribute_name The block's bound attribute name.
-	 * @return string The block binding value.
+	 * @return string|null The block binding value or an empty string on failure.
 	 */
 	public function get_value( array $source_attrs, \WP_Block $block_instance, string $attribute_name ) {
 		if ( ! isset( $source_attrs['key'] ) || ! is_string( $source_attrs['key'] ) ) {
-			$value = null;
+			$value = '';
 		} else {
-			$value = get_field( $source_attrs['key'] );
+			$field = get_field_object( $source_attrs['key'], false, true, true, true );
+
+			if ( ! $field ) {
+				return '';
+			}
+
+			if ( ! acf_field_type_supports( $field['type'], 'bindings', true ) ) {
+				if ( is_preview() ) {
+					return apply_filters( 'acf/bindings/field_not_supported_message', '[' . esc_html__( 'The requested ACF field type does not support output in Block Bindings or the ACF shortcode.', 'acf' ) . ']' );
+				} else {
+					return '';
+				}
+			}
+
+			if ( isset( $field['allow_in_bindings'] ) && ! $field['allow_in_bindings'] ) {
+				if ( is_preview() ) {
+					return apply_filters( 'acf/bindings/field_not_allowed_message', '[' . esc_html__( 'The requested ACF field is not allowed to be output in bindings or the ACF Shortcode.', 'acf' ) . ']' );
+				} else {
+					return '';
+				}
+			}
+
+			$value = $field['value'];
 
 			if ( is_array( $value ) ) {
 				$value = implode( ', ', $value );

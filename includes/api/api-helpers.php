@@ -687,14 +687,30 @@ function acf_verify_nonce( $value ) {
  *
  * @since   5.2.3
  *
- * @param string $nonce  The nonce to check.
- * @param string $action The action of the nonce.
+ * @param string  $nonce           The nonce to check.
+ * @param string  $action          The action of the nonce.
+ * @param boolean $action_is_field If the action is a field, modify the action to match validate the field type.
  * @return boolean
  */
-function acf_verify_ajax( $nonce = '', $action = '' ) {
+function acf_verify_ajax( $nonce = '', $action = '', $action_is_field = false ) {
 	// Bail early if we don't have a nonce to check.
 	if ( empty( $nonce ) && empty( $_REQUEST['nonce'] ) ) {
 		return false;
+	}
+
+	// Build the action if we're trying to validate a specific field nonce.
+	if ( $action_is_field ) {
+		if ( ! acf_is_field_key( $action ) ) {
+			return false;
+		}
+
+		$field = acf_get_field( $action );
+
+		if ( empty( $field['type'] ) ) {
+			return false;
+		}
+
+		$action = 'acf_field_' . $field['type'] . '_' . $action;
 	}
 
 	$nonce_to_check = ! empty( $nonce ) ? $nonce : $_REQUEST['nonce']; // phpcs:ignore WordPress.Security -- We're verifying a nonce here.
@@ -3974,3 +3990,20 @@ function acf_is_multisite_main_site() {
 	}
 	return false;
 }
+
+/**
+ * Allow filterable permissions metabox callbacks.
+ *
+ * @since   6.3.10
+ *
+ * @param   boolean $enable_meta_box_cb_edit Can the current user edit metabox callbacks.
+ * @return  boolean
+ */
+function acf_settings_enable_meta_box_cb_edit( $enable_meta_box_cb_edit ): bool {
+	if ( ! is_super_admin() ) {
+		return false;
+	}
+
+	return (bool) $enable_meta_box_cb_edit;
+}
+add_filter( 'acf/settings/enable_meta_box_cb_edit', 'acf_settings_enable_meta_box_cb_edit', 1 );

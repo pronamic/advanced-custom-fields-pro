@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-07-18T08:39:03+00:00\n"
+"PO-Revision-Date: 2024-10-02T12:08:46+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:136
+msgid ""
+"ACF was unable to perform validation due to an invalid security nonce being "
+"provided."
+msgstr ""
+
+#: includes/fields/class-acf-field.php:359
+msgid "Allow Access to Value in Editor UI"
+msgstr ""
+
+#: includes/fields/class-acf-field.php:341
+msgid "Learn more."
+msgstr ""
+
+#. translators: %s A "Learn More" link to documentation explaining the setting
+#. further.
+#: includes/fields/class-acf-field.php:340
+msgid ""
+"Allow content editors to access and display the field value in the editor UI "
+"using Block Bindings or the ACF Shortcode. %s"
+msgstr ""
+
+#: includes/Blocks/Bindings.php:64
+msgid ""
+"The requested ACF field type does not support output in Block Bindings or "
+"the ACF shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1085 includes/Blocks/Bindings.php:72
+msgid ""
+"The requested ACF field is not allowed to be output in bindings or the ACF "
+"Shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1077
+msgid ""
+"The requested ACF field type does not support output in bindings or the ACF "
+"Shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1054
+msgid "[The ACF shortcode cannot display fields from non-public posts]"
+msgstr ""
+
+#: includes/api/api-template.php:1011
+msgid "[The ACF shortcode is disabled on this site]"
+msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:451
 msgid "Businessman Icon"
@@ -322,7 +370,7 @@ msgid "Crop Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:574
-msgid "Id (alt) Icon"
+msgid "ID (alt) Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:572
@@ -575,7 +623,7 @@ msgid "Replies Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:446
-msgid "Pm Icon"
+msgid "PM Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:444
@@ -591,7 +639,7 @@ msgid "BuddyPress Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:440
-msgid "BbPress Icon"
+msgid "bbPress Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:439
@@ -690,20 +738,14 @@ msgstr ""
 msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
 msgstr ""
 
-#: includes/ajax/class-acf-ajax-upgrade.php:24
-msgid "Sorry, you don't have permission to do that."
-msgstr ""
-
 #: includes/ajax/class-acf-ajax-query-users.php:24
 msgid "Invalid request args."
 msgstr ""
 
+#: includes/ajax/class-acf-ajax-check-screen.php:37
 #: includes/ajax/class-acf-ajax-local-json-diff.php:37
-msgid "Sorry, you are not allowed to do that."
-msgstr ""
-
-#: includes/ajax/class-acf-ajax-check-screen.php:27
 #: includes/ajax/class-acf-ajax-query-users.php:32
+#: includes/ajax/class-acf-ajax-upgrade.php:24
 #: includes/ajax/class-acf-ajax-user-setting.php:38
 msgid "Sorry, you do not have permission to do that."
 msgstr ""
@@ -1010,7 +1052,7 @@ msgid "Index Card Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:573
-msgid "Id Icon"
+msgid "ID Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:570
@@ -1640,7 +1682,7 @@ msgid ""
 msgstr ""
 
 #: includes/assets.php:373 assets/build/js/acf-input.js:11312
-#: assets/build/js/acf-input.js:12394
+#: assets/build/js/acf-input.js:12396
 msgid "An ACF Block on this page requires attention before you can save."
 msgstr ""
 
@@ -1842,21 +1884,20 @@ msgstr ""
 msgid "Please activate your ACF PRO license to edit this options page."
 msgstr ""
 
-#: includes/api/api-template.php:381 includes/api/api-template.php:435
+#: includes/api/api-template.php:385 includes/api/api-template.php:439
 msgid ""
 "Returning escaped HTML values is only possible when format_value is also "
 "true. The field values have not been returned for security."
 msgstr ""
 
-#: includes/api/api-template.php:46 includes/api/api-template.php:247
-#: includes/api/api-template.php:939
+#: includes/api/api-template.php:46 includes/api/api-template.php:251
+#: includes/api/api-template.php:947
 msgid ""
 "Returning an escaped HTML value is only possible when format_value is also "
 "true. The field value has not been returned for security."
 msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
-#. %3$s - Link to show more details about the error
 #: includes/admin/views/escaped-html-notice.php:32
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by "
@@ -1969,8 +2010,8 @@ msgid "Add fields"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:147
-#: assets/build/js/acf-field-group.js:2803
-#: assets/build/js/acf-field-group.js:3298
+#: assets/build/js/acf-field-group.js:2804
+#: assets/build/js/acf-field-group.js:3220
 msgid "This Field"
 msgstr ""
 
@@ -2034,7 +2075,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-page_link.php:498
 #: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-select.php:380
+#: includes/fields/class-acf-field-select.php:372
 #: includes/fields/class-acf-field-user.php:111
 msgid "Select Multiple"
 msgstr "Vybrat více"
@@ -4507,15 +4548,15 @@ msgstr "Typ obsahu smazán."
 
 #: includes/admin/post-types/admin-field-group.php:146
 #: assets/build/js/acf-field-group.js:1159
-#: assets/build/js/acf-field-group.js:1383
+#: assets/build/js/acf-field-group.js:1369
 msgid "Type to search..."
 msgstr "Pište pro hledání..."
 
 #: includes/admin/post-types/admin-field-group.php:101
 #: assets/build/js/acf-field-group.js:1186
-#: assets/build/js/acf-field-group.js:2349
-#: assets/build/js/acf-field-group.js:1429
-#: assets/build/js/acf-field-group.js:2761
+#: assets/build/js/acf-field-group.js:2350
+#: assets/build/js/acf-field-group.js:1404
+#: assets/build/js/acf-field-group.js:2683
 msgid "PRO Only"
 msgstr "Pouze PRO"
 
@@ -4626,7 +4667,7 @@ msgstr ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
-#: includes/api/api-template.php:1015
+#: includes/api/api-template.php:1027
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[Hodnota zkráceného kódu ACF vypnuta pro náhled]"
 
@@ -4636,8 +4677,8 @@ msgid "Close Modal"
 msgstr "Zavřít modální okno"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:1701
-#: assets/build/js/acf-field-group.js:2032
+#: assets/build/js/acf-field-group.js:1702
+#: assets/build/js/acf-field-group.js:1972
 msgid "Field moved to other group"
 msgstr "Pole přesunuto do jiné skupiny"
 
@@ -4646,15 +4687,15 @@ msgstr "Pole přesunuto do jiné skupiny"
 msgid "Close modal"
 msgstr "Zavřít modální okno"
 
-#: includes/fields/class-acf-field-tab.php:119
+#: includes/fields/class-acf-field-tab.php:122
 msgid "Start a new group of tabs at this tab."
 msgstr "Začněte novou skupinu karet na této kartě."
 
-#: includes/fields/class-acf-field-tab.php:118
+#: includes/fields/class-acf-field-tab.php:121
 msgid "New Tab Group"
 msgstr "Nová skupina karet"
 
-#: includes/fields/class-acf-field-select.php:423
+#: includes/fields/class-acf-field-select.php:415
 #: includes/fields/class-acf-field-true_false.php:188
 msgid "Use a stylized checkbox using select2"
 msgstr "Použití stylizovaného zaškrtávacího políčka pomocí select2"
@@ -4870,8 +4911,8 @@ msgid "Activate this item"
 msgstr "Aktivovat tuto položku"
 
 #: includes/admin/post-types/admin-field-group.php:88
-#: assets/build/js/acf-field-group.js:2862
-#: assets/build/js/acf-field-group.js:3375
+#: assets/build/js/acf-field-group.js:2863
+#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr "Přesunout skupinu polí do koše?"
 
@@ -4934,7 +4975,7 @@ msgstr "%1$s musí mít platné ID uživatele."
 msgid "Invalid request."
 msgstr "Neplatný požadavek."
 
-#: includes/fields/class-acf-field-select.php:637
+#: includes/fields/class-acf-field-select.php:629
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s není jedním z %2$s"
 
@@ -5600,7 +5641,7 @@ msgstr "šířka"
 msgid "Wrapper Attributes"
 msgstr "Atributy obalového pole"
 
-#: includes/fields/class-acf-field.php:311
+#: includes/fields/class-acf-field.php:312
 msgid "Required"
 msgstr "Požadováno?"
 
@@ -5660,8 +5701,8 @@ msgstr "Přetažením změníte pořadí"
 
 #: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2387
-#: assets/build/js/acf-field-group.js:2812
+#: assets/build/js/acf-field-group.js:2388
+#: assets/build/js/acf-field-group.js:2734
 msgid "Show this field group if"
 msgstr "Zobrazit tuto skupinu polí, pokud"
 
@@ -5955,8 +5996,8 @@ msgstr "Nula"
 #: includes/admin/post-types/admin-field-group.php:97
 #: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1541
-#: assets/build/js/acf-field-group.js:1860
+#: assets/build/js/acf-field-group.js:1542
+#: assets/build/js/acf-field-group.js:1805
 msgid "copy"
 msgstr "kopírovat"
 
@@ -5973,8 +6014,8 @@ msgid "Checked"
 msgstr "Zaškrtnuto"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1646
-#: assets/build/js/acf-field-group.js:1972
+#: assets/build/js/acf-field-group.js:1647
+#: assets/build/js/acf-field-group.js:1913
 msgid "Move Custom Field"
 msgstr "Přesunout vlastní pole"
 
@@ -5989,14 +6030,14 @@ msgid "Field group title is required"
 msgstr "Vyžadován nadpis pro skupinu polí"
 
 #: includes/admin/post-types/admin-field-group.php:86
-#: assets/build/js/acf-field-group.js:1635
-#: assets/build/js/acf-field-group.js:1958
+#: assets/build/js/acf-field-group.js:1636
+#: assets/build/js/acf-field-group.js:1902
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Toto pole nelze přesunout, dokud nebudou uloženy jeho změny"
 
 #: includes/admin/post-types/admin-field-group.php:85
-#: assets/build/js/acf-field-group.js:1445
-#: assets/build/js/acf-field-group.js:1755
+#: assets/build/js/acf-field-group.js:1446
+#: assets/build/js/acf-field-group.js:1703
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "Řetězec \"pole_\" nesmí být použit na začátku názvu pole"
 
@@ -6234,7 +6275,7 @@ msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 "Pokud opustíte tuto stránku, změny, které jste provedli, budou ztraceny"
 
-#: includes/api/api-helpers.php:2959
+#: includes/api/api-helpers.php:2984
 msgid "File type must be %s."
 msgstr "Typ souboru musí být %s."
 
@@ -6243,34 +6284,34 @@ msgstr "Typ souboru musí být %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:182
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2956 assets/build/js/acf-field-group.js:781
-#: assets/build/js/acf-field-group.js:2427
+#: includes/api/api-helpers.php:2981 assets/build/js/acf-field-group.js:781
+#: assets/build/js/acf-field-group.js:2428
 #: assets/build/js/acf-field-group.js:946
-#: assets/build/js/acf-field-group.js:2859
+#: assets/build/js/acf-field-group.js:2781
 msgid "or"
 msgstr "nebo"
 
-#: includes/api/api-helpers.php:2932
+#: includes/api/api-helpers.php:2957
 msgid "File size must not exceed %s."
 msgstr "Velikost souboru nesmí překročit %s."
 
-#: includes/api/api-helpers.php:2928
+#: includes/api/api-helpers.php:2953
 msgid "File size must be at least %s."
 msgstr "Velikost souboru musí být alespoň %s."
 
-#: includes/api/api-helpers.php:2915
+#: includes/api/api-helpers.php:2940
 msgid "Image height must not exceed %dpx."
 msgstr "Výška obrázku nesmí přesáhnout %dpx."
 
-#: includes/api/api-helpers.php:2911
+#: includes/api/api-helpers.php:2936
 msgid "Image height must be at least %dpx."
 msgstr "Výška obrázku musí být alespoň %dpx."
 
-#: includes/api/api-helpers.php:2899
+#: includes/api/api-helpers.php:2924
 msgid "Image width must not exceed %dpx."
 msgstr "Šířka obrázku nesmí přesáhnout %dpx."
 
-#: includes/api/api-helpers.php:2895
+#: includes/api/api-helpers.php:2920
 msgid "Image width must be at least %dpx."
 msgstr "Šířka obrázku musí být alespoň %dpx."
 
@@ -6297,7 +6338,7 @@ msgstr "Miniatura"
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:95
 #: assets/build/js/acf-field-group.js:1090
-#: assets/build/js/acf-field-group.js:1277
+#: assets/build/js/acf-field-group.js:1274
 msgid "(no label)"
 msgstr "(bez štítku)"
 
@@ -6469,7 +6510,7 @@ msgstr "Jiné"
 msgid "Radio Button"
 msgstr "Přepínač"
 
-#: includes/fields/class-acf-field-accordion.php:103
+#: includes/fields/class-acf-field-accordion.php:106
 msgid ""
 "Define an endpoint for the previous accordion to stop. This accordion will "
 "not be visible."
@@ -6477,19 +6518,19 @@ msgstr ""
 "Definujte koncový bod pro předchozí akordeon. Tento akordeon nebude "
 "viditelný."
 
-#: includes/fields/class-acf-field-accordion.php:92
+#: includes/fields/class-acf-field-accordion.php:95
 msgid "Allow this accordion to open without closing others."
 msgstr "Povolit otevření tohoto akordeonu bez zavření ostatních."
 
-#: includes/fields/class-acf-field-accordion.php:91
+#: includes/fields/class-acf-field-accordion.php:94
 msgid "Multi-Expand"
 msgstr ""
 
-#: includes/fields/class-acf-field-accordion.php:81
+#: includes/fields/class-acf-field-accordion.php:84
 msgid "Display this accordion as open on page load."
 msgstr "Zobrazit tento akordeon jako otevřený při načtení stránky."
 
-#: includes/fields/class-acf-field-accordion.php:80
+#: includes/fields/class-acf-field-accordion.php:83
 msgid "Open"
 msgstr "Otevřít"
 
@@ -6551,81 +6592,87 @@ msgstr "Soubor"
 msgid "Password"
 msgstr "Heslo"
 
-#: includes/fields/class-acf-field-select.php:365
+#: includes/fields/class-acf-field-select.php:357
 msgid "Specify the value returned"
 msgstr "Zadat konkrétní návratovou hodnotu"
 
-#: includes/fields/class-acf-field-select.php:433
+#: includes/fields/class-acf-field-select.php:425
 msgid "Use AJAX to lazy load choices?"
 msgstr "K načtení volby použít AJAX lazy load?"
 
 #: includes/fields/class-acf-field-checkbox.php:333
-#: includes/fields/class-acf-field-select.php:354
+#: includes/fields/class-acf-field-select.php:346
 msgid "Enter each default value on a new line"
 msgstr "Zadejte každou výchozí hodnotu na nový řádek"
 
-#: includes/fields/class-acf-field-select.php:229 includes/media.php:48
+#: includes/fields/class-acf-field-select.php:221 includes/media.php:48
 #: assets/build/js/acf-input.js:7822 assets/build/js/acf-input.js:8484
 msgctxt "verb"
 msgid "Select"
 msgstr "Vybrat"
 
-#: includes/fields/class-acf-field-select.php:109
+#: includes/fields/class-acf-field-select.php:101
 msgctxt "Select2 JS load_fail"
 msgid "Loading failed"
 msgstr "Načítání selhalo"
 
-#: includes/fields/class-acf-field-select.php:108
+#: includes/fields/class-acf-field-select.php:100
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
 msgstr "Vyhledávání&hellip;"
 
-#: includes/fields/class-acf-field-select.php:107
+#: includes/fields/class-acf-field-select.php:99
 msgctxt "Select2 JS load_more"
 msgid "Loading more results&hellip;"
 msgstr "Načítání dalších výsledků&hellip;"
 
-#: includes/fields/class-acf-field-select.php:106
+#. translators: %d - maximum number of items that can be selected in the select
+#. field
+#: includes/fields/class-acf-field-select.php:98
 msgctxt "Select2 JS selection_too_long_n"
 msgid "You can only select %d items"
 msgstr "Můžete vybrat pouze %d položek"
 
-#: includes/fields/class-acf-field-select.php:105
+#: includes/fields/class-acf-field-select.php:96
 msgctxt "Select2 JS selection_too_long_1"
 msgid "You can only select 1 item"
 msgstr "Můžete vybrat pouze 1 položku"
 
-#: includes/fields/class-acf-field-select.php:104
+#. translators: %d - number of characters that should be removed from select
+#. field
+#: includes/fields/class-acf-field-select.php:95
 msgctxt "Select2 JS input_too_long_n"
 msgid "Please delete %d characters"
 msgstr "Prosím odstraňte %d znaků"
 
-#: includes/fields/class-acf-field-select.php:103
+#: includes/fields/class-acf-field-select.php:93
 msgctxt "Select2 JS input_too_long_1"
 msgid "Please delete 1 character"
 msgstr "Prosím odstraňte 1 znak"
 
-#: includes/fields/class-acf-field-select.php:102
+#. translators: %d - number of characters to enter into select field input
+#: includes/fields/class-acf-field-select.php:92
 msgctxt "Select2 JS input_too_short_n"
 msgid "Please enter %d or more characters"
 msgstr "Prosím zadejte %d nebo více znaků"
 
-#: includes/fields/class-acf-field-select.php:101
+#: includes/fields/class-acf-field-select.php:90
 msgctxt "Select2 JS input_too_short_1"
 msgid "Please enter 1 or more characters"
 msgstr "Prosím zadejte 1 nebo více znaků"
 
-#: includes/fields/class-acf-field-select.php:100
+#: includes/fields/class-acf-field-select.php:89
 msgctxt "Select2 JS matches_0"
 msgid "No matches found"
 msgstr "Nebyly nalezeny žádné výsledky"
 
-#: includes/fields/class-acf-field-select.php:99
+#. translators: %d - number of results available in select field
+#: includes/fields/class-acf-field-select.php:88
 msgctxt "Select2 JS matches_n"
 msgid "%d results are available, use up and down arrow keys to navigate."
 msgstr "%d výsledků je k dispozici, použijte šipky nahoru a dolů pro navigaci."
 
-#: includes/fields/class-acf-field-select.php:98
+#: includes/fields/class-acf-field-select.php:86
 msgctxt "Select2 JS matches_1"
 msgid "One result is available, press enter to select it."
 msgstr ""
@@ -6766,21 +6813,21 @@ msgstr "Zvolit čas"
 msgid "Date Time Picker"
 msgstr "Výběr data a času"
 
-#: includes/fields/class-acf-field-accordion.php:102
+#: includes/fields/class-acf-field-accordion.php:105
 msgid "Endpoint"
 msgstr "Koncový bod"
 
 #: includes/admin/views/acf-field-group/options.php:130
-#: includes/fields/class-acf-field-tab.php:109
+#: includes/fields/class-acf-field-tab.php:112
 msgid "Left aligned"
 msgstr "Zarovnat zleva"
 
 #: includes/admin/views/acf-field-group/options.php:129
-#: includes/fields/class-acf-field-tab.php:108
+#: includes/fields/class-acf-field-tab.php:111
 msgid "Top aligned"
 msgstr "Zarovnat shora"
 
-#: includes/fields/class-acf-field-tab.php:104
+#: includes/fields/class-acf-field-tab.php:107
 msgid "Placement"
 msgstr "Umístění"
 
@@ -6838,7 +6885,7 @@ msgstr "Rozmezí"
 #: includes/fields/class-acf-field-button-group.php:165
 #: includes/fields/class-acf-field-checkbox.php:350
 #: includes/fields/class-acf-field-radio.php:210
-#: includes/fields/class-acf-field-select.php:372
+#: includes/fields/class-acf-field-select.php:364
 msgid "Both (Array)"
 msgstr "Obě (pole)"
 
@@ -6846,14 +6893,14 @@ msgstr "Obě (pole)"
 #: includes/fields/class-acf-field-button-group.php:164
 #: includes/fields/class-acf-field-checkbox.php:349
 #: includes/fields/class-acf-field-radio.php:209
-#: includes/fields/class-acf-field-select.php:371
+#: includes/fields/class-acf-field-select.php:363
 msgid "Label"
 msgstr "Štítek"
 
 #: includes/fields/class-acf-field-button-group.php:163
 #: includes/fields/class-acf-field-checkbox.php:348
 #: includes/fields/class-acf-field-radio.php:208
-#: includes/fields/class-acf-field-select.php:370
+#: includes/fields/class-acf-field-select.php:362
 msgid "Value"
 msgstr "Hodnota"
 
@@ -6872,28 +6919,28 @@ msgstr "Horizontální"
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "red : Red"
 msgstr "cervena : Červená"
 
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "For more control, you may specify both a value and label like this:"
 msgstr "Pro větší kontrolu můžete zadat jak hodnotu, tak štítek:"
 
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "Enter each choice on a new line."
 msgstr "Zadejte každou volbu na nový řádek."
 
 #: includes/fields/class-acf-field-button-group.php:137
 #: includes/fields/class-acf-field-checkbox.php:322
 #: includes/fields/class-acf-field-radio.php:182
-#: includes/fields/class-acf-field-select.php:342
+#: includes/fields/class-acf-field-select.php:334
 msgid "Choices"
 msgstr "Možnosti"
 
@@ -6905,7 +6952,7 @@ msgstr "Skupina tlačítek"
 #: includes/fields/class-acf-field-page_link.php:519
 #: includes/fields/class-acf-field-post_object.php:432
 #: includes/fields/class-acf-field-radio.php:228
-#: includes/fields/class-acf-field-select.php:401
+#: includes/fields/class-acf-field-select.php:393
 #: includes/fields/class-acf-field-taxonomy.php:705
 #: includes/fields/class-acf-field-user.php:132
 msgid "Allow Null"
@@ -7296,35 +7343,35 @@ msgstr "Vybrat obrázek"
 msgid "Image"
 msgstr "Obrázek"
 
-#: includes/fields/class-acf-field-message.php:110
+#: includes/fields/class-acf-field-message.php:113
 msgid "Allow HTML markup to display as visible text instead of rendering"
 msgstr "Nevykreslovat efekt, ale zobrazit značky HTML jako prostý text"
 
-#: includes/fields/class-acf-field-message.php:109
+#: includes/fields/class-acf-field-message.php:112
 msgid "Escape HTML"
 msgstr "Escapovat HTML"
 
-#: includes/fields/class-acf-field-message.php:101
+#: includes/fields/class-acf-field-message.php:104
 #: includes/fields/class-acf-field-textarea.php:162
 msgid "No Formatting"
 msgstr "Žádné formátování"
 
-#: includes/fields/class-acf-field-message.php:100
+#: includes/fields/class-acf-field-message.php:103
 #: includes/fields/class-acf-field-textarea.php:161
 msgid "Automatically add &lt;br&gt;"
 msgstr "Automaticky přidávat &lt;br&gt;"
 
-#: includes/fields/class-acf-field-message.php:99
+#: includes/fields/class-acf-field-message.php:102
 #: includes/fields/class-acf-field-textarea.php:160
 msgid "Automatically add paragraphs"
 msgstr "Automaticky přidávat odstavce"
 
-#: includes/fields/class-acf-field-message.php:95
+#: includes/fields/class-acf-field-message.php:98
 #: includes/fields/class-acf-field-textarea.php:156
 msgid "Controls how new lines are rendered"
 msgstr "Řídí, jak se vykreslují nové řádky"
 
-#: includes/fields/class-acf-field-message.php:94
+#: includes/fields/class-acf-field-message.php:97
 #: includes/fields/class-acf-field-textarea.php:155
 msgid "New Lines"
 msgstr "Nové řádky"
@@ -7406,7 +7453,7 @@ msgstr "Text zobrazený při aktivním poli"
 msgid "On Text"
 msgstr "Text (aktivní)"
 
-#: includes/fields/class-acf-field-select.php:422
+#: includes/fields/class-acf-field-select.php:414
 #: includes/fields/class-acf-field-true_false.php:187
 msgid "Stylized UI"
 msgstr "Stylizované uživatelské rozhraní"
@@ -7418,7 +7465,7 @@ msgstr "Stylizované uživatelské rozhraní"
 #: includes/fields/class-acf-field-number.php:113
 #: includes/fields/class-acf-field-radio.php:192
 #: includes/fields/class-acf-field-range.php:153
-#: includes/fields/class-acf-field-select.php:353
+#: includes/fields/class-acf-field-select.php:345
 #: includes/fields/class-acf-field-text.php:95
 #: includes/fields/class-acf-field-textarea.php:93
 #: includes/fields/class-acf-field-true_false.php:135
@@ -7432,7 +7479,7 @@ msgid "Displays text alongside the checkbox"
 msgstr "Zobrazí text vedle zaškrtávacího políčka"
 
 #: includes/fields/class-acf-field-message.php:23
-#: includes/fields/class-acf-field-message.php:84
+#: includes/fields/class-acf-field-message.php:87
 #: includes/fields/class-acf-field-true_false.php:125
 msgid "Message"
 msgstr "Zpráva"
@@ -7457,31 +7504,31 @@ msgstr "Ano"
 msgid "True / False"
 msgstr "Pravda / Nepravda"
 
-#: includes/fields/class-acf-field-group.php:412
+#: includes/fields/class-acf-field-group.php:415
 msgid "Row"
 msgstr "Řádek"
 
-#: includes/fields/class-acf-field-group.php:411
+#: includes/fields/class-acf-field-group.php:414
 msgid "Table"
 msgstr "Tabulka"
 
 #: includes/admin/post-types/admin-field-group.php:158
-#: includes/fields/class-acf-field-group.php:410
+#: includes/fields/class-acf-field-group.php:413
 msgid "Block"
 msgstr "Blok"
 
-#: includes/fields/class-acf-field-group.php:405
+#: includes/fields/class-acf-field-group.php:408
 msgid "Specify the style used to render the selected fields"
 msgstr "Určení stylu použitého pro vykreslení vybraných polí"
 
 #: includes/fields.php:330 includes/fields/class-acf-field-button-group.php:204
 #: includes/fields/class-acf-field-checkbox.php:405
-#: includes/fields/class-acf-field-group.php:404
+#: includes/fields/class-acf-field-group.php:407
 #: includes/fields/class-acf-field-radio.php:276
 msgid "Layout"
 msgstr "Typ zobrazení"
 
-#: includes/fields/class-acf-field-group.php:388
+#: includes/fields/class-acf-field-group.php:391
 msgid "Sub Fields"
 msgstr "Podřazená pole"
 
@@ -7557,7 +7604,7 @@ msgstr "Formát vrácen pomocí funkcí šablony"
 #: includes/fields/class-acf-field-image.php:177
 #: includes/fields/class-acf-field-post_object.php:396
 #: includes/fields/class-acf-field-relationship.php:610
-#: includes/fields/class-acf-field-select.php:364
+#: includes/fields/class-acf-field-select.php:356
 #: includes/fields/class-acf-field-time_picker.php:121
 #: includes/fields/class-acf-field-user.php:95
 msgid "Return Format"

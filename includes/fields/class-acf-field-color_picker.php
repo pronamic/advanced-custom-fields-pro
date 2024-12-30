@@ -47,7 +47,7 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 			// Register scripts for non-admin.
 			// Applies logic from wp_default_scripts() function defined in "wp-includes/script-loader.php".
 			if ( ! is_admin() ) {
-				$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+				$suffix  = defined( 'ACF_DEVELOPMENT_MODE' ) && ACF_DEVELOPMENT_MODE ? '' : '.min';
 				$scripts = wp_scripts();
 				$scripts->add( 'iris', '/wp-admin/js/iris.min.js', array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), '1.0.7', 1 );
 				$scripts->add( 'wp-color-picker', "/wp-admin/js/color-picker$suffix.js", array( 'iris' ), false, 1 );

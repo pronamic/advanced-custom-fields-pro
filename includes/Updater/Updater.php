@@ -5,24 +5,28 @@
  * @package ACF
  */
 
+namespace ACF;
+
+use WP_Error;
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'ACF_Updates' ) ) {
+if ( ! class_exists( 'Updater' ) ) {
 
 	/**
 	 * class for handling API services.
 	 */
-	class ACF_Updates {
+	class Updater {
 
 		/**
-		 * The ACF_Updates version
+		 * The Updater version
 		 *
 		 * @var string
 		 */
-		public $version = '2.4';
+		public $version = '3.0';
 
 		/**
 		 * The array of registered plugins
@@ -45,8 +49,8 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 		 */
 		public function __construct() {
 
-			// disable showing updates if show updates is hidden.
-			if ( ! acf_pro_is_updates_page_visible() ) {
+			// disable showing PRO updates if show updates is hidden.
+			if ( acf_is_pro() && ! acf_pro_is_updates_page_visible() ) {
 				return;
 			}
 
@@ -120,7 +124,16 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 		 */
 		public function request( $endpoint = '', $body = null ) {
 
-			// Determine URL.
+			$site_url = acf_get_home_url();
+			if ( empty( $site_url ) || ! is_string( $site_url ) ) {
+				$site_url = '';
+			}
+
+			$headers = array(
+				'X-ACF-Version' => ACF_VERSION,
+				'X-ACF-URL'     => $site_url,
+			);
+
 			$url = "https://connect.advancedcustomfields.com/$endpoint";
 
 			// Staging environment.
@@ -129,27 +142,25 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 				acf_log( $url, $body );
 			}
 
-			$license_key = acf_pro_get_license_key();
-			if ( ! $license_key ) {
-				$license_key = '';
-			}
-
-			$site_url = acf_pro_get_home_url();
-			if ( ! $site_url ) {
-				$site_url = '';
+			// Determine URL.
+			if ( acf_is_pro() ) {
+				$license_key = acf_pro_get_license_key();
+				if ( empty( $license_key ) || ! is_string( $license_key ) ) {
+					$license_key = '';
+				}
+				$headers['X-ACF-License'] = $license_key;
+				$headers['X-ACF-Plugin']  = 'pro';
+			} else {
+				$headers['X-ACF-Plugin'] = 'acf';
 			}
 
 			// Make request.
 			$raw_response = wp_remote_post(
 				$url,
 				array(
-					'timeout' => 28,
+					'timeout' => 20,
 					'body'    => $body,
-					'headers' => array(
-						'X-ACF-Version' => ACF_VERSION,
-						'X-ACF-License' => $license_key,
-						'X-ACF-URL'     => $site_url,
-					),
+					'headers' => $headers,
 				)
 			);
 
@@ -298,7 +309,7 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 				'wp'      => wp_json_encode(
 					array(
 						'wp_name'      => get_bloginfo( 'name' ),
-						'wp_url'       => acf_pro_get_home_url(),
+						'wp_url'       => acf_get_home_url(),
 						'wp_version'   => get_bloginfo( 'version' ),
 						'wp_language'  => get_bloginfo( 'language' ),
 						'wp_timezone'  => get_option( 'timezone_string' ),
@@ -310,7 +321,7 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 					array(
 						'acf_version' => get_option( 'acf_version' ),
 						'acf_pro'     => acf_is_pro(),
-						'block_count' => acf_pro_get_registered_block_count(),
+						'block_count' => function_exists( 'acf_pro_get_registered_block_count' ) ? acf_pro_get_registered_block_count() : 0,
 					)
 				),
 			);
@@ -479,36 +490,6 @@ if ( ! class_exists( 'ACF_Updates' ) ) {
 
 			return $response;
 		}
-	}
-
-
-	/**
-	 * The main function responsible for returning the acf_updates singleton.
-	 * Use this function like you would a global variable, except without needing to declare the global.
-	 *
-	 * Example: <?php $acf_updates = acf_updates(); ?>
-	 *
-	 * @since   5.5.12
-	 *
-	 * @return ACF_Updates The singleton instance of ACF_Updates.
-	 */
-	function acf_updates() {
-		global $acf_updates;
-		if ( ! isset( $acf_updates ) ) {
-			$acf_updates = new ACF_Updates();
-		}
-		return $acf_updates;
-	}
-
-	/**
-	 * Alias of acf_updates()->add_plugin().
-	 *
-	 * @since   5.5.10
-	 *
-	 * @param   array $plugin Plugin data array.
-	 */
-	function acf_register_plugin_update( $plugin ) {
-		acf_updates()->add_plugin( $plugin );
 	}
 
 }

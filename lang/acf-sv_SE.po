@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-07-18T08:39:03+00:00\n"
+"PO-Revision-Date: 2024-10-02T12:08:46+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:136
+msgid ""
+"ACF was unable to perform validation due to an invalid security nonce being "
+"provided."
+msgstr ""
+
+#: includes/fields/class-acf-field.php:359
+msgid "Allow Access to Value in Editor UI"
+msgstr ""
+
+#: includes/fields/class-acf-field.php:341
+msgid "Learn more."
+msgstr ""
+
+#. translators: %s A "Learn More" link to documentation explaining the setting
+#. further.
+#: includes/fields/class-acf-field.php:340
+msgid ""
+"Allow content editors to access and display the field value in the editor UI "
+"using Block Bindings or the ACF Shortcode. %s"
+msgstr ""
+
+#: includes/Blocks/Bindings.php:64
+msgid ""
+"The requested ACF field type does not support output in Block Bindings or "
+"the ACF shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1085 includes/Blocks/Bindings.php:72
+msgid ""
+"The requested ACF field is not allowed to be output in bindings or the ACF "
+"Shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1077
+msgid ""
+"The requested ACF field type does not support output in bindings or the ACF "
+"Shortcode."
+msgstr ""
+
+#: includes/api/api-template.php:1054
+msgid "[The ACF shortcode cannot display fields from non-public posts]"
+msgstr "[ACF-kortkoden kan inte visa fält från icke-offentliga inlägg]"
+
+#: includes/api/api-template.php:1011
+msgid "[The ACF shortcode is disabled on this site]"
+msgstr "[ACF-kortkoden är inaktiverad på denna webbplats]"
 
 #: includes/fields/class-acf-field-icon_picker.php:451
 msgid "Businessman Icon"
@@ -43,7 +91,7 @@ msgstr "Xing-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:718
 msgid "WordPress (alt) Icon"
-msgstr ""
+msgstr "Alternativ WordPress-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:716
 msgid "WhatsApp Icon"
@@ -51,7 +99,7 @@ msgstr "WhatsApp-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:715
 msgid "Write Blog Icon"
-msgstr ""
+msgstr "”Skriv blogg”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:714
 msgid "Widgets Menus Icon"
@@ -63,7 +111,7 @@ msgstr "Visa webbplats-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:712
 msgid "Learn More Icon"
-msgstr ""
+msgstr "”Lär dig mer”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:710
 msgid "Add Page Icon"
@@ -71,11 +119,11 @@ msgstr "Ikon för lägg till sida"
 
 #: includes/fields/class-acf-field-icon_picker.php:707
 msgid "Video (alt3) Icon"
-msgstr ""
+msgstr "Alternativ video-ikon 3"
 
 #: includes/fields/class-acf-field-icon_picker.php:706
 msgid "Video (alt2) Icon"
-msgstr ""
+msgstr "Alternativ video-ikon 2"
 
 #: includes/fields/class-acf-field-icon_picker.php:705
 msgid "Video (alt) Icon"
@@ -83,11 +131,11 @@ msgstr "Alternativ video-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:702
 msgid "Update (alt) Icon"
-msgstr ""
+msgstr "Alternativ uppdatera-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:699
 msgid "Universal Access (alt) Icon"
-msgstr ""
+msgstr "Alternativ ikon för universell åtkomst"
 
 #: includes/fields/class-acf-field-icon_picker.php:696
 msgid "Twitter (alt) Icon"
@@ -111,31 +159,31 @@ msgstr "Ikon för textsida"
 
 #: includes/fields/class-acf-field-icon_picker.php:680
 msgid "Table Row Delete Icon"
-msgstr ""
+msgstr "Ikon för borttagning av tabellrad"
 
 #: includes/fields/class-acf-field-icon_picker.php:679
 msgid "Table Row Before Icon"
-msgstr ""
+msgstr "Ikon för före tabellrad"
 
 #: includes/fields/class-acf-field-icon_picker.php:678
 msgid "Table Row After Icon"
-msgstr ""
+msgstr "Ikon för efter tabellrad"
 
 #: includes/fields/class-acf-field-icon_picker.php:677
 msgid "Table Col Delete Icon"
-msgstr ""
+msgstr "Ikon för borttagning av tabellkolumn"
 
 #: includes/fields/class-acf-field-icon_picker.php:676
 msgid "Table Col Before Icon"
-msgstr ""
+msgstr "Ikon för före tabellkolumn"
 
 #: includes/fields/class-acf-field-icon_picker.php:675
 msgid "Table Col After Icon"
-msgstr ""
+msgstr "Ikon för efter tabellkolumn"
 
 #: includes/fields/class-acf-field-icon_picker.php:674
 msgid "Superhero (alt) Icon"
-msgstr ""
+msgstr "Alternativ superhjälte-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:673
 msgid "Superhero Icon"
@@ -151,11 +199,11 @@ msgstr "Ikon för kortkod"
 
 #: includes/fields/class-acf-field-icon_picker.php:660
 msgid "Shield (alt) Icon"
-msgstr ""
+msgstr "Alternativ sköld-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:658
 msgid "Share (alt2) Icon"
-msgstr ""
+msgstr "Alternativ dela-ikon 2"
 
 #: includes/fields/class-acf-field-icon_picker.php:657
 msgid "Share (alt) Icon"
@@ -195,7 +243,7 @@ msgstr "Podio-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:638
 msgid "Plus (alt2) Icon"
-msgstr ""
+msgstr "Alternativ plusikon 2"
 
 #: includes/fields/class-acf-field-icon_picker.php:637
 msgid "Plus (alt) Icon"
@@ -223,7 +271,7 @@ msgstr "Ikon för palmträd"
 
 #: includes/fields/class-acf-field-icon_picker.php:625
 msgid "Open Folder Icon"
-msgstr ""
+msgstr "Ikon för öppen mapp"
 
 #: includes/fields/class-acf-field-icon_picker.php:624
 msgid "No (alt) Icon"
@@ -231,7 +279,7 @@ msgstr "Alternativ nej-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:619
 msgid "Money (alt) Icon"
-msgstr ""
+msgstr "Alternativ pengar-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:614
 msgid "Menu (alt3) Icon"
@@ -251,7 +299,7 @@ msgstr "Ikon för kalkylark"
 
 #: includes/fields/class-acf-field-icon_picker.php:606
 msgid "Interactive Icon"
-msgstr ""
+msgstr "Interaktiv ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:605
 msgid "Document Icon"
@@ -263,7 +311,7 @@ msgstr "Standardikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:598
 msgid "Location (alt) Icon"
-msgstr ""
+msgstr "Alternativ plats-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:595
 msgid "LinkedIn Icon"
@@ -279,7 +327,7 @@ msgstr "Ikon för infoga före"
 
 #: includes/fields/class-acf-field-icon_picker.php:588
 msgid "Insert After Icon"
-msgstr ""
+msgstr "Ikon för infoga efter"
 
 #: includes/fields/class-acf-field-icon_picker.php:587
 msgid "Insert Icon"
@@ -291,7 +339,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:583
 msgid "Images (alt2) Icon"
-msgstr ""
+msgstr "Alternativ bilderikon 2"
 
 #: includes/fields/class-acf-field-icon_picker.php:582
 msgid "Images (alt) Icon"
@@ -311,19 +359,19 @@ msgstr "Ikon för att rotera"
 
 #: includes/fields/class-acf-field-icon_picker.php:578
 msgid "Flip Vertical Icon"
-msgstr ""
+msgstr "”Vänd vertikalt”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:577
 msgid "Flip Horizontal Icon"
-msgstr ""
+msgstr "”Vänd vågrätt”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:575
 msgid "Crop Icon"
 msgstr "Beskärningsikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:574
-msgid "Id (alt) Icon"
-msgstr ""
+msgid "ID (alt) Icon"
+msgstr "Alternativ ID-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:572
 msgid "HTML Icon"
@@ -396,7 +444,7 @@ msgstr "Ikon för inbäddning av videoklipp"
 
 #: includes/fields/class-acf-field-icon_picker.php:541
 msgid "Embed Post Icon"
-msgstr ""
+msgstr "Ikon för inbäddning av inlägg"
 
 #: includes/fields/class-acf-field-icon_picker.php:540
 msgid "Embed Photo Icon"
@@ -404,7 +452,7 @@ msgstr "Ikon för inbäddning av foto"
 
 #: includes/fields/class-acf-field-icon_picker.php:539
 msgid "Embed Generic Icon"
-msgstr ""
+msgstr "Genetisk ikon för inbäddning"
 
 #: includes/fields/class-acf-field-icon_picker.php:538
 msgid "Embed Audio Icon"
@@ -448,7 +496,7 @@ msgstr "Ikon för redigera sida"
 
 #: includes/fields/class-acf-field-icon_picker.php:499
 msgid "Edit Large Icon"
-msgstr ""
+msgstr "Redigera stor ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:497
 msgid "Drumstick Icon"
@@ -456,19 +504,19 @@ msgstr "Ikon för trumstock"
 
 #: includes/fields/class-acf-field-icon_picker.php:493
 msgid "Database View Icon"
-msgstr ""
+msgstr "Ikon för visning av databas"
 
 #: includes/fields/class-acf-field-icon_picker.php:492
 msgid "Database Remove Icon"
-msgstr ""
+msgstr "Ikon för borttagning av databas"
 
 #: includes/fields/class-acf-field-icon_picker.php:491
 msgid "Database Import Icon"
-msgstr ""
+msgstr "Ikon för databasimport"
 
 #: includes/fields/class-acf-field-icon_picker.php:490
 msgid "Database Export Icon"
-msgstr ""
+msgstr "Ikon för databasexport"
 
 #: includes/fields/class-acf-field-icon_picker.php:489
 msgid "Database Add Icon"
@@ -492,7 +540,7 @@ msgstr "Ikon för volymavstängning"
 
 #: includes/fields/class-acf-field-icon_picker.php:483
 msgid "Skip Forward Icon"
-msgstr ""
+msgstr "”Hoppa framåt”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:482
 msgid "Skip Back Icon"
@@ -575,7 +623,7 @@ msgid "Replies Icon"
 msgstr "Ikon för svar"
 
 #: includes/fields/class-acf-field-icon_picker.php:446
-msgid "Pm Icon"
+msgid "PM Icon"
 msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:444
@@ -591,8 +639,8 @@ msgid "BuddyPress Icon"
 msgstr "BuddyPress-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:440
-msgid "BbPress Icon"
-msgstr "BbPress-ikon"
+msgid "bbPress Icon"
+msgstr "bbPress-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:439
 msgid "Activity Icon"
@@ -604,7 +652,7 @@ msgstr "Alternativ bok-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:436
 msgid "Block Default Icon"
-msgstr ""
+msgstr "Standardikon för block"
 
 #: includes/fields/class-acf-field-icon_picker.php:435
 msgid "Bell Icon"
@@ -620,19 +668,19 @@ msgstr "Bankikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:429
 msgid "Arrow Up (alt2) Icon"
-msgstr ""
+msgstr "Alternativ ”pil upp”-ikon 2"
 
 #: includes/fields/class-acf-field-icon_picker.php:428
 msgid "Arrow Up (alt) Icon"
-msgstr ""
+msgstr "Alternativ ”pil upp”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:426
 msgid "Arrow Right (alt2) Icon"
-msgstr ""
+msgstr "Alternativ ”pil höger”-ikon 2"
 
 #: includes/fields/class-acf-field-icon_picker.php:425
 msgid "Arrow Right (alt) Icon"
-msgstr ""
+msgstr "Alternativ ”pil höger”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:423
 msgid "Arrow Left (alt2) Icon"
@@ -691,27 +739,21 @@ msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
 msgstr ""
 "Uppgradera till ACF PRO för att skapa alternativsidor med bara några få klick"
 
-#: includes/ajax/class-acf-ajax-upgrade.php:24
-msgid "Sorry, you don't have permission to do that."
-msgstr "Du har inte behörighet att göra det."
-
 #: includes/ajax/class-acf-ajax-query-users.php:24
 msgid "Invalid request args."
-msgstr ""
+msgstr "Ogiltiga argument för begäran."
 
+#: includes/ajax/class-acf-ajax-check-screen.php:37
 #: includes/ajax/class-acf-ajax-local-json-diff.php:37
-msgid "Sorry, you are not allowed to do that."
-msgstr "Du har inte behörighet att göra det."
-
-#: includes/ajax/class-acf-ajax-check-screen.php:27
 #: includes/ajax/class-acf-ajax-query-users.php:32
+#: includes/ajax/class-acf-ajax-upgrade.php:24
 #: includes/ajax/class-acf-ajax-user-setting.php:38
 msgid "Sorry, you do not have permission to do that."
 msgstr "Du har inte behörighet att göra det."
 
 #: includes/class-acf-site-health.php:643
 msgid "Blocks Using Post Meta"
-msgstr ""
+msgstr "Block som använder inläggsmetadata"
 
 #: includes/admin/views/acf-field-group/pro-features.php:25
 #: includes/admin/views/acf-field-group/pro-features.php:27
@@ -881,7 +923,7 @@ msgstr "Sökikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:654
 msgid "Screen Options Icon"
-msgstr ""
+msgstr "Ikon för skärmalternativ"
 
 #: includes/fields/class-acf-field-icon_picker.php:653
 msgid "Schedule Icon"
@@ -1012,7 +1054,7 @@ msgid "Index Card Icon"
 msgstr "Ikon för indexkort"
 
 #: includes/fields/class-acf-field-icon_picker.php:573
-msgid "Id Icon"
+msgid "ID Icon"
 msgstr "ID-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:570
@@ -1142,7 +1184,7 @@ msgstr "Kursiv-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:512
 msgid "Insert More Icon"
-msgstr ""
+msgstr "”Infoga mer”-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:511
 msgid "Indent Icon"
@@ -1187,7 +1229,7 @@ msgstr "Avfärda-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:494
 msgid "Desktop Icon"
-msgstr ""
+msgstr "Skrivbordsikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:487
 msgid "Dashboard Icon"
@@ -1239,7 +1281,7 @@ msgstr "Kamera-ikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:457
 msgid "Calendar (alt) Icon"
-msgstr ""
+msgstr "Alternativ kalenderikon"
 
 #: includes/fields/class-acf-field-icon_picker.php:456
 msgid "Calendar Icon"
@@ -1399,6 +1441,8 @@ msgid ""
 "The available icons matching your search query have been updated in the icon "
 "picker below."
 msgstr ""
+"De tillgängliga ikonerna som matchar din sökfråga har uppdaterats i "
+"ikonväljaren nedan."
 
 #: includes/fields/class-acf-field-icon_picker.php:284
 msgid "No results found for that search term"
@@ -1485,7 +1529,7 @@ msgstr "Modal för fälttyp aktiverat"
 
 #: includes/class-acf-site-health.php:659
 msgid "Admin UI Enabled"
-msgstr ""
+msgstr "Administrationsgränssnitt aktiverat"
 
 #: includes/class-acf-site-health.php:650
 msgid "Block Preloading Enabled"
@@ -1644,7 +1688,7 @@ msgstr ""
 "kan vara användbar för support."
 
 #: includes/assets.php:373 assets/build/js/acf-input.js:11312
-#: assets/build/js/acf-input.js:12394
+#: assets/build/js/acf-input.js:12396
 msgid "An ACF Block on this page requires attention before you can save."
 msgstr "Ett ACF-block på denna sida kräver uppmärksamhet innan du kan spara."
 
@@ -1768,12 +1812,12 @@ msgstr "Har någon relation vald"
 #: includes/admin/post-types/admin-field-group.php:123
 #: assets/build/js/acf-input.js:1327 assets/build/js/acf-input.js:1416
 msgid "Has no post selected"
-msgstr ""
+msgstr "Har inget inlägg valt"
 
 #: includes/admin/post-types/admin-field-group.php:122
 #: assets/build/js/acf-input.js:1304 assets/build/js/acf-input.js:1390
 msgid "Has any post selected"
-msgstr ""
+msgstr "Har något inlägg valt"
 
 #: includes/admin/post-types/admin-field-group.php:121
 #: assets/build/js/acf-input.js:1277 assets/build/js/acf-input.js:1359
@@ -1848,21 +1892,20 @@ msgstr ""
 msgid "Please activate your ACF PRO license to edit this options page."
 msgstr "Aktivera din ACF PRO-licens för att redigera denna alternativsida."
 
-#: includes/api/api-template.php:381 includes/api/api-template.php:435
+#: includes/api/api-template.php:385 includes/api/api-template.php:439
 msgid ""
 "Returning escaped HTML values is only possible when format_value is also "
 "true. The field values have not been returned for security."
 msgstr ""
 
-#: includes/api/api-template.php:46 includes/api/api-template.php:247
-#: includes/api/api-template.php:939
+#: includes/api/api-template.php:46 includes/api/api-template.php:251
+#: includes/api/api-template.php:947
 msgid ""
 "Returning an escaped HTML value is only possible when format_value is also "
 "true. The field value has not been returned for security."
 msgstr ""
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
-#. %3$s - Link to show more details about the error
 #: includes/admin/views/escaped-html-notice.php:32
 msgid ""
 "%1$s ACF now automatically escapes unsafe HTML when rendered by "
@@ -1976,8 +2019,8 @@ msgid "Add fields"
 msgstr "Lägg till fält"
 
 #: includes/admin/post-types/admin-field-group.php:147
-#: assets/build/js/acf-field-group.js:2803
-#: assets/build/js/acf-field-group.js:3298
+#: assets/build/js/acf-field-group.js:2804
+#: assets/build/js/acf-field-group.js:3220
 msgid "This Field"
 msgstr "Detta fält"
 
@@ -2042,7 +2085,7 @@ msgstr "%s-fält"
 
 #: includes/fields/class-acf-field-page_link.php:498
 #: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-select.php:380
+#: includes/fields/class-acf-field-select.php:372
 #: includes/fields/class-acf-field-user.php:111
 msgid "Select Multiple"
 msgstr "Välj flera"
@@ -2121,6 +2164,9 @@ msgid ""
 "Blocks and Options Pages, and sophisticated field types like Repeater, "
 "Flexible Content, Clone, and Gallery."
 msgstr ""
+"Snabba upp ditt arbetsflöde och utveckla bättre webbplatser med funktioner "
+"som ACF-block och alternativsidor, och sofistikerade fälttyper som "
+"upprepning, flexibelt innehåll, klona och galleri."
 
 #: includes/admin/views/acf-field-group/pro-features.php:2
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
@@ -2189,6 +2235,8 @@ msgid ""
 "The taxonomy key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
 msgstr ""
+"Nyckeln för taxonomi får endast innehålla alfanumeriska tecken med gemener, "
+"understreck eller bindestreck."
 
 #: includes/post-types/class-acf-taxonomy.php:251
 msgid "The taxonomy key must be under 32 characters."
@@ -2281,6 +2329,8 @@ msgid ""
 "The post type key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
 msgstr ""
+"Nyckeln för inläggstyp får endast innehålla alfanumeriska tecken med "
+"gemener, understreck eller bindestreck."
 
 #: includes/post-types/class-acf-post-type.php:328
 msgid "The post type key must be under 20 characters."
@@ -2462,12 +2512,16 @@ msgid ""
 "An interactive UI for picking a date and time. The date return format can be "
 "customized using the field settings."
 msgstr ""
+"Ett interaktivt användargränssnitt för att välja datum och tid. Datumets "
+"returformat kan anpassas med hjälp av fältinställningarna."
 
 #: includes/fields/class-acf-field-date_picker.php:24
 msgid ""
 "An interactive UI for picking a date. The date return format can be "
 "customized using the field settings."
 msgstr ""
+"Ett interaktivt användargränssnitt för att välja ett datum. Datumets "
+"returformat kan anpassas med hjälp av fältinställningarna."
 
 #: includes/fields/class-acf-field-color_picker.php:24
 msgid "An interactive UI for selecting a color, or specifying a Hex value."
@@ -2480,12 +2534,16 @@ msgid ""
 "A group of checkbox inputs that allow the user to select one, or multiple "
 "values that you specify."
 msgstr ""
+"En grupp kryssrutor som låter användaren välja ett eller flera värden som du "
+"anger."
 
 #: includes/fields/class-acf-field-button-group.php:25
 msgid ""
 "A group of buttons with values that you specify, users can choose one option "
 "from the values provided."
 msgstr ""
+"En grupp knappar med värden som du anger, användarna kan välja ett "
+"alternativ bland de angivna värdena."
 
 #: includes/fields/class-acf-field-accordion.php:26
 msgid ""
@@ -3114,7 +3172,7 @@ msgstr "Visa etikett"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:217
 msgid "In the admin bar to view term during editing."
-msgstr ""
+msgstr "I adminfältet för att visa term vid redigering."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:198
 msgid "Edit Tag"
@@ -3272,6 +3330,8 @@ msgstr "Etikett i plural"
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Posts_Controller`."
 msgstr ""
+"Valfri anpassad controller att använda i stället för "
+"`WP_REST_Posts_Controller`."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1297
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
@@ -3362,7 +3422,7 @@ msgstr "Arkiv-slug"
 msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
-msgstr ""
+msgstr "Har ett objektarkiv som kan anpassas med en arkivmallfil i ditt tema."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1133
 msgid "Archive"
@@ -3370,7 +3430,7 @@ msgstr "Arkiv"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1113
 msgid "Pagination support for the items URLs such as the archives."
-msgstr ""
+msgstr "Stöd för sidonumrering av objektens URL:er, t.ex. arkiven."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1112
 msgid "Pagination"
@@ -3390,6 +3450,8 @@ msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
 msgstr ""
+"Ändrar permalänkstrukturen så att prefixet `WP_Rewrite::$front` läggs till i "
+"URL:er."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1075
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:960
@@ -3468,7 +3530,7 @@ msgstr "Kan exportera"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:963
 msgid "Optionally provide a plural to be used in capabilities."
-msgstr ""
+msgstr "Ange eventuellt en pluralform som kan användas i behörigheter."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:962
 msgid "Plural Capability Name"
@@ -3508,7 +3570,7 @@ msgstr ""
 #: includes/admin/views/acf-post-type/advanced-settings.php:899
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:853
 msgid "Appearance Menus Support"
-msgstr ""
+msgstr "Stöd för menyer i Utseende"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:881
 msgid "Appears as an item in the 'New' menu in the admin bar."
@@ -3523,6 +3585,8 @@ msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen."
 msgstr ""
+"Ett PHP-funktionsnamn som ska anropas när du ställer in metarutorna för "
+"redigeringsvyn."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:848
 msgid "Custom Meta Box Callback"
@@ -3778,7 +3842,7 @@ msgstr "Filtrera %s-listan"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:469
 msgid "In the media modal showing all media uploaded to this item."
-msgstr ""
+msgstr "I mediamodalen där alla media som laddats upp till detta objekt visas."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:468
 msgid "Uploaded To This Item"
@@ -4419,15 +4483,15 @@ msgstr "Inläggstyp borttagen."
 
 #: includes/admin/post-types/admin-field-group.php:146
 #: assets/build/js/acf-field-group.js:1159
-#: assets/build/js/acf-field-group.js:1383
+#: assets/build/js/acf-field-group.js:1369
 msgid "Type to search..."
 msgstr "Skriv för att söka …"
 
 #: includes/admin/post-types/admin-field-group.php:101
 #: assets/build/js/acf-field-group.js:1186
-#: assets/build/js/acf-field-group.js:2349
-#: assets/build/js/acf-field-group.js:1429
-#: assets/build/js/acf-field-group.js:2761
+#: assets/build/js/acf-field-group.js:2350
+#: assets/build/js/acf-field-group.js:1404
+#: assets/build/js/acf-field-group.js:2683
 msgid "PRO Only"
 msgstr "Endast PRO"
 
@@ -4537,7 +4601,7 @@ msgstr ""
 "https://wpengine.com/?utm_source=wordpress."
 "org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
-#: includes/api/api-template.php:1015
+#: includes/api/api-template.php:1027
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[ACF-kortkod inaktiverad för förhandsvisning]"
 
@@ -4547,8 +4611,8 @@ msgid "Close Modal"
 msgstr "Stäng modal"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:1701
-#: assets/build/js/acf-field-group.js:2032
+#: assets/build/js/acf-field-group.js:1702
+#: assets/build/js/acf-field-group.js:1972
 msgid "Field moved to other group"
 msgstr "Fält flyttat till annan grupp"
 
@@ -4557,15 +4621,15 @@ msgstr "Fält flyttat till annan grupp"
 msgid "Close modal"
 msgstr "Stäng modal"
 
-#: includes/fields/class-acf-field-tab.php:119
+#: includes/fields/class-acf-field-tab.php:122
 msgid "Start a new group of tabs at this tab."
 msgstr "Starta en ny grupp av flikar på denna flik."
 
-#: includes/fields/class-acf-field-tab.php:118
+#: includes/fields/class-acf-field-tab.php:121
 msgid "New Tab Group"
 msgstr "Ny flikgrupp"
 
-#: includes/fields/class-acf-field-select.php:423
+#: includes/fields/class-acf-field-select.php:415
 #: includes/fields/class-acf-field-true_false.php:188
 msgid "Use a stylized checkbox using select2"
 msgstr "Använd en stiliserad kryssruta med hjälp av select2"
@@ -4779,8 +4843,8 @@ msgid "Activate this item"
 msgstr "Aktivera detta objekt"
 
 #: includes/admin/post-types/admin-field-group.php:88
-#: assets/build/js/acf-field-group.js:2862
-#: assets/build/js/acf-field-group.js:3375
+#: assets/build/js/acf-field-group.js:2863
+#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr "Flytta fältgrupp till papperskorg?"
 
@@ -4840,7 +4904,7 @@ msgstr "%1$s måste ha ett giltigt användar-ID."
 msgid "Invalid request."
 msgstr "Ogiltig begäran."
 
-#: includes/fields/class-acf-field-select.php:637
+#: includes/fields/class-acf-field-select.php:629
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s är inte en av %2$s"
 
@@ -5508,7 +5572,7 @@ msgstr "bredd"
 msgid "Wrapper Attributes"
 msgstr "Omslagsattribut"
 
-#: includes/fields/class-acf-field.php:311
+#: includes/fields/class-acf-field.php:312
 msgid "Required"
 msgstr "Obligatoriskt"
 
@@ -5568,8 +5632,8 @@ msgstr "Dra för att sortera om"
 
 #: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2387
-#: assets/build/js/acf-field-group.js:2812
+#: assets/build/js/acf-field-group.js:2388
+#: assets/build/js/acf-field-group.js:2734
 msgid "Show this field group if"
 msgstr "Visa denna fältgrupp om"
 
@@ -5860,8 +5924,8 @@ msgstr "Null"
 #: includes/admin/post-types/admin-field-group.php:97
 #: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1541
-#: assets/build/js/acf-field-group.js:1860
+#: assets/build/js/acf-field-group.js:1542
+#: assets/build/js/acf-field-group.js:1805
 msgid "copy"
 msgstr "kopiera"
 
@@ -5878,8 +5942,8 @@ msgid "Checked"
 msgstr "Ikryssad"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1646
-#: assets/build/js/acf-field-group.js:1972
+#: assets/build/js/acf-field-group.js:1647
+#: assets/build/js/acf-field-group.js:1913
 msgid "Move Custom Field"
 msgstr "Flytta anpassat fält"
 
@@ -5894,14 +5958,14 @@ msgid "Field group title is required"
 msgstr "Rubrik för fältgrupp är obligatoriskt"
 
 #: includes/admin/post-types/admin-field-group.php:86
-#: assets/build/js/acf-field-group.js:1635
-#: assets/build/js/acf-field-group.js:1958
+#: assets/build/js/acf-field-group.js:1636
+#: assets/build/js/acf-field-group.js:1902
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Detta fält kan inte flyttas innan dess ändringar har sparats"
 
 #: includes/admin/post-types/admin-field-group.php:85
-#: assets/build/js/acf-field-group.js:1445
-#: assets/build/js/acf-field-group.js:1755
+#: assets/build/js/acf-field-group.js:1446
+#: assets/build/js/acf-field-group.js:1703
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "Strängen ”field_” får inte användas i början av ett fältnamn"
 
@@ -6140,7 +6204,7 @@ msgstr ""
 "De ändringar du gjort kommer att gå förlorade om du navigerar bort från "
 "denna sida"
 
-#: includes/api/api-helpers.php:2959
+#: includes/api/api-helpers.php:2984
 msgid "File type must be %s."
 msgstr "Filtyp måste vara %s."
 
@@ -6149,34 +6213,34 @@ msgstr "Filtyp måste vara %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:182
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2956 assets/build/js/acf-field-group.js:781
-#: assets/build/js/acf-field-group.js:2427
+#: includes/api/api-helpers.php:2981 assets/build/js/acf-field-group.js:781
+#: assets/build/js/acf-field-group.js:2428
 #: assets/build/js/acf-field-group.js:946
-#: assets/build/js/acf-field-group.js:2859
+#: assets/build/js/acf-field-group.js:2781
 msgid "or"
 msgstr "eller"
 
-#: includes/api/api-helpers.php:2932
+#: includes/api/api-helpers.php:2957
 msgid "File size must not exceed %s."
 msgstr "Filstorleken får inte överskrida %s."
 
-#: includes/api/api-helpers.php:2928
+#: includes/api/api-helpers.php:2953
 msgid "File size must be at least %s."
 msgstr "Filstorlek måste vara lägst %s."
 
-#: includes/api/api-helpers.php:2915
+#: includes/api/api-helpers.php:2940
 msgid "Image height must not exceed %dpx."
 msgstr "Bildens höjd får inte överskrida %d px."
 
-#: includes/api/api-helpers.php:2911
+#: includes/api/api-helpers.php:2936
 msgid "Image height must be at least %dpx."
 msgstr "Bildens höjd måste vara åtminstone %d px."
 
-#: includes/api/api-helpers.php:2899
+#: includes/api/api-helpers.php:2924
 msgid "Image width must not exceed %dpx."
 msgstr "Bildens bredd får inte överskrida %d px."
 
-#: includes/api/api-helpers.php:2895
+#: includes/api/api-helpers.php:2920
 msgid "Image width must be at least %dpx."
 msgstr "Bildens bredd måste vara åtminstone %d px."
 
@@ -6203,7 +6267,7 @@ msgstr "Miniatyr"
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:95
 #: assets/build/js/acf-field-group.js:1090
-#: assets/build/js/acf-field-group.js:1277
+#: assets/build/js/acf-field-group.js:1274
 msgid "(no label)"
 msgstr "(ingen etikett)"
 
@@ -6375,7 +6439,7 @@ msgstr "Annat"
 msgid "Radio Button"
 msgstr "Alternativknapp"
 
-#: includes/fields/class-acf-field-accordion.php:103
+#: includes/fields/class-acf-field-accordion.php:106
 msgid ""
 "Define an endpoint for the previous accordion to stop. This accordion will "
 "not be visible."
@@ -6383,19 +6447,19 @@ msgstr ""
 "Definiera en ändpunkt för föregående dragspel att stoppa. Detta dragspel "
 "kommer inte att vara synligt."
 
-#: includes/fields/class-acf-field-accordion.php:92
+#: includes/fields/class-acf-field-accordion.php:95
 msgid "Allow this accordion to open without closing others."
 msgstr "Tillåt detta dragspel öppna utan att stänga andra."
 
-#: includes/fields/class-acf-field-accordion.php:91
+#: includes/fields/class-acf-field-accordion.php:94
 msgid "Multi-Expand"
 msgstr "Multi-expandera"
 
-#: includes/fields/class-acf-field-accordion.php:81
+#: includes/fields/class-acf-field-accordion.php:84
 msgid "Display this accordion as open on page load."
 msgstr "Visa detta dragspel som öppet på sidladdning."
 
-#: includes/fields/class-acf-field-accordion.php:80
+#: includes/fields/class-acf-field-accordion.php:83
 msgid "Open"
 msgstr "Öppen"
 
@@ -6457,83 +6521,89 @@ msgstr "Fil"
 msgid "Password"
 msgstr "Lösenord"
 
-#: includes/fields/class-acf-field-select.php:365
+#: includes/fields/class-acf-field-select.php:357
 msgid "Specify the value returned"
 msgstr "Specificera värdet att returnera"
 
-#: includes/fields/class-acf-field-select.php:433
+#: includes/fields/class-acf-field-select.php:425
 msgid "Use AJAX to lazy load choices?"
 msgstr "Använda AJAX för att ladda alternativ efter att sidan laddats?"
 
 #: includes/fields/class-acf-field-checkbox.php:333
-#: includes/fields/class-acf-field-select.php:354
+#: includes/fields/class-acf-field-select.php:346
 msgid "Enter each default value on a new line"
 msgstr "Ange varje standardvärde på en ny rad"
 
-#: includes/fields/class-acf-field-select.php:229 includes/media.php:48
+#: includes/fields/class-acf-field-select.php:221 includes/media.php:48
 #: assets/build/js/acf-input.js:7822 assets/build/js/acf-input.js:8484
 msgctxt "verb"
 msgid "Select"
 msgstr "Välj"
 
-#: includes/fields/class-acf-field-select.php:109
+#: includes/fields/class-acf-field-select.php:101
 msgctxt "Select2 JS load_fail"
 msgid "Loading failed"
 msgstr "Laddning misslyckades"
 
-#: includes/fields/class-acf-field-select.php:108
+#: includes/fields/class-acf-field-select.php:100
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
 msgstr "Söker&hellip;"
 
-#: includes/fields/class-acf-field-select.php:107
+#: includes/fields/class-acf-field-select.php:99
 msgctxt "Select2 JS load_more"
 msgid "Loading more results&hellip;"
 msgstr "Laddar in fler resultat …"
 
-#: includes/fields/class-acf-field-select.php:106
+#. translators: %d - maximum number of items that can be selected in the select
+#. field
+#: includes/fields/class-acf-field-select.php:98
 msgctxt "Select2 JS selection_too_long_n"
 msgid "You can only select %d items"
 msgstr "Du kan endast välja %d objekt"
 
-#: includes/fields/class-acf-field-select.php:105
+#: includes/fields/class-acf-field-select.php:96
 msgctxt "Select2 JS selection_too_long_1"
 msgid "You can only select 1 item"
 msgstr "Du kan endast välja 1 objekt"
 
-#: includes/fields/class-acf-field-select.php:104
+#. translators: %d - number of characters that should be removed from select
+#. field
+#: includes/fields/class-acf-field-select.php:95
 msgctxt "Select2 JS input_too_long_n"
 msgid "Please delete %d characters"
 msgstr "Ta bort %d tecken"
 
-#: includes/fields/class-acf-field-select.php:103
+#: includes/fields/class-acf-field-select.php:93
 msgctxt "Select2 JS input_too_long_1"
 msgid "Please delete 1 character"
 msgstr "Ta bort 1 tecken"
 
-#: includes/fields/class-acf-field-select.php:102
+#. translators: %d - number of characters to enter into select field input
+#: includes/fields/class-acf-field-select.php:92
 msgctxt "Select2 JS input_too_short_n"
 msgid "Please enter %d or more characters"
 msgstr "Ange %d eller fler tecken"
 
-#: includes/fields/class-acf-field-select.php:101
+#: includes/fields/class-acf-field-select.php:90
 msgctxt "Select2 JS input_too_short_1"
 msgid "Please enter 1 or more characters"
 msgstr "Ange 1 eller fler tecken"
 
-#: includes/fields/class-acf-field-select.php:100
+#: includes/fields/class-acf-field-select.php:89
 msgctxt "Select2 JS matches_0"
 msgid "No matches found"
 msgstr "Inga matchningar hittades"
 
-#: includes/fields/class-acf-field-select.php:99
+#. translators: %d - number of results available in select field
+#: includes/fields/class-acf-field-select.php:88
 msgctxt "Select2 JS matches_n"
 msgid "%d results are available, use up and down arrow keys to navigate."
 msgstr ""
 "%d resultat är tillgängliga, använd tangenterna med uppåt- och nedåtpil för "
 "att navigera."
 
-#: includes/fields/class-acf-field-select.php:98
+#: includes/fields/class-acf-field-select.php:86
 msgctxt "Select2 JS matches_1"
 msgid "One result is available, press enter to select it."
 msgstr ""
@@ -6674,21 +6744,21 @@ msgstr "Välj tid"
 msgid "Date Time Picker"
 msgstr "Datum/tidväljare"
 
-#: includes/fields/class-acf-field-accordion.php:102
+#: includes/fields/class-acf-field-accordion.php:105
 msgid "Endpoint"
 msgstr "Ändpunkt"
 
 #: includes/admin/views/acf-field-group/options.php:130
-#: includes/fields/class-acf-field-tab.php:109
+#: includes/fields/class-acf-field-tab.php:112
 msgid "Left aligned"
 msgstr "Vänsterjusterad"
 
 #: includes/admin/views/acf-field-group/options.php:129
-#: includes/fields/class-acf-field-tab.php:108
+#: includes/fields/class-acf-field-tab.php:111
 msgid "Top aligned"
 msgstr "Toppjusterad"
 
-#: includes/fields/class-acf-field-tab.php:104
+#: includes/fields/class-acf-field-tab.php:107
 msgid "Placement"
 msgstr "Placering"
 
@@ -6746,7 +6816,7 @@ msgstr "Intervall"
 #: includes/fields/class-acf-field-button-group.php:165
 #: includes/fields/class-acf-field-checkbox.php:350
 #: includes/fields/class-acf-field-radio.php:210
-#: includes/fields/class-acf-field-select.php:372
+#: includes/fields/class-acf-field-select.php:364
 msgid "Both (Array)"
 msgstr "Båda (Array)"
 
@@ -6754,14 +6824,14 @@ msgstr "Båda (Array)"
 #: includes/fields/class-acf-field-button-group.php:164
 #: includes/fields/class-acf-field-checkbox.php:349
 #: includes/fields/class-acf-field-radio.php:209
-#: includes/fields/class-acf-field-select.php:371
+#: includes/fields/class-acf-field-select.php:363
 msgid "Label"
 msgstr "Etikett"
 
 #: includes/fields/class-acf-field-button-group.php:163
 #: includes/fields/class-acf-field-checkbox.php:348
 #: includes/fields/class-acf-field-radio.php:208
-#: includes/fields/class-acf-field-select.php:370
+#: includes/fields/class-acf-field-select.php:362
 msgid "Value"
 msgstr "Värde"
 
@@ -6780,14 +6850,14 @@ msgstr "Horisontell"
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "red : Red"
 msgstr "röd : Röd"
 
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "For more control, you may specify both a value and label like this:"
 msgstr ""
 "För mer kontroll kan du specificera både ett värde och en etikett så här:"
@@ -6795,14 +6865,14 @@ msgstr ""
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:343
+#: includes/fields/class-acf-field-select.php:335
 msgid "Enter each choice on a new line."
 msgstr "Ange varje val på en ny rad."
 
 #: includes/fields/class-acf-field-button-group.php:137
 #: includes/fields/class-acf-field-checkbox.php:322
 #: includes/fields/class-acf-field-radio.php:182
-#: includes/fields/class-acf-field-select.php:342
+#: includes/fields/class-acf-field-select.php:334
 msgid "Choices"
 msgstr "Val"
 
@@ -6814,7 +6884,7 @@ msgstr "Knappgrupp"
 #: includes/fields/class-acf-field-page_link.php:519
 #: includes/fields/class-acf-field-post_object.php:432
 #: includes/fields/class-acf-field-radio.php:228
-#: includes/fields/class-acf-field-select.php:401
+#: includes/fields/class-acf-field-select.php:393
 #: includes/fields/class-acf-field-taxonomy.php:705
 #: includes/fields/class-acf-field-user.php:132
 msgid "Allow Null"
@@ -7204,36 +7274,36 @@ msgstr "Välj bild"
 msgid "Image"
 msgstr "Bild"
 
-#: includes/fields/class-acf-field-message.php:110
+#: includes/fields/class-acf-field-message.php:113
 msgid "Allow HTML markup to display as visible text instead of rendering"
 msgstr ""
 "Tillåt att HTML-märkkod visas som synlig text i stället för att renderas"
 
-#: includes/fields/class-acf-field-message.php:109
+#: includes/fields/class-acf-field-message.php:112
 msgid "Escape HTML"
 msgstr "Inaktivera HTML-rendering"
 
-#: includes/fields/class-acf-field-message.php:101
+#: includes/fields/class-acf-field-message.php:104
 #: includes/fields/class-acf-field-textarea.php:162
 msgid "No Formatting"
 msgstr "Ingen formatering"
 
-#: includes/fields/class-acf-field-message.php:100
+#: includes/fields/class-acf-field-message.php:103
 #: includes/fields/class-acf-field-textarea.php:161
 msgid "Automatically add &lt;br&gt;"
 msgstr "Lägg automatiskt till &lt;br&gt;"
 
-#: includes/fields/class-acf-field-message.php:99
+#: includes/fields/class-acf-field-message.php:102
 #: includes/fields/class-acf-field-textarea.php:160
 msgid "Automatically add paragraphs"
 msgstr "Lägg automatiskt till stycken"
 
-#: includes/fields/class-acf-field-message.php:95
+#: includes/fields/class-acf-field-message.php:98
 #: includes/fields/class-acf-field-textarea.php:156
 msgid "Controls how new lines are rendered"
 msgstr "Styr hur nya rader visas"
 
-#: includes/fields/class-acf-field-message.php:94
+#: includes/fields/class-acf-field-message.php:97
 #: includes/fields/class-acf-field-textarea.php:155
 msgid "New Lines"
 msgstr "Nya rader"
@@ -7315,7 +7385,7 @@ msgstr "Text som visas när aktivt"
 msgid "On Text"
 msgstr "”På”-text"
 
-#: includes/fields/class-acf-field-select.php:422
+#: includes/fields/class-acf-field-select.php:414
 #: includes/fields/class-acf-field-true_false.php:187
 msgid "Stylized UI"
 msgstr "Stiliserat användargränssnitt"
@@ -7327,7 +7397,7 @@ msgstr "Stiliserat användargränssnitt"
 #: includes/fields/class-acf-field-number.php:113
 #: includes/fields/class-acf-field-radio.php:192
 #: includes/fields/class-acf-field-range.php:153
-#: includes/fields/class-acf-field-select.php:353
+#: includes/fields/class-acf-field-select.php:345
 #: includes/fields/class-acf-field-text.php:95
 #: includes/fields/class-acf-field-textarea.php:93
 #: includes/fields/class-acf-field-true_false.php:135
@@ -7341,7 +7411,7 @@ msgid "Displays text alongside the checkbox"
 msgstr "Visar text bredvid kryssrutan"
 
 #: includes/fields/class-acf-field-message.php:23
-#: includes/fields/class-acf-field-message.php:84
+#: includes/fields/class-acf-field-message.php:87
 #: includes/fields/class-acf-field-true_false.php:125
 msgid "Message"
 msgstr "Meddelande"
@@ -7366,31 +7436,31 @@ msgstr "Ja"
 msgid "True / False"
 msgstr "Sant/falskt"
 
-#: includes/fields/class-acf-field-group.php:412
+#: includes/fields/class-acf-field-group.php:415
 msgid "Row"
 msgstr "Rad"
 
-#: includes/fields/class-acf-field-group.php:411
+#: includes/fields/class-acf-field-group.php:414
 msgid "Table"
 msgstr "Tabell"
 
 #: includes/admin/post-types/admin-field-group.php:158
-#: includes/fields/class-acf-field-group.php:410
+#: includes/fields/class-acf-field-group.php:413
 msgid "Block"
 msgstr "Block"
 
-#: includes/fields/class-acf-field-group.php:405
+#: includes/fields/class-acf-field-group.php:408
 msgid "Specify the style used to render the selected fields"
 msgstr "Specificera stilen för att rendera valda fält"
 
 #: includes/fields.php:330 includes/fields/class-acf-field-button-group.php:204
 #: includes/fields/class-acf-field-checkbox.php:405
-#: includes/fields/class-acf-field-group.php:404
+#: includes/fields/class-acf-field-group.php:407
 #: includes/fields/class-acf-field-radio.php:276
 msgid "Layout"
 msgstr "Layout"
 
-#: includes/fields/class-acf-field-group.php:388
+#: includes/fields/class-acf-field-group.php:391
 msgid "Sub Fields"
 msgstr "Underfält"
 
@@ -7466,7 +7536,7 @@ msgstr "Formatet returnerad via mallfunktioner"
 #: includes/fields/class-acf-field-image.php:177
 #: includes/fields/class-acf-field-post_object.php:396
 #: includes/fields/class-acf-field-relationship.php:610
-#: includes/fields/class-acf-field-select.php:364
+#: includes/fields/class-acf-field-select.php:356
 #: includes/fields/class-acf-field-time_picker.php:121
 #: includes/fields/class-acf-field-user.php:95
 msgid "Return Format"

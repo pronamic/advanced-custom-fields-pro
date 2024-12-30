@@ -319,6 +319,7 @@ if ( isset( $field['conditional_logic'] ) && is_array( $field['conditional_logic
 				?>
 				<div class="acf-field-settings-footer">
 					<a class="button close-field edit-field" title="<?php esc_attr_e( 'Close Field', 'acf' ); ?>" href="#"><?php esc_html_e( 'Close Field', 'acf' ); ?></a>
+					<a class="acf-btn acf-btn-secondary close-add-field" title="<?php esc_attr_e( 'Close and Add Field', 'acf' ); ?>" href="#"><?php esc_html_e( 'Close and Add Field', 'acf' ); ?></a>
 				</div>
 			</div>
 		</div>
