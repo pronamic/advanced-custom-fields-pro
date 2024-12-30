@@ -105,7 +105,7 @@ mkdir( $plugins_dir );
 
 $plugin_dir = $plugins_dir . '/advanced-custom-fields-pro';
 
-$zip_file = $archives_dir . '/advanced-custom-fields-pro-' . $version . '.zip';
+$zip_file = $archives_dir . '/advanced-custom-fields-pro.' . $version . '.zip';
 
 /**
  * Download ZIP.
