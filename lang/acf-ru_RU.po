@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-10-02T12:08:46+00:00\n"
+"PO-Revision-Date: 2025-01-21T10:45:54+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -21,19 +21,66 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/class-acf-site-health.php:291
+msgid "Update Source"
+msgstr ""
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:850
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:810
+msgid "By default only admin users can edit this setting."
+msgstr "По умолчанию этот параметр могут редактировать только администраторы."
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:848
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:808
+msgid "By default only super admin users can edit this setting."
+msgstr ""
+"По умолчанию этот параметр могут редактировать только суперадминистраторы."
+
+#: includes/admin/views/acf-field-group/field.php:322
+msgid "Close and Add Field"
+msgstr "Закрыть и добавить поле"
+
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:804
+msgid ""
+"A PHP function name to be called to handle the content of a meta box on your "
+"taxonomy. For security, this callback will be executed in a special context "
+"without access to any superglobals like $_POST or $_GET."
+msgstr ""
+"Имя PHP функции, которая будет вызвана для обработки содержимого мета-блока "
+"в вашей таксономии. Для безопасности этот обратный вызов будет выполняться в "
+"специальном контексте без доступа к каким-либо суперглобальным переменным, "
+"таким как $_POST или $_GET."
+
+#: includes/admin/views/acf-post-type/advanced-settings.php:842
+msgid ""
+"A PHP function name to be called when setting up the meta boxes for the edit "
+"screen. For security, this callback will be executed in a special context "
+"without access to any superglobals like $_POST or $_GET."
+msgstr ""
+"Имя PHP-функции, которая будет вызвана при настройке мета-боксов для экрана "
+"редактирования. Для безопасности этот обратный вызов будет выполняться в "
+"специальном контексте без доступа к каким-либо суперглобальным переменным, "
+"таким как $_POST или $_GET."
+
+#: includes/class-acf-site-health.php:292
+msgid "wordpress.org"
+msgstr ""
+
 #: includes/validation.php:136
 msgid ""
 "ACF was unable to perform validation due to an invalid security nonce being "
 "provided."
 msgstr ""
+"ACF не смог выполнить проверку из-за того, что был предоставлен неверный "
+"nonce безопасности."
 
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
-msgstr ""
+msgstr "Разрешить доступ к значению в пользовательском интерфейсе редактора"
 
 #: includes/fields/class-acf-field.php:341
 msgid "Learn more."
-msgstr ""
+msgstr "Узнать больше."
 
 #. translators: %s A "Learn More" link to documentation explaining the setting
 #. further.
@@ -63,39 +110,39 @@ msgstr ""
 
 #: includes/api/api-template.php:1054
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
-msgstr ""
+msgstr "[Шорткод ACF не может отображать поля из непубличных записей]"
 
 #: includes/api/api-template.php:1011
 msgid "[The ACF shortcode is disabled on this site]"
-msgstr ""
+msgstr "[Шорткод ACF отключен на этом сайте]"
 
 #: includes/fields/class-acf-field-icon_picker.php:451
 msgid "Businessman Icon"
-msgstr ""
+msgstr "Иконка Бизнесмен"
 
 #: includes/fields/class-acf-field-icon_picker.php:443
 msgid "Forums Icon"
-msgstr ""
+msgstr "Иконка Форумы"
 
 #: includes/fields/class-acf-field-icon_picker.php:722
 msgid "YouTube Icon"
-msgstr ""
+msgstr "Иконка YouTube"
 
 #: includes/fields/class-acf-field-icon_picker.php:721
 msgid "Yes (alt) Icon"
-msgstr ""
+msgstr "Иконка Да (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:719
 msgid "Xing Icon"
-msgstr ""
+msgstr "Иконка Xing"
 
 #: includes/fields/class-acf-field-icon_picker.php:718
 msgid "WordPress (alt) Icon"
-msgstr ""
+msgstr "Иконка WordPress (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:716
 msgid "WhatsApp Icon"
-msgstr ""
+msgstr "Иконка WhatsApp"
 
 #: includes/fields/class-acf-field-icon_picker.php:715
 msgid "Write Blog Icon"
@@ -107,43 +154,43 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:713
 msgid "View Site Icon"
-msgstr ""
+msgstr "Иконка Показать сайт"
 
 #: includes/fields/class-acf-field-icon_picker.php:712
 msgid "Learn More Icon"
-msgstr ""
+msgstr "Иконка Узнать больше"
 
 #: includes/fields/class-acf-field-icon_picker.php:710
 msgid "Add Page Icon"
-msgstr ""
+msgstr "Иконка Добавить страницу"
 
 #: includes/fields/class-acf-field-icon_picker.php:707
 msgid "Video (alt3) Icon"
-msgstr ""
+msgstr "Иконка Видео (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:706
 msgid "Video (alt2) Icon"
-msgstr ""
+msgstr "Иконка Видео (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:705
 msgid "Video (alt) Icon"
-msgstr ""
+msgstr "Иконка Видео (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:702
 msgid "Update (alt) Icon"
-msgstr ""
+msgstr "Иконка Обновить (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:699
 msgid "Universal Access (alt) Icon"
-msgstr ""
+msgstr "Иконка Универсальный доступ (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:696
 msgid "Twitter (alt) Icon"
-msgstr ""
+msgstr "Иконка Twitter (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:694
 msgid "Twitch Icon"
-msgstr ""
+msgstr "Иконка Twitch"
 
 #: includes/fields/class-acf-field-icon_picker.php:691
 msgid "Tide Icon"
@@ -151,103 +198,103 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:690
 msgid "Tickets (alt) Icon"
-msgstr ""
+msgstr "Иконка Билеты (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:686
 msgid "Text Page Icon"
-msgstr ""
+msgstr "Иконка Текстовая страница"
 
 #: includes/fields/class-acf-field-icon_picker.php:680
 msgid "Table Row Delete Icon"
-msgstr ""
+msgstr "Иконка Удалить строку таблицы"
 
 #: includes/fields/class-acf-field-icon_picker.php:679
 msgid "Table Row Before Icon"
-msgstr ""
+msgstr "Иконка Перед строкой таблицы"
 
 #: includes/fields/class-acf-field-icon_picker.php:678
 msgid "Table Row After Icon"
-msgstr ""
+msgstr "Иконка После строки таблицы"
 
 #: includes/fields/class-acf-field-icon_picker.php:677
 msgid "Table Col Delete Icon"
-msgstr ""
+msgstr "Иконка Удалить колонку таблицы"
 
 #: includes/fields/class-acf-field-icon_picker.php:676
 msgid "Table Col Before Icon"
-msgstr ""
+msgstr "Иконка Перед колонкой таблицы"
 
 #: includes/fields/class-acf-field-icon_picker.php:675
 msgid "Table Col After Icon"
-msgstr ""
+msgstr "Иконка После колонки таблицы"
 
 #: includes/fields/class-acf-field-icon_picker.php:674
 msgid "Superhero (alt) Icon"
-msgstr ""
+msgstr "Иконка Супергерой (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:673
 msgid "Superhero Icon"
-msgstr ""
+msgstr "Иконка Супергерой"
 
 #: includes/fields/class-acf-field-icon_picker.php:667
 msgid "Spotify Icon"
-msgstr ""
+msgstr "Иконка Spotify"
 
 #: includes/fields/class-acf-field-icon_picker.php:661
 msgid "Shortcode Icon"
-msgstr ""
+msgstr "Иконка Шорткод"
 
 #: includes/fields/class-acf-field-icon_picker.php:660
 msgid "Shield (alt) Icon"
-msgstr ""
+msgstr "Иконка Щит (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:658
 msgid "Share (alt2) Icon"
-msgstr ""
+msgstr "Иконка Поделиться (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:657
 msgid "Share (alt) Icon"
-msgstr ""
+msgstr "Иконка Поделиться (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:652
 msgid "Saved Icon"
-msgstr ""
+msgstr "Иконка Сохранено"
 
 #: includes/fields/class-acf-field-icon_picker.php:651
 msgid "RSS Icon"
-msgstr ""
+msgstr "Иконка RSS"
 
 #: includes/fields/class-acf-field-icon_picker.php:650
 msgid "REST API Icon"
-msgstr ""
+msgstr "Иконка REST API"
 
 #: includes/fields/class-acf-field-icon_picker.php:649
 msgid "Remove Icon"
-msgstr ""
+msgstr "Иконка Удалить"
 
 #: includes/fields/class-acf-field-icon_picker.php:647
 msgid "Reddit Icon"
-msgstr ""
+msgstr "Ааываыва"
 
 #: includes/fields/class-acf-field-icon_picker.php:644
 msgid "Privacy Icon"
-msgstr ""
+msgstr "Иконка Приватность"
 
 #: includes/fields/class-acf-field-icon_picker.php:643
 msgid "Printer Icon"
-msgstr ""
+msgstr "Иконка Принтер"
 
 #: includes/fields/class-acf-field-icon_picker.php:639
 msgid "Podio Icon"
-msgstr ""
+msgstr "Иконка Радио"
 
 #: includes/fields/class-acf-field-icon_picker.php:638
 msgid "Plus (alt2) Icon"
-msgstr ""
+msgstr "Иконка Плюс (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:637
 msgid "Plus (alt) Icon"
-msgstr ""
+msgstr "Иконка Плюс (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:635
 msgid "Plugins Checked Icon"
@@ -255,43 +302,43 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:632
 msgid "Pinterest Icon"
-msgstr ""
+msgstr "Иконка Pinterest"
 
 #: includes/fields/class-acf-field-icon_picker.php:630
 msgid "Pets Icon"
-msgstr ""
+msgstr "Иконка Питомцы"
 
 #: includes/fields/class-acf-field-icon_picker.php:628
 msgid "PDF Icon"
-msgstr ""
+msgstr "Иконка PDF"
 
 #: includes/fields/class-acf-field-icon_picker.php:626
 msgid "Palm Tree Icon"
-msgstr ""
+msgstr "Иконка Пальмовое дерево"
 
 #: includes/fields/class-acf-field-icon_picker.php:625
 msgid "Open Folder Icon"
-msgstr ""
+msgstr "Иконка Открыть папку"
 
 #: includes/fields/class-acf-field-icon_picker.php:624
 msgid "No (alt) Icon"
-msgstr ""
+msgstr "Иконка Нет (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:619
 msgid "Money (alt) Icon"
-msgstr ""
+msgstr "Иконка Деньги (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:614
 msgid "Menu (alt3) Icon"
-msgstr ""
+msgstr "Иконка Меню (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:613
 msgid "Menu (alt2) Icon"
-msgstr ""
+msgstr "Иконка Меню (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:612
 msgid "Menu (alt) Icon"
-msgstr ""
+msgstr "Иконка Меню (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:607
 msgid "Spreadsheet Icon"
@@ -303,35 +350,35 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:605
 msgid "Document Icon"
-msgstr ""
+msgstr "Иконка Документ"
 
 #: includes/fields/class-acf-field-icon_picker.php:604
 msgid "Default Icon"
-msgstr ""
+msgstr "Иконка По умолчанию"
 
 #: includes/fields/class-acf-field-icon_picker.php:598
 msgid "Location (alt) Icon"
-msgstr ""
+msgstr "Иконка Местоположение (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:595
 msgid "LinkedIn Icon"
-msgstr ""
+msgstr "Иконка LinkedIn"
 
 #: includes/fields/class-acf-field-icon_picker.php:590
 msgid "Instagram Icon"
-msgstr ""
+msgstr "Иконка Instagram"
 
 #: includes/fields/class-acf-field-icon_picker.php:589
 msgid "Insert Before Icon"
-msgstr ""
+msgstr "Иконка Вставить перед"
 
 #: includes/fields/class-acf-field-icon_picker.php:588
 msgid "Insert After Icon"
-msgstr ""
+msgstr "Иконка Вставить после"
 
 #: includes/fields/class-acf-field-icon_picker.php:587
 msgid "Insert Icon"
-msgstr ""
+msgstr "Иконка Вставить"
 
 #: includes/fields/class-acf-field-icon_picker.php:586
 msgid "Info Outline Icon"
@@ -339,43 +386,43 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:583
 msgid "Images (alt2) Icon"
-msgstr ""
+msgstr "Иконка Изображения (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:582
 msgid "Images (alt) Icon"
-msgstr ""
+msgstr "Иконка Изображения (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:581
 msgid "Rotate Right Icon"
-msgstr ""
+msgstr "Иконка Повернуть вправо"
 
 #: includes/fields/class-acf-field-icon_picker.php:580
 msgid "Rotate Left Icon"
-msgstr ""
+msgstr "Иконка Повернуть влево"
 
 #: includes/fields/class-acf-field-icon_picker.php:579
 msgid "Rotate Icon"
-msgstr ""
+msgstr "Иконка Повернуть"
 
 #: includes/fields/class-acf-field-icon_picker.php:578
 msgid "Flip Vertical Icon"
-msgstr ""
+msgstr "Иконка Отразить по вертикали"
 
 #: includes/fields/class-acf-field-icon_picker.php:577
 msgid "Flip Horizontal Icon"
-msgstr ""
+msgstr "Иконка Отразить по горизонтали"
 
 #: includes/fields/class-acf-field-icon_picker.php:575
 msgid "Crop Icon"
-msgstr ""
+msgstr "Иконка Обрезать"
 
 #: includes/fields/class-acf-field-icon_picker.php:574
 msgid "ID (alt) Icon"
-msgstr ""
+msgstr "Иконка ID (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:572
 msgid "HTML Icon"
-msgstr ""
+msgstr "Иконка HTML"
 
 #: includes/fields/class-acf-field-icon_picker.php:571
 msgid "Hourglass Icon"
@@ -387,68 +434,68 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:564
 msgid "Google Icon"
-msgstr ""
+msgstr "Иконка Google"
 
 #: includes/fields/class-acf-field-icon_picker.php:563
 msgid "Games Icon"
-msgstr ""
+msgstr "Иконка Игры"
 
 #: includes/fields/class-acf-field-icon_picker.php:562
 msgid "Fullscreen Exit (alt) Icon"
-msgstr ""
+msgstr "Иконка Выйти из полноэкранного режима"
 
 #: includes/fields/class-acf-field-icon_picker.php:561
 msgid "Fullscreen (alt) Icon"
-msgstr ""
+msgstr "Иконка Полноэкранный режим (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:558
 msgid "Status Icon"
-msgstr ""
+msgstr "Иконка Статус"
 
 #: includes/fields/class-acf-field-icon_picker.php:556
 msgid "Image Icon"
-msgstr ""
+msgstr "Иконка Изображение"
 
 #: includes/fields/class-acf-field-icon_picker.php:555
 msgid "Gallery Icon"
-msgstr ""
+msgstr "Иконка Галерея"
 
 #: includes/fields/class-acf-field-icon_picker.php:554
 msgid "Chat Icon"
-msgstr ""
+msgstr "Иконка Чат"
 
 #: includes/fields/class-acf-field-icon_picker.php:553
 #: includes/fields/class-acf-field-icon_picker.php:602
 msgid "Audio Icon"
-msgstr ""
+msgstr "Иконка Аудио"
 
 #: includes/fields/class-acf-field-icon_picker.php:552
 msgid "Aside Icon"
-msgstr ""
+msgstr "Иконка Сайдбар"
 
 #: includes/fields/class-acf-field-icon_picker.php:551
 msgid "Food Icon"
-msgstr ""
+msgstr "Иконка Еда"
 
 #: includes/fields/class-acf-field-icon_picker.php:544
 msgid "Exit Icon"
-msgstr ""
+msgstr "Иконка Выйти"
 
 #: includes/fields/class-acf-field-icon_picker.php:543
 msgid "Excerpt View Icon"
-msgstr ""
+msgstr "Иконка Отрывок"
 
 #: includes/fields/class-acf-field-icon_picker.php:542
 msgid "Embed Video Icon"
-msgstr ""
+msgstr "Иконка Встроенное видео"
 
 #: includes/fields/class-acf-field-icon_picker.php:541
 msgid "Embed Post Icon"
-msgstr ""
+msgstr "Иконка Встроенная запись"
 
 #: includes/fields/class-acf-field-icon_picker.php:540
 msgid "Embed Photo Icon"
-msgstr ""
+msgstr "Иконка Встроенное фото"
 
 #: includes/fields/class-acf-field-icon_picker.php:539
 msgid "Embed Generic Icon"
@@ -456,11 +503,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:538
 msgid "Embed Audio Icon"
-msgstr ""
+msgstr "Иконка Встроенное аудио"
 
 #: includes/fields/class-acf-field-icon_picker.php:537
 msgid "Email (alt2) Icon"
-msgstr ""
+msgstr "Иконка Email (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:534
 msgid "Ellipsis Icon"
@@ -492,7 +539,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:500
 msgid "Edit Page Icon"
-msgstr ""
+msgstr "Иконка Редактировать страницу"
 
 #: includes/fields/class-acf-field-icon_picker.php:499
 msgid "Edit Large Icon"
@@ -500,31 +547,31 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:497
 msgid "Drumstick Icon"
-msgstr ""
+msgstr "Иконка Барабанная палочка"
 
 #: includes/fields/class-acf-field-icon_picker.php:493
 msgid "Database View Icon"
-msgstr ""
+msgstr "Иконка Отобразить базу данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:492
 msgid "Database Remove Icon"
-msgstr ""
+msgstr "Иконка Удалить базу данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:491
 msgid "Database Import Icon"
-msgstr ""
+msgstr "Иконка Импорт базы данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:490
 msgid "Database Export Icon"
-msgstr ""
+msgstr "Иконка Экспорт базы данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:489
 msgid "Database Add Icon"
-msgstr ""
+msgstr "Иконка Добавить базу данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:488
 msgid "Database Icon"
-msgstr ""
+msgstr "Иконка База данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:486
 msgid "Cover Image Icon"
@@ -532,11 +579,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:485
 msgid "Volume On Icon"
-msgstr ""
+msgstr "Иконка Включить звук"
 
 #: includes/fields/class-acf-field-icon_picker.php:484
 msgid "Volume Off Icon"
-msgstr ""
+msgstr "Иконка Выключить звук"
 
 #: includes/fields/class-acf-field-icon_picker.php:483
 msgid "Skip Forward Icon"
@@ -548,63 +595,63 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:481
 msgid "Repeat Icon"
-msgstr ""
+msgstr "Иконка Повторить"
 
 #: includes/fields/class-acf-field-icon_picker.php:480
 msgid "Play Icon"
-msgstr ""
+msgstr "Иконка Воспроизвести"
 
 #: includes/fields/class-acf-field-icon_picker.php:479
 msgid "Pause Icon"
-msgstr ""
+msgstr "Иконка Пауза"
 
 #: includes/fields/class-acf-field-icon_picker.php:478
 msgid "Forward Icon"
-msgstr ""
+msgstr "Иконка Вперед"
 
 #: includes/fields/class-acf-field-icon_picker.php:477
 msgid "Back Icon"
-msgstr ""
+msgstr "Иконка Назад"
 
 #: includes/fields/class-acf-field-icon_picker.php:476
 msgid "Columns Icon"
-msgstr ""
+msgstr "Иконка Колонки"
 
 #: includes/fields/class-acf-field-icon_picker.php:475
 msgid "Color Picker Icon"
-msgstr ""
+msgstr "Иконка Подборщик цвета"
 
 #: includes/fields/class-acf-field-icon_picker.php:474
 msgid "Coffee Icon"
-msgstr ""
+msgstr "Иконка Кофе"
 
 #: includes/fields/class-acf-field-icon_picker.php:473
 msgid "Code Standards Icon"
-msgstr ""
+msgstr "Иконка Стандарты кода"
 
 #: includes/fields/class-acf-field-icon_picker.php:472
 msgid "Cloud Upload Icon"
-msgstr ""
+msgstr "Иконка Загрузить в облако"
 
 #: includes/fields/class-acf-field-icon_picker.php:471
 msgid "Cloud Saved Icon"
-msgstr ""
+msgstr "Иконка Сохранено в облаке"
 
 #: includes/fields/class-acf-field-icon_picker.php:460
 msgid "Car Icon"
-msgstr ""
+msgstr "Иконка Машина"
 
 #: includes/fields/class-acf-field-icon_picker.php:459
 msgid "Camera (alt) Icon"
-msgstr ""
+msgstr "Иконка Камера (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:455
 msgid "Calculator Icon"
-msgstr ""
+msgstr "Иконка Калькулятор"
 
 #: includes/fields/class-acf-field-icon_picker.php:454
 msgid "Button Icon"
-msgstr ""
+msgstr "Иконка Кнопка"
 
 #: includes/fields/class-acf-field-icon_picker.php:452
 msgid "Businessperson Icon"
@@ -616,7 +663,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:448
 msgid "Topics Icon"
-msgstr ""
+msgstr "Иконка Темы"
 
 #: includes/fields/class-acf-field-icon_picker.php:447
 msgid "Replies Icon"
@@ -624,31 +671,31 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:446
 msgid "PM Icon"
-msgstr ""
+msgstr "Иконка PM"
 
 #: includes/fields/class-acf-field-icon_picker.php:444
 msgid "Friends Icon"
-msgstr ""
+msgstr "Иконка Друзья"
 
 #: includes/fields/class-acf-field-icon_picker.php:442
 msgid "Community Icon"
-msgstr ""
+msgstr "Иконка Сообщество"
 
 #: includes/fields/class-acf-field-icon_picker.php:441
 msgid "BuddyPress Icon"
-msgstr ""
+msgstr "Иконка BuddyPress"
 
 #: includes/fields/class-acf-field-icon_picker.php:440
 msgid "bbPress Icon"
-msgstr ""
+msgstr "Иконка bbPress"
 
 #: includes/fields/class-acf-field-icon_picker.php:439
 msgid "Activity Icon"
-msgstr ""
+msgstr "Иконка Активность"
 
 #: includes/fields/class-acf-field-icon_picker.php:438
 msgid "Book (alt) Icon"
-msgstr ""
+msgstr "Иконка Книга (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:436
 msgid "Block Default Icon"
@@ -656,15 +703,15 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:435
 msgid "Bell Icon"
-msgstr ""
+msgstr "Иконка Колокол"
 
 #: includes/fields/class-acf-field-icon_picker.php:434
 msgid "Beer Icon"
-msgstr ""
+msgstr "Иконка Пиво"
 
 #: includes/fields/class-acf-field-icon_picker.php:433
 msgid "Bank Icon"
-msgstr ""
+msgstr "Иконка Банк"
 
 #: includes/fields/class-acf-field-icon_picker.php:429
 msgid "Arrow Up (alt2) Icon"
@@ -700,7 +747,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:415
 msgid "Amazon Icon"
-msgstr ""
+msgstr "Иконка Amazon"
 
 #: includes/fields/class-acf-field-icon_picker.php:414
 msgid "Align Wide Icon"
@@ -720,37 +767,37 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:405
 msgid "Airplane Icon"
-msgstr ""
+msgstr "Иконка Самолет"
 
 #: includes/fields/class-acf-field-icon_picker.php:402
 msgid "Site (alt3) Icon"
-msgstr ""
+msgstr "Иконка Сайт (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:401
 msgid "Site (alt2) Icon"
-msgstr ""
+msgstr "Иконка Сайт (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:400
 msgid "Site (alt) Icon"
-msgstr ""
+msgstr "Иконка Сайт (alt)"
 
 #: includes/admin/views/options-page-preview.php:26
 msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
-msgstr ""
+msgstr "Обновитесь до ACF PRO чтобы создавать страницы настроек в пару кликов"
 
 #: includes/ajax/class-acf-ajax-query-users.php:24
 msgid "Invalid request args."
-msgstr ""
+msgstr "Неверные аргументы запроса."
 
 #: includes/ajax/class-acf-ajax-check-screen.php:37
 #: includes/ajax/class-acf-ajax-local-json-diff.php:37
-#: includes/ajax/class-acf-ajax-query-users.php:32
+#: includes/ajax/class-acf-ajax-query-users.php:33
 #: includes/ajax/class-acf-ajax-upgrade.php:24
 #: includes/ajax/class-acf-ajax-user-setting.php:38
 msgid "Sorry, you do not have permission to do that."
-msgstr ""
+msgstr "Извините, у вас нет разрешения чтобы делать это."
 
-#: includes/class-acf-site-health.php:643
+#: includes/class-acf-site-health.php:648
 msgid "Blocks Using Post Meta"
 msgstr ""
 
@@ -758,7 +805,7 @@ msgstr ""
 #: includes/admin/views/acf-field-group/pro-features.php:27
 #: includes/admin/views/global/header.php:27
 msgid "ACF PRO logo"
-msgstr ""
+msgstr "Логотип ACF PRO"
 
 #: includes/admin/views/acf-field-group/field.php:37
 msgid "ACF PRO Logo"
@@ -767,76 +814,76 @@ msgstr ""
 #. translators: %s - field/param name
 #: includes/fields/class-acf-field-icon_picker.php:788
 msgid "%s requires a valid attachment ID when type is set to media_library."
-msgstr ""
+msgstr "%s требует валидный ID вложения когда установлен тип media_library."
 
 #. translators: %s - field name
 #: includes/fields/class-acf-field-icon_picker.php:772
 msgid "%s is a required property of acf."
-msgstr ""
+msgstr "%s является обязательным свойством acf."
 
 #: includes/fields/class-acf-field-icon_picker.php:748
 msgid "The value of icon to save."
-msgstr ""
+msgstr "Значение иконки для сохранения."
 
 #: includes/fields/class-acf-field-icon_picker.php:742
 msgid "The type of icon to save."
-msgstr ""
+msgstr "Тип иконки для сохранения."
 
 #: includes/fields/class-acf-field-icon_picker.php:720
 msgid "Yes Icon"
-msgstr ""
+msgstr "Иконка Да"
 
 #: includes/fields/class-acf-field-icon_picker.php:717
 msgid "WordPress Icon"
-msgstr ""
+msgstr "Иконка WordPress"
 
 #: includes/fields/class-acf-field-icon_picker.php:709
 msgid "Warning Icon"
-msgstr ""
+msgstr "Иконка Предупреждение"
 
 #: includes/fields/class-acf-field-icon_picker.php:708
 msgid "Visibility Icon"
-msgstr ""
+msgstr "Иконка Видимость"
 
 #: includes/fields/class-acf-field-icon_picker.php:704
 msgid "Vault Icon"
-msgstr ""
+msgstr "Иконка Хранилище"
 
 #: includes/fields/class-acf-field-icon_picker.php:703
 msgid "Upload Icon"
-msgstr ""
+msgstr "Иконка Загрузить"
 
 #: includes/fields/class-acf-field-icon_picker.php:701
 msgid "Update Icon"
-msgstr ""
+msgstr "Иконка Обновить"
 
 #: includes/fields/class-acf-field-icon_picker.php:700
 msgid "Unlock Icon"
-msgstr ""
+msgstr "Иконка Разблокировать"
 
 #: includes/fields/class-acf-field-icon_picker.php:698
 msgid "Universal Access Icon"
-msgstr ""
+msgstr "Иконка Универсальный доступ"
 
 #: includes/fields/class-acf-field-icon_picker.php:697
 msgid "Undo Icon"
-msgstr ""
+msgstr "Иконка Отменить"
 
 #: includes/fields/class-acf-field-icon_picker.php:695
 msgid "Twitter Icon"
-msgstr ""
+msgstr "Иконка Twitter"
 
 #: includes/fields/class-acf-field-icon_picker.php:693
 msgid "Trash Icon"
-msgstr ""
+msgstr "Иконка Мусорка"
 
 #: includes/fields/class-acf-field-icon_picker.php:692
 msgid "Translation Icon"
-msgstr ""
+msgstr "Иконка Перевод"
 
 #: includes/fields/class-acf-field-icon_picker.php:689
 msgid "Tickets Icon"
-msgstr ""
+msgstr "Иконка Билеты"
 
 #: includes/fields/class-acf-field-icon_picker.php:688
 msgid "Thumbs Up Icon"
@@ -849,7 +896,7 @@ msgstr ""
 #: includes/fields/class-acf-field-icon_picker.php:608
 #: includes/fields/class-acf-field-icon_picker.php:685
 msgid "Text Icon"
-msgstr ""
+msgstr "Иконка Текст"
 
 #: includes/fields/class-acf-field-icon_picker.php:684
 msgid "Testimonial Icon"
@@ -857,19 +904,19 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:683
 msgid "Tagcloud Icon"
-msgstr ""
+msgstr "Иконка Облако меток"
 
 #: includes/fields/class-acf-field-icon_picker.php:682
 msgid "Tag Icon"
-msgstr ""
+msgstr "Иконка Метка"
 
 #: includes/fields/class-acf-field-icon_picker.php:681
 msgid "Tablet Icon"
-msgstr ""
+msgstr "Иконка Планшет"
 
 #: includes/fields/class-acf-field-icon_picker.php:672
 msgid "Store Icon"
-msgstr ""
+msgstr "Иконка Магазин"
 
 #: includes/fields/class-acf-field-icon_picker.php:671
 msgid "Sticky Icon"
@@ -877,15 +924,15 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:670
 msgid "Star Half Icon"
-msgstr ""
+msgstr "Иконка Звезда половина"
 
 #: includes/fields/class-acf-field-icon_picker.php:669
 msgid "Star Filled Icon"
-msgstr ""
+msgstr "Иконка Звезда заполненная"
 
 #: includes/fields/class-acf-field-icon_picker.php:668
 msgid "Star Empty Icon"
-msgstr ""
+msgstr "Иконка Звезда пустая"
 
 #: includes/fields/class-acf-field-icon_picker.php:666
 msgid "Sos Icon"
@@ -893,7 +940,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:665
 msgid "Sort Icon"
-msgstr ""
+msgstr "Иконка Сортировать"
 
 #: includes/fields/class-acf-field-icon_picker.php:664
 msgid "Smiley Icon"
@@ -901,23 +948,23 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:663
 msgid "Smartphone Icon"
-msgstr ""
+msgstr "Иконка Смартфон"
 
 #: includes/fields/class-acf-field-icon_picker.php:662
 msgid "Slides Icon"
-msgstr ""
+msgstr "Иконка Слайды"
 
 #: includes/fields/class-acf-field-icon_picker.php:659
 msgid "Shield Icon"
-msgstr ""
+msgstr "Иконка Щит"
 
 #: includes/fields/class-acf-field-icon_picker.php:656
 msgid "Share Icon"
-msgstr ""
+msgstr "Иконка Поделиться"
 
 #: includes/fields/class-acf-field-icon_picker.php:655
 msgid "Search Icon"
-msgstr ""
+msgstr "Иконка Поиск"
 
 #: includes/fields/class-acf-field-icon_picker.php:654
 msgid "Screen Options Icon"
@@ -925,11 +972,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:653
 msgid "Schedule Icon"
-msgstr ""
+msgstr "Иконка Расписание"
 
 #: includes/fields/class-acf-field-icon_picker.php:648
 msgid "Redo Icon"
-msgstr ""
+msgstr "Иконка Повторить"
 
 #: includes/fields/class-acf-field-icon_picker.php:646
 msgid "Randomize Icon"
@@ -937,7 +984,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:645
 msgid "Products Icon"
-msgstr ""
+msgstr "Иконка Товары"
 
 #: includes/fields/class-acf-field-icon_picker.php:642
 msgid "Pressthis Icon"
@@ -945,27 +992,27 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:641
 msgid "Post Status Icon"
-msgstr ""
+msgstr "Иконка Статус записи"
 
 #: includes/fields/class-acf-field-icon_picker.php:640
 msgid "Portfolio Icon"
-msgstr ""
+msgstr "Иконка Портфолио"
 
 #: includes/fields/class-acf-field-icon_picker.php:636
 msgid "Plus Icon"
-msgstr ""
+msgstr "Иконка Плюс"
 
 #: includes/fields/class-acf-field-icon_picker.php:634
 msgid "Playlist Video Icon"
-msgstr ""
+msgstr "Иконка Видео плейлист"
 
 #: includes/fields/class-acf-field-icon_picker.php:633
 msgid "Playlist Audio Icon"
-msgstr ""
+msgstr "Иконка Аудио плейлист"
 
 #: includes/fields/class-acf-field-icon_picker.php:631
 msgid "Phone Icon"
-msgstr ""
+msgstr "Иконка Телефон"
 
 #: includes/fields/class-acf-field-icon_picker.php:629
 msgid "Performance Icon"
@@ -977,7 +1024,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:623
 msgid "No Icon"
-msgstr ""
+msgstr "Иконка Нет"
 
 #: includes/fields/class-acf-field-icon_picker.php:622
 msgid "Networking Icon"
@@ -989,39 +1036,39 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:620
 msgid "Move Icon"
-msgstr ""
+msgstr "Иконка Переместить"
 
 #: includes/fields/class-acf-field-icon_picker.php:618
 msgid "Money Icon"
-msgstr ""
+msgstr "Иконка Деньги"
 
 #: includes/fields/class-acf-field-icon_picker.php:617
 msgid "Minus Icon"
-msgstr ""
+msgstr "Иконка Минус"
 
 #: includes/fields/class-acf-field-icon_picker.php:616
 msgid "Migrate Icon"
-msgstr ""
+msgstr "Иконка Перенос"
 
 #: includes/fields/class-acf-field-icon_picker.php:615
 msgid "Microphone Icon"
-msgstr ""
+msgstr "Иконка Микрофон"
 
 #: includes/fields/class-acf-field-icon_picker.php:610
 msgid "Megaphone Icon"
-msgstr ""
+msgstr "Иконка Мегафон"
 
 #: includes/fields/class-acf-field-icon_picker.php:600
 msgid "Marker Icon"
-msgstr ""
+msgstr "Иконка Маркер"
 
 #: includes/fields/class-acf-field-icon_picker.php:599
 msgid "Lock Icon"
-msgstr ""
+msgstr "Иконка Закрыть"
 
 #: includes/fields/class-acf-field-icon_picker.php:597
 msgid "Location Icon"
-msgstr ""
+msgstr "Иконка Местоположение"
 
 #: includes/fields/class-acf-field-icon_picker.php:596
 msgid "List View Icon"
@@ -1029,7 +1076,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:594
 msgid "Lightbulb Icon"
-msgstr ""
+msgstr "Иконка Лампочка"
 
 #: includes/fields/class-acf-field-icon_picker.php:593
 msgid "Left Right Icon"
@@ -1041,11 +1088,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:591
 msgid "Laptop Icon"
-msgstr ""
+msgstr "Иконка Ноутбук"
 
 #: includes/fields/class-acf-field-icon_picker.php:585
 msgid "Info Icon"
-msgstr ""
+msgstr "Иконка Инфо"
 
 #: includes/fields/class-acf-field-icon_picker.php:584
 msgid "Index Card Icon"
@@ -1053,7 +1100,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:573
 msgid "ID Icon"
-msgstr ""
+msgstr "Иконка ID"
 
 #: includes/fields/class-acf-field-icon_picker.php:570
 msgid "Hidden Icon"
@@ -1061,16 +1108,16 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:569
 msgid "Heart Icon"
-msgstr ""
+msgstr "Иконка Сердце"
 
 #: includes/fields/class-acf-field-icon_picker.php:567
 msgid "Hammer Icon"
-msgstr ""
+msgstr "Иконка Молот"
 
 #: includes/fields/class-acf-field-icon_picker.php:445
 #: includes/fields/class-acf-field-icon_picker.php:566
 msgid "Groups Icon"
-msgstr ""
+msgstr "Иконка Группы"
 
 #: includes/fields/class-acf-field-icon_picker.php:565
 msgid "Grid View Icon"
@@ -1078,28 +1125,28 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:560
 msgid "Forms Icon"
-msgstr ""
+msgstr "Иконка Формы"
 
 #: includes/fields/class-acf-field-icon_picker.php:550
 msgid "Flag Icon"
-msgstr ""
+msgstr "Иконка Флаг"
 
 #: includes/fields/class-acf-field-icon_picker.php:549
 #: includes/fields/class-acf-field-icon_picker.php:576
 msgid "Filter Icon"
-msgstr ""
+msgstr "Иконка Фильтр"
 
 #: includes/fields/class-acf-field-icon_picker.php:548
 msgid "Feedback Icon"
-msgstr ""
+msgstr "Иконка Обратная связь"
 
 #: includes/fields/class-acf-field-icon_picker.php:547
 msgid "Facebook (alt) Icon"
-msgstr ""
+msgstr "Иконка Facebook (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:546
 msgid "Facebook Icon"
-msgstr ""
+msgstr "Иконка Facebook"
 
 #: includes/fields/class-acf-field-icon_picker.php:545
 msgid "External Icon"
@@ -1107,17 +1154,17 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:536
 msgid "Email (alt) Icon"
-msgstr ""
+msgstr "Иконка Email (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:535
 msgid "Email Icon"
-msgstr ""
+msgstr "Иконка Email"
 
 #: includes/fields/class-acf-field-icon_picker.php:533
 #: includes/fields/class-acf-field-icon_picker.php:559
 #: includes/fields/class-acf-field-icon_picker.php:609
 msgid "Video Icon"
-msgstr ""
+msgstr "Иконка Видео"
 
 #: includes/fields/class-acf-field-icon_picker.php:532
 msgid "Unlink Icon"
@@ -1133,7 +1180,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:528
 msgid "Table Icon"
-msgstr ""
+msgstr "Иконка Таблица"
 
 #: includes/fields/class-acf-field-icon_picker.php:527
 msgid "Strikethrough Icon"
@@ -1150,19 +1197,19 @@ msgstr ""
 #: includes/fields/class-acf-field-icon_picker.php:523
 #: includes/fields/class-acf-field-icon_picker.php:557
 msgid "Quote Icon"
-msgstr ""
+msgstr "Иконка Цитата"
 
 #: includes/fields/class-acf-field-icon_picker.php:522
 msgid "Paste Word Icon"
-msgstr ""
+msgstr "Иконка Вставить слово"
 
 #: includes/fields/class-acf-field-icon_picker.php:521
 msgid "Paste Text Icon"
-msgstr ""
+msgstr "Иконка Вставить текст"
 
 #: includes/fields/class-acf-field-icon_picker.php:520
 msgid "Paragraph Icon"
-msgstr ""
+msgstr "Иконка Параграф"
 
 #: includes/fields/class-acf-field-icon_picker.php:519
 msgid "Outdent Icon"
@@ -1178,7 +1225,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:513
 msgid "Italic Icon"
-msgstr ""
+msgstr "Иконка Курсив"
 
 #: includes/fields/class-acf-field-icon_picker.php:512
 msgid "Insert More Icon"
@@ -1190,11 +1237,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:510
 msgid "Help Icon"
-msgstr ""
+msgstr "Иконка Помощь"
 
 #: includes/fields/class-acf-field-icon_picker.php:509
 msgid "Expand Icon"
-msgstr ""
+msgstr "Иконка Развернуть"
 
 #: includes/fields/class-acf-field-icon_picker.php:507
 msgid "Contract Icon"
@@ -1203,7 +1250,7 @@ msgstr ""
 #: includes/fields/class-acf-field-icon_picker.php:506
 #: includes/fields/class-acf-field-icon_picker.php:603
 msgid "Code Icon"
-msgstr ""
+msgstr "Иконка Код"
 
 #: includes/fields/class-acf-field-icon_picker.php:505
 msgid "Break Icon"
@@ -1211,11 +1258,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:504
 msgid "Bold Icon"
-msgstr ""
+msgstr "Иконка Жирный"
 
 #: includes/fields/class-acf-field-icon_picker.php:498
 msgid "Edit Icon"
-msgstr ""
+msgstr "Иконка Редактировать"
 
 #: includes/fields/class-acf-field-icon_picker.php:496
 msgid "Download Icon"
@@ -1235,7 +1282,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:470
 msgid "Cloud Icon"
-msgstr ""
+msgstr "Иконка Облако"
 
 #: includes/fields/class-acf-field-icon_picker.php:469
 msgid "Clock Icon"
@@ -1267,15 +1314,15 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:462
 msgid "Cart Icon"
-msgstr ""
+msgstr "Иконка Корзина"
 
 #: includes/fields/class-acf-field-icon_picker.php:461
 msgid "Carrot Icon"
-msgstr ""
+msgstr "Иконка Морковка"
 
 #: includes/fields/class-acf-field-icon_picker.php:458
 msgid "Camera Icon"
-msgstr ""
+msgstr "Иконка Камера"
 
 #: includes/fields/class-acf-field-icon_picker.php:457
 msgid "Calendar (alt) Icon"
@@ -1295,15 +1342,15 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:437
 msgid "Book Icon"
-msgstr ""
+msgstr "Иконка Книга"
 
 #: includes/fields/class-acf-field-icon_picker.php:432
 msgid "Backup Icon"
-msgstr ""
+msgstr "Иконка Резервная копия"
 
 #: includes/fields/class-acf-field-icon_picker.php:431
 msgid "Awards Icon"
-msgstr ""
+msgstr "Иконка Награды"
 
 #: includes/fields/class-acf-field-icon_picker.php:430
 msgid "Art Icon"
@@ -1355,55 +1402,55 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:406
 msgid "Album Icon"
-msgstr ""
+msgstr "Иконка Альбом"
 
 #: includes/fields/class-acf-field-icon_picker.php:404
 msgid "Users Icon"
-msgstr ""
+msgstr "Иконка Пользователи"
 
 #: includes/fields/class-acf-field-icon_picker.php:403
 msgid "Tools Icon"
-msgstr ""
+msgstr "Иконка Инструменты"
 
 #: includes/fields/class-acf-field-icon_picker.php:399
 msgid "Site Icon"
-msgstr ""
+msgstr "Иконка Сайт"
 
 #: includes/fields/class-acf-field-icon_picker.php:398
 msgid "Settings Icon"
-msgstr ""
+msgstr "Иконка Настройки"
 
 #: includes/fields/class-acf-field-icon_picker.php:397
 msgid "Post Icon"
-msgstr ""
+msgstr "Иконка Запись"
 
 #: includes/fields/class-acf-field-icon_picker.php:396
 msgid "Plugins Icon"
-msgstr ""
+msgstr "Иконка Плагины"
 
 #: includes/fields/class-acf-field-icon_picker.php:395
 msgid "Page Icon"
-msgstr ""
+msgstr "Иконка Страница"
 
 #: includes/fields/class-acf-field-icon_picker.php:394
 msgid "Network Icon"
-msgstr ""
+msgstr "Иконка Сеть"
 
 #: includes/fields/class-acf-field-icon_picker.php:393
 msgid "Multisite Icon"
-msgstr ""
+msgstr "Иконка Мультисайт"
 
 #: includes/fields/class-acf-field-icon_picker.php:392
 msgid "Media Icon"
-msgstr ""
+msgstr "Иконка Медиа"
 
 #: includes/fields/class-acf-field-icon_picker.php:391
 msgid "Links Icon"
-msgstr ""
+msgstr "Иконка Ссылки"
 
 #: includes/fields/class-acf-field-icon_picker.php:390
 msgid "Home Icon"
-msgstr ""
+msgstr "Иконка Дом"
 
 #: includes/fields/class-acf-field-icon_picker.php:388
 msgid "Customizer Icon"
@@ -1412,15 +1459,15 @@ msgstr ""
 #: includes/fields/class-acf-field-icon_picker.php:387
 #: includes/fields/class-acf-field-icon_picker.php:711
 msgid "Comments Icon"
-msgstr ""
+msgstr "Иконка Комментарии"
 
 #: includes/fields/class-acf-field-icon_picker.php:386
 msgid "Collapse Icon"
-msgstr ""
+msgstr "Иконка Свернуть"
 
 #: includes/fields/class-acf-field-icon_picker.php:385
 msgid "Appearance Icon"
-msgstr ""
+msgstr "Иконка Внешний вид"
 
 #: includes/fields/class-acf-field-icon_picker.php:389
 msgid "Generic Icon"
@@ -1428,17 +1475,19 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:321
 msgid "Icon picker requires a value."
-msgstr ""
+msgstr "Подборщик иконки требует значение."
 
 #: includes/fields/class-acf-field-icon_picker.php:316
 msgid "Icon picker requires an icon type."
-msgstr ""
+msgstr "Подборщик иконки требует тип иконки."
 
 #: includes/fields/class-acf-field-icon_picker.php:285
 msgid ""
 "The available icons matching your search query have been updated in the icon "
 "picker below."
 msgstr ""
+"Доступные иконки, соответствующие вашему поисковому запросу, были обновлены "
+"в подборщике иконки ниже."
 
 #: includes/fields/class-acf-field-icon_picker.php:284
 msgid "No results found for that search term"
@@ -1446,28 +1495,29 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:266
 msgid "Array"
-msgstr ""
+msgstr "Массив"
 
 #: includes/fields/class-acf-field-icon_picker.php:265
 msgid "String"
-msgstr ""
+msgstr "Строка"
 
 #. translators: %s - link to documentation
 #: includes/fields/class-acf-field-icon_picker.php:253
 msgid "Specify the return format for the icon. %s"
-msgstr ""
+msgstr "Укажите формат возвращаемого значения для иконки. %s"
 
 #: includes/fields/class-acf-field-icon_picker.php:238
 msgid "Select where content editors can choose the icon from."
-msgstr ""
+msgstr "Укажите откуда редакторы содержимого могут выбирать иконку."
 
 #: includes/fields/class-acf-field-icon_picker.php:211
 msgid "The URL to the icon you'd like to use, or svg as Data URI"
 msgstr ""
+"URLиконки, которую вы хотите использовать или svg в качестве URI данных"
 
 #: includes/fields/class-acf-field-icon_picker.php:194
 msgid "Browse Media Library"
-msgstr ""
+msgstr "Открыть библиотеку файлов"
 
 #: includes/fields/class-acf-field-icon_picker.php:185
 msgid "The currently selected image preview"
@@ -1475,216 +1525,220 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:176
 msgid "Click to change the icon in the Media Library"
-msgstr ""
+msgstr "Нажмите чтобы сменить иконку в библиотеке файлов"
 
 #: includes/fields/class-acf-field-icon_picker.php:142
 msgid "Search icons..."
-msgstr ""
+msgstr "Искать иконки..."
 
 #: includes/fields/class-acf-field-icon_picker.php:53
 msgid "Media Library"
-msgstr ""
+msgstr "Медиафайлы"
 
 #: includes/fields/class-acf-field-icon_picker.php:49
 msgid "Dashicons"
-msgstr ""
+msgstr "Dashicons"
 
 #: includes/fields/class-acf-field-icon_picker.php:26
 msgid ""
 "An interactive UI for selecting an icon. Select from Dashicons, the media "
 "library, or a standalone URL input."
 msgstr ""
+"Интерактивный интерфейс для подбора иконки. Выбирайте среди Dashicons, из "
+"библиотеки файлов или используйте автономный ввод URL."
 
 #: includes/fields/class-acf-field-icon_picker.php:23
 msgid "Icon Picker"
-msgstr ""
+msgstr "Подборщик иконки"
 
-#: includes/class-acf-site-health.php:704
+#: includes/class-acf-site-health.php:709
 msgid "JSON Load Paths"
-msgstr ""
+msgstr "Пути загрузки JSON"
 
-#: includes/class-acf-site-health.php:698
+#: includes/class-acf-site-health.php:703
 msgid "JSON Save Paths"
-msgstr ""
+msgstr "Пути сохранения JSON"
 
-#: includes/class-acf-site-health.php:689
+#: includes/class-acf-site-health.php:694
 msgid "Registered ACF Forms"
-msgstr ""
+msgstr "Зарегистрированные ACF формы"
 
-#: includes/class-acf-site-health.php:683
+#: includes/class-acf-site-health.php:688
 msgid "Shortcode Enabled"
-msgstr ""
+msgstr "Шорткод включен"
 
-#: includes/class-acf-site-health.php:675
+#: includes/class-acf-site-health.php:680
 msgid "Field Settings Tabs Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:667
+#: includes/class-acf-site-health.php:672
 msgid "Field Type Modal Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:659
+#: includes/class-acf-site-health.php:664
 msgid "Admin UI Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:650
+#: includes/class-acf-site-health.php:655
 msgid "Block Preloading Enabled"
-msgstr ""
+msgstr "Предварительная загрузка блока включена"
 
-#: includes/class-acf-site-health.php:638
+#: includes/class-acf-site-health.php:643
 msgid "Blocks Per ACF Block Version"
 msgstr ""
 
-#: includes/class-acf-site-health.php:633
+#: includes/class-acf-site-health.php:638
 msgid "Blocks Per API Version"
 msgstr ""
 
-#: includes/class-acf-site-health.php:606
+#: includes/class-acf-site-health.php:611
 msgid "Registered ACF Blocks"
-msgstr ""
+msgstr "Зарегистрированные ACF блоки"
 
-#: includes/class-acf-site-health.php:600
+#: includes/class-acf-site-health.php:605
 msgid "Light"
 msgstr ""
 
-#: includes/class-acf-site-health.php:600
+#: includes/class-acf-site-health.php:605
 msgid "Standard"
 msgstr ""
 
-#: includes/class-acf-site-health.php:599
+#: includes/class-acf-site-health.php:604
 msgid "REST API Format"
-msgstr ""
+msgstr "Формат REST API"
 
-#: includes/class-acf-site-health.php:591
+#: includes/class-acf-site-health.php:596
 msgid "Registered Options Pages (PHP)"
-msgstr ""
+msgstr "Зарегистрированные страницы настроек (PHP)"
+
+#: includes/class-acf-site-health.php:582
+msgid "Registered Options Pages (JSON)"
+msgstr "Зарегистрированные страницы настроек (JSON)"
 
 #: includes/class-acf-site-health.php:577
-msgid "Registered Options Pages (JSON)"
-msgstr ""
-
-#: includes/class-acf-site-health.php:572
 msgid "Registered Options Pages (UI)"
-msgstr ""
+msgstr "Зарегистрированные страницы настроек (UI)"
 
-#: includes/class-acf-site-health.php:542
+#: includes/class-acf-site-health.php:547
 msgid "Options Pages UI Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:534
+#: includes/class-acf-site-health.php:539
 msgid "Registered Taxonomies (JSON)"
-msgstr ""
+msgstr "Зарегистрированные таксономии (JSON)"
 
-#: includes/class-acf-site-health.php:522
+#: includes/class-acf-site-health.php:527
 msgid "Registered Taxonomies (UI)"
-msgstr ""
+msgstr "Зарегистрированные таксономии (UI)"
 
-#: includes/class-acf-site-health.php:510
+#: includes/class-acf-site-health.php:515
 msgid "Registered Post Types (JSON)"
-msgstr ""
+msgstr "Зарегистрированные типы записей (JSON)"
 
-#: includes/class-acf-site-health.php:498
+#: includes/class-acf-site-health.php:503
 msgid "Registered Post Types (UI)"
-msgstr ""
+msgstr "Зарегистрированные типы записей (UI)"
 
-#: includes/class-acf-site-health.php:485
+#: includes/class-acf-site-health.php:490
 msgid "Post Types and Taxonomies Enabled"
-msgstr ""
+msgstr "Типы записей и таксономии включены"
 
-#: includes/class-acf-site-health.php:478
+#: includes/class-acf-site-health.php:483
 msgid "Number of Third Party Fields by Field Type"
 msgstr ""
 
-#: includes/class-acf-site-health.php:473
+#: includes/class-acf-site-health.php:478
 msgid "Number of Fields by Field Type"
 msgstr ""
 
-#: includes/class-acf-site-health.php:440
+#: includes/class-acf-site-health.php:445
 msgid "Field Groups Enabled for GraphQL"
-msgstr ""
+msgstr "Группы полей включены для GraphQL"
 
-#: includes/class-acf-site-health.php:427
+#: includes/class-acf-site-health.php:432
 msgid "Field Groups Enabled for REST API"
-msgstr ""
+msgstr "Группы полей включены для REST API"
 
-#: includes/class-acf-site-health.php:415
+#: includes/class-acf-site-health.php:420
 msgid "Registered Field Groups (JSON)"
-msgstr ""
+msgstr "Зарегистрированные группы полей (JSON)"
 
-#: includes/class-acf-site-health.php:403
+#: includes/class-acf-site-health.php:408
 msgid "Registered Field Groups (PHP)"
-msgstr ""
+msgstr "Зарегистрированные группы полей (PHP)"
 
-#: includes/class-acf-site-health.php:391
+#: includes/class-acf-site-health.php:396
 msgid "Registered Field Groups (UI)"
-msgstr ""
+msgstr "Зарегистрированные группы полей (UI)"
 
-#: includes/class-acf-site-health.php:379
+#: includes/class-acf-site-health.php:384
 msgid "Active Plugins"
-msgstr ""
+msgstr "Активные плагины"
 
-#: includes/class-acf-site-health.php:353
+#: includes/class-acf-site-health.php:358
 msgid "Parent Theme"
-msgstr ""
+msgstr "Родительская тема"
 
-#: includes/class-acf-site-health.php:342
+#: includes/class-acf-site-health.php:347
 msgid "Active Theme"
-msgstr ""
+msgstr "Активная тема"
+
+#: includes/class-acf-site-health.php:338
+msgid "Is Multisite"
+msgstr "Является мультисайтом"
 
 #: includes/class-acf-site-health.php:333
-msgid "Is Multisite"
-msgstr ""
+msgid "MySQL Version"
+msgstr "Версия MySQL"
 
 #: includes/class-acf-site-health.php:328
-msgid "MySQL Version"
-msgstr ""
-
-#: includes/class-acf-site-health.php:323
 msgid "WordPress Version"
-msgstr ""
+msgstr "Версия WordPress"
 
-#: includes/class-acf-site-health.php:316
+#: includes/class-acf-site-health.php:321
 msgid "Subscription Expiry Date"
 msgstr ""
 
-#: includes/class-acf-site-health.php:308
+#: includes/class-acf-site-health.php:313
 msgid "License Status"
 msgstr ""
 
-#: includes/class-acf-site-health.php:303
+#: includes/class-acf-site-health.php:308
 msgid "License Type"
 msgstr ""
 
-#: includes/class-acf-site-health.php:298
+#: includes/class-acf-site-health.php:303
 msgid "Licensed URL"
 msgstr ""
 
-#: includes/class-acf-site-health.php:292
+#: includes/class-acf-site-health.php:297
 msgid "License Activated"
 msgstr ""
 
 #: includes/class-acf-site-health.php:286
 msgid "Free"
-msgstr ""
+msgstr "Бесплатный"
 
 #: includes/class-acf-site-health.php:285
 msgid "Plugin Type"
-msgstr ""
+msgstr "Тип плагина"
 
 #: includes/class-acf-site-health.php:280
 msgid "Plugin Version"
-msgstr ""
+msgstr "Версия плагина"
 
 #: includes/class-acf-site-health.php:251
 msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
 msgstr ""
+"В этом разделе содержится отладочная информация о конфигурации ACF, которая "
+"может быть полезна для предоставления в службу поддержки."
 
-#: includes/assets.php:373 assets/build/js/acf-input.js:11312
-#: assets/build/js/acf-input.js:12396
+#: includes/assets.php:373
 msgid "An ACF Block on this page requires attention before you can save."
 msgstr ""
+"Блок ACF на этой странице требует внимания, прежде чем вы сможете сохранить."
 
 #. translators: %s - The clear log button opening HTML tag. %s - The closing
 #. HTML tag.
@@ -1704,163 +1758,133 @@ msgid "Instructions for content editors. Shown when submitting data."
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:143
-#: assets/build/js/acf-input.js:1461 assets/build/js/acf-input.js:1559
 msgid "Has no term selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:142
-#: assets/build/js/acf-input.js:1438 assets/build/js/acf-input.js:1535
 msgid "Has any term selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:141
-#: assets/build/js/acf-input.js:1413 assets/build/js/acf-input.js:1508
 msgid "Terms do not contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:140
-#: assets/build/js/acf-input.js:1388 assets/build/js/acf-input.js:1482
 msgid "Terms contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:139
-#: assets/build/js/acf-input.js:1369 assets/build/js/acf-input.js:1462
 msgid "Term is not equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:138
-#: assets/build/js/acf-input.js:1350 assets/build/js/acf-input.js:1442
 msgid "Term is equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:137
-#: assets/build/js/acf-input.js:1053 assets/build/js/acf-input.js:1117
 msgid "Has no user selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:136
-#: assets/build/js/acf-input.js:1030 assets/build/js/acf-input.js:1093
 msgid "Has any user selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:135
-#: assets/build/js/acf-input.js:1004 assets/build/js/acf-input.js:1065
 msgid "Users do not contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:134
-#: assets/build/js/acf-input.js:977 assets/build/js/acf-input.js:1036
 msgid "Users contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:133
-#: assets/build/js/acf-input.js:958 assets/build/js/acf-input.js:1016
 msgid "User is not equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:132
-#: assets/build/js/acf-input.js:939 assets/build/js/acf-input.js:996
 msgid "User is equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:131
-#: assets/build/js/acf-input.js:916 assets/build/js/acf-input.js:972
 msgid "Has no page selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:130
-#: assets/build/js/acf-input.js:893 assets/build/js/acf-input.js:948
 msgid "Has any page selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:129
-#: assets/build/js/acf-input.js:866 assets/build/js/acf-input.js:919
 msgid "Pages do not contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:128
-#: assets/build/js/acf-input.js:839 assets/build/js/acf-input.js:890
 msgid "Pages contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:127
-#: assets/build/js/acf-input.js:820 assets/build/js/acf-input.js:870
 msgid "Page is not equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:126
-#: assets/build/js/acf-input.js:801 assets/build/js/acf-input.js:850
 msgid "Page is equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:125
-#: assets/build/js/acf-input.js:1189 assets/build/js/acf-input.js:1260
 msgid "Has no relationship selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:124
-#: assets/build/js/acf-input.js:1166 assets/build/js/acf-input.js:1236
 msgid "Has any relationship selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:123
-#: assets/build/js/acf-input.js:1327 assets/build/js/acf-input.js:1416
 msgid "Has no post selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:122
-#: assets/build/js/acf-input.js:1304 assets/build/js/acf-input.js:1390
 msgid "Has any post selected"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:121
-#: assets/build/js/acf-input.js:1277 assets/build/js/acf-input.js:1359
 msgid "Posts do not contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:120
-#: assets/build/js/acf-input.js:1250 assets/build/js/acf-input.js:1328
 msgid "Posts contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:119
-#: assets/build/js/acf-input.js:1231 assets/build/js/acf-input.js:1306
 msgid "Post is not equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:118
-#: assets/build/js/acf-input.js:1212 assets/build/js/acf-input.js:1284
 msgid "Post is equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:117
-#: assets/build/js/acf-input.js:1140 assets/build/js/acf-input.js:1208
 msgid "Relationships do not contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:116
-#: assets/build/js/acf-input.js:1114 assets/build/js/acf-input.js:1181
 msgid "Relationships contain"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:115
-#: assets/build/js/acf-input.js:1095 assets/build/js/acf-input.js:1161
 msgid "Relationship is not equal to"
 msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:114
-#: assets/build/js/acf-input.js:1076 assets/build/js/acf-input.js:1141
 msgid "Relationship is equal to"
 msgstr ""
 
 #: includes/Blocks/Bindings.php:35
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
-msgstr ""
+msgstr "Поля ACF"
 
 #: includes/admin/views/browse-fields-modal.php:14
 msgid "ACF PRO Feature"
-msgstr ""
+msgstr "Функция ACF PRO"
 
 #: includes/admin/views/browse-fields-modal.php:10
 msgid "Renew PRO to Unlock"
@@ -1883,6 +1907,8 @@ msgstr ""
 #: includes/admin/admin-internal-post-type-list.php:231
 msgid "Please activate your ACF PRO license to edit this options page."
 msgstr ""
+"Пожалуйста, активируйте вашу лицензию ACF PRO чтобы редактировать эту "
+"страницу настроек."
 
 #: includes/api/api-template.php:385 includes/api/api-template.php:439
 msgid ""
@@ -1909,18 +1935,20 @@ msgstr ""
 #: includes/admin/views/escaped-html-notice.php:27
 msgid "Please contact your site administrator or developer for more details."
 msgstr ""
+"Пожалуйста, свяжитесь с вашим администратором сайта или разработчиком чтобы "
+"узнать подробности."
 
 #: includes/admin/views/escaped-html-notice.php:5
 msgid "Learn&nbsp;more"
-msgstr ""
+msgstr "Узнать&nbsp;больше"
 
 #: includes/admin/admin.php:63
 msgid "Hide&nbsp;details"
-msgstr ""
+msgstr "Скрыть&nbsp;подробности"
 
 #: includes/admin/admin.php:62 includes/admin/views/escaped-html-notice.php:24
 msgid "Show&nbsp;details"
-msgstr ""
+msgstr "Показать&nbsp;подробности"
 
 #. translators: %1$s - The selector used  %2$s The field name  3%$s The parent
 #. function name
@@ -1958,7 +1986,7 @@ msgstr ""
 
 #: includes/admin/views/global/header.php:35
 msgid "Add Options Page"
-msgstr ""
+msgstr "Добавить страницу настроек"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:708
 msgid "In the editor used as the placeholder of the title."
@@ -1975,7 +2003,7 @@ msgstr "4 месяца бесплатно"
 #. translators: %s - A singular label for a post type or taxonomy.
 #: includes/admin/views/global/form-top.php:59
 msgid "(Duplicated from %s)"
-msgstr ""
+msgstr "(Скопировано из %s)"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:289
 msgid "Select Options Pages"
@@ -2010,8 +2038,6 @@ msgid "Add fields"
 msgstr "Добавить поля"
 
 #: includes/admin/post-types/admin-field-group.php:147
-#: assets/build/js/acf-field-group.js:2804
-#: assets/build/js/acf-field-group.js:3220
 msgid "This Field"
 msgstr "Это поле"
 
@@ -2075,7 +2101,7 @@ msgstr "%s поле"
 
 #: includes/fields/class-acf-field-page_link.php:498
 #: includes/fields/class-acf-field-post_object.php:411
-#: includes/fields/class-acf-field-select.php:372
+#: includes/fields/class-acf-field-select.php:378
 #: includes/fields/class-acf-field-user.php:111
 msgid "Select Multiple"
 msgstr "Выбор нескольких пунктов"
@@ -2089,39 +2115,39 @@ msgid "Lower case letters, underscores and dashes only, Max 32 characters."
 msgstr ""
 "Только буквы нижнего регистра, подчеркивания и дефисы. Максимум 32 символа."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1136
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1156
 msgid "The capability name for assigning terms of this taxonomy."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1135
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1155
 msgid "Assign Terms Capability"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1119
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1139
 msgid "The capability name for deleting terms of this taxonomy."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1118
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1138
 msgid "Delete Terms Capability"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1102
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1122
 msgid "The capability name for editing terms of this taxonomy."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1101
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1121
 msgid "Edit Terms Capability"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1085
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1105
 msgid "The capability name for managing terms of this taxonomy."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1084
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1104
 msgid "Manage Terms Capability"
-msgstr "Возможность управления термами"
+msgstr "Возможность управления терминами"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:914
+#: includes/admin/views/acf-post-type/advanced-settings.php:929
 msgid ""
 "Sets whether posts should be excluded from search results and taxonomy "
 "archive pages."
@@ -2155,7 +2181,7 @@ msgstr ""
 
 #: includes/admin/views/acf-field-group/pro-features.php:2
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
-msgstr "Разблокируйте Дополнительные функции и сделайте больше с ACF Pro"
+msgstr "Разблокируйте дополнительные функции и сделайте больше с ACF PRO"
 
 #. translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre"
 #: includes/admin/views/global/form-top.php:19
@@ -2393,6 +2419,8 @@ msgid ""
 "Allows you to group fields into tabbed sections in the edit screen. Useful "
 "for keeping fields organized and structured."
 msgstr ""
+"Позволяет группировать поля в разделы с вкладками на экране редактирования. "
+"Полезно для упорядочивания и структурирования полей."
 
 #: includes/fields/class-acf-field-select.php:24
 msgid "A dropdown list with a selection of choices that you specify."
@@ -2404,28 +2432,38 @@ msgid ""
 "type items to create a relationship with the item that you're currently "
 "editing. Includes options to search and filter."
 msgstr ""
+"Двухколоночный интерфейс для выбора одной или нескольких записей, страниц "
+"или элементов пользовательских типов записей, чтобы создать связь с "
+"элементом, который вы сейчас редактируете. Включает опции поиска и "
+"фильтрации."
 
 #: includes/fields/class-acf-field-range.php:23
 msgid ""
 "An input for selecting a numerical value within a specified range using a "
 "range slider element."
 msgstr ""
+"Поле выбора числового значения в заданном диапазоне с помощью ползунка "
+"диапазона."
 
 #: includes/fields/class-acf-field-radio.php:24
 msgid ""
 "A group of radio button inputs that allows the user to make a single "
 "selection from values that you specify."
 msgstr ""
+"Группа радиокнопок, позволяющих пользователю выбрать одно из заданных вами "
+"значений."
 
 #: includes/fields/class-acf-field-post_object.php:17
 msgid ""
 "An interactive and customizable UI for picking one or many posts, pages or "
 "post type items with the option to search. "
 msgstr ""
+"Интерактивный и настраиваемый интерфейс для выбора одной или нескольких "
+"записей, страниц или типов записей с возможностью поиска. "
 
 #: includes/fields/class-acf-field-password.php:23
 msgid "An input for providing a password using a masked field."
-msgstr ""
+msgstr "Ввод пароля с помощью замаскированного поля."
 
 #: includes/fields/class-acf-field-page_link.php:457
 #: includes/fields/class-acf-field-post_object.php:366
@@ -2444,6 +2482,9 @@ msgid ""
 "An interactive component for embedding videos, images, tweets, audio and "
 "other content by making use of the native WordPress oEmbed functionality."
 msgstr ""
+"Интерактивный компонент для вставки видео, изображений, твитов, аудио и "
+"другого контента с использованием встроенной в WordPress функциональности "
+"oEmbed."
 
 #: includes/fields/class-acf-field-number.php:23
 msgid "An input limited to numerical values."
@@ -2454,22 +2495,31 @@ msgid ""
 "Used to display a message to editors alongside other fields. Useful for "
 "providing additional context or instructions around your fields."
 msgstr ""
+"Используется для отображения сообщения для редакторов рядом с другими "
+"полями. Полезно для предоставления дополнительного контекста или инструкций "
+"по работе с полями."
 
 #: includes/fields/class-acf-field-link.php:24
 msgid ""
 "Allows you to specify a link and its properties such as title and target "
 "using the WordPress native link picker."
 msgstr ""
+"Позволяет указать ссылку и ее свойства, такие как заголовок и цель, "
+"используя встроенный в WordPress подборщик ссылок."
 
 #: includes/fields/class-acf-field-image.php:24
 msgid "Uses the native WordPress media picker to upload, or choose images."
 msgstr ""
+"Использует встроенный в WordPress подборщик медиа для загрузки или выбора "
+"изображений."
 
 #: includes/fields/class-acf-field-group.php:24
 msgid ""
 "Provides a way to structure fields into groups to better organize the data "
 "and the edit screen."
 msgstr ""
+"Предоставляет возможность структурировать поля по группам, чтобы лучше "
+"организовать данные и экран редактирования."
 
 #: includes/fields/class-acf-field-google-map.php:24
 msgid ""
@@ -2480,6 +2530,8 @@ msgstr ""
 #: includes/fields/class-acf-field-file.php:24
 msgid "Uses the native WordPress media picker to upload, or choose files."
 msgstr ""
+"Использует встроенный в WordPress медиа подборщик чтобы загружать или "
+"выбирать файлы."
 
 #: includes/fields/class-acf-field-email.php:23
 msgid "A text input specifically designed for storing email addresses."
@@ -2508,18 +2560,25 @@ msgid ""
 "A group of checkbox inputs that allow the user to select one, or multiple "
 "values that you specify."
 msgstr ""
+"Группа полей с флажками, которые позволяют пользователю выбрать одно или "
+"несколько из заданных вами значений."
 
 #: includes/fields/class-acf-field-button-group.php:25
 msgid ""
 "A group of buttons with values that you specify, users can choose one option "
 "from the values provided."
 msgstr ""
+"Группа кнопок с указанными вами значениями, пользователи могут выбрать одну "
+"опцию из представленных значений."
 
 #: includes/fields/class-acf-field-accordion.php:26
 msgid ""
 "Allows you to group and organize custom fields into collapsable panels that "
 "are shown while editing content. Useful for keeping large datasets tidy."
 msgstr ""
+"Позволяет ваш группировать и организовывать пользовательские поля в "
+"сворачиваемые панели, которые отображаются при редактировании содержимого. "
+"Полезно для поддержания порядка в больших наборах данных."
 
 #: includes/fields.php:449
 msgid ""
@@ -2663,39 +2722,39 @@ msgstr "Жанр"
 msgid "Genres"
 msgstr "Жанры"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1211
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1231
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Terms_Controller `."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1155
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1175
 msgid "Expose this post type in the REST API."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1055
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1075
 msgid "Customize the query variable name"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1028
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1048
 msgid ""
 "Terms can be accessed using the non-pretty permalink, e.g., {query_var}"
 "={term_slug}."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:981
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1001
 msgid "Parent-child terms in URLs for hierarchical taxonomies."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:941
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:961
 msgid "Customize the slug used in the URL"
 msgstr "Настроить слаг, используемое в URL"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:924
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:944
 msgid "Permalinks for this taxonomy are disabled."
 msgstr "Постоянные ссылки для этой таксономии отключены."
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:921
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:941
 msgid ""
 "Rewrite the URL using the taxonomy key as the slug. Your permalink structure "
 "will be"
@@ -2703,41 +2762,41 @@ msgstr ""
 "Перепишите URL, используя ключ таксономии в качестве слага. Ваша структура "
 "постоянных ссылок будет выглядеть следующим образом"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:913
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1030
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:933
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1050
 #: includes/admin/views/acf-taxonomy/basic-settings.php:57
 msgid "Taxonomy Key"
 msgstr "Ключ таксономии"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:911
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:931
 msgid "Select the type of permalink to use for this taxonomy."
 msgstr "Выберите тип постоянной ссылки для этой таксономии."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:896
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:916
 msgid "Display a column for the taxonomy on post type listing screens."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:895
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:915
 msgid "Show Admin Column"
 msgstr "Отображать столбец админа"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:882
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:902
 msgid "Show the taxonomy in the quick/bulk edit panel."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:881
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:901
 msgid "Quick Edit"
 msgstr "Быстрое редактирование"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:868
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:888
 msgid "List the taxonomy in the Tag Cloud Widget controls."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:867
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:887
 msgid "Tag Cloud"
 msgstr "Облако меток"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:824
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:842
 msgid ""
 "A PHP function name to be called for sanitizing taxonomy data saved from a "
 "meta box."
@@ -2745,48 +2804,40 @@ msgstr ""
 "Название PHP-функции, вызываемой для санации данных таксономии, сохраненных "
 "из мета-бокса."
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:823
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:841
 msgid "Meta Box Sanitization Callback"
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:805
-msgid ""
-"A PHP function name to be called to handle the content of a meta box on your "
-"taxonomy."
-msgstr ""
-"Имя PHP-функции, которая будет вызываться для обработки содержимого мета-"
-"бокса в вашей таксономии."
-
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:804
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:821
 msgid "Register Meta Box Callback"
 msgstr "Регистрация обратного вызова метабокса"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:763
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:752
 msgid "No Meta Box"
 msgstr "Отсутствует метабокс"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:762
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:751
 msgid "Custom Meta Box"
 msgstr "Произвольный метабокс"
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:758
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:768
 msgid ""
 "Controls the meta box on the content editor screen. By default, the "
 "Categories meta box is shown for hierarchical taxonomies, and the Tags meta "
 "box is shown for non-hierarchical taxonomies."
 msgstr ""
 
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:757
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:767
 msgid "Meta Box"
 msgstr "Блок метаданных"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:746
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:767
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:773
 msgid "Categories Meta Box"
 msgstr "Категории метабокса"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:745
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:766
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:772
 msgid "Tags Meta Box"
 msgstr "Теги метабокса"
 
@@ -2895,7 +2946,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:552
 msgid "Parent Field Description"
-msgstr ""
+msgstr "Описание родительского поля"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:538
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:539
@@ -3021,7 +3072,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:390
 msgid "Separate Items With Commas"
-msgstr ""
+msgstr "Разделять элементы запятыми"
 
 #. translators: %s Plural form of taxonomy name
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:386
@@ -3182,7 +3233,7 @@ msgstr "Ярлык термина"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:56
 msgid "The name of the default term."
-msgstr ""
+msgstr "Название термина по умолчанию."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:55
 msgid "Term Name"
@@ -3198,7 +3249,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:40
 msgid "Default Term"
-msgstr ""
+msgstr "Термин по умолчанию"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:28
 msgid ""
@@ -3208,7 +3259,7 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:27
 msgid "Sort Terms"
-msgstr ""
+msgstr "Сортировать термины"
 
 #: includes/admin/views/acf-post-type/list-empty.php:14
 msgid "Add Post Type"
@@ -3219,6 +3270,8 @@ msgid ""
 "Expand the functionality of WordPress beyond standard posts and pages with "
 "custom post types."
 msgstr ""
+"Расширьте функциональность WordPress за пределы стандартных записей и "
+"страниц с помощью пользовательских типов постов."
 
 #: includes/admin/views/acf-post-type/list-empty.php:12
 msgid "Add Your First Post Type"
@@ -3239,7 +3292,7 @@ msgid "Hierarchical post types can have descendants (like pages)."
 msgstr "Иерархические типы записей могут иметь потомков (например, страницы)."
 
 #: includes/admin/views/acf-post-type/basic-settings.php:122
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:980
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1000
 #: includes/admin/views/acf-taxonomy/basic-settings.php:121
 msgid "Hierarchical"
 msgstr "Иерархическая"
@@ -3282,260 +3335,254 @@ msgstr "Фильмы"
 msgid "Plural Label"
 msgstr "Подпись множественного числа"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1298
+#: includes/admin/views/acf-post-type/advanced-settings.php:1313
 msgid ""
 "Optional custom controller to use instead of `WP_REST_Posts_Controller`."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1297
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
+#: includes/admin/views/acf-post-type/advanced-settings.php:1312
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1230
 msgid "Controller Class"
 msgstr "Класс контроллера"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1279
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1191
+#: includes/admin/views/acf-post-type/advanced-settings.php:1294
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1211
 msgid "The namespace part of the REST API URL."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1278
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1190
+#: includes/admin/views/acf-post-type/advanced-settings.php:1293
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1210
 msgid "Namespace Route"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1260
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1172
+#: includes/admin/views/acf-post-type/advanced-settings.php:1275
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1192
 msgid "The base URL for the post type REST API URLs."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1259
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1171
+#: includes/admin/views/acf-post-type/advanced-settings.php:1274
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1191
 msgid "Base URL"
 msgstr "Базовый URL"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1245
+#: includes/admin/views/acf-post-type/advanced-settings.php:1260
 msgid ""
 "Exposes this post type in the REST API. Required to use the block editor."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1244
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1154
+#: includes/admin/views/acf-post-type/advanced-settings.php:1259
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1174
 msgid "Show In REST API"
 msgstr "Показывать в REST API"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1223
+#: includes/admin/views/acf-post-type/advanced-settings.php:1238
 msgid "Customize the query variable name."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1222
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1054
+#: includes/admin/views/acf-post-type/advanced-settings.php:1237
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1074
 msgid "Query Variable"
-msgstr ""
+msgstr "Переменная запроса"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1200
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1032
+#: includes/admin/views/acf-post-type/advanced-settings.php:1215
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1052
 msgid "No Query Variable Support"
 msgstr "Нет поддержки переменных запросов"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1199
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1031
+#: includes/admin/views/acf-post-type/advanced-settings.php:1214
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1051
 msgid "Custom Query Variable"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1196
+#: includes/admin/views/acf-post-type/advanced-settings.php:1211
 msgid ""
 "Items can be accessed using the non-pretty permalink, eg. {post_type}"
 "={post_slug}."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1195
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1027
+#: includes/admin/views/acf-post-type/advanced-settings.php:1210
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1047
 msgid "Query Variable Support"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1170
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1003
+#: includes/admin/views/acf-post-type/advanced-settings.php:1185
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1023
 msgid "URLs for an item and items can be accessed with a query string."
 msgstr ""
 "Доступ к URL-адресам элемента и элементов можно получить с помощью строки "
 "запроса."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1169
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:1002
+#: includes/admin/views/acf-post-type/advanced-settings.php:1184
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:1022
 msgid "Publicly Queryable"
 msgstr "Публично запрашиваемый"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1148
+#: includes/admin/views/acf-post-type/advanced-settings.php:1163
 msgid "Custom slug for the Archive URL."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1147
+#: includes/admin/views/acf-post-type/advanced-settings.php:1162
 msgid "Archive Slug"
 msgstr "Ярлык архива"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1134
+#: includes/admin/views/acf-post-type/advanced-settings.php:1149
 msgid ""
 "Has an item archive that can be customized with an archive template file in "
 "your theme."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1133
+#: includes/admin/views/acf-post-type/advanced-settings.php:1148
 msgid "Archive"
 msgstr "Архив"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1113
+#: includes/admin/views/acf-post-type/advanced-settings.php:1128
 msgid "Pagination support for the items URLs such as the archives."
 msgstr "Поддержка пагинации для URL элементов, таких как архивы."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1112
+#: includes/admin/views/acf-post-type/advanced-settings.php:1127
 msgid "Pagination"
 msgstr "Разделение на страницы"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1095
+#: includes/admin/views/acf-post-type/advanced-settings.php:1110
 msgid "RSS feed URL for the post type items."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1094
+#: includes/admin/views/acf-post-type/advanced-settings.php:1109
 msgid "Feed URL"
 msgstr "URL фида"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1076
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:961
+#: includes/admin/views/acf-post-type/advanced-settings.php:1091
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:981
 msgid ""
 "Alters the permalink structure to add the `WP_Rewrite::$front` prefix to "
 "URLs."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1075
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:960
+#: includes/admin/views/acf-post-type/advanced-settings.php:1090
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:980
 msgid "Front URL Prefix"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1056
+#: includes/admin/views/acf-post-type/advanced-settings.php:1071
 msgid "Customize the slug used in the URL."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1055
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:940
+#: includes/admin/views/acf-post-type/advanced-settings.php:1070
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:960
 msgid "URL Slug"
 msgstr "Ярлык URL"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1039
+#: includes/admin/views/acf-post-type/advanced-settings.php:1054
 msgid "Permalinks for this post type are disabled."
 msgstr ""
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:1038
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:923
+#: includes/admin/views/acf-post-type/advanced-settings.php:1053
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:943
 msgid ""
 "Rewrite the URL using a custom slug defined in the input below. Your "
 "permalink structure will be"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1030
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:915
+#: includes/admin/views/acf-post-type/advanced-settings.php:1045
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:935
 msgid "No Permalink (prevent URL rewriting)"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1029
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:914
+#: includes/admin/views/acf-post-type/advanced-settings.php:1044
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:934
 msgid "Custom Permalink"
 msgstr "Произвольная постоянная ссылка"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1028
-#: includes/admin/views/acf-post-type/advanced-settings.php:1198
+#: includes/admin/views/acf-post-type/advanced-settings.php:1043
+#: includes/admin/views/acf-post-type/advanced-settings.php:1213
 #: includes/admin/views/acf-post-type/basic-settings.php:56
 msgid "Post Type Key"
-msgstr ""
+msgstr "Ключ типа записи"
 
 #. translators: this string will be appended with the new permalink structure.
-#: includes/admin/views/acf-post-type/advanced-settings.php:1026
-#: includes/admin/views/acf-post-type/advanced-settings.php:1036
+#: includes/admin/views/acf-post-type/advanced-settings.php:1041
+#: includes/admin/views/acf-post-type/advanced-settings.php:1051
 msgid ""
 "Rewrite the URL using the post type key as the slug. Your permalink "
 "structure will be"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1024
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:910
+#: includes/admin/views/acf-post-type/advanced-settings.php:1039
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:930
 msgid "Permalink Rewrite"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1010
+#: includes/admin/views/acf-post-type/advanced-settings.php:1025
 msgid "Delete items by a user when that user is deleted."
 msgstr ""
 "Удаление элементов, созданных пользователем, при удалении этого пользователя."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1009
+#: includes/admin/views/acf-post-type/advanced-settings.php:1024
 msgid "Delete With User"
 msgstr "Удалить вместе с пользователем"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:995
+#: includes/admin/views/acf-post-type/advanced-settings.php:1010
 msgid "Allow the post type to be exported from 'Tools' > 'Export'."
 msgstr "Разрешить экспорт типа сообщения из «Инструменты»> «Экспорт»."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:994
+#: includes/admin/views/acf-post-type/advanced-settings.php:1009
 msgid "Can Export"
 msgstr "Можно экспортировать"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:963
+#: includes/admin/views/acf-post-type/advanced-settings.php:978
 msgid "Optionally provide a plural to be used in capabilities."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:962
+#: includes/admin/views/acf-post-type/advanced-settings.php:977
 msgid "Plural Capability Name"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:944
+#: includes/admin/views/acf-post-type/advanced-settings.php:959
 msgid "Choose another post type to base the capabilities for this post type."
 msgstr ""
 "Выберите другой тип записи, чтобы использовать возможности этого типа записи."
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:943
+#: includes/admin/views/acf-post-type/advanced-settings.php:958
 msgid "Singular Capability Name"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:929
+#: includes/admin/views/acf-post-type/advanced-settings.php:944
 msgid ""
 "By default the capabilities of the post type will inherit the 'Post' "
 "capability names, eg. edit_post, delete_posts. Enable to use post type "
 "specific capabilities, eg. edit_{singular}, delete_{plural}."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:928
+#: includes/admin/views/acf-post-type/advanced-settings.php:943
 msgid "Rename Capabilities"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:913
+#: includes/admin/views/acf-post-type/advanced-settings.php:928
 msgid "Exclude From Search"
-msgstr ""
+msgstr "Исключить из поиска"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:900
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:854
+#: includes/admin/views/acf-post-type/advanced-settings.php:915
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:874
 msgid ""
 "Allow items to be added to menus in the 'Appearance' > 'Menus' screen. Must "
 "be turned on in 'Screen options'."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:899
-#: includes/admin/views/acf-taxonomy/advanced-settings.php:853
+#: includes/admin/views/acf-post-type/advanced-settings.php:914
+#: includes/admin/views/acf-taxonomy/advanced-settings.php:873
 msgid "Appearance Menus Support"
 msgstr "Поддержка меню внешнего вида"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:881
+#: includes/admin/views/acf-post-type/advanced-settings.php:896
 msgid "Appears as an item in the 'New' menu in the admin bar."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:880
+#: includes/admin/views/acf-post-type/advanced-settings.php:895
 msgid "Show In Admin Bar"
 msgstr "Показать на панели админа"
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:849
-msgid ""
-"A PHP function name to be called when setting up the meta boxes for the edit "
-"screen."
-msgstr ""
-
-#: includes/admin/views/acf-post-type/advanced-settings.php:848
+#: includes/admin/views/acf-post-type/advanced-settings.php:861
 msgid "Custom Meta Box Callback"
 msgstr ""
 
@@ -3576,7 +3623,7 @@ msgstr "Показывать в меню админа"
 #: includes/admin/views/acf-post-type/advanced-settings.php:725
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:719
 msgid "Items can be edited and managed in the admin dashboard."
-msgstr ""
+msgstr "Управлять элементами и изменять их можно в консоли администратора."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:724
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:718
@@ -3682,7 +3729,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:591
 msgid "Item Published Privately"
-msgstr ""
+msgstr "Элемент опубликован приватно"
 
 #. translators: %s Singular form of post type name
 #: includes/admin/views/acf-post-type/advanced-settings.php:588
@@ -3971,7 +4018,7 @@ msgstr ""
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:264
 msgid "Parent Item Prefix"
-msgstr ""
+msgstr "Префикс родительского элемента"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
@@ -4125,7 +4172,7 @@ msgstr "Добавить пользовательский"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:42
 msgid "Enable various features in the content editor."
-msgstr "Активируйте различные функции в редакторе содержимого."
+msgstr "Включить различные функции в редакторе содержимого."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:31
 msgid "Post Formats"
@@ -4180,9 +4227,9 @@ msgstr "Ничего из плагина Custom Post Type UI не выбрано
 #: includes/admin/tools/class-acf-admin-tool-import.php:204
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Импортирован 1 элемент"
+msgstr[1] "Импортировано %s элемента"
+msgstr[2] "Импортировано %s элементов"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:119
 msgid ""
@@ -4201,9 +4248,9 @@ msgid ""
 "The following code can be used to register a local version of the selected "
 "items. Storing field groups, post types, or taxonomies locally can provide "
 "many benefits such as faster load times, version control & dynamic fields/"
-"settings. Simply copy and paste the following code to your theme's functions."
-"php file or include it within an external file, then deactivate or delete "
-"the items from the ACF admin."
+"settings. Simply copy and paste the following code to your theme's "
+"functions.php file or include it within an external file, then deactivate or "
+"delete the items from the ACF admin."
 msgstr ""
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:353
@@ -4230,14 +4277,10 @@ msgstr[1] "Экспортировано %s элемента."
 msgstr[2] "Экспортировано %s элементов."
 
 #: includes/admin/post-types/admin-taxonomy.php:127
-#: assets/build/js/acf-internal-post-type.js:182
-#: assets/build/js/acf-internal-post-type.js:256
 msgid "Category"
 msgstr "Рубрика"
 
 #: includes/admin/post-types/admin-taxonomy.php:125
-#: assets/build/js/acf-internal-post-type.js:179
-#: assets/build/js/acf-internal-post-type.js:253
 msgid "Tag"
 msgstr "Метка"
 
@@ -4380,8 +4423,6 @@ msgstr ""
 "зарегистрирован другим плагином или темой."
 
 #: includes/admin/post-types/admin-post-type.php:126
-#: assets/build/js/acf-internal-post-type.js:176
-#: assets/build/js/acf-internal-post-type.js:250
 msgid "Pages"
 msgstr "Страницы"
 
@@ -4418,7 +4459,7 @@ msgstr ""
 
 #: includes/admin/post-types/admin-post-type.php:53
 msgid "Post type saved."
-msgstr ""
+msgstr "Тип записи сохранён."
 
 #: includes/admin/post-types/admin-post-type.php:50
 msgid "Post type updated."
@@ -4429,22 +4470,14 @@ msgid "Post type deleted."
 msgstr "Тип записей удален."
 
 #: includes/admin/post-types/admin-field-group.php:146
-#: assets/build/js/acf-field-group.js:1159
-#: assets/build/js/acf-field-group.js:1369
 msgid "Type to search..."
 msgstr "Введите текст для поиска..."
 
 #: includes/admin/post-types/admin-field-group.php:101
-#: assets/build/js/acf-field-group.js:1186
-#: assets/build/js/acf-field-group.js:2350
-#: assets/build/js/acf-field-group.js:1404
-#: assets/build/js/acf-field-group.js:2683
 msgid "PRO Only"
 msgstr "Только для Про"
 
 #: includes/admin/post-types/admin-field-group.php:93
-#: assets/build/js/acf-internal-post-type.js:308
-#: assets/build/js/acf-internal-post-type.js:417
 msgid "Field groups linked successfully."
 msgstr "Группы полей связаны успешно."
 
@@ -4543,11 +4576,11 @@ msgstr "Вкладки настроек полей"
 #. Author URI of the plugin
 #: acf.php
 msgid ""
-"https://wpengine.com/?utm_source=wordpress."
-"org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
+"https://wpengine.com/?"
+"utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 msgstr ""
-"https://wpengine.com/?utm_source=wordpress."
-"org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
+"https://wpengine.com/?"
+"utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields"
 
 #: includes/api/api-template.php:1027
 msgid "[ACF shortcode value disabled for preview]"
@@ -4559,13 +4592,10 @@ msgid "Close Modal"
 msgstr "Закрыть модальное окно"
 
 #: includes/admin/post-types/admin-field-group.php:92
-#: assets/build/js/acf-field-group.js:1702
-#: assets/build/js/acf-field-group.js:1972
 msgid "Field moved to other group"
 msgstr "Поле перемещено в другую группу"
 
 #: includes/admin/post-types/admin-field-group.php:91
-#: assets/build/js/acf.js:1443 assets/build/js/acf.js:1521
 msgid "Close modal"
 msgstr "Закрыть модальное окно"
 
@@ -4577,7 +4607,7 @@ msgstr "Начать новую группу вкладок с этой вкла
 msgid "New Tab Group"
 msgstr "Новая группа вкладок"
 
-#: includes/fields/class-acf-field-select.php:415
+#: includes/fields/class-acf-field-select.php:421
 #: includes/fields/class-acf-field-true_false.php:188
 msgid "Use a stylized checkbox using select2"
 msgstr "Используйте стилизованный флажок, используя select2"
@@ -4681,7 +4711,7 @@ msgstr ""
 
 #: includes/admin/views/acf-field-group/pro-features.php:46
 msgid "Repeater Field"
-msgstr ""
+msgstr "Повторяющееся поле"
 
 #: includes/admin/views/global/navigation.php:215
 msgid "Unlock Extra Features with ACF PRO"
@@ -4694,7 +4724,7 @@ msgstr "Удалить группу полей"
 #. translators: 1: Post creation date 2: Post creation time
 #: includes/admin/views/acf-field-group/options.php:261
 msgid "Created on %1$s at %2$s"
-msgstr "Создано на %1$s в %2$s"
+msgstr "Создано %1$s в %2$s"
 
 #: includes/acf-field-group-functions.php:497
 msgid "Group Settings"
@@ -4763,17 +4793,17 @@ msgstr "Экспорт в формате JSON"
 #: includes/admin/post-types/admin-field-groups.php:360
 msgid "Field group deactivated."
 msgid_plural "%s field groups deactivated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s группа полей деактивирована."
+msgstr[1] "%s группы полей деактивировано."
+msgstr[2] "%s групп полей деактивировано."
 
 #. translators: %s number of field groups activated
 #: includes/admin/post-types/admin-field-groups.php:353
 msgid "Field group activated."
 msgid_plural "%s field groups activated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s группа полей активирована."
+msgstr[1] "%s группы полей активировано."
+msgstr[2] "%s групп полей активировано."
 
 #: includes/admin/admin-internal-post-type-list.php:470
 #: includes/admin/admin-internal-post-type-list.php:496
@@ -4794,12 +4824,10 @@ msgid "Activate this item"
 msgstr "Активировать этот элемент"
 
 #: includes/admin/post-types/admin-field-group.php:88
-#: assets/build/js/acf-field-group.js:2863
-#: assets/build/js/acf-field-group.js:3297
 msgid "Move field group to trash?"
 msgstr "Переместить группу полей в корзину?"
 
-#: acf.php:500 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:501 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -4812,7 +4840,7 @@ msgstr "Неактивна"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:558
+#: acf.php:559
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -4821,7 +4849,7 @@ msgstr ""
 "должны быть активны одновременно. Мы автоматически деактивировали "
 "Продвинутые пользовательские поля PRO."
 
-#: acf.php:556
+#: acf.php:557
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -4858,7 +4886,7 @@ msgstr "%1$s должен иметь действительный ID польз�
 msgid "Invalid request."
 msgstr "Неверный запрос."
 
-#: includes/fields/class-acf-field-select.php:629
+#: includes/fields/class-acf-field-select.php:635
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s не является одним из %2$s"
 
@@ -4890,7 +4918,7 @@ msgstr "Показывать в REST API"
 
 #: includes/fields/class-acf-field-color_picker.php:156
 msgid "Enable Transparency"
-msgstr "Прозрачность"
+msgstr "Включить прозрачность"
 
 #: includes/fields/class-acf-field-color_picker.php:175
 msgid "RGBA Array"
@@ -4970,8 +4998,6 @@ msgstr "Таксономии"
 #: includes/admin/post-types/admin-post-type.php:124
 #: includes/admin/post-types/admin-post-types.php:114
 #: includes/admin/views/acf-post-type/advanced-settings.php:106
-#: assets/build/js/acf-internal-post-type.js:173
-#: assets/build/js/acf-internal-post-type.js:247
 msgid "Posts"
 msgstr "Записи"
 
@@ -5134,7 +5160,7 @@ msgstr "Тип местоположения \"%s\" уже зарегистрир
 msgid "Class \"%s\" does not exist."
 msgstr "Класса \"%s\" не существует."
 
-#: includes/ajax/class-acf-ajax-query-users.php:41
+#: includes/ajax/class-acf-ajax-query-users.php:43
 #: includes/ajax/class-acf-ajax.php:157
 msgid "Invalid nonce."
 msgstr "Неверный одноразовый номер."
@@ -5142,11 +5168,6 @@ msgstr "Неверный одноразовый номер."
 #: includes/fields/class-acf-field-user.php:400
 msgid "Error loading field."
 msgstr "Ошибка загрузки поля."
-
-#: assets/build/js/acf-input.js:3439 assets/build/js/acf-input.js:3508
-#: assets/build/js/acf-input.js:3687 assets/build/js/acf-input.js:3761
-msgid "Location not found: %s"
-msgstr "Не найдено местоположение: %s"
 
 #: includes/forms/form-user.php:328
 msgid "<strong>Error</strong>: %s"
@@ -5379,15 +5400,11 @@ msgstr "Отправить обратные ссылки"
 #: includes/admin/post-types/admin-taxonomy.php:126
 #: includes/admin/views/acf-field-group/options.php:185
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:159
-#: assets/build/js/acf-internal-post-type.js:180
-#: assets/build/js/acf-internal-post-type.js:254
 msgid "Tags"
 msgstr "Метки"
 
 #: includes/admin/post-types/admin-taxonomy.php:128
 #: includes/admin/views/acf-field-group/options.php:184
-#: assets/build/js/acf-internal-post-type.js:183
-#: assets/build/js/acf-internal-post-type.js:257
 msgid "Categories"
 msgstr "Рубрики"
 
@@ -5590,8 +5607,6 @@ msgstr "Перетащите, чтобы изменить порядок"
 
 #: includes/admin/post-types/admin-field-group.php:99
 #: includes/admin/views/acf-field-group/location-group.php:3
-#: assets/build/js/acf-field-group.js:2388
-#: assets/build/js/acf-field-group.js:2734
 msgid "Show this field group if"
 msgstr "Показать эту группу полей, если"
 
@@ -5810,9 +5825,9 @@ msgstr[2] "%s групп полей синхронизированы."
 #: includes/admin/post-types/admin-field-groups.php:367
 msgid "Field group duplicated."
 msgid_plural "%s field groups duplicated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "% группа полей продублирована."
+msgstr[1] "%s группы полей продублировано."
+msgstr[2] "%s групп полей продублировано."
 
 #: includes/admin/admin-internal-post-type-list.php:155
 msgid "Active <span class=\"count\">(%s)</span>"
@@ -5876,39 +5891,28 @@ msgid "Location"
 msgstr "Местонахождение"
 
 #: includes/admin/post-types/admin-field-group.php:100
-#: assets/build/js/acf-input.js:1689 assets/build/js/acf-input.js:1851
 msgid "Null"
 msgstr "Null"
 
 #: includes/admin/post-types/admin-field-group.php:97
 #: includes/class-acf-internal-post-type.php:728
 #: includes/post-types/class-acf-field-group.php:345
-#: assets/build/js/acf-field-group.js:1542
-#: assets/build/js/acf-field-group.js:1805
 msgid "copy"
 msgstr "копировать"
 
 #: includes/admin/post-types/admin-field-group.php:96
-#: assets/build/js/acf-field-group.js:627
-#: assets/build/js/acf-field-group.js:782
 msgid "(this field)"
 msgstr "(текущее поле)"
 
 #: includes/admin/post-types/admin-field-group.php:94
-#: assets/build/js/acf-input.js:1630 assets/build/js/acf-input.js:1652
-#: assets/build/js/acf-input.js:1784 assets/build/js/acf-input.js:1809
 msgid "Checked"
 msgstr "Выбрано"
 
 #: includes/admin/post-types/admin-field-group.php:90
-#: assets/build/js/acf-field-group.js:1647
-#: assets/build/js/acf-field-group.js:1913
 msgid "Move Custom Field"
 msgstr "Переместить пользовательское поле"
 
 #: includes/admin/post-types/admin-field-group.php:89
-#: assets/build/js/acf-field-group.js:653
-#: assets/build/js/acf-field-group.js:808
 msgid "No toggle fields available"
 msgstr "Нет доступных переключаемых полей"
 
@@ -5917,14 +5921,10 @@ msgid "Field group title is required"
 msgstr "Название группы полей обязательно"
 
 #: includes/admin/post-types/admin-field-group.php:86
-#: assets/build/js/acf-field-group.js:1636
-#: assets/build/js/acf-field-group.js:1902
 msgid "This field cannot be moved until its changes have been saved"
 msgstr "Это поле не может быть перемещено до сохранения изменений"
 
 #: includes/admin/post-types/admin-field-group.php:85
-#: assets/build/js/acf-field-group.js:1446
-#: assets/build/js/acf-field-group.js:1703
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "Строка \"field_\" не может использоваться в начале имени поля"
 
@@ -5978,15 +5978,11 @@ msgstr "Формы"
 
 #: includes/admin/post-types/admin-post-type.php:125 includes/locations.php:102
 #: includes/locations/class-acf-location-page.php:22
-#: assets/build/js/acf-internal-post-type.js:175
-#: assets/build/js/acf-internal-post-type.js:249
 msgid "Page"
 msgstr "Страница"
 
 #: includes/admin/post-types/admin-post-type.php:123 includes/locations.php:101
 #: includes/locations/class-acf-location-post.php:22
-#: assets/build/js/acf-internal-post-type.js:172
-#: assets/build/js/acf-internal-post-type.js:246
 msgid "Post"
 msgstr "Запись"
 
@@ -6036,117 +6032,93 @@ msgid "Title"
 msgstr "Заголовок"
 
 #: includes/assets.php:376 includes/forms/form-comment.php:140
-#: assets/build/js/acf-input.js:8414 assets/build/js/acf-input.js:9186
 msgid "Edit field group"
 msgstr "Изменить группу полей"
 
 #: includes/admin/post-types/admin-field-group.php:113
-#: assets/build/js/acf-input.js:1816 assets/build/js/acf-input.js:1991
 msgid "Selection is less than"
 msgstr "Отбор меньше, чем"
 
 #: includes/admin/post-types/admin-field-group.php:112
-#: assets/build/js/acf-input.js:1800 assets/build/js/acf-input.js:1966
 msgid "Selection is greater than"
 msgstr "Отбор больше, чем"
 
 #: includes/admin/post-types/admin-field-group.php:111
-#: assets/build/js/acf-input.js:1772 assets/build/js/acf-input.js:1937
 msgid "Value is less than"
 msgstr "Значение меньше чем"
 
 #: includes/admin/post-types/admin-field-group.php:110
-#: assets/build/js/acf-input.js:1745 assets/build/js/acf-input.js:1909
 msgid "Value is greater than"
 msgstr "Значение больше чем"
 
 #: includes/admin/post-types/admin-field-group.php:109
-#: assets/build/js/acf-input.js:1603 assets/build/js/acf-input.js:1745
 msgid "Value contains"
 msgstr "Значение содержит"
 
 #: includes/admin/post-types/admin-field-group.php:108
-#: assets/build/js/acf-input.js:1580 assets/build/js/acf-input.js:1714
 msgid "Value matches pattern"
 msgstr "Значение соответствует паттерну"
 
 #: includes/admin/post-types/admin-field-group.php:107
-#: assets/build/js/acf-input.js:1561 assets/build/js/acf-input.js:1726
-#: assets/build/js/acf-input.js:1694 assets/build/js/acf-input.js:1889
 msgid "Value is not equal to"
 msgstr "Значение не равно"
 
 #: includes/admin/post-types/admin-field-group.php:106
-#: assets/build/js/acf-input.js:1534 assets/build/js/acf-input.js:1670
-#: assets/build/js/acf-input.js:1658 assets/build/js/acf-input.js:1829
 msgid "Value is equal to"
 msgstr "Значение равно"
 
 #: includes/admin/post-types/admin-field-group.php:105
-#: assets/build/js/acf-input.js:1515 assets/build/js/acf-input.js:1638
 msgid "Has no value"
 msgstr "Не имеет значения"
 
 #: includes/admin/post-types/admin-field-group.php:104
-#: assets/build/js/acf-input.js:1488 assets/build/js/acf-input.js:1587
 msgid "Has any value"
 msgstr "Имеет любое значение"
 
 #: includes/admin/admin-internal-post-type.php:337
 #: includes/admin/views/browse-fields-modal.php:72 includes/assets.php:354
-#: assets/build/js/acf.js:1570 assets/build/js/acf.js:1662
 msgid "Cancel"
 msgstr "Отмена"
 
-#: includes/assets.php:350 assets/build/js/acf.js:1744
-#: assets/build/js/acf.js:1859
+#: includes/assets.php:350
 msgid "Are you sure?"
 msgstr "Вы уверены?"
 
-#: includes/assets.php:370 assets/build/js/acf-input.js:10482
-#: assets/build/js/acf-input.js:11532
+#: includes/assets.php:370
 msgid "%d fields require attention"
 msgstr "%d полей требуют вашего внимания"
 
-#: includes/assets.php:369 assets/build/js/acf-input.js:10480
-#: assets/build/js/acf-input.js:11530
+#: includes/assets.php:369
 msgid "1 field requires attention"
 msgstr "1 поле требует внимания"
 
 #: includes/assets.php:368 includes/validation.php:247
-#: includes/validation.php:255 assets/build/js/acf-input.js:10475
-#: assets/build/js/acf-input.js:11525
+#: includes/validation.php:255
 msgid "Validation failed"
 msgstr "Валидация не удалась"
 
-#: includes/assets.php:367 assets/build/js/acf-input.js:10643
-#: assets/build/js/acf-input.js:11703
+#: includes/assets.php:367
 msgid "Validation successful"
 msgstr "Валидация пройдена успешно"
 
-#: includes/media.php:54 assets/build/js/acf-input.js:8242
-#: assets/build/js/acf-input.js:8990
+#: includes/media.php:54
 msgid "Restricted"
 msgstr "Ограничено"
 
-#: includes/media.php:53 assets/build/js/acf-input.js:8057
-#: assets/build/js/acf-input.js:8754
+#: includes/media.php:53
 msgid "Collapse Details"
 msgstr "Свернуть подробные сведения"
 
-#: includes/media.php:52 assets/build/js/acf-input.js:8057
-#: assets/build/js/acf-input.js:8751
+#: includes/media.php:52
 msgid "Expand Details"
 msgstr "Развернуть подробные сведения"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:470
-#: includes/media.php:51 assets/build/js/acf-input.js:7924
-#: assets/build/js/acf-input.js:8599
+#: includes/media.php:51
 msgid "Uploaded to this post"
 msgstr "Загруженные для этой записи"
 
-#: includes/media.php:50 assets/build/js/acf-input.js:7963
-#: assets/build/js/acf-input.js:8638
+#: includes/media.php:50
 msgctxt "verb"
 msgid "Update"
 msgstr "Обновить"
@@ -6156,12 +6128,11 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Изменить"
 
-#: includes/assets.php:364 assets/build/js/acf-input.js:10253
-#: assets/build/js/acf-input.js:11297
+#: includes/assets.php:364
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Внесенные вами изменения будут утеряны, если вы покинете эту страницу"
 
-#: includes/api/api-helpers.php:2984
+#: includes/api/api-helpers.php:3000
 msgid "File type must be %s."
 msgstr "Тип файла должен быть %s."
 
@@ -6170,61 +6141,56 @@ msgstr "Тип файла должен быть %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:182
 #: includes/admin/views/acf-field-group/location-group.php:3
 #: includes/admin/views/acf-field-group/locations.php:35
-#: includes/api/api-helpers.php:2981 assets/build/js/acf-field-group.js:781
-#: assets/build/js/acf-field-group.js:2428
-#: assets/build/js/acf-field-group.js:946
-#: assets/build/js/acf-field-group.js:2781
+#: includes/api/api-helpers.php:2997
 msgid "or"
 msgstr "или"
 
-#: includes/api/api-helpers.php:2957
+#: includes/api/api-helpers.php:2973
 msgid "File size must not exceed %s."
 msgstr "Размер файла не должен превышать %s."
 
-#: includes/api/api-helpers.php:2953
+#: includes/api/api-helpers.php:2969
 msgid "File size must be at least %s."
 msgstr "Размер файла должен быть не менее чем %s."
 
-#: includes/api/api-helpers.php:2940
+#: includes/api/api-helpers.php:2956
 msgid "Image height must not exceed %dpx."
 msgstr "Высота изображения не должна превышать %d px."
 
-#: includes/api/api-helpers.php:2936
+#: includes/api/api-helpers.php:2952
 msgid "Image height must be at least %dpx."
 msgstr "Высота изображения должна быть не менее %d px."
 
-#: includes/api/api-helpers.php:2924
+#: includes/api/api-helpers.php:2940
 msgid "Image width must not exceed %dpx."
 msgstr "Ширина изображения не должна превышать %d px."
 
-#: includes/api/api-helpers.php:2920
+#: includes/api/api-helpers.php:2936
 msgid "Image width must be at least %dpx."
 msgstr "Ширина изображения должна быть не менее %d px."
 
-#: includes/api/api-helpers.php:1409 includes/api/api-term.php:140
+#: includes/api/api-helpers.php:1425 includes/api/api-term.php:140
 msgid "(no title)"
 msgstr "(без названия)"
 
-#: includes/api/api-helpers.php:765
+#: includes/api/api-helpers.php:781
 msgid "Full Size"
 msgstr "Полный"
 
-#: includes/api/api-helpers.php:730
+#: includes/api/api-helpers.php:746
 msgid "Large"
 msgstr "Большой"
 
-#: includes/api/api-helpers.php:729
+#: includes/api/api-helpers.php:745
 msgid "Medium"
 msgstr "Средний"
 
-#: includes/api/api-helpers.php:728
+#: includes/api/api-helpers.php:744
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
 #: includes/acf-field-functions.php:854
 #: includes/admin/post-types/admin-field-group.php:95
-#: assets/build/js/acf-field-group.js:1090
-#: assets/build/js/acf-field-group.js:1274
 msgid "(no label)"
 msgstr "(без этикетки)"
 
@@ -6272,94 +6238,94 @@ msgstr "Архивы"
 msgid "Page Link"
 msgstr "Ссылка на страницу"
 
-#: includes/fields/class-acf-field-taxonomy.php:881
+#: includes/fields/class-acf-field-taxonomy.php:884
 #: includes/locations/class-acf-location-user-form.php:72
 msgid "Add"
 msgstr "Добавить"
 
 #: includes/admin/views/acf-field-group/fields.php:53
-#: includes/fields/class-acf-field-taxonomy.php:851
+#: includes/fields/class-acf-field-taxonomy.php:854
 msgid "Name"
 msgstr "Имя"
 
-#: includes/fields/class-acf-field-taxonomy.php:836
+#: includes/fields/class-acf-field-taxonomy.php:839
 msgid "%s added"
 msgstr "%s добавлен"
 
-#: includes/fields/class-acf-field-taxonomy.php:800
+#: includes/fields/class-acf-field-taxonomy.php:803
 msgid "%s already exists"
 msgstr "%s уже существует"
 
-#: includes/fields/class-acf-field-taxonomy.php:788
+#: includes/fields/class-acf-field-taxonomy.php:791
 msgid "User unable to add new %s"
 msgstr "У пользователя нет возможности добавить новый %s"
 
-#: includes/fields/class-acf-field-taxonomy.php:675
+#: includes/fields/class-acf-field-taxonomy.php:678
 msgid "Term ID"
 msgstr "ID термина"
 
-#: includes/fields/class-acf-field-taxonomy.php:674
+#: includes/fields/class-acf-field-taxonomy.php:677
 msgid "Term Object"
 msgstr "Объект термина"
 
-#: includes/fields/class-acf-field-taxonomy.php:659
+#: includes/fields/class-acf-field-taxonomy.php:662
 msgid "Load value from posts terms"
 msgstr "Загрузить значения из терминов записей"
 
-#: includes/fields/class-acf-field-taxonomy.php:658
+#: includes/fields/class-acf-field-taxonomy.php:661
 msgid "Load Terms"
 msgstr "Загрузить термины"
 
-#: includes/fields/class-acf-field-taxonomy.php:648
+#: includes/fields/class-acf-field-taxonomy.php:651
 msgid "Connect selected terms to the post"
 msgstr "Связать выбранные термины с записью"
 
-#: includes/fields/class-acf-field-taxonomy.php:647
+#: includes/fields/class-acf-field-taxonomy.php:650
 msgid "Save Terms"
 msgstr "Сохранение терминов"
 
-#: includes/fields/class-acf-field-taxonomy.php:637
+#: includes/fields/class-acf-field-taxonomy.php:640
 msgid "Allow new terms to be created whilst editing"
 msgstr "Разрешить создание новых терминов во время редактирования"
 
-#: includes/fields/class-acf-field-taxonomy.php:636
+#: includes/fields/class-acf-field-taxonomy.php:639
 msgid "Create Terms"
 msgstr "Создание терминов"
 
-#: includes/fields/class-acf-field-taxonomy.php:695
+#: includes/fields/class-acf-field-taxonomy.php:698
 msgid "Radio Buttons"
 msgstr "Кнопки-переключатели"
 
-#: includes/fields/class-acf-field-taxonomy.php:694
+#: includes/fields/class-acf-field-taxonomy.php:697
 msgid "Single Value"
 msgstr "Одиночная значение"
 
-#: includes/fields/class-acf-field-taxonomy.php:692
+#: includes/fields/class-acf-field-taxonomy.php:695
 msgid "Multi Select"
 msgstr "Множественный выбор"
 
 #: includes/fields/class-acf-field-checkbox.php:22
-#: includes/fields/class-acf-field-taxonomy.php:691
+#: includes/fields/class-acf-field-taxonomy.php:694
 msgid "Checkbox"
 msgstr "Флажок"
 
-#: includes/fields/class-acf-field-taxonomy.php:690
+#: includes/fields/class-acf-field-taxonomy.php:693
 msgid "Multiple Values"
 msgstr "Несколько значений"
 
-#: includes/fields/class-acf-field-taxonomy.php:685
+#: includes/fields/class-acf-field-taxonomy.php:688
 msgid "Select the appearance of this field"
 msgstr "Выберите способ отображения поля"
 
-#: includes/fields/class-acf-field-taxonomy.php:684
+#: includes/fields/class-acf-field-taxonomy.php:687
 msgid "Appearance"
 msgstr "Внешний вид"
 
-#: includes/fields/class-acf-field-taxonomy.php:626
+#: includes/fields/class-acf-field-taxonomy.php:629
 msgid "Select the taxonomy to be displayed"
 msgstr "Выберите таксономию для отображения"
 
-#: includes/fields/class-acf-field-taxonomy.php:590
+#: includes/fields/class-acf-field-taxonomy.php:593
 msgctxt "No Terms"
 msgid "No %s"
 msgstr "Нет %s"
@@ -6455,18 +6421,15 @@ msgid "File name"
 msgstr "Имя файла"
 
 #: includes/fields/class-acf-field-file.php:57
-#: assets/build/js/acf-input.js:3163 assets/build/js/acf-input.js:3386
 msgid "Update File"
 msgstr "Обновить файл"
 
 #: includes/fields/class-acf-field-file.php:56
-#: assets/build/js/acf-input.js:3162 assets/build/js/acf-input.js:3385
 msgid "Edit File"
 msgstr "Изменить файл"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
-#: assets/build/js/acf-input.js:3136 assets/build/js/acf-input.js:3358
 msgid "Select File"
 msgstr "Выбрать файл"
 
@@ -6478,21 +6441,20 @@ msgstr "Файл"
 msgid "Password"
 msgstr "Пароль"
 
-#: includes/fields/class-acf-field-select.php:357
+#: includes/fields/class-acf-field-select.php:363
 msgid "Specify the value returned"
 msgstr "Укажите возвращаемое значение"
 
-#: includes/fields/class-acf-field-select.php:425
+#: includes/fields/class-acf-field-select.php:431
 msgid "Use AJAX to lazy load choices?"
 msgstr "Использовать AJAX для отложенной загрузки вариантов?"
 
 #: includes/fields/class-acf-field-checkbox.php:333
-#: includes/fields/class-acf-field-select.php:346
+#: includes/fields/class-acf-field-select.php:352
 msgid "Enter each default value on a new line"
 msgstr "Введите каждое значение по умолчанию с новой строки"
 
-#: includes/fields/class-acf-field-select.php:221 includes/media.php:48
-#: assets/build/js/acf-input.js:7822 assets/build/js/acf-input.js:8484
+#: includes/fields/class-acf-field-select.php:227 includes/media.php:48
 msgctxt "verb"
 msgid "Select"
 msgstr "Выбрать"
@@ -6564,7 +6526,7 @@ msgid "One result is available, press enter to select it."
 msgstr "Доступен один результат, нажмите Enter, чтобы выбрать его."
 
 #: includes/fields/class-acf-field-select.php:22
-#: includes/fields/class-acf-field-taxonomy.php:696
+#: includes/fields/class-acf-field-taxonomy.php:699
 msgctxt "noun"
 msgid "Select"
 msgstr "Выбрать"
@@ -6604,8 +6566,6 @@ msgstr "Выбрать цвет"
 #: includes/admin/post-types/admin-post-type.php:127
 #: includes/admin/post-types/admin-taxonomy.php:129
 #: includes/fields/class-acf-field-color_picker.php:67
-#: assets/build/js/acf-internal-post-type.js:72
-#: assets/build/js/acf-internal-post-type.js:86
 msgid "Default"
 msgstr "По умолчанию"
 
@@ -6622,7 +6582,7 @@ msgstr "Цветовая палитра"
 #: includes/fields/class-acf-field-date_time_picker.php:82
 msgctxt "Date Time Picker JS pmTextShort"
 msgid "P"
-msgstr ""
+msgstr "P"
 
 #: includes/fields/class-acf-field-date_time_picker.php:81
 msgctxt "Date Time Picker JS pmText"
@@ -6632,7 +6592,7 @@ msgstr "ПП"
 #: includes/fields/class-acf-field-date_time_picker.php:78
 msgctxt "Date Time Picker JS amTextShort"
 msgid "A"
-msgstr ""
+msgstr "A"
 
 #: includes/fields/class-acf-field-date_time_picker.php:77
 msgctxt "Date Time Picker JS amText"
@@ -6770,7 +6730,7 @@ msgstr "Диапазон"
 #: includes/fields/class-acf-field-button-group.php:165
 #: includes/fields/class-acf-field-checkbox.php:350
 #: includes/fields/class-acf-field-radio.php:210
-#: includes/fields/class-acf-field-select.php:364
+#: includes/fields/class-acf-field-select.php:370
 msgid "Both (Array)"
 msgstr "Оба (массив)"
 
@@ -6778,14 +6738,14 @@ msgstr "Оба (массив)"
 #: includes/fields/class-acf-field-button-group.php:164
 #: includes/fields/class-acf-field-checkbox.php:349
 #: includes/fields/class-acf-field-radio.php:209
-#: includes/fields/class-acf-field-select.php:363
+#: includes/fields/class-acf-field-select.php:369
 msgid "Label"
 msgstr "Этикетка"
 
 #: includes/fields/class-acf-field-button-group.php:163
 #: includes/fields/class-acf-field-checkbox.php:348
 #: includes/fields/class-acf-field-radio.php:208
-#: includes/fields/class-acf-field-select.php:362
+#: includes/fields/class-acf-field-select.php:368
 msgid "Value"
 msgstr "Значение"
 
@@ -6804,14 +6764,14 @@ msgstr "Горизонтально"
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:335
+#: includes/fields/class-acf-field-select.php:341
 msgid "red : Red"
 msgstr "red : Красный"
 
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:335
+#: includes/fields/class-acf-field-select.php:341
 msgid "For more control, you may specify both a value and label like this:"
 msgstr ""
 "Для большего контроля вы можете указать и значение, и этикетку следующим "
@@ -6820,14 +6780,14 @@ msgstr ""
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:323
 #: includes/fields/class-acf-field-radio.php:183
-#: includes/fields/class-acf-field-select.php:335
+#: includes/fields/class-acf-field-select.php:341
 msgid "Enter each choice on a new line."
 msgstr "Введите каждый вариант с новой строки."
 
 #: includes/fields/class-acf-field-button-group.php:137
 #: includes/fields/class-acf-field-checkbox.php:322
 #: includes/fields/class-acf-field-radio.php:182
-#: includes/fields/class-acf-field-select.php:334
+#: includes/fields/class-acf-field-select.php:340
 msgid "Choices"
 msgstr "Варианты"
 
@@ -6839,15 +6799,15 @@ msgstr "Группа кнопок"
 #: includes/fields/class-acf-field-page_link.php:519
 #: includes/fields/class-acf-field-post_object.php:432
 #: includes/fields/class-acf-field-radio.php:228
-#: includes/fields/class-acf-field-select.php:393
-#: includes/fields/class-acf-field-taxonomy.php:705
+#: includes/fields/class-acf-field-select.php:399
+#: includes/fields/class-acf-field-taxonomy.php:708
 #: includes/fields/class-acf-field-user.php:132
 msgid "Allow Null"
 msgstr "Разрешить Null"
 
 #: includes/fields/class-acf-field-page_link.php:273
 #: includes/fields/class-acf-field-post_object.php:254
-#: includes/fields/class-acf-field-taxonomy.php:869
+#: includes/fields/class-acf-field-taxonomy.php:872
 msgid "Parent"
 msgstr "Родитель"
 
@@ -7020,7 +6980,7 @@ msgstr "Элементы"
 
 #: includes/fields/class-acf-field-relationship.php:602
 #: includes/fields/class-acf-field-taxonomy.php:20
-#: includes/fields/class-acf-field-taxonomy.php:625
+#: includes/fields/class-acf-field-taxonomy.php:628
 #: includes/locations/class-acf-location-taxonomy.php:22
 msgid "Taxonomy"
 msgstr "Таксономия"
@@ -7072,17 +7032,14 @@ msgid "Select post type"
 msgstr "Выбрать тип записи"
 
 #: includes/fields/class-acf-field-relationship.php:78
-#: assets/build/js/acf-input.js:4938 assets/build/js/acf-input.js:5403
 msgid "No matches found"
 msgstr "Соответствий не найдено"
 
 #: includes/fields/class-acf-field-relationship.php:77
-#: assets/build/js/acf-input.js:4921 assets/build/js/acf-input.js:5382
 msgid "Loading"
 msgstr "Загрузка"
 
 #: includes/fields/class-acf-field-relationship.php:76
-#: assets/build/js/acf-input.js:4825 assets/build/js/acf-input.js:5272
 msgid "Maximum values reached ( {max} values )"
 msgstr "Достигнуты макс. значения ( {max} values )"
 
@@ -7181,7 +7138,7 @@ msgstr "Укажите возвращаемое значение на фронт
 #: includes/fields/class-acf-field-file.php:199
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
-#: includes/fields/class-acf-field-taxonomy.php:669
+#: includes/fields/class-acf-field-taxonomy.php:672
 msgid "Return Value"
 msgstr "Возвращаемое значение"
 
@@ -7195,8 +7152,7 @@ msgstr "Изображение не выбрано"
 
 #: includes/assets.php:353 includes/fields/class-acf-field-file.php:152
 #: includes/fields/class-acf-field-image.php:135
-#: includes/fields/class-acf-field-link.php:124 assets/build/js/acf.js:1569
-#: assets/build/js/acf.js:1661
+#: includes/fields/class-acf-field-link.php:124
 msgid "Remove"
 msgstr "Удалить"
 
@@ -7208,23 +7164,18 @@ msgid "Edit"
 msgstr "Изменить"
 
 #: includes/fields/class-acf-field-image.php:63 includes/media.php:55
-#: assets/build/js/acf-input.js:7869 assets/build/js/acf-input.js:8538
 msgid "All images"
 msgstr "Все изображения"
 
 #: includes/fields/class-acf-field-image.php:62
-#: assets/build/js/acf-input.js:4182 assets/build/js/acf-input.js:4580
 msgid "Update Image"
 msgstr "Обновить изображение"
 
 #: includes/fields/class-acf-field-image.php:61
-#: assets/build/js/acf-input.js:4181 assets/build/js/acf-input.js:4579
 msgid "Edit Image"
 msgstr "Редактировать"
 
 #: includes/fields/class-acf-field-image.php:60
-#: assets/build/js/acf-input.js:4017 assets/build/js/acf-input.js:4157
-#: assets/build/js/acf-input.js:4405 assets/build/js/acf-input.js:4554
 msgid "Select Image"
 msgstr "Выбрать изображение"
 
@@ -7343,7 +7294,7 @@ msgstr "Текст, отображаемый при активности"
 msgid "On Text"
 msgstr "На тексте"
 
-#: includes/fields/class-acf-field-select.php:414
+#: includes/fields/class-acf-field-select.php:420
 #: includes/fields/class-acf-field-true_false.php:187
 msgid "Stylized UI"
 msgstr "Стилизованный интерфейс"
@@ -7355,7 +7306,7 @@ msgstr "Стилизованный интерфейс"
 #: includes/fields/class-acf-field-number.php:113
 #: includes/fields/class-acf-field-radio.php:192
 #: includes/fields/class-acf-field-range.php:153
-#: includes/fields/class-acf-field-select.php:345
+#: includes/fields/class-acf-field-select.php:351
 #: includes/fields/class-acf-field-text.php:95
 #: includes/fields/class-acf-field-textarea.php:93
 #: includes/fields/class-acf-field-true_false.php:135
@@ -7375,18 +7326,16 @@ msgid "Message"
 msgstr "Сообщение"
 
 #: includes/assets.php:352 includes/class-acf-site-health.php:277
-#: includes/class-acf-site-health.php:334
+#: includes/class-acf-site-health.php:339
 #: includes/fields/class-acf-field-true_false.php:79
 #: includes/fields/class-acf-field-true_false.php:175
-#: assets/build/js/acf.js:1746 assets/build/js/acf.js:1861
 msgid "No"
 msgstr "Нет"
 
 #: includes/assets.php:351 includes/class-acf-site-health.php:276
-#: includes/class-acf-site-health.php:334
+#: includes/class-acf-site-health.php:339
 #: includes/fields/class-acf-field-true_false.php:76
 #: includes/fields/class-acf-field-true_false.php:159
-#: assets/build/js/acf.js:1745 assets/build/js/acf.js:1860
 msgid "Yes"
 msgstr "Да"
 
@@ -7473,7 +7422,6 @@ msgid "Search"
 msgstr "Поиск"
 
 #: includes/fields/class-acf-field-google-map.php:57
-#: assets/build/js/acf-input.js:3529 assets/build/js/acf-input.js:3787
 msgid "Sorry, this browser does not support geolocation"
 msgstr "Ваш браузер не поддерживает определение местоположения"
 
@@ -7494,7 +7442,7 @@ msgstr "Формат, возвращаемый через функции шаб�
 #: includes/fields/class-acf-field-image.php:177
 #: includes/fields/class-acf-field-post_object.php:396
 #: includes/fields/class-acf-field-relationship.php:610
-#: includes/fields/class-acf-field-select.php:356
+#: includes/fields/class-acf-field-select.php:362
 #: includes/fields/class-acf-field-time_picker.php:121
 #: includes/fields/class-acf-field-user.php:95
 msgid "Return Format"
@@ -7526,91 +7474,91 @@ msgid "Time Picker"
 msgstr "Подборщик времени"
 
 #. translators: counts for inactive field groups
-#: acf.php:506
+#: acf.php:507
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Неактивен <span class=\"count\">(%s)</span>"
 msgstr[1] "Неактивны <span class=\"count\">(%s)</span>"
 msgstr[2] "Неактивно <span class=\"count\">(%s)</span>"
 
-#: acf.php:467
+#: acf.php:468
 msgid "No Fields found in Trash"
 msgstr "Поля не найдены в корзине"
 
-#: acf.php:466
+#: acf.php:467
 msgid "No Fields found"
 msgstr "Поля не найдены"
 
-#: acf.php:465
+#: acf.php:466
 msgid "Search Fields"
 msgstr "Поиск полей"
 
-#: acf.php:464
+#: acf.php:465
 msgid "View Field"
 msgstr "Просмотреть поле"
 
-#: acf.php:463 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:464 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Новое поле"
 
-#: acf.php:462
+#: acf.php:463
 msgid "Edit Field"
 msgstr "Изменить поле"
 
-#: acf.php:461
+#: acf.php:462
 msgid "Add New Field"
 msgstr "Добавить новое поле"
 
-#: acf.php:459
+#: acf.php:460
 msgid "Field"
 msgstr "Поле"
 
-#: acf.php:458 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:459 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Поля"
 
-#: acf.php:433
+#: acf.php:434
 msgid "No Field Groups found in Trash"
 msgstr "Группы полей не найдены в корзине"
 
-#: acf.php:432
+#: acf.php:433
 msgid "No Field Groups found"
 msgstr "Группы полей не найдены"
 
-#: acf.php:431
+#: acf.php:432
 msgid "Search Field Groups"
 msgstr "Найти группу полей"
 
-#: acf.php:430
+#: acf.php:431
 msgid "View Field Group"
 msgstr "Просмотреть группу полей"
 
-#: acf.php:429
+#: acf.php:430
 msgid "New Field Group"
 msgstr "Новая группа полей"
 
-#: acf.php:428
+#: acf.php:429
 msgid "Edit Field Group"
 msgstr "Редактирование группы полей"
 
-#: acf.php:427
+#: acf.php:428
 msgid "Add New Field Group"
 msgstr "Добавить новую группу полей"
 
-#: acf.php:426 acf.php:460
+#: acf.php:427 acf.php:461
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Добавить новое"
 
-#: acf.php:425
+#: acf.php:426
 msgid "Field Group"
 msgstr "Группа полей"
 
-#: acf.php:424 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:425 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"

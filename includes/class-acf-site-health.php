@@ -289,7 +289,7 @@ if ( ! class_exists( 'ACF_Site_Health' ) ) {
 
 			$fields['update_source'] = array(
 				'label' => __( 'Update Source', 'acf' ),
-				'value' => __( 'ACF Direct', 'acf' ),
+				'value' => apply_filters( 'acf/site_health/update_source', __( 'wordpress.org', 'acf' ) ),
 			);
 
 			if ( $is_pro ) {

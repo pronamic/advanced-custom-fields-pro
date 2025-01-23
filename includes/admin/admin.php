@@ -318,9 +318,18 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			$wp_engine_link = acf_add_url_utm_tags( 'https://wpengine.com/', 'bx_prod_referral', acf_is_pro() ? 'acf_pro_plugin_footer_text' : 'acf_free_plugin_footer_text', false, 'acf_plugin', 'referral' );
 			$acf_link       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/', 'footer', 'footer' );
 
+			if ( acf_is_pro() ) {
+				return sprintf(
+					/* translators: This text is prepended by a link to ACF's website, and appended by a link to WP Engine's website. */
+					'<a href="%1$s" target="_blank">ACF&#174;</a> and <a href="%1$s" target="_blank">ACF&#174; PRO</a> ' . __( 'are developed and maintained by', 'acf' ) . ' <a href="%2$s" target="_blank">WP Engine</a>.',
+					$acf_link,
+					$wp_engine_link
+				);
+			}
+
 			return sprintf(
 				/* translators: This text is prepended by a link to ACF's website, and appended by a link to WP Engine's website. */
-				'<a href="%1$s" target="_blank">' . ( acf_is_pro() ? 'ACF PRO' : 'ACF' ) . '</a> ' . __( 'is developed and maintained by', 'acf' ) . ' <a href="%2$s" target="_blank">WP Engine</a>.',
+				'<a href="%1$s" target="_blank">ACF&#174;</a> ' . __( 'is developed and maintained by', 'acf' ) . ' <a href="%2$s" target="_blank">WP Engine</a>.',
 				$acf_link,
 				$wp_engine_link
 			);

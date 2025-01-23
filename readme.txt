@@ -1,4 +1,4 @@
-=== Advanced Custom Fields PRO ===
+=== Advanced Custom Fields (ACF®) PRO ===
 Contributors: elliotcondon
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
@@ -11,7 +11,7 @@ ACF helps customize WordPress with powerful, professional and intuitive fields. 
 
 == Description ==
 
-Advanced Custom Fields (ACF) turns WordPress sites into a fully-fledged content management system by giving you all the tools to do more with your data.
+Advanced Custom Fields (ACF®) turns WordPress sites into a fully-fledged content management system by giving you all the tools to do more with your data.
 
 Use the ACF plugin to take full control of your WordPress edit screens, custom field data, and more.
 
@@ -92,6 +92,13 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.3.12 =
+*Release Date 21st January 2025*
+
+* Enhancement - Error messages that occur when field validation fails due an insufficient security nonce now have additional context
+* Fix - Duplicated ACF blocks no longer lose their field values after the initial save when block preloading is enabled
+* Fix - ACF Blocks containing complex field types now behave correctly when React StrictMode is enabled
 
 = 6.3.11 =
 *Release Date 12th November 2024*
