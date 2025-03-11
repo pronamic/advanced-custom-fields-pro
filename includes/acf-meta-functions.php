@@ -11,43 +11,20 @@
  * @return array
  */
 function acf_get_meta( $post_id = 0 ) {
-
 	// Allow filter to short-circuit load_value logic.
 	$null = apply_filters( 'acf/pre_load_meta', null, $post_id );
 	if ( $null !== null ) {
 		return ( $null === '__return_null' ) ? null : $null;
 	}
 
-	// Decode $post_id for $type and $id.
-	$decoded = acf_decode_post_id( $post_id );
+	// Decode the $post_id for $type and $id.
+	$decoded  = acf_decode_post_id( $post_id );
+	$instance = acf_get_meta_instance( $decoded['type'] );
+	$meta     = array();
 
-	/**
-	 * Determine CRUD function.
-	 *
-	 * - Relies on decoded post_id result to identify option or meta types.
-	 * - Uses xxx_metadata(type) instead of xxx_type_meta() to bypass additional logic that could alter the ID.
-	 */
-	if ( $decoded['type'] === 'option' ) {
-		$allmeta = acf_get_option_meta( $decoded['id'] );
-	} else {
-		$allmeta = get_metadata( $decoded['type'], $decoded['id'], '' );
+	if ( $instance ) {
+		$meta = $instance->get_meta( $decoded['id'] );
 	}
-
-	// Loop over meta and check that a reference exists for each value.
-	$meta = array();
-	if ( $allmeta ) {
-		foreach ( $allmeta as $key => $value ) {
-
-			// If a reference exists for this value, add it to the meta array.
-			if ( isset( $allmeta[ "_$key" ] ) ) {
-				$meta[ $key ]    = $allmeta[ $key ][0];
-				$meta[ "_$key" ] = $allmeta[ "_$key" ][0];
-			}
-		}
-	}
-
-	// Unserialized results (get_metadata does not unserialize if $key is empty).
-	$meta = array_map( 'acf_maybe_unserialize', $meta );
 
 	/**
 	 * Filters the $meta array after it has been loaded.
@@ -74,7 +51,6 @@ function acf_get_meta( $post_id = 0 ) {
  * @return  array
  */
 function acf_get_option_meta( $prefix = '' ) {
-
 	// Globals.
 	global $wpdb;
 
@@ -241,32 +217,23 @@ function acf_delete_metadata( $post_id = 0, $name = '', $hidden = false ) {
 }
 
 /**
- * acf_copy_postmeta
- *
  * Copies meta from one post to another. Useful for saving and restoring revisions.
  *
- * @date    25/06/2016
  * @since   5.3.8
  *
- * @param   (int|string) $from_post_id The post id to copy from.
- * @param   (int|string) $to_post_id   The post id to paste to.
- * @return  void
+ * @param integer|string $from_post_id The post id to copy from.
+ * @param integer|string $to_post_id   The post id to paste to.
+ * @return void
  */
 function acf_copy_metadata( $from_post_id = 0, $to_post_id = 0 ) {
-
-	// Get all postmeta.
+	// Get all metadata.
 	$meta = acf_get_meta( $from_post_id );
 
-	// Check meta.
-	if ( $meta ) {
+	$decoded  = acf_decode_post_id( $to_post_id );
+	$instance = acf_get_meta_instance( $decoded['type'] );
 
-		// Slash data. WP expects all data to be slashed and will unslash it (fixes '\' character issues).
-		$meta = wp_slash( $meta );
-
-		// Loop over meta.
-		foreach ( $meta as $name => $value ) {
-			acf_update_metadata( $to_post_id, $name, $value );
-		}
+	if ( $meta && $instance ) {
+		$instance->update_meta( $decoded['id'], $meta );
 	}
 }
 
@@ -381,4 +348,156 @@ function acf_update_metaref( $post_id = 0, $type = 'fields', $references = array
 
 	// Update metadata.
 	return acf_update_metadata( $post_id, "_acf_$type", $references );
+}
+
+/**
+ * Retrieves an ACF meta instance for the provided meta type.
+ *
+ * @since 6.4
+ *
+ * @param string $type The meta type as decoded from the post ID.
+ * @return object|null
+ */
+function acf_get_meta_instance( string $type ): ?object {
+	$instance       = null;
+	$meta_locations = acf_get_store( 'acf-meta-locations' );
+
+	if ( $meta_locations && $meta_locations->has( $type ) ) {
+		$instance = acf_get_instance( $meta_locations->get( $type ) );
+	}
+
+	return $instance;
+}
+
+/**
+ * Gets metadata from the database.
+ *
+ * @since 6.4
+ *
+ * @param integer|string $post_id The post id.
+ * @param array          $field   The field array.
+ * @param boolean        $hidden  True if we should return the reference key.
+ * @return mixed
+ */
+function acf_get_metadata_by_field( $post_id = 0, $field = array(), bool $hidden = false ) {
+	if ( empty( $field['name'] ) ) {
+		return null;
+	}
+
+	// Allow filter to short-circuit logic.
+	$null = apply_filters( 'acf/pre_load_metadata', null, $post_id, $field['name'], $hidden );
+	if ( $null !== null ) {
+		return ( $null === '__return_null' ) ? null : $null;
+	}
+
+	// Decode the $post_id for $type and $id.
+	$decoded = acf_decode_post_id( $post_id );
+	$id      = $decoded['id'];
+	$type    = $decoded['type'];
+
+	// Bail early if no $id (possible during new acf_form).
+	if ( ! $id ) {
+		return null;
+	}
+
+	$meta_instance = acf_get_meta_instance( $type );
+
+	if ( ! $meta_instance ) {
+		return false;
+	}
+
+	if ( $hidden ) {
+		return $meta_instance->get_reference( $id, $field['name'] );
+	}
+
+	return $meta_instance->get_value( $id, $field );
+}
+
+/**
+ * Updates metadata in the database.
+ *
+ * @since 6.4
+ *
+ * @param integer|string $post_id The post id.
+ * @param array          $field   The field array.
+ * @param mixed          $value   The meta value.
+ * @param boolean        $hidden  True if we should update the reference key.
+ * @return integer|boolean Meta ID if the key didn't exist, true on successful update, false on failure.
+ */
+function acf_update_metadata_by_field( $post_id = 0, $field = array(), $value = '', bool $hidden = false ) {
+	if ( empty( $field['name'] ) ) {
+		return null;
+	}
+
+	// Allow filter to short-circuit logic.
+	$pre = apply_filters( 'acf/pre_update_metadata', null, $post_id, $field['name'], $value, $hidden );
+	if ( $pre !== null ) {
+		return $pre;
+	}
+
+	// Decode the $post_id for $type and $id.
+	$decoded = acf_decode_post_id( $post_id );
+	$id      = $decoded['id'];
+	$type    = $decoded['type'];
+
+	// Bail early if no $id (possible during new acf_form).
+	if ( ! $id ) {
+		return false;
+	}
+
+	$meta_instance = acf_get_meta_instance( $type );
+
+	if ( ! $meta_instance ) {
+		return false;
+	}
+
+	if ( $hidden ) {
+		return $meta_instance->update_reference( $id, $field['name'], $field['key'] );
+	}
+
+	return $meta_instance->update_value( $id, $field, $value );
+}
+
+/**
+ * Deletes metadata from the database.
+ *
+ * @since 6.4
+ *
+ * @param integer|string $post_id The post id.
+ * @param array          $field   The field array.
+ * @param boolean        $hidden  True if we should update the reference key.
+ * @return boolean
+ */
+function acf_delete_metadata_by_field( $post_id = 0, $field = array(), bool $hidden = false ) {
+	if ( empty( $field['name'] ) ) {
+		return null;
+	}
+
+	// Allow filter to short-circuit logic.
+	$pre = apply_filters( 'acf/pre_delete_metadata', null, $post_id, $field['name'], $hidden );
+	if ( $pre !== null ) {
+		return $pre;
+	}
+
+	// Decode the $post_id for $type and $id.
+	$decoded = acf_decode_post_id( $post_id );
+	$id      = $decoded['id'];
+	$type    = $decoded['type'];
+
+	// Bail early if no $id (possible during new acf_form).
+	if ( ! $id ) {
+		return false;
+	}
+
+	$meta_instance = acf_get_meta_instance( $type );
+
+	if ( ! $meta_instance ) {
+		return false;
+	}
+
+	if ( $hidden ) {
+		return $meta_instance->delete_reference( $id, $field['name'] );
+	}
+
+	return $meta_instance->delete_value( $id, $field );
 }

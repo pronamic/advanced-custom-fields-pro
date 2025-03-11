@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-21T10:45:54+00:00\n"
+"PO-Revision-Date: 2025-03-10T14:58:23+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:144
+msgid "Learn more"
+msgstr "Tìm hiểu thêm"
+
+#: includes/validation.php:133
+msgid ""
+"ACF was unable to perform validation because the provided nonce failed "
+"verification."
+msgstr ""
+"ACF không thể thực hiện xác thực vì nonce được cung cấp không xác minh được."
+
+#: includes/validation.php:131
+msgid ""
+"ACF was unable to perform validation because no nonce was received by the "
+"server."
+msgstr "ACF không thể thực hiện xác thực vì máy chủ không nhận được mã nonce."
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:324
+msgid "are developed and maintained by"
+msgstr "được phát triển và duy trì bởi"
 
 #: includes/class-acf-site-health.php:291
 msgid "Update Source"
@@ -63,13 +86,6 @@ msgstr ""
 #: includes/class-acf-site-health.php:292
 msgid "wordpress.org"
 msgstr "wordpress.org"
-
-#: includes/validation.php:136
-msgid ""
-"ACF was unable to perform validation due to an invalid security nonce being "
-"provided."
-msgstr ""
-"ACF không thể thực hiện xác thực do mã bảo mật được cung cấp không hợp lệ."
 
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
@@ -2064,21 +2080,21 @@ msgstr "Thêm trường"
 msgid "This Field"
 msgstr "Trường này"
 
-#: includes/admin/admin.php:352
+#: includes/admin/admin.php:361
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:350
+#: includes/admin/admin.php:359
 msgid "Feedback"
 msgstr "Phản hồi"
 
-#: includes/admin/admin.php:348
+#: includes/admin/admin.php:357
 msgid "Support"
 msgstr "Hỗ trợ"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:323
+#: includes/admin/admin.php:332
 msgid "is developed and maintained by"
 msgstr "được phát triển và duy trì bởi"
 
@@ -4610,7 +4626,7 @@ msgstr ""
 "Nhập loại nội dung và Phân loại đã đăng ký với Giao diện người dùng loại nội "
 "dung Tùy chỉnh và quản lý chúng với ACF. <a href=\"%s\">Bắt đầu</a>."
 
-#: includes/admin/admin.php:46 includes/admin/admin.php:352
+#: includes/admin/admin.php:46 includes/admin/admin.php:361
 #: includes/class-acf-site-health.php:250
 msgid "ACF"
 msgstr "ACF"
@@ -4941,7 +4957,7 @@ msgstr "Kích hoạt mục này"
 msgid "Move field group to trash?"
 msgstr "Chuyển nhóm trường vào thùng rác?"
 
-#: acf.php:501 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -4954,7 +4970,7 @@ msgstr "Không hoạt động"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:559
+#: acf.php:562
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -4962,7 +4978,7 @@ msgstr ""
 "Advanced Custom Fields và Advanced Custom Fields PRO không nên hoạt động "
 "cùng một lúc. Chúng tôi đã tự động tắt Advanced Custom Fields PRO."
 
-#: acf.php:557
+#: acf.php:560
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5409,7 +5425,7 @@ msgstr "Tất cả %s các định dạng"
 msgid "Attachment"
 msgstr "Đính kèm tệp"
 
-#: includes/validation.php:313
+#: includes/validation.php:323
 msgid "%s value is required"
 msgstr "%s giá trị là bắt buộc"
 
@@ -5900,7 +5916,7 @@ msgstr "Tạo bản sao mục này"
 msgid "Supports"
 msgstr "Hỗ trợ"
 
-#: includes/admin/admin.php:346
+#: includes/admin/admin.php:355
 #: includes/admin/views/browse-fields-modal.php:102
 msgid "Documentation"
 msgstr "Tài liệu hướng dẫn"
@@ -6195,8 +6211,8 @@ msgstr "%d trường cần chú ý"
 msgid "1 field requires attention"
 msgstr "1 trường cần chú ý"
 
-#: includes/assets.php:368 includes/validation.php:247
-#: includes/validation.php:255
+#: includes/assets.php:368 includes/validation.php:257
+#: includes/validation.php:265
 msgid "Validation failed"
 msgstr "Xác thực thất bại"
 
@@ -7575,89 +7591,89 @@ msgid "Time Picker"
 msgstr "Công cụ chọn thời gian"
 
 #. translators: counts for inactive field groups
-#: acf.php:507
+#: acf.php:510
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "<span class=\"count\">(%s)</span> không hoạt động"
 
-#: acf.php:468
+#: acf.php:471
 msgid "No Fields found in Trash"
 msgstr "Không tìm thấy trường nào trong thùng rác"
 
-#: acf.php:467
+#: acf.php:470
 msgid "No Fields found"
 msgstr "Không tìm thấy trường nào"
 
-#: acf.php:466
+#: acf.php:469
 msgid "Search Fields"
 msgstr "Tìm kiếm các trường"
 
-#: acf.php:465
+#: acf.php:468
 msgid "View Field"
 msgstr "Xem trường"
 
-#: acf.php:464 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Trường mới"
 
-#: acf.php:463
+#: acf.php:466
 msgid "Edit Field"
 msgstr "Chỉnh sửa trường"
 
-#: acf.php:462
+#: acf.php:465
 msgid "Add New Field"
 msgstr "Thêm trường mới"
 
-#: acf.php:460
+#: acf.php:463
 msgid "Field"
 msgstr "Trường"
 
-#: acf.php:459 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Các trường"
 
-#: acf.php:434
+#: acf.php:437
 msgid "No Field Groups found in Trash"
 msgstr "Không tìm thấy nhóm trường nào trong thùng rác"
 
-#: acf.php:433
+#: acf.php:436
 msgid "No Field Groups found"
 msgstr "Không tìm thấy nhóm trường nào"
 
-#: acf.php:432
+#: acf.php:435
 msgid "Search Field Groups"
 msgstr "Tìm kiếm nhóm trường"
 
-#: acf.php:431
+#: acf.php:434
 msgid "View Field Group"
 msgstr "Xem nhóm trường"
 
-#: acf.php:430
+#: acf.php:433
 msgid "New Field Group"
 msgstr "Nhóm trường mới"
 
-#: acf.php:429
+#: acf.php:432
 msgid "Edit Field Group"
 msgstr "Chỉnh sửa nhóm trường"
 
-#: acf.php:428
+#: acf.php:431
 msgid "Add New Field Group"
 msgstr "Thêm nhóm trường mới"
 
-#: acf.php:427 acf.php:461
+#: acf.php:430 acf.php:464
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Thêm mới"
 
-#: acf.php:426
+#: acf.php:429
 msgid "Field Group"
 msgstr "Nhóm trường"
 
-#: acf.php:425 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"

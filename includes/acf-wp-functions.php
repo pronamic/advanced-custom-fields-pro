@@ -195,6 +195,10 @@ function acf_decode_post_id( $post_id = 0 ) {
 			$type = taxonomy_exists( $type ) ? 'term' : 'blog';
 			$id   = absint( $id );
 			break;
+		case 'woo_order_%d':
+			$type = 'woo_order';
+			$id   = absint( $id );
+			break;
 		default:
 			// Check for taxonomy name.
 			if ( taxonomy_exists( $type ) && is_numeric( $id ) ) {

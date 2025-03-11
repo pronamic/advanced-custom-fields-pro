@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-21T10:45:54+00:00\n"
+"PO-Revision-Date: 2025-03-10T14:58:23+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: nl_BE\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:144
+msgid "Learn more"
+msgstr "Leer meer"
+
+#: includes/validation.php:133
+msgid ""
+"ACF was unable to perform validation because the provided nonce failed "
+"verification."
+msgstr ""
+"ACF kon geen validatie uitvoeren omdat de verstrekte nonce niet geverifieerd "
+"kon worden."
+
+#: includes/validation.php:131
+msgid ""
+"ACF was unable to perform validation because no nonce was received by the "
+"server."
+msgstr ""
+"ACF kon geen validatie uitvoeren omdat de server geen nonce heeft ontvangen."
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:324
+msgid "are developed and maintained by"
+msgstr "worden ontwikkeld en onderhouden door"
 
 #: includes/class-acf-site-health.php:291
 msgid "Update Source"
@@ -65,14 +90,6 @@ msgstr ""
 #: includes/class-acf-site-health.php:292
 msgid "wordpress.org"
 msgstr "wordpress.org"
-
-#: includes/validation.php:136
-msgid ""
-"ACF was unable to perform validation due to an invalid security nonce being "
-"provided."
-msgstr ""
-"ACF kon de validatie niet uitvoeren omdat er een ongeldige nonce voor de "
-"beveiliging was verstrekt."
 
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
@@ -2066,21 +2083,21 @@ msgstr "Velden toevoegen"
 msgid "This Field"
 msgstr "Dit veld"
 
-#: includes/admin/admin.php:352
+#: includes/admin/admin.php:361
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:350
+#: includes/admin/admin.php:359
 msgid "Feedback"
 msgstr "Feedback"
 
-#: includes/admin/admin.php:348
+#: includes/admin/admin.php:357
 msgid "Support"
 msgstr "Ondersteuning"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:323
+#: includes/admin/admin.php:332
 msgid "is developed and maintained by"
 msgstr "is ontwikkeld en wordt onderhouden door"
 
@@ -4648,7 +4665,7 @@ msgstr ""
 "aangepast berichttype UI en beheerder ze met ACF. <a href=\"%s\">Aan de "
 "slag</a>."
 
-#: includes/admin/admin.php:46 includes/admin/admin.php:352
+#: includes/admin/admin.php:46 includes/admin/admin.php:361
 #: includes/class-acf-site-health.php:250
 msgid "ACF"
 msgstr "ACF"
@@ -4982,7 +4999,7 @@ msgstr "Activeer dit item"
 msgid "Move field group to trash?"
 msgstr "Veldgroep naar prullenmand verplaatsen?"
 
-#: acf.php:501 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -4995,7 +5012,7 @@ msgstr "Inactief"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:559
+#: acf.php:562
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -5004,7 +5021,7 @@ msgstr ""
 "tegelijkertijd actief zijn. We hebben Advanced Custom Fields PRO automatisch "
 "gedeactiveerd."
 
-#: acf.php:557
+#: acf.php:560
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5457,7 +5474,7 @@ msgstr "Alle %s formaten"
 msgid "Attachment"
 msgstr "Bijlage"
 
-#: includes/validation.php:313
+#: includes/validation.php:323
 msgid "%s value is required"
 msgstr "%s waarde is verplicht"
 
@@ -5948,7 +5965,7 @@ msgstr "Dit item dupliceren"
 msgid "Supports"
 msgstr "Ondersteunt"
 
-#: includes/admin/admin.php:346
+#: includes/admin/admin.php:355
 #: includes/admin/views/browse-fields-modal.php:102
 msgid "Documentation"
 msgstr "Documentatie"
@@ -6246,8 +6263,8 @@ msgstr "%d velden vereisen aandacht"
 msgid "1 field requires attention"
 msgstr "1 veld vereist aandacht"
 
-#: includes/assets.php:368 includes/validation.php:247
-#: includes/validation.php:255
+#: includes/assets.php:368 includes/validation.php:257
+#: includes/validation.php:265
 msgid "Validation failed"
 msgstr "Validatie mislukt"
 
@@ -7630,90 +7647,90 @@ msgid "Time Picker"
 msgstr "Tijdkiezer"
 
 #. translators: counts for inactive field groups
-#: acf.php:507
+#: acf.php:510
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Inactief <span class=\"count\">(%s)</span>"
 msgstr[1] "Inactief <span class=\"count\">(%s)</span>"
 
-#: acf.php:468
+#: acf.php:471
 msgid "No Fields found in Trash"
 msgstr "Geen velden gevonden in de prullenmand"
 
-#: acf.php:467
+#: acf.php:470
 msgid "No Fields found"
 msgstr "Geen velden gevonden"
 
-#: acf.php:466
+#: acf.php:469
 msgid "Search Fields"
 msgstr "Velden zoeken"
 
-#: acf.php:465
+#: acf.php:468
 msgid "View Field"
 msgstr "Veld bekijken"
 
-#: acf.php:464 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Nieuw veld"
 
-#: acf.php:463
+#: acf.php:466
 msgid "Edit Field"
 msgstr "Veld bewerken"
 
-#: acf.php:462
+#: acf.php:465
 msgid "Add New Field"
 msgstr "Nieuw veld toevoegen"
 
-#: acf.php:460
+#: acf.php:463
 msgid "Field"
 msgstr "Veld"
 
-#: acf.php:459 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Velden"
 
-#: acf.php:434
+#: acf.php:437
 msgid "No Field Groups found in Trash"
 msgstr "Geen veldgroepen gevonden in prullenmand"
 
-#: acf.php:433
+#: acf.php:436
 msgid "No Field Groups found"
 msgstr "Geen veldgroepen gevonden"
 
-#: acf.php:432
+#: acf.php:435
 msgid "Search Field Groups"
 msgstr "Veldgroepen zoeken"
 
-#: acf.php:431
+#: acf.php:434
 msgid "View Field Group"
 msgstr "Veldgroep bekijken"
 
-#: acf.php:430
+#: acf.php:433
 msgid "New Field Group"
 msgstr "Nieuwe veldgroep"
 
-#: acf.php:429
+#: acf.php:432
 msgid "Edit Field Group"
 msgstr "Veldgroep bewerken"
 
-#: acf.php:428
+#: acf.php:431
 msgid "Add New Field Group"
 msgstr "Nieuwe veldgroep toevoegen"
 
-#: acf.php:427 acf.php:461
+#: acf.php:430 acf.php:464
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Nieuwe toevoegen"
 
-#: acf.php:426
+#: acf.php:429
 msgid "Field Group"
 msgstr "Veldgroep"
 
-#: acf.php:425 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"

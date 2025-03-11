@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-21T10:45:54+00:00\n"
+"PO-Revision-Date: 2025-03-10T14:58:23+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:144
+msgid "Learn more"
+msgstr ""
+
+#: includes/validation.php:133
+msgid ""
+"ACF was unable to perform validation because the provided nonce failed "
+"verification."
+msgstr ""
+
+#: includes/validation.php:131
+msgid ""
+"ACF was unable to perform validation because no nonce was received by the "
+"server."
+msgstr ""
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:324
+msgid "are developed and maintained by"
+msgstr ""
 
 #: includes/class-acf-site-health.php:291
 msgid "Update Source"
@@ -56,12 +78,6 @@ msgstr ""
 #: includes/class-acf-site-health.php:292
 msgid "wordpress.org"
 msgstr "wordpress.org"
-
-#: includes/validation.php:136
-msgid ""
-"ACF was unable to perform validation due to an invalid security nonce being "
-"provided."
-msgstr ""
 
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
@@ -2018,21 +2034,21 @@ msgstr "Добавити поле"
 msgid "This Field"
 msgstr "Це поле"
 
-#: includes/admin/admin.php:352
+#: includes/admin/admin.php:361
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:350
+#: includes/admin/admin.php:359
 msgid "Feedback"
 msgstr "Зворотній зв’язок"
 
-#: includes/admin/admin.php:348
+#: includes/admin/admin.php:357
 msgid "Support"
 msgstr "Підтримка"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:323
+#: includes/admin/admin.php:332
 msgid "is developed and maintained by"
 msgstr "розробляється та підтримується"
 
@@ -4388,7 +4404,7 @@ msgid ""
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:46 includes/admin/admin.php:352
+#: includes/admin/admin.php:46 includes/admin/admin.php:361
 #: includes/class-acf-site-health.php:250
 msgid "ACF"
 msgstr "ACF"
@@ -4712,7 +4728,7 @@ msgstr "Активувати цей елемент"
 msgid "Move field group to trash?"
 msgstr ""
 
-#: acf.php:501 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -4725,13 +4741,13 @@ msgstr "Неактивний"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:559
+#: acf.php:562
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
 msgstr ""
 
-#: acf.php:557
+#: acf.php:560
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5176,7 +5192,7 @@ msgstr "Всі %s формати"
 msgid "Attachment"
 msgstr "Вкладений файл"
 
-#: includes/validation.php:313
+#: includes/validation.php:323
 msgid "%s value is required"
 msgstr "%s значення обов'язкове"
 
@@ -5660,7 +5676,7 @@ msgstr "Дублювати цей елемент"
 msgid "Supports"
 msgstr "Підтримка"
 
-#: includes/admin/admin.php:346
+#: includes/admin/admin.php:355
 #: includes/admin/views/browse-fields-modal.php:102
 msgid "Documentation"
 msgstr "Документація"
@@ -5960,8 +5976,8 @@ msgstr "%d поле потребує уваги"
 msgid "1 field requires attention"
 msgstr "1 поле потребує уваги"
 
-#: includes/assets.php:368 includes/validation.php:247
-#: includes/validation.php:255
+#: includes/assets.php:368 includes/validation.php:257
+#: includes/validation.php:265
 msgid "Validation failed"
 msgstr "Помилка валідації"
 
@@ -7097,7 +7113,7 @@ msgstr "Зберегти формат"
 #: includes/fields/class-acf-field-date_picker.php:61
 msgctxt "Date Picker JS weekHeader"
 msgid "Wk"
-msgstr "Wk"
+msgstr "Нд"
 
 #: includes/fields/class-acf-field-date_picker.php:60
 msgctxt "Date Picker JS prevText"
@@ -7338,91 +7354,91 @@ msgid "Time Picker"
 msgstr "Вибір часу"
 
 #. translators: counts for inactive field groups
-#: acf.php:507
+#: acf.php:510
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Неактивний <span class=\"count\">(%s)</span>"
 msgstr[1] "Неактивні <span class=\"count\">(%s)</span>"
 msgstr[2] "Неактивних <span class=\"count\">(%s)</span>"
 
-#: acf.php:468
+#: acf.php:471
 msgid "No Fields found in Trash"
 msgstr "Не знайдено полів у кошику"
 
-#: acf.php:467
+#: acf.php:470
 msgid "No Fields found"
 msgstr "Не знайдено полів"
 
-#: acf.php:466
+#: acf.php:469
 msgid "Search Fields"
 msgstr "Поля пошуку"
 
-#: acf.php:465
+#: acf.php:468
 msgid "View Field"
 msgstr "Переглянути\t поле"
 
-#: acf.php:464 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Нове поле"
 
-#: acf.php:463
+#: acf.php:466
 msgid "Edit Field"
 msgstr "Редагувати поле"
 
-#: acf.php:462
+#: acf.php:465
 msgid "Add New Field"
 msgstr "Додати нове поле"
 
-#: acf.php:460
+#: acf.php:463
 msgid "Field"
 msgstr "Поле"
 
-#: acf.php:459 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Поля"
 
-#: acf.php:434
+#: acf.php:437
 msgid "No Field Groups found in Trash"
 msgstr "У кошику немає груп полів"
 
-#: acf.php:433
+#: acf.php:436
 msgid "No Field Groups found"
 msgstr "Не знайдено груп полів"
 
-#: acf.php:432
+#: acf.php:435
 msgid "Search Field Groups"
 msgstr "Шукати групи полів"
 
-#: acf.php:431
+#: acf.php:434
 msgid "View Field Group"
 msgstr "Переглянути групу полів"
 
-#: acf.php:430
+#: acf.php:433
 msgid "New Field Group"
 msgstr "Нова група полів"
 
-#: acf.php:429
+#: acf.php:432
 msgid "Edit Field Group"
 msgstr "Редагувати групу полів"
 
-#: acf.php:428
+#: acf.php:431
 msgid "Add New Field Group"
 msgstr "Додати нову групу полів"
 
-#: acf.php:427 acf.php:461
+#: acf.php:430 acf.php:464
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Додати новий"
 
-#: acf.php:426
+#: acf.php:429
 msgid "Field Group"
 msgstr "Група полів"
 
-#: acf.php:425 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"

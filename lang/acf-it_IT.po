@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-21T10:45:54+00:00\n"
+"PO-Revision-Date: 2025-03-10T14:58:23+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/validation.php:144
+msgid "Learn more"
+msgstr ""
+
+#: includes/validation.php:133
+msgid ""
+"ACF was unable to perform validation because the provided nonce failed "
+"verification."
+msgstr ""
+
+#: includes/validation.php:131
+msgid ""
+"ACF was unable to perform validation because no nonce was received by the "
+"server."
+msgstr ""
+
+#. translators: This text is prepended by a link to ACF's website, and appended
+#. by a link to WP Engine's website.
+#: includes/admin/admin.php:324
+msgid "are developed and maintained by"
+msgstr ""
 
 #: includes/class-acf-site-health.php:291
 msgid "Update Source"
@@ -68,14 +90,6 @@ msgstr ""
 #: includes/class-acf-site-health.php:292
 msgid "wordpress.org"
 msgstr "wordpress.org"
-
-#: includes/validation.php:136
-msgid ""
-"ACF was unable to perform validation due to an invalid security nonce being "
-"provided."
-msgstr ""
-"ACF non ha potuto effettuare la validazione a causa del fatto che è stato "
-"fornito un nonce di sicurezza non valido."
 
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
@@ -2076,21 +2090,21 @@ msgstr "Aggiungi campi"
 msgid "This Field"
 msgstr "Questo campo"
 
-#: includes/admin/admin.php:352
+#: includes/admin/admin.php:361
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:350
+#: includes/admin/admin.php:359
 msgid "Feedback"
 msgstr "Feedback"
 
-#: includes/admin/admin.php:348
+#: includes/admin/admin.php:357
 msgid "Support"
 msgstr "Supporto"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:323
+#: includes/admin/admin.php:332
 msgid "is developed and maintained by"
 msgstr "è sviluppato e manutenuto da"
 
@@ -2726,7 +2740,7 @@ msgstr "Post type non valido selezionato per la revisione."
 
 #: includes/admin/views/global/navigation.php:189
 msgid "More"
-msgstr "Altri"
+msgstr "Altro"
 
 #: includes/admin/views/browse-fields-modal.php:96
 msgid "Tutorial"
@@ -4690,7 +4704,7 @@ msgstr ""
 "Importa post type e tassonomie registrate con Custom Post Type UI e "
 "gestiscile con ACF. <a href=\"%s\">Inizia qui</a>."
 
-#: includes/admin/admin.php:46 includes/admin/admin.php:352
+#: includes/admin/admin.php:46 includes/admin/admin.php:361
 #: includes/class-acf-site-health.php:250
 msgid "ACF"
 msgstr "ACF"
@@ -5023,7 +5037,7 @@ msgstr "Attiva questo elemento"
 msgid "Move field group to trash?"
 msgstr "Spostare il gruppo di campi nel cestino?"
 
-#: acf.php:501 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -5036,7 +5050,7 @@ msgstr "Inattivo"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:559
+#: acf.php:562
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -5045,7 +5059,7 @@ msgstr ""
 "attivi contemporaneamente. Abbiamo automaticamente disattivato Advanced "
 "Custom Fields PRO."
 
-#: acf.php:557
+#: acf.php:560
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5496,7 +5510,7 @@ msgstr "Tutti i formati di %s"
 msgid "Attachment"
 msgstr "Allegato"
 
-#: includes/validation.php:313
+#: includes/validation.php:323
 msgid "%s value is required"
 msgstr "Il valore %s è richiesto"
 
@@ -5993,7 +6007,7 @@ msgstr "Duplica questo elemento"
 msgid "Supports"
 msgstr "Supporta"
 
-#: includes/admin/admin.php:346
+#: includes/admin/admin.php:355
 #: includes/admin/views/browse-fields-modal.php:102
 msgid "Documentation"
 msgstr "Documentazione"
@@ -6293,8 +6307,8 @@ msgstr "%d campi necessitano attenzione"
 msgid "1 field requires attention"
 msgstr "1 campo richiede attenzione"
 
-#: includes/assets.php:368 includes/validation.php:247
-#: includes/validation.php:255
+#: includes/assets.php:368 includes/validation.php:257
+#: includes/validation.php:265
 msgid "Validation failed"
 msgstr "Validazione fallita"
 
@@ -7677,90 +7691,90 @@ msgid "Time Picker"
 msgstr "Selettore orario"
 
 #. translators: counts for inactive field groups
-#: acf.php:507
+#: acf.php:510
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Non attivo <span class=\"count\">(%s)</span>"
 msgstr[1] "Non attivi <span class=\"count\">(%s)</span>"
 
-#: acf.php:468
+#: acf.php:471
 msgid "No Fields found in Trash"
 msgstr "Nessun campo trovato nel Cestino"
 
-#: acf.php:467
+#: acf.php:470
 msgid "No Fields found"
 msgstr "Nessun campo trovato"
 
-#: acf.php:466
+#: acf.php:469
 msgid "Search Fields"
 msgstr "Cerca campi"
 
-#: acf.php:465
+#: acf.php:468
 msgid "View Field"
 msgstr "Visualizza campo"
 
-#: acf.php:464 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Nuovo campo"
 
-#: acf.php:463
+#: acf.php:466
 msgid "Edit Field"
 msgstr "Modifica campo"
 
-#: acf.php:462
+#: acf.php:465
 msgid "Add New Field"
 msgstr "Aggiungi nuovo campo"
 
-#: acf.php:460
+#: acf.php:463
 msgid "Field"
 msgstr "Campo"
 
-#: acf.php:459 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Campi"
 
-#: acf.php:434
+#: acf.php:437
 msgid "No Field Groups found in Trash"
 msgstr "Nessun gruppo di campi trovato nel cestino"
 
-#: acf.php:433
+#: acf.php:436
 msgid "No Field Groups found"
 msgstr "Nessun gruppo di campi trovato"
 
-#: acf.php:432
+#: acf.php:435
 msgid "Search Field Groups"
 msgstr "Cerca gruppo di campi"
 
-#: acf.php:431
+#: acf.php:434
 msgid "View Field Group"
 msgstr "Visualizza gruppo di campi"
 
-#: acf.php:430
+#: acf.php:433
 msgid "New Field Group"
 msgstr "Nuovo gruppo di campi"
 
-#: acf.php:429
+#: acf.php:432
 msgid "Edit Field Group"
 msgstr "Modifica gruppo di campi"
 
-#: acf.php:428
+#: acf.php:431
 msgid "Add New Field Group"
 msgstr "Aggiungi nuovo gruppo di campi"
 
-#: acf.php:427 acf.php:461
+#: acf.php:430 acf.php:464
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Aggiungi nuovo"
 
-#: acf.php:426
+#: acf.php:429
 msgid "Field Group"
 msgstr "Gruppo di campi"
 
-#: acf.php:425 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"

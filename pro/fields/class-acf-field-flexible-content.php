@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 		public function delete_row( $i, $field, $post_id ) {
 
 			// vars
-			$value = acf_get_metadata( $post_id, $field['name'] );
+			$value = acf_get_metadata_by_field( $post_id, $field );
 
 			// bail early if no value
 			if ( ! is_array( $value ) || ! isset( $value[ $i ] ) ) {
@@ -1104,7 +1104,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 
 			// vars
 			$new_value = array();
-			$old_value = acf_get_metadata( $post_id, $field['name'] );
+			$old_value = acf_get_metadata_by_field( $post_id, $field );
 			$old_value = is_array( $old_value ) ? $old_value : array();
 
 			// update
@@ -1174,7 +1174,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 		public function delete_value( $post_id, $key, $field ) {
 
 			// vars
-			$old_value = acf_get_metadata( $post_id, $field['name'] );
+			$old_value = acf_get_metadata_by_field( $post_id, $field['name'] );
 			$old_value = is_array( $old_value ) ? $old_value : array();
 
 			// bail early if no rows or no sub fields

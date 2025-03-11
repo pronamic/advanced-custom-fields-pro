@@ -1,9 +1,10 @@
 === Advanced Custom Fields (ACF®) PRO ===
-Contributors: elliotcondon
+Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.7.2
 Requires PHP: 7.4
+Stable tag: 6.3.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +93,15 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.4.0-RC1 =
+*Release Date 10th March 2025*
+
+* New - In ACF PRO, fields can now be added to WooCommerce orders when using HPOS
+* Enhancement - The “Escaped HTML” warning notice is now disabled by default
+* Enhancement - ACF now uses Composer to autoload some classes
+* i18n - Various British English translation strings no longer have a quoting issue breaking links
+* i18n - Added Dutch (formal) translations (props @toineenzo)
 
 = 6.3.12 =
 *Release Date 21st January 2025*
