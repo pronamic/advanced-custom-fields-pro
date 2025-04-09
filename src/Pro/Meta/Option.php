@@ -69,7 +69,7 @@ class Option extends MetaLocation {
 	 * @param string         $field_name The name of the field to get the reference for.
 	 * @return string|boolean
 	 */
-	public function get_reference( $object_id = '', string $field_name = '' ) {
+	public function get_reference( $object_id = '', $field_name = '' ) {
 		return get_option( $this->reference_prefix . $object_id . '_' . $field_name, null );
 	}
 

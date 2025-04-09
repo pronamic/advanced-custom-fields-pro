@@ -9,7 +9,7 @@
  * Plugin Name:       Advanced Custom Fields PRO
  * Plugin URI:        https://www.advancedcustomfields.com
  * Description:       Customize WordPress with powerful, professional and intuitive fields.
- * Version:           6.4.0-RC1
+ * Version:           6.4.0.1
  * Author:            WP Engine
  * Author URI:        https://wpengine.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields
  * Update URI:        https://www.advancedcustomfields.com/pro
@@ -36,7 +36,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '6.4.0-RC1';
+		public $version = '6.4.0.1';
 
 		/**
 		 * The plugin settings array.
@@ -91,7 +91,7 @@ if ( ! class_exists( 'ACF' ) ) {
 
 			// Define settings.
 			$this->settings = array(
-				'name'                    => __( 'Advanced Custom Fields', 'acf' ),
+				'name'                    => 'Advanced Custom Fields',
 				'slug'                    => dirname( ACF_BASENAME ),
 				'version'                 => ACF_VERSION,
 				'basename'                => ACF_BASENAME,
@@ -130,6 +130,7 @@ if ( ! class_exists( 'ACF' ) ) {
 				'enable_shortcode'        => true,
 				'enable_bidirection'      => true,
 				'enable_block_bindings'   => true,
+				'enable_meta_box_cb_edit' => true,
 			);
 
 			// Include autoloader.
@@ -284,6 +285,9 @@ if ( ! class_exists( 'ACF' ) ) {
 
 			// Load textdomain file.
 			acf_load_textdomain();
+
+			// Make plugin name translatable.
+			acf_update_setting( 'name', __( 'Advanced Custom Fields', 'acf' ) );
 
 			// Include 3rd party compatiblity.
 			acf_include( 'includes/third-party.php' );

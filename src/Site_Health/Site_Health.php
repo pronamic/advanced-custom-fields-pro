@@ -235,6 +235,7 @@ class Site_Health {
 			'field_groups_with_single_block_rule',
 			'field_groups_with_multiple_block_rules',
 			'field_groups_with_blocks_and_other_rules',
+			'all_location_rules',
 		);
 
 		foreach ( $fields_to_unset as $field ) {
@@ -447,15 +448,19 @@ class Site_Health {
 
 		$all_fields   = array();
 		$object_types = array();
+		$all_rules    = array();
+
 		foreach ( $field_groups as $field_group ) {
 			$all_fields = array_merge( $all_fields, acf_get_fields( $field_group ) );
 
-			if ( ! $is_pro ) {
-				continue;
-			}
-
 			foreach ( $field_group['location'] as $rules ) {
 				foreach ( $rules as $rule ) {
+					$all_rules[] = $rule['param'] . $rule['operator'] . $rule['value'];
+
+					if ( ! $is_pro ) {
+						continue;
+					}
+
 					$location = acf_get_location_type( $rule['param'] );
 					if ( ! $location ) {
 						continue;
@@ -466,6 +471,11 @@ class Site_Health {
 				}
 			}
 		}
+
+		$fields['all_location_rules'] = array(
+			'label' => __( 'All Location Rules', 'acf' ),
+			'value' => array_values( array_unique( $all_rules ) ),
+		);
 
 		if ( $is_pro ) {
 			$field_groups_with_single_block_rule      = 0;

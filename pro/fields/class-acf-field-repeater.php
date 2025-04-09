@@ -1041,6 +1041,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 				array(
 					'field_name'    => '',
 					'field_key'     => '',
+					'field_prefix'  => '',
 					'post_id'       => 0,
 					'rows_per_page' => 0,
 					'refresh'       => false,
@@ -1080,10 +1081,11 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 			}
 
 			/**
-			 * We have to swap out the field name with the one sent via JS,
+			 * We have to swap out the field name and prefix with the ones sent via JS,
 			 * as the repeater could be inside a subfield.
 			 */
-			$field['name'] = $args['field_name'];
+			$field['name']   = $args['field_name'];
+			$field['prefix'] = $args['field_prefix'];
 
 			$field['value']   = acf_get_value( $post_id, $field );
 			$field            = acf_prepare_field( $field );

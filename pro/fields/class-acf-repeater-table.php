@@ -158,6 +158,7 @@ class ACF_Repeater_Table {
 			'data-min'        => $this->field['min'],
 			'data-max'        => $this->field['max'],
 			'data-pagination' => ! empty( $this->field['pagination'] ),
+			'data-prefix'     => $this->field['prefix'],
 		);
 
 		if ( $this->field['pagination'] ) {

@@ -18,7 +18,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			// update setting
 			acf_update_setting( 'pro', true );
-			acf_update_setting( 'name', __( 'Advanced Custom Fields PRO', 'acf' ) );
+			acf_update_setting( 'name', 'Advanced Custom Fields PRO' );
 
 			// Initialize autoloaded classes.
 			acf_new_instance( 'ACF\Pro\Meta\Option' );
@@ -36,6 +36,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			// actions
 			add_action( 'init', array( $this, 'register_assets' ) );
+			add_action( 'acf/init', array( $this, 'update_plugin_name' ) );
 			add_action( 'woocommerce_init', array( $this, 'init_hpos_integration' ), 99 );
 			add_action( 'acf/init_internal_post_types', array( $this, 'register_ui_options_pages' ) );
 			add_action( 'acf/include_fields', array( $this, 'include_options_pages' ) );
@@ -51,6 +52,17 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			add_filter( 'posts_where', array( $this, 'posts_where' ), 10, 2 );
 			add_filter( 'acf/internal_post_type/admin_body_classes', array( $this, 'admin_body_classes' ) );
 			add_filter( 'acf/internal_post_type_list/admin_body_classes', array( $this, 'admin_body_classes' ) );
+		}
+
+		/**
+		 * Updates the plugin name to make it translatable.
+		 *
+		 * @since 6.4
+		 *
+		 * @return void
+		 */
+		public function update_plugin_name() {
+			acf_update_setting( 'name', __( 'Advanced Custom Fields PRO', 'acf' ) );
 		}
 
 		/**

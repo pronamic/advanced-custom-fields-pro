@@ -109,7 +109,7 @@ class MetaLocation {
 	 * @param string         $field_name The name of the field to get the reference for.
 	 * @return string|null
 	 */
-	public function get_reference( $object_id = 0, string $field_name = '' ) {
+	public function get_reference( $object_id = 0, $field_name = '' ) {
 		$reference = get_metadata( $this->location_type, $object_id, $this->reference_prefix . $field_name );
 		return $reference[0] ?? null;
 	}

@@ -124,7 +124,7 @@ class WooOrder extends MetaLocation {
 	 * @param string         $field_name The name of the field to get the reference for.
 	 * @return string|null
 	 */
-	public function get_reference( $object_id = 0, string $field_name = '' ) {
+	public function get_reference( $object_id = 0, $field_name = '' ) {
 		$order = wc_get_order( $object_id );
 		$key   = $this->reference_prefix . $field_name;
 
@@ -152,6 +152,7 @@ class WooOrder extends MetaLocation {
 		}
 
 		foreach ( $meta as $name => $value ) {
+			$value = wp_unslash( $value );
 			$order->update_meta_data( $name, $value );
 		}
 
@@ -174,6 +175,8 @@ class WooOrder extends MetaLocation {
 		if ( ! $order ) {
 			return false;
 		}
+
+		$value = wp_unslash( $value );
 
 		$order->update_meta_data( $this->reference_prefix . $field['name'], $field['key'] );
 		$order->update_meta_data( $field['name'], $value );

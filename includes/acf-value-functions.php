@@ -387,8 +387,8 @@ function acf_log_invalid_field_notice( $field, $function ) {
 	}
 
 	$error_text = sprintf(
-		/* translators: %1 plugin name, %2 the URL to the documentation on this error */
-		__( '<strong>%1$s</strong> - We\'ve detected one or more calls to retrieve ACF field values before ACF has been initialized. This is not supported and can result in malformed or missing data. <a href="%2$s" target="_blank">Learn how to fix this</a>.', 'acf' ),
+		// This happens too early for translations to be loaded properly.
+		'<strong>%1$s</strong> - We\'ve detected one or more calls to retrieve ACF field values before ACF has been initialized. This is not supported and can result in malformed or missing data. <a href="%2$s" target="_blank">Learn how to fix this</a>.',
 		acf_get_setting( 'name' ),
 		acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/acf-field-functions/', 'docs', 'early_init_warning' )
 	);
