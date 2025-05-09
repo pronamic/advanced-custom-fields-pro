@@ -216,7 +216,7 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			}
 
 			// Allow opting-out of the notice.
-			if ( apply_filters( 'acf/admin/prevent_escaped_html_notice', false ) ) {
+			if ( apply_filters( 'acf/admin/prevent_escaped_html_notice', true ) ) {
 				return;
 			}
 

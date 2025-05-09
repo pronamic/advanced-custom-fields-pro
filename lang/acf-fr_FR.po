@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-04T12:09:00+00:00\n"
+"PO-Revision-Date: 2025-05-08T10:20:52+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -21,45 +21,61 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: src/Site_Health/Site_Health.php:517
+msgid "Number of Field Groups with Blocks and Other Locations"
+msgstr ""
+
+#: src/Site_Health/Site_Health.php:512
+msgid "Number of Field Groups with Multiple Block Locations"
+msgstr ""
+
+#: src/Site_Health/Site_Health.php:507
+msgid "Number of Field Groups with a Single Block Location"
+msgstr ""
+
+#: src/Site_Health/Site_Health.php:476
+msgid "All Location Rules"
+msgstr ""
+
 #: includes/validation.php:144
 msgid "Learn more"
-msgstr ""
+msgstr "En savoir plus"
 
 #: includes/validation.php:133
 msgid ""
 "ACF was unable to perform validation because the provided nonce failed "
 "verification."
 msgstr ""
+"ACF n’a pas pu effectuer la validation car le jeton de sécurité fourni a "
+"échoué à la vérification."
 
 #: includes/validation.php:131
 msgid ""
 "ACF was unable to perform validation because no nonce was received by the "
 "server."
 msgstr ""
+"ACF n’a pas pu effectuer la validation car aucun jeton de sécurité n’a été "
+"reçu par le serveur."
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:324
 msgid "are developed and maintained by"
-msgstr ""
-
-#: includes/class-acf-site-health.php:291
-msgid "Update Source"
-msgstr ""
+msgstr "sont développés et maintenus par"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:850
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:810
 msgid "By default only admin users can edit this setting."
-msgstr ""
+msgstr "Par défaut, seuls les administrateurs peuvent modifier ce réglage."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:848
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:808
 msgid "By default only super admin users can edit this setting."
-msgstr ""
+msgstr "Par défaut, seuls les super-admins peuvent modifier ce réglage."
 
 #: includes/admin/views/acf-field-group/field.php:322
 msgid "Close and Add Field"
-msgstr ""
+msgstr "Fermer et Ajouter un Champ"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:804
 msgid ""
@@ -73,10 +89,6 @@ msgid ""
 "A PHP function name to be called when setting up the meta boxes for the edit "
 "screen. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
-msgstr ""
-
-#: includes/class-acf-site-health.php:292
-msgid "wordpress.org"
 msgstr ""
 
 #: includes/fields/class-acf-field.php:359
@@ -98,7 +110,7 @@ msgstr ""
 "champ et de l’afficher dans l’interface de l’éditeur en utilisant les blocs "
 "bindings ou le code court ACF. %s"
 
-#: includes/Blocks/Bindings.php:64
+#: src/Blocks/Bindings.php:67
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -106,7 +118,7 @@ msgstr ""
 "Le type de champ ACF demandé ne prend pas en charge la sortie via les Block "
 "Bindings ou le code court ACF."
 
-#: includes/api/api-template.php:1085 includes/Blocks/Bindings.php:72
+#: includes/api/api-template.php:1085 src/Blocks/Bindings.php:75
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -198,7 +210,7 @@ msgstr "Icône de mise à jour (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:699
 msgid "Universal Access (alt) Icon"
-msgstr ""
+msgstr "Icône d’accès universel (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:696
 msgid "Twitter (alt) Icon"
@@ -222,7 +234,7 @@ msgstr "Icône de page de texte"
 
 #: includes/fields/class-acf-field-icon_picker.php:680
 msgid "Table Row Delete Icon"
-msgstr ""
+msgstr "Icône de suppression de rangée de tableau"
 
 #: includes/fields/class-acf-field-icon_picker.php:679
 msgid "Table Row Before Icon"
@@ -811,9 +823,9 @@ msgstr "Arguments de requête invalides."
 #: includes/ajax/class-acf-ajax-upgrade.php:24
 #: includes/ajax/class-acf-ajax-user-setting.php:38
 msgid "Sorry, you do not have permission to do that."
-msgstr ""
+msgstr "Désolé, vous n’avez pas la permission de faire cette action"
 
-#: includes/class-acf-site-health.php:648
+#: src/Site_Health/Site_Health.php:715
 msgid "Blocks Using Post Meta"
 msgstr ""
 
@@ -831,11 +843,13 @@ msgstr "Logo ACF PRO"
 #: includes/fields/class-acf-field-icon_picker.php:788
 msgid "%s requires a valid attachment ID when type is set to media_library."
 msgstr ""
+"%s nécessite un ID de pièce jointe valide lorsque le type est défini sur "
+"media_library."
 
 #. translators: %s - field name
 #: includes/fields/class-acf-field-icon_picker.php:772
 msgid "%s is a required property of acf."
-msgstr ""
+msgstr "%s est une propriété nécessaire d’ACF."
 
 #: includes/fields/class-acf-field-icon_picker.php:748
 msgid "The value of icon to save."
@@ -899,7 +913,7 @@ msgstr "Icône de traduction"
 
 #: includes/fields/class-acf-field-icon_picker.php:689
 msgid "Tickets Icon"
-msgstr ""
+msgstr "Icône de billets"
 
 #: includes/fields/class-acf-field-icon_picker.php:688
 msgid "Thumbs Up Icon"
@@ -1008,7 +1022,7 @@ msgstr "Icône Pressthis"
 
 #: includes/fields/class-acf-field-icon_picker.php:641
 msgid "Post Status Icon"
-msgstr ""
+msgstr "Icône d’état de publication"
 
 #: includes/fields/class-acf-field-icon_picker.php:640
 msgid "Portfolio Icon"
@@ -1024,7 +1038,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:633
 msgid "Playlist Audio Icon"
-msgstr ""
+msgstr "Icône de liste de lecture audio"
 
 #: includes/fields/class-acf-field-icon_picker.php:631
 msgid "Phone Icon"
@@ -1032,7 +1046,7 @@ msgstr "Icône de téléphone"
 
 #: includes/fields/class-acf-field-icon_picker.php:629
 msgid "Performance Icon"
-msgstr ""
+msgstr "Icône de performance"
 
 #: includes/fields/class-acf-field-icon_picker.php:627
 msgid "Paperclip Icon"
@@ -1044,7 +1058,7 @@ msgstr "Pas d'icône"
 
 #: includes/fields/class-acf-field-icon_picker.php:622
 msgid "Networking Icon"
-msgstr ""
+msgstr "Icône de réseau"
 
 #: includes/fields/class-acf-field-icon_picker.php:621
 msgid "Nametag Icon"
@@ -1088,7 +1102,7 @@ msgstr "Icône d’emplacement"
 
 #: includes/fields/class-acf-field-icon_picker.php:596
 msgid "List View Icon"
-msgstr ""
+msgstr "Icône Vue en liste"
 
 #: includes/fields/class-acf-field-icon_picker.php:594
 msgid "Lightbulb Icon"
@@ -1096,11 +1110,11 @@ msgstr "Icône d’ampoule"
 
 #: includes/fields/class-acf-field-icon_picker.php:593
 msgid "Left Right Icon"
-msgstr ""
+msgstr "Icône Gauche/droite"
 
 #: includes/fields/class-acf-field-icon_picker.php:592
 msgid "Layout Icon"
-msgstr ""
+msgstr "Icône de mise en page"
 
 #: includes/fields/class-acf-field-icon_picker.php:591
 msgid "Laptop Icon"
@@ -1170,7 +1184,7 @@ msgstr "Icône externe"
 
 #: includes/fields/class-acf-field-icon_picker.php:536
 msgid "Email (alt) Icon"
-msgstr ""
+msgstr "Icône d’e-mail (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:535
 msgid "Email Icon"
@@ -1200,7 +1214,7 @@ msgstr "Icône de tableau"
 
 #: includes/fields/class-acf-field-icon_picker.php:527
 msgid "Strikethrough Icon"
-msgstr ""
+msgstr "Icône barrée"
 
 #: includes/fields/class-acf-field-icon_picker.php:526
 msgid "Spellcheck Icon"
@@ -1270,11 +1284,11 @@ msgstr "Icône de code"
 
 #: includes/fields/class-acf-field-icon_picker.php:505
 msgid "Break Icon"
-msgstr ""
+msgstr "Icône de rupture"
 
 #: includes/fields/class-acf-field-icon_picker.php:504
 msgid "Bold Icon"
-msgstr ""
+msgstr "Icône en gras"
 
 #: includes/fields/class-acf-field-icon_picker.php:498
 msgid "Edit Icon"
@@ -1286,7 +1300,7 @@ msgstr "Icône de téléchargement"
 
 #: includes/fields/class-acf-field-icon_picker.php:495
 msgid "Dismiss Icon"
-msgstr ""
+msgstr "Ignorer l’icône"
 
 #: includes/fields/class-acf-field-icon_picker.php:494
 msgid "Desktop Icon"
@@ -1338,7 +1352,7 @@ msgstr "Icône de carotte"
 
 #: includes/fields/class-acf-field-icon_picker.php:458
 msgid "Camera Icon"
-msgstr ""
+msgstr "Icône d’appareil photo"
 
 #: includes/fields/class-acf-field-icon_picker.php:457
 msgid "Calendar (alt) Icon"
@@ -1354,7 +1368,7 @@ msgstr "Icône de femme d’affaires"
 
 #: includes/fields/class-acf-field-icon_picker.php:450
 msgid "Building Icon"
-msgstr ""
+msgstr "Icône de bâtiment"
 
 #: includes/fields/class-acf-field-icon_picker.php:437
 msgid "Book Icon"
@@ -1366,7 +1380,7 @@ msgstr "Icône de sauvegarde"
 
 #: includes/fields/class-acf-field-icon_picker.php:431
 msgid "Awards Icon"
-msgstr ""
+msgstr "Icône de prix"
 
 #: includes/fields/class-acf-field-icon_picker.php:430
 msgid "Art Icon"
@@ -1466,7 +1480,7 @@ msgstr "Icône de liens"
 
 #: includes/fields/class-acf-field-icon_picker.php:390
 msgid "Home Icon"
-msgstr ""
+msgstr "Icon d’accueil"
 
 #: includes/fields/class-acf-field-icon_picker.php:388
 msgid "Customizer Icon"
@@ -1542,7 +1556,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:142
 msgid "Search icons..."
-msgstr ""
+msgstr "Rechercher des icônes…"
 
 #: includes/fields/class-acf-field-icon_picker.php:53
 msgid "Media Library"
@@ -1562,183 +1576,183 @@ msgstr ""
 msgid "Icon Picker"
 msgstr "Sélecteur d’icône"
 
-#: includes/class-acf-site-health.php:709
+#: src/Site_Health/Site_Health.php:776
 msgid "JSON Load Paths"
 msgstr ""
 
-#: includes/class-acf-site-health.php:703
+#: src/Site_Health/Site_Health.php:770
 msgid "JSON Save Paths"
 msgstr ""
 
-#: includes/class-acf-site-health.php:694
+#: src/Site_Health/Site_Health.php:761
 msgid "Registered ACF Forms"
 msgstr ""
 
-#: includes/class-acf-site-health.php:688
+#: src/Site_Health/Site_Health.php:755
 msgid "Shortcode Enabled"
 msgstr "Code court activé"
 
-#: includes/class-acf-site-health.php:680
+#: src/Site_Health/Site_Health.php:747
 msgid "Field Settings Tabs Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:672
+#: src/Site_Health/Site_Health.php:739
 msgid "Field Type Modal Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:664
+#: src/Site_Health/Site_Health.php:731
 msgid "Admin UI Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:655
+#: src/Site_Health/Site_Health.php:722
 msgid "Block Preloading Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:643
+#: src/Site_Health/Site_Health.php:710
 msgid "Blocks Per ACF Block Version"
 msgstr ""
 
-#: includes/class-acf-site-health.php:638
+#: src/Site_Health/Site_Health.php:705
 msgid "Blocks Per API Version"
 msgstr ""
 
-#: includes/class-acf-site-health.php:611
+#: src/Site_Health/Site_Health.php:678
 msgid "Registered ACF Blocks"
 msgstr ""
 
-#: includes/class-acf-site-health.php:605
+#: src/Site_Health/Site_Health.php:672
 msgid "Light"
 msgstr "Clair"
 
-#: includes/class-acf-site-health.php:605
+#: src/Site_Health/Site_Health.php:672
 msgid "Standard"
 msgstr "Normal"
 
-#: includes/class-acf-site-health.php:604
+#: src/Site_Health/Site_Health.php:671
 msgid "REST API Format"
 msgstr "Format de l’API REST"
 
-#: includes/class-acf-site-health.php:596
+#: src/Site_Health/Site_Health.php:663
 msgid "Registered Options Pages (PHP)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:582
+#: src/Site_Health/Site_Health.php:649
 msgid "Registered Options Pages (JSON)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:577
+#: src/Site_Health/Site_Health.php:644
 msgid "Registered Options Pages (UI)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:547
+#: src/Site_Health/Site_Health.php:614
 msgid "Options Pages UI Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:539
+#: src/Site_Health/Site_Health.php:606
 msgid "Registered Taxonomies (JSON)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:527
+#: src/Site_Health/Site_Health.php:594
 msgid "Registered Taxonomies (UI)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:515
+#: src/Site_Health/Site_Health.php:582
 msgid "Registered Post Types (JSON)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:503
+#: src/Site_Health/Site_Health.php:570
 msgid "Registered Post Types (UI)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:490
+#: src/Site_Health/Site_Health.php:557
 msgid "Post Types and Taxonomies Enabled"
 msgstr ""
 
-#: includes/class-acf-site-health.php:483
+#: src/Site_Health/Site_Health.php:550
 msgid "Number of Third Party Fields by Field Type"
 msgstr ""
 
-#: includes/class-acf-site-health.php:478
+#: src/Site_Health/Site_Health.php:545
 msgid "Number of Fields by Field Type"
 msgstr ""
 
-#: includes/class-acf-site-health.php:445
+#: src/Site_Health/Site_Health.php:444
 msgid "Field Groups Enabled for GraphQL"
 msgstr ""
 
-#: includes/class-acf-site-health.php:432
+#: src/Site_Health/Site_Health.php:431
 msgid "Field Groups Enabled for REST API"
 msgstr ""
 
-#: includes/class-acf-site-health.php:420
+#: src/Site_Health/Site_Health.php:419
 msgid "Registered Field Groups (JSON)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:408
+#: src/Site_Health/Site_Health.php:407
 msgid "Registered Field Groups (PHP)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:396
+#: src/Site_Health/Site_Health.php:395
 msgid "Registered Field Groups (UI)"
 msgstr ""
 
-#: includes/class-acf-site-health.php:384
+#: src/Site_Health/Site_Health.php:383
 msgid "Active Plugins"
 msgstr "Extensions actives"
 
-#: includes/class-acf-site-health.php:358
+#: src/Site_Health/Site_Health.php:357
 msgid "Parent Theme"
 msgstr "Thème parent"
 
-#: includes/class-acf-site-health.php:347
+#: src/Site_Health/Site_Health.php:346
 msgid "Active Theme"
 msgstr "Thème actif"
 
-#: includes/class-acf-site-health.php:338
+#: src/Site_Health/Site_Health.php:337
 msgid "Is Multisite"
 msgstr "Est un multisite"
 
-#: includes/class-acf-site-health.php:333
+#: src/Site_Health/Site_Health.php:332
 msgid "MySQL Version"
 msgstr "Version MySQL"
 
-#: includes/class-acf-site-health.php:328
+#: src/Site_Health/Site_Health.php:327
 msgid "WordPress Version"
 msgstr "Version de WordPress"
 
-#: includes/class-acf-site-health.php:321
+#: src/Site_Health/Site_Health.php:320
 msgid "Subscription Expiry Date"
 msgstr ""
 
-#: includes/class-acf-site-health.php:313
+#: src/Site_Health/Site_Health.php:312
 msgid "License Status"
 msgstr "État de la licence"
 
-#: includes/class-acf-site-health.php:308
+#: src/Site_Health/Site_Health.php:307
 msgid "License Type"
 msgstr "Type de licence"
 
-#: includes/class-acf-site-health.php:303
+#: src/Site_Health/Site_Health.php:302
 msgid "Licensed URL"
 msgstr "URL sous licence"
 
-#: includes/class-acf-site-health.php:297
+#: src/Site_Health/Site_Health.php:296
 msgid "License Activated"
 msgstr "Licence activée"
 
-#: includes/class-acf-site-health.php:286
+#: src/Site_Health/Site_Health.php:290
 msgid "Free"
 msgstr "Gratuit"
 
-#: includes/class-acf-site-health.php:285
+#: src/Site_Health/Site_Health.php:289
 msgid "Plugin Type"
 msgstr "Type d’extension"
 
-#: includes/class-acf-site-health.php:280
+#: src/Site_Health/Site_Health.php:284
 msgid "Plugin Version"
 msgstr "Version de l’extension"
 
-#: includes/class-acf-site-health.php:251
+#: src/Site_Health/Site_Health.php:255
 msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
@@ -1783,11 +1797,11 @@ msgstr "Les termes contiennent"
 
 #: includes/admin/post-types/admin-field-group.php:139
 msgid "Term is not equal to"
-msgstr ""
+msgstr "Le terme n’est pas égal à"
 
 #: includes/admin/post-types/admin-field-group.php:138
 msgid "Term is equal to"
-msgstr ""
+msgstr "Le terme est égal à"
 
 #: includes/admin/post-types/admin-field-group.php:137
 msgid "Has no user selected"
@@ -1819,11 +1833,11 @@ msgstr "N’a pas de page sélectionnée"
 
 #: includes/admin/post-types/admin-field-group.php:130
 msgid "Has any page selected"
-msgstr ""
+msgstr "Comme une page sélectionnée"
 
 #: includes/admin/post-types/admin-field-group.php:129
 msgid "Pages do not contain"
-msgstr ""
+msgstr "Les pages ne contiennent pas"
 
 #: includes/admin/post-types/admin-field-group.php:128
 msgid "Pages contain"
@@ -1831,11 +1845,11 @@ msgstr "Les pages contiennent"
 
 #: includes/admin/post-types/admin-field-group.php:127
 msgid "Page is not equal to"
-msgstr ""
+msgstr "La page n’est pas égale à"
 
 #: includes/admin/post-types/admin-field-group.php:126
 msgid "Page is equal to"
-msgstr ""
+msgstr "La page est égale à"
 
 #: includes/admin/post-types/admin-field-group.php:125
 msgid "Has no relationship selected"
@@ -1855,7 +1869,7 @@ msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:121
 msgid "Posts do not contain"
-msgstr ""
+msgstr "Les publications ne contiennent pas"
 
 #: includes/admin/post-types/admin-field-group.php:120
 msgid "Posts contain"
@@ -1867,25 +1881,25 @@ msgstr ""
 
 #: includes/admin/post-types/admin-field-group.php:118
 msgid "Post is equal to"
-msgstr ""
+msgstr "La publication est égale à"
 
 #: includes/admin/post-types/admin-field-group.php:117
 msgid "Relationships do not contain"
-msgstr ""
+msgstr "Les relations ne contiennent pas"
 
 #: includes/admin/post-types/admin-field-group.php:116
 msgid "Relationships contain"
-msgstr ""
+msgstr "Les relations contiennent"
 
 #: includes/admin/post-types/admin-field-group.php:115
 msgid "Relationship is not equal to"
-msgstr ""
+msgstr "La relation n’est pas égale à"
 
 #: includes/admin/post-types/admin-field-group.php:114
 msgid "Relationship is equal to"
-msgstr ""
+msgstr "La relation est égale à"
 
-#: includes/Blocks/Bindings.php:35
+#: src/Blocks/Bindings.php:38
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
 msgstr "Champs ACF"
@@ -1946,6 +1960,10 @@ msgid ""
 "some of your fields has been modified by this change, but this may not be a "
 "breaking change. %2$s."
 msgstr ""
+"%1$s ACF renvoi désormais automatiquement au HTML non sécurisé lorsqu’il est "
+"rendu par <code>the_field</code> ou le code court ACF. Nous avons détecté "
+"que le résultat de certains de vos champs a été modifié par ce changement, "
+"mais il ne s’agit peut-être pas d’un changement radical. %2$s."
 
 #: includes/admin/views/escaped-html-notice.php:27
 msgid "Please contact your site administrator or developer for more details."
@@ -2688,8 +2706,8 @@ msgctxt "noun"
 msgid "Clone"
 msgstr "Cloner"
 
-#: includes/admin/views/global/navigation.php:86
-#: includes/class-acf-site-health.php:286 includes/fields.php:331
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:331
+#: src/Site_Health/Site_Health.php:290
 msgid "PRO"
 msgstr "Pro"
 
@@ -4695,7 +4713,7 @@ msgstr ""
 "avec ACF. <a href=\"%s\">Lancez-vous</a>."
 
 #: includes/admin/admin.php:46 includes/admin/admin.php:361
-#: includes/class-acf-site-health.php:250
+#: src/Site_Health/Site_Health.php:254
 msgid "ACF"
 msgstr "ACF"
 
@@ -5027,7 +5045,7 @@ msgstr "Activer cet élément"
 msgid "Move field group to trash?"
 msgstr "Déplacer le groupe de champs vers la corbeille ?"
 
-#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:519 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -5040,7 +5058,7 @@ msgstr "Inactif"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:562
+#: acf.php:577
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -5049,7 +5067,7 @@ msgstr ""
 "actives en même temps. Nous avons automatiquement désactivé Advanced Custom "
 "Fields Pro."
 
-#: acf.php:560
+#: acf.php:575
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5057,20 +5075,6 @@ msgstr ""
 "Advanced Custom Fields et Advanced Custom Fields Pro ne doivent pas être "
 "actives en même temps. Nous avons automatiquement désactivé Advanced Custom "
 "Fields."
-
-#. translators: %1 plugin name, %2 the URL to the documentation on this error
-#: includes/acf-value-functions.php:376
-msgid ""
-"<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
-"field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" "
-"target=\"_blank\">Learn how to fix this</a>."
-msgstr ""
-"<strong>%1$s</strong> - Nous avons détecté un ou plusieurs appels pour "
-"récupérer les valeurs des champs ACF avant l’initialisation d’ACF. Ceci "
-"n’est pas pris en charge et peut entraîner des données incorrectes ou "
-"manquantes. <a href=\"%2$s\" target=\"_blank\">Découvrez comment corriger ce "
-"problème</a>."
 
 #: includes/fields/class-acf-field-user.php:578
 msgid "%1$s must have a user with the %2$s role."
@@ -6220,28 +6224,28 @@ msgstr "Inconnu"
 msgid "Field type does not exist"
 msgstr "Le type de champ n’existe pas"
 
-#: includes/forms/form-front.php:217
+#: includes/forms/form-front.php:220
 msgid "Spam Detected"
 msgstr "Indésirable détecté"
 
-#: includes/forms/form-front.php:100
+#: includes/forms/form-front.php:103
 msgid "Post updated"
 msgstr "Publication mise à jour"
 
-#: includes/forms/form-front.php:99
+#: includes/forms/form-front.php:102
 msgid "Update"
 msgstr "Mise à jour"
 
-#: includes/forms/form-front.php:54
+#: includes/forms/form-front.php:63
 msgid "Validate Email"
 msgstr "Valider l’e-mail"
 
-#: includes/fields.php:326 includes/forms/form-front.php:46
+#: includes/fields.php:326 includes/forms/form-front.php:55
 msgid "Content"
 msgstr "Contenu"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
-#: includes/forms/form-front.php:37
+#: includes/forms/form-front.php:46
 msgid "Title"
 msgstr "Titre"
 
@@ -7541,17 +7545,15 @@ msgstr "Affiche le texte à côté de la case à cocher"
 msgid "Message"
 msgstr "Message"
 
-#: includes/assets.php:352 includes/class-acf-site-health.php:277
-#: includes/class-acf-site-health.php:339
-#: includes/fields/class-acf-field-true_false.php:79
+#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:79
 #: includes/fields/class-acf-field-true_false.php:175
+#: src/Site_Health/Site_Health.php:281 src/Site_Health/Site_Health.php:338
 msgid "No"
 msgstr "Non"
 
-#: includes/assets.php:351 includes/class-acf-site-health.php:276
-#: includes/class-acf-site-health.php:339
-#: includes/fields/class-acf-field-true_false.php:76
+#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:76
 #: includes/fields/class-acf-field-true_false.php:159
+#: src/Site_Health/Site_Health.php:280 src/Site_Health/Site_Health.php:338
 msgid "Yes"
 msgstr "Oui"
 
@@ -7690,90 +7692,90 @@ msgid "Time Picker"
 msgstr "Sélecteur d’heure"
 
 #. translators: counts for inactive field groups
-#: acf.php:510
+#: acf.php:525
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "<span class=\"count\">(%s)</span> inactif"
 msgstr[1] "<span class=\"count\">(%s)</span> inactifs"
 
-#: acf.php:471
+#: acf.php:486
 msgid "No Fields found in Trash"
 msgstr "Aucun champ trouvé dans la corbeille"
 
-#: acf.php:470
+#: acf.php:485
 msgid "No Fields found"
 msgstr "Aucun champ trouvé"
 
-#: acf.php:469
+#: acf.php:484
 msgid "Search Fields"
 msgstr "Rechercher des champs"
 
-#: acf.php:468
+#: acf.php:483
 msgid "View Field"
 msgstr "Voir le champ"
 
-#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:482 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Nouveau champ"
 
-#: acf.php:466
+#: acf.php:481
 msgid "Edit Field"
 msgstr "Modifier le champ"
 
-#: acf.php:465
+#: acf.php:480
 msgid "Add New Field"
 msgstr "Ajouter un nouveau champ"
 
-#: acf.php:463
+#: acf.php:478
 msgid "Field"
 msgstr "Champ"
 
-#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:477 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Champs"
 
-#: acf.php:437
+#: acf.php:452
 msgid "No Field Groups found in Trash"
 msgstr "Aucun groupe de champs trouvé dans la corbeille"
 
-#: acf.php:436
+#: acf.php:451
 msgid "No Field Groups found"
 msgstr "Aucun groupe de champs trouvé"
 
-#: acf.php:435
+#: acf.php:450
 msgid "Search Field Groups"
 msgstr "Rechercher des groupes de champs"
 
-#: acf.php:434
+#: acf.php:449
 msgid "View Field Group"
 msgstr "Voir le groupe de champs"
 
-#: acf.php:433
+#: acf.php:448
 msgid "New Field Group"
 msgstr "Nouveau groupe de champs"
 
-#: acf.php:432
+#: acf.php:447
 msgid "Edit Field Group"
 msgstr "Modifier le groupe de champs"
 
-#: acf.php:431
+#: acf.php:446
 msgid "Add New Field Group"
 msgstr "Ajouter un groupe de champs"
 
-#: acf.php:430 acf.php:464
+#: acf.php:445 acf.php:479
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Ajouter"
 
-#: acf.php:429
+#: acf.php:444
 msgid "Field Group"
 msgstr "Groupe de champs"
 
-#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:443 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"
@@ -7792,7 +7794,7 @@ msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com/"
 
 #. Plugin Name of the plugin
-#: acf.php acf.php:93
+#: acf.php acf.php:289
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
 

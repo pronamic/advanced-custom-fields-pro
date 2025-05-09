@@ -93,10 +93,11 @@ if ( ! defined( 'PWP_NAME' ) ) {
 	$acf_wpengine_logo     = sprintf( '<span><img class="acf-wp-engine-pro" src="%s" alt="WP Engine" /></span>', $acf_wpengine_logo );
 	$utm_content           = acf_is_pro() ? 'acf_pro_plugin_topbar_dropdown_cta' : 'acf_free_plugin_topbar_dropdown_cta';
 	$wpengine_more_items[] = array(
-		'url'      => acf_add_url_utm_tags( 'https://wpengine.com/plans/?coupon=freedomtocreate', 'bx_prod_referral', $utm_content, false, 'acf_plugin', 'referral' ),
-		'text'     => $acf_wpengine_logo . '<span class="acf-wp-engine-upsell-pill">' . __( '4 Months Free', 'acf' ) . '</span>',
-		'target'   => '_blank',
-		'li_class' => 'acf-wp-engine',
+		'url'        => acf_add_url_utm_tags( 'https://wpengine.com/plans/?coupon=freedomtocreate', 'bx_prod_referral', $utm_content, false, 'acf_plugin', 'referral' ),
+		'text'       => $acf_wpengine_logo . '<span class="acf-wp-engine-upsell-pill">' . __( '4 Months Free', 'acf' ) . '</span>',
+		'target'     => '_blank',
+		'li_class'   => 'acf-wp-engine',
+		'aria-label' => __( 'Get 4 months free on any WP Engine plan', 'acf' ),
 	);
 }
 
@@ -142,16 +143,18 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 	$section_html = '';
 
 	foreach ( $menu_items as $menu_item ) {
-		$class    = ! empty( $menu_item['class'] ) ? $menu_item['class'] : $menu_item['text'];
-		$target   = ! empty( $menu_item['target'] ) ? ' target="' . esc_attr( $menu_item['target'] ) . '"' : '';
-		$li_class = ! empty( $menu_item['li_class'] ) ? esc_attr( $menu_item['li_class'] ) : '';
+		$class      = ! empty( $menu_item['class'] ) ? $menu_item['class'] : $menu_item['text'];
+		$target     = ! empty( $menu_item['target'] ) ? ' target="' . esc_attr( $menu_item['target'] ) . '"' : '';
+		$aria_label = ! empty( $menu_item['aria-label'] ) ? ' aria-label="' . esc_attr( $menu_item['aria-label'] ) . '"' : '';
+		$li_class   = ! empty( $menu_item['li_class'] ) ? esc_attr( $menu_item['li_class'] ) : '';
 
 		$html = sprintf(
-			'<a class="acf-tab%s %s" href="%s"%s><i class="acf-icon"></i>%s</a>',
+			'<a class="acf-tab%s %s" href="%s"%s%s><i class="acf-icon"></i>%s</a>',
 			! empty( $menu_item['is_active'] ) ? ' is-active' : '',
 			'acf-header-tab-' . esc_attr( acf_slugify( $class ) ),
 			esc_url( $menu_item['url'] ),
 			$target,
+			$aria_label,
 			acf_esc_html( $menu_item['text'] )
 		);
 
@@ -173,11 +176,11 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 	<div class="acf-admin-toolbar-inner">
 		<div class="acf-nav-wrap">
 			<?php if ( acf_is_pro() && acf_pro_is_license_active() ) { ?>
-				<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=acf-field-group' ) ); ?>" class="acf-logo pro">
+				<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=acf-field-group' ) ); ?>" class="acf-logo pro" aria-label="<?php esc_attr_e( 'Edit ACF Field Groups', 'acf' ); ?>">
 					<img src="<?php echo esc_url( acf_get_url( 'assets/images/acf-pro-logo.svg' ) ); ?>" alt="<?php esc_attr_e( 'Advanced Custom Fields logo', 'acf' ); ?>">
 				</a>
 			<?php } else { ?>
-				<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=acf-field-group' ) ); ?>" class="acf-logo">
+				<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=acf-field-group' ) ); ?>" class="acf-logo" aria-label="<?php esc_attr_e( 'Edit ACF Field Groups', 'acf' ); ?>">
 					<img src="<?php echo esc_url( acf_get_url( 'assets/images/acf-logo.svg' ) ); ?>" alt="<?php esc_attr_e( 'Advanced Custom Fields logo', 'acf' ); ?>">
 				</a>
 			<?php } ?>
@@ -234,7 +237,7 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 				<?php
 			}
 			?>
-			<a href="<?php echo $acf_wpengine_logo_link; ?>" target="_blank" class="acf-nav-wpengine-logo"><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
+			<a href="<?php echo $acf_wpengine_logo_link; ?>" target="_blank" class="acf-nav-wpengine-logo" aria-label="<?php esc_attr_e( 'WP Engine', 'acf' ); ?>"><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped on generation. ?>
 				<img src="<?php echo esc_url( acf_get_url( 'assets/images/wp-engine-horizontal-white.svg' ) ); ?>" alt="<?php esc_html_e( 'WP Engine logo', 'acf' ); ?>" />
 			</a>
 		</div>

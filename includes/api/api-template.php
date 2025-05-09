@@ -142,7 +142,7 @@ function the_field( $selector, $post_id = false, $format_value = true ) {
  */
 function _acf_log_escaped_html( $function, $selector, $field, $post_id ) {
 	// If the notice isn't shown, no use in logging the errors.
-	if ( apply_filters( 'acf/admin/prevent_escaped_html_notice', false ) ) {
+	if ( apply_filters( 'acf/admin/prevent_escaped_html_notice', true ) ) {
 		return;
 	}
 

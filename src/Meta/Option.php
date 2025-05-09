@@ -7,9 +7,7 @@
  * @author     WP Engine
  */
 
-namespace ACF\Pro\Meta;
-
-use ACF\Meta\MetaLocation;
+namespace ACF\Meta;
 
 /**
  * A class to add support for saving to options.

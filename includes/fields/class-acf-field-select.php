@@ -4,20 +4,14 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 
 	class acf_field_select extends acf_field {
 
-
 		/**
-		 * This function will setup the field type data
+		 * Sets up the field type data.
 		 *
-		 * @type    function
-		 * @date    5/03/2014
 		 * @since   5.0.0
 		 *
-		 * @param   n/a
-		 * @return  n/a
+		 * @return void
 		 */
-		function initialize() {
-
-			// vars
+		public function initialize() {
 			$this->name          = 'select';
 			$this->label         = _x( 'Select', 'noun', 'acf' );
 			$this->category      = 'choice';
@@ -25,21 +19,21 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-select.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/select/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'multiple'      => 0,
-				'allow_null'    => 0,
-				'choices'       => array(),
-				'default_value' => '',
-				'ui'            => 0,
-				'ajax'          => 0,
-				'placeholder'   => '',
-				'return_format' => 'value',
+				'multiple'       => 0,
+				'allow_null'     => 0,
+				'choices'        => array(),
+				'default_value'  => '',
+				'ui'             => 0,
+				'ajax'           => 0,
+				'placeholder'    => '',
+				'return_format'  => 'value',
+				'create_options' => 0,
+				'save_options'   => 0,
 			);
 
-			// ajax
 			add_action( 'wp_ajax_acf/fields/select/query', array( $this, 'ajax_query' ) );
 			add_action( 'wp_ajax_nopriv_acf/fields/select/query', array( $this, 'ajax_query' ) );
 		}
-
 
 		/**
 		 * Enqueues admin scripts for the Select field.
@@ -208,26 +202,22 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 
 
 		/**
-		 * Create the HTML interface for your field
+		 * Creates the HTML interface for the field.
 		 *
-		 * @param   $field - an array holding all the field's data
+		 * @since 3.6
 		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @param array $field An array holding all the field's data.
+		 * @return void
 		 */
-		function render_field( $field ) {
-
-			// convert
+		public function render_field( $field ) {
 			$value   = acf_get_array( $field['value'] );
 			$choices = acf_get_array( $field['choices'] );
 
-			// placeholder
 			if ( empty( $field['placeholder'] ) ) {
 				$field['placeholder'] = _x( 'Select', 'verb', 'acf' );
 			}
 
-			// add empty value (allows '' to be selected)
+			// Add empty value (allows '' to be selected).
 			if ( empty( $value ) ) {
 				$value = array( '' );
 			}
@@ -250,7 +240,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				$choices = $minimal;
 			}
 
-			// vars
 			$select = array(
 				'id'               => $field['id'],
 				'class'            => $field['class'],
@@ -266,7 +255,6 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				$select['aria-label'] = $field['aria-label'];
 			}
 
-			// multiple
 			if ( $field['multiple'] ) {
 				$select['multiple'] = 'multiple';
 				$select['size']     = 5;
@@ -276,6 +264,10 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				if ( $field['ui'] ) {
 					$select['size'] = 1;
 				}
+			}
+
+			if ( ! empty( $field['create_options'] ) && $field['ui'] ) {
+				$select['data-create_options'] = true;
 			}
 
 			// special atts
@@ -298,7 +290,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				$select['data-minimum-results-for-search'] = '-1';
 			}
 
-			// hidden input is needed to allow validation to see <select> element with no selected value
+			// Hidden input is needed to allow validation to see <select> element with no selected value.
 			if ( $field['multiple'] || $field['ui'] ) {
 				acf_hidden_input(
 					array(
@@ -308,26 +300,34 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				);
 			}
 
-			// append
 			$select['value']   = $value;
 			$select['choices'] = $choices;
 
-			// render
+			if ( ! empty( $field['create_options'] ) && $field['ui'] && is_array( $field['value'] ) ) {
+				foreach ( $field['value'] as $value ) {
+					// Already exists in choices.
+					if ( isset( $field['choices'][ $value ] ) ) {
+						continue;
+					}
+
+					$option = esc_attr( $value );
+
+					$select['choices'][ $option ] = $option;
+				}
+			}
+
 			acf_select_input( $select );
 		}
 
-
 		/**
-		 * Create extra options for your field. This is rendered when editing a field.
-		 * The value of $field['name'] can be used (like bellow) to save extra data to the $field
+		 * Renders the field settings used in the "General" tab.
 		 *
-		 * @type    action
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @since 3.6
 		 *
-		 * @param   $field  - an array holding all the field's data
+		 * @param array $field An array holding all the field's data.
+		 * @return void
 		 */
-		function render_field_settings( $field ) {
+		public function render_field_settings( $field ) {
 
 			// encode choices (convert from array)
 			$field['choices']       = acf_encode_choices( $field['choices'] );
@@ -392,7 +392,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @param array $field The field settings array.
 		 * @return void
 		 */
-		function render_field_validation_settings( $field ) {
+		public function render_field_validation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -413,7 +413,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 		 * @param array $field The field settings array.
 		 * @return void
 		 */
-		function render_field_presentation_settings( $field ) {
+		public function render_field_presentation_settings( $field ) {
 			acf_render_field_setting(
 				$field,
 				array(
@@ -440,22 +440,70 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 					),
 				)
 			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Create Options', 'acf' ),
+					'instructions' => __( 'Allow content editors to create new options by typing in the Select input. Multiple options can be created from a comma separated string.', 'acf' ),
+					'name'         => 'create_options',
+					'type'         => 'true_false',
+					'ui'           => 1,
+					'conditions'   => array(
+						array(
+							'field'    => 'ui',
+							'operator' => '==',
+							'value'    => 1,
+						),
+						array(
+							'field'    => 'multiple',
+							'operator' => '==',
+							'value'    => 1,
+						),
+					),
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Save Options', 'acf' ),
+					'instructions' => __( 'Save created options back to the "Choices" setting in the field definition.', 'acf' ),
+					'name'         => 'save_options',
+					'type'         => 'true_false',
+					'ui'           => 1,
+					'conditions'   => array(
+						array(
+							'field'    => 'ui',
+							'operator' => '==',
+							'value'    => 1,
+						),
+						array(
+							'field'    => 'multiple',
+							'operator' => '==',
+							'value'    => 1,
+						),
+						array(
+							'field'    => 'create_options',
+							'operator' => '==',
+							'value'    => 1,
+						),
+					),
+				)
+			);
 		}
 
 		/**
-		 * This filter is applied to the $value after it is loaded from the db
+		 * Filters the $value after it is loaded from the db.
 		 *
-		 * @type    filter
 		 * @since   3.6
-		 * @date    23/01/13
 		 *
-		 * @param   $value (mixed) the value found in the database
-		 * @param   $post_id (mixed) the post_id from which the value was loaded
-		 * @param   $field (array) the field array holding all the field options
-		 * @return  $value
+		 * @param mixed          $value   The value found in the database.
+		 * @param integer|string $post_id The post_id from which the value was loaded.
+		 * @param array          $field   The field array holding all the field options.
+		 * @return mixed
 		 */
-		function load_value( $value, $post_id, $field ) {
-
+		public function load_value( $value, $post_id, $field ) {
 			// Return an array when field is set for multiple.
 			if ( $field['multiple'] ) {
 				if ( acf_is_empty( $value ) ) {
@@ -468,23 +516,16 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 			return acf_unarray( $value );
 		}
 
-
 		/**
+		 * Filters the $field before it is saved to the database.
 		 *
-		 * This filter is appied to the $field before it is saved to the database
+		 * @since 3.6
 		 *
-		 * @type    filter
-		 * @since   3.6
-		 * @date    23/01/13
-		 *
-		 * @param   $field - the field array holding all the field options
-		 * @param   $post_id - the field group ID (post_type = acf)
-		 *
-		 * @return  $field - the modified field
+		 * @param array $field The field array holding all the field options.
+		 * @return array
 		 */
-		function update_field( $field ) {
-
-			// decode choices (convert to array)
+		public function update_field( $field ) {
+			// Decode choices (convert to array).
 			$field['choices']       = acf_decode_choices( $field['choices'] );
 			$field['default_value'] = acf_decode_choices( $field['default_value'], true );
 
@@ -493,26 +534,21 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				$field['default_value'] = acf_unarray( $field['default_value'] );
 			}
 
-			// return
 			return $field;
 		}
 
-
 		/**
-		 * This filter is appied to the $value before it is updated in the db
+		 * Filters the $value before it is updated in the db.
 		 *
-		 * @type    filter
-		 * @since   3.6
-		 * @date    23/01/13
+		 * @since 3.6
 		 *
-		 * @param   $value - the value which will be saved in the database
-		 * @param   $post_id - the post_id of which the value will be saved
-		 * @param   $field - the field array holding all the field options
+		 * @param mixed          $value   The value which will be saved in the database.
+		 * @param integer|string $post_id The post_id of which the value will be saved.
+		 * @param array          $field   The field array holding all the field options.
 		 *
-		 * @return  $value - the modified value
+		 * @return mixed
 		 */
-		function update_value( $value, $post_id, $field ) {
-
+		public function update_value( $value, $post_id, $field ) {
 			// Bail early if no value.
 			if ( empty( $value ) ) {
 				return $value;
@@ -524,45 +560,63 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				$value = array_map( 'strval', $value );
 			}
 
-			// return
+			// Save custom options back to the field definition if configured.
+			if ( ! empty( $field['save_options'] ) && is_array( $value ) ) {
+				// Get the raw field, using the ID if present or the key otherwise (i.e. when using JSON).
+				$selector = $field['ID'] ? $field['ID'] : $field['key'];
+				$field    = acf_get_field( $selector );
+
+				// Bail if we don't have a valid field or field ID (JSON only).
+				if ( empty( $field['ID'] ) ) {
+					return $value;
+				}
+
+				foreach ( $value as $v ) {
+					// Ignore if the option already exists.
+					if ( isset( $field['choices'][ $v ] ) ) {
+						continue;
+					}
+
+					// Unslash (fixes serialize single quote issue) and sanitize.
+					$v = wp_unslash( $v );
+					$v = sanitize_text_field( $v );
+
+					// Append to the field choices.
+					$field['choices'][ $v ] = $v;
+				}
+
+				acf_update_field( $field );
+			}
+
 			return $value;
 		}
 
-
 		/**
-		 * This function will translate field settings
+		 * Translates the field settings.
 		 *
-		 * @type    function
-		 * @date    8/03/2016
-		 * @since   5.3.2
+		 * @since 5.3.2
 		 *
-		 * @param   $field (array)
-		 * @return  $field
+		 * @param array $field The main field array.
+		 * @return array
 		 */
-		function translate_field( $field ) {
-
-			// translate
+		public function translate_field( $field ) {
 			$field['choices'] = acf_translate( $field['choices'] );
-
-			// return
 			return $field;
 		}
 
 
 		/**
-		 * This filter is appied to the $value after it is loaded from the db and before it is returned to the template
+		 * Filters the $value after it is loaded from the db, and before it is returned to the template.
 		 *
-		 * @type    filter
 		 * @since   3.6
-		 * @date    23/01/13
 		 *
-		 * @param   $value (mixed) the value which was loaded from the database
-		 * @param   $post_id (mixed) the post_id from which the value was loaded
-		 * @param   $field (array) the field array holding all the field options
+		 * @param mixed          $value   The value which was loaded from the database.
+		 * @param integer|string $post_id The post_id from which the value was loaded.
+		 * @param array          $field   The field array holding all the field options.
 		 *
-		 * @return  $value (mixed) the modified value
+		 * @return mixed
 		 */
-		function format_value( $value, $post_id, $field ) {
+		public function format_value( $value, $post_id, $field ) {
 			if ( is_array( $value ) ) {
 				foreach ( $value as $i => $val ) {
 					$value[ $i ] = $this->format_value_single( $val, $post_id, $field );
@@ -570,37 +624,37 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 			} else {
 				$value = $this->format_value_single( $value, $post_id, $field );
 			}
+
 			return $value;
 		}
 
-
-		function format_value_single( $value, $post_id, $field ) {
-
-			// bail early if is empty
+		/**
+		 * Formats the value when the select is not a multi-select.
+		 *
+		 * @since 3.6
+		 *
+		 * @param mixed          $value   The value to format.
+		 * @param integer|string $post_id The post_id from which the value was loaded.
+		 * @param array          $field   The field array holding all the field options.
+		 * @return mixed
+		 */
+		public function format_value_single( $value, $post_id, $field ) {
+			// Bail early if is empty.
 			if ( acf_is_empty( $value ) ) {
 				return $value;
 			}
 
-			// vars
 			$label = acf_maybe_get( $field['choices'], $value, $value );
 
-			// value
-			if ( $field['return_format'] == 'value' ) {
-
-				// do nothing
-				// label
-			} elseif ( $field['return_format'] == 'label' ) {
+			if ( $field['return_format'] === 'label' ) {
 				$value = $label;
-
-				// array
-			} elseif ( $field['return_format'] == 'array' ) {
+			} elseif ( $field['return_format'] === 'array' ) {
 				$value = array(
 					'value' => $value,
 					'label' => $label,
 				);
 			}
 
-			// return
 			return $value;
 		}
 

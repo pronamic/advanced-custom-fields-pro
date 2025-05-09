@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 6.4.0.1
+Stable tag: 6.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,16 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 6.4.1 =
+*Release Date 8th May 2025*
+
+* New - Select fields can now be configured to allow creating new options when editing the field's value (requires the "Stylized UI" and "Multiple" field settings to be enabled)
+* Enhancement - The "Escaped HTML" warning notice [introduced in ACF 6.2.5](https://www.advancedcustomfields.com/blog/acf-6-2-5-security-release/) is now disabled by default
+* Enhancement - The Icon Picker field now supports supplying an array of icons to a custom tab via a new `acf/fields/icon_picker/{tab_name}/icons` filter
+* Fix - ACF Blocks are now forced into preview mode when editing a synced pattern
+* Fix - The free ACF plugin once again works with the Classic Widgets plugin and the legacy ACF Options Page addon
+* Fix - ACF no longer causes an infinite loop in bbPress when editing replies
+
 = 6.4.0.1 =
 *Release Date 8th April 2025*
 
@@ -103,7 +113,6 @@ From your WordPress dashboard
 *Release Date 7th April 2025*
 
 * New - In ACF PRO, fields can now be added to WooCommerce orders when using HPOS
-* Enhancement - The "Escaped HTML" warning notice is now disabled by default
 * Enhancement - ACF now uses Composer to autoload some classes
 * Fix - Repeater pagination now works when the Repeater is inside a Group field
 * Fix - Various translations are no longer called before the WordPress `init` action hook

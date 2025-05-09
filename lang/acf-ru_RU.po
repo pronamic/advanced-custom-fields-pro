@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-04T12:09:00+00:00\n"
+"PO-Revision-Date: 2025-05-08T10:20:52+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: src/Site_Health/Site_Health.php:517
+msgid "Number of Field Groups with Blocks and Other Locations"
+msgstr ""
+"Количество групп полей с правилами размещения как для блоков, так и для "
+"других типов."
+
+#: src/Site_Health/Site_Health.php:512
+msgid "Number of Field Groups with Multiple Block Locations"
+msgstr ""
+"Количество групп полей, у которых несколько правил размещения для блоков."
+
+#: src/Site_Health/Site_Health.php:507
+msgid "Number of Field Groups with a Single Block Location"
+msgstr ""
+"Количество групп полей с единственным правилом размещения типа \"Блок\"."
+
+#: src/Site_Health/Site_Health.php:476
+msgid "All Location Rules"
+msgstr "Все правила местонахождения"
 
 #: includes/validation.php:144
 msgid "Learn more"
@@ -30,22 +50,20 @@ msgid ""
 "ACF was unable to perform validation because the provided nonce failed "
 "verification."
 msgstr ""
+"ACF не смог выполнить проверку, потому что переданный nonce не прошёл "
+"верификацию."
 
 #: includes/validation.php:131
 msgid ""
 "ACF was unable to perform validation because no nonce was received by the "
 "server."
-msgstr ""
+msgstr "ACF не смог выполнить проверку, потому что сервер не получил nonce."
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:324
 msgid "are developed and maintained by"
-msgstr ""
-
-#: includes/class-acf-site-health.php:291
-msgid "Update Source"
-msgstr "Обновить источник"
+msgstr "разработано и обслуживается"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:850
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:810
@@ -84,10 +102,6 @@ msgstr ""
 "специальном контексте без доступа к каким-либо суперглобальным переменным, "
 "таким как $_POST или $_GET."
 
-#: includes/class-acf-site-health.php:292
-msgid "wordpress.org"
-msgstr "wordpress.org"
-
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
 msgstr "Разрешить доступ к значению в пользовательском интерфейсе редактора"
@@ -106,13 +120,13 @@ msgstr ""
 "Откройте доступ редакторам содержимого к отображению значения поля в "
 "интерфейсе редактора с помощью привязки к блоку или шорткода ACF. %s"
 
-#: includes/Blocks/Bindings.php:64
+#: src/Blocks/Bindings.php:67
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
 msgstr ""
 
-#: includes/api/api-template.php:1085 includes/Blocks/Bindings.php:72
+#: includes/api/api-template.php:1085 src/Blocks/Bindings.php:75
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -213,7 +227,7 @@ msgstr "Иконка Twitch"
 
 #: includes/fields/class-acf-field-icon_picker.php:691
 msgid "Tide Icon"
-msgstr ""
+msgstr "Иконка Tide"
 
 #: includes/fields/class-acf-field-icon_picker.php:690
 msgid "Tickets (alt) Icon"
@@ -816,7 +830,7 @@ msgstr "Неверные аргументы запроса."
 msgid "Sorry, you do not have permission to do that."
 msgstr "Извините, у вас нет разрешения чтобы делать это."
 
-#: includes/class-acf-site-health.php:648
+#: src/Site_Health/Site_Health.php:715
 msgid "Blocks Using Post Meta"
 msgstr "Блоки, использующие мета данные записей"
 
@@ -828,7 +842,7 @@ msgstr "Логотип ACF PRO"
 
 #: includes/admin/views/acf-field-group/field.php:37
 msgid "ACF PRO Logo"
-msgstr ""
+msgstr "Логотип ACF PRO"
 
 #. translators: %s - field/param name
 #: includes/fields/class-acf-field-icon_picker.php:788
@@ -1570,183 +1584,183 @@ msgstr ""
 msgid "Icon Picker"
 msgstr "Подборщик иконки"
 
-#: includes/class-acf-site-health.php:709
+#: src/Site_Health/Site_Health.php:776
 msgid "JSON Load Paths"
 msgstr "Пути загрузки JSON"
 
-#: includes/class-acf-site-health.php:703
+#: src/Site_Health/Site_Health.php:770
 msgid "JSON Save Paths"
 msgstr "Пути сохранения JSON"
 
-#: includes/class-acf-site-health.php:694
+#: src/Site_Health/Site_Health.php:761
 msgid "Registered ACF Forms"
 msgstr "Зарегистрированные ACF формы"
 
-#: includes/class-acf-site-health.php:688
+#: src/Site_Health/Site_Health.php:755
 msgid "Shortcode Enabled"
 msgstr "Шорткод включен"
 
-#: includes/class-acf-site-health.php:680
+#: src/Site_Health/Site_Health.php:747
 msgid "Field Settings Tabs Enabled"
 msgstr "Вкладки настроек поля включены"
 
-#: includes/class-acf-site-health.php:672
+#: src/Site_Health/Site_Health.php:739
 msgid "Field Type Modal Enabled"
 msgstr "Окно типа поля включено"
 
-#: includes/class-acf-site-health.php:664
+#: src/Site_Health/Site_Health.php:731
 msgid "Admin UI Enabled"
 msgstr "Интерфейс администратора включен"
 
-#: includes/class-acf-site-health.php:655
+#: src/Site_Health/Site_Health.php:722
 msgid "Block Preloading Enabled"
 msgstr "Предварительная загрузка блока включена"
 
-#: includes/class-acf-site-health.php:643
+#: src/Site_Health/Site_Health.php:710
 msgid "Blocks Per ACF Block Version"
 msgstr ""
 
-#: includes/class-acf-site-health.php:638
+#: src/Site_Health/Site_Health.php:705
 msgid "Blocks Per API Version"
 msgstr "Блоки по версии API"
 
-#: includes/class-acf-site-health.php:611
+#: src/Site_Health/Site_Health.php:678
 msgid "Registered ACF Blocks"
 msgstr "Зарегистрированные ACF блоки"
 
-#: includes/class-acf-site-health.php:605
+#: src/Site_Health/Site_Health.php:672
 msgid "Light"
 msgstr "Светлый"
 
-#: includes/class-acf-site-health.php:605
+#: src/Site_Health/Site_Health.php:672
 msgid "Standard"
 msgstr "Стадартный"
 
-#: includes/class-acf-site-health.php:604
+#: src/Site_Health/Site_Health.php:671
 msgid "REST API Format"
 msgstr "Формат REST API"
 
-#: includes/class-acf-site-health.php:596
+#: src/Site_Health/Site_Health.php:663
 msgid "Registered Options Pages (PHP)"
 msgstr "Зарегистрированные страницы настроек (PHP)"
 
-#: includes/class-acf-site-health.php:582
+#: src/Site_Health/Site_Health.php:649
 msgid "Registered Options Pages (JSON)"
 msgstr "Зарегистрированные страницы настроек (JSON)"
 
-#: includes/class-acf-site-health.php:577
+#: src/Site_Health/Site_Health.php:644
 msgid "Registered Options Pages (UI)"
 msgstr "Зарегистрированные страницы настроек (UI)"
 
-#: includes/class-acf-site-health.php:547
+#: src/Site_Health/Site_Health.php:614
 msgid "Options Pages UI Enabled"
 msgstr "Интерфейс страниц настроек включен"
 
-#: includes/class-acf-site-health.php:539
+#: src/Site_Health/Site_Health.php:606
 msgid "Registered Taxonomies (JSON)"
 msgstr "Зарегистрированные таксономии (JSON)"
 
-#: includes/class-acf-site-health.php:527
+#: src/Site_Health/Site_Health.php:594
 msgid "Registered Taxonomies (UI)"
 msgstr "Зарегистрированные таксономии (UI)"
 
-#: includes/class-acf-site-health.php:515
+#: src/Site_Health/Site_Health.php:582
 msgid "Registered Post Types (JSON)"
 msgstr "Зарегистрированные типы записей (JSON)"
 
-#: includes/class-acf-site-health.php:503
+#: src/Site_Health/Site_Health.php:570
 msgid "Registered Post Types (UI)"
 msgstr "Зарегистрированные типы записей (UI)"
 
-#: includes/class-acf-site-health.php:490
+#: src/Site_Health/Site_Health.php:557
 msgid "Post Types and Taxonomies Enabled"
 msgstr "Типы записей и таксономии включены"
 
-#: includes/class-acf-site-health.php:483
+#: src/Site_Health/Site_Health.php:550
 msgid "Number of Third Party Fields by Field Type"
 msgstr "Кол-во сторонних полей по типу поля"
 
-#: includes/class-acf-site-health.php:478
+#: src/Site_Health/Site_Health.php:545
 msgid "Number of Fields by Field Type"
 msgstr "Кол-во полей по типу поля"
 
-#: includes/class-acf-site-health.php:445
+#: src/Site_Health/Site_Health.php:444
 msgid "Field Groups Enabled for GraphQL"
 msgstr "Группы полей включены для GraphQL"
 
-#: includes/class-acf-site-health.php:432
+#: src/Site_Health/Site_Health.php:431
 msgid "Field Groups Enabled for REST API"
 msgstr "Группы полей включены для REST API"
 
-#: includes/class-acf-site-health.php:420
+#: src/Site_Health/Site_Health.php:419
 msgid "Registered Field Groups (JSON)"
 msgstr "Зарегистрированные группы полей (JSON)"
 
-#: includes/class-acf-site-health.php:408
+#: src/Site_Health/Site_Health.php:407
 msgid "Registered Field Groups (PHP)"
 msgstr "Зарегистрированные группы полей (PHP)"
 
-#: includes/class-acf-site-health.php:396
+#: src/Site_Health/Site_Health.php:395
 msgid "Registered Field Groups (UI)"
 msgstr "Зарегистрированные группы полей (UI)"
 
-#: includes/class-acf-site-health.php:384
+#: src/Site_Health/Site_Health.php:383
 msgid "Active Plugins"
 msgstr "Активные плагины"
 
-#: includes/class-acf-site-health.php:358
+#: src/Site_Health/Site_Health.php:357
 msgid "Parent Theme"
 msgstr "Родительская тема"
 
-#: includes/class-acf-site-health.php:347
+#: src/Site_Health/Site_Health.php:346
 msgid "Active Theme"
 msgstr "Активная тема"
 
-#: includes/class-acf-site-health.php:338
+#: src/Site_Health/Site_Health.php:337
 msgid "Is Multisite"
 msgstr "Является мультисайтом"
 
-#: includes/class-acf-site-health.php:333
+#: src/Site_Health/Site_Health.php:332
 msgid "MySQL Version"
 msgstr "Версия MySQL"
 
-#: includes/class-acf-site-health.php:328
+#: src/Site_Health/Site_Health.php:327
 msgid "WordPress Version"
 msgstr "Версия WordPress"
 
-#: includes/class-acf-site-health.php:321
+#: src/Site_Health/Site_Health.php:320
 msgid "Subscription Expiry Date"
-msgstr ""
+msgstr "Дата окончания подписки"
 
-#: includes/class-acf-site-health.php:313
+#: src/Site_Health/Site_Health.php:312
 msgid "License Status"
 msgstr "Статус лицензии"
 
-#: includes/class-acf-site-health.php:308
+#: src/Site_Health/Site_Health.php:307
 msgid "License Type"
 msgstr "Тип лицензии"
 
-#: includes/class-acf-site-health.php:303
+#: src/Site_Health/Site_Health.php:302
 msgid "Licensed URL"
-msgstr ""
+msgstr "URL лицензии"
 
-#: includes/class-acf-site-health.php:297
+#: src/Site_Health/Site_Health.php:296
 msgid "License Activated"
 msgstr "Лицензия активирована"
 
-#: includes/class-acf-site-health.php:286
+#: src/Site_Health/Site_Health.php:290
 msgid "Free"
 msgstr "Бесплатный"
 
-#: includes/class-acf-site-health.php:285
+#: src/Site_Health/Site_Health.php:289
 msgid "Plugin Type"
 msgstr "Тип плагина"
 
-#: includes/class-acf-site-health.php:280
+#: src/Site_Health/Site_Health.php:284
 msgid "Plugin Version"
 msgstr "Версия плагина"
 
-#: includes/class-acf-site-health.php:251
+#: src/Site_Health/Site_Health.php:255
 msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
@@ -1900,7 +1914,7 @@ msgstr "Взаимосвязь не равна"
 msgid "Relationship is equal to"
 msgstr "Взаимосвязь равна"
 
-#: includes/Blocks/Bindings.php:35
+#: src/Blocks/Bindings.php:38
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
 msgstr "Поля ACF"
@@ -1911,21 +1925,23 @@ msgstr "Функция ACF PRO"
 
 #: includes/admin/views/browse-fields-modal.php:10
 msgid "Renew PRO to Unlock"
-msgstr ""
+msgstr "Возобновить PRO чтобы разблокировать"
 
 #: includes/admin/views/browse-fields-modal.php:8
 msgid "Renew PRO License"
-msgstr ""
+msgstr "Возобновить лицензию PRO"
 
 #: includes/admin/views/acf-field-group/field.php:41
 msgid "PRO fields cannot be edited without an active license."
-msgstr ""
+msgstr "PRO-поля не могут быть отредактированы без активной лицензии"
 
 #: includes/admin/admin-internal-post-type-list.php:232
 msgid ""
 "Please activate your ACF PRO license to edit field groups assigned to an ACF "
 "Block."
 msgstr ""
+"Пожалуйста, активируйте лицензию ACF PRO чтобы редактировать группы полей "
+"которые привязаны к ACF-блокам."
 
 #: includes/admin/admin-internal-post-type-list.php:231
 msgid "Please activate your ACF PRO license to edit this options page."
@@ -1985,7 +2001,7 @@ msgstr "%1$s (%2$s) - отрисовано через %3$s"
 
 #: includes/admin/views/global/navigation.php:226
 msgid "Renew ACF PRO License"
-msgstr ""
+msgstr "Возобновить лицензию ACF PRO"
 
 #: includes/admin/views/acf-field-group/pro-features.php:17
 msgid "Renew License"
@@ -2001,7 +2017,7 @@ msgstr "Расположение 'Сверху' не поддерживаетс�
 
 #: includes/admin/views/options-page-preview.php:30
 msgid "Upgrade to ACF PRO"
-msgstr ""
+msgstr "Обновить до ACF PRO"
 
 #. translators: %s URL to ACF options pages documentation
 #: includes/admin/views/options-page-preview.php:7
@@ -2197,7 +2213,7 @@ msgstr ""
 
 #: includes/admin/views/acf-field-group/pro-features.php:6
 msgid "View Pricing & Upgrade"
-msgstr ""
+msgstr "Просмотр цен и обновление"
 
 #: includes/admin/views/acf-field-group/pro-features.php:3
 #: includes/admin/views/options-page-preview.php:29
@@ -2672,8 +2688,8 @@ msgctxt "noun"
 msgid "Clone"
 msgstr "Клонировать"
 
-#: includes/admin/views/global/navigation.php:86
-#: includes/class-acf-site-health.php:286 includes/fields.php:331
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:331
+#: src/Site_Health/Site_Health.php:290
 msgid "PRO"
 msgstr "PRO"
 
@@ -4343,9 +4359,9 @@ msgstr ". Плагин Custom Post Type UI можно деактивироват
 #: includes/admin/tools/class-acf-admin-tool-import.php:273
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Импортировано %d запись из Custom Post Type UI -"
+msgstr[1] "Импортировано %d записи из Custom Post Type UI -"
+msgstr[2] "Импортировано %d записей из Custom Post Type UI -"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:257
 msgid "Failed to import taxonomies."
@@ -4635,7 +4651,7 @@ msgstr ""
 "Post Type UI, и управлять ими с помощью ACF. <a href=\"%s\">Начать</a>."
 
 #: includes/admin/admin.php:46 includes/admin/admin.php:361
-#: includes/class-acf-site-health.php:250
+#: src/Site_Health/Site_Health.php:254
 msgid "ACF"
 msgstr "ACF"
 
@@ -4971,7 +4987,7 @@ msgstr "Активировать этот элемент"
 msgid "Move field group to trash?"
 msgstr "Переместить группу полей в корзину?"
 
-#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:519 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -4984,7 +5000,7 @@ msgstr "Неактивна"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:562
+#: acf.php:577
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -4993,7 +5009,7 @@ msgstr ""
 "должны быть активны одновременно. Мы автоматически деактивировали "
 "Продвинутые пользовательские поля PRO."
 
-#: acf.php:560
+#: acf.php:575
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5002,25 +5018,12 @@ msgstr ""
 "должны быть активны одновременно. Мы автоматически деактивировали "
 "Продвинутые пользовательские поля."
 
-#. translators: %1 plugin name, %2 the URL to the documentation on this error
-#: includes/acf-value-functions.php:376
-msgid ""
-"<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
-"field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" "
-"target=\"_blank\">Learn how to fix this</a>."
-msgstr ""
-"<strong>%1$s</strong> - Мы обнаружили один или несколько вызовов для "
-"получения значений ACF полей до момента инициализации ACF. Это неправильно и "
-"может привести к искажению или отсутствию данных. <a href=\"%2$s\" "
-"target=\"_blank\">Узнайте, как это исправить</a>."
-
 #: includes/fields/class-acf-field-user.php:578
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$s должно содержать пользователя со следующими ролью: %2$s"
+msgstr[1] "%1$s должно содержать пользователя со следующими ролями: %2$s"
+msgstr[2] "%1$s должно содержать пользователя со следующими ролями: %2$s"
 
 #: includes/fields/class-acf-field-user.php:569
 msgid "%1$s must have a valid user ID."
@@ -6150,28 +6153,28 @@ msgstr "Неизвестный"
 msgid "Field type does not exist"
 msgstr "Тип поля не существует"
 
-#: includes/forms/form-front.php:217
+#: includes/forms/form-front.php:220
 msgid "Spam Detected"
 msgstr "Обнаружение спама"
 
-#: includes/forms/form-front.php:100
+#: includes/forms/form-front.php:103
 msgid "Post updated"
 msgstr "Запись обновлена"
 
-#: includes/forms/form-front.php:99
+#: includes/forms/form-front.php:102
 msgid "Update"
 msgstr "Обновить"
 
-#: includes/forms/form-front.php:54
+#: includes/forms/form-front.php:63
 msgid "Validate Email"
 msgstr "Проверка Email"
 
-#: includes/fields.php:326 includes/forms/form-front.php:46
+#: includes/fields.php:326 includes/forms/form-front.php:55
 msgid "Content"
 msgstr "Содержимое"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
-#: includes/forms/form-front.php:37
+#: includes/forms/form-front.php:46
 msgid "Title"
 msgstr "Заголовок"
 
@@ -7085,9 +7088,9 @@ msgstr "Текст"
 #: includes/fields/class-acf-field-relationship.php:753
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%1$s требует выбора как минимум %2$s элемента"
+msgstr[1] "%1$s требует выбора как минимум %2$s элемента"
+msgstr[2] "%1$s требует выбора как минимум %2$s элементов"
 
 #: includes/fields/class-acf-field-post_object.php:402
 #: includes/fields/class-acf-field-relationship.php:616
@@ -7469,17 +7472,15 @@ msgstr "Отображать текст рядом с флажком"
 msgid "Message"
 msgstr "Сообщение"
 
-#: includes/assets.php:352 includes/class-acf-site-health.php:277
-#: includes/class-acf-site-health.php:339
-#: includes/fields/class-acf-field-true_false.php:79
+#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:79
 #: includes/fields/class-acf-field-true_false.php:175
+#: src/Site_Health/Site_Health.php:281 src/Site_Health/Site_Health.php:338
 msgid "No"
 msgstr "Нет"
 
-#: includes/assets.php:351 includes/class-acf-site-health.php:276
-#: includes/class-acf-site-health.php:339
-#: includes/fields/class-acf-field-true_false.php:76
+#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:76
 #: includes/fields/class-acf-field-true_false.php:159
+#: src/Site_Health/Site_Health.php:280 src/Site_Health/Site_Health.php:338
 msgid "Yes"
 msgstr "Да"
 
@@ -7618,91 +7619,91 @@ msgid "Time Picker"
 msgstr "Подборщик времени"
 
 #. translators: counts for inactive field groups
-#: acf.php:510
+#: acf.php:525
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "Неактивен <span class=\"count\">(%s)</span>"
 msgstr[1] "Неактивны <span class=\"count\">(%s)</span>"
 msgstr[2] "Неактивно <span class=\"count\">(%s)</span>"
 
-#: acf.php:471
+#: acf.php:486
 msgid "No Fields found in Trash"
 msgstr "Поля не найдены в корзине"
 
-#: acf.php:470
+#: acf.php:485
 msgid "No Fields found"
 msgstr "Поля не найдены"
 
-#: acf.php:469
+#: acf.php:484
 msgid "Search Fields"
 msgstr "Поиск полей"
 
-#: acf.php:468
+#: acf.php:483
 msgid "View Field"
 msgstr "Просмотреть поле"
 
-#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:482 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Новое поле"
 
-#: acf.php:466
+#: acf.php:481
 msgid "Edit Field"
 msgstr "Изменить поле"
 
-#: acf.php:465
+#: acf.php:480
 msgid "Add New Field"
 msgstr "Добавить новое поле"
 
-#: acf.php:463
+#: acf.php:478
 msgid "Field"
 msgstr "Поле"
 
-#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:477 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Поля"
 
-#: acf.php:437
+#: acf.php:452
 msgid "No Field Groups found in Trash"
 msgstr "Группы полей не найдены в корзине"
 
-#: acf.php:436
+#: acf.php:451
 msgid "No Field Groups found"
 msgstr "Группы полей не найдены"
 
-#: acf.php:435
+#: acf.php:450
 msgid "Search Field Groups"
 msgstr "Найти группу полей"
 
-#: acf.php:434
+#: acf.php:449
 msgid "View Field Group"
 msgstr "Просмотреть группу полей"
 
-#: acf.php:433
+#: acf.php:448
 msgid "New Field Group"
 msgstr "Новая группа полей"
 
-#: acf.php:432
+#: acf.php:447
 msgid "Edit Field Group"
 msgstr "Редактирование группы полей"
 
-#: acf.php:431
+#: acf.php:446
 msgid "Add New Field Group"
 msgstr "Добавить новую группу полей"
 
-#: acf.php:430 acf.php:464
+#: acf.php:445 acf.php:479
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Добавить новое"
 
-#: acf.php:429
+#: acf.php:444
 msgid "Field Group"
 msgstr "Группа полей"
 
-#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:443 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"
@@ -7721,7 +7722,7 @@ msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php acf.php:93
+#: acf.php acf.php:289
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
 

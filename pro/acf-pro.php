@@ -20,9 +20,6 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			acf_update_setting( 'pro', true );
 			acf_update_setting( 'name', 'Advanced Custom Fields PRO' );
 
-			// Initialize autoloaded classes.
-			acf_new_instance( 'ACF\Pro\Meta\Option' );
-
 			// includes
 			acf_include( 'pro/blocks.php' );
 			acf_include( 'pro/options-page.php' );

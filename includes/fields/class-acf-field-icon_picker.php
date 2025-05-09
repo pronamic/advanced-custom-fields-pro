@@ -67,6 +67,43 @@ if ( ! class_exists( 'acf_field_icon_picker' ) ) :
 		}
 
 		/**
+		 * Renders an icon list tab (i.e. dashicons, custom icons).
+		 *
+		 * @since 6.4
+		 *
+		 * @param string $tab_name The name of the tab being rendered.
+		 * @return void
+		 */
+		public function render_icon_list_tab( $tab_name ) {
+			?>
+			<div class="acf-icon-list-search-wrap">
+				<?php
+				acf_text_input(
+					array(
+						'class'       => 'acf-icon-list-search-input',
+						'placeholder' => esc_html__( 'Search icons...', 'acf' ),
+						'type'        => 'search',
+					)
+				);
+				?>
+			</div>
+			<div class="acf-icon-list" role="radiogroup" data-parent-tab="<?php echo esc_attr( $tab_name ); ?>"></div>
+			<div class="acf-icon-list-empty">
+				<img src="<?php echo esc_url( acf_get_url( 'assets/images/face-sad.svg' ) ); ?>" />
+				<p class="acf-no-results-text">
+					<?php
+					printf(
+						/* translators: %s: The invalid search term */
+						esc_html__( "No search results for '%s'", 'acf' ),
+						'<span class="acf-invalid-icon-list-search-term"></span>'
+					);
+					?>
+				</p>
+			</div>
+			<?php
+		}
+
+		/**
 		 * Renders icon picker field
 		 *
 		 * @since 6.3
@@ -131,35 +168,11 @@ if ( ! class_exists( 'acf_field_icon_picker' ) ) :
 				}
 
 				$wrapper_class = str_replace( '_', '-', $name );
-				echo '<div class="acf-icon-picker-tabs acf-icon-picker-' . esc_attr( $wrapper_class ) . '-tabs">';
+				echo '<div class="acf-icon-picker-tabs acf-icon-picker-' . esc_attr( $wrapper_class ) . '-tabs" data-tab="' . esc_attr( $name ) . '">';
 
 				switch ( $name ) {
 					case 'dashicons':
-						echo '<div class="acf-dashicons-search-wrap">';
-							acf_text_input(
-								array(
-									'class'       => 'acf-dashicons-search-input',
-									'placeholder' => esc_html__( 'Search icons...', 'acf' ),
-									'type'        => 'search',
-								)
-							);
-						echo '</div>';
-						echo '<div class="acf-dashicons-list"></div>';
-						?>
-						<div class="acf-dashicons-list-empty">
-							<img src="<?php echo esc_url( acf_get_url( 'assets/images/face-sad.svg' ) ); ?>" />
-							<p class="acf-no-results-text">
-								<?php
-								printf(
-									/* translators: %s: The invalid search term */
-									esc_html__( "No search results for '%s'", 'acf' ),
-									'<span class="acf-invalid-dashicon-search-term"></span>'
-								);
-								?>
-							</p>
-						</div>
-
-						<?php
+						$this->render_icon_list_tab( $name );
 						break;
 					case 'media_library':
 						?>
@@ -214,6 +227,18 @@ if ( ! class_exists( 'acf_field_icon_picker' ) ) :
 						break;
 					default:
 						do_action( 'acf/fields/icon_picker/tab/' . $name, $field );
+
+						$custom_icons = apply_filters( 'acf/fields/icon_picker/' . $name . '/icons', array(), $field );
+
+						if ( is_array( $custom_icons ) && ! empty( $custom_icons ) ) {
+							$this->render_icon_list_tab( $name, $custom_icons );
+
+							acf_localize_data(
+								array(
+									'iconPickerIcons_' . $name  => $custom_icons,
+								)
+							);
+						}
 				}
 
 				echo '</div>';

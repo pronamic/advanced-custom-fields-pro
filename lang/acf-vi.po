@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-04T12:09:00+00:00\n"
+"PO-Revision-Date: 2025-05-08T10:20:52+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: src/Site_Health/Site_Health.php:517
+msgid "Number of Field Groups with Blocks and Other Locations"
+msgstr ""
+
+#: src/Site_Health/Site_Health.php:512
+msgid "Number of Field Groups with Multiple Block Locations"
+msgstr ""
+
+#: src/Site_Health/Site_Health.php:507
+msgid "Number of Field Groups with a Single Block Location"
+msgstr ""
+
+#: src/Site_Health/Site_Health.php:476
+msgid "All Location Rules"
+msgstr ""
 
 #: includes/validation.php:144
 msgid "Learn more"
@@ -43,10 +59,6 @@ msgstr "ACF không thể thực hiện xác thực vì máy chủ không nhận 
 #: includes/admin/admin.php:324
 msgid "are developed and maintained by"
 msgstr "được phát triển và duy trì bởi"
-
-#: includes/class-acf-site-health.php:291
-msgid "Update Source"
-msgstr "Cập nhật nguồn"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:850
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:810
@@ -83,10 +95,6 @@ msgstr ""
 "bảo an toàn, hàm gọi lại này sẽ được thực thi trong một ngữ cảnh đặc biệt mà "
 "không có quyền truy cập vào bất kỳ siêu toàn cục nào như $_POST hoặc $_GET."
 
-#: includes/class-acf-site-health.php:292
-msgid "wordpress.org"
-msgstr "wordpress.org"
-
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
 msgstr "Cho phép truy cập giá trị trong giao diện trình chỉnh sửa"
@@ -106,7 +114,7 @@ msgstr ""
 "trong giao diện trình chỉnh sửa bằng cách sử dụng Block Bindings hoặc ACF "
 "Shortcode. %s"
 
-#: includes/Blocks/Bindings.php:64
+#: src/Blocks/Bindings.php:67
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -114,7 +122,7 @@ msgstr ""
 "Loại trường ACF được yêu cầu không hỗ trợ xuất trong Block Bindings hoặc ACF "
 "Shortcode."
 
-#: includes/api/api-template.php:1085 includes/Blocks/Bindings.php:72
+#: includes/api/api-template.php:1085 src/Blocks/Bindings.php:75
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -821,7 +829,7 @@ msgstr "Yêu cầu không hợp lệ của Args."
 msgid "Sorry, you do not have permission to do that."
 msgstr "Xin lỗi, bạn không được phép làm điều đó."
 
-#: includes/class-acf-site-health.php:648
+#: src/Site_Health/Site_Health.php:715
 msgid "Blocks Using Post Meta"
 msgstr "Các bài viết sử dụng Post Meta"
 
@@ -1574,183 +1582,183 @@ msgstr ""
 msgid "Icon Picker"
 msgstr "Bộ chọn biểu tượng"
 
-#: includes/class-acf-site-health.php:709
+#: src/Site_Health/Site_Health.php:776
 msgid "JSON Load Paths"
 msgstr "Json tải đường"
 
-#: includes/class-acf-site-health.php:703
+#: src/Site_Health/Site_Health.php:770
 msgid "JSON Save Paths"
 msgstr "Đường dẫn lưu JSON"
 
-#: includes/class-acf-site-health.php:694
+#: src/Site_Health/Site_Health.php:761
 msgid "Registered ACF Forms"
 msgstr "Các mẫu ACF đăng ký"
 
-#: includes/class-acf-site-health.php:688
+#: src/Site_Health/Site_Health.php:755
 msgid "Shortcode Enabled"
 msgstr "Shortcode được kích hoạt"
 
-#: includes/class-acf-site-health.php:680
+#: src/Site_Health/Site_Health.php:747
 msgid "Field Settings Tabs Enabled"
 msgstr "Bảng cài đặt trường được bật"
 
-#: includes/class-acf-site-health.php:672
+#: src/Site_Health/Site_Health.php:739
 msgid "Field Type Modal Enabled"
 msgstr "Chất loại hộp cửa sổ được kích hoạt"
 
-#: includes/class-acf-site-health.php:664
+#: src/Site_Health/Site_Health.php:731
 msgid "Admin UI Enabled"
 msgstr "Giao diện quản trị đã bật"
 
-#: includes/class-acf-site-health.php:655
+#: src/Site_Health/Site_Health.php:722
 msgid "Block Preloading Enabled"
 msgstr "Tải trước khối đã bật"
 
-#: includes/class-acf-site-health.php:643
+#: src/Site_Health/Site_Health.php:710
 msgid "Blocks Per ACF Block Version"
 msgstr "Các khối theo phiên bản khối ACF"
 
-#: includes/class-acf-site-health.php:638
+#: src/Site_Health/Site_Health.php:705
 msgid "Blocks Per API Version"
 msgstr "Khóa theo phiên bản API"
 
-#: includes/class-acf-site-health.php:611
+#: src/Site_Health/Site_Health.php:678
 msgid "Registered ACF Blocks"
 msgstr "Các khối ACF đã đăng ký"
 
-#: includes/class-acf-site-health.php:605
+#: src/Site_Health/Site_Health.php:672
 msgid "Light"
 msgstr "Sáng"
 
-#: includes/class-acf-site-health.php:605
+#: src/Site_Health/Site_Health.php:672
 msgid "Standard"
 msgstr "Tiêu chuẩn"
 
-#: includes/class-acf-site-health.php:604
+#: src/Site_Health/Site_Health.php:671
 msgid "REST API Format"
 msgstr "Khởi động API"
 
-#: includes/class-acf-site-health.php:596
+#: src/Site_Health/Site_Health.php:663
 msgid "Registered Options Pages (PHP)"
 msgstr "Trang cài đặt đăng ký (PHP)"
 
-#: includes/class-acf-site-health.php:582
+#: src/Site_Health/Site_Health.php:649
 msgid "Registered Options Pages (JSON)"
 msgstr "Trang cài đặt đăng ký (JSON)"
 
-#: includes/class-acf-site-health.php:577
+#: src/Site_Health/Site_Health.php:644
 msgid "Registered Options Pages (UI)"
 msgstr "Trang cài đặt đăng ký (UI)"
 
-#: includes/class-acf-site-health.php:547
+#: src/Site_Health/Site_Health.php:614
 msgid "Options Pages UI Enabled"
 msgstr "Giao diện trang cài đặt đã bật"
 
-#: includes/class-acf-site-health.php:539
+#: src/Site_Health/Site_Health.php:606
 msgid "Registered Taxonomies (JSON)"
 msgstr "Phân loại đã đăng ký (JSON)"
 
-#: includes/class-acf-site-health.php:527
+#: src/Site_Health/Site_Health.php:594
 msgid "Registered Taxonomies (UI)"
 msgstr "Phân loại đã đăng ký (UI)"
 
-#: includes/class-acf-site-health.php:515
+#: src/Site_Health/Site_Health.php:582
 msgid "Registered Post Types (JSON)"
 msgstr "Loại nội dung đã đăng ký (JSON)"
 
-#: includes/class-acf-site-health.php:503
+#: src/Site_Health/Site_Health.php:570
 msgid "Registered Post Types (UI)"
 msgstr "Loại nội dung đã đăng ký (UI)"
 
-#: includes/class-acf-site-health.php:490
+#: src/Site_Health/Site_Health.php:557
 msgid "Post Types and Taxonomies Enabled"
 msgstr "Loại nội dung và phân loại đã được bật"
 
-#: includes/class-acf-site-health.php:483
+#: src/Site_Health/Site_Health.php:550
 msgid "Number of Third Party Fields by Field Type"
 msgstr "Số trường bên thứ ba theo loại trường"
 
-#: includes/class-acf-site-health.php:478
+#: src/Site_Health/Site_Health.php:545
 msgid "Number of Fields by Field Type"
 msgstr "Số trường theo loại trường"
 
-#: includes/class-acf-site-health.php:445
+#: src/Site_Health/Site_Health.php:444
 msgid "Field Groups Enabled for GraphQL"
 msgstr "Nhóm trường đã được kích hoạt cho GraphQL"
 
-#: includes/class-acf-site-health.php:432
+#: src/Site_Health/Site_Health.php:431
 msgid "Field Groups Enabled for REST API"
 msgstr "Nhóm trường đã được kích hoạt cho REST API"
 
-#: includes/class-acf-site-health.php:420
+#: src/Site_Health/Site_Health.php:419
 msgid "Registered Field Groups (JSON)"
 msgstr "Nhóm trường đã đăng ký (JSON)"
 
-#: includes/class-acf-site-health.php:408
+#: src/Site_Health/Site_Health.php:407
 msgid "Registered Field Groups (PHP)"
 msgstr "Nhóm trường đã đăng ký (PHP)"
 
-#: includes/class-acf-site-health.php:396
+#: src/Site_Health/Site_Health.php:395
 msgid "Registered Field Groups (UI)"
 msgstr "Nhóm trường đã đăng ký (UI)"
 
-#: includes/class-acf-site-health.php:384
+#: src/Site_Health/Site_Health.php:383
 msgid "Active Plugins"
 msgstr "Plugin hoạt động"
 
-#: includes/class-acf-site-health.php:358
+#: src/Site_Health/Site_Health.php:357
 msgid "Parent Theme"
 msgstr "Giao diện cha"
 
-#: includes/class-acf-site-health.php:347
+#: src/Site_Health/Site_Health.php:346
 msgid "Active Theme"
 msgstr "Giao diện hoạt động"
 
-#: includes/class-acf-site-health.php:338
+#: src/Site_Health/Site_Health.php:337
 msgid "Is Multisite"
 msgstr "Là nhiều trang"
 
-#: includes/class-acf-site-health.php:333
+#: src/Site_Health/Site_Health.php:332
 msgid "MySQL Version"
 msgstr "Phiên bản MySQL"
 
-#: includes/class-acf-site-health.php:328
+#: src/Site_Health/Site_Health.php:327
 msgid "WordPress Version"
 msgstr "Phiên bản WordPress"
 
-#: includes/class-acf-site-health.php:321
+#: src/Site_Health/Site_Health.php:320
 msgid "Subscription Expiry Date"
 msgstr "Đăng ký ngày hết hạn"
 
-#: includes/class-acf-site-health.php:313
+#: src/Site_Health/Site_Health.php:312
 msgid "License Status"
 msgstr "Trạng thái bản quyền"
 
-#: includes/class-acf-site-health.php:308
+#: src/Site_Health/Site_Health.php:307
 msgid "License Type"
 msgstr "Loại bản quyền"
 
-#: includes/class-acf-site-health.php:303
+#: src/Site_Health/Site_Health.php:302
 msgid "Licensed URL"
 msgstr "URL được cấp phép"
 
-#: includes/class-acf-site-health.php:297
+#: src/Site_Health/Site_Health.php:296
 msgid "License Activated"
 msgstr "Bản quyền được kích hoạt"
 
-#: includes/class-acf-site-health.php:286
+#: src/Site_Health/Site_Health.php:290
 msgid "Free"
 msgstr "Miễn phí"
 
-#: includes/class-acf-site-health.php:285
+#: src/Site_Health/Site_Health.php:289
 msgid "Plugin Type"
 msgstr "Plugin loại"
 
-#: includes/class-acf-site-health.php:280
+#: src/Site_Health/Site_Health.php:284
 msgid "Plugin Version"
 msgstr "Phiên bản plugin"
 
-#: includes/class-acf-site-health.php:251
+#: src/Site_Health/Site_Health.php:255
 msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
@@ -1904,7 +1912,7 @@ msgstr "Mối quan hệ không tương đương với"
 msgid "Relationship is equal to"
 msgstr "Mối quan hệ tương đương với"
 
-#: includes/Blocks/Bindings.php:35
+#: src/Blocks/Bindings.php:38
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
 msgstr "Các trường ACF"
@@ -2690,8 +2698,8 @@ msgctxt "noun"
 msgid "Clone"
 msgstr "Sao chép"
 
-#: includes/admin/views/global/navigation.php:86
-#: includes/class-acf-site-health.php:286 includes/fields.php:331
+#: includes/admin/views/global/navigation.php:86 includes/fields.php:331
+#: src/Site_Health/Site_Health.php:290
 msgid "PRO"
 msgstr "PRO"
 
@@ -4627,7 +4635,7 @@ msgstr ""
 "dung Tùy chỉnh và quản lý chúng với ACF. <a href=\"%s\">Bắt đầu</a>."
 
 #: includes/admin/admin.php:46 includes/admin/admin.php:361
-#: includes/class-acf-site-health.php:250
+#: src/Site_Health/Site_Health.php:254
 msgid "ACF"
 msgstr "ACF"
 
@@ -4957,7 +4965,7 @@ msgstr "Kích hoạt mục này"
 msgid "Move field group to trash?"
 msgstr "Chuyển nhóm trường vào thùng rác?"
 
-#: acf.php:504 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:519 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:282
 #: includes/admin/post-types/admin-taxonomy.php:284
@@ -4970,7 +4978,7 @@ msgstr "Không hoạt động"
 msgid "WP Engine"
 msgstr "WP Engine"
 
-#: acf.php:562
+#: acf.php:577
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -4978,26 +4986,13 @@ msgstr ""
 "Advanced Custom Fields và Advanced Custom Fields PRO không nên hoạt động "
 "cùng một lúc. Chúng tôi đã tự động tắt Advanced Custom Fields PRO."
 
-#: acf.php:560
+#: acf.php:575
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
 msgstr ""
 "Advanced Custom Fields và Advanced Custom Fields PRO không nên hoạt động "
 "cùng một lúc. Chúng tôi đã tự động tắt Advanced Custom Fields."
-
-#. translators: %1 plugin name, %2 the URL to the documentation on this error
-#: includes/acf-value-functions.php:376
-msgid ""
-"<strong>%1$s</strong> - We've detected one or more calls to retrieve ACF "
-"field values before ACF has been initialized. This is not supported and can "
-"result in malformed or missing data. <a href=\"%2$s\" "
-"target=\"_blank\">Learn how to fix this</a>."
-msgstr ""
-"<strong>%1$s</strong> - Chúng tôi đã phát hiện một hoặc nhiều cuộc gọi để "
-"lấy giá trị trường ACF trước khi ACF được khởi tạo. Điều này không được hỗ "
-"trợ và có thể dẫn đến dữ liệu bị hỏng hoặc thiếu. <a href=\"%2$s\" "
-"target=\"_blank\">Tìm hiểu cách khắc phục điều này</a>."
 
 #: includes/fields/class-acf-field-user.php:578
 msgid "%1$s must have a user with the %2$s role."
@@ -6125,28 +6120,28 @@ msgstr "Không rõ"
 msgid "Field type does not exist"
 msgstr "Loại trường không tồn tại"
 
-#: includes/forms/form-front.php:217
+#: includes/forms/form-front.php:220
 msgid "Spam Detected"
 msgstr "Phát hiện spam"
 
-#: includes/forms/form-front.php:100
+#: includes/forms/form-front.php:103
 msgid "Post updated"
 msgstr "Bài viết đã được cập nhật"
 
-#: includes/forms/form-front.php:99
+#: includes/forms/form-front.php:102
 msgid "Update"
 msgstr "Cập nhật"
 
-#: includes/forms/form-front.php:54
+#: includes/forms/form-front.php:63
 msgid "Validate Email"
 msgstr "Xác thực Email"
 
-#: includes/fields.php:326 includes/forms/form-front.php:46
+#: includes/fields.php:326 includes/forms/form-front.php:55
 msgid "Content"
 msgstr "Nội dung"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:21
-#: includes/forms/form-front.php:37
+#: includes/forms/form-front.php:46
 msgid "Title"
 msgstr "Tiêu đề"
 
@@ -7442,17 +7437,15 @@ msgstr "Hiển thị văn bản cùng với hộp kiểm"
 msgid "Message"
 msgstr "Hiển thị thông điệp"
 
-#: includes/assets.php:352 includes/class-acf-site-health.php:277
-#: includes/class-acf-site-health.php:339
-#: includes/fields/class-acf-field-true_false.php:79
+#: includes/assets.php:352 includes/fields/class-acf-field-true_false.php:79
 #: includes/fields/class-acf-field-true_false.php:175
+#: src/Site_Health/Site_Health.php:281 src/Site_Health/Site_Health.php:338
 msgid "No"
 msgstr "Không"
 
-#: includes/assets.php:351 includes/class-acf-site-health.php:276
-#: includes/class-acf-site-health.php:339
-#: includes/fields/class-acf-field-true_false.php:76
+#: includes/assets.php:351 includes/fields/class-acf-field-true_false.php:76
 #: includes/fields/class-acf-field-true_false.php:159
+#: src/Site_Health/Site_Health.php:280 src/Site_Health/Site_Health.php:338
 msgid "Yes"
 msgstr "Có"
 
@@ -7591,89 +7584,89 @@ msgid "Time Picker"
 msgstr "Công cụ chọn thời gian"
 
 #. translators: counts for inactive field groups
-#: acf.php:510
+#: acf.php:525
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "<span class=\"count\">(%s)</span> không hoạt động"
 
-#: acf.php:471
+#: acf.php:486
 msgid "No Fields found in Trash"
 msgstr "Không tìm thấy trường nào trong thùng rác"
 
-#: acf.php:470
+#: acf.php:485
 msgid "No Fields found"
 msgstr "Không tìm thấy trường nào"
 
-#: acf.php:469
+#: acf.php:484
 msgid "Search Fields"
 msgstr "Tìm kiếm các trường"
 
-#: acf.php:468
+#: acf.php:483
 msgid "View Field"
 msgstr "Xem trường"
 
-#: acf.php:467 includes/admin/views/acf-field-group/fields.php:113
+#: acf.php:482 includes/admin/views/acf-field-group/fields.php:113
 msgid "New Field"
 msgstr "Trường mới"
 
-#: acf.php:466
+#: acf.php:481
 msgid "Edit Field"
 msgstr "Chỉnh sửa trường"
 
-#: acf.php:465
+#: acf.php:480
 msgid "Add New Field"
 msgstr "Thêm trường mới"
 
-#: acf.php:463
+#: acf.php:478
 msgid "Field"
 msgstr "Trường"
 
-#: acf.php:462 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:477 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:93
 #: includes/admin/views/acf-field-group/fields.php:32
 msgid "Fields"
 msgstr "Các trường"
 
-#: acf.php:437
+#: acf.php:452
 msgid "No Field Groups found in Trash"
 msgstr "Không tìm thấy nhóm trường nào trong thùng rác"
 
-#: acf.php:436
+#: acf.php:451
 msgid "No Field Groups found"
 msgstr "Không tìm thấy nhóm trường nào"
 
-#: acf.php:435
+#: acf.php:450
 msgid "Search Field Groups"
 msgstr "Tìm kiếm nhóm trường"
 
-#: acf.php:434
+#: acf.php:449
 msgid "View Field Group"
 msgstr "Xem nhóm trường"
 
-#: acf.php:433
+#: acf.php:448
 msgid "New Field Group"
 msgstr "Nhóm trường mới"
 
-#: acf.php:432
+#: acf.php:447
 msgid "Edit Field Group"
 msgstr "Chỉnh sửa nhóm trường"
 
-#: acf.php:431
+#: acf.php:446
 msgid "Add New Field Group"
 msgstr "Thêm nhóm trường mới"
 
-#: acf.php:430 acf.php:464
+#: acf.php:445 acf.php:479
 #: includes/admin/views/acf-post-type/advanced-settings.php:224
 #: includes/post-types/class-acf-post-type.php:93
 #: includes/post-types/class-acf-taxonomy.php:92
 msgid "Add New"
 msgstr "Thêm mới"
 
-#: acf.php:429
+#: acf.php:444
 msgid "Field Group"
 msgstr "Nhóm trường"
 
-#: acf.php:428 includes/admin/post-types/admin-field-groups.php:55
+#: acf.php:443 includes/admin/post-types/admin-field-groups.php:55
 #: includes/admin/post-types/admin-post-types.php:113
 #: includes/admin/post-types/admin-taxonomies.php:112
 msgid "Field Groups"
@@ -7691,6 +7684,6 @@ msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php acf.php:93
+#: acf.php acf.php:289
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
