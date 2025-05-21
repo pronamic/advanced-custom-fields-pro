@@ -414,6 +414,16 @@ function acf_validate_block_type( $block ) {
 		$block['supports']['jsx'] = $block['supports']['__experimental_jsx'];
 	}
 
+	// Normalize block 'parent' setting.
+	if ( array_key_exists( 'parent', $block ) ) {
+		// As of WP 6.8, parent must be an array.
+		if ( null === $block['parent'] ) {
+			unset( $block['parent'] );
+		} elseif ( is_string( $block['parent'] ) ) {
+			$block['parent'] = array( $block['parent'] );
+		}
+	}
+
 	// Return block.
 	return $block;
 }

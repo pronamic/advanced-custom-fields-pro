@@ -344,9 +344,9 @@ if ( ! class_exists( 'acf_field' ) ) :
 				$binding_url
 			);
 
-			// This field setting has a unique behaviour. If the value isn't defined on the field object, it defaults to true, but for new fields, it defaults to off.
+			// This field setting has unique behavior. If the value isn't defined on the field object, it defaults to true, but for new fields or when changing field types, it defaults to off.
 			if ( ! isset( $field['allow_in_bindings'] ) ) {
-				if ( empty( $field['ID'] ) ) {
+				if ( empty( $field['ID'] ) || doing_action( 'wp_ajax_acf/field_group/render_field_settings' ) ) {
 					$field['allow_in_bindings'] = false;
 				} else {
 					$field['allow_in_bindings'] = true;

@@ -9,7 +9,7 @@
 
 namespace ACF\Pro\Forms;
 
-use Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController;
+use Automattic\WooCommerce\Utilities\OrderUtil;
 
 /**
  * Adds ACF metaboxes to the new WooCommerce order screen.
@@ -23,6 +23,7 @@ class WC_Order {
 	 */
 	public function __construct() {
 		add_action( 'load-woocommerce_page_wc-orders', array( $this, 'initialize' ) );
+		add_action( 'load-woocommerce_page_wc-orders--shop_subscription', array( $this, 'initialize' ) );
 		add_action( 'woocommerce_update_order', array( $this, 'save_order' ), 10, 1 );
 	}
 
@@ -52,16 +53,20 @@ class WC_Order {
 		// Storage for localized postboxes.
 		$postboxes = array();
 
-		$order  = ( $post instanceof \WP_Post ) ? wc_get_order( $post->ID ) : $post;
-		$screen = class_exists( '\Automattic\WooCommerce\Internal\DataStores\Orders\CustomOrdersTableController' ) && wc_get_container()->get( CustomOrdersTableController::class )->custom_orders_table_usage_is_enabled()
-			? wc_get_page_screen_id( 'shop-order' )
-			: 'shop_order';
+		$location = 'shop_order';
+		$order    = ( $post instanceof \WP_Post ) ? wc_get_order( $post->ID ) : $post;
+		$screen   = $this->is_hpos_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
+
+		if ( $order instanceof \WC_Subscription ) {
+			$location = 'shop_subscription';
+			$screen   = function_exists( 'wcs_get_page_screen_id' ) ? wcs_get_page_screen_id( 'shop_subscription' ) : 'shop_subscription';
+		}
 
 		// Get field groups for this screen.
 		$field_groups = acf_get_field_groups(
 			array(
 				'post_id'   => $order->get_id(),
-				'post_type' => 'shop_order',
+				'post_type' => $location,
 			)
 		);
 
@@ -71,12 +76,7 @@ class WC_Order {
 				$id       = "acf-{$field_group['key']}"; // acf-group_123
 				$title    = $field_group['title'];       // Group 1
 				$context  = $field_group['position'];    // normal, side, acf_after_title
-				$priority = 'high';                      // high, core, default, low
-
-				// Reduce priority for sidebar metaboxes for best position.
-				if ( $context === 'side' ) {
-					$priority = 'core';
-				}
+				$priority = 'core';                      // high, core, default, low
 
 				// Allow field groups assigned to after title to still be rendered.
 				if ( 'acf_after_title' === $context ) {
@@ -180,6 +180,21 @@ class WC_Order {
 	}
 
 	/**
+	 * Checks if WooCommerce HPOS is enabled.
+	 *
+	 * @since 6.4.2
+	 *
+	 * @return boolean
+	 */
+	public function is_hpos_enabled(): bool {
+		if ( class_exists( '\Automattic\WooCommerce\Utilities\OrderUtil' ) && OrderUtil::custom_orders_table_usage_is_enabled() ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Saves ACF fields to the current order.
 	 *
 	 * @since 6.4
@@ -188,6 +203,11 @@ class WC_Order {
 	 * @return void
 	 */
 	public function save_order( int $order_id ) {
+		// Bail if not using HPOS to prevent a double-save.
+		if ( ! $this->is_hpos_enabled() ) {
+			return;
+		}
+
 		// Remove the action to prevent an infinite loop via $order->save().
 		remove_action( 'woocommerce_update_order', array( $this, 'save_order' ), 10 );
 		acf_save_post( 'woo_order_' . $order_id );

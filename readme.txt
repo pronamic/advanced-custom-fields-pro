@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 6.4.1
+Stable tag: 6.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,14 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.4.2 =
+*Release Date 20th May 2025*
+
+* New - In ACF PRO, fields can now be added to WooCommerce Subscriptions when using HPOS
+* Security - Changing a field type no longer enables the "Allow Access to Value in Editor UI" setting
+* Fix - Paginated Repeater fields no longer save duplicate values when saving to a WooCommerce Order with HPOS disabled
+* Fix - Blocks registered via acf_register_block_type() with a `parent` value of `null` no longer fail to register
 
 = 6.4.1 =
 *Release Date 8th May 2025*
