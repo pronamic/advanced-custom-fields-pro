@@ -48,7 +48,7 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 				return $choices;
 			}
 			if ( ! empty( $rule_value ) ) {
-				$post_title = get_the_title( $rule_value );
+				$post_title = esc_html( get_the_title( $rule_value ) );
 				$choices    = array( $rule_value => $post_title );
 			}
 			return $choices;

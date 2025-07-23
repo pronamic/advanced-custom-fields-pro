@@ -142,14 +142,21 @@ if ( ! class_exists( 'Updater' ) ) {
 				acf_log( $url, $body );
 			}
 
+			// If we're posting an ACF license key, set it as the header.
+			if ( is_array( $body ) && isset( $body['acf_license'] ) ) {
+				$headers['X-ACF-License'] = $body['acf_license'];
+			}
+
 			// Determine URL.
 			if ( acf_is_pro() ) {
-				$license_key = acf_pro_get_license_key();
-				if ( empty( $license_key ) || ! is_string( $license_key ) ) {
-					$license_key = '';
+				if ( empty( $headers['X-ACF-License'] ) ) {
+					$license_key = acf_pro_get_license_key();
+					if ( empty( $license_key ) || ! is_string( $license_key ) ) {
+						$license_key = '';
+					}
+					$headers['X-ACF-License'] = $license_key;
 				}
-				$headers['X-ACF-License'] = $license_key;
-				$headers['X-ACF-Plugin']  = 'pro';
+				$headers['X-ACF-Plugin'] = 'pro';
 			} else {
 				$headers['X-ACF-Plugin'] = 'acf';
 			}

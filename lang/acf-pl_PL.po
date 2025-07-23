@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-05-19T16:45:13+00:00\n"
+"PO-Revision-Date: 2025-07-21T18:29:30+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
@@ -25,71 +25,78 @@ msgstr ""
 msgid ""
 "Save created options back to the \"Choices\" setting in the field definition."
 msgstr ""
+"Zapisz utworzone opcje z powrotem w ustawieniu „Wybory” w definicji pola."
 
 #: includes/fields/class-acf-field-select.php:470
 msgid "Save Options"
-msgstr ""
+msgstr "Zapisz opcje"
 
 #: includes/fields/class-acf-field-select.php:448
 msgid ""
 "Allow content editors to create new options by typing in the Select input. "
 "Multiple options can be created from a comma separated string."
 msgstr ""
+"Zezwól redaktorom treści na tworzenie nowych opcji poprzez wpisanie w polu "
+"Wybierz. Wiele opcji można utworzyć z ciągu rozdzielonego przecinkami."
 
 #: includes/fields/class-acf-field-select.php:447
 msgid "Create Options"
-msgstr ""
+msgstr "Utwórz opcje"
 
 #: includes/admin/views/global/navigation.php:179
 #: includes/admin/views/global/navigation.php:183
 msgid "Edit ACF Field Groups"
-msgstr ""
+msgstr "Edytuj grupy pól ACF"
 
 #: includes/admin/views/global/navigation.php:100
 msgid "Get 4 months free on any WP Engine plan"
-msgstr ""
+msgstr "Otrzymaj 4 miesiące za darmo na dowolny plan WP Engine"
 
 #: src/Site_Health/Site_Health.php:522
 msgid "Number of Field Groups with Blocks and Other Locations"
-msgstr ""
+msgstr "Liczba grup pól z blokami i innymi lokalizacjami"
 
 #: src/Site_Health/Site_Health.php:517
 msgid "Number of Field Groups with Multiple Block Locations"
-msgstr ""
+msgstr "Liczba grup pól z wieloma lokalizacjami bloków"
 
 #: src/Site_Health/Site_Health.php:512
 msgid "Number of Field Groups with a Single Block Location"
-msgstr ""
+msgstr "Liczba grup pól z pojedynczą lokalizacją bloku"
 
 #: src/Site_Health/Site_Health.php:481
 msgid "All Location Rules"
-msgstr ""
+msgstr "Wszystkie zasady lokalizacji"
 
 #: includes/validation.php:144
 msgid "Learn more"
-msgstr ""
+msgstr "Dowiedz się więcej"
 
 #: includes/validation.php:133
 msgid ""
 "ACF was unable to perform validation because the provided nonce failed "
 "verification."
 msgstr ""
+"ACF nie mógł wykonać walidacji, ponieważ podany kod jednorazowy nie "
+"przeszedł weryfikacji."
 
 #: includes/validation.php:131
 msgid ""
 "ACF was unable to perform validation because no nonce was received by the "
 "server."
 msgstr ""
+"ACF nie mógł wykonać walidacji, ponieważ serwer nie otrzymał żadnego kodu "
+"jednorazowego."
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:324
 msgid "are developed and maintained by"
-msgstr ""
+msgstr "są rozwijane i utrzymywane przez"
 
 #: src/Site_Health/Site_Health.php:295
 msgid "Update Source"
-msgstr ""
+msgstr "Zaktualizuj źródło"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:850
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:810
@@ -111,6 +118,10 @@ msgid ""
 "taxonomy. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
 msgstr ""
+"Nazwa funkcji PHP, która ma zostać wywołana w celu obsługi zawartości meta-"
+"pola w Twojej taksonomii. Ze względów bezpieczeństwa to wywołanie zwrotne "
+"zostanie wykonane w specjalnym kontekście bez dostępu do żadnych super "
+"globalnych zmiennych, takich jak $_POST lub $_GET."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:842
 msgid ""
@@ -118,14 +129,18 @@ msgid ""
 "screen. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
 msgstr ""
+"Nazwa funkcji PHP, która ma zostać wywołana podczas konfigurowania pól meta "
+"dla ekranu edycji. Ze względów bezpieczeństwa to wywołanie zwrotne zostanie "
+"wykonane w specjalnym kontekście bez dostępu do żadnych super globalnych "
+"zmiennych, takich jak $_POST lub $_GET."
 
 #: src/Site_Health/Site_Health.php:296
 msgid "wordpress.org"
-msgstr ""
+msgstr "wordpress.org"
 
 #: includes/fields/class-acf-field.php:359
 msgid "Allow Access to Value in Editor UI"
-msgstr ""
+msgstr "Zezwól na dostęp do wartości w interfejsie użytkownika edytora"
 
 #: includes/fields/class-acf-field.php:341
 msgid "Learn more."
@@ -138,32 +153,41 @@ msgid ""
 "Allow content editors to access and display the field value in the editor UI "
 "using Block Bindings or the ACF Shortcode. %s"
 msgstr ""
+"Zezwalaj edytorom treści na dostęp i wyświetlanie wartości pola w "
+"interfejsie użytkownika edytora za pomocą powiązań blokowych lub krótkiego "
+"kodu ACF. %s"
 
 #: src/Blocks/Bindings.php:67
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
 msgstr ""
+"Żądany rodzaj pola ACF nie obsługuje danych wyjściowych w powiązaniach "
+"blokowych ani w krótkim kodzie ACF."
 
 #: includes/api/api-template.php:1085 src/Blocks/Bindings.php:75
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
 msgstr ""
+"Żądane pole ACF nie może być wyprowadzone w powiązaniach ani w krótkim "
+"kodzie ACF."
 
 #: includes/api/api-template.php:1077
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
 msgstr ""
+"Żądany rodzaj pola ACF nie obsługuje danych wyjściowych w powiązaniach ani w "
+"krótkim kodzie ACF."
 
 #: includes/api/api-template.php:1054
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
-msgstr ""
+msgstr "[Krótki kod ACF nie może wyświetlać pól z wpisów niepublicznych]"
 
 #: includes/api/api-template.php:1011
 msgid "[The ACF shortcode is disabled on this site]"
-msgstr ""
+msgstr "[Krótki kod ACF jest wyłączony na tej witrynie]"
 
 #: includes/fields/class-acf-field-icon_picker.php:476
 msgid "Businessman Icon"
@@ -171,7 +195,7 @@ msgstr "Ikonka biznesmena"
 
 #: includes/fields/class-acf-field-icon_picker.php:468
 msgid "Forums Icon"
-msgstr ""
+msgstr "Ikonka forum"
 
 #: includes/fields/class-acf-field-icon_picker.php:747
 msgid "YouTube Icon"
@@ -179,7 +203,7 @@ msgstr "Ikonka YouTube"
 
 #: includes/fields/class-acf-field-icon_picker.php:746
 msgid "Yes (alt) Icon"
-msgstr ""
+msgstr "Ikonka Yes (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:744
 msgid "Xing Icon"
@@ -195,47 +219,47 @@ msgstr "Ikonka WhatsApp"
 
 #: includes/fields/class-acf-field-icon_picker.php:740
 msgid "Write Blog Icon"
-msgstr ""
+msgstr "Napisz ikonkę bloga"
 
 #: includes/fields/class-acf-field-icon_picker.php:739
 msgid "Widgets Menus Icon"
-msgstr ""
+msgstr "Ikonka menu widżetów"
 
 #: includes/fields/class-acf-field-icon_picker.php:738
 msgid "View Site Icon"
-msgstr ""
+msgstr "Zobacz ikonkę witryny"
 
 #: includes/fields/class-acf-field-icon_picker.php:737
 msgid "Learn More Icon"
-msgstr ""
+msgstr "Ikonka Dowiedz się więcej"
 
 #: includes/fields/class-acf-field-icon_picker.php:735
 msgid "Add Page Icon"
-msgstr ""
+msgstr "Dodaj ikonkę strony"
 
 #: includes/fields/class-acf-field-icon_picker.php:732
 msgid "Video (alt3) Icon"
-msgstr ""
+msgstr "Ikonka filmu (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:731
 msgid "Video (alt2) Icon"
-msgstr ""
+msgstr "Ikonka filmu (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:730
 msgid "Video (alt) Icon"
-msgstr ""
+msgstr "Ikonka filmu (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:727
 msgid "Update (alt) Icon"
-msgstr ""
+msgstr "Ikonka aktualizacji (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:724
 msgid "Universal Access (alt) Icon"
-msgstr ""
+msgstr "Ikona uniwersalnego dostępu (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:721
 msgid "Twitter (alt) Icon"
-msgstr ""
+msgstr "Ikonka Twittera (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:719
 msgid "Twitch Icon"
@@ -243,43 +267,43 @@ msgstr "Ikonka Twitch"
 
 #: includes/fields/class-acf-field-icon_picker.php:716
 msgid "Tide Icon"
-msgstr ""
+msgstr "Ikonka fali"
 
 #: includes/fields/class-acf-field-icon_picker.php:715
 msgid "Tickets (alt) Icon"
-msgstr ""
+msgstr "Ikonka Tickets (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:711
 msgid "Text Page Icon"
-msgstr ""
+msgstr "Ikonka strony tekstowej"
 
 #: includes/fields/class-acf-field-icon_picker.php:705
 msgid "Table Row Delete Icon"
-msgstr ""
+msgstr "Ikonka usuwania wiersza tabeli"
 
 #: includes/fields/class-acf-field-icon_picker.php:704
 msgid "Table Row Before Icon"
-msgstr ""
+msgstr "Ikonka wiersz tabeli przed"
 
 #: includes/fields/class-acf-field-icon_picker.php:703
 msgid "Table Row After Icon"
-msgstr ""
+msgstr "Ikonka wiersz tabeli po"
 
 #: includes/fields/class-acf-field-icon_picker.php:702
 msgid "Table Col Delete Icon"
-msgstr ""
+msgstr "Ikonka usuwania kolumny tabeli"
 
 #: includes/fields/class-acf-field-icon_picker.php:701
 msgid "Table Col Before Icon"
-msgstr ""
+msgstr "Ikonka kolumna tabeli przed"
 
 #: includes/fields/class-acf-field-icon_picker.php:700
 msgid "Table Col After Icon"
-msgstr ""
+msgstr "Ikonka kolumna tabeli po"
 
 #: includes/fields/class-acf-field-icon_picker.php:699
 msgid "Superhero (alt) Icon"
-msgstr ""
+msgstr "Ikonka super bohatera (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:698
 msgid "Superhero Icon"
@@ -291,23 +315,23 @@ msgstr "Ikonka Spotify"
 
 #: includes/fields/class-acf-field-icon_picker.php:686
 msgid "Shortcode Icon"
-msgstr ""
+msgstr "Ikonka krótkiego kodu"
 
 #: includes/fields/class-acf-field-icon_picker.php:685
 msgid "Shield (alt) Icon"
-msgstr ""
+msgstr "Ikonka tarcza (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:683
 msgid "Share (alt2) Icon"
-msgstr ""
+msgstr "Ikonka udostępnij (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:682
 msgid "Share (alt) Icon"
-msgstr ""
+msgstr "Ikonka udostępnij (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:677
 msgid "Saved Icon"
-msgstr ""
+msgstr "Ikonka zapisz"
 
 #: includes/fields/class-acf-field-icon_picker.php:676
 msgid "RSS Icon"
@@ -319,7 +343,7 @@ msgstr "Ikonka REST API"
 
 #: includes/fields/class-acf-field-icon_picker.php:674
 msgid "Remove Icon"
-msgstr ""
+msgstr "Ikonka usuń"
 
 #: includes/fields/class-acf-field-icon_picker.php:672
 msgid "Reddit Icon"
@@ -327,7 +351,7 @@ msgstr "Ikonka Reddit"
 
 #: includes/fields/class-acf-field-icon_picker.php:669
 msgid "Privacy Icon"
-msgstr ""
+msgstr "Ikonka prywatności"
 
 #: includes/fields/class-acf-field-icon_picker.php:668
 msgid "Printer Icon"
@@ -339,15 +363,15 @@ msgstr "Ikonka Podio"
 
 #: includes/fields/class-acf-field-icon_picker.php:663
 msgid "Plus (alt2) Icon"
-msgstr ""
+msgstr "Ikonka plus (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:662
 msgid "Plus (alt) Icon"
-msgstr ""
+msgstr "Ikonka plus (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:660
 msgid "Plugins Checked Icon"
-msgstr ""
+msgstr "Ikonka zaznaczonych wtyczek"
 
 #: includes/fields/class-acf-field-icon_picker.php:657
 msgid "Pinterest Icon"
@@ -355,7 +379,7 @@ msgstr "Ikonka Pinterest"
 
 #: includes/fields/class-acf-field-icon_picker.php:655
 msgid "Pets Icon"
-msgstr ""
+msgstr "Ikonka zwierząt domowych"
 
 #: includes/fields/class-acf-field-icon_picker.php:653
 msgid "PDF Icon"
@@ -363,51 +387,51 @@ msgstr "Ikonka PDF"
 
 #: includes/fields/class-acf-field-icon_picker.php:651
 msgid "Palm Tree Icon"
-msgstr ""
+msgstr "Ikonka palmy"
 
 #: includes/fields/class-acf-field-icon_picker.php:650
 msgid "Open Folder Icon"
-msgstr ""
+msgstr "Ikonka otwartego katalogu"
 
 #: includes/fields/class-acf-field-icon_picker.php:649
 msgid "No (alt) Icon"
-msgstr ""
+msgstr "Ikonka brak (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:644
 msgid "Money (alt) Icon"
-msgstr ""
+msgstr "Ikonka pieniędzy (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:639
 msgid "Menu (alt3) Icon"
-msgstr ""
+msgstr "Ikonka menu (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:638
 msgid "Menu (alt2) Icon"
-msgstr ""
+msgstr "Ikonka menu (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:637
 msgid "Menu (alt) Icon"
-msgstr ""
+msgstr "Ikonka menu (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:632
 msgid "Spreadsheet Icon"
-msgstr ""
+msgstr "Ikonka arkusza kalkulacyjnego"
 
 #: includes/fields/class-acf-field-icon_picker.php:631
 msgid "Interactive Icon"
-msgstr ""
+msgstr "Ikonka interaktywna"
 
 #: includes/fields/class-acf-field-icon_picker.php:630
 msgid "Document Icon"
-msgstr ""
+msgstr "Ikonka dokumentu"
 
 #: includes/fields/class-acf-field-icon_picker.php:629
 msgid "Default Icon"
-msgstr ""
+msgstr "Ikonka domyślnie"
 
 #: includes/fields/class-acf-field-icon_picker.php:623
 msgid "Location (alt) Icon"
-msgstr ""
+msgstr "Ikonka lokalizacji (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:620
 msgid "LinkedIn Icon"
@@ -419,67 +443,67 @@ msgstr "Ikonka Instagramu"
 
 #: includes/fields/class-acf-field-icon_picker.php:614
 msgid "Insert Before Icon"
-msgstr ""
+msgstr "Ikonka wstaw przed"
 
 #: includes/fields/class-acf-field-icon_picker.php:613
 msgid "Insert After Icon"
-msgstr ""
+msgstr "Ikonka wstaw po"
 
 #: includes/fields/class-acf-field-icon_picker.php:612
 msgid "Insert Icon"
-msgstr ""
+msgstr "Ikonka wstaw"
 
 #: includes/fields/class-acf-field-icon_picker.php:611
 msgid "Info Outline Icon"
-msgstr ""
+msgstr "Ikonka konturu informacji"
 
 #: includes/fields/class-acf-field-icon_picker.php:608
 msgid "Images (alt2) Icon"
-msgstr ""
+msgstr "Ikonka obrazków (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:607
 msgid "Images (alt) Icon"
-msgstr ""
+msgstr "Ikonka obrazków (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:606
 msgid "Rotate Right Icon"
-msgstr ""
+msgstr "Ikonka obróć w prawo"
 
 #: includes/fields/class-acf-field-icon_picker.php:605
 msgid "Rotate Left Icon"
-msgstr ""
+msgstr "Ikonka obróć w lewo"
 
 #: includes/fields/class-acf-field-icon_picker.php:604
 msgid "Rotate Icon"
-msgstr ""
+msgstr "Ikonka obróć"
 
 #: includes/fields/class-acf-field-icon_picker.php:603
 msgid "Flip Vertical Icon"
-msgstr ""
+msgstr "Ikonka odwróć pionowo"
 
 #: includes/fields/class-acf-field-icon_picker.php:602
 msgid "Flip Horizontal Icon"
-msgstr ""
+msgstr "Ikonka odwróć poziomo"
 
 #: includes/fields/class-acf-field-icon_picker.php:600
 msgid "Crop Icon"
-msgstr ""
+msgstr "Ikonka przytnij"
 
 #: includes/fields/class-acf-field-icon_picker.php:599
 msgid "ID (alt) Icon"
-msgstr ""
+msgstr "Ikonka ID (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:597
 msgid "HTML Icon"
-msgstr ""
+msgstr "Ikonka HTML"
 
 #: includes/fields/class-acf-field-icon_picker.php:596
 msgid "Hourglass Icon"
-msgstr ""
+msgstr "Ikonka klepsydry"
 
 #: includes/fields/class-acf-field-icon_picker.php:593
 msgid "Heading Icon"
-msgstr ""
+msgstr "Ikonka nagłówka"
 
 #: includes/fields/class-acf-field-icon_picker.php:589
 msgid "Google Icon"
@@ -487,248 +511,248 @@ msgstr "Ikonka Google"
 
 #: includes/fields/class-acf-field-icon_picker.php:588
 msgid "Games Icon"
-msgstr ""
+msgstr "Ikonka gier"
 
 #: includes/fields/class-acf-field-icon_picker.php:587
 msgid "Fullscreen Exit (alt) Icon"
-msgstr ""
+msgstr "Ikonka wyjścia z pełnego ekranu (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:586
 msgid "Fullscreen (alt) Icon"
-msgstr ""
+msgstr "Ikonka trybu pełnoekranowego (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:583
 msgid "Status Icon"
-msgstr ""
+msgstr "Ikonka statusu"
 
 #: includes/fields/class-acf-field-icon_picker.php:581
 msgid "Image Icon"
-msgstr ""
+msgstr "Ikonka obrazka"
 
 #: includes/fields/class-acf-field-icon_picker.php:580
 msgid "Gallery Icon"
-msgstr ""
+msgstr "Ikonka galerii"
 
 #: includes/fields/class-acf-field-icon_picker.php:579
 msgid "Chat Icon"
-msgstr ""
+msgstr "Ikonka czatu"
 
 #: includes/fields/class-acf-field-icon_picker.php:578
 #: includes/fields/class-acf-field-icon_picker.php:627
 msgid "Audio Icon"
-msgstr ""
+msgstr "Ikonka dźwięku"
 
 #: includes/fields/class-acf-field-icon_picker.php:577
 msgid "Aside Icon"
-msgstr ""
+msgstr "Ikonka obok"
 
 #: includes/fields/class-acf-field-icon_picker.php:576
 msgid "Food Icon"
-msgstr ""
+msgstr "Ikonka żywności"
 
 #: includes/fields/class-acf-field-icon_picker.php:569
 msgid "Exit Icon"
-msgstr ""
+msgstr "Ikonka wyjście"
 
 #: includes/fields/class-acf-field-icon_picker.php:568
 msgid "Excerpt View Icon"
-msgstr ""
+msgstr "Ikonka widoku zajawki"
 
 #: includes/fields/class-acf-field-icon_picker.php:567
 msgid "Embed Video Icon"
-msgstr ""
+msgstr "Ikonka osadzonego filmu"
 
 #: includes/fields/class-acf-field-icon_picker.php:566
 msgid "Embed Post Icon"
-msgstr ""
+msgstr "Ikonka osadzonego wpisu"
 
 #: includes/fields/class-acf-field-icon_picker.php:565
 msgid "Embed Photo Icon"
-msgstr ""
+msgstr "Ikonka osadzonego zdjęcia"
 
 #: includes/fields/class-acf-field-icon_picker.php:564
 msgid "Embed Generic Icon"
-msgstr ""
+msgstr "Ikonka osadzenia ogólnego"
 
 #: includes/fields/class-acf-field-icon_picker.php:563
 msgid "Embed Audio Icon"
-msgstr ""
+msgstr "Ikonka osadzonego dźwięku"
 
 #: includes/fields/class-acf-field-icon_picker.php:562
 msgid "Email (alt2) Icon"
-msgstr ""
+msgstr "Ikonka e-maila (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:559
 msgid "Ellipsis Icon"
-msgstr ""
+msgstr "Ikonka elipsy"
 
 #: includes/fields/class-acf-field-icon_picker.php:555
 msgid "Unordered List Icon"
-msgstr ""
+msgstr "Ikonka listy nieuporządkowanej"
 
 #: includes/fields/class-acf-field-icon_picker.php:550
 msgid "RTL Icon"
-msgstr ""
+msgstr "Ikonka RTL"
 
 #: includes/fields/class-acf-field-icon_picker.php:543
 msgid "Ordered List RTL Icon"
-msgstr ""
+msgstr "Ikonka listy uporządkowanej RTL"
 
 #: includes/fields/class-acf-field-icon_picker.php:542
 msgid "Ordered List Icon"
-msgstr ""
+msgstr "Ikonka listy uporządkowanej"
 
 #: includes/fields/class-acf-field-icon_picker.php:541
 msgid "LTR Icon"
-msgstr ""
+msgstr "Ikonka LTR"
 
 #: includes/fields/class-acf-field-icon_picker.php:533
 msgid "Custom Character Icon"
-msgstr ""
+msgstr "Ikonka własnej postaci"
 
 #: includes/fields/class-acf-field-icon_picker.php:525
 msgid "Edit Page Icon"
-msgstr ""
+msgstr "Ikonka edycji strony"
 
 #: includes/fields/class-acf-field-icon_picker.php:524
 msgid "Edit Large Icon"
-msgstr ""
+msgstr "Ikonka dużej edycji"
 
 #: includes/fields/class-acf-field-icon_picker.php:522
 msgid "Drumstick Icon"
-msgstr ""
+msgstr "Ikonka pałeczek perkusyjnych"
 
 #: includes/fields/class-acf-field-icon_picker.php:518
 msgid "Database View Icon"
-msgstr ""
+msgstr "Ikonka widoku bazy danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:517
 msgid "Database Remove Icon"
-msgstr ""
+msgstr "Ikonka usuwania bazy danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:516
 msgid "Database Import Icon"
-msgstr ""
+msgstr "Ikonka importowania bazy danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:515
 msgid "Database Export Icon"
-msgstr ""
+msgstr "Ikonka eksportowania bazy danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:514
 msgid "Database Add Icon"
-msgstr ""
+msgstr "Ikonka dodaj bazę danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:513
 msgid "Database Icon"
-msgstr ""
+msgstr "Ikonka baza danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:511
 msgid "Cover Image Icon"
-msgstr ""
+msgstr "Ikonka obrazek okładki"
 
 #: includes/fields/class-acf-field-icon_picker.php:510
 msgid "Volume On Icon"
-msgstr ""
+msgstr "Ikonka włączenia głośności"
 
 #: includes/fields/class-acf-field-icon_picker.php:509
 msgid "Volume Off Icon"
-msgstr ""
+msgstr "Ikonka wyłączenia głośności"
 
 #: includes/fields/class-acf-field-icon_picker.php:508
 msgid "Skip Forward Icon"
-msgstr ""
+msgstr "Ikonka pomiń do przodu"
 
 #: includes/fields/class-acf-field-icon_picker.php:507
 msgid "Skip Back Icon"
-msgstr ""
+msgstr "Ikonka pomiń wstecz"
 
 #: includes/fields/class-acf-field-icon_picker.php:506
 msgid "Repeat Icon"
-msgstr ""
+msgstr "Ikonka powtórz"
 
 #: includes/fields/class-acf-field-icon_picker.php:505
 msgid "Play Icon"
-msgstr ""
+msgstr "Ikonka odtwórz"
 
 #: includes/fields/class-acf-field-icon_picker.php:504
 msgid "Pause Icon"
-msgstr ""
+msgstr "Ikonka pauza"
 
 #: includes/fields/class-acf-field-icon_picker.php:503
 msgid "Forward Icon"
-msgstr ""
+msgstr "Ikonka do przodu"
 
 #: includes/fields/class-acf-field-icon_picker.php:502
 msgid "Back Icon"
-msgstr ""
+msgstr "Ikonka cofnij"
 
 #: includes/fields/class-acf-field-icon_picker.php:501
 msgid "Columns Icon"
-msgstr ""
+msgstr "Ikonka kolumny"
 
 #: includes/fields/class-acf-field-icon_picker.php:500
 msgid "Color Picker Icon"
-msgstr ""
+msgstr "Ikonka selektor koloru"
 
 #: includes/fields/class-acf-field-icon_picker.php:499
 msgid "Coffee Icon"
-msgstr ""
+msgstr "Ikonka kawa"
 
 #: includes/fields/class-acf-field-icon_picker.php:498
 msgid "Code Standards Icon"
-msgstr ""
+msgstr "Ikonka kod standardowy"
 
 #: includes/fields/class-acf-field-icon_picker.php:497
 msgid "Cloud Upload Icon"
-msgstr ""
+msgstr "Ikonka przesyłania do chmury"
 
 #: includes/fields/class-acf-field-icon_picker.php:496
 msgid "Cloud Saved Icon"
-msgstr ""
+msgstr "Ikonka zapisana w chmurze"
 
 #: includes/fields/class-acf-field-icon_picker.php:485
 msgid "Car Icon"
-msgstr ""
+msgstr "Ikonka samochodu"
 
 #: includes/fields/class-acf-field-icon_picker.php:484
 msgid "Camera (alt) Icon"
-msgstr ""
+msgstr "Ikonka aparatu (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:480
 msgid "Calculator Icon"
-msgstr ""
+msgstr "Ikonka kalkulatora"
 
 #: includes/fields/class-acf-field-icon_picker.php:479
 msgid "Button Icon"
-msgstr ""
+msgstr "Ikonka przycisku"
 
 #: includes/fields/class-acf-field-icon_picker.php:477
 msgid "Businessperson Icon"
-msgstr ""
+msgstr "Ikonka przedsiębiorcy"
 
 #: includes/fields/class-acf-field-icon_picker.php:474
 msgid "Tracking Icon"
-msgstr ""
+msgstr "Ikonka śledzenia"
 
 #: includes/fields/class-acf-field-icon_picker.php:473
 msgid "Topics Icon"
-msgstr ""
+msgstr "Ikonka tematów"
 
 #: includes/fields/class-acf-field-icon_picker.php:472
 msgid "Replies Icon"
-msgstr ""
+msgstr "Ikonka odpowiedzi"
 
 #: includes/fields/class-acf-field-icon_picker.php:471
 msgid "PM Icon"
-msgstr ""
+msgstr "Ikonka PM"
 
 #: includes/fields/class-acf-field-icon_picker.php:469
 msgid "Friends Icon"
-msgstr ""
+msgstr "Ikonka przyjaciół"
 
 #: includes/fields/class-acf-field-icon_picker.php:467
 msgid "Community Icon"
-msgstr ""
+msgstr "Ikonka społeczności"
 
 #: includes/fields/class-acf-field-icon_picker.php:466
 msgid "BuddyPress Icon"
@@ -740,99 +764,101 @@ msgstr "Ikonka bbPress"
 
 #: includes/fields/class-acf-field-icon_picker.php:464
 msgid "Activity Icon"
-msgstr ""
+msgstr "Ikonka aktywności"
 
 #: includes/fields/class-acf-field-icon_picker.php:463
 msgid "Book (alt) Icon"
-msgstr ""
+msgstr "Ikonka książki (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:461
 msgid "Block Default Icon"
-msgstr ""
+msgstr "Ikonka domyślnego bloku"
 
 #: includes/fields/class-acf-field-icon_picker.php:460
 msgid "Bell Icon"
-msgstr ""
+msgstr "Ikonka dzwonka"
 
 #: includes/fields/class-acf-field-icon_picker.php:459
 msgid "Beer Icon"
-msgstr ""
+msgstr "Ikonka piwa"
 
 #: includes/fields/class-acf-field-icon_picker.php:458
 msgid "Bank Icon"
-msgstr ""
+msgstr "Ikonka banku"
 
 #: includes/fields/class-acf-field-icon_picker.php:454
 msgid "Arrow Up (alt2) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w górę (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:453
 msgid "Arrow Up (alt) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w górę (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:451
 msgid "Arrow Right (alt2) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w prawo (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:450
 msgid "Arrow Right (alt) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w prawo (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:448
 msgid "Arrow Left (alt2) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w lewo (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:447
 msgid "Arrow Left (alt) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w lewo (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:445
 msgid "Arrow Down (alt2) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w dół (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:444
 msgid "Arrow Down (alt) Icon"
-msgstr ""
+msgstr "Ikonka strzałki w dół (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:440
 msgid "Amazon Icon"
-msgstr ""
+msgstr "Ikonka Amazon"
 
 #: includes/fields/class-acf-field-icon_picker.php:439
 msgid "Align Wide Icon"
-msgstr ""
+msgstr "Ikonka wyrównaj szeroko"
 
 #: includes/fields/class-acf-field-icon_picker.php:437
 msgid "Align Pull Right Icon"
-msgstr ""
+msgstr "Ikonka wyrównaj przyciąganie do prawej"
 
 #: includes/fields/class-acf-field-icon_picker.php:436
 msgid "Align Pull Left Icon"
-msgstr ""
+msgstr "Ikonka wyrównaj przyciąganie do lewej"
 
 #: includes/fields/class-acf-field-icon_picker.php:433
 msgid "Align Full Width Icon"
-msgstr ""
+msgstr "Ikonka wyrównaj na pełną szerokość"
 
 #: includes/fields/class-acf-field-icon_picker.php:430
 msgid "Airplane Icon"
-msgstr ""
+msgstr "Ikonka samolot"
 
 #: includes/fields/class-acf-field-icon_picker.php:427
 msgid "Site (alt3) Icon"
-msgstr ""
+msgstr "Ikonka witryna (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:426
 msgid "Site (alt2) Icon"
-msgstr ""
+msgstr "Ikonka witryna (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:425
 msgid "Site (alt) Icon"
-msgstr ""
+msgstr "Ikonka witryna (alt)"
 
 #: includes/admin/views/options-page-preview.php:26
 msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
 msgstr ""
+"Zaktualizuj do wersji ACF PRO, aby tworzyć strony opcji za pomocą zaledwie "
+"kilku kliknięć"
 
 #: includes/ajax/class-acf-ajax-query-users.php:24
 msgid "Invalid request args."
@@ -844,11 +870,11 @@ msgstr "Nieprawidłowe argumenty żądania."
 #: includes/ajax/class-acf-ajax-upgrade.php:24
 #: includes/ajax/class-acf-ajax-user-setting.php:38
 msgid "Sorry, you do not have permission to do that."
-msgstr ""
+msgstr "Przepraszamy, ale nie masz uprawnień, aby to zrobić."
 
 #: src/Site_Health/Site_Health.php:720
 msgid "Blocks Using Post Meta"
-msgstr ""
+msgstr "Bloki używające meta wpisu"
 
 #: includes/admin/views/acf-field-group/pro-features.php:25
 #: includes/admin/views/acf-field-group/pro-features.php:27
@@ -882,7 +908,7 @@ msgstr "Rodzaj ikonki do zapisania."
 
 #: includes/fields/class-acf-field-icon_picker.php:745
 msgid "Yes Icon"
-msgstr ""
+msgstr "Ikonka Yes"
 
 #: includes/fields/class-acf-field-icon_picker.php:742
 msgid "WordPress Icon"
@@ -890,35 +916,35 @@ msgstr "Ikonka WordPress"
 
 #: includes/fields/class-acf-field-icon_picker.php:734
 msgid "Warning Icon"
-msgstr ""
+msgstr "Ikonka ostrzeżenia"
 
 #: includes/fields/class-acf-field-icon_picker.php:733
 msgid "Visibility Icon"
-msgstr ""
+msgstr "Ikonka widoczności"
 
 #: includes/fields/class-acf-field-icon_picker.php:729
 msgid "Vault Icon"
-msgstr ""
+msgstr "Ikonka sklepienia"
 
 #: includes/fields/class-acf-field-icon_picker.php:728
 msgid "Upload Icon"
-msgstr ""
+msgstr "Ikonka przesyłania"
 
 #: includes/fields/class-acf-field-icon_picker.php:726
 msgid "Update Icon"
-msgstr ""
+msgstr "Ikonka aktualizacji"
 
 #: includes/fields/class-acf-field-icon_picker.php:725
 msgid "Unlock Icon"
-msgstr ""
+msgstr "Ikonka odblokowania"
 
 #: includes/fields/class-acf-field-icon_picker.php:723
 msgid "Universal Access Icon"
-msgstr ""
+msgstr "Ikonka uniwersalnego dostępu"
 
 #: includes/fields/class-acf-field-icon_picker.php:722
 msgid "Undo Icon"
-msgstr ""
+msgstr "Ikonka cofnij"
 
 #: includes/fields/class-acf-field-icon_picker.php:720
 msgid "Twitter Icon"
@@ -926,621 +952,623 @@ msgstr "Ikonka Twitter"
 
 #: includes/fields/class-acf-field-icon_picker.php:718
 msgid "Trash Icon"
-msgstr ""
+msgstr "Ikonka kosza"
 
 #: includes/fields/class-acf-field-icon_picker.php:717
 msgid "Translation Icon"
-msgstr ""
+msgstr "Ikonka tłumaczenia"
 
 #: includes/fields/class-acf-field-icon_picker.php:714
 msgid "Tickets Icon"
-msgstr ""
+msgstr "Ikonka Tickets"
 
 #: includes/fields/class-acf-field-icon_picker.php:713
 msgid "Thumbs Up Icon"
-msgstr ""
+msgstr "Ikonka kciuka w górę"
 
 #: includes/fields/class-acf-field-icon_picker.php:712
 msgid "Thumbs Down Icon"
-msgstr ""
+msgstr "Ikonka kciuka w dół"
 
 #: includes/fields/class-acf-field-icon_picker.php:633
 #: includes/fields/class-acf-field-icon_picker.php:710
 msgid "Text Icon"
-msgstr ""
+msgstr "Ikonka tekst"
 
 #: includes/fields/class-acf-field-icon_picker.php:709
 msgid "Testimonial Icon"
-msgstr ""
+msgstr "Ikonka referencji"
 
 #: includes/fields/class-acf-field-icon_picker.php:708
 msgid "Tagcloud Icon"
-msgstr ""
+msgstr "Ikonka chmury znaczników"
 
 #: includes/fields/class-acf-field-icon_picker.php:707
 msgid "Tag Icon"
-msgstr ""
+msgstr "Ikonka znacznika"
 
 #: includes/fields/class-acf-field-icon_picker.php:706
 msgid "Tablet Icon"
-msgstr ""
+msgstr "Ikonka tabletu"
 
 #: includes/fields/class-acf-field-icon_picker.php:697
 msgid "Store Icon"
-msgstr ""
+msgstr "Ikonka sklepu"
 
 #: includes/fields/class-acf-field-icon_picker.php:696
 msgid "Sticky Icon"
-msgstr ""
+msgstr "Ikonka przypięcia"
 
 #: includes/fields/class-acf-field-icon_picker.php:695
 msgid "Star Half Icon"
-msgstr ""
+msgstr "Ikonka połowy gwiazdki"
 
 #: includes/fields/class-acf-field-icon_picker.php:694
 msgid "Star Filled Icon"
-msgstr ""
+msgstr "Ikonka wypełniona gwiazdka"
 
 #: includes/fields/class-acf-field-icon_picker.php:693
 msgid "Star Empty Icon"
-msgstr ""
+msgstr "Ikonka pustej gwiazdki"
 
 #: includes/fields/class-acf-field-icon_picker.php:691
 msgid "Sos Icon"
-msgstr ""
+msgstr "Ikonka Sos"
 
 #: includes/fields/class-acf-field-icon_picker.php:690
 msgid "Sort Icon"
-msgstr ""
+msgstr "Ikonka sortuj"
 
 #: includes/fields/class-acf-field-icon_picker.php:689
 msgid "Smiley Icon"
-msgstr ""
+msgstr "Ikonka uśmiech"
 
 #: includes/fields/class-acf-field-icon_picker.php:688
 msgid "Smartphone Icon"
-msgstr ""
+msgstr "Ikonka smartfon"
 
 #: includes/fields/class-acf-field-icon_picker.php:687
 msgid "Slides Icon"
-msgstr ""
+msgstr "Ikonka slajdów"
 
 #: includes/fields/class-acf-field-icon_picker.php:684
 msgid "Shield Icon"
-msgstr ""
+msgstr "Ikonka tarcza"
 
 #: includes/fields/class-acf-field-icon_picker.php:681
 msgid "Share Icon"
-msgstr ""
+msgstr "Ikonka udostępniania"
 
 #: includes/fields/class-acf-field-icon_picker.php:680
 msgid "Search Icon"
-msgstr ""
+msgstr "Ikonka szukaj"
 
 #: includes/fields/class-acf-field-icon_picker.php:679
 msgid "Screen Options Icon"
-msgstr ""
+msgstr "Ikonka opcji ekranu"
 
 #: includes/fields/class-acf-field-icon_picker.php:678
 msgid "Schedule Icon"
-msgstr ""
+msgstr "Ikonka harmonogramu"
 
 #: includes/fields/class-acf-field-icon_picker.php:673
 msgid "Redo Icon"
-msgstr ""
+msgstr "Ikonka ponów"
 
 #: includes/fields/class-acf-field-icon_picker.php:671
 msgid "Randomize Icon"
-msgstr ""
+msgstr "Ikonka losuj"
 
 #: includes/fields/class-acf-field-icon_picker.php:670
 msgid "Products Icon"
-msgstr ""
+msgstr "Ikonka produkty"
 
 #: includes/fields/class-acf-field-icon_picker.php:667
 msgid "Pressthis Icon"
-msgstr ""
+msgstr "Ikonka naciśnij"
 
 #: includes/fields/class-acf-field-icon_picker.php:666
 msgid "Post Status Icon"
-msgstr ""
+msgstr "Ikonka statusu wpisu"
 
 #: includes/fields/class-acf-field-icon_picker.php:665
 msgid "Portfolio Icon"
-msgstr ""
+msgstr "Ikonka portfolio"
 
 #: includes/fields/class-acf-field-icon_picker.php:661
 msgid "Plus Icon"
-msgstr ""
+msgstr "Ikonka plus"
 
 #: includes/fields/class-acf-field-icon_picker.php:659
 msgid "Playlist Video Icon"
-msgstr ""
+msgstr "Ikonka listy odtwarzania filmów"
 
 #: includes/fields/class-acf-field-icon_picker.php:658
 msgid "Playlist Audio Icon"
-msgstr ""
+msgstr "Ikonka listy odtwarzania dźwięku"
 
 #: includes/fields/class-acf-field-icon_picker.php:656
 msgid "Phone Icon"
-msgstr ""
+msgstr "Ikonka telefonu"
 
 #: includes/fields/class-acf-field-icon_picker.php:654
 msgid "Performance Icon"
-msgstr ""
+msgstr "Ikonka wydajności"
 
 #: includes/fields/class-acf-field-icon_picker.php:652
 msgid "Paperclip Icon"
-msgstr ""
+msgstr "Ikonka spinacza"
 
 #: includes/fields/class-acf-field-icon_picker.php:648
 msgid "No Icon"
-msgstr ""
+msgstr "Ikonka brak"
 
 #: includes/fields/class-acf-field-icon_picker.php:647
 msgid "Networking Icon"
-msgstr ""
+msgstr "Ikonka sieciowa"
 
 #: includes/fields/class-acf-field-icon_picker.php:646
 msgid "Nametag Icon"
-msgstr ""
+msgstr "Ikonka etykiety"
 
 #: includes/fields/class-acf-field-icon_picker.php:645
 msgid "Move Icon"
-msgstr ""
+msgstr "Ikonka przesuń"
 
 #: includes/fields/class-acf-field-icon_picker.php:643
 msgid "Money Icon"
-msgstr ""
+msgstr "Ikonka pieniędzy"
 
 #: includes/fields/class-acf-field-icon_picker.php:642
 msgid "Minus Icon"
-msgstr ""
+msgstr "Ikonka minus"
 
 #: includes/fields/class-acf-field-icon_picker.php:641
 msgid "Migrate Icon"
-msgstr ""
+msgstr "Ikonka migracji"
 
 #: includes/fields/class-acf-field-icon_picker.php:640
 msgid "Microphone Icon"
-msgstr ""
+msgstr "Ikonka mikrofonu"
 
 #: includes/fields/class-acf-field-icon_picker.php:635
 msgid "Megaphone Icon"
-msgstr ""
+msgstr "Ikonka megafonu"
 
 #: includes/fields/class-acf-field-icon_picker.php:625
 msgid "Marker Icon"
-msgstr ""
+msgstr "Ikonka znacznika"
 
 #: includes/fields/class-acf-field-icon_picker.php:624
 msgid "Lock Icon"
-msgstr ""
+msgstr "Ikonka kłódki"
 
 #: includes/fields/class-acf-field-icon_picker.php:622
 msgid "Location Icon"
-msgstr ""
+msgstr "Ikonka lokalizacji"
 
 #: includes/fields/class-acf-field-icon_picker.php:621
 msgid "List View Icon"
-msgstr ""
+msgstr "Ikonka widoku listy"
 
 #: includes/fields/class-acf-field-icon_picker.php:619
 msgid "Lightbulb Icon"
-msgstr ""
+msgstr "Ikonka żarówki"
 
 #: includes/fields/class-acf-field-icon_picker.php:618
 msgid "Left Right Icon"
-msgstr ""
+msgstr "Ikonka lewo prawo"
 
 #: includes/fields/class-acf-field-icon_picker.php:617
 msgid "Layout Icon"
-msgstr ""
+msgstr "Ikonka układ"
 
 #: includes/fields/class-acf-field-icon_picker.php:616
 msgid "Laptop Icon"
-msgstr ""
+msgstr "Ikonka laptop"
 
 #: includes/fields/class-acf-field-icon_picker.php:610
 msgid "Info Icon"
-msgstr ""
+msgstr "Ikonka informacji"
 
 #: includes/fields/class-acf-field-icon_picker.php:609
 msgid "Index Card Icon"
-msgstr ""
+msgstr "Ikonka karty indeksowej"
 
 #: includes/fields/class-acf-field-icon_picker.php:598
 msgid "ID Icon"
-msgstr ""
+msgstr "Ikonka ID"
 
 #: includes/fields/class-acf-field-icon_picker.php:595
 msgid "Hidden Icon"
-msgstr ""
+msgstr "Ikonka ukryj"
 
 #: includes/fields/class-acf-field-icon_picker.php:594
 msgid "Heart Icon"
-msgstr ""
+msgstr "Ikonka serca"
 
 #: includes/fields/class-acf-field-icon_picker.php:592
 msgid "Hammer Icon"
-msgstr ""
+msgstr "Ikonka młotka"
 
 #: includes/fields/class-acf-field-icon_picker.php:470
 #: includes/fields/class-acf-field-icon_picker.php:591
 msgid "Groups Icon"
-msgstr ""
+msgstr "Ikonka grup"
 
 #: includes/fields/class-acf-field-icon_picker.php:590
 msgid "Grid View Icon"
-msgstr ""
+msgstr "Ikonka widoku siatki"
 
 #: includes/fields/class-acf-field-icon_picker.php:585
 msgid "Forms Icon"
-msgstr ""
+msgstr "Ikonka formularzy"
 
 #: includes/fields/class-acf-field-icon_picker.php:575
 msgid "Flag Icon"
-msgstr ""
+msgstr "Ikonka flagi"
 
 #: includes/fields/class-acf-field-icon_picker.php:574
 #: includes/fields/class-acf-field-icon_picker.php:601
 msgid "Filter Icon"
-msgstr ""
+msgstr "Ikonka filtra"
 
 #: includes/fields/class-acf-field-icon_picker.php:573
 msgid "Feedback Icon"
-msgstr ""
+msgstr "Ikonka uwagi"
 
 #: includes/fields/class-acf-field-icon_picker.php:572
 msgid "Facebook (alt) Icon"
-msgstr ""
+msgstr "Ikonka Facebooka (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:571
 msgid "Facebook Icon"
-msgstr ""
+msgstr "Ikonka Facebooka"
 
 #: includes/fields/class-acf-field-icon_picker.php:570
 msgid "External Icon"
-msgstr ""
+msgstr "Ikonka zewnętrzny"
 
 #: includes/fields/class-acf-field-icon_picker.php:561
 msgid "Email (alt) Icon"
-msgstr ""
+msgstr "Ikonka e-maila (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:560
 msgid "Email Icon"
-msgstr ""
+msgstr "Ikonka e-maila"
 
 #: includes/fields/class-acf-field-icon_picker.php:558
 #: includes/fields/class-acf-field-icon_picker.php:584
 #: includes/fields/class-acf-field-icon_picker.php:634
 msgid "Video Icon"
-msgstr ""
+msgstr "Ikonka filmu"
 
 #: includes/fields/class-acf-field-icon_picker.php:557
 msgid "Unlink Icon"
-msgstr ""
+msgstr "Ikonka odłączenia"
 
 #: includes/fields/class-acf-field-icon_picker.php:556
 msgid "Underline Icon"
-msgstr ""
+msgstr "Ikonka podkreślenia"
 
 #: includes/fields/class-acf-field-icon_picker.php:554
 msgid "Text Color Icon"
-msgstr ""
+msgstr "Ikonka koloru tekstu"
 
 #: includes/fields/class-acf-field-icon_picker.php:553
 msgid "Table Icon"
-msgstr ""
+msgstr "Ikonka tabeli"
 
 #: includes/fields/class-acf-field-icon_picker.php:552
 msgid "Strikethrough Icon"
-msgstr ""
+msgstr "Ikonka przekreślenia"
 
 #: includes/fields/class-acf-field-icon_picker.php:551
 msgid "Spellcheck Icon"
-msgstr ""
+msgstr "Ikonka sprawdzania pisowni"
 
 #: includes/fields/class-acf-field-icon_picker.php:549
 msgid "Remove Formatting Icon"
-msgstr ""
+msgstr "Ikonka usuwania formatowania"
 
 #: includes/fields/class-acf-field-icon_picker.php:548
 #: includes/fields/class-acf-field-icon_picker.php:582
 msgid "Quote Icon"
-msgstr ""
+msgstr "Ikonka cytatu"
 
 #: includes/fields/class-acf-field-icon_picker.php:547
 msgid "Paste Word Icon"
-msgstr ""
+msgstr "Ikonka wklejenia słowa"
 
 #: includes/fields/class-acf-field-icon_picker.php:546
 msgid "Paste Text Icon"
-msgstr ""
+msgstr "Ikonka wklejenia tekstu"
 
 #: includes/fields/class-acf-field-icon_picker.php:545
 msgid "Paragraph Icon"
-msgstr ""
+msgstr "Ikonka akapitu"
 
 #: includes/fields/class-acf-field-icon_picker.php:544
 msgid "Outdent Icon"
-msgstr ""
+msgstr "Ikonka zmniejszenia wcięcia"
 
 #: includes/fields/class-acf-field-icon_picker.php:540
 msgid "Kitchen Sink Icon"
-msgstr ""
+msgstr "Ikonka zlewu kuchennego"
 
 #: includes/fields/class-acf-field-icon_picker.php:539
 msgid "Justify Icon"
-msgstr ""
+msgstr "Ikonka wyjustowania"
 
 #: includes/fields/class-acf-field-icon_picker.php:538
 msgid "Italic Icon"
-msgstr ""
+msgstr "Ikonka kursywy"
 
 #: includes/fields/class-acf-field-icon_picker.php:537
 msgid "Insert More Icon"
-msgstr ""
+msgstr "Ikonka wstaw więcej"
 
 #: includes/fields/class-acf-field-icon_picker.php:536
 msgid "Indent Icon"
-msgstr ""
+msgstr "Ikonka wcięcia"
 
 #: includes/fields/class-acf-field-icon_picker.php:535
 msgid "Help Icon"
-msgstr ""
+msgstr "Ikonka pomocy"
 
 #: includes/fields/class-acf-field-icon_picker.php:534
 msgid "Expand Icon"
-msgstr ""
+msgstr "Ikonka rozwinięcia"
 
 #: includes/fields/class-acf-field-icon_picker.php:532
 msgid "Contract Icon"
-msgstr ""
+msgstr "Ikonka kontraktu"
 
 #: includes/fields/class-acf-field-icon_picker.php:531
 #: includes/fields/class-acf-field-icon_picker.php:628
 msgid "Code Icon"
-msgstr ""
+msgstr "Ikonka kodu"
 
 #: includes/fields/class-acf-field-icon_picker.php:530
 msgid "Break Icon"
-msgstr ""
+msgstr "Ikonka przerwy"
 
 #: includes/fields/class-acf-field-icon_picker.php:529
 msgid "Bold Icon"
-msgstr ""
+msgstr "Ikonka pogrubienia"
 
 #: includes/fields/class-acf-field-icon_picker.php:523
 msgid "Edit Icon"
-msgstr ""
+msgstr "Ikonka edytuj"
 
 #: includes/fields/class-acf-field-icon_picker.php:521
 msgid "Download Icon"
-msgstr ""
+msgstr "Ikonka pobierz"
 
 #: includes/fields/class-acf-field-icon_picker.php:520
 msgid "Dismiss Icon"
-msgstr ""
+msgstr "Ikonka odrzuć"
 
 #: includes/fields/class-acf-field-icon_picker.php:519
 msgid "Desktop Icon"
-msgstr ""
+msgstr "Ikonka komputera stacjonarnego"
 
 #: includes/fields/class-acf-field-icon_picker.php:512
 msgid "Dashboard Icon"
-msgstr ""
+msgstr "Ikonka kokpit"
 
 #: includes/fields/class-acf-field-icon_picker.php:495
 msgid "Cloud Icon"
-msgstr ""
+msgstr "Ikonka chmura"
 
 #: includes/fields/class-acf-field-icon_picker.php:494
 msgid "Clock Icon"
-msgstr ""
+msgstr "Ikonka zegar"
 
 #: includes/fields/class-acf-field-icon_picker.php:493
 msgid "Clipboard Icon"
-msgstr ""
+msgstr "Ikonka schowek"
 
 #: includes/fields/class-acf-field-icon_picker.php:492
 msgid "Chart Pie Icon"
-msgstr ""
+msgstr "Ikonka wykres kołowy"
 
 #: includes/fields/class-acf-field-icon_picker.php:491
 msgid "Chart Line Icon"
-msgstr ""
+msgstr "Ikonka wykres liniowy"
 
 #: includes/fields/class-acf-field-icon_picker.php:490
 msgid "Chart Bar Icon"
-msgstr ""
+msgstr "Ikonka pasek wykresu"
 
 #: includes/fields/class-acf-field-icon_picker.php:489
 msgid "Chart Area Icon"
-msgstr ""
+msgstr "Ikonka obszar wykresu"
 
 #: includes/fields/class-acf-field-icon_picker.php:488
 msgid "Category Icon"
-msgstr ""
+msgstr "Ikonka kategorii"
 
 #: includes/fields/class-acf-field-icon_picker.php:487
 msgid "Cart Icon"
-msgstr ""
+msgstr "Ikonka koszyka"
 
 #: includes/fields/class-acf-field-icon_picker.php:486
 msgid "Carrot Icon"
-msgstr ""
+msgstr "Ikonka marchewki"
 
 #: includes/fields/class-acf-field-icon_picker.php:483
 msgid "Camera Icon"
-msgstr ""
+msgstr "Ikonka aparatu"
 
 #: includes/fields/class-acf-field-icon_picker.php:482
 msgid "Calendar (alt) Icon"
-msgstr ""
+msgstr "Ikonka kalendarza (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:481
 msgid "Calendar Icon"
-msgstr ""
+msgstr "Ikonka kalendarza"
 
 #: includes/fields/class-acf-field-icon_picker.php:478
 msgid "Businesswoman Icon"
-msgstr ""
+msgstr "Ikonka bizneswoman"
 
 #: includes/fields/class-acf-field-icon_picker.php:475
 msgid "Building Icon"
-msgstr ""
+msgstr "Ikonka budynku"
 
 #: includes/fields/class-acf-field-icon_picker.php:462
 msgid "Book Icon"
-msgstr ""
+msgstr "Ikonka książki"
 
 #: includes/fields/class-acf-field-icon_picker.php:457
 msgid "Backup Icon"
-msgstr ""
+msgstr "Ikonka kopii zapasowej"
 
 #: includes/fields/class-acf-field-icon_picker.php:456
 msgid "Awards Icon"
-msgstr ""
+msgstr "Ikonka nagród"
 
 #: includes/fields/class-acf-field-icon_picker.php:455
 msgid "Art Icon"
-msgstr ""
+msgstr "Ikonka sztuki"
 
 #: includes/fields/class-acf-field-icon_picker.php:452
 msgid "Arrow Up Icon"
-msgstr ""
+msgstr "Ikonka strzałki w górę"
 
 #: includes/fields/class-acf-field-icon_picker.php:449
 msgid "Arrow Right Icon"
-msgstr ""
+msgstr "Ikonka strzałki w prawo"
 
 #: includes/fields/class-acf-field-icon_picker.php:446
 msgid "Arrow Left Icon"
-msgstr ""
+msgstr "Ikonka strzałki w lewo"
 
 #: includes/fields/class-acf-field-icon_picker.php:443
 msgid "Arrow Down Icon"
-msgstr ""
+msgstr "Ikonka strzałki w dół"
 
 #: includes/fields/class-acf-field-icon_picker.php:442
 #: includes/fields/class-acf-field-icon_picker.php:626
 msgid "Archive Icon"
-msgstr ""
+msgstr "Ikonka archiwum"
 
 #: includes/fields/class-acf-field-icon_picker.php:441
 msgid "Analytics Icon"
-msgstr ""
+msgstr "Ikonka analityki"
 
 #: includes/fields/class-acf-field-icon_picker.php:438
 #: includes/fields/class-acf-field-icon_picker.php:528
 msgid "Align Right Icon"
-msgstr ""
+msgstr "Ikonka wyrównaj do prawej"
 
 #: includes/fields/class-acf-field-icon_picker.php:435
 msgid "Align None Icon"
-msgstr ""
+msgstr "Ikonka bez wyrównania"
 
 #: includes/fields/class-acf-field-icon_picker.php:434
 #: includes/fields/class-acf-field-icon_picker.php:527
 msgid "Align Left Icon"
-msgstr ""
+msgstr "Ikonka wyrównaj do lewej"
 
 #: includes/fields/class-acf-field-icon_picker.php:432
 #: includes/fields/class-acf-field-icon_picker.php:526
 msgid "Align Center Icon"
-msgstr ""
+msgstr "Ikonka wyśrodkuj"
 
 #: includes/fields/class-acf-field-icon_picker.php:431
 msgid "Album Icon"
-msgstr ""
+msgstr "Ikonka albumu"
 
 #: includes/fields/class-acf-field-icon_picker.php:429
 msgid "Users Icon"
-msgstr ""
+msgstr "Ikonka użytkownicy"
 
 #: includes/fields/class-acf-field-icon_picker.php:428
 msgid "Tools Icon"
-msgstr ""
+msgstr "Ikonka narzędzia"
 
 #: includes/fields/class-acf-field-icon_picker.php:424
 msgid "Site Icon"
-msgstr ""
+msgstr "Ikonka witryna"
 
 #: includes/fields/class-acf-field-icon_picker.php:423
 msgid "Settings Icon"
-msgstr ""
+msgstr "Ikonka ustawienia"
 
 #: includes/fields/class-acf-field-icon_picker.php:422
 msgid "Post Icon"
-msgstr ""
+msgstr "Ikonka wpis"
 
 #: includes/fields/class-acf-field-icon_picker.php:421
 msgid "Plugins Icon"
-msgstr ""
+msgstr "Ikonka wtyczki"
 
 #: includes/fields/class-acf-field-icon_picker.php:420
 msgid "Page Icon"
-msgstr ""
+msgstr "Ikonka strona"
 
 #: includes/fields/class-acf-field-icon_picker.php:419
 msgid "Network Icon"
-msgstr ""
+msgstr "Ikonka sieć"
 
 #: includes/fields/class-acf-field-icon_picker.php:418
 msgid "Multisite Icon"
-msgstr ""
+msgstr "Ikonka wielowitrynowa"
 
 #: includes/fields/class-acf-field-icon_picker.php:417
 msgid "Media Icon"
-msgstr ""
+msgstr "Ikonka media"
 
 #: includes/fields/class-acf-field-icon_picker.php:416
 msgid "Links Icon"
-msgstr ""
+msgstr "Ikonka odnośniki"
 
 #: includes/fields/class-acf-field-icon_picker.php:415
 msgid "Home Icon"
-msgstr ""
+msgstr "Ikonka dom"
 
 #: includes/fields/class-acf-field-icon_picker.php:413
 msgid "Customizer Icon"
-msgstr ""
+msgstr "Ikonka konfigurator"
 
 #: includes/fields/class-acf-field-icon_picker.php:412
 #: includes/fields/class-acf-field-icon_picker.php:736
 msgid "Comments Icon"
-msgstr ""
+msgstr "Ikonka komentarze"
 
 #: includes/fields/class-acf-field-icon_picker.php:411
 msgid "Collapse Icon"
-msgstr ""
+msgstr "Ikonka zwinięcia"
 
 #: includes/fields/class-acf-field-icon_picker.php:410
 msgid "Appearance Icon"
-msgstr ""
+msgstr "Ikonka wyglądu"
 
 #: includes/fields/class-acf-field-icon_picker.php:414
 msgid "Generic Icon"
-msgstr ""
+msgstr "Ikonka ogólne"
 
 #: includes/fields/class-acf-field-icon_picker.php:346
 msgid "Icon picker requires a value."
-msgstr ""
+msgstr "Selektor ikonki wymaga podania wartości."
 
 #: includes/fields/class-acf-field-icon_picker.php:341
 msgid "Icon picker requires an icon type."
-msgstr ""
+msgstr "Selektor ikonki wymaga podania rodzaju ikonki."
 
 #: includes/fields/class-acf-field-icon_picker.php:310
 msgid ""
 "The available icons matching your search query have been updated in the icon "
 "picker below."
 msgstr ""
+"Dostępne ikonki odpowiadające Twojemu zapytaniu zostały zaktualizowane w "
+"selektorze ikonki poniżej."
 
 #: includes/fields/class-acf-field-icon_picker.php:309
 msgid "No results found for that search term"
-msgstr ""
+msgstr "Nie znaleziono wyników dla tej taksonomii wyszukiwania"
 
 #: includes/fields/class-acf-field-icon_picker.php:291
 msgid "Array"
@@ -1553,15 +1581,16 @@ msgstr "Ciąg znaków"
 #. translators: %s - link to documentation
 #: includes/fields/class-acf-field-icon_picker.php:278
 msgid "Specify the return format for the icon. %s"
-msgstr ""
+msgstr "Określ format zwrotu dla ikonki. %s"
 
 #: includes/fields/class-acf-field-icon_picker.php:263
 msgid "Select where content editors can choose the icon from."
-msgstr ""
+msgstr "Wybierz, skąd redaktorzy treści będą mogli wybrać ikonkę."
 
 #: includes/fields/class-acf-field-icon_picker.php:224
 msgid "The URL to the icon you'd like to use, or svg as Data URI"
 msgstr ""
+"Adres URL ikonki, której chcesz użyć, lub svg jako identyfikator URI danych"
 
 #: includes/fields/class-acf-field-icon_picker.php:207
 msgid "Browse Media Library"
@@ -1569,11 +1598,11 @@ msgstr "Przeglądaj bibliotekę mediów"
 
 #: includes/fields/class-acf-field-icon_picker.php:198
 msgid "The currently selected image preview"
-msgstr ""
+msgstr "Aktualnie wybrany podgląd obrazka"
 
 #: includes/fields/class-acf-field-icon_picker.php:189
 msgid "Click to change the icon in the Media Library"
-msgstr ""
+msgstr "Kliknij, aby zmienić ikonkę w multimediach"
 
 #: includes/fields/class-acf-field-icon_picker.php:84
 msgid "Search icons..."
@@ -1585,13 +1614,15 @@ msgstr "Multimedia"
 
 #: includes/fields/class-acf-field-icon_picker.php:49
 msgid "Dashicons"
-msgstr ""
+msgstr "Dashicony"
 
 #: includes/fields/class-acf-field-icon_picker.php:26
 msgid ""
 "An interactive UI for selecting an icon. Select from Dashicons, the media "
 "library, or a standalone URL input."
 msgstr ""
+"Interaktywny interfejs użytkownika do wybierania ikonki. Wybierz z "
+"Dashicons, multimediów lub samodzielnego wprowadzania adresu URL."
 
 #: includes/fields/class-acf-field-icon_picker.php:23
 msgid "Icon Picker"
@@ -1599,55 +1630,55 @@ msgstr "Wybór ikonki"
 
 #: src/Site_Health/Site_Health.php:781
 msgid "JSON Load Paths"
-msgstr ""
+msgstr "Ścieżki wczytania JSON"
 
 #: src/Site_Health/Site_Health.php:775
 msgid "JSON Save Paths"
-msgstr ""
+msgstr "Ścieżki zapisu JSON"
 
 #: src/Site_Health/Site_Health.php:766
 msgid "Registered ACF Forms"
-msgstr ""
+msgstr "Zarejestrowane formularze ACF"
 
 #: src/Site_Health/Site_Health.php:760
 msgid "Shortcode Enabled"
-msgstr ""
+msgstr "Krótki kod włączony"
 
 #: src/Site_Health/Site_Health.php:752
 msgid "Field Settings Tabs Enabled"
-msgstr ""
+msgstr "Włączono karty ustawień pola"
 
 #: src/Site_Health/Site_Health.php:744
 msgid "Field Type Modal Enabled"
-msgstr ""
+msgstr "Włączono modalny rodzaj pola"
 
 #: src/Site_Health/Site_Health.php:736
 msgid "Admin UI Enabled"
-msgstr ""
+msgstr "Włączono UI administratora"
 
 #: src/Site_Health/Site_Health.php:727
 msgid "Block Preloading Enabled"
-msgstr ""
+msgstr "Włączono wstępne ładowanie bloku"
 
 #: src/Site_Health/Site_Health.php:715
 msgid "Blocks Per ACF Block Version"
-msgstr ""
+msgstr "Bloki na wersję bloku ACF"
 
 #: src/Site_Health/Site_Health.php:710
 msgid "Blocks Per API Version"
-msgstr ""
+msgstr "Bloki na wersję API"
 
 #: src/Site_Health/Site_Health.php:683
 msgid "Registered ACF Blocks"
-msgstr ""
+msgstr "Zarejestrowane bloki ACF"
 
 #: src/Site_Health/Site_Health.php:677
 msgid "Light"
-msgstr ""
+msgstr "Jasny"
 
 #: src/Site_Health/Site_Health.php:677
 msgid "Standard"
-msgstr ""
+msgstr "Standardowe"
 
 #: src/Site_Health/Site_Health.php:676
 msgid "REST API Format"
@@ -1655,67 +1686,67 @@ msgstr "Format REST API"
 
 #: src/Site_Health/Site_Health.php:668
 msgid "Registered Options Pages (PHP)"
-msgstr ""
+msgstr "Zarejestrowane strony opcji (PHP)"
 
 #: src/Site_Health/Site_Health.php:654
 msgid "Registered Options Pages (JSON)"
-msgstr ""
+msgstr "Zarejestrowane strony opcji (JSON)"
 
 #: src/Site_Health/Site_Health.php:649
 msgid "Registered Options Pages (UI)"
-msgstr ""
+msgstr "Zarejestrowane strony opcji (Interfejs użytkownika)"
 
 #: src/Site_Health/Site_Health.php:619
 msgid "Options Pages UI Enabled"
-msgstr ""
+msgstr "Strony opcji UI włączone"
 
 #: src/Site_Health/Site_Health.php:611
 msgid "Registered Taxonomies (JSON)"
-msgstr ""
+msgstr "Zarejestrowane taksonomie (JSON)"
 
 #: src/Site_Health/Site_Health.php:599
 msgid "Registered Taxonomies (UI)"
-msgstr ""
+msgstr "Zarejestrowane taksonomie (Interfejs użytkownika)"
 
 #: src/Site_Health/Site_Health.php:587
 msgid "Registered Post Types (JSON)"
-msgstr ""
+msgstr "Zarejestrowane rodzaje wpisów (JSON)"
 
 #: src/Site_Health/Site_Health.php:575
 msgid "Registered Post Types (UI)"
-msgstr ""
+msgstr "Zarejestrowane rodzaje wpisów (Interfejs użytkownika)"
 
 #: src/Site_Health/Site_Health.php:562
 msgid "Post Types and Taxonomies Enabled"
-msgstr ""
+msgstr "Włączono rodzaje wpisów i taksonomie"
 
 #: src/Site_Health/Site_Health.php:555
 msgid "Number of Third Party Fields by Field Type"
-msgstr ""
+msgstr "Liczba pól stron trzecich wg rodzaju pola"
 
 #: src/Site_Health/Site_Health.php:550
 msgid "Number of Fields by Field Type"
-msgstr ""
+msgstr "Liczba pól wg rodzaju pola"
 
 #: src/Site_Health/Site_Health.php:449
 msgid "Field Groups Enabled for GraphQL"
-msgstr ""
+msgstr "Włączono grupy pól dla GraphQL"
 
 #: src/Site_Health/Site_Health.php:436
 msgid "Field Groups Enabled for REST API"
-msgstr ""
+msgstr "Włączono grupy pól dla interfejsu API REST"
 
 #: src/Site_Health/Site_Health.php:424
 msgid "Registered Field Groups (JSON)"
-msgstr ""
+msgstr "Zarejestrowane grupy pól (JSON)"
 
 #: src/Site_Health/Site_Health.php:412
 msgid "Registered Field Groups (PHP)"
-msgstr ""
+msgstr "Zarejestrowane grupy pól (PHP)"
 
 #: src/Site_Health/Site_Health.php:400
 msgid "Registered Field Groups (UI)"
-msgstr ""
+msgstr "Zarejestrowane grupy pól (Interfejs użytkownika)"
 
 #: src/Site_Health/Site_Health.php:388
 msgid "Active Plugins"
@@ -1731,7 +1762,7 @@ msgstr "Włączony motyw"
 
 #: src/Site_Health/Site_Health.php:342
 msgid "Is Multisite"
-msgstr ""
+msgstr "Jest wielowitrynowa"
 
 #: src/Site_Health/Site_Health.php:337
 msgid "MySQL Version"
@@ -1778,10 +1809,13 @@ msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
 msgstr ""
+"Ta sekcja zawiera informacje debugowania dotyczące konfiguracji ACF, które "
+"mogą okazać się przydatne dla wsparcia technicznego."
 
 #: includes/assets.php:373
 msgid "An ACF Block on this page requires attention before you can save."
 msgstr ""
+"Przed zapisaniem pliku należy zwrócić uwagę na blok ACF na tej stronie."
 
 #. translators: %s - The clear log button opening HTML tag. %s - The closing
 #. HTML tag.
@@ -1791,6 +1825,10 @@ msgid ""
 "output. %1$sClear log and dismiss%2$s after escaping the values in your "
 "code. The notice will reappear if we detect changed values again."
 msgstr ""
+"Te dane są rejestrowane, gdy wykrywamy wartości, które zostały zmienione "
+"podczas wyprowadzania. %1$sWyczyść dziennik i odrzuć%2$s po ucieczce z "
+"wartości w kodzie. Powiadomienie pojawi się ponownie, jeśli ponownie "
+"wykryjemy zmienione wartości."
 
 #: includes/admin/views/escaped-html-notice.php:25
 msgid "Dismiss permanently"
@@ -1799,126 +1837,127 @@ msgstr "Odrzuć na zawsze"
 #: includes/admin/views/acf-field-group/field.php:220
 msgid "Instructions for content editors. Shown when submitting data."
 msgstr ""
+"Instrukcje dla redaktorów treści. Wyświetlane podczas przesyłania danych."
 
 #: includes/admin/post-types/admin-field-group.php:143
 msgid "Has no term selected"
-msgstr ""
+msgstr "Nie wybrano żadnej taksonomii"
 
 #: includes/admin/post-types/admin-field-group.php:142
 msgid "Has any term selected"
-msgstr ""
+msgstr "Wybrano dowolną taksonomię"
 
 #: includes/admin/post-types/admin-field-group.php:141
 msgid "Terms do not contain"
-msgstr ""
+msgstr "Taksonomia nie zawiera"
 
 #: includes/admin/post-types/admin-field-group.php:140
 msgid "Terms contain"
-msgstr ""
+msgstr "Taksonomia zawiera"
 
 #: includes/admin/post-types/admin-field-group.php:139
 msgid "Term is not equal to"
-msgstr ""
+msgstr "Taksonomia nie jest równa"
 
 #: includes/admin/post-types/admin-field-group.php:138
 msgid "Term is equal to"
-msgstr ""
+msgstr "Taksonomia jest równa"
 
 #: includes/admin/post-types/admin-field-group.php:137
 msgid "Has no user selected"
-msgstr ""
+msgstr "Nie wybrano żadnego użytkownika"
 
 #: includes/admin/post-types/admin-field-group.php:136
 msgid "Has any user selected"
-msgstr ""
+msgstr "Wybrano dowolnego użytkownika"
 
 #: includes/admin/post-types/admin-field-group.php:135
 msgid "Users do not contain"
-msgstr ""
+msgstr "Użytkownicy nie zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:134
 msgid "Users contain"
-msgstr ""
+msgstr "Użytkownicy zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:133
 msgid "User is not equal to"
-msgstr ""
+msgstr "Użytkownik nie jest równy"
 
 #: includes/admin/post-types/admin-field-group.php:132
 msgid "User is equal to"
-msgstr ""
+msgstr "Użytkownik jest równy"
 
 #: includes/admin/post-types/admin-field-group.php:131
 msgid "Has no page selected"
-msgstr ""
+msgstr "Nie wybrano żadnej strony"
 
 #: includes/admin/post-types/admin-field-group.php:130
 msgid "Has any page selected"
-msgstr ""
+msgstr "Wybrano dowolną stronę"
 
 #: includes/admin/post-types/admin-field-group.php:129
 msgid "Pages do not contain"
-msgstr ""
+msgstr "Strony nie zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:128
 msgid "Pages contain"
-msgstr ""
+msgstr "Strony zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:127
 msgid "Page is not equal to"
-msgstr ""
+msgstr "Strona nie jest równa"
 
 #: includes/admin/post-types/admin-field-group.php:126
 msgid "Page is equal to"
-msgstr ""
+msgstr "Strona jest równa"
 
 #: includes/admin/post-types/admin-field-group.php:125
 msgid "Has no relationship selected"
-msgstr ""
+msgstr "Nie wybrano żadnej relacji"
 
 #: includes/admin/post-types/admin-field-group.php:124
 msgid "Has any relationship selected"
-msgstr ""
+msgstr "Wybrano dowolną relację"
 
 #: includes/admin/post-types/admin-field-group.php:123
 msgid "Has no post selected"
-msgstr ""
+msgstr "Nie wybrano żadnego wpisu"
 
 #: includes/admin/post-types/admin-field-group.php:122
 msgid "Has any post selected"
-msgstr ""
+msgstr "Wybrano dowolny wpis"
 
 #: includes/admin/post-types/admin-field-group.php:121
 msgid "Posts do not contain"
-msgstr ""
+msgstr "Wpisy nie zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:120
 msgid "Posts contain"
-msgstr ""
+msgstr "Wpisy zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:119
 msgid "Post is not equal to"
-msgstr ""
+msgstr "Wpis nie jest równy"
 
 #: includes/admin/post-types/admin-field-group.php:118
 msgid "Post is equal to"
-msgstr ""
+msgstr "Wpis jest równy"
 
 #: includes/admin/post-types/admin-field-group.php:117
 msgid "Relationships do not contain"
-msgstr ""
+msgstr "Relacje nie zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:116
 msgid "Relationships contain"
-msgstr ""
+msgstr "Relacje zawierają"
 
 #: includes/admin/post-types/admin-field-group.php:115
 msgid "Relationship is not equal to"
-msgstr ""
+msgstr "Relacje nie są równe"
 
 #: includes/admin/post-types/admin-field-group.php:114
 msgid "Relationship is equal to"
-msgstr ""
+msgstr "Relacje są równe"
 
 #: src/Blocks/Bindings.php:38
 msgctxt "The core ACF block binding source name for fields on the current page"
@@ -1939,23 +1978,28 @@ msgstr "Odnów licencję PRO"
 
 #: includes/admin/views/acf-field-group/field.php:41
 msgid "PRO fields cannot be edited without an active license."
-msgstr ""
+msgstr "Pól PRO nie można edytować bez aktywnej licencji."
 
 #: includes/admin/admin-internal-post-type-list.php:232
 msgid ""
 "Please activate your ACF PRO license to edit field groups assigned to an ACF "
 "Block."
 msgstr ""
+"Aby edytować grupy pól przypisane do bloku ACF, należy aktywować licencję "
+"ACF PRO."
 
 #: includes/admin/admin-internal-post-type-list.php:231
 msgid "Please activate your ACF PRO license to edit this options page."
-msgstr ""
+msgstr "Aby edytować tę stronę opcji, proszę aktywować licencję ACF PRO."
 
 #: includes/api/api-template.php:385 includes/api/api-template.php:439
 msgid ""
 "Returning escaped HTML values is only possible when format_value is also "
 "true. The field values have not been returned for security."
 msgstr ""
+"Zwrócenie zmienionych wartości HTML jest możliwe tylko wtedy, gdy parametr "
+"format_value ma również wartość true. Wartości pól nie zostały zwrócone ze "
+"względów bezpieczeństwa."
 
 #: includes/api/api-template.php:46 includes/api/api-template.php:251
 #: includes/api/api-template.php:947
@@ -1963,6 +2007,9 @@ msgid ""
 "Returning an escaped HTML value is only possible when format_value is also "
 "true. The field value has not been returned for security."
 msgstr ""
+"Zwrócenie wartości HTML w formie znaku ucieczki jest możliwe tylko wtedy, "
+"gdy parametr format_value ma również wartość true. Wartość pola nie została "
+"zwrócona ze względów bezpieczeństwa."
 
 #. translators: %1$s - name of the ACF plugin. %2$s - Link to documentation.
 #: includes/admin/views/escaped-html-notice.php:32
@@ -1972,10 +2019,16 @@ msgid ""
 "some of your fields has been modified by this change, but this may not be a "
 "breaking change. %2$s."
 msgstr ""
+"%1$s ACF teraz automatycznie ucieka z niebezpiecznego kodu HTML, gdy jest "
+"renderowany przez <code>the_field</code> lub krótki kod ACF. Wykryliśmy, że "
+"dane wyjściowe niektórych pól zostały zmodyfikowane przez tę zmianę, ale "
+"może to nie być zmiana powodująca przerwanie działania. %2$s."
 
 #: includes/admin/views/escaped-html-notice.php:27
 msgid "Please contact your site administrator or developer for more details."
 msgstr ""
+"Aby uzyskać więcej szczegółów, skontaktuj się z administratorem witryny lub "
+"twórcą witryny."
 
 #: includes/admin/views/escaped-html-notice.php:5
 msgid "Learn&nbsp;more"
@@ -6098,7 +6151,7 @@ msgstr "Grupa pól została zaktualizowana."
 
 #: includes/admin/admin-tools.php:107
 #: includes/admin/views/global/navigation.php:254
-#: includes/admin/views/tools/tools.php:13
+#: includes/admin/views/tools/tools.php:14
 msgid "Tools"
 msgstr "Narzędzia"
 

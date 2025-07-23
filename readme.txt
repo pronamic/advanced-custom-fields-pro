@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
 Tested up to: 6.8.1
 Requires PHP: 7.4
-Stable tag: 6.4.2
+Stable tag: 6.4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,16 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.4.3 =
+*Release Date 22nd July 2025*
+
+* Security - Unsafe HTML in field group labels is now correctly escaped for conditionally loaded field groups, resolving a JS execution vulnerability in the classic editor
+* Security - HTML is now escaped from field group labels when output in the ACF admin
+* Security - Bidirectional and Conditional Logic Select2 elements no longer render HTML in field labels or post titles
+* Security - The `acf.escHtml` function now uses the third party DOMPurify library to ensure all unsafe HTML is removed. A new `esc_html_dompurify_config` JS filter can be used to modify the default behaviour
+* Security - Post titles are now correctly escaped whenever they are output by ACF code. Thanks to Shogo Kumamaru of LAC Co., Ltd. for the responsible disclosure
+* Security - An admin notice is now displayed when version 3 of the Select2 library is used, as it has now been deprecated in favor of version 4
 
 = 6.4.2 =
 *Release Date 20th May 2025*

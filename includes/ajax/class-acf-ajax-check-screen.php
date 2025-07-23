@@ -51,14 +51,14 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 
 					// vars
 					$item = array(
-						'id'       => 'acf-' . $field_group['key'],
-						'key'      => $field_group['key'],
-						'title'    => $field_group['title'],
-						'position' => $field_group['position'],
+						'id'       => esc_attr( 'acf-' . $field_group['key'] ),
+						'key'      => esc_attr( $field_group['key'] ),
+						'title'    => esc_html( $field_group['title'] ),
+						'position' => esc_attr( $field_group['position'] ),
 						'classes'  => postbox_classes( 'acf-' . $field_group['key'], $args['screen'] ),
-						'style'    => $field_group['style'],
-						'label'    => $field_group['label_placement'],
-						'edit'     => acf_get_field_group_edit_link( $field_group['ID'] ),
+						'style'    => esc_attr( $field_group['style'] ),
+						'label'    => esc_attr( $field_group['label_placement'] ),
+						'edit'     => esc_url( acf_get_field_group_edit_link( $field_group['ID'] ) ),
 						'html'     => '',
 					);
 
@@ -67,6 +67,8 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 					if ( is_array( $hidden_metaboxes ) && in_array( $item['id'], $hidden_metaboxes ) ) {
 						$item['classes'] = trim( $item['classes'] . ' hide-if-js' );
 					}
+
+					$item['classes'] = esc_attr( $item['classes'] );
 
 					// append html if doesnt already exist on page
 					if ( ! in_array( $field_group['key'], $args['exists'] ) ) {

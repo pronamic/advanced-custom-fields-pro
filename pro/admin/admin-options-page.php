@@ -181,7 +181,7 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 					$priority = apply_filters( 'acf/input/meta_box_priority', $priority, $field_group );
 
 					// add meta box
-					add_meta_box( $id, acf_esc_html( $title ), array( $this, 'postbox_acf' ), 'acf_options_page', $context, $priority, $args );
+					add_meta_box( $id, esc_html( $title ), array( $this, 'postbox_acf' ), 'acf_options_page', $context, $priority, $args );
 				}
 				// foreach
 			}

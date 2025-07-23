@@ -105,7 +105,7 @@ class WC_Order {
 				// Add the meta box.
 				add_meta_box(
 					$id,
-					acf_esc_html( $title ),
+					esc_html( $title ),
 					array( $this, 'render_meta_box' ),
 					$screen,
 					$context,

@@ -250,6 +250,8 @@ function acf_pro_get_translated_connect_message( $text ) {
 		$text .= ' ' . sprintf( __( '%1$s or %2$s.', 'acf' ), $view_license, $check_again );
 
 		return $text;
+	} elseif ( strpos( $text, 'Invalid Site URL' ) !== false ) { // Support for licenses which are locked to one URL.
+		return __( 'Your license is not valid for this site URL. Please contact support for assistance.', 'acf' );
 	} elseif ( strpos( $text, 'upstream API error' ) !== false ) {
 		return __( 'An upstream API error occurred when checking your ACF PRO license status. We will retry again shortly.', 'acf' );
 	} elseif ( strpos( $text, 'scheduled maintenance' ) !== false ) {

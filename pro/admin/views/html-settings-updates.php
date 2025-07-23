@@ -25,6 +25,7 @@ function acf_pro_render_license_status_table( $status ) {
 	$status['status'] = ! empty( $status['status'] ) ? $status['status'] : 'inactive';
 	$status_text      = _x( 'Inactive', 'license status', 'acf' );
 	$is_lifetime      = ! empty( $status['lifetime'] );
+	$is_wpe           = ! empty( $status['wpe'] );
 
 	if ( 'active' === $status['status'] ) {
 		$status_text = _x( 'Active', 'license status', 'acf' );
@@ -63,7 +64,7 @@ function acf_pro_render_license_status_table( $status ) {
 			</th>
 			<td>
 				<?php
-				if ( $is_lifetime ) {
+				if ( $is_lifetime && ! $is_wpe ) {
 					esc_html_e( 'Lifetime - ', 'acf' );
 				}
 				echo esc_html( $status['name'] );
@@ -165,39 +166,42 @@ function acf_pro_render_manage_license_button( $status ) {
 					</div>
 				<?php endif; ?>
 			<?php else : // License is not defined. ?>
-				<form action="" method="post" class="acf-activation-form">
-					<?php acf_nonce_input( $nonce ); ?>
-					<label for="acf-field-acf_pro_license"><?php esc_html_e( 'License Key', 'acf' ); ?></label>
-					<?php
-					acf_render_field(
-						array(
-							'type'     => 'text',
-							'name'     => 'acf_pro_license',
-							'value'    => str_repeat( '*', strlen( $license ) ),
-							'readonly' => $active ? 1 : 0,
-						)
-					);
-
-					$activate_deactivate_btn_id    = $active ? 'id="deactivate-license" ' : '';
-					$activate_deactivate_btn_class = $active ? ' acf-btn-tertiary' : '';
-					?>
-					<input <?php echo $activate_deactivate_btn_id; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- manually defined safe HTML. ?>type="submit" value="<?php echo esc_attr( $activate_deactivate_btn ); ?>" class="acf-btn<?php echo esc_attr( $activate_deactivate_btn_class ); ?>">
-					<?php
-					acf_pro_render_manage_license_button( $license_status );
-
-					if ( acf_pro_is_license_expired( $license_status ) || acf_pro_was_license_refunded( $license_status ) ) {
-						$acf_recheck_nonce = wp_create_nonce( 'acf_recheck_status' );
-						$acf_recheck_url   = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates&acf_retry_nonce=' . $acf_recheck_nonce );
-						$acf_recheck_text  = __( 'Recheck License', 'acf' );
-						printf(
-							'<a class="acf-recheck-license" href="%1$s"><i class="acf-icon acf-icon-regenerate"></i>%2$s</a>',
-							esc_url( $acf_recheck_url ),
-							esc_html( $acf_recheck_text )
+				<?php if ( empty( $license_status['wpe'] ) ) { // Don't show the license key and deactivate button for WPE issued licenses. ?>
+					<form action="" method="post" class="acf-activation-form">
+						<?php acf_nonce_input( $nonce ); ?>
+						<label for="acf-field-acf_pro_license"><?php esc_html_e( 'License Key', 'acf' ); ?></label>
+						<?php
+						acf_render_field(
+							array(
+								'type'     => 'text',
+								'name'     => 'acf_pro_license',
+								'value'    => str_repeat( '*', strlen( $license ) ),
+								'readonly' => $active ? 1 : 0,
+							)
 						);
-					}
-					?>
 
-				</form>
+						$activate_deactivate_btn_id    = $active ? 'id="deactivate-license" ' : '';
+						$activate_deactivate_btn_class = $active ? ' acf-btn-tertiary' : '';
+						?>
+						<input <?php echo $activate_deactivate_btn_id; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- manually defined safe HTML. ?>type="submit" value="<?php echo esc_attr( $activate_deactivate_btn ); ?>" class="acf-btn<?php echo esc_attr( $activate_deactivate_btn_class ); ?>">
+
+						<?php
+						acf_pro_render_manage_license_button( $license_status );
+
+						if ( acf_pro_is_license_expired( $license_status ) || acf_pro_was_license_refunded( $license_status ) ) {
+							$acf_recheck_nonce = wp_create_nonce( 'acf_recheck_status' );
+							$acf_recheck_url   = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates&acf_retry_nonce=' . $acf_recheck_nonce );
+							$acf_recheck_text  = __( 'Recheck License', 'acf' );
+							printf(
+								'<a class="acf-recheck-license" href="%1$s"><i class="acf-icon acf-icon-regenerate"></i>%2$s</a>',
+								esc_url( $acf_recheck_url ),
+								esc_html( $acf_recheck_text )
+							);
+						}
+						?>
+
+					</form>
+				<?php } ?>
 			<?php endif; // End of license_defined check. ?>
 			<div class="acf-license-status-wrap">
 				<?php
