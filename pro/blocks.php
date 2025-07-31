@@ -616,6 +616,10 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 			echo acf_get_empty_block_form_html( $attributes['name'] ); //phpcs:ignore -- escaped in function.
 		}
 	} else {
+		if ( $is_preview ) {
+			acf_set_data( 'acf_doing_block_preview', true );
+		}
+
 		// Capture block render output.
 		acf_render_block( $attributes, $content, $is_preview, $post_id, $wp_block, $context );
 
@@ -670,6 +674,8 @@ function acf_rendered_block( $attributes, $content = '', $is_preview = false, $p
 		$attributes['id'],
 		$block_cache
 	);
+
+	acf_set_data( 'acf_doing_block_preview', false );
 
 	// Prevent edit forms being output to rest endpoints.
 	if ( $form && acf_get_data( 'acf_inside_rest_call' ) && apply_filters( 'acf/blocks/prevent_edit_forms_on_rest_endpoints', true ) ) {

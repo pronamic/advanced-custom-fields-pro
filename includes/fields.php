@@ -5,12 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'acf_fields' ) ) :
-	#[AllowDynamicProperties]
 	class acf_fields {
 
-		/** @var array Contains an array of field type instances */
-		var $types = array();
-
+		/**
+		 * Contains an array of field type instances.
+		 * @var array
+		 */
+		public $types = array();
 
 		/**
 		 * This function will setup the class functionality

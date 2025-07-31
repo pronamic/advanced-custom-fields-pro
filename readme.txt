@@ -2,7 +2,7 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 Requires PHP: 7.4
 Stable tag: 6.4.3
 License: GPLv2 or later
@@ -93,6 +93,21 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.5.0-RC1 =
+*Release Date 30th July 2025*
+
+* New - Flexible Content layouts can now be renamed in the post editor, giving content editors better clarity when managing layouts
+* New - Flexible Content layouts can now be disabled, preventing them from rendering on the frontend without needing to delete their data
+* New - Flexible Content layouts can now be collapsed and expanded in bulk for faster content editing
+* New - Editing a Flexible Content layout now highlights the layout being edited, making it easier to identify
+* New - The Date and Date Time Picker fields can now be configured to default to the current date
+* Fix - Custom Icon Picker tabs now work correctly when used inside an ACF Block
+* Fix - Duplicating a Field Group no longer causes a fatal error when using Russian translations
+* Fix - ACF classes no longer use dynamic class properties, improving compatibility with PHP 8.2+
+* Fix - ACF PRO no longer shows an update available immediately after updating to the latest version
+* Fix - Field group metabox collapse and expand buttons are no longer misaligned in the post editor
+* Fix - The ACF Site Health section no longer causes a PHP warning when field group location rules are incomplete
 
 = 6.4.3 =
 *Release Date 22nd July 2025*

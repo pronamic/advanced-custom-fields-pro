@@ -9,7 +9,7 @@
  * Plugin Name:       Advanced Custom Fields PRO
  * Plugin URI:        https://www.advancedcustomfields.com
  * Description:       Customize WordPress with powerful, professional and intuitive fields.
- * Version:           6.4.3
+ * Version:           6.5.0-RC1
  * Author:            WP Engine
  * Author URI:        https://wpengine.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields
  * Update URI:        https://www.advancedcustomfields.com/pro
@@ -28,7 +28,6 @@ if ( ! class_exists( 'ACF' ) ) {
 	/**
 	 * The main ACF class
 	 */
-	#[AllowDynamicProperties]
 	class ACF {
 
 		/**
@@ -36,7 +35,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '6.4.3';
+		public $version = '6.5.0-RC1';
 
 		/**
 		 * The plugin settings array.
@@ -58,6 +57,48 @@ if ( ! class_exists( 'ACF' ) ) {
 		 * @var array
 		 */
 		public $instances = array();
+
+		/**
+		 * The loop instance.
+		 *
+		 * @var acf_loop
+		 */
+		public $loop;
+
+		/**
+		 * The revisions instance.
+		 *
+		 * @var acf_revisions
+		 */
+		public $revisions;
+
+		/**
+		 * The fields instance.
+		 *
+		 * @var acf_fields
+		 */
+		public $fields;
+
+		/**
+		 * The form front instance.
+		 *
+		 * @var acf_form_front
+		 */
+		public $form_front;
+
+		/**
+		 * The validation instance.
+		 *
+		 * @var acf_validation
+		 */
+		public $validation;
+
+		/**
+		 * The admin tools instance.
+		 *
+		 * @var acf_admin_tools
+		 */
+		public $admin_tools;
 
 		/**
 		 * A dummy constructor to ensure ACF is only setup once.

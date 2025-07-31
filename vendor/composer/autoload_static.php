@@ -28,6 +28,8 @@ class ComposerStaticInit94e23cbc47a4750e27ee21b7644f1866
         'ACF\\Meta\\Post' => __DIR__ . '/../..' . '/src/Meta/Post.php',
         'ACF\\Meta\\Term' => __DIR__ . '/../..' . '/src/Meta/Term.php',
         'ACF\\Meta\\User' => __DIR__ . '/../..' . '/src/Meta/User.php',
+        'ACF\\Pro\\Fields\\FlexibleContent\\Layout' => __DIR__ . '/../..' . '/src/Pro/Fields/FlexibleContent/Layout.php',
+        'ACF\\Pro\\Fields\\FlexibleContent\\Render' => __DIR__ . '/../..' . '/src/Pro/Fields/FlexibleContent/Render.php',
         'ACF\\Pro\\Forms\\WC_Order' => __DIR__ . '/../..' . '/src/Pro/Forms/WC_Order.php',
         'ACF\\Pro\\Meta\\WooOrder' => __DIR__ . '/../..' . '/src/Pro/Meta/WooOrder.php',
         'ACF\\Site_Health\\Site_Health' => __DIR__ . '/../..' . '/src/Site_Health/Site_Health.php',

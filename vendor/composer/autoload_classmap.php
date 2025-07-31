@@ -13,6 +13,8 @@ return array(
     'ACF\\Meta\\Post' => $baseDir . '/src/Meta/Post.php',
     'ACF\\Meta\\Term' => $baseDir . '/src/Meta/Term.php',
     'ACF\\Meta\\User' => $baseDir . '/src/Meta/User.php',
+    'ACF\\Pro\\Fields\\FlexibleContent\\Layout' => $baseDir . '/src/Pro/Fields/FlexibleContent/Layout.php',
+    'ACF\\Pro\\Fields\\FlexibleContent\\Render' => $baseDir . '/src/Pro/Fields/FlexibleContent/Render.php',
     'ACF\\Pro\\Forms\\WC_Order' => $baseDir . '/src/Pro/Forms/WC_Order.php',
     'ACF\\Pro\\Meta\\WooOrder' => $baseDir . '/src/Pro/Meta/WooOrder.php',
     'ACF\\Site_Health\\Site_Health' => $baseDir . '/src/Site_Health/Site_Health.php',

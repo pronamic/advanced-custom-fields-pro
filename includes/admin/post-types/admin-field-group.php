@@ -88,7 +88,6 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 					'Move field group to trash?'        => esc_html__( 'Move field group to trash?', 'acf' ),
 					'No toggle fields available'        => esc_html__( 'No toggle fields available', 'acf' ),
 					'Move Custom Field'                 => esc_html__( 'Move Custom Field', 'acf' ),
-					'Close modal'                       => esc_html__( 'Close modal', 'acf' ),
 					'Field moved to other group'        => esc_html__( 'Field moved to other group', 'acf' ),
 					'Field groups linked successfully.' => esc_html__( 'Field groups linked successfully.', 'acf' ),
 					'Checked'                           => esc_html__( 'Checked', 'acf' ),

@@ -409,6 +409,10 @@ if ( ! class_exists( 'Updater' ) ) {
 		 * @return object $transient The modified transient value.
 		 */
 		public function modify_plugins_transient( $transient ) {
+			// Bail if we're just completing a plugin update.
+			if ( doing_action( 'upgrader_process_complete' ) ) {
+				return $transient;
+			}
 
 			// Bail early if no response (error).
 			if ( ! isset( $transient->response ) ) {

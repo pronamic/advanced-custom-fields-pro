@@ -25,9 +25,10 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-date-picker.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/date-picker/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'display_format' => 'd/m/Y',
-				'return_format'  => 'd/m/Y',
-				'first_day'      => 1,
+				'display_format'          => 'd/m/Y',
+				'return_format'           => 'd/m/Y',
+				'first_day'               => 1,
+				'default_to_current_date' => 0,
 			);
 		}
 
@@ -111,6 +112,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			$text_input   = array(
 				'class' => $field['class'] . ' input',
 				'value' => $display_value,
+				'data-default-to-today' => $field['default_to_current_date'],
 			);
 
 			// special attributes
@@ -223,6 +225,17 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 					'type'         => 'select',
 					'name'         => 'first_day',
 					'choices'      => array_values( $wp_locale->weekday ),
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Default to the current date', 'acf' ),
+					'instructions' => __( 'Use the current date as the default value for this field.', 'acf' ),
+					'type'         => 'true_false',
+					'name'         => 'default_to_current_date',
+					'ui'           => 1,
 				)
 			);
 		}

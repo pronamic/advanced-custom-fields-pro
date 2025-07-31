@@ -5,13 +5,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
-	#[AllowDynamicProperties]
 	class ACF_Admin_Field_Groups extends ACF_Admin_Internal_Post_Type_List {
 
 		/**
 		 * The slug for the internal post type.
 		 *
-		 * @since 6.1
 		 * @var string
 		 */
 		public $post_type = 'acf-field-group';
@@ -19,7 +17,6 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 		/**
 		 * The admin body class used for the post type.
 		 *
-		 * @since 6.1
 		 * @var string
 		 */
 		public $admin_body_class = 'acf-admin-field-groups';
@@ -80,7 +77,6 @@ if ( ! class_exists( 'ACF_Admin_Field_Groups' ) ) :
 			// Set the "no found" label to be our custom HTML for no results.
 			if ( empty( acf_request_arg( 's' ) ) ) {
 				global $wp_post_types;
-				$this->not_found_label                               = $wp_post_types['acf-field-group']->labels->not_found;
 				$wp_post_types['acf-field-group']->labels->not_found = $this->get_not_found_html();
 			}
 

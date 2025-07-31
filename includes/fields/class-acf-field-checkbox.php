@@ -4,6 +4,19 @@ if ( ! class_exists( 'acf_field_checkbox' ) ) :
 
 	class acf_field_checkbox extends acf_field {
 
+		/**
+		 * A local store of all values for de-duplication.
+		 *
+		 * @var array
+		 */
+		private array $_values; //phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore -- backwards compatibility.
+
+		/**
+		 * An internal boolean tracking if all checkboxes are checked.
+		 *
+		 * @var boolean
+		 */
+		private bool $_all_checked; //phpcs:ignore PSR2.Classes.PropertyDeclaration.Underscore -- backwards compatibility.
 
 		/**
 		 * This function will setup the field type data

@@ -323,35 +323,32 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 		/**
 		 * Enqueues and localizes scripts.
 		 *
-		 * @date    27/4/20
-		 * @since   5.9.0
+		 * @since 5.9.0
 		 *
-		 * @param   void
-		 * @return  void
+		 * @return void
 		 */
 		public function enqueue_scripts() {
-
 			// Enqueue input scripts.
-			if ( in_array( 'input', $this->enqueue ) ) {
+			if ( in_array( 'input', $this->enqueue, true ) ) {
 				wp_enqueue_script( 'acf-input' );
 				wp_enqueue_style( 'acf-input' );
 			}
 
 			// Enqueue media scripts.
-			if ( in_array( 'uploader', $this->enqueue ) ) {
+			if ( in_array( 'uploader', $this->enqueue, true ) ) {
 				$this->enqueue_uploader();
 			}
 
 			// Localize text.
 			acf_localize_text(
 				array(
-
 					// Tooltip
-					'Are you sure?' => __( 'Are you sure?', 'acf' ),
-					'Yes'           => __( 'Yes', 'acf' ),
-					'No'            => __( 'No', 'acf' ),
-					'Remove'        => __( 'Remove', 'acf' ),
-					'Cancel'        => __( 'Cancel', 'acf' ),
+					'Are you sure?' => esc_html__( 'Are you sure?', 'acf' ),
+					'Yes'           => esc_html__( 'Yes', 'acf' ),
+					'No'            => esc_html__( 'No', 'acf' ),
+					'Remove'        => esc_html__( 'Remove', 'acf' ),
+					'Cancel'        => esc_html__( 'Cancel', 'acf' ),
+					'Close modal'   => esc_html__( 'Close modal', 'acf' ),
 				)
 			);
 
@@ -359,33 +356,31 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			if ( wp_script_is( 'acf-input' ) ) {
 				acf_localize_text(
 					array(
-
 						// Unload
-						'The changes you made will be lost if you navigate away from this page' => __( 'The changes you made will be lost if you navigate away from this page', 'acf' ),
+						'The changes you made will be lost if you navigate away from this page' => esc_html__( 'The changes you made will be lost if you navigate away from this page', 'acf' ),
 
 						// Metaboxes
 						'Toggle panel'                => __( 'Toggle panel', 'acf' ),
 
 						// Validation
-						'Validation successful'       => __( 'Validation successful', 'acf' ),
-						'Validation failed'           => __( 'Validation failed', 'acf' ),
-						'1 field requires attention'  => __( '1 field requires attention', 'acf' ),
-						'%d fields require attention' => __( '%d fields require attention', 'acf' ),
+						'Validation successful'       => esc_html__( 'Validation successful', 'acf' ),
+						'Validation failed'           => esc_html__( 'Validation failed', 'acf' ),
+						'1 field requires attention'  => esc_html__( '1 field requires attention', 'acf' ),
+						/* translators: %d is the number of fields that require attention */
+						'%d fields require attention' => esc_html__( '%d fields require attention', 'acf' ),
 
 						// Block Validation
-						'An ACF Block on this page requires attention before you can save.' => __( 'An ACF Block on this page requires attention before you can save.', 'acf' ),
+						'An ACF Block on this page requires attention before you can save.' => esc_html__( 'An ACF Block on this page requires attention before you can save.', 'acf' ),
 
 						// Other
-						'Edit field group'            => __( 'Edit field group', 'acf' ),
+						'Edit field group'            => esc_html__( 'Edit field group', 'acf' ),
 					)
 				);
 
 				/**
 				 * Fires during "admin_enqueue_scripts" when ACF scripts are enqueued.
 				 *
-				 * @since   5.6.9
-				 *
-				 * @param   void
+				 * @since 5.6.9
 				 */
 				do_action( 'acf/input/admin_enqueue_scripts' );
 			}
@@ -393,9 +388,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			/**
 			 * Fires during "admin_enqueue_scripts" when ACF scripts are enqueued.
 			 *
-			 * @since   5.6.9
-			 *
-			 * @param   void
+			 * @since 5.6.9
 			 */
 			do_action( 'acf/admin_enqueue_scripts' );
 			do_action( 'acf/enqueue_scripts' );
@@ -407,6 +400,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 					$text[ $k ] = $v;
 				}
 			}
+
 			if ( $text ) {
 				wp_localize_script( 'acf', 'acfL10n', $text );
 			}

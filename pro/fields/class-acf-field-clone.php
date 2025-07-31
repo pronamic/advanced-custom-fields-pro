@@ -4,6 +4,11 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 
 	class acf_field_clone extends acf_field {
 
+		/**
+		 * Array of fields being cloned.
+		 * @var array
+		 */
+		public $cloning = array();
 
 		/**
 		 * This function will setup the field type data
@@ -34,7 +39,6 @@ if ( ! class_exists( 'acf_field_clone' ) ) :
 				'display'      => 'seamless',
 				'layout'       => 'block',
 			);
-			$this->cloning       = array();
 			$this->have_rows     = 'single';
 
 			// register filter
