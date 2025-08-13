@@ -194,7 +194,7 @@ class Layout {
 				</tr>
 			</thead>
 			<tbody>
-				<tr></tr>
+				<tr><?php $this->sub_fields(); ?></tr>
 			</tbody>
 		</table>
 		<?php
@@ -243,7 +243,7 @@ class Layout {
 				<span class="acf-layout-disabled"><?php esc_html_e( 'Disabled', 'acf' ); ?></span>
 			</div>
 			<div class="acf-fc-layout-controls">
-				<a class="acf-js-tooltip" href="#" data-name="add-layout" title="<?php esc_attr_e( 'Add layout', 'acf' ); ?>"><span class="acf-icon -plus-alt "></span></a>
+				<a class="acf-js-tooltip" href="#" data-name="add-layout" data-context="layout" title="<?php esc_attr_e( 'Add layout', 'acf' ); ?>"><span class="acf-icon -plus-alt "></span></a>
 				<a class="acf-js-tooltip" href="#" data-name="duplicate-layout" title="<?php esc_attr_e( 'Duplicate layout', 'acf' ); ?>"><span class="acf-icon -duplicate-alt"></span></a>
 				<a class="acf-js-tooltip" aria-haspopup="menu" href="#" data-name="more-layout-actions" title="<?php esc_attr_e( 'More layout actions...', 'acf' ); ?>"><span class="acf-icon -more-actions"></span></a>
 				<div class="acf-layout-collapse">

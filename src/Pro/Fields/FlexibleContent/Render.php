@@ -194,7 +194,7 @@ class Render {
 					<?php esc_html_e( 'Collapse All', 'acf' ); ?>
 				</button>
 				<span class="acf-separator"></span>
-				<a class="acf-button button button-primary" href="#" data-name="add-layout">
+				<a class="acf-button button button-primary" href="#" data-name="add-layout" data-context="top-actions">
 					<i class="acf-icon -plus small"></i>
 					<?php echo acf_esc_html( $this->field['button_label'] ); ?>
 				</a>
@@ -203,7 +203,7 @@ class Render {
 		} else {
 			?>
 			<div class="acf-actions">
-				<a class="acf-button button button-primary" href="#" data-name="add-layout">
+				<a class="acf-button button button-primary" href="#" data-name="add-layout" data-context="bottom-actions">
 					<i class="acf-icon -plus small"></i>
 					<?php echo acf_esc_html( $this->field['button_label'] ); ?>
 				</a>
@@ -222,13 +222,15 @@ class Render {
 	private function add_layout_menu() {
 		echo '<script type="text-html" class="tmpl-popup"><ul>';
 		foreach ( $this->layouts as $layout ) {
-			$atts = array(
+			$safe_label = acf_esc_html( $layout['label'] );
+			$atts       = array(
 				'href'        => '#',
 				'data-layout' => $layout['name'],
 				'data-min'    => $layout['min'],
 				'data-max'    => $layout['max'],
+				'title'       => $safe_label,
 			);
-			printf( '<li><a %s>%s</a></li>', acf_esc_attrs( $atts ), acf_esc_html( $layout['label'] ) );
+			printf( '<li><a %s>%s</a></li>', acf_esc_attrs( $atts ), $safe_label ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped above.
 		}
 		echo '</ul></script>';
 	}
