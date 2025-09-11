@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.0
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 6.5.0.1
+Stable tag: 6.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,21 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.5.1 =
+*Release Date 10th September 2025*
+
+* Enhancement - The Flexible Content “Expand All” and “Collapse All” button now appear correctly on mobile
+* Enhancement - The Flexible Content delete layout button is now back in the main layout header, making it easier to delete layouts
+* Enhancement - The JSON import tool now limits the selectable files to JSON files
+* Fix - Disabled Flexible Content layouts are no longer counted towards min/max layout validation
+* Fix - The top “Add Row” button for layouts is now disabled when layouts have reached the max layouts validation
+* Fix - The per-layout “Add Row” and “Duplicate Layout” buttons are now disabled when layouts have reached the max layouts validation
+* Fix - Disabling Flexible Content layouts no longer disables layouts in cloned Flexible Content fields using a different post ID on the same page
+* Fix - Flexible Content “Add Layout” menu is no longer hidden by some field types
+* Fix - Flexible Content layout names can now allow some safe HTML
+* Fix - When creating a temporary post type during import, ACF now correctly sets the ACF post type, rather than defaulting to post
+* Fix - ACF PRO updates are now shown even when no other plugins have an update available
 
 = 6.5.0.1 =
 *Release Date 12th August 2025*

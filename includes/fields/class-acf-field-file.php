@@ -161,13 +161,17 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 			
 			<label class="acf-basic-uploader">
 				<?php
-				acf_file_input(
-					array(
-						'name' => $field['name'],
-						'id'   => $field['id'],
-						'key'  => $field['key'],
-					)
+				$args = array(
+					'name' => $field['name'],
+					'id'   => $field['id'],
+					'key'  => $field['key'],
 				);
+
+				if ( ! empty( $field['mime_types'] ) ) {
+					$args['accept'] = $field['mime_types'];
+				}
+
+				acf_file_input( $args );
 				?>
 			</label>
 			

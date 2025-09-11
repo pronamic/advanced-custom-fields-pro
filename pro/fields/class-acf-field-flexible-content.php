@@ -83,7 +83,8 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					'layouts' => esc_html__( 'layouts', 'acf' ),
 					'Fields'  => esc_html__( 'Fields', 'acf' ),
 
-					// Deleting a layout.
+					// Adding/deleting a layout.
+					'Duplicate' => esc_html__( 'Duplicate', 'acf' ),
 					'Delete' => esc_html__( 'Delete', 'acf' ),
 					'Delete Layout' => esc_html__( 'Delete Layout', 'acf' ),
 					/* translators: %s - Name of the Flexible content layout */
@@ -101,6 +102,8 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					// min / max
 					'This field requires at least {min} {label} {identifier}' => esc_html__( 'This field requires at least {min} {label} {identifier}', 'acf' ),
 					'This field has a limit of {max} {label} {identifier}' => esc_html__( 'This field has a limit of {max} {label} {identifier}', 'acf' ),
+					'Maximum rows reached ({max})' => esc_html__( 'Maximum rows reached ({max})', 'acf' ),
+					'Maximum {label} {identifier} reached ({max})' => esc_html__( 'Maximum {label} {identifier} reached ({max})', 'acf' ),
 
 					// popup badge
 					'{available} {label} {identifier} available (max {max})' => esc_html__( '{available} {label} {identifier} available (max {max})', 'acf' ),
@@ -711,7 +714,6 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 		 * @return  $post_id (int)
 		 */
 		public function validate_value( $valid, $value, $field, $input ) {
-
 			// vars
 			$count = 0;
 
@@ -723,8 +725,13 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					unset( $value['acfcloneindex'] );
 				}
 
-				// count
-				$count = count( $value );
+				foreach ( $value as $row_value ) {
+					// Don't count disabled rows;
+					if ( ! empty( $row_value['acf_fc_layout_disabled'] ) ) {
+						continue;
+					}
+					++$count;
+				}
 			}
 
 			// validate required
@@ -770,6 +777,10 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 				foreach ( $value as $i => $row ) {
 					// ensure row is an array
 					if ( ! is_array( $row ) ) {
+						continue;
+					}
+
+					if ( ! empty( $row['acf_fc_layout_disabled'] ) ) {
 						continue;
 					}
 
@@ -889,8 +900,9 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 			}
 
 			// Return the cached meta if we have it.
-			if ( ! empty( $this->layout_meta[ $field_name ] ) ) {
-				return $this->layout_meta[ $field_name ];
+			$cache_key = "$post_id:$field_name";
+			if ( ! empty( $this->layout_meta[ $cache_key ] ) ) {
+				return $this->layout_meta[ $cache_key ];
 			}
 
 			$layout_meta = acf_get_metadata_by_field(
@@ -904,9 +916,9 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 				return array();
 			}
 
-			$this->layout_meta[ $field_name ] = $layout_meta;
+			$this->layout_meta[ $cache_key ] = $layout_meta;
 
-			return $this->layout_meta[ $field_name ];
+			return $this->layout_meta[ $cache_key ];
 		}
 
 		/**

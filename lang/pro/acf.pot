@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: WP Engine <support@advancedcustomfields.com>\n"
-"POT-Creation-Date: 2025-08-12 11:23+0000\n"
+"POT-Creation-Date: 2025-09-10 00:29+0000\n"
 "Report-Msgid-Bugs-To: https://support.advancedcustomfields.com\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -280,7 +280,7 @@ msgstr ""
 msgid "Seamless (replaces this field with selected fields)"
 msgstr ""
 
-#: pro/fields/class-acf-field-clone.php:765, pro/fields/class-acf-field-flexible-content.php:342, pro/fields/class-acf-field-flexible-content.php:405, pro/fields/class-acf-field-repeater.php:180
+#: pro/fields/class-acf-field-clone.php:765, pro/fields/class-acf-field-flexible-content.php:345, pro/fields/class-acf-field-flexible-content.php:408, pro/fields/class-acf-field-repeater.php:180
 msgid "Layout"
 msgstr ""
 
@@ -288,15 +288,15 @@ msgstr ""
 msgid "Specify the style used to render the selected fields"
 msgstr ""
 
-#: pro/fields/class-acf-field-clone.php:771, pro/fields/class-acf-field-flexible-content.php:418, pro/fields/class-acf-field-repeater.php:188, pro/locations/class-acf-location-block.php:22
+#: pro/fields/class-acf-field-clone.php:771, pro/fields/class-acf-field-flexible-content.php:421, pro/fields/class-acf-field-repeater.php:188, pro/locations/class-acf-location-block.php:22
 msgid "Block"
 msgstr ""
 
-#: pro/fields/class-acf-field-clone.php:772, pro/fields/class-acf-field-flexible-content.php:417, pro/fields/class-acf-field-repeater.php:187
+#: pro/fields/class-acf-field-clone.php:772, pro/fields/class-acf-field-flexible-content.php:420, pro/fields/class-acf-field-repeater.php:187
 msgid "Table"
 msgstr ""
 
-#: pro/fields/class-acf-field-clone.php:773, pro/fields/class-acf-field-flexible-content.php:419, pro/fields/class-acf-field-repeater.php:189
+#: pro/fields/class-acf-field-clone.php:773, pro/fields/class-acf-field-flexible-content.php:422, pro/fields/class-acf-field-repeater.php:189
 msgid "Row"
 msgstr ""
 
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Add Row"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:82, pro/fields/class-acf-field-flexible-content.php:741, pro/fields/class-acf-field-flexible-content.php:823
+#: pro/fields/class-acf-field-flexible-content.php:82, pro/fields/class-acf-field-flexible-content.php:748, pro/fields/class-acf-field-flexible-content.php:834
 msgid "layout"
 msgid_plural "layouts"
 msgstr[0] ""
@@ -358,115 +358,127 @@ msgstr[1] ""
 msgid "layouts"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:87, src/pro/Fields/FlexibleContent/Render.php:264
+#: pro/fields/class-acf-field-flexible-content.php:87, src/pro/Fields/FlexibleContent/Layout.php:247
+msgid "Duplicate"
+msgstr ""
+
+#: pro/fields/class-acf-field-flexible-content.php:88, src/pro/Fields/FlexibleContent/Layout.php:248
 msgid "Delete"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:88, pro/fields/class-acf-field-flexible-content.php:350
+#: pro/fields/class-acf-field-flexible-content.php:89, pro/fields/class-acf-field-flexible-content.php:353
 msgid "Delete Layout"
 msgstr ""
 
 #. translators: %s - Name of the Flexible content layout
-#: pro/fields/class-acf-field-flexible-content.php:90
+#: pro/fields/class-acf-field-flexible-content.php:91
 msgid "Delete %s"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:91
+#: pro/fields/class-acf-field-flexible-content.php:92
 msgid "Are you sure you want to delete the layout?"
 msgstr ""
 
 #. translators: %s - Name of the Flexible content layout
-#: pro/fields/class-acf-field-flexible-content.php:93
+#: pro/fields/class-acf-field-flexible-content.php:94
 msgid "Are you sure you want to delete %s?"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:96
+#: pro/fields/class-acf-field-flexible-content.php:97
 msgid "Rename Layout"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:97, src/pro/Fields/FlexibleContent/Render.php:251
+#: pro/fields/class-acf-field-flexible-content.php:98, src/pro/Fields/FlexibleContent/Render.php:252
 msgid "Rename"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:98
+#: pro/fields/class-acf-field-flexible-content.php:99
 msgid "New Label"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:99
+#: pro/fields/class-acf-field-flexible-content.php:100
 msgid "Remove Custom Label"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:102, pro/fields/class-acf-field-flexible-content.php:740, pro/fields/class-acf-field-flexible-content.php:822
+#: pro/fields/class-acf-field-flexible-content.php:103, pro/fields/class-acf-field-flexible-content.php:747, pro/fields/class-acf-field-flexible-content.php:833
 msgid "This field requires at least {min} {label} {identifier}"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:103
+#: pro/fields/class-acf-field-flexible-content.php:104
 msgid "This field has a limit of {max} {label} {identifier}"
 msgstr ""
 
+#: pro/fields/class-acf-field-flexible-content.php:105
+msgid "Maximum rows reached ({max})"
+msgstr ""
+
 #: pro/fields/class-acf-field-flexible-content.php:106
+msgid "Maximum {label} {identifier} reached ({max})"
+msgstr ""
+
+#: pro/fields/class-acf-field-flexible-content.php:109
 msgid "{available} {label} {identifier} available (max {max})"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:107
+#: pro/fields/class-acf-field-flexible-content.php:110
 msgid "{required} {label} {identifier} required (min {min})"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:110
+#: pro/fields/class-acf-field-flexible-content.php:113
 msgid "Flexible Content requires at least 1 layout"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:351
+#: pro/fields/class-acf-field-flexible-content.php:354
 msgid "Duplicate Layout"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:352
+#: pro/fields/class-acf-field-flexible-content.php:355
 msgid "Add New Layout"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:352
+#: pro/fields/class-acf-field-flexible-content.php:355
 msgid "Add Layout"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:381
+#: pro/fields/class-acf-field-flexible-content.php:384
 msgid "Label"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:398
+#: pro/fields/class-acf-field-flexible-content.php:401
 msgid "Name"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:436
+#: pro/fields/class-acf-field-flexible-content.php:439
 msgid "Min"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:451
+#: pro/fields/class-acf-field-flexible-content.php:454
 msgid "Max"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:492
+#: pro/fields/class-acf-field-flexible-content.php:495
 msgid "Minimum Layouts"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:503
+#: pro/fields/class-acf-field-flexible-content.php:506
 msgid "Maximum Layouts"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:514, pro/fields/class-acf-field-repeater.php:296
+#: pro/fields/class-acf-field-flexible-content.php:517, pro/fields/class-acf-field-repeater.php:296
 msgid "Button Label"
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:1495, pro/fields/class-acf-field-repeater.php:915
+#: pro/fields/class-acf-field-flexible-content.php:1507, pro/fields/class-acf-field-repeater.php:915
 msgid "%s must be of type array or null."
 msgstr ""
 
-#: pro/fields/class-acf-field-flexible-content.php:1506
+#: pro/fields/class-acf-field-flexible-content.php:1518
 msgid "%1$s must contain at least %2$s %3$s layout."
 msgid_plural "%1$s must contain at least %2$s %3$s layouts."
 msgstr[0] ""
 msgstr[1] ""
 
-#: pro/fields/class-acf-field-flexible-content.php:1522
+#: pro/fields/class-acf-field-flexible-content.php:1534
 msgid "%1$s must contain at most %2$s %3$s layout."
 msgid_plural "%1$s must contain at most %2$s %3$s layouts."
 msgstr[0] ""
@@ -1260,39 +1272,31 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: src/pro/Fields/FlexibleContent/Layout.php:246
-msgid "Add layout"
-msgstr ""
-
-#: src/pro/Fields/FlexibleContent/Layout.php:247
-msgid "Duplicate layout"
-msgstr ""
-
-#: src/pro/Fields/FlexibleContent/Layout.php:248
+#: src/pro/Fields/FlexibleContent/Layout.php:249
 msgid "More layout actions..."
 msgstr ""
 
-#: src/pro/Fields/FlexibleContent/Layout.php:250
+#: src/pro/Fields/FlexibleContent/Layout.php:251
 msgid "Toggle layout"
 msgstr ""
 
 #. translators: %s the button label used for adding a new layout.
-#: src/pro/Fields/FlexibleContent/Render.php:112
+#: src/pro/Fields/FlexibleContent/Render.php:113
 msgid "Click the \"%s\" button below to start creating your layout"
 msgstr ""
 
-#: src/pro/Fields/FlexibleContent/Render.php:191
+#: src/pro/Fields/FlexibleContent/Render.php:192
 msgid "Expand All"
 msgstr ""
 
-#: src/pro/Fields/FlexibleContent/Render.php:194
+#: src/pro/Fields/FlexibleContent/Render.php:195
 msgid "Collapse All"
 msgstr ""
 
-#: src/pro/Fields/FlexibleContent/Render.php:256
+#: src/pro/Fields/FlexibleContent/Render.php:257
 msgid "Disable"
 msgstr ""
 
-#: src/pro/Fields/FlexibleContent/Render.php:259
+#: src/pro/Fields/FlexibleContent/Render.php:260
 msgid "Enable"
 msgstr ""

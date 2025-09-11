@@ -243,8 +243,9 @@ class Layout {
 				<span class="acf-layout-disabled"><?php esc_html_e( 'Disabled', 'acf' ); ?></span>
 			</div>
 			<div class="acf-fc-layout-controls">
-				<a class="acf-js-tooltip" href="#" data-name="add-layout" data-context="layout" title="<?php esc_attr_e( 'Add layout', 'acf' ); ?>"><span class="acf-icon -plus-alt "></span></a>
-				<a class="acf-js-tooltip" href="#" data-name="duplicate-layout" title="<?php esc_attr_e( 'Duplicate layout', 'acf' ); ?>"><span class="acf-icon -duplicate-alt"></span></a>
+				<a class="acf-js-tooltip" href="#" data-name="add-layout" data-context="layout" title="<?php esc_attr( $this->field['button_label'] ); ?>"><span class="acf-icon -plus-alt "></span></a>
+				<a class="acf-js-tooltip" href="#" data-name="duplicate-layout" title="<?php esc_attr_e( 'Duplicate', 'acf' ); ?>"><span class="acf-icon -duplicate-alt"></span></a>
+				<a class="acf-js-tooltip" href="#" data-name="remove-layout" title="<?php esc_attr_e( 'Delete', 'acf' ); ?>"><span class="acf-icon -trash-alt"></span></a>
 				<a class="acf-js-tooltip" aria-haspopup="menu" href="#" data-name="more-layout-actions" title="<?php esc_attr_e( 'More layout actions...', 'acf' ); ?>"><span class="acf-icon -more-actions"></span></a>
 				<div class="acf-layout-collapse">
 					<a class="acf-icon -collapse -clear" href="#" data-name="collapse-layout" aria-label="<?php esc_attr_e( 'Toggle layout', 'acf' ); ?>"></a>

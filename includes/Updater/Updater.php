@@ -54,11 +54,44 @@ if ( ! class_exists( 'Updater' ) ) {
 				return;
 			}
 
-			// append update information to transient.
-			add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'modify_plugins_transient' ), 10, 1 );
+			// append update information to transient on both save and get.
+			add_filter( 'site_transient_update_plugins', array( $this, 'modify_plugins_transient' ), 10, 1 );
+
+			// clear ACF transient when updates complete.
+			add_filter( 'upgrader_process_complete', array( $this, 'clear_transients_on_upgrade' ), 5, 2 );
 
 			// modify plugin data visible in the 'View details' popup.
 			add_filter( 'plugins_api', array( $this, 'modify_plugin_details' ), 10, 3 );
+		}
+
+		/**
+		 * Clears ACF plugin update transients when ACF is updated.
+		 *
+		 * This method is hooked to the 'upgrader_process_complete' action and will
+		 * delete the 'acf_plugin_updates' transient when the ACF plugin is updated,
+		 * ensuring fresh update data is fetched on the next check.
+		 *
+		 * @since 6.5.1
+		 *
+		 * @param WP_Upgrader $upgrader_object The upgrader instance.
+		 * @param array       $options         Array of update details including:
+		 *                                     - 'action' (string) The action performed (e.g., 'update').
+		 *                                     - 'type' (string) The type of update (e.g., 'plugin').
+		 *                                     - 'plugins' (array) Array of plugin basenames that were updated.
+		 */
+		public function clear_transients_on_upgrade( $upgrader_object, $options ) {
+			// Check if this was a plugin update
+			if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
+				// Check if we were one of the updated plugins
+				if ( isset( $options['plugins'] ) ) {
+					$acf_basename = acf_get_setting( 'basename' );
+					if ( in_array( $acf_basename, $options['plugins'], true ) ) {
+						$plugin    = $this->get_plugin_by( 'basename', $acf_basename );
+						$plugin_id = $plugin ? $plugin['id'] : false;
+						$this->refresh_plugins_transient( $plugin_id );
+					}
+				}
+			}
 		}
 
 		/**
@@ -133,6 +166,16 @@ if ( ! class_exists( 'Updater' ) ) {
 				'X-ACF-Version' => ACF_VERSION,
 				'X-ACF-URL'     => $site_url,
 			);
+
+			// Add update channel header if defined.
+			if ( defined( 'ACF_UPDATE_CHANNEL' ) && ACF_UPDATE_CHANNEL ) {
+				$headers['X-ACF-Update-Channel'] = ACF_UPDATE_CHANNEL;
+			}
+
+			// Add plugin override header if defined.
+			if ( defined( 'ACF_RELEASE_ACCESS_KEY' ) && ACF_RELEASE_ACCESS_KEY ) {
+				$headers['X-ACF-Release-Access-Key'] = ACF_RELEASE_ACCESS_KEY;
+			}
 
 			$url = "https://connect.advancedcustomfields.com/$endpoint";
 
@@ -391,13 +434,19 @@ if ( ! class_exists( 'Updater' ) ) {
 		}
 
 		/**
-		 * Deletes transients and allows a fresh lookup.
+		 * Deletes cached ACF plugin update transients and allows a fresh lookup.
 		 *
 		 * @since   5.5.10
+		 *
+		 * @param   string|false $id Optional. The plugin ID to clear specific plugin info transient.
+		 *                           If provided, will delete the 'acf_plugin_info_{id}' transient.
+		 *                           Defaults to false.
 		 */
-		public function refresh_plugins_transient() {
-			delete_site_transient( 'update_plugins' );
+		public function refresh_plugins_transient( $id = false ) {
 			delete_transient( 'acf_plugin_updates' );
+			if ( ! empty( $id ) && is_string( $id ) ) {
+				delete_transient( 'acf_plugin_info_' . $id );
+			}
 		}
 
 		/**
@@ -409,11 +458,6 @@ if ( ! class_exists( 'Updater' ) ) {
 		 * @return object $transient The modified transient value.
 		 */
 		public function modify_plugins_transient( $transient ) {
-			// Bail if we're just completing a plugin update.
-			if ( doing_action( 'upgrader_process_complete' ) ) {
-				return $transient;
-			}
-
 			// Bail early if no response (error).
 			if ( ! isset( $transient->response ) ) {
 				return $transient;

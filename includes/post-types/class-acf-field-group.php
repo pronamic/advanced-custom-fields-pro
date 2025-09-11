@@ -345,10 +345,15 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 				$post['title'] .= ' (' . __( 'copy', 'acf' ) . ')';
 			}
 
-			// When importing a new field group, insert a temporary post and set the field group's ID.
+			// When duplicating a field group, insert a temporary post and set the field group's ID.
 			// This allows fields to be updated before the field group (field group ID is needed for field parent setting).
 			if ( ! $post['ID'] ) {
-				$post['ID'] = wp_insert_post( array( 'post_title' => $post['key'] ) );
+				$post['ID'] = wp_insert_post(
+					array(
+						'post_title' => $post['key'],
+						'post_type'  => $this->post_type,
+					)
+				);
 			}
 
 			// Duplicate fields and update post.
@@ -495,9 +500,13 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 			// When importing a new field group, insert a temporary post and set the field group's ID.
 			// This allows fields to be updated before the field group (field group ID is needed for field parent setting).
 			if ( ! $post['ID'] ) {
-				$post['ID'] = wp_insert_post( array( 'post_title' => $post['key'] ) );
+				$post['ID'] = wp_insert_post(
+					array(
+						'post_title' => $post['key'],
+						'post_type'  => $this->post_type,
+					)
+				);
 			}
-
 			// Add field group data to $ids map.
 			$ids[ $post['key'] ] = $post['ID'];
 

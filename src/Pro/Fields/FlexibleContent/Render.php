@@ -76,9 +76,10 @@ class Render {
 	 */
 	public function render() {
 		$div_attrs = array(
-			'class'    => 'acf-flexible-content',
-			'data-min' => $this->field['min'],
-			'data-max' => $this->field['max'],
+			'class'             => 'acf-flexible-content',
+			'data-min'          => $this->field['min'],
+			'data-max'          => $this->field['max'],
+			'data-button-label' => $this->field['button_label'],
 		);
 
 		if ( empty( $this->field['value'] ) ) {
@@ -257,11 +258,6 @@ class Render {
 					</a>
 					<a class="acf-toggle-layout enable" data-action="toggle-layout" href="#" role="menuitem">
 						<?php esc_html_e( 'Enable', 'acf' ); ?>
-					</a>
-				</li>
-				<li>
-					<a class="acf-delete-layout" data-action="remove-layout" href="#" role="menuitem">
-						<?php esc_html_e( 'Delete', 'acf' ); ?>
 					</a>
 				</li>
 			</ul>
