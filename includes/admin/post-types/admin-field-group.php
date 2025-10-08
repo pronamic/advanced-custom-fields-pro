@@ -1,11 +1,12 @@
 <?php
 /**
- * ACF Admin Field Group Class
+ * @package ACF
+ * @author  WP Engine
  *
- * @class       acf_admin_field_group
- *
- * @package     ACF
- * @subpackage  Admin
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! class_exists( 'acf_admin_field_group' ) ) :

@@ -1,15 +1,19 @@
 <?php
 /**
- * Generic functions for accessing ACF objects stored as WordPress post types which aren't handled by type specific functions.
- *
  * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /**
  * Gets an instance of an ACF_Internal_Post_Type.
  *
  * @param string $post_type The ACF internal post type to get the instance for.
- * @return ACF_Internal_Post_Type|bool The internal post type class instance, or false on failure.
+ * @return ACF_Internal_Post_Type|boolean The internal post type class instance, or false on failure.
  */
 function acf_get_internal_post_type_instance( $post_type = 'acf-field-group' ) {
 	$store = acf_get_store( 'internal-post-types' );

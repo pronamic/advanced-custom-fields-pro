@@ -1,12 +1,12 @@
 <?php
 /**
- * ACF Internal Post Type List class
- *
- * Base class to add functionality to ACF internal post type list pages.
- *
  * @package ACF
- * @subpackage Admin
- * @since 6.1
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

@@ -1,4 +1,14 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
+
 $acf_field_group_pro_features_title = __( 'Unlock Advanced Features and Build Even More with ACF PRO', 'acf' );
 $acf_learn_more_text                = __( 'Learn More', 'acf' );
 $acf_learn_more_link                = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'metabox' );

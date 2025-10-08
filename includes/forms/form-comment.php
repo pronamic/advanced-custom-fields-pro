@@ -1,14 +1,14 @@
 <?php
-
 /**
- * ACF Comment Form Class
+ * @package ACF
+ * @author  WP Engine
  *
- * All the logic for adding fields to comments
- *
- * @class       acf_form_comment
- * @package     ACF
- * @subpackage  Forms
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
+
 if ( ! class_exists( 'acf_form_comment' ) ) :
 
 	class acf_form_comment {
@@ -148,7 +148,7 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 
 					?>
 					<div id="acf-<?php echo esc_attr( $field_group['ID'] ); ?>" class="stuffbox">
-						<h3 class="hndle"><?php echo esc_html( $field_group['title'] ); ?></h3>
+						<h3 class="hndle"><?php echo acf_esc_html( acf_get_field_group_title( $field_group ) ); ?></h3>
 						<div class="inside">
 							<?php acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'] ); ?>
 							<script type="text/javascript">

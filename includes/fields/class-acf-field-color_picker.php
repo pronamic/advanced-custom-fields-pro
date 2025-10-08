@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 if ( ! class_exists( 'acf_field_color_picker' ) ) :
 
@@ -25,9 +34,12 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 			$this->preview_image = acf_get_url() . '/assets/images/field-type-previews/field-preview-color-picker.png';
 			$this->doc_url       = acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/color-picker/', 'docs', 'field-type-selection' );
 			$this->defaults      = array(
-				'default_value'  => '',
-				'enable_opacity' => false,
-				'return_format'  => 'string', // 'string'|'array'
+				'default_value'         => '',
+				'enable_opacity'        => false,
+				'custom_palette_source' => '',
+				'palette_colors'        => '',
+				'show_color_wheel'      => true,
+				'return_format'         => 'string', // 'string'|'array'
 			);
 		}
 
@@ -105,7 +117,7 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 		 * @since   3.6
 		 * @date    23/01/13
 		 */
-		function render_field( $field ) {
+		public function render_field( $field ) {
 			$text_input                             = acf_get_sub_array( $field, array( 'id', 'class', 'name', 'value' ) );
 			$hidden_input                           = acf_get_sub_array( $field, array( 'name', 'value' ) );
 			$text_input['data-alpha-skip-debounce'] = true;
@@ -115,9 +127,54 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 				$text_input['data-alpha-enabled'] = true;
 			}
 
+			// Handle color palette when the theme supports theme.json.
+			if ( wp_theme_has_theme_json() ) {
+				// If the field was set to use themejson.
+				if ( $field['custom_palette_source'] === 'themejson' ) {
+					$text_input['data-acf-palette-type'] = 'custom';
+
+					// Get the palette (theme + custom).
+					$global_settings = wp_get_global_settings();
+					$palette         = $global_settings['color']['palette']['theme'] ?? array();
+
+					// Extract only the color values.
+					$color_values = array_map(
+						fn( $c ) => $c['color'] ?? null,
+						$palette
+					);
+
+					// Remove nulls (in case any entries are missing 'color')
+					$color_values = array_filter( $color_values );
+
+					$hex_string = implode( ',', $color_values );
+
+					$text_input['data-acf-palette-colors'] = $hex_string;
+				} elseif ( $field['custom_palette_source'] === 'custom' && ! empty( $field['palette_colors'] ) ) {
+					// If the field was set to use a custom palette.
+					$text_input['data-acf-palette-type']   = 'custom';
+					$text_input['data-acf-palette-colors'] = $field['palette_colors'];
+				} elseif ( $field['custom_palette_source'] === '' && ! empty( $field['palette_colors'] ) ) {
+					// This state can happen if they switched from a classic theme to a themejson theme without resaving the field.
+					$text_input['data-acf-palette-type']   = 'custom';
+					$text_input['data-acf-palette-colors'] = $field['palette_colors'];
+				} else {
+					// Fallback to use the default color palette for the iris color picker.
+					$text_input['data-acf-palette-type'] = 'default';
+				}
+			} else {
+				// Handle color palette for themes that do not support themejson.
+				if ( ! empty( $field['palette_colors'] ) ) {
+					$text_input['data-acf-palette-type']   = 'custom';
+					$text_input['data-acf-palette-colors'] = $field['palette_colors'];
+				} else {
+					// Fallback to use the default color palette for the iris color picker.
+					$text_input['data-acf-palette-type'] = 'default';
+				}
+			}
+
 			// html
 			?>
-		<div class="acf-color-picker">
+		<div class="acf-color-picker<?php echo esc_attr( ! $field['show_color_wheel'] ? ' acf-hide-color-picker-color-wheel' : '' ); ?>">
 			<?php acf_hidden_input( $hidden_input ); ?>
 			<?php acf_text_input( $text_input ); ?>
 		</div>
@@ -174,6 +231,84 @@ if ( ! class_exists( 'acf_field_color_picker' ) ) :
 						'string' => __( 'Hex String', 'acf' ),
 						'array'  => __( 'RGBA Array', 'acf' ),
 					),
+				)
+			);
+		}
+
+		/**
+		 * Renders the field settings used in the "Presentation" tab.
+		 *
+		 * @since 6.0
+		 *
+		 * @param array $field The field settings array.
+		 * @return void
+		 */
+		public function render_field_presentation_settings( $field ) {
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Show Custom Palette', 'acf' ),
+					'instructions' => '',
+					'type'         => 'true_false',
+					'name'         => 'show_custom_palette',
+					'ui'           => 1,
+				)
+			);
+
+			$custom_palette_conditions = array(
+				'field'    => 'show_custom_palette',
+				'operator' => '==',
+				'value'    => 1,
+			);
+
+			if ( wp_theme_has_theme_json() ) {
+				acf_render_field_setting(
+					$field,
+					array(
+						'label'        => __( 'Custom Palette Source', 'acf' ),
+						'instructions' => '',
+						'type'         => 'radio',
+						'name'         => 'custom_palette_source',
+						'layout'       => 'vertical',
+						'choices'      => array(
+							'custom'  => __( 'Specify custom colors', 'acf' ),
+							'themejson' => __( 'Use colors from theme.json', 'acf' ),
+						),
+						'conditions'    => array(
+							'field'    => 'show_custom_palette',
+							'operator' => '==',
+							'value'    => 1,
+						),
+					)
+				);
+
+				$custom_palette_conditions = array(
+					'field'    => 'custom_palette_source',
+					'operator' => '==',
+					'value'    => 'custom',
+				);
+			}
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'        => __( 'Custom Palette', 'acf' ),
+					'instructions' => __( 'Use a custom color palette by entering comma separated hex or rgba values', 'acf' ),
+					'type'         => 'text',
+					'name'         => 'palette_colors',
+					'conditions'   => $custom_palette_conditions,
+				)
+			);
+
+			acf_render_field_setting(
+				$field,
+				array(
+					'label'         => __( 'Show Color Wheel', 'acf' ),
+					'instructions'  => '',
+					'type'          => 'true_false',
+					'name'          => 'show_color_wheel',
+					'default_value' => 1,
+					'ui'            => 1,
 				)
 			);
 		}

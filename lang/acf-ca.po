@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-10T00:29:48+00:00\n"
+"PO-Revision-Date: 2025-10-06T21:27:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+msgid "Select JSON File"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
+msgid ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
+msgstr ""
 
 #: includes/fields/class-acf-field-date_picker.php:235
 #: includes/fields/class-acf-field-date_time_picker.php:222
@@ -4413,41 +4429,41 @@ msgstr ""
 msgid "Browse Fields"
 msgstr "Cerca camps"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:287
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr "Res a importar"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:282
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr "L'extensió Custom Post Type UI es pot desactivar."
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:273
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] "S'ha importat %d element de Custom Post Type UI -"
 msgstr[1] "S'ha importat %d elements de Custom Post Type UI -"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:257
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr "No s'han pogut importar les taxonomies."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:239
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr "No s'han pogut importar els tipus de contingut."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:228
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr ""
 "No s'ha seleccionat res de l'extensió Custom Post Type UI per a importar."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:204
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] "S'ha importat 1 element"
 msgstr[1] "S'han importat %s elements"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:119
+#: includes/admin/tools/class-acf-admin-tool-import.php:121
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
@@ -4457,8 +4473,8 @@ msgstr ""
 "una que ja existeix sobreescriurà la configuració del tipus de contingut o "
 "taxonomia existents amb la de la importació."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:108
-#: includes/admin/tools/class-acf-admin-tool-import.php:124
+#: includes/admin/tools/class-acf-admin-tool-import.php:110
+#: includes/admin/tools/class-acf-admin-tool-import.php:126
 msgid "Import from Custom Post Type UI"
 msgstr "Importar des de Custom Post Type UI"
 
@@ -4614,7 +4630,7 @@ msgstr[1] "%s tipus de continguts activats."
 
 #: includes/admin/post-types/admin-post-types.php:84
 #: includes/admin/post-types/admin-taxonomies.php:107
-#: includes/admin/tools/class-acf-admin-tool-import.php:79
+#: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -4998,7 +5014,7 @@ msgstr "Validació"
 msgid "General"
 msgstr "General"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:67
+#: includes/admin/tools/class-acf-admin-tool-import.php:69
 msgid "Import JSON"
 msgstr "Importa JSON"
 
@@ -5106,7 +5122,7 @@ msgstr[1] "%1$s ha de ser d'un dels següents tipus de contingut: %2$s"
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s ha de tenir un identificador d'entrada vàlid."
 
-#: includes/fields/class-acf-field-file.php:447
+#: includes/fields/class-acf-field-file.php:451
 msgid "%s requires a valid attachment ID."
 msgstr "%s requereix un identificador d'adjunt vàlid."
 
@@ -5185,7 +5201,7 @@ msgstr "Adjunts"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:108
 #: includes/admin/post-types/admin-taxonomies.php:83
-#: includes/admin/tools/class-acf-admin-tool-import.php:90
+#: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -5949,25 +5965,17 @@ msgstr "Genera PHP"
 msgid "Export Field Groups"
 msgstr "Exporta els grups de camps"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:172
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
 msgstr "El fitxer d'importació és buit"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:163
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
 msgstr "Tipus de fitxer incorrecte"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:158
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
 msgstr "S'ha produït un error en penjar el fitxer. Torneu-ho a provar"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:47
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the items in that file."
-msgstr ""
-"Seleccioneu el fitxer JSON de l'Advanced Custom Fields que voleu importar. "
-"En fer clic al botó d'importació, l'ACF importarà els grups de camps."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
@@ -6593,29 +6601,29 @@ msgstr "Obert"
 msgid "Accordion"
 msgstr "Acordió"
 
-#: includes/fields/class-acf-field-file.php:253
-#: includes/fields/class-acf-field-file.php:265
+#: includes/fields/class-acf-field-file.php:257
+#: includes/fields/class-acf-field-file.php:269
 msgid "Restrict which files can be uploaded"
 msgstr "Restringeix quins fitxers es poden penjar"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File ID"
 msgstr "Identificador de fitxer"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File URL"
 msgstr "URL del fitxer"
 
-#: includes/fields/class-acf-field-file.php:205
+#: includes/fields/class-acf-field-file.php:209
 msgid "File Array"
 msgstr "Matriu de fitxer"
 
-#: includes/fields/class-acf-field-file.php:176
+#: includes/fields/class-acf-field-file.php:180
 msgid "Add File"
 msgstr "Afegeix un fitxer"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:151
-#: includes/fields/class-acf-field-file.php:176
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:180
 msgid "No file selected"
 msgstr "No s'ha seleccionat cap fitxer"
 
@@ -6631,7 +6639,6 @@ msgstr "Actualitza el fitxer"
 msgid "Edit File"
 msgstr "Edita el fitxer"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
 msgid "Select File"
 msgstr "Escull el fitxer"
@@ -7251,24 +7258,24 @@ msgstr "S’ha arribat al màxim de valors ({max} valors)"
 msgid "Relationship"
 msgstr "Relació"
 
-#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-file.php:281
 #: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr "Llista separada per comes. Deixeu-ho en blanc per a tots els tipus"
 
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:280
 #: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
 msgstr "Tipus de fitxers permesos"
 
-#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:268
 #: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "Màxim"
 
 #: includes/fields/class-acf-field-file.php:144
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:260
+#: includes/fields/class-acf-field-file.php:272
 #: includes/fields/class-acf-field-image.php:261
 #: includes/fields/class-acf-field-image.php:297
 msgid "File size"
@@ -7279,17 +7286,17 @@ msgstr "Mida del fitxer"
 msgid "Restrict which images can be uploaded"
 msgstr "Restringeix quines imatges es poden penjar"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "Mínim"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "S'ha penjat a l'entrada"
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
@@ -7301,12 +7308,12 @@ msgstr "S'ha penjat a l'entrada"
 msgid "All"
 msgstr "Tots"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "Limita l'elecció d'elements de la mediateca"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "Mediateca"
@@ -7329,7 +7336,7 @@ msgstr "Matriu d'imatges"
 
 #: includes/fields/class-acf-field-button-group.php:158
 #: includes/fields/class-acf-field-checkbox.php:356
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-link.php:147
 #: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
@@ -7337,7 +7344,7 @@ msgstr "Especifiqueu el valor a retornar a la interfície frontal"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-file.php:203
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-taxonomy.php:672

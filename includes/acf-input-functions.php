@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 /**
  * acf_filter_attrs
@@ -333,7 +342,27 @@ function acf_get_checkbox_input( $attrs = array() ) {
 
 	// Render.
 	$checked = isset( $attrs['checked'] );
-	return '<label' . ( $checked ? ' class="selected"' : '' ) . '><input ' . acf_esc_attrs( $attrs ) . '/> ' . acf_esc_html( $label ) . '</label>';
+
+	// Build label attributes array for accessibility and consistency.
+	$label_attrs = array();
+	if ( $checked ) {
+		$label_attrs['class'] = 'selected';
+	}
+
+	if ( ! empty( $attrs['button_group'] ) ) {
+		unset( $attrs['button_group'] );
+		// If tabindex is provided, use it for the label; otherwise, use checked-based default.
+		if ( isset( $attrs['tabindex'] ) ) {
+			$label_attrs['tabindex'] = (string) $attrs['tabindex'];
+			unset( $attrs['tabindex'] );
+		} else {
+			$label_attrs['tabindex'] = $checked ? '0' : '-1';
+		}
+		$label_attrs['role']         = 'radio';
+		$label_attrs['aria-checked'] = $checked ? 'true' : 'false';
+	}
+
+	return '<label' . ( acf_esc_attrs( $label_attrs ) ? ' ' . acf_esc_attrs( $label_attrs ) : '' ) . '><input ' . acf_esc_attrs( $attrs ) . '/> ' . acf_esc_html( $label ) . '</label>';
 }
 
 /**

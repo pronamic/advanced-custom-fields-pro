@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-10T00:29:48+00:00\n"
+"PO-Revision-Date: 2025-10-06T21:27:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+msgid "Select JSON File"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
+msgid ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
+msgstr ""
 
 #: includes/fields/class-acf-field-date_picker.php:235
 #: includes/fields/class-acf-field-date_time_picker.php:222
@@ -1768,13 +1784,13 @@ msgstr ""
 msgid "Subscription Expiry Date"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:317
+#: pro/admin/views/html-settings-updates.php:46
 msgid "License Status"
-msgstr ""
+msgstr "ライセンスステータス"
 
-#: src/Site_Health/Site_Health.php:312
+#: pro/admin/views/html-settings-updates.php:59
 msgid "License Type"
-msgstr ""
+msgstr "イセンスタイプ"
 
 #: src/Site_Health/Site_Health.php:307
 msgid "Licensed URL"
@@ -4220,46 +4236,46 @@ msgstr ""
 msgid "Browse Fields"
 msgstr "フィールドを見る"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:287
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr "インポート対象がありません"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:282
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr ""
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:273
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:257
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:239
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:228
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:204
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] "インポートした %s 項目"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:119
+#: includes/admin/tools/class-acf-admin-tool-import.php:121
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
 "with those of the import."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:108
-#: includes/admin/tools/class-acf-admin-tool-import.php:124
+#: includes/admin/tools/class-acf-admin-tool-import.php:110
+#: includes/admin/tools/class-acf-admin-tool-import.php:126
 msgid "Import from Custom Post Type UI"
 msgstr ""
 
@@ -4397,7 +4413,7 @@ msgstr[0] "投稿タイプ %s が有効化されました。"
 
 #: includes/admin/post-types/admin-post-types.php:84
 #: includes/admin/post-types/admin-taxonomies.php:107
-#: includes/admin/tools/class-acf-admin-tool-import.php:79
+#: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -4768,7 +4784,7 @@ msgstr "検証"
 msgid "General"
 msgstr "全般"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:67
+#: includes/admin/tools/class-acf-admin-tool-import.php:69
 msgid "Import JSON"
 msgstr "JSON をインポート"
 
@@ -4872,7 +4888,7 @@ msgstr[0] "%1$s は投稿タイプ %2$s である必要があります。"
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s は有効な投稿 ID である必要があります。"
 
-#: includes/fields/class-acf-field-file.php:447
+#: includes/fields/class-acf-field-file.php:451
 msgid "%s requires a valid attachment ID."
 msgstr "%s には有効な添付ファイル ID が必要です。"
 
@@ -4951,7 +4967,7 @@ msgstr "添付ファイル"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:108
 #: includes/admin/post-types/admin-taxonomies.php:83
-#: includes/admin/tools/class-acf-admin-tool-import.php:90
+#: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -5707,25 +5723,17 @@ msgstr "PHP を生成"
 msgid "Export Field Groups"
 msgstr "フィールドグループをエクスポート"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:172
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
 msgstr "空ファイルのインポート"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:163
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
 msgstr "不正なファイルの種類"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:158
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
 msgstr "ファイルアップロードエラー。もう一度お試しください"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:47
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the items in that file."
-msgstr ""
-"インポートしたい ACF の JSON ファイルを選択してください。下のインポートボタン"
-"をクリックすると、ACF はファイルに項目をインポートします。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
@@ -6348,29 +6356,29 @@ msgstr "受付中"
 msgid "Accordion"
 msgstr "アコーディオン"
 
-#: includes/fields/class-acf-field-file.php:253
-#: includes/fields/class-acf-field-file.php:265
+#: includes/fields/class-acf-field-file.php:257
+#: includes/fields/class-acf-field-file.php:269
 msgid "Restrict which files can be uploaded"
 msgstr "アップロード可能なファイルを制限"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File ID"
 msgstr "ファイル ID"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File URL"
 msgstr "ファイルの URL"
 
-#: includes/fields/class-acf-field-file.php:205
+#: includes/fields/class-acf-field-file.php:209
 msgid "File Array"
 msgstr "ファイル配列"
 
-#: includes/fields/class-acf-field-file.php:176
+#: includes/fields/class-acf-field-file.php:180
 msgid "Add File"
 msgstr "ファイルを追加"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:151
-#: includes/fields/class-acf-field-file.php:176
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:180
 msgid "No file selected"
 msgstr "ファイルが選択されていません"
 
@@ -6386,7 +6394,6 @@ msgstr "ファイルを更新"
 msgid "Edit File"
 msgstr "ファイルを編集"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
 msgid "Select File"
 msgstr "ファイルを選択"
@@ -7001,24 +7008,24 @@ msgstr "最大値 ({max}) に達しました"
 msgid "Relationship"
 msgstr "関係"
 
-#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-file.php:281
 #: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr "カンマ区切りのリスト。すべてのタイプを許可する場合は空白のままにします"
 
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:280
 #: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
 msgstr "許可されるファイルの種類"
 
-#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:268
 #: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "最大"
 
 #: includes/fields/class-acf-field-file.php:144
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:260
+#: includes/fields/class-acf-field-file.php:272
 #: includes/fields/class-acf-field-image.php:261
 #: includes/fields/class-acf-field-image.php:297
 msgid "File size"
@@ -7029,17 +7036,17 @@ msgstr "ファイルサイズ"
 msgid "Restrict which images can be uploaded"
 msgstr "アップロード可能な画像を制限"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "最小"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "投稿にアップロード"
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
@@ -7051,12 +7058,12 @@ msgstr "投稿にアップロード"
 msgid "All"
 msgstr "すべて"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "メディアライブラリの選択肢を制限"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "ライブラリ"
@@ -7079,7 +7086,7 @@ msgstr "画像配列"
 
 #: includes/fields/class-acf-field-button-group.php:158
 #: includes/fields/class-acf-field-checkbox.php:356
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-link.php:147
 #: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
@@ -7087,7 +7094,7 @@ msgstr "フロントエンドへの返り値を指定してください"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-file.php:203
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-taxonomy.php:672
@@ -7527,93 +7534,31 @@ msgstr "https://www.advancedcustomfields.com"
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
 
-#: pro/acf-pro.php:27
-msgid "Advanced Custom Fields PRO"
-msgstr "Advanced Custom Fields PRO"
-
-#: pro/blocks.php:170
-msgid "Block type name is required."
-msgstr ""
-
-#. translators: The name of the block type
-#: pro/blocks.php:178
-msgid "Block type \"%s\" is already registered."
-msgstr ""
-
-#: pro/blocks.php:726
-msgid "Switch to Edit"
-msgstr ""
-
-#: pro/blocks.php:727
-msgid "Switch to Preview"
-msgstr ""
-
-#: pro/blocks.php:728
-msgid "Change content alignment"
-msgstr ""
-
-#. translators: %s: Block type title
-#: pro/blocks.php:731
-msgid "%s settings"
-msgstr ""
-
-#: pro/blocks.php:936
-msgid "This block contains no editable fields."
-msgstr ""
-
-#. translators: %s: an admin URL to the field group edit screen
-#: pro/blocks.php:942
-msgid ""
-"Assign a <a href=\"%s\" target=\"_blank\">field group</a> to add fields to "
-"this block."
-msgstr ""
-
-#: pro/options-page.php:78
+#: pro/options-page.php:74, pro/post-types/acf-ui-options-page.php:174
 msgid "Options Updated"
 msgstr "オプションを更新しました"
 
-#: pro/updates.php:99
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
+#: pro/updates.php:155
+msgid "An error occurred when connecting to activation server"
+msgstr "<b>エラー</b> ライセンスサーバーに接続できません"
 
-#: pro/updates.php:159
-msgid ""
-"<b>ACF Activation Error</b>. Your defined license key has changed, but an "
-"error occurred when deactivating your old licence"
-msgstr ""
-
-#: pro/updates.php:154
-msgid ""
-"<b>ACF Activation Error</b>. Your defined license key has changed, but an "
-"error occurred when connecting to activation server"
-msgstr ""
-
-#: pro/updates.php:192
-msgid "<b>ACF Activation Error</b>"
-msgstr ""
-
-#: pro/updates.php:187
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr ""
-
-#: pro/updates.php:279
-msgid "Check Again"
+#: pro/updates.php:246
+msgid "check again"
 msgstr "再確認"
 
-#: pro/updates.php:593
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr ""
+#: pro/updates.php:344
+msgid "Check again"
+msgstr "再確認"
 
-#: pro/admin/admin-options-page.php:195
+#: pro/updates.php:659
+msgid "Could not connect to the activation server"
+msgstr "<b>エラー</b> ライセンスサーバーに接続できません"
+
+#: pro/admin/admin-options-page.php:159
 msgid "Publish"
 msgstr "公開"
 
-#: pro/admin/admin-options-page.php:199
+#: pro/admin/admin-options-page.php:162
 msgid ""
 "No Custom Field Groups found for this options page. <a href=\"%s\">Create a "
 "Custom Field Group</a>"
@@ -7622,471 +7567,392 @@ msgstr ""
 "カスタムフィールドグループを作成</a>"
 
 #: pro/admin/admin-updates.php:52
-msgid "<b>Error</b>. Could not connect to update server"
+msgid "<strong>Error</strong>. Could not connect to the update server"
 msgstr "<b>エラー</b> 更新サーバーに接続できません"
 
-#: pro/admin/admin-updates.php:212
-msgid ""
-"<b>Error</b>. Could not authenticate update package. Please check again or "
-"deactivate and reactivate your ACF PRO license."
-msgstr ""
-
-#: pro/admin/admin-updates.php:199
-msgid ""
-"<b>Error</b>. Your license for this site has expired or been deactivated. "
-"Please reactivate your ACF PRO license."
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:27,
-#: pro/fields/class-acf-field-repeater.php:31
-msgid ""
-"Allows you to select and display existing fields. It does not duplicate any "
-"fields in the database, but loads and displays the selected fields at run-"
-"time. The Clone field can either replace itself with the selected fields or "
-"display the selected fields as a group of subfields."
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:819
-msgid "Select one or more fields you wish to clone"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:838
+#: pro/fields/class-acf-field-clone.php:749
 msgid "Display"
 msgstr "表示"
 
-#: pro/fields/class-acf-field-clone.php:839
-msgid "Specify the style used to render the clone field"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:844
-msgid "Group (displays selected fields in a group within this field)"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:845
-msgid "Seamless (replaces this field with selected fields)"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:868
-msgid "Labels will be displayed as %s"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:873
-msgid "Prefix Field Labels"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:883
-msgid "Values will be saved as %s"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:888
-msgid "Prefix Field Names"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:1005
-msgid "Unknown field"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:1042
-msgid "Unknown field group"
-msgstr ""
-
-#: pro/fields/class-acf-field-clone.php:1046
-msgid "All fields from %s field group"
-msgstr ""
-
-#: pro/fields/class-acf-field-flexible-content.php:27
-msgid ""
-"Allows you to define, create and manage content with total control by "
-"creating layouts that contain subfields that content editors can choose from."
-msgstr ""
-
-#: pro/fields/class-acf-field-flexible-content.php:36,
-#: pro/fields/class-acf-field-repeater.php:103,
-#: pro/fields/class-acf-field-repeater.php:297
+#: pro/fields/class-acf-field-flexible-content.php:50,
+#: pro/fields/class-acf-field-repeater.php:104,
+#: pro/fields/class-acf-field-repeater.php:300
 msgid "Add Row"
 msgstr "行を追加"
 
-#: pro/fields/class-acf-field-flexible-content.php:76,
-#: pro/fields/class-acf-field-flexible-content.php:943,
-#: pro/fields/class-acf-field-flexible-content.php:1022
-#, fuzzy
-#| msgid "layout"
+#: pro/fields/class-acf-field-flexible-content.php:82,
+#: pro/fields/class-acf-field-flexible-content.php:748,
+#: pro/fields/class-acf-field-flexible-content.php:834
 msgid "layout"
 msgid_plural "layouts"
 msgstr[0] "レイアウト"
 
-#: pro/fields/class-acf-field-flexible-content.php:77
+#: pro/fields/class-acf-field-flexible-content.php:83
 msgid "layouts"
 msgstr "レイアウト"
 
-#: pro/fields/class-acf-field-flexible-content.php:81,
-#: pro/fields/class-acf-field-flexible-content.php:942,
-#: pro/fields/class-acf-field-flexible-content.php:1021
-msgid "This field requires at least {min} {label} {identifier}"
-msgstr "{identifier}に{label}は最低{min}個必要です"
-
-#: pro/fields/class-acf-field-flexible-content.php:82
-msgid "This field has a limit of {max} {label} {identifier}"
-msgstr ""
-
-#: pro/fields/class-acf-field-flexible-content.php:85
-msgid "{available} {label} {identifier} available (max {max})"
-msgstr ""
-"あと{available}個 {identifier}には {label} を利用できます（最大 {max}個）"
-
-#: pro/fields/class-acf-field-flexible-content.php:86
-msgid "{required} {label} {identifier} required (min {min})"
-msgstr ""
-"あと{required}個 {identifier}には {label} を利用する必要があります（最小 "
-"{max}個）"
-
-#: pro/fields/class-acf-field-flexible-content.php:89
-msgid "Flexible Content requires at least 1 layout"
-msgstr "柔軟コンテンツは少なくとも1個のレイアウトが必要です"
-
-#: pro/fields/class-acf-field-flexible-content.php:282
-msgid "Click the \"%s\" button below to start creating your layout"
-msgstr "下の \"%s\" ボタンをクリックしてレイアウトの作成を始めてください"
-
-#: pro/fields/class-acf-field-flexible-content.php:423
-msgid "Add layout"
-msgstr "レイアウトを追加"
-
-#: pro/fields/class-acf-field-flexible-content.php:424
-msgid "Duplicate layout"
-msgstr ""
-
-#: pro/fields/class-acf-field-flexible-content.php:425
-msgid "Remove layout"
-msgstr "レイアウトを削除"
-
-#: pro/fields/class-acf-field-flexible-content.php:426,
-#: pro/fields/class-acf-repeater-table.php:382
-msgid "Click to toggle"
-msgstr ""
-
-#: pro/fields/class-acf-field-flexible-content.php:562
+#: pro/fields/class-acf-field-flexible-content.php:89,
+#: pro/fields/class-acf-field-flexible-content.php:353
 msgid "Delete Layout"
 msgstr "レイアウトを削除"
 
-#: pro/fields/class-acf-field-flexible-content.php:563
+#. translators: %s - Name of the Flexible content layout
+#: pro/fields/class-acf-field-flexible-content.php:91
+msgid "Delete %s"
+msgstr "%s を削除"
+
+#: pro/fields/class-acf-field-flexible-content.php:97
+msgid "Rename Layout"
+msgstr "レイアウトの名前を変更"
+
+#: pro/fields/class-acf-field-flexible-content.php:98,
+#: src/pro/Fields/FlexibleContent/Render.php:252
+msgid "Rename"
+msgstr "名前の変更"
+
+#: pro/fields/class-acf-field-flexible-content.php:99
+msgid "New Label"
+msgstr "新しいラベル"
+
+#: pro/fields/class-acf-field-flexible-content.php:103,
+#: pro/fields/class-acf-field-flexible-content.php:747,
+#: pro/fields/class-acf-field-flexible-content.php:833
+msgid "This field requires at least {min} {label} {identifier}"
+msgstr "{identifier}に{label}は最低{min}個必要です"
+
+#: pro/fields/class-acf-field-flexible-content.php:105
+msgid "Maximum rows reached ({max})"
+msgstr "最大行数に達しました（{max}）"
+
+#: pro/fields/class-acf-field-flexible-content.php:109
+msgid "{available} {label} {identifier} available (max {max})"
+msgstr ""
+"あと{available}個 {identifier}には {label} を利用できます（最大 {max}）"
+
+#: pro/fields/class-acf-field-flexible-content.php:110
+msgid "{required} {label} {identifier} required (min {min})"
+msgstr ""
+"あと{required}個 {identifier}には {label} を利用する必要があります（最小 "
+"{min}）"
+
+#: pro/fields/class-acf-field-flexible-content.php:113
+msgid "Flexible Content requires at least 1 layout"
+msgstr "柔軟コンテンツは少なくとも1個のレイアウトが必要です"
+
+#: pro/fields/class-acf-field-flexible-content.php:354
 msgid "Duplicate Layout"
 msgstr "レイアウトを複製"
 
-#: pro/fields/class-acf-field-flexible-content.php:564
+#: pro/fields/class-acf-field-flexible-content.php:355
 msgid "Add New Layout"
 msgstr "新しいレイアウトを追加"
 
-#: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
+#: pro/fields/class-acf-field-flexible-content.php:355
 msgid "Add Layout"
 msgstr "レイアウトを追加"
 
-#: pro/fields/class-acf-field-flexible-content.php:647
+#: pro/fields/class-acf-field-flexible-content.php:439
 msgid "Min"
 msgstr "最小数"
 
-#: pro/fields/class-acf-field-flexible-content.php:662
+#: pro/fields/class-acf-field-flexible-content.php:454
 msgid "Max"
 msgstr "最大数"
 
-#: pro/fields/class-acf-field-flexible-content.php:705
+#: pro/fields/class-acf-field-flexible-content.php:495
 msgid "Minimum Layouts"
 msgstr "レイアウトの最小数"
 
-#: pro/fields/class-acf-field-flexible-content.php:716
+#: pro/fields/class-acf-field-flexible-content.php:506
 msgid "Maximum Layouts"
 msgstr "レイアウトの最大数"
 
-#: pro/fields/class-acf-field-flexible-content.php:727,
-#: pro/fields/class-acf-field-repeater.php:293
+#: pro/fields/class-acf-field-flexible-content.php:517,
+#: pro/fields/class-acf-field-repeater.php:296
 msgid "Button Label"
 msgstr "ボタンのラベル"
 
-#: pro/fields/class-acf-field-flexible-content.php:1710,
-#: pro/fields/class-acf-field-repeater.php:918
-msgid "%s must be of type array or null."
-msgstr ""
-
-#: pro/fields/class-acf-field-flexible-content.php:1721
-msgid "%1$s must contain at least %2$s %3$s layout."
-msgid_plural "%1$s must contain at least %2$s %3$s layouts."
-msgstr[0] ""
-
-#: pro/fields/class-acf-field-flexible-content.php:1737
-msgid "%1$s must contain at most %2$s %3$s layout."
-msgid_plural "%1$s must contain at most %2$s %3$s layouts."
-msgstr[0] ""
-
-#: pro/fields/class-acf-field-gallery.php:27
-msgid ""
-"An interactive interface for managing a collection of attachments, such as "
-"images."
-msgstr ""
-
-#: pro/fields/class-acf-field-gallery.php:77
+#: pro/fields/class-acf-field-gallery.php:72
 msgid "Add Image to Gallery"
 msgstr "ギャラリーに画像を追加"
 
-#: pro/fields/class-acf-field-gallery.php:78
+#: pro/fields/class-acf-field-gallery.php:73
 msgid "Maximum selection reached"
 msgstr "選択の最大数に到達しました"
 
-#: pro/fields/class-acf-field-gallery.php:324
+#: pro/fields/class-acf-field-gallery.php:282
 msgid "Length"
 msgstr "長さ"
 
-#: pro/fields/class-acf-field-gallery.php:368
-msgid "Caption"
-msgstr ""
-
-#: pro/fields/class-acf-field-gallery.php:380
-msgid "Alt Text"
-msgstr ""
-
-#: pro/fields/class-acf-field-gallery.php:504
+#: pro/fields/class-acf-field-gallery.php:460
 msgid "Add to gallery"
 msgstr "ギャラリーを追加"
 
-#: pro/fields/class-acf-field-gallery.php:508
+#: pro/fields/class-acf-field-gallery.php:464
 msgid "Bulk actions"
 msgstr "一括操作"
 
-#: pro/fields/class-acf-field-gallery.php:509
+#: pro/fields/class-acf-field-gallery.php:465
 msgid "Sort by date uploaded"
 msgstr "アップロード日で並べ替え"
 
-#: pro/fields/class-acf-field-gallery.php:510
+#: pro/fields/class-acf-field-gallery.php:466
 msgid "Sort by date modified"
 msgstr "変更日で並び替え"
 
-#: pro/fields/class-acf-field-gallery.php:511
+#: pro/fields/class-acf-field-gallery.php:467
 msgid "Sort by title"
 msgstr "タイトルで並び替え"
 
-#: pro/fields/class-acf-field-gallery.php:512
+#: pro/fields/class-acf-field-gallery.php:468
 msgid "Reverse current order"
 msgstr "並び順を逆にする"
 
-#: pro/fields/class-acf-field-gallery.php:524
+#: pro/fields/class-acf-field-gallery.php:480
 msgid "Close"
 msgstr "閉じる"
 
-#: pro/fields/class-acf-field-gallery.php:615
+#: pro/fields/class-acf-field-gallery.php:567
 msgid "Minimum Selection"
 msgstr "最小選択数"
 
-#: pro/fields/class-acf-field-gallery.php:625
+#: pro/fields/class-acf-field-gallery.php:577
 msgid "Maximum Selection"
 msgstr "最大選択数"
 
-#: pro/fields/class-acf-field-gallery.php:707
-msgid "Allowed file types"
-msgstr "許可するファイルタイプ"
-
-#: pro/fields/class-acf-field-gallery.php:727
-msgid "Insert"
-msgstr ""
-
-#: pro/fields/class-acf-field-gallery.php:728
-msgid "Specify where new attachments are added"
-msgstr ""
-
-#: pro/fields/class-acf-field-gallery.php:732
-msgid "Append to the end"
-msgstr ""
-
-#: pro/fields/class-acf-field-gallery.php:733
-msgid "Prepend to the beginning"
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
+#: pro/fields/class-acf-field-repeater.php:67,
+#: pro/fields/class-acf-field-repeater.php:464
 msgid "Minimum rows not reached ({min} rows)"
 msgstr "最小行数に達しました（{min} 行）"
 
-#: pro/fields/class-acf-field-repeater.php:67
+#: pro/fields/class-acf-field-repeater.php:68
 msgid "Maximum rows reached ({max} rows)"
 msgstr "最大行数に達しました（{max} 行）"
 
-#: pro/fields/class-acf-field-repeater.php:68
-msgid "Error loading page"
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:69
-msgid "Order will be assigned upon save"
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:196
-msgid "Useful for fields with a large number of rows."
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-msgid "Rows Per Page"
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:208
-msgid "Set the number of rows to be displayed on a page."
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:240
+#: pro/fields/class-acf-field-repeater.php:243
 msgid "Minimum Rows"
 msgstr "最小行数"
 
-#: pro/fields/class-acf-field-repeater.php:251
+#: pro/fields/class-acf-field-repeater.php:254
 msgid "Maximum Rows"
 msgstr "最大行数"
 
-#: pro/fields/class-acf-field-repeater.php:281
-msgid "Collapsed"
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:282
-msgid "Select a sub field to show when row is collapsed"
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:1060
-msgid "Invalid field key or name."
-msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:1069
-msgid "There was an error retrieving the field."
-msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
+#: pro/fields/class-acf-repeater-table.php:368
 msgid "Click to reorder"
-msgstr "ドラッグして並び替え"
+msgstr "クリックして並び替え"
 
-#: pro/fields/class-acf-repeater-table.php:402
+#: pro/fields/class-acf-repeater-table.php:401
 msgid "Add row"
 msgstr "行を追加"
 
 #: pro/fields/class-acf-repeater-table.php:403
-msgid "Duplicate row"
-msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:404
 msgid "Remove row"
 msgstr "行を削除"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-msgid "Current Page"
-msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
+#: pro/fields/class-acf-repeater-table.php:455,
+#: pro/fields/class-acf-repeater-table.php:456
 msgid "First Page"
-msgstr "フロントページ"
+msgstr "最初のページ"
 
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
+#: pro/fields/class-acf-repeater-table.php:459,
+#: pro/fields/class-acf-repeater-table.php:460
 msgid "Previous Page"
-msgstr "投稿ページ"
+msgstr "前のページ"
 
-#. translators: 1: Current page, 2: Total pages.
-#: pro/fields/class-acf-repeater-table.php:470
-msgctxt "paging"
-msgid "%1$s of %2$s"
-msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
+#: pro/fields/class-acf-repeater-table.php:476,
+#: pro/fields/class-acf-repeater-table.php:477
 msgid "Next Page"
-msgstr "フロントページ"
+msgstr "次のページ"
 
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
+#: pro/fields/class-acf-repeater-table.php:480,
+#: pro/fields/class-acf-repeater-table.php:481
 msgid "Last Page"
-msgstr "投稿ページ"
+msgstr "最後のページ"
 
-#: pro/locations/class-acf-location-block.php:71
-msgid "No block types exist"
-msgstr ""
+#: pro/locations/class-acf-location-options-page.php:74,
+#: pro/post-types/acf-ui-options-page.php:95,
+#: pro/admin/post-types/admin-ui-options-page.php:482
+msgid "Add New Options Page"
+msgstr "新しいオプションページを追加"
 
-#: pro/locations/class-acf-location-options-page.php:70
-msgid "No options pages exist"
-msgstr "オプションページはありません"
+#: pro/post-types/acf-ui-options-page.php:96
+msgid "Edit Options Page"
+msgstr "オプションページを編集"
 
-#: pro/admin/views/html-settings-updates.php:6
+#: pro/post-types/acf-ui-options-page.php:97
+msgid "New Options Page"
+msgstr "新しいオプションページ"
+
+#: pro/post-types/acf-ui-options-page.php:98
+msgid "View Options Page"
+msgstr "オプションページを表示"
+
+#: pro/post-types/acf-ui-options-page.php:99
+msgid "Search Options Pages"
+msgstr "オプションページを検索"
+
+#: pro/post-types/acf-ui-options-page.php:100
+msgid "No Options Pages found"
+msgstr "オプションページが見つかりません"
+
+#: pro/post-types/acf-ui-options-page.php:101
+msgid "No Options Pages found in Trash"
+msgstr "ゴミ箱にオプションページはありません"
+
+#: pro/admin/post-types/admin-ui-options-page.php:56
+msgid "Options page deleted."
+msgstr "オプションを削除しました"
+
+#: pro/admin/post-types/admin-ui-options-page.php:57
+msgid "Options page updated."
+msgstr "オプションを更新しました"
+
+#: pro/admin/post-types/admin-ui-options-page.php:60
+msgid "Options page saved."
+msgstr "オプションページを保存しました"
+
+#: pro/admin/post-types/admin-ui-options-page.php:61
+msgid "Options page submitted."
+msgstr "オプションを更新しました"
+
+#: pro/admin/post-types/admin-ui-options-page.php:63
+msgid "Options page draft updated."
+msgstr "オプションのドラフトを更新しました"
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:83
+msgid "%s options page updated"
+msgstr "%s のオプションを更新しました"
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:89
+msgid "%s options page created"
+msgstr "%s のオプションページを作成しました"
+
+#: pro/admin/post-types/admin-ui-options-page.php:102
+msgid "Link existing field groups"
+msgstr "既存のフィールドグループをリンク"
+
+#. translators: %s number of post types activated
+#: pro/admin/post-types/admin-ui-options-pages.php:175
+msgid "Options page activated."
+msgid_plural "%s options pages activated."
+msgstr[0] "%s のオプションページを有効しました"
+
+#. translators: %s number of post types deactivated
+#: pro/admin/post-types/admin-ui-options-pages.php:182
+msgid "Options page deactivated."
+msgid_plural "%s options pages deactivated."
+msgstr[0] "%s のオプションを無効しました"
+
+#: pro/admin/views/html-settings-updates.php:9
 msgid "Deactivate License"
 msgstr "ライセンスのアクティベートを解除"
 
-#: pro/admin/views/html-settings-updates.php:6
+#: pro/admin/views/html-settings-updates.php:9
 msgid "Activate License"
 msgstr "ライセンスをアクティベート"
 
-#: pro/admin/views/html-settings-updates.php:16
-msgid "License Information"
-msgstr ""
-
-#: pro/admin/views/html-settings-updates.php:34
-msgid ""
-"To unlock updates, please enter your license key below. If you don't have a "
-"licence key, please see <a href=\"%s\" target=\"_blank\">details & pricing</"
-"a>."
-msgstr ""
-
-#: pro/admin/views/html-settings-updates.php:37
+#: pro/admin/views/html-settings-updates.php:172
 msgid "License Key"
 msgstr "ライセンスキー"
 
-#: pro/admin/views/html-settings-updates.php:22
-msgid "Your license key is defined in wp-config.php."
-msgstr ""
+#: pro/admin/views/html-settings-updates.php:194,
+#: pro/admin/views/html-settings-updates.php:158
+msgid "Recheck License"
+msgstr "ライセンスのアクティベートを再度確認"
 
-#: pro/admin/views/html-settings-updates.php:29
-msgid "Retry Activation"
-msgstr ""
-
-#: pro/admin/views/html-settings-updates.php:61
+#: pro/admin/views/html-settings-updates.php:239
 msgid "Update Information"
-msgstr "アップデート情報"
+msgstr "情報を更新"
 
-#: pro/admin/views/html-settings-updates.php:68
+#: pro/admin/views/html-settings-updates.php:246
 msgid "Current Version"
 msgstr "現在のバージョン"
 
-#: pro/admin/views/html-settings-updates.php:76
+#: pro/admin/views/html-settings-updates.php:254
 msgid "Latest Version"
 msgstr "最新のバージョン"
 
-#: pro/admin/views/html-settings-updates.php:84
+#: pro/admin/views/html-settings-updates.php:262
 msgid "Update Available"
 msgstr "利用可能なアップデート"
 
-#: pro/admin/views/html-settings-updates.php:98
+#: pro/admin/views/html-settings-updates.php:276
 msgid "Upgrade Notice"
 msgstr "アップグレード通知"
 
-#: pro/admin/views/html-settings-updates.php:126
-msgid "Check For Updates"
-msgstr ""
-
-#: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
+#: pro/admin/views/html-settings-updates.php:304
 msgid "Enter your license key to unlock updates"
 msgstr "アップデートのロックを解除するためにライセンスキーを入力してください"
 
-#: pro/admin/views/html-settings-updates.php:119
+#: pro/admin/views/html-settings-updates.php:302
 msgid "Update Plugin"
 msgstr "プラグインをアップデート"
 
-#: pro/admin/views/html-settings-updates.php:117
-msgid "Please reactivate your license to unlock updates"
-msgstr ""
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:80
+msgid "Menu Title"
+msgstr "メニュータイトル"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:163
+msgid "Update Button Label"
+msgstr "ボタンのラベルを更新"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:178
+msgid "Updated Message"
+msgstr "メッセージを更新しました"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:180
+msgid "Updated Options"
+msgstr "オプションを更新しました"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:288
+msgid "Autoload Options"
+msgstr "オプションをオートロード"
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:20,
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:16
+msgid "Page Title"
+msgstr "ページタイトル"
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:52,
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:47
+msgid "Parent Page"
+msgstr "親ページ"
+
+#: pro/admin/views/acf-ui-options-page/list-empty.php:30
+msgid "Add Your First Options Page"
+msgstr "最初のオプションページを追加"
+
+#: src/pro/Fields/FlexibleContent/Layout.php:243
+msgid "Disabled"
+msgstr "無効化"
+
+#: src/pro/Fields/FlexibleContent/Layout.php:249
+msgid "More layout actions..."
+msgstr "その他のアクション..."
+
+#: src/pro/Fields/FlexibleContent/Layout.php:251
+msgid "Toggle layout"
+msgstr "レイアウトを切り替え"
+
+#. translators: %s the button label used for adding a new layout.
+#: src/pro/Fields/FlexibleContent/Render.php:113
+msgid "Click the \"%s\" button below to start creating your layout"
+msgstr "下の \"%s\" ボタンをクリックしてレイアウトの作成を始めてください"
+
+#: src/pro/Fields/FlexibleContent/Render.php:192
+msgid "Expand All"
+msgstr "すべてを展開"
+
+#: src/pro/Fields/FlexibleContent/Render.php:195
+msgid "Collapse All"
+msgstr "すべてを折りたたむ"
+
+#: src/pro/Fields/FlexibleContent/Render.php:257
+msgid "Disable"
+msgstr "無効化"
+
+#: src/pro/Fields/FlexibleContent/Render.php:260
+msgid "Enable"
+msgstr "有効化"

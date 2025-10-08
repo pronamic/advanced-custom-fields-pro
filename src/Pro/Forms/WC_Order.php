@@ -1,10 +1,12 @@
 <?php
 /**
- * Adds ACF functionality to WooCommerce HPOS order pages.
+ * @package ACF
+ * @author  WP Engine
  *
- * @package    ACF
- * @subpackage Pro\Forms
- * @author     WP Engine
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace ACF\Pro\Forms;
@@ -74,7 +76,6 @@ class WC_Order {
 		if ( $field_groups ) {
 			foreach ( $field_groups as $field_group ) {
 				$id       = "acf-{$field_group['key']}"; // acf-group_123
-				$title    = $field_group['title'];       // Group 1
 				$context  = $field_group['position'];    // normal, side, acf_after_title
 				$priority = 'core';                      // high, core, default, low
 
@@ -105,7 +106,7 @@ class WC_Order {
 				// Add the meta box.
 				add_meta_box(
 					$id,
-					esc_html( $title ),
+					acf_esc_html( acf_get_field_group_title( $field_group ) ),
 					array( $this, 'render_meta_box' ),
 					$screen,
 					$context,

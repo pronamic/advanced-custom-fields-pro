@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 // calculate add-ons (non pro only)
 $plugins = array();
@@ -19,7 +28,7 @@ if ( ! acf_get_setting( 'pro' ) ) {
 }
 
 ?>
-<div id="acf-upgrade-notice" class="notice">
+<div id="acf-upgrade-notice" class="notice notice-warning">
 	<div class="notice-container">
 		<div class="col-content">
 			<img src="<?php echo esc_url( acf_get_url( 'assets/images/acf-logo.svg' ) ); ?>" />
@@ -33,7 +42,7 @@ if ( ! acf_get_setting( 'pro' ) ) {
 			<?php endif; ?>
 		</div>
 		<div class="col-actions">
-			<a id="acf-upgrade-button" href="<?php echo esc_url( $button_url ); ?>" class="acf-btn"><?php echo esc_html( $button_text ); ?></a>
+			<a id="acf-upgrade-button" href="<?php echo esc_url( $button_url ); ?>" class="button-primary"><?php echo esc_html( $button_text ); ?></a>
 		</div>
 		
 	</div>

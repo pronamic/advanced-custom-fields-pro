@@ -1,9 +1,12 @@
 <?php
 /**
- * Adds helpful debugging information to a new "Advanced Custom Fields"
- * panel in the WordPress Site Health screen.
- *
  * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace ACF\Site_Health;

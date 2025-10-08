@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -101,10 +110,7 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 			// Loop over field groups.
 			if ( $field_groups ) {
 				foreach ( $field_groups as $field_group ) {
-
-					// vars
 					$id       = esc_attr( "acf-{$field_group['key']}" );
-					$title    = esc_html( $field_group['title'] );
 					$context  = esc_attr( $field_group['position'] );
 					$priority = 'high';
 
@@ -134,7 +140,15 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 					);
 
 					// Add the meta box.
-					add_meta_box( $id, $title, array( $this, 'render_meta_box' ), $post_type, $context, $priority, array( 'field_group' => $field_group ) );
+					add_meta_box(
+						$id,
+						acf_esc_html( acf_get_field_group_title( $field_group ) ),
+						array( $this, 'render_meta_box' ),
+						$post_type,
+						$context,
+						$priority,
+						array( 'field_group' => $field_group )
+					);
 				}
 
 				// Set style from first field group.

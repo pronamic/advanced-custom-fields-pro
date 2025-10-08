@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-10T00:29:48+00:00\n"
+"PO-Revision-Date: 2025-10-06T21:27:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: gu\n"
 "MIME-Version: 1.0\n"
@@ -21,19 +21,39 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
+msgstr ""
+"ફીલ્ડ જૂથો, પોસ્ટ પ્રકારો અથવા વર્ગીકરણ ધરાવતા JSON ને આયાત કરો (ફક્ત વિશ્વસનીય "
+"સ્ત્રોતો માટે)"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+msgid "Select JSON File"
+msgstr "JSON ફાઇલ પસંદ કરો"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
+msgid ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
+msgstr ""
+"આયાત કરવા માટે ACF JSON ફાઇલ પસંદ કરો. ફક્ત વિશ્વસનીય સ્રોતોમાંથી ફાઇલોનો ઉપયોગ "
+"કરો, પછી આયાત કરો પર ક્લિક કરો."
+
 #: includes/fields/class-acf-field-date_picker.php:235
 #: includes/fields/class-acf-field-date_time_picker.php:222
 msgid "Use the current date as the default value for this field."
-msgstr ""
+msgstr "આ ફીલ્ડ માટે ડિફોલ્ટ મૂલ્ય તરીકે વર્તમાન તારીખનો ઉપયોગ કરો."
 
 #: includes/fields/class-acf-field-date_picker.php:234
 #: includes/fields/class-acf-field-date_time_picker.php:221
 msgid "Default to the current date"
-msgstr ""
+msgstr "ડિફોલ્ટ રૂપે વર્તમાન તારીખ"
 
 #: includes/assets.php:363
 msgid "Toggle panel"
-msgstr ""
+msgstr "પેનલ ટૉગલ કરો"
 
 #. translators: %1$s - Plugin name, %2$s URL to documentation
 #: includes/admin/admin.php:302
@@ -43,21 +63,26 @@ msgid ""
 "removed in a future version of ACF. <a href=\"%2$s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"%1$s અમને જાણવા મળ્યું છે કે આ વેબસાઇટ Select2 jQuery લાઇબ્રેરીના v3 નો ઉપયોગ કરવા "
+"માટે ગોઠવેલી છે, જેને v4 ની તરફેણમાં નાપસંદ કરવામાં આવી છે અને ACF ના ભવિષ્યના સંસ્કરણમાં "
+"દૂર કરવામાં આવશે. <a href=\"%2$s\" target=\"_blank\">વધુ જાણો</a>."
 
 #: includes/fields/class-acf-field-select.php:471
 msgid ""
 "Save created options back to the \"Choices\" setting in the field definition."
-msgstr ""
+msgstr "બનાવેલા વિકલ્પોને ફીલ્ડ ડેફિનેશનમાં \"પસંદગીઓ\" સેટિંગમાં પાછા સાચવો."
 
 #: includes/fields/class-acf-field-select.php:470
 msgid "Save Options"
-msgstr ""
+msgstr "વિકલ્પો સાચવો"
 
 #: includes/fields/class-acf-field-select.php:448
 msgid ""
 "Allow content editors to create new options by typing in the Select input. "
 "Multiple options can be created from a comma separated string."
 msgstr ""
+"\"સિલેક્ટ\" ઇનપુટ લખીને કન્ટેન્ટ એડિટર્સને નવા વિકલ્પો બનાવવાની મંજૂરી આપો. અલ્પવિરામથી "
+"વિભાજિત સ્ટ્રિંગમાંથી બહુવિધ વિકલ્પો બનાવી શકાય છે."
 
 #: includes/fields/class-acf-field-select.php:447
 msgid "Create Options"
@@ -66,11 +91,11 @@ msgstr "વિકલ્પો બનાવો"
 #: includes/admin/views/global/navigation.php:179
 #: includes/admin/views/global/navigation.php:183
 msgid "Edit ACF Field Groups"
-msgstr ""
+msgstr "ACF ફીલ્ડ જૂથો સંપાદિત કરો"
 
 #: includes/admin/views/global/navigation.php:100
 msgid "Get 4 months free on any WP Engine plan"
-msgstr ""
+msgstr "કોઈપણ WP એન્જિન પ્લાન પર 4 મહિના મફત મેળવો"
 
 #: src/Site_Health/Site_Health.php:528
 msgid "Number of Field Groups with Blocks and Other Locations"
@@ -293,27 +318,27 @@ msgstr "Table Row Delete ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:711
 msgid "Table Row Before Icon"
-msgstr ""
+msgstr "ચિહ્ન પહેલાં કોષ્ટક પંક્તિ"
 
 #: includes/fields/class-acf-field-icon_picker.php:710
 msgid "Table Row After Icon"
-msgstr ""
+msgstr "ચિહ્ન પછી કોષ્ટક પંક્તિ"
 
 #: includes/fields/class-acf-field-icon_picker.php:709
 msgid "Table Col Delete Icon"
-msgstr ""
+msgstr "ટેબલ કોલ ડિલીટ આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:708
 msgid "Table Col Before Icon"
-msgstr ""
+msgstr "આઇકોન પહેલા ટેબલ કોલ"
 
 #: includes/fields/class-acf-field-icon_picker.php:707
 msgid "Table Col After Icon"
-msgstr ""
+msgstr "આઇકોન પછી ટેબલ કોલ"
 
 #: includes/fields/class-acf-field-icon_picker.php:706
 msgid "Superhero (alt) Icon"
-msgstr ""
+msgstr "સુપરહીરો (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:705
 msgid "Superhero Icon"
@@ -329,15 +354,15 @@ msgstr "શોર્ટકોડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:692
 msgid "Shield (alt) Icon"
-msgstr ""
+msgstr "શીલ્ડ (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:690
 msgid "Share (alt2) Icon"
-msgstr ""
+msgstr "શેર (alt2) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:689
 msgid "Share (alt) Icon"
-msgstr ""
+msgstr "શેર (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:684
 msgid "Saved Icon"
@@ -357,39 +382,39 @@ msgstr "આઇકન દૂર કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:679
 msgid "Reddit Icon"
-msgstr ""
+msgstr "Reddit આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:676
 msgid "Privacy Icon"
-msgstr ""
+msgstr "ગોપનીયતા ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:675
 msgid "Printer Icon"
-msgstr ""
+msgstr "પ્રિન્ટર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:671
 msgid "Podio Icon"
-msgstr ""
+msgstr "પોડિયો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:670
 msgid "Plus (alt2) Icon"
-msgstr ""
+msgstr "પ્લસ (alt2) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:669
 msgid "Plus (alt) Icon"
-msgstr ""
+msgstr "પ્લસ (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:667
 msgid "Plugins Checked Icon"
-msgstr ""
+msgstr "પ્લગઇન્સ ચેક કરેલ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:664
 msgid "Pinterest Icon"
-msgstr ""
+msgstr "Pinterest આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:662
 msgid "Pets Icon"
-msgstr ""
+msgstr "પાળતુ પ્રાણીનું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:660
 msgid "PDF Icon"
@@ -397,39 +422,39 @@ msgstr "પીડીએફ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:658
 msgid "Palm Tree Icon"
-msgstr ""
+msgstr "પામનું વૃક્ષ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:657
 msgid "Open Folder Icon"
-msgstr ""
+msgstr "ફોલ્ડર આઈકોન ખોલો"
 
 #: includes/fields/class-acf-field-icon_picker.php:656
 msgid "No (alt) Icon"
-msgstr ""
+msgstr "નહિં (અલ્ટ) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:651
 msgid "Money (alt) Icon"
-msgstr ""
+msgstr "રોકડ (અલ્ટ) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:646
 msgid "Menu (alt3) Icon"
-msgstr ""
+msgstr "મેનુ (alt3) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:645
 msgid "Menu (alt2) Icon"
-msgstr ""
+msgstr "મેનુ (alt2) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:644
 msgid "Menu (alt) Icon"
-msgstr ""
+msgstr "મેનુ (ઑલ્ટ) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:639
 msgid "Spreadsheet Icon"
-msgstr ""
+msgstr "સ્પ્રેડશીટ આઈકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:638
 msgid "Interactive Icon"
-msgstr ""
+msgstr "મિશ્રિત ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:637
 msgid "Document Icon"
@@ -437,99 +462,99 @@ msgstr "દસ્તાવેજ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:636
 msgid "Default Icon"
-msgstr ""
+msgstr "ડિફોલ્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:630
 msgid "Location (alt) Icon"
-msgstr ""
+msgstr "સ્થાન (આલ્ટ) આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:627
 msgid "LinkedIn Icon"
-msgstr ""
+msgstr "લિંક્ડઇન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:622
 msgid "Instagram Icon"
-msgstr ""
+msgstr "ઇન્સ્ટાગ્રામ આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:621
 msgid "Insert Before Icon"
-msgstr ""
+msgstr "આઈકોનથી પહેલા દાખલ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:620
 msgid "Insert After Icon"
-msgstr ""
+msgstr "આઇકોન પછી દાખલ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:619
 msgid "Insert Icon"
-msgstr ""
+msgstr "આઇકન દાખલ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:618
 msgid "Info Outline Icon"
-msgstr ""
+msgstr "માહિતી આઉટલાઇન આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:615
 msgid "Images (alt2) Icon"
-msgstr ""
+msgstr "છબીઓ (alt2) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:614
 msgid "Images (alt) Icon"
-msgstr ""
+msgstr "છબીઓ (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:613
 msgid "Rotate Right Icon"
-msgstr ""
+msgstr "જમણું ચિહ્ન ફેરવો"
 
 #: includes/fields/class-acf-field-icon_picker.php:612
 msgid "Rotate Left Icon"
-msgstr ""
+msgstr "ડાબે આયકન ફેરવો"
 
 #: includes/fields/class-acf-field-icon_picker.php:611
 msgid "Rotate Icon"
-msgstr ""
+msgstr "ચિહ્ન ફેરવો"
 
 #: includes/fields/class-acf-field-icon_picker.php:610
 msgid "Flip Vertical Icon"
-msgstr ""
+msgstr "ફ્લિપ વર્ટિકલ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:609
 msgid "Flip Horizontal Icon"
-msgstr ""
+msgstr "ફ્લિપ હોરિઝોન્ટલ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:607
 msgid "Crop Icon"
-msgstr ""
+msgstr "કાપવાનું આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:606
 msgid "ID (alt) Icon"
-msgstr ""
+msgstr "ID (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:604
 msgid "HTML Icon"
-msgstr ""
+msgstr "HTML આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:603
 msgid "Hourglass Icon"
-msgstr ""
+msgstr "રેતીની ઘડિયાળનું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:600
 msgid "Heading Icon"
-msgstr ""
+msgstr "મથાળું આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:596
 msgid "Google Icon"
-msgstr ""
+msgstr "Google ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:595
 msgid "Games Icon"
-msgstr ""
+msgstr "ગેમ્સ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:594
 msgid "Fullscreen Exit (alt) Icon"
-msgstr ""
+msgstr "પૂર્ણસ્ક્રીન બહાર નીકળો (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:593
 msgid "Fullscreen (alt) Icon"
-msgstr ""
+msgstr "પૂર્ણસ્ક્રીન (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:590
 msgid "Status Icon"
@@ -541,116 +566,116 @@ msgstr "છબી ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:587
 msgid "Gallery Icon"
-msgstr ""
+msgstr "ગેલેરી આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:586
 msgid "Chat Icon"
-msgstr ""
+msgstr "ચેટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:585
 #: includes/fields/class-acf-field-icon_picker.php:634
 msgid "Audio Icon"
-msgstr ""
+msgstr "ઑડિયો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:584
 msgid "Aside Icon"
-msgstr ""
+msgstr "એક બાજુ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:583
 msgid "Food Icon"
-msgstr ""
+msgstr "ફૂડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:576
 msgid "Exit Icon"
-msgstr ""
+msgstr "બહાર નીકળો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:575
 msgid "Excerpt View Icon"
-msgstr ""
+msgstr "અવતરણ દૃશ્ય ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:574
 msgid "Embed Video Icon"
-msgstr ""
+msgstr "એમ્બેડ વિડિઓ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:573
 msgid "Embed Post Icon"
-msgstr ""
+msgstr "પોસ્ટ આયકન એમ્બેડ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:572
 msgid "Embed Photo Icon"
-msgstr ""
+msgstr "ફોટો આઇકન એમ્બેડ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:571
 msgid "Embed Generic Icon"
-msgstr ""
+msgstr "સામાન્ય ચિહ્ન એમ્બેડ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:570
 msgid "Embed Audio Icon"
-msgstr ""
+msgstr "ઑડિયો આઇકન એમ્બેડ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:569
 msgid "Email (alt2) Icon"
-msgstr ""
+msgstr "ઇમેઇલ (alt2) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:566
 msgid "Ellipsis Icon"
-msgstr ""
+msgstr "એલિપ્સિસ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:562
 msgid "Unordered List Icon"
-msgstr ""
+msgstr "ક્રમાંકિત સૂચિનું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:557
 msgid "RTL Icon"
-msgstr ""
+msgstr "RTL આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:550
 msgid "Ordered List RTL Icon"
-msgstr ""
+msgstr "ક્રમબદ્ધ સૂચિ RTL આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:549
 msgid "Ordered List Icon"
-msgstr ""
+msgstr "ઓર્ડર કરેલ સૂચિ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:548
 msgid "LTR Icon"
-msgstr ""
+msgstr "LTR આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:540
 msgid "Custom Character Icon"
-msgstr ""
+msgstr "કસ્ટમ કેરેક્ટર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:532
 msgid "Edit Page Icon"
-msgstr ""
+msgstr "પૃષ્ઠ ચિહ્ન સંપાદિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:531
 msgid "Edit Large Icon"
-msgstr ""
+msgstr "મોટા ચિહ્નને સંપાદિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:529
 msgid "Drumstick Icon"
-msgstr ""
+msgstr "ડ્રમસ્ટિક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:525
 msgid "Database View Icon"
-msgstr ""
+msgstr "ડેટાબેઝ વ્યુ આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:524
 msgid "Database Remove Icon"
-msgstr ""
+msgstr "ડેટાબેઝ દૂર કરો ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:523
 msgid "Database Import Icon"
-msgstr ""
+msgstr "ડેટાબેઝ આયાત આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:522
 msgid "Database Export Icon"
-msgstr ""
+msgstr "ડેટાબેઝ નિકાસ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:521
 msgid "Database Add Icon"
-msgstr ""
+msgstr "ડેટાબેઝ ઉમેરો ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:520
 msgid "Database Icon"
@@ -658,23 +683,23 @@ msgstr "ડેટાબેઝ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:518
 msgid "Cover Image Icon"
-msgstr ""
+msgstr "કવર ઇમેજ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:517
 msgid "Volume On Icon"
-msgstr ""
+msgstr "ચિહ્ન પર વોલ્યુમ"
 
 #: includes/fields/class-acf-field-icon_picker.php:516
 msgid "Volume Off Icon"
-msgstr ""
+msgstr "વોલ્યુમ બંધ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:515
 msgid "Skip Forward Icon"
-msgstr ""
+msgstr "સ્કિપ ફોરવર્ડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:514
 msgid "Skip Back Icon"
-msgstr ""
+msgstr "સ્કિપ બેક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:513
 msgid "Repeat Icon"
@@ -682,67 +707,67 @@ msgstr "પુનરાવર્તન ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:512
 msgid "Play Icon"
-msgstr ""
+msgstr "પ્લે આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:511
 msgid "Pause Icon"
-msgstr ""
+msgstr "થોભાવો ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:510
 msgid "Forward Icon"
-msgstr ""
+msgstr "ફોરવર્ડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:509
 msgid "Back Icon"
-msgstr ""
+msgstr "પાછળનું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:508
 msgid "Columns Icon"
-msgstr ""
+msgstr "કૉલમ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:507
 msgid "Color Picker Icon"
-msgstr ""
+msgstr "રંગ પીકર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:506
 msgid "Coffee Icon"
-msgstr ""
+msgstr "કોફી આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:505
 msgid "Code Standards Icon"
-msgstr ""
+msgstr "કોડ ધોરણો આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:504
 msgid "Cloud Upload Icon"
-msgstr ""
+msgstr "ક્લાઉડ અપલોડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:503
 msgid "Cloud Saved Icon"
-msgstr ""
+msgstr "ક્લાઉડ સેવ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:492
 msgid "Car Icon"
-msgstr ""
+msgstr "કારનું આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:491
 msgid "Camera (alt) Icon"
-msgstr ""
+msgstr "કેમેરા (વૈકલ્પિક) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:487
 msgid "Calculator Icon"
-msgstr ""
+msgstr "કેલ્ક્યુલેટર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:486
 msgid "Button Icon"
-msgstr ""
+msgstr "બટન આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:484
 msgid "Businessperson Icon"
-msgstr ""
+msgstr "વ્યવસાયી વ્યક્તિનું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:481
 msgid "Tracking Icon"
-msgstr ""
+msgstr "ટ્રેકિંગ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:480
 msgid "Topics Icon"
@@ -750,127 +775,127 @@ msgstr "વિષયોનું આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:479
 msgid "Replies Icon"
-msgstr ""
+msgstr "જવાબો આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:478
 msgid "PM Icon"
-msgstr ""
+msgstr "પીએમ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:476
 msgid "Friends Icon"
-msgstr ""
+msgstr "મિત્રો ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:474
 msgid "Community Icon"
-msgstr ""
+msgstr "સમુદાય આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:473
 msgid "BuddyPress Icon"
-msgstr ""
+msgstr "BuddyPress ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:472
 msgid "bbPress Icon"
-msgstr ""
+msgstr "bbPress ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:471
 msgid "Activity Icon"
-msgstr ""
+msgstr "પ્રવૃત્તિ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:470
 msgid "Book (alt) Icon"
-msgstr ""
+msgstr "પુસ્તક (વૈકલ્પિક) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:468
 msgid "Block Default Icon"
-msgstr ""
+msgstr "ડિફૉલ્ટ આઇકનને અવરોધિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:467
 msgid "Bell Icon"
-msgstr ""
+msgstr "બેલ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:466
 msgid "Beer Icon"
-msgstr ""
+msgstr "બીયર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:465
 msgid "Bank Icon"
-msgstr ""
+msgstr "બેંક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:461
 msgid "Arrow Up (alt2) Icon"
-msgstr ""
+msgstr "ઉપર તીર (alt2) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:460
 msgid "Arrow Up (alt) Icon"
-msgstr ""
+msgstr "ઉપર તીર (alt) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:458
 msgid "Arrow Right (alt2) Icon"
-msgstr ""
+msgstr "જમણા તીર (alt2) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:457
 msgid "Arrow Right (alt) Icon"
-msgstr ""
+msgstr "જમણે તીર (alt) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:455
 msgid "Arrow Left (alt2) Icon"
-msgstr ""
+msgstr "જમણે તીર (alt) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:454
 msgid "Arrow Left (alt) Icon"
-msgstr ""
+msgstr "ડાબી બાજુ તીર (alt) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:452
 msgid "Arrow Down (alt2) Icon"
-msgstr ""
+msgstr "નીચે તીર (alt2) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:451
 msgid "Arrow Down (alt) Icon"
-msgstr ""
+msgstr "નીચે તીર (alt) ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:447
 msgid "Amazon Icon"
-msgstr ""
+msgstr "એમેઝોન આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:446
 msgid "Align Wide Icon"
-msgstr ""
+msgstr "વાઈડ આયકન સંરેખિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:444
 msgid "Align Pull Right Icon"
-msgstr ""
+msgstr "સંરેખિત કરો જમણે ચિહ્ન ખેંચો"
 
 #: includes/fields/class-acf-field-icon_picker.php:443
 msgid "Align Pull Left Icon"
-msgstr ""
+msgstr "સંરેખિત કરો ડાબું ચિહ્ન ખેંચો"
 
 #: includes/fields/class-acf-field-icon_picker.php:440
 msgid "Align Full Width Icon"
-msgstr ""
+msgstr "પૂર્ણ પહોળાઈનું ચિહ્ન સંરેખિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:437
 msgid "Airplane Icon"
-msgstr ""
+msgstr "એરપ્લેન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:434
 msgid "Site (alt3) Icon"
-msgstr ""
+msgstr "સાઇટ (alt3) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:433
 msgid "Site (alt2) Icon"
-msgstr ""
+msgstr "સાઇટ (alt3) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:432
 msgid "Site (alt) Icon"
-msgstr ""
+msgstr "સાઇટ (alt) આઇકન"
 
 #: includes/admin/views/options-page-preview.php:26
 msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
-msgstr ""
+msgstr "ફક્ત થોડા ક્લિક્સમાં વિકલ્પો પૃષ્ઠો બનાવવા માટે ACF PRO પર અપગ્રેડ કરો."
 
 #: includes/ajax/class-acf-ajax-query-users.php:24
 msgid "Invalid request args."
-msgstr ""
+msgstr "અમાન્ય વિનંતી args."
 
 #: includes/ajax/class-acf-ajax-check-screen.php:37
 #: includes/ajax/class-acf-ajax-local-json-diff.php:37
@@ -882,99 +907,100 @@ msgstr "માફ કરશો, તમને તે કરવાની પરવ
 
 #: src/Site_Health/Site_Health.php:726
 msgid "Blocks Using Post Meta"
-msgstr ""
+msgstr "પોસ્ટ મેટાનો ઉપયોગ કરીને બ્લોક્સ"
 
 #: includes/admin/views/acf-field-group/pro-features.php:25
 #: includes/admin/views/acf-field-group/pro-features.php:27
 #: includes/admin/views/global/header.php:27
 msgid "ACF PRO logo"
-msgstr ""
+msgstr "ACF PRO લોગો"
 
 #: includes/admin/views/acf-field-group/field.php:37
 msgid "ACF PRO Logo"
-msgstr ""
+msgstr "ACF PRO લોગો"
 
 #. translators: %s - field/param name
 #: includes/fields/class-acf-field-icon_picker.php:820
 msgid "%s requires a valid attachment ID when type is set to media_library."
 msgstr ""
+"જ્યારે પ્રકાર media_library પર સેટ કરેલ હોય ત્યારે %s ને માન્ય જોડાણ ID ની જરૂર પડે છે."
 
 #. translators: %s - field name
 #: includes/fields/class-acf-field-icon_picker.php:804
 msgid "%s is a required property of acf."
-msgstr ""
+msgstr "%s એ acf ની આવશ્યક મિલકત છે."
 
 #: includes/fields/class-acf-field-icon_picker.php:780
 msgid "The value of icon to save."
-msgstr ""
+msgstr "સાચવવા માટેના ચિહ્નનું મૂલ્ય."
 
 #: includes/fields/class-acf-field-icon_picker.php:774
 msgid "The type of icon to save."
-msgstr ""
+msgstr "સાચવવા માટેના ચિહ્નનો પ્રકાર."
 
 #: includes/fields/class-acf-field-icon_picker.php:752
 msgid "Yes Icon"
-msgstr ""
+msgstr "હા આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:749
 msgid "WordPress Icon"
-msgstr ""
+msgstr "વર્ડપ્રેસ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:741
 msgid "Warning Icon"
-msgstr ""
+msgstr "ચેતવણી ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:740
 msgid "Visibility Icon"
-msgstr ""
+msgstr "દૃશ્યતા આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:736
 msgid "Vault Icon"
-msgstr ""
+msgstr "વૉલ્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:735
 msgid "Upload Icon"
-msgstr ""
+msgstr "અપલોડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:733
 msgid "Update Icon"
-msgstr ""
+msgstr "અપડેટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:732
 msgid "Unlock Icon"
-msgstr ""
+msgstr "અનલૉક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:730
 msgid "Universal Access Icon"
-msgstr ""
+msgstr "યુનિવર્સલ એક્સેસ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:729
 msgid "Undo Icon"
-msgstr ""
+msgstr "પૂર્વવત્ કરો આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:727
 msgid "Twitter Icon"
-msgstr ""
+msgstr "ટ્વિટર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:725
 msgid "Trash Icon"
-msgstr ""
+msgstr "ટ્રેશ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:724
 msgid "Translation Icon"
-msgstr ""
+msgstr "અનુવાદ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:721
 msgid "Tickets Icon"
-msgstr ""
+msgstr "ટિકિટ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:720
 msgid "Thumbs Up Icon"
-msgstr ""
+msgstr "થમ્બ્સ અપ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:719
 msgid "Thumbs Down Icon"
-msgstr ""
+msgstr "થમ્બ્સ ડાઉન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:640
 #: includes/fields/class-acf-field-icon_picker.php:717
@@ -983,553 +1009,553 @@ msgstr "ટેક્સ્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:716
 msgid "Testimonial Icon"
-msgstr ""
+msgstr "પ્રશંસાપત્ર ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:715
 msgid "Tagcloud Icon"
-msgstr ""
+msgstr "ટેગક્લાઉડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:714
 msgid "Tag Icon"
-msgstr ""
+msgstr "ટૅગ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:713
 msgid "Tablet Icon"
-msgstr ""
+msgstr "ટેબ્લેટ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:704
 msgid "Store Icon"
-msgstr ""
+msgstr "સ્ટોર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:703
 msgid "Sticky Icon"
-msgstr ""
+msgstr "સ્ટીકી આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:702
 msgid "Star Half Icon"
-msgstr ""
+msgstr "સ્ટાર હાફ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:701
 msgid "Star Filled Icon"
-msgstr ""
+msgstr "સ્ટાર ભરેલ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:700
 msgid "Star Empty Icon"
-msgstr ""
+msgstr "સ્ટાર ખાલી ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:698
 msgid "Sos Icon"
-msgstr ""
+msgstr "Sos ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:697
 msgid "Sort Icon"
-msgstr ""
+msgstr "સૉર્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:696
 msgid "Smiley Icon"
-msgstr ""
+msgstr "સ્માઇલી આઇકોન"
 
 #: includes/fields/class-acf-field-icon_picker.php:695
 msgid "Smartphone Icon"
-msgstr ""
+msgstr "સ્માર્ટફોન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:694
 msgid "Slides Icon"
-msgstr ""
+msgstr "સ્લાઇડ્સ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:691
 msgid "Shield Icon"
-msgstr ""
+msgstr "શિલ્ડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:688
 msgid "Share Icon"
-msgstr ""
+msgstr "શેર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:687
 msgid "Search Icon"
-msgstr ""
+msgstr "શોધ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:686
 msgid "Screen Options Icon"
-msgstr ""
+msgstr "સ્ક્રીન વિકલ્પો આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:685
 msgid "Schedule Icon"
-msgstr ""
+msgstr "શેડ્યૂલ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:680
 msgid "Redo Icon"
-msgstr ""
+msgstr "ફરીથી કરો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:678
 msgid "Randomize Icon"
-msgstr ""
+msgstr "રેન્ડમાઇઝ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:677
 msgid "Products Icon"
-msgstr ""
+msgstr "પ્રોડક્ટ્સ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:674
 msgid "Pressthis Icon"
-msgstr ""
+msgstr "આ ચિહ્ન દબાવો"
 
 #: includes/fields/class-acf-field-icon_picker.php:673
 msgid "Post Status Icon"
-msgstr ""
+msgstr "પોસ્ટ સ્ટેટસ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:672
 msgid "Portfolio Icon"
-msgstr ""
+msgstr "પોર્ટફોલિયો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:668
 msgid "Plus Icon"
-msgstr ""
+msgstr "પ્લસ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:666
 msgid "Playlist Video Icon"
-msgstr ""
+msgstr "પ્લેલિસ્ટ વિડિઓ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:665
 msgid "Playlist Audio Icon"
-msgstr ""
+msgstr "પ્લેલિસ્ટ ઑડિઓ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:663
 msgid "Phone Icon"
-msgstr ""
+msgstr "ફોન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:661
 msgid "Performance Icon"
-msgstr ""
+msgstr "પ્રદર્શન ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:659
 msgid "Paperclip Icon"
-msgstr ""
+msgstr "પેપરક્લિપ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:655
 msgid "No Icon"
-msgstr ""
+msgstr "કોઈ આઇકન નથી"
 
 #: includes/fields/class-acf-field-icon_picker.php:654
 msgid "Networking Icon"
-msgstr ""
+msgstr "નેટવર્કિંગ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:653
 msgid "Nametag Icon"
-msgstr ""
+msgstr "નેમટેગ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:652
 msgid "Move Icon"
-msgstr ""
+msgstr "મૂવ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:650
 msgid "Money Icon"
-msgstr ""
+msgstr "મની આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:649
 msgid "Minus Icon"
-msgstr ""
+msgstr "માઈનસ આઈકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:648
 msgid "Migrate Icon"
-msgstr ""
+msgstr "સ્થાનાંતરિત આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:647
 msgid "Microphone Icon"
-msgstr ""
+msgstr "માઇક્રોફોન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:642
 msgid "Megaphone Icon"
-msgstr ""
+msgstr "મેગાફોન આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:632
 msgid "Marker Icon"
-msgstr ""
+msgstr "માર્કર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:631
 msgid "Lock Icon"
-msgstr ""
+msgstr "લૉક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:629
 msgid "Location Icon"
-msgstr ""
+msgstr "સ્થાન આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:628
 msgid "List View Icon"
-msgstr ""
+msgstr "સૂચિ દૃશ્ય આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:626
 msgid "Lightbulb Icon"
-msgstr ""
+msgstr "લાઇટબલ્બ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:625
 msgid "Left Right Icon"
-msgstr ""
+msgstr "ડાબું જમણું આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:624
 msgid "Layout Icon"
-msgstr ""
+msgstr "લેઆઉટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:623
 msgid "Laptop Icon"
-msgstr ""
+msgstr "લેપટોપ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:617
 msgid "Info Icon"
-msgstr ""
+msgstr "માહિતી ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:616
 msgid "Index Card Icon"
-msgstr ""
+msgstr "ઇન્ડેક્સ કાર્ડ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:605
 msgid "ID Icon"
-msgstr ""
+msgstr "ID આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:602
 msgid "Hidden Icon"
-msgstr ""
+msgstr "છુપાયેલ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:601
 msgid "Heart Icon"
-msgstr ""
+msgstr "હાર્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:599
 msgid "Hammer Icon"
-msgstr ""
+msgstr "હેમર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:477
 #: includes/fields/class-acf-field-icon_picker.php:598
 msgid "Groups Icon"
-msgstr ""
+msgstr "જૂથો આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:597
 msgid "Grid View Icon"
-msgstr ""
+msgstr "ગ્રીડ વ્યૂ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:592
 msgid "Forms Icon"
-msgstr ""
+msgstr "ફોર્મ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:582
 msgid "Flag Icon"
-msgstr ""
+msgstr "ધ્વજ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:581
 #: includes/fields/class-acf-field-icon_picker.php:608
 msgid "Filter Icon"
-msgstr ""
+msgstr "ફિલ્ટર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:580
 msgid "Feedback Icon"
-msgstr ""
+msgstr "પ્રતિસાદ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:579
 msgid "Facebook (alt) Icon"
-msgstr ""
+msgstr "ફેસબુક (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:578
 msgid "Facebook Icon"
-msgstr ""
+msgstr "ફેસબુક ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:577
 msgid "External Icon"
-msgstr ""
+msgstr "બાહ્ય ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:568
 msgid "Email (alt) Icon"
-msgstr ""
+msgstr "ઇમેઇલ (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:567
 msgid "Email Icon"
-msgstr ""
+msgstr "ઈમેલ આઈકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:565
 #: includes/fields/class-acf-field-icon_picker.php:591
 #: includes/fields/class-acf-field-icon_picker.php:641
 msgid "Video Icon"
-msgstr ""
+msgstr "વિડિઓ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:564
 msgid "Unlink Icon"
-msgstr ""
+msgstr "અનલિંક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:563
 msgid "Underline Icon"
-msgstr ""
+msgstr "રેખાંકિત ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:561
 msgid "Text Color Icon"
-msgstr ""
+msgstr "ટેક્સ્ટ કલર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:560
 msgid "Table Icon"
-msgstr ""
+msgstr "કોષ્ટક આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:559
 msgid "Strikethrough Icon"
-msgstr ""
+msgstr "સ્ટ્રાઇકથ્રુ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:558
 msgid "Spellcheck Icon"
-msgstr ""
+msgstr "જોડણી તપાસ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:556
 msgid "Remove Formatting Icon"
-msgstr ""
+msgstr "ફોર્મેટિંગ આયકન દૂર કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:555
 #: includes/fields/class-acf-field-icon_picker.php:589
 msgid "Quote Icon"
-msgstr ""
+msgstr "અવતરણ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:554
 msgid "Paste Word Icon"
-msgstr ""
+msgstr "વર્ડ આઇકન પેસ્ટ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:553
 msgid "Paste Text Icon"
-msgstr ""
+msgstr "Paste Text Icon"
 
 #: includes/fields/class-acf-field-icon_picker.php:552
 msgid "Paragraph Icon"
-msgstr ""
+msgstr "ફકરો આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:551
 msgid "Outdent Icon"
-msgstr ""
+msgstr "આઉટડેન્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:547
 msgid "Kitchen Sink Icon"
-msgstr ""
+msgstr "કિચન સિંક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:546
 msgid "Justify Icon"
-msgstr ""
+msgstr "જસ્ટિફાઇ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:545
 msgid "Italic Icon"
-msgstr ""
+msgstr "ઇટાલિક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:544
 msgid "Insert More Icon"
-msgstr ""
+msgstr "વધુ આઇકન દાખલ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:543
 msgid "Indent Icon"
-msgstr ""
+msgstr "ઇન્ડેન્ટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:542
 msgid "Help Icon"
-msgstr ""
+msgstr "મદદ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:541
 msgid "Expand Icon"
-msgstr ""
+msgstr "આઇકન વિસ્તૃત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:539
 msgid "Contract Icon"
-msgstr ""
+msgstr "કરાર ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:538
 #: includes/fields/class-acf-field-icon_picker.php:635
 msgid "Code Icon"
-msgstr ""
+msgstr "કોડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:537
 msgid "Break Icon"
-msgstr ""
+msgstr "બ્રેક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:536
 msgid "Bold Icon"
-msgstr ""
+msgstr "બોલ્ડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:530
 msgid "Edit Icon"
-msgstr ""
+msgstr "ચિહ્ન સંપાદિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:528
 msgid "Download Icon"
-msgstr ""
+msgstr "ડાઉનલોડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:527
 msgid "Dismiss Icon"
-msgstr ""
+msgstr "કાઢી નાખો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:526
 msgid "Desktop Icon"
-msgstr ""
+msgstr "ડેસ્કટૉપ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:519
 msgid "Dashboard Icon"
-msgstr ""
+msgstr "ડેશબોર્ડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:502
 msgid "Cloud Icon"
-msgstr ""
+msgstr "ક્લાઉડ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:501
 msgid "Clock Icon"
-msgstr ""
+msgstr "ઘડિયાળનું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:500
 msgid "Clipboard Icon"
-msgstr ""
+msgstr "ક્લિપબોર્ડ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:499
 msgid "Chart Pie Icon"
-msgstr ""
+msgstr "ચાર્ટ પાઇ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:498
 msgid "Chart Line Icon"
-msgstr ""
+msgstr "ચાર્ટ લાઇન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:497
 msgid "Chart Bar Icon"
-msgstr ""
+msgstr "ચાર્ટ બાર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:496
 msgid "Chart Area Icon"
-msgstr ""
+msgstr "ચાર્ટ વિસ્તાર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:495
 msgid "Category Icon"
-msgstr ""
+msgstr "કેટેગરી આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:494
 msgid "Cart Icon"
-msgstr ""
+msgstr "કાર્ટ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:493
 msgid "Carrot Icon"
-msgstr ""
+msgstr "ગાજર ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:490
 msgid "Camera Icon"
-msgstr ""
+msgstr "કૅમેરા આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:489
 msgid "Calendar (alt) Icon"
-msgstr ""
+msgstr "કેલેન્ડર (alt) આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:488
 msgid "Calendar Icon"
-msgstr ""
+msgstr "કૅલેન્ડર આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:485
 msgid "Businesswoman Icon"
-msgstr ""
+msgstr "બિઝનેસવુમન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:482
 msgid "Building Icon"
-msgstr ""
+msgstr "બિલ્ડીંગ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:469
 msgid "Book Icon"
-msgstr ""
+msgstr "બુક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:464
 msgid "Backup Icon"
-msgstr ""
+msgstr "બેકઅપ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:463
 msgid "Awards Icon"
-msgstr ""
+msgstr "એવોર્ડ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:462
 msgid "Art Icon"
-msgstr ""
+msgstr "કલા ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:459
 msgid "Arrow Up Icon"
-msgstr ""
+msgstr "એરો અપ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:456
 msgid "Arrow Right Icon"
-msgstr ""
+msgstr "એરો રાઇટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:453
 msgid "Arrow Left Icon"
-msgstr ""
+msgstr "તીર ડાબું ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:450
 msgid "Arrow Down Icon"
-msgstr ""
+msgstr "એરો ડાઉન આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:449
 #: includes/fields/class-acf-field-icon_picker.php:633
 msgid "Archive Icon"
-msgstr ""
+msgstr "આર્કાઇવ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:448
 msgid "Analytics Icon"
-msgstr ""
+msgstr "Analytics આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:445
 #: includes/fields/class-acf-field-icon_picker.php:535
 msgid "Align Right Icon"
-msgstr ""
+msgstr "જમણું ચિહ્ન સંરેખિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:442
 msgid "Align None Icon"
-msgstr ""
+msgstr "કોઈ નહીં ચિહ્ન સંરેખિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:441
 #: includes/fields/class-acf-field-icon_picker.php:534
 msgid "Align Left Icon"
-msgstr ""
+msgstr "ડાબું ચિહ્ન સંરેખિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:439
 #: includes/fields/class-acf-field-icon_picker.php:533
 msgid "Align Center Icon"
-msgstr ""
+msgstr "કેન્દ્ર આયકન સંરેખિત કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:438
 msgid "Album Icon"
-msgstr ""
+msgstr "આલ્બમ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:436
 msgid "Users Icon"
-msgstr ""
+msgstr "વપરાશકર્તાઓ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:435
 msgid "Tools Icon"
-msgstr ""
+msgstr "ટૂલ્સ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:431
 msgid "Site Icon"
-msgstr ""
+msgstr "સાઇટ ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:430
 msgid "Settings Icon"
-msgstr ""
+msgstr "સેટિંગ્સ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:429
 msgid "Post Icon"
-msgstr ""
+msgstr "પોસ્ટ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:428
 msgid "Plugins Icon"
-msgstr ""
+msgstr "પ્લગઇન્સ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:427
 msgid "Page Icon"
-msgstr ""
+msgstr "પૃષ્ઠ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:426
 msgid "Network Icon"
-msgstr ""
+msgstr "નેટવર્ક આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:425
 msgid "Multisite Icon"
-msgstr ""
+msgstr "મલ્ટિસાઇટ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:424
 msgid "Media Icon"
-msgstr ""
+msgstr "મીડિયા આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:423
 msgid "Links Icon"
-msgstr ""
+msgstr "લિંક્સ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:422
 msgid "Home Icon"
@@ -1537,24 +1563,24 @@ msgstr "હોમ આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:420
 msgid "Customizer Icon"
-msgstr ""
+msgstr "કસ્ટમાઇઝર આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:419
 #: includes/fields/class-acf-field-icon_picker.php:743
 msgid "Comments Icon"
-msgstr ""
+msgstr "ટિપ્પણીઓ આયકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:418
 msgid "Collapse Icon"
-msgstr ""
+msgstr "સંકુચિત કરો આઇકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:417
 msgid "Appearance Icon"
-msgstr ""
+msgstr "રોકાણ સિમ્બલ"
 
 #: includes/fields/class-acf-field-icon_picker.php:421
 msgid "Generic Icon"
-msgstr ""
+msgstr "મૌલિક ચિહ્ન"
 
 #: includes/fields/class-acf-field-icon_picker.php:353
 msgid "Icon picker requires a value."
@@ -1562,120 +1588,124 @@ msgstr "આઇકન પીકરને મૂલ્યની જરૂર છ�
 
 #: includes/fields/class-acf-field-icon_picker.php:348
 msgid "Icon picker requires an icon type."
-msgstr ""
+msgstr "આઇકન પિકર માટે એક આઇકન પ્રકારની જરૂર છે."
 
 #: includes/fields/class-acf-field-icon_picker.php:317
 msgid ""
 "The available icons matching your search query have been updated in the icon "
 "picker below."
 msgstr ""
+"તમે તમારી શોધ પ્રશ્નના અનુકૂળ ઉપલબ્ધ આઇકોન્સની જાણકારી નીચેની આઇકન પિકરમાં અપડેટ "
+"કરવામાં આવી છે."
 
 #: includes/fields/class-acf-field-icon_picker.php:316
 msgid "No results found for that search term"
-msgstr ""
+msgstr "તે શોધ શબ્દ માટે કોઈ પરિણામો મળ્યાં નથી."
 
 #: includes/fields/class-acf-field-icon_picker.php:298
 msgid "Array"
-msgstr ""
+msgstr "એરેગ"
 
 #: includes/fields/class-acf-field-icon_picker.php:297
 msgid "String"
-msgstr ""
+msgstr "શબ્દમાળા"
 
 #. translators: %s - link to documentation
 #: includes/fields/class-acf-field-icon_picker.php:285
 msgid "Specify the return format for the icon. %s"
-msgstr ""
+msgstr "આઇકન માટે રીટર્ન ફોર્મેટ સ્પષ્ટ કરો. %s"
 
 #: includes/fields/class-acf-field-icon_picker.php:270
 msgid "Select where content editors can choose the icon from."
-msgstr ""
+msgstr "કન્ટેન્ટ એડિટર ક્યાંથી આઇકન પસંદ કરી શકે તે પસંદ કરો."
 
 #: includes/fields/class-acf-field-icon_picker.php:242
 msgid "The URL to the icon you'd like to use, or svg as Data URI"
-msgstr ""
+msgstr "તમે જે આઇકનનો ઉપયોગ કરવા માંગો છો તેનું URL, અથવા ડેટા URI તરીકે svg"
 
 #: includes/fields/class-acf-field-icon_picker.php:225
 msgid "Browse Media Library"
-msgstr ""
+msgstr "મીડિયા લાઇબ્રેરી બ્રાઉઝ કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:216
 msgid "The currently selected image preview"
-msgstr ""
+msgstr "હાલમાં પસંદ કરેલ છબી પૂર્વાવલોકન"
 
 #: includes/fields/class-acf-field-icon_picker.php:207
 msgid "Click to change the icon in the Media Library"
-msgstr ""
+msgstr "મીડિયા લાઇબ્રેરીમાં આઇકન બદલવા માટે ક્લિક કરો"
 
 #: includes/fields/class-acf-field-icon_picker.php:95
 msgid "Search icons..."
-msgstr ""
+msgstr "ચિહ્નો શોધો..."
 
 #: includes/fields/class-acf-field-icon_picker.php:53
 msgid "Media Library"
-msgstr ""
+msgstr "મીડિયા લાઇબ્રેરી"
 
 #: includes/fields/class-acf-field-icon_picker.php:49
 msgid "Dashicons"
-msgstr ""
+msgstr "ડેશીકોન્સ"
 
 #: includes/fields/class-acf-field-icon_picker.php:26
 msgid ""
 "An interactive UI for selecting an icon. Select from Dashicons, the media "
 "library, or a standalone URL input."
 msgstr ""
+"આઇકન પસંદ કરવા માટે એક ઇન્ટરેક્ટિવ UI. ડેશિકન્સ, મીડિયા લાઇબ્રેરી અથવા સ્ટેન્ડઅલોન URL "
+"ઇનપુટમાંથી પસંદ કરો."
 
 #: includes/fields/class-acf-field-icon_picker.php:23
 msgid "Icon Picker"
-msgstr ""
+msgstr "આઇકન પીકર"
 
 #: src/Site_Health/Site_Health.php:787
 msgid "JSON Load Paths"
-msgstr ""
+msgstr "JSON લોડ પાથ"
 
 #: src/Site_Health/Site_Health.php:781
 msgid "JSON Save Paths"
-msgstr ""
+msgstr "JSON સેવ પાથ"
 
 #: src/Site_Health/Site_Health.php:772
 msgid "Registered ACF Forms"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ACF ફોર્મ્સ"
 
 #: src/Site_Health/Site_Health.php:766
 msgid "Shortcode Enabled"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ACF ફોર્મ્સ"
 
 #: src/Site_Health/Site_Health.php:758
 msgid "Field Settings Tabs Enabled"
-msgstr ""
+msgstr "ફીલ્ડ સેટિંગ્સ ટેબ્સ સક્રિય"
 
 #: src/Site_Health/Site_Health.php:750
 msgid "Field Type Modal Enabled"
-msgstr ""
+msgstr "ફીલ્ડ ટાઈપ મોડીલ સક્રિય છે"
 
 #: src/Site_Health/Site_Health.php:742
 msgid "Admin UI Enabled"
-msgstr ""
+msgstr "એડમિન યુઆઈ સક્રિય છે"
 
 #: src/Site_Health/Site_Health.php:733
 msgid "Block Preloading Enabled"
-msgstr ""
+msgstr "બ્લોક પ્રીલોડિંગ સક્રિય છે"
 
 #: src/Site_Health/Site_Health.php:721
 msgid "Blocks Per ACF Block Version"
-msgstr ""
+msgstr "ACF બ્લોક વર્ઝન દીઠ બ્લોક્સ"
 
 #: src/Site_Health/Site_Health.php:716
 msgid "Blocks Per API Version"
-msgstr ""
+msgstr "એપીઆઈ આવર્તન પ્રમાણે બ્લોક્સ"
 
 #: src/Site_Health/Site_Health.php:689
 msgid "Registered ACF Blocks"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ACF બ્લોક્સ"
 
 #: src/Site_Health/Site_Health.php:683
 msgid "Light"
-msgstr ""
+msgstr "લાઇટ"
 
 #: src/Site_Health/Site_Health.php:683
 msgid "Standard"
@@ -1683,115 +1713,115 @@ msgstr "સામાન્ય"
 
 #: src/Site_Health/Site_Health.php:682
 msgid "REST API Format"
-msgstr ""
+msgstr "REST API ફોર્મેટ"
 
 #: src/Site_Health/Site_Health.php:674
 msgid "Registered Options Pages (PHP)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ઓપ્શન્સ પેજીસ (PHP)"
 
 #: src/Site_Health/Site_Health.php:660
 msgid "Registered Options Pages (JSON)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ વિકલ્પો પૃષ્ઠો (JSON)"
 
 #: src/Site_Health/Site_Health.php:655
 msgid "Registered Options Pages (UI)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ વિકલ્પો પૃષ્ઠો (UI)"
 
 #: src/Site_Health/Site_Health.php:625
 msgid "Options Pages UI Enabled"
-msgstr ""
+msgstr "વિકલ્પો પૃષ્ઠો UI સક્ષમ કરેલ છે"
 
 #: src/Site_Health/Site_Health.php:617
 msgid "Registered Taxonomies (JSON)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ટેક્સોનોમી (JSON)"
 
 #: src/Site_Health/Site_Health.php:605
 msgid "Registered Taxonomies (UI)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ટેક્સોનોમી (UI)"
 
 #: src/Site_Health/Site_Health.php:593
 msgid "Registered Post Types (JSON)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ પોસ્ટ પ્રકારો (JSON)"
 
 #: src/Site_Health/Site_Health.php:581
 msgid "Registered Post Types (UI)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ પોસ્ટ પ્રકારો (UI)"
 
 #: src/Site_Health/Site_Health.php:568
 msgid "Post Types and Taxonomies Enabled"
-msgstr ""
+msgstr "પોસ્ટ પ્રકારો અને વર્ગીકરણો સક્ષમ"
 
 #: src/Site_Health/Site_Health.php:561
 msgid "Number of Third Party Fields by Field Type"
-msgstr ""
+msgstr "ફીલ્ડ પ્રકાર દ્વારા તૃતીય પક્ષ ફીલ્ડની સંખ્યા"
 
 #: src/Site_Health/Site_Health.php:556
 msgid "Number of Fields by Field Type"
-msgstr ""
+msgstr "ક્ષેત્ર પ્રકાર દ્વારા ક્ષેત્રોની સંખ્યા"
 
 #: src/Site_Health/Site_Health.php:449
 msgid "Field Groups Enabled for GraphQL"
-msgstr ""
+msgstr "GraphQL માટે ફીલ્ડ જૂથો સક્ષમ કર્યા"
 
 #: src/Site_Health/Site_Health.php:436
 msgid "Field Groups Enabled for REST API"
-msgstr ""
+msgstr "REST API માટે ફીલ્ડ જૂથો સક્ષમ કર્યા"
 
 #: src/Site_Health/Site_Health.php:424
 msgid "Registered Field Groups (JSON)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ફીલ્ડ ગ્રુપ્સ (JSON)"
 
 #: src/Site_Health/Site_Health.php:412
 msgid "Registered Field Groups (PHP)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ફીલ્ડ ગ્રુપ્સ (PHP)"
 
 #: src/Site_Health/Site_Health.php:400
 msgid "Registered Field Groups (UI)"
-msgstr ""
+msgstr "રજિસ્ટર્ડ ફીલ્ડ ગ્રુપ્સ (UI)"
 
 #: src/Site_Health/Site_Health.php:388
 msgid "Active Plugins"
-msgstr ""
+msgstr "સક્રિય પ્લગઇન્સ"
 
 #: src/Site_Health/Site_Health.php:362
 msgid "Parent Theme"
-msgstr ""
+msgstr "પિતૃ થીમ"
 
 #: src/Site_Health/Site_Health.php:351
 msgid "Active Theme"
-msgstr ""
+msgstr "સક્રિય થીમ"
 
 #: src/Site_Health/Site_Health.php:342
 msgid "Is Multisite"
-msgstr ""
+msgstr "મલ્ટીસાઇટ છે"
 
 #: src/Site_Health/Site_Health.php:337
 msgid "MySQL Version"
-msgstr ""
+msgstr "MySQL સંસ્કરણ"
 
 #: src/Site_Health/Site_Health.php:332
 msgid "WordPress Version"
-msgstr ""
+msgstr "વર્ડપ્રેસ વર્ઝન"
 
 #: src/Site_Health/Site_Health.php:325
 msgid "Subscription Expiry Date"
-msgstr ""
+msgstr "સબ્સ્ક્રિપ્શન સમાપ્તિ તારીખ"
 
 #: src/Site_Health/Site_Health.php:317
 msgid "License Status"
-msgstr ""
+msgstr "લાઇસન્સ સ્થિતિ"
 
 #: src/Site_Health/Site_Health.php:312
 msgid "License Type"
-msgstr ""
+msgstr "લાઇસન્સનો પ્રકાર"
 
 #: src/Site_Health/Site_Health.php:307
 msgid "Licensed URL"
-msgstr ""
+msgstr "લાઇસેંસ પ્રાપ્ત URL"
 
 #: src/Site_Health/Site_Health.php:301
 msgid "License Activated"
-msgstr ""
+msgstr "લાઇસન્સ સક્રિય"
 
 #: src/Site_Health/Site_Health.php:290
 msgid "Free"
@@ -1799,7 +1829,7 @@ msgstr "મફત"
 
 #: src/Site_Health/Site_Health.php:289
 msgid "Plugin Type"
-msgstr ""
+msgstr "પ્લગઇન પ્રકાર"
 
 #: src/Site_Health/Site_Health.php:284
 msgid "Plugin Version"
@@ -1810,10 +1840,12 @@ msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
 msgstr ""
+"આ વિભાગમાં તમારા ACF રૂપરેખાંકન વિશે ડીબગ માહિતી છે જે સપોર્ટને પૂરી પાડવા માટે ઉપયોગી "
+"થઈ શકે છે."
 
 #: includes/assets.php:373
 msgid "An ACF Block on this page requires attention before you can save."
-msgstr ""
+msgstr "આ પૃષ્ઠ પરના ACF બ્લોકને તમને ઉપલેબધા કરી નાખો તે પહેલા ધ્યાન આપવાની જરૂર છે."
 
 #. translators: %s - The clear log button opening HTML tag. %s - The closing
 #. HTML tag.
@@ -1823,6 +1855,9 @@ msgid ""
 "output. %1$sClear log and dismiss%2$s after escaping the values in your "
 "code. The notice will reappear if we detect changed values again."
 msgstr ""
+"આઉટપુટ દરમિયાન બદલાયેલા મૂલ્યો શોધી કાઢીએ છીએ ત્યારે આ ડેટા લોગ કરવામાં આવે છે. "
+"%1$sતમારા કોડમાં મૂલ્યો છોડી દીધા પછી લોગ સાફ કરો અને%2$s ને કાઢી નાખો. જો અમને "
+"ફરીથી બદલાયેલા મૂલ્યો મળશે તો સૂચના ફરીથી દેખાશે."
 
 #: includes/admin/views/escaped-html-notice.php:25
 msgid "Dismiss permanently"
@@ -1830,132 +1865,132 @@ msgstr "કાયમી ધોરણે કાઢી નાખો"
 
 #: includes/admin/views/acf-field-group/field.php:220
 msgid "Instructions for content editors. Shown when submitting data."
-msgstr ""
+msgstr "સામગ્રી સંપાદકો માટે સૂચનાઓ. ડેટા સબમિટ કરતી વખતે બતાવવામાં આવે છે."
 
 #: includes/admin/post-types/admin-field-group.php:142
 msgid "Has no term selected"
-msgstr ""
+msgstr "કોઈ પદ પસંદ કરેલ નથી"
 
 #: includes/admin/post-types/admin-field-group.php:141
 msgid "Has any term selected"
-msgstr ""
+msgstr "કોઈપણ પદ પસંદ કરેલ છે"
 
 #: includes/admin/post-types/admin-field-group.php:140
 msgid "Terms do not contain"
-msgstr ""
+msgstr "શરતો સમાવી નથી"
 
 #: includes/admin/post-types/admin-field-group.php:139
 msgid "Terms contain"
-msgstr ""
+msgstr "શરતો સમાવે છે"
 
 #: includes/admin/post-types/admin-field-group.php:138
 msgid "Term is not equal to"
-msgstr ""
+msgstr "શબ્દ સમાન નથી"
 
 #: includes/admin/post-types/admin-field-group.php:137
 msgid "Term is equal to"
-msgstr ""
+msgstr "ટર્મ બરાબર છે"
 
 #: includes/admin/post-types/admin-field-group.php:136
 msgid "Has no user selected"
-msgstr ""
+msgstr "કોઈ વપરાશકર્તા પસંદ કરેલ નથી"
 
 #: includes/admin/post-types/admin-field-group.php:135
 msgid "Has any user selected"
-msgstr ""
+msgstr "કોઈપણ વપરાશકર્તા પસંદ કરેલ છે"
 
 #: includes/admin/post-types/admin-field-group.php:134
 msgid "Users do not contain"
-msgstr ""
+msgstr "વપરાશકર્તાઓ સમાવતા નથી"
 
 #: includes/admin/post-types/admin-field-group.php:133
 msgid "Users contain"
-msgstr ""
+msgstr "વપરાશકર્તાઓ સમાવે છે"
 
 #: includes/admin/post-types/admin-field-group.php:132
 msgid "User is not equal to"
-msgstr ""
+msgstr "વપરાશકર્તા બરાબર નથી"
 
 #: includes/admin/post-types/admin-field-group.php:131
 msgid "User is equal to"
-msgstr ""
+msgstr "વપરાશકર્તા સમાન છે"
 
 #: includes/admin/post-types/admin-field-group.php:130
 msgid "Has no page selected"
-msgstr ""
+msgstr "કોઈ પૃષ્ઠ પસંદ કરેલ નથી"
 
 #: includes/admin/post-types/admin-field-group.php:129
 msgid "Has any page selected"
-msgstr ""
+msgstr "કોઈપણ પૃષ્ઠ પસંદ કરેલ છે"
 
 #: includes/admin/post-types/admin-field-group.php:128
 msgid "Pages do not contain"
-msgstr ""
+msgstr "પૃષ્ઠો સમાવતા નથી"
 
 #: includes/admin/post-types/admin-field-group.php:127
 msgid "Pages contain"
-msgstr ""
+msgstr "પૃષ્ઠો સમાવે છે"
 
 #: includes/admin/post-types/admin-field-group.php:126
 msgid "Page is not equal to"
-msgstr ""
+msgstr "પૃષ્ઠ બરાબર નથી"
 
 #: includes/admin/post-types/admin-field-group.php:125
 msgid "Page is equal to"
-msgstr ""
+msgstr "મૂલ્ય સમાન છે"
 
 #: includes/admin/post-types/admin-field-group.php:124
 msgid "Has no relationship selected"
-msgstr ""
+msgstr "કોઈ સંબંધ પસંદ કર્યો નથી"
 
 #: includes/admin/post-types/admin-field-group.php:123
 msgid "Has any relationship selected"
-msgstr ""
+msgstr "પસંદ કરેલ કોઈપણ સંબંધ છે"
 
 #: includes/admin/post-types/admin-field-group.php:122
 msgid "Has no post selected"
-msgstr ""
+msgstr "કોઈ પોસ્ટ પસંદ કરેલ નથી"
 
 #: includes/admin/post-types/admin-field-group.php:121
 msgid "Has any post selected"
-msgstr ""
+msgstr "કોઈપણ પોસ્ટ પસંદ કરેલ છે"
 
 #: includes/admin/post-types/admin-field-group.php:120
 msgid "Posts do not contain"
-msgstr ""
+msgstr "પોસ્ટ સમાવી નથી"
 
 #: includes/admin/post-types/admin-field-group.php:119
 msgid "Posts contain"
-msgstr ""
+msgstr "પોસ્ટ સમાવે છે"
 
 #: includes/admin/post-types/admin-field-group.php:118
 msgid "Post is not equal to"
-msgstr ""
+msgstr "પોસ્ટ બરાબર નથી"
 
 #: includes/admin/post-types/admin-field-group.php:117
 msgid "Post is equal to"
-msgstr ""
+msgstr "પોસ્ટ બરાબર છે"
 
 #: includes/admin/post-types/admin-field-group.php:116
 msgid "Relationships do not contain"
-msgstr ""
+msgstr "સંબંધોમાં સમાવિષ્ટ નથી"
 
 #: includes/admin/post-types/admin-field-group.php:115
 msgid "Relationships contain"
-msgstr ""
+msgstr "સંબંધો સમાવે છે"
 
 #: includes/admin/post-types/admin-field-group.php:114
 msgid "Relationship is not equal to"
-msgstr ""
+msgstr "સંબંધ સમાન નથી"
 
 #: includes/admin/post-types/admin-field-group.php:113
 msgid "Relationship is equal to"
-msgstr ""
+msgstr "Relationship is equal to"
 
 #: src/Blocks/Bindings.php:38
 msgctxt "The core ACF block binding source name for fields on the current page"
 msgid "ACF Fields"
-msgstr ""
+msgstr "ACF ક્ષેત્રો"
 
 #: includes/admin/views/browse-fields-modal.php:14
 msgid "ACF PRO Feature"
@@ -2010,6 +2045,9 @@ msgid ""
 "some of your fields has been modified by this change, but this may not be a "
 "breaking change. %2$s."
 msgstr ""
+"%1$s ACF હવે <code>the_field</code> અથવા ACF શોર્ટકોડ દ્વારા રેન્ડર કરતી વખતે "
+"અસલામત HTML ને સ્વયંક્રીય રીતે એસ્કેપ કરે છે. અમને કેટલીક ફીલ્ડ્સનું આઉટપુટ આ પરિવર્તનથી "
+"બદલાય ગયું હોવાથી શોધાયું છે, પરંતુ આ જરૂરિયાતે તોડી દેવાનું પરિવર્તન નહીં હોઈ શકે. %2$s."
 
 #: includes/admin/views/escaped-html-notice.php:27
 msgid "Please contact your site administrator or developer for more details."
@@ -2839,11 +2877,11 @@ msgstr ""
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1001
 msgid "Parent-child terms in URLs for hierarchical taxonomies."
-msgstr ""
+msgstr "વંશવેલો વર્ગીકરણ માટે URL માં માતાપિતા-બાળક શબ્દો."
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:961
 msgid "Customize the slug used in the URL"
-msgstr ""
+msgstr "URL માં વપરાયેલ સ્લગને કસ્ટમાઇઝ કરો"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:944
 msgid "Permalinks for this taxonomy are disabled."
@@ -3528,11 +3566,11 @@ msgstr "સાર્વજનિક રૂપે પૂછવા યોગ્ય
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1163
 msgid "Custom slug for the Archive URL."
-msgstr ""
+msgstr "આર્કાઇવ URL માટે કસ્ટમ સ્લગ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1162
 msgid "Archive Slug"
-msgstr ""
+msgstr "આર્કાઇવ સ્લેગ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1149
 msgid ""
@@ -3575,7 +3613,7 @@ msgstr "ફ્રન્ટ URL ઉપસર્ગ"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1071
 msgid "Customize the slug used in the URL."
-msgstr ""
+msgstr "URL માં વપરાયેલ સ્લગને કસ્ટમાઇઝ કરો."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1070
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:960
@@ -4144,7 +4182,7 @@ msgstr "પોસ્ટ ટાઇપ લિસ્ટ સ્ક્રીનમા
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:264
 msgid "Parent Item Prefix"
-msgstr ""
+msgstr "પિતૃ આઇટમ ઉપસર્ગ"
 
 #. translators: %s Singular form of post type name
 #. translators: %s Singular form of taxonomy name
@@ -4292,11 +4330,11 @@ msgstr "સક્રિય પોસ્ટ પ્રકારો સક્ષમ
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:63
 msgid "A descriptive summary of the post type."
-msgstr ""
+msgstr "પોસ્ટ પ્રકારનો વર્ણનાત્મક સારાંશ."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:48
 msgid "Add Custom"
-msgstr ""
+msgstr "કસ્ટમ ઉમેરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:42
 msgid "Enable various features in the content editor."
@@ -4322,40 +4360,40 @@ msgstr "પોસ્ટ પ્રકારની વસ્તુઓનું વ
 msgid "Browse Fields"
 msgstr "ક્ષેત્રો બ્રાઉઝ કરો"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:287
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr "આયાત કરવા માટે કંઈ નથી"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:282
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr ". કસ્ટમ પોસ્ટ પ્રકાર UI પ્લગઇન નિષ્ક્રિય કરી શકાય છે."
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:273
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] "કસ્ટમ પોસ્ટ પ્રકાર UI માંથી %d આઇટમ આયાત કરી -"
 msgstr[1] "કસ્ટમ પોસ્ટ પ્રકાર UI માંથી %d આઇટમ આયાત કરી -"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:257
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr "વર્ગીકરણ આયાત કરવામાં નિષ્ફળ."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:239
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr "પોસ્ટ પ્રકારો આયાત કરવામાં નિષ્ફળ."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:228
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr "કસ્ટમ પોસ્ટ પ્રકાર UI પ્લગઇનમાંથી કંઈપણ આયાત માટે પસંદ કરેલ નથી."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:204
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] "1 આઇટમ આયાત કરી"
 msgstr[1] "%s આઇટમ આયાત કરી"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:119
+#: includes/admin/tools/class-acf-admin-tool-import.php:121
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
@@ -4364,8 +4402,8 @@ msgstr ""
 "પહેલાથી જ અસ્તિત્વમાં છે તે જ કી સાથે પોસ્ટ પ્રકાર અથવા વર્ગીકરણ આયાત કરવાથી વર્તમાન "
 "પોસ્ટ પ્રકાર અથવા વર્ગીકરણની સેટિંગ્સ આયાતની સાથે ઓવરરાઈટ થઈ જશે."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:108
-#: includes/admin/tools/class-acf-admin-tool-import.php:124
+#: includes/admin/tools/class-acf-admin-tool-import.php:110
+#: includes/admin/tools/class-acf-admin-tool-import.php:126
 msgid "Import from Custom Post Type UI"
 msgstr "કસ્ટમ પોસ્ટ પ્રકાર UI માંથી આયાત કરો"
 
@@ -4394,17 +4432,17 @@ msgstr "નિકાસ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:264
 msgid "Select Taxonomies"
-msgstr ""
+msgstr "વર્ગીકરણ પસંદ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:239
 msgid "Select Post Types"
-msgstr ""
+msgstr "પોસ્ટ પ્રકારો પસંદ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:155
 msgid "Exported 1 item."
 msgid_plural "Exported %s items."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 આઇટમ નિકાસ કરી."
+msgstr[1] "%s વસ્તુઓ નિકાસ કરી."
 
 #: includes/admin/post-types/admin-taxonomy.php:127
 msgid "Category"
@@ -4417,20 +4455,20 @@ msgstr "ટૅગ"
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:82
 msgid "%s taxonomy created"
-msgstr ""
+msgstr "%s વર્ગીકરણ બનાવ્યું"
 
 #. translators: %s taxonomy name
 #: includes/admin/post-types/admin-taxonomy.php:76
 msgid "%s taxonomy updated"
-msgstr ""
+msgstr "%s વર્ગીકરણ અપડેટ કર્યું"
 
 #: includes/admin/post-types/admin-taxonomy.php:56
 msgid "Taxonomy draft updated."
-msgstr ""
+msgstr "વર્ગીકરણ ડ્રાફ્ટ અપડેટ કર્યો."
 
 #: includes/admin/post-types/admin-taxonomy.php:55
 msgid "Taxonomy scheduled for."
-msgstr ""
+msgstr "વર્ગીકરણ માટે સુનિશ્ચિત."
 
 #: includes/admin/post-types/admin-taxonomy.php:54
 msgid "Taxonomy submitted."
@@ -4519,7 +4557,7 @@ msgstr[1] "%s પોસ્ટ પ્રકારો સક્રિય થયા
 
 #: includes/admin/post-types/admin-post-types.php:84
 #: includes/admin/post-types/admin-taxonomies.php:107
-#: includes/admin/tools/class-acf-admin-tool-import.php:79
+#: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -4615,7 +4653,7 @@ msgstr ""
 #: includes/admin/admin.php:47 includes/admin/admin.php:385
 #: src/Site_Health/Site_Health.php:254
 msgid "ACF"
-msgstr ""
+msgstr "એસીએફ"
 
 #: includes/admin/admin-internal-post-type.php:314
 msgid "taxonomy"
@@ -4635,17 +4673,17 @@ msgstr "ક્ષેત્ર જૂથો"
 
 #: includes/admin/admin-internal-post-type.php:323
 msgid "Select one or many field groups..."
-msgstr ""
+msgstr "એક અથવા ઘણા ક્ષેત્ર જૂથો પસંદ કરો..."
 
 #: includes/admin/admin-internal-post-type.php:322
 msgid "Please select the field groups to link."
-msgstr ""
+msgstr "કૃપા કરીને લિંક કરવા માટે ફીલ્ડ જૂથો પસંદ કરો."
 
 #: includes/admin/admin-internal-post-type.php:280
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ફીલ્ડ ગ્રુપ સફળતાપૂર્વક લિંક થયું."
+msgstr[1] "ફીલ્ડ જૂથો સફળતાપૂર્વક લિંક થયા."
 
 #: includes/admin/admin-internal-post-type-list.php:277
 #: includes/admin/post-types/admin-post-types.php:342
@@ -4659,6 +4697,8 @@ msgid ""
 "This item could not be registered because its key is in use by another item "
 "registered by another plugin or theme."
 msgstr ""
+"This item could not be registered because its key is in use by another item "
+"registered by another plugin or theme."
 
 #: includes/acf-internal-post-type-functions.php:509
 #: includes/acf-internal-post-type-functions.php:538
@@ -4724,36 +4764,36 @@ msgstr "આ ટૅબ પર ટૅબનું નવું જૂથ શરૂ
 
 #: includes/fields/class-acf-field-tab.php:121
 msgid "New Tab Group"
-msgstr ""
+msgstr "નવું ટૅબ જૂથ"
 
 #: includes/fields/class-acf-field-select.php:421
 #: includes/fields/class-acf-field-true_false.php:188
 msgid "Use a stylized checkbox using select2"
-msgstr ""
+msgstr "Select2 નો ઉપયોગ કરીને સ્ટાઇલવાળી ચેકબોક્ષનો ઉપયોગ કરો"
 
 #: includes/fields/class-acf-field-radio.php:250
 msgid "Save Other Choice"
-msgstr ""
+msgstr "અન્ય પસંદગી સાચવો"
 
 #: includes/fields/class-acf-field-radio.php:239
 msgid "Allow Other Choice"
-msgstr ""
+msgstr "અન્ય પસંદગીની મંજૂરી આપો"
 
 #: includes/fields/class-acf-field-checkbox.php:433
 msgid "Add Toggle All"
-msgstr ""
+msgstr "બધાને ટૉગલ કરો ઉમેરો"
 
 #: includes/fields/class-acf-field-checkbox.php:392
 msgid "Save Custom Values"
-msgstr ""
+msgstr "કસ્ટમ મૂલ્યો સાચવો"
 
 #: includes/fields/class-acf-field-checkbox.php:381
 msgid "Allow Custom Values"
-msgstr ""
+msgstr "કસ્ટમ મૂલ્યોને મંજૂરી આપો"
 
 #: includes/fields/class-acf-field-checkbox.php:147
 msgid "Checkbox custom values cannot be empty. Uncheck any empty values."
-msgstr ""
+msgstr "ચેકબોક્સ કસ્ટમ મૂલ્યો ખાલી હોઈ શકતા નથી. કોઈપણ ખાલી મૂલ્યોને અનચેક કરો."
 
 #: includes/admin/views/global/navigation.php:256
 msgid "Updates"
@@ -4762,7 +4802,7 @@ msgstr "સુધારાઓ"
 #: includes/admin/views/global/navigation.php:180
 #: includes/admin/views/global/navigation.php:184
 msgid "Advanced Custom Fields logo"
-msgstr ""
+msgstr "એડવાન્સ્ડ કસ્ટમ ફીલ્ડ્સ લોગો"
 
 #: includes/admin/views/global/form-top.php:92
 msgid "Save Changes"
@@ -4786,6 +4826,8 @@ msgid ""
 "New to ACF? Take a look at our <a href=\"%s\" target=\"_blank\">getting "
 "started guide</a>."
 msgstr ""
+"ACF માં નવા છો? અમારી <a href=\"%s\" target=\"_blank\">શરૂઆત માર્ગદર્શિકા</a> પર "
+"એક નજર નાખો."
 
 #: includes/admin/views/acf-field-group/list-empty.php:24
 msgid "Add Field Group"
@@ -4797,54 +4839,56 @@ msgid ""
 "ACF uses <a href=\"%s\" target=\"_blank\">field groups</a> to group custom "
 "fields together, and then attach those fields to edit screens."
 msgstr ""
+"ACF કસ્ટમ ફીલ્ડ્સને એકસાથે જૂથબદ્ધ કરવા માટે <a href=\"%s\" target=\"_blank\">ફીલ્ડ "
+"ગ્રુપ્સ</a> નો ઉપયોગ કરે છે, અને પછી તે ફીલ્ડ્સને સ્ક્રીનને સંપાદિત કરવા માટે જોડે છે."
 
 #: includes/admin/views/acf-field-group/list-empty.php:12
 msgid "Add Your First Field Group"
-msgstr ""
+msgstr "તમારું પ્રથમ ક્ષેત્ર જૂથ ઉમેરો"
 
 #: includes/admin/admin-options-pages-preview.php:28
 #: includes/admin/views/acf-field-group/pro-features.php:58
 #: includes/admin/views/global/navigation.php:86
 #: includes/admin/views/global/navigation.php:258
 msgid "Options Pages"
-msgstr ""
+msgstr "વિકલ્પો પૃષ્ઠો"
 
 #: includes/admin/views/acf-field-group/pro-features.php:54
 msgid "ACF Blocks"
-msgstr ""
+msgstr "ACF બ્લોક્સ"
 
 #: includes/admin/views/acf-field-group/pro-features.php:62
 msgid "Gallery Field"
-msgstr ""
+msgstr "ગેલેરી ક્ષેત્ર"
 
 #: includes/admin/views/acf-field-group/pro-features.php:42
 msgid "Flexible Content Field"
-msgstr ""
+msgstr "લવચીક સામગ્રી ક્ષેત્ર"
 
 #: includes/admin/views/acf-field-group/pro-features.php:46
 msgid "Repeater Field"
-msgstr ""
+msgstr "પુનરાવર્તક સૂચિ"
 
 #: includes/admin/views/global/navigation.php:218
 msgid "Unlock Extra Features with ACF PRO"
-msgstr ""
+msgstr "ACF PRO સાથે વધારાની સુવિધાઓ અનલૉક કરો"
 
 #: includes/admin/views/acf-field-group/options.php:267
 msgid "Delete Field Group"
-msgstr ""
+msgstr "ક્ષેત્ર જૂથ કાઢી નાખો"
 
 #. translators: 1: Post creation date 2: Post creation time
 #: includes/admin/views/acf-field-group/options.php:261
 msgid "Created on %1$s at %2$s"
-msgstr ""
+msgstr "%1$s ના રોજ %2$s વાગ્યે બનાવ્યું"
 
 #: includes/acf-field-group-functions.php:497
 msgid "Group Settings"
-msgstr ""
+msgstr "જૂથ સેટિંગ્સ"
 
 #: includes/acf-field-group-functions.php:495
 msgid "Location Rules"
-msgstr ""
+msgstr "સ્થાન નિયમો"
 
 #. translators: %s url to field types list
 #: includes/admin/views/acf-field-group/fields.php:73
@@ -4852,16 +4896,20 @@ msgid ""
 "Choose from over 30 field types. <a href=\"%s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"30 થી વધુ ફીલ્ડ પ્રકારોમાંથી પસંદ કરો. <a href=\"%s\" target=\"_blank\">વધુ જાણો</"
+"a>."
 
 #: includes/admin/views/acf-field-group/fields.php:65
 msgid ""
 "Get started creating new custom fields for your posts, pages, custom post "
 "types and other WordPress content."
 msgstr ""
+"તમારી પોસ્ટ્સ, પૃષ્ઠો, કસ્ટમ પોસ્ટ પ્રકારો અને અન્ય WordPress સામગ્રી માટે નવા કસ્ટમ "
+"ફીલ્ડ્સ બનાવવાનું શરૂ કરો."
 
 #: includes/admin/views/acf-field-group/fields.php:64
 msgid "Add Your First Field"
-msgstr ""
+msgstr "તમારું પ્રથમ ક્ષેત્ર ઉમેરો"
 
 #. translators: A symbol (or text, if not available in your locale) meaning
 #. "Order Number", in terms of positional placement.
@@ -4874,7 +4922,7 @@ msgstr "#"
 #: includes/admin/views/acf-field-group/fields.php:101
 #: includes/admin/views/global/form-top.php:88
 msgid "Add Field"
-msgstr ""
+msgstr "ક્ષેત્ર ઉમેરો"
 
 #: includes/acf-field-group-functions.php:496 includes/fields.php:385
 msgid "Presentation"
@@ -4882,34 +4930,34 @@ msgstr "રજૂઆત"
 
 #: includes/fields.php:384
 msgid "Validation"
-msgstr ""
+msgstr "માન્યતા"
 
 #: includes/acf-internal-post-type-functions.php:504
 #: includes/acf-internal-post-type-functions.php:533 includes/fields.php:383
 msgid "General"
 msgstr "સામાન્ય"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:67
+#: includes/admin/tools/class-acf-admin-tool-import.php:69
 msgid "Import JSON"
-msgstr ""
+msgstr "JSON આયાત કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:338
 msgid "Export As JSON"
-msgstr ""
+msgstr "JSON તરીકે નિકાસ કરો"
 
 #. translators: %s number of field groups deactivated
 #: includes/admin/post-types/admin-field-groups.php:356
 msgid "Field group deactivated."
 msgid_plural "%s field groups deactivated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ક્ષેત્ર જૂથ નિષ્ક્રિય."
+msgstr[1] "%s ફીલ્ડ જૂથો નિષ્ક્રિય કર્યા."
 
 #. translators: %s number of field groups activated
 #: includes/admin/post-types/admin-field-groups.php:349
 msgid "Field group activated."
 msgid_plural "%s field groups activated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ક્ષેત્ર જૂથ સક્રિય."
+msgstr[1] "%s ફીલ્ડ જૂથો સક્રિય થયા."
 
 #: includes/admin/admin-internal-post-type-list.php:470
 #: includes/admin/admin-internal-post-type-list.php:496
@@ -4931,7 +4979,7 @@ msgstr "આ આઇટમ સક્રિય કરો"
 
 #: includes/admin/post-types/admin-field-group.php:88
 msgid "Move field group to trash?"
-msgstr ""
+msgstr "ફીલ્ડ ગ્રુપને ટ્રેશમાં ખસેડીએ?"
 
 #: acf.php:561 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:303
@@ -4944,7 +4992,7 @@ msgstr "નિષ્ક્રિય"
 #. Author of the plugin
 #: acf.php includes/admin/views/global/navigation.php:240
 msgid "WP Engine"
-msgstr ""
+msgstr "WP એન્જિન"
 
 #: acf.php:619
 msgid ""
@@ -4965,12 +5013,12 @@ msgstr ""
 #: includes/fields/class-acf-field-user.php:578
 msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s પાસે %2$s ભૂમિકા ધરાવતો વપરાશકર્તા હોવો આવશ્યક છે."
+msgstr[1] "%1$s પાસે નીચેનામાંથી કોઈ એક ભૂમિકા ધરાવતો વપરાશકર્તા હોવો આવશ્યક છે: %2$s"
 
 #: includes/fields/class-acf-field-user.php:569
 msgid "%1$s must have a valid user ID."
-msgstr ""
+msgstr "%1$s પાસે માન્ય વપરાશકર્તા ID હોવો આવશ્યક છે."
 
 #: includes/fields/class-acf-field-user.php:408
 msgid "Invalid request."
@@ -4978,27 +5026,27 @@ msgstr "અમાન્ય વિનંતી."
 
 #: includes/fields/class-acf-field-select.php:689
 msgid "%1$s is not one of %2$s"
-msgstr ""
+msgstr "%1$s એ %2$s માંથી એક નથી."
 
 #: includes/fields/class-acf-field-post_object.php:660
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s માં %2$s શબ્દ હોવો આવશ્યક છે."
+msgstr[1] "%1$s માં નીચેનામાંથી એક શબ્દ હોવો આવશ્યક છે: %2$s"
 
 #: includes/fields/class-acf-field-post_object.php:644
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1$s પોસ્ટ પ્રકાર %2$s હોવો જોઈએ."
+msgstr[1] "%1$s નીચેના પોસ્ટ પ્રકારોમાંથી એક હોવો જોઈએ: %2$s"
 
 #: includes/fields/class-acf-field-post_object.php:635
 msgid "%1$s must have a valid post ID."
-msgstr ""
+msgstr "%1$s પાસે માન્ય પોસ્ટ ID હોવો આવશ્યક છે."
 
-#: includes/fields/class-acf-field-file.php:447
+#: includes/fields/class-acf-field-file.php:451
 msgid "%s requires a valid attachment ID."
-msgstr ""
+msgstr "%s ને માન્ય જોડાણ ID ની જરૂર છે."
 
 #: includes/admin/views/acf-field-group/options.php:233
 msgid "Show in REST API"
@@ -5010,16 +5058,16 @@ msgstr "પારદર્શિતા સક્ષમ કરો"
 
 #: includes/fields/class-acf-field-color_picker.php:175
 msgid "RGBA Array"
-msgstr ""
+msgstr "RGBA એરે"
 
 #: includes/fields/class-acf-field-color_picker.php:92
 msgid "RGBA String"
-msgstr ""
+msgstr "RGBA સ્ટ્રિંગ"
 
 #: includes/fields/class-acf-field-color_picker.php:91
 #: includes/fields/class-acf-field-color_picker.php:174
 msgid "Hex String"
-msgstr ""
+msgstr "હેક્સ સ્ટ્રિંગ"
 
 #: includes/admin/views/browse-fields-modal.php:12
 msgid "Upgrade to PRO"
@@ -5075,7 +5123,7 @@ msgstr "જોડાણો"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:108
 #: includes/admin/post-types/admin-taxonomies.php:83
-#: includes/admin/tools/class-acf-admin-tool-import.php:90
+#: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -5124,11 +5172,11 @@ msgstr "સ્થિત થયેલ છે: %s"
 
 #: includes/admin/admin-internal-post-type-list.php:391
 msgid "Located in plugin: %s"
-msgstr ""
+msgstr "પ્લગઇનમાં સ્થિત: %s"
 
 #: includes/admin/admin-internal-post-type-list.php:388
 msgid "Located in theme: %s"
-msgstr ""
+msgstr "થીમ્સમાં સ્થિત: %s"
 
 #: includes/admin/post-types/admin-field-groups.php:231
 msgid "Various"
@@ -5168,6 +5216,8 @@ msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
 msgstr ""
+"<a href=\"%s\" target=\"_blank\">હેલ્પ ડેસ્ક</a>. અમારા હેલ્પ ડેસ્ક પરના સપોર્ટ "
+"પ્રોફેશનલ્સ તમારા વધુ ઊંડાણપૂર્વકના, ટેકનિકલ પડકારોમાં મદદ કરશે."
 
 #: includes/admin/admin.php:154
 msgid ""
@@ -5175,6 +5225,8 @@ msgid ""
 "friendly community on our Community Forums who may be able to help you "
 "figure out the 'how-tos' of the ACF world."
 msgstr ""
+"<a href=\"%s\" target=\"_blank\">ચર્ચાઓ</a>. અમારા સમુદાય ફોરમ પર એક સક્રિય અને "
+"મૈત્રીપૂર્ણ સમુદાય છે જે તમને ACF વિશ્વના 'કેવી રીતે કરવું' તે સમજવામાં મદદ કરી શકે છે."
 
 #: includes/admin/admin.php:150
 msgid ""
@@ -5182,6 +5234,8 @@ msgid ""
 "documentation contains references and guides for most situations you may "
 "encounter."
 msgstr ""
+"<a href=\"%s\" target=\"_blank\">દસ્તાવેજીકરણ</a>. અમારા વ્યાપક દસ્તાવેજીકરણમાં "
+"મોટાભાગની પરિસ્થિતિઓ માટે સંદર્ભો અને માર્ગદર્શિકાઓ શામેલ છે જેનો તમે સામનો કરી શકો છો."
 
 #: includes/admin/admin.php:147
 msgid ""
@@ -5210,6 +5264,9 @@ msgid ""
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
 "yourself with the plugin's philosophy and best practises."
 msgstr ""
+"તમારું પહેલું ફીલ્ડ ગ્રુપ બનાવતા પહેલા, અમે ભલામણ કરીએ છીએ કે તમે પ્લગઇનની ફિલસૂફી અને શ્રેષ્ઠ "
+"પ્રથાઓથી પરિચિત થવા માટે અમારી <a href=\"%s\" target=\"_blank\">શરૂઆત કરવી</a> "
+"માર્ગદર્શિકા વાંચો."
 
 #: includes/admin/admin.php:130
 msgid ""
@@ -5217,6 +5274,9 @@ msgid ""
 "customize WordPress edit screens with extra fields, and an intuitive API to "
 "display custom field values in any theme template file."
 msgstr ""
+"એડવાન્સ્ડ કસ્ટમ ફીલ્ડ્સ પ્લગઇન વર્ડપ્રેસ એડિટ સ્ક્રીનને વધારાના ફીલ્ડ્સ સાથે કસ્ટમાઇઝ કરવા "
+"માટે વિઝ્યુઅલ ફોર્મ બિલ્ડર અને કોઈપણ થીમ ટેમ્પલેટ ફાઇલમાં કસ્ટમ ફીલ્ડ મૂલ્યો પ્રદર્શિત કરવા "
+"માટે એક સાહજિક API પ્રદાન કરે છે."
 
 #: includes/admin/admin.php:127 includes/admin/admin.php:129
 msgid "Overview"
@@ -5225,12 +5285,12 @@ msgstr "અવલોકન"
 #. translators: %s the name of the location type
 #: includes/locations.php:38
 msgid "Location type \"%s\" is already registered."
-msgstr ""
+msgstr "સ્થાન પ્રકાર \"%s\" પહેલાથી જ નોંધાયેલ છે."
 
 #. translators: %s class name for a location that could not be found
 #: includes/locations.php:26
 msgid "Class \"%s\" does not exist."
-msgstr ""
+msgstr "\"%s\" વર્ગ અસ્તિત્વમાં નથી."
 
 #: includes/ajax/class-acf-ajax-query-users.php:43
 #: includes/ajax/class-acf-ajax.php:157
@@ -5239,11 +5299,11 @@ msgstr "અમાન્ય નૉન."
 
 #: includes/fields/class-acf-field-user.php:400
 msgid "Error loading field."
-msgstr ""
+msgstr "ફીલ્ડ લોડ કરવામાં ભૂલ."
 
 #: includes/forms/form-user.php:328
 msgid "<strong>Error</strong>: %s"
-msgstr ""
+msgstr "<strong>ભૂલ</strong>: %s"
 
 #: includes/locations/class-acf-location-widget.php:22
 msgid "Widget"
@@ -5263,7 +5323,7 @@ msgstr "પોસ્ટ ફોર્મેટ"
 
 #: includes/locations/class-acf-location-nav-menu-item.php:22
 msgid "Menu Item"
-msgstr "મેનુ વસ્તુ"
+msgstr "મેનુ આઈટમ"
 
 #: includes/locations/class-acf-location-post-status.php:22
 msgid "Post Status"
@@ -5284,19 +5344,19 @@ msgstr "મેનુ"
 
 #: includes/locations/class-acf-location-post-taxonomy.php:22
 msgid "Post Taxonomy"
-msgstr ""
+msgstr "પોસ્ટ વર્ગીકરણ"
 
 #: includes/locations/class-acf-location-page-type.php:114
 msgid "Child Page (has parent)"
-msgstr ""
+msgstr "બાળ પૃષ્ઠ (માતાપિતા છે)"
 
 #: includes/locations/class-acf-location-page-type.php:113
 msgid "Parent Page (has children)"
-msgstr ""
+msgstr "માતાપિતાનું પૃષ્ઠ (બાળકો છે)"
 
 #: includes/locations/class-acf-location-page-type.php:112
 msgid "Top Level Page (no parent)"
-msgstr ""
+msgstr "ટોચના સ્તરનું પૃષ્ઠ (કોઈ માતાપિતા નહીં)"
 
 #: includes/locations/class-acf-location-page-type.php:111
 msgid "Posts Page"
@@ -5312,11 +5372,11 @@ msgstr "પેજ પ્રકાર"
 
 #: includes/locations/class-acf-location-current-user.php:73
 msgid "Viewing back end"
-msgstr ""
+msgstr "પાછળનો છેડો જોઈ રહ્યાં છીએ"
 
 #: includes/locations/class-acf-location-current-user.php:72
 msgid "Viewing front end"
-msgstr ""
+msgstr "આગળનો છેડો જોઈ રહ્યાં છીએ"
 
 #: includes/locations/class-acf-location-current-user.php:71
 msgid "Logged in"
@@ -5381,12 +5441,12 @@ msgstr "%s મૂલ્ય જરૂરી છે"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:64
 msgid "Show this field if"
-msgstr ""
+msgstr "જો આ ક્ષેત્ર બતાવો"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:25
 #: includes/admin/views/acf-field-group/field.php:122 includes/fields.php:386
 msgid "Conditional Logic"
-msgstr ""
+msgstr "શરતી તર્ક"
 
 #: includes/admin/views/acf-field-group/conditional-logic.php:169
 #: includes/admin/views/acf-field-group/location-rule.php:84
@@ -5397,11 +5457,11 @@ msgstr "અને"
 #: includes/admin/post-types/admin-post-types.php:114
 #: includes/admin/post-types/admin-taxonomies.php:113
 msgid "Local JSON"
-msgstr ""
+msgstr "સ્થાનિક JSON"
 
 #: includes/admin/views/acf-field-group/pro-features.php:50
 msgid "Clone Field"
-msgstr ""
+msgstr "ક્લોન ફીલ્ડ"
 
 #. translators: %s a list of plugin
 #: includes/admin/views/upgrade/notice.php:32
@@ -5413,21 +5473,21 @@ msgstr ""
 #: includes/admin/views/upgrade/notice.php:29
 msgid ""
 "This version contains improvements to your database and requires an upgrade."
-msgstr ""
+msgstr "આ સંસ્કરણમાં તમારા ડેટાબેઝમાં સુધારાઓ છે અને તેને અપગ્રેડની જરૂર છે."
 
 #. translators: %1 plugin name, %2 version number
 #: includes/admin/views/upgrade/notice.php:28
 msgid "Thank you for updating to %1$s v%2$s!"
-msgstr ""
+msgstr "%1$s v%2$s પર અપડેટ કરવા બદલ આભાર!"
 
 #: includes/admin/views/upgrade/notice.php:26
 msgid "Database Upgrade Required"
-msgstr ""
+msgstr "ડેટાબેઝ અપગ્રેડ જરૂરી છે"
 
 #: includes/admin/post-types/admin-field-group.php:158
 #: includes/admin/views/upgrade/notice.php:17
 msgid "Options Page"
-msgstr ""
+msgstr "વિકલ્પો પૃષ્ઠ"
 
 #: includes/admin/views/upgrade/notice.php:14 includes/fields.php:437
 msgid "Gallery"
@@ -5435,7 +5495,7 @@ msgstr "ગેલેરી"
 
 #: includes/admin/views/upgrade/notice.php:11 includes/fields.php:427
 msgid "Flexible Content"
-msgstr ""
+msgstr "લવચીક સામગ્રી"
 
 #: includes/admin/views/upgrade/notice.php:8 includes/fields.php:447
 msgid "Repeater"
@@ -5443,17 +5503,19 @@ msgstr "રીપીટર"
 
 #: includes/admin/views/tools/tools.php:16
 msgid "Back to all tools"
-msgstr ""
+msgstr "બધા સાધનો પર પાછા"
 
 #: includes/admin/views/acf-field-group/options.php:195
 msgid ""
 "If multiple field groups appear on an edit screen, the first field group's "
 "options will be used (the one with the lowest order number)"
 msgstr ""
+"જો સંપાદન સ્ક્રીન પર બહુવિધ ફીલ્ડ જૂથો દેખાય છે, તો પ્રથમ ફીલ્ડ જૂથના વિકલ્પોનો ઉપયોગ "
+"કરવામાં આવશે (સૌથી ઓછો ઓર્ડર નંબર ધરાવતો)"
 
 #: includes/admin/views/acf-field-group/options.php:195
 msgid "<b>Select</b> items to <b>hide</b> them from the edit screen."
-msgstr ""
+msgstr "સંપાદન સ્ક્રીનમાંથી વસ્તુઓને <b>છુપાવવા</b> માટે <b>પસંદ કરો</b>."
 
 #: includes/admin/views/acf-field-group/options.php:194
 msgid "Hide on screen"
@@ -5514,7 +5576,7 @@ msgstr "અવતરણ"
 
 #: includes/admin/views/acf-field-group/options.php:173
 msgid "Content Editor"
-msgstr ""
+msgstr "સામગ્રી સંપાદક"
 
 #: includes/admin/views/acf-field-group/options.php:172
 msgid "Permalink"
@@ -5522,43 +5584,43 @@ msgstr "પરમાલિંક"
 
 #: includes/admin/views/acf-field-group/options.php:250
 msgid "Shown in field group list"
-msgstr ""
+msgstr "ફીલ્ડ જૂથ સૂચિમાં બતાવેલ છે"
 
 #: includes/admin/views/acf-field-group/options.php:157
 msgid "Field groups with a lower order will appear first"
-msgstr ""
+msgstr "નીચલા ક્રમવાળા ક્ષેત્ર જૂથો પહેલા દેખાશે"
 
 #: includes/admin/views/acf-field-group/options.php:156
 msgid "Order No."
-msgstr ""
+msgstr "ઓર્ડર નં."
 
 #: includes/admin/views/acf-field-group/options.php:147
 msgid "Below fields"
-msgstr ""
+msgstr "નીચે ફીલ્ડ્સ"
 
 #: includes/admin/views/acf-field-group/options.php:146
 msgid "Below labels"
-msgstr ""
+msgstr "લેબલ્સ નીચે"
 
 #: includes/admin/views/acf-field-group/options.php:139
 msgid "Instruction Placement"
-msgstr ""
+msgstr "સૂચના પ્લેસમેન્ટ"
 
 #: includes/admin/views/acf-field-group/options.php:122
 msgid "Label Placement"
-msgstr ""
+msgstr "લેબલ પ્લેસમેન્ટ"
 
 #: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
-msgstr ""
+msgstr "બાજુ"
 
 #: includes/admin/views/acf-field-group/options.php:109
 msgid "Normal (after content)"
-msgstr ""
+msgstr "સામાન્ય (સામગ્રી પછી)"
 
 #: includes/admin/views/acf-field-group/options.php:108
 msgid "High (after title)"
-msgstr ""
+msgstr "ઉચ્ચ (શીર્ષક પછી)"
 
 #: includes/admin/views/acf-field-group/options.php:101
 msgid "Position"
@@ -5566,11 +5628,11 @@ msgstr "પદ"
 
 #: includes/admin/views/acf-field-group/options.php:92
 msgid "Seamless (no metabox)"
-msgstr ""
+msgstr "સીમલેસ (કોઈ મેટાબોક્સ નથી)"
 
 #: includes/admin/views/acf-field-group/options.php:91
 msgid "Standard (WP metabox)"
-msgstr ""
+msgstr "સ્ટાન્ડર્ડ (WP મેટાબોક્સ)"
 
 #: includes/admin/views/acf-field-group/options.php:84
 msgid "Style"
@@ -5595,7 +5657,7 @@ msgstr "ઓર્ડર"
 
 #: includes/admin/views/acf-field-group/field.php:321
 msgid "Close Field"
-msgstr ""
+msgstr "બંધ ક્ષેત્ર"
 
 #: includes/admin/views/acf-field-group/field.php:252
 msgid "id"
@@ -5611,7 +5673,7 @@ msgstr "પહોળાઈ"
 
 #: includes/admin/views/acf-field-group/field.php:272
 msgid "Wrapper Attributes"
-msgstr ""
+msgstr "રેપર વિશેષતાઓ"
 
 #: includes/fields/class-acf-field.php:317
 msgid "Required"
@@ -5619,7 +5681,7 @@ msgstr "જરૂરી?"
 
 #: includes/admin/views/acf-field-group/field.php:219
 msgid "Instructions"
-msgstr ""
+msgstr "સૂચનાઓ"
 
 #: includes/admin/views/acf-field-group/field.php:142
 msgid "Field Type"
@@ -5627,7 +5689,7 @@ msgstr "ક્ષેત્ર પ્રકાર"
 
 #: includes/admin/views/acf-field-group/field.php:183
 msgid "Single word, no spaces. Underscores and dashes allowed"
-msgstr ""
+msgstr "એક શબ્દ, ખાલી જગ્યા નહીં. અન્ડરસ્કોર્સ અને ડેશની મંજૂરી છે."
 
 #: includes/admin/views/acf-field-group/field.php:182
 msgid "Field Name"
@@ -5635,7 +5697,7 @@ msgstr "ક્ષેત્રનું નામ"
 
 #: includes/admin/views/acf-field-group/field.php:170
 msgid "This is the name which will appear on the EDIT page"
-msgstr ""
+msgstr "આ નામ EDIT પેજ પર દેખાશે."
 
 #: includes/admin/views/acf-field-group/field.php:169
 #: includes/admin/views/browse-fields-modal.php:69
@@ -5656,11 +5718,11 @@ msgstr "ખસેડો"
 
 #: includes/admin/views/acf-field-group/field.php:92
 msgid "Move field to another group"
-msgstr ""
+msgstr "ફીલ્ડને બીજા જૂથમાં ખસેડો"
 
 #: includes/admin/views/acf-field-group/field.php:90
 msgid "Duplicate field"
-msgstr ""
+msgstr "ડુપ્લિકેટ ફીલ્ડ"
 
 #: includes/admin/views/acf-field-group/field.php:86
 #: includes/admin/views/acf-field-group/field.php:89
@@ -5669,12 +5731,12 @@ msgstr "ફાઇલ સંપાદિત કરો"
 
 #: includes/admin/views/acf-field-group/field.php:82
 msgid "Drag to reorder"
-msgstr ""
+msgstr "ફરીથી ક્રમાંકિત કરવા માટે ખેંચો"
 
 #: includes/admin/post-types/admin-field-group.php:98
 #: includes/admin/views/acf-field-group/location-group.php:3
 msgid "Show this field group if"
-msgstr ""
+msgstr "આ ફીલ્ડ ગ્રુપ બતાવો જો"
 
 #: includes/admin/views/upgrade/upgrade.php:93
 #: includes/ajax/class-acf-ajax-upgrade.php:34
@@ -5688,23 +5750,23 @@ msgstr "ડેટાબેઝ અપગ્રેડ પૂર્ણ. <a href=\"%
 
 #: includes/admin/views/upgrade/upgrade.php:27
 msgid "Reading upgrade tasks..."
-msgstr ""
+msgstr "અપગ્રેડ કાર્યો વાંચી રહ્યા છીએ..."
 
 #: includes/admin/views/upgrade/network.php:165
 #: includes/admin/views/upgrade/upgrade.php:64
 msgid "Upgrade failed."
-msgstr ""
+msgstr "અપગ્રેડ નિષ્ફળ ગયું."
 
 #: includes/admin/views/upgrade/network.php:162
 msgid "Upgrade complete."
-msgstr ""
+msgstr "અપગ્રેડ પૂર્ણ."
 
 #. translators: %s the version being upgraded to.
 #. translators: %s the new ACF version
 #: includes/admin/views/upgrade/network.php:148
 #: includes/admin/views/upgrade/upgrade.php:29
 msgid "Upgrading data to version %s"
-msgstr ""
+msgstr "ડેટાને %s સંસ્કરણમાં અપગ્રેડ કરી રહ્યું છે"
 
 #: includes/admin/views/upgrade/network.php:120
 #: includes/admin/views/upgrade/notice.php:46
@@ -5712,6 +5774,8 @@ msgid ""
 "It is strongly recommended that you backup your database before proceeding. "
 "Are you sure you wish to run the updater now?"
 msgstr ""
+"આગળ વધતા પહેલા તમારા ડેટાબેઝનો બેકઅપ લેવાની ભારપૂર્વક ભલામણ કરવામાં આવે છે. શું તમે ખરેખર "
+"અપડેટર હમણાં ચલાવવા માંગો છો?"
 
 #: includes/admin/views/upgrade/network.php:116
 msgid "Please select at least one site to upgrade."
@@ -5721,11 +5785,11 @@ msgstr "કૃપા કરીને અપગ્રેડ કરવા મા�
 #: includes/admin/views/upgrade/network.php:96
 msgid ""
 "Database Upgrade complete. <a href=\"%s\">Return to network dashboard</a>"
-msgstr ""
+msgstr "ડેટાબેઝ અપગ્રેડ પૂર્ણ થયું. <a href=\"%s\">નેટવર્ક ડેશબોર્ડ પર પાછા ફરો</a>"
 
 #: includes/admin/views/upgrade/network.php:79
 msgid "Site is up to date"
-msgstr ""
+msgstr "સાઇટ અપ ટુ ડેટ છે"
 
 #. translators: %1 current db version, %2 available db version
 #: includes/admin/views/upgrade/network.php:77
@@ -5756,13 +5820,15 @@ msgstr ""
 #: includes/admin/views/acf-field-group/conditional-logic.php:184
 #: includes/admin/views/acf-field-group/locations.php:37
 msgid "Add rule group"
-msgstr ""
+msgstr "નિયમ જૂથ ઉમેરો"
 
 #: includes/admin/views/acf-field-group/locations.php:10
 msgid ""
 "Create a set of rules to determine which edit screens will use these "
 "advanced custom fields"
 msgstr ""
+"કયા સંપાદન સ્ક્રીનો આ અદ્યતન કસ્ટમ ફીલ્ડ્સનો ઉપયોગ કરશે તે નક્કી કરવા માટે નિયમોનો સમૂહ "
+"બનાવો."
 
 #: includes/admin/views/acf-field-group/locations.php:9
 msgid "Rules"
@@ -5774,7 +5840,7 @@ msgstr "કૉપિ થઇ ગયું"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:425
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "ક્લિપબોર્ડ પર કૉપિ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:331
 msgid ""
@@ -5789,44 +5855,38 @@ msgstr ""
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:215
 msgid "Select Field Groups"
-msgstr ""
+msgstr "ક્ષેત્ર જૂથો પસંદ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:88
 #: includes/admin/tools/class-acf-admin-tool-export.php:121
 msgid "No field groups selected"
-msgstr ""
+msgstr "કોઈ ફીલ્ડ જૂથો પસંદ કર્યા નથી"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:38
 #: includes/admin/tools/class-acf-admin-tool-export.php:339
 #: includes/admin/tools/class-acf-admin-tool-export.php:363
 msgid "Generate PHP"
-msgstr ""
+msgstr "PHP જનરેટ કરો"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:34
 msgid "Export Field Groups"
-msgstr ""
+msgstr "નિકાસ ક્ષેત્ર જૂથો"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:172
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
-msgstr ""
+msgstr "ખાલી ફાઇલ આયાત કરો"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:163
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
-msgstr ""
+msgstr "ખોટો ફાઇલ પ્રકાર"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:158
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
-msgstr ""
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:47
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the items in that file."
-msgstr ""
+msgstr "ફાઇલ અપલોડ કરવામાં ભૂલ. કૃપા કરીને ફરી પ્રયાસ કરો."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
-msgstr ""
+msgstr "ક્ષેત્ર જૂથો આયાત કરો"
 
 #: includes/admin/admin-internal-post-type-list.php:417
 msgid "Sync"
@@ -5845,11 +5905,11 @@ msgstr "ડુપ્લિકેટ"
 
 #: includes/admin/admin-internal-post-type-list.php:460
 msgid "Duplicate this item"
-msgstr ""
+msgstr "આ આઇટમની નકલ કરો"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:41
 msgid "Supports"
-msgstr ""
+msgstr "આધાર આપે છે"
 
 #: includes/admin/admin.php:379
 #: includes/admin/views/browse-fields-modal.php:102
@@ -5870,21 +5930,21 @@ msgstr "વર્ણન"
 #: includes/admin/admin-internal-post-type-list.php:414
 #: includes/admin/admin-internal-post-type-list.php:832
 msgid "Sync available"
-msgstr ""
+msgstr "સિંક ઉપલબ્ધ છે"
 
 #. translators: %s number of field groups synchronized
 #: includes/admin/post-types/admin-field-groups.php:370
 msgid "Field group synchronized."
 msgid_plural "%s field groups synchronized."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ફીલ્ડ જૂથ સમન્વયિત."
+msgstr[1] "%s ફીલ્ડ જૂથો સિંક્રનાઇઝ થયા."
 
 #. translators: %s number of field groups duplicated
 #: includes/admin/post-types/admin-field-groups.php:363
 msgid "Field group duplicated."
 msgid_plural "%s field groups duplicated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ફીલ્ડ ગ્રુપ ડુપ્લિકેટ કર્યું."
+msgstr[1] "%s ફીલ્ડ જૂથો ડુપ્લિકેટ થયા."
 
 #: includes/admin/admin-internal-post-type-list.php:155
 msgid "Active <span class=\"count\">(%s)</span>"
@@ -5894,14 +5954,14 @@ msgstr[1] "સક્રિય <span class=\"count\">(%s)</span>"
 
 #: includes/admin/admin-upgrade.php:251
 msgid "Review sites & upgrade"
-msgstr ""
+msgstr "સાઇટ્સની સમીક્ષા કરો અને અપગ્રેડ કરો"
 
 #: includes/admin/admin-upgrade.php:59 includes/admin/admin-upgrade.php:90
 #: includes/admin/admin-upgrade.php:91 includes/admin/admin-upgrade.php:227
 #: includes/admin/views/upgrade/network.php:21
 #: includes/admin/views/upgrade/upgrade.php:23
 msgid "Upgrade Database"
-msgstr ""
+msgstr "ડેટાબેઝ અપગ્રેડ કરો"
 
 #: includes/admin/views/acf-field-group/options.php:175
 #: includes/admin/views/acf-post-type/advanced-settings.php:30
@@ -5910,12 +5970,12 @@ msgstr "કસ્ટમ ફીલ્ડ"
 
 #: includes/admin/post-types/admin-field-group.php:608
 msgid "Move Field"
-msgstr ""
+msgstr "ક્ષેત્ર ખસેડો"
 
 #: includes/admin/post-types/admin-field-group.php:601
 #: includes/admin/post-types/admin-field-group.php:605
 msgid "Please select the destination for this field"
-msgstr ""
+msgstr "કૃપા કરીને આ ફીલ્ડ માટે ગંતવ્ય પસંદ કરો."
 
 #. translators: Confirmation message once a field has been moved to a different
 #. field group.
@@ -5925,7 +5985,7 @@ msgstr "%1$s ક્ષેત્ર હવે %2$s ક્ષેત્ર જૂ�
 
 #: includes/admin/post-types/admin-field-group.php:564
 msgid "Move Complete."
-msgstr ""
+msgstr "ખસેડો પૂર્ણ."
 
 #: includes/admin/views/acf-field-group/field.php:52
 #: includes/admin/views/acf-field-group/options.php:217
@@ -5936,7 +5996,7 @@ msgstr "સક્રિય"
 
 #: includes/admin/post-types/admin-field-group.php:275
 msgid "Field Keys"
-msgstr ""
+msgstr "ફીલ્ડ કીઓ"
 
 #: includes/admin/post-types/admin-field-group.php:179
 msgid "Settings"
@@ -6064,7 +6124,7 @@ msgstr "ક્ષેત્ર પ્રકાર અસ્તિત્વમા�
 
 #: includes/forms/form-front.php:219
 msgid "Spam Detected"
-msgstr ""
+msgstr "સ્પામ શોધાયેલ"
 
 #: includes/forms/form-front.php:102
 msgid "Post updated"
@@ -6089,11 +6149,11 @@ msgstr "શીર્ષક"
 
 #: includes/assets.php:376 includes/forms/form-comment.php:140
 msgid "Edit field group"
-msgstr ""
+msgstr "ક્ષેત્ર જૂથ સંપાદિત કરો"
 
 #: includes/admin/post-types/admin-field-group.php:112
 msgid "Selection is less than"
-msgstr ""
+msgstr "પસંદગી કરતાં ઓછી છે"
 
 #: includes/admin/post-types/admin-field-group.php:111
 msgid "Selection is greater than"
@@ -6143,20 +6203,20 @@ msgstr "શું તમને ખાતરી છે?"
 #. translators: %d is the number of fields that require attention
 #: includes/assets.php:370
 msgid "%d fields require attention"
-msgstr ""
+msgstr "%d ફીલ્ડ પર ધ્યાન આપવાની જરૂર છે"
 
 #: includes/assets.php:368
 msgid "1 field requires attention"
-msgstr ""
+msgstr "1 ફીલ્ડ પર ધ્યાન આપવાની જરૂર છે"
 
 #: includes/assets.php:367 includes/validation.php:258
 #: includes/validation.php:266
 msgid "Validation failed"
-msgstr ""
+msgstr "માન્યતા નિષ્ફળ"
 
 #: includes/assets.php:366
 msgid "Validation successful"
-msgstr ""
+msgstr "માન્યતા સફળ"
 
 #: includes/media.php:54
 msgid "Restricted"
@@ -6164,7 +6224,7 @@ msgstr "પ્રતિબંધિત"
 
 #: includes/media.php:53
 msgid "Collapse Details"
-msgstr ""
+msgstr "વિગતો સંકુચિત કરો"
 
 #: includes/media.php:52
 msgid "Expand Details"
@@ -6208,7 +6268,7 @@ msgstr "ફાઇલનું કદ %s થી વધુ ન હોવું જ
 
 #: includes/api/api-helpers.php:2969
 msgid "File size must be at least %s."
-msgstr ""
+msgstr "ફાઇલનું કદ ઓછામાં ઓછું %s હોવું જોઈએ."
 
 #: includes/api/api-helpers.php:2956
 msgid "Image height must not exceed %dpx."
@@ -6253,7 +6313,7 @@ msgstr "(લેબલ નથી)"
 
 #: includes/fields/class-acf-field-textarea.php:135
 msgid "Sets the textarea height"
-msgstr ""
+msgstr "ટેક્સ્ટેરિયા ઊંચાઈ સેટ કરે છે"
 
 #: includes/fields/class-acf-field-textarea.php:134
 msgid "Rows"
@@ -6266,14 +6326,16 @@ msgstr "ટેક્સ્ટ વિસ્તાર"
 #: includes/fields/class-acf-field-checkbox.php:434
 msgid "Prepend an extra checkbox to toggle all choices"
 msgstr ""
+"બધા વિકલ્પોને ટૉગલ કરવા માટે એક વધારાનો ચેકબોક્સ ઉમેરો.બધા વિકલ્પોને ટૉગલ કરવા માટે "
+"એક વધારાનો ચેકબોક્સ ઉમેરો."
 
 #: includes/fields/class-acf-field-checkbox.php:396
 msgid "Save 'custom' values to the field's choices"
-msgstr ""
+msgstr "ફીલ્ડની પસંદગીઓમાં 'કસ્ટમ' મૂલ્યો સાચવો"
 
 #: includes/fields/class-acf-field-checkbox.php:385
 msgid "Allow 'custom' values to be added"
-msgstr ""
+msgstr "'કસ્ટમ' મૂલ્યો ઉમેરવાની મંજૂરી આપો"
 
 #: includes/fields/class-acf-field-checkbox.php:48
 msgid "Add new choice"
@@ -6281,11 +6343,11 @@ msgstr "નવી પસંદગી ઉમેરો"
 
 #: includes/fields/class-acf-field-checkbox.php:170
 msgid "Toggle All"
-msgstr ""
+msgstr "બધાને ટૉગલ કરો"
 
 #: includes/fields/class-acf-field-page_link.php:487
 msgid "Allow Archives URLs"
-msgstr ""
+msgstr "આર્કાઇવ URL ને મંજૂરી આપો"
 
 #: includes/fields/class-acf-field-page_link.php:196
 msgid "Archives"
@@ -6311,7 +6373,7 @@ msgstr "%s ઉમેર્યું"
 
 #: includes/fields/class-acf-field-taxonomy.php:803
 msgid "%s already exists"
-msgstr ""
+msgstr "%s પહેલાથી જ અસ્તિત્વમાં છે"
 
 #: includes/fields/class-acf-field-taxonomy.php:791
 msgid "User unable to add new %s"
@@ -6323,23 +6385,23 @@ msgstr "ટર્મ ID"
 
 #: includes/fields/class-acf-field-taxonomy.php:677
 msgid "Term Object"
-msgstr ""
+msgstr "ટર્મ ઑબ્જેક્ટ"
 
 #: includes/fields/class-acf-field-taxonomy.php:662
 msgid "Load value from posts terms"
-msgstr ""
+msgstr "પોસ્ટ ટર્મ્સમાંથી મૂલ્ય લોડ કરો"
 
 #: includes/fields/class-acf-field-taxonomy.php:661
 msgid "Load Terms"
-msgstr ""
+msgstr "લોડ શરતો"
 
 #: includes/fields/class-acf-field-taxonomy.php:651
 msgid "Connect selected terms to the post"
-msgstr ""
+msgstr "પસંદ કરેલા શબ્દોને પોસ્ટ સાથે જોડો"
 
 #: includes/fields/class-acf-field-taxonomy.php:650
 msgid "Save Terms"
-msgstr ""
+msgstr "શરતો સાચવો"
 
 #: includes/fields/class-acf-field-taxonomy.php:640
 msgid "Allow new terms to be created whilst editing"
@@ -6347,15 +6409,15 @@ msgstr "સંપાદન કરતી વખતે નવી શરતો બ�
 
 #: includes/fields/class-acf-field-taxonomy.php:639
 msgid "Create Terms"
-msgstr ""
+msgstr "શરતો બનાવો"
 
 #: includes/fields/class-acf-field-taxonomy.php:698
 msgid "Radio Buttons"
-msgstr ""
+msgstr "રેડિયો બટનો"
 
 #: includes/fields/class-acf-field-taxonomy.php:697
 msgid "Single Value"
-msgstr ""
+msgstr "સિંગલ વેલ્યુ"
 
 #: includes/fields/class-acf-field-taxonomy.php:695
 msgid "Multi Select"
@@ -6372,7 +6434,7 @@ msgstr "બહુવિધ મૂલ્યો"
 
 #: includes/fields/class-acf-field-taxonomy.php:688
 msgid "Select the appearance of this field"
-msgstr ""
+msgstr "આ ક્ષેત્રનો દેખાવ પસંદ કરો"
 
 #: includes/fields/class-acf-field-taxonomy.php:687
 msgid "Appearance"
@@ -6380,7 +6442,7 @@ msgstr "દેખાવ"
 
 #: includes/fields/class-acf-field-taxonomy.php:629
 msgid "Select the taxonomy to be displayed"
-msgstr ""
+msgstr "પ્રદર્શિત કરવા માટે વર્ગીકરણ પસંદ કરો"
 
 #: includes/fields/class-acf-field-taxonomy.php:593
 msgctxt "No Terms"
@@ -6389,7 +6451,7 @@ msgstr "ના %s"
 
 #: includes/fields/class-acf-field-number.php:240
 msgid "Value must be equal to or lower than %d"
-msgstr ""
+msgstr "મૂલ્ય %d જેટલું અથવા તેનાથી ઓછું હોવું આવશ્યક છે."
 
 #: includes/fields/class-acf-field-number.php:235
 msgid "Value must be equal to or higher than %d"
@@ -6409,7 +6471,7 @@ msgstr "ક્ષેત્રની પસંદગીમાં 'અન્ય' �
 
 #: includes/fields/class-acf-field-radio.php:243
 msgid "Add 'other' choice to allow for custom values"
-msgstr ""
+msgstr "કસ્ટમ મૂલ્યોને મંજૂરી આપવા માટે 'અન્ય' વિકલ્પ ઉમેરો"
 
 #: includes/admin/views/global/navigation.php:202
 msgid "Other"
@@ -6417,7 +6479,7 @@ msgstr "અન્ય"
 
 #: includes/fields/class-acf-field-radio.php:22
 msgid "Radio Button"
-msgstr ""
+msgstr "રેડિયો બટન"
 
 #: includes/fields/class-acf-field-accordion.php:106
 msgid ""
@@ -6428,15 +6490,15 @@ msgstr ""
 
 #: includes/fields/class-acf-field-accordion.php:95
 msgid "Allow this accordion to open without closing others."
-msgstr ""
+msgstr "આ એકોર્ડિયનને બીજાને બંધ કર્યા વિના ખોલવા દો."
 
 #: includes/fields/class-acf-field-accordion.php:94
 msgid "Multi-Expand"
-msgstr ""
+msgstr "બહુ-વિસ્તૃત"
 
 #: includes/fields/class-acf-field-accordion.php:84
 msgid "Display this accordion as open on page load."
-msgstr ""
+msgstr "આ એકોર્ડિયનને પેજ લોડ પર ખુલ્લું તરીકે દર્શાવો."
 
 #: includes/fields/class-acf-field-accordion.php:83
 msgid "Open"
@@ -6446,29 +6508,29 @@ msgstr "ઓપન"
 msgid "Accordion"
 msgstr "એકોર્ડિયન"
 
-#: includes/fields/class-acf-field-file.php:253
-#: includes/fields/class-acf-field-file.php:265
+#: includes/fields/class-acf-field-file.php:257
+#: includes/fields/class-acf-field-file.php:269
 msgid "Restrict which files can be uploaded"
-msgstr ""
+msgstr "કઈ ફાઇલો અપલોડ કરી શકાય તે પ્રતિબંધિત કરો"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File ID"
 msgstr "ફાઈલ આઈડી"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File URL"
 msgstr "ફાઈલ યુઆરએલ"
 
-#: includes/fields/class-acf-field-file.php:205
+#: includes/fields/class-acf-field-file.php:209
 msgid "File Array"
-msgstr ""
+msgstr "ફાઇલ એરે"
 
-#: includes/fields/class-acf-field-file.php:176
+#: includes/fields/class-acf-field-file.php:180
 msgid "Add File"
 msgstr "ફાઇલ ઉમેરો"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:151
-#: includes/fields/class-acf-field-file.php:176
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:180
 msgid "No file selected"
 msgstr "કોઈ ફાઇલ પસંદ કરી નથી"
 
@@ -6484,7 +6546,6 @@ msgstr "ફાઇલ અપડેટ કરો"
 msgid "Edit File"
 msgstr "ફાઇલ સંપાદિત કરો\t"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
 msgid "Select File"
 msgstr "ફાઇલ પસંદ કરો"
@@ -6499,16 +6560,16 @@ msgstr "પાસવર્ડ"
 
 #: includes/fields/class-acf-field-select.php:363
 msgid "Specify the value returned"
-msgstr ""
+msgstr "પરત કરેલ મૂલ્યનો ઉલ્લેખ કરો"
 
 #: includes/fields/class-acf-field-select.php:431
 msgid "Use AJAX to lazy load choices?"
-msgstr ""
+msgstr "લેઝી લોડ પસંદગીઓ માટે AJAX નો ઉપયોગ કરીએ?"
 
 #: includes/fields/class-acf-field-checkbox.php:346
 #: includes/fields/class-acf-field-select.php:352
 msgid "Enter each default value on a new line"
-msgstr ""
+msgstr "દરેક ડિફોલ્ટ મૂલ્ય નવી લાઇન પર દાખલ કરો"
 
 #: includes/fields/class-acf-field-select.php:217 includes/media.php:48
 msgctxt "verb"
@@ -6518,12 +6579,12 @@ msgstr "પસંદ કરો"
 #: includes/fields/class-acf-field-select.php:95
 msgctxt "Select2 JS load_fail"
 msgid "Loading failed"
-msgstr ""
+msgstr "લોડિંગ નિષ્ફળ થયું"
 
 #: includes/fields/class-acf-field-select.php:94
 msgctxt "Select2 JS searching"
 msgid "Searching&hellip;"
-msgstr ""
+msgstr "શોધી રહ્યું છે..."
 
 #: includes/fields/class-acf-field-select.php:93
 msgctxt "Select2 JS load_more"
@@ -6597,15 +6658,15 @@ msgstr "વપરાશકર્તા ઑબ્જેક્ટ"
 
 #: includes/fields/class-acf-field-user.php:100
 msgid "User Array"
-msgstr ""
+msgstr "વપરાશકર્તા એરે"
 
 #: includes/fields/class-acf-field-user.php:88
 msgid "All user roles"
-msgstr ""
+msgstr "તમામ વપરાશકર્તા ભૂમિકાઓ"
 
 #: includes/fields/class-acf-field-user.php:80
 msgid "Filter by Role"
-msgstr ""
+msgstr "ભૂમિકા દ્વારા ફિલ્ટર કરો"
 
 #: includes/fields/class-acf-field-user.php:15 includes/locations.php:103
 msgid "User"
@@ -6638,7 +6699,7 @@ msgstr "રંગ પીકર"
 #: includes/fields/class-acf-field-date_time_picker.php:83
 msgctxt "Date Time Picker JS pmTextShort"
 msgid "P"
-msgstr ""
+msgstr "પ"
 
 #: includes/fields/class-acf-field-date_time_picker.php:82
 msgctxt "Date Time Picker JS pmText"
@@ -6648,7 +6709,7 @@ msgstr "પી એમ(PM)"
 #: includes/fields/class-acf-field-date_time_picker.php:79
 msgctxt "Date Time Picker JS amTextShort"
 msgid "A"
-msgstr ""
+msgstr "એ"
 
 #: includes/fields/class-acf-field-date_time_picker.php:78
 msgctxt "Date Time Picker JS amText"
@@ -6712,11 +6773,11 @@ msgstr "સમય પસંદ કરો"
 
 #: includes/fields/class-acf-field-date_time_picker.php:22
 msgid "Date Time Picker"
-msgstr ""
+msgstr "તારીખ સમય પીકર"
 
 #: includes/fields/class-acf-field-accordion.php:105
 msgid "Endpoint"
-msgstr ""
+msgstr "અંતિમ બિંદુ"
 
 #: includes/admin/views/acf-field-group/options.php:130
 #: includes/fields/class-acf-field-tab.php:112
@@ -6746,11 +6807,11 @@ msgstr "લિંક યુઆરએલ"
 
 #: includes/fields/class-acf-field-link.php:152
 msgid "Link Array"
-msgstr ""
+msgstr "લિંક એરે"
 
 #: includes/fields/class-acf-field-link.php:124
 msgid "Opens in a new window/tab"
-msgstr ""
+msgstr "નવી વિંડો/ટેબમાં ખુલે છે"
 
 #: includes/fields/class-acf-field-link.php:119
 msgid "Select Link"
@@ -6767,7 +6828,7 @@ msgstr "ઇમેઇલ"
 #: includes/fields/class-acf-field-number.php:173
 #: includes/fields/class-acf-field-range.php:206
 msgid "Step Size"
-msgstr ""
+msgstr "પગલું કદ"
 
 #: includes/fields/class-acf-field-number.php:143
 #: includes/fields/class-acf-field-range.php:184
@@ -6788,7 +6849,7 @@ msgstr "શ્રેણી"
 #: includes/fields/class-acf-field-radio.php:210
 #: includes/fields/class-acf-field-select.php:370
 msgid "Both (Array)"
-msgstr ""
+msgstr "બંને (એરે)"
 
 #: includes/admin/views/acf-field-group/fields.php:52
 #: includes/fields/class-acf-field-button-group.php:164
@@ -6822,7 +6883,7 @@ msgstr "આડું"
 #: includes/fields/class-acf-field-radio.php:183
 #: includes/fields/class-acf-field-select.php:341
 msgid "red : Red"
-msgstr ""
+msgstr "લાલ : લાલ"
 
 #: includes/fields/class-acf-field-button-group.php:138
 #: includes/fields/class-acf-field-checkbox.php:336
@@ -6857,7 +6918,7 @@ msgstr "બટન જૂથ"
 #: includes/fields/class-acf-field-taxonomy.php:708
 #: includes/fields/class-acf-field-user.php:132
 msgid "Allow Null"
-msgstr ""
+msgstr "નલને મંજૂરી આપો"
 
 #: includes/fields/class-acf-field-page_link.php:273
 #: includes/fields/class-acf-field-post_object.php:254
@@ -6871,11 +6932,11 @@ msgstr "જ્યાં સુધી ફીલ્ડ ક્લિક ન થા�
 
 #: includes/fields/class-acf-field-wysiwyg.php:366
 msgid "Delay Initialization"
-msgstr ""
+msgstr "વિલંબ આરંભ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:355
 msgid "Show Media Upload Buttons"
-msgstr ""
+msgstr "મીડિયા અપલોડ બટનો બતાવો"
 
 #: includes/fields/class-acf-field-wysiwyg.php:339
 msgid "Toolbar"
@@ -6887,11 +6948,11 @@ msgstr "ફક્ત ટેક્સ્ટ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:330
 msgid "Visual Only"
-msgstr ""
+msgstr "માત્ર વિઝ્યુઅલ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:329
 msgid "Visual & Text"
-msgstr ""
+msgstr "વિઝ્યુઅલ અને ટેક્સ્ટ"
 
 #: includes/fields/class-acf-field-icon_picker.php:269
 #: includes/fields/class-acf-field-wysiwyg.php:324
@@ -6900,7 +6961,7 @@ msgstr "ટૅબ્સ"
 
 #: includes/fields/class-acf-field-wysiwyg.php:268
 msgid "Click to initialize TinyMCE"
-msgstr ""
+msgstr "TinyMCE શરૂ કરવા માટે ક્લિક કરો."
 
 #: includes/fields/class-acf-field-wysiwyg.php:262
 msgctxt "Name for the Text editor tab (formerly HTML)"
@@ -6919,7 +6980,7 @@ msgstr "મૂલ્ય %d અક્ષરોથી વધુ ન હોવુ�
 #: includes/fields/class-acf-field-text.php:116
 #: includes/fields/class-acf-field-textarea.php:114
 msgid "Leave blank for no limit"
-msgstr ""
+msgstr "કોઈ મર્યાદા ન હોય તો ખાલી છોડી દો"
 
 #: includes/fields/class-acf-field-text.php:115
 #: includes/fields/class-acf-field-textarea.php:113
@@ -6932,7 +6993,7 @@ msgstr "અક્ષર મર્યાદા"
 #: includes/fields/class-acf-field-range.php:228
 #: includes/fields/class-acf-field-text.php:156
 msgid "Appears after the input"
-msgstr ""
+msgstr "ઇનપુટ પછી દેખાય છે"
 
 #: includes/fields/class-acf-field-email.php:143
 #: includes/fields/class-acf-field-number.php:193
@@ -6940,7 +7001,7 @@ msgstr ""
 #: includes/fields/class-acf-field-range.php:227
 #: includes/fields/class-acf-field-text.php:155
 msgid "Append"
-msgstr ""
+msgstr "ઉમેરો"
 
 #: includes/fields/class-acf-field-email.php:134
 #: includes/fields/class-acf-field-number.php:184
@@ -6948,7 +7009,7 @@ msgstr ""
 #: includes/fields/class-acf-field-range.php:218
 #: includes/fields/class-acf-field-text.php:146
 msgid "Appears before the input"
-msgstr ""
+msgstr "ઇનપુટ પહેલાં દેખાય છે"
 
 #: includes/fields/class-acf-field-email.php:133
 #: includes/fields/class-acf-field-number.php:183
@@ -6965,7 +7026,7 @@ msgstr "પ્રીપેન્ડ"
 #: includes/fields/class-acf-field-textarea.php:146
 #: includes/fields/class-acf-field-url.php:105
 msgid "Appears within the input"
-msgstr ""
+msgstr "ઇનપુટમાં દેખાય છે"
 
 #: includes/fields/class-acf-field-email.php:123
 #: includes/fields/class-acf-field-number.php:163
@@ -6974,7 +7035,7 @@ msgstr ""
 #: includes/fields/class-acf-field-textarea.php:145
 #: includes/fields/class-acf-field-url.php:104
 msgid "Placeholder Text"
-msgstr ""
+msgstr "પ્લેસહોલ્ડર ટેક્સ્ટ"
 
 #: includes/fields/class-acf-field-button-group.php:148
 #: includes/fields/class-acf-field-email.php:104
@@ -7007,7 +7068,7 @@ msgstr "પોસ્ટ આઈડી"
 #: includes/fields/class-acf-field-post_object.php:401
 #: includes/fields/class-acf-field-relationship.php:615
 msgid "Post Object"
-msgstr ""
+msgstr "ઑબ્જેક્ટ પોસ્ટ કરો"
 
 #: includes/fields/class-acf-field-relationship.php:648
 msgid "Maximum Posts"
@@ -7025,7 +7086,7 @@ msgstr "ફીચર્ડ છબી"
 
 #: includes/fields/class-acf-field-relationship.php:669
 msgid "Selected elements will be displayed in each result"
-msgstr ""
+msgstr "દરેક પરિણામમાં પસંદ કરેલા તત્વો પ્રદર્શિત થશે."
 
 #: includes/fields/class-acf-field-relationship.php:668
 msgid "Elements"
@@ -7058,19 +7119,19 @@ msgstr "બધા વર્ગીકરણ"
 #: includes/fields/class-acf-field-post_object.php:381
 #: includes/fields/class-acf-field-relationship.php:580
 msgid "Filter by Taxonomy"
-msgstr ""
+msgstr "વર્ગીકરણ દ્વારા ફિલ્ટર કરો"
 
 #: includes/fields/class-acf-field-page_link.php:450
 #: includes/fields/class-acf-field-post_object.php:359
 #: includes/fields/class-acf-field-relationship.php:558
 msgid "All post types"
-msgstr ""
+msgstr "બધા પોસ્ટ પ્રકારો"
 
 #: includes/fields/class-acf-field-page_link.php:442
 #: includes/fields/class-acf-field-post_object.php:351
 #: includes/fields/class-acf-field-relationship.php:550
 msgid "Filter by Post Type"
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર દ્વારા ફિલ્ટર કરો"
 
 #: includes/fields/class-acf-field-relationship.php:450
 msgid "Search..."
@@ -7078,11 +7139,11 @@ msgstr "શોધો"
 
 #: includes/fields/class-acf-field-relationship.php:380
 msgid "Select taxonomy"
-msgstr ""
+msgstr "વર્ગીકરણ પસંદ કરો"
 
 #: includes/fields/class-acf-field-relationship.php:372
 msgid "Select post type"
-msgstr ""
+msgstr "પોસ્ટ પ્રકાર પસંદ કરો"
 
 #: includes/fields/class-acf-field-relationship.php:78
 msgid "No matches found"
@@ -7100,24 +7161,24 @@ msgstr "મહત્તમ મૂલ્યો પહોંચી ગયા ( {ma
 msgid "Relationship"
 msgstr "સંબંધ"
 
-#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-file.php:281
 #: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr "અલ્પવિરામથી વિભાજિત સૂચિ. તમામ પ્રકારના માટે ખાલી છોડો"
 
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:280
 #: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
-msgstr ""
+msgstr "મંજૂર ફાઇલ પ્રકારો"
 
-#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:268
 #: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "મહત્તમ"
 
 #: includes/fields/class-acf-field-file.php:144
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:260
+#: includes/fields/class-acf-field-file.php:272
 #: includes/fields/class-acf-field-image.php:261
 #: includes/fields/class-acf-field-image.php:297
 msgid "File size"
@@ -7128,17 +7189,17 @@ msgstr "ફાઈલ સાઇઝ઼:"
 msgid "Restrict which images can be uploaded"
 msgstr "કઈ છબીઓ અપલોડ કરી શકાય તે પ્રતિબંધિત કરો"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "ન્યૂનતમ"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "પોસ્ટમાં અપલોડ કરવામાં આવ્યું છે"
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
@@ -7150,12 +7211,12 @@ msgstr "પોસ્ટમાં અપલોડ કરવામાં આવ્
 msgid "All"
 msgstr "બધા"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "મીડિયા લાઇબ્રેરીની પસંદગીને મર્યાદિત કરો"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "લાઇબ્રેરી"
@@ -7166,7 +7227,7 @@ msgstr "પૂર્વાવલોકન કદ"
 
 #: includes/fields/class-acf-field-image.php:185
 msgid "Image ID"
-msgstr ""
+msgstr "છબી ID"
 
 #: includes/fields/class-acf-field-image.php:184
 msgid "Image URL"
@@ -7174,11 +7235,11 @@ msgstr "ચિત્ર યુઆરએલ"
 
 #: includes/fields/class-acf-field-image.php:183
 msgid "Image Array"
-msgstr ""
+msgstr "છબી એરે"
 
 #: includes/fields/class-acf-field-button-group.php:158
 #: includes/fields/class-acf-field-checkbox.php:356
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-link.php:147
 #: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
@@ -7186,7 +7247,7 @@ msgstr "અગ્રભાગ પર પરત કરેલ મૂલ્યન�
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-file.php:203
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-taxonomy.php:672
@@ -7240,22 +7301,22 @@ msgstr "HTML માર્કઅપને અનુવાદ બદલે દૃ�
 
 #: includes/fields/class-acf-field-message.php:112
 msgid "Escape HTML"
-msgstr ""
+msgstr "એસ્કેપ HTML"
 
 #: includes/fields/class-acf-field-message.php:104
 #: includes/fields/class-acf-field-textarea.php:162
 msgid "No Formatting"
-msgstr ""
+msgstr "કોઈ ફોર્મેટિંગ નથી"
 
 #: includes/fields/class-acf-field-message.php:103
 #: includes/fields/class-acf-field-textarea.php:161
 msgid "Automatically add &lt;br&gt;"
-msgstr ""
+msgstr "આપમેળે &lt;br&gt; ઉમેરો"
 
 #: includes/fields/class-acf-field-message.php:102
 #: includes/fields/class-acf-field-textarea.php:160
 msgid "Automatically add paragraphs"
-msgstr ""
+msgstr "આપમેળે ફકરા ઉમેરો"
 
 #: includes/fields/class-acf-field-message.php:98
 #: includes/fields/class-acf-field-textarea.php:156
@@ -7270,7 +7331,7 @@ msgstr "નવી રેખાઓ"
 #: includes/fields/class-acf-field-date_picker.php:223
 #: includes/fields/class-acf-field-date_time_picker.php:210
 msgid "Week Starts On"
-msgstr ""
+msgstr "પર અઠવાડિયું શરૂ થાય છે"
 
 #: includes/fields/class-acf-field-date_picker.php:192
 msgid "The format used when saving a value"
@@ -7283,7 +7344,7 @@ msgstr "ફોર્મેટ સાચવો"
 #: includes/fields/class-acf-field-date_picker.php:62
 msgctxt "Date Picker JS weekHeader"
 msgid "Wk"
-msgstr ""
+msgstr "Wk"
 
 #: includes/fields/class-acf-field-date_picker.php:61
 msgctxt "Date Picker JS prevText"
@@ -7318,7 +7379,7 @@ msgstr "પહોળાઈ"
 #: includes/fields/class-acf-field-oembed.php:237
 #: includes/fields/class-acf-field-oembed.php:249
 msgid "Embed Size"
-msgstr ""
+msgstr "એમ્બેડ કદ"
 
 #: includes/fields/class-acf-field-oembed.php:197
 msgid "Enter URL"
@@ -7326,7 +7387,7 @@ msgstr "યુઆરએલ દાખલ કરો"
 
 #: includes/fields/class-acf-field-oembed.php:21
 msgid "oEmbed"
-msgstr ""
+msgstr "oEmbed"
 
 #: includes/fields/class-acf-field-true_false.php:172
 msgid "Text shown when inactive"
@@ -7334,20 +7395,20 @@ msgstr "જ્યારે નિષ્ક્રિય હોય ત્યાર
 
 #: includes/fields/class-acf-field-true_false.php:171
 msgid "Off Text"
-msgstr ""
+msgstr "બંધ ટેક્સ્ટ"
 
 #: includes/fields/class-acf-field-true_false.php:156
 msgid "Text shown when active"
-msgstr ""
+msgstr "સક્રિય હોય ત્યારે ટેક્સ્ટ બતાવવામાં આવે છે"
 
 #: includes/fields/class-acf-field-true_false.php:155
 msgid "On Text"
-msgstr ""
+msgstr "ટેક્સ્ટ પર"
 
 #: includes/fields/class-acf-field-select.php:420
 #: includes/fields/class-acf-field-true_false.php:187
 msgid "Stylized UI"
-msgstr ""
+msgstr "શૈલીયુક્ત UI"
 
 #: includes/fields/class-acf-field-button-group.php:147
 #: includes/fields/class-acf-field-checkbox.php:345
@@ -7367,7 +7428,7 @@ msgstr "મૂળભૂત મૂલ્ય"
 
 #: includes/fields/class-acf-field-true_false.php:126
 msgid "Displays text alongside the checkbox"
-msgstr ""
+msgstr "ચેકબોક્સની સાથે ટેક્સ્ટ દર્શાવે છે"
 
 #: includes/fields/class-acf-field-message.php:23
 #: includes/fields/class-acf-field-message.php:87
@@ -7406,7 +7467,7 @@ msgstr "બ્લોક"
 
 #: includes/fields/class-acf-field-group.php:407
 msgid "Specify the style used to render the selected fields"
-msgstr ""
+msgstr "પસંદ કરેલા ફીલ્ડ્સ રેન્ડર કરવા માટે વપરાયેલી શૈલીનો ઉલ્લેખ કરો."
 
 #: includes/fields.php:331 includes/fields/class-acf-field-button-group.php:204
 #: includes/fields/class-acf-field-checkbox.php:418
@@ -7417,7 +7478,7 @@ msgstr "લેઆઉટ"
 
 #: includes/fields/class-acf-field-group.php:390
 msgid "Sub Fields"
-msgstr ""
+msgstr "પેટા ક્ષેત્રો"
 
 #: includes/fields/class-acf-field-group.php:21
 msgid "Group"
@@ -7425,7 +7486,7 @@ msgstr "જૂથ"
 
 #: includes/fields/class-acf-field-google-map.php:221
 msgid "Customize the map height"
-msgstr ""
+msgstr "નકશાની ઊંચાઈ કસ્ટમાઇઝ કરો"
 
 #: includes/fields/class-acf-field-google-map.php:220
 #: includes/fields/class-acf-field-image.php:249
@@ -7436,7 +7497,7 @@ msgstr "ઊંચાઈ"
 
 #: includes/fields/class-acf-field-google-map.php:209
 msgid "Set the initial zoom level"
-msgstr ""
+msgstr "પ્રારંભિક ઝૂમ સ્તર સેટ કરો"
 
 #: includes/fields/class-acf-field-google-map.php:208
 msgid "Zoom"
@@ -7445,7 +7506,7 @@ msgstr "ઝૂમ"
 #: includes/fields/class-acf-field-google-map.php:182
 #: includes/fields/class-acf-field-google-map.php:195
 msgid "Center the initial map"
-msgstr ""
+msgstr "શરૂઆતના નકશાને મધ્યમાં રાખો"
 
 #: includes/fields/class-acf-field-google-map.php:181
 #: includes/fields/class-acf-field-google-map.php:194
@@ -7454,7 +7515,7 @@ msgstr "મધ્ય"
 
 #: includes/fields/class-acf-field-google-map.php:153
 msgid "Search for address..."
-msgstr ""
+msgstr "સરનામું શોધો..."
 
 #: includes/fields/class-acf-field-google-map.php:150
 msgid "Find current location"
@@ -7471,7 +7532,7 @@ msgstr "શોધો"
 
 #: includes/fields/class-acf-field-google-map.php:56
 msgid "Sorry, this browser does not support geolocation"
-msgstr ""
+msgstr "માફ કરશો, આ બ્રાઉઝર ભૌગોલિક સ્થાનને સપોર્ટ કરતું નથી."
 
 #: includes/fields/class-acf-field-google-map.php:21
 msgid "Google Map"
@@ -7481,7 +7542,7 @@ msgstr "ગૂગલે નકશો"
 #: includes/fields/class-acf-field-date_time_picker.php:191
 #: includes/fields/class-acf-field-time_picker.php:122
 msgid "The format returned via template functions"
-msgstr ""
+msgstr "ટેમ્પલેટ ફંક્શન દ્વારા ફોર્મેટ પરત કરવામાં આવ્યું"
 
 #: includes/fields/class-acf-field-color_picker.php:168
 #: includes/fields/class-acf-field-date_picker.php:202
@@ -7494,7 +7555,7 @@ msgstr ""
 #: includes/fields/class-acf-field-time_picker.php:121
 #: includes/fields/class-acf-field-user.php:95
 msgid "Return Format"
-msgstr ""
+msgstr "રીટર્ન ફોર્મેટ"
 
 #: includes/fields/class-acf-field-date_picker.php:181
 #: includes/fields/class-acf-field-date_picker.php:212
@@ -7509,13 +7570,13 @@ msgstr "કસ્ટમ:"
 #: includes/fields/class-acf-field-date_time_picker.php:173
 #: includes/fields/class-acf-field-time_picker.php:106
 msgid "The format displayed when editing a post"
-msgstr ""
+msgstr "પોસ્ટ સંપાદિત કરતી વખતે પ્રદર્શિત થતું ફોર્મેટ"
 
 #: includes/fields/class-acf-field-date_picker.php:172
 #: includes/fields/class-acf-field-date_time_picker.php:172
 #: includes/fields/class-acf-field-time_picker.php:105
 msgid "Display Format"
-msgstr ""
+msgstr "ડિસ્પ્લે ફોર્મેટ"
 
 #: includes/fields/class-acf-field-time_picker.php:22
 msgid "Time Picker"

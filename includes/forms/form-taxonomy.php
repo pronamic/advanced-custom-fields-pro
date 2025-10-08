@@ -1,14 +1,14 @@
 <?php
-
 /**
- * ACF Taxonomy Form Class
+ * @package ACF
+ * @author  WP Engine
  *
- * All the logic for adding fields to taxonomy terms
- *
- * @class       acf_form_taxonomy
- * @package     ACF
- * @subpackage  Forms
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
+
 if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 
 	class acf_form_taxonomy {
@@ -183,17 +183,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 				);
 
 				foreach ( $field_groups as $field_group ) {
-
-						// title
-					if ( $field_group['style'] == 'default' ) {
-						echo '<h2>' . esc_html( $field_group['title'] ) . '</h2>';
+					// title
+					if ( $field_group['style'] === 'default' ) {
+						echo '<h2>' . acf_esc_html( acf_get_field_group_title( $field_group ) ) . '</h2>';
 					}
 
-						// fields
-						echo '<table class="form-table">';
+					// fields
+					echo '<table class="form-table">';
 					$fields = acf_get_fields( $field_group );
 					acf_render_fields( $fields, $post_id, 'tr', 'field' );
-						echo '</table>';
+					echo '</table>';
 				}
 			}
 		}

@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
@@ -53,7 +62,7 @@ if ( ! class_exists( 'ACF_Ajax_Check_Screen' ) ) :
 					$item = array(
 						'id'       => esc_attr( 'acf-' . $field_group['key'] ),
 						'key'      => esc_attr( $field_group['key'] ),
-						'title'    => esc_html( $field_group['title'] ),
+						'title'    => acf_esc_html( acf_get_field_group_title( $field_group ) ),
 						'position' => esc_attr( $field_group['position'] ),
 						'classes'  => postbox_classes( 'acf-' . $field_group['key'], $args['screen'] ),
 						'style'    => esc_attr( $field_group['style'] ),

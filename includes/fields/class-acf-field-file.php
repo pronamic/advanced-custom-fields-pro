@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 if ( ! class_exists( 'acf_field_file' ) ) :
 
@@ -128,7 +137,7 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 				)
 			);
 			?>
-	<div class="show-if-value file-wrap">
+	<div class="show-if-value file-wrap" tabindex="0" role="button" aria-label="<?php esc_attr_e( 'Selected file. Press tab to access file options.', 'acf' ); ?>">
 		<div class="file-icon">
 			<img data-name="icon" src="<?php echo esc_url( $o['icon'] ); ?>" alt=""/>
 		</div>
@@ -147,9 +156,9 @@ if ( ! class_exists( 'acf_field_file' ) ) :
 		</div>
 		<div class="acf-actions -hover">
 			<?php if ( $uploader != 'basic' ) : ?>
-			<a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php esc_attr_e( 'Edit', 'acf' ); ?>"></a>
+			<a class="acf-icon -pencil dark" data-name="edit" href="#" title="<?php esc_attr_e( 'Edit', 'acf' ); ?>" aria-label="<?php esc_attr_e( 'Edit file', 'acf' ); ?>"></a>
 			<?php endif; ?>
-			<a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php esc_attr_e( 'Remove', 'acf' ); ?>"></a>
+			<a class="acf-icon -cancel dark" data-name="remove" href="#" title="<?php esc_attr_e( 'Remove', 'acf' ); ?>" aria-label="<?php esc_attr_e( 'Remove file', 'acf' ); ?>"></a>
 		</div>
 	</div>
 	<div class="hide-if-value">

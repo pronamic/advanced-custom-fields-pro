@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-10T00:29:48+00:00\n"
+"PO-Revision-Date: 2025-10-06T21:27:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: es_MX\n"
 "MIME-Version: 1.0\n"
@@ -21,19 +21,35 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+msgid "Select JSON File"
+msgstr "Seleccionar archivo JSON"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
+msgid ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
+msgstr ""
+
 #: includes/fields/class-acf-field-date_picker.php:235
 #: includes/fields/class-acf-field-date_time_picker.php:222
 msgid "Use the current date as the default value for this field."
-msgstr ""
+msgstr "Usa la fecha actual como valor predeterminado para este campo."
 
 #: includes/fields/class-acf-field-date_picker.php:234
 #: includes/fields/class-acf-field-date_time_picker.php:221
 msgid "Default to the current date"
-msgstr ""
+msgstr "Predeterminado la fecha actual"
 
 #: includes/assets.php:363
 msgid "Toggle panel"
-msgstr ""
+msgstr "Alternar panel"
 
 #. translators: %1$s - Plugin name, %2$s URL to documentation
 #: includes/admin/admin.php:302
@@ -43,6 +59,10 @@ msgid ""
 "removed in a future version of ACF. <a href=\"%2$s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"%1$s Hemos detectado que este sitio web está configurado para usar la "
+"versión 3 de la biblioteca jQuery Select2, que ha quedado obsoleta en favor "
+"de la versión 4 y se eliminará en una versión futura de ACF. <a "
+"href=\"%2$s\" target=\"_blank\">Más información</a>."
 
 #: includes/fields/class-acf-field-select.php:471
 msgid ""
@@ -51,82 +71,92 @@ msgstr ""
 
 #: includes/fields/class-acf-field-select.php:470
 msgid "Save Options"
-msgstr ""
+msgstr "Guardar opciones"
 
 #: includes/fields/class-acf-field-select.php:448
 msgid ""
 "Allow content editors to create new options by typing in the Select input. "
 "Multiple options can be created from a comma separated string."
 msgstr ""
+"Permite que los editores de contenido creen nuevas opciones escribiendo en "
+"el campo de selección. Se pueden crear varias opciones a partir de una "
+"cadena separada por comas."
 
 #: includes/fields/class-acf-field-select.php:447
 msgid "Create Options"
-msgstr ""
+msgstr "Crear opciones"
 
 #: includes/admin/views/global/navigation.php:179
 #: includes/admin/views/global/navigation.php:183
 msgid "Edit ACF Field Groups"
-msgstr ""
+msgstr "Editar grupos de campos de ACF"
 
 #: includes/admin/views/global/navigation.php:100
 msgid "Get 4 months free on any WP Engine plan"
-msgstr ""
+msgstr "Obtén 4 meses gratis en cualquier plan de WP Engine"
 
 #: src/Site_Health/Site_Health.php:528
 msgid "Number of Field Groups with Blocks and Other Locations"
-msgstr ""
+msgstr "Número de grupos de campos con bloques y otras ubicaciones"
 
 #: src/Site_Health/Site_Health.php:523
 msgid "Number of Field Groups with Multiple Block Locations"
-msgstr ""
+msgstr "Número de grupos de campos con múltiples ubicaciones de bloques"
 
 #: src/Site_Health/Site_Health.php:518
 msgid "Number of Field Groups with a Single Block Location"
-msgstr ""
+msgstr "Número de grupos de campos con una sola ubicación de bloque"
 
 #: src/Site_Health/Site_Health.php:487
 msgid "All Location Rules"
-msgstr ""
+msgstr "Todas las reglas de ubicación"
 
 #: includes/validation.php:145
 msgid "Learn more"
-msgstr ""
+msgstr "Saber más"
 
 #: includes/validation.php:134
 msgid ""
 "ACF was unable to perform validation because the provided nonce failed "
 "verification."
 msgstr ""
+"ACE no fue capaz de realizar la validación porque falló la verificación del "
+"nonce facilitado."
 
 #: includes/validation.php:132
 msgid ""
 "ACF was unable to perform validation because no nonce was received by the "
 "server."
 msgstr ""
+"CE no fue capaz de realizar la validación porque no se recibió ningún nonce "
+"del servidor."
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:348
 msgid "are developed and maintained by"
-msgstr ""
+msgstr "lo desarrollan y mantienen"
 
 #: src/Site_Health/Site_Health.php:295
 msgid "Update Source"
-msgstr ""
+msgstr "Actualizar la fuente"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:850
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:810
 msgid "By default only admin users can edit this setting."
 msgstr ""
+"Por defecto, solo los usuarios administradores pueden editar este ajuste."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:848
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:808
 msgid "By default only super admin users can edit this setting."
 msgstr ""
+"Por defecto, solo los usuarios súper administradores pueden editar este "
+"ajuste."
 
 #: includes/admin/views/acf-field-group/field.php:322
 msgid "Close and Add Field"
-msgstr ""
+msgstr "Cerrar y añadir campo"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:804
 msgid ""
@@ -134,6 +164,10 @@ msgid ""
 "taxonomy. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
 msgstr ""
+"Un nombre de función PHP que se llamará para gestionar el contenido de una "
+"meta box en tu taxonomía. Por seguridad, esta llamada de retorno se "
+"ejecutará en un contexto especial sin acceso a ninguna superglobal como "
+"$_POST o $_GET."
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:842
 msgid ""
@@ -141,18 +175,22 @@ msgid ""
 "screen. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
 msgstr ""
+"Un nombre de función PHP que se llamará cuando se configuren las cajas meta "
+"dela pantalla de edición. Por seguridad, esta llamada de retorno se "
+"ejecutará en un contexto especial sin acceso a ninguna superglobal como "
+"$_POST o $_GET."
 
 #: src/Site_Health/Site_Health.php:296
 msgid "wordpress.org"
-msgstr ""
+msgstr "wordpress.org"
 
 #: includes/fields/class-acf-field.php:364
 msgid "Allow Access to Value in Editor UI"
-msgstr ""
+msgstr "Permitir el acceso al valor en la interfaz del editor"
 
 #: includes/fields/class-acf-field.php:346
 msgid "Learn more."
-msgstr ""
+msgstr "Saber más."
 
 #. translators: %s A "Learn More" link to documentation explaining the setting
 #. further.
@@ -161,92 +199,101 @@ msgid ""
 "Allow content editors to access and display the field value in the editor UI "
 "using Block Bindings or the ACF Shortcode. %s"
 msgstr ""
+"Permite que los editores de contenido accedan y muestren el valor del campo "
+"en la interfaz de usuario del editor utilizando enlaces de bloque o el "
+"shortcode de ACF. %s"
 
 #: src/Blocks/Bindings.php:67
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
 msgstr ""
+"El tipo de campo ACF solicitado no admite la salida en bloques enlazados o "
+"en el shortcode de ACF."
 
 #: includes/api/api-template.php:1085 src/Blocks/Bindings.php:75
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
 msgstr ""
+"El campo ACF solicitado no puede aparecer en los enlaces o en el shortcode "
+"de ACF."
 
 #: includes/api/api-template.php:1077
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
 msgstr ""
+"El tipo de campo ACF solicitado no admite la salida en enlaces o en el "
+"shortcode de ACF."
 
 #: includes/api/api-template.php:1054
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
-msgstr ""
+msgstr "[El shortcode de ACF no puede mostrar campos de entradas no públicas]"
 
 #: includes/api/api-template.php:1011
 msgid "[The ACF shortcode is disabled on this site]"
-msgstr ""
+msgstr "[El shortcode de ACF está desactivado en este sitio]"
 
 #: includes/fields/class-acf-field-icon_picker.php:483
 msgid "Businessman Icon"
-msgstr ""
+msgstr "Ícono de hombre de negocios"
 
 #: includes/fields/class-acf-field-icon_picker.php:475
 msgid "Forums Icon"
-msgstr ""
+msgstr "Ícono de foros"
 
 #: includes/fields/class-acf-field-icon_picker.php:754
 msgid "YouTube Icon"
-msgstr ""
+msgstr "Ícono de YouTube"
 
 #: includes/fields/class-acf-field-icon_picker.php:753
 msgid "Yes (alt) Icon"
-msgstr ""
+msgstr "Ícono de sí (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:751
 msgid "Xing Icon"
-msgstr ""
+msgstr "Ícono de Xing"
 
 #: includes/fields/class-acf-field-icon_picker.php:750
 msgid "WordPress (alt) Icon"
-msgstr ""
+msgstr "Ícono de WordPress (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:748
 msgid "WhatsApp Icon"
-msgstr ""
+msgstr "Ícono de Whatsapp"
 
 #: includes/fields/class-acf-field-icon_picker.php:747
 msgid "Write Blog Icon"
-msgstr ""
+msgstr "Ícono de escribir blog"
 
 #: includes/fields/class-acf-field-icon_picker.php:746
 msgid "Widgets Menus Icon"
-msgstr ""
+msgstr "Ícono de widgets de menús"
 
 #: includes/fields/class-acf-field-icon_picker.php:745
 msgid "View Site Icon"
-msgstr ""
+msgstr "Ícono de ver el sitio"
 
 #: includes/fields/class-acf-field-icon_picker.php:744
 msgid "Learn More Icon"
-msgstr ""
+msgstr "Ícono de aprender más"
 
 #: includes/fields/class-acf-field-icon_picker.php:742
 msgid "Add Page Icon"
-msgstr ""
+msgstr "Ícono de agregar página"
 
 #: includes/fields/class-acf-field-icon_picker.php:739
 msgid "Video (alt3) Icon"
-msgstr ""
+msgstr "Ícono de video (alt3)"
 
 #: includes/fields/class-acf-field-icon_picker.php:738
 msgid "Video (alt2) Icon"
-msgstr ""
+msgstr "Ícono de video (alt2)"
 
 #: includes/fields/class-acf-field-icon_picker.php:737
 msgid "Video (alt) Icon"
-msgstr ""
+msgstr "Ícono de video (alt)"
 
 #: includes/fields/class-acf-field-icon_picker.php:734
 msgid "Update (alt) Icon"
@@ -4197,48 +4244,48 @@ msgstr ""
 msgid "Browse Fields"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:287
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:282
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr ""
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:273
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:257
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:239
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:228
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:204
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:119
+#: includes/admin/tools/class-acf-admin-tool-import.php:121
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
 "with those of the import."
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:108
-#: includes/admin/tools/class-acf-admin-tool-import.php:124
+#: includes/admin/tools/class-acf-admin-tool-import.php:110
+#: includes/admin/tools/class-acf-admin-tool-import.php:126
 msgid "Import from Custom Post Type UI"
 msgstr ""
 
@@ -4385,7 +4432,7 @@ msgstr[1] ""
 
 #: includes/admin/post-types/admin-post-types.php:84
 #: includes/admin/post-types/admin-taxonomies.php:107
-#: includes/admin/tools/class-acf-admin-tool-import.php:79
+#: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -4749,7 +4796,7 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:67
+#: includes/admin/tools/class-acf-admin-tool-import.php:69
 msgid "Import JSON"
 msgstr ""
 
@@ -4852,7 +4899,7 @@ msgstr[1] "%1$s debe ser de uno de los siguientes tipos de contenido: %2$s"
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s debe tener un ID de entrada válido."
 
-#: includes/fields/class-acf-field-file.php:447
+#: includes/fields/class-acf-field-file.php:451
 msgid "%s requires a valid attachment ID."
 msgstr "%s necesita un ID de adjunto válido."
 
@@ -4931,7 +4978,7 @@ msgstr "Adjuntos"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:108
 #: includes/admin/post-types/admin-taxonomies.php:83
-#: includes/admin/tools/class-acf-admin-tool-import.php:90
+#: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -5687,23 +5734,17 @@ msgstr "Generar PHP"
 msgid "Export Field Groups"
 msgstr "Exportar grupos de campos"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:172
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
 msgstr "Archivo de imporación vacío"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:163
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
 msgstr "Tipo de campo incorrecto"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:158
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
 msgstr "Error al subir el archivo. Por favor, inténtalo de nuevo"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:47
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the items in that file."
-msgstr ""
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
@@ -6330,29 +6371,29 @@ msgstr "Abrir"
 msgid "Accordion"
 msgstr "Acordeón"
 
-#: includes/fields/class-acf-field-file.php:253
-#: includes/fields/class-acf-field-file.php:265
+#: includes/fields/class-acf-field-file.php:257
+#: includes/fields/class-acf-field-file.php:269
 msgid "Restrict which files can be uploaded"
 msgstr "Restringen los archivos que se pueden subir"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File ID"
 msgstr "ID del archivo"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File URL"
 msgstr "URL del archivo"
 
-#: includes/fields/class-acf-field-file.php:205
+#: includes/fields/class-acf-field-file.php:209
 msgid "File Array"
 msgstr "Array del archivo"
 
-#: includes/fields/class-acf-field-file.php:176
+#: includes/fields/class-acf-field-file.php:180
 msgid "Add File"
 msgstr "Añadir archivo"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:151
-#: includes/fields/class-acf-field-file.php:176
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:180
 msgid "No file selected"
 msgstr "Ningún archivo seleccionado"
 
@@ -6368,7 +6409,6 @@ msgstr "Actualizar archivo"
 msgid "Edit File"
 msgstr "Editar archivo"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
 msgid "Select File"
 msgstr "Seleccionar archivo"
@@ -6987,24 +7027,24 @@ msgstr "Valores máximos alcanzados ( {max} valores )"
 msgid "Relationship"
 msgstr "Relación"
 
-#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-file.php:281
 #: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr "Lista separada por comas. Déjalo en blanco para todos los tipos"
 
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:280
 #: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
 msgstr ""
 
-#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:268
 #: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "Máximo"
 
 #: includes/fields/class-acf-field-file.php:144
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:260
+#: includes/fields/class-acf-field-file.php:272
 #: includes/fields/class-acf-field-image.php:261
 #: includes/fields/class-acf-field-image.php:297
 msgid "File size"
@@ -7015,17 +7055,17 @@ msgstr "Tamaño del archivo"
 msgid "Restrict which images can be uploaded"
 msgstr "Restringir que las imágenes se pueden subir"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "Subidos al contenido"
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
@@ -7037,12 +7077,12 @@ msgstr "Subidos al contenido"
 msgid "All"
 msgstr "Todos"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "Limitar las opciones de la biblioteca de medios"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "Biblioteca"
@@ -7065,7 +7105,7 @@ msgstr "Array de imágenes"
 
 #: includes/fields/class-acf-field-button-group.php:158
 #: includes/fields/class-acf-field-checkbox.php:356
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-link.php:147
 #: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
@@ -7073,7 +7113,7 @@ msgstr "Especificar el valor devuelto en la web"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-file.php:203
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-taxonomy.php:672

@@ -1,8 +1,12 @@
 <?php
 /**
- * The ACF Update Class, responsible for talking to the connect API server and injecting PRO's update data into WordPress.
- *
  * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace ACF;

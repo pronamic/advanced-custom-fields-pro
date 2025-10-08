@@ -1,4 +1,13 @@
 <?php
+/**
+ * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 
@@ -601,9 +610,18 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 			$args = apply_filters( 'acf/fields/taxonomy/wp_list_categories/name=' . $field['_name'], $args, $field );
 			$args = apply_filters( 'acf/fields/taxonomy/wp_list_categories/key=' . $field['key'], $args, $field );
 
+			// Build UL attributes for accessibility and consistency.
+			$ul = array(
+				'class' => 'acf-checkbox-list acf-bl',
+				'role'  => $field['field_type'] === 'radio' ? 'radiogroup' : 'group',
+			);
+
+			if ( ! empty( $field['id'] ) ) {
+				$ul['aria-labelledby'] = $field['id'] . '-label';
+			}
 			?>
 <div class="categorychecklist-holder">
-	<ul class="acf-checkbox-list acf-bl">
+	<ul <?php echo acf_esc_attrs( $ul ); ?>>
 			<?php wp_list_categories( $args ); ?>
 	</ul>
 </div>

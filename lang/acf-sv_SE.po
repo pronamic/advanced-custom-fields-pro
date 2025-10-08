@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-10T00:29:48+00:00\n"
+"PO-Revision-Date: 2025-10-06T21:27:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+msgid "Select JSON File"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
+msgid ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
+msgstr ""
 
 #: includes/fields/class-acf-field-date_picker.php:235
 #: includes/fields/class-acf-field-date_time_picker.php:222
@@ -4276,40 +4292,40 @@ msgstr ""
 msgid "Browse Fields"
 msgstr "Bläddra bland fält"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:287
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr "Ingenting att importera"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:282
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr ". Tillägget ”Custom Post Type UI” kan inaktiveras."
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:273
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] "Importerade %d objekt från ”Custom Post Type UI” –"
 msgstr[1] "Importerade %d objekt från ”Custom Post Type UI” –"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:257
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr "Misslyckades att importera taxonomier."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:239
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr "Misslyckades att importera inläggstyper."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:228
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr "Inget från ”Custom Post Type UI” har valts för import."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:204
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] "Importerade 1 objekt"
 msgstr[1] "Importerade %s objekt"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:119
+#: includes/admin/tools/class-acf-admin-tool-import.php:121
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
@@ -4319,8 +4335,8 @@ msgstr ""
 "finns skrivs inställningarna för den befintliga inläggstypen eller taxonomin "
 "över med inställningarna för importen."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:108
-#: includes/admin/tools/class-acf-admin-tool-import.php:124
+#: includes/admin/tools/class-acf-admin-tool-import.php:110
+#: includes/admin/tools/class-acf-admin-tool-import.php:126
 msgid "Import from Custom Post Type UI"
 msgstr "Importera från Custom Post Type UI"
 
@@ -4475,7 +4491,7 @@ msgstr[1] "%s inläggstyper aktiverade."
 
 #: includes/admin/post-types/admin-post-types.php:84
 #: includes/admin/post-types/admin-taxonomies.php:107
-#: includes/admin/tools/class-acf-admin-tool-import.php:79
+#: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -4857,7 +4873,7 @@ msgstr "Validering"
 msgid "General"
 msgstr "Allmänt"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:67
+#: includes/admin/tools/class-acf-admin-tool-import.php:69
 msgid "Import JSON"
 msgstr "Importera JSON"
 
@@ -4964,7 +4980,7 @@ msgstr[1] "%1$s måste vara en av följande inläggstyper: %2$s"
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s måste ha ett giltigt inläggs-ID."
 
-#: includes/fields/class-acf-field-file.php:447
+#: includes/fields/class-acf-field-file.php:451
 msgid "%s requires a valid attachment ID."
 msgstr "%s kräver ett giltig bilage-ID."
 
@@ -5043,7 +5059,7 @@ msgstr "Bilagor"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:108
 #: includes/admin/post-types/admin-taxonomies.php:83
-#: includes/admin/tools/class-acf-admin-tool-import.php:90
+#: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -5801,25 +5817,17 @@ msgstr "Generera PHP"
 msgid "Export Field Groups"
 msgstr "Exportera fältgrupper"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:172
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
 msgstr "Importerad fil är tom"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:163
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
 msgstr "Felaktig filtyp"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:158
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
 msgstr "Fel vid uppladdning av fil. Försök igen"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:47
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the items in that file."
-msgstr ""
-"Välj den JSON-fil för Advanced Custom Fields som du vill importera. När du "
-"klickar på importknappen nedan kommer ACF att importera objekten i den filen."
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
@@ -6446,29 +6454,29 @@ msgstr "Öppen"
 msgid "Accordion"
 msgstr "Dragspel"
 
-#: includes/fields/class-acf-field-file.php:253
-#: includes/fields/class-acf-field-file.php:265
+#: includes/fields/class-acf-field-file.php:257
+#: includes/fields/class-acf-field-file.php:269
 msgid "Restrict which files can be uploaded"
 msgstr "Begränsa vilka filer som kan laddas upp"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File ID"
 msgstr "Fil-ID"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File URL"
 msgstr "Fil-URL"
 
-#: includes/fields/class-acf-field-file.php:205
+#: includes/fields/class-acf-field-file.php:209
 msgid "File Array"
 msgstr "Fil-array"
 
-#: includes/fields/class-acf-field-file.php:176
+#: includes/fields/class-acf-field-file.php:180
 msgid "Add File"
 msgstr "Lägg till fil"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:151
-#: includes/fields/class-acf-field-file.php:176
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:180
 msgid "No file selected"
 msgstr "Ingen fil vald"
 
@@ -6484,7 +6492,6 @@ msgstr "Uppdatera fil"
 msgid "Edit File"
 msgstr "Redigera fil"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
 msgid "Select File"
 msgstr "Välj fil"
@@ -7104,24 +7111,24 @@ msgstr "Maximalt antal värden har nåtts ({max} värden)"
 msgid "Relationship"
 msgstr "Relationer"
 
-#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-file.php:281
 #: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr "Kommaseparerad lista. Lämna tomt för alla typer"
 
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:280
 #: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
 msgstr "Tillåtna filtyper"
 
-#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:268
 #: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "Maximalt"
 
 #: includes/fields/class-acf-field-file.php:144
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:260
+#: includes/fields/class-acf-field-file.php:272
 #: includes/fields/class-acf-field-image.php:261
 #: includes/fields/class-acf-field-image.php:297
 msgid "File size"
@@ -7132,17 +7139,17 @@ msgstr "Filstorlek"
 msgid "Restrict which images can be uploaded"
 msgstr "Begränsa vilka bilder som kan laddas upp"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "Minimum"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "Uppladdat till inlägg"
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
@@ -7154,12 +7161,12 @@ msgstr "Uppladdat till inlägg"
 msgid "All"
 msgstr "Alla"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "Begränsa mediabiblioteksvalet"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "Bibliotek"
@@ -7182,7 +7189,7 @@ msgstr "Bild-array"
 
 #: includes/fields/class-acf-field-button-group.php:158
 #: includes/fields/class-acf-field-checkbox.php:356
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-link.php:147
 #: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
@@ -7190,7 +7197,7 @@ msgstr "Specificera returvärdet på front-end"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-file.php:203
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-taxonomy.php:672

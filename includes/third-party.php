@@ -1,11 +1,12 @@
 <?php
 /**
- * ACF 3rd Party Compatibility Class
+ * @package ACF
+ * @author  WP Engine
  *
- * All the logic for 3rd party functionality
- *
- * @package     ACF
- * @subpackage  Core
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 if ( ! class_exists( 'acf_third_party' ) ) :
@@ -98,10 +99,10 @@ if ( ! class_exists( 'acf_third_party' ) ) :
 
 					// vars
 					$id    = "acf-{$field_group['key']}";
-					$title = 'ACF: ' . $field_group['title'];
+					$title = 'ACF: ' . acf_esc_html( acf_get_field_group_title( $field_group ) );
 
 					// add meta box
-					add_meta_box( $id, esc_html( $title ), '__return_true', $post_type );
+					add_meta_box( $id, $title, '__return_true', $post_type );
 				}
 			}
 		}

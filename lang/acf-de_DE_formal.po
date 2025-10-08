@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-10T00:29:48+00:00\n"
+"PO-Revision-Date: 2025-10-06T21:27:19+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: de_DE_formal\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:61
+msgid ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:55
+msgid "Select JSON File"
+msgstr ""
+
+#: includes/admin/tools/class-acf-admin-tool-import.php:47
+msgid ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
+msgstr ""
 
 #: includes/fields/class-acf-field-date_picker.php:235
 #: includes/fields/class-acf-field-date_time_picker.php:222
@@ -2242,7 +2258,7 @@ msgstr "Preise anzeigen und Upgrade installieren"
 #: includes/admin/views/options-page-preview.php:29
 #: includes/fields/class-acf-field-icon_picker.php:280
 msgid "Learn More"
-msgstr "Mehr erfahren"
+msgstr "Weitere Informationen"
 
 #: includes/admin/views/acf-field-group/pro-features.php:28
 msgid ""
@@ -4310,41 +4326,41 @@ msgstr ""
 msgid "Browse Fields"
 msgstr "Felder durchsuchen"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:287
+#: includes/admin/tools/class-acf-admin-tool-import.php:289
 msgid "Nothing to import"
 msgstr "Es gibt nichts zu importieren"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:282
+#: includes/admin/tools/class-acf-admin-tool-import.php:284
 msgid ". The Custom Post Type UI plugin can be deactivated."
 msgstr ". Das Plugin Custom Post Type UI kann deaktiviert werden."
 
 #. translators: %d - number of items imported from CPTUI
-#: includes/admin/tools/class-acf-admin-tool-import.php:273
+#: includes/admin/tools/class-acf-admin-tool-import.php:275
 msgid "Imported %d item from Custom Post Type UI -"
 msgid_plural "Imported %d items from Custom Post Type UI -"
 msgstr[0] "Es wurde %d Element von Custom Post Type UI importiert -"
 msgstr[1] "Es wurden %d Elemente von Custom Post Type UI importiert -"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:257
+#: includes/admin/tools/class-acf-admin-tool-import.php:259
 msgid "Failed to import taxonomies."
 msgstr "Der Import der Taxonomien ist fehlgeschlagen."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:239
+#: includes/admin/tools/class-acf-admin-tool-import.php:241
 msgid "Failed to import post types."
 msgstr "Der Import der Inhaltstypen ist fehlgeschlagen."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:228
+#: includes/admin/tools/class-acf-admin-tool-import.php:230
 msgid "Nothing from Custom Post Type UI plugin selected for import."
 msgstr ""
 "Es wurde nichts aus dem Plugin Custom Post Type UI für den Import ausgewählt."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:204
+#: includes/admin/tools/class-acf-admin-tool-import.php:206
 msgid "Imported 1 item"
 msgid_plural "Imported %s items"
 msgstr[0] "1 Element wurde importiert"
 msgstr[1] "%s Elemente wurden importiert"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:119
+#: includes/admin/tools/class-acf-admin-tool-import.php:121
 msgid ""
 "Importing a Post Type or Taxonomy with the same key as one that already "
 "exists will overwrite the settings for the existing Post Type or Taxonomy "
@@ -4355,8 +4371,8 @@ msgstr ""
 "Inhaltstyps oder der vorhandenen Taxonomie mit denen des Imports "
 "überschrieben."
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:108
-#: includes/admin/tools/class-acf-admin-tool-import.php:124
+#: includes/admin/tools/class-acf-admin-tool-import.php:110
+#: includes/admin/tools/class-acf-admin-tool-import.php:126
 msgid "Import from Custom Post Type UI"
 msgstr "Aus Custom Post Type UI importieren"
 
@@ -4513,7 +4529,7 @@ msgstr[1] "%s Inhaltstypen wurden aktiviert."
 
 #: includes/admin/post-types/admin-post-types.php:84
 #: includes/admin/post-types/admin-taxonomies.php:107
-#: includes/admin/tools/class-acf-admin-tool-import.php:79
+#: includes/admin/tools/class-acf-admin-tool-import.php:81
 #: includes/admin/views/acf-taxonomy/basic-settings.php:82
 #: includes/post-types/class-acf-post-type.php:91
 msgid "Post Types"
@@ -4899,7 +4915,7 @@ msgstr "Validierung"
 msgid "General"
 msgstr "Allgemein"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:67
+#: includes/admin/tools/class-acf-admin-tool-import.php:69
 msgid "Import JSON"
 msgstr "JSON importieren"
 
@@ -5008,7 +5024,7 @@ msgstr[1] "%1$s muss einer der folgenden Inhaltstypen sein: %2$s"
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s muss eine gültige Beitrags-ID haben."
 
-#: includes/fields/class-acf-field-file.php:447
+#: includes/fields/class-acf-field-file.php:451
 msgid "%s requires a valid attachment ID."
 msgstr "%s erfordert eine gültige Anhangs-ID."
 
@@ -5087,7 +5103,7 @@ msgstr "Anhänge"
 #: includes/acf-wp-functions.php:57
 #: includes/admin/post-types/admin-post-types.php:108
 #: includes/admin/post-types/admin-taxonomies.php:83
-#: includes/admin/tools/class-acf-admin-tool-import.php:90
+#: includes/admin/tools/class-acf-admin-tool-import.php:92
 #: includes/admin/views/acf-post-type/basic-settings.php:86
 #: includes/post-types/class-acf-taxonomy.php:90
 #: includes/post-types/class-acf-taxonomy.php:91
@@ -5589,7 +5605,7 @@ msgstr "Platzierung der Beschriftung"
 
 #: includes/admin/views/acf-field-group/options.php:110
 msgid "Side"
-msgstr "Seite"
+msgstr "Seitlich"
 
 #: includes/admin/views/acf-field-group/options.php:109
 msgid "Normal (after content)"
@@ -5857,23 +5873,17 @@ msgstr "PHP erstellen"
 msgid "Export Field Groups"
 msgstr "Feldgruppen exportieren"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:172
+#: includes/admin/tools/class-acf-admin-tool-import.php:174
 msgid "Import file empty"
 msgstr "Die importierte Datei ist leer"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:163
+#: includes/admin/tools/class-acf-admin-tool-import.php:165
 msgid "Incorrect file type"
 msgstr "Inkorrekter Dateityp"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:158
+#: includes/admin/tools/class-acf-admin-tool-import.php:160
 msgid "Error uploading file. Please try again"
 msgstr "Fehler beim Upload der Datei. Bitte erneut versuchen"
-
-#: includes/admin/tools/class-acf-admin-tool-import.php:47
-msgid ""
-"Select the Advanced Custom Fields JSON file you would like to import. When "
-"you click the import button below, ACF will import the items in that file."
-msgstr ""
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:26
 msgid "Import Field Groups"
@@ -6502,29 +6512,29 @@ msgstr "Geöffnet"
 msgid "Accordion"
 msgstr "Akkordeon"
 
-#: includes/fields/class-acf-field-file.php:253
-#: includes/fields/class-acf-field-file.php:265
+#: includes/fields/class-acf-field-file.php:257
+#: includes/fields/class-acf-field-file.php:269
 msgid "Restrict which files can be uploaded"
 msgstr "Beschränkt, welche Dateien hochgeladen werden können"
 
-#: includes/fields/class-acf-field-file.php:207
+#: includes/fields/class-acf-field-file.php:211
 msgid "File ID"
 msgstr "Datei-ID"
 
-#: includes/fields/class-acf-field-file.php:206
+#: includes/fields/class-acf-field-file.php:210
 msgid "File URL"
 msgstr "Datei-URL"
 
-#: includes/fields/class-acf-field-file.php:205
+#: includes/fields/class-acf-field-file.php:209
 msgid "File Array"
 msgstr "Datei-Array"
 
-#: includes/fields/class-acf-field-file.php:176
+#: includes/fields/class-acf-field-file.php:180
 msgid "Add File"
 msgstr "Datei hinzufügen"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:151
-#: includes/fields/class-acf-field-file.php:176
+#: includes/admin/tools/class-acf-admin-tool-import.php:153
+#: includes/fields/class-acf-field-file.php:180
 msgid "No file selected"
 msgstr "Es wurde keine Datei ausgewählt"
 
@@ -6540,7 +6550,6 @@ msgstr "Datei aktualisieren"
 msgid "Edit File"
 msgstr "Datei bearbeiten"
 
-#: includes/admin/tools/class-acf-admin-tool-import.php:55
 #: includes/fields/class-acf-field-file.php:55
 msgid "Select File"
 msgstr "Datei auswählen"
@@ -6624,7 +6633,7 @@ msgstr "Gib bitte ein oder mehr Zeichen ein"
 #: includes/fields/class-acf-field-select.php:83
 msgctxt "Select2 JS matches_0"
 msgid "No matches found"
-msgstr "Es wurden keine Übereinstimmungen gefunden"
+msgstr "Keine Übereinstimmung gefunden"
 
 #. translators: %d - number of results available in select field
 #: includes/fields/class-acf-field-select.php:82
@@ -6701,7 +6710,7 @@ msgstr "P"
 #: includes/fields/class-acf-field-date_time_picker.php:82
 msgctxt "Date Time Picker JS pmText"
 msgid "PM"
-msgstr "PM"
+msgstr "p.m."
 
 #: includes/fields/class-acf-field-date_time_picker.php:79
 msgctxt "Date Time Picker JS amTextShort"
@@ -6711,7 +6720,7 @@ msgstr "A"
 #: includes/fields/class-acf-field-date_time_picker.php:78
 msgctxt "Date Time Picker JS amText"
 msgid "AM"
-msgstr "AM"
+msgstr "a.m."
 
 #: includes/fields/class-acf-field-date_time_picker.php:76
 msgctxt "Date Time Picker JS selectText"
@@ -7146,7 +7155,7 @@ msgstr "Inhaltstyp auswählen"
 
 #: includes/fields/class-acf-field-relationship.php:78
 msgid "No matches found"
-msgstr "Es wurde keine Übereinstimmung gefunden"
+msgstr "Keine Übereinstimmung gefunden"
 
 #: includes/fields/class-acf-field-relationship.php:77
 msgid "Loading"
@@ -7160,25 +7169,25 @@ msgstr "Die maximal möglichen Werte wurden erreicht ({max} Werte)"
 msgid "Relationship"
 msgstr "Beziehung"
 
-#: includes/fields/class-acf-field-file.php:277
+#: includes/fields/class-acf-field-file.php:281
 #: includes/fields/class-acf-field-image.php:307
 msgid "Comma separated list. Leave blank for all types"
 msgstr ""
 "Eine durch Kommata getrennte Liste. Leer lassen, um alle Typen zu erlauben"
 
-#: includes/fields/class-acf-field-file.php:276
+#: includes/fields/class-acf-field-file.php:280
 #: includes/fields/class-acf-field-image.php:306
 msgid "Allowed File Types"
 msgstr "Erlaubte Dateiformate"
 
-#: includes/fields/class-acf-field-file.php:264
+#: includes/fields/class-acf-field-file.php:268
 #: includes/fields/class-acf-field-image.php:270
 msgid "Maximum"
 msgstr "Maximum"
 
 #: includes/fields/class-acf-field-file.php:144
-#: includes/fields/class-acf-field-file.php:256
-#: includes/fields/class-acf-field-file.php:268
+#: includes/fields/class-acf-field-file.php:260
+#: includes/fields/class-acf-field-file.php:272
 #: includes/fields/class-acf-field-image.php:261
 #: includes/fields/class-acf-field-image.php:297
 msgid "File size"
@@ -7189,17 +7198,17 @@ msgstr "Dateigröße"
 msgid "Restrict which images can be uploaded"
 msgstr "Beschränkt, welche Bilder hochgeladen werden können"
 
-#: includes/fields/class-acf-field-file.php:252
+#: includes/fields/class-acf-field-file.php:256
 #: includes/fields/class-acf-field-image.php:234
 msgid "Minimum"
 msgstr "Minimum"
 
-#: includes/fields/class-acf-field-file.php:222
+#: includes/fields/class-acf-field-file.php:226
 #: includes/fields/class-acf-field-image.php:200
 msgid "Uploaded to post"
 msgstr "Wurde zum Beitrag hochgeladen"
 
-#: includes/fields/class-acf-field-file.php:221
+#: includes/fields/class-acf-field-file.php:225
 #: includes/fields/class-acf-field-image.php:199
 #: includes/locations/class-acf-location-attachment.php:73
 #: includes/locations/class-acf-location-comment.php:61
@@ -7211,12 +7220,12 @@ msgstr "Wurde zum Beitrag hochgeladen"
 msgid "All"
 msgstr "Alle"
 
-#: includes/fields/class-acf-field-file.php:216
+#: includes/fields/class-acf-field-file.php:220
 #: includes/fields/class-acf-field-image.php:194
 msgid "Limit the media library choice"
 msgstr "Beschränkt die Auswahl in der Mediathek"
 
-#: includes/fields/class-acf-field-file.php:215
+#: includes/fields/class-acf-field-file.php:219
 #: includes/fields/class-acf-field-image.php:193
 msgid "Library"
 msgstr "Mediathek"
@@ -7239,7 +7248,7 @@ msgstr "Bild-Array"
 
 #: includes/fields/class-acf-field-button-group.php:158
 #: includes/fields/class-acf-field-checkbox.php:356
-#: includes/fields/class-acf-field-file.php:200
+#: includes/fields/class-acf-field-file.php:204
 #: includes/fields/class-acf-field-link.php:147
 #: includes/fields/class-acf-field-radio.php:203
 msgid "Specify the returned value on front end"
@@ -7247,7 +7256,7 @@ msgstr "Legt den Rückgabewert für das Frontend fest"
 
 #: includes/fields/class-acf-field-button-group.php:157
 #: includes/fields/class-acf-field-checkbox.php:355
-#: includes/fields/class-acf-field-file.php:199
+#: includes/fields/class-acf-field-file.php:203
 #: includes/fields/class-acf-field-link.php:146
 #: includes/fields/class-acf-field-radio.php:202
 #: includes/fields/class-acf-field-taxonomy.php:672

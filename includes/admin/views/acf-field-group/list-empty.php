@@ -1,11 +1,15 @@
 <?php
 /**
- * The empty list state for an ACF field group
- *
  * @package ACF
+ * @author  WP Engine
+ *
+ * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * "ACF" is a trademark of WP Engine.
+ * Licensed under the GNU General Public License v2 or later.
+ * https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-?><script>document.body.classList.add('acf-no-field-groups');</script>
+?>
+<script>document.body.classList.add('acf-no-field-groups');</script>
 <div class="acf-no-field-groups-wrapper">
 	<div class="acf-no-field-groups-inner">
 		<img src="<?php echo esc_url( acf_get_url( 'assets/images/empty-group.svg' ) ); ?>" />
