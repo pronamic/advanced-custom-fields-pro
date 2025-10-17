@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
-Tested up to: 6.8.2
+Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 6.6.0
+Stable tag: 6.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,17 @@ From your WordPress dashboard
 
 == Changelog ==
 
+= 6.6.1 =
+*Release Date 16th October 2025*
+
+* Fix - The Color Picker palette now displays correctly with a larger number of custom palette colors
+* Fix - The WYSIWYG field no longer displays an extra textarea in ACF Blocks
+* Fix - The type signature of the ACF Blocks render function now matches prior to 6.6, resolving potential type hinting errors
+* Fix - V3 Blocks now correctly update the block preview when changing text controls
+* Fix - V3 Blocks now work correctly in the Widget block editor
+* Fix - V3 Blocks no longer render an extra hidden div into the block editor
+* Fix - Fields on V3 blocks now consistently render properly when switching between “Post” and “Block” view in the sidebar
+
 = 6.6.0 =
 *Release Date 7th October 2025*
 
@@ -115,6 +126,7 @@ From your WordPress dashboard
 * Fix - New field names are lowercase only
 * Fix - Icon Picker now enforces required validation
 * Fix - Calls to jQuery’s deprecated focus function have been updated to use the trigger function
+* Fix - Layouts inside cloned Flexible Content fields can now be disabled and renamed
 * i18n - Updated PRO Japanese translations (props danielkun)
 
 = 6.5.1 =
