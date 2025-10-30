@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 6.6.1
+Stable tag: 6.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,19 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.6.2 =
+*Release Date 29th October 2025*
+
+* Enhancement - Added a new `convert_field_name_to_lowercase` JS filter to allow uppercase letters in ACF field names
+* Enhancement - The form for V3 Blocks can now be optionally hidden from the sidebar via a new `hideFieldsInSidebar` setting in block.json
+* Enhancement - V3 Blocks now display an "Open Expanded Editor" button in the sidebar for easier access to the full edit form
+* Fix - The buttons to reorder ACF metaboxes are no longer hidden for metaboxes in the block editor sidebar
+* Fix - V3 Blocks now display a fallback message when the block preview can't be rendered due to invalid HTML being used in field values
+* Fix - V3 Blocks no longer show a loading spinner when preloaded
+* Fix - V3 Blocks now save default field values even if the block wasn't interacted with before saving
+* Fix - Pressing CMD/CTRL + Z no longer causes the fields to disappear in V3 Blocks
+* Fix - The form for V3 Blocks now opens on the left side in RTL languages
 
 = 6.6.1 =
 *Release Date 16th October 2025*
