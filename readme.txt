@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
-Tested up to: 6.8.3
+Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 6.6.2
+Stable tag: 6.7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,19 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.7.0 =
+*Release Date 3rd December 2025*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-6-7-released/)
+* New - ACF Blocks V3 now supports Inline Editing - edit your block content directly in place, right inside the editor. Just opt in to enable it.
+* Enhancement - Accordion field accessibility improvements
+* Enhancement - Google Maps field accessibility improvements
+* Enhancement - Styling improvements to the V3 Blocks expanded editor
+* Fix - V3 ACF Blocks validation now clears properly when more than one block is in the editor.
+* Fix - Relationship, Post Object, and Page Link fields now sort posts correctly on WordPress 6.8+
+* Fix - List tables now respect the convert_field_name_to_lowercase javascript filter
+* Fix - WYSIWYG field on attachment pages no longer sends ajax on every keystroke
 
 = 6.6.2 =
 *Release Date 29th October 2025*
