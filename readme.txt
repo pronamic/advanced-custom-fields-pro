@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 6.7.0.1
+Stable tag: 6.7.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,12 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.7.0.2 =
+*Release Date 11th December 2025*
+*PRO Only Release*
+
+* Fix - Posts with V3 blocks can now be saved without clicking the block
 
 = 6.7.0.1 =
 *Release Date 10th December 2025*
