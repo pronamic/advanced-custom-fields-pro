@@ -3,7 +3,7 @@
  * @package ACF
  * @author  WP Engine
  *
- * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * © 2026 Advanced Custom Fields (ACF®). All rights reserved.
  * "ACF" is a trademark of WP Engine.
  * Licensed under the GNU General Public License v2 or later.
  * https://www.gnu.org/licenses/gpl-2.0.html
@@ -85,20 +85,19 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 		}
 
 		/**
-		 * get_args
-		 *
 		 * Returns an array of args for this query.
 		 *
-		 * @date    31/7/18
-		 * @since   5.7.2
+		 * @since 5.7.2
 		 *
-		 * @param   array $request The request args.
-		 * @return  array
+		 * @param array $request The request args.
+		 * @return array
 		 */
-		function get_args( $request ) {
-			$args           = parent::get_args( $request );
-			$args['number'] = $this->per_page;
-			$args['paged']  = $this->page;
+		public function get_args( $request ) {
+			$args = array(
+				'number' => $this->per_page,
+				'paged'  => $this->page,
+			);
+
 			if ( $this->is_search ) {
 				$args['search'] = "*{$this->search}*";
 			}
@@ -106,12 +105,11 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 			/**
 			 * Filters the query args.
 			 *
-			 * @date    21/5/19
-			 * @since   5.8.1
+			 * @since 5.8.1
 			 *
-			 * @param   array $args The query args.
-			 * @param   array $request The query request.
-			 * @param   ACF_Ajax_Query $query The query object.
+			 * @param array          $args    The query args.
+			 * @param array          $request The query request.
+			 * @param ACF_Ajax_Query $query   The query object.
 			 */
 			return apply_filters( 'acf/ajax/query_users/args', $args, $request, $this );
 		}
@@ -148,21 +146,22 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 		}
 
 		/**
-		 * get_results
-		 *
 		 * Returns an array of results for the given args.
 		 *
-		 * @date    31/7/18
 		 * @since   5.7.2
 		 *
-		 * @param   array args The query args.
-		 * @return  array
+		 * @param array $args The query args.
+		 * @return array
 		 */
-		function get_results( $args ) {
+		public function get_results( $args ) {
+			// Prepare the $args for query.
+			$args    = $this->prepare_args( $args );
 			$results = array();
 
-			// Prepare args for quey.
-			$args = $this->prepare_args( $args );
+			// Apply field role restriction, allowing overrides via filter.
+			if ( $this->field && ! empty( $this->field['role'] ) && empty( $args['role__in'] ) ) {
+				$args['role__in'] = (array) $this->field['role'];
+			}
 
 			// Get result groups.
 			if ( ! empty( $args['role__in'] ) ) {
@@ -171,7 +170,7 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 				$roles = acf_get_user_role_labels();
 			}
 
-			// Return a flat array of results when searching or when queriying one group only.
+			// Return a flat array of results when searching or when querying one group only.
 			if ( $this->is_search || count( $roles ) === 1 ) {
 
 				// Query users and append to results.
@@ -288,26 +287,28 @@ if ( ! class_exists( 'ACF_Ajax_Query_Users' ) ) :
 		/**
 		 * Filters the WP_User_Query search columns.
 		 *
-		 * @date    9/3/20
-		 * @since   5.8.8
+		 * @since 5.8.8
 		 *
-		 * @param   array         $columns       An array of column names to be searched.
-		 * @param   string        $search        The search term.
-		 * @param   WP_User_Query $WP_User_Query The WP_User_Query instance.
-		 * @return  array
+		 * @param array         $columns       An array of column names to be searched.
+		 * @param string        $search        The search term.
+		 * @param WP_User_Query $WP_User_Query The WP_User_Query instance.
+		 * @return array
 		 */
-		function filter_search_columns( $columns, $search, $WP_User_Query ) {
+		public function filter_search_columns( $columns, $search, $WP_User_Query ) {
+			// Restrict search columns for users that can't edit other users.
+			if ( ! current_user_can( 'edit_users' ) ) {
+				$columns = array( 'user_login', 'user_nicename', 'display_name' );
+			}
 
 			/**
 			 * Filters the column names to be searched.
 			 *
-			 * @date    21/5/19
-			 * @since   5.8.1
+			 * @since 5.8.1
 			 *
-			 * @param   array $columns An array of column names to be searched.
-			 * @param   string $search The search term.
-			 * @param   WP_User_Query $WP_User_Query The WP_User_Query instance.
-			 * @param   ACF_Ajax_Query $query The query object.
+			 * @param array          $columns       An array of column names to be searched.
+			 * @param string         $search        The search term.
+			 * @param WP_User_Query  $WP_User_Query The WP_User_Query instance.
+			 * @param ACF_Ajax_Query $query         The query object.
 			 */
 			return apply_filters( 'acf/ajax/query_users/search_columns', $columns, $search, $WP_User_Query, $this );
 		}

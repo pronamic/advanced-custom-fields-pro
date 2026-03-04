@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
-Tested up to: 6.9
+Tested up to: 6.9.1
 Requires PHP: 7.4
-Stable tag: 6.7.0.2
+Stable tag: 6.7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,12 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.7.1 =
+*Release Date 3rd March 2026*
+
+* Security - User field AJAX queries now enforce field-configured role restrictions and validate search permissions
+* Security - Post Object, Relationship, and Page Link field AJAX queries now enforce field-configured restrictions for post status, post type, and taxonomy
 
 = 6.7.0.2 =
 *Release Date 11th December 2025*

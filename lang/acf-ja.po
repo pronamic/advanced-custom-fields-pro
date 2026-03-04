@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-12-11T18:22:21+00:00\n"
+"PO-Revision-Date: 2026-03-02T19:47:34+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -95,30 +95,34 @@ msgid ""
 "Import JSON containing field groups, post types, or taxonomies (trusted "
 "sources only)"
 msgstr ""
+"フィールドグループ、投稿タイプ、またはタクソノミーを含む JSON をインポートし"
+"ます (信頼できるソースのみ)  。"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:64
 msgid "Select JSON File"
-msgstr ""
+msgstr "JSON ファイルを選択"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:56
 msgid ""
 "Choose an ACF JSON file to import. Use only files from trusted sources, then "
 "click Import."
 msgstr ""
+"インポートする ACF JSON ファイルを選択してください。信頼できるソースからの"
+"ファイルのみを使用し、 ｢インポート｣ をクリックしてください。"
 
 #: includes/fields/class-acf-field-date_picker.php:244
 #: includes/fields/class-acf-field-date_time_picker.php:231
 msgid "Use the current date as the default value for this field."
-msgstr ""
+msgstr "このフィールドの初期値として現在の日付を使用します。"
 
 #: includes/fields/class-acf-field-date_picker.php:243
 #: includes/fields/class-acf-field-date_time_picker.php:230
 msgid "Default to the current date"
-msgstr ""
+msgstr "現在の日付を初期値とする"
 
 #: includes/assets.php:372
 msgid "Toggle panel"
-msgstr ""
+msgstr "パネルを切り替え"
 
 #. translators: %1$s - Plugin name, %2$s URL to documentation
 #: includes/admin/admin.php:311
@@ -128,50 +132,56 @@ msgid ""
 "removed in a future version of ACF. <a href=\"%2$s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"%1$s この Web サイトは Select2 jQuery ライブラリの v3 を使用するように設定さ"
+"れていることが検出されました。 v3 は廃止され、v4 が推奨されており、 ACF の将"
+"来のバージョンでは削除される予定です。 <a href=\"%2$s\" target=\"_blank\"> 詳"
+"細 </​​a>"
 
 #: includes/fields/class-acf-field-select.php:480
 msgid ""
 "Save created options back to the \"Choices\" setting in the field definition."
-msgstr ""
+msgstr "作成したオプションを、フィールド定義の ｢選択肢｣ 設定に保存します。"
 
 #: includes/fields/class-acf-field-select.php:479
 msgid "Save Options"
-msgstr ""
+msgstr "保存オプション"
 
 #: includes/fields/class-acf-field-select.php:457
 msgid ""
 "Allow content editors to create new options by typing in the Select input. "
 "Multiple options can be created from a comma separated string."
 msgstr ""
+"コンテンツ編集者が選択入力欄に入力することで新しいオプションを作成できるよう"
+"にします。カンマ区切りの文字列で複数のオプションを作成できます。"
 
 #: includes/fields/class-acf-field-select.php:456
 msgid "Create Options"
-msgstr ""
+msgstr "オプションを作成"
 
 #: includes/admin/views/global/navigation.php:189
 #: includes/admin/views/global/navigation.php:193
 msgid "Edit ACF Field Groups"
-msgstr ""
+msgstr "ACF フィールドグループの編集"
 
 #: includes/admin/views/global/navigation.php:110
 msgid "Get 4 months free on any WP Engine plan"
-msgstr ""
+msgstr "WP Engine のどのプランでも4ヶ月間無料"
 
 #: src/Site_Health/Site_Health.php:531
 msgid "Number of Field Groups with Blocks and Other Locations"
-msgstr ""
+msgstr "ブロックやその他の場所を含むフィールドグループの数"
 
 #: src/Site_Health/Site_Health.php:526
 msgid "Number of Field Groups with Multiple Block Locations"
-msgstr ""
+msgstr "複数のブロック位置を持つフィールドグループの数"
 
 #: src/Site_Health/Site_Health.php:521
 msgid "Number of Field Groups with a Single Block Location"
-msgstr ""
+msgstr "単一のブロック位置を持つフィールドグループの数"
 
 #: src/Site_Health/Site_Health.php:490
 msgid "All Location Rules"
-msgstr ""
+msgstr "すべてのロケーションルール"
 
 #: includes/validation.php:154
 msgid "Learn more"
@@ -182,22 +192,24 @@ msgid ""
 "ACF was unable to perform validation because the provided nonce failed "
 "verification."
 msgstr ""
+"提供された nonce が検証に失敗したため、ACF は検証を実行できませんでした。"
 
 #: includes/validation.php:141
 msgid ""
 "ACF was unable to perform validation because no nonce was received by the "
 "server."
 msgstr ""
+"サーバーが nonce を受信しなかったため、ACF は検証を実行できませんでした。"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
 #: includes/admin/admin.php:357
 msgid "are developed and maintained by"
-msgstr ""
+msgstr "によって開発され、維持されている"
 
 #: src/Site_Health/Site_Health.php:298
 msgid "Update Source"
-msgstr ""
+msgstr "ソースを更新"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:859
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:819
@@ -219,6 +231,9 @@ msgid ""
 "taxonomy. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
 msgstr ""
+"タクソノミーのメタボックスのコンテンツを処理するために呼び出される PHP 関数名"
+"です。セキュリティ上の理由から、このコールバックは $_POST や $_GET などのスー"
+"パーグローバル変数にアクセスできない特別なコンテキストで実行されます。"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:851
 msgid ""
@@ -226,14 +241,17 @@ msgid ""
 "screen. For security, this callback will be executed in a special context "
 "without access to any superglobals like $_POST or $_GET."
 msgstr ""
+"編集画面のメタボックスを設定する際に呼び出される PHP 関数名。セキュリティ上の"
+"理由から、このコールバックは $_POST や $_GET などのスーパーグローバル変数にア"
+"クセスできない特別なコンテキストで実行されます。"
 
 #: src/Site_Health/Site_Health.php:299
 msgid "wordpress.org"
-msgstr ""
+msgstr "WordPress.org"
 
 #: includes/fields/class-acf-field.php:373
 msgid "Allow Access to Value in Editor UI"
-msgstr ""
+msgstr "エディター UI で値へのアクセスを許可する"
 
 #: includes/fields/class-acf-field.php:355
 msgid "Learn more."
@@ -246,24 +264,32 @@ msgid ""
 "Allow content editors to access and display the field value in the editor UI "
 "using Block Bindings or the ACF Shortcode. %s"
 msgstr ""
+"コンテンツ編集者がブロックバインディングまたは ACF ショートコードを使用してエ"
+"ディター UI でフィールド値にアクセスして表示できるようにします。 %s"
 
 #: src/Blocks/Bindings.php:70
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
 msgstr ""
+"リクエストされた ACF フィールドタイプはブロックバインディングまたは ACF "
+"ショートコードでの出力がサポートされていません。"
 
 #: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
 msgstr ""
+"要求された ACF フィールドは、バインディングまたは ACF ショートコードで出力す"
+"ることはできません。"
 
 #: includes/api/api-template.php:1086
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
 msgstr ""
+"要求された ACF フィールドタイプは、バインディングまたは ACF ショートコードで"
+"の出力をサポートしていません。"
 
 #: includes/api/api-template.php:1063
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
@@ -287,7 +313,7 @@ msgstr "YouTube アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:762
 msgid "Yes (alt) Icon"
-msgstr ""
+msgstr "はい (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:760
 msgid "Xing Icon"
@@ -303,7 +329,7 @@ msgstr "WhatsApp アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:756
 msgid "Write Blog Icon"
-msgstr ""
+msgstr "ブログを書くアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:755
 msgid "Widgets Menus Icon"
@@ -347,11 +373,11 @@ msgstr "Twitter (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:735
 msgid "Twitch Icon"
-msgstr ""
+msgstr "Twitch アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:732
 msgid "Tide Icon"
-msgstr ""
+msgstr "潮アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:731
 msgid "Tickets (alt) Icon"
@@ -363,11 +389,11 @@ msgstr "テキストページアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:721
 msgid "Table Row Delete Icon"
-msgstr ""
+msgstr "表の行削除アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:720
 msgid "Table Row Before Icon"
-msgstr ""
+msgstr "表の行の前のアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:719
 msgid "Table Row After Icon"
@@ -375,11 +401,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:718
 msgid "Table Col Delete Icon"
-msgstr ""
+msgstr "表の列削除アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:717
 msgid "Table Col Before Icon"
-msgstr ""
+msgstr "表の列の前のアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:716
 msgid "Table Col After Icon"
@@ -387,11 +413,11 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:715
 msgid "Superhero (alt) Icon"
-msgstr ""
+msgstr "スーパーヒーロー (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:714
 msgid "Superhero Icon"
-msgstr ""
+msgstr "スーパーヒーローアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:708
 msgid "Spotify Icon"
@@ -403,15 +429,15 @@ msgstr "ショートコードアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:701
 msgid "Shield (alt) Icon"
-msgstr ""
+msgstr "シールド (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:699
 msgid "Share (alt2) Icon"
-msgstr ""
+msgstr "共有 (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:698
 msgid "Share (alt) Icon"
-msgstr ""
+msgstr "共有 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:693
 msgid "Saved Icon"
@@ -447,7 +473,7 @@ msgstr "Podioアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:679
 msgid "Plus (alt2) Icon"
-msgstr ""
+msgstr "プラス (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:678
 msgid "Plus (alt) Icon"
@@ -455,7 +481,7 @@ msgstr "プラス (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:676
 msgid "Plugins Checked Icon"
-msgstr ""
+msgstr "プラグインチェックアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:673
 msgid "Pinterest Icon"
@@ -475,31 +501,31 @@ msgstr "ヤシの木アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:666
 msgid "Open Folder Icon"
-msgstr ""
+msgstr "フォルダを開くアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:665
 msgid "No (alt) Icon"
-msgstr ""
+msgstr "いいえ (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:660
 msgid "Money (alt) Icon"
-msgstr ""
+msgstr "お金 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:655
 msgid "Menu (alt3) Icon"
-msgstr ""
+msgstr "メニュー (alt3) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:654
 msgid "Menu (alt2) Icon"
-msgstr ""
+msgstr "メニュー (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:653
 msgid "Menu (alt) Icon"
-msgstr ""
+msgstr "メニュー (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:648
 msgid "Spreadsheet Icon"
-msgstr "スプレッドシート アイコン"
+msgstr "スプレッドシートアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:647
 msgid "Interactive Icon"
@@ -535,23 +561,23 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:628
 msgid "Insert Icon"
-msgstr ""
+msgstr "アイコンを挿入"
 
 #: includes/fields/class-acf-field-icon_picker.php:627
 msgid "Info Outline Icon"
-msgstr ""
+msgstr "情報アウトラインアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:624
 msgid "Images (alt2) Icon"
-msgstr ""
+msgstr "画像 (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:623
 msgid "Images (alt) Icon"
-msgstr ""
+msgstr "画像 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:622
 msgid "Rotate Right Icon"
-msgstr ""
+msgstr "右回転アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:621
 msgid "Rotate Left Icon"
@@ -563,7 +589,7 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:619
 msgid "Flip Vertical Icon"
-msgstr ""
+msgstr "垂直反転アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:618
 msgid "Flip Horizontal Icon"
@@ -595,15 +621,15 @@ msgstr "Google アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:604
 msgid "Games Icon"
-msgstr ""
+msgstr "ゲームアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:603
 msgid "Fullscreen Exit (alt) Icon"
-msgstr ""
+msgstr "全画面終了 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:602
 msgid "Fullscreen (alt) Icon"
-msgstr ""
+msgstr "フルスクリーン (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:599
 msgid "Status Icon"
@@ -628,75 +654,75 @@ msgstr "オーディオアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:593
 msgid "Aside Icon"
-msgstr ""
+msgstr "サイドアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:592
 msgid "Food Icon"
-msgstr ""
+msgstr "食べ物アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:585
 msgid "Exit Icon"
-msgstr ""
+msgstr "終了アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:584
 msgid "Excerpt View Icon"
-msgstr ""
+msgstr "抜粋表示アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:583
 msgid "Embed Video Icon"
-msgstr ""
+msgstr "埋め込み動画アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:582
 msgid "Embed Post Icon"
-msgstr ""
+msgstr "埋め込み投稿アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:581
 msgid "Embed Photo Icon"
-msgstr ""
+msgstr "埋め込み写真アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:580
 msgid "Embed Generic Icon"
-msgstr ""
+msgstr "埋め込み汎用アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:579
 msgid "Embed Audio Icon"
-msgstr ""
+msgstr "埋め込み音声ファイルアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:578
 msgid "Email (alt2) Icon"
-msgstr ""
+msgstr "メール (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:575
 msgid "Ellipsis Icon"
-msgstr ""
+msgstr "省略記号アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:571
 msgid "Unordered List Icon"
-msgstr ""
+msgstr "順序なしリストアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:566
 msgid "RTL Icon"
-msgstr ""
+msgstr "RTL アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:559
 msgid "Ordered List RTL Icon"
-msgstr ""
+msgstr "順序付きリスト RTL アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:558
 msgid "Ordered List Icon"
-msgstr ""
+msgstr "順序付きリストアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:557
 msgid "LTR Icon"
-msgstr ""
+msgstr "LTR アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:549
 msgid "Custom Character Icon"
-msgstr ""
+msgstr "カスタムキャラクターアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:541
 msgid "Edit Page Icon"
-msgstr ""
+msgstr "ページ編集アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:540
 msgid "Edit Large Icon"
@@ -704,67 +730,67 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:538
 msgid "Drumstick Icon"
-msgstr ""
+msgstr "ドラムスティックアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:534
 msgid "Database View Icon"
-msgstr ""
+msgstr "データベース表示アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:533
 msgid "Database Remove Icon"
-msgstr ""
+msgstr "データベース削除アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:532
 msgid "Database Import Icon"
-msgstr ""
+msgstr "データベース取り込みアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:531
 msgid "Database Export Icon"
-msgstr ""
+msgstr "データベース出力アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:530
 msgid "Database Add Icon"
-msgstr ""
+msgstr "データベース追加アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:529
 msgid "Database Icon"
-msgstr ""
+msgstr "データベースアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:527
 msgid "Cover Image Icon"
-msgstr ""
+msgstr "カバー画像アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:526
 msgid "Volume On Icon"
-msgstr ""
+msgstr "音量オンアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:525
 msgid "Volume Off Icon"
-msgstr ""
+msgstr "音量オフアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:524
 msgid "Skip Forward Icon"
-msgstr ""
+msgstr "早送りアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:523
 msgid "Skip Back Icon"
-msgstr ""
+msgstr "巻き戻しアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:522
 msgid "Repeat Icon"
-msgstr ""
+msgstr "繰り返しアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:521
 msgid "Play Icon"
-msgstr ""
+msgstr "再生アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:520
 msgid "Pause Icon"
-msgstr ""
+msgstr "一時停止アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:519
 msgid "Forward Icon"
-msgstr ""
+msgstr "進むアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:518
 msgid "Back Icon"
@@ -828,19 +854,19 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:487
 msgid "PM Icon"
-msgstr ""
+msgstr "PM アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:485
 msgid "Friends Icon"
-msgstr ""
+msgstr "友達アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:483
 msgid "Community Icon"
-msgstr ""
+msgstr "コミュニティアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:482
 msgid "BuddyPress Icon"
-msgstr ""
+msgstr "BuddyPress アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:481
 msgid "bbPress Icon"
@@ -848,11 +874,11 @@ msgstr "BbPress アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:480
 msgid "Activity Icon"
-msgstr ""
+msgstr "活動アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:479
 msgid "Book (alt) Icon"
-msgstr ""
+msgstr "本 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:477
 msgid "Block Default Icon"
@@ -860,39 +886,39 @@ msgstr "ブロックデフォルトアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:476
 msgid "Bell Icon"
-msgstr ""
+msgstr "ベルアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:475
 msgid "Beer Icon"
-msgstr ""
+msgstr "ビールアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:474
 msgid "Bank Icon"
-msgstr ""
+msgstr "銀行アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:470
 msgid "Arrow Up (alt2) Icon"
-msgstr ""
+msgstr "上矢印 (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:469
 msgid "Arrow Up (alt) Icon"
-msgstr ""
+msgstr "上矢印 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:467
 msgid "Arrow Right (alt2) Icon"
-msgstr ""
+msgstr "右矢印 (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:466
 msgid "Arrow Right (alt) Icon"
-msgstr ""
+msgstr "右矢印 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:464
 msgid "Arrow Left (alt2) Icon"
-msgstr ""
+msgstr "左矢印 (alt2) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:463
 msgid "Arrow Left (alt) Icon"
-msgstr ""
+msgstr "左矢印 (alt) アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:461
 msgid "Arrow Down (alt2) Icon"
@@ -974,11 +1000,13 @@ msgstr "ACF PRO ロゴ"
 #: includes/fields/class-acf-field-icon_picker.php:829
 msgid "%s requires a valid attachment ID when type is set to media_library."
 msgstr ""
+"タイプがメディアライブラリに登録されている場合、%s には有効なアタッチメント "
+"ID が必要です。"
 
 #. translators: %s - field name
 #: includes/fields/class-acf-field-icon_picker.php:813
 msgid "%s is a required property of acf."
-msgstr ""
+msgstr "%s は acf の必須プロパティです。"
 
 #: includes/fields/class-acf-field-icon_picker.php:789
 msgid "The value of icon to save."
@@ -1022,19 +1050,19 @@ msgstr ""
 
 #: includes/fields/class-acf-field-icon_picker.php:739
 msgid "Universal Access Icon"
-msgstr ""
+msgstr "ユニバーサルアクセスアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:738
 msgid "Undo Icon"
-msgstr ""
+msgstr "元に戻すアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:736
 msgid "Twitter Icon"
-msgstr ""
+msgstr "Twitter アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:734
 msgid "Trash Icon"
-msgstr ""
+msgstr "ゴミ箱アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:733
 msgid "Translation Icon"
@@ -1042,40 +1070,40 @@ msgstr "翻訳アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:730
 msgid "Tickets Icon"
-msgstr ""
+msgstr "チケットアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:729
 msgid "Thumbs Up Icon"
-msgstr ""
+msgstr "いいねアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:728
 msgid "Thumbs Down Icon"
-msgstr ""
+msgstr "悪いねアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:649
 #: includes/fields/class-acf-field-icon_picker.php:726
 msgid "Text Icon"
-msgstr ""
+msgstr "テキストアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:725
 msgid "Testimonial Icon"
-msgstr ""
+msgstr "お客様の声アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:724
 msgid "Tagcloud Icon"
-msgstr ""
+msgstr "タグクラウドアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:723
 msgid "Tag Icon"
-msgstr ""
+msgstr "タグアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:722
 msgid "Tablet Icon"
-msgstr ""
+msgstr "タブレットアイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:713
 msgid "Store Icon"
-msgstr ""
+msgstr "店アイコン"
 
 #: includes/fields/class-acf-field-icon_picker.php:712
 msgid "Sticky Icon"
@@ -2236,6 +2264,8 @@ msgstr "ターゲットフィールド"
 #: includes/acf-bidirectional-functions.php:225
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr ""
+"このフィールドで選択された値が持つターゲットフィールドを更新し、このアイテム"
+"のIDを参照する"
 
 #: includes/acf-bidirectional-functions.php:224
 msgid "Bidirectional"
@@ -2324,10 +2354,13 @@ msgid ""
 "Blocks and Options Pages, and sophisticated field types like Repeater, "
 "Flexible Content, Clone, and Gallery."
 msgstr ""
+"ACF Blocksやオプションページのような機能、繰り返し、柔軟コンテンツ、クロー"
+"ン、ギャラリーのような洗練されたフィールドタイプで、ワークフローをスピード"
+"アップし、より良いウェブサイトを開発しましょう。"
 
 #: includes/admin/views/acf-field-group/pro-features.php:12
 msgid "Unlock Advanced Features and Build Even More with ACF PRO"
-msgstr ""
+msgstr "ACF PRO で高度な機能をアンロックして構築する"
 
 #. translators: %s - singular label of post type/taxonomy, i.e. "Movie"/"Genre"
 #: includes/admin/views/global/form-top.php:29
@@ -2376,6 +2409,8 @@ msgid ""
 "This taxonomy key is already in use by another taxonomy registered outside "
 "of ACF and cannot be used."
 msgstr ""
+"このタクソノミーキーは、ACF の外部で登録された別のタクソノミーによってすでに"
+"使用されているため、使用することはできません。"
 
 #: includes/post-types/class-acf-taxonomy.php:293
 msgid ""
@@ -2476,12 +2511,16 @@ msgid ""
 "This field must not be a WordPress <a href=\"%s\" target=\"_blank\">reserved "
 "term</a>."
 msgstr ""
+"このフィールドは WordPress の <a href=\"%s\" target=\"_blank\"> 予約語 </a> "
+"を避けなければなりません。"
 
 #: includes/post-types/class-acf-post-type.php:342
 msgid ""
 "The post type key must only contain lower case alphanumeric characters, "
 "underscores or dashes."
 msgstr ""
+"投稿タイプキーには、小文字の英数字、アンダースコア ( _ )、ダッシュ ( - ) 以外"
+"は使用できません。"
 
 #: includes/post-types/class-acf-post-type.php:337
 msgid "The post type key must be under 20 characters."
@@ -2859,6 +2898,7 @@ msgid ""
 "Terms can be accessed using the non-pretty permalink, e.g., {query_var}"
 "={term_slug}."
 msgstr ""
+"タームへのアクセスに使用するクエリ変数名 (例: {query_var}={term_slug} )"
 
 #: includes/admin/views/acf-taxonomy/advanced-settings.php:1010
 msgid "Parent-child terms in URLs for hierarchical taxonomies."
@@ -4360,7 +4400,7 @@ msgstr ""
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:362
 msgid "Export - Generate PHP"
-msgstr ""
+msgstr "生成した PHP をエクスポート"
 
 #: includes/admin/tools/class-acf-admin-tool-export.php:339
 msgid "Export"
@@ -4865,13 +4905,13 @@ msgstr "JSON をエクスポート"
 #: includes/admin/post-types/admin-field-groups.php:365
 msgid "Field group deactivated."
 msgid_plural "%s field groups deactivated."
-msgstr[0] ""
+msgstr[0] "%s件のフィールドグループを無効化しました。"
 
 #. translators: %s number of field groups activated
 #: includes/admin/post-types/admin-field-groups.php:358
 msgid "Field group activated."
 msgid_plural "%s field groups activated."
-msgstr[0] ""
+msgstr[0] "%s件のフィールドグループを有効化しました。"
 
 #: includes/admin/admin-internal-post-type-list.php:470
 #: includes/admin/admin-internal-post-type-list.php:496
@@ -4893,7 +4933,7 @@ msgstr "この項目を有効化する"
 
 #: includes/admin/post-types/admin-field-group.php:89
 msgid "Move field group to trash?"
-msgstr ""
+msgstr "フィールドグループをゴミ箱へ移動しますか ?"
 
 #: acf.php:571 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304

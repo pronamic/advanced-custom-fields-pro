@@ -3,7 +3,7 @@
  * @package ACF
  * @author  WP Engine
  *
- * © 2025 Advanced Custom Fields (ACF®). All rights reserved.
+ * © 2026 Advanced Custom Fields (ACF®). All rights reserved.
  * "ACF" is a trademark of WP Engine.
  * Licensed under the GNU General Public License v2 or later.
  * https://www.gnu.org/licenses/gpl-2.0.html
@@ -114,23 +114,18 @@ if ( ! class_exists( 'ACF_Ajax_Query' ) ) :
 		}
 
 		/**
-		 * get_args
-		 *
 		 * Returns an array of args for this query.
 		 *
-		 * @date    31/7/18
-		 * @since   5.7.2
+		 * @since 5.7.2
 		 *
-		 * @param   array $request The request args.
-		 * @return  array
+		 * @param array $request The request args.
+		 * @return array
 		 */
-		function get_args( $request ) {
-
-			// Allow for custom "query" arg.
-			if ( isset( $request['query'] ) ) {
-				return (array) $request['query'];
-			}
-
+		public function get_args( $request ) {
+			/**
+			 * We return an empty array here as subclasses should implement
+			 * their own allow list of parameters for security.
+			 */
 			return array();
 		}
 
