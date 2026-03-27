@@ -151,6 +151,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 
 			// loop over attachments
 			foreach ( $_POST['attachments'] as $id => $changes ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized by WP core when saved.
+				$id = (int) $id;
 
 				if ( ! current_user_can( 'edit_post', $id ) ) {
 					wp_send_json_error();

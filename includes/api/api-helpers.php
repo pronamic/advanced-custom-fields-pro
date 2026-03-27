@@ -2777,6 +2777,61 @@ function acf_current_user_can_edit_post( int $post_id ): bool {
 }
 
 /**
+ * Checks if the current user can edit a given ACF context.
+ *
+ * Handles post, user, term, comment, woo_order, block, and option contexts returned by acf_decode_post_id().
+ *
+ * @since 6.7.2
+ *
+ * @param array  $post_id_info      The result of acf_decode_post_id(), containing 'type' and 'id'.
+ * @param string $options_page_slug Optional. The options page menu slug, used to look up the page's capability.
+ * @return boolean
+ */
+function acf_current_user_can_edit_in_context( array $post_id_info, string $options_page_slug = '' ): bool {
+	$type = $post_id_info['type'] ?? '';
+	$id   = $post_id_info['id'] ?? 0;
+
+	switch ( $type ) {
+		case 'post':
+			return acf_current_user_can_edit_post( (int) $id );
+
+		case 'user':
+			return current_user_can( 'edit_user', (int) $id );
+
+		case 'term':
+			return current_user_can( 'edit_term', (int) $id );
+
+		case 'comment':
+			return current_user_can( 'edit_comment', (int) $id );
+
+		case 'woo_order':
+			return current_user_can( 'edit_shop_orders' ); // phpcs:ignore
+
+		case 'block':
+			return current_user_can( 'edit_posts' );
+
+		case 'option':
+			if ( ! empty( $options_page_slug ) && function_exists( 'acf_get_options_page' ) ) {
+				$page = acf_get_options_page( $options_page_slug );
+
+				if ( ! empty( $page['capability'] ) && ! empty( $page['post_id'] ) ) {
+					// Ensure the page's post_id matches the requested post_id.
+					if ( acf_get_valid_post_id( $page['post_id'] ) !== $id ) {
+						return false;
+					}
+
+					return current_user_can( $page['capability'] );
+				}
+			}
+
+			return current_user_can( 'manage_options' );
+
+		default:
+			return (bool) apply_filters( 'acf/current_user_can_edit_in_context', false, $post_id_info );
+	}
+}
+
+/**
  * acf_get_filesize
  *
  * This function will return a numeric value of bytes for a given filesize string

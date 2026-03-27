@@ -118,6 +118,9 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 			// load acf scripts
 			acf_enqueue_scripts();
 
+			// Localize options page slug for repeater pagination capability checks.
+			acf_localize_data( array( 'options_page_slug' => $this->page['menu_slug'] ) );
+
 			// actions
 			add_action( 'acf/input/admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 			add_action( 'acf/input/admin_head', array( $this, 'admin_head' ) );

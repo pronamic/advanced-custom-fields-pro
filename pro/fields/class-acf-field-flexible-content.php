@@ -1291,7 +1291,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 		public function ajax_layout_title() {
 
 			$options = acf_parse_args(
-				$_POST, // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified elsewhere.
+				$_POST, // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified below via acf_verify_ajax.
 				array(
 					'post_id'   => 0,
 					'i'         => 0,
@@ -1301,6 +1301,10 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					'value'     => array(),
 				)
 			);
+
+			if ( ! acf_verify_ajax( $options['nonce'], $options['field_key'], true ) ) {
+				die();
+			}
 
 			// load field
 			$field = acf_get_field( $options['field_key'] );
