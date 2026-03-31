@@ -12,6 +12,9 @@
 // Register store.
 acf_register_store( 'fields' )->prop( 'multisite', true );
 
+// Register store for field type JSON schemas.
+acf_register_store( 'field-type-schemas' );
+
 /**
  * acf_get_field
  *
@@ -873,6 +876,13 @@ function acf_get_field_label( $field, $context = '' ) {
 		$label .= ' <span class="acf-required">*</span>';
 	}
 
+	if ( ! empty( $field['experimental'] ) ) {
+		$label .= sprintf(
+			' <span class="acf-experimental-badge">%s</span>',
+			esc_html__( 'Experimental', 'acf' )
+		);
+	}
+
 	/**
 	 * Filters the field's label HTML.
 	 *
@@ -1642,3 +1652,68 @@ function acf_prepare_field_for_import( $field ) {
 
 // Register variation.
 acf_add_filter_variations( 'acf/prepare_field_for_import', array( 'type' ), 0 );
+
+/**
+ * Retrieves the JSON schema for a field.
+ *
+ * @since 6.8.0
+ *
+ * @param string $field_type The field to get the JSON schema for.
+ * @return array
+ */
+function acf_get_field_json_schema( string $field_type ): array {
+	// Check store cache first.
+	$store = acf_get_store( 'field-type-schemas' );
+	if ( $store->has( $field_type ) ) {
+		return $store->get( $field_type );
+	}
+
+	$schema = array();
+
+	// Sanitize field name to prevent directory traversal.
+	$safe_name = preg_replace( '/[^a-z0-9_-]/i', '', $field_type );
+
+	// Early return if sanitization removed the name.
+	if ( empty( $safe_name ) || $safe_name !== $field_type ) {
+		// Cache the empty result to avoid repeated validation attempts.
+		$store->set( $field_type, $schema );
+		return $schema;
+	}
+
+	// Build schema file path.
+	$schema_file = ACF_PATH . 'schemas/fields/v1/' . $safe_name . '.json';
+
+	// Get cached schema directory path or compute it once.
+	$real_schema_dir = $store->has( '_schema_dir' )
+		? $store->get( '_schema_dir' )
+		: realpath( ACF_PATH . 'schemas/fields/v1/' );
+
+	// Cache the schema directory for subsequent calls.
+	if ( ! $store->has( '_schema_dir' ) && $real_schema_dir ) {
+		$store->set( '_schema_dir', $real_schema_dir );
+	}
+
+	// Verify the resolved path is within the expected directory (security check).
+	$real_schema_path = realpath( $schema_file );
+
+	if ( ! $real_schema_path || ! $real_schema_dir || strpos( $real_schema_path, $real_schema_dir ) !== 0 ) {
+		// Cache the empty result to avoid repeated file system checks.
+		$store->set( $field_type, array() );
+		return array();
+	}
+
+	// Read and parse JSON file.
+	$json_content = wp_json_file_decode( $real_schema_path, array( 'associative' => true ) );
+
+	if ( is_array( $json_content ) ) {
+		$schema = $json_content;
+
+		// Remove JSON Schema meta properties not needed for WordPress REST API validation.
+		unset( $schema['$schema'], $schema['$id'] );
+	}
+
+	// Cache the parsed schema.
+	$store->set( $field_type, $schema );
+
+	return $schema;
+}

@@ -274,6 +274,70 @@ if ( ! class_exists( 'acf_field_link' ) ) :
 				),
 			);
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'URL', 'WebPage' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) ) {
+				return null;
+			}
+
+			// Get link data.
+			$link = $this->get_link( $value );
+
+			if ( empty( $link['url'] ) ) {
+				return null;
+			}
+
+			// Get output format with fallback.
+			$output_format = $field['schema_output_format'] ?? '';
+			if ( empty( $output_format ) ) {
+				$property      = $field['schema_property'] ?? '';
+				$output_format = \ACF\AI\GEO\Schema::get_default_output_format( $this->name, $property );
+			}
+
+			// Default to URL if no format determined.
+			if ( empty( $output_format ) ) {
+				$output_format = 'URL';
+			}
+
+			// URL format - just return the URL string.
+			if ( 'URL' === $output_format ) {
+				return $link['url'];
+			}
+
+			// WebPage format - return structured object.
+			$webpage = array(
+				'@type' => 'WebPage',
+				'url'   => $link['url'],
+			);
+
+			// Add title as name if available.
+			if ( ! empty( $link['title'] ) ) {
+				$webpage['name'] = $link['title'];
+			}
+
+			return $webpage;
+		}
 	}
 
 

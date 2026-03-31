@@ -968,6 +968,99 @@ if ( ! class_exists( 'acf_field_taxonomy' ) ) :
 
 			return $links;
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'DefinedTerm', 'Text' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) ) {
+				return null;
+			}
+
+			// Get output format with fallback.
+			$output_format = $field['schema_output_format'] ?? '';
+			if ( empty( $output_format ) ) {
+				$property      = $field['schema_property'] ?? '';
+				$output_format = \ACF\AI\GEO\Schema::get_default_output_format( $this->name, $property );
+			}
+
+			// Default to Text if no format determined.
+			if ( empty( $output_format ) ) {
+				$output_format = 'Text';
+			}
+
+			// Force value to array for consistent processing.
+			$value = acf_get_array( $value );
+
+			// Get term objects.
+			$terms = $this->get_terms( $value, $field['taxonomy'] );
+
+			if ( empty( $terms ) ) {
+				return null;
+			}
+
+			// Format based on output format.
+			$formatted = array();
+			foreach ( $terms as $term ) {
+				if ( ! $term instanceof \WP_Term ) {
+					continue;
+				}
+
+				if ( 'Text' === $output_format ) {
+					$formatted[] = $term->name;
+				} else {
+					// DefinedTerm format.
+					$term_data = array(
+						'@type' => 'DefinedTerm',
+						'name'  => $term->name,
+					);
+
+					// Add term URL if available.
+					$term_link = get_term_link( $term );
+					if ( ! is_wp_error( $term_link ) ) {
+						$term_data['url'] = $term_link;
+					}
+
+					// Add term ID as identifier.
+					$term_data['identifier'] = (string) $term->term_id;
+
+					$formatted[] = $term_data;
+				}
+			}
+
+			if ( empty( $formatted ) ) {
+				return null;
+			}
+
+			// Return single value for single-value field types.
+			// Radio is always single. Select is single unless multiple is enabled.
+			$is_single = 'radio' === $field['field_type'] ||
+				( 'select' === $field['field_type'] && empty( $field['multiple'] ) );
+
+			if ( $is_single ) {
+				return $formatted[0];
+			}
+
+			return $formatted;
+		}
 	}
 
 

@@ -626,12 +626,33 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					array(
 						'action' => '',
 						'query'  => '',
+						'block'  => null,
 					)
 				);
 
+				$wp_block_type = null;
+
+				// If we are dealing with a flexible content field inside a block.
+				if ( ! empty( $args['block'] ) ) {
+					$block_data = json_decode( wp_unslash( $args['block'] ), true );
+
+					if ( JSON_ERROR_NONE === json_last_error() && is_array( $block_data ) && isset( $block_data['name'] ) ) {
+						$registry      = WP_Block_Type_Registry::get_instance();
+						$wp_block_type = $registry->get_registered( $block_data['name'] );
+					}
+				}
+
 				// If this is a block preview, disable the layout.
-				if ( ( $args['action'] === 'acf/ajax/fetch-block' && ! empty( $args['query']['preview'] ) ) ||
-					acf_get_data( 'acf_doing_block_preview' ) ) {
+				if (
+					// Blocks v2 preview check
+					(
+						$args['action'] === 'acf/ajax/fetch-block' &&
+						! empty( $args['query']['preview'] ) &&
+						( $wp_block_type && isset( $wp_block_type->acf_block_version ) && $wp_block_type->acf_block_version <= 2 )
+					) ||
+					// Blocks v3 preview check
+					acf_get_data( 'acf_doing_block_preview' )
+				) {
 					return true;
 				}
 
@@ -1170,8 +1191,16 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 		 */
 		public function delete_value( $post_id, $key, $field ) {
 
+			// Delete layout meta (disabled and renamed layouts).
+			acf_delete_metadata_by_field(
+				$post_id,
+				array(
+					'name' => '_' . $field['name'] . '_layout_meta',
+				)
+			);
+
 			// vars
-			$old_value = acf_get_metadata_by_field( $post_id, $field['name'] );
+			$old_value = acf_get_metadata_by_field( $post_id, $field );
 			$old_value = is_array( $old_value ) ? $old_value : array();
 
 			// bail early if no rows or no sub fields

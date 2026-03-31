@@ -305,6 +305,100 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 
 			return $schema;
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'VideoObject', 'AudioObject', 'MediaObject' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field (URL).
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) ) {
+				return null;
+			}
+
+			// Get output format with fallback.
+			$output_format = $field['schema_output_format'] ?? '';
+			if ( empty( $output_format ) ) {
+				$property      = $field['schema_property'] ?? '';
+				$output_format = \ACF\AI\GEO\Schema::get_default_output_format( $this->name, $property );
+			}
+
+			// Default to VideoObject if no format determined.
+			if ( empty( $output_format ) ) {
+				$output_format = 'VideoObject';
+			}
+
+			// Get oEmbed data for richer output.
+			$oembed_data = _wp_oembed_get_object()->get_data( $value, array() );
+
+			$result = array(
+				'@type' => $output_format,
+				'url'   => $value,
+			);
+
+			if ( $oembed_data ) {
+				// Add name/title.
+				if ( ! empty( $oembed_data->title ) ) {
+					$result['name'] = $oembed_data->title;
+				}
+
+				// Add thumbnail.
+				if ( ! empty( $oembed_data->thumbnail_url ) ) {
+					$result['thumbnailUrl'] = $oembed_data->thumbnail_url;
+				}
+
+				// Add provider information.
+				if ( ! empty( $oembed_data->provider_name ) ) {
+					$result['publisher'] = array(
+						'@type' => 'Organization',
+						'name'  => $oembed_data->provider_name,
+					);
+					if ( ! empty( $oembed_data->provider_url ) ) {
+						$result['publisher']['url'] = $oembed_data->provider_url;
+					}
+				}
+
+				// Add dimensions for video.
+				if ( 'VideoObject' === $output_format || 'video' === ( $oembed_data->type ?? '' ) ) {
+					if ( ! empty( $oembed_data->width ) ) {
+						$result['width'] = (int) $oembed_data->width;
+					}
+					if ( ! empty( $oembed_data->height ) ) {
+						$result['height'] = (int) $oembed_data->height;
+					}
+				}
+
+				// Add author if available.
+				if ( ! empty( $oembed_data->author_name ) ) {
+					$author = array(
+						'@type' => 'Person',
+						'name'  => $oembed_data->author_name,
+					);
+					if ( ! empty( $oembed_data->author_url ) ) {
+						$author['url'] = $oembed_data->author_url;
+					}
+					$result['author'] = $author;
+				}
+			}
+
+			return $result;
+		}
 	}
 
 

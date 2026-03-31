@@ -373,6 +373,163 @@ if ( ! class_exists( 'acf_field_google_map' ) ) :
 
 			return acf_format_numerics( $value );
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'Place', 'GeoCoordinates', 'PostalAddress' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) || ! is_array( $value ) ) {
+				return null;
+			}
+
+			// Get output format with fallback.
+			$output_format = $field['schema_output_format'] ?? '';
+			if ( empty( $output_format ) ) {
+				$property      = $field['schema_property'] ?? '';
+				$output_format = \ACF\AI\GEO\Schema::get_default_output_format( $this->name, $property );
+			}
+
+			// Default to Place if no format determined.
+			if ( empty( $output_format ) ) {
+				$output_format = 'Place';
+			}
+
+			switch ( $output_format ) {
+				case 'GeoCoordinates':
+					return $this->format_geo_coordinates( $value );
+
+				case 'PostalAddress':
+					return $this->format_postal_address( $value );
+
+				case 'Place':
+				default:
+					return $this->format_place( $value );
+			}
+		}
+
+		/**
+		 * Format value as GeoCoordinates.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param array $value The google map value array.
+		 * @return array|null
+		 */
+		private function format_geo_coordinates( $value ) {
+			if ( empty( $value['lat'] ) || empty( $value['lng'] ) ) {
+				return null;
+			}
+
+			return array(
+				'@type'     => 'GeoCoordinates',
+				'latitude'  => (float) $value['lat'],
+				'longitude' => (float) $value['lng'],
+			);
+		}
+
+		/**
+		 * Format value as PostalAddress.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param array $value The google map value array.
+		 * @return array|null
+		 */
+		private function format_postal_address( $value ) {
+			$address = array(
+				'@type' => 'PostalAddress',
+			);
+
+			// Build street address from components.
+			$street_parts = array();
+			if ( ! empty( $value['street_number'] ) ) {
+				$street_parts[] = $value['street_number'];
+			}
+			if ( ! empty( $value['street_name'] ) ) {
+				$street_parts[] = $value['street_name'];
+			}
+			if ( ! empty( $street_parts ) ) {
+				$address['streetAddress'] = implode( ' ', $street_parts );
+			}
+
+			if ( ! empty( $value['city'] ) ) {
+				$address['addressLocality'] = $value['city'];
+			}
+
+			if ( ! empty( $value['state'] ) ) {
+				$address['addressRegion'] = $value['state'];
+			}
+
+			if ( ! empty( $value['post_code'] ) ) {
+				$address['postalCode'] = (string) $value['post_code'];
+			}
+
+			if ( ! empty( $value['country'] ) ) {
+				$address['addressCountry'] = $value['country'];
+			}
+
+			// Only return if we have at least one address property beyond @type.
+			if ( count( $address ) > 1 ) {
+				return $address;
+			}
+
+			return null;
+		}
+
+		/**
+		 * Format value as Place.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param array $value The google map value array.
+		 * @return array|null
+		 */
+		private function format_place( $value ) {
+			$place = array(
+				'@type' => 'Place',
+			);
+
+			// Add name if available.
+			if ( ! empty( $value['name'] ) ) {
+				$place['name'] = $value['name'];
+			}
+
+			// Add full address as formatted string.
+			if ( ! empty( $value['address'] ) ) {
+				$place['address'] = $value['address'];
+			}
+
+			// Add geo coordinates.
+			$geo = $this->format_geo_coordinates( $value );
+			if ( $geo ) {
+				$place['geo'] = $geo;
+			}
+
+			// Only return if we have meaningful data beyond @type.
+			if ( count( $place ) > 1 ) {
+				return $place;
+			}
+
+			return null;
+		}
 	}
 
 

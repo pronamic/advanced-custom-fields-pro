@@ -187,6 +187,8 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 				'advanced_configuration'   => false,
 				'import_source'            => '',
 				'import_date'              => '',
+				'allow_ai_access'          => false,
+				'ai_description'           => '',
 				// Settings passed to register_post_type().
 				'labels'                   => array(
 					'name'                     => '',
@@ -530,6 +532,19 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 			// WordPress defaults to the "title" and "editor" supports, but none can be provided by passing false (WP 3.5+).
 			$supports = is_array( $post['supports'] ) ? $post['supports'] : array();
 			$supports = array_unique( array_filter( array_map( 'strval', $supports ) ) );
+
+			// Notes is a sub-feature of the editor support in WP 6.9+.
+			// When both editor and notes are enabled, convert to the proper format.
+			$has_notes  = in_array( 'notes', $supports, true );
+			$has_editor = in_array( 'editor', $supports, true );
+
+			if ( $has_notes && $has_editor ) {
+				// Remove both 'notes' and 'editor' so we can add 'editor' back as an associative array.
+				$supports = array_values( array_diff( $supports, array( 'notes', 'editor' ) ) );
+
+				// Add 'editor' with notes sub-feature enabled (WP 6.9+ format).
+				$supports['editor'] = array( 'notes' => true );
+			}
 
 			if ( empty( $supports ) ) {
 				$args['supports'] = false;

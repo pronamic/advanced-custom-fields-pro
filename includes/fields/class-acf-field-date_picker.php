@@ -326,6 +326,44 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 
 			return (string) $value;
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'Date' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * Converts the stored Ymd format to ISO 8601 date format.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return string|null ISO 8601 formatted date or null.
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) || ! is_string( $value ) ) {
+				return null;
+			}
+
+			// ACF stores date_picker internally as 'Ymd' (e.g., 20231225).
+			$date = \DateTime::createFromFormat( 'Ymd', $value );
+			if ( ! $date ) {
+				return null;
+			}
+
+			// Return ISO 8601 date format (YYYY-MM-DD).
+			return $date->format( 'Y-m-d' );
+		}
 	}
 
 

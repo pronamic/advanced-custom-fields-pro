@@ -40,6 +40,11 @@ if ( ! class_exists( 'acf_pro' ) ) :
 				acf_include( 'pro/admin/admin-updates.php' );
 			}
 
+			// Initialize GEO Blocks output (PRO only).
+			if ( class_exists( 'ACF\Pro\AI\GEO\Outputs\Blocks' ) ) {
+				new \ACF\Pro\AI\GEO\Outputs\Blocks();
+			}
+
 			// actions
 			add_action( 'init', array( $this, 'register_assets' ) );
 			add_action( 'acf/init', array( $this, 'update_plugin_name' ) );

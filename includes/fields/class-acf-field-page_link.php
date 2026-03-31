@@ -704,6 +704,46 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			$value = acf_format_numerics( $value );
+
+			if ( ! $value ) {
+				return $value;
+			}
+
+			if ( is_array( $value ) ) {
+				return array_map(
+					function ( $post_id ) {
+						return get_permalink( $post_id );
+					},
+					$value
+				);
+			}
+
+			return get_permalink( $value );
+		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'URL' );
+		}
 	}
 
 

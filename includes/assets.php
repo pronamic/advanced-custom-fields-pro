@@ -488,7 +488,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			acf_localize_data( $data_to_localize );
 
 			// Print inline script.
-			printf( "<script>\n%s\n</script>\n", 'acf.data = ' . wp_json_encode( $this->data ) . ';' );
+			wp_print_inline_script_tag( 'acf.data = ' . wp_json_encode( $this->data ) . ';' );
 
 			if ( wp_script_is( 'acf-input' ) ) {
 
@@ -501,7 +501,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 				 */
 				$compat_l10n = apply_filters( 'acf/input/admin_l10n', array() );
 				if ( $compat_l10n ) {
-					printf( "<script>\n%s\n</script>\n", 'acf.l10n = ' . wp_json_encode( $compat_l10n ) . ';' );
+					wp_print_inline_script_tag( 'acf.l10n = ' . wp_json_encode( $compat_l10n ) . ';' );
 				}
 
 				/**
@@ -524,7 +524,7 @@ if ( ! class_exists( 'ACF_Assets' ) ) :
 			do_action( 'acf/admin_print_footer_scripts' );
 
 			// Once all data is localized, trigger acf.prepare() to execute functionality before DOM ready.
-			printf( "<script>\n%s\n</script>\n", "acf.doAction( 'prepare' );" );
+			wp_print_inline_script_tag( "acf.doAction( 'prepare' );" );
 		}
 
 		/**

@@ -1,0 +1,163 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "label": {
+            "type": "string",
+            "description": "The field label displayed in the edit screen",
+            "minLength": 1
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "image"
+            ],
+            "description": "Field type identifier. Must be \"image\" for this field type."
+        },
+        "name": {
+            "type": "string",
+            "description": "The field name used to save/load data. Auto-generated from label if not provided.",
+            "pattern": "^[a-z_][a-z0-9_]*$"
+        },
+        "key": {
+            "type": "string",
+            "description": "Unique field key. Auto-generated if not provided.",
+            "pattern": "^field_[a-z0-9]+$"
+        },
+        "instructions": {
+            "type": "string",
+            "description": "Instructions displayed to editors below the field label"
+        },
+        "required": {
+            "type": "boolean",
+            "description": "Whether this field is required",
+            "default": false
+        },
+        "conditional_logic": {
+            "type": [
+                "boolean",
+                "array"
+            ],
+            "description": "Conditional logic rules. Set to false to disable, or provide rules array.",
+            "default": false
+        },
+        "wrapper": {
+            "type": "object",
+            "description": "HTML wrapper attributes",
+            "properties": {
+                "width": {
+                    "type": "string",
+                    "description": "Width percentage (e.g., \"50\")"
+                },
+                "class": {
+                    "type": "string",
+                    "description": "Custom CSS classes"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Custom HTML ID"
+                }
+            }
+        },
+        "default_value": {
+            "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+            ],
+            "description": "Default value when creating new content"
+        },
+        "placeholder": {
+            "type": "string",
+            "description": "Placeholder text shown in empty fields"
+        },
+        "prepend": {
+            "type": "string",
+            "description": "Text to prepend before the input"
+        },
+        "append": {
+            "type": "string",
+            "description": "Text to append after the input"
+        },
+        "maxlength": {
+            "type": "integer",
+            "description": "Maximum character length (if applicable)",
+            "minimum": 1
+        },
+        "allow_in_bindings": {
+            "type": "boolean",
+            "description": "Whether this field can be used in block bindings",
+            "default": false
+        },
+        "return_format": {
+            "type": "string",
+            "description": "Format of returned value",
+            "enum": [
+                "array",
+                "url",
+                "id"
+            ],
+            "default": "array"
+        },
+        "preview_size": {
+            "type": "string",
+            "description": "Image size to use for preview (e.g., \"thumbnail\", \"medium\", \"large\")",
+            "default": "medium"
+        },
+        "library": {
+            "type": "string",
+            "description": "Limit media library to uploaded images only",
+            "enum": [
+                "all",
+                "uploadedTo"
+            ],
+            "default": "all"
+        },
+        "min_width": {
+            "type": "integer",
+            "description": "Minimum width in pixels (0 for no limit)",
+            "default": 0,
+            "minimum": 0
+        },
+        "min_height": {
+            "type": "integer",
+            "description": "Minimum height in pixels (0 for no limit)",
+            "default": 0,
+            "minimum": 0
+        },
+        "min_size": {
+            "type": "number",
+            "description": "Minimum file size in MB (0 for no limit)",
+            "default": 0,
+            "minimum": 0
+        },
+        "max_width": {
+            "type": "integer",
+            "description": "Maximum width in pixels (0 for no limit)",
+            "default": 0,
+            "minimum": 0
+        },
+        "max_height": {
+            "type": "integer",
+            "description": "Maximum height in pixels (0 for no limit)",
+            "default": 0,
+            "minimum": 0
+        },
+        "max_size": {
+            "type": "number",
+            "description": "Maximum file size in MB (0 for no limit)",
+            "default": 0,
+            "minimum": 0
+        },
+        "mime_types": {
+            "type": "string",
+            "description": "Comma-separated list of allowed MIME types (e.g., \"jpg,png,gif\")"
+        }
+    },
+    "required": [
+        "label",
+        "type"
+    ]
+}

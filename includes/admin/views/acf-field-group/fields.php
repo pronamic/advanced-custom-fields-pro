@@ -116,13 +116,15 @@ if ( $is_subfield ) {
 if ( ! $parent ) :
 
 	// get clone
+	global $field_group;
 	$clone = acf_get_valid_field(
 		array(
-			'ID'    => 'acfcloneindex',
-			'key'   => 'acfcloneindex',
-			'label' => __( 'New Field', 'acf' ),
-			'name'  => 'new_field',
-			'type'  => 'text',
+			'ID'     => 'acfcloneindex',
+			'key'    => 'acfcloneindex',
+			'label'  => __( 'New Field', 'acf' ),
+			'name'   => 'new_field',
+			'type'   => 'text',
+			'parent' => isset( $field_group['ID'] ) ? $field_group['ID'] : 0,
 		)
 	);
 

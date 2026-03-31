@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-26T17:19:59+00:00\n"
+"PO-Revision-Date: 2026-03-30T15:14:15+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: da_DK\n"
 "MIME-Version: 1.0\n"
@@ -963,9 +963,9 @@ msgstr ""
 msgid "Site (alt) Icon"
 msgstr ""
 
-#: includes/admin/views/options-page-preview.php:36
+#: pro/admin/views/acf-ui-options-page/list-empty.php:27
 msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
-msgstr ""
+msgstr "Opgrader til ACF PRO for at oprette indstillingssider med få klik"
 
 #: includes/ajax/class-acf-ajax-query-users.php:33
 msgid "Invalid request args."
@@ -1876,13 +1876,13 @@ msgstr ""
 msgid "Subscription Expiry Date"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:320
+#: pro/admin/views/html-settings-updates.php:41
 msgid "License Status"
-msgstr ""
+msgstr "Licensstatus"
 
-#: src/Site_Health/Site_Health.php:315
+#: pro/admin/views/html-settings-updates.php:54
 msgid "License Type"
-msgstr ""
+msgstr "Licenstype"
 
 #: src/Site_Health/Site_Health.php:310
 msgid "Licensed URL"
@@ -2134,29 +2134,32 @@ msgstr ""
 msgid "Renew License"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:24
+#: pro/acf-pro.php:214, pro/admin/views/html-settings-updates.php:110
 msgid "Manage License"
-msgstr ""
+msgstr "Administrér licens"
 
 #: includes/admin/views/acf-field-group/options.php:113
 msgid "'High' position not supported in the Block Editor"
 msgstr ""
 
-#: includes/admin/views/options-page-preview.php:40
+#: pro/admin/views/acf-ui-options-page/list-empty.php:39
 msgid "Upgrade to ACF PRO"
-msgstr ""
+msgstr "Opgrader til ACF PRO"
 
 #. translators: %s URL to ACF options pages documentation
-#: includes/admin/views/options-page-preview.php:17
+#: pro/admin/views/acf-ui-options-page/list-empty.php:5
 msgid ""
 "ACF <a href=\"%s\" target=\"_blank\">options pages</a> are custom admin "
 "pages for managing global settings via fields. You can create multiple pages "
 "and sub-pages."
 msgstr ""
+"ACF <a href=\"%s\" target=\"_blank\">indstillingssider</a> er tilpassede "
+"admin-sider til at administrere globale indstillinger via felter. Du kan "
+"oprette flere sider og undersider."
 
-#: includes/admin/views/global/header.php:45
+#: pro/admin/views/acf-ui-options-page/list-empty.php:35
 msgid "Add Options Page"
-msgstr ""
+msgstr "Tilføj indstillingsside"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:717
 msgid "In the editor used as the placeholder of the title."
@@ -2335,11 +2338,9 @@ msgstr ""
 msgid "View Pricing & Upgrade"
 msgstr ""
 
-#: includes/admin/views/acf-field-group/pro-features.php:13
-#: includes/admin/views/options-page-preview.php:39
-#: includes/fields/class-acf-field-icon_picker.php:284
+#: pro/admin/views/acf-ui-options-page/list-empty.php:38
 msgid "Learn More"
-msgstr ""
+msgstr "Lær mere"
 
 #: includes/admin/views/acf-field-group/pro-features.php:38
 msgid ""
@@ -2382,11 +2383,9 @@ msgstr ""
 msgid "No fields"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-groups.php:133
-#: includes/admin/post-types/admin-post-types.php:152
-#: includes/admin/post-types/admin-taxonomies.php:151
+#: pro/admin/post-types/admin-ui-options-pages.php:147
 msgid "No description"
-msgstr ""
+msgstr "Ingen beskrivelse"
 
 #: includes/fields/class-acf-field-page_link.php:472
 #: includes/fields/class-acf-field-post_object.php:381
@@ -2502,9 +2501,9 @@ msgstr ""
 msgid "The post type key must be under 20 characters."
 msgstr ""
 
-#: includes/fields/class-acf-field-wysiwyg.php:33
+#: pro/fields/class-acf-field-flexible-content.php:40
 msgid "We do not recommend using this field in ACF Blocks."
-msgstr ""
+msgstr "Vi anbefaler ikke at bruge dette felt i ACF-blokke."
 
 #: includes/fields/class-acf-field-wysiwyg.php:33
 msgid ""
@@ -2718,10 +2717,10 @@ msgid ""
 "or display the selected fields as a group of subfields."
 msgstr ""
 
-#: includes/fields.php:426
+#: pro/fields/class-acf-field-clone.php:27
 msgctxt "noun"
 msgid "Clone"
-msgstr ""
+msgstr "Klon"
 
 #: includes/admin/views/global/navigation.php:96 includes/fields.php:341
 #: src/Site_Health/Site_Health.php:293
@@ -3367,15 +3366,13 @@ msgstr ""
 msgid "Add Your First Post Type"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/basic-settings.php:146
-#: includes/admin/views/acf-taxonomy/basic-settings.php:144
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:74
 msgid "I know what I'm doing, show me all the options."
-msgstr ""
+msgstr "Jeg ved hvad jeg laver, vis mig alle muligheder."
 
-#: includes/admin/views/acf-post-type/basic-settings.php:145
-#: includes/admin/views/acf-taxonomy/basic-settings.php:143
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:73
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Avanceret konfiguration"
 
 #: includes/admin/views/acf-post-type/basic-settings.php:133
 msgid "Hierarchical post types can have descendants (like pages)."
@@ -3527,9 +3524,9 @@ msgstr ""
 msgid "Pagination support for the items URLs such as the archives."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:1136
+#: pro/fields/class-acf-field-repeater.php:198
 msgid "Pagination"
-msgstr ""
+msgstr "Sideinddeling"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:1119
 msgid "RSS feed URL for the post type items."
@@ -3672,18 +3669,17 @@ msgstr ""
 msgid "Custom Meta Box Callback"
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:831
-#: includes/fields/class-acf-field-icon_picker.php:652
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:59
 msgid "Menu Icon"
-msgstr ""
+msgstr "Menuikon"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:787
 msgid "The position in the sidebar menu in the admin dashboard."
 msgstr ""
 
-#: includes/admin/views/acf-post-type/advanced-settings.php:786
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:115
 msgid "Menu Position"
-msgstr ""
+msgstr "Menuposition"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:768
 msgid ""
@@ -4474,15 +4470,13 @@ msgstr[1] ""
 msgid "Post Types"
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:159
-#: includes/admin/post-types/admin-taxonomy.php:161
+#: pro/admin/post-types/admin-ui-options-page.php:152
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Avancerede indstillinger"
 
-#: includes/admin/post-types/admin-post-type.php:158
-#: includes/admin/post-types/admin-taxonomy.php:160
+#: pro/admin/post-types/admin-ui-options-page.php:151
 msgid "Basic Settings"
-msgstr ""
+msgstr "Grundindstillinger"
 
 #: includes/admin/post-types/admin-post-type.php:152
 #: includes/admin/post-types/admin-post-types.php:350
@@ -4491,9 +4485,9 @@ msgid ""
 "post type registered by another plugin or theme."
 msgstr ""
 
-#: includes/admin/post-types/admin-post-type.php:127
+#: pro/admin/post-types/admin-ui-options-page.php:128
 msgid "Pages"
-msgstr ""
+msgstr "Sider"
 
 #: includes/admin/admin-internal-post-type.php:347
 msgid "Link Existing Field Groups"
@@ -4504,10 +4498,10 @@ msgstr ""
 msgid "%s post type created"
 msgstr ""
 
-#. translators: %s taxonomy name
-#: includes/admin/post-types/admin-taxonomy.php:79
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:79
 msgid "Add fields to %s"
-msgstr ""
+msgstr "Tilføj felter til %s"
 
 #. translators: %s post type name
 #: includes/admin/post-types/admin-post-type.php:77
@@ -4570,9 +4564,9 @@ msgstr ""
 msgid "post type"
 msgstr ""
 
-#: includes/admin/admin-internal-post-type.php:338
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:63
 msgid "Done"
-msgstr ""
+msgstr "Færdig"
 
 #: includes/admin/admin-internal-post-type.php:324
 msgid "Field Group(s)"
@@ -4749,12 +4743,12 @@ msgstr ""
 msgid "Add Your First Field Group"
 msgstr ""
 
-#: includes/admin/admin-options-pages-preview.php:37
-#: includes/admin/views/acf-field-group/pro-features.php:68
-#: includes/admin/views/global/navigation.php:96
-#: includes/admin/views/global/navigation.php:268
+#: pro/post-types/acf-ui-options-page.php:92,
+#: pro/post-types/acf-ui-options-page.php:93,
+#: pro/admin/post-types/admin-ui-options-pages.php:91,
+#: pro/admin/post-types/admin-ui-options-pages.php:91
 msgid "Options Pages"
-msgstr ""
+msgstr "Indstillingssider"
 
 #: includes/admin/views/acf-field-group/pro-features.php:64
 msgid "ACF Blocks"
@@ -4880,13 +4874,10 @@ msgstr ""
 msgid "Move field group to trash?"
 msgstr ""
 
-#: acf.php:571 includes/admin/admin-internal-post-type-list.php:264
-#: includes/admin/post-types/admin-field-group.php:304
-#: includes/admin/post-types/admin-post-type.php:283
-#: includes/admin/post-types/admin-taxonomy.php:285
+#: pro/admin/post-types/admin-ui-options-page.php:277
 msgctxt "post status"
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 #. Author of the plugin
 #: acf.php includes/admin/views/global/navigation.php:250
@@ -4968,12 +4959,10 @@ msgstr ""
 msgid "Upgrade to PRO"
 msgstr ""
 
-#: includes/admin/post-types/admin-field-group.php:304
-#: includes/admin/post-types/admin-post-type.php:283
-#: includes/admin/post-types/admin-taxonomy.php:285
+#: pro/admin/post-types/admin-ui-options-page.php:277
 msgctxt "post status"
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #: includes/fields/class-acf-field-email.php:175
 msgid "'%s' is not a valid email address"
@@ -4995,9 +4984,10 @@ msgstr ""
 msgid "Blocks"
 msgstr ""
 
-#: includes/acf-wp-functions.php:95
+#: pro/options-page.php:43,
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:237
 msgid "Options"
-msgstr ""
+msgstr "Indstillinger"
 
 #: includes/acf-wp-functions.php:91
 msgid "Users"
@@ -5025,12 +5015,9 @@ msgstr ""
 msgid "Taxonomies"
 msgstr ""
 
-#: includes/acf-wp-functions.php:53
-#: includes/admin/post-types/admin-post-type.php:125
-#: includes/admin/post-types/admin-post-types.php:119
-#: includes/admin/views/acf-post-type/advanced-settings.php:115
+#: pro/admin/post-types/admin-ui-options-page.php:126
 msgid "Posts"
-msgstr ""
+msgstr "Indlæg"
 
 #: includes/ajax/class-acf-ajax-local-json-diff.php:90
 msgid "Last updated: %s"
@@ -5171,10 +5158,9 @@ msgstr ""
 msgid "Class \"%s\" does not exist."
 msgstr ""
 
-#: includes/ajax/class-acf-ajax-query-users.php:52
-#: includes/ajax/class-acf-ajax.php:166
+#: pro/fields/class-acf-field-repeater.php:1084
 msgid "Invalid nonce."
-msgstr ""
+msgstr "Ugyldig nonce."
 
 #: includes/fields/class-acf-field-user.php:409
 msgid "Error loading field."
@@ -6126,7 +6112,7 @@ msgstr "Rediger"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Dine ændringer vil gå tabt, hvis du går væk fra denne side"
 
-#: includes/api/api-helpers.php:3020
+#: includes/api/api-helpers.php:3075
 msgid "File type must be %s."
 msgstr "Filtypen skal være %s."
 
@@ -6135,31 +6121,31 @@ msgstr "Filtypen skal være %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3017
+#: includes/api/api-helpers.php:3072
 msgid "or"
 msgstr "eller"
 
-#: includes/api/api-helpers.php:2993
+#: includes/api/api-helpers.php:3048
 msgid "File size must not exceed %s."
 msgstr "Filstørrelsen må ikke overskride %s. "
 
-#: includes/api/api-helpers.php:2989
+#: includes/api/api-helpers.php:3044
 msgid "File size must be at least %s."
 msgstr "Filens størrelse skal være mindst %s."
 
-#: includes/api/api-helpers.php:2976
+#: includes/api/api-helpers.php:3031
 msgid "Image height must not exceed %dpx."
 msgstr "Billedets højde må ikke overskride %dpx."
 
-#: includes/api/api-helpers.php:2972
+#: includes/api/api-helpers.php:3027
 msgid "Image height must be at least %dpx."
 msgstr "Billedets højde skal være mindst %dpx."
 
-#: includes/api/api-helpers.php:2960
+#: includes/api/api-helpers.php:3015
 msgid "Image width must not exceed %dpx."
 msgstr "Billedets bredde må ikke overskride %dpx."
 
-#: includes/api/api-helpers.php:2956
+#: includes/api/api-helpers.php:3011
 msgid "Image width must be at least %dpx."
 msgstr "Billedets bredde skal være mindst %dpx."
 
@@ -7058,10 +7044,10 @@ msgstr "Maksimum"
 msgid "File size"
 msgstr "Filstørrelse"
 
-#: includes/fields/class-acf-field-image.php:244
-#: includes/fields/class-acf-field-image.php:280
+#: pro/fields/class-acf-field-gallery.php:588,
+#: pro/fields/class-acf-field-gallery.php:624
 msgid "Restrict which images can be uploaded"
-msgstr ""
+msgstr "Begræns hvilke billeder der kan uploades"
 
 #: includes/fields/class-acf-field-file.php:265
 #: includes/fields/class-acf-field-image.php:243
@@ -7085,10 +7071,9 @@ msgstr "Uploadet til indlæg"
 msgid "All"
 msgstr "Alle"
 
-#: includes/fields/class-acf-field-file.php:229
-#: includes/fields/class-acf-field-image.php:203
+#: pro/fields/class-acf-field-gallery.php:525
 msgid "Limit the media library choice"
-msgstr ""
+msgstr "Begræns valg i mediebibliotek"
 
 #: includes/fields/class-acf-field-file.php:228
 #: includes/fields/class-acf-field-image.php:202
@@ -7340,9 +7325,9 @@ msgstr "Tabel"
 msgid "Block"
 msgstr "Blok"
 
-#: includes/fields/class-acf-field-group.php:416
+#: pro/fields/class-acf-field-clone.php:766
 msgid "Specify the style used to render the selected fields"
-msgstr ""
+msgstr "Angiv stilen der bruges til at vise de valgte felter"
 
 #: includes/fields.php:340 includes/fields/class-acf-field-button-group.php:231
 #: includes/fields/class-acf-field-checkbox.php:433
@@ -7419,18 +7404,9 @@ msgstr "Google Map"
 msgid "The format returned via template functions"
 msgstr ""
 
-#: includes/fields/class-acf-field-color_picker.php:225
-#: includes/fields/class-acf-field-date_picker.php:211
-#: includes/fields/class-acf-field-date_time_picker.php:199
-#: includes/fields/class-acf-field-icon_picker.php:296
-#: includes/fields/class-acf-field-image.php:186
-#: includes/fields/class-acf-field-post_object.php:403
-#: includes/fields/class-acf-field-relationship.php:647
-#: includes/fields/class-acf-field-select.php:371
-#: includes/fields/class-acf-field-time_picker.php:130
-#: includes/fields/class-acf-field-user.php:104
+#: pro/fields/class-acf-field-gallery.php:508
 msgid "Return Format"
-msgstr ""
+msgstr "Returformat"
 
 #: includes/fields/class-acf-field-date_picker.php:190
 #: includes/fields/class-acf-field-date_picker.php:221
@@ -7561,3 +7537,1167 @@ msgstr "https://www.advancedcustomfields.com"
 #: acf.php acf.php:341
 msgid "Advanced Custom Fields"
 msgstr "Advanced Custom Fields"
+
+#: pro/acf-pro.php:62
+msgid "Advanced Custom Fields PRO"
+msgstr "Advanced Custom Fields PRO"
+
+#: pro/acf-pro.php:199
+msgid ""
+"Your ACF PRO license is no longer active. Please renew to continue to have "
+"access to updates, support, & PRO features."
+msgstr ""
+"Din ACF PRO-licens er ikke længere aktiv. Forny venligst for fortsat adgang "
+"til opdateringer, support og PRO-funktioner."
+
+#: pro/acf-pro.php:196
+msgid ""
+"Your license has expired. Please renew to continue to have access to "
+"updates, support &amp; PRO features."
+msgstr ""
+"Din licens er udløbet. Forny venligst for fortsat adgang til opdateringer, "
+"support og PRO-funktioner."
+
+#: pro/acf-pro.php:193
+msgid ""
+"Activate your license to enable access to updates, support &amp; PRO "
+"features."
+msgstr ""
+"Aktivér din licens for at få adgang til opdateringer, support og PRO-"
+"funktioner."
+
+#: pro/acf-pro.php:282
+msgid "A valid license is required to edit options pages."
+msgstr "En gyldig licens er påkrævet for at redigere indstillingssider."
+
+#: pro/acf-pro.php:280
+msgid "A valid license is required to edit field groups assigned to a block."
+msgstr ""
+"En gyldig licens er påkrævet for at redigere feltgrupper, der er tildelt en "
+"blok."
+
+#: pro/blocks.php:203
+msgid "Block type name is required."
+msgstr "Bloktypens navn er påkrævet."
+
+#. translators: The name of the block type
+#: pro/blocks.php:211
+msgid "Block type \"%s\" is already registered."
+msgstr "Bloktypen \"%s\" er allerede registreret."
+
+#: pro/blocks.php:800
+msgid "The render template for this ACF Block was not found"
+msgstr "Render-skabelonen for denne ACF-blok blev ikke fundet"
+
+#: pro/blocks.php:852
+msgid "Switch to Edit"
+msgstr "Skift til redigering"
+
+#: pro/blocks.php:853
+msgid "Switch to Preview"
+msgstr "Skift til forhåndsvisning"
+
+#: pro/blocks.php:854
+msgid "Change content alignment"
+msgstr "Skift indholdsjustering"
+
+#: pro/blocks.php:855
+msgid "An error occurred when loading the preview for this block."
+msgstr ""
+"Der opstod en fejl under indlæsning af forhåndsvisningen for denne blok."
+
+#: pro/blocks.php:856
+msgid "An error occurred when loading the block in edit mode."
+msgstr "Der opstod en fejl under indlæsning af blokken i redigeringstilstand."
+
+#: pro/blocks.php:857
+msgid "Edit Block"
+msgstr "Rediger blok"
+
+#: pro/blocks.php:858
+msgid "Open Expanded Editor"
+msgstr "Åbn udvidet editor"
+
+#: pro/blocks.php:859
+msgid ""
+"The preview for this block couldn't be loaded. Review its content or "
+"settings for issues."
+msgstr ""
+"Forhåndsvisningen af denne blok kunne ikke indlæses. Gennemgå indhold eller "
+"indstillinger for fejl."
+
+#: pro/blocks.php:860
+msgid "ACF Block"
+msgstr "ACF-blok"
+
+#. translators: %s: Block type title
+#: pro/blocks.php:863
+msgid "%s settings"
+msgstr "%s-indstillinger"
+
+#: pro/blocks.php:1105
+msgid "This block contains no editable fields."
+msgstr "Denne blok indeholder ingen redigerbare felter."
+
+#. translators: %s: an admin URL to the field group edit screen
+#: pro/blocks.php:1111
+msgid ""
+"Assign a <a href=\"%s\" target=\"_blank\">field group</a> to add fields to "
+"this block."
+msgstr ""
+"Tildel en <a href=\"%s\" target=\"_blank\">feltgruppe</a> for at tilføje "
+"felter til denne blok."
+
+#: pro/options-page.php:74, pro/post-types/acf-ui-options-page.php:174
+msgid "Options Updated"
+msgstr "Indstillinger er opdateret"
+
+#. translators: %1 A link to the updates page. %2 link to the pricing page
+#: pro/updates.php:75
+msgid ""
+"To enable updates, please enter your license key on the <a "
+"href=\"%1$s\">Updates</a> page. If you don't have a license key, please see "
+"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
+msgstr ""
+"For at aktivere opdateringer, indtast venligst din licensnøgle på <a "
+"href=\"%1$s\">Opdateringer</a>-siden. Hvis du ikke har en licensnøgle, se "
+"venligst <a href=\"%2$s\" target=\"_blank\">detaljer og priser</a>."
+
+#: pro/updates.php:71
+msgid ""
+"To enable updates, please enter your license key on the <a "
+"href=\"%1$s\">Updates</a> page of the main site. If you don't have a license "
+"key, please see <a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
+msgstr ""
+"For at aktivere opdateringer, indtast venligst din licensnøgle på <a "
+"href=\"%1$s\">Opdateringer</a>-siden på hovedsiden. Hvis du ikke har en "
+"licensnøgle, se venligst <a href=\"%2$s\" target=\"_blank\">detaljer og "
+"priser</a>."
+
+#: pro/updates.php:136
+msgid ""
+"Your defined license key has changed, but an error occurred when "
+"deactivating your old license"
+msgstr ""
+"Din angivne licensnøgle er ændret, men der opstod en fejl ved deaktivering "
+"af din gamle licens"
+
+#: pro/updates.php:133
+msgid ""
+"Your defined license key has changed, but an error occurred when connecting "
+"to activation server"
+msgstr ""
+"Din angivne licensnøgle er ændret, men der opstod en fejl ved forbindelse "
+"til aktiveringsserveren"
+
+#: pro/updates.php:168
+msgid ""
+"<strong>ACF PRO &mdash;</strong> Your license key has been activated "
+"successfully. Access to updates, support &amp; PRO features is now enabled."
+msgstr ""
+"<strong>ACF PRO &mdash;</strong> Din licensnøgle er blevet aktiveret. Adgang "
+"til opdateringer, support og PRO-funktioner er nu aktiveret."
+
+#: pro/updates.php:159
+msgid "There was an issue activating your license key."
+msgstr "Der opstod et problem med at aktivere din licensnøgle."
+
+#: pro/updates.php:155
+msgid "An error occurred when connecting to activation server"
+msgstr "Der opstod en fejl ved forbindelse til aktiveringsserveren"
+
+#: pro/updates.php:260
+msgid ""
+"The ACF activation service is temporarily unavailable. Please try again "
+"later."
+msgstr ""
+"ACF-aktiveringstjenesten er midlertidigt utilgængelig. Prøv venligst igen "
+"senere."
+
+#: pro/updates.php:258
+msgid ""
+"The ACF activation service is temporarily unavailable for scheduled "
+"maintenance. Please try again later."
+msgstr ""
+"ACF-aktiveringstjenesten er midlertidigt utilgængelig pga. planlagt "
+"vedligeholdelse. Prøv venligst igen senere."
+
+#: pro/updates.php:256
+msgid ""
+"An upstream API error occurred when checking your ACF PRO license status. We "
+"will retry again shortly."
+msgstr ""
+"Der opstod en API-fejl i kaldet til kontrol af din ACF PRO-licensstatus. Vi "
+"prøver igen om lidt."
+
+#: pro/updates.php:254
+msgid ""
+"Your license is not valid for this site URL. Please contact support for "
+"assistance."
+msgstr ""
+"Din licens er ikke gyldig for denne side-URL. Kontakt venligst support for "
+"hjælp."
+
+#: pro/updates.php:224
+msgid "You have reached the activation limit for the license."
+msgstr "Du har nået grænsen for aktiveringer for licensen."
+
+#: pro/updates.php:233, pro/updates.php:205
+msgid "View your licenses"
+msgstr "Se dine licenser"
+
+#: pro/updates.php:246
+msgid "check again"
+msgstr "tjek igen"
+
+#: pro/updates.php:250
+msgid "%1$s or %2$s."
+msgstr "%1$s eller %2$s."
+
+#: pro/updates.php:210
+msgid "Your license key has expired and cannot be activated."
+msgstr "Din licensnøgle er udløbet og kan ikke aktiveres."
+
+#: pro/updates.php:219
+msgid "View your subscriptions"
+msgstr "Se dine abonnementer"
+
+#: pro/updates.php:196
+msgid ""
+"License key not found. Make sure you have copied your license key exactly as "
+"it appears in your receipt or your account."
+msgstr ""
+"Licensnøgle ikke fundet. Sørg for at du har kopieret din licensnøgle præcis "
+"som den fremgår i din kvittering eller på din konto."
+
+#: pro/updates.php:194
+msgid "Your license key has been deactivated."
+msgstr "Din licensnøgle er blevet deaktiveret."
+
+#: pro/updates.php:192
+msgid ""
+"Your license key has been activated successfully. Access to updates, support "
+"&amp; PRO features is now enabled."
+msgstr ""
+"Din licensnøgle er blevet aktiveret. Adgang til opdateringer, support og PRO-"
+"funktioner er nu aktiveret."
+
+#. translators: %s an untranslatable internal upstream error message
+#: pro/updates.php:264
+msgid ""
+"An unknown error occurred while trying to communicate with the ACF "
+"activation service: %s."
+msgstr ""
+"Der opstod en ukendt fejl ved kommunikation med ACF-aktiveringstjenesten: %s."
+
+#: pro/updates.php:335, pro/updates.php:951
+msgid "<strong>ACF PRO &mdash;</strong>"
+msgstr "<strong>ACF PRO &mdash;</strong>"
+
+#: pro/updates.php:344
+msgid "Check again"
+msgstr "Tjek igen"
+
+#: pro/updates.php:659
+msgid "Could not connect to the activation server"
+msgstr "Kunne ikke oprette forbindelse til aktiveringsserveren"
+
+#. translators: %s - URL to ACF updates page
+#: pro/updates.php:729
+msgid ""
+"Your license key is valid but not activated on this site. Please <a "
+"href=\"%s\">deactivate</a> and then reactivate the license."
+msgstr ""
+"Din licensnøgle er gyldig, men ikke aktiveret på denne side. <a "
+"href=\"%s\">Deaktiver</a> venligst og genaktiver derefter licensen."
+
+#: pro/updates.php:951
+msgid ""
+"Your site URL has changed since last activating your license. We've "
+"automatically activated it for this site URL."
+msgstr ""
+"Din side-URL er ændret siden sidste aktivering af licensen. Vi har "
+"automatisk aktiveret den for denne side-URL."
+
+#: pro/updates.php:943
+msgid ""
+"Your site URL has changed since last activating your license, but we weren't "
+"able to automatically reactivate it: %s"
+msgstr ""
+"Din side-URL er ændret siden sidste aktivering af licensen, men vi kunne "
+"ikke automatisk genaktivere den: %s"
+
+#: pro/admin/admin-options-page.php:159
+msgid "Publish"
+msgstr "Udgiv"
+
+#: pro/admin/admin-options-page.php:162
+msgid ""
+"No Custom Field Groups found for this options page. <a href=\"%s\">Create a "
+"Custom Field Group</a>"
+msgstr ""
+"Ingen tilpassede feltgrupper fundet for denne indstillingsside. <a "
+"href=\"%s\">Opret en tilpasset feltgruppe</a>"
+
+#: pro/admin/admin-updates.php:52
+msgid "<strong>Error</strong>. Could not connect to the update server"
+msgstr ""
+"<strong>Fejl</strong>. Kunne ikke oprette forbindelse til opdateringsserveren"
+
+#. translators: %s the version of WordPress required for this ACF update
+#: pro/admin/admin-updates.php:203
+msgid ""
+"An update to ACF is available, but it is not compatible with your version of "
+"WordPress. Please upgrade to WordPress %s or newer to update ACF."
+msgstr ""
+"En opdatering til ACF er tilgængelig, men den er ikke kompatibel med din "
+"version af WordPress. Opgrader venligst til WordPress %s eller nyere for at "
+"opdatere ACF."
+
+#: pro/admin/admin-updates.php:224
+msgid ""
+"<strong>Error</strong>. Could not authenticate update package. Please check "
+"again or deactivate and reactivate your ACF PRO license."
+msgstr ""
+"<strong>Fejl</strong>. Kunne ikke godkende opdateringspakken. Tjek venligst "
+"igen eller deaktivér og genaktivér din ACF PRO-licens."
+
+#: pro/admin/admin-updates.php:214
+msgid ""
+"<strong>Error</strong>. Your license for this site has expired or been "
+"deactivated. Please reactivate your ACF PRO license."
+msgstr ""
+"<strong>Fejl</strong>. Din licens for denne side er udløbet eller blevet "
+"deaktiveret. Genaktivér venligst din ACF PRO-licens."
+
+#: pro/fields/class-acf-field-clone.php:29
+msgid ""
+"Allows you to select and display existing fields. It does not duplicate any "
+"fields in the database, but loads and displays the selected fields at run-"
+"time. The Clone field can either replace itself with the selected fields or "
+"display the selected fields as a group of subfields."
+msgstr ""
+"Giver dig mulighed for at vælge og vise eksisterende felter. Det duplikerer "
+"ikke felter i databasen, men indlæser og viser de valgte felter dynamisk. "
+"Klon-feltet kan enten erstatte sig selv med de valgte felter eller vise de "
+"valgte felter som en gruppe af underfelter."
+
+#: pro/fields/class-acf-field-clone.php:729
+msgid "Select one or more fields you wish to clone"
+msgstr "Vælg et eller flere felter du vil klone"
+
+#: pro/fields/class-acf-field-clone.php:749
+msgid "Display"
+msgstr "Visning"
+
+#: pro/fields/class-acf-field-clone.php:750
+msgid "Specify the style used to render the clone field"
+msgstr "Angiv stilen der bruges til at vise klon-feltet"
+
+#: pro/fields/class-acf-field-clone.php:755
+msgid "Group (displays selected fields in a group within this field)"
+msgstr "Gruppe (viser valgte felter i en gruppe inden i dette felt)"
+
+#: pro/fields/class-acf-field-clone.php:756
+msgid "Seamless (replaces this field with selected fields)"
+msgstr "Integreret (erstatter dette felt med valgte felter)"
+
+#: pro/fields/class-acf-field-clone.php:779
+msgid "Labels will be displayed as %s"
+msgstr "Labels vises som %s"
+
+#: pro/fields/class-acf-field-clone.php:784
+msgid "Prefix Field Labels"
+msgstr "Præfiks felt-labels"
+
+#: pro/fields/class-acf-field-clone.php:794
+msgid "Values will be saved as %s"
+msgstr "Værdier gemmes som %s"
+
+#: pro/fields/class-acf-field-clone.php:799
+msgid "Prefix Field Names"
+msgstr "Præfiks feltnavne"
+
+#: pro/fields/class-acf-field-clone.php:896
+msgid "Unknown field"
+msgstr "Ukendt felt"
+
+#: pro/fields/class-acf-field-clone.php:929
+msgid "Unknown field group"
+msgstr "Ukendt feltgruppe"
+
+#: pro/fields/class-acf-field-clone.php:933
+msgid "All fields from %s field group"
+msgstr "Alle felter fra feltgruppen %s"
+
+#: pro/fields/class-acf-field-flexible-content.php:40
+msgid ""
+"Allows you to define, create and manage content with total control by "
+"creating layouts that contain subfields that content editors can choose from."
+msgstr ""
+"Giver dig mulighed for at definere, oprette og administrere indhold med fuld "
+"kontrol ved at oprette layouts, der indeholder underfelter, som "
+"indholdsredaktører kan vælge imellem."
+
+#: pro/fields/class-acf-field-flexible-content.php:50,
+#: pro/fields/class-acf-field-repeater.php:104,
+#: pro/fields/class-acf-field-repeater.php:300
+msgid "Add Row"
+msgstr "Tilføj række"
+
+#: pro/fields/class-acf-field-flexible-content.php:82,
+#: pro/fields/class-acf-field-flexible-content.php:748,
+#: pro/fields/class-acf-field-flexible-content.php:834
+msgid "layout"
+msgid_plural "layouts"
+msgstr[0] "layout"
+msgstr[1] "layouts"
+
+#: pro/fields/class-acf-field-flexible-content.php:83
+msgid "layouts"
+msgstr "layouts"
+
+#: pro/fields/class-acf-field-flexible-content.php:89,
+#: pro/fields/class-acf-field-flexible-content.php:353
+msgid "Delete Layout"
+msgstr "Slet layout"
+
+#. translators: %s - Name of the Flexible content layout
+#: pro/fields/class-acf-field-flexible-content.php:91
+msgid "Delete %s"
+msgstr "Slet %s"
+
+#: pro/fields/class-acf-field-flexible-content.php:92
+msgid "Are you sure you want to delete the layout?"
+msgstr "Er du sikker på, at du vil slette layoutet?"
+
+#. translators: %s - Name of the Flexible content layout
+#: pro/fields/class-acf-field-flexible-content.php:94
+msgid "Are you sure you want to delete %s?"
+msgstr "Er du sikker på, at du vil slette %s?"
+
+#: pro/fields/class-acf-field-flexible-content.php:97
+msgid "Rename Layout"
+msgstr "Omdøb layout"
+
+#: pro/fields/class-acf-field-flexible-content.php:98,
+#: src/pro/Fields/FlexibleContent/Render.php:247
+msgid "Rename"
+msgstr "Omdøb"
+
+#: pro/fields/class-acf-field-flexible-content.php:99
+msgid "New Label"
+msgstr "Ny label"
+
+#: pro/fields/class-acf-field-flexible-content.php:100
+msgid "Remove Custom Label"
+msgstr "Fjern brugerdefineret label"
+
+#: pro/fields/class-acf-field-flexible-content.php:103,
+#: pro/fields/class-acf-field-flexible-content.php:747,
+#: pro/fields/class-acf-field-flexible-content.php:833
+msgid "This field requires at least {min} {label} {identifier}"
+msgstr "Dette felt kræver mindst {min} {label} {identifier}"
+
+#: pro/fields/class-acf-field-flexible-content.php:104
+msgid "This field has a limit of {max} {label} {identifier}"
+msgstr "Dette felt har en grænse på {max} {label} {identifier}"
+
+#: pro/fields/class-acf-field-flexible-content.php:105
+msgid "Maximum rows reached ({max})"
+msgstr "Maksimum antal rækker nået ({max})"
+
+#: pro/fields/class-acf-field-flexible-content.php:106
+msgid "Maximum {label} {identifier} reached ({max})"
+msgstr "Maksimum {label} {identifier} nået ({max})"
+
+#: pro/fields/class-acf-field-flexible-content.php:109
+msgid "{available} {label} {identifier} available (max {max})"
+msgstr "{available} {label} {identifier} tilgængelig (maks. {max})"
+
+#: pro/fields/class-acf-field-flexible-content.php:110
+msgid "{required} {label} {identifier} required (min {min})"
+msgstr "{required} {label} {identifier} påkrævet (min. {min})"
+
+#: pro/fields/class-acf-field-flexible-content.php:113
+msgid "Flexible Content requires at least 1 layout"
+msgstr "Fleksibelt indhold kræver mindst 1 layout"
+
+#: pro/fields/class-acf-field-flexible-content.php:354
+msgid "Duplicate Layout"
+msgstr "Duplikér layout"
+
+#: pro/fields/class-acf-field-flexible-content.php:355
+msgid "Add New Layout"
+msgstr "Tilføj nyt layout"
+
+#: pro/fields/class-acf-field-flexible-content.php:355
+msgid "Add Layout"
+msgstr "Tilføj layout"
+
+#: pro/fields/class-acf-field-flexible-content.php:439
+msgid "Min"
+msgstr "Min."
+
+#: pro/fields/class-acf-field-flexible-content.php:454
+msgid "Max"
+msgstr "Maks."
+
+#: pro/fields/class-acf-field-flexible-content.php:495
+msgid "Minimum Layouts"
+msgstr "Minimum layouts"
+
+#: pro/fields/class-acf-field-flexible-content.php:506
+msgid "Maximum Layouts"
+msgstr "Maksimum layouts"
+
+#: pro/fields/class-acf-field-flexible-content.php:517,
+#: pro/fields/class-acf-field-repeater.php:296
+msgid "Button Label"
+msgstr "Knaptekst"
+
+#: pro/fields/class-acf-field-flexible-content.php:1507,
+#: pro/fields/class-acf-field-repeater.php:915
+msgid "%s must be of type array or null."
+msgstr "%s skal være af typen array eller null."
+
+#: pro/fields/class-acf-field-flexible-content.php:1518
+msgid "%1$s must contain at least %2$s %3$s layout."
+msgid_plural "%1$s must contain at least %2$s %3$s layouts."
+msgstr[0] "%1$s skal indeholde mindst %2$s %3$s layout."
+msgstr[1] "%1$s skal indeholde mindst %2$s %3$s layouts."
+
+#: pro/fields/class-acf-field-flexible-content.php:1534
+msgid "%1$s must contain at most %2$s %3$s layout."
+msgid_plural "%1$s must contain at most %2$s %3$s layouts."
+msgstr[0] "%1$s må højst indeholde %2$s %3$s layout."
+msgstr[1] "%1$s må højst indeholde %2$s %3$s layouts."
+
+#: pro/fields/class-acf-field-gallery.php:24
+msgid ""
+"An interactive interface for managing a collection of attachments, such as "
+"images."
+msgstr ""
+"En interaktiv grænseflade til at administrere en samling af vedhæftede "
+"filer, såsom billeder."
+
+#: pro/fields/class-acf-field-gallery.php:72
+msgid "Add Image to Gallery"
+msgstr "Tilføj billede til galleri"
+
+#: pro/fields/class-acf-field-gallery.php:73
+msgid "Maximum selection reached"
+msgstr "Maksimalt antal valgt"
+
+#: pro/fields/class-acf-field-gallery.php:282
+msgid "Length"
+msgstr "Længde"
+
+#: pro/fields/class-acf-field-gallery.php:326
+msgid "Caption"
+msgstr "Billedtekst"
+
+#: pro/fields/class-acf-field-gallery.php:338
+msgid "Alt Text"
+msgstr "Alternativ tekst"
+
+#: pro/fields/class-acf-field-gallery.php:460
+msgid "Add to gallery"
+msgstr "Tilføj til galleri"
+
+#: pro/fields/class-acf-field-gallery.php:464
+msgid "Bulk actions"
+msgstr "Massehandlinger"
+
+#: pro/fields/class-acf-field-gallery.php:465
+msgid "Sort by date uploaded"
+msgstr "Sortér efter uploaddato"
+
+#: pro/fields/class-acf-field-gallery.php:466
+msgid "Sort by date modified"
+msgstr "Sortér efter ændringsdato"
+
+#: pro/fields/class-acf-field-gallery.php:467
+msgid "Sort by title"
+msgstr "Sortér efter titel"
+
+#: pro/fields/class-acf-field-gallery.php:468
+msgid "Reverse current order"
+msgstr "Omvend nuværende rækkefølge"
+
+#: pro/fields/class-acf-field-gallery.php:480
+msgid "Close"
+msgstr "Luk"
+
+#: pro/fields/class-acf-field-gallery.php:567
+msgid "Minimum Selection"
+msgstr "Minimum valg"
+
+#: pro/fields/class-acf-field-gallery.php:577
+msgid "Maximum Selection"
+msgstr "Maksimum valg"
+
+#: pro/fields/class-acf-field-gallery.php:679
+msgid "Insert"
+msgstr "Indsæt"
+
+#: pro/fields/class-acf-field-gallery.php:680
+msgid "Specify where new attachments are added"
+msgstr "Angiv hvor nye vedhæftede filer tilføjes"
+
+#: pro/fields/class-acf-field-gallery.php:684
+msgid "Append to the end"
+msgstr "Tilføj til sidst"
+
+#: pro/fields/class-acf-field-gallery.php:685
+msgid "Prepend to the beginning"
+msgstr "Tilføj i starten"
+
+#: pro/fields/class-acf-field-repeater.php:31
+msgid ""
+"Provides a solution for repeating content such as slides, team members, and "
+"call-to-action tiles, by acting as a parent to a set of subfields which can "
+"be repeated again and again."
+msgstr ""
+"Giver en løsning til gentaget indhold som slides, teammedlemmer og call-to-"
+"action-felter ved at fungere som forælder til et sæt underfelter, der kan "
+"gentages igen og igen."
+
+#: pro/fields/class-acf-field-repeater.php:67,
+#: pro/fields/class-acf-field-repeater.php:464
+msgid "Minimum rows not reached ({min} rows)"
+msgstr "Minimum antal rækker ikke nået ({min} rækker)"
+
+#: pro/fields/class-acf-field-repeater.php:68
+msgid "Maximum rows reached ({max} rows)"
+msgstr "Maksimum antal rækker nået ({max} rækker)"
+
+#: pro/fields/class-acf-field-repeater.php:69
+msgid "Error loading page"
+msgstr "Fejl ved indlæsning af side"
+
+#: pro/fields/class-acf-field-repeater.php:70
+msgid "Order will be assigned upon save"
+msgstr "Rækkefølge bliver sat ved gem"
+
+#: pro/fields/class-acf-field-repeater.php:199
+msgid "Useful for fields with a large number of rows."
+msgstr "Nyttigt for felter med et stort antal rækker."
+
+#: pro/fields/class-acf-field-repeater.php:210
+msgid "Rows Per Page"
+msgstr "Rækker pr. side"
+
+#: pro/fields/class-acf-field-repeater.php:211
+msgid "Set the number of rows to be displayed on a page."
+msgstr "Angiv antallet af rækker der vises på en side."
+
+#: pro/fields/class-acf-field-repeater.php:243
+msgid "Minimum Rows"
+msgstr "Minimum rækker"
+
+#: pro/fields/class-acf-field-repeater.php:254
+msgid "Maximum Rows"
+msgstr "Maksimum rækker"
+
+#: pro/fields/class-acf-field-repeater.php:284
+msgid "Collapsed"
+msgstr "Sammenfoldet"
+
+#: pro/fields/class-acf-field-repeater.php:285
+msgid "Select a sub field to show when row is collapsed"
+msgstr "Vælg et underfelt der vises når rækken er sammenfoldet"
+
+#: pro/fields/class-acf-field-repeater.php:1089
+msgid "Invalid field key or name."
+msgstr "Ugyldig feltnøgle eller navn."
+
+#: pro/fields/class-acf-field-repeater.php:1098
+msgid "There was an error retrieving the field."
+msgstr "Der opstod en fejl ved hentning af feltet."
+
+#: pro/fields/class-acf-repeater-table.php:369
+msgid "Click to reorder"
+msgstr "Klik for at omarrangere"
+
+#: pro/fields/class-acf-repeater-table.php:382
+msgid "Click to toggle"
+msgstr "Klik for at skifte"
+
+#: pro/fields/class-acf-repeater-table.php:402
+msgid "Add row"
+msgstr "Tilføj række"
+
+#: pro/fields/class-acf-repeater-table.php:403
+msgid "Duplicate row"
+msgstr "Dupliker række"
+
+#: pro/fields/class-acf-repeater-table.php:404
+msgid "Remove row"
+msgstr "Fjern række"
+
+#: pro/fields/class-acf-repeater-table.php:448,
+#: pro/fields/class-acf-repeater-table.php:465,
+#: pro/fields/class-acf-repeater-table.php:466
+msgid "Current Page"
+msgstr "Nuværende side"
+
+#: pro/fields/class-acf-repeater-table.php:456,
+#: pro/fields/class-acf-repeater-table.php:457
+msgid "First Page"
+msgstr "Første side"
+
+#: pro/fields/class-acf-repeater-table.php:460,
+#: pro/fields/class-acf-repeater-table.php:461
+msgid "Previous Page"
+msgstr "Forrige side"
+
+#. translators: 1: Current page, 2: Total pages.
+#: pro/fields/class-acf-repeater-table.php:470
+msgctxt "paging"
+msgid "%1$s of %2$s"
+msgstr "%1$s af %2$s"
+
+#: pro/fields/class-acf-repeater-table.php:477,
+#: pro/fields/class-acf-repeater-table.php:478
+msgid "Next Page"
+msgstr "Næste side"
+
+#: pro/fields/class-acf-repeater-table.php:481,
+#: pro/fields/class-acf-repeater-table.php:482
+msgid "Last Page"
+msgstr "Sidste side"
+
+#: pro/locations/class-acf-location-block.php:73
+msgid "No block types exist"
+msgstr "Der findes ingen bloktyper"
+
+#: pro/locations/class-acf-location-options-page.php:70
+msgid "Select options page..."
+msgstr "Vælg indstillingsside..."
+
+#: pro/locations/class-acf-location-options-page.php:74,
+#: pro/post-types/acf-ui-options-page.php:95,
+#: pro/admin/post-types/admin-ui-options-page.php:476
+msgid "Add New Options Page"
+msgstr "Tilføj ny indstillingsside"
+
+#: pro/post-types/acf-ui-options-page.php:96
+msgid "Edit Options Page"
+msgstr "Rediger indstillingsside"
+
+#: pro/post-types/acf-ui-options-page.php:97
+msgid "New Options Page"
+msgstr "Ny indstillingsside"
+
+#: pro/post-types/acf-ui-options-page.php:98
+msgid "View Options Page"
+msgstr "Vis indstillingsside"
+
+#: pro/post-types/acf-ui-options-page.php:99
+msgid "Search Options Pages"
+msgstr "Søg i indstillingssider"
+
+#: pro/post-types/acf-ui-options-page.php:100
+msgid "No Options Pages found"
+msgstr "Ingen indstillingssider fundet"
+
+#: pro/post-types/acf-ui-options-page.php:101
+msgid "No Options Pages found in Trash"
+msgstr "Ingen indstillingssider fundet i papirkurven"
+
+#: pro/post-types/acf-ui-options-page.php:203
+msgid ""
+"The menu slug must only contain lower case alphanumeric characters, "
+"underscores or dashes."
+msgstr ""
+"Menu-slug'en må kun indeholde små bogstaver, tal, understreger eller "
+"bindestreger."
+
+#: pro/post-types/acf-ui-options-page.php:235
+msgid "This Menu Slug is already in use by another ACF Options Page."
+msgstr "Denne menu-slug bruges allerede af en anden ACF-indstillingsside."
+
+#: pro/admin/post-types/admin-ui-options-page.php:50
+msgid "Options page deleted."
+msgstr "Indstillingsside slettet."
+
+#: pro/admin/post-types/admin-ui-options-page.php:51
+msgid "Options page updated."
+msgstr "Indstillingsside opdateret."
+
+#: pro/admin/post-types/admin-ui-options-page.php:54
+msgid "Options page saved."
+msgstr "Indstillingsside gemt."
+
+#: pro/admin/post-types/admin-ui-options-page.php:55
+msgid "Options page submitted."
+msgstr "Indstillingsside indsendt."
+
+#: pro/admin/post-types/admin-ui-options-page.php:56
+msgid "Options page scheduled for."
+msgstr "Indstillingsside planlagt til."
+
+#: pro/admin/post-types/admin-ui-options-page.php:57
+msgid "Options page draft updated."
+msgstr "Indstillingsside-kladde opdateret."
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:77
+msgid "%s options page updated"
+msgstr "%s indstillingsside opdateret"
+
+#. translators: %s options page name
+#: pro/admin/post-types/admin-ui-options-page.php:83
+msgid "%s options page created"
+msgstr "%s indstillingsside oprettet"
+
+#: pro/admin/post-types/admin-ui-options-page.php:96
+msgid "Link existing field groups"
+msgstr "Link eksisterende feltgrupper"
+
+#: pro/admin/post-types/admin-ui-options-page.php:355
+msgid "No Parent"
+msgstr "Ingen forælder"
+
+#: pro/admin/post-types/admin-ui-options-page.php:444
+msgid "The provided Menu Slug already exists."
+msgstr "Den angivne menu-slug findes allerede."
+
+#. translators: %s number of post types activated
+#: pro/admin/post-types/admin-ui-options-pages.php:175
+msgid "Options page activated."
+msgid_plural "%s options pages activated."
+msgstr[0] "Indstillingsside aktiveret."
+msgstr[1] "%s indstillingssider aktiveret."
+
+#. translators: %s number of post types deactivated
+#: pro/admin/post-types/admin-ui-options-pages.php:182
+msgid "Options page deactivated."
+msgid_plural "%s options pages deactivated."
+msgstr[0] "Indstillingsside deaktiveret."
+msgstr[1] "%s indstillingssider deaktiveret."
+
+#. translators: %s number of post types duplicated
+#: pro/admin/post-types/admin-ui-options-pages.php:189
+msgid "Options page duplicated."
+msgid_plural "%s options pages duplicated."
+msgstr[0] "Indstillingsside duplikeret."
+msgstr[1] "%s indstillingssider duplikeret."
+
+#. translators: %s number of post types synchronized
+#: pro/admin/post-types/admin-ui-options-pages.php:196
+msgid "Options page synchronized."
+msgid_plural "%s options pages synchronized."
+msgstr[0] "Indstillingsside synkroniseret."
+msgstr[1] "%s indstillingssider synkroniseret."
+
+#: pro/admin/views/html-settings-updates.php:4
+msgid "Deactivate License"
+msgstr "Deaktivér licens"
+
+#: pro/admin/views/html-settings-updates.php:4
+msgid "Activate License"
+msgstr "Aktivér licens"
+
+#: pro/admin/views/html-settings-updates.php:21
+msgctxt "license status"
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: pro/admin/views/html-settings-updates.php:30
+msgctxt "license status"
+msgid "Cancelled"
+msgstr "Annulleret"
+
+#: pro/admin/views/html-settings-updates.php:28
+msgctxt "license status"
+msgid "Expired"
+msgstr "Udløbet"
+
+#: pro/admin/views/html-settings-updates.php:26
+msgctxt "license status"
+msgid "Active"
+msgstr "Aktiv"
+
+#: pro/admin/views/html-settings-updates.php:43
+msgid "Subscription Status"
+msgstr "Abonnementsstatus"
+
+#: pro/admin/views/html-settings-updates.php:56
+msgid "Subscription Type"
+msgstr "Abonnementstype"
+
+#: pro/admin/views/html-settings-updates.php:63
+msgid "Lifetime - "
+msgstr "Livstid - "
+
+#: pro/admin/views/html-settings-updates.php:77
+msgid "Subscription Expires"
+msgstr "Abonnement udløber"
+
+#: pro/admin/views/html-settings-updates.php:75
+msgid "Subscription Expired"
+msgstr "Abonnement udløbet"
+
+#: pro/admin/views/html-settings-updates.php:114
+msgid "Renew Subscription"
+msgstr "Forny abonnement"
+
+#: pro/admin/views/html-settings-updates.php:132
+msgid "License Information"
+msgstr "Licensinformation"
+
+#: pro/admin/views/html-settings-updates.php:167
+msgid "License Key"
+msgstr "Licensnøgle"
+
+#: pro/admin/views/html-settings-updates.php:189,
+#: pro/admin/views/html-settings-updates.php:153
+msgid "Recheck License"
+msgstr "Tjek licens igen"
+
+#: pro/admin/views/html-settings-updates.php:138
+msgid "Your license key is defined in wp-config.php."
+msgstr "Din licensnøgle er defineret i wp-config.php."
+
+#: pro/admin/views/html-settings-updates.php:210
+msgid "View pricing & purchase"
+msgstr "Se priser og køb"
+
+#. translators: %s - link to ACF website
+#: pro/admin/views/html-settings-updates.php:219
+msgid "Don't have an ACF PRO license? %s"
+msgstr "Har du ikke en ACF PRO-licens? %s"
+
+#: pro/admin/views/html-settings-updates.php:234
+msgid "Update Information"
+msgstr "Opdateringsinformation"
+
+#: pro/admin/views/html-settings-updates.php:241
+msgid "Current Version"
+msgstr "Nuværende version"
+
+#: pro/admin/views/html-settings-updates.php:249
+msgid "Latest Version"
+msgstr "Seneste version"
+
+#: pro/admin/views/html-settings-updates.php:257
+msgid "Update Available"
+msgstr "Opdatering tilgængelig"
+
+#: pro/admin/views/html-settings-updates.php:271
+msgid "Upgrade Notice"
+msgstr "Opgraderingsmeddelelse"
+
+#: pro/admin/views/html-settings-updates.php:302
+msgid "Check For Updates"
+msgstr "Søg efter opdateringer"
+
+#: pro/admin/views/html-settings-updates.php:299
+msgid "Enter your license key to unlock updates"
+msgstr "Indtast din licensnøgle for at låse opdateringer op"
+
+#: pro/admin/views/html-settings-updates.php:297
+msgid "Update Plugin"
+msgstr "Opdatér plugin"
+
+#: pro/admin/views/html-settings-updates.php:295
+msgid "Updates must be manually installed in this configuration"
+msgstr "Opdateringer skal installeres manuelt i denne konfiguration"
+
+#: pro/admin/views/html-settings-updates.php:293
+msgid "Update ACF in Network Admin"
+msgstr "Opdatér ACF i netværksadministration"
+
+#: pro/admin/views/html-settings-updates.php:291
+msgid "Please reactivate your license to unlock updates"
+msgstr "Genaktivér venligst din licens for at få adgang til opdateringer"
+
+#: pro/admin/views/html-settings-updates.php:289
+msgid "Please upgrade WordPress to update ACF"
+msgstr "Opgrader venligst WordPress for at opdatere ACF"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:20
+msgid "Dashicon class name"
+msgstr "Dashicon-klassenavn"
+
+#. translators: %s = "dashicon class name", link to the WordPress dashicon documentation.
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:25
+msgid ""
+"The icon used for the options page menu item in the admin dashboard. Can be "
+"a URL or %s to use for the icon."
+msgstr ""
+"Ikonet der bruges til indstillingssidens menupunkt i administratorpanelet. "
+"Kan være en URL eller %s til brug som ikon."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:80
+msgid "Menu Title"
+msgstr "Menutitel"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:94
+msgid "Learn more about menu positions."
+msgstr "Lær mere om menupositioner."
+
+#. translators: %s - link to WordPress docs to learn more about menu positions.
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:98,
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:104
+msgid "The position in the menu where this page should appear. %s"
+msgstr "Positionen i menuen hvor denne side skal vises. %s"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:108
+msgid ""
+"The position in the menu where this child page should appear. The first "
+"child page is 0, the next is 1, etc."
+msgstr ""
+"Positionen i menuen hvor denne underside skal vises. Den første underside er "
+"0, den næste er 1, osv."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:129
+msgid "Redirect to Child Page"
+msgstr "Omdiriger til underside"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:130
+msgid ""
+"When child pages exist for this parent page, this page will redirect to the "
+"first child page."
+msgstr ""
+"Når der findes undersider for denne forældreside, vil denne side omdirigere "
+"til den første underside."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:154
+msgid "A descriptive summary of the options page."
+msgstr "En beskrivende opsummering af indstillingssiden."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:163
+msgid "Update Button Label"
+msgstr "Opdateringsknap-tekst"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:164
+msgid ""
+"The label used for the submit button which updates the fields on the options "
+"page."
+msgstr ""
+"Teksten der bruges til gem-knappen, som opdaterer felterne på "
+"indstillingssiden."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:178
+msgid "Updated Message"
+msgstr "Besked ved opdatering"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:179
+msgid ""
+"The message that is displayed after successfully updating the options page."
+msgstr "Beskeden der vises efter vellykket opdatering af indstillingssiden."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:180
+msgid "Updated Options"
+msgstr "Indstillinger opdateret"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:217
+msgid "Capability"
+msgstr "Rettighed"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:218
+msgid "The capability required for this menu to be displayed to the user."
+msgstr "Den påkrævede rettighed for at denne menu vises for brugeren."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:234
+msgid "Data Storage"
+msgstr "Datalagring"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:235
+msgid ""
+"By default, the option page stores field data in the options table. You can "
+"make the page load field data from a post, user, or term."
+msgstr ""
+"Som standard gemmer indstillingssiden feltdata i options-tabellen. Du kan "
+"lade siden hente feltdata fra et indlæg, bruger eller term."
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:238,
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:269
+msgid "Custom Storage"
+msgstr "Tilpasset lagring"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:258
+msgid "Learn more about available settings."
+msgstr "Lær mere om tilgængelige indstillinger."
+
+#. translators: %s = link to learn more about storage locations.
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:263
+msgid ""
+"Set a custom storage location. Can be a numeric post ID (123), or a string "
+"(`user_2`). %s"
+msgstr ""
+"Angiv en tilpasset lagringsplacering. Kan være et numerisk indlægs-ID (123) "
+"eller en streng (`user_2`). %s"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:288
+msgid "Autoload Options"
+msgstr "Autoload indstillinger"
+
+#: pro/admin/views/acf-ui-options-page/advanced-settings.php:289
+msgid ""
+"Improve performance by loading the fields in the option records "
+"automatically when WordPress loads."
+msgstr ""
+"Forbedr ydeevnen ved automatisk at indlæse felterne i indstillingsposterne, "
+"når WordPress starter."
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:21,
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:16
+msgid "Page Title"
+msgstr "Sidetitel"
+
+#. translators: example options page name
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:23,
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:18
+msgid "Site Settings"
+msgstr "Sideindstillinger"
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:38,
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:33
+msgid "Menu Slug"
+msgstr "Menu-slug"
+
+#: pro/admin/views/acf-ui-options-page/basic-settings.php:53,
+#: pro/admin/views/acf-ui-options-page/create-options-page-modal.php:47
+msgid "Parent Page"
+msgstr "Forældreside"
+
+#: pro/admin/views/acf-ui-options-page/list-empty.php:25
+msgid "Add Your First Options Page"
+msgstr "Tilføj din første indstillingsside"
+
+#: src/pro/Fields/FlexibleContent/Layout.php:238
+msgid "Disabled"
+msgstr "Deaktiveret"
+
+#: src/pro/Fields/FlexibleContent/Layout.php:244
+msgid "More layout actions..."
+msgstr "Flere layout-handlinger..."
+
+#: src/pro/Fields/FlexibleContent/Layout.php:246
+msgid "Toggle layout"
+msgstr "Skift layout"
+
+#. translators: %s the button label used for adding a new layout.
+#: src/pro/Fields/FlexibleContent/Render.php:108
+msgid "Click the \"%s\" button below to start creating your layout"
+msgstr "Klik på \"%s\"-knappen nedenfor for at begynde at oprette dit layout"
+
+#: src/pro/Fields/FlexibleContent/Render.php:187
+msgid "Expand All"
+msgstr "Udvid alle"
+
+#: src/pro/Fields/FlexibleContent/Render.php:190
+msgid "Collapse All"
+msgstr "Sammenfold alle"
+
+#: src/pro/Fields/FlexibleContent/Render.php:252
+msgid "Disable"
+msgstr "Deaktivér"
+
+#: src/pro/Fields/FlexibleContent/Render.php:255
+msgid "Enable"
+msgstr "Aktivér"

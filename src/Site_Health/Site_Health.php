@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) || exit;
  * The ACF Site Health class responsible for populating ACF debug information in WordPress Site Health.
  */
 class Site_Health {
+
 	/**
 	 * The option name used to store site health data.
 	 *
@@ -26,16 +27,31 @@ class Site_Health {
 	public string $option_name = 'acf_site_health';
 
 	/**
+	 * Stores an instance of the AI_Usage helper class.
+	 *
+	 * @var AI_Usage
+	 */
+	private AI_Usage $ai_usage;
+
+	/**
 	 * Constructs the ACF_Site_Health class.
 	 *
 	 * @since 6.3
 	 */
 	public function __construct() {
+		$this->ai_usage = new AI_Usage( $this );
+
 		add_action( 'debug_information', array( $this, 'render_tab_content' ) );
 		add_action( 'acf_update_site_health_data', array( $this, 'update_site_health_data' ) );
 
-		if ( ! wp_next_scheduled( 'acf_update_site_health_data' ) ) {
-			wp_schedule_event( time(), 'weekly', 'acf_update_site_health_data' );
+		$hook      = 'acf_update_site_health_data';
+		$timestamp = wp_next_scheduled( $hook );
+
+		if ( ! $timestamp ) {
+			wp_schedule_event( time(), 'daily', $hook );
+		} elseif ( 'daily' !== wp_get_schedule( $hook ) ) {
+			wp_unschedule_event( $timestamp, $hook );
+			wp_schedule_event( time(), 'daily', $hook );
 		}
 
 		// ACF events.
@@ -101,14 +117,56 @@ class Site_Health {
 		}
 
 		foreach ( $site_health as $key => $value ) {
+			// Preserve event_* keys for activation tracking.
 			if ( 'event_' === substr( $key, 0, 6 ) ) {
 				$updated[ $key ] = $value;
+				continue;
+			}
+
+			// Preserve AI usage data.
+			if ( 'ai_usage' === $key ) {
+				$updated[ $key ] = $value;
+				continue;
 			}
 		}
+
+		$this->maybe_log_first_registered_block( $site_health, $updated );
 
 		$updated['last_updated'] = time();
 
 		return $this->update_site_health( $updated );
+	}
+
+	/**
+	 * Logs the first-run timestamp of a WP-CLI command.
+	 *
+	 * Stores an associative array under the `event_cli_commands` key in the
+	 * site health option. Each entry maps a full command name (e.g.
+	 * "acf json import") to the Unix timestamp when it was first executed.
+	 * Subsequent calls for the same command are no-ops.
+	 *
+	 * @since 6.8
+	 *
+	 * @param string $command The full CLI command name (e.g. "acf json import").
+	 * @return boolean True if a new entry was written, false if already recorded.
+	 */
+	public function log_cli_command( string $command ): bool {
+		$site_health = $this->get_site_health();
+
+		if ( ! isset( $site_health['event_cli_commands'] ) || ! is_array( $site_health['event_cli_commands'] ) ) {
+			$site_health['event_cli_commands'] = array();
+		}
+
+		if ( isset( $site_health['event_cli_commands'][ $command ] ) ) {
+			return false;
+		}
+
+		$time = time();
+
+		$site_health['event_cli_commands'][ $command ] = $time;
+		$site_health['last_updated']                   = $time;
+
+		return $this->update_site_health( $site_health );
 	}
 
 	/**
@@ -173,6 +231,58 @@ class Site_Health {
 		}
 
 		return $this->add_site_health_event( $event_name );
+	}
+
+	/**
+	 * Logs when a site first registers an ACF Block.
+	 *
+	 * Only sets the event when the stored registered_acf_blocks count
+	 * transitions from 0 to a positive number. Requires a previously
+	 * stored count of 0 to avoid backfilling existing users. Tracks a
+	 * has_had_blocks flag to prevent false positives when users remove
+	 * all blocks and later re-add them.
+	 *
+	 * @since 6.8
+	 *
+	 * @param array $site_health The previously stored site health data.
+	 * @param array $updated     The updated site health data. This array may be modified to include the first registered block event timestamp.
+	 * @return void
+	 */
+	public function maybe_log_first_registered_block( array $site_health, array &$updated ): void {
+		if ( ! acf_is_pro() || ! function_exists( 'acf_pro_get_registered_block_count' ) ) {
+			return;
+		}
+
+		if ( ! empty( $site_health['has_had_blocks'] ) ) {
+			$updated['has_had_blocks'] = true;
+		}
+
+		// Already tracked — event is immutable.
+		if ( ! empty( $updated['event_first_registered_block'] ) ) {
+			return;
+		}
+
+		// No previous block count stored — site predates this field. Skip to establish a baseline.
+		if ( ! isset( $site_health['registered_acf_blocks'] ) ) {
+			return;
+		}
+
+		// Blocks were previously registered — set flag and skip.
+		if ( (int) $site_health['registered_acf_blocks'] > 0 ) {
+			$updated['has_had_blocks'] = true;
+			return;
+		}
+
+		// Flag already set — user had blocks before (remove-then-re-add scenario).
+		if ( ! empty( $updated['has_had_blocks'] ) ) {
+			return;
+		}
+
+		// Transition from 0 → positive: first time registering a block.
+		if ( acf_pro_get_registered_block_count() > 0 ) {
+			$updated['event_first_registered_block'] = time();
+			$updated['has_had_blocks']               = true;
+		}
 	}
 
 	/**
@@ -277,11 +387,13 @@ class Site_Health {
 		$license        = $is_pro ? acf_pro_get_license() : array();
 		$license_status = $is_pro ? acf_pro_get_license_status() : array();
 		$field_groups   = acf_get_field_groups();
-		$post_types     = acf_get_post_types();
-		$taxonomies     = acf_get_taxonomies();
+		$post_types     = acf_get_acf_post_types();
+		$taxonomies     = acf_get_acf_taxonomies();
 
-		$yes = __( 'Yes', 'acf' );
-		$no  = __( 'No', 'acf' );
+		$yes      = __( 'Yes', 'acf' );
+		$no       = __( 'No', 'acf' );
+		$enabled  = __( 'Enabled', 'acf' );
+		$disabled = __( 'Disabled', 'acf' );
 
 		$fields['version'] = array(
 			'label' => __( 'Plugin Version', 'acf' ),
@@ -576,7 +688,7 @@ class Site_Health {
 		$ui_post_types = array_filter(
 			$post_types,
 			function ( $post_type ) {
-				return empty( $post_type['local'] );
+				return ! empty( $post_type['ID'] );
 			}
 		);
 
@@ -588,7 +700,7 @@ class Site_Health {
 		$json_post_types = array_filter(
 			$post_types,
 			function ( $post_type ) {
-				return ! empty( $post_type['local'] ) && 'json' === $post_type['local'];
+				return ! empty( $post_type['local'] ) && 'json' === $post_type['local'] && empty( $post_type['ID'] );
 			}
 		);
 
@@ -600,7 +712,7 @@ class Site_Health {
 		$ui_taxonomies = array_filter(
 			$taxonomies,
 			function ( $taxonomy ) {
-				return empty( $taxonomy['local'] );
+				return ! empty( $taxonomy['ID'] );
 			}
 		);
 
@@ -612,7 +724,7 @@ class Site_Health {
 		$json_taxonomies = array_filter(
 			$taxonomies,
 			function ( $taxonomy ) {
-				return ! empty( $taxonomy['local'] ) && 'json' === $taxonomy['local'];
+				return ! empty( $taxonomy['local'] ) && 'json' === $taxonomy['local'] && empty( $taxonomy['ID'] );
 			}
 		);
 
@@ -643,14 +755,14 @@ class Site_Health {
 				$ui_options_pages_in_ui = array_filter(
 					$ui_options_pages,
 					function ( $ui_options_page ) {
-						return empty( $ui_options_page['local'] );
+						return ! empty( $ui_options_page['ID'] );
 					}
 				);
 
 				$json_options_pages = array_filter(
 					$ui_options_pages,
 					function ( $ui_options_page ) {
-						return ! empty( $ui_options_page['local'] );
+						return ! empty( $ui_options_page['local'] ) && empty( $ui_options_page['ID'] );
 					}
 				);
 
@@ -687,6 +799,11 @@ class Site_Health {
 			'debug' => $rest_api_format,
 		);
 
+		$schema_objects = array(
+			'blocks'     => 0,
+			'post_types' => 0,
+		);
+
 		if ( $is_pro ) {
 			$fields['registered_acf_blocks'] = array(
 				'label' => __( 'Registered ACF Blocks', 'acf' ),
@@ -714,6 +831,10 @@ class Site_Health {
 
 				if ( ! empty( $block['auto_inline_editing'] ) ) {
 					++$blocks_using_auto_inline_editing;
+				}
+
+				if ( ! empty( $block['auto_jsonld'] ) ) {
+					++$schema_objects['blocks'];
 				}
 
 				++$block_api_versions[ 'v' . $block['api_version'] ];
@@ -800,6 +921,86 @@ class Site_Health {
 			'label' => __( 'JSON Load Paths', 'acf' ),
 			'value' => number_format_i18n( count( $load_paths ) ),
 			'debug' => count( $load_paths ),
+		);
+
+		$ai_enabled = acf_get_setting( 'enable_acf_ai' );
+
+		$fields['ai_enabled'] = array(
+			'label' => __( 'AI Support', 'acf' ),
+			'value' => ! empty( $ai_enabled ) ? $enabled : $disabled,
+			'debug' => $ai_enabled,
+		);
+
+		// Add AI usage metrics if enabled and the Abilities API is available (WP 6.9+).
+		$abilities_api_available = function_exists( 'wp_register_ability' );
+
+		if ( $ai_enabled && ! $abilities_api_available ) {
+			$fields['ai_abilities_api'] = array(
+				'label' => __( 'Abilities API', 'acf' ),
+				'value' => __( 'Not available (requires WordPress 6.9+)', 'acf' ),
+				'debug' => 'unavailable',
+			);
+		}
+
+		if ( $ai_enabled && $abilities_api_available ) {
+			$ai_ready_counts = $this->ai_usage->get_ai_ready_counts( $field_groups, $post_types, $taxonomies );
+			$ai_usage        = $this->ai_usage->get_usage_metrics();
+
+			$fields['ai_ready_objects'] = array(
+				'label' => __( 'AI-Ready Objects', 'acf' ),
+				'value' => sprintf(
+					/* translators: 1: field group count, 2: post type count, 3: taxonomy count */
+					__( '%1$d Field Groups, %2$d Custom Post Types, %3$d Taxonomies', 'acf' ),
+					$ai_ready_counts['field_groups'],
+					$ai_ready_counts['post_types'],
+					$ai_ready_counts['taxonomies'],
+				),
+				'debug' => $ai_ready_counts,
+			);
+
+			$executions_text = sprintf(
+				/* translators: %s - number of successful tasks performed */
+				_n( '%s (Successful task performed)', '%s (Successful tasks performed)', $ai_usage['total_executions'], 'acf' ),
+				number_format_i18n( $ai_usage['total_executions'] )
+			);
+
+			$fields['ai_executions'] = array(
+				'label' => __( 'AI Actions Executed', 'acf' ),
+				'value' => $executions_text,
+				'debug' => $ai_usage['total_executions'],
+			);
+
+			if ( $ai_usage['error_count'] > 0 ) {
+				$fields['ai_errors'] = array(
+					'label' => __( 'AI Execution Errors', 'acf' ),
+					'value' => number_format_i18n( $ai_usage['error_count'] ),
+					'debug' => $ai_usage['error_count'],
+				);
+			}
+		}
+
+		$schema_support           = acf_get_setting( 'enable_schema' );
+		$fields['schema_support'] = array(
+			'label' => __( 'Schema Support', 'acf' ),
+			'value' => ! empty( $schema_support ) ? $enabled : $disabled,
+			'debug' => $schema_support,
+		);
+
+		foreach ( $post_types as $post_type ) {
+			if ( ! empty( $post_type['active'] ) && ! empty( $post_type['auto_jsonld'] ) ) {
+				++$schema_objects['post_types'];
+			}
+		}
+
+		$fields['schema_ready_objects'] = array(
+			'label' => __( 'Objects with Schema Support', 'acf' ),
+			'value' => sprintf(
+				/* translators: 1: number of post types, 2: number of blocks using ACF schema */
+				__( '%1$d Post Types, %2$d Blocks', 'acf' ),
+				$schema_objects['post_types'],
+				$schema_objects['blocks'],
+			),
+			'debug' => $schema_objects,
 		);
 
 		return $fields;

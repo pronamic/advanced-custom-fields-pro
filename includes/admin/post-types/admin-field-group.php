@@ -501,6 +501,7 @@ if ( ! class_exists( 'acf_admin_field_group' ) ) :
 
 				do_action( "acf/field_group/render_field_settings_tab/{$tab}/type={$field['type']}", $field );
 				do_action( "acf/render_field_{$tab}_settings/type={$field['type']}", $field );
+				do_action( "acf/render_field_{$tab}_settings", $field );
 
 				$sections[ $tab ] = ob_get_clean();
 			}

@@ -662,6 +662,93 @@ if ( ! class_exists( 'ACF_Field_User' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) ) {
+				return null;
+			}
+
+			// Get output format with fallback.
+			$output_format = $field['schema_output_format'] ?? '';
+			if ( empty( $output_format ) ) {
+				$property      = $field['schema_property'] ?? '';
+				$output_format = \ACF\AI\GEO\Schema::get_default_output_format( $this->name, $property );
+			}
+
+			// Default to Person if still empty.
+			if ( empty( $output_format ) ) {
+				$output_format = 'Person';
+			}
+
+			$field['return_format'] = 'object';
+			$users                  = $this->format_value( $value, $post_id, $field );
+
+			if ( ! $users ) {
+				return null;
+			}
+
+			// Handle single user.
+			if ( $users instanceof \WP_User ) {
+				return $this->format_user_for_jsonld( $users, $output_format );
+			}
+
+			// Handle multiple users.
+			$formatted = array();
+			if ( is_array( $users ) ) {
+				foreach ( $users as $user ) {
+					if ( $user instanceof \WP_User ) {
+						$formatted[] = $this->format_user_for_jsonld( $user, $output_format );
+					}
+				}
+			}
+
+			return $formatted;
+		}
+
+		/**
+		 * Format a single user for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param \WP_User $user          The user object.
+		 * @param string   $output_format The output format (Person or Organization).
+		 * @return array The formatted user data.
+		 */
+		private function format_user_for_jsonld( $user, $output_format ) {
+			$data = array(
+				'@type' => $output_format,
+				'name'  => $user->get( 'display_name' ),
+			);
+
+			// Add URL if available.
+			$url = $user->get( 'user_url' );
+			if ( $url ) {
+				$data['url'] = $url;
+			}
+
+			return $data;
+		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'Person', 'Organization' );
+		}
 	}
 
 

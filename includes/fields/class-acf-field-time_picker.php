@@ -194,6 +194,38 @@ if ( ! class_exists( 'acf_field_time_picker' ) ) :
 				'required'    => ! empty( $field['required'] ),
 			);
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'Time' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * Returns the stored H:i:s format which is already ISO 8601 compliant.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return string|null ISO 8601 formatted time or null.
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) || ! is_string( $value ) ) {
+				return null;
+			}
+
+			// ACF stores time_picker internally as 'H:i:s' which is ISO 8601 compliant.
+			return $value;
+		}
 	}
 
 

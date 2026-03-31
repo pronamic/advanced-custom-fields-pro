@@ -1,0 +1,158 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "label": {
+            "type": "string",
+            "description": "The field label displayed in the edit screen",
+            "minLength": 1
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "taxonomy"
+            ],
+            "description": "Field type identifier. Must be \"taxonomy\" for this field type."
+        },
+        "name": {
+            "type": "string",
+            "description": "The field name used to save/load data. Auto-generated from label if not provided.",
+            "pattern": "^[a-z_][a-z0-9_]*$"
+        },
+        "key": {
+            "type": "string",
+            "description": "Unique field key. Auto-generated if not provided.",
+            "pattern": "^field_[a-z0-9]+$"
+        },
+        "instructions": {
+            "type": "string",
+            "description": "Instructions displayed to editors below the field label"
+        },
+        "required": {
+            "type": "boolean",
+            "description": "Whether this field is required",
+            "default": false
+        },
+        "conditional_logic": {
+            "type": [
+                "boolean",
+                "array"
+            ],
+            "description": "Conditional logic rules. Set to false to disable, or provide rules array.",
+            "default": false
+        },
+        "wrapper": {
+            "type": "object",
+            "description": "HTML wrapper attributes",
+            "properties": {
+                "width": {
+                    "type": "string",
+                    "description": "Width percentage (e.g., \"50\")"
+                },
+                "class": {
+                    "type": "string",
+                    "description": "Custom CSS classes"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Custom HTML ID"
+                }
+            }
+        },
+        "default_value": {
+            "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+            ],
+            "description": "Default value when creating new content"
+        },
+        "placeholder": {
+            "type": "string",
+            "description": "Placeholder text shown in empty fields"
+        },
+        "prepend": {
+            "type": "string",
+            "description": "Text to prepend before the input"
+        },
+        "append": {
+            "type": "string",
+            "description": "Text to append after the input"
+        },
+        "maxlength": {
+            "type": "integer",
+            "description": "Maximum character length (if applicable)",
+            "minimum": 1
+        },
+        "allow_in_bindings": {
+            "type": "boolean",
+            "description": "Whether this field can be used in block bindings",
+            "default": false
+        },
+        "taxonomy": {
+            "type": "string",
+            "description": "The taxonomy to query (e.g., \"category\", \"post_tag\", or custom taxonomy slug)",
+            "default": "category"
+        },
+        "field_type": {
+            "type": "string",
+            "description": "How to display the field interface",
+            "enum": [
+                "checkbox",
+                "multi_select",
+                "radio",
+                "select"
+            ],
+            "default": "checkbox"
+        },
+        "multiple": {
+            "type": "boolean",
+            "description": "Allow multiple values to be selected (applies to select field_type)",
+            "default": false
+        },
+        "allow_null": {
+            "type": "boolean",
+            "description": "Allow a null (empty) value to be selected",
+            "default": false
+        },
+        "return_format": {
+            "type": "string",
+            "description": "Format of returned value",
+            "enum": [
+                "id",
+                "object"
+            ],
+            "default": "id"
+        },
+        "add_term": {
+            "type": "boolean",
+            "description": "Allow new terms to be created whilst editing",
+            "default": true
+        },
+        "load_terms": {
+            "type": "boolean",
+            "description": "Load value based on the post's terms",
+            "default": false
+        },
+        "save_terms": {
+            "type": "boolean",
+            "description": "Save value as post terms",
+            "default": false
+        },
+        "bidirectional_target": {
+            "type": "array",
+            "description": "Array of field keys for bidirectional relationships",
+            "items": {
+                "type": "string"
+            },
+            "default": []
+        }
+    },
+    "required": [
+        "label",
+        "type",
+        "taxonomy"
+    ]
+}

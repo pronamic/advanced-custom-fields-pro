@@ -647,6 +647,86 @@ if ( ! class_exists( 'acf_field__group' ) ) :
 
 			return $value;
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'Thing' );
+		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) || ! is_array( $value ) || empty( $field['sub_fields'] ) ) {
+				return null;
+			}
+
+			// Get output format with fallback.
+			$output_format = $field['schema_output_format'] ?? '';
+			if ( empty( $output_format ) ) {
+				$property      = $field['schema_property'] ?? '';
+				$output_format = \ACF\AI\GEO\Schema::get_default_output_format( $this->name, $property );
+			}
+
+			// Build the JSON-LD object.
+			$result = array();
+
+			// Add @type if we have a specific output format.
+			if ( ! empty( $output_format ) ) {
+				$result['@type'] = $output_format;
+			}
+
+			// Modify names for DB access.
+			$field = $this->prepare_field_for_db( $field );
+
+			// Process each sub field.
+			foreach ( $field['sub_fields'] as $sub_field ) {
+				// Get the sub field value.
+				$sub_value = $value[ $sub_field['key'] ] ?? $value[ $sub_field['_name'] ] ?? null;
+
+				if ( null === $sub_value ) {
+					continue;
+				}
+
+				// Check if sub field has a schema property mapping.
+				$schema_property = $sub_field['schema_property'] ?? '';
+
+				if ( empty( $schema_property ) ) {
+					// No schema property - skip this field for JSON-LD output.
+					continue;
+				}
+
+				// Parse qualified property (e.g., "Thing.name" -> "name") to strip type prefix.
+				$property_name = \ACF\AI\GEO\Schema::get_property_name( $schema_property );
+
+				// Format the sub field value for JSON-LD.
+				$formatted_value = \ACF\AI\GEO\GEO::format_field_value_for_jsonld( $sub_value, $sub_field );
+
+				if ( null !== $formatted_value ) {
+					$result[ $property_name ] = $formatted_value;
+				}
+			}
+
+			// Only return if we have content beyond @type.
+			if ( count( $result ) > 1 || ( count( $result ) === 1 && ! isset( $result['@type'] ) ) ) {
+				return $result;
+			}
+
+			return null;
+		}
 	}
 
 

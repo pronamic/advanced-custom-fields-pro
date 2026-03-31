@@ -21,17 +21,33 @@ class ComposerStaticInit94e23cbc47a4750e27ee21b7644f1866
     );
 
     public static $classMap = array (
+        'ACF\\AI\\AI' => __DIR__ . '/../..' . '/src/AI/AI.php',
+        'ACF\\AI\\Abilities\\ACF_REST_Ability' => __DIR__ . '/../..' . '/src/AI/Abilities/ACF_REST_Ability.php',
+        'ACF\\AI\\Abilities\\Abilities' => __DIR__ . '/../..' . '/src/AI/Abilities/Abilities.php',
+        'ACF\\AI\\Abilities\\AbstractAbilityGroup' => __DIR__ . '/../..' . '/src/AI/Abilities/AbstractAbilityGroup.php',
+        'ACF\\AI\\Abilities\\FieldGroup' => __DIR__ . '/../..' . '/src/AI/Abilities/FieldGroup.php',
+        'ACF\\AI\\Abilities\\PostType' => __DIR__ . '/../..' . '/src/AI/Abilities/PostType.php',
+        'ACF\\AI\\Abilities\\Taxonomy' => __DIR__ . '/../..' . '/src/AI/Abilities/Taxonomy.php',
+        'ACF\\AI\\GEO\\FieldSettings' => __DIR__ . '/../..' . '/src/AI/GEO/FieldSettings.php',
+        'ACF\\AI\\GEO\\GEO' => __DIR__ . '/../..' . '/src/AI/GEO/GEO.php',
+        'ACF\\AI\\GEO\\Outputs\\Posts' => __DIR__ . '/../..' . '/src/AI/GEO/Outputs/Posts.php',
+        'ACF\\AI\\GEO\\Schema' => __DIR__ . '/../..' . '/src/AI/GEO/Schema.php',
+        'ACF\\AI\\GEO\\SchemaData' => __DIR__ . '/../..' . '/src/AI/GEO/SchemaData.php',
         'ACF\\Blocks\\Bindings' => __DIR__ . '/../..' . '/src/Blocks/Bindings.php',
+        'ACF\\CLI\\CLI' => __DIR__ . '/../..' . '/src/CLI/CLI.php',
+        'ACF\\CLI\\JsonCommand' => __DIR__ . '/../..' . '/src/CLI/JsonCommand.php',
         'ACF\\Meta\\Comment' => __DIR__ . '/../..' . '/src/Meta/Comment.php',
         'ACF\\Meta\\MetaLocation' => __DIR__ . '/../..' . '/src/Meta/MetaLocation.php',
         'ACF\\Meta\\Option' => __DIR__ . '/../..' . '/src/Meta/Option.php',
         'ACF\\Meta\\Post' => __DIR__ . '/../..' . '/src/Meta/Post.php',
         'ACF\\Meta\\Term' => __DIR__ . '/../..' . '/src/Meta/Term.php',
         'ACF\\Meta\\User' => __DIR__ . '/../..' . '/src/Meta/User.php',
+        'ACF\\Pro\\AI\\GEO\\Outputs\\Blocks' => __DIR__ . '/../..' . '/src/Pro/AI/GEO/Outputs/Blocks.php',
         'ACF\\Pro\\Fields\\FlexibleContent\\Layout' => __DIR__ . '/../..' . '/src/Pro/Fields/FlexibleContent/Layout.php',
         'ACF\\Pro\\Fields\\FlexibleContent\\Render' => __DIR__ . '/../..' . '/src/Pro/Fields/FlexibleContent/Render.php',
         'ACF\\Pro\\Forms\\WC_Order' => __DIR__ . '/../..' . '/src/Pro/Forms/WC_Order.php',
         'ACF\\Pro\\Meta\\WooOrder' => __DIR__ . '/../..' . '/src/Pro/Meta/WooOrder.php',
+        'ACF\\Site_Health\\AI_Usage' => __DIR__ . '/../..' . '/src/Site_Health/AI_Usage.php',
         'ACF\\Site_Health\\Site_Health' => __DIR__ . '/../..' . '/src/Site_Health/Site_Health.php',
     );
 

@@ -1,0 +1,78 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "label": {
+            "type": "string",
+            "description": "The field label displayed in the edit screen",
+            "minLength": 1
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "accordion"
+            ],
+            "description": "Field type identifier. Must be \"accordion\" for this field type."
+        },
+        "name": {
+            "type": "string",
+            "description": "The field name used to save/load data. Auto-generated from label if not provided.",
+            "pattern": "^[a-z_][a-z0-9_]*$"
+        },
+        "key": {
+            "type": "string",
+            "description": "Unique field key. Auto-generated if not provided.",
+            "pattern": "^field_[a-z0-9]+$"
+        },
+        "instructions": {
+            "type": "string",
+            "description": "Instructions displayed to editors below the field label"
+        },
+        "conditional_logic": {
+            "type": [
+                "boolean",
+                "array"
+            ],
+            "description": "Conditional logic rules. Set to false to disable, or provide rules array.",
+            "default": false
+        },
+        "wrapper": {
+            "type": "object",
+            "description": "HTML wrapper attributes",
+            "properties": {
+                "width": {
+                    "type": "string",
+                    "description": "Width percentage (e.g., \"50\")"
+                },
+                "class": {
+                    "type": "string",
+                    "description": "Custom CSS classes"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Custom HTML ID"
+                }
+            }
+        },
+        "open": {
+            "type": "boolean",
+            "description": "Display this accordion as open on page load",
+            "default": false
+        },
+        "multi_expand": {
+            "type": "boolean",
+            "description": "Allow this accordion to open without closing others",
+            "default": false
+        },
+        "endpoint": {
+            "type": "boolean",
+            "description": "Define an endpoint for the previous accordion to stop. This accordion will not be visible.",
+            "default": false
+        }
+    },
+    "required": [
+        "label",
+        "type"
+    ]
+}

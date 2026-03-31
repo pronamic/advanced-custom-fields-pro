@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 6.7.2
+Stable tag: 6.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,37 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.8.0 =
+*Release Date 30th March 2026*
+
+* [View Release Post](https://www.advancedcustomfields.com/blog/acf-pro-6-8-release-ai-ready-discoverable-content/)
+* New - ACF now integrates with the WordPress Abilities API, allowing external consumers (AI tools) to manage field groups, post types, and taxonomies when explicitly enabled via the `enable_acf_ai` feature flag
+* New - ACF can now generate JSON-LD structured data fields when explicitly enabled via the `enable_schema` feature flag
+* New - ACF now includes WP-CLI support with new `wp acf json` commands for importing, exporting, syncing, and checking the status of ACF JSON files
+* New - ACF custom post Types now support the WordPress 6.9+ "Notes" editor feature via a new "Notes" checkbox in the Supports settings
+* Enhancement - The Blocks V3 "Open in Expanded Editor" button text can now be customized via a new `acf.expandedEditorButtonText` block.json property
+* Enhancement - A new `acf/blocks/default_expanded_editor_button_text` PHP filter allows customizing the default "Open in Expanded Editor" button text for all V3 blocks
+* Enhancement - The Blocks V3 edit and "Open in Expanded Editor" buttons can now be hidden via a new `acf.expandedEditorButtons` block.json property
+* Enhancement - A new `blocks/expanded_editor_overlay_class` JS filter allows customizing the CSS class on the Expanded Editor modal overlay
+* Enhancement - ACF Blocks V3 now preloads the block form HTML alongside the preview, eliminating an extra AJAX call on mount
+* Enhancement - ACF inline script tags now use `wp_print_inline_script_tag()` for Content Security Policy (CSP) compliance and nonce support
+* Enhancement - The Expanded Editor buttons are now hidden for V3 blocks that have no fields assigned
+* Fix - Flexible Content fields now properly clean up nested postmeta when a parent layout containing nested Flexible Content fields is deleted
+* Fix - The Expanded Editor "Done" button now stays disabled until the AJAX save completes, preventing data loss
+* Fix - Pressing Escape while the Expanded Editor is saving will no longer close the modal, preventing data loss
+* Fix - InnerBlocks content containing backslashes or dollar signs now renders correctly
+* Fix - Auto Inline Editing now only applies to ACF Blocks V3, resolving incorrect hover/focus borders appearing on V2 blocks
+* Fix - Validation errors in the V3 Expanded Editor no longer cause a dead-end state
+* Fix - Icon Picker selections in Repeater fields no longer disappear
+* Fix - Range field number input now syncs to the slider and correctly updates V3 block previews
+* Fix - Message field Name and Instructions settings are no longer shown in the field group editor
+* Fix - Image field no longer crashes in WordPress 7.0 release candidates
+* Fix - Auto Inline Editing blocks now receive block context variables in render templates
+* Fix - V3 blocks registered via PHP now correctly show the "Open in Expanded Editor" button
+* Fix - Flexible Content disabled layouts now work correctly in Blocks V3
+* Fix - Auto Inline Editing now works with blocks using `renderCallback`
+* i18n - Added Danish translation
 
 = 6.7.2 =
 *Release Date 26th March 2026*

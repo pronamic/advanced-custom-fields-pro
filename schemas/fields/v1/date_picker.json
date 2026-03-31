@@ -1,0 +1,121 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "label": {
+            "type": "string",
+            "description": "The field label displayed in the edit screen",
+            "minLength": 1
+        },
+        "type": {
+            "type": "string",
+            "enum": [
+                "date_picker"
+            ],
+            "description": "Field type identifier. Must be \"date_picker\" for this field type."
+        },
+        "name": {
+            "type": "string",
+            "description": "The field name used to save/load data. Auto-generated from label if not provided.",
+            "pattern": "^[a-z_][a-z0-9_]*$"
+        },
+        "key": {
+            "type": "string",
+            "description": "Unique field key. Auto-generated if not provided.",
+            "pattern": "^field_[a-z0-9]+$"
+        },
+        "instructions": {
+            "type": "string",
+            "description": "Instructions displayed to editors below the field label"
+        },
+        "required": {
+            "type": "boolean",
+            "description": "Whether this field is required",
+            "default": false
+        },
+        "conditional_logic": {
+            "type": [
+                "boolean",
+                "array"
+            ],
+            "description": "Conditional logic rules. Set to false to disable, or provide rules array.",
+            "default": false
+        },
+        "wrapper": {
+            "type": "object",
+            "description": "HTML wrapper attributes",
+            "properties": {
+                "width": {
+                    "type": "string",
+                    "description": "Width percentage (e.g., \"50\")"
+                },
+                "class": {
+                    "type": "string",
+                    "description": "Custom CSS classes"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Custom HTML ID"
+                }
+            }
+        },
+        "default_value": {
+            "type": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+            ],
+            "description": "Default value when creating new content"
+        },
+        "placeholder": {
+            "type": "string",
+            "description": "Placeholder text shown in empty fields"
+        },
+        "prepend": {
+            "type": "string",
+            "description": "Text to prepend before the input"
+        },
+        "append": {
+            "type": "string",
+            "description": "Text to append after the input"
+        },
+        "maxlength": {
+            "type": "integer",
+            "description": "Maximum character length (if applicable)",
+            "minimum": 1
+        },
+        "allow_in_bindings": {
+            "type": "boolean",
+            "description": "Whether this field can be used in block bindings",
+            "default": false
+        },
+        "display_format": {
+            "type": "string",
+            "description": "PHP date format for displaying the date when editing (e.g., \"d/m/Y\", \"m/d/Y\", \"F j, Y\"). See PHP date() documentation for format options.",
+            "default": "d/m/Y"
+        },
+        "return_format": {
+            "type": "string",
+            "description": "PHP date format for the value returned via template functions (e.g., \"d/m/Y\", \"m/d/Y\", \"F j, Y\", \"Ymd\"). See PHP date() documentation for format options.",
+            "default": "d/m/Y"
+        },
+        "first_day": {
+            "type": "integer",
+            "description": "Which day the week starts on in the date picker (0 = Sunday, 1 = Monday, etc.)",
+            "default": 1,
+            "minimum": 0,
+            "maximum": 6
+        },
+        "default_to_current_date": {
+            "type": "boolean",
+            "description": "Use the current date as the default value when creating new content",
+            "default": false
+        }
+    },
+    "required": [
+        "label",
+        "type"
+    ]
+}

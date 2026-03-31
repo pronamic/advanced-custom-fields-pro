@@ -921,6 +921,51 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 		public function format_value_for_rest( $value, $post_id, array $field ) {
 			return acf_format_numerics( $value );
 		}
+
+		/**
+		 * Formats the field value for JSON-LD output.
+		 *
+		 * @since 6.8.0
+		 *
+		 * @param mixed          $value   The value of the field.
+		 * @param integer|string $post_id The ID of the post.
+		 * @param array          $field   The field array.
+		 * @return mixed
+		 */
+		public function format_value_for_jsonld( $value, $post_id, $field ) {
+			if ( empty( $value ) || ! is_array( $value ) ) {
+				return null;
+			}
+
+			$image_field_type = acf_get_field_type( 'image' );
+			$images           = array();
+
+			foreach ( $value as $attachment_id ) {
+				// Create a temporary field config with the same output format.
+				$image_field = array(
+					'schema_output_format' => $field['schema_output_format'] ?? '',
+					'schema_property'      => $field['schema_property'] ?? '',
+				);
+
+				$formatted = $image_field_type->format_value_for_jsonld( $attachment_id, $post_id, $image_field );
+				if ( $formatted ) {
+					$images[] = $formatted;
+				}
+			}
+
+			return empty( $images ) ? null : $images;
+		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array( 'ImageObject', 'URL' );
+		}
 	}
 
 

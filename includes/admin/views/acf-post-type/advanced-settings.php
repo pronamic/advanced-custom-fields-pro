@@ -26,21 +26,31 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 
 	switch ( $tab_key ) {
 		case 'general':
+			// Editor placed after Title for visual consistency with the editor layout.
+			// Notes follows Editor as its sub-feature.
+			// With CSS Grid vertical flow (4 rows, 3 columns), Notes appears below Editor.
 			$acf_available_supports = array(
 				'title'           => __( 'Title', 'acf' ),
-				'author'          => __( 'Author', 'acf' ),
-				'comments'        => __( 'Comments', 'acf' ),
-				'trackbacks'      => __( 'Trackbacks', 'acf' ),
 				'editor'          => __( 'Editor', 'acf' ),
-				'excerpt'         => __( 'Excerpt', 'acf' ),
-				'revisions'       => __( 'Revisions', 'acf' ),
-				'page-attributes' => __( 'Page Attributes', 'acf' ),
+				'notes'           => __( 'Notes', 'acf' ),
 				'thumbnail'       => __( 'Featured Image', 'acf' ),
+				'author'          => __( 'Author', 'acf' ),
+				'trackbacks'      => __( 'Trackbacks', 'acf' ),
+				'revisions'       => __( 'Revisions', 'acf' ),
 				'custom-fields'   => __( 'Custom Fields', 'acf' ),
+				'comments'        => __( 'Comments', 'acf' ),
+				'excerpt'         => __( 'Excerpt', 'acf' ),
+				'page-attributes' => __( 'Page Attributes', 'acf' ),
 				'post-formats'    => __( 'Post Formats', 'acf' ),
 			);
 			$acf_available_supports = apply_filters( 'acf/post_type/available_supports', $acf_available_supports, $acf_post_type );
 			$acf_selected_supports  = is_array( $acf_post_type['supports'] ) ? $acf_post_type['supports'] : array();
+
+			// Notes should be disabled if editor is not selected.
+			$acf_supports_disabled = array();
+			if ( ! in_array( 'editor', $acf_selected_supports, true ) ) {
+				$acf_supports_disabled[] = 'notes';
+			}
 
 			acf_render_field_wrap(
 				array(
@@ -52,6 +62,7 @@ foreach ( acf_get_combined_post_type_settings_tabs() as $tab_key => $tab_label )
 					'prefix'                    => 'acf_post_type',
 					'value'                     => array_unique( array_filter( $acf_selected_supports ) ),
 					'choices'                   => $acf_available_supports,
+					'disabled'                  => $acf_supports_disabled,
 					'allow_custom'              => true,
 					'class'                     => 'acf_post_type_supports',
 					'custom_choice_button_text' => __( 'Add Custom', 'acf' ),

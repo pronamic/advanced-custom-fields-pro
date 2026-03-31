@@ -146,6 +146,17 @@ if ( ! class_exists( 'acf_field__accordion' ) ) :
 			// return
 			return $field;
 		}
+
+		/**
+		 * Returns an array of JSON-LD Property output types that are supported by this field type.
+		 *
+		 * @since 6.8
+		 *
+		 * @return string[]
+		 */
+		public function get_jsonld_output_types(): array {
+			return array();
+		}
 	}
 
 

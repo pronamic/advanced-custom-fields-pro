@@ -9,7 +9,7 @@
  * Plugin Name:       Advanced Custom Fields PRO
  * Plugin URI:        https://www.advancedcustomfields.com
  * Description:       Customize WordPress with powerful, professional and intuitive fields.
- * Version:           6.7.2
+ * Version:           6.8.0
  * Author:            WP Engine
  * Author URI:        https://wpengine.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields
  * Update URI:        https://www.advancedcustomfields.com/pro
@@ -45,7 +45,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '6.7.2';
+		public $version = '6.8.0';
 
 		/**
 		 * The plugin settings array.
@@ -182,6 +182,8 @@ if ( ! class_exists( 'ACF' ) ) {
 				'enable_bidirection'      => true,
 				'enable_block_bindings'   => true,
 				'enable_meta_box_cb_edit' => true,
+				'enable_acf_ai'           => false,
+				'enable_schema'           => false,
 			);
 
 			// Include autoloader.
@@ -213,6 +215,10 @@ if ( ! class_exists( 'ACF' ) ) {
 			acf_new_instance( 'ACF\Meta\Term' );
 			acf_new_instance( 'ACF\Meta\User' );
 			acf_new_instance( 'ACF\Meta\Option' );
+
+			if ( defined( 'WP_CLI' ) && WP_CLI ) {
+				acf_new_instance( 'ACF\CLI\CLI' );
+			}
 
 			acf_include( 'includes/acf-hook-functions.php' );
 			acf_include( 'includes/acf-field-functions.php' );
@@ -467,6 +473,9 @@ if ( ! class_exists( 'ACF' ) ) {
 			if ( version_compare( get_bloginfo( 'version' ), '6.5', '>=' ) ) {
 				new ACF\Blocks\Bindings();
 			}
+
+			// Initialize ACF AI.
+			acf_new_instance( '\ACF\AI\AI' );
 
 			/**
 			 * Fires after ACF is completely "initialized".

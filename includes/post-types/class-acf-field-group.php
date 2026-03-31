@@ -103,6 +103,8 @@ if ( ! class_exists( 'ACF_Field_Group' ) ) {
 				'description'           => '',
 				'show_in_rest'          => false,
 				'display_title'         => '',
+				'allow_ai_access'       => false,
+				'ai_description'        => '',
 			);
 		}
 
