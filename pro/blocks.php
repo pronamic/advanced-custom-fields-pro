@@ -779,44 +779,53 @@ function acf_rendered_block_v3( $attributes, $content = '', $is_preview = false,
 
 	$attributes['id'] = acf_get_block_id( $attributes, $context, $force_new_id );
 
-	$cached_block = acf_get_store( 'block-cache' )->get( $attributes['id'] );
-	if ( $cached_block ) {
-		return $cached_block['html'];
+	// Only use the cache in the block editor for preloading.
+	if ( $is_preview ) {
+		$cached_block = acf_get_store( 'block-cache' )->get( $attributes['id'] );
+		if ( $cached_block ) {
+			return $cached_block['html'];
+		}
 	}
 
 	$validation = false;
-
-	// Load the block form
-	// Set flag for post REST cleanup of media enqueue count during preloads.
-	acf_set_data( 'acf_did_render_block_form', true );
+	$form       = '';
+	$fields     = false;
 
 	$block = acf_prepare_block( $attributes );
 	$block = acf_add_block_meta_values( $block, $post_id );
 	acf_setup_meta( $block['data'], $block['id'], true );
 
-	if ( ! empty( $block['validate'] ) ) {
-		$validation = acf_get_block_validation_state( $block, false, false, true );
+	// Only render the block form in the admin/preview context to avoid
+	// enqueueing editor assets (e.g. wp_editor) on the front end.
+	if ( $is_preview ) {
+		// Load the block form
+		// Set flag for post REST cleanup of media enqueue count during preloads.
+		acf_set_data( 'acf_did_render_block_form', true );
+
+		if ( ! empty( $block['validate'] ) ) {
+			$validation = acf_get_block_validation_state( $block, false, false, true );
+		}
+
+		$fields = acf_get_block_fields( $block );
+		if ( $fields ) {
+			acf_prefix_fields( $fields, "acf-{$block['id']}" );
+
+			ob_start();
+			echo '<div class="acf-block-fields acf-fields" data-block-id="' . esc_attr( $block['id'] ) . '">';
+			acf_render_fields( $fields, acf_ensure_block_id_prefix( $block['id'] ), 'div', 'field' );
+			echo '</div>';
+			$form = ob_get_clean();
+		} else {
+			ob_start();
+			echo acf_get_empty_block_form_html( $attributes['name'] ); //phpcs:ignore -- Output of acf_get_empty_block_form_html() is already escaped via acf_esc_html() for use as text within this HTML container.
+			$form = ob_get_clean();
+		}
+
+		// Now that the form has been rendered, reset field values
+		// as they may need to be different depending on if acf_doing_block_preview is true or false.
+		// An example of this is the flexible content field, which shows disabled fields in the form, but not the preview.
+		acf_get_store( 'values' )->reset();
 	}
-
-	$fields = acf_get_block_fields( $block );
-	if ( $fields ) {
-		acf_prefix_fields( $fields, "acf-{$block['id']}" );
-
-		ob_start();
-		echo '<div class="acf-block-fields acf-fields" data-block-id="' . esc_attr( $block['id'] ) . '">';
-		acf_render_fields( $fields, acf_ensure_block_id_prefix( $block['id'] ), 'div', 'field' );
-		echo '</div>';
-		$form = ob_get_clean();
-	} else {
-		ob_start();
-		echo acf_get_empty_block_form_html( $attributes['name'] ); //phpcs:ignore -- Output of acf_get_empty_block_form_html() is already escaped via acf_esc_html() for use as text within this HTML container.
-		$form = ob_get_clean();
-	}
-
-	// Now that the form has been rendered, reset field values
-	// as they may need to be different depending on if acf_doing_block_preview is true or false.
-	// An example of this is the flexible content field, which shows disabled fields in the form, but not the preview.
-	acf_get_store( 'values' )->reset();
 
 	// Capture block render output.
 	acf_set_data( 'acf_doing_block_preview', true );

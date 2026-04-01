@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 6.8.0
+Stable tag: 6.8.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,13 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.8.0.1 =
+*Release Date 31st March 2026*
+*PRO Only Release*
+
+* Fix - V3 blocks with WYSIWYG fields no longer enqueue TinyMCE editor assets on the frontend
+* Fix - V3 blocks with identical attributes and different InnerBlocks content no longer return cached output from the first block on the frontend
 
 = 6.8.0 =
 *Release Date 30th March 2026*
