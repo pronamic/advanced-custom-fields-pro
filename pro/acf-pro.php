@@ -31,6 +31,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			// includes
 			acf_include( 'pro/blocks.php' );
+			acf_include( 'pro/datastore.php' );
 			acf_include( 'pro/options-page.php' );
 			acf_include( 'pro/acf-ui-options-page-functions.php' );
 			acf_include( 'pro/updates.php' );
@@ -44,6 +45,15 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			if ( class_exists( 'ACF\Pro\AI\GEO\Outputs\Blocks' ) ) {
 				new \ACF\Pro\AI\GEO\Outputs\Blocks();
 			}
+
+			// Datastore integration (self-gates on acf_is_using_datastore()).
+			acf_new_instance( 'ACF\Pro\Datastore\REST_Save' );
+			acf_new_instance( 'ACF\Pro\Datastore\Localization' );
+			acf_new_instance( 'ACF\Pro\Datastore\Revisions' );
+			acf_new_instance( 'ACF\Pro\Datastore\Check_Screen' );
+
+			// JS block bindings layer (self-gates on enable_block_bindings + datastore).
+			acf_new_instance( 'ACF\Pro\Blocks\Bindings_Editor' );
 
 			// actions
 			add_action( 'init', array( $this, 'register_assets' ) );
@@ -157,6 +167,8 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			wp_register_script( 'acf-pro-input', acf_get_url( "assets/build/js/pro/acf-pro-input{$min}.js" ), array( 'acf-input' ), $version );
 			wp_register_script( 'acf-pro-field-group', acf_get_url( "assets/build/js/pro/acf-pro-field-group{$min}.js" ), array( 'acf-field-group' ), $version );
 			wp_register_script( 'acf-pro-ui-options-page', acf_get_url( "assets/build/js/pro/acf-pro-ui-options-page{$min}.js" ), array( 'acf-input' ), $version );
+			wp_register_script( 'acf-datastore', acf_get_url( "assets/build/js/pro/acf-datastore{$min}.js" ), array( 'acf-input', 'wp-data' ), $version );
+			wp_register_script( 'acf-field-bindings', acf_get_url( "assets/build/js/pro/acf-field-bindings{$min}.js" ), array( 'acf-datastore', 'wp-blocks' ), $version );
 
 			// Register styles.
 			wp_register_style( 'acf-pro-input', acf_get_url( 'assets/build/css/pro/acf-pro-input' . $min . '.css' ), array( 'acf-input' ), $version );

@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-31T22:11:49+00:00\n"
+"PO-Revision-Date: 2026-05-13T15:21:32+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: en_GB\n"
 "MIME-Version: 1.0\n"
@@ -24,67 +24,67 @@ msgstr ""
 #. translators: 1: number of post types, 2: number of blocks using ACF schema
 #: src/Site_Health/Site_Health.php:999
 msgid "%1$d Post Types, %2$d Blocks"
-msgstr ""
+msgstr "%1$d Post Types, %2$d Blocks"
 
 #: src/Site_Health/Site_Health.php:996
 msgid "Objects with Schema Support"
-msgstr ""
+msgstr "Objects with Schema Support"
 
 #: src/Site_Health/Site_Health.php:984
 msgid "Schema Support"
-msgstr ""
+msgstr "Schema Support"
 
 #: src/Site_Health/Site_Health.php:975
 msgid "AI Execution Errors"
-msgstr ""
+msgstr "AI Execution Errors"
 
 #: src/Site_Health/Site_Health.php:968
 msgid "AI Actions Executed"
-msgstr ""
+msgstr "AI Actions Executed"
 
 #. translators: %s - number of successful tasks performed
 #: src/Site_Health/Site_Health.php:963
 msgid "%s (Successful task performed)"
 msgid_plural "%s (Successful tasks performed)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s (Successful task performed)"
+msgstr[1] "%s (Successful tasks performed)"
 
 #. translators: 1: field group count, 2: post type count, 3: taxonomy count
 #: src/Site_Health/Site_Health.php:953
 msgid "%1$d Field Groups, %2$d Custom Post Types, %3$d Taxonomies"
-msgstr ""
+msgstr "%1$d Field Groups, %2$d Custom Post Types, %3$d Taxonomies"
 
 #: src/Site_Health/Site_Health.php:950
 msgid "AI-Ready Objects"
-msgstr ""
+msgstr "AI-Ready Objects"
 
 #: src/Site_Health/Site_Health.php:940
 msgid "Not available (requires WordPress 6.9+)"
-msgstr ""
+msgstr "Not available (requires WordPress 6.9+)"
 
 #: src/Site_Health/Site_Health.php:939
 msgid "Abilities API"
-msgstr ""
+msgstr "Abilities API"
 
 #: src/Site_Health/Site_Health.php:929
 msgid "AI Support"
-msgstr ""
+msgstr "AI Support"
 
 #: src/Site_Health/Site_Health.php:396
 msgid "Disabled"
-msgstr ""
+msgstr "Disabled"
 
 #: src/Site_Health/Site_Health.php:395
 msgid "Enabled"
-msgstr ""
+msgstr "Enabled"
 
 #: src/AI/GEO/GEO.php:135
 msgid "All Types"
-msgstr ""
+msgstr "All Types"
 
 #: src/AI/GEO/GEO.php:134
 msgid "Common Types"
-msgstr ""
+msgstr "Common Types"
 
 #: src/AI/GEO/GEO.php:104
 msgid ""
@@ -93,51 +93,60 @@ msgid ""
 "fields. You can assign additional types here. Select multiple types if "
 "needed (e.g., Recipe + Article)."
 msgstr ""
+"The Schema.org @type for JSON-LD output. By default, the type is "
+"automatically detected based on the schema properties assigned to your "
+"fields. You can assign additional types here. Select multiple types if "
+"needed (e.g., Recipe + Article)."
 
 #: src/AI/GEO/GEO.php:103
 msgid "Schema.org Type"
-msgstr ""
+msgstr "Schema.org Type"
 
 #: src/AI/GEO/GEO.php:89
 msgid ""
 "When enabled, ACF field data will be automatically included as JSON-LD "
 "structured data in the page head for better SEO and semantic markup."
 msgstr ""
+"When enabled, ACF field data will be automatically included as JSON-LD "
+"structured data in the page head for better SEO and semantic markup."
 
 #: src/AI/GEO/GEO.php:88
 msgid "Automatically add JSON-LD data for fields on this post type"
-msgstr ""
+msgstr "Automatically add JSON-LD data for fields on this post type"
 
 #: src/AI/GEO/GEO.php:65
 msgid "Schema"
-msgstr ""
+msgstr "Schema"
 
 #: src/AI/GEO/FieldSettings.php:169
 msgid "Schema.org Output Format"
-msgstr ""
+msgstr "Schema.org Output Format"
 
 #: src/AI/GEO/FieldSettings.php:145
 msgid ""
 "Map this field to a Schema.org property instead of using additionalProperty."
 msgstr ""
+"Map this field to a Schema.org property instead of using additionalProperty."
 
 #: src/AI/GEO/FieldSettings.php:144
 msgid "Schema.org Property"
-msgstr ""
+msgstr "Schema.org Property"
 
 #: src/AI/GEO/FieldSettings.php:95
 msgid "Missing required parameters"
-msgstr ""
+msgstr "Missing required parameters"
 
 #: src/AI/AI.php:157
 msgid ""
 "Add a short explanation of what this field group is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Add a short explanation of what this field group is for. The clearer your "
+"description, the better the AI's output will be."
 
 #: src/AI/AI.php:156
 msgid "AI Context Description"
-msgstr ""
+msgstr "AI Context Description"
 
 #: src/AI/AI.php:155
 msgid ""
@@ -145,20 +154,25 @@ msgid ""
 "group using supported integrations. This feature uses the WordPress "
 "Abilities API."
 msgstr ""
+"When enabled, AI models can access and interact with the fields in this "
+"group using supported integrations. This feature uses the WordPress "
+"Abilities API."
 
 #: src/AI/AI.php:154
 msgid "Allow AI Access to Field Data"
-msgstr ""
+msgstr "Allow AI Access to Field Data"
 
 #: src/AI/AI.php:150
 msgid ""
 "Add a short explanation of what this taxonomy is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Add a short explanation of what this taxonomy is for. The clearer your "
+"description, the better the AI's output will be."
 
 #: src/AI/AI.php:149
 msgid "AI Guidance for Taxonomy"
-msgstr ""
+msgstr "AI Guidance for Taxonomy"
 
 #: src/AI/AI.php:148
 msgid ""
@@ -166,20 +180,25 @@ msgid ""
 "taxonomy using supported integrations. This feature uses the WordPress "
 "Abilities API."
 msgstr ""
+"When enabled, AI models can access and interact with the terms in this "
+"taxonomy using supported integrations. This feature uses the WordPress "
+"Abilities API."
 
 #: src/AI/AI.php:147
 msgid "Allow AI Access to Taxonomy Terms"
-msgstr ""
+msgstr "Allow AI Access to Taxonomy Terms"
 
 #: src/AI/AI.php:143
 msgid ""
 "Add a short explanation of what this post type is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Add a short explanation of what this post type is for. The clearer your "
+"description, the better the AI's output will be."
 
 #: src/AI/AI.php:142
 msgid "AI Guidance for Post Type"
-msgstr ""
+msgstr "AI Guidance for Post Type"
 
 #: src/AI/AI.php:141
 msgid ""
@@ -187,98 +206,105 @@ msgid ""
 "this post type using supported integrations. This feature uses the WordPress "
 "Abilities API."
 msgstr ""
+"When enabled, AI models can access and interact with the content of posts in "
+"this post type using supported integrations. This feature uses the WordPress "
+"Abilities API."
 
 #: src/AI/AI.php:140
 msgid "Allow AI Access to Post Content"
-msgstr ""
+msgstr "Allow AI Access to Post Content"
 
 #: src/AI/AI.php:137
 msgid ""
 "Provide a description that will help AI systems understand the purpose and "
 "how to use this effectively."
 msgstr ""
+"Provide a description that will help AI systems understand the purpose and "
+"how to use this effectively."
 
 #: src/AI/AI.php:136
 msgid "AI Description"
-msgstr ""
+msgstr "AI Description"
 
 #: src/AI/AI.php:135
 msgid ""
 "Allow AI systems to access and modify this content through the WordPress "
 "Abilities API."
 msgstr ""
+"Allow AI systems to access and modify this content through the WordPress "
+"Abilities API."
 
 #: src/AI/AI.php:134
 msgid "Allow AI Access"
-msgstr ""
+msgstr "Allow AI Access"
 
 #: src/AI/AI.php:103
 msgid "ACF AI"
-msgstr ""
+msgstr "ACF AI"
 
 #: src/AI/Abilities/Taxonomy.php:697
 msgid "ACF custom taxonomy created successfully"
-msgstr ""
+msgstr "ACF custom taxonomy created successfully"
 
 #: src/AI/Abilities/Taxonomy.php:690
 msgid "Failed to create the custom taxonomy"
-msgstr ""
+msgstr "Failed to create the custom taxonomy"
 
 #: src/AI/Abilities/Taxonomy.php:645
 msgid "A taxonomy with this key already exists"
-msgstr ""
+msgstr "A taxonomy with this key already exists"
 
 #. translators: %d: Number of ACF custom taxonomies
 #: src/AI/Abilities/Taxonomy.php:603
 msgid "Found %d ACF custom taxonomy"
 msgid_plural "Found %d ACF custom taxonomies"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Found %d ACF custom taxonomy"
+msgstr[1] "Found %d ACF custom taxonomies"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:417
 msgid "Delete a %s term by its ID."
-msgstr ""
+msgstr "Delete a %s term by its ID."
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:415
 msgid "Delete a %s Term"
-msgstr ""
+msgstr "Delete a %s Term"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:387
 msgid "Update a %s term by its ID."
-msgstr ""
+msgstr "Update a %s term by its ID."
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:385
 msgid "Update a %s Term"
-msgstr ""
+msgstr "Update a %s Term"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:348
 msgid "Get a %s term by its ID."
-msgstr ""
+msgstr "Get a %s term by its ID."
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:346
 msgid "View a %s Term"
-msgstr ""
+msgstr "View a %s Term"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:319
 msgid "Create a new \"%s\" term."
-msgstr ""
+msgstr "Create a new \"%s\" term."
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:317
 msgid "Create %s Term"
-msgstr ""
+msgstr "Create %s Term"
 
 #. translators: %s The plural label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:235
 msgid "Get a list of %s terms that match the query parameters."
-msgstr ""
+msgstr "Get a list of %s terms that match the query parameters."
 
 #: src/AI/Abilities/Taxonomy.php:79
 msgid ""
@@ -287,88 +313,92 @@ msgid ""
 "within it. Use the create term abilities to add terms to an existing "
 "taxonomy."
 msgstr ""
+"Register a new taxonomy definition in WordPress (e.g., \"Genre\", "
+"\"Colour\"). This creates the taxonomy schema itself, not individual terms "
+"within it. Use the create term abilities to add terms to an existing "
+"taxonomy."
 
 #: src/AI/Abilities/Taxonomy.php:78
 msgid "Register Custom Taxonomy"
-msgstr ""
+msgstr "Register Custom Taxonomy"
 
 #: src/AI/Abilities/Taxonomy.php:43
 msgid "Get all ACF registered custom taxonomies"
-msgstr ""
+msgstr "Get all ACF registered custom taxonomies"
 
 #: src/AI/Abilities/Taxonomy.php:42
 msgid "ACF Custom Taxonomies"
-msgstr ""
+msgstr "ACF Custom Taxonomies"
 
 #: src/AI/Abilities/PostType.php:752
 msgid "ACF custom post type created successfully"
-msgstr ""
+msgstr "ACF custom post type created successfully"
 
 #: src/AI/Abilities/PostType.php:745
 msgid "Failed to create the custom post type"
-msgstr ""
+msgstr "Failed to create the custom post type"
 
 #: src/AI/Abilities/PostType.php:631
 msgid "A post type with this key already exists"
-msgstr ""
+msgstr "A post type with this key already exists"
 
 #. translators: %d: Number of ACF custom post types
 #: src/AI/Abilities/PostType.php:607
 msgid "Found %d ACF custom post type"
 msgid_plural "Found %d ACF custom post types"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Found %d ACF custom post type"
+msgstr[1] "Found %d ACF custom post types"
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:415
 msgid "Delete a %s by its ID."
-msgstr ""
+msgstr "Delete a %s by its ID."
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:413
 msgid "Delete a %s"
-msgstr ""
+msgstr "Delete a %s"
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:385
 msgid "Update a %s by its ID."
-msgstr ""
+msgstr "Update a %s by its ID."
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:383
 msgid "Update a %s"
-msgstr ""
+msgstr "Update a %s"
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:346
 msgid "Get a %s by its ID."
-msgstr ""
+msgstr "Get a %s by its ID."
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:344
 msgid "View a %s"
-msgstr ""
+msgstr "View a %s"
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:317
 msgid "Create a new \"%s\" post item."
-msgstr ""
+msgstr "Create a new \"%s\" post item."
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:315
 msgid "Create %s"
-msgstr ""
+msgstr "Create %s"
 
 #. translators: %s The plural label for the custom post type.
 #: src/AI/Abilities/PostType.php:248
 msgid "Get a list of %s that match the query parameters."
-msgstr ""
+msgstr "Get a list of %s that match the query parameters."
 
 #. translators: %s The plural label for the custom post type.
 #. translators: %s The plural label for the custom taxonomy.
 #: src/AI/Abilities/PostType.php:246 src/AI/Abilities/Taxonomy.php:233
 msgid "Query %s"
-msgstr ""
+msgstr "Query %s"
 
 #: src/AI/Abilities/PostType.php:79
 msgid ""
@@ -376,34 +406,37 @@ msgid ""
 "\"Event\"). This creates the post type schema itself, not individual posts. "
 "Use the create post abilities to add posts to an existing post type."
 msgstr ""
+"Register a new post type definition in WordPress (e.g., \"Book\", "
+"\"Event\"). This creates the post type schema itself, not individual posts. "
+"Use the create post abilities to add posts to an existing post type."
 
 #: src/AI/Abilities/PostType.php:78
 msgid "Register Custom Post Type"
-msgstr ""
+msgstr "Register Custom Post Type"
 
 #: src/AI/Abilities/PostType.php:43
 msgid "Get all ACF registered custom post types"
-msgstr ""
+msgstr "Get all ACF registered custom post types"
 
 #: src/AI/Abilities/PostType.php:42
 msgid "ACF Custom Post Types"
-msgstr ""
+msgstr "ACF Custom Post Types"
 
 #. translators: %s: Field group title
 #: src/AI/Abilities/FieldGroup.php:427
 msgid "Field group \"%s\" created successfully."
-msgstr ""
+msgstr "Field group \"%s\" created successfully."
 
 #: src/AI/Abilities/FieldGroup.php:416
 msgid "Failed to create the field group"
-msgstr ""
+msgstr "Failed to create the field group"
 
 #. translators: %d: Number of found field groups
 #: src/AI/Abilities/FieldGroup.php:343
 msgid "Found %d ACF field group."
 msgid_plural "Found %d ACF field groups."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Found %d ACF field group."
+msgstr[1] "Found %d ACF field groups."
 
 #: src/AI/Abilities/FieldGroup.php:86
 msgid ""
@@ -412,141 +445,154 @@ msgid ""
 "themselves. Field values are set when creating or updating posts, terms, or "
 "other content."
 msgstr ""
+"Register a new ACF field group schema with field definitions. This creates "
+"the field structure that will appear on content, not the field values "
+"themselves. Field values are set when creating or updating posts, terms, or "
+"other content."
 
 #: src/AI/Abilities/FieldGroup.php:85
 msgid "Register ACF Field Group"
-msgstr ""
+msgstr "Register ACF Field Group"
 
 #: src/AI/Abilities/FieldGroup.php:43
 msgid "Get all ACF field groups that allow AI access."
-msgstr ""
+msgstr "Get all ACF field groups that allow AI access."
 
 #: src/AI/Abilities/FieldGroup.php:42
 msgid "List ACF Field Groups"
-msgstr ""
+msgstr "List ACF Field Groups"
 
 #: src/AI/Abilities/Abilities.php:129
 msgid ""
 "Abilities for discovering WordPress content types, taxonomies, and structure."
 msgstr ""
+"Abilities for discovering WordPress content types, taxonomies, and structure."
 
 #: src/AI/Abilities/Abilities.php:128
 msgid "WordPress Content Discovery"
-msgstr ""
+msgstr "WordPress Content Discovery"
 
 #: src/AI/Abilities/Abilities.php:120
 msgid ""
 "Abilities for managing Advanced Custom Fields field groups and field data."
 msgstr ""
+"Abilities for managing Advanced Custom Fields field groups and field data."
 
 #: src/AI/Abilities/Abilities.php:119
 msgid "ACF Field Management"
-msgstr ""
+msgstr "ACF Field Management"
 
 #: includes/admin/views/acf-post-type/advanced-settings.php:35
 msgid "Notes"
-msgstr ""
+msgstr "Notes"
 
 #: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
 msgid "Experimental"
-msgstr ""
+msgstr "Experimental"
 
 #: src/Site_Health/Site_Health.php:860
 msgid "Blocks Using Auto Inline Editing"
-msgstr ""
+msgstr "Blocks Using Auto Inline Editing"
 
 #: includes/fields/class-acf-field-image.php:144
 msgid "Remove image"
-msgstr ""
+msgstr "Remove image"
 
 #: includes/fields/class-acf-field-image.php:142
 msgid "Edit image"
-msgstr ""
+msgstr "Edit image"
 
 #: includes/fields/class-acf-field-image.php:138
 msgid "Selected image. Press tab to access image options."
-msgstr ""
+msgstr "Selected image. Press tab to access image options."
 
 #: includes/fields/class-acf-field-file.php:161
 msgid "Remove file"
-msgstr ""
+msgstr "Remove file"
 
 #: includes/fields/class-acf-field-file.php:159
 msgid "Edit file"
-msgstr ""
+msgstr "Edit file"
 
 #: includes/fields/class-acf-field-file.php:140
 msgid "Selected file. Press tab to access file options."
-msgstr ""
+msgstr "Selected file. Press tab to access file options."
 
 #: includes/fields/class-acf-field-color_picker.php:306
 msgid "Show Color Wheel"
-msgstr ""
+msgstr "Show Colour Wheel"
 
 #: includes/fields/class-acf-field-color_picker.php:296
 msgid ""
 "Use a custom color palette by entering comma separated hex or rgba values"
 msgstr ""
+"Use a custom colour palette by entering comma separated hex or rgba values"
 
 #: includes/fields/class-acf-field-color_picker.php:295
 msgid "Custom Palette"
-msgstr ""
+msgstr "Custom Palette"
 
 #: includes/fields/class-acf-field-color_picker.php:275
 msgid "Use colors from theme.json"
-msgstr ""
+msgstr "Use colours from theme.json"
 
 #: includes/fields/class-acf-field-color_picker.php:274
 msgid "Specify custom colors"
-msgstr ""
+msgstr "Specify custom colours"
 
 #: includes/fields/class-acf-field-color_picker.php:268
 msgid "Custom Palette Source"
-msgstr ""
+msgstr "Custom Palette Source"
 
 #: includes/fields/class-acf-field-color_picker.php:250
 msgid "Show Custom Palette"
-msgstr ""
+msgstr "Show Custom Palette"
 
 #: includes/admin/views/acf-field-group/options.php:272
 msgid ""
 "Title shown on the edit screen for the field group meta box to use instead "
 "of the field group title"
 msgstr ""
+"Title shown on the edit screen for the field group meta box to use instead "
+"of the field group title"
 
 #: includes/admin/views/acf-field-group/options.php:271
 msgid "Display Title"
-msgstr ""
+msgstr "Display Title"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:70
 msgid ""
 "Import JSON containing field groups, post types, or taxonomies (trusted "
 "sources only)"
 msgstr ""
+"Import JSON containing field groups, post types, or taxonomies (trusted "
+"sources only)"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:64
 msgid "Select JSON File"
-msgstr ""
+msgstr "Select JSON File"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:56
 msgid ""
 "Choose an ACF JSON file to import. Use only files from trusted sources, then "
 "click Import."
 msgstr ""
+"Choose an ACF JSON file to import. Use only files from trusted sources, then "
+"click Import."
 
 #: includes/fields/class-acf-field-date_picker.php:244
 #: includes/fields/class-acf-field-date_time_picker.php:231
 msgid "Use the current date as the default value for this field."
-msgstr ""
+msgstr "Use the current date as the default value for this field."
 
 #: includes/fields/class-acf-field-date_picker.php:243
 #: includes/fields/class-acf-field-date_time_picker.php:230
 msgid "Default to the current date"
-msgstr ""
+msgstr "Default to the current date"
 
 #: includes/assets.php:372
 msgid "Toggle panel"
-msgstr ""
+msgstr "Toggle panel"
 
 #. translators: %1$s - Plugin name, %2$s URL to documentation
 #: includes/admin/admin.php:311
@@ -556,50 +602,57 @@ msgid ""
 "removed in a future version of ACF. <a href=\"%2$s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
+"%1$s We have detected that this website is configured to use v3 of the "
+"Select2 jQuery library, which has been deprecated in favour of v4 and will "
+"be removed in a future version of ACF. <a href=\"%2$s\" "
+"target=\"_blank\">Learn more</a>."
 
 #: includes/fields/class-acf-field-select.php:480
 msgid ""
 "Save created options back to the \"Choices\" setting in the field definition."
 msgstr ""
+"Save created options back to the \"Choices\" setting in the field definition."
 
 #: includes/fields/class-acf-field-select.php:479
 msgid "Save Options"
-msgstr ""
+msgstr "Save Options"
 
 #: includes/fields/class-acf-field-select.php:457
 msgid ""
 "Allow content editors to create new options by typing in the Select input. "
 "Multiple options can be created from a comma separated string."
 msgstr ""
+"Allow content editors to create new options by typing in the Select input. "
+"Multiple options can be created from a comma separated string."
 
 #: includes/fields/class-acf-field-select.php:456
 msgid "Create Options"
-msgstr ""
+msgstr "Create Options"
 
 #: includes/admin/views/global/navigation.php:189
 #: includes/admin/views/global/navigation.php:193
 msgid "Edit ACF Field Groups"
-msgstr ""
+msgstr "Edit ACF Field Groups"
 
 #: includes/admin/views/global/navigation.php:110
 msgid "Get 4 months free on any WP Engine plan"
-msgstr ""
+msgstr "Get 4 months free on any WP Engine plan"
 
 #: src/Site_Health/Site_Health.php:643
 msgid "Number of Field Groups with Blocks and Other Locations"
-msgstr ""
+msgstr "Number of Field Groups with Blocks and Other Locations"
 
 #: src/Site_Health/Site_Health.php:638
 msgid "Number of Field Groups with Multiple Block Locations"
-msgstr ""
+msgstr "Number of Field Groups with Multiple Block Locations"
 
 #: src/Site_Health/Site_Health.php:633
 msgid "Number of Field Groups with a Single Block Location"
-msgstr ""
+msgstr "Number of Field Groups with a Single Block Location"
 
 #: src/Site_Health/Site_Health.php:602
 msgid "All Location Rules"
-msgstr ""
+msgstr "All Location Rules"
 
 #: includes/validation.php:154
 msgid "Learn more"

@@ -175,6 +175,13 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
 		$settings['expanded_editor_buttons'] = true;
 	}
 
+	// Handle fields defined in block.json
+	if ( isset( $metadata['acf']['fields'] ) && is_array( $metadata['acf']['fields'] ) ) {
+		$block_title          = isset( $metadata['title'] ) ? $metadata['title'] : $metadata['name'];
+		$override_group_title = isset( $metadata['acf']['fieldGroupTitle'] ) ? (string) $metadata['acf']['fieldGroupTitle'] : '';
+		acf_register_block_field_group_from_fields( $metadata['name'], $block_title, $metadata['acf']['fields'], $override_group_title );
+	}
+
 	acf_get_store( 'block-types' )->set( $metadata['name'], $settings );
 	add_action( 'enqueue_block_editor_assets', 'acf_enqueue_block_assets' );
 
@@ -194,6 +201,124 @@ function acf_handle_json_block_registration( $settings, $metadata ) {
  */
 function acf_is_acf_block_json( $metadata ) {
 	return ( isset( $metadata['acf'] ) && $metadata['acf'] );
+}
+
+/**
+ * Recursively ensures every field in a set of block-inlined fields has a key,
+ * generating `field_{block_slug}_{parent_path}_{name}` for any that don't.
+ * The parent path scopes sub-field keys under their ancestor names so that two
+ * fields with the same `name` at different depths (e.g. a top-level `title`
+ * and a repeater sub-field `title`) don't end up with the same field key and
+ * overwrite each other in the local fields store. Invalid field definitions
+ * (missing a name) are skipped and reported via _doing_it_wrong().
+ *
+ * @since 6.8.1
+ *
+ * @param array  $fields      The fields to process.
+ * @param string $block_slug  The sanitized block slug used to build keys.
+ * @param string $block_name  The original block name (used for error messages).
+ * @param string $parent_path Internal. Underscore-joined ancestor names for the current nesting level.
+ * @return array The processed fields, with keys filled in and invalid entries removed.
+ */
+function acf_block_json_process_fields( $fields, $block_slug, $block_name = '', $parent_path = '' ) {
+	$processed = array();
+
+	foreach ( $fields as $field ) {
+		if ( ! is_array( $field ) ) {
+			continue;
+		}
+
+		if ( empty( $field['name'] ) ) {
+			$message = sprintf(
+				/* translators: %s - The block name. */
+				__( 'A field defined in block "%s" is missing a "name" and will be skipped.', 'acf' ),
+				$block_name ? $block_name : $block_slug
+			);
+			_doing_it_wrong( 'acf_block_json_process_fields', esc_html( $message ), '6.8.1' );
+			continue;
+		}
+
+		if ( empty( $field['key'] ) ) {
+			$key_suffix   = '' === $parent_path ? $field['name'] : $parent_path . '_' . $field['name'];
+			$field['key'] = 'field_' . $block_slug . '_' . $key_suffix;
+		}
+
+		$child_path = '' === $parent_path ? $field['name'] : $parent_path . '_' . $field['name'];
+
+		if ( ! empty( $field['sub_fields'] ) && is_array( $field['sub_fields'] ) ) {
+			$field['sub_fields'] = acf_block_json_process_fields( $field['sub_fields'], $block_slug, $block_name, $child_path );
+		}
+
+		if ( ! empty( $field['layouts'] ) && is_array( $field['layouts'] ) ) {
+			foreach ( $field['layouts'] as $layout_index => $layout ) {
+				if ( ! empty( $layout['sub_fields'] ) && is_array( $layout['sub_fields'] ) ) {
+					// Include the layout's name (or its index as a fallback) so identical sub-field names
+					// across layouts in the same flexible_content field don't collide.
+					$layout_name                                     = ! empty( $layout['name'] ) ? $layout['name'] : (string) $layout_index;
+					$layout_path                                     = $child_path . '_' . $layout_name;
+					$field['layouts'][ $layout_index ]['sub_fields'] = acf_block_json_process_fields( $layout['sub_fields'], $block_slug, $block_name, $layout_path );
+				}
+			}
+		}
+
+		$processed[] = $field;
+	}
+
+	return $processed;
+}
+
+/**
+ * Registers a local field group for a block from an inline fields array,
+ * as used by `acf.fields` in block.json and `fields` in acf_register_block_type().
+ *
+ * @since 6.8.1
+ *
+ * @param string $block_name        The full block name (e.g. 'acf/my-block').
+ * @param string $block_title       The block's display title, used in the default group title.
+ * @param array  $fields            The fields defined inline on the block.
+ * @param string $field_group_title Optional. Overrides the auto-generated "Block: {title}" group title.
+ * @return boolean True if the field group was registered, false otherwise.
+ */
+function acf_register_block_field_group_from_fields( $block_name, $block_title, $fields, $field_group_title = '' ) {
+	if ( empty( $block_name ) || ! is_array( $fields ) || empty( $fields ) ) {
+		return false;
+	}
+
+	$block_slug = sanitize_key( str_replace( array( '/', '-' ), '_', $block_name ) );
+
+	if ( '' === $field_group_title ) {
+		$fallback_title = $block_title ? $block_title : $block_name;
+		/* translators: %s - The block title. */
+		$field_group_title = sprintf( __( 'Block: %s', 'acf' ), $fallback_title );
+	}
+
+	$processed_fields = acf_block_json_process_fields( $fields, $block_slug, $block_name );
+
+	if ( empty( $processed_fields ) ) {
+		return false;
+	}
+
+	// Key the group off the (globally unique) block slug so two blocks that happen
+	// to share a title - or override fieldGroupTitle to the same string - don't collide
+	// in the local field-group store.
+	$field_group_key = 'group_' . $block_slug;
+
+	return acf_add_local_field_group(
+		array(
+			'key'      => $field_group_key,
+			'title'    => $field_group_title,
+			'fields'   => $processed_fields,
+			'location' => array(
+				array(
+					array(
+						'param'    => 'block',
+						'operator' => '==',
+						'value'    => $block_name,
+					),
+				),
+			),
+		)
+	);
 }
 
 
@@ -267,6 +392,12 @@ function acf_register_block_type( $block ) {
 
 	// Add to storage.
 	acf_get_store( 'block-types' )->set( $block['name'], $block );
+
+	// Handle fields defined inline on the block.
+	if ( isset( $block['fields'] ) && is_array( $block['fields'] ) ) {
+		$override_group_title = isset( $block['field_group_title'] ) ? (string) $block['field_group_title'] : '';
+		acf_register_block_field_group_from_fields( $block['name'], $block['title'], $block['fields'], $override_group_title );
+	}
 
 	// Overwrite callback for WordPress registration.
 	$block['render_callback'] = 'acf_render_block_callback';

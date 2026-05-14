@@ -408,7 +408,7 @@ class FieldGroup extends AbstractAbilityGroup {
 		// Create the field group using ACF's function.
 		add_filter( 'acf/prepare_field_for_import', array( $this, 'prepare_field_for_ability_import' ), 5 );
 		$field_group = acf_import_field_group( $field_group_data );
-		remove_filter( 'acf/prepare_field_for_import', array( $this, 'prepare_field_for_ability_import' ) );
+		remove_filter( 'acf/prepare_field_for_import', array( $this, 'prepare_field_for_ability_import' ), 5 );
 
 		if ( empty( $field_group['ID'] ) || ! is_int( $field_group['ID'] ) ) {
 			return new WP_Error(

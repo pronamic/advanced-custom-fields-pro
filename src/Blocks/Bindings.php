@@ -38,7 +38,7 @@ class Bindings {
 			register_block_bindings_source(
 				'acf/field',
 				array(
-					'label'              => _x( 'ACF Fields', 'The core ACF block binding source name for fields on the current page', 'acf' ),
+					'label'              => _x( 'Custom Fields', 'The core ACF block binding source name for fields on the current page', 'acf' ),
 					'get_value_callback' => array( $this, 'get_value' ),
 				)
 			);

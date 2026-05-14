@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 6.9.4
 Requires PHP: 7.4
-Stable tag: 6.8.0.1
+Stable tag: 6.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,9 @@ From your WordPress dashboard
 
 **Support Forums.** Our ACF Community Forums provide a great resource for searching and finding previously answered and asked support questions. You may create a new thread on these forums, however, it is not guaranteed that you will receive an answer from our support team. This is more of an area for ACF developers to talk to one another, post ideas, plugins and provide basic help. [View the Support Forum](https://support.advancedcustomfields.com/)
 
+= Looking for non-minified files? =
+
+Our plugin's non-minified JS and CSS files are available on [GitHub](https://github.com/advancedcustomfields/acf).
 
 == Screenshots ==
 
@@ -93,6 +96,20 @@ From your WordPress dashboard
 
 
 == Changelog ==
+
+= 6.8.1 =
+*Release Date 13th May 2026*
+
+* Security - ACF now correctly checks user permissions before running database upgrades on a specific site in a multisite network
+* New - A `wp.data` store (`acf/fields`) is now available in ACF PRO for reading and writing ACF field values from JavaScript, which can be enabled via a new `acf/settings/enable_datastore` filter (requires WordPress 6.7 or later).
+* New - ACF PRO block bindings now support live preview and editing in the block editor, when both the datastore and the `enable_block_bindings` setting are enabled.
+* New - ACF PRO can now save metabox field values via Gutenberg's native REST flow with full revision and autosave support when using the datastore.
+* New - ACF PRO Blocks can now define their field group inline via an `acf.fields` array in `block.json`, or via a `fields` argument in `acf_register_block_type()`, with field keys auto-generated and scoped to the block
+* Fix - Repeater and Flexible Content row helpers no longer trigger a PHP 8.x `TypeError` when `row_index_offset` or the active loop index is non-numeric
+* Fix - V3 Blocks with `hideFieldsInSidebar` enabled no longer show fields in the sidebar after the inline toolbar popover is closed
+* Fix - Scrollbars no longer appear under the tabs in field groups containing many tabs
+* Fix - The `acf/delete-{taxonomy}` ability no longer returns a 501 error when called without an explicit `force` argument, as terms cannot be trashed
+* Fix - The `prepare_field_for_ability_import` filter is now correctly removed after each Abilities field group import, preventing subsequent imports in the same request from having values corrupted
 
 = 6.8.0.1 =
 *Release Date 31st March 2026*

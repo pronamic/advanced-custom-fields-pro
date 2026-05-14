@@ -34,12 +34,26 @@ if ( ! class_exists( 'ACF_Ajax_Upgrade' ) ) :
 			}
 
 			// Switch blog.
+			$switched = false;
 			if ( isset( $request['blog_id'] ) ) {
-				switch_to_blog( $request['blog_id'] );
+				if ( ! is_super_admin() ) {
+					return new WP_Error( 'upgrade_error', __( 'Sorry, you do not have permission to do that.', 'acf' ) );
+				}
+
+				$blog_id = absint( $request['blog_id'] );
+				if ( ! $blog_id || ! get_site( $blog_id ) ) {
+					return new WP_Error( 'upgrade_error', __( 'Invalid site ID.', 'acf' ) );
+				}
+
+				switch_to_blog( $blog_id );
+				$switched = true;
 			}
 
-			// Bail early if no upgrade avaiable.
+			// Bail early if no upgrade available.
 			if ( ! acf_has_upgrade() ) {
+				if ( $switched ) {
+					restore_current_blog();
+				}
 				return new WP_Error( 'upgrade_error', __( 'No updates available.', 'acf' ) );
 			}
 
@@ -51,6 +65,10 @@ if ( ! class_exists( 'ACF_Ajax_Upgrade' ) ) :
 
 			// Store output.
 			$error = ob_get_clean();
+
+			if ( $switched ) {
+				restore_current_blog();
+			}
 
 			// Return error or success.
 			if ( $error ) {

@@ -1003,6 +1003,15 @@ class Site_Health {
 			'debug' => $schema_objects,
 		);
 
+		if ( $is_pro ) {
+			$datastore_enabled           = function_exists( 'acf_is_using_datastore' ) && acf_is_using_datastore();
+			$fields['datastore_enabled'] = array(
+				'label' => __( 'Datastore Enabled', 'acf' ),
+				'value' => $datastore_enabled ? $enabled : $disabled,
+				'debug' => $datastore_enabled,
+			);
+		}
+
 		return $fields;
 	}
 }

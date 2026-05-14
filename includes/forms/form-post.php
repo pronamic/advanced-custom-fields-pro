@@ -316,6 +316,22 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 				return $post_id;
 			}
 
+			/**
+			 * Filters whether ACF_Form_Post::save_post() should bail without
+			 * verifying the nonce or running acf_save_post(). Allows extensions
+			 * to short-circuit the save when another handler is responsible for
+			 * persisting field values for the current request.
+			 *
+			 * @since 6.8.1
+			 *
+			 * @param boolean $skip    Whether to skip the save.
+			 * @param integer $post_id The post ID being saved.
+			 * @param WP_Post $post    The post being saved.
+			 */
+			if ( apply_filters( 'acf/form-post/skip_save', false, $post_id, $post ) ) {
+				return $post_id;
+			}
+
 			// Verify nonce.
 			if ( ! acf_verify_nonce( 'post' ) ) {
 				return $post_id;

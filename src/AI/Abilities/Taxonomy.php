@@ -426,9 +426,9 @@ class Taxonomy extends AbstractAbilityGroup {
 							),
 							'force' => array(
 								'type'        => 'boolean',
-								'description' => 'Whether to permanently delete the term (required, as terms cannot be trashed)',
+								'description' => 'Whether to permanently delete the term. Defaults to true, as terms cannot be trashed.',
 								'required'    => false,
-								'default'     => false,
+								'default'     => true,
 							),
 						),
 					),

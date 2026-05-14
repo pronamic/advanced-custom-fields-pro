@@ -26,6 +26,13 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		private $files = array();
 
 		/**
+		 * Whether an expected Local JSON write failed during the current request.
+		 *
+		 * @var boolean
+		 */
+		private $save_file_failure = false;
+
+		/**
 		 * Constructor.
 		 *
 		 * @date    14/4/20
@@ -58,6 +65,11 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			add_action( 'acf/include_fields', array( $this, 'include_fields' ) );
 			add_action( 'acf/include_post_types', array( $this, 'include_post_types' ) );
 			add_action( 'acf/include_taxonomies', array( $this, 'include_taxonomies' ) );
+
+			if ( is_admin() ) {
+				add_filter( 'redirect_post_location', array( $this, 'redirect_post_location' ) );
+				add_action( 'current_screen', array( $this, 'maybe_show_save_failure_notice' ) );
+			}
 		}
 
 		/**
@@ -71,6 +83,77 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		 */
 		public function is_enabled() {
 			return (bool) acf_get_setting( 'json' );
+		}
+
+		/**
+		 * Returns true if a Local JSON save failure has been recorded for this request.
+		 *
+		 * @since 6.8.1
+		 *
+		 * @return boolean
+		 */
+		public function has_save_file_failure() {
+			return $this->save_file_failure;
+		}
+
+		/**
+		 * Records a Local JSON save failure for this request.
+		 *
+		 * @since 6.8.1
+		 *
+		 * @return void
+		 */
+		private function record_save_file_failure() {
+			$this->save_file_failure = true;
+		}
+
+		/**
+		 * Appends a Local JSON save failure query arg to the post save redirect.
+		 *
+		 * @since 6.8.1
+		 *
+		 * @param string $location The redirect location.
+		 * @return string
+		 */
+		public function redirect_post_location( $location ) {
+			if ( ! $this->has_save_file_failure() ) {
+				return $location;
+			}
+
+			// Only users who can manage ACF should see ACF admin save state.
+			if ( ! current_user_can( acf_get_setting( 'capability' ) ) ) {
+				return $location;
+			}
+
+			return add_query_arg( 'acf_local_json_save_failed', 1, $location );
+		}
+
+		/**
+		 * Adds an admin notice when a Local JSON save failure is present in the request.
+		 *
+		 * @since 6.8.1
+		 *
+		 * @param WP_Screen $current_screen The current WP_Screen object.
+		 * @return void
+		 */
+		public function maybe_show_save_failure_notice( $current_screen ) {
+			if ( ! acf_maybe_get_GET( 'acf_local_json_save_failed', false ) ) {
+				return;
+			}
+
+			if ( empty( $current_screen->post_type ) || ! in_array( $current_screen->post_type, acf_get_internal_post_types(), true ) ) {
+				return;
+			}
+
+			// Match the capability used by ACF internal post type save handlers.
+			if ( ! current_user_can( acf_get_setting( 'capability' ) ) ) {
+				return;
+			}
+
+			acf_add_admin_notice(
+				__( 'ACF saved your changes to the database, but could not update the Local JSON file. Check that the configured Local JSON save path is writable.', 'acf' ),
+				'warning'
+			);
 		}
 
 		/**
@@ -425,16 +508,27 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 		 * @return boolean
 		 */
 		public function save_file( $key, $post ) {
-			$paths          = $this->get_save_paths( $key, $post );
-			$filename       = $this->get_filename( $key, $post );
-			$file           = false;
-			$first_writable = false;
+			$paths             = $this->get_save_paths( $key, $post );
+			$filename          = $this->get_filename( $key, $post );
+			$file              = false;
+			$first_writable    = false;
+			$has_existing_file = is_array( $this->files ) && isset( $this->files[ $key ] );
 
 			if ( ! $filename ) {
 				return false;
 			}
 
 			foreach ( $paths as $path ) {
+				if ( ! is_string( $path ) || '' === $path ) {
+					continue;
+				}
+
+				$file_to_check = trailingslashit( $path ) . $filename;
+
+				if ( is_file( $file_to_check ) ) {
+					$has_existing_file = true;
+				}
+
 				if ( ! is_writable( $path ) ) { //phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_is_writable -- non-compatible function for this purpose.
 					continue;
 				}
@@ -442,8 +536,6 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 				if ( false === $first_writable ) {
 					$first_writable = $path;
 				}
-
-				$file_to_check = trailingslashit( $path ) . $filename;
 
 				if ( is_file( $file_to_check ) ) {
 					$file = $file_to_check;
@@ -454,6 +546,10 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 				if ( $first_writable ) {
 					$file = trailingslashit( $first_writable ) . $filename;
 				} else {
+					if ( $has_existing_file ) {
+						$this->record_save_file_failure();
+					}
+
 					return false;
 				}
 			}
@@ -474,6 +570,10 @@ if ( ! class_exists( 'ACF_Local_JSON' ) ) :
 			// Prepare for export and save the file.
 			$post   = acf_prepare_internal_post_type_for_export( $post, $post_type );
 			$result = file_put_contents( $file, acf_json_encode( $post ) . apply_filters( 'acf/json/eof_newline', PHP_EOL ) ); //phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- potentially could run outside of admin.
+
+			if ( ! is_int( $result ) && $has_existing_file ) {
+				$this->record_save_file_failure();
+			}
 
 			// Return true if bytes were written.
 			return is_int( $result );
