@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-05-13T15:21:32+00:00\n"
+"PO-Revision-Date: 2026-05-26T16:02:32+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: src/Site_Health/Site_Health.php:1009
+msgid "Datastore Enabled"
+msgstr "Функція зберігання даних увімкнено"
+
+#: includes/local-json.php:154
+msgid ""
+"ACF saved your changes to the database, but could not update the Local JSON "
+"file. Check that the configured Local JSON save path is writable."
+msgstr ""
+"ACF зберегло ваші зміни в базі даних, але не змогло оновити локальний файл "
+"JSON. Перевірте, чи має налаштований шлях збереження локального файлу JSON "
+"права на запис."
+
+#: includes/ajax/class-acf-ajax-upgrade.php:45
+msgid "Invalid site ID."
+msgstr "Неправильний ID сайту."
 
 #. translators: 1: number of post types, 2: number of blocks using ACF schema
 #: src/Site_Health/Site_Health.php:999
@@ -36,19 +53,19 @@ msgstr ""
 
 #: src/Site_Health/Site_Health.php:975
 msgid "AI Execution Errors"
-msgstr ""
+msgstr "Помилки виконання ШІ"
 
 #: src/Site_Health/Site_Health.php:968
 msgid "AI Actions Executed"
-msgstr ""
+msgstr "Виконані дії ШІ"
 
 #. translators: %s - number of successful tasks performed
 #: src/Site_Health/Site_Health.php:963
 msgid "%s (Successful task performed)"
 msgid_plural "%s (Successful tasks performed)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s (Завдання успішно виконано)"
+msgstr[1] "%s (Завдання успішно виконано)"
+msgstr[2] "%s (Завдань успішно виконано)"
 
 #. translators: 1: field group count, 2: post type count, 3: taxonomy count
 #: src/Site_Health/Site_Health.php:953
@@ -57,11 +74,11 @@ msgstr ""
 
 #: src/Site_Health/Site_Health.php:950
 msgid "AI-Ready Objects"
-msgstr ""
+msgstr "Об’єкти, готові до ШІ"
 
 #: src/Site_Health/Site_Health.php:940
 msgid "Not available (requires WordPress 6.9+)"
-msgstr ""
+msgstr "Недоступно (потрібен WordPress 6.9+)"
 
 #: src/Site_Health/Site_Health.php:939
 msgid "Abilities API"
@@ -69,23 +86,23 @@ msgstr ""
 
 #: src/Site_Health/Site_Health.php:929
 msgid "AI Support"
-msgstr ""
+msgstr "Підтримка ШІ"
 
 #: src/Site_Health/Site_Health.php:396
 msgid "Disabled"
-msgstr ""
+msgstr "Вимкнено"
 
 #: src/Site_Health/Site_Health.php:395
 msgid "Enabled"
-msgstr ""
+msgstr "Увімкнено"
 
 #: src/AI/GEO/GEO.php:135
 msgid "All Types"
-msgstr ""
+msgstr "Всі типи"
 
 #: src/AI/GEO/GEO.php:134
 msgid "Common Types"
-msgstr ""
+msgstr "Поширені типи"
 
 #: src/AI/GEO/GEO.php:104
 msgid ""
@@ -94,24 +111,30 @@ msgid ""
 "fields. You can assign additional types here. Select multiple types if "
 "needed (e.g., Recipe + Article)."
 msgstr ""
+"Тип Schema.org @type для виводу JSON-LD. За замовчуванням тип визначається "
+"автоматично на основі властивостей схеми, призначених вашим полям. Тут можна "
+"додати додаткові типи. За потреби оберіть кілька типів (наприклад, Recipe + "
+"Article)."
 
 #: src/AI/GEO/GEO.php:103
 msgid "Schema.org Type"
-msgstr ""
+msgstr "Тип Schema.org"
 
 #: src/AI/GEO/GEO.php:89
 msgid ""
 "When enabled, ACF field data will be automatically included as JSON-LD "
 "structured data in the page head for better SEO and semantic markup."
 msgstr ""
+"Коли увімкнено, дані полів ACF автоматично додаються як структуровані дані "
+"JSON-LD у секцію head сторінки для покращення SEO та семантичної розмітки."
 
 #: src/AI/GEO/GEO.php:88
 msgid "Automatically add JSON-LD data for fields on this post type"
-msgstr ""
+msgstr "Автоматично додавати JSON-LD дані для полів цього типу записів"
 
 #: src/AI/GEO/GEO.php:65
 msgid "Schema"
-msgstr ""
+msgstr "Schema"
 
 #: src/AI/GEO/FieldSettings.php:169
 msgid "Schema.org Output Format"
@@ -170,17 +193,19 @@ msgstr ""
 
 #: src/AI/AI.php:147
 msgid "Allow AI Access to Taxonomy Terms"
-msgstr ""
+msgstr "Дозволити ШІ доступ до термінів таксономії"
 
 #: src/AI/AI.php:143
 msgid ""
 "Add a short explanation of what this post type is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Додайте короткий опис призначення цього типу записів. Чим чіткіший опис, тим "
+"кращим буде результат ШІ."
 
 #: src/AI/AI.php:142
 msgid "AI Guidance for Post Type"
-msgstr ""
+msgstr "Настанови ШІ для типу записів"
 
 #: src/AI/AI.php:141
 msgid ""
@@ -198,44 +223,48 @@ msgid ""
 "Provide a description that will help AI systems understand the purpose and "
 "how to use this effectively."
 msgstr ""
+"Надайте опис, який допоможе системам ШІ зрозуміти призначення та ефективне "
+"використання."
 
 #: src/AI/AI.php:136
 msgid "AI Description"
-msgstr ""
+msgstr "Опис для ШІ"
 
 #: src/AI/AI.php:135
 msgid ""
 "Allow AI systems to access and modify this content through the WordPress "
 "Abilities API."
 msgstr ""
+"Дозволити системам ШІ отримувати доступ і змінювати цей вміст через API "
+"можливості WordPress."
 
 #: src/AI/AI.php:134
 msgid "Allow AI Access"
-msgstr ""
+msgstr "Дозволити доступ для ШІ"
 
 #: src/AI/AI.php:103
 msgid "ACF AI"
-msgstr ""
+msgstr "ACF ШІ"
 
 #: src/AI/Abilities/Taxonomy.php:697
 msgid "ACF custom taxonomy created successfully"
-msgstr ""
+msgstr "Користувацьку таксономію ACF успішно створено"
 
 #: src/AI/Abilities/Taxonomy.php:690
 msgid "Failed to create the custom taxonomy"
-msgstr ""
+msgstr "Не вдалося створити користувацьку таксономію"
 
 #: src/AI/Abilities/Taxonomy.php:645
 msgid "A taxonomy with this key already exists"
-msgstr ""
+msgstr "Таксономія з таким ключем вже існує"
 
 #. translators: %d: Number of ACF custom taxonomies
 #: src/AI/Abilities/Taxonomy.php:603
 msgid "Found %d ACF custom taxonomy"
 msgid_plural "Found %d ACF custom taxonomies"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Знайдено %d користувацьку таксономію ACF"
+msgstr[1] "Знайдено %d користувацькі таксономії ACF"
+msgstr[2] "Знайдено %d користувацьких таксономій ACF"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:417
@@ -345,7 +374,7 @@ msgstr ""
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:346
 msgid "Get a %s by its ID."
-msgstr ""
+msgstr "Отримати %s за його ID."
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:344
@@ -365,7 +394,7 @@ msgstr ""
 #. translators: %s The plural label for the custom post type.
 #: src/AI/Abilities/PostType.php:248
 msgid "Get a list of %s that match the query parameters."
-msgstr ""
+msgstr "Отримати список %s, які відповідають параметрам запиту."
 
 #. translators: %s The plural label for the custom post type.
 #. translators: %s The plural label for the custom taxonomy.
@@ -379,6 +408,10 @@ msgid ""
 "\"Event\"). This creates the post type schema itself, not individual posts. "
 "Use the create post abilities to add posts to an existing post type."
 msgstr ""
+"Зареєструйте нове визначення типу запису в WordPress (наприклад, \"Книга\", "
+"\"Подія\"). Це створює саму схему типу запису, а не окремі записи. Щоб "
+"додавати записи до існуючого типу, скористайтеся правами на створення "
+"записів."
 
 #: src/AI/Abilities/PostType.php:78
 msgid "Register Custom Post Type"
@@ -386,7 +419,7 @@ msgstr ""
 
 #: src/AI/Abilities/PostType.php:43
 msgid "Get all ACF registered custom post types"
-msgstr ""
+msgstr "Отримати всі зареєстровані в ACF типи користувацьких записів"
 
 #: src/AI/Abilities/PostType.php:42
 msgid "ACF Custom Post Types"
@@ -395,19 +428,19 @@ msgstr ""
 #. translators: %s: Field group title
 #: src/AI/Abilities/FieldGroup.php:427
 msgid "Field group \"%s\" created successfully."
-msgstr ""
+msgstr "Групу полів \"%s\" успішно створено."
 
 #: src/AI/Abilities/FieldGroup.php:416
 msgid "Failed to create the field group"
-msgstr ""
+msgstr "Не вдалося створити групу полів"
 
 #. translators: %d: Number of found field groups
 #: src/AI/Abilities/FieldGroup.php:343
 msgid "Found %d ACF field group."
 msgid_plural "Found %d ACF field groups."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Знайдено %d групу полів ACF."
+msgstr[1] "Знайдено %d групи полів ACF."
+msgstr[2] "Знайдено %d груп полів ACF."
 
 #: src/AI/Abilities/FieldGroup.php:86
 msgid ""
@@ -416,6 +449,10 @@ msgid ""
 "themselves. Field values are set when creating or updating posts, terms, or "
 "other content."
 msgstr ""
+"Зареєструйте нову схему групи полів ACF із визначеннями полів. Це створює "
+"структуру полів, яка відображатиметься у вмісті, а не самі значення полів. "
+"Значення полів задаються під час створення або оновлення публікацій, "
+"термінів чи іншого вмісту."
 
 #: src/AI/Abilities/FieldGroup.php:85
 msgid "Register ACF Field Group"
@@ -491,18 +528,20 @@ msgstr ""
 msgid ""
 "Use a custom color palette by entering comma separated hex or rgba values"
 msgstr ""
+"Використовуйте власну палітру кольорів, ввівши значення у форматі hex або "
+"rgba, розділені комами"
 
 #: includes/fields/class-acf-field-color_picker.php:295
 msgid "Custom Palette"
-msgstr ""
+msgstr "Користувацька палітра"
 
 #: includes/fields/class-acf-field-color_picker.php:275
 msgid "Use colors from theme.json"
-msgstr ""
+msgstr "Використовуйте кольори з theme.json"
 
 #: includes/fields/class-acf-field-color_picker.php:274
 msgid "Specify custom colors"
-msgstr ""
+msgstr "Вказати власні кольори"
 
 #: includes/fields/class-acf-field-color_picker.php:268
 msgid "Custom Palette Source"
@@ -517,20 +556,24 @@ msgid ""
 "Title shown on the edit screen for the field group meta box to use instead "
 "of the field group title"
 msgstr ""
+"Заголовок, що відображається на екрані редагування метабоксу групи полів, "
+"який слід використовувати замість заголовка групи полів"
 
 #: includes/admin/views/acf-field-group/options.php:271
 msgid "Display Title"
-msgstr ""
+msgstr "Показати заголовок"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:70
 msgid ""
 "Import JSON containing field groups, post types, or taxonomies (trusted "
 "sources only)"
 msgstr ""
+"Імпортувати JSON-файл, що містить групи полів, типи записів або таксономії "
+"(лише з надійних джерел)"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:64
 msgid "Select JSON File"
-msgstr ""
+msgstr "Вибрати файл JSON"
 
 #: includes/admin/tools/class-acf-admin-tool-import.php:56
 msgid ""
@@ -1382,6 +1425,7 @@ msgstr ""
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
+#: includes/ajax/class-acf-ajax-upgrade.php:40
 #: includes/ajax/class-acf-ajax-user-setting.php:47
 #: src/AI/GEO/FieldSettings.php:82
 msgid "Sorry, you do not have permission to do that."
@@ -2461,7 +2505,7 @@ msgstr ""
 
 #: src/Blocks/Bindings.php:41
 msgctxt "The core ACF block binding source name for fields on the current page"
-msgid "ACF Fields"
+msgid "Custom Fields"
 msgstr ""
 
 #: includes/admin/views/browse-fields-modal.php:24
@@ -6074,7 +6118,7 @@ msgid "Show this field group if"
 msgstr "Показувати групу полів, якщо"
 
 #: includes/admin/views/upgrade/upgrade.php:94
-#: includes/ajax/class-acf-ajax-upgrade.php:43
+#: includes/ajax/class-acf-ajax-upgrade.php:57
 msgid "No updates available."
 msgstr "Немає оновлень."
 

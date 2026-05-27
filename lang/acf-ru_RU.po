@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-05-13T15:21:32+00:00\n"
+"PO-Revision-Date: 2026-05-26T16:02:32+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -21,26 +21,40 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
+#: src/Site_Health/Site_Health.php:1009
+msgid "Datastore Enabled"
+msgstr ""
+
+#: includes/local-json.php:154
+msgid ""
+"ACF saved your changes to the database, but could not update the Local JSON "
+"file. Check that the configured Local JSON save path is writable."
+msgstr ""
+
+#: includes/ajax/class-acf-ajax-upgrade.php:45
+msgid "Invalid site ID."
+msgstr "Неверный ID сайта."
+
 #. translators: 1: number of post types, 2: number of blocks using ACF schema
 #: src/Site_Health/Site_Health.php:999
 msgid "%1$d Post Types, %2$d Blocks"
-msgstr ""
+msgstr "%1$d типов записей, %2$d блоков"
 
 #: src/Site_Health/Site_Health.php:996
 msgid "Objects with Schema Support"
-msgstr ""
+msgstr "Объекты с поддержкой схем"
 
 #: src/Site_Health/Site_Health.php:984
 msgid "Schema Support"
-msgstr ""
+msgstr "Поддержка схем"
 
 #: src/Site_Health/Site_Health.php:975
 msgid "AI Execution Errors"
-msgstr ""
+msgstr "Ошибки выполнения ИИ"
 
 #: src/Site_Health/Site_Health.php:968
 msgid "AI Actions Executed"
-msgstr ""
+msgstr "Выполненные действия ИИ"
 
 #. translators: %s - number of successful tasks performed
 #: src/Site_Health/Site_Health.php:963
@@ -53,23 +67,23 @@ msgstr[2] ""
 #. translators: 1: field group count, 2: post type count, 3: taxonomy count
 #: src/Site_Health/Site_Health.php:953
 msgid "%1$d Field Groups, %2$d Custom Post Types, %3$d Taxonomies"
-msgstr ""
+msgstr "%1$d групп полей, %2$d пользовательских типов записей, %3$d таксономий"
 
 #: src/Site_Health/Site_Health.php:950
 msgid "AI-Ready Objects"
-msgstr ""
+msgstr "ИИ-подготовленные объекты"
 
 #: src/Site_Health/Site_Health.php:940
 msgid "Not available (requires WordPress 6.9+)"
-msgstr ""
+msgstr "Недоступно (требуется WordPress 6.9+)"
 
 #: src/Site_Health/Site_Health.php:939
 msgid "Abilities API"
-msgstr ""
+msgstr "API возможностей"
 
 #: src/Site_Health/Site_Health.php:929
 msgid "AI Support"
-msgstr ""
+msgstr "Поддержка искусственного интеллекта"
 
 #: src/Site_Health/Site_Health.php:396
 msgid "Disabled"
@@ -94,16 +108,23 @@ msgid ""
 "fields. You can assign additional types here. Select multiple types if "
 "needed (e.g., Recipe + Article)."
 msgstr ""
+"Атрибут @type из Schema.org для вывода JSON LD. По умолчанию тип "
+"определяется автоматически на основе свойств схемы, назначенных вашим полям. "
+"Здесь вы можете назначить дополнительные типы. При необходимости выберите "
+"несколько типов (например, Рецепт + Статья)."
 
 #: src/AI/GEO/GEO.php:103
 msgid "Schema.org Type"
-msgstr ""
+msgstr "Тип Schema.org"
 
 #: src/AI/GEO/GEO.php:89
 msgid ""
 "When enabled, ACF field data will be automatically included as JSON-LD "
 "structured data in the page head for better SEO and semantic markup."
 msgstr ""
+"Если включить, то данные ACF полей будут автоматически добавляться в "
+"заголовок страницы в виде структурированных данных JSON LD для улучшения SEO "
+"и семантической разметки."
 
 #: src/AI/GEO/GEO.php:88
 msgid "Automatically add JSON-LD data for fields on this post type"
@@ -115,16 +136,18 @@ msgstr "Schema"
 
 #: src/AI/GEO/FieldSettings.php:169
 msgid "Schema.org Output Format"
-msgstr ""
+msgstr "Формат вывода Schema.org"
 
 #: src/AI/GEO/FieldSettings.php:145
 msgid ""
 "Map this field to a Schema.org property instead of using additionalProperty."
 msgstr ""
+"Сопоставьте это поле со свойством Schema.org вместо использования "
+"additionalProperty."
 
 #: src/AI/GEO/FieldSettings.php:144
 msgid "Schema.org Property"
-msgstr ""
+msgstr "Свойство Schema.org"
 
 #: src/AI/GEO/FieldSettings.php:95
 msgid "Missing required parameters"
@@ -135,10 +158,12 @@ msgid ""
 "Add a short explanation of what this field group is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Добавить краткое пояснение, для чего предназначена эта группы полей. Чем "
+"четче будет ваше описание, тем качественнее будет результат работы ИИ."
 
 #: src/AI/AI.php:156
 msgid "AI Context Description"
-msgstr ""
+msgstr "Описание контекста ИИ"
 
 #: src/AI/AI.php:155
 msgid ""
@@ -146,20 +171,25 @@ msgid ""
 "group using supported integrations. This feature uses the WordPress "
 "Abilities API."
 msgstr ""
+"Если включить, то модели ИИ смогут получать доступ к полям в этой группе и "
+"взаимодействовать с ними с помощью поддерживаемых интеграций. Данная функция "
+"использует WordPress Abilities API."
 
 #: src/AI/AI.php:154
 msgid "Allow AI Access to Field Data"
-msgstr ""
+msgstr "Предоставить ИИ доступ к данным поля"
 
 #: src/AI/AI.php:150
 msgid ""
 "Add a short explanation of what this taxonomy is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Добавить краткое пояснение, для чего предназначена эта таксономия. Чем четче "
+"будет ваше описание, тем качественнее будет результат работы ИИ."
 
 #: src/AI/AI.php:149
 msgid "AI Guidance for Taxonomy"
-msgstr ""
+msgstr "Руководство по ИИ для таксономии"
 
 #: src/AI/AI.php:148
 msgid ""
@@ -167,20 +197,25 @@ msgid ""
 "taxonomy using supported integrations. This feature uses the WordPress "
 "Abilities API."
 msgstr ""
+"Если включить, то модели ИИ смогут получать доступ к терминам данной "
+"таксономии и взаимодействовать с ними с помощью поддерживаемых интеграций. "
+"Данная функция использует WordPress Abilities API."
 
 #: src/AI/AI.php:147
 msgid "Allow AI Access to Taxonomy Terms"
-msgstr ""
+msgstr "Предоставить ИИ доступ к терминам таксономии"
 
 #: src/AI/AI.php:143
 msgid ""
 "Add a short explanation of what this post type is for. The clearer your "
 "description, the better the AI's output will be."
 msgstr ""
+"Добавить краткое пояснение, для чего предназначен этот тип записей. Чем "
+"четче будет ваше описание, тем качественнее будет результат работы ИИ."
 
 #: src/AI/AI.php:142
 msgid "AI Guidance for Post Type"
-msgstr ""
+msgstr "Руководство по ИИ для типа записей"
 
 #: src/AI/AI.php:141
 msgid ""
@@ -188,30 +223,37 @@ msgid ""
 "this post type using supported integrations. This feature uses the WordPress "
 "Abilities API."
 msgstr ""
+"Если включить, то модели ИИ смогут получать доступ к содержимому записей "
+"данного типа и взаимодействовать с ним с помощью поддерживаемых интеграций. "
+"Данная функция использует WordPress Abilities API."
 
 #: src/AI/AI.php:140
 msgid "Allow AI Access to Post Content"
-msgstr ""
+msgstr "Предоставить ИИ доступ к содержимому записи"
 
 #: src/AI/AI.php:137
 msgid ""
 "Provide a description that will help AI systems understand the purpose and "
 "how to use this effectively."
 msgstr ""
+"Предоставьте описание, которое поможет системам ИИ понимать предназначение и "
+"способы его эффективного использования."
 
 #: src/AI/AI.php:136
 msgid "AI Description"
-msgstr ""
+msgstr "ИИ Описание"
 
 #: src/AI/AI.php:135
 msgid ""
 "Allow AI systems to access and modify this content through the WordPress "
 "Abilities API."
 msgstr ""
+"Предоставить системам ИИ доступ к этому содержимому и возможность изменять "
+"его с помощью API WordPress Abilities."
 
 #: src/AI/AI.php:134
 msgid "Allow AI Access"
-msgstr ""
+msgstr "Разрешить доступ ИИ"
 
 #: src/AI/AI.php:103
 msgid "ACF AI"
@@ -219,7 +261,7 @@ msgstr ""
 
 #: src/AI/Abilities/Taxonomy.php:697
 msgid "ACF custom taxonomy created successfully"
-msgstr ""
+msgstr "Пользовательская таксономия SCF успешно создана"
 
 #: src/AI/Abilities/Taxonomy.php:690
 msgid "Failed to create the custom taxonomy"
@@ -227,7 +269,7 @@ msgstr ""
 
 #: src/AI/Abilities/Taxonomy.php:645
 msgid "A taxonomy with this key already exists"
-msgstr ""
+msgstr "Таксономия с этим ключом уже существует"
 
 #. translators: %d: Number of ACF custom taxonomies
 #: src/AI/Abilities/Taxonomy.php:603
@@ -250,12 +292,12 @@ msgstr ""
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:387
 msgid "Update a %s term by its ID."
-msgstr ""
+msgstr "Обновите термин %s по его ID."
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:385
 msgid "Update a %s Term"
-msgstr ""
+msgstr "Обновить термин %s"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:348
@@ -265,7 +307,7 @@ msgstr ""
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:346
 msgid "View a %s Term"
-msgstr ""
+msgstr "Просмотреть термин %s"
 
 #. translators: %s The singular label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:319
@@ -280,7 +322,7 @@ msgstr ""
 #. translators: %s The plural label for the custom taxonomy.
 #: src/AI/Abilities/Taxonomy.php:235
 msgid "Get a list of %s terms that match the query parameters."
-msgstr ""
+msgstr "Получить %s (термины), соответствующие параметрам запроса."
 
 #: src/AI/Abilities/Taxonomy.php:79
 msgid ""
@@ -289,14 +331,18 @@ msgid ""
 "within it. Use the create term abilities to add terms to an existing "
 "taxonomy."
 msgstr ""
+"Зарегистрируйте новое определение таксономии в WordPress (например, «Жанр», "
+"«Цвет»). При этом создается сама схема таксономии, а не отдельные термины в "
+"ней. Для добавления терминов в существующую таксономию воспользуйтесь "
+"функциями создания терминов."
 
 #: src/AI/Abilities/Taxonomy.php:78
 msgid "Register Custom Taxonomy"
-msgstr ""
+msgstr "Зарегистрировать пользовательскую таксономию"
 
 #: src/AI/Abilities/Taxonomy.php:43
 msgid "Get all ACF registered custom taxonomies"
-msgstr ""
+msgstr "Получить все зарегистрированные пользовательские таксономии SCF"
 
 #: src/AI/Abilities/Taxonomy.php:42
 msgid "ACF Custom Taxonomies"
@@ -304,7 +350,7 @@ msgstr ""
 
 #: src/AI/Abilities/PostType.php:752
 msgid "ACF custom post type created successfully"
-msgstr ""
+msgstr "Пользовательский тип записей SCF успешно создан"
 
 #: src/AI/Abilities/PostType.php:745
 msgid "Failed to create the custom post type"
@@ -312,7 +358,7 @@ msgstr ""
 
 #: src/AI/Abilities/PostType.php:631
 msgid "A post type with this key already exists"
-msgstr ""
+msgstr "Тип записи с этим ключом уже существует"
 
 #. translators: %d: Number of ACF custom post types
 #: src/AI/Abilities/PostType.php:607
@@ -335,12 +381,12 @@ msgstr ""
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:385
 msgid "Update a %s by its ID."
-msgstr ""
+msgstr "Обновить %s по его ID."
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:383
 msgid "Update a %s"
-msgstr ""
+msgstr "Обновить %s"
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:346
@@ -350,7 +396,7 @@ msgstr ""
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:344
 msgid "View a %s"
-msgstr ""
+msgstr "Просмотреть %s"
 
 #. translators: %s The singular label for the custom post type.
 #: src/AI/Abilities/PostType.php:317
@@ -365,13 +411,13 @@ msgstr ""
 #. translators: %s The plural label for the custom post type.
 #: src/AI/Abilities/PostType.php:248
 msgid "Get a list of %s that match the query parameters."
-msgstr ""
+msgstr "Получить %s, соответствующие параметрам запроса."
 
 #. translators: %s The plural label for the custom post type.
 #. translators: %s The plural label for the custom taxonomy.
 #: src/AI/Abilities/PostType.php:246 src/AI/Abilities/Taxonomy.php:233
 msgid "Query %s"
-msgstr ""
+msgstr "Запрос: %s"
 
 #: src/AI/Abilities/PostType.php:79
 msgid ""
@@ -379,14 +425,18 @@ msgid ""
 "\"Event\"). This creates the post type schema itself, not individual posts. "
 "Use the create post abilities to add posts to an existing post type."
 msgstr ""
+"Зарегистрируйте новое определение типа записей в WordPress (например, "
+"«Книга», «Событие»). При этом создается сама схема типа записей, а не "
+"отдельные записи. Для добавления записей в существующий тип записей "
+"воспользуйтесь функциями создания записей."
 
 #: src/AI/Abilities/PostType.php:78
 msgid "Register Custom Post Type"
-msgstr ""
+msgstr "Зарегистрировать пользовательский тип записей"
 
 #: src/AI/Abilities/PostType.php:43
 msgid "Get all ACF registered custom post types"
-msgstr ""
+msgstr "Получить все зарегистрированные пользовательские типы записей SCF"
 
 #: src/AI/Abilities/PostType.php:42
 msgid "ACF Custom Post Types"
@@ -416,27 +466,32 @@ msgid ""
 "themselves. Field values are set when creating or updating posts, terms, or "
 "other content."
 msgstr ""
+"Зарегистрируйте новую схему группы полей SCF с определениями полей. При этом "
+"создается структура полей, которая будет отображаться в контенте, а не сами "
+"значения полей. Значения полей задаются при создании или обновлении записей, "
+"терминов или другого контента."
 
 #: src/AI/Abilities/FieldGroup.php:85
 msgid "Register ACF Field Group"
-msgstr ""
+msgstr "Зарегистрировать группу полей SCF"
 
 #: src/AI/Abilities/FieldGroup.php:43
 msgid "Get all ACF field groups that allow AI access."
-msgstr ""
+msgstr "Получить все группы полей SCF, к которым имеет доступ ИИ."
 
 #: src/AI/Abilities/FieldGroup.php:42
 msgid "List ACF Field Groups"
-msgstr ""
+msgstr "Список групп полей SCF"
 
 #: src/AI/Abilities/Abilities.php:129
 msgid ""
 "Abilities for discovering WordPress content types, taxonomies, and structure."
 msgstr ""
+"Возможности для нахождения типов записей, таксономий и структур WordPress."
 
 #: src/AI/Abilities/Abilities.php:128
 msgid "WordPress Content Discovery"
-msgstr ""
+msgstr "Поиск содержимого в WordPress"
 
 #: src/AI/Abilities/Abilities.php:120
 msgid ""
@@ -1423,6 +1478,7 @@ msgstr "Неверные аргументы запроса."
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
+#: includes/ajax/class-acf-ajax-upgrade.php:40
 #: includes/ajax/class-acf-ajax-user-setting.php:47
 #: src/AI/GEO/FieldSettings.php:82
 msgid "Sorry, you do not have permission to do that."
@@ -2514,8 +2570,8 @@ msgstr "Взаимосвязь равна"
 
 #: src/Blocks/Bindings.php:41
 msgctxt "The core ACF block binding source name for fields on the current page"
-msgid "ACF Fields"
-msgstr "Поля ACF"
+msgid "Custom Fields"
+msgstr "Произвольные поля"
 
 #: includes/admin/views/browse-fields-modal.php:24
 msgid "ACF PRO Feature"
@@ -6371,7 +6427,7 @@ msgid "Show this field group if"
 msgstr "Показать эту группу полей, если"
 
 #: includes/admin/views/upgrade/upgrade.php:94
-#: includes/ajax/class-acf-ajax-upgrade.php:43
+#: includes/ajax/class-acf-ajax-upgrade.php:57
 msgid "No updates available."
 msgstr "Обновлений нет."
 
