@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.8.2
+Stable tag: 6.8.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,11 @@ Our plugin's non-minified JS and CSS files are available on [GitHub](https://git
 
 
 == Changelog ==
+
+= 6.8.3 =
+*Release Date 2nd June 2026*
+
+* Security - The oEmbed field's AJAX preview no longer performs URL discovery for users without the `edit_posts` capability.
 
 = 6.8.2 =
 *Release Date 26th May 2026*

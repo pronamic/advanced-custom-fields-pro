@@ -81,13 +81,17 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 		 * @param string         $url    The URL that should be embedded.
 		 * @param integer|string $width  Optional maxwidth value passed to the provider URL.
 		 * @param integer|string $height Optional maxheight value passed to the provider URL.
+		 * @param array          $args   Optional. Additional arguments merged into the oEmbed request (e.g. 'discover').
 		 * @return string|false The embedded HTML on success, false on failure.
 		 */
-		function wp_oembed_get( $url = '', $width = 0, $height = 0 ) {
+		function wp_oembed_get( $url = '', $width = 0, $height = 0, $args = array() ) {
 			$embed = false;
-			$res   = array(
-				'width'  => $width,
-				'height' => $height,
+			$res   = array_merge(
+				array(
+					'width'  => $width,
+					'height' => $height,
+				),
+				$args
 			);
 
 			if ( function_exists( 'wp_oembed_get' ) ) {
@@ -97,7 +101,21 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			// try shortcode
 			if ( ! $embed ) {
 				global $wp_embed;
+
+				/**
+				 * Mirror our discover restriction onto WP_Embed::shortcode(),
+				 * which otherwise forces discover=true via embed_oembed_discover.
+				 */
+				$force_discover_off = isset( $args['discover'] ) && false === $args['discover'];
+				if ( $force_discover_off ) {
+					add_filter( 'embed_oembed_discover', '__return_false', PHP_INT_MAX );
+				}
+
 				$embed = $wp_embed->shortcode( $res, $url );
+
+				if ( $force_discover_off ) {
+					remove_filter( 'embed_oembed_discover', '__return_false', PHP_INT_MAX );
+				}
 			}
 
 			return $embed;
@@ -119,6 +137,11 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			);
 
 			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
+				die();
+			}
+
+			$field = acf_get_field( $args['field_key'] );
+			if ( ! $field || 'oembed' !== ( $field['type'] ?? '' ) ) {
 				die();
 			}
 
@@ -155,10 +178,25 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 			// prepare field to correct width and height
 			$field = $this->prepare_field( $field );
 
+			/**
+			 * Filters whether URL discovery is permitted on the AJAX oEmbed preview path.
+			 *
+			 * Discovery is restricted by default to users with the edit_posts capability,
+			 * limiting unauthenticated and subscriber-tier callers to WordPress's
+			 * registered oEmbed provider allowlist. Saved values and admin save-time
+			 * rendering are unaffected.
+			 *
+			 * @since 6.8.3
+			 *
+			 * @param bool  $allow_discovery Whether discovery is permitted. Default: true for users with edit_posts, false otherwise.
+			 * @param array $field           The oEmbed field array.
+			 */
+			$allow_discovery = (bool) apply_filters( 'acf/fields/oembed/allow_discovery', current_user_can( 'edit_posts' ), $field );
+
 			// vars
 			$response = array(
 				'url'  => $args['s'],
-				'html' => $this->wp_oembed_get( $args['s'], $field['width'], $field['height'] ),
+				'html' => $this->wp_oembed_get( $args['s'], $field['width'], $field['height'], array( 'discover' => $allow_discovery ) ),
 			);
 
 			// return
