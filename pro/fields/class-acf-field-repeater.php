@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 				)
 			);
 
-			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true, 'repeater' ) ) {
 				$error = array( 'error' => __( 'Invalid nonce.', 'acf' ) );
 				wp_send_json_error( $error, 401 );
 			}

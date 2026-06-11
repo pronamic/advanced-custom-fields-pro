@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.8.3
+Stable tag: 6.8.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,17 @@ Our plugin's non-minified JS and CSS files are available on [GitHub](https://git
 
 
 == Changelog ==
+
+= 6.8.4 =
+*Release Date 10th June 2026*
+
+* Security - ACF AJAX field handlers now validate that the request nonce was created for the expected field type
+* Enhancement - ACF PRO now satisfies plugin dependencies declared against `advanced-custom-fields`, so plugins requiring ACF can activate when only ACF PRO is installed
+* Enhancement - `acf_inline_toolbar_editing_attrs()` now accepts a `return_array` argument that returns the attributes as an escaped array suitable for use with `wp_get_attachment_image()`
+* Fix - `acf_form()` with `'post_id' => 'new_post'` and a `fields` list of field names no longer fatal errors when `acf_form_head()` runs before WordPress's main query is built
+* Fix - Multiple `acf_form()` calls wrapped inside a single outer `<form>` tag with one submit button no longer silently drop field values, `post_title`, or `post_content` from the non-last forms
+* Fix - Duplicating a V3 block with identical attributes no longer displays corrupted preview content in the duplicate
+* Fix - Switching between tabs containing WYSIWYG fields no longer leaves the admin menu pinned against a shorter page, which could lock page scroll
 
 = 6.8.3 =
 *Release Date 2nd June 2026*

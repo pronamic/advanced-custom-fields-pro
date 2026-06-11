@@ -136,12 +136,7 @@ if ( ! class_exists( 'acf_field_oembed' ) ) :
 				)
 			);
 
-			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
-				die();
-			}
-
-			$field = acf_get_field( $args['field_key'] );
-			if ( ! $field || 'oembed' !== ( $field['type'] ?? '' ) ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true, 'oembed' ) ) {
 				die();
 			}
 

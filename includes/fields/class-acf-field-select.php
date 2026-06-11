@@ -130,7 +130,7 @@ if ( ! class_exists( 'acf_field_select' ) ) :
 				$key   = '';
 			}
 
-			if ( ! acf_verify_ajax( $nonce, $key, $is_field_key ) ) {
+			if ( ! acf_verify_ajax( $nonce, $key, $is_field_key, 'select' ) ) {
 				die();
 			}
 

@@ -1331,7 +1331,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 				)
 			);
 
-			if ( ! acf_verify_ajax( $options['nonce'], $options['field_key'], true ) ) {
+			if ( ! acf_verify_ajax( $options['nonce'], $options['field_key'], true, 'flexible_content' ) ) {
 				die();
 			}
 

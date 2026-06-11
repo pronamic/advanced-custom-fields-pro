@@ -29,6 +29,13 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 		public $fields = array();
 
 		/**
+		 * Per-request render id, shared across every render_form() call in this request.
+		 *
+		 * @var string|null
+		 */
+		private $render_id = null;
+
+		/**
 		 * Constructs the class.
 		 *
 		 * @since 5.0.0
@@ -356,6 +363,8 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				}
 			}
 
+			$form = $this->merge_form_meta( $form );
+
 			// Run kses on all $_POST data.
 			if ( $form['kses'] && isset( $_POST['acf'] ) ) {
 				$_POST['acf'] = wp_kses_post_deep( $_POST['acf'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- False positive.
@@ -428,6 +437,136 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			}
 		}
 
+		/**
+		 * Returns the per-request render ID, generating one if necessary.
+		 *
+		 * @since 6.8.4
+		 *
+		 * @return string
+		 */
+		protected function get_render_id(): string {
+			if ( $this->render_id === null ) {
+				$this->render_id = wp_generate_uuid4();
+			}
+			return $this->render_id;
+		}
+
+		/**
+		 * Folds metadata from `_acf_form_meta[]` inputs into the primary form
+		 * configuration so the multi-`acf_form()`-in-one-outer-`<form>` pattern works.
+		 *
+		 * Non-field request-level args (`post_id`, `return`, `new_post`, `kses`) stay
+		 * "last wins" via the primary form.
+		 *
+		 * @since 6.8.4
+		 *
+		 * @param array $form The primary form configuration loaded from `_acf_form`.
+		 * @return array The primary form with allowed-key extras and OR'd title/content flags.
+		 */
+		protected function merge_form_meta( array $form ): array {
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified above in check_submit_form().
+			if ( empty( $_POST['_acf_form_meta'] ) || ! is_array( $_POST['_acf_form_meta'] ) ) {
+				return $form;
+			}
+
+			if ( empty( $_POST['_acf_render_id'] ) || ! is_scalar( $_POST['_acf_render_id'] ) ) {
+				return $form;
+			}
+			$expected_render_id = sanitize_text_field( wp_unslash( $_POST['_acf_render_id'] ) );
+
+			// wp_unslash only — sanitize_text_field would desync from the raw
+			// $acf_form_value hashed render-side.
+			$primary_form_value = ( isset( $_POST['_acf_form'] ) && is_scalar( $_POST['_acf_form'] ) )
+				? (string) wp_unslash( $_POST['_acf_form'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Must match render-side bytes hashed into the form anchor.
+				: '';
+
+			$expected_anchor = hash( 'sha256', $primary_form_value );
+			$primary_post_id = isset( $form['post_id'] ) ? (string) $form['post_id'] : '';
+
+			/**
+			 * Filters how long a `_acf_form_meta[]` payload remains valid after the page that
+			 * emitted it was rendered.
+			 *
+			 * @since 6.8.4
+			 *
+			 * @param int $ttl Allowed age of a meta payload, in seconds.
+			 */
+			$ttl = (int) apply_filters( 'acf/form/meta_ttl', DAY_IN_SECONDS );
+			$now = time();
+
+			$valid_metas     = array();
+			$primary_present = false;
+
+			foreach ( $_POST['_acf_form_meta'] as $token ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Each $token is sanitized below before use.
+				if ( ! is_scalar( $token ) ) {
+					continue;
+				}
+
+				$decoded = json_decode( acf_decrypt( sanitize_text_field( $token ) ), true );
+				if ( ! is_array( $decoded ) ) {
+					continue;
+				}
+
+				if ( empty( $decoded['render_id'] ) || ! is_string( $decoded['render_id'] ) ) {
+					continue;
+				}
+
+				if ( ! hash_equals( $expected_render_id, $decoded['render_id'] ) ) {
+					continue;
+				}
+
+				if ( ! isset( $decoded['issued_at'] ) || ! is_numeric( $decoded['issued_at'] ) ) {
+					continue;
+				}
+				if ( ( $now - (int) $decoded['issued_at'] ) >= $ttl ) {
+					continue;
+				}
+
+				if ( ! empty( $decoded['form_anchor'] )
+					&& is_string( $decoded['form_anchor'] )
+					&& hash_equals( $expected_anchor, $decoded['form_anchor'] )
+				) {
+					$primary_present = true;
+				}
+
+				$valid_metas[] = $decoded;
+			}
+
+			if ( ! $primary_present ) {
+				return $form;
+			}
+
+			$extra_keys = array();
+
+			foreach ( $valid_metas as $decoded ) {
+				$target_post_id = isset( $decoded['target_post_id'] ) ? (string) $decoded['target_post_id'] : '';
+				if ( ! hash_equals( $primary_post_id, $target_post_id ) ) {
+					continue;
+				}
+
+				if ( ! empty( $decoded['allowed_field_keys'] ) && is_array( $decoded['allowed_field_keys'] ) ) {
+					foreach ( $decoded['allowed_field_keys'] as $key ) {
+						if ( is_scalar( $key ) ) {
+							$extra_keys[] = (string) $key;
+						}
+					}
+				}
+
+				if ( ! empty( $decoded['post_title'] ) ) {
+					$form['post_title'] = true;
+				}
+				if ( ! empty( $decoded['post_content'] ) ) {
+					$form['post_content'] = true;
+				}
+			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
+
+			if ( $extra_keys ) {
+				$form['_additional_allowed_field_keys'] = array_values( array_unique( $extra_keys ) );
+			}
+
+			return $form;
+		}
 
 		/**
 		 * Returns the fields a given form configuration will expose, mirroring the
@@ -469,10 +608,16 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 
 			// Load specific fields.
 			if ( $args['fields'] ) {
-
-				// Lookup fields using $strict = false for better compatibility with field names.
 				foreach ( $args['fields'] as $selector ) {
-					$fields[] = acf_maybe_get_field( $selector, $post_id, false );
+					if ( $post_id ) {
+						// Lookup fields using $strict = false for better compatibility with field names.
+						$fields[] = acf_maybe_get_field( $selector, $post_id, false );
+					} else {
+						// No post to resolve meta references against — skip acf_maybe_get_field()'s
+						// post_id resolution, which can fatal in get_queried_object() if submit_form()
+						// runs before WordPress's main query is built.
+						$fields[] = acf_get_field( $selector );
+					}
 				}
 
 				// Load specific field groups.
@@ -524,13 +669,16 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 		 *
 		 * @since 6.8.2
 		 *
-		 * @param array $form The validated form configuration.
+		 * @param array $form   The validated form configuration.
+		 * @param array $fields Optional pre-discovered fields for this form to avoid a
+		 *                      redundant get_form_fields() call when the caller already has them.
 		 * @return array
 		 */
-		public function get_allowed_field_keys( array $form ): array {
-			$keys = array();
+		public function get_allowed_field_keys( array $form, array $fields = array() ): array {
+			$keys   = array();
+			$fields = $fields ?: $this->get_form_fields( $form );
 
-			foreach ( $this->get_form_fields( $form ) as $field ) {
+			foreach ( $fields as $field ) {
 				$prefix = $field['prefix'] ?? 'acf';
 
 				if ( $prefix === 'acf' ) {
@@ -540,6 +688,11 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				} elseif ( preg_match( '/^acf\[([^]]+)]$/', $prefix, $matches ) ) {
 					$keys[] = $matches[1];
 				}
+			}
+
+			// Include keys folded in from sibling acf_form() calls on the same page.
+			if ( ! empty( $form['_additional_allowed_field_keys'] ) && is_array( $form['_additional_allowed_field_keys'] ) ) {
+				$keys = array_merge( $keys, $form['_additional_allowed_field_keys'] );
 			}
 
 			$keys = array_values( array_unique( array_filter( $keys ) ) );
@@ -633,12 +786,40 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				<?php
 			endif;
 
-			// Render hidde form data.
+			// Render hidden form data.
+			$render_id      = $this->get_render_id();
+			$acf_form_value = $is_registered ? $args['id'] : acf_encrypt( wp_json_encode( $args ) );
 			acf_form_data(
 				array(
-					'screen'  => 'acf_form',
-					'post_id' => $args['post_id'],
-					'form'    => $is_registered ? $args['id'] : acf_encrypt( json_encode( $args ) ),
+					'screen'    => 'acf_form',
+					'post_id'   => $args['post_id'],
+					'form'      => $acf_form_value,
+					'render_id' => $render_id,
+				)
+			);
+
+			/**
+			 * Emit a per-form metadata token. PHP keeps only the last `_acf_form` input
+			 * after browser-level dedup, so multiple acf_form() calls inside a single
+			 * outer <form> would otherwise lose all but one form's allow-list —
+			 * `_acf_form_meta[]` uses the array form to survive that and carries each
+			 * form's contribution.
+			 */
+			$meta = wp_json_encode(
+				array(
+					'render_id'          => $render_id,
+					'form_anchor'        => hash( 'sha256', (string) $acf_form_value ),
+					'target_post_id'     => (string) $args['post_id'],
+					'issued_at'          => time(),
+					'allowed_field_keys' => $this->get_allowed_field_keys( $args, $fields ),
+					'post_title'         => (bool) $args['post_title'],
+					'post_content'       => (bool) $args['post_content'],
+				)
+			);
+			acf_hidden_input(
+				array(
+					'name'  => '_acf_form_meta[]',
+					'value' => acf_encrypt( $meta ),
 				)
 			);
 

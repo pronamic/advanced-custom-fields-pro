@@ -102,7 +102,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 			);
 
 			// Validate request.
-			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true, 'gallery' ) ) {
 				die();
 			}
 
@@ -140,7 +140,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true, 'gallery' ) ) {
 				wp_send_json_error();
 			}
 
@@ -219,7 +219,7 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				)
 			);
 
-			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true ) ) {
+			if ( ! acf_verify_ajax( $args['nonce'], $args['field_key'], true, 'gallery' ) ) {
 				wp_send_json_error();
 			}
 

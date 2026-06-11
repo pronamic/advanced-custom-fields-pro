@@ -90,7 +90,7 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				$key   = '';
 			}
 
-			if ( ! acf_verify_ajax( $nonce, $key, ! $conditional_logic ) ) {
+			if ( ! acf_verify_ajax( $nonce, $key, ! $conditional_logic, 'page_link' ) ) {
 				die();
 			}
 

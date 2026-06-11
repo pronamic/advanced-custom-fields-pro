@@ -85,7 +85,7 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 				$key   = '';
 			}
 
-			if ( ! acf_verify_ajax( $nonce, $key, ! $conditional_logic ) ) {
+			if ( ! acf_verify_ajax( $nonce, $key, ! $conditional_logic, 'post_object' ) ) {
 				die();
 			}
 

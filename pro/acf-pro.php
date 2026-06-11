@@ -71,6 +71,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			// Add filters.
 			add_filter( 'posts_where', array( $this, 'posts_where' ), 10, 2 );
+			add_filter( 'wp_plugin_dependencies_slug', array( $this, 'plugin_dependency_slug' ), 10 );
 			add_filter( 'acf/internal_post_type/admin_body_classes', array( $this, 'admin_body_classes' ) );
 			add_filter( 'acf/internal_post_type_list/admin_body_classes', array( $this, 'admin_body_classes' ) );
 		}
@@ -347,6 +348,25 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			}
 
 			return $classes;
+		}
+
+		/**
+		 * Filters the plugin dependency slug to allow ACF PRO to satisfy dependencies declared for ACF.
+		 *
+		 * ACF PRO is a superset of ACF, so a dependency on `advanced-custom-fields`
+		 * should be considered satisfied when ACF PRO is active.
+		 *
+		 * @since 6.8.2
+		 *
+		 * @param  string $slug The plugin dependency slug.
+		 * @return string
+		 */
+		public function plugin_dependency_slug( $slug ) {
+			if ( 'advanced-custom-fields' === $slug ) {
+				$slug = 'advanced-custom-fields-pro';
+			}
+
+			return $slug;
 		}
 	}
 
