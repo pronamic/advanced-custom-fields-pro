@@ -1132,7 +1132,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 					unset( $row['acf_fc_layout_disabled'] );
 
 					if ( ! empty( $row['acf_fc_layout_custom_label'] ) ) {
-						$renamed_layouts[ $i ] = $row['acf_fc_layout_custom_label'];
+						$renamed_layouts[ $i ] = sanitize_text_field( $row['acf_fc_layout_custom_label'] );
 					}
 					unset( $row['acf_fc_layout_custom_label'] );
 

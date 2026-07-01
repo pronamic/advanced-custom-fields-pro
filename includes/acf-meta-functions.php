@@ -65,12 +65,8 @@ function acf_get_option_meta( $prefix = '' ) {
 
 	// Vars.
 	$meta    = array();
-	$search  = "{$prefix}_%";
-	$_search = "_{$prefix}_%";
-
-	// Escape underscores for LIKE.
-	$search  = str_replace( '_', '\_', $search );
-	$_search = str_replace( '_', '\_', $_search );
+	$search  = $wpdb->esc_like( "{$prefix}_" ) . '%';
+	$_search = $wpdb->esc_like( "_{$prefix}_" ) . '%';
 
 	// Query database for results.
 	$rows = $wpdb->get_results(

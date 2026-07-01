@@ -26,7 +26,6 @@ class WC_Order {
 	public function __construct() {
 		add_action( 'load-woocommerce_page_wc-orders', array( $this, 'initialize' ) );
 		add_action( 'load-woocommerce_page_wc-orders--shop_subscription', array( $this, 'initialize' ) );
-		add_action( 'woocommerce_update_order', array( $this, 'save_order' ), 10, 1 );
 	}
 
 	/**
@@ -40,6 +39,7 @@ class WC_Order {
 	public function initialize() {
 		acf_enqueue_scripts( array( 'uploader' => true ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
+		add_action( 'woocommerce_update_order', array( $this, 'save_order' ), 10, 1 );
 	}
 
 	/**
@@ -206,6 +206,10 @@ class WC_Order {
 	public function save_order( int $order_id ) {
 		// Bail if not using HPOS to prevent a double-save.
 		if ( ! $this->is_hpos_enabled() ) {
+			return;
+		}
+
+		if ( empty( $_POST['acf'] ) || ! acf_verify_nonce( 'post' ) ) {
 			return;
 		}
 

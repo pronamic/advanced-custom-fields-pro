@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 6.8.4
+Stable tag: 6.8.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -96,6 +96,14 @@ Our plugin's non-minified JS and CSS files are available on [GitHub](https://git
 
 
 == Changelog ==
+
+= 6.8.5 =
+*Release Date 30th June 2026*
+
+* Security - ACF PRO's save handler for WooCommerce order fields now verifies security nonces and only attaches on the order edit screen, preventing unauthenticated field value updates for stores utilizing HPOS
+* Security - The Flexible Content "Rename Layout" modal no longer allows for the execution of a potential stored XSS vulnerability
+* Security - A default limit of 1000 has been applied to user-contributed choices for Checkbox, Radio, and Select fields to improve security, with a new `acf/fields/max_appended_choices` filter available for customization
+* Security - Special characters within LIKE patterns are now fully escaped in `wp_options` queries via `$wpdb->esc_like()`
 
 = 6.8.4 =
 *Release Date 10th June 2026*

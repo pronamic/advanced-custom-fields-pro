@@ -366,6 +366,14 @@ if ( ! class_exists( 'acf_field_radio' ) ) :
 					// sanitize (remove tags)
 					$value = sanitize_text_field( $value );
 
+					/** This filter is documented in includes/fields/class-acf-field-select.php */
+					$max = (int) apply_filters( 'acf/fields/max_appended_choices', 1000, $field, $post_id );
+
+					// bail if the cap is reached; the normalized value still saves
+					if ( count( $field['choices'] ) >= $max ) {
+						return $value;
+					}
+
 					// update $field
 					$field['choices'][ $value ] = $value;
 

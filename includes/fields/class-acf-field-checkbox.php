@@ -476,20 +476,18 @@ if ( ! class_exists( 'acf_field_checkbox' ) ) :
 
 
 		/**
-		 * This filter is appied to the $value before it is updated in the db
+		 * Filters the $value before it is updated in the db.
 		 *
-		 * @type    filter
 		 * @since   3.6
 		 * @date    23/01/13
 		 *
-		 * @param   $value - the value which will be saved in the database
-		 * @param   $post_id - the post_id of which the value will be saved
-		 * @param   $field - the field array holding all the field options
+		 * @param mixed          $value   The value which will be saved in the database.
+		 * @param integer|string $post_id The post_id of which the value will be saved.
+		 * @param array          $field   The field array holding all the field options.
 		 *
-		 * @return  $value - the modified value
+		 * @return mixed
 		 */
 		function update_value( $value, $post_id, $field ) {
-
 			// bail early if is empty
 			if ( empty( $value ) ) {
 				return $value;
@@ -498,7 +496,7 @@ if ( ! class_exists( 'acf_field_checkbox' ) ) :
 			// select -> update_value()
 			$value = acf_get_field_type( 'select' )->update_value( $value, $post_id, $field );
 
-			// save_other_choice
+			// save_custom
 			if ( $field['save_custom'] ) {
 
 				// get raw $field (may have been changed via repeater field)
@@ -514,32 +512,12 @@ if ( ! class_exists( 'acf_field_checkbox' ) ) :
 					return $value;
 				}
 
-				// loop
-				foreach ( $value as $v ) {
-
-					// ignore if already eixsts
-					if ( isset( $field['choices'][ $v ] ) ) {
-						continue;
-					}
-
-					// unslash (fixes serialize single quote issue)
-					$v = wp_unslash( $v );
-
-					// sanitize (remove tags)
-					$v = sanitize_text_field( $v );
-
-					// append
-					$field['choices'][ $v ] = $v;
-				}
-
-				// save
-				acf_update_field( $field );
+				acf_get_field_type( 'select' )->append_user_choices_to_field( $value, $post_id, $field );
 			}
 
 			// return
 			return $value;
 		}
-
 
 		/**
 		 * This function will translate field settings
