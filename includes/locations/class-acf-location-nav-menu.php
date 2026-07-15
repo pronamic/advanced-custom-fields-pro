@@ -54,7 +54,8 @@ if ( ! class_exists( 'ACF_Location_Nav_Menu' ) ) :
 			}
 
 			// Allow for "location/xxx" rule value.
-			$bits = explode( '/', $rule['value'] );
+			$rule['value'] = $rule['value'] ?? '';
+			$bits          = explode( '/', $rule['value'] );
 			if ( $bits[0] === 'location' ) {
 				$location = $bits[1];
 

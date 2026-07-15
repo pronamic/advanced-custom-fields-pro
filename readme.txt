@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
-Tested up to: 7.0
+Tested up to: 7.0.1
 Requires PHP: 7.4
-Stable tag: 6.8.5
+Stable tag: 6.8.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,10 @@ From your WordPress dashboard
 
 Our plugin's non-minified JS and CSS files are available on [GitHub](https://github.com/advancedcustomfields/acf).
 
+= Does ACF collect any data? =
+
+ACF includes an optional email signup to receive plugin updates and news. No data is collected unless you choose to subscribe. Your email is stored in accordance with [WP Engine's Privacy Policy](https://wpengine.com/legal/privacy/).
+
 == Screenshots ==
 
 1. Simple & Intuitive
@@ -96,6 +100,17 @@ Our plugin's non-minified JS and CSS files are available on [GitHub](https://git
 
 
 == Changelog ==
+
+= 6.8.6 =
+*Release Date 14th July 2026*
+
+* Fix - Google Maps field values are no longer double-encoded when saved in an ACF block
+* Fix - Inserting a Link field value in the Classic Editor no longer triggers validation for other required fields before the post is saved
+* Fix - Auto Inline Editing blocks no longer return truthy placeholder strings for empty field values fetched from a different post inside the block render template
+* Fix - ACF Blocks (V2 and V3) no longer crash when rendering an oEmbed field whose title begins with `[` or `{`
+* Fix - Field group location rules without a location value no longer cause PHP warnings on page load
+* Fix - The appearance of the URL, Number, and Select fields has been improved on WordPress 7.0+
+* Fix - ACF fields now save on WooCommerce orders when using HPOS in compatibility mode
 
 = 6.8.5 =
 *Release Date 30th June 2026*

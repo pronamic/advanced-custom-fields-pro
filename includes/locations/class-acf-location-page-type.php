@@ -61,7 +61,7 @@ if ( ! class_exists( 'ACF_Location_Page_Type' ) ) :
 			}
 
 			// Compare.
-			switch ( $rule['value'] ) {
+			switch ( $rule['value'] ?? '' ) {
 				case 'front_page':
 					$front_page = (int) get_option( 'page_on_front' );
 					$result     = ( $front_page === $post->ID );
@@ -99,7 +99,7 @@ if ( ! class_exists( 'ACF_Location_Page_Type' ) ) :
 			}
 
 			// Reverse result for "!=" operator.
-			if ( $rule['operator'] === '!=' ) {
+			if ( ( $rule['operator'] ?? '' ) === '!=' ) {
 				return ! $result;
 			}
 			return $result;

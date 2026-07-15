@@ -40,6 +40,7 @@ class WC_Order {
 		acf_enqueue_scripts( array( 'uploader' => true ) );
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
 		add_action( 'woocommerce_update_order', array( $this, 'save_order' ), 10, 1 );
+		add_filter( 'acf/form-post/skip_save', array( $this, 'skip_post_save_for_orders' ), 10, 3 );
 	}
 
 	/**
@@ -193,6 +194,28 @@ class WC_Order {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Prevents ACF_Form_Post from saving order posts so that save_order()
+	 * remains the single save entry-point. Without this, the backfill
+	 * triggered by WooCommerce Compatibility Mode fires save_post before
+	 * woocommerce_update_order, consuming the ACF nonce and causing
+	 * save_order() to bail.
+	 *
+	 * @since 6.8.6
+	 *
+	 * @param boolean  $skip    Whether to skip the save.
+	 * @param integer  $post_id The post ID being saved.
+	 * @param \WP_Post $post    The post being saved.
+	 * @return boolean
+	 */
+	public function skip_post_save_for_orders( $skip, $post_id, $post ) {
+		if ( in_array( $post->post_type, array( 'shop_order', 'shop_subscription' ), true ) ) {
+			return true;
+		}
+
+		return $skip;
 	}
 
 	/**

@@ -175,20 +175,21 @@ if ( ! class_exists( 'ACF_Location' ) ) :
 		 * @date    17/9/19
 		 * @since   5.8.1
 		 *
-		 * @param   array $rule  The location rule data.
 		 * @param   mixed $value The value to compare against.
+		 * @param   array $rule  The location rule data.
 		 * @return  boolean
 		 */
 		public function compare_to_rule( $value, $rule ) {
-			$result = ( $value == $rule['value'] );
+			$rule_value = $rule['value'] ?? '';
+			$result     = ( $value == $rule_value );
 
 			// Allow "all" to match any value.
-			if ( $rule['value'] === 'all' ) {
+			if ( $rule_value === 'all' ) {
 				$result = true;
 			}
 
 			// Reverse result for "!=" operator.
-			if ( $rule['operator'] === '!=' ) {
+			if ( ( $rule['operator'] ?? '' ) === '!=' ) {
 				return ! $result;
 			}
 			return $result;

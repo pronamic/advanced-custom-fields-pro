@@ -50,9 +50,17 @@ function get_non_auto_inline_editing_fields(): array {
  */
 function populate_auto_inline_editing_values( $field_value, $post_id, $field ) {
 
-	global $acf_fields_used_in_block_render_template, $acf_blocks_doing_auto_inline_editing;
+	global $acf_fields_used_in_block_render_template, $acf_blocks_doing_auto_inline_editing, $acf_blocks_doing_auto_inline_editing_block_id;
 
 	if ( ! $acf_blocks_doing_auto_inline_editing || ! empty( $field['parent_repeater'] ) ) {
+		return $field_value;
+	}
+
+	// Only modify values for fields fetched against the current block's own post id.
+	// Calls like get_field( 'foo', $other_post_id ) target a different post and must be returned unmodified
+	// so block templates can rely on real values (e.g. for conditional logic) instead of placeholder strings.
+	if ( ! empty( $acf_blocks_doing_auto_inline_editing_block_id )
+		&& (string) $post_id !== (string) $acf_blocks_doing_auto_inline_editing_block_id ) {
 		return $field_value;
 	}
 
@@ -92,19 +100,31 @@ add_filter( 'acf/format_value', __NAMESPACE__ . '\populate_auto_inline_editing_v
  * @return string
  */
 function apply_inline_editing_attributes_to_render_template( $path, $block, $content, $is_preview, $post_id, $wp_block, $context ): string {
-	global $acf_fields_used_in_block_render_template, $acf_blocks_doing_auto_inline_editing;
+	global $acf_fields_used_in_block_render_template, $acf_blocks_doing_auto_inline_editing, $acf_blocks_doing_auto_inline_editing_block_id;
 
-	$acf_fields_used_in_block_render_template = array();
+	// Save the entire previous render context (fields collected, doing-flag, block id) so a
+	// nested ACF block render does not clobber the parent's tracked fields or active block id.
+	$previous_fields                    = is_array( $acf_fields_used_in_block_render_template ) ? $acf_fields_used_in_block_render_template : array();
+	$previous_doing_auto_inline_editing = ! empty( $acf_blocks_doing_auto_inline_editing );
+	$previous_block_id                  = $acf_blocks_doing_auto_inline_editing_block_id ?? null;
 
-	$acf_blocks_doing_auto_inline_editing = true;
+	$acf_fields_used_in_block_render_template      = array();
+	$acf_blocks_doing_auto_inline_editing          = true;
+	$acf_blocks_doing_auto_inline_editing_block_id = $block['id'] ?? null;
 
 	ob_start();
 	include $path;
 	$html = ob_get_clean();
 
-	$acf_blocks_doing_auto_inline_editing = false;
+	// Process the HTML before restoring the parent context - apply_inline_editing_attributes_to_html_string()
+	// reads $acf_fields_used_in_block_render_template via global, so it must see THIS block's field list.
+	$processed_html = apply_inline_editing_attributes_to_html_string( $html, $block );
 
-	return apply_inline_editing_attributes_to_html_string( $html, $block );
+	$acf_fields_used_in_block_render_template      = $previous_fields;
+	$acf_blocks_doing_auto_inline_editing          = $previous_doing_auto_inline_editing;
+	$acf_blocks_doing_auto_inline_editing_block_id = $previous_block_id;
+
+	return $processed_html;
 }
 
 /**
@@ -120,19 +140,31 @@ function apply_inline_editing_attributes_to_render_template( $path, $block, $con
  * @return string
  */
 function apply_inline_editing_attributes_to_render_callback( $render_callback, $block, $content, $is_preview, $post_id, $wp_block, $context ): string {
-	global $acf_fields_used_in_block_render_template, $acf_blocks_doing_auto_inline_editing;
+	global $acf_fields_used_in_block_render_template, $acf_blocks_doing_auto_inline_editing, $acf_blocks_doing_auto_inline_editing_block_id;
 
-	$acf_fields_used_in_block_render_template = array();
+	// Save the entire previous render context (fields collected, doing-flag, block id) so a
+	// nested ACF block render does not clobber the parent's tracked fields or active block id.
+	$previous_fields                    = is_array( $acf_fields_used_in_block_render_template ) ? $acf_fields_used_in_block_render_template : array();
+	$previous_doing_auto_inline_editing = ! empty( $acf_blocks_doing_auto_inline_editing );
+	$previous_block_id                  = $acf_blocks_doing_auto_inline_editing_block_id ?? null;
 
-	$acf_blocks_doing_auto_inline_editing = true;
+	$acf_fields_used_in_block_render_template      = array();
+	$acf_blocks_doing_auto_inline_editing          = true;
+	$acf_blocks_doing_auto_inline_editing_block_id = $block['id'] ?? null;
 
 	ob_start();
 	call_user_func( $render_callback, $block, $content, $is_preview, $post_id, $wp_block, $context );
 	$html = ob_get_clean();
 
-	$acf_blocks_doing_auto_inline_editing = false;
+	// Process the HTML before restoring the parent context - apply_inline_editing_attributes_to_html_string()
+	// reads $acf_fields_used_in_block_render_template via global, so it must see THIS block's field list.
+	$processed_html = apply_inline_editing_attributes_to_html_string( $html, $block );
 
-	return apply_inline_editing_attributes_to_html_string( $html, $block );
+	$acf_fields_used_in_block_render_template      = $previous_fields;
+	$acf_blocks_doing_auto_inline_editing          = $previous_doing_auto_inline_editing;
+	$acf_blocks_doing_auto_inline_editing_block_id = $previous_block_id;
+
+	return $processed_html;
 }
 
 /**

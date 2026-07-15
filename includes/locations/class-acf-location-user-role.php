@@ -60,7 +60,7 @@ if ( ! class_exists( 'ACF_Location_User_Role' ) ) :
 					$user_role = get_option( 'default_role' );
 
 					// Check if user can, and if so, set the value allowing them to match.
-				} elseif ( user_can( $user_id, $rule['value'] ) ) {
+				} elseif ( ( $rule['value'] ?? '' ) && user_can( $user_id, $rule['value'] ) ) {
 					$user_role = $rule['value'];
 				}
 			} else {

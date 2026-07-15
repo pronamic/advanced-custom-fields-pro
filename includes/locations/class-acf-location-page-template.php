@@ -58,7 +58,7 @@ if ( ! class_exists( 'ACF_Location_Page_Template' ) ) :
 
 			// Page templates were extended in WordPress version 4.7 for all post types.
 			// Prevent this rule (which is scoped to the "page" post type) appearing on all post types without a template selected (default template).
-			if ( $rule['value'] === 'default' && $post_type !== 'page' ) {
+			if ( ( $rule['value'] ?? '' ) === 'default' && $post_type !== 'page' ) {
 				return false;
 			}
 

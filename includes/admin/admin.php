@@ -90,6 +90,10 @@ if ( ! class_exists( 'ACF_Admin' ) ) :
 			// Add body class.
 			$classes .= ' acf-admin-5-3';
 
+			if ( version_compare( $wp_version, '7.0', '>=' ) ) {
+				$classes .= ' acf-admin-7-0';
+			}
+
 			// Add browser for specific CSS.
 			$classes .= ' acf-browser-' . esc_attr( acf_get_browser() );
 

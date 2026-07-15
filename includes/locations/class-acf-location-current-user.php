@@ -44,7 +44,7 @@ if ( ! class_exists( 'ACF_Location_Current_User' ) ) :
 		 * @return  boolean
 		 */
 		public function match( $rule, $screen, $field_group ) {
-			switch ( $rule['value'] ) {
+			switch ( $rule['value'] ?? '' ) {
 				case 'logged_in':
 					$result = is_user_logged_in();
 					break;
@@ -60,7 +60,7 @@ if ( ! class_exists( 'ACF_Location_Current_User' ) ) :
 			}
 
 			// Reverse result for "!=" operator.
-			if ( $rule['operator'] === '!=' ) {
+			if ( ( $rule['operator'] ?? '' ) === '!=' ) {
 				return ! $result;
 			}
 			return $result;
