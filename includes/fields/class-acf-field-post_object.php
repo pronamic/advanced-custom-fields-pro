@@ -180,10 +180,16 @@ if ( ! class_exists( 'acf_field_post_object' ) ) :
 				}
 			}
 
+			$args['perm'] = 'readable';
+			$args         = acf_ensure_perm_readable_post_status( $args );
+
 			// filters
 			$args = apply_filters( 'acf/fields/post_object/query', $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/post_object/query/name=' . $field['name'], $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/post_object/query/key=' . $field['key'], $args, $field, $options['post_id'] );
+
+			// Re-normalize in case a filter reset `post_status` to 'any' while leaving `perm=readable`.
+			$args = acf_ensure_perm_readable_post_status( $args );
 
 			// get posts grouped by post type
 			$groups = acf_get_grouped_posts( $args );

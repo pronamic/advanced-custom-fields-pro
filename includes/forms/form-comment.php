@@ -225,26 +225,33 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 			return $html;
 		}
 
-
 		/**
-		 * This function will save the comment data
+		 * Saves ACF field values to a comment.
 		 *
-		 * @type    function
-		 * @date    19/10/13
-		 * @since   5.0.0
+		 * @since 5.0.0
 		 *
-		 * @param   comment_id (int)
-		 * @return  n/a
+		 * @param integer $comment_id The ID of the comment being saved to.
+		 * @return integer|void
 		 */
-		function save_comment( $comment_id ) {
-
+		public function save_comment( $comment_id ) {
 			// bail early if not valid nonce
 			if ( ! acf_verify_nonce( 'comment' ) ) {
 				return $comment_id;
 			}
 
-			// kses
-			if ( isset( $_POST['acf'] ) ) {
+			if ( isset( $_POST['acf'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified above.
+				if ( ! is_array( $_POST['acf'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified above.
+					return $comment_id;
+				}
+
+				// Restrict $_POST['acf'] to keys of fields belonging to field groups that apply to this comment.
+				$allowed_keys = $this->get_allowed_field_keys( $comment_id );
+				$_POST['acf'] = array_intersect_key( $_POST['acf'], array_flip( $allowed_keys ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Verified above; sanitized below.
+
+				if ( empty( $_POST['acf'] ) ) {
+					return $comment_id;
+				}
+
 				$_POST['acf'] = wp_kses_post_deep( $_POST['acf'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized with wp_kses_post_deep().
 			}
 
@@ -252,6 +259,63 @@ if ( ! class_exists( 'acf_form_comment' ) ) :
 			if ( acf_validate_save_post( true ) ) {
 				acf_save_post( "comment_{$comment_id}" );
 			}
+		}
+
+		/**
+		 * Returns the top-level ACF field keys that are allowed to be saved for
+		 * the given comment. Built from the field groups whose comment location
+		 * rules match the comment's post type.
+		 *
+		 * @since 6.8.7
+		 *
+		 * @param integer $comment_id The ID of comment being saved.
+		 * @return array
+		 */
+		private function get_allowed_field_keys( $comment_id ) {
+			$keys    = array();
+			$comment = get_comment( $comment_id );
+
+			if ( $comment ) {
+				$field_groups = acf_get_field_groups(
+					array(
+						'comment' => get_post_type( $comment->comment_post_ID ),
+					)
+				);
+
+				foreach ( $field_groups as $field_group ) {
+					foreach ( acf_get_fields( $field_group ) as $field ) {
+						$prefix = $field['prefix'] ?? 'acf';
+
+						if ( $prefix === 'acf' ) {
+							if ( ! empty( $field['key'] ) ) {
+								$keys[] = $field['key'];
+							}
+						} elseif ( preg_match( '/^acf\[([^]]+)]$/', $prefix, $matches ) ) {
+							$keys[] = $matches[1];
+						}
+					}
+				}
+			}
+
+			$keys = array_values( array_unique( array_filter( $keys ) ) );
+
+			/**
+			 * Filters the list of $_POST['acf'] keys a comment submission is allowed to save.
+			 *
+			 * Use this to permit additional field keys when a developer dynamically injects
+			 * fields into the comment form via JavaScript that aren't part of a field group
+			 * whose location rules target this comment.
+			 *
+			 * @since 6.8.7
+			 *
+			 * @param array $keys       The allowed top-level $_POST['acf'] keys.
+			 * @param int   $comment_id The comment being saved.
+			 */
+			$keys = apply_filters( 'acf/form/comment/allowed_field_keys', $keys, $comment_id );
+
+			// Re-normalize after the filter so a misbehaving callback can't break array_flip().
+			$keys = array_filter( (array) $keys, 'is_scalar' );
+			return array_values( array_unique( array_filter( array_map( 'strval', $keys ) ) ) );
 		}
 
 

@@ -168,10 +168,16 @@ if ( ! class_exists( 'acf_field_page_link' ) ) :
 				$args['include'] = (int) $options['include'];
 			}
 
+			$args['perm'] = 'readable';
+			$args         = acf_ensure_perm_readable_post_status( $args );
+
 			// filters
 			$args = apply_filters( 'acf/fields/page_link/query', $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/page_link/query/name=' . $field['name'], $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/page_link/query/key=' . $field['key'], $args, $field, $options['post_id'] );
+
+			// Re-normalize in case a filter reset `post_status` to 'any' while leaving `perm=readable`.
+			$args = acf_ensure_perm_readable_post_status( $args );
 
 			// add archives to $results
 			if ( $field['allow_archives'] && $args['paged'] == 1 ) {

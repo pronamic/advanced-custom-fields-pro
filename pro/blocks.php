@@ -651,6 +651,7 @@ function acf_prepare_block( $block ) {
 		'enqueue_assets',
 		'post_types',
 		'use_post_meta',
+		'path',
 	);
 	$block     = array_diff_key( $block, array_flip( $protected ) );
 
@@ -1096,6 +1097,18 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
 }
 
 /**
+ * Checks if a path uses a PHP stream wrapper, such as `phar://` or `php://`.
+ *
+ * @since 6.8.7
+ *
+ * @param string $path The path to check.
+ * @return boolean True if the path begins with a stream wrapper.
+ */
+function acf_path_has_stream_wrapper( $path ) {
+	return (bool) preg_match( '#^[a-zA-Z][a-zA-Z0-9.+-]*://#', (string) $path );
+}
+
+/**
  * Locate and include an ACF block's template.
  *
  * @since   6.0.4
@@ -1103,13 +1116,22 @@ function acf_render_block( $attributes, $content = '', $is_preview = false, $pos
  * @param   array $block The block props.
  */
 function acf_block_render_template( $block, $content, $is_preview, $post_id, $wp_block, $context ) {
-	// Locate template.
-	if ( isset( $block['path'] ) && file_exists( $block['path'] . '/' . $block['render_template'] ) ) {
-		$path = $block['path'] . '/' . $block['render_template'];
-	} elseif ( file_exists( $block['render_template'] ) ) {
-		$path = $block['render_template'];
+	// Always resolve the block path from the registered block type rather than the
+	// passed block, so a path in the saved block attributes can never be included.
+	$block_type      = acf_get_block_type( $block['name'] ?? '' );
+	$registered_path = $block_type['path'] ?? '';
+	$render_template = $block['render_template'] ?? '';
+
+	// Locate template. Templates are always included from the local filesystem, so
+	// reject stream wrappers such as `phar://` or `php://` before touching the disk.
+	if ( acf_path_has_stream_wrapper( $render_template ) ) {
+		$path = '';
+	} elseif ( $registered_path && file_exists( $registered_path . '/' . $render_template ) ) {
+		$path = $registered_path . '/' . $render_template;
+	} elseif ( file_exists( $render_template ) ) {
+		$path = $render_template;
 	} else {
-		$path = locate_template( $block['render_template'] );
+		$path = locate_template( $render_template );
 	}
 
 	do_action( 'acf/blocks/pre_block_template_render', $block, $content, $is_preview, $post_id, $wp_block, $context );

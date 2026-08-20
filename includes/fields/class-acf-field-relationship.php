@@ -255,10 +255,16 @@ if ( ! class_exists( 'acf_field_relationship' ) ) :
 				$args['post__in'] = array( (int) $options['include'] );
 			}
 
+			$args['perm'] = 'readable';
+			$args         = acf_ensure_perm_readable_post_status( $args );
+
 			// filters
 			$args = apply_filters( 'acf/fields/relationship/query', $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/relationship/query/name=' . $field['name'], $args, $field, $options['post_id'] );
 			$args = apply_filters( 'acf/fields/relationship/query/key=' . $field['key'], $args, $field, $options['post_id'] );
+
+			// Re-normalize in case a filter reset `post_status` to 'any' while leaving `perm=readable`.
+			$args = acf_ensure_perm_readable_post_status( $args );
 
 			// get posts grouped by post type
 			$groups = acf_get_grouped_posts( $args );

@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
-Tested up to: 7.0.1
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.8.6
+Stable tag: 6.8.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,21 @@ ACF includes an optional email signup to receive plugin updates and news. No dat
 
 
 == Changelog ==
+
+= 6.8.8 =
+*Release Date 19th August 2026*
+
+* Fix - Image and Gallery fields no longer reject SVG files
+
+= 6.8.7 =
+*Release Date 4th August 2026*
+
+* Security - ACF Image and Gallery fields now enforce server-side validation to accept only image files
+* Security - The `path` attribute of registered ACF Blocks is now protected from being overridden by client-supplied block data
+* Security - ACF's `acf_encrypt()` and `acf_decrypt()` helpers now authenticate encrypted values with an HMAC and no longer fall back to base64 encoding when OpenSSL is unavailable
+* Security - ACF's comment, user, and options page form save handlers now only save values for fields whose field groups are assigned to the current save context
+* Security - The Post Object, Page Link, and Relationship field AJAX search queries now enforce WordPress read permissions, preventing unauthenticated visitors from seeing non-public post statuses or post types
+* Security - The User field now returns only user IDs in REST API responses to requesters without the `list_users` capability, preventing unauthenticated visitors from seeing user email addresses
 
 = 6.8.6 =
 *Release Date 14th July 2026*

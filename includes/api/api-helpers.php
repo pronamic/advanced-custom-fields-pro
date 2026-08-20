@@ -1276,8 +1276,8 @@ function _acf_query_remove_post_type( $sql ) {
  *
  * @since   5.0.0
  *
- * @param   $args (array)
- * @return  (array)
+ * @param array $args The query arguments.
+ * @return array
  */
 function acf_get_grouped_posts( $args ) {
 
@@ -1298,6 +1298,49 @@ function acf_get_grouped_posts( $args ) {
 			'update_post_meta_cache' => false,
 		)
 	);
+
+	// Narrow anonymous callers to publicly-viewable types/statuses.
+	if ( ! is_user_logged_in() ) {
+		$requested_post_types = acf_get_array( $args['post_type'] );
+
+		if ( in_array( 'any', $requested_post_types, true ) ) {
+			$requested_post_types = get_post_types();
+		}
+
+		$viewable_post_types = array_values( array_filter( $requested_post_types, 'is_post_type_viewable' ) );
+
+		if ( empty( $viewable_post_types ) ) {
+			return $data;
+		}
+
+		$requested_post_statuses = acf_get_array( $args['post_status'] );
+		$public_post_statuses    = array_values( array_filter( get_post_stati(), 'is_post_status_viewable' ) );
+
+		if ( empty( $requested_post_statuses ) ) {
+			return $data;
+		}
+
+		if ( in_array( 'any', $requested_post_statuses, true ) ) {
+			$viewable_post_statuses = $public_post_statuses;
+
+			if ( in_array( 'attachment', $viewable_post_types, true ) ) {
+				$viewable_post_statuses[] = 'inherit';
+			}
+		} else {
+			$viewable_post_statuses = array_values( array_intersect( $requested_post_statuses, $public_post_statuses ) );
+
+			if ( in_array( 'attachment', $viewable_post_types, true ) && in_array( 'inherit', $requested_post_statuses, true ) ) {
+				$viewable_post_statuses[] = 'inherit';
+			}
+		}
+
+		if ( empty( $viewable_post_statuses ) ) {
+			return $data;
+		}
+
+		$args['post_type']   = $viewable_post_types;
+		$args['post_status'] = array_values( array_unique( $viewable_post_statuses ) );
+	}
 
 	// find array of post_type
 	$post_types          = acf_get_array( $args['post_type'] );
@@ -1405,6 +1448,37 @@ function acf_get_grouped_posts( $args ) {
 
 	// return
 	return $data;
+}
+
+/**
+ * Normalizes an args array so `perm=readable` actually applies inside `WP_Query`.
+ *
+ * WP_Query ignores `perm=readable` when `post_status='any'` (Trac #52094). Callers
+ * that opt into `perm=readable` therefore need `post_status` enumerated. This helper
+ * is idempotent and safe to call before and after the per-field `acf/fields/<type>/query`
+ * filters run — the post-filter call catches callbacks that reset `post_status`
+ * back to 'any' while leaving `perm` untouched.
+ *
+ * @since 6.8.7
+ *
+ * @param array $args WP_Query args.
+ * @return array Args with `post_status` enumerated when `perm=readable` requires it.
+ */
+function acf_ensure_perm_readable_post_status( $args ) {
+	if ( ! isset( $args['perm'] ) || 'readable' !== $args['perm'] ) {
+		return $args;
+	}
+
+	$status = isset( $args['post_status'] ) ? $args['post_status'] : '';
+	$is_any = empty( $status )
+		|| 'any' === $status
+		|| ( is_array( $status ) && in_array( 'any', $status, true ) );
+
+	if ( $is_any ) {
+		$args['post_status'] = get_post_stati( array( 'exclude_from_search' => false ) );
+	}
+
+	return $args;
 }
 
 /**
@@ -2428,6 +2502,16 @@ function acf_upload_file( $uploaded_file ) {
 	// required for wp_handle_upload() to upload the file
 	$upload_overrides = array( 'test_form' => false );
 
+	// Restrict uploads to image MIME types for image and gallery fields.
+	// phpcs:disable WordPress.Security.NonceVerification.Missing -- Field key is used for validation context only.
+	if ( ! empty( $_POST['_acfuploader'] ) ) {
+		$field = acf_get_field( sanitize_text_field( wp_unslash( $_POST['_acfuploader'] ) ) );
+		if ( acf_is_image_field( $field ) ) {
+			$upload_overrides['mimes'] = acf_get_image_mime_types( $field );
+		}
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Missing
+
 	// upload
 	$file = wp_handle_upload( $uploaded_file, $upload_overrides );
 
@@ -2952,6 +3036,287 @@ function acf_get_valid_terms( $terms = false, $taxonomy = 'category' ) {
 }
 
 /**
+ * Returns true when the field only accepts image uploads.
+ *
+ * @since 6.8.7
+ *
+ * @param array $field The field array.
+ * @return boolean
+ */
+function acf_is_image_field( $field ) {
+	if ( ! is_array( $field ) ) {
+		/**
+		 * Filters whether the supplied field should be treated as an image field.
+		 *
+		 * @since 6.8.7
+		 *
+		 * @param bool  $is_image_field Whether the field only accepts image uploads.
+		 * @param array $field          The field array.
+		 */
+		return (bool) apply_filters( 'acf/is_image_field', false, $field );
+	}
+
+	$is_image_field = in_array( acf_maybe_get( $field, 'type', '' ), array( 'image', 'gallery' ), true );
+
+	/**
+	 * Filters whether the supplied field should be treated as an image field.
+	 *
+	 * @since 6.8.7
+	 *
+	 * @param bool  $is_image_field Whether the field only accepts image uploads.
+	 * @param array $field          The field array.
+	 */
+	$field_type = acf_maybe_get( $field, 'type', '' );
+	$field_name = acf_maybe_get( $field, '_name', '' );
+	$field_key  = acf_maybe_get( $field, 'key', '' );
+
+	$is_image_field = apply_filters( "acf/is_image_field/type={$field_type}", $is_image_field, $field );
+	$is_image_field = apply_filters( "acf/is_image_field/name={$field_name}", $is_image_field, $field );
+	$is_image_field = apply_filters( "acf/is_image_field/key={$field_key}", $is_image_field, $field );
+	$is_image_field = apply_filters( 'acf/is_image_field', $is_image_field, $field );
+
+	return $is_image_field;
+}
+
+/**
+ * Returns allowed MIME types restricted to images.
+ *
+ * @since 6.8.7
+ *
+ * @param array|false $field Optional field array for field-specific filtering.
+ * @return array
+ */
+function acf_get_image_mime_types( $field = false ) {
+	static $image_mimes = null;
+
+	if ( null === $image_mimes ) {
+		$image_mimes   = array();
+		$allowed_mimes = get_allowed_mime_types();
+
+		foreach ( $allowed_mimes as $ext => $mime ) {
+			if ( wp_match_mime_types( 'image', $mime ) ) {
+				$image_mimes[ $ext ] = $mime;
+			}
+		}
+
+		/**
+		 * Filters the image MIME types allowed for image and gallery fields.
+		 *
+		 * @since 6.8.7
+		 *
+		 * @param array $image_mimes The allowed image MIME types keyed by extension.
+		 */
+		$image_mimes = apply_filters( 'acf/get_image_mime_types', $image_mimes );
+	}
+
+	if ( ! is_array( $field ) || empty( $field['type'] ) ) {
+		return $image_mimes;
+	}
+
+	/**
+	 * Filters the image MIME types allowed for a specific field.
+	 *
+	 * @since 6.8.7
+	 *
+	 * @param array $image_mimes The allowed image MIME types keyed by extension.
+	 * @param array $field         The field array.
+	 */
+	$field_type = acf_maybe_get( $field, 'type', '' );
+	$field_name = acf_maybe_get( $field, '_name', '' );
+	$field_key  = acf_maybe_get( $field, 'key', '' );
+
+	$field_mimes = apply_filters( "acf/get_image_mime_types/type={$field_type}", $image_mimes, $field );
+	$field_mimes = apply_filters( "acf/get_image_mime_types/name={$field_name}", $field_mimes, $field );
+	$field_mimes = apply_filters( "acf/get_image_mime_types/key={$field_key}", $field_mimes, $field );
+
+	return $field_mimes;
+}
+
+/**
+ * Applies filters to image attachment validation errors.
+ *
+ * @since 6.8.7
+ *
+ * @param array  $errors     Validation errors.
+ * @param array  $file       Normalized file data.
+ * @param array  $attachment Raw attachment data for the current context.
+ * @param array  $field      The field array.
+ * @param string $context    The validation context.
+ * @return array
+ */
+function acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context ) {
+	/**
+	 * Filters the errors for image attachment validation.
+	 *
+	 * @since 6.8.7
+	 *
+	 * @param array  $errors     An array of errors.
+	 * @param array  $file       An array of data for a single file.
+	 * @param array  $attachment An array of attachment data which differs based on the context.
+	 * @param array  $field      The field array.
+	 * @param string $context    The current context (uploading, preparing, basic_upload).
+	 */
+	$field_type = acf_maybe_get( $field, 'type', '' );
+	$field_name = acf_maybe_get( $field, '_name', '' );
+	$field_key  = acf_maybe_get( $field, 'key', '' );
+
+	$errors = apply_filters( "acf/validate_is_image_attachment/type={$field_type}", $errors, $file, $attachment, $field, $context );
+	$errors = apply_filters( "acf/validate_is_image_attachment/name={$field_name}", $errors, $file, $attachment, $field, $context );
+	$errors = apply_filters( "acf/validate_is_image_attachment/key={$field_key}", $errors, $file, $attachment, $field, $context );
+	$errors = apply_filters( 'acf/validate_is_image_attachment', $errors, $file, $attachment, $field, $context );
+
+	return $errors;
+}
+
+/**
+ * Validates image attachment data during upload.
+ *
+ * @since 6.8.7
+ *
+ * @param array  $errors        Validation errors.
+ * @param array  $file          Normalized file data.
+ * @param array  $attachment    Raw attachment data for the current context.
+ * @param array  $field         The field array.
+ * @param string $context       The validation context.
+ * @param string $error_message The error message to use when validation fails.
+ * @return array
+ */
+function acf_validate_is_image_attachment_upload( $errors, $file, $attachment, $field, $context, $error_message ) {
+	if ( empty( $attachment['tmp_name'] ) || ! file_exists( $attachment['tmp_name'] ) ) {
+		$errors['invalid_image'] = $error_message;
+
+		return acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context );
+	}
+
+	$checked = wp_check_filetype_and_ext( $attachment['tmp_name'], $attachment['name'], acf_get_image_mime_types( $field ) );
+
+	if ( empty( $checked['ext'] ) || empty( $checked['type'] ) || empty( wp_match_mime_types( 'image', $checked['type'] ) ) ) {
+		$errors['invalid_image'] = $error_message;
+
+		return acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context );
+	}
+
+	/**
+	 * Filters the list of image MIME types that cannot be validated by
+	 * wp_get_image_mime(), which reads a binary magic number and only
+	 * recognizes raster formats. Vector / XML image types (e.g. SVG)
+	 * always fail that check by design and must be excluded from it.
+	 *
+	 * @since 6.8.8
+	 *
+	 * @param array $vector_mime_types MIME types to skip the binary magic-number check for.
+	 */
+	$vector_mime_types = (array) apply_filters( 'acf/validate_is_image_attachment/vector_mime_types', array( 'image/svg+xml' ) );
+
+	if ( ! in_array( $checked['type'], $vector_mime_types, true ) ) {
+		$real_mime = wp_get_image_mime( $attachment['tmp_name'] );
+
+		if ( ! $real_mime || empty( wp_match_mime_types( 'image', $real_mime ) ) ) {
+			$errors['invalid_image'] = $error_message;
+		}
+	}
+
+	return acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context );
+}
+
+/**
+ * Validates image attachment data when preparing for the media library.
+ *
+ * @since 6.8.7
+ *
+ * @param array  $errors        Validation errors.
+ * @param array  $file          Normalized file data.
+ * @param array  $attachment    Raw attachment data for the current context.
+ * @param array  $field         The field array.
+ * @param string $context       The validation context.
+ * @param string $error_message The error message to use when validation fails.
+ * @return array
+ */
+function acf_validate_is_image_attachment_prepare( $errors, $file, $attachment, $field, $context, $error_message ) {
+	$attachment_id = (int) acf_maybe_get( $attachment, 'id', 0 );
+
+	if ( $attachment_id ) {
+		if ( ! wp_attachment_is_image( $attachment_id ) ) {
+			$errors['invalid_image'] = $error_message;
+		}
+
+		return acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context );
+	}
+
+	$mime = acf_maybe_get( $attachment, 'mime', acf_maybe_get( $attachment, 'type', '' ) );
+
+	if ( $mime && empty( wp_match_mime_types( 'image', $mime ) ) ) {
+		$errors['invalid_image'] = $error_message;
+	}
+
+	return acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context );
+}
+
+/**
+ * Validates image attachment data during basic uploader pre-save checks.
+ *
+ * @since 6.8.7
+ *
+ * @param array  $errors        Validation errors.
+ * @param array  $file          Normalized file data.
+ * @param array  $attachment    Raw attachment data for the current context.
+ * @param array  $field         The field array.
+ * @param string $context       The validation context.
+ * @param string $error_message The error message to use when validation fails.
+ * @return array
+ */
+function acf_validate_is_image_attachment_basic_upload( $errors, $file, $attachment, $field, $context, $error_message ) {
+	$mime = acf_maybe_get( $attachment, 'type', '' );
+
+	if ( $mime && empty( wp_match_mime_types( 'image', $mime ) ) ) {
+		$errors['invalid_image'] = $error_message;
+	}
+
+	return acf_apply_validate_is_image_attachment_filters( $errors, $file, $attachment, $field, $context );
+}
+
+/**
+ * Validates that an attachment is an image for image and gallery fields.
+ *
+ * @since 6.8.7
+ *
+ * @param array  $errors     Existing validation errors.
+ * @param array  $file       Normalized file data.
+ * @param array  $attachment Raw attachment data for the current context.
+ * @param array  $field      The field array.
+ * @param string $context    The validation context.
+ * @return array
+ */
+function acf_validate_is_image_attachment( $errors, $file, $attachment, $field, $context ) {
+	if ( ! acf_is_image_field( $field ) ) {
+		return $errors;
+	}
+
+	/**
+	 * Filters the error message used when an attachment is not a valid image.
+	 *
+	 * @since 6.8.7
+	 *
+	 * @param string $error_message The default error message.
+	 * @param array  $field         The field array.
+	 * @param string $context       The current context (uploading, preparing, basic_upload).
+	 * @param array  $file          An array of data for a single file.
+	 * @param array  $attachment    An array of attachment data which differs based on the context.
+	 */
+	$error_message = apply_filters( 'acf/validate_is_image_attachment/error_message', __( 'File must be a valid image.', 'acf' ), $field, $context, $file, $attachment );
+
+	if ( 'upload' === $context ) {
+		return acf_validate_is_image_attachment_upload( $errors, $file, $attachment, $field, $context, $error_message );
+	}
+
+	if ( 'prepare' === $context ) {
+		return acf_validate_is_image_attachment_prepare( $errors, $file, $attachment, $field, $context, $error_message );
+	}
+
+	return acf_validate_is_image_attachment_basic_upload( $errors, $file, $attachment, $field, $context, $error_message );
+}
+
+/**
  * acf_validate_attachment
  *
  * This function will validate an attachment based on a field's restrictions and return an array of errors
@@ -2981,10 +3346,13 @@ function acf_validate_attachment( $attachment, $field, $context = 'prepare' ) {
 		$file['type'] = pathinfo( $attachment['name'], PATHINFO_EXTENSION );
 		$file['size'] = filesize( $attachment['tmp_name'] );
 
-		if ( strpos( $attachment['type'], 'image' ) !== false ) {
-			$size           = getimagesize( $attachment['tmp_name'] );
-			$file['width']  = acf_maybe_get( $size, 0 );
-			$file['height'] = acf_maybe_get( $size, 1 );
+		if ( acf_is_image_field( $field ) || strpos( $attachment['type'], 'image' ) !== false ) {
+			$size = function_exists( 'wp_getimagesize' ) ? wp_getimagesize( $attachment['tmp_name'] ) : getimagesize( $attachment['tmp_name'] );
+
+			if ( $size ) {
+				$file['width']  = acf_maybe_get( $size, 0 );
+				$file['height'] = acf_maybe_get( $size, 1 );
+			}
 		}
 
 		// prepare
@@ -3784,65 +4152,73 @@ function acf_connect_attachment_to_post( $attachment_id = 0, $post_id = 0 ) {
 }
 
 /**
- * acf_encrypt
- *
- * This function will encrypt a string using PHP
+ * Encrypts a string using PHP.
  * https://bhoover.com/using-php-openssl_encrypt-openssl_decrypt-encrypt-decrypt-data/
  *
- * @since   5.5.8
+ * @since 5.5.8
  *
- * @param   $data (string)
- * @return  (string)
+ * @param string $data The data to encrypt.
+ * @return string|false Encrypted string, or false if encryption fails.
  */
 function acf_encrypt( $data = '' ) {
 
-	// bail early if no encrypt function
 	if ( ! function_exists( 'openssl_encrypt' ) ) {
-		return base64_encode( $data );
+		return false;
 	}
 
-	// generate a key
-	$key = wp_hash( 'acf_encrypt' );
+	$key     = wp_hash( 'acf_encrypt' );
+	$mac_key = wp_hash( 'acf_encrypt_mac' );
+	$iv      = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
 
-	// Generate an initialization vector
-	$iv = openssl_random_pseudo_bytes( openssl_cipher_iv_length( 'aes-256-cbc' ) );
-
-	// Encrypt the data using AES 256 encryption in CBC mode using our encryption key and initialization vector.
 	$encrypted_data = openssl_encrypt( $data, 'aes-256-cbc', $key, 0, $iv );
 
-	// The $iv is just as important as the key for decrypting, so save it with our encrypted data using a unique separator (::)
-	return base64_encode( $encrypted_data . '::' . $iv );
+	$payload = $encrypted_data . '::' . $iv;
+	$hmac    = hash_hmac( 'sha256', $payload, $mac_key, true );
+
+	return base64_encode( $payload . $hmac );
 }
 
 /**
  * Decrypts an encrypted string using PHP.
  * https://bhoover.com/using-php-openssl_encrypt-openssl_decrypt-encrypt-decrypt-data/
  *
- * @since   5.5.8
+ * @since 5.5.8
  *
  * @param string $data The string to decrypt.
  * @return string|false Decrypted string, or false if the payload is malformed or decryption fails.
  */
 function acf_decrypt( $data = '' ) {
-	// bail early if no decrypt function
-	if ( ! function_exists( 'openssl_decrypt' ) ) {
-		return base64_decode( (string) $data );
-	}
 
-	// Treat malformed input as a decrypt failure: list() destructuring below would
-	// otherwise warn on PHP 8 when the payload isn't the "base64(data::iv)" shape.
-	$raw = base64_decode( (string) $data, true );
-	if ( false === $raw || strpos( $raw, '::' ) === false ) {
+	if ( ! function_exists( 'openssl_decrypt' ) ) {
 		return false;
 	}
 
-	// generate a key
+	$raw = base64_decode( (string) $data, true );
+	if ( false === $raw ) {
+		return false;
+	}
+
+	if ( strlen( $raw ) <= 32 ) {
+		return false;
+	}
+
+	$mac_key = wp_hash( 'acf_encrypt_mac' );
+	$hmac    = substr( $raw, -32 );
+	$payload = substr( $raw, 0, -32 );
+
+	$expected = hash_hmac( 'sha256', $payload, $mac_key, true );
+	if ( ! hash_equals( $expected, $hmac ) ) {
+		return false;
+	}
+
+	if ( strpos( $payload, '::' ) === false ) {
+		return false;
+	}
+
 	$key = wp_hash( 'acf_encrypt' );
 
-	// To decrypt, split the encrypted data from our IV - our unique separator used was "::"
-	list( $encrypted_data, $iv ) = explode( '::', $raw, 2 );
+	list( $encrypted_data, $iv ) = explode( '::', $payload, 2 );
 
-	// decrypt
 	return openssl_decrypt( $encrypted_data, 'aes-256-cbc', $key, 0, $iv );
 }
 

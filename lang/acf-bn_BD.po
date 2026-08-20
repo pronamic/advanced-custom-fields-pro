@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-07-14T01:00:08+00:00\n"
+"PO-Revision-Date: 2026-08-19T14:59:20+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: bn_BD\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+
+#: includes/api/api-helpers.php:3292
+#: includes/fields/class-acf-field-image.php:457
+msgid "File must be a valid image."
+msgstr ""
+
+#: includes/admin/views/email-opt-in-banner.php:103
+msgid "Dismiss email opt-in banner"
+msgstr "ইমেইল অপ্ট-ইন ব্যানার বন্ধ করুন।"
+
+#: includes/admin/views/email-opt-in-banner.php:95
+msgid "You're on the list! Keep an eye out for our next update."
+msgstr "আপনি লিস্টে আছেন! আমাদের পরবর্তী আপডেটের দিকে নজর রাখুন।"
+
+#: includes/admin/views/email-opt-in-banner.php:70
+msgid "Join the list"
+msgstr "লিস্টে যোগ দিন"
+
+#: includes/admin/views/email-opt-in-banner.php:63
+msgid "you@example.com"
+msgstr ""
+
+#: includes/admin/views/email-opt-in-banner.php:54
+msgid "Email address"
+msgstr ""
+
+#: includes/admin/views/email-opt-in-banner.php:42
+msgid ""
+"Get critical ACF security updates, releases, news, and workflow improvements."
+msgstr ""
+
+#: includes/admin/views/email-opt-in-banner.php:39
+msgid "Join the ACF community."
+msgstr ""
+
+#. translators: %s - Privacy Policy link, opens in a new tab.
+#: includes/admin/views/email-opt-in-banner.php:26
+msgid ""
+"We respect your inbox. Unsubscribe anytime. By signing up, you agree to our "
+"%s."
+msgstr ""
+
+#: includes/admin/views/email-opt-in-banner.php:21
+msgid "Privacy Policy"
+msgstr ""
+
+#: includes/admin/admin-email-opt-in-banner.php:265
+msgid "Something went wrong on our end. Please try again."
+msgstr "আমাদের পক্ষ থেকে একটি সমস্যা হয়েছে। অনুগ্রহ করে আবার চেষ্টা করুন।"
+
+#: includes/admin/admin-email-opt-in-banner.php:264
+msgid "Please enter a valid email address."
+msgstr "অনুগ্রহ করে একটি বৈধ ইমেইল ঠিকানা লিখুন।"
+
+#: includes/admin/admin-email-opt-in-banner.php:263
+msgid "Email address is required."
+msgstr "ইমেইল ঠিকানা সঠিক নয়।"
 
 #: src/Site_Health/Site_Health.php:1009
 msgid "Datastore Enabled"
@@ -328,7 +385,7 @@ msgstr ""
 
 #: src/AI/Abilities/Taxonomy.php:78
 msgid "Register Custom Taxonomy"
-msgstr ""
+msgstr "কাস্টম ট্যাক্সোনমি নিবন্ধন করুন"
 
 #: src/AI/Abilities/Taxonomy.php:43
 msgid "Get all ACF registered custom taxonomies"
@@ -496,15 +553,15 @@ msgstr ""
 msgid "Blocks Using Auto Inline Editing"
 msgstr ""
 
-#: includes/fields/class-acf-field-image.php:144
+#: includes/fields/class-acf-field-image.php:145
 msgid "Remove image"
 msgstr "ছবি সরান"
 
-#: includes/fields/class-acf-field-image.php:142
+#: includes/fields/class-acf-field-image.php:143
 msgid "Edit image"
 msgstr "ছবি সম্পাদনা করুন"
 
-#: includes/fields/class-acf-field-image.php:138
+#: includes/fields/class-acf-field-image.php:139
 msgid "Selected image. Press tab to access image options."
 msgstr ""
 
@@ -597,7 +654,7 @@ msgid "Toggle panel"
 msgstr ""
 
 #. translators: %1$s - Plugin name, %2$s URL to documentation
-#: includes/admin/admin.php:311
+#: includes/admin/admin.php:315
 msgid ""
 "%1$s We have detected that this website is configured to use v3 of the "
 "Select2 jQuery library, which has been deprecated in favor of v4 and will be "
@@ -669,7 +726,7 @@ msgstr "সার্ভার কোনো nonce না পাওয়ায়
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:357
+#: includes/admin/admin.php:361
 msgid "are developed and maintained by"
 msgstr "দ্বারা উন্নয়ন ও রক্ষণাবেক্ষণ করা হয়।"
 
@@ -2668,21 +2725,21 @@ msgstr "ক্ষেত্রগুলি যোগ করুন"
 msgid "This Field"
 msgstr ""
 
-#: includes/admin/admin.php:394
+#: includes/admin/admin.php:398
 msgid "ACF PRO"
 msgstr "ACF PRO"
 
-#: includes/admin/admin.php:392
+#: includes/admin/admin.php:396
 msgid "Feedback"
 msgstr "মতামত"
 
-#: includes/admin/admin.php:390
+#: includes/admin/admin.php:394
 msgid "Support"
 msgstr "সমর্থন"
 
 #. translators: This text is prepended by a link to ACF's website, and appended
 #. by a link to WP Engine's website.
-#: includes/admin/admin.php:365
+#: includes/admin/admin.php:369
 msgid "is developed and maintained by"
 msgstr ""
 
@@ -2726,8 +2783,8 @@ msgstr ""
 msgid "%s Field"
 msgstr "%s ফিল্ড"
 
-#: includes/fields/class-acf-field-page_link.php:505
-#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-page_link.php:511
+#: includes/fields/class-acf-field-post_object.php:424
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2845,9 +2902,9 @@ msgstr "কোন ফিল্ড নেই"
 msgid "No description"
 msgstr "কোনো বর্ণনা নেই"
 
-#: includes/fields/class-acf-field-page_link.php:472
-#: includes/fields/class-acf-field-post_object.php:381
-#: includes/fields/class-acf-field-relationship.php:610
+#: includes/fields/class-acf-field-page_link.php:478
+#: includes/fields/class-acf-field-post_object.php:387
+#: includes/fields/class-acf-field-relationship.php:616
 msgid "Any post status"
 msgstr "যেকোনো পোস্ট স্ট্যাটাস"
 
@@ -3053,9 +3110,9 @@ msgstr ""
 msgid "An input for providing a password using a masked field."
 msgstr ""
 
-#: includes/fields/class-acf-field-page_link.php:464
-#: includes/fields/class-acf-field-post_object.php:373
-#: includes/fields/class-acf-field-relationship.php:602
+#: includes/fields/class-acf-field-page_link.php:470
+#: includes/fields/class-acf-field-post_object.php:379
+#: includes/fields/class-acf-field-relationship.php:608
 msgid "Filter by Post Status"
 msgstr ""
 
@@ -5008,13 +5065,13 @@ msgid "Field groups linked successfully."
 msgstr ""
 
 #. translators: %s - URL to ACF tools page.
-#: includes/admin/admin.php:204
+#: includes/admin/admin.php:208
 msgid ""
 "Import Post Types and Taxonomies registered with Custom Post Type UI and "
 "manage them with ACF. <a href=\"%s\">Get Started</a>."
 msgstr ""
 
-#: includes/admin/admin.php:56 includes/admin/admin.php:394
+#: includes/admin/admin.php:56 includes/admin/admin.php:398
 #: src/Site_Health/Site_Health.php:367
 msgid "ACF"
 msgstr "ACF"
@@ -5338,7 +5395,7 @@ msgstr ""
 msgid "Move field group to trash?"
 msgstr ""
 
-#: acf.php:580 includes/admin/admin-internal-post-type-list.php:264
+#: acf.php:581 includes/admin/admin-internal-post-type-list.php:264
 #: includes/admin/post-types/admin-field-group.php:304
 #: includes/admin/post-types/admin-post-type.php:283
 #: includes/admin/post-types/admin-taxonomy.php:285
@@ -5351,7 +5408,7 @@ msgstr ""
 msgid "WP Engine"
 msgstr ""
 
-#: acf.php:638
+#: acf.php:639
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields PRO."
@@ -5359,7 +5416,7 @@ msgstr ""
 "অ্যাডভ্যান্স কাস্টম ফিল্ডস এবং অ্যাডভ্যান্স কাস্টম ফিল্ডস প্রো একই সময়ে একটিভ হওয়া উচিত "
 "নয়। আমরা স্বয়ংক্রিয়ভাবে অ্যাডভ্যান্স কাস্টম ফিল্ডস প্রো ডিএকটিভ করেছি।"
 
-#: acf.php:636
+#: acf.php:637
 msgid ""
 "Advanced Custom Fields and Advanced Custom Fields PRO should not be active "
 "at the same time. We've automatically deactivated Advanced Custom Fields."
@@ -5387,19 +5444,19 @@ msgstr "অননুমোদিত অনুরোধ।"
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s, %2$s-এর অংশ নয়।"
 
-#: includes/fields/class-acf-field-post_object.php:667
+#: includes/fields/class-acf-field-post_object.php:673
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s-এর অবশ্যই %2$s টার্ম থাকতে হবে।"
 msgstr[1] "%1$s-এর অবশ্যই নিম্নলিখিত টার্মগুলির মধ্যে একটি: %2$s থাকতে হবে ৷"
 
-#: includes/fields/class-acf-field-post_object.php:651
+#: includes/fields/class-acf-field-post_object.php:657
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s অবশ্যই পোস্ট টাইপ %2$s হতে হবে।"
 msgstr[1] "%1$s অবশ্যই নিম্নলিখিত ধরনের পোস্টগুলির মধ্যে একটি হতে হবে: %2$s৷"
 
-#: includes/fields/class-acf-field-post_object.php:642
+#: includes/fields/class-acf-field-post_object.php:648
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s-এর অবশ্যই একটি বৈধ পোস্ট আইডি থাকতে হবে৷"
 
@@ -5554,23 +5611,23 @@ msgstr ""
 msgid "Review local JSON changes"
 msgstr ""
 
-#: includes/admin/admin.php:179
+#: includes/admin/admin.php:183
 msgid "Visit website"
 msgstr "সাইট দেখুন"
 
-#: includes/admin/admin.php:178
+#: includes/admin/admin.php:182
 msgid "View details"
 msgstr "বিস্তারিত দেখুন"
 
-#: includes/admin/admin.php:177
+#: includes/admin/admin.php:181
 msgid "Version %s"
 msgstr "ভার্শন %s"
 
-#: includes/admin/admin.php:176
+#: includes/admin/admin.php:180
 msgid "Information"
 msgstr "তথ্য"
 
-#: includes/admin/admin.php:167
+#: includes/admin/admin.php:171
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Help Desk</a>. The support professionals on "
 "our Help Desk will assist with your more in depth, technical challenges."
@@ -5578,21 +5635,21 @@ msgstr ""
 "<a href=\"%s\" target=\"_blank\">হেল্প ডেস্ক</a>। আমাদের হেল্প ডেস্ক এর "
 "সহায়তাকারীরা আপনাকে আরও গভীর টেকনিক্যাল চ্যাল্যাঞ্জ মোকাবিলায় সাহায্য করবে।"
 
-#: includes/admin/admin.php:163
+#: includes/admin/admin.php:167
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Discussions</a>. We have an active and "
 "friendly community on our Community Forums who may be able to help you "
 "figure out the 'how-tos' of the ACF world."
 msgstr ""
 
-#: includes/admin/admin.php:159
+#: includes/admin/admin.php:163
 msgid ""
 "<a href=\"%s\" target=\"_blank\">Documentation</a>. Our extensive "
 "documentation contains references and guides for most situations you may "
 "encounter."
 msgstr ""
 
-#: includes/admin/admin.php:156
+#: includes/admin/admin.php:160
 msgid ""
 "We are fanatical about support, and want you to get the best out of your "
 "website with ACF. If you run into any difficulties, there are several places "
@@ -5602,11 +5659,11 @@ msgstr ""
 "ওয়েবসাইট থেকে সেরাটা পান। আপনি যদি কোন অসুবিধায় পড়েন, তবে আপনি সাহায্য পেতে "
 "পারেন এমন বেশ কয়েকটি জায়গা রয়েছে:"
 
-#: includes/admin/admin.php:153 includes/admin/admin.php:155
+#: includes/admin/admin.php:157 includes/admin/admin.php:159
 msgid "Help & Support"
 msgstr "সাহায্য সহযোগীতা"
 
-#: includes/admin/admin.php:144
+#: includes/admin/admin.php:148
 msgid ""
 "Please use the Help & Support tab to get in touch should you find yourself "
 "requiring assistance."
@@ -5614,14 +5671,14 @@ msgstr ""
 "অনুগ্রহ করে যোগাযোগ করতে সাহায্য এবং সহযোগীতা ট্যাবটি ব্যবহার করুন যদি আপনি নিজের "
 "সহায়তার প্রয়োজন মনে করেন।"
 
-#: includes/admin/admin.php:141
+#: includes/admin/admin.php:145
 msgid ""
 "Before creating your first Field Group, we recommend first reading our <a "
 "href=\"%s\" target=\"_blank\">Getting started</a> guide to familiarize "
 "yourself with the plugin's philosophy and best practises."
 msgstr ""
 
-#: includes/admin/admin.php:139
+#: includes/admin/admin.php:143
 msgid ""
 "The Advanced Custom Fields plugin provides a visual form builder to "
 "customize WordPress edit screens with extra fields, and an intuitive API to "
@@ -5631,7 +5688,7 @@ msgstr ""
 "স্ক্রিন কাস্টমাইজ করার জন্য একটি ভিজ্যুয়াল ফর্ম নির্মাতা প্রদান করে এবং যেকোনো থিম "
 "টেমপ্লেট ফাইলে কাস্টম ফিল্ডের মান প্রদর্শনের জন্য একটি সহজবোধ্য API সরবরাহ করে।"
 
-#: includes/admin/admin.php:136 includes/admin/admin.php:138
+#: includes/admin/admin.php:140 includes/admin/admin.php:142
 msgid "Overview"
 msgstr "সারসংক্ষেপ"
 
@@ -5654,7 +5711,7 @@ msgstr "অকার্যকর."
 msgid "Error loading field."
 msgstr "ত্রুটি লোড করার ফিল্ড"
 
-#: includes/forms/form-user.php:337
+#: includes/forms/form-user.php:417
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>ত্রুটি</strong>: %s"
 
@@ -5683,11 +5740,11 @@ msgid "Post Status"
 msgstr "পোস্ট স্ট্যাটাস"
 
 #: includes/acf-wp-functions.php:83
-#: includes/locations/class-acf-location-nav-menu.php:98
+#: includes/locations/class-acf-location-nav-menu.php:99
 msgid "Menus"
 msgstr "মেনুসমূহ"
 
-#: includes/locations/class-acf-location-nav-menu.php:89
+#: includes/locations/class-acf-location-nav-menu.php:90
 msgid "Menu Locations"
 msgstr "মেনু লোকেশন"
 
@@ -5759,7 +5816,7 @@ msgstr ""
 msgid "Page Parent"
 msgstr "উর্দ্ধতন পাতা"
 
-#: includes/locations/class-acf-location-current-user-role.php:86
+#: includes/locations/class-acf-location-current-user-role.php:87
 msgid "Super Admin"
 msgstr ""
 
@@ -5780,7 +5837,7 @@ msgstr "পোস্ট টেমপ্লেট"
 msgid "Post Category"
 msgstr "প্রকাশনা বিভাগ"
 
-#: includes/locations/class-acf-location-attachment.php:93
+#: includes/locations/class-acf-location-attachment.php:94
 msgid "All %s formats"
 msgstr ""
 
@@ -6263,7 +6320,7 @@ msgstr ""
 msgid "Supports"
 msgstr ""
 
-#: includes/admin/admin.php:388
+#: includes/admin/admin.php:392
 #: includes/admin/views/browse-fields-modal.php:112
 msgid "Documentation"
 msgstr "ডকুমেন্টেশন"
@@ -6601,7 +6658,7 @@ msgstr "এডিট"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "এই পৃষ্ঠা থেকে চলে গেলে আপনার করা পরিবর্তনগুলো হারিয়ে যাবে"
 
-#: includes/api/api-helpers.php:3080
+#: includes/api/api-helpers.php:3434
 msgid "File type must be %s."
 msgstr ""
 
@@ -6610,35 +6667,35 @@ msgstr ""
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3077
+#: includes/api/api-helpers.php:3431
 msgid "or"
 msgstr "অথবা"
 
-#: includes/api/api-helpers.php:3053
+#: includes/api/api-helpers.php:3407
 msgid "File size must not exceed %s."
 msgstr "ফাইলের আকার %s-এর বেশি হতে পারবে না।"
 
-#: includes/api/api-helpers.php:3049
+#: includes/api/api-helpers.php:3403
 msgid "File size must be at least %s."
 msgstr "ফাইলের আকার কমপক্ষে %s হতে হবে।"
 
-#: includes/api/api-helpers.php:3036
+#: includes/api/api-helpers.php:3390
 msgid "Image height must not exceed %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3032
+#: includes/api/api-helpers.php:3386
 msgid "Image height must be at least %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3020
+#: includes/api/api-helpers.php:3374
 msgid "Image width must not exceed %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:3016
+#: includes/api/api-helpers.php:3370
 msgid "Image width must be at least %dpx."
 msgstr ""
 
-#: includes/api/api-helpers.php:1450 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr ""
 
@@ -6695,11 +6752,11 @@ msgstr "নতুন পছন্দ যোগ করুন।"
 msgid "Toggle All"
 msgstr "সব টোগল করুন"
 
-#: includes/fields/class-acf-field-page_link.php:494
+#: includes/fields/class-acf-field-page_link.php:500
 msgid "Allow Archives URLs"
 msgstr "আর্কাইভ URLs অ্যালাউ করুন"
 
-#: includes/fields/class-acf-field-page_link.php:203
+#: includes/fields/class-acf-field-page_link.php:209
 msgid "Archives"
 msgstr "আর্কাইভ"
 
@@ -7262,8 +7319,8 @@ msgid "Button Group"
 msgstr "বাটন গ্রুপ"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:526
-#: includes/fields/class-acf-field-post_object.php:439
+#: includes/fields/class-acf-field-page_link.php:532
+#: includes/fields/class-acf-field-post_object.php:445
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -7271,8 +7328,8 @@ msgstr "বাটন গ্রুপ"
 msgid "Allow Null"
 msgstr "নাল অনুমতি দিন"
 
-#: includes/fields/class-acf-field-page_link.php:280
-#: includes/fields/class-acf-field-post_object.php:261
+#: includes/fields/class-acf-field-page_link.php:286
+#: includes/fields/class-acf-field-post_object.php:267
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "মূল"
@@ -7404,95 +7461,95 @@ msgstr "নতুন পোস্ট তৈরী করার সময় দে�
 msgid "Text"
 msgstr "টেক্সট"
 
-#: includes/fields/class-acf-field-relationship.php:790
+#: includes/fields/class-acf-field-relationship.php:796
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:415
+#: includes/fields/class-acf-field-relationship.php:659
 msgid "Post ID"
 msgstr "পোস্ট আইডি"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:408
-#: includes/fields/class-acf-field-relationship.php:652
+#: includes/fields/class-acf-field-post_object.php:414
+#: includes/fields/class-acf-field-relationship.php:658
 msgid "Post Object"
 msgstr "পোস্ট অবজেক্ট"
 
-#: includes/fields/class-acf-field-relationship.php:685
+#: includes/fields/class-acf-field-relationship.php:691
 msgid "Maximum Posts"
 msgstr "সর্বাধিক পোস্ট"
 
-#: includes/fields/class-acf-field-relationship.php:675
+#: includes/fields/class-acf-field-relationship.php:681
 msgid "Minimum Posts"
 msgstr "সর্বনিম্ন পোস্ট"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:710
+#: includes/fields/class-acf-field-relationship.php:716
 msgid "Featured Image"
 msgstr "নির্বাচিত ছবি"
 
-#: includes/fields/class-acf-field-relationship.php:706
+#: includes/fields/class-acf-field-relationship.php:712
 msgid "Selected elements will be displayed in each result"
 msgstr "নির্বাচিত এলিমেন্টগুলো প্রতিটি ফলাফলে প্রদর্শিত হবে।"
 
-#: includes/fields/class-acf-field-relationship.php:705
+#: includes/fields/class-acf-field-relationship.php:711
 msgid "Elements"
 msgstr "এলিমেন্টস"
 
-#: includes/fields/class-acf-field-relationship.php:639
+#: includes/fields/class-acf-field-relationship.php:645
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
 msgid "Taxonomy"
 msgstr "ট্যাক্সোনমি"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
 msgstr "পোস্টের ধরন"
 
-#: includes/fields/class-acf-field-relationship.php:632
+#: includes/fields/class-acf-field-relationship.php:638
 msgid "Filters"
 msgstr "ফিল্টার গুলি"
 
-#: includes/fields/class-acf-field-page_link.php:487
-#: includes/fields/class-acf-field-post_object.php:396
-#: includes/fields/class-acf-field-relationship.php:625
+#: includes/fields/class-acf-field-page_link.php:493
+#: includes/fields/class-acf-field-post_object.php:402
+#: includes/fields/class-acf-field-relationship.php:631
 msgid "All taxonomies"
 msgstr "সব ট্যাক্সোনমি"
 
-#: includes/fields/class-acf-field-page_link.php:479
-#: includes/fields/class-acf-field-post_object.php:388
-#: includes/fields/class-acf-field-relationship.php:617
+#: includes/fields/class-acf-field-page_link.php:485
+#: includes/fields/class-acf-field-post_object.php:394
+#: includes/fields/class-acf-field-relationship.php:623
 msgid "Filter by Taxonomy"
 msgstr "ট্যাক্সোনমি অনুসারে ফিল্টার করুন"
 
-#: includes/fields/class-acf-field-page_link.php:457
-#: includes/fields/class-acf-field-post_object.php:366
-#: includes/fields/class-acf-field-relationship.php:595
+#: includes/fields/class-acf-field-page_link.php:463
+#: includes/fields/class-acf-field-post_object.php:372
+#: includes/fields/class-acf-field-relationship.php:601
 msgid "All post types"
 msgstr "সব ধরনের পোস্ট"
 
-#: includes/fields/class-acf-field-page_link.php:449
-#: includes/fields/class-acf-field-post_object.php:358
-#: includes/fields/class-acf-field-relationship.php:587
+#: includes/fields/class-acf-field-page_link.php:455
+#: includes/fields/class-acf-field-post_object.php:364
+#: includes/fields/class-acf-field-relationship.php:593
 msgid "Filter by Post Type"
 msgstr "সব ধরনের পোস্ট"
 
-#: includes/fields/class-acf-field-relationship.php:487
+#: includes/fields/class-acf-field-relationship.php:493
 msgid "Search..."
 msgstr "অনুসন্ধান..."
 
-#: includes/fields/class-acf-field-relationship.php:417
+#: includes/fields/class-acf-field-relationship.php:423
 msgid "Select taxonomy"
 msgstr "ট্যাক্সোনমি সিলেক্ট করুন"
 
-#: includes/fields/class-acf-field-relationship.php:409
+#: includes/fields/class-acf-field-relationship.php:415
 msgid "Select post type"
 msgstr "পোস্ট এর ধরন বাছাই করুন।"
 
@@ -7513,48 +7570,48 @@ msgid "Relationship"
 msgstr "সম্পর্ক"
 
 #: includes/fields/class-acf-field-file.php:290
-#: includes/fields/class-acf-field-image.php:316
+#: includes/fields/class-acf-field-image.php:331
 msgid "Comma separated list. Leave blank for all types"
 msgstr "কমা দিয়ে পৃথক করা তালিকা। অল টাইপ এর জন্য ফাঁকা রাখুন"
 
 #: includes/fields/class-acf-field-file.php:289
-#: includes/fields/class-acf-field-image.php:315
+#: includes/fields/class-acf-field-image.php:330
 msgid "Allowed File Types"
 msgstr "অনুমোদিত ফাইলের প্রকার"
 
 #: includes/fields/class-acf-field-file.php:277
-#: includes/fields/class-acf-field-image.php:279
+#: includes/fields/class-acf-field-image.php:294
 msgid "Maximum"
 msgstr "সর্বোচ্চ"
 
 #: includes/fields/class-acf-field-file.php:153
 #: includes/fields/class-acf-field-file.php:269
 #: includes/fields/class-acf-field-file.php:281
-#: includes/fields/class-acf-field-image.php:270
-#: includes/fields/class-acf-field-image.php:306
+#: includes/fields/class-acf-field-image.php:285
+#: includes/fields/class-acf-field-image.php:321
 msgid "File size"
 msgstr "ফাইলের আকার:"
 
-#: includes/fields/class-acf-field-image.php:244
-#: includes/fields/class-acf-field-image.php:280
+#: includes/fields/class-acf-field-image.php:259
+#: includes/fields/class-acf-field-image.php:295
 msgid "Restrict which images can be uploaded"
 msgstr "কোন ছবি আপলোড করা যাবে তা সীমাবদ্ধ করুন"
 
 #: includes/fields/class-acf-field-file.php:265
-#: includes/fields/class-acf-field-image.php:243
+#: includes/fields/class-acf-field-image.php:258
 msgid "Minimum"
 msgstr "সর্বনিম্ন"
 
 #: includes/fields/class-acf-field-file.php:235
-#: includes/fields/class-acf-field-image.php:209
+#: includes/fields/class-acf-field-image.php:224
 msgid "Uploaded to post"
 msgstr "পোস্টে আপলোড হয়েছে"
 
 #: includes/fields/class-acf-field-file.php:234
-#: includes/fields/class-acf-field-image.php:208
-#: includes/locations/class-acf-location-attachment.php:82
+#: includes/fields/class-acf-field-image.php:223
+#: includes/locations/class-acf-location-attachment.php:83
 #: includes/locations/class-acf-location-comment.php:70
-#: includes/locations/class-acf-location-nav-menu.php:83
+#: includes/locations/class-acf-location-nav-menu.php:84
 #: includes/locations/class-acf-location-taxonomy.php:72
 #: includes/locations/class-acf-location-user-form.php:80
 #: includes/locations/class-acf-location-user-role.php:87
@@ -7563,28 +7620,28 @@ msgid "All"
 msgstr "সবগুলো"
 
 #: includes/fields/class-acf-field-file.php:229
-#: includes/fields/class-acf-field-image.php:203
+#: includes/fields/class-acf-field-image.php:218
 msgid "Limit the media library choice"
 msgstr "মিডিয়া লাইব্রেরির পছন্দ সীমিত করুন"
 
 #: includes/fields/class-acf-field-file.php:228
-#: includes/fields/class-acf-field-image.php:202
+#: includes/fields/class-acf-field-image.php:217
 msgid "Library"
 msgstr "লাইব্রেরি"
 
-#: includes/fields/class-acf-field-image.php:335
+#: includes/fields/class-acf-field-image.php:350
 msgid "Preview Size"
 msgstr "পূর্বরূপ আকার"
 
-#: includes/fields/class-acf-field-image.php:194
+#: includes/fields/class-acf-field-image.php:209
 msgid "Image ID"
 msgstr "ছবির আইডি"
 
-#: includes/fields/class-acf-field-image.php:193
+#: includes/fields/class-acf-field-image.php:208
 msgid "Image URL"
 msgstr "ছবির ঠিকানা"
 
-#: includes/fields/class-acf-field-image.php:192
+#: includes/fields/class-acf-field-image.php:207
 msgid "Image Array"
 msgstr "ইমেজ অ্যারে"
 
@@ -7605,40 +7662,40 @@ msgstr "ফ্রন্টএন্ডে প্রদর্শিত রিট�
 msgid "Return Value"
 msgstr "রিটার্ন ভ্যালু"
 
-#: includes/fields/class-acf-field-image.php:164
+#: includes/fields/class-acf-field-image.php:179
 msgid "Add Image"
 msgstr "ছবি যোগ করুন"
 
-#: includes/fields/class-acf-field-image.php:164
+#: includes/fields/class-acf-field-image.php:179
 msgid "No image selected"
 msgstr "কোনো ছবি বাছাই করা হয়নি"
 
 #: includes/assets.php:358 includes/fields/class-acf-field-file.php:161
-#: includes/fields/class-acf-field-image.php:144
+#: includes/fields/class-acf-field-image.php:145
 #: includes/fields/class-acf-field-link.php:133
 msgid "Remove"
 msgstr "সরিয়ে ফেলুন"
 
 #: includes/admin/views/acf-field-group/field.php:99
 #: includes/fields/class-acf-field-file.php:159
-#: includes/fields/class-acf-field-image.php:142
+#: includes/fields/class-acf-field-image.php:143
 #: includes/fields/class-acf-field-link.php:133
 msgid "Edit"
 msgstr "পরিবর্তন করুন"
 
-#: includes/fields/class-acf-field-image.php:72 includes/media.php:64
+#: includes/fields/class-acf-field-image.php:73 includes/media.php:64
 msgid "All images"
 msgstr "সবগুলো ছবি"
 
-#: includes/fields/class-acf-field-image.php:71
+#: includes/fields/class-acf-field-image.php:72
 msgid "Update Image"
 msgstr "ছবি আপডেট করুন"
 
-#: includes/fields/class-acf-field-image.php:70
+#: includes/fields/class-acf-field-image.php:71
 msgid "Edit Image"
 msgstr "ছবি এডিট করুন"
 
-#: includes/fields/class-acf-field-image.php:69
+#: includes/fields/class-acf-field-image.php:70
 msgid "Select Image"
 msgstr "ছবি নির্বাচন করুন"
 
@@ -7722,8 +7779,8 @@ msgstr "সম্পন্ন হয়েছে"
 msgid "Date Picker"
 msgstr "তারিখ নির্বাচন করুন"
 
-#: includes/fields/class-acf-field-image.php:247
-#: includes/fields/class-acf-field-image.php:283
+#: includes/fields/class-acf-field-image.php:262
+#: includes/fields/class-acf-field-image.php:298
 #: includes/fields/class-acf-field-oembed.php:282
 msgid "Width"
 msgstr "প্রস্থ"
@@ -7841,8 +7898,8 @@ msgid "Customize the map height"
 msgstr "মানচিত্রের উচ্চতা কাস্টমাইজ করুন"
 
 #: includes/fields/class-acf-field-google-map.php:230
-#: includes/fields/class-acf-field-image.php:258
-#: includes/fields/class-acf-field-image.php:294
+#: includes/fields/class-acf-field-image.php:273
+#: includes/fields/class-acf-field-image.php:309
 #: includes/fields/class-acf-field-oembed.php:294
 msgid "Height"
 msgstr "উচ্চতা"
@@ -7878,7 +7935,7 @@ msgid "Clear location"
 msgstr "অবস্থান মুছে ফেলুন"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:637
+#: includes/fields/class-acf-field-relationship.php:643
 msgid "Search"
 msgstr "অনুসন্ধান করুন"
 
@@ -7900,9 +7957,9 @@ msgstr "ফর্ম্যাটটি টেমপ্লেট ফাংশন�
 #: includes/fields/class-acf-field-date_picker.php:211
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
-#: includes/fields/class-acf-field-image.php:186
-#: includes/fields/class-acf-field-post_object.php:403
-#: includes/fields/class-acf-field-relationship.php:647
+#: includes/fields/class-acf-field-image.php:201
+#: includes/fields/class-acf-field-post_object.php:409
+#: includes/fields/class-acf-field-relationship.php:653
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -7935,90 +7992,90 @@ msgid "Time Picker"
 msgstr "সময় চয়নকারী"
 
 #. translators: counts for inactive field groups
-#: acf.php:586
+#: acf.php:587
 msgid "Inactive <span class=\"count\">(%s)</span>"
 msgid_plural "Inactive <span class=\"count\">(%s)</span>"
 msgstr[0] "নিষ্ক্রীয় <span class=\"count\"> (%s) </span>"
 msgstr[1] "নিষ্ক্রীয় <span class=\"count\"> (%s) </span>"
 
-#: acf.php:547
+#: acf.php:548
 msgid "No Fields found in Trash"
 msgstr "ট্র্যাশে কোনো ফিল্ড পাওয়া যায়নি"
 
-#: acf.php:546
+#: acf.php:547
 msgid "No Fields found"
 msgstr "কোনো ফিল্ড পাওয়া যায়নি"
 
-#: acf.php:545
+#: acf.php:546
 msgid "Search Fields"
 msgstr "অনুসন্ধান ফিল্ড সমূহ "
 
-#: acf.php:544
+#: acf.php:545
 msgid "View Field"
 msgstr "ফিল্ড দেখুন"
 
-#: acf.php:543 includes/admin/views/acf-field-group/fields.php:124
+#: acf.php:544 includes/admin/views/acf-field-group/fields.php:124
 msgid "New Field"
 msgstr "নতুন ফিল্ড "
 
-#: acf.php:542
+#: acf.php:543
 msgid "Edit Field"
 msgstr "ফিল্ড সম্পাদনা "
 
-#: acf.php:541
+#: acf.php:542
 msgid "Add New Field"
 msgstr "নতুন ফিল্ড যোগ করুন "
 
-#: acf.php:539
+#: acf.php:540
 msgid "Field"
 msgstr "ফিল্ড/ক্ষেত্র "
 
-#: acf.php:538 includes/admin/post-types/admin-field-group.php:179
+#: acf.php:539 includes/admin/post-types/admin-field-group.php:179
 #: includes/admin/post-types/admin-field-groups.php:98
 #: includes/admin/views/acf-field-group/fields.php:42
 msgid "Fields"
 msgstr "ফিল্ড সমূহ "
 
-#: acf.php:513
+#: acf.php:514
 msgid "No Field Groups found in Trash"
 msgstr "ট্র্যাশে কোনো ফিল্ড গ্রুপ পাওয়া যায়নি"
 
-#: acf.php:512
+#: acf.php:513
 msgid "No Field Groups found"
 msgstr "কোনো ফিল্ড গ্রুপ পাওয়া যায়নি"
 
-#: acf.php:511
+#: acf.php:512
 msgid "Search Field Groups"
 msgstr "ফিল্ড গ্রুপগুলো অনুসন্ধান করুন"
 
-#: acf.php:510
+#: acf.php:511
 msgid "View Field Group"
 msgstr "ফিল্ড গ্রুপ দেখুন"
 
-#: acf.php:509
+#: acf.php:510
 msgid "New Field Group"
 msgstr "নতুন ফিল্ড গ্রুপ"
 
-#: acf.php:508
+#: acf.php:509
 msgid "Edit Field Group"
 msgstr "ফিল্ড গ্রুপ সম্পাদনা করুন"
 
-#: acf.php:507
+#: acf.php:508
 msgid "Add New Field Group"
 msgstr "নতুন ফিল্ডগ্রুপ যোগ করুন"
 
-#: acf.php:506 acf.php:540
+#: acf.php:507 acf.php:541
 #: includes/admin/views/acf-post-type/advanced-settings.php:244
 #: includes/post-types/class-acf-post-type.php:102
 #: includes/post-types/class-acf-taxonomy.php:101
 msgid "Add New"
 msgstr "নতুন যোগ করুন"
 
-#: acf.php:505
+#: acf.php:506
 msgid "Field Group"
 msgstr "ফিল্ড গ্রুপ"
 
-#: acf.php:504 includes/admin/post-types/admin-field-groups.php:61
+#: acf.php:505 includes/admin/post-types/admin-field-groups.php:61
 #: includes/admin/post-types/admin-post-types.php:118
 #: includes/admin/post-types/admin-taxonomies.php:117
 msgid "Field Groups"
@@ -8035,6 +8092,6 @@ msgid "https://www.advancedcustomfields.com"
 msgstr "https://www.advancedcustomfields.com"
 
 #. Plugin Name of the plugin
-#: acf.php acf.php:347
+#: acf.php acf.php:348
 msgid "Advanced Custom Fields"
 msgstr "উন্নত কাস্টম ফিল্ড "

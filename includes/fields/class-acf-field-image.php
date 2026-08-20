@@ -48,6 +48,7 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 
 			// filters
 			add_filter( 'get_media_item_args', array( $this, 'get_media_item_args' ) );
+			add_filter( 'acf/validate_attachment/type=image', 'acf_validate_is_image_attachment', 10, 5 );
 		}
 
 
@@ -151,13 +152,27 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 			<?php endif; ?>
 			<label class="acf-basic-uploader">
 				<?php
-				acf_file_input(
-					array(
-						'name' => $field['name'],
-						'id'   => $field['id'],
-						'key'  => $field['key'],
-					)
+				$args = array(
+					'name' => $field['name'],
+					'id'   => $field['id'],
+					'key'  => $field['key'],
 				);
+
+				if ( ! empty( $field['mime_types'] ) ) {
+					$extensions        = str_replace( array( ' ', '.' ), '', $field['mime_types'] );
+					$extensions        = array_filter( explode( ',', $extensions ) );
+					$accept_extensions = array();
+
+					foreach ( $extensions as $extension ) {
+						$accept_extensions[] = '.' . $extension;
+					}
+
+					$args['accept'] = implode( ',', $accept_extensions );
+				} else {
+					$args['accept'] = 'image/*';
+				}
+
+				acf_file_input( $args );
 				?>
 			</label>
 		<?php else : ?>
@@ -430,6 +445,18 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 		 * @return boolean The validity status.
 		 */
 		public function validate_value( $valid, $value, $field, $input ) {
+			if ( $valid !== true ) {
+				return $valid;
+			}
+
+			if ( empty( $value ) ) {
+				return $valid;
+			}
+
+			if ( is_numeric( $value ) && ! wp_attachment_is_image( $value ) ) {
+				return __( 'File must be a valid image.', 'acf' );
+			}
+
 			return acf_get_field_type( 'file' )->validate_value( $valid, $value, $field, $input );
 		}
 
