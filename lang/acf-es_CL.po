@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-08-19T14:59:20+00:00\n"
+"PO-Revision-Date: 2026-08-27T18:24:28+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: es_CL\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,11 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
-#: includes/api/api-helpers.php:3292
+#: src/Site_Health/Site_Health.php:623
+msgid "Field Groups by Post Type"
+msgstr ""
+
+#: includes/api/api-helpers.php:3306
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr "El archivo tiene que ser una imagen válida."
@@ -82,7 +86,7 @@ msgstr "Por favor, introduce una dirección de correo electrónico válida."
 msgid "Email address is required."
 msgstr "Es obligatorio introducir una dirección de correo electrónico."
 
-#: src/Site_Health/Site_Health.php:1009
+#: src/Site_Health/Site_Health.php:1030
 msgid "Datastore Enabled"
 msgstr "Datastore activado"
 
@@ -100,61 +104,61 @@ msgid "Invalid site ID."
 msgstr "ID de sitio no válido."
 
 #. translators: 1: number of post types, 2: number of blocks using ACF schema
-#: src/Site_Health/Site_Health.php:999
+#: src/Site_Health/Site_Health.php:1020
 msgid "%1$d Post Types, %2$d Blocks"
 msgstr "%1$d tipos de contenido, %2$d bloques"
 
-#: src/Site_Health/Site_Health.php:996
+#: src/Site_Health/Site_Health.php:1017
 msgid "Objects with Schema Support"
 msgstr "Objetos con compatibilidad con Schema"
 
-#: src/Site_Health/Site_Health.php:984
+#: src/Site_Health/Site_Health.php:1005
 msgid "Schema Support"
 msgstr "Compatible con Schema"
 
-#: src/Site_Health/Site_Health.php:975
+#: src/Site_Health/Site_Health.php:996
 msgid "AI Execution Errors"
 msgstr "Errores de ejecución de la IA"
 
-#: src/Site_Health/Site_Health.php:968
+#: src/Site_Health/Site_Health.php:989
 msgid "AI Actions Executed"
 msgstr "Acciones de la IA ejecutadas"
 
 #. translators: %s - number of successful tasks performed
-#: src/Site_Health/Site_Health.php:963
+#: src/Site_Health/Site_Health.php:984
 msgid "%s (Successful task performed)"
 msgid_plural "%s (Successful tasks performed)"
 msgstr[0] "%s (tarea realizada correctamente)"
 msgstr[1] "%s (tareas realizadas correctamente)"
 
 #. translators: 1: field group count, 2: post type count, 3: taxonomy count
-#: src/Site_Health/Site_Health.php:953
+#: src/Site_Health/Site_Health.php:974
 msgid "%1$d Field Groups, %2$d Custom Post Types, %3$d Taxonomies"
 msgstr ""
 "%1$d Grupos de campos, %2$d Tipos de contenido personalizados, %3$d "
 "Taxonomías"
 
-#: src/Site_Health/Site_Health.php:950
+#: src/Site_Health/Site_Health.php:971
 msgid "AI-Ready Objects"
 msgstr "Objetos listos para la IA"
 
-#: src/Site_Health/Site_Health.php:940
+#: src/Site_Health/Site_Health.php:961
 msgid "Not available (requires WordPress 6.9+)"
 msgstr "No disponible (requiere WordPress 6.9+)"
 
-#: src/Site_Health/Site_Health.php:939
+#: src/Site_Health/Site_Health.php:960
 msgid "Abilities API"
 msgstr "API de habilidades"
 
-#: src/Site_Health/Site_Health.php:929
+#: src/Site_Health/Site_Health.php:950
 msgid "AI Support"
 msgstr "Compatibilidad con IA"
 
-#: src/Site_Health/Site_Health.php:396
+#: src/Site_Health/Site_Health.php:397
 msgid "Disabled"
 msgstr "Desactivado"
 
-#: src/Site_Health/Site_Health.php:395
+#: src/Site_Health/Site_Health.php:396
 msgid "Enabled"
 msgstr "Activado"
 
@@ -579,7 +583,7 @@ msgstr "Notas"
 msgid "Experimental"
 msgstr "En fase de pruebas"
 
-#: src/Site_Health/Site_Health.php:860
+#: src/Site_Health/Site_Health.php:881
 msgid "Blocks Using Auto Inline Editing"
 msgstr "Bloques que utilizan edición automática integrada"
 
@@ -732,19 +736,19 @@ msgstr "Editar grupos de campos de ACF"
 msgid "Get 4 months free on any WP Engine plan"
 msgstr "Obtén 4 meses gratis en cualquier plan de WP Engine"
 
-#: src/Site_Health/Site_Health.php:643
+#: src/Site_Health/Site_Health.php:664
 msgid "Number of Field Groups with Blocks and Other Locations"
 msgstr "Número de grupos de campos con bloques y otras ubicaciones"
 
-#: src/Site_Health/Site_Health.php:638
+#: src/Site_Health/Site_Health.php:659
 msgid "Number of Field Groups with Multiple Block Locations"
 msgstr "Número de grupos de campos con múltiples ubicaciones de bloques"
 
-#: src/Site_Health/Site_Health.php:633
+#: src/Site_Health/Site_Health.php:654
 msgid "Number of Field Groups with a Single Block Location"
 msgstr "Número de grupos de campos con una sola ubicación de bloque"
 
-#: src/Site_Health/Site_Health.php:602
+#: src/Site_Health/Site_Health.php:610
 msgid "All Location Rules"
 msgstr "Todas las reglas de ubicación"
 
@@ -774,7 +778,7 @@ msgstr ""
 msgid "are developed and maintained by"
 msgstr "lo desarrollan y mantienen"
 
-#: src/Site_Health/Site_Health.php:410
+#: src/Site_Health/Site_Health.php:411
 msgid "Update Source"
 msgstr "Actualizar la fuente"
 
@@ -818,7 +822,7 @@ msgstr ""
 "contexto especial sin acceso a ninguna variable super global como $_POST o "
 "$_GET."
 
-#: src/Site_Health/Site_Health.php:411
+#: src/Site_Health/Site_Health.php:412
 msgid "wordpress.org"
 msgstr "wordpress.org"
 
@@ -1556,7 +1560,7 @@ msgstr "Argumentos de solicitud no válidos."
 msgid "Sorry, you do not have permission to do that."
 msgstr "Lo siento, no tienes permisos para hacer eso."
 
-#: src/Site_Health/Site_Health.php:855
+#: src/Site_Health/Site_Health.php:876
 msgid "Blocks Using Post Meta"
 msgstr "Bloques con Post Meta"
 
@@ -2311,183 +2315,183 @@ msgstr ""
 msgid "Icon Picker"
 msgstr "Selector de íconos"
 
-#: src/Site_Health/Site_Health.php:921
+#: src/Site_Health/Site_Health.php:942
 msgid "JSON Load Paths"
 msgstr "Rutas de carga JSON"
 
-#: src/Site_Health/Site_Health.php:915
+#: src/Site_Health/Site_Health.php:936
 msgid "JSON Save Paths"
 msgstr "Rutas de guardado JSON"
 
-#: src/Site_Health/Site_Health.php:906
+#: src/Site_Health/Site_Health.php:927
 msgid "Registered ACF Forms"
 msgstr "Formularios ACF registrados"
 
-#: src/Site_Health/Site_Health.php:900
+#: src/Site_Health/Site_Health.php:921
 msgid "Shortcode Enabled"
 msgstr "Shortcode activado"
 
-#: src/Site_Health/Site_Health.php:892
+#: src/Site_Health/Site_Health.php:913
 msgid "Field Settings Tabs Enabled"
 msgstr "Pestañas de ajustes de campo activadas"
 
-#: src/Site_Health/Site_Health.php:884
+#: src/Site_Health/Site_Health.php:905
 msgid "Field Type Modal Enabled"
 msgstr "Tipo de campo emergente activado"
 
-#: src/Site_Health/Site_Health.php:876
+#: src/Site_Health/Site_Health.php:897
 msgid "Admin UI Enabled"
 msgstr "Interfaz de administrador activada"
 
-#: src/Site_Health/Site_Health.php:867
+#: src/Site_Health/Site_Health.php:888
 msgid "Block Preloading Enabled"
 msgstr "Precarga de bloques activada"
 
-#: src/Site_Health/Site_Health.php:850
+#: src/Site_Health/Site_Health.php:871
 msgid "Blocks Per ACF Block Version"
 msgstr "Bloques por versión de bloque ACF"
 
-#: src/Site_Health/Site_Health.php:845
+#: src/Site_Health/Site_Health.php:866
 msgid "Blocks Per API Version"
 msgstr "Bloques por versión de API"
 
-#: src/Site_Health/Site_Health.php:809
+#: src/Site_Health/Site_Health.php:830
 msgid "Registered ACF Blocks"
 msgstr "Bloques ACF registrados"
 
-#: src/Site_Health/Site_Health.php:798
+#: src/Site_Health/Site_Health.php:819
 msgid "Light"
 msgstr "Claro"
 
-#: src/Site_Health/Site_Health.php:798
+#: src/Site_Health/Site_Health.php:819
 msgid "Standard"
 msgstr "Estándar"
 
-#: src/Site_Health/Site_Health.php:797
+#: src/Site_Health/Site_Health.php:818
 msgid "REST API Format"
 msgstr "Formato de la API REST"
 
-#: src/Site_Health/Site_Health.php:789
+#: src/Site_Health/Site_Health.php:810
 msgid "Registered Options Pages (PHP)"
 msgstr "Páginas de opciones registradas (PHP)"
 
-#: src/Site_Health/Site_Health.php:775
+#: src/Site_Health/Site_Health.php:796
 msgid "Registered Options Pages (JSON)"
 msgstr "Páginas de opciones registradas (JSON)"
 
-#: src/Site_Health/Site_Health.php:770
+#: src/Site_Health/Site_Health.php:791
 msgid "Registered Options Pages (UI)"
 msgstr "Páginas de opciones registradas (IU)"
 
-#: src/Site_Health/Site_Health.php:740
+#: src/Site_Health/Site_Health.php:761
 msgid "Options Pages UI Enabled"
 msgstr "Interfaz de usuario de las páginas de opciones activada"
 
-#: src/Site_Health/Site_Health.php:732
+#: src/Site_Health/Site_Health.php:753
 msgid "Registered Taxonomies (JSON)"
 msgstr "Taxonomías registradas (JSON)"
 
-#: src/Site_Health/Site_Health.php:720
+#: src/Site_Health/Site_Health.php:741
 msgid "Registered Taxonomies (UI)"
 msgstr "Taxonomías registradas (IU)"
 
-#: src/Site_Health/Site_Health.php:708
+#: src/Site_Health/Site_Health.php:729
 msgid "Registered Post Types (JSON)"
 msgstr "Tipos de contenido registrados (JSON)"
 
-#: src/Site_Health/Site_Health.php:696
+#: src/Site_Health/Site_Health.php:717
 msgid "Registered Post Types (UI)"
 msgstr "Tipos de contenido registrados (UI)"
 
-#: src/Site_Health/Site_Health.php:683
+#: src/Site_Health/Site_Health.php:704
 msgid "Post Types and Taxonomies Enabled"
 msgstr "Tipos de contenido y taxonomías activados"
 
-#: src/Site_Health/Site_Health.php:676
+#: src/Site_Health/Site_Health.php:697
 msgid "Number of Third Party Fields by Field Type"
 msgstr "Número de campos de terceros por tipo de campo"
 
-#: src/Site_Health/Site_Health.php:671
+#: src/Site_Health/Site_Health.php:692
 msgid "Number of Fields by Field Type"
 msgstr "Número de campos por tipo de campo"
 
-#: src/Site_Health/Site_Health.php:564
+#: src/Site_Health/Site_Health.php:565
 msgid "Field Groups Enabled for GraphQL"
 msgstr "Grupos de campos activados para GraphQL"
 
-#: src/Site_Health/Site_Health.php:551
+#: src/Site_Health/Site_Health.php:552
 msgid "Field Groups Enabled for REST API"
 msgstr "Grupos de campos activados para la API REST"
 
-#: src/Site_Health/Site_Health.php:539
+#: src/Site_Health/Site_Health.php:540
 msgid "Registered Field Groups (JSON)"
 msgstr "Grupos de campos registrados (JSON)"
 
-#: src/Site_Health/Site_Health.php:527
+#: src/Site_Health/Site_Health.php:528
 msgid "Registered Field Groups (PHP)"
 msgstr "Grupos de campos registrados (PHP)"
 
-#: src/Site_Health/Site_Health.php:515
+#: src/Site_Health/Site_Health.php:516
 msgid "Registered Field Groups (UI)"
 msgstr "Grupos de campos registrados (UI)"
 
-#: src/Site_Health/Site_Health.php:503
+#: src/Site_Health/Site_Health.php:504
 msgid "Active Plugins"
 msgstr "Plugins activos"
 
-#: src/Site_Health/Site_Health.php:477
+#: src/Site_Health/Site_Health.php:478
 msgid "Parent Theme"
 msgstr "Tema principal"
 
-#: src/Site_Health/Site_Health.php:466
+#: src/Site_Health/Site_Health.php:467
 msgid "Active Theme"
 msgstr "Tema activo"
 
-#: src/Site_Health/Site_Health.php:457
+#: src/Site_Health/Site_Health.php:458
 msgid "Is Multisite"
 msgstr "Es multisitio"
 
-#: src/Site_Health/Site_Health.php:452
+#: src/Site_Health/Site_Health.php:453
 msgid "MySQL Version"
 msgstr "Versión de MySQL"
 
-#: src/Site_Health/Site_Health.php:447
+#: src/Site_Health/Site_Health.php:448
 msgid "WordPress Version"
 msgstr "Versión de WordPress"
 
-#: src/Site_Health/Site_Health.php:440
+#: src/Site_Health/Site_Health.php:441
 msgid "Subscription Expiry Date"
 msgstr "Fecha de caducidad de la suscripción"
 
-#: src/Site_Health/Site_Health.php:432
+#: src/Site_Health/Site_Health.php:433
 msgid "License Status"
 msgstr "Estado de la licencia"
 
-#: src/Site_Health/Site_Health.php:427
+#: src/Site_Health/Site_Health.php:428
 msgid "License Type"
 msgstr "Tipo de licencia"
 
-#: src/Site_Health/Site_Health.php:422
+#: src/Site_Health/Site_Health.php:423
 msgid "Licensed URL"
 msgstr "URL con licencia"
 
-#: src/Site_Health/Site_Health.php:416
+#: src/Site_Health/Site_Health.php:417
 msgid "License Activated"
 msgstr "Licencia activada"
 
-#: src/Site_Health/Site_Health.php:405
+#: src/Site_Health/Site_Health.php:406
 msgid "Free"
 msgstr "Gratis"
 
-#: src/Site_Health/Site_Health.php:404
+#: src/Site_Health/Site_Health.php:405
 msgid "Plugin Type"
 msgstr "Tipo de plugin"
 
-#: src/Site_Health/Site_Health.php:399
+#: src/Site_Health/Site_Health.php:400
 msgid "Plugin Version"
 msgstr "Versión del plugin"
 
-#: src/Site_Health/Site_Health.php:368
+#: src/Site_Health/Site_Health.php:369
 msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
@@ -3444,7 +3448,7 @@ msgid "Clone"
 msgstr "Clon"
 
 #: includes/admin/views/global/navigation.php:96 includes/fields.php:341
-#: src/Site_Health/Site_Health.php:405
+#: src/Site_Health/Site_Health.php:406
 msgid "PRO"
 msgstr "PRO"
 
@@ -5430,7 +5434,7 @@ msgstr ""
 "y gestiónalos con ACF. <a href=\"%s\">Empieza aquí</a>."
 
 #: includes/admin/admin.php:56 includes/admin/admin.php:398
-#: src/Site_Health/Site_Health.php:367
+#: src/Site_Health/Site_Health.php:368
 msgid "ACF"
 msgstr "ACF"
 
@@ -7050,7 +7054,7 @@ msgstr "Editar"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Los cambios que has realizado se perderán si navegas hacia otra página"
 
-#: includes/api/api-helpers.php:3434
+#: includes/api/api-helpers.php:3448
 msgid "File type must be %s."
 msgstr "El tipo de archivo debe ser %s."
 
@@ -7059,31 +7063,31 @@ msgstr "El tipo de archivo debe ser %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3431
+#: includes/api/api-helpers.php:3445
 msgid "or"
 msgstr "o"
 
-#: includes/api/api-helpers.php:3407
+#: includes/api/api-helpers.php:3421
 msgid "File size must not exceed %s."
 msgstr "El tamaño del archivo no debe ser mayor de %s."
 
-#: includes/api/api-helpers.php:3403
+#: includes/api/api-helpers.php:3417
 msgid "File size must be at least %s."
 msgstr "El tamaño de archivo debe ser al menos %s."
 
-#: includes/api/api-helpers.php:3390
+#: includes/api/api-helpers.php:3404
 msgid "Image height must not exceed %dpx."
 msgstr "La altura de la imagen no debe exceder %dpx."
 
-#: includes/api/api-helpers.php:3386
+#: includes/api/api-helpers.php:3400
 msgid "Image height must be at least %dpx."
 msgstr "La altura de la imagen debe ser al menos %dpx."
 
-#: includes/api/api-helpers.php:3374
+#: includes/api/api-helpers.php:3388
 msgid "Image width must not exceed %dpx."
 msgstr "El ancho de la imagen no debe exceder %dpx."
 
-#: includes/api/api-helpers.php:3370
+#: includes/api/api-helpers.php:3384
 msgid "Image width must be at least %dpx."
 msgstr "El ancho de la imagen debe ser al menos %dpx."
 
@@ -8244,13 +8248,13 @@ msgstr "Mensaje"
 
 #: includes/assets.php:357 includes/fields/class-acf-field-true_false.php:88
 #: includes/fields/class-acf-field-true_false.php:184
-#: src/Site_Health/Site_Health.php:394 src/Site_Health/Site_Health.php:458
+#: src/Site_Health/Site_Health.php:395 src/Site_Health/Site_Health.php:459
 msgid "No"
 msgstr "No"
 
 #: includes/assets.php:356 includes/fields/class-acf-field-true_false.php:85
 #: includes/fields/class-acf-field-true_false.php:168
-#: src/Site_Health/Site_Health.php:393 src/Site_Health/Site_Health.php:458
+#: src/Site_Health/Site_Health.php:394 src/Site_Health/Site_Health.php:459
 msgid "Yes"
 msgstr "Sí"
 

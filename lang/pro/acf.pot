@@ -7,7 +7,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language-Team: WP Engine <support@advancedcustomfields.com>\n"
-"POT-Creation-Date: 2026-08-19 14:59+0000\n"
+"POT-Creation-Date: 2026-08-27 18:24+0000\n"
 "Report-Msgid-Bugs-To: https://support.advancedcustomfields.com\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
@@ -44,84 +44,101 @@ msgstr ""
 msgid "A valid license is required to edit field groups assigned to a block."
 msgstr ""
 
-#: pro/blocks-auto-inline-editing.php:229, pro/blocks.php:2208
+#: pro/blocks-auto-inline-editing.php:229, pro/blocks.php:2418
 msgid "Type to edit..."
 msgstr ""
 
 #. translators: %s - The block name.
-#: pro/blocks.php:225
+#: pro/blocks.php:231
 msgid "A field defined in block \"%s\" is missing a \"name\" and will be skipped."
 msgstr ""
 
 #. translators: %s - The block title.
-#: pro/blocks.php:283
+#: pro/blocks.php:289
 msgid "Block: %s"
 msgstr ""
 
-#: pro/blocks.php:340
+#: pro/blocks.php:346
 msgid "Block type name is required."
 msgstr ""
 
 #. translators: The name of the block type
-#: pro/blocks.php:348
+#: pro/blocks.php:354
 msgid "Block type \"%s\" is already registered."
 msgstr ""
 
-#: pro/blocks.php:1144
+#: pro/blocks.php:602
+msgid "Learn more"
+msgstr ""
+
+#. translators: %1$s - Plugin name, %2$s - Link to documentation.
+#: pro/blocks.php:614
+msgid "%1$s When you update to WordPress 7.1, ACF Blocks that show fields inside the block while editing will be affected. Migrate the following blocks to ACF Blocks V3 before updating, or install the compatibility plugin if you need more time. %2$s"
+msgstr ""
+
+#: pro/blocks.php:607
+msgid "%1$s WordPress 7.1 has changed how the block editor works. ACF Blocks that showed fields inside the block while editing will now only show them in the sidebar. Migrate the following blocks to ACF Blocks V3, or install the compatibility plugin for a temporary fix. %2$s"
+msgstr ""
+
+#: pro/blocks.php:634
+msgid "Dismiss permanently"
+msgstr ""
+
+#: pro/blocks.php:1354
 msgid "The render template for this ACF Block was not found"
 msgstr ""
 
-#: pro/blocks.php:1196
+#: pro/blocks.php:1406
 msgid "Switch to Edit"
 msgstr ""
 
-#: pro/blocks.php:1197
+#: pro/blocks.php:1407
 msgid "Switch to Preview"
 msgstr ""
 
-#: pro/blocks.php:1198
+#: pro/blocks.php:1408
 msgid "Change content alignment"
 msgstr ""
 
-#: pro/blocks.php:1199
+#: pro/blocks.php:1409
 msgid "An error occurred when loading the preview for this block."
 msgstr ""
 
-#: pro/blocks.php:1200
+#: pro/blocks.php:1410
 msgid "An error occurred when loading the block in edit mode."
 msgstr ""
 
-#: pro/blocks.php:1201
+#: pro/blocks.php:1411
 msgid "Edit Block"
 msgstr ""
 
-#: pro/blocks.php:1202
+#: pro/blocks.php:1412
 msgid "Open Expanded Editor"
 msgstr ""
 
-#: pro/blocks.php:1203
+#: pro/blocks.php:1413
 msgid "The preview for this block couldn’t be loaded. Review its content or settings for issues."
 msgstr ""
 
-#: pro/blocks.php:1204
+#: pro/blocks.php:1414
 msgid "ACF Block"
 msgstr ""
 
-#: pro/blocks.php:1205, pro/admin/views/acf-ui-options-page/create-options-page-modal.php:63
+#: pro/blocks.php:1415, pro/admin/views/acf-ui-options-page/create-options-page-modal.php:63
 msgid "Done"
 msgstr ""
 
 #. translators: %s: Block type title
-#: pro/blocks.php:1208
+#: pro/blocks.php:1418
 msgid "%s settings"
 msgstr ""
 
-#: pro/blocks.php:1501
+#: pro/blocks.php:1711
 msgid "This block contains no editable fields."
 msgstr ""
 
 #. translators: %s: an admin URL to the field group edit screen
-#: pro/blocks.php:1507
+#: pro/blocks.php:1717
 msgid "Assign a <a href=\"%s\" target=\"_blank\">field group</a> to add fields to this block."
 msgstr ""
 

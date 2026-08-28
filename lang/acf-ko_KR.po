@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-08-19T14:59:20+00:00\n"
+"PO-Revision-Date: 2026-08-27T18:24:28+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ko_KR\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,11 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 
-#: includes/api/api-helpers.php:3292
+#: src/Site_Health/Site_Health.php:623
+msgid "Field Groups by Post Type"
+msgstr ""
+
+#: includes/api/api-helpers.php:3306
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr ""
@@ -78,7 +82,7 @@ msgstr ""
 msgid "Email address is required."
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:1009
+#: src/Site_Health/Site_Health.php:1030
 msgid "Datastore Enabled"
 msgstr ""
 
@@ -93,58 +97,58 @@ msgid "Invalid site ID."
 msgstr ""
 
 #. translators: 1: number of post types, 2: number of blocks using ACF schema
-#: src/Site_Health/Site_Health.php:999
+#: src/Site_Health/Site_Health.php:1020
 msgid "%1$d Post Types, %2$d Blocks"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:996
+#: src/Site_Health/Site_Health.php:1017
 msgid "Objects with Schema Support"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:984
+#: src/Site_Health/Site_Health.php:1005
 msgid "Schema Support"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:975
+#: src/Site_Health/Site_Health.php:996
 msgid "AI Execution Errors"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:968
+#: src/Site_Health/Site_Health.php:989
 msgid "AI Actions Executed"
 msgstr ""
 
 #. translators: %s - number of successful tasks performed
-#: src/Site_Health/Site_Health.php:963
+#: src/Site_Health/Site_Health.php:984
 msgid "%s (Successful task performed)"
 msgid_plural "%s (Successful tasks performed)"
 msgstr[0] ""
 
 #. translators: 1: field group count, 2: post type count, 3: taxonomy count
-#: src/Site_Health/Site_Health.php:953
+#: src/Site_Health/Site_Health.php:974
 msgid "%1$d Field Groups, %2$d Custom Post Types, %3$d Taxonomies"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:950
+#: src/Site_Health/Site_Health.php:971
 msgid "AI-Ready Objects"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:940
+#: src/Site_Health/Site_Health.php:961
 msgid "Not available (requires WordPress 6.9+)"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:939
+#: src/Site_Health/Site_Health.php:960
 msgid "Abilities API"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:929
+#: src/Site_Health/Site_Health.php:950
 msgid "AI Support"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:396
+#: src/Site_Health/Site_Health.php:397
 msgid "Disabled"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:395
+#: src/Site_Health/Site_Health.php:396
 msgid "Enabled"
 msgstr ""
 
@@ -518,7 +522,7 @@ msgstr ""
 msgid "Experimental"
 msgstr ""
 
-#: src/Site_Health/Site_Health.php:860
+#: src/Site_Health/Site_Health.php:881
 msgid "Blocks Using Auto Inline Editing"
 msgstr ""
 
@@ -664,19 +668,19 @@ msgstr "ACF 필드 그룹 편집"
 msgid "Get 4 months free on any WP Engine plan"
 msgstr "모든 WP 엔진 요금제에서 4개월 무료 이용"
 
-#: src/Site_Health/Site_Health.php:643
+#: src/Site_Health/Site_Health.php:664
 msgid "Number of Field Groups with Blocks and Other Locations"
 msgstr "블록 및 기타 위치가 있는 필드 그룹 수"
 
-#: src/Site_Health/Site_Health.php:638
+#: src/Site_Health/Site_Health.php:659
 msgid "Number of Field Groups with Multiple Block Locations"
 msgstr "여러 블록 위치가 있는 필드 그룹 수"
 
-#: src/Site_Health/Site_Health.php:633
+#: src/Site_Health/Site_Health.php:654
 msgid "Number of Field Groups with a Single Block Location"
 msgstr "단일 블록 위치가 있는 필드 그룹 수"
 
-#: src/Site_Health/Site_Health.php:602
+#: src/Site_Health/Site_Health.php:610
 msgid "All Location Rules"
 msgstr "모든 위치 규칙"
 
@@ -704,7 +708,7 @@ msgstr ""
 msgid "are developed and maintained by"
 msgstr "에 의해 개발 및 유지 관리됩니다."
 
-#: src/Site_Health/Site_Health.php:410
+#: src/Site_Health/Site_Health.php:411
 msgid "Update Source"
 msgstr "출처 업데이트"
 
@@ -742,7 +746,7 @@ msgstr ""
 "콜백은 $_POST 또는 $_GET과 같은 슈퍼글로브에 액세스하지 않고 특수한 컨텍스트"
 "에서 실행됩니다."
 
-#: src/Site_Health/Site_Health.php:411
+#: src/Site_Health/Site_Health.php:412
 msgid "wordpress.org"
 msgstr "wordpress.org"
 
@@ -1476,7 +1480,7 @@ msgstr "잘못된 요청 인수입니다."
 msgid "Sorry, you do not have permission to do that."
 msgstr "죄송합니다. 해당 권한이 없습니다."
 
-#: src/Site_Health/Site_Health.php:855
+#: src/Site_Health/Site_Health.php:876
 msgid "Blocks Using Post Meta"
 msgstr "포스트 메타를 사용한 블록"
 
@@ -2230,183 +2234,183 @@ msgstr ""
 msgid "Icon Picker"
 msgstr "아이콘 선택기"
 
-#: src/Site_Health/Site_Health.php:921
+#: src/Site_Health/Site_Health.php:942
 msgid "JSON Load Paths"
 msgstr "JSON 로드 경로"
 
-#: src/Site_Health/Site_Health.php:915
+#: src/Site_Health/Site_Health.php:936
 msgid "JSON Save Paths"
 msgstr "JSON 경로 저장"
 
-#: src/Site_Health/Site_Health.php:906
+#: src/Site_Health/Site_Health.php:927
 msgid "Registered ACF Forms"
 msgstr "등록된 ACF 양식"
 
-#: src/Site_Health/Site_Health.php:900
+#: src/Site_Health/Site_Health.php:921
 msgid "Shortcode Enabled"
 msgstr "쇼트코드 사용"
 
-#: src/Site_Health/Site_Health.php:892
+#: src/Site_Health/Site_Health.php:913
 msgid "Field Settings Tabs Enabled"
 msgstr "필드 설정 탭 사용됨"
 
-#: src/Site_Health/Site_Health.php:884
+#: src/Site_Health/Site_Health.php:905
 msgid "Field Type Modal Enabled"
 msgstr "필드 유형 모달 사용됨"
 
-#: src/Site_Health/Site_Health.php:876
+#: src/Site_Health/Site_Health.php:897
 msgid "Admin UI Enabled"
 msgstr "관리자 UI 활성화됨"
 
-#: src/Site_Health/Site_Health.php:867
+#: src/Site_Health/Site_Health.php:888
 msgid "Block Preloading Enabled"
 msgstr "블록 사전 로드 활성화됨"
 
-#: src/Site_Health/Site_Health.php:850
+#: src/Site_Health/Site_Health.php:871
 msgid "Blocks Per ACF Block Version"
 msgstr "ACF 블록 버전당 블록 수"
 
-#: src/Site_Health/Site_Health.php:845
+#: src/Site_Health/Site_Health.php:866
 msgid "Blocks Per API Version"
 msgstr "API 버전별 블록 수"
 
-#: src/Site_Health/Site_Health.php:809
+#: src/Site_Health/Site_Health.php:830
 msgid "Registered ACF Blocks"
 msgstr "등록된 ACF 블록"
 
-#: src/Site_Health/Site_Health.php:798
+#: src/Site_Health/Site_Health.php:819
 msgid "Light"
 msgstr "Light"
 
-#: src/Site_Health/Site_Health.php:798
+#: src/Site_Health/Site_Health.php:819
 msgid "Standard"
 msgstr "표준"
 
-#: src/Site_Health/Site_Health.php:797
+#: src/Site_Health/Site_Health.php:818
 msgid "REST API Format"
 msgstr "REST API 형식"
 
-#: src/Site_Health/Site_Health.php:789
+#: src/Site_Health/Site_Health.php:810
 msgid "Registered Options Pages (PHP)"
 msgstr "등록된 옵션 페이지(PHP)"
 
-#: src/Site_Health/Site_Health.php:775
+#: src/Site_Health/Site_Health.php:796
 msgid "Registered Options Pages (JSON)"
 msgstr "등록된 옵션 페이지(JSON)"
 
-#: src/Site_Health/Site_Health.php:770
+#: src/Site_Health/Site_Health.php:791
 msgid "Registered Options Pages (UI)"
 msgstr "등록된 옵션 페이지(UI)"
 
-#: src/Site_Health/Site_Health.php:740
+#: src/Site_Health/Site_Health.php:761
 msgid "Options Pages UI Enabled"
 msgstr "옵션 페이지 UI 활성화됨"
 
-#: src/Site_Health/Site_Health.php:732
+#: src/Site_Health/Site_Health.php:753
 msgid "Registered Taxonomies (JSON)"
 msgstr "등록된 분류(JSON)"
 
-#: src/Site_Health/Site_Health.php:720
+#: src/Site_Health/Site_Health.php:741
 msgid "Registered Taxonomies (UI)"
 msgstr "등록된 분류(UI)"
 
-#: src/Site_Health/Site_Health.php:708
+#: src/Site_Health/Site_Health.php:729
 msgid "Registered Post Types (JSON)"
 msgstr "등록된 글 유형(JSON)"
 
-#: src/Site_Health/Site_Health.php:696
+#: src/Site_Health/Site_Health.php:717
 msgid "Registered Post Types (UI)"
 msgstr "등록된 글 유형(UI)"
 
-#: src/Site_Health/Site_Health.php:683
+#: src/Site_Health/Site_Health.php:704
 msgid "Post Types and Taxonomies Enabled"
 msgstr "게시물 유형 및 택소노미 사용됨"
 
-#: src/Site_Health/Site_Health.php:676
+#: src/Site_Health/Site_Health.php:697
 msgid "Number of Third Party Fields by Field Type"
 msgstr "필드 유형별 타사 필드 수"
 
-#: src/Site_Health/Site_Health.php:671
+#: src/Site_Health/Site_Health.php:692
 msgid "Number of Fields by Field Type"
 msgstr "필드 유형별 필드 수"
 
-#: src/Site_Health/Site_Health.php:564
+#: src/Site_Health/Site_Health.php:565
 msgid "Field Groups Enabled for GraphQL"
 msgstr "GraphQL에 사용 가능한 필드 그룹"
 
-#: src/Site_Health/Site_Health.php:551
+#: src/Site_Health/Site_Health.php:552
 msgid "Field Groups Enabled for REST API"
 msgstr "REST API에 필드 그룹 사용 가능"
 
-#: src/Site_Health/Site_Health.php:539
+#: src/Site_Health/Site_Health.php:540
 msgid "Registered Field Groups (JSON)"
 msgstr "등록된 필드 그룹(JSON)"
 
-#: src/Site_Health/Site_Health.php:527
+#: src/Site_Health/Site_Health.php:528
 msgid "Registered Field Groups (PHP)"
 msgstr "등록된 필드 그룹(PHP)"
 
-#: src/Site_Health/Site_Health.php:515
+#: src/Site_Health/Site_Health.php:516
 msgid "Registered Field Groups (UI)"
 msgstr "등록된 필드 그룹(UI)"
 
-#: src/Site_Health/Site_Health.php:503
+#: src/Site_Health/Site_Health.php:504
 msgid "Active Plugins"
 msgstr "활성 플러그인"
 
-#: src/Site_Health/Site_Health.php:477
+#: src/Site_Health/Site_Health.php:478
 msgid "Parent Theme"
 msgstr "부모 테마"
 
-#: src/Site_Health/Site_Health.php:466
+#: src/Site_Health/Site_Health.php:467
 msgid "Active Theme"
 msgstr "활성 테마"
 
-#: src/Site_Health/Site_Health.php:457
+#: src/Site_Health/Site_Health.php:458
 msgid "Is Multisite"
 msgstr "다중 사이트임"
 
-#: src/Site_Health/Site_Health.php:452
+#: src/Site_Health/Site_Health.php:453
 msgid "MySQL Version"
 msgstr "MySQL 버전"
 
-#: src/Site_Health/Site_Health.php:447
+#: src/Site_Health/Site_Health.php:448
 msgid "WordPress Version"
 msgstr "워드프레스 버전"
 
-#: src/Site_Health/Site_Health.php:440
+#: src/Site_Health/Site_Health.php:441
 msgid "Subscription Expiry Date"
 msgstr "구독 만료 날짜"
 
-#: src/Site_Health/Site_Health.php:432
+#: src/Site_Health/Site_Health.php:433
 msgid "License Status"
 msgstr "라이선스 상태"
 
-#: src/Site_Health/Site_Health.php:427
+#: src/Site_Health/Site_Health.php:428
 msgid "License Type"
 msgstr "라이선스 유형"
 
-#: src/Site_Health/Site_Health.php:422
+#: src/Site_Health/Site_Health.php:423
 msgid "Licensed URL"
 msgstr "라이선스 URL"
 
-#: src/Site_Health/Site_Health.php:416
+#: src/Site_Health/Site_Health.php:417
 msgid "License Activated"
 msgstr "라이선스 활성화됨"
 
-#: src/Site_Health/Site_Health.php:405
+#: src/Site_Health/Site_Health.php:406
 msgid "Free"
 msgstr "무료"
 
-#: src/Site_Health/Site_Health.php:404
+#: src/Site_Health/Site_Health.php:405
 msgid "Plugin Type"
 msgstr "플러그인 유형"
 
-#: src/Site_Health/Site_Health.php:399
+#: src/Site_Health/Site_Health.php:400
 msgid "Plugin Version"
 msgstr "플러그인 버전"
 
-#: src/Site_Health/Site_Health.php:368
+#: src/Site_Health/Site_Health.php:369
 msgid ""
 "This section contains debug information about your ACF configuration which "
 "can be useful to provide to support."
@@ -3323,7 +3327,7 @@ msgid "Clone"
 msgstr "복제"
 
 #: includes/admin/views/global/navigation.php:96 includes/fields.php:341
-#: src/Site_Health/Site_Health.php:405
+#: src/Site_Health/Site_Health.php:406
 msgid "PRO"
 msgstr "프로"
 
@@ -5221,7 +5225,7 @@ msgstr ""
 "다. <a href=\"%s\">시작하기</a>."
 
 #: includes/admin/admin.php:56 includes/admin/admin.php:398
-#: src/Site_Health/Site_Health.php:367
+#: src/Site_Health/Site_Health.php:368
 msgid "ACF"
 msgstr "ACF"
 
@@ -6812,7 +6816,7 @@ msgstr "편집하기"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "페이지를 벗어나면 변경 한 내용이 손실 됩니다"
 
-#: includes/api/api-helpers.php:3434
+#: includes/api/api-helpers.php:3448
 msgid "File type must be %s."
 msgstr "파일 유형은 %s여야 합니다."
 
@@ -6821,31 +6825,31 @@ msgstr "파일 유형은 %s여야 합니다."
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3431
+#: includes/api/api-helpers.php:3445
 msgid "or"
 msgstr "또는"
 
-#: includes/api/api-helpers.php:3407
+#: includes/api/api-helpers.php:3421
 msgid "File size must not exceed %s."
 msgstr "파일 크기는 %s를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3403
+#: includes/api/api-helpers.php:3417
 msgid "File size must be at least %s."
 msgstr "파일 크기는 %s 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:3390
+#: includes/api/api-helpers.php:3404
 msgid "Image height must not exceed %dpx."
 msgstr "이미지 높이는 %dpx를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3386
+#: includes/api/api-helpers.php:3400
 msgid "Image height must be at least %dpx."
 msgstr "이미지 높이는 %dpx 이상이어야 합니다."
 
-#: includes/api/api-helpers.php:3374
+#: includes/api/api-helpers.php:3388
 msgid "Image width must not exceed %dpx."
 msgstr "이미지 너비는 %dpx를 초과할 수 없습니다."
 
-#: includes/api/api-helpers.php:3370
+#: includes/api/api-helpers.php:3384
 msgid "Image width must be at least %dpx."
 msgstr "이미지 너비는 %dpx 이상이어야 합니다."
 
@@ -7998,13 +8002,13 @@ msgstr "메시지"
 
 #: includes/assets.php:357 includes/fields/class-acf-field-true_false.php:88
 #: includes/fields/class-acf-field-true_false.php:184
-#: src/Site_Health/Site_Health.php:394 src/Site_Health/Site_Health.php:458
+#: src/Site_Health/Site_Health.php:395 src/Site_Health/Site_Health.php:459
 msgid "No"
 msgstr "아니요"
 
 #: includes/assets.php:356 includes/fields/class-acf-field-true_false.php:85
 #: includes/fields/class-acf-field-true_false.php:168
-#: src/Site_Health/Site_Health.php:393 src/Site_Health/Site_Health.php:458
+#: src/Site_Health/Site_Health.php:394 src/Site_Health/Site_Health.php:459
 msgid "Yes"
 msgstr "예"
 

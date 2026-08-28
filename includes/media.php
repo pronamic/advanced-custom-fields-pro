@@ -35,7 +35,7 @@ if ( ! class_exists( 'ACF_Media' ) ) :
 			add_action( 'acf/save_post', array( $this, 'save_files' ), 5, 1 );
 
 			// Hook into Media Upload to run additional logic.
-			add_filter( 'wp_handle_upload_prefilter', array( $this, 'handle_upload_prefilter' ), 10, 1 );
+			add_filter( 'wp_handle_upload_prefilter', array( $this, 'handle_upload_prefilter' ), 20, 1 );
 
 			// Hook into Media Modal Query to run additional logic.
 			add_action( 'wp_ajax_query-attachments', array( $this, 'wp_ajax_query_attachments' ), -1 );
