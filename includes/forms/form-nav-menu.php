@@ -113,7 +113,7 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 					acf_prefix_fields( $fields, $prefix );
 
 					// render
-					acf_render_fields( $fields, $item_id, 'div', $field_group['instruction_placement'] );
+					acf_render_fields( $fields, $item_id, 'div', $field_group['instruction_placement'], array( 'prefix' => $prefix ) );
 				}
 
 				// close
@@ -152,14 +152,142 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 				return $menu_id;
 			}
 
+			// Restrict submitted values to fields rendered for the menu and its items, or that apply to them (before validation).
+			$this->restrict_save_input( $menu_id );
+
 			// validate and show errors
 			acf_validate_save_post( true );
 
 			// save
 			acf_save_post( $post_id );
 
+			// Menu items don't submit files; only the menu's own fields use $_FILES['acf'].
+			acf_discard_uploaded_field_values();
+
 			// save nav menu items
 			$this->update_nav_menu_items( $menu_id );
+		}
+
+		/**
+		 * Restricts the menu's $_POST['acf'] and $_FILES['acf'] values, and each item's
+		 * $_POST['menu-item-acf'] values, to the fields rendered for them or that apply to them.
+		 *
+		 * Each menu item is rendered for its own ID, so an item only accepts its own field list.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param integer $menu_id The menu ID.
+		 * @return void
+		 */
+		private function restrict_save_input( $menu_id ) {
+			$menu_id = (int) $menu_id;
+
+			acf_restrict_save_input(
+				array(
+					'context'    => 'nav_menu',
+					'post_id'    => "term_{$menu_id}",
+					'render_ids' => array( "term_{$menu_id}" ),
+					'screen'     => array( 'nav_menu' => $menu_id ),
+				)
+			);
+
+			// phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Verified in update_nav_menu(); sanitized when saved.
+			if ( ! isset( $_POST['menu-item-acf'] ) ) {
+				return;
+			}
+
+			$submitted = is_array( $_POST['menu-item-acf'] ) ? $_POST['menu-item-acf'] : array();
+			$lists     = isset( $_POST['_acf_fields'] ) && is_array( $_POST['_acf_fields'] ) ? wp_unslash( $_POST['_acf_fields'] ) : array();
+			$items     = array();
+			// phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+
+			// The menu item location rule reads the menu being edited from this data, as while the menu editor renders.
+			$previous_menu_id = acf_get_data( 'nav_menu_id' );
+			acf_set_data( 'nav_menu_id', $menu_id );
+
+			try {
+				foreach ( $this->get_nav_menu_item_ids( $submitted ) as $item_id ) {
+					$screen = $this->get_nav_menu_item_screen( $item_id );
+
+					// Only save to IDs that are menu items.
+					if ( ! $screen ) {
+						continue;
+					}
+
+					$items[ $item_id ] = acf_filter_save_values(
+						$submitted[ $item_id ],
+						array(
+							'context'    => 'nav_menu_item',
+							'post_id'    => $item_id,
+							'render_ids' => array( $item_id ),
+							'lists'      => $lists,
+							'screen'     => $screen,
+						)
+					);
+				}
+			} finally {
+				acf_set_data( 'nav_menu_id', $previous_menu_id );
+			}
+
+			$_POST['menu-item-acf'] = $items;
+		}
+
+		/**
+		 * Returns the menu item IDs among the keys of submitted menu item values, and primes their caches.
+		 *
+		 * update_nav_menu_items() saves to the submitted keys, so only keys that are item IDs are returned.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param array $submitted The submitted menu item values, keyed by item ID.
+		 * @return integer[]
+		 */
+		private function get_nav_menu_item_ids( $submitted ) {
+			$item_ids = array_values(
+				array_filter(
+					array_keys( $submitted ),
+					function ( $item_id ) {
+						return is_int( $item_id ) && $item_id > 0;
+					}
+				)
+			);
+
+			_prime_post_caches( $item_ids, false, true );
+
+			return $item_ids;
+		}
+
+		/**
+		 * Returns the location screen args a menu item is rendered with, or false if the ID isn't a menu item.
+		 *
+		 * As in wp_nav_menu_item_custom_fields(), the menu isn't part of the screen: the menu item rule reads
+		 * it from the `nav_menu_id` data, so rules for the menu itself don't match its items.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param integer $item_id The menu item ID.
+		 * @return array|false
+		 */
+		private function get_nav_menu_item_screen( $item_id ) {
+			if ( ! $item_id || get_post_type( $item_id ) !== 'nav_menu_item' ) {
+				return false;
+			}
+
+			// Walk up the item's parents to find its depth, as the menu editor's walker does.
+			$depth  = 0;
+			$seen   = array( $item_id => true );
+			$parent = (int) get_post_meta( $item_id, '_menu_item_menu_item_parent', true );
+			while ( $parent && ! isset( $seen[ $parent ] ) ) {
+				$seen[ $parent ] = true;
+				++$depth;
+				$parent = (int) get_post_meta( $parent, '_menu_item_menu_item_parent', true );
+			}
+
+			return array(
+				'nav_menu_item'       => (string) get_post_meta( $item_id, '_menu_item_type', true ),
+				'nav_menu_item_id'    => $item_id,
+				'nav_menu_item_depth' => $depth,
+			);
 		}
 
 
@@ -349,6 +477,10 @@ if ( ! class_exists( 'acf_form_nav_menu' ) ) :
 			
 			// bail early if is 'acf[' input
 			if( pair.name.indexOf('acf[') > -1 ) return;
+			
+			
+			// field lists use `[]` names, which nav-menu-data can't expand
+			if( pair.name.indexOf('_acf_fields[') === 0 ) return;
 						
 			
 			// append

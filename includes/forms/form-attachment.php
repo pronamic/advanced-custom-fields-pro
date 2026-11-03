@@ -191,6 +191,9 @@ acf.unload.active = 0;
 				return $post;
 			}
 
+			// Only accept fields rendered for this attachment, or from field groups located on it.
+			acf_restrict_save_input( _acf_get_attachment_save_args( $post['ID'] ) );
+
 			// bypass validation for ajax
 			if ( acf_is_ajax( 'save-attachment-compat' ) ) {
 				acf_save_post( $post['ID'] );

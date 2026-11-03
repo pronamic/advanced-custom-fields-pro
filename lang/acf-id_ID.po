@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: id_ID\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: pro/acf-pro.php:27
 msgid "Advanced Custom Fields PRO"
@@ -74,21 +75,6 @@ msgstr "Perbarui"
 msgid "Options Updated"
 msgstr "Pilihan Diperbarui"
 
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>."
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"Untuk mengaktifkan update, masukkan kunci lisensi Anda pada halaman <a "
-"href=\"%s\">Pembaruan</a>. Jika anda tidak memiliki kunci lisensi, silakan "
-"lihat <a href=\"%s\">rincian & harga</a>."
-
 #: pro/updates.php:159
 msgid ""
 "<b>ACF Activation Error</b>. Your defined license key has changed, but an "
@@ -105,23 +91,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>Kesalahan.</b> Tidak dapat terhubung ke server yang memperbarui"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "Periksa lagi"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>Kesalahan.</b> Tidak dapat terhubung ke server yang memperbarui"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -152,19 +124,6 @@ msgstr "Pembaruan"
 msgid ""
 "<b>Error</b>. Could not authenticate update package. Please check again or "
 "deactivate and reactivate your ACF PRO license."
-msgstr ""
-"<b>Terjadi Kesalahan</b>. Tidak dapat mengautentikasi paket pembaruan. "
-"Silakan periksa lagi atau nonaktifkan dan aktifkan kembali lisensi ACF PRO "
-"Anda."
-
-#: pro/admin/admin-updates.php:199
-#, fuzzy
-#| msgid ""
-#| "<b>Error</b>. Could not authenticate update package. Please check again "
-#| "or deactivate and reactivate your ACF PRO license."
-msgid ""
-"<b>Error</b>. Your license for this site has expired or been deactivated. "
-"Please reactivate your ACF PRO license."
 msgstr ""
 "<b>Terjadi Kesalahan</b>. Tidak dapat mengautentikasi paket pembaruan. "
 "Silakan periksa lagi atau nonaktifkan dan aktifkan kembali lisensi ACF PRO "
@@ -363,8 +322,6 @@ msgid "Add New Layout"
 msgstr "Tambah Layout Baru"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Tambah Layout"
 
@@ -585,9 +542,6 @@ msgid "Preview Size"
 msgstr "Ukuran Tinjauan"
 
 #: pro/fields/class-acf-field-gallery.php:844
-#, fuzzy
-#| msgid "%s requires at least %s selection"
-#| msgid_plural "%s requires at least %s selections"
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%s diperlukan setidaknya %s pilihan"
@@ -596,22 +550,9 @@ msgstr[0] "%s diperlukan setidaknya %s pilihan"
 msgid "Repeater"
 msgstr "Pengulang"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "Baris minimal mencapai ({min} baris)"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "Baris maksimum mencapai ({max} baris)"
-
-#: pro/fields/class-acf-field-repeater.php:68
-#, fuzzy
-#| msgid "Error loading field."
-msgid "Error loading page"
-msgstr "Kesalahan saat memproses bidang."
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
@@ -621,27 +562,9 @@ msgstr ""
 msgid "Sub Fields"
 msgstr "Sub Bidang"
 
-#: pro/fields/class-acf-field-repeater.php:195
-#, fuzzy
-#| msgid "Position"
-msgid "Pagination"
-msgstr "Posisi"
-
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "Laman Post"
-
-#: pro/fields/class-acf-field-repeater.php:208
-#, fuzzy
-#| msgid "Select the taxonomy to be displayed"
-msgid "Set the number of rows to be displayed on a page."
-msgstr "Pilih taksonomi yang akan ditampilkan"
 
 #: pro/fields/class-acf-field-repeater.php:240
 msgid "Minimum Rows"
@@ -663,21 +586,9 @@ msgstr "Pilih sub bidang untuk ditampilkan ketika baris disempitkan"
 msgid "Invalid nonce."
 msgstr "Nonce tidak valid."
 
-#: pro/fields/class-acf-field-repeater.php:1060
-#, fuzzy
-#| msgid "Invalid field group ID."
-msgid "Invalid field key or name."
-msgstr "ID grup bidang tidak valid."
-
 #: pro/fields/class-acf-field-repeater.php:1069
 msgid "There was an error retrieving the field."
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "Seret untuk menyusun ulang"
 
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
@@ -691,47 +602,11 @@ msgstr "Gandakan baris"
 msgid "Remove row"
 msgstr "Hapus baris"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "Pengguna saat ini"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "Laman Depan"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "Laman Post"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "Laman Depan"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "Laman Post"
 
 #: pro/locations/class-acf-location-block.php:71
 msgid "No block types exist"
@@ -775,12 +650,6 @@ msgstr "Kunci lisensi"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "Validasi lebih baik"
-
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
 msgstr "Informasi Pembaruan"
@@ -814,17 +683,9 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "Masukkan kunci lisensi Anda di atas untuk membuka pembaruan"
 
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "Perbarui Plugin"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "Masukkan kunci lisensi Anda di atas untuk membuka pembaruan"

@@ -4,7 +4,7 @@ Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 6.8.10
+Stable tag: 6.8.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,26 @@ ACF includes an optional email signup to receive plugin updates and news. No dat
 
 
 == Changelog ==
+
+= 6.8.11 =
+*Release Date 2nd November 2026*
+
+* Security - Custom values submitted to Checkbox, Radio, and Select fields with "Save Custom Values" enabled can no longer corrupt the field's settings or add HTML attributes to the field's wrapper. The new `acf/fields/allow_append_choices` filter can be used to restrict who can add new choices to a field. Thanks to Jakub Herman via WPScan for the responsible disclosure
+* Security - ACF now sanitizes field, field group, post type, taxonomy, and options page settings saved by users without the `unfiltered_html` capability. For those users, a field's wrapper settings are limited to width, class, and id. Event handler (`on*`) attributes in a field's wrapper setting are no longer output for any field, including fields registered in PHP or local JSON
+* Security - Field values of password-protected posts are no longer shown by the `[acf]` shortcode, block bindings, JSON-LD output, or the REST API until the password is entered. REST responses also no longer expand a referenced password-protected post into a full post object
+* Security - The `[acf]` shortcode and ACF block bindings now output only user IDs for User fields, rather than personal data such as names and email addresses. The previous output can be restored with the new `acf/bindings/allow_user_data` filter
+* Security - Files uploaded through the basic uploader by users without the `upload_files` capability no longer generate PDF preview images or save embedded audio and video cover art. This can be changed with the new `acf/upload/generate_previews` filter
+* Security - ACF now discards submitted field values unless the field was rendered for the content being saved or its field group's location rules match it.
+ Inputs outside these rules, such as fields added with JavaScript, can be allowed with the `acf/form/{context}/allowed_field_keys` and `acf/options_page/allowed_field_keys` filters. Registration forms no longer save fields from field groups set to "User Form is Add / Edit". Thanks to vuxvinh via WPScan for the responsible disclosure
+* Security - WordPress's Custom Fields meta box, its AJAX handler, and XML-RPC can no longer change meta that belongs to ACF fields
+* Security - Basic uploader nonces are now tied to the content being edited
+* Security - The AJAX request that loads field groups while editing a post no longer returns field groups assigned to other content
+* Security - The Relationship, Post Object, and Page Link fields no longer reveal the titles or statuses of posts the current user cannot read, and no longer save newly selected posts the user cannot read. Existing selections the user cannot read are shown as "(Restricted item)" and are kept when the user saves. Thanks to vuxvinh via WPScan for the responsible disclosure
+* Security - Relationship, Post Object, and Page Link values rendered in ACF Blocks now leave out posts the author of the post cannot read, such as another user's unpublished drafts. This can be disabled with the new acf/fields/relational/hide_unreadable_posts filter
+* Security - Bidirectional fields now only add references to posts the current user can edit, terms they can assign, and users they can edit or set as a post's author. Saves made with update_field(), WP-CLI, or cron are not checked, and the new acf/bidirectional/can_update_target and acf/is_trusted_save_context filters can adjust this. Thanks to vuxvinh via WPScan for the responsible disclosure
+* Fix - The [acf] shortcode and ACF block bindings no longer cause a fatal error on PHP 8 when a field returns objects, such as a Relationship field set to return post objects. These values, and arrays containing nested values such as an Image field set to return an array, now output nothing, except for User fields, which output user IDs
+* Fix - Field settings containing `&`, `<`, or certain HTML entities no longer cause the field to revert to its default settings after saving
+* Fix - Saving a custom choice no longer removes backslashes from the field's other settings
 
 = 6.8.10 =
 *Release Date 10th September 2026*

@@ -433,6 +433,28 @@ class ACF_Rest_Api {
 	}
 
 	/**
+	 * Checks whether a post's field values must stay out of the response because the
+	 * post is password protected and the caller has neither unlocked it nor can edit it.
+	 *
+	 * @since 6.8.11
+	 *
+	 * @param integer         $post_id The post ID.
+	 * @param WP_REST_Request $request The current request.
+	 * @return boolean
+	 */
+	private function is_password_protected_content_hidden( $post_id, $request ) {
+		$post = get_post( $post_id );
+
+		if ( ! $post instanceof WP_Post || ! post_password_required( $post ) || current_user_can( 'edit_post', $post->ID ) ) {
+			return false;
+		}
+
+		$password = $request instanceof WP_REST_Request ? $request->get_param( 'password' ) : '';
+
+		return ! is_string( $password ) || '' === $password || ! hash_equals( $post->post_password, $password );
+	}
+
+	/**
 	 * Load field values into the requested object. This method is not a part of any public API and is only public as
 	 * it is required by WordPress.
 	 *
@@ -459,6 +481,11 @@ class ACF_Rest_Api {
 		}
 
 		$object_sub_type = str_replace( '-revision', '', $object_sub_type );
+
+		// Don't expose field values of a password-protected post until the password is provided.
+		if ( 'post' === $object_type && $this->is_password_protected_content_hidden( $object_id, $request ) ) {
+			return $fields;
+		}
 
 		// Get all field groups for the current object.
 		$field_groups = $this->get_field_groups_by_id( $object_id, $object_type, $object_sub_type );
@@ -572,19 +599,23 @@ class ACF_Rest_Api {
 				$data = wp_kses_post_deep( $data );
 			}
 
-			// Loop through the inbound data payload, find the field matching the incoming field name, and
-			// update the field.
-			foreach ( $data as $field_name => $value ) {
+			_acf_save_submitted_values(
+				function () use ( $data, $field_key_map, $all_fields, $post_id ) {
+					// Loop through the inbound data payload, find the field matching the incoming field name, and
+					// update the field.
+					foreach ( $data as $field_name => $value ) {
 
-				// If the field name has a key explicitly mapped to it, use the field key to find the field.
-				if ( isset( $field_key_map[ $field_name ] ) ) {
-					$field_name = $field_key_map[ $field_name ];
-				}
+						// If the field name has a key explicitly mapped to it, use the field key to find the field.
+						if ( isset( $field_key_map[ $field_name ] ) ) {
+							$field_name = $field_key_map[ $field_name ];
+						}
 
-				if ( $field = acf_search_fields( $field_name, $all_fields ) ) {
-					acf_update_value( $value, $post_id, $field );
+						if ( $field = acf_search_fields( $field_name, $all_fields ) ) {
+							acf_update_value( $value, $post_id, $field );
+						}
+					}
 				}
-			}
+			);
 		}
 
 		return true;

@@ -153,7 +153,18 @@ class REST_Save {
 			$values = wp_kses_post_deep( $values );
 		}
 
-		acf_update_values( $values, $revision_id );
+		// The values were submitted by the user, so check them as the post's save did. Otherwise
+		// the revision would store selections the post's save rejected, and restoring it would
+		// copy them to the post.
+		$was_saving_submitted = acf_get_data( 'acf_saving_submitted_values' );
+		acf_set_data( 'acf_saving_submitted_values', true );
+
+		try {
+			acf_update_values( $values, $revision_id );
+		} finally {
+			acf_set_data( 'acf_saving_submitted_values', $was_saving_submitted );
+			_acf_clear_stored_post_ids_snapshot( $revision_id );
+		}
 
 		$this->current_acf_values = null;
 	}
@@ -187,6 +198,24 @@ class REST_Save {
 			return;
 		}
 
+		$allowed = $this->restrict_values( $post, $values, $meta['_acf'] );
+
+		// Values come from the request meta, never from uploads.
+		acf_discard_uploaded_field_values();
+
+		// Keep dropped values out of the stored blob too, which WordPress copies to the revision.
+		if ( count( $allowed ) !== count( $values ) ) {
+			update_metadata( 'post', $post->ID, '_acf', wp_slash( wp_json_encode( (object) $allowed ) ) );
+		}
+
+		$values = $allowed;
+
+		if ( empty( $values ) ) {
+			// Nothing to save, but the transport blob still needs removing once the revision system has run.
+			$this->pending_cleanup_post_id = $post->ID;
+			return;
+		}
+
 		// Save individual meta keys to the post.
 		// Fires acf/save_post action, runs all ACF processing hooks.
 		acf_save_post( $post->ID, $values );
@@ -199,6 +228,37 @@ class REST_Save {
 		// system finishes.
 		$this->current_acf_values      = $values;
 		$this->pending_cleanup_post_id = $post->ID;
+	}
+
+	/**
+	 * Restricts decoded values to the fields rendered for the post in the editor, or belonging to
+	 * field groups located on it.
+	 *
+	 * The editor sends the field lists rendered in its meta boxes as `_acf_fields` in the `_acf` blob.
+	 * They are read from the request, as the meta's sanitize callback keeps them out of the stored
+	 * meta. Autosaves are matched as the post they belong to.
+	 *
+	 * @since 6.8.11
+	 *
+	 * @param \WP_Post $post     The post or autosave being saved.
+	 * @param array    $values   The decoded values.
+	 * @param mixed    $raw_meta The `_acf` meta from the request.
+	 * @return array
+	 */
+	private function restrict_values( $post, $values, $raw_meta ) {
+		$request_values = is_string( $raw_meta ) ? json_decode( $raw_meta, true ) : null;
+		$lists          = is_array( $request_values ) && isset( $request_values['_acf_fields'] ) && is_array( $request_values['_acf_fields'] ) ? $request_values['_acf_fields'] : array();
+
+		return acf_filter_save_values(
+			$values,
+			array_merge(
+				_acf_get_post_save_args( $post, 'datastore' ),
+				array(
+					'lists'           => $lists,
+					'flat_clone_keys' => true,
+				)
+			)
+		);
 	}
 
 	/**

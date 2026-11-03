@@ -276,3 +276,164 @@ function acf_get_object_id( $object ) {
 
 	return null;
 }
+
+/**
+ * Inserts or updates one of ACF's internal posts (fields, field groups, post types,
+ * taxonomies and options pages), storing its serialized `post_content` exactly as given.
+ *
+ * Filters on `content_save_pre` (kses, `convert_invalid_entities`, etc.) treat the
+ * serialized settings as HTML and can change string lengths, which corrupts them.
+ * Settings must already be sanitized, see _acf_maybe_kses_internal_post_settings().
+ *
+ * @since 6.8.11
+ *
+ * @param array $postarr Slashed post data, as passed to wp_insert_post().
+ * @return integer|WP_Error The post ID on success. The value 0 or WP_Error on failure.
+ */
+function acf_insert_or_update_internal_post( $postarr ) {
+	// Remember the exact content being saved, so other posts written by hooks during the save are still filtered.
+	$saving = acf_get_data( 'saving_internal_post_content' );
+	acf_set_data( 'saving_internal_post_content', $postarr['post_content'] ?? null );
+
+	try {
+		if ( ! empty( $postarr['ID'] ) ) {
+			return wp_update_post( $postarr );
+		}
+
+		return wp_insert_post( $postarr );
+	} finally {
+		acf_set_data( 'saving_internal_post_content', $saving );
+	}
+}
+
+/**
+ * Private callback for the "wp_insert_post_data" filter.
+ *
+ * Restores the unsanitized `post_content` of ACF's internal posts when it's the content
+ * being saved by acf_insert_or_update_internal_post(), or when an update leaves the content
+ * unchanged, such as trashing or restoring. Both values are slashed at this point.
+ * Follows WP_Customize_Manager::preserve_insert_changeset_post_content().
+ *
+ * @since 6.8.11
+ * @internal
+ *
+ * @param array   $data                An array of slashed, sanitized post data.
+ * @param array   $postarr             An array of sanitized post data.
+ * @param array   $unsanitized_postarr An array of slashed yet unsanitized post data.
+ * @param boolean $update              Whether this is an existing post being updated.
+ * @return array
+ */
+function _acf_preserve_internal_post_content( $data, $postarr, $unsanitized_postarr, $update = false ) {
+	$internal_post_types = array_merge( array( 'acf-field' ), acf_get_internal_post_types() );
+
+	if ( ! isset( $data['post_type'], $unsanitized_postarr['post_content'] ) || ! in_array( $data['post_type'], $internal_post_types, true ) ) {
+		return $data;
+	}
+
+	$expected = acf_get_data( 'saving_internal_post_content' );
+	$preserve = null !== $expected && $expected === $unsanitized_postarr['post_content'];
+
+	// Updates that only change the status, like trashing or restoring, resave the stored content.
+	if ( ! $preserve && $update && ! empty( $postarr['ID'] ) ) {
+		$stored   = wp_slash( get_post_field( 'post_content', $postarr['ID'], 'raw' ) );
+		$preserve = $stored === $unsanitized_postarr['post_content'];
+	}
+
+	if ( $preserve ) {
+		$data['post_content'] = $unsanitized_postarr['post_content'];
+	}
+
+	return $data;
+}
+
+add_filter( 'wp_insert_post_data', '_acf_preserve_internal_post_content', PHP_INT_MAX, 4 );
+
+/**
+ * Runs a callback that saves ACF internal posts from a trusted source, without
+ * sanitizing their settings for the current user.
+ *
+ * Settings saved by users without the `unfiltered_html` capability are otherwise filtered
+ * with wp_kses_post(). Use this only for settings that are already stored or sanitized,
+ * or that come from the server, such as local JSON files. Never for user input.
+ *
+ * @since 6.8.11
+ *
+ * @param callable $callback The callback that saves the posts.
+ * @param mixed    ...$args  Arguments to pass to the callback.
+ * @return mixed The callback's return value.
+ */
+function acf_skip_internal_post_sanitization( callable $callback, ...$args ) {
+	$skipping = acf_get_data( 'skip_internal_post_sanitization' );
+	acf_set_data( 'skip_internal_post_sanitization', true );
+
+	try {
+		return $callback( ...$args );
+	} finally {
+		acf_set_data( 'skip_internal_post_sanitization', $skipping );
+	}
+}
+
+/**
+ * Checks whether the settings of an ACF internal post being saved need sanitizing, because
+ * the current user can't use unfiltered HTML and sanitization isn't skipped with
+ * acf_skip_internal_post_sanitization().
+ *
+ * @since 6.8.11
+ * @internal
+ *
+ * @return boolean
+ */
+function _acf_should_sanitize_internal_post_settings() {
+	return ! acf_get_data( 'skip_internal_post_sanitization' ) && ! current_user_can( 'unfiltered_html' );
+}
+
+/**
+ * Sanitizes the settings of an ACF internal post being saved, when the current user can't
+ * use unfiltered HTML and sanitization isn't skipped with acf_skip_internal_post_sanitization().
+ *
+ * Settings are stored exactly as given, so this does what kses on `post_content` would
+ * otherwise do for these users, without corrupting the serialized data.
+ *
+ * @since 6.8.11
+ * @internal
+ *
+ * @param array $settings The unslashed settings.
+ * @return array
+ */
+function _acf_maybe_kses_internal_post_settings( $settings ) {
+	if ( ! _acf_should_sanitize_internal_post_settings() ) {
+		return $settings;
+	}
+
+	return _acf_kses_post_deep_with_keys( $settings );
+}
+
+/**
+ * Recursively runs wp_kses_post() over string keys and string values that contain HTML.
+ *
+ * Browsers only start a tag at "<" followed by a letter, "/", "!" or "?", so other text
+ * can't contain HTML and is left exactly as typed. Otherwise kses can rewrite plain text,
+ * such as "&" or entities, breaking choice keys and conditional logic operators like "<".
+ *
+ * @since 6.8.11
+ * @internal
+ *
+ * @param mixed $data The data to sanitize.
+ * @return mixed
+ */
+function _acf_kses_post_deep_with_keys( $data ) {
+	if ( is_string( $data ) ) {
+		return preg_match( '~<[a-zA-Z/!?]~', $data ) ? wp_kses_post( $data ) : $data;
+	}
+
+	if ( ! is_array( $data ) ) {
+		return $data;
+	}
+
+	$sanitized = array();
+	foreach ( $data as $key => $value ) {
+		$sanitized[ _acf_kses_post_deep_with_keys( $key ) ] = _acf_kses_post_deep_with_keys( $value );
+	}
+
+	return $sanitized;
+}

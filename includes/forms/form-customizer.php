@@ -96,6 +96,9 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		 */
 		function save_widget( $instance, $new_instance, $old_instance, $widget ) {
 
+			// The field lists are kept in the instance's ACF data instead.
+			unset( $instance['_acf_fields'] );
+
 			// bail early if not valid (customize + acf values + nonce)
 			if ( ! isset( $_POST['wp_customize'] ) || ! isset( $new_instance['acf'] ) || ! acf_verify_nonce( 'widget' ) ) {
 				return $instance;
@@ -103,13 +106,15 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 
 			// vars
 			$data = array(
-				'post_id' => "widget_{$widget->id}",
-				'values'  => array(),
-				'fields'  => array(),
+				'post_id'     => "widget_{$widget->id}",
+				'values'      => array(),
+				'fields'      => array(),
+				'_acf_fields' => array(),
 			);
 
-			// append values
-			$data['values'] = $new_instance['acf'];
+			// Only keep fields rendered for the widget, or that apply to it. The lists are kept so customize_save() can check again.
+			$data['_acf_fields'] = isset( $new_instance['_acf_fields'] ) && is_array( $new_instance['_acf_fields'] ) ? $new_instance['_acf_fields'] : array();
+			$data['values']      = acf_get_instance( 'acf_form_widget' )->filter_values( $new_instance['acf'], $data['_acf_fields'], $widget->id_base, $data['post_id'] );
 
 			// append fields (name => key relationship) - used later in 'acf/get_field_reference' for customizer previews
 			foreach ( $data['values'] as $k => $v ) {
@@ -302,19 +307,59 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 				return;
 			}
 
+			// Widget values are saved from the settings, not $_FILES.
+			acf_discard_uploaded_field_values();
+
 			// append values
 			foreach ( $settings as $setting ) {
-
-				// get acf data
-				$data = $setting->acf;
-
-				// save acf data
-				acf_save_post( $data['post_id'], $data['values'] );
 
 				// remove [acf] data from saved widget array
 				$id_data = $setting->id_data();
 				add_filter( 'pre_update_option_' . $id_data['base'], array( $this, 'pre_update_option' ), 10, 3 );
+
+				// The setting value isn't always verified: block widget instances can be posted as raw values.
+				// Save only to the setting's own widget, and only fields rendered for it or that apply to it.
+				$widget = $this->get_setting_widget( $setting );
+				if ( ! $widget ) {
+					continue;
+				}
+
+				$data    = is_array( $setting->acf ) ? $setting->acf : array();
+				$post_id = "widget_{$widget['id_base']}-{$widget['number']}";
+
+				acf_save_post( $post_id, acf_get_instance( 'acf_form_widget' )->filter_values( $data['values'] ?? array(), $data['_acf_fields'] ?? array(), $widget['id_base'], $post_id ) );
 			}
+		}
+
+		/**
+		 * Returns the widget a Customizer setting stores, from the setting's ID (`widget_{id_base}[{number}]`).
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param WP_Customize_Setting $setting The setting.
+		 * @return array|false The widget's `id_base` and `number`, or false if the setting isn't a registered widget.
+		 */
+		private function get_setting_widget( $setting ) {
+			global $wp_widget_factory;
+
+			$id_data = $setting->id_data();
+			$base    = (string) ( $id_data['base'] ?? '' );
+			$keys    = (array) ( $id_data['keys'] ?? array() );
+
+			if ( strpos( $base, 'widget_' ) !== 0 || count( $keys ) !== 1 || ! ctype_digit( (string) reset( $keys ) ) ) {
+				return false;
+			}
+
+			$id_base = substr( $base, 7 );
+
+			if ( ! $wp_widget_factory instanceof WP_Widget_Factory || ! $wp_widget_factory->get_widget_object( $id_base ) ) {
+				return false;
+			}
+
+			return array(
+				'id_base' => $id_base,
+				'number'  => (int) reset( $keys ),
+			);
 		}
 
 
@@ -340,12 +385,12 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 			foreach ( $value as $i => $widget ) {
 
 				// bail early if no acf
-				if ( ! isset( $widget['acf'] ) ) {
+				if ( ! is_array( $widget ) || ( ! isset( $widget['acf'] ) && ! isset( $widget['_acf_fields'] ) ) ) {
 					continue;
 				}
 
 				// remove widget
-				unset( $value[ $i ]['acf'] );
+				unset( $value[ $i ]['acf'], $value[ $i ]['_acf_fields'] );
 			}
 
 			// return
@@ -443,7 +488,7 @@ if ( ! class_exists( 'acf_form_customizer' ) ) :
 		}
 	}
 
-	new acf_form_customizer();
+	acf_new_instance( 'acf_form_customizer' );
 endif;
 
 ?>

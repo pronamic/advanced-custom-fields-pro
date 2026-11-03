@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: he_IL\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: pro/acf-pro.php:27
 msgid "Advanced Custom Fields PRO"
 msgstr "שדות מיוחדים מתקדמים פרו"
-
-#: pro/blocks.php:170
-#, fuzzy
-#| msgid "%s value is required"
-msgid "Block type name is required."
-msgstr "ערך %s נדרש"
 
 #. translators: The name of the block type
 #: pro/blocks.php:178
@@ -47,13 +42,6 @@ msgstr ""
 #: pro/blocks.php:728
 msgid "Change content alignment"
 msgstr ""
-
-#. translators: %s: Block type title
-#: pro/blocks.php:731
-#, fuzzy
-#| msgid "Settings"
-msgid "%s settings"
-msgstr "הגדרות"
 
 #: pro/blocks.php:936
 msgid "This block contains no editable fields."
@@ -78,21 +66,6 @@ msgstr "עדכון"
 msgid "Options Updated"
 msgstr "האפשרויות עודכנו"
 
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>"
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"כדי לאפשר עדכונים, בבקשה הקלד את מפתח הרשיון שלך בדף <a "
-"href=\"%s\">העדכונים</a>. אם אין לך מפתח רשיון, בבקשה עבור לדף <a "
-"href=\"%s\">פרטים ומחירים</a>"
-
 #: pro/updates.php:159
 msgid ""
 "<b>ACF Activation Error</b>. Your defined license key has changed, but an "
@@ -109,23 +82,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "‏<b>שגיאה</b>. החיבור לשרת העדכון נכשל"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "בדיקה חוזרת"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "‏<b>שגיאה</b>. החיבור לשרת העדכון נכשל"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -287,8 +246,6 @@ msgstr "הוספת שורה חדשה"
 #: pro/fields/class-acf-field-flexible-content.php:76,
 #: pro/fields/class-acf-field-flexible-content.php:943,
 #: pro/fields/class-acf-field-flexible-content.php:1022
-#, fuzzy
-#| msgid "layout"
 msgid "layout"
 msgid_plural "layouts"
 msgstr[0] "פריסה"
@@ -303,12 +260,6 @@ msgstr "פריסות"
 #: pro/fields/class-acf-field-flexible-content.php:1021
 msgid "This field requires at least {min} {label} {identifier}"
 msgstr "שדה זה דורש לפחות {min} {label} {identifier}"
-
-#: pro/fields/class-acf-field-flexible-content.php:82
-#, fuzzy
-#| msgid "This field has a limit of {max} {identifier}"
-msgid "This field has a limit of {max} {label} {identifier}"
-msgstr "לשדה זה יש מגבלה של  {max} {identifier}"
 
 #: pro/fields/class-acf-field-flexible-content.php:85
 msgid "{available} {label} {identifier} available (max {max})"
@@ -335,12 +286,6 @@ msgstr "גרור ושחרר לסידור מחדש"
 msgid "Add layout"
 msgstr "הוספת פריסה"
 
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "שכפול פריסת תוכן"
-
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
 msgstr "הסרת פריסה"
@@ -363,8 +308,6 @@ msgid "Add New Layout"
 msgstr "הוספת פריסת תוכן חדשה"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "הוספת פריסה"
 
@@ -587,7 +530,6 @@ msgid "Preview Size"
 msgstr "גודל תצוגה"
 
 #: pro/fields/class-acf-field-gallery.php:844
-#, fuzzy
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%s מחייב לפחות בחירה %s"
@@ -597,22 +539,9 @@ msgstr[1] "%s מחייב לפחות בחירה %s"
 msgid "Repeater"
 msgstr "שדה חזרה"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "הגעתם למינימום שורות האפשרי ({min} שורות)"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "הגעתם למקסימום שורות האפשרי ({max} שורות)"
-
-#: pro/fields/class-acf-field-repeater.php:68
-#, fuzzy
-#| msgid "Error validating request"
-msgid "Error loading page"
-msgstr "שגיאה בבקשת האימות"
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
@@ -622,21 +551,9 @@ msgstr ""
 msgid "Sub Fields"
 msgstr "שדות משנה"
 
-#: pro/fields/class-acf-field-repeater.php:195
-#, fuzzy
-#| msgid "Position"
-msgid "Pagination"
-msgstr "מיקום"
-
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "עמוד פוסטים"
 
 #: pro/fields/class-acf-field-repeater.php:208
 msgid "Set the number of rows to be displayed on a page."
@@ -670,19 +587,11 @@ msgstr ""
 msgid "There was an error retrieving the field."
 msgstr ""
 
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "גרור ושחרר לסידור מחדש"
-
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
 msgstr "הוספת שורה"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "שיכפול"
 
@@ -690,53 +599,11 @@ msgstr "שיכפול"
 msgid "Remove row"
 msgstr "הסרת שורה"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Front Page"
-msgid "Current Page"
-msgstr "עמוד ראשי"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "עמוד ראשי"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "עמוד פוסטים"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "עמוד ראשי"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "עמוד פוסטים"
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "לא קיים דף אפשרויות"
 
 #: pro/locations/class-acf-location-options-page.php:22
 msgid "Options Page"
@@ -773,12 +640,6 @@ msgstr "מפתח רשיון"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "אימות נתונים משופר"
-
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
 msgstr "מידע על העדכון"
@@ -812,17 +673,9 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "הקלד בבקשה את מפתח הרשיון שלך לעיל כדי לשחרר את נעילת העדכונים"
 
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "עדכון התוסף"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "הקלד בבקשה את מפתח הרשיון שלך לעיל כדי לשחרר את נעילת העדכונים"

@@ -109,6 +109,14 @@ class Posts {
 			return;
 		}
 
+		// Don't output field values of a password-protected post until the password has been entered.
+		if ( post_password_required( $post ) ) {
+			if ( $debug ) {
+				echo "<!-- ACF AI JSON-LD: Post is password protected -->\n";
+			}
+			return;
+		}
+
 		/**
 		 * Filters the field objects before retrieval, allowing posts to provide custom data.
 		 *

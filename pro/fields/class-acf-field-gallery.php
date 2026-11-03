@@ -151,6 +151,12 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				wp_send_json_error();
 			}
 
+			// The sidebar's ACF values, saved to each attachment by save_sidebar_field_values().
+			$values = isset( $_POST['acf'] ) && is_array( $_POST['acf'] ) ? $_POST['acf'] : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Sanitized by acf_save_post() and WP core when saved.
+
+			// The sidebar has no file inputs.
+			acf_discard_uploaded_field_values();
+
 			// loop over attachments
 			foreach ( $_POST['attachments'] as $id => $changes ) { // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized by WP core when saved.
 				$id = (int) $id;
@@ -165,27 +171,8 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 					wp_send_json_error();
 				}
 
-				if ( isset( $changes['title'] ) ) {
-					$post['post_title'] = $changes['title'];
-				}
-
-				if ( isset( $changes['caption'] ) ) {
-					$post['post_excerpt'] = $changes['caption'];
-				}
-
-				if ( isset( $changes['description'] ) ) {
-					$post['post_content'] = $changes['description'];
-				}
-
-				if ( isset( $changes['alt'] ) ) {
-					$alt = wp_unslash( $changes['alt'] );
-					if ( $alt != get_post_meta( $id, '_wp_attachment_image_alt', true ) ) {
-						$alt = wp_strip_all_tags( $alt, true );
-						update_post_meta( $id, '_wp_attachment_image_alt', wp_slash( $alt ) );
-					}
-				}
-
 				// save post
+				$post = $this->apply_sidebar_changes( $post, $changes );
 				wp_update_post( $post );
 
 				/** This filter is documented in wp-admin/includes/media.php */
@@ -195,11 +182,65 @@ if ( ! class_exists( 'acf_field_gallery' ) ) :
 				$post = apply_filters( 'attachment_fields_to_save', $post, $changes );
 
 				// save meta
-				acf_save_post( $id );
+				if ( null !== $values ) {
+					$this->save_sidebar_field_values( $id, $values );
+				}
 			}
 
 			// return
 			wp_send_json_success();
+		}
+
+		/**
+		 * Applies the sidebar's title, caption and description changes to an attachment's post data,
+		 * and saves its alt text.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param array $post    The attachment's post data.
+		 * @param array $changes The changes submitted from the sidebar.
+		 * @return array The post data to save.
+		 */
+		private function apply_sidebar_changes( $post, $changes ) {
+			$properties = array(
+				'title'       => 'post_title',
+				'caption'     => 'post_excerpt',
+				'description' => 'post_content',
+			);
+
+			foreach ( $properties as $change => $property ) {
+				if ( isset( $changes[ $change ] ) ) {
+					$post[ $property ] = $changes[ $change ];
+				}
+			}
+
+			if ( isset( $changes['alt'] ) ) {
+				$alt = wp_unslash( $changes['alt'] );
+				if ( $alt !== get_post_meta( $post['ID'], '_wp_attachment_image_alt', true ) ) {
+					$alt = wp_strip_all_tags( $alt, true );
+					update_post_meta( $post['ID'], '_wp_attachment_image_alt', wp_slash( $alt ) );
+				}
+			}
+
+			return $post;
+		}
+
+		/**
+		 * Saves the sidebar's ACF values to an attachment, restricted to the fields rendered for it
+		 * or belonging to its own field groups.
+		 *
+		 * The sidebar renders each attachment's fields for the attachment, so its field list is bound to
+		 * the attachment ID. Each attachment saves a copy, as acf_save_post() overwrites $_POST['acf']
+		 * with the values it's given.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param integer $id     The attachment ID.
+		 * @param array   $values The sidebar's ACF values.
+		 * @return void
+		 */
+		private function save_sidebar_field_values( $id, $values ) {
+			acf_save_post( $id, acf_filter_save_values( $values, _acf_get_attachment_save_args( $id ) ) );
 		}
 
 		/**

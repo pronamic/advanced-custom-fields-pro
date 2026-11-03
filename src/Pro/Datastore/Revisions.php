@@ -74,6 +74,10 @@ class Revisions {
 					if ( json_last_error() !== JSON_ERROR_NONE || ! is_array( $decoded ) ) {
 						return '';
 					}
+
+					// Field lists are verified from the request by REST_Save, and never stored on the post or its revisions.
+					unset( $decoded['_acf_fields'] );
+
 					return wp_json_encode( self::canonicalize_acf_value( $decoded ) );
 				},
 			)

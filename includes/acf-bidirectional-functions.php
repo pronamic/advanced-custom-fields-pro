@@ -35,8 +35,14 @@ function acf_update_bidirectional_values( $target_item_ids, $post_id, $field, $t
 		return;
 	}
 
-	$decoded            = acf_decode_post_id( $post_id );
-	$item_id            = $decoded['id'];
+	$decoded = acf_decode_post_id( $post_id );
+	$item_id = $decoded['id'];
+
+	// Revisions are never a valid back-reference.
+	if ( 'post' === $decoded['type'] && wp_is_post_revision( (int) $item_id ) ) {
+		return;
+	}
+
 	$valid_target_types = acf_get_valid_bidirectional_target_types( $decoded['type'] );
 	$valid_targets      = array();
 
@@ -56,8 +62,23 @@ function acf_update_bidirectional_values( $target_item_ids, $post_id, $field, $t
 		$current_values = array_filter( acf_get_array( get_field( $field['key'], $post_id, false ) ) );
 		$new_values     = array_filter( acf_get_array( $target_item_ids ) );
 
-		$additions    = array_diff( $new_values, $current_values );
+		// Every selected item is checked, not just new ones, so a back-reference skipped on an earlier
+		// save is added once someone who can edit the target saves.
+		$additions    = $new_values;
 		$subtractions = array_diff( $current_values, $new_values );
+
+		$target_ids = array_filter( array_map( 'intval', $additions ) );
+		switch ( $target_prefix ? $target_prefix : 'post' ) {
+			case 'post':
+				_prime_post_caches( $target_ids, false, true );
+				break;
+			case 'user':
+				cache_users( $target_ids );
+				break;
+			case 'term':
+				_prime_term_caches( $target_ids, true );
+				break;
+		}
 
 		// Prefix additions and subtractions for destinations which aren't posts.
 		if ( ! empty( $target_prefix ) ) {
@@ -68,23 +89,131 @@ function acf_update_bidirectional_values( $target_item_ids, $post_id, $field, $t
 			$subtractions = array_map( $mapper, $subtractions );
 		}
 
+		$subtractions = array_filter(
+			$subtractions,
+			function ( $target_id ) use ( $post_id, $field, $target_prefix ) {
+				return acf_can_update_bidirectional_target( $target_id, $post_id, $field, $target_prefix, 'remove' );
+			}
+		);
+
 		acf_set_data( 'acf_doing_bidirectional_update', true );
 
-		// Loop over each target, processing additions and removals.
-		foreach ( $valid_targets as $target_field ) {
-			foreach ( $additions as $addition ) {
-				$current_value = acf_get_array( get_field( $target_field, $addition, false ) );
-				update_field( $target_field, array_unique( array_merge( $current_value, array( $item_id ) ) ), $addition );
-			}
+		try {
+			$can_add = array();
 
-			foreach ( $subtractions as $subtraction ) {
-				$current_value = acf_get_array( get_field( $target_field, $subtraction, false ) );
-				update_field( $target_field, array_unique( array_diff( $current_value, array( $item_id ) ) ), $subtraction );
+			// Loop over each target, processing additions and removals.
+			foreach ( $valid_targets as $target_field ) {
+				foreach ( $additions as $addition ) {
+					$current_value = acf_get_array( get_field( $target_field, $addition, false ) );
+					if ( in_array( (string) $item_id, array_map( 'strval', $current_value ), true ) ) {
+						continue;
+					}
+
+					if ( ! isset( $can_add[ $addition ] ) ) {
+						$can_add[ $addition ] = acf_can_update_bidirectional_target( $addition, $post_id, $field, $target_prefix, 'add' );
+					}
+
+					if ( $can_add[ $addition ] ) {
+						update_field( $target_field, array_unique( array_merge( $current_value, array( $item_id ) ) ), $addition );
+					}
+				}
+
+				foreach ( $subtractions as $subtraction ) {
+					$current_value = acf_get_array( get_field( $target_field, $subtraction, false ) );
+					update_field( $target_field, array_unique( array_diff( $current_value, array( $item_id ) ) ), $subtraction );
+				}
 			}
+		} finally {
+			acf_set_data( 'acf_doing_bidirectional_update', false );
+		}
+	}
+}
+
+/**
+ * Checks whether a bidirectional update may add or remove a reference on a target post, user or term.
+ *
+ * Targets that don't exist, or aren't the object type this field links to, are always skipped.
+ * When adding a reference while ACF is saving submitted values, through acf_save_post() or the
+ * REST API, the current user must also be able to edit the target post, assign the target term, or
+ * edit the target user. Users can also be linked from a post by anyone who can edit others' posts of
+ * that post type, as they could set the user as the post's author. Removals only take the origin's
+ * own ID out of the target, so they aren't permission checked. Values saved by code with
+ * update_field(), or from a trusted context (see acf_is_trusted_save_context()), aren't checked.
+ *
+ * @since 6.8.11
+ *
+ * @param integer|string $target_id     The ACF encoded target post, user or term ID.
+ * @param integer|string $post_id       The ACF encoded origin post, user or term ID.
+ * @param array          $field         The field being updated on the origin.
+ * @param string|false   $target_prefix The ACF prefix for the target object type, or false for posts.
+ * @param string         $action        Either 'add' or 'remove'.
+ * @return boolean
+ */
+function acf_can_update_bidirectional_target( $target_id, $post_id, $field, $target_prefix = false, $action = 'add' ) {
+	$decoded    = acf_decode_post_id( $target_id );
+	$id         = (int) $decoded['id'];
+	$can_update = false;
+
+	if ( $id && $decoded['type'] === ( $target_prefix ? $target_prefix : 'post' ) ) {
+		switch ( $decoded['type'] ) {
+			case 'post':
+				$exists = (bool) get_post( $id );
+				$cap    = 'edit_post';
+				break;
+			case 'user':
+				$exists = (bool) get_userdata( $id );
+				$cap    = 'edit_user';
+				break;
+			case 'term':
+				// Terms that still share an ID across taxonomies need the taxonomy to be found.
+				$term   = get_term( $id, $field['taxonomy'] ?? '' );
+				$exists = $term instanceof WP_Term;
+				$cap    = 'assign_term';
+
+				// Core's assign_term check looks the term up without a taxonomy, so it can't resolve shared IDs.
+				if ( $exists ) {
+					$unqualified = get_term( $id );
+					if ( ! $unqualified instanceof WP_Term || $unqualified->taxonomy !== $term->taxonomy ) {
+						$cap = get_taxonomy( $term->taxonomy )->cap->assign_terms;
+					}
+				}
+				break;
+			default:
+				$exists = false;
+				$cap    = '';
 		}
 
-		acf_set_data( 'acf_doing_bidirectional_update', false );
+		$needs_permission = 'add' === $action && acf_get_data( 'acf_saving_submitted_values' );
+		$can_update       = $exists && ( ! $needs_permission || current_user_can( $cap, $id ) );
+
+		if ( ! $can_update && $exists && 'user' === $decoded['type'] ) {
+			// On multisite, only edit_user may reach users outside this site and super admins.
+			$is_site_user = ! is_multisite() || ( is_user_member_of_blog( $id ) && ! is_super_admin( $id ) );
+
+			// As with setting a post's author, anyone who can edit others' posts of the origin's type may link users of this site.
+			$origin     = acf_decode_post_id( $post_id );
+			$post_type  = 'post' === $origin['type'] ? get_post_type_object( (string) get_post_type( $origin['id'] ) ) : null;
+			$can_update = $is_site_user && $post_type && current_user_can( $post_type->cap->edit_others_posts );
+
+			// On multisite, edit_user is limited to super admins, so site admins may also link users of their own site.
+			if ( ! $can_update && is_multisite() ) {
+				$can_update = $is_site_user && current_user_can( 'promote_users' );
+			}
+		}
 	}
+
+	/**
+	 * Filters whether a bidirectional update may add or remove a reference on a target.
+	 *
+	 * @since 6.8.11
+	 *
+	 * @param boolean        $can_update Whether the target may be updated.
+	 * @param integer|string $target_id  The ACF encoded target post, user or term ID.
+	 * @param integer|string $post_id    The ACF encoded origin post, user or term ID.
+	 * @param array          $field      The field being updated on the origin.
+	 * @param string         $action     Either 'add' or 'remove'.
+	 */
+	return (bool) apply_filters( 'acf/bidirectional/can_update_target', $can_update, $target_id, $post_id, $field, $action );
 }
 
 /**

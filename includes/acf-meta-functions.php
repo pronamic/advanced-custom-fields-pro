@@ -506,3 +506,251 @@ function acf_delete_metadata_by_field( $post_id = 0, $field = array(), bool $hid
 
 	return $meta_instance->delete_value( $id, $field );
 }
+
+/**
+ * Returns true if a post meta key stores the value of an ACF field.
+ *
+ * A key belongs to a field if the post has a field key reference for it, or if it is a name ACF loads a value
+ * from without a reference: a top-level field's name, the name of a group or clone sub field (such as
+ * `{group}_{sub_field}`), or a repeater or flexible content row's sub field (such as `{repeater}_0_{sub_field}`).
+ *
+ * @since 6.8.11
+ * @access private
+ *
+ * @param integer $post_id  The post ID.
+ * @param string  $meta_key The meta key.
+ * @return boolean
+ */
+function _acf_is_field_meta_key( $post_id, $meta_key ) {
+	if ( ! is_string( $meta_key ) || '' === $meta_key ) {
+		return false;
+	}
+
+	if ( $post_id && acf_is_field_key( get_post_meta( $post_id, '_' . $meta_key, true ) ) ) {
+		return true;
+	}
+
+	$storage = _acf_get_field_storage_names();
+
+	if ( isset( $storage['names'][ $meta_key ] ) ) {
+		return true;
+	}
+
+	foreach ( $storage['patterns'] as $pattern ) {
+		if ( preg_match( $pattern, $meta_key ) ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Returns the meta names ACF loads field values from without a field key reference.
+ *
+ * These are the names of top-level fields (in field groups, or local fields registered without one) and of
+ * group and clone sub fields (as array keys in `names`), and
+ * patterns for the sub fields of repeater and flexible content rows, whose names include the row number
+ * (in `patterns`). They are worked out as the field types name sub fields when loading their values.
+ *
+ * Cached for the request, until local fields or posts (including database fields) change.
+ *
+ * @since 6.8.11
+ * @access private
+ *
+ * @return array
+ */
+function _acf_get_field_storage_names() {
+	static $cache = array(
+		'version' => '',
+		'storage' => array(),
+	);
+
+	$version = acf_get_local_store( 'fields' )->count() . '|' . acf_get_local_store( 'groups' )->count() . '|' . wp_cache_get_last_changed( 'posts' );
+
+	if ( $cache['version'] === $version ) {
+		return $cache['storage'];
+	}
+
+	$storage = array(
+		'names'    => array(),
+		'patterns' => array(),
+	);
+
+	foreach ( acf_get_field_groups() as $field_group ) {
+		foreach ( (array) acf_get_fields( $field_group ) as $field ) {
+			_acf_add_field_storage_names( $storage, $field );
+		}
+	}
+
+	// Local fields registered without a field group (or field) parent are loaded by name too.
+	foreach ( (array) acf_get_local_store( 'fields' )->get() as $local_field ) {
+		$parent = (string) ( $local_field['parent'] ?? '' );
+
+		if ( '' === $parent || ( ! acf_is_local_field_group( $parent ) && ! acf_is_local_field( $parent ) && ! acf_get_field_group( $parent ) ) ) {
+			$field = acf_get_field( $local_field['key'] ?? '' );
+			_acf_add_field_storage_names( $storage, $field ? $field : $local_field );
+		}
+	}
+
+	$storage['patterns'] = array_keys( $storage['patterns'] );
+
+	$cache = array(
+		'version' => $version,
+		'storage' => $storage,
+	);
+
+	return $storage;
+}
+
+/**
+ * Adds the meta name a field is loaded from without a reference, and those of its sub fields.
+ *
+ * Group and clone sub field names are worked out with the field types' own prepare_field_for_db(), as when
+ * their values are loaded. Repeater and flexible content rows are named `{field}_{row}_{sub_field}`; the row
+ * number is held as a placeholder and turned into a pattern.
+ *
+ * @since 6.8.11
+ * @access private
+ *
+ * @param array $storage The names and patterns, as array keys.
+ * @param array $field   The field array, with its meta name in `name`.
+ * @return void
+ */
+function _acf_add_field_storage_names( array &$storage, $field ) {
+	$name = (string) ( $field['name'] ?? '' );
+
+	if ( '' === $name ) {
+		return;
+	}
+
+	// Names containing a row placeholder become patterns.
+	if ( false !== strpos( $name, "\0" ) ) {
+		$parts = array_map(
+			function ( $part ) {
+				return preg_quote( $part, '/' );
+			},
+			explode( "\0", $name )
+		);
+
+		$storage['patterns'][ '/^' . implode( '\d+', $parts ) . '$/' ] = true;
+	} else {
+		$storage['names'][ $name ] = true;
+	}
+
+	foreach ( _acf_get_field_storage_sub_fields( $field ) as $sub_field ) {
+		_acf_add_field_storage_names( $storage, $sub_field );
+	}
+}
+
+/**
+ * Returns a field's sub fields with their meta names in `name`, as the field type names them when loading.
+ *
+ * @since 6.8.11
+ * @access private
+ *
+ * @param array $field The field array, with its meta name in `name`.
+ * @return array
+ */
+function _acf_get_field_storage_sub_fields( $field ) {
+	$type = (string) ( $field['type'] ?? '' );
+
+	if ( in_array( $type, array( 'group', 'clone' ), true ) ) {
+		return _acf_get_prepared_sub_fields( $field, $type );
+	}
+
+	if ( in_array( $type, array( 'repeater', 'flexible_content' ), true ) ) {
+		return _acf_get_row_sub_fields( $field, $type );
+	}
+
+	return array();
+}
+
+/**
+ * Returns a group or clone field's sub fields named by the field type's prepare_field_for_db().
+ *
+ * @since 6.8.11
+ * @access private
+ *
+ * @param array  $field The field array.
+ * @param string $type  The field type.
+ * @return array
+ */
+function _acf_get_prepared_sub_fields( $field, $type ) {
+	$field_type = acf_get_field_type( $type );
+
+	if ( $field_type && method_exists( $field_type, 'prepare_field_for_db' ) && ! empty( $field['sub_fields'] ) ) {
+		$field = $field_type->prepare_field_for_db( $field );
+	}
+
+	return is_array( $field['sub_fields'] ?? null ) ? $field['sub_fields'] : array();
+}
+
+/**
+ * Returns a repeater's sub fields, or those of every flexible content layout, named for their rows.
+ *
+ * Rows are named `{field}_{row}_{sub_field}`, with the row number held as a placeholder.
+ *
+ * @since 6.8.11
+ * @access private
+ *
+ * @param array  $field The field array.
+ * @param string $type  The field type.
+ * @return array
+ */
+function _acf_get_row_sub_fields( $field, $type ) {
+	if ( 'repeater' === $type ) {
+		$sub_fields = is_array( $field['sub_fields'] ?? null ) ? $field['sub_fields'] : array();
+	} else {
+		$sub_fields = array();
+		foreach ( (array) ( $field['layouts'] ?? array() ) as $layout ) {
+			$sub_fields = array_merge( $sub_fields, is_array( $layout['sub_fields'] ?? null ) ? $layout['sub_fields'] : array() );
+		}
+	}
+
+	foreach ( $sub_fields as &$sub_field ) {
+		$sub_field['name'] = $field['name'] . "_\0_" . ( $sub_field['name'] ?? '' );
+	}
+
+	return $sub_fields;
+}
+
+/**
+ * Prevents WordPress's own custom field editing from changing post meta that belongs to an ACF field.
+ *
+ * The Custom Fields meta box (`metakeyinput` and `meta[]` in the post form), `wp_ajax_add_meta` and XML-RPC
+ * `custom_fields` check these capabilities. Without this, a user who can edit a post could write values for ACF
+ * fields that aren't shown to them, bypassing ACF's save checks. ACF saves its own values without these checks.
+ * Meta keys registered with register_meta() and protected meta keys are left to WordPress.
+ *
+ * @since 6.8.11
+ *
+ * @param string[] $caps       The primitive capabilities required.
+ * @param string   $cap        The capability being checked.
+ * @param mixed    ...$context The user ID, and the post ID and meta key.
+ * @return string[]
+ */
+function acf_map_post_meta_caps( $caps, $cap, ...$context ) {
+	// The user ID isn't needed: the capability is denied whoever the user is.
+	$args = isset( $context[1] ) ? (array) $context[1] : array();
+
+	if ( ! in_array( $cap, array( 'add_post_meta', 'edit_post_meta', 'delete_post_meta' ), true ) || ! isset( $args[0], $args[1] ) || ! is_string( $args[1] ) ) {
+		return $caps;
+	}
+
+	$post_id   = (int) $args[0];
+	$meta_key  = $args[1];
+	$post_type = (string) get_post_type( $post_id );
+
+	if ( registered_meta_key_exists( 'post', $meta_key, $post_type ) || registered_meta_key_exists( 'post', $meta_key ) || is_protected_meta( $meta_key, 'post' ) ) {
+		return $caps;
+	}
+
+	if ( _acf_is_field_meta_key( $post_id, $meta_key ) ) {
+		$caps[] = 'do_not_allow';
+	}
+
+	return $caps;
+}
+
+add_filter( 'map_meta_cap', 'acf_map_post_meta_caps', 10, 4 );

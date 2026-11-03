@@ -207,6 +207,9 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 			// vars
 			$post_id = 'user_' . $args['user_id'];
 
+			// New users are rendered for the form they are created with, so a list from one form isn't accepted by the other.
+			$render_id = $args['user_id'] ? $post_id : 'user_0/' . $args['view'];
+
 			// get field groups
 			$field_groups = acf_get_field_groups(
 				array(
@@ -251,7 +254,7 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 
 				// render
 				echo $before; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- safe HTML string.
-				acf_render_fields( $fields, $post_id, $args['el'], $field_group['instruction_placement'] );
+				acf_render_fields( $fields, $post_id, $args['el'], $field_group['instruction_placement'], array( 'render_id' => $render_id ) );
 				echo $after; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- safe HTML string.
 			}
 
@@ -309,9 +312,8 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 					return $user_id;
 				}
 
-				// Restrict $_POST['acf'] to keys of fields belonging to field groups that apply to this user.
-				$allowed_keys = $this->get_allowed_field_keys( $user_id );
-				$_POST['acf'] = array_intersect_key( $_POST['acf'], array_flip( $allowed_keys ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Verified above; sanitized downstream.
+				// Restrict $_POST['acf'] to fields rendered for this user, or belonging to field groups that apply to them.
+				$this->restrict_save_input( $user_id );
 
 				if ( empty( $_POST['acf'] ) ) {
 					return $user_id;
@@ -325,74 +327,59 @@ if ( ! class_exists( 'ACF_Form_User' ) ) :
 		}
 
 		/**
-		 * Returns the top-level ACF field keys that are allowed to be saved for
-		 * the given user in the current save context. On user_register the new
-		 * user has just been created via either the public register form or the
-		 * admin add-user form; on profile_update the user was rendered via the
-		 * edit form (self-edit or admin-edit-other).
+		 * Restricts the submitted values to fields rendered for the user, or belonging to field groups
+		 * that apply to them in the current save context.
 		 *
-		 * @since 6.8.7
+		 * On user_register the new user was created with either the public register form or the admin
+		 * Add User form, which are rendered and matched separately. On profile_update the user was
+		 * rendered with the edit form (self-edit or admin-edit-other).
+		 *
+		 * @since 6.8.11
 		 *
 		 * @param integer $user_id The user being saved.
-		 * @return array
+		 * @return void
 		 */
-		private function get_allowed_field_keys( $user_id ) {
+		private function restrict_save_input( $user_id ) {
 			if ( current_action() === 'user_register' ) {
-				$queries = array(
-					array(
-						'user_id'   => 'new',
-						'user_form' => 'register',
-					),
-					array(
-						'user_id'   => 'new',
-						'user_form' => 'add',
-					),
+				$view       = $this->is_add_user_request() ? 'add' : 'register';
+				$render_ids = array( 'user_0/' . $view );
+				$screen     = array(
+					'user_id'   => 'new',
+					'user_form' => $view,
 				);
-			} else {
-				$queries = array(
-					array(
-						'user_id'   => $user_id,
-						'user_form' => 'edit',
-					),
-				);
-			}
 
-			$keys = array();
-			foreach ( $queries as $query ) {
-				foreach ( acf_get_field_groups( $query ) as $field_group ) {
-					foreach ( acf_get_fields( $field_group ) as $field ) {
-						$prefix = $field['prefix'] ?? 'acf';
-
-						if ( $prefix === 'acf' ) {
-							if ( ! empty( $field['key'] ) ) {
-								$keys[] = $field['key'];
-							}
-						} elseif ( preg_match( '/^acf\[([^]]+)]$/', $prefix, $matches ) ) {
-							$keys[] = $matches[1];
-						}
-					}
+				// Extensions such as ACF Extended render the admin Add User form's fields for the `user_0` post ID.
+				if ( 'add' === $view ) {
+					$render_ids[] = 'user_0';
 				}
+			} else {
+				$render_ids = array( 'user_' . $user_id );
+				$screen     = array(
+					'user_id'   => $user_id,
+					'user_form' => 'edit',
+				);
 			}
 
-			$keys = array_values( array_unique( array_filter( $keys ) ) );
+			acf_restrict_save_input(
+				array(
+					'context'    => 'user',
+					'post_id'    => 'user_' . $user_id,
+					'render_ids' => $render_ids,
+					'screen'     => $screen,
+					'filter_arg' => $user_id,
+				)
+			);
+		}
 
-			/**
-			 * Filters the list of $_POST['acf'] keys a user save is allowed to persist.
-			 *
-			 * Use this to permit additional field keys when a developer dynamically
-			 * injects fields into the register/add/edit user form via JavaScript
-			 * that aren't part of a field group whose location rules target this user.
-			 *
-			 * @since 6.8.7
-			 *
-			 * @param array $keys    The allowed top-level $_POST['acf'] keys.
-			 * @param int   $user_id The user being saved.
-			 */
-			$keys = apply_filters( 'acf/form/user/allowed_field_keys', $keys, $user_id );
-
-			// Re-normalize after the filter so a misbehaving callback can't break array_flip().
-			$keys = array_filter( (array) $keys, 'is_scalar' );
-			return array_values( array_unique( array_filter( array_map( 'strval', $keys ) ) ) );
+		/**
+		 * Returns true if the current request is the admin Add User form, rather than registration.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @return boolean
+		 */
+		private function is_add_user_request() {
+			return is_admin() && 'createuser' === acf_maybe_get_POST( 'action' );
 		}
 
 		/**

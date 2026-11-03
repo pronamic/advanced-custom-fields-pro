@@ -168,7 +168,7 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 						acf_prefix_fields( $fields, $prefix );
 
 						// render
-						acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'] );
+						acf_render_fields( $fields, $post_id, 'div', $field_group['instruction_placement'], $this->get_render_args( $widget ) );
 				}
 
 				// wrap
@@ -205,6 +205,9 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		 */
 		function save_widget( $instance, $new_instance, $old_instance, $widget ) {
 
+			// The field lists are only needed to save the values, never in the stored instance.
+			unset( $instance['_acf_fields'] );
+
 			// validate nonce if we're not a REST API request.
 			// the $_POST object is not available to us to validate if we're in a REST API call.
 			if ( ! ( function_exists( 'wp_is_json_request' ) && wp_is_json_request() ) ) {
@@ -218,13 +221,74 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 				return $instance;
 			}
 
+			// Widget values are saved from the instance, not $_FILES.
+			acf_discard_uploaded_field_values();
+
 			// save
-			acf_save_post( "widget_{$widget->id}", $new_instance['acf'] );
+			acf_save_post( "widget_{$widget->id}", $this->filter_values( $new_instance['acf'], $new_instance['_acf_fields'] ?? array(), $widget->id_base, "widget_{$widget->id}" ) );
 
 			// return
 			return $instance;
 		}
 
+		/**
+		 * Returns the render ID widget fields are rendered for.
+		 *
+		 * Widgets are rendered for their widget type rather than their number: the widgets screen renames
+		 * the `__i__` template, and the block widget editor renders forms with temporary numbers. Location
+		 * rules only depend on the widget type, so a list from one widget accepted on another of the same
+		 * type grants nothing.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param string $id_base The widget type.
+		 * @return string
+		 */
+		public static function get_render_id( $id_base ) {
+			return 'widget/' . $id_base;
+		}
+
+		/**
+		 * Returns the args widget fields are rendered with. The list is submitted with the widget's
+		 * instance, alongside its values.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param WP_Widget $widget The widget.
+		 * @return array
+		 */
+		private function get_render_args( $widget ) {
+			return array(
+				'render_id' => self::get_render_id( $widget->id_base ),
+				'prefix'    => 'widget-' . $widget->id_base . '[' . $widget->number . '][acf]',
+				'list_name' => 'widget-' . $widget->id_base . '[' . $widget->number . '][_acf_fields]',
+			);
+		}
+
+		/**
+		 * Returns a widget's submitted values restricted to the fields rendered for its widget type,
+		 * or belonging to field groups located on it.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param mixed  $values  The submitted values.
+		 * @param mixed  $lists   The submitted field lists, keyed by render ID.
+		 * @param string $id_base The widget type.
+		 * @param string $post_id The widget's ACF post ID (`widget_{id_base}-{number}`).
+		 * @return array
+		 */
+		public function filter_values( $values, $lists, $id_base, $post_id ) {
+			return acf_filter_save_values(
+				$values,
+				array(
+					'context'    => 'widget',
+					'post_id'    => $post_id,
+					'render_ids' => array( self::get_render_id( $id_base ) ),
+					'lists'      => is_array( $lists ) ? $lists : array(),
+					'screen'     => array( 'widget' => $id_base ),
+				)
+			);
+		}
 
 		/**
 		 * This function will add some custom HTML to the footer of the edit page
@@ -302,7 +366,7 @@ if ( ! class_exists( 'acf_form_widget' ) ) :
 		}
 	}
 
-	new acf_form_widget();
+	acf_new_instance( 'acf_form_widget' );
 endif;
 
 ?>

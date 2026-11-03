@@ -222,7 +222,8 @@ function acf_upgrade_500_field_group( $ofg ) {
 
 	// save field group
 	// acf_upgrade_field_group will call the acf_get_valid_field_group function and apply 'compatibility' changes
-	$nfg = acf_update_field_group( $nfg );
+	// Upgrading data already in the database, so skip sanitization.
+	$nfg = acf_skip_internal_post_sanitization( 'acf_update_field_group', $nfg );
 
 	// log
 	acf_dev_log( '> Complete.', $nfg );
@@ -357,8 +358,8 @@ function acf_upgrade_500_field( $field ) {
 		}
 	}
 
-	// save field
-	$field = acf_update_field( $field );
+	// save field, skipping sanitization since it's upgrading data already in the database
+	$field = acf_skip_internal_post_sanitization( 'acf_update_field', $field );
 
 	// log
 	acf_dev_log( '> Complete.', $field );

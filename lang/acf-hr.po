@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: pro/acf-pro.php:27
 msgid "Advanced Custom Fields PRO"
 msgstr "Advanced Custom Fields PRO"
-
-#: pro/blocks.php:170
-#, fuzzy
-#| msgid "%s value is required"
-msgid "Block type name is required."
-msgstr "%s je obavezno"
 
 #. translators: The name of the block type
 #: pro/blocks.php:178
@@ -47,13 +43,6 @@ msgstr ""
 #: pro/blocks.php:728
 msgid "Change content alignment"
 msgstr ""
-
-#. translators: %s: Block type title
-#: pro/blocks.php:731
-#, fuzzy
-#| msgid "Settings"
-msgid "%s settings"
-msgstr "Postavke"
 
 #: pro/blocks.php:936
 msgid "This block contains no editable fields."
@@ -78,21 +67,6 @@ msgstr "Ažuriraj"
 msgid "Options Updated"
 msgstr "Postavke spremljene"
 
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>."
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"Da bi omogućili automatsko ažuriranje, molimo unesite licencu na stranici <a "
-"href=“%s”>ažuriranja</a>. Ukoliko nemate licencu, pogledajte <a "
-"href=“%s”>opcije i cijene</a>."
-
 #: pro/updates.php:159
 msgid ""
 "<b>ACF Activation Error</b>. Your defined license key has changed, but an "
@@ -109,23 +83,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>Greška</b>. Greška prilikom spajanja na server"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "Provjeri ponovno"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>Greška</b>. Greška prilikom spajanja na server"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -289,8 +249,6 @@ msgstr "Dodaj red"
 #: pro/fields/class-acf-field-flexible-content.php:76,
 #: pro/fields/class-acf-field-flexible-content.php:943,
 #: pro/fields/class-acf-field-flexible-content.php:1022
-#, fuzzy
-#| msgid "layout"
 msgid "layout"
 msgid_plural "layouts"
 msgstr[0] "raspored"
@@ -306,12 +264,6 @@ msgstr "rasporedi"
 #: pro/fields/class-acf-field-flexible-content.php:1021
 msgid "This field requires at least {min} {label} {identifier}"
 msgstr "Polje mora sadržavati najmanje {min} {label} {identifier}"
-
-#: pro/fields/class-acf-field-flexible-content.php:82
-#, fuzzy
-#| msgid "This field has a limit of {max} {identifier}"
-msgid "This field has a limit of {max} {label} {identifier}"
-msgstr "Polje je ograničeno na najviše {max} {identifier}"
 
 #: pro/fields/class-acf-field-flexible-content.php:85
 msgid "{available} {label} {identifier} available (max {max})"
@@ -338,12 +290,6 @@ msgstr "Presloži polja povlačenjem"
 msgid "Add layout"
 msgstr "Dodaj razmještaj"
 
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "Dupliciraj razmještaj"
-
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
 msgstr "Ukloni razmještaj"
@@ -366,8 +312,6 @@ msgid "Add New Layout"
 msgstr "Dodaj novi razmještaj"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Dodaj razmještaj"
 
@@ -593,36 +537,13 @@ msgstr "Umetni na početak"
 msgid "Preview Size"
 msgstr "Veličina prikaza prilikom uređivanja stranice"
 
-#: pro/fields/class-acf-field-gallery.php:844
-#, fuzzy
-#| msgid "1 field requires attention"
-msgid "%1$s requires at least %2$s selection"
-msgid_plural "%1$s requires at least %2$s selections"
-msgstr[0] "1 polje treba vašu pažnju"
-msgstr[1] "1 polje treba vašu pažnju"
-msgstr[2] "1 polje treba vašu pažnju"
-
 #: pro/fields/class-acf-field-repeater.php:29
 msgid "Repeater"
 msgstr "Ponavljajuće polje"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "Minimalni broj redova je već odabran ({min})"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "Maksimalni broj redova je već odabran ({max})"
-
-#: pro/fields/class-acf-field-repeater.php:68
-#, fuzzy
-#| msgctxt "Select2 JS load_fail"
-#| msgid "Loading failed"
-msgid "Error loading page"
-msgstr "Neuspješno učitavanje"
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
@@ -632,27 +553,9 @@ msgstr ""
 msgid "Sub Fields"
 msgstr "Pod polja"
 
-#: pro/fields/class-acf-field-repeater.php:195
-#, fuzzy
-#| msgid "Position"
-msgid "Pagination"
-msgstr "Pozicija"
-
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "Stranica za objave"
-
-#: pro/fields/class-acf-field-repeater.php:208
-#, fuzzy
-#| msgid "Select the taxonomy to be displayed"
-msgid "Set the number of rows to be displayed on a page."
-msgstr "Odaberite taksonomiju za prikaz"
 
 #: pro/fields/class-acf-field-repeater.php:240
 msgid "Minimum Rows"
@@ -674,29 +577,15 @@ msgstr "Odaberite pod polje koje će biti prikazano dok je red sklopljen"
 msgid "Invalid nonce."
 msgstr ""
 
-#: pro/fields/class-acf-field-repeater.php:1060
-#, fuzzy
-#| msgid "Edit field group"
-msgid "Invalid field key or name."
-msgstr "Uredi skup polja"
-
 #: pro/fields/class-acf-field-repeater.php:1069
 msgid "There was an error retrieving the field."
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "Presloži polja povlačenjem"
 
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
 msgstr "Dodaj red"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "Dupliciraj"
 
@@ -704,53 +593,11 @@ msgstr "Dupliciraj"
 msgid "Remove row"
 msgstr "Ukloni red"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "Trenutni korisnik"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "Početna stranica"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "Stranica za objave"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "Početna stranica"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "Stranica za objave"
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "Ne postoji stranica sa postavkama"
 
 #: pro/locations/class-acf-location-options-page.php:22
 msgid "Options Page"
@@ -790,12 +637,6 @@ msgstr "Licenca"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "Bolja verifikacija polja"
-
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
 msgstr "Ažuriraj informacije"
@@ -829,17 +670,9 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "Unesite licencu kako bi mogli izvršiti nadogradnju"
 
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "Nadogradi dodatak"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "Unesite licencu kako bi mogli izvršiti nadogradnju"

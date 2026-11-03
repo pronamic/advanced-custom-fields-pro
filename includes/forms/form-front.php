@@ -406,10 +406,17 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			// Restrict $_POST['acf'] to the field keys the form actually exposed, so the
 			// save path cannot accept values for fields the form did not render.
 			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified in check_submit_form().
+			$allowed_keys = $this->get_allowed_field_keys( $form );
 			if ( isset( $_POST['acf'] ) && is_array( $_POST['acf'] ) ) {
-				$allowed_keys = $this->get_allowed_field_keys( $form );
 				$_POST['acf'] = array_intersect_key( $_POST['acf'], array_flip( $allowed_keys ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Sanitized downstream; save pipeline expects slashed input.
 			}
+
+			// Uploads write back into $_POST['acf'], so restrict them to the same keys.
+			acf_restrict_uploaded_field_keys( $allowed_keys );
+
+			// Basic uploader nonces are signed for the form's render (see render_form()).
+			$render_id = $this->get_submitted_render_id();
+			acf_set_upload_render_ids( $render_id ? array( 'acf_form/' . $render_id ) : array() );
 			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			// save
@@ -435,6 +442,19 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				wp_redirect( $return ); //phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect -- unsafe redirects allowed.
 				exit;
 			}
+		}
+
+		/**
+		 * Returns the render ID submitted with the form, or an empty string.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @return string
+		 */
+		protected function get_submitted_render_id(): string {
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified in check_submit_form().
+			return isset( $_POST['_acf_render_id'] ) && is_scalar( $_POST['_acf_render_id'] ) ? sanitize_text_field( wp_unslash( $_POST['_acf_render_id'] ) ) : '';
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 		}
 
 		/**
@@ -501,11 +521,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				return false;
 			}
 
-			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified above in check_submit_form().
-			$expected_render_id = ( isset( $_POST['_acf_render_id'] ) && is_scalar( $_POST['_acf_render_id'] ) )
-				? sanitize_text_field( wp_unslash( $_POST['_acf_render_id'] ) )
-				: '';
-			// phpcs:enable WordPress.Security.NonceVerification.Missing
+			$expected_render_id = $this->get_submitted_render_id();
 			if ( '' === $expected_render_id ) {
 				return false;
 			}
@@ -536,10 +552,10 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 				return $form;
 			}
 
-			if ( empty( $_POST['_acf_render_id'] ) || ! is_scalar( $_POST['_acf_render_id'] ) ) {
+			$expected_render_id = $this->get_submitted_render_id();
+			if ( '' === $expected_render_id ) {
 				return $form;
 			}
-			$expected_render_id = sanitize_text_field( wp_unslash( $_POST['_acf_render_id'] ) );
 
 			// wp_unslash only — sanitize_text_field would desync from the raw
 			// $acf_form_value hashed render-side.
@@ -746,15 +762,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			$fields = $fields ?: $this->get_form_fields( $form );
 
 			foreach ( $fields as $field ) {
-				$prefix = $field['prefix'] ?? 'acf';
-
-				if ( $prefix === 'acf' ) {
-					if ( ! empty( $field['key'] ) ) {
-						$keys[] = $field['key'];
-					}
-				} elseif ( preg_match( '/^acf\[([^]]+)]$/', $prefix, $matches ) ) {
-					$keys[] = $matches[1];
-				}
+				$keys[] = acf_get_field_root_key( $field );
 			}
 
 			// Include keys folded in from sibling acf_form() calls on the same page.
@@ -779,8 +787,7 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 
 			// Re-normalize after the filter so a misbehaving callback can't break array_flip()
 			// downstream in submit_form() with non-scalar or empty values.
-			$keys = array_filter( (array) $keys, 'is_scalar' );
-			return array_values( array_unique( array_filter( array_map( 'strval', $keys ) ) ) );
+			return acf_normalize_field_keys( $keys );
 		}
 
 		/**
@@ -908,7 +915,20 @@ if ( ! class_exists( 'acf_form_front' ) ) :
 			?>
 			<div class="acf-fields acf-form-fields -<?php echo esc_attr( $args['label_placement'] ); ?>">
 				<?php echo $args['html_before_fields']; ?><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- designed to contain potentially unsafe HTML, set by developers. ?>
-				<?php acf_render_fields( $fields, $post_id, $args['field_el'], $args['instruction_placement'] ); ?>
+				<?php
+				// The form's allowed keys are signed in `_acf_form_meta[]`, so no field list is output. The render ID
+				// signs basic uploader nonces for this render.
+				acf_render_fields(
+					$fields,
+					$post_id,
+					$args['field_el'],
+					$args['instruction_placement'],
+					array(
+						'render_id' => 'acf_form/' . $render_id,
+						'list_name' => false,
+					)
+				);
+				?>
 				<?php echo $args['html_after_fields']; ?><?php //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- designed to contain potentially unsafe HTML, set by developers. ?>
 			</div>
 			<?php if ( $args['form'] ) : ?>

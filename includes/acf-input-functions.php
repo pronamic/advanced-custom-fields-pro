@@ -52,6 +52,13 @@ function acf_esc_attrs( $attrs ) {
 	// Loop over attrs and validate data types.
 	foreach ( $attrs as $k => $v ) {
 
+		// Skip invalid attribute names, based on the rule WP_HTML_Tag_Processor uses.
+		// esc_attr() leaves spaces and "=" alone, which would let a name break out into extra attributes.
+		// The "u" flag also rejects invalid UTF-8, which esc_attr() would turn into an empty name.
+		if ( ! preg_match( '~^[^ "\'>&</=\x00-\x1F\x7F]+$~u', (string) $k ) ) {
+			continue;
+		}
+
 		// String (but don't trim value).
 		if ( is_string( $v ) && ( $k !== 'value' ) ) {
 			$v = trim( $v );
@@ -213,6 +220,19 @@ function acf_file_input( $attrs = array() ) {
 }
 
 /**
+ * Returns the nonce action of a basic uploader file input, bound to the object it is rendered for.
+ *
+ * @since 6.8.11
+ *
+ * @param string $render_id The render ID of the object, as from acf_get_current_render_id().
+ * @param string $field_key The field key.
+ * @return string
+ */
+function acf_get_file_uploader_nonce_action( $render_id, $field_key ) {
+	return 'acf/file_uploader_nonce/' . $render_id . '/' . $field_key;
+}
+
+/**
  * acf_get_file_input
  *
  * Returns the HTML of a file input.
@@ -247,7 +267,7 @@ function acf_get_file_input( $attrs = array() ) {
 	if ( '' !== $field_key ) {
 		$nonce_attrs = array(
 			'name'  => 'acf[' . $field_key . '_file_nonce]',
-			'value' => wp_create_nonce( 'acf/file_uploader_nonce/' . $field_key ),
+			'value' => wp_create_nonce( acf_get_file_uploader_nonce_action( acf_get_current_render_id(), $field_key ) ),
 		);
 		$nonce_field = sprintf(
 			'<input type="hidden" %s />',

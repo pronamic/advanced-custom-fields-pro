@@ -56,13 +56,12 @@ class WC_Order {
 		// Storage for localized postboxes.
 		$postboxes = array();
 
-		$location = 'shop_order';
 		$order    = ( $post instanceof \WP_Post ) ? wc_get_order( $post->ID ) : $post;
+		$location = $this->get_order_location_type( $order->get_id() );
 		$screen   = $this->is_hpos_enabled() ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
 
-		if ( $order instanceof \WC_Subscription ) {
-			$location = 'shop_subscription';
-			$screen   = function_exists( 'wcs_get_page_screen_id' ) ? wcs_get_page_screen_id( 'shop_subscription' ) : 'shop_subscription';
+		if ( 'shop_subscription' === $location ) {
+			$screen = function_exists( 'wcs_get_page_screen_id' ) ? wcs_get_page_screen_id( 'shop_subscription' ) : 'shop_subscription';
 		}
 
 		// Get field groups for this screen.
@@ -236,8 +235,39 @@ class WC_Order {
 			return;
 		}
 
+		// Only accept fields rendered for this order, or from field groups located on it.
+		acf_restrict_save_input(
+			array(
+				'context'    => 'woo_order',
+				'post_id'    => 'woo_order_' . $order_id,
+				'render_ids' => array( 'woo_order_' . $order_id ),
+				'screen'     => array(
+					'post_id'   => $order_id,
+					'post_type' => $this->get_order_location_type( $order_id ),
+				),
+			)
+		);
+
 		// Remove the action to prevent an infinite loop via $order->save().
 		remove_action( 'woocommerce_update_order', array( $this, 'save_order' ), 10 );
 		acf_save_post( 'woo_order_' . $order_id );
+	}
+
+	/**
+	 * Returns the post type used to match field groups to an order, as in add_meta_boxes().
+	 *
+	 * @since 6.8.11
+	 *
+	 * @param integer $order_id The order ID.
+	 * @return string
+	 */
+	protected function get_order_location_type( int $order_id ): string {
+		$order = function_exists( 'wc_get_order' ) ? wc_get_order( $order_id ) : false;
+
+		if ( class_exists( 'WC_Subscription' ) && $order instanceof \WC_Subscription ) {
+			return 'shop_subscription';
+		}
+
+		return 'shop_order';
 	}
 }

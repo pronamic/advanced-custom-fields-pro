@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fr_CA\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 # @ acf
 #: pro/acf-pro.php:27
@@ -79,21 +80,6 @@ msgstr "Mise à jour"
 msgid "Options Updated"
 msgstr "Options mises à jours"
 
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>."
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"Pour activer les mises à jour, veuillez entrer votre clé de licence sur la "
-"page <a href=\"%s\">Mises à jour</a>. Si vous n’en avez pas, rendez-vous sur "
-"nos <a href=\"%s\">détails & tarifs</a>."
-
 #: pro/updates.php:159
 msgid ""
 "<b>ACF Activation Error</b>. Your defined license key has changed, but an "
@@ -110,23 +96,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>Erreur</b>. Impossible de joindre le serveur"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "Vérifier à nouveau"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>Erreur</b>. Impossible de joindre le serveur"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -160,19 +132,6 @@ msgstr "Mises à jour"
 msgid ""
 "<b>Error</b>. Could not authenticate update package. Please check again or "
 "deactivate and reactivate your ACF PRO license."
-msgstr ""
-"<b>Erreur</b>. Impossible d’authentifier la mise à jour. Merci d’essayer à "
-"nouveau et si le problème persiste, désactivez et réactivez votre licence "
-"ACF PRO."
-
-#: pro/admin/admin-updates.php:199
-#, fuzzy
-#| msgid ""
-#| "<b>Error</b>. Could not authenticate update package. Please check again "
-#| "or deactivate and reactivate your ACF PRO license."
-msgid ""
-"<b>Error</b>. Your license for this site has expired or been deactivated. "
-"Please reactivate your ACF PRO license."
 msgstr ""
 "<b>Erreur</b>. Impossible d’authentifier la mise à jour. Merci d’essayer à "
 "nouveau et si le problème persiste, désactivez et réactivez votre licence "
@@ -360,12 +319,6 @@ msgstr "Faites glisser pour réorganiser"
 msgid "Add layout"
 msgstr "Ajouter une mise-en-forme"
 
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "Dupliquer la mise-en-forme"
-
 # @ acf
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
@@ -392,8 +345,6 @@ msgstr "Ajouter une nouvelle mise-en-forme"
 
 # @ acf
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Ajouter une mise-en-forme"
 
@@ -640,9 +591,6 @@ msgid "Preview Size"
 msgstr "Taille de prévisualisation"
 
 #: pro/fields/class-acf-field-gallery.php:844
-#, fuzzy
-#| msgid "%s requires at least %s selection"
-#| msgid_plural "%s requires at least %s selections"
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%s requiert au moins %s sélection"
@@ -653,22 +601,9 @@ msgstr[1] "%s requiert au moins %s sélections"
 msgid "Repeater"
 msgstr "Répéteur"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "Nombre minimum d’éléments atteint ({min} éléments)"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "Nombre maximum d’éléments atteint ({max} éléments)"
-
-#: pro/fields/class-acf-field-repeater.php:68
-#, fuzzy
-#| msgid "Error loading field."
-msgid "Error loading page"
-msgstr "Échec du chargement du champ."
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
@@ -679,29 +614,9 @@ msgstr ""
 msgid "Sub Fields"
 msgstr "Sous-champs"
 
-# @ acf
-#: pro/fields/class-acf-field-repeater.php:195
-#, fuzzy
-#| msgid "Position"
-msgid "Pagination"
-msgstr "Position"
-
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "Page des articles"
-
-# @ acf
-#: pro/fields/class-acf-field-repeater.php:208
-#, fuzzy
-#| msgid "Select the taxonomy to be displayed"
-msgid "Set the number of rows to be displayed on a page."
-msgstr "Choisissez la taxonomie à afficher"
 
 # @ acf
 #: pro/fields/class-acf-field-repeater.php:240
@@ -725,21 +640,9 @@ msgstr "Choisir un sous champ à afficher lorsque l’élément est replié"
 msgid "Invalid nonce."
 msgstr "Nonce invalide."
 
-#: pro/fields/class-acf-field-repeater.php:1060
-#, fuzzy
-#| msgid "Invalid nonce."
-msgid "Invalid field key or name."
-msgstr "Nonce invalide."
-
 #: pro/fields/class-acf-field-repeater.php:1069
 msgid "There was an error retrieving the field."
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "Faites glisser pour réorganiser"
 
 # @ acf
 #: pro/fields/class-acf-repeater-table.php:402
@@ -747,8 +650,6 @@ msgid "Add row"
 msgstr "Ajouter un élément"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "Dupliquer"
 
@@ -757,53 +658,11 @@ msgstr "Dupliquer"
 msgid "Remove row"
 msgstr "Retirer l’élément"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "Utilisateur courant"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "Page d’accueil"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "Page des articles"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "Page d’accueil"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "Page des articles"
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "Aucune page d’option n’existe"
 
 # @ acf
 #: pro/locations/class-acf-location-options-page.php:22
@@ -847,12 +706,6 @@ msgstr "Code de licence"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "Meilleure validation"
-
 # @ acf
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
@@ -889,8 +742,6 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "Entrez votre clé de licence ci-dessus pour activer les mises à jour"
 
@@ -898,9 +749,3 @@ msgstr "Entrez votre clé de licence ci-dessus pour activer les mises à jour"
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "Mettre à jour l’extension"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "Entrez votre clé de licence ci-dessus pour activer les mises à jour"

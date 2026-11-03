@@ -488,6 +488,9 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 			 */
 			$post = apply_filters( "acf/pre_update_{$this->hook_name}", $post );
 
+			// Sanitize for users without unfiltered_html, as the settings are stored exactly as given.
+			$post = _acf_maybe_kses_internal_post_settings( $post );
+
 			// Make a backup of internal post type data and remove some args.
 			$_post = $post;
 			acf_extract_vars( $_post, array( 'ID', 'key', 'title', 'menu_order', 'fields', 'active', '_valid', '_parent' ) );
@@ -507,18 +510,14 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 				'post_parent'    => ! empty( $post['_parent'] ) ? (int) $post['_parent'] : 0,
 			);
 
-			// Unhook wp_targeted_link_rel() filter from WP 5.1 corrupting serialized data.
-			remove_filter( 'content_save_pre', 'wp_targeted_link_rel' );
-
 			// Slash data.
 			// WP expects all data to be slashed and will unslash it (fixes '\' character issues).
 			$save = wp_slash( $save );
 
-			// Update or Insert.
-			if ( $post['ID'] ) {
-				wp_update_post( $save );
-			} else {
-				$post['ID'] = wp_insert_post( $save );
+			// Update or Insert, storing the serialized settings exactly as given.
+			$post_id = acf_insert_or_update_internal_post( $save );
+			if ( ! $post['ID'] ) {
+				$post['ID'] = $post_id;
 			}
 
 			$this->flush_post_cache( $post );

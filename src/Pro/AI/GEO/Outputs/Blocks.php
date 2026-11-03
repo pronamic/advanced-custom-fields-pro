@@ -153,6 +153,14 @@ class Blocks {
 			echo '<!-- ACF AI Block JSON-LD: Checking block: ' . esc_html( $block['name'] ) . " -->\n";
 		}
 
+		// Don't output field values of a password-protected post until the password has been entered.
+		if ( acf_post_password_required( $post_id ) ) {
+			if ( $debug ) {
+				echo "<!-- ACF AI Block JSON-LD: Skipped (password protected post) -->\n";
+			}
+			return;
+		}
+
 		// Get the block type.
 		$block_type = acf_get_block_type( $block['name'] );
 		if ( ! $block_type ) {

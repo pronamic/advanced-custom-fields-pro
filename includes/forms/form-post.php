@@ -337,6 +337,9 @@ if ( ! class_exists( 'ACF_Form_Post' ) ) :
 				return $post_id;
 			}
 
+			// Only accept fields rendered for this post, or from field groups located on it.
+			acf_restrict_save_input( _acf_get_post_save_args( $post, 'post' ) );
+
 			// Validate for published post (allow draft to save without validation).
 			if ( $post->post_status === 'publish' ) {
 				// Bail early if validation fails.

@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: includes/api/api-helpers.php:2534
+msgid "Sorry, this file could not be uploaded."
+msgstr ""
 
 #: src/Site_Health/Site_Health.php:623
 msgid "Field Groups by Post Type"
 msgstr ""
 
-#: includes/api/api-helpers.php:3306
+#: includes/api/api-helpers.php:3315
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr ""
@@ -5786,7 +5791,7 @@ msgstr ""
 msgid "Attachment"
 msgstr "附件"
 
-#: includes/validation.php:333
+#: includes/validation.php:335
 msgid "%s value is required"
 msgstr ""
 
@@ -6552,8 +6557,8 @@ msgstr ""
 msgid "1 field requires attention"
 msgstr ""
 
-#: includes/assets.php:376 includes/validation.php:267
-#: includes/validation.php:275
+#: includes/assets.php:376 includes/validation.php:269
+#: includes/validation.php:277
 msgid "Validation failed"
 msgstr "驗證失敗"
 
@@ -6592,7 +6597,7 @@ msgstr "編輯"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 
-#: includes/api/api-helpers.php:3448
+#: includes/api/api-helpers.php:3457
 msgid "File type must be %s."
 msgstr "檔案類型必須為 %s。"
 
@@ -6601,31 +6606,31 @@ msgstr "檔案類型必須為 %s。"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3445
+#: includes/api/api-helpers.php:3454
 msgid "or"
 msgstr "或"
 
-#: includes/api/api-helpers.php:3421
+#: includes/api/api-helpers.php:3430
 msgid "File size must not exceed %s."
 msgstr "檔案大小不得超過 %s。"
 
-#: includes/api/api-helpers.php:3417
+#: includes/api/api-helpers.php:3426
 msgid "File size must be at least %s."
 msgstr "檔案大小必須至少為 %s。"
 
-#: includes/api/api-helpers.php:3404
+#: includes/api/api-helpers.php:3413
 msgid "Image height must not exceed %dpx."
 msgstr "圖片高度不得超過 %dpx。"
 
-#: includes/api/api-helpers.php:3400
+#: includes/api/api-helpers.php:3409
 msgid "Image height must be at least %dpx."
 msgstr "圖片高度必須至少為 %dpx。"
 
-#: includes/api/api-helpers.php:3388
+#: includes/api/api-helpers.php:3397
 msgid "Image width must not exceed %dpx."
 msgstr "圖片寬度不得超過 %dpx。"
 
-#: includes/api/api-helpers.php:3384
+#: includes/api/api-helpers.php:3393
 msgid "Image width must be at least %dpx."
 msgstr "圖片寬度必須至少為 %dpx。"
 
@@ -8036,12 +8041,6 @@ msgstr "Advanced Custom Fields"
 msgid "Advanced Custom Fields PRO"
 msgstr "Advanced Custom Fields PRO"
 
-#: pro/blocks.php:170
-#, fuzzy
-#| msgid "%s value is required"
-msgid "Block type name is required."
-msgstr "%s 值為必填"
-
 #. translators: The name of the block type
 #: pro/blocks.php:178
 msgid "Block type \"%s\" is already registered."
@@ -8059,13 +8058,6 @@ msgstr "切換至預覽"
 msgid "Change content alignment"
 msgstr ""
 
-#. translators: %s: Block type title
-#: pro/blocks.php:731
-#, fuzzy
-#| msgid "Settings"
-msgid "%s settings"
-msgstr "設定"
-
 #: pro/blocks.php:936
 msgid "This block contains no editable fields."
 msgstr ""
@@ -8080,20 +8072,6 @@ msgstr ""
 #: pro/options-page.php:78
 msgid "Options Updated"
 msgstr "選項已更新"
-
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>."
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"要啟用更新，請在<a href=\"%s\">更新</a>頁面上輸入您的授權金鑰。 如果您沒有授"
-"權金鑰，請參閱<a href=\"%s\">詳情和定價</a>。"
 
 #: pro/updates.php:159
 msgid ""
@@ -8111,23 +8089,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>錯誤</b>。 無法連接到更新伺服器"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "再檢查一次"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>錯誤</b>。 無法連接到更新伺服器"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -8147,18 +8111,6 @@ msgstr "<b>錯誤</b>。 無法連接到更新伺服器"
 msgid ""
 "<b>Error</b>. Could not authenticate update package. Please check again or "
 "deactivate and reactivate your ACF PRO license."
-msgstr ""
-"<b>錯誤</b>。無法對更新包進行驗證。請再次檢查或停用並重新啟動您的 ACF PRO 授"
-"權。"
-
-#: pro/admin/admin-updates.php:199
-#, fuzzy
-#| msgid ""
-#| "<b>Error</b>. Could not authenticate update package. Please check again "
-#| "or deactivate and reactivate your ACF PRO license."
-msgid ""
-"<b>Error</b>. Your license for this site has expired or been deactivated. "
-"Please reactivate your ACF PRO license."
 msgstr ""
 "<b>錯誤</b>。無法對更新包進行驗證。請再次檢查或停用並重新啟動您的 ACF PRO 授"
 "權。"
@@ -8273,12 +8225,6 @@ msgstr "點擊下方的 \"%s\" 按鈕以新增設定"
 msgid "Add layout"
 msgstr "新增版面"
 
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "複製版面"
-
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
 msgstr "移除版面"
@@ -8301,8 +8247,6 @@ msgid "Add New Layout"
 msgstr "新增版面"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "新增版面"
 
@@ -8424,13 +8368,6 @@ msgstr "附加在後"
 msgid "Prepend to the beginning"
 msgstr "插入至最前"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "已達最小行數 ( {min} 行 )"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "已達最大行數 ( {max} 行 )"
@@ -8446,18 +8383,6 @@ msgstr ""
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "文章頁面"
-
-#: pro/fields/class-acf-field-repeater.php:208
-#, fuzzy
-#| msgid "Select the taxonomy to be displayed"
-msgid "Set the number of rows to be displayed on a page."
-msgstr "選擇要顯示的分類法"
 
 #: pro/fields/class-acf-field-repeater.php:240
 msgid "Minimum Rows"
@@ -8483,19 +8408,11 @@ msgstr ""
 msgid "There was an error retrieving the field."
 msgstr ""
 
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "拖曳排序"
-
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
 msgstr "新增列"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "複製"
 
@@ -8503,53 +8420,11 @@ msgstr "複製"
 msgid "Remove row"
 msgstr "移除列"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "目前使用者"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "網站首頁"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "文章頁面"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "網站首頁"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "文章頁面"
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "設定頁面不存在"
 
 #: pro/locations/class-acf-location-options-page.php:70
 msgid "No options pages exist"
@@ -8584,12 +8459,6 @@ msgstr "授權金鑰"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Activation Code"
-msgid "Retry Activation"
-msgstr "啟用碼"
-
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
 msgstr "更新資訊"
@@ -8615,17 +8484,9 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "請於上方輸入你的授權金鑰以解鎖更新"
 
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "更新外掛"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "請於上方輸入你的授權金鑰以解鎖更新"

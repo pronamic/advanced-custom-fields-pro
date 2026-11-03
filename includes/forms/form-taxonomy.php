@@ -139,7 +139,7 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 				// loop
 				foreach ( $field_groups as $field_group ) {
 						$fields = acf_get_fields( $field_group );
-						acf_render_fields( $fields, $post_id, 'div', 'field' );
+						acf_render_fields( $fields, $post_id, 'div', 'field', array( 'render_id' => $post_id . '/' . $taxonomy ) );
 				}
 
 				// wrap
@@ -311,6 +311,16 @@ if ( ! class_exists( 'acf_form_taxonomy' ) ) :
 			if ( ! acf_verify_nonce( 'taxonomy' ) ) {
 				return $term_id;
 			}
+
+			// Only accept fields rendered for this term (or the taxonomy's Add form), or from field groups located on the taxonomy.
+			acf_restrict_save_input(
+				array(
+					'context'    => 'taxonomy',
+					'post_id'    => $post_id,
+					'render_ids' => array( current_action() === 'create_term' ? 'term_0/' . $taxonomy : $post_id ),
+					'screen'     => array( 'taxonomy' => $taxonomy ),
+				)
+			);
 
 			// valied and show errors
 			acf_validate_save_post( true );

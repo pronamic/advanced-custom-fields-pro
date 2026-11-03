@@ -1144,12 +1144,44 @@ if ( ! class_exists( 'acf_field_repeater' ) ) :
 				$response['total_rows'] = (int) acf_get_metadata_by_field( $post_id, $field );
 			}
 
-			// Render the rows to be sent back via AJAX.
-			$field            = acf_prepare_field( $field );
-			$repeater_table   = new ACF_Repeater_Table( $field );
-			$response['rows'] = $repeater_table->rows( true );
+			// Render the rows to be sent back via AJAX, for the object the form was rendered for, so inputs
+			// that sign themselves for it (such as basic uploader nonces) verify when the form is saved.
+			$field          = acf_prepare_field( $field );
+			$repeater_table = new ACF_Repeater_Table( $field );
+
+			_acf_in_field_render(
+				$this->get_ajax_render_id( $args ),
+				function () use ( $repeater_table, &$response ) {
+					$response['rows'] = $repeater_table->rows( true );
+				}
+			);
 
 			wp_send_json_success( $response );
+		}
+
+		/**
+		 * Returns the render ID of the form a paginated repeater's rows are loaded for.
+		 *
+		 * Matches the render IDs the forms use: options pages are rendered for the page, widgets for their
+		 * widget type, and other objects for their ACF post ID.
+		 *
+		 * @since 6.8.11
+		 *
+		 * @param array $args The request args.
+		 * @return string
+		 */
+		private function get_ajax_render_id( $args ) {
+			$slug = sanitize_text_field( (string) $args['options_page_slug'] );
+			if ( '' !== $slug ) {
+				return 'options/' . $slug;
+			}
+
+			$post_id = sanitize_text_field( (string) $args['post_id'] );
+			if ( preg_match( '/^widget_(.+)-\d+$/', $post_id, $matches ) ) {
+				return acf_form_widget::get_render_id( $matches[1] );
+			}
+
+			return $post_id;
 		}
 
 		/**

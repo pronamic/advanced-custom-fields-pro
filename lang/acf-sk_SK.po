@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
@@ -20,16 +20,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: pro/acf-pro.php:27
 msgid "Advanced Custom Fields PRO"
 msgstr "ACF PRO"
-
-#: pro/blocks.php:170
-#, fuzzy
-#| msgid "%s value is required"
-msgid "Block type name is required."
-msgstr "vyžaduje sa hodnota %s"
 
 #. translators: The name of the block type
 #: pro/blocks.php:178
@@ -47,13 +42,6 @@ msgstr ""
 #: pro/blocks.php:728
 msgid "Change content alignment"
 msgstr ""
-
-#. translators: %s: Block type title
-#: pro/blocks.php:731
-#, fuzzy
-#| msgid "New Settings"
-msgid "%s settings"
-msgstr "Nové nastavenia"
 
 #: pro/blocks.php:936
 msgid "This block contains no editable fields."
@@ -78,21 +66,6 @@ msgstr "Aktualizovať "
 msgid "Options Updated"
 msgstr "Nastavenia aktualizované"
 
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>"
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"Aby ste zapli aktualizácie, musíte zadať licencčný kľúč na stránke <a "
-"href=\"%s\">aktualizácií</a>. Ak nemáte licenčný kľúč, porizte si <a "
-"href=\"%s\">podrobnosti a ceny</a>."
-
 #: pro/updates.php:159
 msgid ""
 "<b>ACF Activation Error</b>. Your defined license key has changed, but an "
@@ -109,23 +82,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>Chyba</b>. Nie je možné sa spojiť so serverom"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "Skontrolovať znova"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>Chyba</b>. Nie je možné sa spojiť so serverom"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -233,43 +192,13 @@ msgstr "Tabuľka"
 msgid "Row"
 msgstr "Riadok"
 
-#: pro/fields/class-acf-field-clone.php:868
-#, fuzzy
-#| msgid "Selected elements will be displayed in each result"
-msgid "Labels will be displayed as %s"
-msgstr "Vybraté prvky budú zobrazené v každom výsledku "
-
-#: pro/fields/class-acf-field-clone.php:873
-#, fuzzy
-#| msgid "Field Label"
-msgid "Prefix Field Labels"
-msgstr "Označenie poľa "
-
 #: pro/fields/class-acf-field-clone.php:883
 msgid "Values will be saved as %s"
 msgstr ""
 
-#: pro/fields/class-acf-field-clone.php:888
-#, fuzzy
-#| msgid "Field Name"
-msgid "Prefix Field Names"
-msgstr "Meno poľa "
-
-#: pro/fields/class-acf-field-clone.php:1005
-#, fuzzy
-#| msgid "Below fields"
-msgid "Unknown field"
-msgstr "Pod poliami"
-
 #: pro/fields/class-acf-field-clone.php:1009
 msgid "(no title)"
 msgstr "(bez názvu)"
-
-#: pro/fields/class-acf-field-clone.php:1042
-#, fuzzy
-#| msgid "Synchronise field group"
-msgid "Unknown field group"
-msgstr "Zobraziť túto skupinu poľa, ak"
 
 #: pro/fields/class-acf-field-clone.php:1046
 msgid "All fields from %s field group"
@@ -298,8 +227,6 @@ msgstr "Pridať riadok"
 #: pro/fields/class-acf-field-flexible-content.php:76,
 #: pro/fields/class-acf-field-flexible-content.php:943,
 #: pro/fields/class-acf-field-flexible-content.php:1022
-#, fuzzy
-#| msgid "layout"
 msgid "layout"
 msgid_plural "layouts"
 msgstr[0] "rozloženie"
@@ -315,12 +242,6 @@ msgstr "rozloženia"
 #: pro/fields/class-acf-field-flexible-content.php:1021
 msgid "This field requires at least {min} {label} {identifier}"
 msgstr "Toto pole vyžaduje najmenej {min} {label} {identifier}"
-
-#: pro/fields/class-acf-field-flexible-content.php:82
-#, fuzzy
-#| msgid "This field has a limit of {max} {identifier}"
-msgid "This field has a limit of {max} {label} {identifier}"
-msgstr "Toto pole vyžaduje najviac {max} {identifier}"
 
 #: pro/fields/class-acf-field-flexible-content.php:85
 msgid "{available} {label} {identifier} available (max {max})"
@@ -347,12 +268,6 @@ msgstr "Zmeňte poradie pomocou funkcie ťahaj a pusť"
 msgid "Add layout"
 msgstr "Pridať rozloženie"
 
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "Duplikovať rozloženie"
-
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
 msgstr "Odstrániť rozloženie"
@@ -375,8 +290,6 @@ msgid "Add New Layout"
 msgstr "Pridať nové rozloženie"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Pridať rozloženie"
 
@@ -462,18 +375,6 @@ msgstr "Odstrániť"
 #: pro/fields/class-acf-field-gallery.php:356
 msgid "Title"
 msgstr "Názov"
-
-#: pro/fields/class-acf-field-gallery.php:368
-#, fuzzy
-#| msgid "Options"
-msgid "Caption"
-msgstr "Nastavenia "
-
-#: pro/fields/class-acf-field-gallery.php:380
-#, fuzzy
-#| msgid "Text"
-msgid "Alt Text"
-msgstr "Text "
 
 #: pro/fields/class-acf-field-gallery.php:392
 msgid "Description"
@@ -592,12 +493,6 @@ msgstr ""
 msgid "Specify where new attachments are added"
 msgstr ""
 
-#: pro/fields/class-acf-field-gallery.php:732
-#, fuzzy
-#| msgid "Appears after the input"
-msgid "Append to the end"
-msgstr "Zobrazí sa po vstupe"
-
 #: pro/fields/class-acf-field-gallery.php:733
 msgid "Prepend to the beginning"
 msgstr ""
@@ -607,9 +502,6 @@ msgid "Preview Size"
 msgstr "Veľkosť náhľadu "
 
 #: pro/fields/class-acf-field-gallery.php:844
-#, fuzzy
-#| msgid "%s requires at least %s selection"
-#| msgid_plural "%s requires at least %s selections"
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%s vyžaduje výber najmenej %s"
@@ -619,13 +511,6 @@ msgstr[2] "%s vyžaduje výbej najmenej %s"
 #: pro/fields/class-acf-field-repeater.php:29
 msgid "Repeater"
 msgstr "Opakovač"
-
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "Dosiahnutý počet minimálneho počtu riadkov ({min} rows)"
 
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
@@ -643,21 +528,9 @@ msgstr ""
 msgid "Sub Fields"
 msgstr "Podpolia"
 
-#: pro/fields/class-acf-field-repeater.php:195
-#, fuzzy
-#| msgid "Position"
-msgid "Pagination"
-msgstr "Pozícia "
-
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "Stránka príspevkov "
 
 #: pro/fields/class-acf-field-repeater.php:208
 msgid "Set the number of rows to be displayed on a page."
@@ -670,12 +543,6 @@ msgstr "Minimálny počet riadkov"
 #: pro/fields/class-acf-field-repeater.php:251
 msgid "Maximum Rows"
 msgstr "Maximálny počet riadkov"
-
-#: pro/fields/class-acf-field-repeater.php:281
-#, fuzzy
-#| msgid "Collapse Details"
-msgid "Collapsed"
-msgstr "Zmenšiť detaily "
 
 #: pro/fields/class-acf-field-repeater.php:282
 msgid "Select a sub field to show when row is collapsed"
@@ -693,19 +560,11 @@ msgstr ""
 msgid "There was an error retrieving the field."
 msgstr ""
 
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "Zmeňte poradie pomocou funkcie ťahaj a pusť"
-
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
 msgstr "Pridať riadok"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "Duplikovať "
 
@@ -713,53 +572,11 @@ msgstr "Duplikovať "
 msgid "Remove row"
 msgstr "Odstrániť riadok"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "Aktuálny používateľ"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "Úvodná stránka "
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "Stránka príspevkov "
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "Úvodná stránka "
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "Stránka príspevkov "
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "Neexistujú nastavenia stránok"
 
 #: pro/locations/class-acf-location-options-page.php:22
 msgid "Options Page"
@@ -777,27 +594,6 @@ msgstr "Deaktivovať licenciu"
 msgid "Activate License"
 msgstr "Aktivovať licenciu"
 
-#: pro/admin/views/html-settings-updates.php:16
-#, fuzzy
-#| msgid "Update Information"
-msgid "License Information"
-msgstr "Aktualizovať infromácie"
-
-#: pro/admin/views/html-settings-updates.php:34
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>"
-msgid ""
-"To unlock updates, please enter your license key below. If you don't have a "
-"licence key, please see <a href=\"%s\" target=\"_blank\">details & pricing</"
-"a>."
-msgstr ""
-"Aby ste zapli aktualizácie, musíte zadať licencčný kľúč na stránke <a "
-"href=\"%s\">aktualizácií</a>. Ak nemáte licenčný kľúč, porizte si <a "
-"href=\"%s\">podrobnosti a ceny</a>."
-
 #: pro/admin/views/html-settings-updates.php:37
 msgid "License Key"
 msgstr "Licenčný kľúč"
@@ -805,12 +601,6 @@ msgstr "Licenčný kľúč"
 #: pro/admin/views/html-settings-updates.php:22
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
-
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "Lepšie overovanie"
 
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
@@ -845,17 +635,9 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "Pre odblokovanie aktualizácii, prosím zadajte váš licenčný kľúč"
 
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "Aktualizovať modul"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "Pre odblokovanie aktualizácii, prosím zadajte váš licenčný kľúč"

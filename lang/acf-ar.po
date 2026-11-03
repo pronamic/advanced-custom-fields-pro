@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
 
 #: pro/acf-pro.php:27
 msgid "Advanced Custom Fields PRO"
@@ -74,21 +76,6 @@ msgstr "تحديث"
 msgid "Options Updated"
 msgstr "تم تحديث الإعدادات"
 
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>."
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"لتمكين التحديثات، الرجاء إدخال مفتاح الترخيص الخاص بك على صفحة <a "
-"href=\"%s\">التحديثات</a> . إذا لم يكن لديك مفتاح ترخيص، يرجى الاطلاع على <a "
-"href=\"%s\">التفاصيل والتسعير</a>."
-
 #: pro/updates.php:159
 msgid ""
 "<b>ACF Activation Error</b>. Your defined license key has changed, but an "
@@ -105,23 +92,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>خطأ</b>. تعذر الاتصال بخادم التحديث"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "تحقق مرة اخرى"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>خطأ</b>. تعذر الاتصال بخادم التحديث"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -152,18 +125,6 @@ msgstr "تحديثات"
 msgid ""
 "<b>Error</b>. Could not authenticate update package. Please check again or "
 "deactivate and reactivate your ACF PRO license."
-msgstr ""
-"<b> خطأ </ b>. تعذرت مصادقة حزمة التحديث. يرجى التحقق مرة أخرى أو إلغاء "
-"تنشيط وإعادة تنشيط ترخيص ACF PRO الخاص بك."
-
-#: pro/admin/admin-updates.php:199
-#, fuzzy
-#| msgid ""
-#| "<b>Error</b>. Could not authenticate update package. Please check again "
-#| "or deactivate and reactivate your ACF PRO license."
-msgid ""
-"<b>Error</b>. Your license for this site has expired or been deactivated. "
-"Please reactivate your ACF PRO license."
 msgstr ""
 "<b> خطأ </ b>. تعذرت مصادقة حزمة التحديث. يرجى التحقق مرة أخرى أو إلغاء "
 "تنشيط وإعادة تنشيط ترخيص ACF PRO الخاص بك."
@@ -340,12 +301,6 @@ msgstr "اسحب لإعادة الترتيب"
 msgid "Add layout"
 msgstr "إضافة مخطط جديد"
 
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "تكرار التخطيط"
-
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
 msgstr "إزالة المخطط"
@@ -368,8 +323,6 @@ msgid "Add New Layout"
 msgstr "إضافة مخطط جديد"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "إضافة مخطط جديد"
 
@@ -600,9 +553,6 @@ msgid "Preview Size"
 msgstr "حجم المعاينة"
 
 #: pro/fields/class-acf-field-gallery.php:844
-#, fuzzy
-#| msgid "%s requires at least %s selection"
-#| msgid_plural "%s requires at least %s selections"
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%s يتطلب على الأقل %s تحديد"
@@ -616,22 +566,9 @@ msgstr[5] "%s يتطلب على الأقل %s تحديد"
 msgid "Repeater"
 msgstr "المكرر"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "وصلت للحد الأدنى من الصفوف ({min} صف)"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "بلغت الحد الأقصى من الصفوف ({max} صف)"
-
-#: pro/fields/class-acf-field-repeater.php:68
-#, fuzzy
-#| msgid "Error loading field."
-msgid "Error loading page"
-msgstr "خطأ في تحميل الحقل."
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
@@ -641,27 +578,9 @@ msgstr ""
 msgid "Sub Fields"
 msgstr "الحقول الفرعية"
 
-#: pro/fields/class-acf-field-repeater.php:195
-#, fuzzy
-#| msgid "Position"
-msgid "Pagination"
-msgstr "الموضع"
-
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "صفحة المقالات"
-
-#: pro/fields/class-acf-field-repeater.php:208
-#, fuzzy
-#| msgid "Select the taxonomy to be displayed"
-msgid "Set the number of rows to be displayed on a page."
-msgstr "حدد التصنيف الذي سيتم عرضه"
 
 #: pro/fields/class-acf-field-repeater.php:240
 msgid "Minimum Rows"
@@ -683,29 +602,15 @@ msgstr "حدد حقل فرعي للإظهار عند طي الصف"
 msgid "Invalid nonce."
 msgstr "غير صالح"
 
-#: pro/fields/class-acf-field-repeater.php:1060
-#, fuzzy
-#| msgid "Invalid nonce."
-msgid "Invalid field key or name."
-msgstr "غير صالح"
-
 #: pro/fields/class-acf-field-repeater.php:1069
 msgid "There was an error retrieving the field."
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "اسحب لإعادة الترتيب"
 
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
 msgstr "إضافة صف"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "تكرار"
 
@@ -713,53 +618,11 @@ msgstr "تكرار"
 msgid "Remove row"
 msgstr "إزالة صف"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "المستخدم الحالي"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "الصفحة الرئسية"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "صفحة المقالات"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "الصفحة الرئسية"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "صفحة المقالات"
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "لا توجد صفحة خيارات"
 
 #: pro/locations/class-acf-location-options-page.php:22
 msgid "Options Page"
@@ -798,12 +661,6 @@ msgstr "مفتاح الترخيص"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "تحقق افضل"
-
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
 msgstr "معلومات التحديث"
@@ -837,17 +694,9 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "يرجى إدخال مفتاح الترخيص أعلاه لإلغاء تأمين التحديثات"
 
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "تحديث الاضافة"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr "يرجى إدخال مفتاح الترخيص أعلاه لإلغاء تأمين التحديثات"

@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ro_RO\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n == 0 || n % 100 >= 2 && "
+"n % 100 <= 19) ? 1 : 2);\n"
+
+#: includes/api/api-helpers.php:2534
+msgid "Sorry, this file could not be uploaded."
+msgstr ""
 
 #: src/Site_Health/Site_Health.php:623
 msgid "Field Groups by Post Type"
 msgstr ""
 
-#: includes/api/api-helpers.php:3306
+#: includes/api/api-helpers.php:3315
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr ""
@@ -5815,7 +5821,7 @@ msgstr "Toate formatele %s"
 msgid "Attachment"
 msgstr "Atașament"
 
-#: includes/validation.php:333
+#: includes/validation.php:335
 msgid "%s value is required"
 msgstr "Valoarea %s este obligatorie"
 
@@ -6586,8 +6592,8 @@ msgstr "%d câmpuri necesită atenție"
 msgid "1 field requires attention"
 msgstr "Un câmp necesită atenție"
 
-#: includes/assets.php:376 includes/validation.php:267
-#: includes/validation.php:275
+#: includes/assets.php:376 includes/validation.php:269
+#: includes/validation.php:277
 msgid "Validation failed"
 msgstr "Validarea a eșuat"
 
@@ -6627,7 +6633,7 @@ msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 "Modificările pe care le-ai făcut se vor pierde dacă părăsești această pagină"
 
-#: includes/api/api-helpers.php:3448
+#: includes/api/api-helpers.php:3457
 msgid "File type must be %s."
 msgstr "Tipul de fișier trebuie să fie %s."
 
@@ -6636,31 +6642,31 @@ msgstr "Tipul de fișier trebuie să fie %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3445
+#: includes/api/api-helpers.php:3454
 msgid "or"
 msgstr "sau"
 
-#: includes/api/api-helpers.php:3421
+#: includes/api/api-helpers.php:3430
 msgid "File size must not exceed %s."
 msgstr "Dimensiunea fișierului nu trebuie să depășească %s."
 
-#: includes/api/api-helpers.php:3417
+#: includes/api/api-helpers.php:3426
 msgid "File size must be at least %s."
 msgstr "Dimensiunea fișierului trebuie să aibă cel puțin %s."
 
-#: includes/api/api-helpers.php:3404
+#: includes/api/api-helpers.php:3413
 msgid "Image height must not exceed %dpx."
 msgstr "Înălțimea imaginii nu trebuie să depășească %d px."
 
-#: includes/api/api-helpers.php:3400
+#: includes/api/api-helpers.php:3409
 msgid "Image height must be at least %dpx."
 msgstr "Înălțimea imaginii trebuie să fie de cel puțin %d px."
 
-#: includes/api/api-helpers.php:3388
+#: includes/api/api-helpers.php:3397
 msgid "Image width must not exceed %dpx."
 msgstr "Lățimea imaginii nu trebuie să depășească %d px."
 
-#: includes/api/api-helpers.php:3384
+#: includes/api/api-helpers.php:3393
 msgid "Image width must be at least %dpx."
 msgstr "Lățimea imaginii trebuie să aibă cel puțin %d px."
 
@@ -8070,12 +8076,6 @@ msgstr ""
 msgid "Advanced Custom Fields PRO"
 msgstr "Câmpuri Avansate Personalizate PRO"
 
-#: pro/blocks.php:170
-#, fuzzy
-#| msgid "%s value is required"
-msgid "Block type name is required."
-msgstr "%s valoarea este obligatorie"
-
 #. translators: The name of the block type
 #: pro/blocks.php:178
 msgid "Block type \"%s\" is already registered."
@@ -8093,13 +8093,6 @@ msgstr ""
 msgid "Change content alignment"
 msgstr ""
 
-#. translators: %s: Block type title
-#: pro/blocks.php:731
-#, fuzzy
-#| msgid "Settings"
-msgid "%s settings"
-msgstr "Setări"
-
 #: pro/blocks.php:936
 msgid "This block contains no editable fields."
 msgstr ""
@@ -8114,21 +8107,6 @@ msgstr ""
 #: pro/options-page.php:78
 msgid "Options Updated"
 msgstr "Opțiunile au fost actualizate"
-
-#: pro/updates.php:99
-#, fuzzy
-#| msgid ""
-#| "To enable updates, please enter your license key on the <a "
-#| "href=\"%s\">Updates</a> page. If you don't have a licence key, please see "
-#| "<a href=\"%s\">details & pricing</a>."
-msgid ""
-"To enable updates, please enter your license key on the <a "
-"href=\"%1$s\">Updates</a> page. If you don't have a licence key, please see "
-"<a href=\"%2$s\" target=\"_blank\">details & pricing</a>."
-msgstr ""
-"Pentru a activa actualizările, este nevoie să introduci licența în pagina <a "
-"href=\"%s\">de actualizări</a>. Dacă nu ai o licență, verifică aici <a "
-"href=\"%s\">detaliile și prețul</a>."
 
 #: pro/updates.php:159
 msgid ""
@@ -8146,23 +8124,9 @@ msgstr ""
 msgid "<b>ACF Activation Error</b>"
 msgstr ""
 
-#: pro/updates.php:187
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid ""
-"<b>ACF Activation Error</b>. An error occurred when connecting to activation "
-"server"
-msgstr "<b>Eroare</b>. Conexiunea cu servărul a fost pierdută"
-
 #: pro/updates.php:279
 msgid "Check Again"
 msgstr "Verifică din nou"
-
-#: pro/updates.php:593
-#, fuzzy
-#| msgid "<b>Error</b>. Could not connect to update server"
-msgid "<b>ACF Activation Error</b>. Could not connect to activation server"
-msgstr "<b>Eroare</b>. Conexiunea cu servărul a fost pierdută"
 
 #: pro/admin/admin-options-page.php:195
 msgid "Publish"
@@ -8264,8 +8228,6 @@ msgstr "Adaugă o linie nouă"
 #: pro/fields/class-acf-field-flexible-content.php:76,
 #: pro/fields/class-acf-field-flexible-content.php:943,
 #: pro/fields/class-acf-field-flexible-content.php:1022
-#, fuzzy
-#| msgid "layout"
 msgid "layout"
 msgid_plural "layouts"
 msgstr[0] "schemă"
@@ -8281,12 +8243,6 @@ msgstr "scheme"
 #: pro/fields/class-acf-field-flexible-content.php:1021
 msgid "This field requires at least {min} {label} {identifier}"
 msgstr "Acest câmp necesită cel puțin {min} {label} {identifier}"
-
-#: pro/fields/class-acf-field-flexible-content.php:82
-#, fuzzy
-#| msgid "This field has a limit of {max} {identifier}"
-msgid "This field has a limit of {max} {label} {identifier}"
-msgstr "Acest câmp are o limită de {max} {identifier}"
 
 #: pro/fields/class-acf-field-flexible-content.php:85
 msgid "{available} {label} {identifier} available (max {max})"
@@ -8307,12 +8263,6 @@ msgstr "Apasă butonul  \"%s\" de mai jos pentru a începe să îți creezi sche
 #: pro/fields/class-acf-field-flexible-content.php:423
 msgid "Add layout"
 msgstr "Adaugă Schema"
-
-#: pro/fields/class-acf-field-flexible-content.php:424
-#, fuzzy
-#| msgid "Duplicate Layout"
-msgid "Duplicate layout"
-msgstr "Copiază Schema"
 
 #: pro/fields/class-acf-field-flexible-content.php:425
 msgid "Remove layout"
@@ -8336,8 +8286,6 @@ msgid "Add New Layout"
 msgstr "Adaugă o Nouă Schemă"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Adaugă Schema"
 
@@ -8463,13 +8411,6 @@ msgstr "Adaugă la sfârșit"
 msgid "Prepend to the beginning"
 msgstr "Adaugă la început"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "Numărul minim de linii a fost atins ({min} rows)"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "Numărul maxim de linii a fost atins ({max} rows)"
@@ -8485,12 +8426,6 @@ msgstr ""
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "Pagina Articolelor"
 
 #: pro/fields/class-acf-field-repeater.php:208
 msgid "Set the number of rows to be displayed on a page."
@@ -8520,19 +8455,11 @@ msgstr ""
 msgid "There was an error retrieving the field."
 msgstr ""
 
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "Trage pentru a reordona"
-
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
 msgstr "Adaugă linie"
 
 #: pro/fields/class-acf-repeater-table.php:403
-#, fuzzy
-#| msgid "Duplicate"
 msgid "Duplicate row"
 msgstr "Copiază"
 
@@ -8540,53 +8467,11 @@ msgstr "Copiază"
 msgid "Remove row"
 msgstr "Înlătură linie"
 
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "Utilizatorul Curent"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "Pagina principală"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "Pagina Articolelor"
-
 #. translators: 1: Current page, 2: Total pages.
 #: pro/fields/class-acf-repeater-table.php:470
 msgctxt "paging"
 msgid "%1$s of %2$s"
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "Pagina principală"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "Pagina Articolelor"
-
-#: pro/locations/class-acf-location-block.php:71
-#, fuzzy
-#| msgid "No options pages exist"
-msgid "No block types exist"
-msgstr "Nu există nicio pagină de opțiuni"
 
 #: pro/locations/class-acf-location-options-page.php:70
 msgid "No options pages exist"
@@ -8619,12 +8504,6 @@ msgstr "Cod de activare"
 msgid "Your license key is defined in wp-config.php."
 msgstr ""
 
-#: pro/admin/views/html-settings-updates.php:29
-#, fuzzy
-#| msgid "Better Validation"
-msgid "Retry Activation"
-msgstr "O validare mai bună"
-
 #: pro/admin/views/html-settings-updates.php:61
 msgid "Update Information"
 msgstr "Actualizează infromațiile"
@@ -8650,8 +8529,6 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr ""
 "Te rog sa introduci codul de activare în câmpul de mai sus pentru a permite "
@@ -8660,11 +8537,3 @@ msgstr ""
 #: pro/admin/views/html-settings-updates.php:119
 msgid "Update Plugin"
 msgstr "Actualizează Modulul"
-
-#: pro/admin/views/html-settings-updates.php:117
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
-msgid "Please reactivate your license to unlock updates"
-msgstr ""
-"Te rog sa introduci codul de activare în câmpul de mai sus pentru a permite "
-"actualizări"

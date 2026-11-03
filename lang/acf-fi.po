@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-09-10T15:48:23+00:00\n"
+"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: includes/api/api-helpers.php:2534
+msgid "Sorry, this file could not be uploaded."
+msgstr ""
 
 #: src/Site_Health/Site_Health.php:623
 msgid "Field Groups by Post Type"
 msgstr ""
 
-#: includes/api/api-helpers.php:3306
+#: includes/api/api-helpers.php:3315
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr ""
@@ -5902,7 +5907,7 @@ msgstr "Kaikki %s muodot"
 msgid "Attachment"
 msgstr "Liite"
 
-#: includes/validation.php:333
+#: includes/validation.php:335
 msgid "%s value is required"
 msgstr "%s arvo on pakollinen"
 
@@ -6681,8 +6686,8 @@ msgstr "%d kenttää vaativat huomiota"
 msgid "1 field requires attention"
 msgstr "Yksi kenttä vaatii huomiota"
 
-#: includes/assets.php:376 includes/validation.php:267
-#: includes/validation.php:275
+#: includes/assets.php:376 includes/validation.php:269
+#: includes/validation.php:277
 msgid "Validation failed"
 msgstr "Lisäkentän validointi epäonnistui"
 
@@ -6721,7 +6726,7 @@ msgstr "Muokkaa"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Tekemäsi muutokset menetetään, jos siirryt pois tältä sivulta"
 
-#: includes/api/api-helpers.php:3448
+#: includes/api/api-helpers.php:3457
 msgid "File type must be %s."
 msgstr "Tiedoston koko täytyy olla %s."
 
@@ -6730,31 +6735,31 @@ msgstr "Tiedoston koko täytyy olla %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3445
+#: includes/api/api-helpers.php:3454
 msgid "or"
 msgstr "tai"
 
-#: includes/api/api-helpers.php:3421
+#: includes/api/api-helpers.php:3430
 msgid "File size must not exceed %s."
 msgstr "Tiedoston koko ei saa ylittää %s."
 
-#: includes/api/api-helpers.php:3417
+#: includes/api/api-helpers.php:3426
 msgid "File size must be at least %s."
 msgstr "Tiedoston koko täytyy olla vähintään %s."
 
-#: includes/api/api-helpers.php:3404
+#: includes/api/api-helpers.php:3413
 msgid "Image height must not exceed %dpx."
 msgstr "Kuvan korkeus ei saa ylittää %dpx."
 
-#: includes/api/api-helpers.php:3400
+#: includes/api/api-helpers.php:3409
 msgid "Image height must be at least %dpx."
 msgstr "Kuvan korkeus täytyy olla vähintään %dpx."
 
-#: includes/api/api-helpers.php:3388
+#: includes/api/api-helpers.php:3397
 msgid "Image width must not exceed %dpx."
 msgstr "Kuvan leveys ei saa ylittää %dpx."
 
-#: includes/api/api-helpers.php:3384
+#: includes/api/api-helpers.php:3393
 msgid "Image width must be at least %dpx."
 msgstr "Kuvan leveys täytyy olla vähintään %dpx."
 
@@ -8420,8 +8425,6 @@ msgid "Add New Layout"
 msgstr "Lisää uusi asettelu"
 
 #: pro/fields/class-acf-field-flexible-content.php:564
-#, fuzzy
-#| msgid "Add layout"
 msgid "Add Layout"
 msgstr "Lisää asettelu"
 
@@ -8545,22 +8548,9 @@ msgstr "Lisää loppuun"
 msgid "Prepend to the beginning"
 msgstr "Lisää alkuun"
 
-#: pro/fields/class-acf-field-repeater.php:66,
-#: pro/fields/class-acf-field-repeater.php:463
-#, fuzzy
-#| msgid "Minimum rows reached ({min} rows)"
-msgid "Minimum rows not reached ({min} rows)"
-msgstr "Pienin määrä rivejä saavutettu ({min} riviä)"
-
 #: pro/fields/class-acf-field-repeater.php:67
 msgid "Maximum rows reached ({max} rows)"
 msgstr "Suurin määrä rivejä saavutettu ({max} riviä)"
-
-#: pro/fields/class-acf-field-repeater.php:68
-#, fuzzy
-#| msgid "Error loading field."
-msgid "Error loading page"
-msgstr "Virhe ladattaessa kenttää."
 
 #: pro/fields/class-acf-field-repeater.php:69
 msgid "Order will be assigned upon save"
@@ -8569,18 +8559,6 @@ msgstr ""
 #: pro/fields/class-acf-field-repeater.php:196
 msgid "Useful for fields with a large number of rows."
 msgstr ""
-
-#: pro/fields/class-acf-field-repeater.php:207
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Rows Per Page"
-msgstr "Artikkelit -sivu"
-
-#: pro/fields/class-acf-field-repeater.php:208
-#, fuzzy
-#| msgid "Select the taxonomy to be displayed"
-msgid "Set the number of rows to be displayed on a page."
-msgstr "Valitse taksonomia, joka näytetään"
 
 #: pro/fields/class-acf-field-repeater.php:240
 msgid "Minimum Rows"
@@ -8598,21 +8576,9 @@ msgstr "Piilotettu"
 msgid "Select a sub field to show when row is collapsed"
 msgstr "Valitse alakenttä, joka näytetään, kun rivi on piilotettu"
 
-#: pro/fields/class-acf-field-repeater.php:1060
-#, fuzzy
-#| msgid "Invalid field group ID."
-msgid "Invalid field key or name."
-msgstr "Virheellinen kenttäryhmän tunnus."
-
 #: pro/fields/class-acf-field-repeater.php:1069
 msgid "There was an error retrieving the field."
 msgstr ""
-
-#: pro/fields/class-acf-repeater-table.php:369
-#, fuzzy
-#| msgid "Drag to reorder"
-msgid "Click to reorder"
-msgstr "Muuta järjestystä vetämällä ja pudottamalla"
 
 #: pro/fields/class-acf-repeater-table.php:402
 msgid "Add row"
@@ -8625,50 +8591,6 @@ msgstr "Monista rivi"
 #: pro/fields/class-acf-repeater-table.php:404
 msgid "Remove row"
 msgstr "Poista rivi"
-
-#: pro/fields/class-acf-repeater-table.php:448,
-#: pro/fields/class-acf-repeater-table.php:465,
-#: pro/fields/class-acf-repeater-table.php:466
-#, fuzzy
-#| msgid "Current User"
-msgid "Current Page"
-msgstr "Nykyinen käyttäjä"
-
-#: pro/fields/class-acf-repeater-table.php:456,
-#: pro/fields/class-acf-repeater-table.php:457
-#, fuzzy
-#| msgid "Front Page"
-msgid "First Page"
-msgstr "Etusivu"
-
-#: pro/fields/class-acf-repeater-table.php:460,
-#: pro/fields/class-acf-repeater-table.php:461
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Previous Page"
-msgstr "Artikkelit -sivu"
-
-#. translators: 1: Current page, 2: Total pages.
-#: pro/fields/class-acf-repeater-table.php:470
-#, fuzzy
-#| msgid "%1$s is not one of %2$s"
-msgctxt "paging"
-msgid "%1$s of %2$s"
-msgstr "%1$s ei ole yksi näistä: %2$s"
-
-#: pro/fields/class-acf-repeater-table.php:477,
-#: pro/fields/class-acf-repeater-table.php:478
-#, fuzzy
-#| msgid "Front Page"
-msgid "Next Page"
-msgstr "Etusivu"
-
-#: pro/fields/class-acf-repeater-table.php:481,
-#: pro/fields/class-acf-repeater-table.php:482
-#, fuzzy
-#| msgid "Posts Page"
-msgid "Last Page"
-msgstr "Artikkelit -sivu"
 
 #: pro/locations/class-acf-location-block.php:71
 msgid "No block types exist"
@@ -8737,8 +8659,6 @@ msgid "Check For Updates"
 msgstr ""
 
 #: pro/admin/views/html-settings-updates.php:121
-#, fuzzy
-#| msgid "Please enter your license key above to unlock updates"
 msgid "Enter your license key to unlock updates"
 msgstr "Syötä lisenssiavain saadaksesi päivityksiä"
 

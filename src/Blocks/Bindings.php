@@ -59,7 +59,14 @@ class Bindings {
 		if ( ! isset( $source_attrs['key'] ) || ! is_string( $source_attrs['key'] ) ) {
 			$value = '';
 		} else {
-			$field = get_field_object( $source_attrs['key'], false, true, true, true );
+			$post_id = acf_get_valid_post_id( false );
+
+			// Don't output fields of a password-protected post until the password has been entered.
+			if ( acf_post_password_required( $post_id ) ) {
+				return '';
+			}
+
+			$field = get_field_object( $source_attrs['key'], $post_id, true, true, true );
 
 			if ( ! $field ) {
 				return '';
@@ -83,14 +90,14 @@ class Bindings {
 
 			$value = $field['value'];
 
-			if ( is_array( $value ) ) {
-				$value = implode( ', ', $value );
+			// Reduce User data to IDs. The escaped value is rebuilt from the reduced value, as escaping turns user objects into false.
+			if ( acf_bindings_should_reduce_user_data( $field, $post_id, 'bindings' ) ) {
+				$value = acf_bindings_reduce_user_value( acf_format_value( acf_get_value( $post_id, $field ), $post_id, $field ), $field );
+				$value = map_deep( $value, 'acf_esc_html' );
 			}
 
-			// If we're not a scalar we'd throw an error, so return early for safety.
-			if ( ! is_scalar( $value ) ) {
-				$value = null;
-			}
+			// Anything we can't output as a string would throw an error, so it's returned as null for safety.
+			$value = acf_bindings_flatten_value( $value );
 		}
 
 		return apply_filters( 'acf/blocks/binding_value', $value, $source_attrs, $block_instance, $attribute_name );
