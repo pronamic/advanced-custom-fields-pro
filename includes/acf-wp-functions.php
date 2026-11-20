@@ -317,16 +317,26 @@ function acf_insert_or_update_internal_post( $postarr ) {
  * @since 6.8.11
  * @internal
  *
- * @param array   $data                An array of slashed, sanitized post data.
- * @param array   $postarr             An array of sanitized post data.
- * @param array   $unsanitized_postarr An array of slashed yet unsanitized post data.
- * @param boolean $update              Whether this is an existing post being updated.
+ * @param array        $data                An array of slashed, sanitized post data.
+ * @param array        $postarr             An array of sanitized post data.
+ * @param array|object $unsanitized_postarr The slashed yet unsanitized post data, exactly as passed to
+ *                                          wp_insert_post(), which also accepts an object such as a WP_Post.
+ * @param boolean      $update              Whether this is an existing post being updated.
  * @return array
  */
 function _acf_preserve_internal_post_content( $data, $postarr, $unsanitized_postarr, $update = false ) {
 	$internal_post_types = array_merge( array( 'acf-field' ), acf_get_internal_post_types() );
 
-	if ( ! isset( $data['post_type'], $unsanitized_postarr['post_content'] ) || ! in_array( $data['post_type'], $internal_post_types, true ) ) {
+	if ( ! isset( $data['post_type'] ) || ! in_array( $data['post_type'], $internal_post_types, true ) ) {
+		return $data;
+	}
+
+	// wp_insert_post() passes its argument on before converting it to an array, so it may be an object.
+	if ( is_object( $unsanitized_postarr ) ) {
+		$unsanitized_postarr = get_object_vars( $unsanitized_postarr );
+	}
+
+	if ( ! is_array( $unsanitized_postarr ) || ! isset( $unsanitized_postarr['post_content'] ) ) {
 		return $data;
 	}
 

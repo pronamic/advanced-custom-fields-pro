@@ -52,6 +52,7 @@ class ComposerStaticInit94e23cbc47a4750e27ee21b7644f1866
         'ACF\\Pro\\Fields\\FlexibleContent\\Render' => __DIR__ . '/../..' . '/src/Pro/Fields/FlexibleContent/Render.php',
         'ACF\\Pro\\Forms\\WC_Order' => __DIR__ . '/../..' . '/src/Pro/Forms/WC_Order.php',
         'ACF\\Pro\\Meta\\WooOrder' => __DIR__ . '/../..' . '/src/Pro/Meta/WooOrder.php',
+        'ACF\\Settings_Page\\Settings_Page' => __DIR__ . '/../..' . '/src/Settings_Page/Settings_Page.php',
         'ACF\\Site_Health\\AI_Usage' => __DIR__ . '/../..' . '/src/Site_Health/AI_Usage.php',
         'ACF\\Site_Health\\Site_Health' => __DIR__ . '/../..' . '/src/Site_Health/Site_Health.php',
     );

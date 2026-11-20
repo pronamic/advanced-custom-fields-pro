@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr ""
 "trong giao diện trình chỉnh sửa bằng cách sử dụng Block Bindings hoặc ACF "
 "Shortcode. %s"
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -190,7 +190,7 @@ msgstr ""
 "Loại trường ACF được yêu cầu không hỗ trợ xuất trong Block Bindings hoặc ACF "
 "Shortcode."
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -198,7 +198,7 @@ msgstr ""
 "Trường ACF được yêu cầu không được phép xuất trong bindings hoặc ACF "
 "Shortcode."
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -206,7 +206,7 @@ msgstr ""
 "Loại trường ACF được yêu cầu không hỗ trợ xuất trong bindings hoặc ACF "
 "Shortcode."
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr ""
 "[Shortcode ACF không thể hiển thị các trường từ các bài viết không công khai]"
@@ -885,7 +885,7 @@ msgid "Upgrade to ACF PRO to create options pages in just a few clicks"
 msgstr ""
 "Cập nhật lên ACF pro để tạo các Trang cài đặt chỉ trong vài cú nhấp chuột"
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2127,11 +2127,11 @@ msgid "Add fields"
 msgstr "Thêm trường"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "Thêm %s này vào quy tắc vị trí của các nhóm trường đã chọn."
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Hai chiều"
 
@@ -2145,7 +2145,7 @@ msgid "Duplicate taxonomy"
 msgstr "Sao chép phân loại"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2174,7 +2174,7 @@ msgstr "được phát triển và duy trì bởi"
 msgid "Link field groups"
 msgstr "Liên kết nhóm trường"
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2190,7 +2190,7 @@ msgstr ""
 msgid "Support"
 msgstr "Hỗ trợ"
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Trường mục tiêu"
 
@@ -2198,7 +2198,7 @@ msgstr "Trường mục tiêu"
 msgid "This Field"
 msgstr "Trường này"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr ""
 "Cập nhật một trường trên các giá trị đã chọn, tham chiếu trở lại ID này"
@@ -2217,12 +2217,12 @@ msgid "Select Options Pages"
 msgstr "Chọn trang cài đặt"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "Trường %s"
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2346,9 +2346,9 @@ msgstr "Không có mục phân loại"
 msgid "%s fields"
 msgstr "Các trường %s"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Bất kỳ trạng thái bài viết nào"
 
@@ -2513,9 +2513,9 @@ msgstr ""
 msgid "Edit Taxonomy"
 msgstr "Chỉnh sửa phân loại"
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Lọc theo Trạng thái Bài viết"
 
@@ -3122,7 +3122,7 @@ msgstr ""
 msgid "Description for a navigation link block variation."
 msgstr "Mô tả cho biến thể khối liên kết điều hướng."
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Hoàn tất"
 
@@ -3174,7 +3174,7 @@ msgstr "Hộp meta hình ảnh nổi bật"
 msgid "Feed URL"
 msgstr "URL nguồn cấp dữ liệu"
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "Nhóm trường đã được liên kết thành công."
@@ -3360,13 +3360,13 @@ msgstr "Điều hướng danh sách mục"
 msgid "JSON (newer)"
 msgstr "JSON (mới hơn)"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "Nhãn"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Liên kết Nhóm Trường Hiện tại"
 
@@ -3574,13 +3574,13 @@ msgstr "Mục cha với dấu hai chấm"
 msgid "Parent Page:"
 msgstr "Trang cha:"
 
-#: includes/acf-internal-post-type-functions.php:512
-#: includes/acf-internal-post-type-functions.php:541
-#: includes/acf-internal-post-type-functions.php:568
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
 msgid "Permissions"
 msgstr "Quyền"
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Vui lòng chọn nhóm trường để liên kết."
 
@@ -3696,8 +3696,8 @@ msgstr "Xóa hình ảnh nổi bật"
 msgid "Rename Capabilities"
 msgstr "Đổi tên quyền người dùng"
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST API"
 
@@ -3725,7 +3725,7 @@ msgstr "Tìm kiếm bài viết"
 msgid "Search Tags"
 msgstr "Tìm kiếm thẻ"
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Chọn một hoặc nhiều nhóm trường..."
 
@@ -3807,7 +3807,7 @@ msgstr "Danh sách điều hướng thẻ"
 msgid "Tags Meta Box"
 msgstr "Hộp Meta Thẻ"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "phân loại"
 
@@ -3930,8 +3930,8 @@ msgstr "Cập nhật thẻ"
 msgid "Uploaded to this %s"
 msgstr "Đã tải lên %s này"
 
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
 msgid "URLs"
 msgstr "URL"
 
@@ -3979,9 +3979,9 @@ msgstr "Xem bài viết"
 msgid "View Tag"
 msgstr "Xem thẻ"
 
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
+#: includes/acf-internal-post-type-functions.php:512
+#: includes/acf-internal-post-type-functions.php:541
+#: includes/acf-internal-post-type-functions.php:568
 msgid "Visibility"
 msgstr "Khả năng hiển thị"
 
@@ -4057,7 +4057,7 @@ msgstr "Chỉnh sửa nhanh"
 msgid "Show Admin Column"
 msgstr "Hiển thị cột quản trị"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Nhóm trường"
 
@@ -4364,7 +4364,7 @@ msgstr ""
 "Nhập loại nội dung và Phân loại đã đăng ký với Giao diện người dùng loại nội "
 "dung Tùy chỉnh và quản lý chúng với ACF. <a href=\"%s\">Bắt đầu</a>."
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "loại nội dung"
 
@@ -4797,7 +4797,7 @@ msgstr "Trường được chuyển đến nhóm khác"
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[Giá trị shortcode ACF bị tắt xem trước]"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Thoát hộp cửa sổ"
@@ -4964,8 +4964,8 @@ msgstr "Trường nội dung linh hoạt"
 msgid "Location Rules"
 msgstr "Quy tắc vị trí"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Tổng quan"
 
@@ -5059,7 +5059,7 @@ msgstr ""
 "Advanced Custom Fields và Advanced Custom Fields PRO không nên hoạt động "
 "cùng một lúc. Chúng tôi đã tự động tắt Advanced Custom Fields."
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s không phải là một trong %2$s"
 
@@ -5068,7 +5068,7 @@ msgid "%1$s must have a user with the %2$s role."
 msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] "%1$s phải có một người dùng với vai trò %2$s."
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s phải có một ID bài viết hợp lệ."
 
@@ -5088,12 +5088,12 @@ msgstr "Yêu cầu không hợp lệ."
 msgid "Show in REST API"
 msgstr "Hiển thị trong REST API"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s phải là loại nội dung %2$s."
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s phải có mục phân loại %2$s."
@@ -5351,7 +5351,7 @@ msgstr "Lỗi tải trường."
 msgid "Invalid nonce."
 msgstr "Số lần không hợp lệ."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Lỗi</strong>: %s"
 
@@ -5460,7 +5460,7 @@ msgid "Find current location"
 msgstr "Tìm vị trí hiện tại"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Tìm kiếm"
 
@@ -5469,8 +5469,8 @@ msgstr "Tìm kiếm"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -5513,7 +5513,7 @@ msgid_plural "Active <span class=\"count\">(%s)</span>"
 msgstr[0] "Kích hoạt <span class=\"count\">(%s)</span>"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "sao chép"
@@ -5606,11 +5606,11 @@ msgstr "Xóa"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Ảnh đại diện"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s yêu cầu ít nhất %2$s lựa chọn"
@@ -5628,12 +5628,12 @@ msgstr "%s đã được thêm"
 msgid "%s already exists"
 msgstr "%s đã tồn tại"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(không nhãn)"
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(không tiêu đề)"
 
@@ -5721,9 +5721,9 @@ msgstr "Tất cả %s các định dạng"
 msgid "All images"
 msgstr "Tất cả hình ảnh"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Tất cả các phân loại"
 
@@ -5735,7 +5735,7 @@ msgstr "Tất cả vai trò người dùng"
 msgid "Allow 'custom' values to be added"
 msgstr "Cho phép thêm giá trị 'tùy chỉnh'"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Cho phép URL lưu trữ"
 
@@ -5745,8 +5745,8 @@ msgstr ""
 "Cho phép đánh dấu HTML hiển thị dưới dạng văn bản hiển thị thay vì hiển thị"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -5812,7 +5812,7 @@ msgstr "Xuất hiện trong đầu vào"
 msgid "Append"
 msgstr "Thêm vào"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Trang lưu trữ"
 
@@ -5854,7 +5854,7 @@ msgstr "Khối"
 msgid "Button Group"
 msgstr "Nhóm nút"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Hủy"
@@ -6194,7 +6194,7 @@ msgstr "Chỉnh sửa trường"
 msgid "Edit Field Group"
 msgstr "Chỉnh sửa nhóm trường"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Chỉnh sửa nhóm trường"
 
@@ -6202,7 +6202,7 @@ msgstr "Chỉnh sửa nhóm trường"
 msgid "Edit Image"
 msgstr "Chỉnh sửa hình ảnh"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Các phần tử"
 
@@ -6336,15 +6336,15 @@ msgstr "Tên tệp"
 msgid "File size"
 msgstr "Kích thước tệp"
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "Kích thước tệp phải ít nhất là %s."
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "Kích thước tệp không được vượt quá %s."
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "Loại tệp phải là %s."
 
@@ -6352,13 +6352,13 @@ msgstr "Loại tệp phải là %s."
 msgid "Filter by Role"
 msgstr "Lọc theo Vai trò"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Lọc theo phân loại"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Bộ lọc"
 
@@ -6442,11 +6442,11 @@ msgstr ""
 msgid "Image"
 msgstr "Hình ảnh"
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "Chiều cao hình ảnh phải ít nhất là %dpx."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "Chiều cao hình ảnh không được vượt quá %dpx."
 
@@ -6458,11 +6458,11 @@ msgstr "ID Hình ảnh"
 msgid "Image URL"
 msgstr "URL Hình ảnh"
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "Chiều rộng hình ảnh phải ít nhất là %dpx."
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "Chiều rộng hình ảnh không được vượt quá %dpx."
 
@@ -6564,7 +6564,7 @@ msgstr "JSON cục bộ"
 msgid "Location"
 msgstr "Vị trí"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "Số bài viết tối đa"
 
@@ -6591,7 +6591,7 @@ msgstr "Mục menu"
 msgid "Message"
 msgstr "Hiển thị thông điệp"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "Số bài viết tối thiểu"
 
@@ -6703,7 +6703,7 @@ msgstr "Mở trong cửa sổ/tab mới"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "hoặc"
 
@@ -6781,14 +6781,14 @@ msgstr "Bài viết"
 msgid "Post Category"
 msgstr "Danh mục bài viết"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "ID bài viết"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Đối tượng bài viết"
 
@@ -6913,7 +6913,7 @@ msgstr "Tìm kiếm các trường"
 msgid "Search for address..."
 msgstr "Tìm kiếm địa chỉ..."
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Tìm kiếm..."
 
@@ -6925,7 +6925,7 @@ msgstr "Chọn nhóm trường"
 msgid "Select Link"
 msgstr "Chọn liên kết"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Chọn phân loại"
 
@@ -7004,7 +7004,7 @@ msgctxt "Select2 JS selection_too_long_n"
 msgid "You can only select %d items"
 msgstr "Bạn chỉ có thể chọn %d mục"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "Các phần tử đã chọn sẽ được hiển thị trong mỗi kết quả"
 
@@ -7127,7 +7127,7 @@ msgid "Sync"
 msgstr "Đồng bộ"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Đồng bộ hóa có sẵn"
 
@@ -7136,7 +7136,7 @@ msgstr "Đồng bộ hóa có sẵn"
 msgid "Tabs"
 msgstr "Tab"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
@@ -7481,23 +7481,23 @@ msgstr "Menu"
 msgid "Revisions"
 msgstr "Bản sửa đổi"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Tất cả loại nội dung"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Lọc theo loại nội dung"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Chọn loại nội dung"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
@@ -7585,7 +7585,7 @@ msgid "Upgrade Sites"
 msgstr "Nâng cấp trang web"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "Lự chọn %s"
 
@@ -7671,8 +7671,8 @@ msgstr "Thẻ tag"
 msgid "Parent Page (has children)"
 msgstr "Trang cha (có trang con)"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Cha"

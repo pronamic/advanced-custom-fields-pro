@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: sr_RS\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : ((n % "
 "10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 1 : 2);\n"
 
-#: includes/api/api-helpers.php:2534
+#: includes/api/api-helpers.php:1851
+msgid "(Restricted item)"
+msgstr "(Ограничена ставка)"
+
+#: includes/api/api-helpers.php:3242
 msgid "Sorry, this file could not be uploaded."
 msgstr "Нажалост, ова датотека није могла да се отпреми."
 
@@ -31,7 +35,7 @@ msgstr "Нажалост, ова датотека није могла да се 
 msgid "Field Groups by Post Type"
 msgstr "Групе поља по врсти чланка"
 
-#: includes/api/api-helpers.php:3315
+#: includes/api/api-helpers.php:4064
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr "Датотека мора бити исправна слика."
@@ -556,7 +560,7 @@ msgstr ""
 msgid "Notes"
 msgstr "Белешке"
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "Експериментално"
 
@@ -832,21 +836,21 @@ msgstr ""
 "Омогућите уређивачима садржаја да приступе и прикажу вредност поља у "
 "корисничком интерфејсу уређивача користећи блок везе или ACF кратки кôд. %s"
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
 msgstr ""
 "Тражени тип поља ACF не подржава излаз у блок везама или ACF кратком кôду."
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
 msgstr ""
 "Захтевано ACF поље није дозвољено за излаз у везама или ACF кратком кôду."
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -856,7 +860,7 @@ msgstr "Тражени тип ACF поља не подржава излаз у �
 msgid "Learn more."
 msgstr "Сазнајте више."
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr "[Кратки кôд ACF не може приказати поља из необјављених чланака]"
 
@@ -1539,7 +1543,7 @@ msgstr "Иконица сајт (алт.)"
 msgid "Invalid request args."
 msgstr "Неисправни аргументи захтева."
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2822,29 +2826,29 @@ msgid "is developed and maintained by"
 msgstr "развија и одржава"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "Додај ово %s у правила локације изабраних група поља."
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Циљно поље"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr "Ажурирај поље на изабраним вредностима, уз упућивање назад на овај ID"
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Двосмерно"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "Поље %s"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2857,7 +2861,7 @@ msgstr ""
 "ID таксономије или ID корисника ставке која се ажурира. За више информација "
 "прочитајте <a href=\"%s\" target=\"_blank\">документацију</a>."
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2873,8 +2877,8 @@ msgstr ""
 msgid "Feedback"
 msgstr "Мишљење"
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2997,9 +3001,9 @@ msgstr "Нема описа"
 msgid "No post types"
 msgstr "Нема врста чланака"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Било које стање чланка"
 
@@ -3236,9 +3240,9 @@ msgstr ""
 msgid "An input for providing a password using a masked field."
 msgstr "Поље за унос лозинке са скривеним знаковима."
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Филтрирај по стању чланка"
 
@@ -5268,7 +5272,7 @@ msgstr ""
 msgid "Pages"
 msgstr "Странице"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Повежи постојеће групе поља"
 
@@ -5337,31 +5341,31 @@ msgstr ""
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "таксономија"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "врста чланка"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Обављено"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Групе поља"
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Изаберите једну или више група поља..."
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Изаберите групе поља за повезивање."
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "Група поља је успешно повезана."
@@ -5383,31 +5387,31 @@ msgstr ""
 "Ова ставка није могла да се региструје јер њен кључ користи друга ставка "
 "коју је регистровао други додатак или тема."
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST API"
+
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
+msgid "Permissions"
+msgstr "Дозволе"
+
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
+msgid "URLs"
+msgstr "URL-ови"
 
 #: includes/acf-internal-post-type-functions.php:512
 #: includes/acf-internal-post-type-functions.php:541
 #: includes/acf-internal-post-type-functions.php:568
-msgid "Permissions"
-msgstr "Дозволе"
-
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
-msgid "URLs"
-msgstr "URL-ови"
-
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
 msgid "Visibility"
 msgstr "Видљивост"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "Ознаке"
 
@@ -5445,7 +5449,7 @@ msgstr ""
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[Вредност ACF кратког кода је искључена за преглед]"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Затвори модални прозор"
@@ -5634,8 +5638,8 @@ msgstr "Приказ"
 msgid "Validation"
 msgstr "Провера"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Опште"
 
@@ -5729,25 +5733,25 @@ msgstr[0] "%1$s мора имати корисника са улогом %2$s."
 msgstr[1] "%1$s мора имати корисника са једном од следећих улога: %2$s"
 msgstr[2] "%1$s мора имати корисника са једном од следећих улога: %2$s"
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s није једно од %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s мора имати појам %2$s."
 msgstr[1] "%1$s мора имати један од следећих појмова: %2$s"
 msgstr[2] "%1$s мора имати један од следећих појмова: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s мора бити врсте чланка %2$s."
 msgstr[1] "%1$s мора бити једне од следећих врста чланака: %2$s"
 msgstr[2] "%1$s мора бити једне од следећих врста чланака: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s мора имати исправан ID чланка."
 
@@ -6011,7 +6015,7 @@ msgstr "Неважећи nonce."
 msgid "Error loading field."
 msgstr "Грешка при учитавању поља."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Грешка</strong>: %s"
 
@@ -6058,7 +6062,7 @@ msgstr "Изабери боју"
 msgid "Categories"
 msgstr "Категорије"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Архиве"
 
@@ -6224,7 +6228,7 @@ msgstr "Не"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Издвојена слика"
 
@@ -6249,7 +6253,7 @@ msgstr "URL везе"
 msgid "Table"
 msgstr "Табела"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
@@ -6352,7 +6356,7 @@ msgctxt "Date Time Picker JS timezoneText"
 msgid "Time Zone"
 msgstr "Временска зона"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Филтери"
 
@@ -6545,30 +6549,30 @@ msgstr "Аутоматски додај &lt;br&gt;"
 msgid "File size"
 msgstr "Величина датотеке"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "ID чланка"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Објекат чланка"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Елементи"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Све таксономије"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Филтрирај по таксономији"
 
@@ -6631,11 +6635,11 @@ msgstr "Да ли сте сигурни?"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "или"
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "Величина датотеке не сме прећи %s."
 
@@ -6679,7 +6683,7 @@ msgstr "Избриши поље"
 msgid "Options Page"
 msgstr "Страница са могућностима"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Откажи"
@@ -6699,7 +6703,7 @@ msgstr "Пошаљи праћења"
 msgid "Select File"
 msgstr "Изабери датотеку"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Претражи..."
 
@@ -6720,7 +6724,7 @@ msgstr "Отвори"
 msgid "Zoom"
 msgstr "Увеличај"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Изабери таксономију"
 
@@ -6749,7 +6753,7 @@ msgstr "Ниједна Група поља није одабрана"
 msgid "Selection is greater than"
 msgstr "Избор је већи од"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Изабери тип чланка"
 
@@ -6980,7 +6984,7 @@ msgstr "Провери е-адресу"
 msgid "1 field requires attention"
 msgstr "1 поље захтева пажњу"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Уреди групу поља"
 
@@ -7001,15 +7005,15 @@ msgstr "Ограничено"
 msgid "The changes you made will be lost if you navigate away from this page"
 msgstr "Измене које сте направили биће изгубљене ако напустите ову страницу"
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "Висина слике мора бити најмање %dpx."
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "Ширина слике не сме бити већа од %dpx."
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "Ширина слике мора бити најмање %dpx."
 
@@ -7033,7 +7037,7 @@ msgstr "Додај нови избор"
 msgid "Toggle All"
 msgstr "Штиклирај све"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Дозволи URL-ове архива"
 
@@ -7369,8 +7373,8 @@ msgid "Choices"
 msgstr "Изборне ставке"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -7471,22 +7475,22 @@ msgstr "Текст чувара места"
 msgid "Appears when creating a new post"
 msgstr "Појављује се при прављењу новог чланка"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s захтева бар %2$s избор"
 msgstr[1] "%1$s захтева бар %2$s избора"
 msgstr[2] "%1$s захтева бар %2$s избора"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "Највише чланака"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "Најмање чланака"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "Изабрани елементи биће приказани у сваком резултату"
 
@@ -7689,7 +7693,7 @@ msgid "Checkbox"
 msgstr "Поље за потврду"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "копирај"
@@ -7702,13 +7706,13 @@ msgstr "копирај"
 msgid "Label"
 msgstr "Етикета"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Надређен"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
@@ -7899,15 +7903,15 @@ msgstr "Опсег"
 msgid "Other"
 msgstr "Остало"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Све врсте садржаја"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Филтрирај по врсти садржаја"
 
@@ -7974,7 +7978,7 @@ msgid "Clear location"
 msgstr "Очисти локацију"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Претражи"
 
@@ -8033,8 +8037,8 @@ msgstr "Недеља почиње у"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -8103,19 +8107,19 @@ msgstr "Врста поља не постоји"
 msgid "%d fields require attention"
 msgstr "%d поља захтевају пажњу"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "Врста датотеке мора бити %s."
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "Величина датотеке мора бити најмање %s."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "Висина слике не сме прећи %dpx."
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(без наслова)"
 
@@ -8157,10 +8161,6 @@ msgstr "Надоградња је завршена."
 #: includes/admin/views/acf-post-type/advanced-settings.php:43
 msgid "Page Attributes"
 msgstr "Особине странице"
-
-#: includes/admin/views/acf-field-group/options.php:185
-msgid "Permalink"
-msgstr "Трајна веза"
 
 #: includes/admin/views/acf-field-group/options.php:259
 msgid "Shown in field group list"
@@ -8287,7 +8287,7 @@ msgid "Tools"
 msgstr "Алати"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "Изабери %s"
 
@@ -8302,7 +8302,7 @@ msgid "Duplicate this item"
 msgstr "Удвостручи ову ставку"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Доступна синхронизација"
 
@@ -8341,7 +8341,7 @@ msgstr "Вредност је једнака са"
 msgid "Has any value"
 msgstr "Има било коју вредност"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(без ознаке)"
@@ -8405,6 +8405,10 @@ msgstr "Додај нову групу поља"
 #: includes/admin/post-types/admin-field-group.php:86
 msgid "The string \"field_\" may not be used at the start of a field name"
 msgstr "Ниска „field_“ не сме да се користи на почетку имена поља"
+
+#: includes/admin/views/acf-field-group/options.php:185
+msgid "Permalink"
+msgstr "Стална веза"
 
 #. Plugin Name of the plugin
 #: acf.php acf.php:348

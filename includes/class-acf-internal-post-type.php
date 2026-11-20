@@ -128,6 +128,15 @@ if ( ! class_exists( 'ACF_Internal_Post_Type' ) ) {
 			 */
 			$post = apply_filters( "acf/load_{$this->hook_name}", $post );
 
+			if (
+				! is_array( $post )
+				|| ! isset( $post['key'], $post['ID'] )
+				|| ! is_scalar( $post['key'] )
+				|| ! is_scalar( $post['ID'] )
+			) {
+				return false;
+			}
+
 			// Store field group using aliases to also find via key, ID and name.
 			$store->set( $post['key'], $post );
 			$store->alias( $post['key'], $post['ID'] );

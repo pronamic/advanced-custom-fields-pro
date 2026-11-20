@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: tr_TR\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,11 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 
-#: includes/api/api-helpers.php:2534
+#: includes/api/api-helpers.php:1851
+msgid "(Restricted item)"
+msgstr "(Kısıtlanmış öğe)"
+
+#: includes/api/api-helpers.php:3242
 msgid "Sorry, this file could not be uploaded."
 msgstr "Üzgünüz, bu dosya yüklenemedi."
 
@@ -30,7 +34,7 @@ msgstr "Üzgünüz, bu dosya yüklenemedi."
 msgid "Field Groups by Post Type"
 msgstr "Yazı tipine göre alan grupları"
 
-#: includes/api/api-helpers.php:3315
+#: includes/api/api-helpers.php:4064
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr "Dosya geçerli bir görsel olmalıdır."
@@ -463,7 +467,7 @@ msgstr "%s ögesini sil"
 msgid "Delete a %s by its ID."
 msgstr "Bir %s ögesini kimliğine göre sil."
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "Deneysel"
 
@@ -842,7 +846,7 @@ msgstr ""
 msgid "Learn more."
 msgstr "Daha fazla bilgi."
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -850,7 +854,7 @@ msgstr ""
 "İstenen ACF alanının bağlamalarda veya ACF kısa kodunda çıktı olarak "
 "verilmesine izin verilmiyor."
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -858,7 +862,7 @@ msgstr ""
 "İstenen ACF alan tipi, Blok Bağlamalarında veya ACF kısa kodunda çıktı "
 "verilmesini desteklemiyor."
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -866,7 +870,7 @@ msgstr ""
 "İstenen ACF alan tipi, bağlamalarda veya ACF kısa kodunda çıktı verilmesini "
 "desteklemiyor."
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr ""
 "[ACF kısa kodu herkese açık olmayan gönderilerdeki alanları görüntüleyemez]"
@@ -1550,7 +1554,7 @@ msgstr ""
 msgid "Invalid request args."
 msgstr "Geçersiz istek argümanları."
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2840,11 +2844,11 @@ msgid "is developed and maintained by"
 msgstr "geliştiren ve devam ettiren"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "Bu %s öğesini seçilen alan gruplarının konum kurallarına ekleyin."
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2856,16 +2860,16 @@ msgstr ""
 "olmalıdır. Örneğin, bu alan bir Taksonomide görüntüleniyorsa, hedef alanınız "
 "Taksonomi türünde olmalıdır"
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Hedef alan"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr "Seçilen değerlerdeki bir alanı bu kimliğe referans vererek güncelleyin"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2879,17 +2883,17 @@ msgstr ""
 "güncellemenize olanak tanır. Daha fazla bilgi için lütfen <a href=\"%s\" "
 "target=\"_blank\">belgeleri</a> okuyun."
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Çift yönlü"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "%s alanı"
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -3014,9 +3018,9 @@ msgstr "Alan grubu yok"
 msgid "No fields"
 msgstr "Alan yok"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Herhangi bir yazı durumu"
 
@@ -3261,9 +3265,9 @@ msgstr ""
 msgid "An input for providing a password using a masked field."
 msgstr "Maskelenmiş bir alan kullanarak parola sağlamaya yönelik bir giriş."
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Yazı durumuna göre filtrele"
 
@@ -3421,26 +3425,26 @@ msgstr "%s bulunamadı"
 msgid "Enable various features in the content editor."
 msgstr "İçerik düzenleyicide çeşitli özellikleri etkinleştirin."
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "Etiketler"
-
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
-msgid "Visibility"
-msgstr "Görünürlük"
 
 #: includes/acf-internal-post-type-functions.php:512
 #: includes/acf-internal-post-type-functions.php:541
 #: includes/acf-internal-post-type-functions.php:568
+msgid "Visibility"
+msgstr "Görünürlük"
+
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
 msgid "Permissions"
 msgstr "İzinler"
 
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
 msgid "URLs"
 msgstr "URL'ler"
 
@@ -3940,16 +3944,16 @@ msgstr "Temel ayarlar"
 msgid "Pages"
 msgstr "Sayfalar"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Tamamlandı"
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST API"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Mevcut alan gruplarını bağlayın"
 
@@ -3973,27 +3977,27 @@ msgstr "%s yazı tipi güncellendi"
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "taksonomi"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "yazı tipi"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Alan grup(lar)ı"
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Bir veya daha fazla alan grubu seçin..."
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Lütfen bağlanacak alan gruplarını seçin."
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "Alan grubu başarıyla bağlandı."
@@ -5473,7 +5477,7 @@ msgstr "Alan ayarı sekmeleri"
 msgid "Close modal"
 msgstr "Modalı kapat"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Pencereyi kapat"
@@ -5503,8 +5507,8 @@ msgstr "Sunum"
 msgid "Validation"
 msgstr "Doğrulama"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Genel"
 
@@ -5756,23 +5760,23 @@ msgstr "%1$s geçerli bir kullanıcı kimliğine sahip olmalıdır."
 msgid "Invalid request."
 msgstr "Geçersiz istek."
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s bir %2$s değil"
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s %2$s terimine sahip olmalı."
 msgstr[1] "%1$s şu terimlerden biri olmalı: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s %2$s yazı tipinde olmalıdır."
 msgstr[1] "%1$s şu yazı tiplerinden birinde olmalıdır: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s geçerli bir yazı kimliği olmalıdır."
 
@@ -6038,7 +6042,7 @@ msgstr "Geçersiz nonce."
 msgid "Error loading field."
 msgstr "Alan yükleme sırasında hata."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Hata</strong>: %s"
 
@@ -6581,7 +6585,7 @@ msgid "Sync"
 msgstr "Eşitle"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "Seç %s"
 
@@ -6601,7 +6605,7 @@ msgid "Description"
 msgstr "Açıklama"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Eşitleme mevcut"
 
@@ -6665,7 +6669,7 @@ msgid "Null"
 msgstr "Boş"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "kopyala"
@@ -6827,7 +6831,7 @@ msgstr "Hiçbir değer"
 msgid "Has any value"
 msgstr "Herhangi bir değer"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Vazgeç"
@@ -6882,35 +6886,35 @@ msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 "Bu sayfadan başka bir sayfaya geçerseniz yaptığınız değişiklikler kaybolacak"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "Dosya tipi %s olmalı."
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "Dosya boyutu %s boyutunu geçmemeli."
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "Dosya boyutu en az %s olmalı."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "Görsel yüksekliği %dpx değerini geçmemeli."
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "Görsel yüksekliği en az %dpx olmalı."
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "Görsel genişliği %dpx değerini geçmemeli."
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "Görsel genişliği en az %dpx olmalı."
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(başlık yok)"
 
@@ -6930,7 +6934,7 @@ msgstr "Orta"
 msgid "Thumbnail"
 msgstr "Küçük resim"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(etiket yok)"
@@ -6968,11 +6972,11 @@ msgstr "Yeni seçenek ekle"
 msgid "Toggle All"
 msgstr "Tümünü aç/kapat"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Arşivler adresine izin ver"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Arşivler"
 
@@ -7527,8 +7531,8 @@ msgstr "Seçimler"
 msgid "Button Group"
 msgstr "Tuş grubu"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Ana"
@@ -7643,89 +7647,89 @@ msgstr "Yeni bir yazı oluştururken görünür"
 msgid "Text"
 msgstr "Metin"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "Yazı ID"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Yazı nesnesi"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "En fazla yazı"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "En az gönderi"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Öne çıkan görsel"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "Her sonuç içinde seçilmiş elemanlar görüntülenir"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Elemanlar"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
 msgid "Taxonomy"
 msgstr "Etiketleme"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
 msgstr "Yazı tipi"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Filtreler"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Tüm taksonomiler"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Taksonomiye göre filtre"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Tüm yazı tipleri"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Yazı tipine göre filtre"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Ara..."
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Taksonomi seç"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Yazı tipi seç"
 
@@ -8096,8 +8100,8 @@ msgstr "Tema işlevlerinden dönen biçim"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -8256,7 +8260,7 @@ msgstr "Sayfa"
 msgid "Content"
 msgstr "İçerik"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Alan grubunu düzenle"
 
@@ -8269,7 +8273,7 @@ msgstr "Emin misiniz?"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "veya"
 
@@ -8311,7 +8315,7 @@ msgid "Yes"
 msgstr "Evet"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Ara"
 
@@ -8365,7 +8369,7 @@ msgstr "Sadece Metin"
 msgid "Tabs"
 msgstr "Seklemeler"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s en az %2$s seçim gerektirir"
@@ -8397,8 +8401,8 @@ msgid "Filter by Role"
 msgstr "Role göre filtrele"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726

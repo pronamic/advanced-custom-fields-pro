@@ -60,7 +60,7 @@ if ( ! class_exists( 'acf_field_date_and_time_picker' ) ) :
 			}
 
 			// vars
-			$version = '1.6.1';
+			$version = '1.6.3';
 
 			// script
 			wp_enqueue_script( 'acf-timepicker', acf_get_url( 'assets/inc/timepicker/jquery-ui-timepicker-addon.min.js' ), array( 'jquery-ui-datepicker' ), $version );

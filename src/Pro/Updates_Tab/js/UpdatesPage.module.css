@@ -1,0 +1,44 @@
+.value {
+	composes: body-md-regular from global;
+	color: var(--text-secondary);
+}
+
+/* Status message with its actions at the end of the row (Figma "Status"). */
+.status {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-lg);
+	width: 100%;
+}
+
+.actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.checking {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.available {
+	composes: body-md-medium from global;
+	color: var(--text-positive);
+}
+
+.error {
+	composes: body-md-medium from global;
+	color: var(--text-negative);
+}
+
+.changelog {
+	composes: mono-md-regular from global;
+	padding: var(--space-2xl);
+	color: var(--text-secondary);
+	white-space: pre-wrap;
+}

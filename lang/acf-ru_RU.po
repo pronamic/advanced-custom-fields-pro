@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -405,6 +405,14 @@ msgstr ""
 "отдельные записи. Для добавления записей в существующий тип записей "
 "воспользуйтесь функциями создания записей."
 
+#: src/AI/Abilities/FieldGroup.php:85
+msgid "Register ACF Field Group"
+msgstr "Зарегистрировать группу полей SCF"
+
+#: src/AI/Abilities/PostType.php:78
+msgid "Register Custom Post Type"
+msgstr "Зарегистрировать пользовательский тип записей"
+
 #: src/AI/Abilities/FieldGroup.php:86
 msgid ""
 "Register a new ACF field group schema with field definitions. This creates "
@@ -416,14 +424,6 @@ msgstr ""
 "создается структура полей, которая будет отображаться в контенте, а не сами "
 "значения полей. Значения полей задаются при создании или обновлении записей, "
 "терминов или другого контента."
-
-#: src/AI/Abilities/FieldGroup.php:85
-msgid "Register ACF Field Group"
-msgstr "Зарегистрировать группу полей SCF"
-
-#: src/AI/Abilities/PostType.php:78
-msgid "Register Custom Post Type"
-msgstr "Зарегистрировать пользовательский тип записей"
 
 #: src/AI/Abilities/Taxonomy.php:78
 msgid "Register Custom Taxonomy"
@@ -468,7 +468,7 @@ msgstr "Удалить %s"
 msgid "Delete a %s by its ID."
 msgstr "Удалить %s по его ID."
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "Экспериментальный"
 
@@ -740,7 +740,7 @@ msgstr "Разрешить доступ к значению в пользова�
 msgid "Learn more."
 msgstr "Узнать больше."
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -757,7 +757,7 @@ msgstr ""
 "Откройте доступ редакторам содержимого к отображению значения поля в "
 "интерфейсе редактора с помощью привязки к блоку или шорткода ACF. %s"
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -765,7 +765,7 @@ msgstr ""
 "Запрашиваемое поле ACF не разрешено для вывода в связке блока или шорткоде "
 "ACF."
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -773,7 +773,7 @@ msgstr ""
 "Запрашиваемый тип поля SCF не поддерживает вывод в связке блока или шорткоде "
 "SCF."
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr "[Шорткод ACF не может отображать поля из непубличных записей]"
 
@@ -1450,7 +1450,7 @@ msgstr "Иконка Сайт (alt2)"
 msgid "Site (alt3) Icon"
 msgstr "Иконка Сайт (alt3)"
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2219,6 +2219,19 @@ msgstr "Инструкции для редакторов. Отображаетс
 msgid "Dismiss permanently"
 msgstr "Отклонить навсегда"
 
+#. translators: %s - The clear log button opening HTML tag. %s - The closing
+#. HTML tag.
+#: includes/admin/views/escaped-html-notice.php:72
+msgid ""
+"This data is logged as we detect values that have been changed during "
+"output. %1$sClear log and dismiss%2$s after escaping the values in your "
+"code. The notice will reappear if we detect changed values again."
+msgstr ""
+"Эти данные записываются в журнал, когда мы обнаруживаем значения, которые "
+"были изменены во время вывода. %1$sОчистите журнал и закройте "
+"уведомление%2$s после экранирования значений в вашем коде. Уведомление "
+"появится снова, если мы снова обнаружим измененные значения."
+
 #: src/Site_Health/Site_Health.php:417
 msgid "License Activated"
 msgstr "Лицензия активирована"
@@ -2246,19 +2259,6 @@ msgstr "Интерфейс страниц настроек включен"
 #: src/Site_Health/Site_Health.php:819
 msgid "Standard"
 msgstr "Стадартный"
-
-#. translators: %s - The clear log button opening HTML tag. %s - The closing
-#. HTML tag.
-#: includes/admin/views/escaped-html-notice.php:72
-msgid ""
-"This data is logged as we detect values that have been changed during "
-"output. %1$sClear log and dismiss%2$s after escaping the values in your "
-"code. The notice will reappear if we detect changed values again."
-msgstr ""
-"Эти данные записываются в журнал, когда мы обнаруживаем значения, которые "
-"были изменены во время вывода. %1$sОчистите журнал и закройте "
-"уведомление%2$s после экранирования значений в вашем коде. Уведомление "
-"появится снова, если мы снова обнаружим измененные значения."
 
 #: src/Site_Health/Site_Health.php:819
 msgid "Light"
@@ -2739,20 +2739,20 @@ msgid "is developed and maintained by"
 msgstr "разработан и поддерживается"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "Добавьте %s в правила местонахождения выбранных групп полей."
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Целевое поле"
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Двунаправленный"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "%s поле"
 
@@ -2761,11 +2761,11 @@ msgstr "%s поле"
 msgid "(Duplicated from %s)"
 msgstr "(Скопировано из %s)"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr "Обновлять поле по выбранным значениям, ссылаясь на этот ID"
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2778,7 +2778,7 @@ msgstr ""
 "целевое поле должно иметь тип Таксономия"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2792,8 +2792,8 @@ msgstr ""
 "получения дополнительной информации ознакомьтесь с <a href=\"%s\" "
 "target=\"_blank\">документацией</a>."
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2917,9 +2917,9 @@ msgstr "Нет терминов"
 msgid "No description"
 msgstr "Нет описания"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Любой статус записи"
 
@@ -3108,9 +3108,9 @@ msgstr ""
 msgid "Edit Post Type"
 msgstr "Изменить тип записи"
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Фильтр по статусу записи"
 
@@ -3341,7 +3341,7 @@ msgstr "Рубрика"
 msgid "Choose from the most used tags"
 msgstr "Выбрать из часто используемых меток"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Готово"
 
@@ -3534,9 +3534,9 @@ msgstr "Просмотр записей"
 msgid "View Tag"
 msgstr "Просмотреть метку"
 
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
+#: includes/acf-internal-post-type-functions.php:512
+#: includes/acf-internal-post-type-functions.php:541
+#: includes/acf-internal-post-type-functions.php:568
 msgid "Visibility"
 msgstr "Видимость"
 
@@ -3604,8 +3604,8 @@ msgstr "%s обновлён."
 msgid "URL Slug"
 msgstr "Ярлык URL"
 
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
 msgid "URLs"
 msgstr "URL-адреса"
 
@@ -3861,8 +3861,8 @@ msgstr "Значок меню"
 msgid "Menu Position"
 msgstr "Позиция меню"
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "Rest API"
 
@@ -3871,7 +3871,7 @@ msgstr "Rest API"
 msgid "Movies"
 msgstr "Фильмы"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "тип записи"
 
@@ -3906,7 +3906,7 @@ msgstr ""
 msgid "Select Field Type"
 msgstr "Выбрать тип поля"
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Выберите одну или несколько групп полей..."
 
@@ -3945,7 +3945,7 @@ msgstr "Одиночная этикетка"
 msgid "Tag Link"
 msgstr "Ссылка метки"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "таксономия"
 
@@ -4058,9 +4058,9 @@ msgstr "Импорт из Custom Post Type UI"
 msgid "Item Link Description"
 msgstr "Описание ссылки на элемент"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "Этикетки"
 
@@ -4420,9 +4420,9 @@ msgstr "Фильтровать список %s"
 msgid "Publicly Queryable"
 msgstr "Публично запрашиваемый"
 
-#: includes/acf-internal-post-type-functions.php:512
-#: includes/acf-internal-post-type-functions.php:541
-#: includes/acf-internal-post-type-functions.php:568
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -4507,11 +4507,11 @@ msgstr ""
 "Импортировать типы записей и таксономии, зарегистрированные через Custom "
 "Post Type UI, и управлять ими с помощью ACF. <a href=\"%s\">Начать</a>."
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Пожалуйста, выберете группы полей, чтобы связать."
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "Группа полей связана успешно."
@@ -4566,7 +4566,7 @@ msgstr "Тип записей удален."
 msgid "Post type updated."
 msgstr "Тип записей обновлен."
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Группа(ы) полей"
 
@@ -4720,7 +4720,7 @@ msgstr "Тип записей запланирован к публикации."
 msgid "Post type draft updated."
 msgstr "Черновик типа записей обновлен."
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Связать существующие группы полей"
 
@@ -5399,7 +5399,7 @@ msgstr "Поле перемещено в другую группу"
 msgid "Close modal"
 msgstr "Закрыть модальное окно"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Закрыть модальное окно"
@@ -5426,8 +5426,8 @@ msgstr "#"
 msgid "Add title"
 msgstr "Добавить заголовок"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Общие"
 
@@ -5675,11 +5675,11 @@ msgstr "Неверный запрос."
 msgid "Show in REST API"
 msgstr "Показывать в REST API"
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s не является одним из %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s должен иметь действительный ID записи."
 
@@ -5698,14 +5698,14 @@ msgstr[0] "%1$s должно содержать пользователя со с
 msgstr[1] "%1$s должно содержать пользователя со следующими ролями: %2$s"
 msgstr[2] "%1$s должно содержать пользователя со следующими ролями: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s может иметь следующие типы записей: %2$s."
 msgstr[1] "%1$s может иметь следующие типы записей: %2$s."
 msgstr[2] "%1$s может иметь следующие типы записей: %2$s."
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s может содержать следующие термины: %2$s."
@@ -5965,7 +5965,7 @@ msgstr "Неверный одноразовый номер."
 msgid "Error loading field."
 msgstr "Ошибка загрузки поля."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Ошибка</strong>: %s"
 
@@ -6016,7 +6016,7 @@ msgstr "Автор"
 msgid "Link"
 msgstr "Ссылка"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
@@ -6254,7 +6254,7 @@ msgctxt "verb"
 msgid "Update"
 msgstr "Обновить"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Архивы"
 
@@ -6277,13 +6277,13 @@ msgstr "Разделитель"
 msgid "Default"
 msgstr "По умолчанию"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
 msgstr "Тип записи"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Фильтры"
 
@@ -6324,7 +6324,7 @@ msgid "Yes"
 msgstr "Да"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Поиск"
 
@@ -6357,7 +6357,7 @@ msgstr "Блок"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "или"
 
@@ -6371,7 +6371,7 @@ msgstr "Таблица"
 msgid "Message"
 msgstr "Сообщение"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Отмена"
@@ -6499,7 +6499,7 @@ msgstr "Перетащите, чтобы изменить порядок"
 msgid "Duplicate"
 msgstr "Дублировать"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Элементы"
 
@@ -6601,7 +6601,7 @@ msgstr "Диапазон"
 msgid "Remove"
 msgstr "Удалить"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Поиск..."
 
@@ -6719,9 +6719,9 @@ msgstr "Добавить новую группу полей"
 msgid "Add rule group"
 msgstr "Добавить группу правил"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Все таксономии"
 
@@ -6764,7 +6764,7 @@ msgid "Clear location"
 msgstr "Очистить местоположение"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "копировать"
@@ -6832,7 +6832,7 @@ msgstr "Загрузка не удалась"
 msgid "Maximum"
 msgstr "Максимум"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "Макс. кол-во записей"
 
@@ -6861,7 +6861,7 @@ msgstr "Минимум"
 msgid "Minimum Value"
 msgstr "Минимальное значение"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "Мин. кол-во записей"
 
@@ -6870,14 +6870,14 @@ msgctxt "Date Time Picker JS pmText"
 msgid "PM"
 msgstr "ПП"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "ID записи"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Объект записи"
 
@@ -6889,7 +6889,7 @@ msgstr "Выбрать файл"
 msgid "Select Link"
 msgstr "Выбрать ссылку"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Выбрать таксономию"
 
@@ -6935,7 +6935,7 @@ msgstr "Варианты"
 msgid "Content Editor"
 msgstr "Текстовый редактор"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Изменить группу полей"
 
@@ -7208,7 +7208,7 @@ msgstr "Ссылка на страницу"
 msgid "Full Size"
 msgstr "Полный"
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "Размер файла должен быть не менее чем %s."
 
@@ -7378,21 +7378,21 @@ msgstr "Значение должно быть равным или больше 
 msgid "Value must be equal to or lower than %d"
 msgstr "Значение должно быть равным или меньшим чем %d"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Родитель"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Фильтрация по типу записей"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Фильтрация по таксономии"
 
@@ -7404,7 +7404,7 @@ msgstr "Другое"
 msgid "Add 'other' choice to allow for custom values"
 msgstr "Выберите значение \"Другое\", чтобы разрешить настраиваемые значения"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "Выбранные элементы будут отображены в каждом результате"
 
@@ -7509,7 +7509,7 @@ msgstr ""
 msgid "Search Field Groups"
 msgstr "Найти группу полей"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(без этикетки)"
@@ -7562,7 +7562,7 @@ msgid "Register"
 msgstr "Регистрация"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "Выбрать %s"
 
@@ -7598,7 +7598,7 @@ msgstr "Валидация пройдена успешно"
 msgid "All %s formats"
 msgstr "Все %s форматы"
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(без названия)"
 
@@ -7642,7 +7642,7 @@ msgstr "Добавить новое"
 msgid "Allow 'custom' values to be added"
 msgstr "Разрешить добавление «пользовательских» значений"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Разрешить URL-адреса архивов"
 
@@ -7715,7 +7715,7 @@ msgstr "Задает высоту текстовой области"
 msgid "Set the initial zoom level"
 msgstr "Укажите начальный масштаб"
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "Ширина изображения должна быть не менее %d px."
 
@@ -7723,15 +7723,15 @@ msgstr "Ширина изображения должна быть не мене�
 msgid "Customize the map height"
 msgstr "Настройка высоты карты"
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "Ширина изображения не должна превышать %d px."
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "Высота изображения должна быть не менее %d px."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "Высота изображения не должна превышать %d px."
 
@@ -7739,7 +7739,7 @@ msgstr "Высота изображения не должна превышать
 msgid "Specify the style used to render the selected fields"
 msgstr "Укажите стиль, используемый для отрисовки выбранных полей"
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "Размер файла не должен превышать %s."
 
@@ -7775,7 +7775,7 @@ msgstr "Выбрать"
 msgid "Radio Buttons"
 msgstr "Кнопки-переключатели"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "Тип файла должен быть %s."
 
@@ -7910,12 +7910,12 @@ msgstr "Проверьте и обновите сайт"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Изображение записи"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Доступна синхронизация"
 
@@ -8065,7 +8065,7 @@ msgstr "Выровнено по левому краю"
 msgid "Toggle All"
 msgstr "Переключить все"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Выбрать тип записи"
 
@@ -8204,8 +8204,8 @@ msgid "Image URL"
 msgstr "URL изображения"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -8264,8 +8264,8 @@ msgstr "Многократное расширение"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -8307,9 +8307,9 @@ msgstr[2] "Неактивно <span class=\"count\">(%s)</span>"
 msgid "red : Red"
 msgstr "red : Красный"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Все типы записи"
 
@@ -8337,7 +8337,7 @@ msgstr "Название поля"
 msgid "Checkbox"
 msgstr "Чекбокс"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s требует выбора как минимум %2$s элемента"
@@ -8349,6 +8349,11 @@ msgctxt "verb"
 msgid "Select"
 msgstr "Выбрать"
 
+#: includes/admin/views/acf-field-group/options.php:195
+#: includes/admin/views/acf-post-type/advanced-settings.php:43
+msgid "Page Attributes"
+msgstr "Свойства страницы"
+
 #. translators: %s number of field groups duplicated
 #: includes/admin/post-types/admin-field-groups.php:372
 msgid "Field group duplicated."
@@ -8356,11 +8361,6 @@ msgid_plural "%s field groups duplicated."
 msgstr[0] "группа полей продублирована."
 msgstr[1] "%s группы полей продублировано."
 msgstr[2] "%s групп полей продублировано."
-
-#: includes/admin/views/acf-field-group/options.php:195
-#: includes/admin/views/acf-post-type/advanced-settings.php:43
-msgid "Page Attributes"
-msgstr "Свойства страницы"
 
 #. Plugin Name of the plugin
 #: acf.php acf.php:348

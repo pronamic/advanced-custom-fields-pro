@@ -76,17 +76,17 @@ if ( ! class_exists( 'acf_pro_updates' ) ) :
 			}
 
 			if ( is_multisite() ) {
-				/* translators: %1 A link to the updates page. %2 link to the pricing page */
-				$message           = __( 'To enable updates, please enter your license key on the <a href="%1$s">Updates</a> page of the main site. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' );
-				$updates_page_link = get_admin_url( get_main_site_id(), 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+				/* translators: %1 A link to the license page. %2 link to the pricing page */
+				$message           = __( 'To enable updates, please enter your license key on the <a href="%1$s">License</a> page of the main site. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' );
+				$license_page_link = get_admin_url( get_main_site_id(), 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license' );
 			} else {
-				/* translators: %1 A link to the updates page. %2 link to the pricing page */
-				$message           = __( 'To enable updates, please enter your license key on the <a href="%1$s">Updates</a> page. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' );
-				$updates_page_link = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+				/* translators: %1 A link to the license page. %2 link to the pricing page */
+				$message           = __( 'To enable updates, please enter your license key on the <a href="%1$s">License</a> page. If you don\'t have a license key, please see <a href="%2$s" target="_blank">details & pricing</a>.', 'acf' );
+				$license_page_link = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license' );
 			}
 
 			// Display message.
-			echo '<br />' . wp_kses_post( sprintf( $message, $updates_page_link, acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'updates' ) ) );
+			echo '<br />' . wp_kses_post( sprintf( $message, $license_page_link, acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/pro/', 'ACF upgrade', 'updates' ) ) );
 		}
 	}
 
@@ -202,7 +202,7 @@ function acf_pro_get_translated_connect_message( $text ) {
 	} elseif ( strpos( $text, 'key deactivated' ) !== false ) {
 		return __( 'Your license key has been deactivated.', 'acf' );
 	} elseif ( strpos( $text, 'key not found' ) !== false ) {
-		$text = __( 'License key not found. Make sure you have copied your license key exactly as it appears in your receipt or your account.', 'acf' );
+		$text = __( 'License key not found. Make sure you have copied your license key exactly.', 'acf' );
 
 		$text .= sprintf(
 			' <a href="%1$s" target="_blank">%2$s</a>',
@@ -242,11 +242,11 @@ function acf_pro_get_translated_connect_message( $text ) {
 			__( 'View your licenses', 'acf' )
 		);
 
-		// Check again on the updates page if shown, or the field group page if not.
+		// Check again on the license page if shown, or the field group page if not.
 		$nonce    = wp_create_nonce( 'acf_retry_activation' );
 		$base_url = 'edit.php?post_type=acf-field-group';
 		if ( acf_pro_is_updates_page_visible() ) {
-			$base_url .= '&page=acf-settings-updates';
+			$base_url .= '&page=acf-settings-tab-license';
 		}
 
 		$check_again = sprintf(
@@ -348,7 +348,7 @@ function acf_pro_display_activation_error( $screen ) {
 		$nonce           = wp_create_nonce( 'acf_retry_activation' );
 		$check_again_url = 'edit.php?post_type=acf-field-group';
 		if ( acf_pro_is_updates_page_visible() ) {
-			$check_again_url .= '&page=acf-settings-updates';
+			$check_again_url .= '&page=acf-settings-tab-license';
 		}
 		$activation_data['error'] = $activation_data['error'] . ' <a href="' . admin_url( $check_again_url . '&acf_retry_nonce=' . $nonce ) . '">' . __( 'Check again', 'acf' ) . '</a>';
 	}
@@ -680,18 +680,19 @@ function acf_pro_display_wp_activation_error( $wp_error ) {
  * @return array
  */
 function acf_pro_get_license_status( $force_check = false ) {
-	$store  = acf_get_store( 'acf_pro_license_status' );
-	$cached = $store->get_data();
-
-	if ( ! empty( $cached ) && ! $force_check ) {
-		return $cached;
-	}
-
 	$license = acf_pro_get_license_key( true );
 
 	// Defined licenses may not have a license stored in the database.
 	if ( ! $license && defined( 'ACF_PRO_LICENSE' ) && acf_pro_get_license() ) {
 		$license = ACF_PRO_LICENSE;
+	}
+
+	$store  = acf_get_store( 'acf_pro_license_status' );
+	$cached = $store->get_data();
+
+	// Only use the cached status if we still have a license, so a status without a license is always cleaned up below.
+	if ( ! empty( $cached ) && ! $force_check && $license ) {
+		return $cached;
 	}
 
 	$status     = acf_pro_get_license_option( 'acf_pro_license_status', array() );
@@ -734,9 +735,9 @@ function acf_pro_get_license_status( $force_check = false ) {
 						acf_pro_check_defined_license();
 					} else {
 						$status['error_msg'] = sprintf(
-						/* translators: %s - URL to ACF updates page */
+						/* translators: %s - URL to ACF license page */
 							__( 'Your license key is valid but not activated on this site. Please <a href="%s">deactivate</a> and then reactivate the license.', 'acf' ),
-							esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#deactivate-license' ) )
+							esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license#deactivate-license' ) )
 						);
 					}
 				} elseif ( ! empty( $response['message'] ) ) {

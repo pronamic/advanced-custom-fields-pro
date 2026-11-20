@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,11 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: includes/api/api-helpers.php:2534
+#: includes/api/api-helpers.php:1851
+msgid "(Restricted item)"
+msgstr "(制限された項目)"
+
+#: includes/api/api-helpers.php:3242
 msgid "Sorry, this file could not be uploaded."
 msgstr "このファイルをアップロードできませんでした。"
 
@@ -30,7 +34,7 @@ msgstr "このファイルをアップロードできませんでした。"
 msgid "Field Groups by Post Type"
 msgstr "投稿タイプ別のフィールドグループ"
 
-#: includes/api/api-helpers.php:3315
+#: includes/api/api-helpers.php:4064
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr "有効な画像ファイルを指定してください。"
@@ -572,7 +576,7 @@ msgstr "ACF フィールド管理"
 msgid "Notes"
 msgstr "メモ"
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "実験的"
 
@@ -691,10 +695,9 @@ msgid ""
 "removed in a future version of ACF. <a href=\"%2$s\" target=\"_blank\">Learn "
 "more</a>."
 msgstr ""
-"%1$s この Web サイトは Select2 jQuery ライブラリの v3 を使用するように設定さ"
-"れていることが検出されました。 v3 は廃止され、v4 が推奨されており、 ACF の将"
-"来のバージョンでは削除される予定です。 <a href=\"%2$s\" target=\"_blank\"> 詳"
-"細 </​​a>"
+"%1$s このサイトは Select2 jQuery ライブラリの v3 を使用するよう設定されていま"
+"す。v3 は v4 への移行に伴い非推奨となり、ACF の今後のバージョンで削除される予"
+"定です。<a href=\"%2$s\" target=\"_blank\">詳しくはこちら</a>。"
 
 #: includes/fields/class-acf-field-select.php:480
 msgid ""
@@ -806,7 +809,7 @@ msgstr ""
 
 #: src/Site_Health/Site_Health.php:412
 msgid "wordpress.org"
-msgstr "WordPress.org"
+msgstr "wordpress.org"
 
 #: includes/fields/class-acf-field.php:420
 msgid "Allow Access to Value in Editor UI"
@@ -826,7 +829,7 @@ msgstr ""
 "コンテンツ編集者がブロックバインディングまたは ACF ショートコードを使用してエ"
 "ディター UI でフィールド値にアクセスして表示できるようにします。 %s"
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -834,7 +837,7 @@ msgstr ""
 "要求された ACF フィールドは、バインディングまたは ACF ショートコードで出力す"
 "ることはできません。"
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -842,7 +845,7 @@ msgstr ""
 "要求された ACF フィールドタイプは、バインディングまたは ACF ショートコードで"
 "の出力をサポートしていません。"
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -854,7 +857,7 @@ msgstr ""
 msgid "[The ACF shortcode is disabled on this site]"
 msgstr "[ACFショートコードはこのサイトでは無効化されています]"
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr "[ACF ショートコードは非公開の投稿のフィールドを表示できません]"
 
@@ -1533,7 +1536,7 @@ msgstr "サイト (alt) アイコン"
 msgid "Invalid request args."
 msgstr "無効なリクエストです。"
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2812,26 +2815,26 @@ msgid "is developed and maintained by"
 msgstr "によって開発され、維持されている"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "%s フィールド"
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "双方向"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr ""
 "このフィールドで選択された値が持つターゲットフィールドを更新し、このアイテム"
 "のIDを参照する"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "%s を選択したフィールドグループのロケーションルールに追加します。"
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "ターゲットフィールド"
 
@@ -2841,7 +2844,7 @@ msgid "(Duplicated from %s)"
 msgstr "( %s からの複製)"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2854,7 +2857,7 @@ msgstr ""
 "ユーザー ID ) を追加または削除することができます。詳しくは <a href=\"%s\" "
 "target=\"_blank\"> ドキュメント </a> をお読みください。"
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2867,8 +2870,8 @@ msgstr ""
 "ります。例えば、このフィールドがタクソノミーに表示される場合、ターゲット"
 "フィールドはタクソノミー型でなければなりません。"
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2989,9 +2992,9 @@ msgstr "フィールドはありません"
 msgid "No description"
 msgstr "説明はありません"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "すべての投稿ステータス"
 
@@ -3048,9 +3051,9 @@ msgstr "新規投稿タイプを追加"
 msgid "URL"
 msgstr "URL"
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "投稿ステータスで絞り込む"
 
@@ -3510,11 +3513,11 @@ msgstr "固定ページ"
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "タクソノミー"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "投稿タイプ"
 
@@ -3591,12 +3594,12 @@ msgstr "PRO"
 msgid "More"
 msgstr "詳細"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "完了"
 
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
 msgid "URLs"
 msgstr "URL"
 
@@ -3634,9 +3637,9 @@ msgstr "No %s"
 msgid "Genres"
 msgstr "ジャンル"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "ラベル"
 
@@ -3702,8 +3705,8 @@ msgstr "URL スラッグ"
 msgid "Base URL"
 msgstr "ベース URL"
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST API"
 
@@ -3799,9 +3802,9 @@ msgstr "エクスポート可能"
 msgid "Pagination"
 msgstr "ページ送り"
 
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
+#: includes/acf-internal-post-type-functions.php:512
+#: includes/acf-internal-post-type-functions.php:541
+#: includes/acf-internal-post-type-functions.php:568
 msgid "Visibility"
 msgstr "可視性"
 
@@ -3845,9 +3848,9 @@ msgstr "%s アーカイブ"
 msgid "%s updated."
 msgstr "%s を更新しました。"
 
-#: includes/acf-internal-post-type-functions.php:512
-#: includes/acf-internal-post-type-functions.php:541
-#: includes/acf-internal-post-type-functions.php:568
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
 msgid "Permissions"
 msgstr "パーミッション"
 
@@ -4010,7 +4013,7 @@ msgstr "クエリー可変"
 msgid "Singular Label"
 msgstr "単数ラベル"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "フィールドグループ"
 
@@ -4592,16 +4595,16 @@ msgstr ""
 "「スラッグ」は、URL に適した形式の名前です。通常はすべて小文字で、文字、数"
 "字、ハイフンのみが使用されます。"
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "フィールドグループが正常にリンクされました。"
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "リンクするフィールドグループを選択してください。"
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "1つまたは複数のフィールド グループを選択します..."
 
@@ -5354,7 +5357,7 @@ msgid "Taxonomy deactivated."
 msgid_plural "%s taxonomies deactivated."
 msgstr[0] "%s件のタクソノミーを無効化しました。"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "既存のフィールドグループをリンク"
 
@@ -5404,7 +5407,7 @@ msgstr ""
 msgid "Close modal"
 msgstr "モーダルを閉じる"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "モーダルを閉じる"
@@ -5442,8 +5445,8 @@ msgstr "最初のフィールドを追加"
 msgid "Validation"
 msgstr "検証"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "全般"
 
@@ -5675,7 +5678,7 @@ msgstr ""
 msgid "Invalid request."
 msgstr "無効なリクエストです。"
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s は %2$s に当てはまりません"
 
@@ -5683,7 +5686,7 @@ msgstr "%1$s は %2$s に当てはまりません"
 msgid "Show in REST API"
 msgstr "REST API で表示"
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s は有効な投稿 ID である必要があります。"
 
@@ -5691,12 +5694,12 @@ msgstr "%1$s は有効な投稿 ID である必要があります。"
 msgid "%s requires a valid attachment ID."
 msgstr "%s には有効な添付ファイル ID が必要です。"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s は投稿タイプ %2$s である必要があります。"
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s はターム %2$s である必要があります。"
@@ -5960,7 +5963,7 @@ msgstr "フィールドの読み込みエラー。"
 msgid "Invalid nonce."
 msgstr "無効な nonce。"
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>エラー</strong>: %s"
 
@@ -6083,7 +6086,7 @@ msgstr "条件判定"
 msgid "Select Image"
 msgstr "画像を選択"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "アーカイブ"
 
@@ -6103,7 +6106,7 @@ msgid "Active"
 msgstr "有効"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "検索"
 
@@ -6134,7 +6137,7 @@ msgid "Move"
 msgstr "移動"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "%sを選択"
 
@@ -6207,8 +6210,8 @@ msgstr "値"
 msgid "Relationship"
 msgstr "関係"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "親"
@@ -6339,14 +6342,9 @@ msgstr "削除"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "アイキャッチ画像"
-
-#: includes/admin/admin.php:392
-#: includes/admin/views/browse-fields-modal.php:112
-msgid "Documentation"
-msgstr "ドキュメンテーション"
 
 #: includes/fields/class-acf-field-link.php:31
 msgid "Link"
@@ -6406,7 +6404,7 @@ msgstr "はい"
 msgid "Width"
 msgstr "幅"
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(タイトルなし)"
 
@@ -6445,7 +6443,7 @@ msgstr "パスワード"
 msgid "Tags"
 msgstr "タグ"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "キャンセル"
@@ -6517,14 +6515,14 @@ msgstr "垂直"
 msgid "Horizontal"
 msgstr "水平"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
 msgid "Taxonomy"
 msgstr "タクソノミー"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "タクソノミーを選択"
 
@@ -6862,7 +6860,7 @@ msgid "Duplicate this item"
 msgstr "この項目を複製"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "同期が利用できます"
 
@@ -6879,7 +6877,7 @@ msgid "Field Keys"
 msgstr "フィールドキー"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "コピー"
@@ -6970,7 +6968,7 @@ msgstr "スパムを検出しました"
 msgid "Validate Email"
 msgstr "メールを確認"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "フィールドグループを編集"
 
@@ -7058,11 +7056,11 @@ msgstr "このページから移動した場合、変更は失われます"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "または"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(ラベルなし)"
@@ -7083,7 +7081,7 @@ msgstr "新規選択肢を追加"
 msgid "Toggle All"
 msgstr "すべて切り替え"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "アーカイブ URL を許可"
 
@@ -7467,48 +7465,48 @@ msgstr "プレースホルダーテキスト"
 msgid "Appears when creating a new post"
 msgstr "新規投稿作成時に表示"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "投稿 ID"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "投稿オブジェクト"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "要素"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
 msgstr "投稿タイプ"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "フィルター"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "すべての投稿タイプ"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "投稿タイプでフィルター"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "検索…"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "投稿タイプを選択"
 
@@ -7685,8 +7683,8 @@ msgstr "お使いのブラウザーは位置情報機能に対応していませ
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -7813,9 +7811,9 @@ msgstr "タームを保存"
 msgid "Create Terms"
 msgstr "タームを追加"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "すべてのタクソノミー"
 
@@ -7916,9 +7914,9 @@ msgid "Allow this accordion to open without closing others."
 msgstr ""
 "他のアコーディオンを閉じずにこのアコーディオンを開くことができるようにする。"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "タクソノミーで絞り込み"
 
@@ -8042,23 +8040,23 @@ msgstr "と"
 msgid "Append"
 msgstr "追加"
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "画像の幅は %dpx 以上である必要があります。"
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "画像の高さは %dpx 以上である必要があります。"
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "画像の高さは %dpx 以下である必要があります。"
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "画像の幅は %dpx 以下である必要があります。"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "選択した要素がそれぞれの結果に表示されます"
 
@@ -8075,15 +8073,15 @@ msgstr ""
 msgid "Enter each default value on a new line"
 msgstr "新しい行に各デフォルト値を入力してください"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "ファイル形式は %s である必要があります。"
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "ファイルサイズは %s 以上である必要があります。"
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "ファイルサイズは %s 以下である必要があります。"
 
@@ -8186,7 +8184,7 @@ msgstr "%1$s v%2$sへの更新をありがとうございます。"
 msgid "Site requires database upgrade from %1$s to %2$s"
 msgstr "%1$s から %2$s へのデータベースのアップグレードが必要です"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$sは%2$s個以上選択する必要があります"
@@ -8274,8 +8272,8 @@ msgid "Multi-Expand"
 msgstr "マルチ展開"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -8291,11 +8289,11 @@ msgstr "初期化を遅延させる"
 msgid "Show Media Upload Buttons"
 msgstr "メディアアップロードボタンを表示"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "最大投稿数"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "最小投稿数"
 
@@ -8342,6 +8340,11 @@ msgstr "位置"
 #: includes/admin/views/acf-field-group/options.php:167
 msgid "Order No."
 msgstr "表示順番"
+
+#: includes/admin/admin.php:392
+#: includes/admin/views/browse-fields-modal.php:112
+msgid "Documentation"
+msgstr "ドキュメント"
 
 #. Plugin Name of the plugin
 #: acf.php acf.php:348

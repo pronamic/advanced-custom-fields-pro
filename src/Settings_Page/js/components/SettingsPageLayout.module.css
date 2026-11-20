@@ -1,0 +1,35 @@
+/* Lets the page shrink below the BDS 920px minimum on narrow screens, as the PDS page did. Doubled to beat Page's own declaration. */
+.page.page {
+	--bds-page-width-min: 0;
+}
+
+/* Header and tabs stay visible while the settings scroll, matching .acf-headerbar on the field group edit screen. */
+.stickyHeader {
+	position: sticky;
+	top: var(--wp-admin--admin-bar--height, 32px);
+	z-index: 700;
+}
+
+@media screen and (max-width: 880px) {
+
+	.stickyHeader {
+		position: static;
+	}
+}
+
+.notices {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+}
+
+.notices:empty {
+	display: none;
+}
+
+.notices > :global(.notice),
+.notices > :global(.updated),
+.notices > :global(.error),
+.notices > :global(.update-nag) {
+	margin: 0;
+}

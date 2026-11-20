@@ -222,7 +222,9 @@ if ( ! class_exists( 'acf_options_page' ) ) :
 		 * @return  (mixed)
 		 */
 		function get_page( $slug ) {
-
+			if ( $slug === null ) {
+				$slug = '';
+			}
 			return isset( $this->pages[ $slug ] ) ? $this->pages[ $slug ] : null;
 		}
 
@@ -399,6 +401,33 @@ if ( ! function_exists( 'acf_get_options_pages' ) ) :
 		foreach ( $pages as $slug => &$page ) {
 			$page = acf_get_options_page( $slug );
 		}
+
+		// Sort so submenus and parent redirects follow the child page position, however the pages were registered.
+		// Top-level pages come first in registration order, then child pages grouped by parent (in the order each
+		// parent first appears) and ordered by position, with no position last.
+		// Ties keep registration order, as sorting is not stable on PHP 7.4.
+		$registration_order = array_flip( array_keys( $pages ) );
+		$parent_order       = array();
+		foreach ( array_column( $pages, 'parent_slug' ) as $parent_slug ) {
+			if ( $parent_slug && ! isset( $parent_order[ $parent_slug ] ) ) {
+				$parent_order[ $parent_slug ] = count( $parent_order );
+			}
+		}
+		$sort_key = function ( $slug ) use ( $pages, $registration_order, $parent_order ) {
+			$page = $pages[ $slug ];
+			if ( empty( $page['parent_slug'] ) ) {
+				return array( 0, 0, 0, 0, $registration_order[ $slug ] );
+			}
+			// The acf/get_options_page filter may set a non-numeric position, so do not rely on it being null.
+			$has_position = is_numeric( $page['position'] );
+			return array( 1, $parent_order[ $page['parent_slug'] ], $has_position ? 0 : 1, $has_position ? (int) $page['position'] : 0, $registration_order[ $slug ] );
+		};
+		uksort(
+			$pages,
+			function ( $slug_a, $slug_b ) use ( $sort_key ) {
+				return $sort_key( $slug_a ) <=> $sort_key( $slug_b );
+			}
+		);
 
 		// calculate parent => child redirectes
 		foreach ( $pages as $slug => &$page ) {

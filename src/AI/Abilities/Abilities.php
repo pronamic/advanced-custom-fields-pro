@@ -19,8 +19,10 @@ defined( 'ABSPATH' ) || exit;
 /**
  * The ACF Abilities API integration.
  *
- * Extends the WordPress Abilities API to expose field groups, post types,
- * taxonomies, and options pages when the "Allow AI Access" setting is enabled.
+ * Extends the WordPress Abilities API to list and register field groups, post types,
+ * and taxonomies when the "Enable Abilities" setting is enabled. Posts and terms of
+ * ACF post types and taxonomies with abilities enabled and "Show in REST API" on
+ * can also be queried, created, viewed, updated, and deleted.
  */
 class Abilities {
 
@@ -61,7 +63,7 @@ class Abilities {
 		// Register abilities.
 		add_action( 'wp_abilities_api_init', array( $this, 'register_abilities' ) );
 
-		// Fix for WordPress 6.9 Abilities API bug: parse JSON from query parameters.
+		// The Abilities API doesn't parse JSON from query parameters (still the case in WordPress 7.2).
 		add_filter( 'rest_request_before_callbacks', array( $this, 'parse_abilities_json_input' ), 10, 3 );
 	}
 
@@ -154,9 +156,10 @@ class Abilities {
 	/**
 	 * Parse JSON input from query parameters for Abilities API
 	 *
-	 * WordPress 6.9's Abilities API REST controller doesn't parse JSON strings
-	 * from query parameters in GET requests. This filter fixes that by detecting
-	 * JSON strings in the 'input' parameter and parsing them into objects/arrays.
+	 * The Abilities API REST controller doesn't parse JSON strings from query
+	 * parameters in GET and DELETE requests (still the case in WordPress 7.2).
+	 * This filter fixes that by detecting JSON strings in the 'input' parameter
+	 * and parsing them into objects/arrays.
 	 *
 	 * @since 6.8.0
 	 *

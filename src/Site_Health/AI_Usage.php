@@ -64,14 +64,14 @@ class AI_Usage {
 	}
 
 	/**
-	 * Checks if ACF AI and the Abilities API are enabled.
+	 * Checks if ACF Abilities API is enabled.
 	 *
 	 * @since 6.8.0
 	 *
 	 * @return boolean
 	 */
 	private function is_acf_abilities_api_available(): bool {
-		return acf_get_setting( 'enable_acf_ai' ) && function_exists( 'wp_register_ability' );
+		return acf_get_setting( 'enable_abilities' ) && function_exists( 'wp_register_ability' );
 	}
 
 	/**
@@ -165,21 +165,21 @@ class AI_Usage {
 
 		// Count AI-ready field groups.
 		foreach ( $field_groups as $field_group ) {
-			if ( ! empty( $field_group['allow_ai_access'] ) && ! empty( $field_group['active'] ) ) {
+			if ( ! empty( $field_group['enable_acf_abilities'] ) && ! empty( $field_group['active'] ) ) {
 				++$counts['field_groups'];
 			}
 		}
 
 		// Count AI-ready post types.
 		foreach ( $post_types as $post_type ) {
-			if ( ! empty( $post_type['allow_ai_access'] ) && ! empty( $post_type['active'] ) ) {
+			if ( ! empty( $post_type['enable_acf_abilities'] ) && ! empty( $post_type['active'] ) ) {
 				++$counts['post_types'];
 			}
 		}
 
 		// Count AI-ready taxonomies.
 		foreach ( $taxonomies as $taxonomy ) {
-			if ( ! empty( $taxonomy['allow_ai_access'] ) && ! empty( $taxonomy['active'] ) ) {
+			if ( ! empty( $taxonomy['enable_acf_abilities'] ) && ! empty( $taxonomy['active'] ) ) {
 				++$counts['taxonomies'];
 			}
 		}

@@ -34,7 +34,37 @@
                 "boolean",
                 "array"
             ],
-            "description": "Conditional logic rules. Set to false to disable, or provide rules array.",
+            "description": "Conditional logic rules. Set to false to disable, or provide an array of rule groups. Groups are combined with OR logic, rules within a group with AND logic.",
+            "items": {
+                "type": "array",
+                "description": "Group of rules that must all match (AND logic)",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "field": {
+                            "type": "string",
+                            "description": "The key of the field to compare against, e.g. field_123abc"
+                        },
+                        "operator": {
+                            "type": "string",
+                            "description": "Comparison operator, e.g. ==, !=, ==empty, !=empty, ==pattern, ==contains, >, <"
+                        },
+                        "value": {
+                            "type": [
+                                "string",
+                                "number",
+                                "integer",
+                                "boolean"
+                            ],
+                            "description": "Value to compare against. Omit for ==empty and !=empty."
+                        }
+                    },
+                    "required": [
+                        "field",
+                        "operator"
+                    ]
+                }
+            },
             "default": false
         },
         "wrapper": {

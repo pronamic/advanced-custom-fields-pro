@@ -22,7 +22,7 @@ if ( acf_is_pro() ) {
 	if ( ! acf_pro_get_license_key() && acf_pro_is_updates_page_visible() ) {
 		$acf_learn_more_target = '';
 		$acf_learn_more_text   = __( 'Manage License', 'acf' );
-		$acf_learn_more_link   = esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' ) );
+		$acf_learn_more_link   = esc_url( admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license#acf_pro_license' ) );
 	} elseif ( acf_pro_is_license_expired() ) {
 		$acf_pricing_text = __( 'Renew License', 'acf' );
 		$acf_pricing_link = acf_add_url_utm_tags( acf_pro_get_manage_license_url(), 'ACF renewal', 'metabox' );

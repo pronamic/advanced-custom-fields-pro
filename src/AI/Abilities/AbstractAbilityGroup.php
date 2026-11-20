@@ -27,6 +27,34 @@ abstract class AbstractAbilityGroup {
 	const REST_ABILITY_CLASS = 'ACF\AI\Abilities\ACF_REST_Ability';
 
 	/**
+	 * WordPress REST API schema keywords that aren't part of JSON Schema, including JSON Hyper-Schema `links`.
+	 */
+	const REST_ONLY_SCHEMA_KEYWORDS = array( 'context', 'readonly', 'arg_options', 'sanitize_callback', 'validate_callback', 'links' );
+
+	/**
+	 * Schema keywords that hold a map of property names to subschemas.
+	 */
+	const SCHEMA_MAP_KEYWORDS = array( 'properties', 'patternProperties', 'definitions', '$defs' );
+
+	/**
+	 * Schema keywords that hold a list of subschemas.
+	 */
+	const SCHEMA_LIST_KEYWORDS = array( 'anyOf', 'oneOf', 'allOf' );
+
+	/**
+	 * Schema keywords that hold a single subschema.
+	 */
+	const SCHEMA_SINGLE_KEYWORDS = array( 'items', 'additionalProperties', 'not' );
+
+	/**
+	 * Type names used by some field REST schemas, mapped to their JSON Schema equivalents.
+	 */
+	const SCHEMA_TYPE_ALIASES = array(
+		'int'   => 'integer',
+		'float' => 'number',
+	);
+
+	/**
 	 * Register abilities for this ability group
 	 *
 	 * @since 6.8.0
@@ -60,6 +88,18 @@ abstract class AbstractAbilityGroup {
 			return null;
 		}
 
+		return wp_register_ability( $id, $this->prepare_ability_args( $ability_args ) );
+	}
+
+	/**
+	 * Applies ACF defaults to ability arguments and normalizes their schemas.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param array $ability_args Ability arguments.
+	 * @return array
+	 */
+	protected function prepare_ability_args( array $ability_args ): array {
 		// Ensure meta array exists.
 		if ( ! isset( $ability_args['meta'] ) ) {
 			$ability_args['meta'] = array();
@@ -75,7 +115,107 @@ abstract class AbstractAbilityGroup {
 			$ability_args['meta']['mcp']['public'] = true;
 		}
 
-		return wp_register_ability( $id, $ability_args );
+		foreach ( array( 'input_schema', 'output_schema' ) as $schema_key ) {
+			if ( ! empty( $ability_args[ $schema_key ] ) && is_array( $ability_args[ $schema_key ] ) ) {
+				$ability_args[ $schema_key ] = $this->normalize_schema( $ability_args[ $schema_key ] );
+			}
+		}
+
+		return $ability_args;
+	}
+
+	/**
+	 * Converts a WordPress REST API style schema into plain JSON Schema.
+	 *
+	 * MCP clients validate ability schemas as JSON Schema, which only allows `required` as an
+	 * array of property names on the parent object. WordPress REST schemas instead set a boolean
+	 * `required` on each property and use keywords such as `context` and `readonly`. WordPress
+	 * validates both forms of `required` the same way, so input validation is unchanged.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param array $schema The schema to normalize.
+	 * @return array
+	 */
+	protected function normalize_schema( array $schema ): array {
+		foreach ( self::REST_ONLY_SCHEMA_KEYWORDS as $keyword ) {
+			unset( $schema[ $keyword ] );
+		}
+
+		if ( isset( $schema['type'] ) ) {
+			if ( is_array( $schema['type'] ) ) {
+				$schema['type'] = array_values( array_unique( array_map( array( $this, 'normalize_schema_type' ), $schema['type'] ) ) );
+			} else {
+				$schema['type'] = $this->normalize_schema_type( $schema['type'] );
+			}
+		}
+
+		$required = isset( $schema['required'] ) && is_array( $schema['required'] ) ? $schema['required'] : array();
+		unset( $schema['required'] );
+
+		if ( isset( $schema['properties'] ) && is_array( $schema['properties'] ) ) {
+			foreach ( $schema['properties'] as $name => $property ) {
+				if ( is_array( $property ) && isset( $property['required'] ) && ! is_array( $property['required'] ) ) {
+					if ( $property['required'] ) {
+						$required[] = (string) $name;
+					}
+
+					unset( $schema['properties'][ $name ]['required'] );
+				}
+			}
+
+			// An empty PHP array would be encoded as a JSON list rather than an object.
+			if ( empty( $schema['properties'] ) ) {
+				unset( $schema['properties'] );
+			}
+		}
+
+		if ( $required ) {
+			$schema['required'] = array_values( array_unique( $required ) );
+		}
+
+		foreach ( self::SCHEMA_MAP_KEYWORDS as $keyword ) {
+			if ( isset( $schema[ $keyword ] ) && is_array( $schema[ $keyword ] ) ) {
+				foreach ( $schema[ $keyword ] as $name => $subschema ) {
+					if ( is_array( $subschema ) ) {
+						$schema[ $keyword ][ $name ] = $this->normalize_schema( $subschema );
+					}
+				}
+			}
+		}
+
+		foreach ( self::SCHEMA_LIST_KEYWORDS as $keyword ) {
+			if ( isset( $schema[ $keyword ] ) && is_array( $schema[ $keyword ] ) ) {
+				// Boolean subschemas are valid branches, so keep them as they are.
+				foreach ( $schema[ $keyword ] as $index => $subschema ) {
+					if ( is_array( $subschema ) ) {
+						$schema[ $keyword ][ $index ] = $this->normalize_schema( $subschema );
+					}
+				}
+
+				$schema[ $keyword ] = array_values( $schema[ $keyword ] );
+			}
+		}
+
+		foreach ( self::SCHEMA_SINGLE_KEYWORDS as $keyword ) {
+			if ( isset( $schema[ $keyword ] ) && is_array( $schema[ $keyword ] ) ) {
+				$schema[ $keyword ] = $this->normalize_schema( $schema[ $keyword ] );
+			}
+		}
+
+		return $schema;
+	}
+
+	/**
+	 * Maps a type name such as `int` to its JSON Schema equivalent.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param mixed $type The type name.
+	 * @return mixed
+	 */
+	protected function normalize_schema_type( $type ) {
+		return is_string( $type ) && isset( self::SCHEMA_TYPE_ALIASES[ $type ] ) ? self::SCHEMA_TYPE_ALIASES[ $type ] : $type;
 	}
 
 	/**
@@ -99,7 +239,7 @@ abstract class AbstractAbilityGroup {
 
 		foreach ( $field_groups as $field_group ) {
 			// Only include AI-accessible field groups that are exposed in REST.
-			if ( empty( $field_group['allow_ai_access'] ) || empty( $field_group['show_in_rest'] ) ) {
+			if ( empty( $field_group['enable_acf_abilities'] ) || empty( $field_group['show_in_rest'] ) ) {
 				continue;
 			}
 
@@ -169,17 +309,38 @@ abstract class AbstractAbilityGroup {
 		$schema['properties']['acf'] = array(
 			'type'        => 'object',
 			'description' => 'ACF field values',
-			'required'    => false,
 			'properties'  => array(),
 		);
 
 		foreach ( $acf_fields as $field_group ) {
 			foreach ( $field_group['fields'] as $field ) {
-				$schema['properties']['acf']['properties'][ $field['name'] ] = $field;
+				$schema['properties']['acf']['properties'][ $field['name'] ] = $this->get_field_value_schema( $field );
 			}
 		}
 
 		return $schema;
+	}
+
+	/**
+	 * Returns the value schema for a field formatted by format_acf_fields_for_schema().
+	 *
+	 * The field's identity is moved into the description so that only schema keywords remain.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param array $field The formatted field.
+	 * @return array
+	 */
+	protected function get_field_value_schema( array $field ): array {
+		$description = sprintf( '%s (%s field)', $field['label'], $field['field_type'] );
+		if ( ! empty( $field['description'] ) ) {
+			$description .= '. ' . $field['description'];
+		}
+
+		unset( $field['key'], $field['name'], $field['label'], $field['field_type'] );
+		$field['description'] = $description;
+
+		return $field;
 	}
 
 	/**

@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: hu_HU\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,98 @@ msgstr ""
 "X-Generator: gettext\n"
 "Project-Id-Version: Advanced Custom Fields\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: includes/api/api-helpers.php:1851
+msgid "(Restricted item)"
+msgstr "(Korlátozott hozzáférésű elem)"
+
+#: includes/api/api-helpers.php:3242
+msgid "Sorry, this file could not be uploaded."
+msgstr "Sajnáljuk, ezt a fájlt nem sikerült feltölteni."
+
+#: src/Site_Health/Site_Health.php:623
+msgid "Field Groups by Post Type"
+msgstr "Mezőcsoportok bejegyzéstípus szerint"
+
+#: includes/api/api-helpers.php:4064
+#: includes/fields/class-acf-field-image.php:457
+msgid "File must be a valid image."
+msgstr "A fájlnak érvényes képnek kell lennie."
+
+#: includes/admin/admin-email-opt-in-banner.php:263
+msgid "Email address is required."
+msgstr "Az e-mail-cím megadása kötelező."
+
+#: includes/admin/admin-email-opt-in-banner.php:264
+msgid "Please enter a valid email address."
+msgstr "Adjon meg egy érvényes e-mail-címet."
+
+#: includes/admin/admin-email-opt-in-banner.php:265
+msgid "Something went wrong on our end. Please try again."
+msgstr "Hiba történt a mi oldalunkon. Próbálja újra."
+
+#: includes/admin/views/email-opt-in-banner.php:21
+msgid "Privacy Policy"
+msgstr "Adatvédelmi szabályzat"
+
+#. translators: %s - Privacy Policy link, opens in a new tab.
+#: includes/admin/views/email-opt-in-banner.php:26
+msgid ""
+"We respect your inbox. Unsubscribe anytime. By signing up, you agree to our "
+"%s."
+msgstr ""
+"Tiszteletben tartjuk a postafiókját. Bármikor leiratkozhat. A "
+"feliratkozással elfogadja az adatvédelmi szabályzatunkat: %s."
+
+#: includes/admin/views/email-opt-in-banner.php:39
+msgid "Join the ACF community."
+msgstr "Csatlakozzon az ACF közösségéhez."
+
+#: includes/admin/views/email-opt-in-banner.php:42
+msgid ""
+"Get critical ACF security updates, releases, news, and workflow improvements."
+msgstr ""
+"Értesüljön az ACF kritikus biztonsági frissítéseiről, új kiadásairól, "
+"híreiről és a munkafolyamatot javító újdonságokról."
+
+#: includes/admin/views/email-opt-in-banner.php:54
+msgid "Email address"
+msgstr "E-mail-cím"
+
+#: includes/admin/views/email-opt-in-banner.php:63
+msgid "you@example.com"
+msgstr "you@example.com"
+
+#: includes/admin/views/email-opt-in-banner.php:70
+msgid "Join the list"
+msgstr "Feliratkozás a levelezőlistára"
+
+#: includes/admin/views/email-opt-in-banner.php:95
+msgid "You're on the list! Keep an eye out for our next update."
+msgstr ""
+"Sikeresen feliratkozott a levelezőlistára! Figyelje a következő "
+"hírlevelünket."
+
+#: includes/admin/views/email-opt-in-banner.php:103
+msgid "Dismiss email opt-in banner"
+msgstr "A hírlevél-feliratkozási sáv bezárása"
+
+#: includes/ajax/class-acf-ajax-upgrade.php:45
+msgid "Invalid site ID."
+msgstr "Érvénytelen honlapazonosító."
+
+#: includes/local-json.php:154
+msgid ""
+"ACF saved your changes to the database, but could not update the Local JSON "
+"file. Check that the configured Local JSON save path is writable."
+msgstr ""
+"Az ACF mentette a módosításokat az adatbázisba, de nem tudta frissíteni a "
+"Local JSON-fájlt. Ellenőrizze, hogy a Local JSON beállított mentési útvonala "
+"írható-e."
+
+#: src/Site_Health/Site_Health.php:1030
+msgid "Datastore Enabled"
+msgstr "Adattár engedélyezve"
 
 #. translators: 1: number of post types, 2: number of blocks using ACF schema
 #: src/Site_Health/Site_Health.php:1020
@@ -464,7 +556,7 @@ msgstr "ACF mezőkezelés"
 msgid "Notes"
 msgstr "Megjegyzések"
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "Kísérleti"
 
@@ -760,7 +852,7 @@ msgstr ""
 "megjelenítsék a szerkesztő felületén blokkhozzárendelések vagy az ACF "
 "rövidkód használatával. %s"
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -768,7 +860,7 @@ msgstr ""
 "A kért ACF mezőtípus nem támogatja a kimenetet blokkhozzárendelésekben vagy "
 "az ACF rövidkódban."
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -776,7 +868,7 @@ msgstr ""
 "A kért ACF mező kimenete nem engedélyezett hozzárendelésekben vagy az ACF "
 "rövidkódban."
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -784,7 +876,7 @@ msgstr ""
 "A kért ACF mezőtípus nem támogatja a kimenetet hozzárendelésekben vagy az "
 "ACF rövidkódban."
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr ""
 "[Az ACF rövidkód nem tud nem nyilvános bejegyzésekből mezőket megjeleníteni]"
@@ -1468,7 +1560,7 @@ msgstr ""
 msgid "Invalid request args."
 msgstr "Érvénytelen kérési argumentumok."
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2761,7 +2853,7 @@ msgid "is developed and maintained by"
 msgstr "fejlesztője és karbantartója"
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2775,26 +2867,26 @@ msgstr ""
 "vagy Felhasználóazonosítóját. További információért olvasd el a <a "
 "href=\"%s\" target=\"_blank\">dokumentációt</a>."
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Célmező"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr ""
 "Mező frissítése a kiválasztott értékeken, erre az azonosítóra "
 "visszahivatkozva"
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Kétirányú"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "%s mező"
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2808,13 +2900,13 @@ msgstr ""
 "kell lennie"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr ""
 "Adjuk hozzá ezt a(z) %s elemet a kiválasztott mezőcsoportok helyszabályaihoz."
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2938,9 +3030,9 @@ msgstr "Nincsenek mezők"
 msgid "No description"
 msgstr "Nincs leírás"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Bármilyen bejegyzésállapot"
 
@@ -3185,9 +3277,9 @@ msgstr ""
 msgid "An input for providing a password using a masked field."
 msgstr "Jelszó megadására szolgáló beviteli mező maszkolt mező használatával."
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Szűrés bejegyzésállapot szerint"
 
@@ -5125,7 +5217,7 @@ msgstr ""
 msgid "Pages"
 msgstr "Oldalak"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Meglévő mezőcsoportok összekapcsolása"
 
@@ -5194,23 +5286,23 @@ msgstr ""
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "taxonómia"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "bejegyzéstípus"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Kész"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Mezőcsoport(ok)"
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "A mezőcsoport sikeresen össze lett kapcsolva."
@@ -5231,35 +5323,35 @@ msgstr ""
 "Ez az elem nem regisztrálható, mert a kulcsa már használatban van egy másik, "
 "másik bővítmény vagy sablon által regisztrált elem által."
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST API"
+
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
+msgid "Permissions"
+msgstr "Jogosultságok"
+
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
+msgid "URLs"
+msgstr "URL-ek"
 
 #: includes/acf-internal-post-type-functions.php:512
 #: includes/acf-internal-post-type-functions.php:541
 #: includes/acf-internal-post-type-functions.php:568
-msgid "Permissions"
-msgstr "Jogosultságok"
-
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
-msgid "URLs"
-msgstr "URL-ek"
-
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
 msgid "Visibility"
 msgstr "Láthatóság"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "Címkék"
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Válassza ki az összekapcsolandó mezőcsoportokat."
 
@@ -5282,7 +5374,7 @@ msgstr ""
 "Válasszon másik bejegyzéstípust, amelynek képességei alapul szolgálnak ehhez "
 "a bejegyzéstípushoz."
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Válasszon egy vagy több mezőcsoportot..."
 
@@ -5411,7 +5503,7 @@ msgstr ""
 msgid "[ACF shortcode value disabled for preview]"
 msgstr "[Az ACF rövidkód értéke le van tiltva az előnézethez]"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Párbeszédablak bezárása"
@@ -5572,8 +5664,8 @@ msgstr "Megjelenítés"
 msgid "Validation"
 msgstr "Érvényesítés"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Általános"
 
@@ -5697,25 +5789,25 @@ msgstr "A(z) %1$s mezőnek érvényes felhasználóazonosítót kell tartalmazni
 msgid "Invalid request."
 msgstr "Érvénytelen kérés."
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "A(z) %1$s nem tartozik a következők közé: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "A(z) %1$s mezőnek tartalmaznia kell ezt a kifejezést: %2$s."
 msgstr[1] ""
 "A(z) %1$s mezőnek az alábbi kifejezések egyikét kell tartalmaznia: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "A(z) %1$s mezőnek %2$s bejegyzéstípusúnak kell lennie."
 msgstr[1] ""
 "A(z) %1$s mezőnek az alábbi bejegyzéstípusok egyikének kell lennie: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "A(z) %1$s mezőnek érvényes bejegyzésazonosítót kell tartalmaznia."
 
@@ -5980,7 +6072,7 @@ msgstr "Érvénytelen nonce."
 msgid "Error loading field."
 msgstr "Hiba a mező betöltésekor."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Hiba</strong>: %s"
 
@@ -6101,7 +6193,7 @@ msgid "Field group title is required"
 msgstr "A mezőcsoport címét kötelező megadni"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "másolat"
@@ -6111,7 +6203,7 @@ msgstr "másolat"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "vagy"
 
@@ -6194,7 +6286,7 @@ msgstr "Mező áthelyezése"
 msgid "Title"
 msgstr "Cím"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Szűrők"
 
@@ -6381,7 +6473,7 @@ msgstr "Mezőcsoport megjelenítése, ha"
 msgid "Post"
 msgstr "Bejegyzés"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
@@ -6554,7 +6646,7 @@ msgstr "Oldal tulajdonságai"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Kiemelt kép"
 
@@ -7076,31 +7168,31 @@ msgstr "URL megadása"
 msgid "Embed Size"
 msgstr "Beágyazási méret"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Archívumok"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Szűrés bejegyzéstípusra"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Minden bejegyzéstípus"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Szűrés osztályozásra"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -7113,8 +7205,8 @@ msgid "Password"
 msgstr "Jelszó (password)"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Bejegyzés objektum (post object)"
 
@@ -7123,16 +7215,16 @@ msgstr "Bejegyzés objektum (post object)"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
 msgid "Return Format"
 msgstr "Visszaadott formátum"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "Bejegyzés azonosító"
 
@@ -7168,39 +7260,39 @@ msgstr "Betöltés"
 msgid "No matches found"
 msgstr "Nincs egyezés"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Keresés..."
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Bejegyzéstípus kiválasztása"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Osztályozás kiválasztása"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Keresés"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
 msgid "Taxonomy"
 msgstr "Osztályozás (taxonomy)"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Elemek"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "A kiválasztott elemek jelennek meg az eredményekben"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "Bejegyzések maximális száma"
 
@@ -7550,7 +7642,7 @@ msgid "Sync"
 msgstr "Szinkronizálás"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "%s kiválasztása"
 
@@ -7579,7 +7671,7 @@ msgid "Description"
 msgstr "Leírás"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Szinkronizálás elérhető"
 
@@ -7669,7 +7761,7 @@ msgstr "Spam észlelve"
 msgid "Validate Email"
 msgstr "E-mail ellenőrzése"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Mezőcsoport szerkesztése"
 
@@ -7713,7 +7805,7 @@ msgstr "Nincs értéke"
 msgid "Has any value"
 msgstr "Van bármilyen értéke"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Mégse"
@@ -7755,39 +7847,39 @@ msgid "The changes you made will be lost if you navigate away from this page"
 msgstr ""
 "Az általad végzett módosítások elvesznek, ha elnavigálsz erről az oldalról"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "A fájltípusnak %s típusúnak kell lennie."
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "A fájlméret nem haladhatja meg ezt: %s."
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "A fájlméretnek legalább %s méretűnek kell lennie."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "A kép magassága nem haladhatja meg a(z) %dpx értéket."
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "A kép magasságának legalább %dpx értékűnek kell lennie."
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "A kép szélessége nem haladhatja meg a(z) %dpx értéket."
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "A kép szélességének legalább %dpx értékűnek kell lennie."
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(nincs cím)"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(nincs címke)"
@@ -7812,7 +7904,7 @@ msgstr "Új lehetőség hozzáadása"
 msgid "Toggle All"
 msgstr "Összes átváltása"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Archívum URL-ek engedélyezése"
 
@@ -8099,8 +8191,8 @@ msgstr "Érték"
 msgid "Button Group"
 msgstr "Gombcsoport"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Szülő"
@@ -8139,19 +8231,19 @@ msgstr "Vizuális"
 msgid "Value must not exceed %d characters"
 msgstr "Az érték nem haladhatja meg a(z) %d karaktert"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "A(z) %1$s mező legalább %2$s kijelölést igényel"
 msgstr[1] "A(z) %1$s mező legalább %2$s kijelölést igényel"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "Bejegyzések minimuma"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Összes taxonómia"
 

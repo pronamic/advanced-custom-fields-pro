@@ -39,6 +39,8 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			if ( is_admin() ) {
 				acf_include( 'pro/admin/admin-options-page.php' );
 				acf_include( 'pro/admin/admin-updates.php' );
+				acf_include( 'src/Pro/License_Tab/License_Tab.php' );
+				acf_include( 'src/Pro/Updates_Tab/Updates_Tab.php' );
 			}
 
 			// Initialize GEO Blocks output (PRO only).
@@ -74,6 +76,9 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			add_filter( 'wp_plugin_dependencies_slug', array( $this, 'plugin_dependency_slug' ), 10 );
 			add_filter( 'acf/internal_post_type/admin_body_classes', array( $this, 'admin_body_classes' ) );
 			add_filter( 'acf/internal_post_type_list/admin_body_classes', array( $this, 'admin_body_classes' ) );
+			add_filter( 'acf/settings/allowed_db_settings', array( $this, 'allowed_db_settings' ) );
+			add_filter( 'acf/settings_page/general/interface/fields', array( $this, 'settings_page_interface_fields' ) );
+			add_filter( 'acf/settings_page/general/api_scripts/fields', array( $this, 'settings_page_api_scripts_fields' ) );
 		}
 
 		/**
@@ -105,6 +110,11 @@ if ( ! class_exists( 'acf_pro' ) ) :
 		 * @since 6.2
 		 */
 		public function register_ui_options_pages() {
+			// PRO-only: prevents duplicate menu with admin-options-pages-preview.php in free mode.
+			if ( ! acf_is_pro() ) {
+				return;
+			}
+
 			if ( ! acf_get_setting( 'enable_options_pages_ui' ) ) {
 				return;
 			}
@@ -218,13 +228,13 @@ if ( ! class_exists( 'acf_pro' ) ) :
 
 			if ( ! acf_pro_get_license_key( true ) && ! defined( 'ACF_PRO_LICENSE' ) ) {
 				$error_msg  = __( 'Activate your license to enable access to updates, support &amp; PRO features.', 'acf' );
-				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
+				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license' );
 			} elseif ( acf_pro_is_license_expired( $license_status ) ) {
 				$error_msg  = __( 'Your license has expired. Please renew to continue to have access to updates, support &amp; PRO features.', 'acf' );
-				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license' );
 			} elseif ( acf_pro_was_license_refunded( $license_status ) ) {
 				$error_msg  = __( 'Your ACF PRO license is no longer active. Please renew to continue to have access to updates, support, & PRO features.', 'acf' );
-				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates' );
+				$manage_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license' );
 			} elseif ( ! empty( $defined_license_errors ) ) {
 				$error_msg = $defined_license_errors['error'];
 			} elseif ( ! empty( $license_status['error_msg'] ) ) {
@@ -234,7 +244,7 @@ if ( ! class_exists( 'acf_pro' ) ) :
 				return;
 			}
 
-			if ( acf_pro_is_updates_page_visible() && ! empty( $manage_url ) && 'acf-settings-updates' !== acf_request_arg( 'page' ) ) {
+			if ( acf_pro_is_updates_page_visible() && ! empty( $manage_url ) && 'acf-settings-tab-license' !== acf_request_arg( 'page' ) ) {
 				$manage_link = sprintf(
 					'<a href="%1$s">%2$s</a>',
 					esc_url( $manage_url ),
@@ -348,6 +358,91 @@ if ( ! class_exists( 'acf_pro' ) ) :
 			}
 
 			return $classes;
+		}
+
+		/**
+		 * Adds the PRO-only settings to the list of settings allowed in the database.
+		 *
+		 * @since 6.8.12
+		 *
+		 * @param array $db_settings The settings allowed in the database.
+		 * @return array
+		 */
+		public function allowed_db_settings( $db_settings ) {
+			$db_settings['enable_options_pages_ui'] = array(
+				'sanitize_callback' => 'wp_validate_boolean',
+				'autoload'          => true,
+			);
+			$db_settings['preload_blocks']          = array(
+				'sanitize_callback' => 'wp_validate_boolean',
+				'autoload'          => true,
+			);
+			$db_settings['enable_datastore']        = array(
+				'sanitize_callback' => 'wp_validate_boolean',
+				'autoload'          => true,
+			);
+
+			return $db_settings;
+		}
+
+		/**
+		 * Adds the PRO-only fields to the Interface section of the General settings tab.
+		 *
+		 * @since 6.8.12
+		 *
+		 * @param array[] $fields The section fields.
+		 * @return array[]
+		 */
+		public function settings_page_interface_fields( $fields ) {
+			$fields[] = array(
+				'key'         => 'enable_options_pages_ui',
+				'type'        => 'toggle',
+				'label'       => __( 'Options Pages UI', 'acf' ),
+				'description' => __( 'Create and manage options pages in ACF.', 'acf' ),
+				'value'       => acf_get_setting( 'enable_options_pages_ui' ),
+				'learnMoreUrl' => acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/options-page/', 'docs', 'settings-page' ),
+			);
+
+			return $fields;
+		}
+
+		/**
+		 * Adds the PRO-only fields to the API & Scripts section of the General settings tab.
+		 *
+		 * @since 6.8.12
+		 *
+		 * @param array[] $fields The section fields.
+		 * @return array[]
+		 */
+		public function settings_page_api_scripts_fields( $fields ) {
+			$fields[] = array(
+				'key'         => 'preload_blocks',
+				'type'        => 'toggle',
+				'label'       => __( 'Preload Blocks', 'acf' ),
+				'description' => __( 'Preload ACF Blocks so they show faster in the editor.', 'acf' ),
+				'value'       => acf_get_setting( 'preload_blocks' ),
+			);
+
+			$datastore_supported = version_compare( get_bloginfo( 'version' ), '6.7', '>=' );
+			$datastore_desc      = __( 'Save fields through the block editor\'s REST API.', 'acf' );
+
+			// The toggle is disabled below WordPress 6.7, so only explain the requirement there.
+			if ( ! $datastore_supported ) {
+				$datastore_desc .= ' ' . __( 'Requires WordPress 6.7 or later.', 'acf' );
+			}
+
+			$fields[] = array(
+				'key'          => 'enable_datastore',
+				'type'         => 'toggle',
+				'label'        => __( 'Datastore', 'acf' ),
+				'description'  => $datastore_desc,
+				'value'        => acf_is_using_datastore(),
+				'learnMoreUrl' => acf_add_url_utm_tags( 'https://www.advancedcustomfields.com/resources/using-the-acf-datastore/', 'docs', 'settings-page' ),
+				'disabled'     => ! $datastore_supported,
+				'experimental' => true,
+			);
+
+			return $fields;
 		}
 
 		/**

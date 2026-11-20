@@ -54,16 +54,100 @@ function acf_raw_setting( $name = '' ) {
  *
  * @since   5.0.0
  *
- * @param   $name (string)
- * @param   $value (mixed)
- * @return  n/a
+ * Saving to the database doesn't check the current user's capabilities, so callers acting on
+ * user input must check them first.
+ *
+ * Settings that can be saved in the database, but are updated here without $save_to_db
+ * (e.g. from a theme or plugin on "acf/init"), are treated as set in code, even if they're
+ * registered with "acf/settings/allowed_db_settings" afterwards. Their in-memory value then
+ * takes precedence over the database value, and they are locked in the settings UI.
+ *
+ * @param string  $name       The name of the setting.
+ * @param mixed   $value      The value for the setting.
+ * @param boolean $save_to_db Whether to save to the db (true) or not (false). Defaults to false.
  */
-function acf_update_setting( $name, $value ) {
+function acf_update_setting( $name, $value, $save_to_db = false ) {
 	// validate name.
 	$name = acf_validate_setting( $name );
 
+	$allowed_in_db_settings = acf_get_allowed_db_settings();
+
+	// If this setting is allowed to be saved in the database, save it there.
+	if ( $save_to_db && array_key_exists( $name, $allowed_in_db_settings ) ) {
+		// Sanitize and save value to database.
+		$sanitizer              = $allowed_in_db_settings[ $name ]['sanitize_callback'];
+		$sanitized_for_db_value = call_user_func( $sanitizer, $value );
+
+		// Store booleans as integers: WordPress serialises false as '' which update_option
+		// treats as a missing option and skips, so it would never insert false.
+		$db_value        = is_bool( $sanitized_for_db_value ) ? (int) $sanitized_for_db_value : $sanitized_for_db_value;
+		$db_save_success = update_option( 'acf_' . $name, $db_value, $allowed_in_db_settings[ $name ]['autoload'] );
+		$current         = get_option( 'acf_' . $name, null );
+
+		// update_option also returns false when the value is unchanged, so check the stored value.
+		// Use null default: get_option returns false for missing options, which loose-equals 0
+		// and would mask a genuine failure when saving boolean false (stored as 0).
+		// phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
+		if ( ! $db_save_success && ( null === $current || $current != $db_value ) ) {
+			// Return before acf()->update_setting so that the setting in memory always aligns with the setting in the database.
+			return new \WP_Error(
+				'acf_update_setting_failed',
+				__( 'Failed to save setting to database.', 'acf' ),
+				array(
+					'status'  => 500,
+					'setting' => $name,
+				)
+			);
+		}
+	} elseif ( ! $save_to_db ) {
+		// Record every setting updated in code, not only those already allowed in the database: a plugin may register
+		// its setting with "acf/settings/allowed_db_settings" after a theme sets it here. acf_is_setting_set_in_code()
+		// only reports settings that are allowed in the database.
+		$set_in_code = (array) acf_get_data( 'settings_set_in_code' );
+		if ( empty( $set_in_code[ $name ] ) ) {
+			$set_in_code[ $name ] = true;
+			acf_set_data( 'settings_set_in_code', $set_in_code );
+		}
+	}
+
+	// Keep the setting in memory as it was saved to the database, not as it was passed in.
+	if ( isset( $sanitized_for_db_value ) ) {
+		$value = $sanitized_for_db_value;
+	}
+
 	// update.
 	return acf()->update_setting( $name, $value );
+}
+
+/**
+ * Returns true if a database-backed setting has been set in code via acf_update_setting().
+ *
+ * This holds whether the setting was registered with "acf/settings/allowed_db_settings" before or after it was
+ * set in code. Settings that aren't allowed in the database always return false.
+ *
+ * @since 6.8.12
+ *
+ * @param string $name The name of the setting.
+ * @return boolean
+ */
+function acf_is_setting_set_in_code( $name ) {
+	$name        = acf_validate_setting( $name );
+	$set_in_code = (array) acf_get_data( 'settings_set_in_code' );
+
+	return ! empty( $set_in_code[ $name ] ) && array_key_exists( $name, acf_get_allowed_db_settings() );
+}
+
+/**
+ * Returns true if a setting is managed in code, either via an "acf/settings/{$name}" filter
+ * or via acf_update_setting(), and so cannot be changed in the settings UI.
+ *
+ * @since 6.8.12
+ *
+ * @param string $name The name of the setting.
+ * @return boolean
+ */
+function acf_is_setting_managed( $name ) {
+	return false !== has_filter( "acf/settings/{$name}" ) || acf_is_setting_set_in_code( $name );
 }
 
 /**
@@ -95,6 +179,20 @@ function acf_get_setting( $name, $value = null ) {
 	// replace default setting value if it exists.
 	if ( acf_has_setting( $name ) ) {
 		$value = acf_raw_setting( $name );
+	}
+
+	// Prior to running filters, check if this setting has been saved in the database.
+	// Values set in code via acf_update_setting() take precedence over the database.
+	$allowed_in_db_settings = acf_get_allowed_db_settings();
+
+	if ( array_key_exists( $name, $allowed_in_db_settings ) && ! acf_is_setting_set_in_code( $name ) ) {
+		$value = get_option( 'acf_' . $name, $value );
+
+		// Booleans are saved as 1/0 and come back from the database as strings, so restore the boolean.
+		// Only the boolean sanitizer is applied: other sanitize callbacks are written to run on save, not on every read.
+		if ( null !== $value && 'wp_validate_boolean' === $allowed_in_db_settings[ $name ]['sanitize_callback'] ) {
+			$value = wp_validate_boolean( $value );
+		}
 	}
 
 	// filter.
@@ -1953,7 +2051,13 @@ function _acf_get_stored_post_ids_snapshot( $post_id ) {
 				continue;
 			}
 
-			$field_key                  = $meta[ '_' . $name ];
+			$field_key = $meta[ '_' . $name ];
+
+			// Other plugins can store their own data under a `_` prefixed meta name, such as an array.
+			if ( ! is_string( $field_key ) || ! acf_is_field_key( $field_key ) ) {
+				continue;
+			}
+
 			$snapshot['names'][ $name ] = true;
 
 			if ( ! isset( $relational[ $field_key ] ) ) {
@@ -3994,7 +4098,7 @@ function acf_validate_is_image_attachment_prepare( $errors, $file, $attachment, 
 	$attachment_id = (int) acf_maybe_get( $attachment, 'id', 0 );
 
 	if ( $attachment_id ) {
-		if ( ! wp_attachment_is_image( $attachment_id ) ) {
+		if ( ! acf_is_valid_image_attachment_id( $attachment_id ) ) {
 			$errors['invalid_image'] = $error_message;
 		}
 
@@ -4072,6 +4176,31 @@ function acf_validate_is_image_attachment( $errors, $file, $attachment, $field, 
 	}
 
 	return acf_validate_is_image_attachment_basic_upload( $errors, $file, $attachment, $field, $context, $error_message );
+}
+
+/**
+ * Returns whether an attachment ID passes save-time image validation.
+ *
+ * Trusts post_mime_type rather than wp_attachment_is_image(), which bails when
+ * get_attached_file() is empty (stream-wrapped filesystems / some offload
+ * plugins). Deleted IDs, non-attachment posts, and non-image mimes fail.
+ *
+ * @since 6.8.12
+ *
+ * @param integer|string $attachment_id The attachment ID.
+ * @return boolean
+ */
+function acf_is_valid_image_attachment_id( $attachment_id ) {
+	if ( ! is_numeric( $attachment_id ) ) {
+		return false;
+	}
+
+	$attachment = get_post( (int) $attachment_id );
+	if ( ! $attachment || 'attachment' !== $attachment->post_type ) {
+		return false;
+	}
+
+	return is_string( $attachment->post_mime_type ) && strpos( $attachment->post_mime_type, 'image/' ) === 0;
 }
 
 /**
@@ -5251,3 +5380,227 @@ function acf_settings_enable_meta_box_cb_edit( $enable_meta_box_cb_edit ): bool 
 	return (bool) $enable_meta_box_cb_edit;
 }
 add_filter( 'acf/settings/enable_meta_box_cb_edit', 'acf_settings_enable_meta_box_cb_edit', 1 );
+
+
+/**
+ * Returns the ACF settings and corresponding callbacks/defaults allowed in the database.
+ * PRO-only settings are added by ACF PRO via the "acf/settings/allowed_db_settings" filter.
+ *
+ * This is called from acf_get_setting(), so the filtered result is cached until the callbacks
+ * on the filter change.
+ *
+ * @since 6.8.1
+ *
+ * @return array<string, array{sanitize_callback: callable, autoload: bool}>
+ */
+function acf_get_allowed_db_settings(): array {
+	global $wp_filter;
+
+	static $cache     = null;
+	static $cache_key = null;
+	static $building  = false;
+
+	// Key the cache on the registered callbacks so filters added or removed later are respected.
+	// Keeping a copy of the callbacks array is cheap to compare: while no filter is added or removed,
+	// it's the same array in memory, so === returns without walking it.
+	$key = isset( $wp_filter['acf/settings/allowed_db_settings'] ) ? $wp_filter['acf/settings/allowed_db_settings']->callbacks : array();
+
+	if ( null !== $cache && $key === $cache_key ) {
+		return $cache;
+	}
+
+	$db_settings = array(
+		// Interface.
+		'enable_post_types'  => array(
+			'sanitize_callback' => 'wp_validate_boolean',
+			'autoload'          => true,
+		),
+		'remove_wp_meta_box' => array(
+			'sanitize_callback' => 'wp_validate_boolean',
+			'autoload'          => true,
+		),
+		// API & Scripts.
+		'enable_shortcode'   => array(
+			'sanitize_callback' => 'wp_validate_boolean',
+			'autoload'          => true,
+		),
+		'rest_api_enabled'   => array(
+			'sanitize_callback' => 'wp_validate_boolean',
+			'autoload'          => true,
+		),
+		'rest_api_format'    => array(
+			'sanitize_callback' => 'acf_sanitize_rest_api_format',
+			'autoload'          => true,
+		),
+		'enable_abilities'   => array(
+			'sanitize_callback' => 'wp_validate_boolean',
+			'autoload'          => true,
+		),
+		'enable_schema'      => array(
+			'sanitize_callback' => 'wp_validate_boolean',
+			'autoload'          => true,
+		),
+		// Field Specific Settings.
+		'google_api_key'     => array(
+			'sanitize_callback' => 'sanitize_text_field',
+			'autoload'          => true,
+		),
+		'google_api_client'  => array(
+			'sanitize_callback' => 'sanitize_text_field',
+			'autoload'          => true,
+		),
+	);
+
+	// A filter callback that calls acf_get_setting() would otherwise recurse forever.
+	if ( $building ) {
+		return $db_settings;
+	}
+
+	$building = true;
+	try {
+		$filtered = apply_filters( 'acf/settings/allowed_db_settings', $db_settings );
+	} finally {
+		$building = false;
+	}
+
+	// acf_get_setting() and acf_update_setting() read 'sanitize_callback' and 'autoload' directly.
+	$db_settings = acf_normalize_allowed_db_settings( $filtered, $db_settings );
+
+	$cache     = $db_settings;
+	$cache_key = $key;
+
+	// Options that haven't been saved yet aren't autoloaded, so load them all in one query
+	// rather than one query each from acf_get_setting(). Requires WordPress 6.4.
+	if ( function_exists( 'wp_prime_option_caches' ) ) {
+		wp_prime_option_caches(
+			array_map(
+				function ( $name ) {
+					return 'acf_' . $name;
+				},
+				array_keys( $db_settings )
+			)
+		);
+	}
+
+	return $db_settings;
+}
+
+/**
+ * Normalizes the settings returned by the "acf/settings/allowed_db_settings" filter.
+ *
+ * Each entry needs a callable 'sanitize_callback'. It runs on every save and ACF can't pick one for an unknown
+ * setting, so entries without one are dropped and can't be saved. 'autoload' defaults to true, like ACF's own
+ * settings. A filter that doesn't return an array leaves ACF's own settings in place.
+ *
+ * @since 6.8.12
+ *
+ * @param mixed $settings The filtered settings.
+ * @param array $defaults ACF's own settings, used when the filter doesn't return an array.
+ * @return array<string, array{sanitize_callback: callable, autoload: bool}>
+ */
+function acf_normalize_allowed_db_settings( $settings, array $defaults ): array {
+	$problems = array();
+
+	if ( ! is_array( $settings ) ) {
+		$problems[] = array( 'not_array', '' );
+		$settings   = $defaults;
+	}
+
+	$normalized = array();
+
+	foreach ( $settings as $name => $entry ) {
+		if ( ! is_string( $name ) || '' === $name ) {
+			$problems[] = array( 'invalid_name', (string) $name );
+			continue;
+		}
+
+		if ( ! is_array( $entry ) || ! isset( $entry['sanitize_callback'] ) || ! is_callable( $entry['sanitize_callback'] ) ) {
+			$problems[] = array( 'no_sanitizer', $name );
+			continue;
+		}
+
+		$normalized[ $name ] = array_merge(
+			$entry,
+			array(
+				'sanitize_callback' => $entry['sanitize_callback'],
+				'autoload'          => isset( $entry['autoload'] ) ? (bool) $entry['autoload'] : true,
+			)
+		);
+	}
+
+	if ( $problems ) {
+		acf_report_invalid_allowed_db_settings( $problems );
+	}
+
+	return $normalized;
+}
+
+/**
+ * Reports problems with the "acf/settings/allowed_db_settings" filter with _doing_it_wrong(), once each.
+ *
+ * The allowed settings are often built before "init", when loading ACF's translations would itself trigger a
+ * notice, so the report waits for "init" if it hasn't run yet.
+ *
+ * @since 6.8.12
+ *
+ * @param array[] $problems Each an array of the problem type and the setting name.
+ * @return void
+ */
+function acf_report_invalid_allowed_db_settings( array $problems ) {
+	static $reported = array();
+
+	$new = array();
+	foreach ( $problems as $problem ) {
+		$id = implode( ':', $problem );
+		if ( ! isset( $reported[ $id ] ) ) {
+			$reported[ $id ] = true;
+			$new[]           = $problem;
+		}
+	}
+
+	if ( ! $new ) {
+		return;
+	}
+
+	$report = function () use ( $new ) {
+		foreach ( $new as $problem ) {
+			list( $type, $name ) = $problem;
+
+			if ( 'not_array' === $type ) {
+				$message = esc_html__( 'The "acf/settings/allowed_db_settings" filter must return an array of settings.', 'acf' );
+			} elseif ( 'invalid_name' === $type ) {
+				$message = sprintf(
+					/* translators: %s: the array key used for the setting */
+					esc_html__( 'Settings registered with the "acf/settings/allowed_db_settings" filter must be keyed by their name. The setting keyed "%s" can\'t be saved to the database.', 'acf' ),
+					esc_html( $name )
+				);
+			} else {
+				$message = sprintf(
+					/* translators: %s: the setting name */
+					esc_html__( 'The "%s" setting registered with the "acf/settings/allowed_db_settings" filter needs a callable "sanitize_callback". It can\'t be saved to the database.', 'acf' ),
+					esc_html( $name )
+				);
+			}
+
+			_doing_it_wrong( 'acf_get_allowed_db_settings', $message, '6.8.12' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped above.
+		}
+	};
+
+	if ( did_action( 'init' ) ) {
+		$report();
+	} else {
+		add_action( 'init', $report );
+	}
+}
+
+/**
+ * Sanitizes the REST API format setting value.
+ *
+ * @since 6.8.5
+ *
+ * @param mixed $value The incoming value.
+ * @return string The sanitized value, defaulting to 'light'.
+ */
+function acf_sanitize_rest_api_format( $value ) {
+	return in_array( $value, array( 'light', 'standard' ), true ) ? $value : 'light';
+}

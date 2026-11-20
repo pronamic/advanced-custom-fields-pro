@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: nl_BE\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: includes/api/api-helpers.php:2534
+#: includes/api/api-helpers.php:3242
 msgid "Sorry, this file could not be uploaded."
 msgstr "Dit bestand kon niet worden geüpload."
 
@@ -30,7 +30,7 @@ msgstr "Dit bestand kon niet worden geüpload."
 msgid "Field Groups by Post Type"
 msgstr "Veldgroepen per berichttype"
 
-#: includes/api/api-helpers.php:3315
+#: includes/api/api-helpers.php:4064
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr "Bestand moet een geldige afbeelding zijn."
@@ -408,7 +408,7 @@ msgstr ""
 "Een korte uitleg toevoegen waar deze veldgroep voor is. Hoe duidelijker je "
 "beschrijving, hoe beter de uitvoer van de AI zal zijn."
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "Experimenteel"
 
@@ -820,7 +820,7 @@ msgstr ""
 msgid "wordpress.org"
 msgstr "wordpress.org"
 
-#: includes/api/api-template.php:1086
+#: includes/api/api-template.php:1091
 msgid ""
 "The requested ACF field type does not support output in bindings or the ACF "
 "Shortcode."
@@ -828,7 +828,7 @@ msgstr ""
 "Het aangevraagde ACF veldtype ondersteunt geen uitvoer in bindingen of de "
 "ACF shortcode."
 
-#: includes/api/api-template.php:1094 src/Blocks/Bindings.php:78
+#: includes/api/api-template.php:1099 src/Blocks/Bindings.php:85
 msgid ""
 "The requested ACF field is not allowed to be output in bindings or the ACF "
 "Shortcode."
@@ -836,7 +836,7 @@ msgstr ""
 "Het aangevraagde ACF veld uitgevoerd in bindingen of de ACF shortcode zijn "
 "niet toegestaan."
 
-#: src/Blocks/Bindings.php:70
+#: src/Blocks/Bindings.php:77
 msgid ""
 "The requested ACF field type does not support output in Block Bindings or "
 "the ACF shortcode."
@@ -866,7 +866,7 @@ msgstr "Toegang tot waarde toestaan in UI van editor"
 msgid "[The ACF shortcode is disabled on this site]"
 msgstr "[De ACF shortcode is uitgeschakeld op deze website]"
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr "[De ACF shortcode kan geen velden van niet-openbare berichten tonen]"
 
@@ -1540,7 +1540,7 @@ msgstr "Website (alt2) icoon"
 msgid "Site (alt3) Icon"
 msgstr "Website (alt3) icoon"
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2822,19 +2822,19 @@ msgid "Select Options Pages"
 msgstr "Opties pagina's selecteren"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "%s veld"
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Bidirectioneel"
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Doelveld"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr ""
 "Een veld bijwerken met de geselecteerde waarden en verwijs terug naar deze ID"
@@ -2845,7 +2845,7 @@ msgstr ""
 msgid "is developed and maintained by"
 msgstr "is ontwikkeld en wordt onderhouden door"
 
-#: includes/acf-bidirectional-functions.php:252
+#: includes/acf-bidirectional-functions.php:381
 msgid ""
 "Select field(s) to store the reference back to the item being updated. You "
 "may select this field. Target fields must be compatible with where this "
@@ -2858,13 +2858,13 @@ msgstr ""
 "een taxonomie, dan moet je doelveld van het type taxonomie zijn"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr ""
 "Voeg deze %s toe aan de locatieregels van de geselecteerde veldgroepen."
 
 #. translators: %s the URL to ACF's bidirectional relationship documentation
-#: includes/acf-bidirectional-functions.php:276
+#: includes/acf-bidirectional-functions.php:405
 msgid ""
 "Enabling the bidirectional setting allows you to update a value in the "
 "target fields for each value selected for this field, adding or removing the "
@@ -2883,8 +2883,8 @@ msgstr ""
 msgid "(Duplicated from %s)"
 msgstr "(Overgenomen van %s)"
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -3008,9 +3008,9 @@ msgstr "%s velden"
 msgid "No terms"
 msgstr "Geen termen"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Elke bericht status"
 
@@ -3124,9 +3124,9 @@ msgstr ""
 msgid "We do not recommend using this field in ACF Blocks."
 msgstr "Wij raden het gebruik van dit veld in ACF blokken af."
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Filter op berichtstatus"
 
@@ -4162,8 +4162,8 @@ msgid_plural "%s taxonomies duplicated."
 msgstr[0] "Taxonomie gedupliceerd."
 msgstr[1] "%s taxonomieën gedupliceerd."
 
-#: includes/acf-internal-post-type-functions.php:511
-#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:513
+#: includes/acf-internal-post-type-functions.php:542
 msgid "URLs"
 msgstr "URL's"
 
@@ -4342,8 +4342,8 @@ msgstr "Metabox"
 msgid "Select Field Type"
 msgstr "Selecteer veldtype"
 
-#: includes/acf-internal-post-type-functions.php:513
-#: includes/acf-internal-post-type-functions.php:542
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST-API"
 
@@ -4392,25 +4392,25 @@ msgstr "Beheerder editor navigatie in het zijbalk menu."
 msgid "Admin Menu Parent"
 msgstr "Beheerder hoofd menu"
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Selecteer één of meerdere veldgroepen..."
+
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
+msgid "Permissions"
+msgstr "Rechten"
 
 #: includes/acf-internal-post-type-functions.php:512
 #: includes/acf-internal-post-type-functions.php:541
 #: includes/acf-internal-post-type-functions.php:568
-msgid "Permissions"
-msgstr "Rechten"
-
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
 msgid "Visibility"
 msgstr "Zichtbaarheid"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
+#: includes/acf-internal-post-type-functions.php:511
+#: includes/acf-internal-post-type-functions.php:540
+#: includes/acf-internal-post-type-functions.php:569
 msgid "Labels"
 msgstr "Labels"
 
@@ -4421,7 +4421,7 @@ msgctxt "post status"
 msgid "Registration Failed"
 msgstr "Registratie mislukt"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "berichttype"
 
@@ -4430,11 +4430,11 @@ msgstr "berichttype"
 msgid "ACF"
 msgstr "ACF"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "taxonomie"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Klaar"
 
@@ -4570,11 +4570,11 @@ msgstr "Openbaar opvraagbaar"
 msgid "Query Variable Support"
 msgstr "Ondersteuning voor query variabelen"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Veld groep(en)"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Link bestaande veld groepen"
 
@@ -4634,7 +4634,7 @@ msgstr "Geüpload naar deze %s"
 msgid "Uploaded To This Item"
 msgstr "Geüpload naar dit item"
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "Veldgroep succesvol gelinkt."
@@ -5150,7 +5150,7 @@ msgstr "Toon de taxonomie in het snel/bulk bewerken paneel."
 msgid "Assigns text to the Title field of the Most Used tab."
 msgstr "Wijst tekst toe aan het titelveld van de tab meest gebruikt."
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Selecteer de veldgroepen om te linken."
 
@@ -5493,7 +5493,7 @@ msgstr "Modal sluiten"
 msgid "Field moved to other group"
 msgstr "Veld verplaatst naar andere groep"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Modal sluiten"
@@ -5520,8 +5520,8 @@ msgstr "Toevoegen toggle alle"
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Algemeen"
 
@@ -5763,7 +5763,7 @@ msgstr ""
 msgid "Invalid request."
 msgstr "Ongeldige aanvraag."
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s moet term %2$s hebben."
@@ -5775,13 +5775,13 @@ msgid_plural "%1$s must have a user with one of the following roles: %2$s"
 msgstr[0] "%1$s moet een gebruiker hebben met de rol %2$s."
 msgstr[1] "%1$s moet een gebruiker hebben met een van de volgende rollen %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s moet van het berichttype %2$s zijn."
 msgstr[1] "%1$s moet van een van de volgende berichttypes zijn %2$s"
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s is niet een van %2$s"
 
@@ -5793,7 +5793,7 @@ msgstr "%s vereist een geldig bijlage ID."
 msgid "%1$s must have a valid user ID."
 msgstr "%1$s moet een geldig gebruikers ID hebben."
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s moet een geldig bericht ID hebben."
 
@@ -6055,7 +6055,7 @@ msgstr "Ongeldige nonce."
 msgid "Error loading field."
 msgstr "Fout tijdens laden van veld."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Fout</strong>: %s"
 
@@ -6119,7 +6119,7 @@ msgstr "Leegmaken"
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "of"
 
@@ -6242,24 +6242,24 @@ msgstr "Wk"
 msgid "File size"
 msgstr "Bestandsgrootte"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Filter op taxonomie"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Filters"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
 msgid "Taxonomy"
 msgstr "Taxonomie"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Elementen"
 
@@ -6384,7 +6384,7 @@ msgid "Sorry, this browser does not support geolocation"
 msgstr "Deze browser ondersteunt geen geolocatie"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Zoeken"
 
@@ -6404,15 +6404,15 @@ msgstr "Het initiële zoomniveau instellen"
 msgid "Specify the returned value on front end"
 msgstr "De geretourneerde waarde op de front-end opgeven"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Selecteer berichttype"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Zoeken..."
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "Geselecteerde elementen worden weergegeven in elk resultaat"
 
@@ -6445,7 +6445,7 @@ msgid "Settings"
 msgstr "Instellingen"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "Selecteer %s"
 
@@ -6519,20 +6519,20 @@ msgstr "Beperken welke afbeeldingen kunnen worden geüpload"
 msgid "No matches found"
 msgstr "Geen overeenkomsten gevonden"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
 msgstr "Berichttype"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Bericht object"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "Bericht ID"
 
@@ -6746,11 +6746,11 @@ msgstr "Minimum"
 msgid "Maximum"
 msgstr "Maximum"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "Minimum aantal berichten"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "Maximum aantal berichten"
 
@@ -6848,19 +6848,19 @@ msgstr "Medium"
 msgid "Large"
 msgstr "Groot"
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(geen titel)"
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "De breedte van de afbeelding moet ten minste %dpx zijn."
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "De breedte van de afbeelding mag niet groter zijn dan %dpx."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "De hoogte van de afbeelding mag niet hoger zijn dan %dpx."
 
@@ -7019,7 +7019,7 @@ msgstr "Kleurkiezer"
 msgid "Connect selected terms to the post"
 msgstr "Geselecteerde termen aan het bericht koppelen"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Archieven"
 
@@ -7027,7 +7027,7 @@ msgstr "Archieven"
 msgid "Are you sure?"
 msgstr "Weet je het zeker?"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Annuleren"
@@ -7112,9 +7112,9 @@ msgstr "Alle afbeeldingen"
 msgid "Add Image"
 msgstr "Afbeelding toevoegen"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Alle taxonomieën"
 
@@ -7179,7 +7179,7 @@ msgstr "Nieuwe keuze toevoegen"
 msgid "Allow 'custom' values to be added"
 msgstr "Toestaan dat 'aangepaste' waarden worden toegevoegd"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(geen label)"
@@ -7205,8 +7205,8 @@ msgstr "Regelgroep toevoegen"
 msgid "and"
 msgstr "en"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Hoofd"
@@ -7482,7 +7482,7 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Bewerken"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s vereist minimaal %2$s selectie"
@@ -7510,7 +7510,7 @@ msgstr ""
 msgid "Full Size"
 msgstr "Volledige grootte"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "Het bestandstype moet %s zijn."
 
@@ -7569,7 +7569,7 @@ msgid "Field Keys"
 msgstr "Veldsleutels"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Synchronisatie beschikbaar"
 
@@ -7641,7 +7641,7 @@ msgstr "Gedaan"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Uitgelichte afbeelding"
 
@@ -7746,9 +7746,9 @@ msgstr "Bewerken"
 msgid "Description"
 msgstr "Beschrijving"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Filter op berichttype"
 
@@ -7831,7 +7831,7 @@ msgstr "Insluit grootte"
 msgid "Image Array"
 msgstr "Afbeelding array"
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "De hoogte van de afbeelding moet minstens %dpx zijn."
 
@@ -7871,7 +7871,7 @@ msgstr "Bovenste level pagina (geen hoofdpagina)"
 msgid "Content Editor"
 msgstr "Inhoud editor"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Archieven URL's toestaan"
 
@@ -7984,8 +7984,8 @@ msgstr "Bedankt voor het bijwerken naar %1$s v%2$s!"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -8041,7 +8041,7 @@ msgstr "Veldgroep bewerken"
 msgid "This is the name which will appear on the EDIT page"
 msgstr "Dit is de naam die op de BEWERK pagina zal verschijnen"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Veldgroep bewerken"
 
@@ -8096,7 +8096,7 @@ msgstr "Geen velden gevonden in de prullenmand"
 msgid "Site requires database upgrade from %1$s to %2$s"
 msgstr "Website vereist database upgrade van %1$s naar %2$s"
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "Bestandsgrootte mag %s niet overschrijden."
 
@@ -8169,8 +8169,8 @@ msgid "Supports"
 msgstr "Ondersteunt"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726
@@ -8233,7 +8233,7 @@ msgid "Repeater"
 msgstr "Herhaler"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "kopie"
@@ -8334,7 +8334,7 @@ msgstr "Beide (array)"
 msgid "Duplicate this item"
 msgstr "Dit item dupliceren"
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "De bestandsgrootte moet minimaal %s zijn."
 
@@ -8379,7 +8379,7 @@ msgstr "Link selecteren"
 msgid "Escape HTML"
 msgstr "HTML escapen"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Taxonomie selecteren"
 
@@ -8433,9 +8433,9 @@ msgstr ""
 msgid "Allowed File Types"
 msgstr "Toegestane bestandstypes"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Alle berichttypes"
 

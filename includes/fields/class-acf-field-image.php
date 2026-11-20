@@ -110,10 +110,19 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 			// Detect value.
 			if ( $field['value'] && is_numeric( $field['value'] ) ) {
 				$image = wp_get_attachment_image_src( $field['value'], $field['preview_size'] );
+				$alt   = get_post_meta( $field['value'], '_wp_attachment_image_alt', true );
+
+				// Non-image attachments are allowed when acf/is_image_field returns false. Preview them
+				// with their mime type icon so the value is kept in the input and isn't lost on save.
+				if ( ! $image && ! acf_is_image_field( $field ) && 'attachment' === get_post_type( $field['value'] ) ) {
+					$image = wp_get_attachment_image_src( $field['value'], $field['preview_size'], true );
+					$alt   = $alt ? $alt : get_post_field( 'post_title', $field['value'] );
+				}
+
 				if ( $image ) {
 					$value               = $field['value'];
 					$img_attrs['src']    = $image[0];
-					$img_attrs['alt']    = get_post_meta( $field['value'], '_wp_attachment_image_alt', true );
+					$img_attrs['alt']    = $alt;
 					$div_attrs['class'] .= ' has-value';
 				}
 			}
@@ -453,8 +462,15 @@ if ( ! class_exists( 'acf_field_image' ) ) :
 				return $valid;
 			}
 
-			if ( is_numeric( $value ) && ! wp_attachment_is_image( $value ) ) {
-				return __( 'File must be a valid image.', 'acf' );
+			if ( is_numeric( $value ) ) {
+				if ( acf_is_image_field( $field ) ) {
+					if ( ! acf_is_valid_image_attachment_id( $value ) ) {
+						return __( 'File must be a valid image.', 'acf' );
+					}
+				} elseif ( 'attachment' !== get_post_type( (int) $value ) ) {
+					/* translators: %s: field label */
+					return sprintf( __( '%s requires a valid attachment ID.', 'acf' ), $field['label'] );
+				}
 			}
 
 			return acf_get_field_type( 'file' )->validate_value( $valid, $value, $field, $input );

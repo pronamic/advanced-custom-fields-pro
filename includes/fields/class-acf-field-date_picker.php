@@ -82,7 +82,7 @@ if ( ! class_exists( 'acf_field_date_picker' ) ) :
 			wp_enqueue_script( 'jquery-ui-datepicker' );
 
 			// style
-			wp_enqueue_style( 'acf-datepicker', acf_get_url( 'assets/inc/datepicker/jquery-ui.min.css' ), array(), '1.11.4' );
+			wp_enqueue_style( 'acf-datepicker', acf_get_url( 'assets/inc/datepicker/jquery-ui.min.css' ), array(), '1.14.2' );
 		}
 
 

@@ -322,6 +322,8 @@ if ( ! class_exists( 'ACF_Admin_Post_Type' ) ) :
 				}
 			}
 
+			$_POST['acf_post_type'] = acf_preserve_unsubmitted_abilities_settings( $_POST['acf_post_type'], $post ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Unslashed when saved.
+
 			// Save the post type.
 			acf_update_internal_post_type( $_POST['acf_post_type'], $this->post_type ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Validated in verify_save_post
 			// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized

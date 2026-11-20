@@ -434,7 +434,7 @@ if ( ! class_exists( 'ACF_UI_Options_Page' ) ) {
 					$args['icon_url'] = $args['menu_icon']['value'];
 				}
 				if ( $args['menu_icon']['type'] === 'media_library' ) {
-					$image_url        = wp_get_attachment_image_url($args['menu_icon']['value']);
+					$image_url        = wp_get_attachment_image_url( $args['menu_icon']['value'] );
 					$args['icon_url'] = $image_url;
 				}
 				if ( $args['menu_icon']['type'] === 'dashicons' ) {

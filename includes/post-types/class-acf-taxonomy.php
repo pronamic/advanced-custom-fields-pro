@@ -235,7 +235,7 @@ if ( ! class_exists( 'ACF_Taxonomy' ) ) {
 				'meta_box'               => 'default',
 				'meta_box_cb'            => '',
 				'meta_box_sanitize_cb'   => '',
-				'allow_ai_access'        => false,
+				'enable_acf_abilities'   => true,
 				'ai_description'         => '',
 			);
 		}

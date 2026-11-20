@@ -47,6 +47,10 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 				return;
 			}
 
+			// Menu slugs of ACF top-level pages. Pages are sorted with top-level pages first, so this is complete
+			// before any child is reached.
+			$acf_parents = array();
+
 			// loop
 			foreach ( $pages as $page ) {
 
@@ -54,10 +58,15 @@ if ( ! class_exists( 'acf_admin_options_page' ) ) :
 				$slug = '';
 				// parent
 				if ( empty( $page['parent_slug'] ) ) {
-					$slug = add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $page['icon_url'], $page['position'] );
+					$slug                              = add_menu_page( $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $page['icon_url'], $page['position'] );
+					$acf_parents[ $page['menu_slug'] ] = true;
 					// child
 				} else {
-					$slug = add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $page['position'] );
+					// Children of ACF pages are already sorted by position, so append them. WordPress treats the
+					// position as an insert index, and 0 or below would push the page in front of earlier siblings.
+					// Children of other menus (e.g. options-general.php) keep their position among the core items.
+					$position = isset( $acf_parents[ $page['parent_slug'] ] ) ? null : $page['position'];
+					$slug     = add_submenu_page( $page['parent_slug'], $page['page_title'], $page['menu_title'], $page['capability'], $page['menu_slug'], array( $this, 'html' ), $position );
 				}
 
 				// actions

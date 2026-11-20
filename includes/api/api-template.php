@@ -1062,8 +1062,16 @@ function acf_shortcode( $atts ) {
 	}
 
 	// If we've decoded to a post, ensure the post is publicly visible.
-	if ( $decoded_post_id['type'] === 'post' ) {
-		if ( $atts['post_id'] !== false && ( (int) $atts['post_id'] !== (int) acf_get_valid_post_id() ) && ( ! is_post_publicly_viewable( $decoded_post_id['id'] ) ) && apply_filters( 'acf/shortcode/prevent_access_to_fields_on_non_public_posts', true ) ) {
+	if ( $atts['post_id'] !== false && $decoded_post_id['type'] === 'post' ) {
+		$current_post_id = acf_decode_post_id( acf_get_valid_post_id() );
+		$is_current_post = false;
+
+		// In previews the current post resolves to its latest revision, so the revision's parent also counts as the current post.
+		if ( $current_post_id['type'] === 'post' && $current_post_id['id'] ) {
+			$is_current_post = in_array( $decoded_post_id['id'], array( $current_post_id['id'], wp_is_post_revision( $current_post_id['id'] ) ), true );
+		}
+
+		if ( ! $is_current_post && ! is_post_publicly_viewable( $decoded_post_id['id'] ) && apply_filters( 'acf/shortcode/prevent_access_to_fields_on_non_public_posts', true ) ) {
 			if ( is_preview() ) {
 				return apply_filters( 'acf/shortcode/post_not_public_message', esc_html__( '[The ACF shortcode cannot display fields from non-public posts]', 'acf' ) );
 			} else {

@@ -944,26 +944,26 @@ class Site_Health {
 			'debug' => count( $load_paths ),
 		);
 
-		$ai_enabled = acf_get_setting( 'enable_acf_ai' );
+		$abilities_enabled = acf_get_setting( 'enable_abilities' );
 
-		$fields['ai_enabled'] = array(
-			'label' => __( 'AI Support', 'acf' ),
-			'value' => ! empty( $ai_enabled ) ? $enabled : $disabled,
-			'debug' => $ai_enabled,
+		$fields['abilities_enabled'] = array(
+			'label' => __( 'Abilities API Support', 'acf' ),
+			'value' => ! empty( $abilities_enabled ) ? $enabled : $disabled,
+			'debug' => $abilities_enabled,
 		);
 
 		// Add AI usage metrics if enabled and the Abilities API is available (WP 6.9+).
 		$abilities_api_available = function_exists( 'wp_register_ability' );
 
-		if ( $ai_enabled && ! $abilities_api_available ) {
-			$fields['ai_abilities_api'] = array(
+		if ( $abilities_enabled && ! $abilities_api_available ) {
+			$fields['abilities_api'] = array(
 				'label' => __( 'Abilities API', 'acf' ),
 				'value' => __( 'Not available (requires WordPress 6.9+)', 'acf' ),
 				'debug' => 'unavailable',
 			);
 		}
 
-		if ( $ai_enabled && $abilities_api_available ) {
+		if ( $abilities_enabled && $abilities_api_available ) {
 			$ai_ready_counts = $this->ai_usage->get_ai_ready_counts( $field_groups, $post_types, $taxonomies );
 			$ai_usage        = $this->ai_usage->get_usage_metrics();
 

@@ -262,15 +262,14 @@ if ( ! class_exists( 'acf_field' ) ) :
 							'type'        => 'string',
 							'description' => 'The label for the field',
 							'minLength'   => 1,
-							'required'    => true,
 						),
 						'type'  => array(
 							'type'        => 'string',
 							'enum'        => array( $this->name ),
 							'description' => 'The field type',
-							'required'    => true,
 						),
 					),
+					'required'   => array( 'label', 'type' ),
 				);
 			}
 

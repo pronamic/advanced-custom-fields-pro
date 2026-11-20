@@ -2,9 +2,9 @@
 Contributors: deliciousbrains, wpengine, elliotcondon, mattshaw, lgladdy, antpb, johnstonphilip, dalewilliams, polevaultweb
 Tags: acf, fields, custom fields, meta, repeater
 Requires at least: 6.2
-Tested up to: 7.1
+Tested up to: 7.1.5
 Requires PHP: 7.4
-Stable tag: 6.8.11
+Stable tag: 6.8.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,45 @@ ACF includes an optional email signup to receive plugin updates and news. No dat
 
 
 == Changelog ==
+
+= 6.8.12 =
+*Release Date 19th November 2026*
+
+* Security - `<script>` tags in ACF Block preview HTML, including ones that load an external file, no longer run in the block editor unless the block opts in with `allowDangerousPreviewScripts` in `block.json` (or `allow_dangerous_preview_scripts` in `acf_register_block_type()`), or the site opts in with the new `acf/blocks/allow_dangerous_preview_scripts` filter
+* Security - The `[acf]` shortcode no longer shows fields from draft or private posts referenced by a prefixed ID such as `post_123` when used inside an ACF Block, or outside the loop such as in a widget on a 404 or search page
+* Security - Icon Picker fields set to return an icon string no longer reveal the URLs of private Media Library images in the REST API
+* New - ACF now has a new Settings page with a Features tab for turning ACF features on and off without code. In ACF PRO, the License and Updates screens are now tabs on this page. Settings defined in code are shown as "Managed via code" and can't be changed in the UI
+* New - Developers can add their own tabs, sections and fields to the Settings page with the new `acf/settings_page/tabs`, `acf/settings_page/general/sections` and `acf/settings_page/general/{$section}/fields` filters. The Features tab can be hidden with the new acf/settings/show_settings filter
+* New - ACF Abilities are now enabled by default for all field groups, post types and taxonomies on WordPress 6.9 and later. They can be turned off for each object, or for the whole site from the Settings page. The `enable_acf_ai` setting has been renamed to `enable_abilities`, and existing `allow_ai_access` values are not carried over
+* Enhancement - The "Edit Block" button text on ACF Blocks V3 that turn off the preview with "renderPreview": false can now be changed with acf.placeholderButtonText in block.json or the new acf/blocks/default_placeholder_button_text filter
+* New - ACF Blocks registered with `acf_register_block_type()` can now set the InnerBlocks `default_block` and `direct_insert` options
+* Enhancement - ACF Abilities now publish valid JSON Schema, so MCP clients such as ChatGPT can discover and use them. Schemas now describe conditional logic, Repeater and Group sub fields, and Flexible Content layouts
+* Enhancement - Breaking change: generated post type and taxonomy ability names now include the object type, so they no longer collide. For example, `acf/create-book` is now `acf/create-book-post` and `acf/books` is now `acf/list-book-posts`. Agent prompts and MCP configurations that use the old names need updating
+* Enhancement - The `acf/field-groups` Ability now includes the list of fields within each field group
+* Enhancement - The Date Picker field's bundled jQuery UI stylesheet has been updated to version 1.14.2
+* Enhancement - New `acf/blocks/auto_inline_editing/field_return_type_supports_auto_inline_editing` filter allows customizing which fields support auto inline editing in ACF Blocks
+* Enhancement - Child options pages now appear in their parent's menu in Menu Position order, whether they were registered in the UI or in PHP. A parent page that redirects to its first child now opens the child with the lowest Menu Position
+* Enhancement - Google Map fields now find the city for more addresses, such as those that only have a neighborhood or sublocality
+* Fix - ACF Blocks no longer crash in the block editor when WordPress or Gutenberg loads React 19
+* Fix - ACF Blocks V3 now save default field values when a block is inserted and left unedited
+* Fix - Auto inline editing in ACF Blocks now works with field values that contain `&`, and saves inline edits as plain text instead of HTML-encoded text
+* Fix - Auto inline editing in ACF Blocks no longer replaces empty array or object field values with a placeholder string
+* Fix - Passing a post object to `wp_insert_post()` no longer causes a fatal error, a regression in 6.8.11
+* Fix - Saving relational fields no longer causes a fatal error when another plugin stores an array in meta whose name starts with `_`, a regression in 6.8.11
+* Fix - Reading a field before the main query is set up no longer triggers an `is_preview()` notice, a regression in 6.8.10
+* Fix - Viewing a draft, pending or scheduled post without a preview link no longer loads field values from its latest revision, and front-end forms on those views no longer save into the revision, a regression in 6.8.10
+* Fix - Image fields no longer fail validation with "File must be a valid image." on hosts that use stream-wrapped file systems
+* Fix - Image and Gallery fields now respect the `acf/is_image_field` filter when validating values
+* Fix - Disabled Flexible Content layouts no longer appear in post previews
+* Fix - Number and Range field validation messages now show decimal minimum and maximum values correctly
+* Fix - The ACF media modal no longer stops showing new uploads after a search returns no results
+* Fix - Field group metaboxes that appear without a page reload can now be collapsed and expanded
+* Fix - True/False fields using the stylized UI now show the switch correctly in right-to-left languages
+* Fix - Field group settings no longer show an incorrect top border on small screens
+* Fix - The Icon Picker field no longer attempts to load an attachment preview when the selected icon is not from the Media Library
+* Fix - Options pages no longer trigger a "Using null as an array offset" deprecation notice on PHP 8.5
+* Fix - Field groups and other ACF internal post types no longer trigger PHP warnings when an `acf/load_{$post_type}` filter returns an invalid value
+* Fix - The license status no longer shows as Active after a license is deactivated
 
 = 6.8.11 =
 *Release Date 2nd November 2026*

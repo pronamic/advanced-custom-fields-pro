@@ -1,0 +1,124 @@
+/*
+ * Corrections to BDS 0.5.3 Switch to match the Figma "Switch with label" component (and the ACF Settings – Base file):
+ * the thumb carries Shadow/Basic/md, a disabled switch keeps its label in text-secondary (only the switch itself
+ * drops to 30% opacity), and a mouse-focused switch shows no focus ring. wp-admin's colour scheme rings every focused
+ * checkbox; BDS only styles :focus-visible. Remove once fixed upstream in @wpengine/bds-react.
+ */
+.switch::before {
+	box-shadow: var(--shadow-md);
+}
+
+.switch:focus:not(:focus-visible) {
+	box-shadow: none;
+}
+
+.switchLabel {
+	color: var(--text-secondary);
+}
+
+/* Label and Experimental pill on one line, in the row's label column. */
+.label {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+/* Control and badges on one line, badges pushed to the end (Figma "Setting" frame). */
+.setting {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-lg);
+	width: 100%;
+}
+
+/*
+ * Switch, label and "Learn more" link flow inline, so the link follows the last word, 8px after it (Figma "Setting"
+ * frame). Wrapped lines hang under the label text: the inset is the md switch track (36px) plus the BDS label gap.
+ */
+.control {
+	padding-inline-start: calc(36px + var(--space-sm));
+	font-family: var(--label-md-font-family);
+	font-size: var(--label-md-font-size);
+	line-height: var(--label-md-line-height);
+}
+
+.control > :first-child {
+	display: inline;
+	margin-inline-start: calc(-36px - var(--space-sm));
+}
+
+.control label,
+.control label > span {
+	display: inline;
+	vertical-align: baseline;
+}
+
+/* Gap before the link sits on the label, so a link that wraps starts at the text edge. */
+.control label {
+	margin-inline-end: var(--space-sm);
+}
+
+.control .switch {
+	vertical-align: top;
+	margin-block: calc((var(--label-md-line-height) - var(--size-md)) / 2);
+	margin-inline-end: var(--space-sm);
+}
+
+/* The 18px icon would make its line taller than the label lines. */
+.control .learnMore {
+	display: inline-flex;
+	margin-block: -1px;
+}
+
+.learnMore {
+	text-decoration: none;
+}
+
+/* Hint text and "Learn more" link flow inline, 8px apart (Figma "Frame 2" under the input). */
+.hintText:not(:last-child) {
+	margin-inline-end: var(--space-sm);
+}
+
+.select {
+	width: 280px;
+	max-width: 100%;
+}
+
+.text {
+	width: 600px;
+	max-width: 100%;
+}
+
+.badges {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.badgeWrap,
+.tooltipTrigger {
+	display: inline-flex;
+}
+
+.tooltipTrigger {
+	border-radius: var(--radius-full);
+}
+
+.tooltipTrigger:focus-visible {
+	outline: none;
+	box-shadow: var(--focus-ring-accent);
+}
+
+.proLink {
+	display: inline-flex;
+	border-radius: var(--radius-full);
+	text-decoration: none;
+}
+
+.proLink:focus-visible {
+	outline: none;
+	box-shadow: var(--focus-ring-accent);
+}

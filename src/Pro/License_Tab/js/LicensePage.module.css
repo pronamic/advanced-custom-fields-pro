@@ -1,0 +1,50 @@
+/* Key input with its activate/deactivate button (Figma "Field + action"). */
+.keyForm {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-sm);
+	width: 100%;
+}
+
+.keyField {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	gap: var(--space-sm);
+	min-width: 0;
+}
+
+.error {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+/* Status badge with the manage or pricing link at the end of the row (Figma "Status"). */
+.status {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-lg);
+	width: 100%;
+}
+
+.actions {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-md);
+}
+
+.prompt {
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.value {
+	composes: body-md-regular from global;
+	color: var(--text-secondary);
+}

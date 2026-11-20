@@ -12,7 +12,7 @@
 # This file is distributed under the same license as Advanced Custom Fields.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-02T16:10:47+00:00\n"
+"PO-Revision-Date: 2026-11-19T18:04:49+00:00\n"
 "Report-Msgid-Bugs-To: http://support.advancedcustomfields.com\n"
 "Language: sv_SE\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Project-Id-Version: Advanced Custom Fields\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: includes/api/api-helpers.php:2534
+#: includes/api/api-helpers.php:3242
 msgid "Sorry, this file could not be uploaded."
 msgstr "Denna fil kunde inte laddas upp."
 
-#: includes/api/api-helpers.php:3315
+#: includes/api/api-helpers.php:4064
 #: includes/fields/class-acf-field-image.php:457
 msgid "File must be a valid image."
 msgstr "Fil måste vara en giltig bild."
@@ -161,7 +161,7 @@ msgstr "Visa en %s"
 msgid "Create %s"
 msgstr "Skapa %s"
 
-#: includes/acf-field-functions.php:882 src/AI/GEO/GEO.php:78
+#: includes/acf-field-functions.php:990 src/AI/GEO/GEO.php:78
 msgid "Experimental"
 msgstr "Experimentell"
 
@@ -258,7 +258,7 @@ msgstr "Lär dig mer."
 msgid "[The ACF shortcode is disabled on this site]"
 msgstr "[ACF-kortkoden är inaktiverad på denna webbplats]"
 
-#: includes/api/api-template.php:1063
+#: includes/api/api-template.php:1068
 msgid "[The ACF shortcode cannot display fields from non-public posts]"
 msgstr "[ACF-kortkoden kan inte visa fält från icke-offentliga inlägg]"
 
@@ -868,7 +868,7 @@ msgstr "Alternativ webbplatsikon 2"
 msgid "Site (alt3) Icon"
 msgstr "Alternativ webbplatsikon 3"
 
-#: includes/ajax/class-acf-ajax-check-screen.php:46
+#: includes/ajax/class-acf-ajax-check-screen.php:39
 #: includes/ajax/class-acf-ajax-local-json-diff.php:46
 #: includes/ajax/class-acf-ajax-query-users.php:42
 #: includes/ajax/class-acf-ajax-upgrade.php:33
@@ -2041,7 +2041,7 @@ msgstr "Feedback"
 msgid "Support"
 msgstr "Support"
 
-#: includes/acf-bidirectional-functions.php:251
+#: includes/acf-bidirectional-functions.php:380
 msgid "Target Field"
 msgstr "Målfält"
 
@@ -2051,11 +2051,11 @@ msgid "Create taxonomy"
 msgstr "Skapa taxonomi"
 
 #. translators: %s A field type name, such as "Relationship"
-#: includes/acf-bidirectional-functions.php:197
+#: includes/acf-bidirectional-functions.php:326
 msgid "%s Field"
 msgstr "%s-fält"
 
-#: includes/acf-bidirectional-functions.php:224
+#: includes/acf-bidirectional-functions.php:353
 msgid "Bidirectional"
 msgstr "Dubbelriktad"
 
@@ -2087,13 +2087,13 @@ msgstr "﻿Välj alternativsidor"
 msgid "is developed and maintained by"
 msgstr "utvecklas och underhålls av"
 
-#: includes/acf-bidirectional-functions.php:225
+#: includes/acf-bidirectional-functions.php:354
 msgid "Update a field on the selected values, referencing back to this ID"
 msgstr ""
 "Uppdatera ett fält med de valda värdena och hänvisa tillbaka till detta ID"
 
 #. translators: %s - either "post type" or "taxonomy"
-#: includes/admin/admin-internal-post-type.php:313
+#: includes/admin/admin-internal-post-type.php:314
 msgid "Add this %s to the location rules of the selected field groups."
 msgstr "Lägg till denna %s i platsreglerna för de valda fältgrupperna."
 
@@ -2102,8 +2102,8 @@ msgstr "Lägg till denna %s i platsreglerna för de valda fältgrupperna."
 msgid "(Duplicated from %s)"
 msgstr "(Duplicerad från %s)"
 
-#: includes/fields/class-acf-field-page_link.php:511
-#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-page_link.php:517
+#: includes/fields/class-acf-field-post_object.php:433
 #: includes/fields/class-acf-field-select.php:387
 #: includes/fields/class-acf-field-user.php:120
 msgid "Select Multiple"
@@ -2227,9 +2227,9 @@ msgstr "Ingen beskrivning"
 msgid "%s fields"
 msgstr "%s-fält"
 
-#: includes/fields/class-acf-field-page_link.php:478
-#: includes/fields/class-acf-field-post_object.php:387
-#: includes/fields/class-acf-field-relationship.php:616
+#: includes/fields/class-acf-field-page_link.php:484
+#: includes/fields/class-acf-field-post_object.php:396
+#: includes/fields/class-acf-field-relationship.php:622
 msgid "Any post status"
 msgstr "Vilken inläggsstatus som helst"
 
@@ -2290,9 +2290,9 @@ msgstr "Redigera inläggstyp"
 msgid "Add New Post Type"
 msgstr "Lägg till ny inläggstyp"
 
-#: includes/fields/class-acf-field-page_link.php:470
-#: includes/fields/class-acf-field-post_object.php:379
-#: includes/fields/class-acf-field-relationship.php:608
+#: includes/fields/class-acf-field-page_link.php:476
+#: includes/fields/class-acf-field-post_object.php:388
+#: includes/fields/class-acf-field-relationship.php:614
 msgid "Filter by Post Status"
 msgstr "Filtrera efter inläggsstatus"
 
@@ -2556,61 +2556,61 @@ msgstr "Välj fält"
 msgid "Add Taxonomy"
 msgstr "Lägg till taxonomi"
 
-#: includes/acf-internal-post-type-functions.php:509
-#: includes/acf-internal-post-type-functions.php:538
-#: includes/acf-internal-post-type-functions.php:567
-msgid "Labels"
-msgstr "Etiketter"
-
-#: includes/acf-internal-post-type-functions.php:510
-#: includes/acf-internal-post-type-functions.php:539
-#: includes/acf-internal-post-type-functions.php:566
-msgid "Visibility"
-msgstr "Synlighet"
-
 #: includes/acf-internal-post-type-functions.php:511
 #: includes/acf-internal-post-type-functions.php:540
-msgid "URLs"
-msgstr "URL:er"
+#: includes/acf-internal-post-type-functions.php:569
+msgid "Labels"
+msgstr "Etiketter"
 
 #: includes/acf-internal-post-type-functions.php:512
 #: includes/acf-internal-post-type-functions.php:541
 #: includes/acf-internal-post-type-functions.php:568
-msgid "Permissions"
-msgstr "Behörigheter"
+msgid "Visibility"
+msgstr "Synlighet"
 
 #: includes/acf-internal-post-type-functions.php:513
 #: includes/acf-internal-post-type-functions.php:542
+msgid "URLs"
+msgstr "URL:er"
+
+#: includes/acf-internal-post-type-functions.php:514
+#: includes/acf-internal-post-type-functions.php:543
+#: includes/acf-internal-post-type-functions.php:570
+msgid "Permissions"
+msgstr "Behörigheter"
+
+#: includes/acf-internal-post-type-functions.php:515
+#: includes/acf-internal-post-type-functions.php:544
 msgid "REST API"
 msgstr "REST API"
 
-#: includes/admin/admin-internal-post-type.php:280
+#: includes/admin/admin-internal-post-type.php:281
 msgid "Field group linked successfully."
 msgid_plural "Field groups linked successfully."
 msgstr[0] "Fältgrupp har länkats."
 msgstr[1] "Fältgrupper har länkats."
 
-#: includes/admin/admin-internal-post-type.php:322
+#: includes/admin/admin-internal-post-type.php:323
 msgid "Please select the field groups to link."
 msgstr "Välj de fältgrupper som ska länkas."
 
-#: includes/admin/admin-internal-post-type.php:323
+#: includes/admin/admin-internal-post-type.php:324
 msgid "Select one or many field groups..."
 msgstr "Markera en eller flera fältgrupper …"
 
-#: includes/admin/admin-internal-post-type.php:324
+#: includes/admin/admin-internal-post-type.php:325
 msgid "Field Group(s)"
 msgstr "Fältgrupp/fältgrupper"
 
-#: includes/admin/admin-internal-post-type.php:338
+#: includes/admin/admin-internal-post-type.php:339
 msgid "Done"
 msgstr "Klar"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "post type"
 msgstr "inläggstyp"
 
-#: includes/admin/admin-internal-post-type.php:314
+#: includes/admin/admin-internal-post-type.php:315
 msgid "taxonomy"
 msgstr "taxonomi"
 
@@ -2668,7 +2668,7 @@ msgstr "Lägg till fält till %s"
 msgid "%s post type created"
 msgstr "Inläggstypen %s skapad"
 
-#: includes/admin/admin-internal-post-type.php:347
+#: includes/admin/admin-internal-post-type.php:348
 msgid "Link Existing Field Groups"
 msgstr "Länka befintliga fältgrupper"
 
@@ -4361,7 +4361,7 @@ msgstr "Stäng modal"
 msgid "Field moved to other group"
 msgstr "Fält flyttat till annan grupp"
 
-#: includes/admin/admin-internal-post-type.php:290
+#: includes/admin/admin-internal-post-type.php:291
 #: includes/admin/post-types/admin-field-group.php:573
 msgid "Close Modal"
 msgstr "Stäng modal"
@@ -4465,8 +4465,8 @@ msgstr "Presentation"
 msgid "Validation"
 msgstr "Validering"
 
-#: includes/acf-internal-post-type-functions.php:508
-#: includes/acf-internal-post-type-functions.php:537 includes/fields.php:392
+#: includes/acf-internal-post-type-functions.php:510
+#: includes/acf-internal-post-type-functions.php:539 includes/fields.php:392
 msgid "General"
 msgstr "Allmänt"
 
@@ -4628,7 +4628,7 @@ msgstr ""
 msgid "Invalid request."
 msgstr "Ogiltig begäran."
 
-#: includes/fields/class-acf-field-select.php:752
+#: includes/fields/class-acf-field-select.php:778
 msgid "%1$s is not one of %2$s"
 msgstr "%1$s är inte en av %2$s"
 
@@ -4640,7 +4640,7 @@ msgstr "%1$s måste ha ett giltigt användar-ID."
 msgid "Show in REST API"
 msgstr "Visa i REST API"
 
-#: includes/fields/class-acf-field-post_object.php:648
+#: includes/fields/class-acf-field-post_object.php:659
 msgid "%1$s must have a valid post ID."
 msgstr "%1$s måste ha ett giltigt inläggs-ID."
 
@@ -4648,13 +4648,13 @@ msgstr "%1$s måste ha ett giltigt inläggs-ID."
 msgid "%s requires a valid attachment ID."
 msgstr "%s kräver ett giltig bilage-ID."
 
-#: includes/fields/class-acf-field-post_object.php:673
+#: includes/fields/class-acf-field-post_object.php:684
 msgid "%1$s must have term %2$s."
 msgid_plural "%1$s must have one of the following terms: %2$s"
 msgstr[0] "%1$s måste ha termen %2$s."
 msgstr[1] "%1$s måste ha en av följande termer: %2$s"
 
-#: includes/fields/class-acf-field-post_object.php:657
+#: includes/fields/class-acf-field-post_object.php:668
 msgid "%1$s must be of post type %2$s."
 msgid_plural "%1$s must be of one of the following post types: %2$s"
 msgstr[0] "%1$s måste vara av inläggstypen %2$s."
@@ -4918,7 +4918,7 @@ msgstr "Ogiltig engångskod."
 msgid "Error loading field."
 msgstr "Fel vid inläsning av fält."
 
-#: includes/forms/form-user.php:417
+#: includes/forms/form-user.php:404
 msgid "<strong>Error</strong>: %s"
 msgstr "<strong>Fel</strong>: %s"
 
@@ -5296,7 +5296,7 @@ msgid "Sync"
 msgstr "Synkronisera"
 
 #. translators: %s: field group title
-#: includes/admin/admin-internal-post-type-list.php:960
+#: includes/admin/admin-internal-post-type-list.php:962
 msgid "Select %s"
 msgstr "Välj %s"
 
@@ -5327,7 +5327,7 @@ msgid "Description"
 msgstr "Beskrivning"
 
 #: includes/admin/admin-internal-post-type-list.php:414
-#: includes/admin/admin-internal-post-type-list.php:832
+#: includes/admin/admin-internal-post-type-list.php:834
 msgid "Sync available"
 msgstr "Synkronisering tillgänglig"
 
@@ -5382,7 +5382,7 @@ msgid "Null"
 msgstr "Null"
 
 #: includes/admin/post-types/admin-field-group.php:97
-#: includes/class-acf-internal-post-type.php:737
+#: includes/class-acf-internal-post-type.php:736
 #: includes/post-types/class-acf-field-group.php:357
 msgid "copy"
 msgstr "kopiera"
@@ -5486,7 +5486,7 @@ msgstr "Innehåll"
 msgid "Title"
 msgstr "Rubrik"
 
-#: includes/assets.php:385 includes/forms/form-comment.php:140
+#: includes/assets.php:385 includes/forms/form-comment.php:148
 msgid "Edit field group"
 msgstr "Redigera fältgrupp"
 
@@ -5514,7 +5514,7 @@ msgstr "Värde är lika med"
 msgid "Has no value"
 msgstr "Har inget värde"
 
-#: includes/admin/admin-internal-post-type.php:337
+#: includes/admin/admin-internal-post-type.php:338
 #: includes/admin/views/browse-fields-modal.php:82 includes/assets.php:359
 msgid "Cancel"
 msgstr "Avbryt"
@@ -5555,7 +5555,7 @@ msgctxt "verb"
 msgid "Edit"
 msgstr "Redigera"
 
-#: includes/api/api-helpers.php:3457
+#: includes/api/api-helpers.php:4206
 msgid "File type must be %s."
 msgstr "Filtyp måste vara %s."
 
@@ -5564,11 +5564,11 @@ msgstr "Filtyp måste vara %s."
 #: includes/admin/views/acf-field-group/conditional-logic.php:191
 #: includes/admin/views/acf-field-group/location-group.php:14
 #: includes/admin/views/acf-field-group/locations.php:43
-#: includes/api/api-helpers.php:3454
+#: includes/api/api-helpers.php:4203
 msgid "or"
 msgstr "eller"
 
-#: includes/api/api-helpers.php:1524 includes/api/api-term.php:149
+#: includes/api/api-helpers.php:1689 includes/api/api-term.php:149
 msgid "(no title)"
 msgstr "(ingen rubrik)"
 
@@ -5588,7 +5588,7 @@ msgstr "Medium"
 msgid "Thumbnail"
 msgstr "Miniatyr"
 
-#: includes/acf-field-functions.php:871
+#: includes/acf-field-functions.php:979
 #: includes/admin/post-types/admin-field-group.php:95
 msgid "(no label)"
 msgstr "(ingen etikett)"
@@ -5609,7 +5609,7 @@ msgstr "Textområde"
 msgid "Add new choice"
 msgstr "Lägg till nytt val"
 
-#: includes/fields/class-acf-field-page_link.php:209
+#: includes/fields/class-acf-field-page_link.php:210
 msgid "Archives"
 msgstr "Arkiv"
 
@@ -5963,8 +5963,8 @@ msgstr "Val"
 msgid "Button Group"
 msgstr "Knappgrupp"
 
-#: includes/fields/class-acf-field-page_link.php:286
-#: includes/fields/class-acf-field-post_object.php:267
+#: includes/fields/class-acf-field-page_link.php:289
+#: includes/fields/class-acf-field-post_object.php:273
 #: includes/fields/class-acf-field-taxonomy.php:890
 msgid "Parent"
 msgstr "Överordnad"
@@ -6015,63 +6015,63 @@ msgstr "Visas när ett nytt inlägg skapas"
 msgid "Text"
 msgstr "Text"
 
-#: includes/fields/class-acf-field-post_object.php:415
-#: includes/fields/class-acf-field-relationship.php:659
+#: includes/fields/class-acf-field-post_object.php:424
+#: includes/fields/class-acf-field-relationship.php:665
 msgid "Post ID"
 msgstr "Inläggs-ID"
 
 #: includes/fields/class-acf-field-post_object.php:24
-#: includes/fields/class-acf-field-post_object.php:414
-#: includes/fields/class-acf-field-relationship.php:658
+#: includes/fields/class-acf-field-post_object.php:423
+#: includes/fields/class-acf-field-relationship.php:664
 msgid "Post Object"
 msgstr "Inläggsobjekt"
 
 #: includes/admin/views/acf-field-group/options.php:196
 #: includes/admin/views/acf-post-type/advanced-settings.php:36
-#: includes/fields/class-acf-field-relationship.php:716
+#: includes/fields/class-acf-field-relationship.php:722
 msgid "Featured Image"
 msgstr "Utvald bild"
 
-#: includes/fields/class-acf-field-relationship.php:711
+#: includes/fields/class-acf-field-relationship.php:717
 msgid "Elements"
 msgstr "Element"
 
-#: includes/fields/class-acf-field-relationship.php:645
+#: includes/fields/class-acf-field-relationship.php:651
 #: includes/fields/class-acf-field-taxonomy.php:29
 #: includes/fields/class-acf-field-taxonomy.php:646
 #: includes/locations/class-acf-location-taxonomy.php:31
 msgid "Taxonomy"
 msgstr "Taxonomi"
 
-#: includes/fields/class-acf-field-relationship.php:644
+#: includes/fields/class-acf-field-relationship.php:650
 #: includes/locations/class-acf-location-post-type.php:31
 #: includes/post-types/class-acf-post-type.php:101
 msgid "Post Type"
 msgstr "Inläggstyp"
 
-#: includes/fields/class-acf-field-relationship.php:638
+#: includes/fields/class-acf-field-relationship.php:644
 msgid "Filters"
 msgstr "Filter"
 
-#: includes/fields/class-acf-field-page_link.php:493
-#: includes/fields/class-acf-field-post_object.php:402
-#: includes/fields/class-acf-field-relationship.php:631
+#: includes/fields/class-acf-field-page_link.php:499
+#: includes/fields/class-acf-field-post_object.php:411
+#: includes/fields/class-acf-field-relationship.php:637
 msgid "All taxonomies"
 msgstr "Alla taxonomier"
 
-#: includes/fields/class-acf-field-page_link.php:485
-#: includes/fields/class-acf-field-post_object.php:394
-#: includes/fields/class-acf-field-relationship.php:623
+#: includes/fields/class-acf-field-page_link.php:491
+#: includes/fields/class-acf-field-post_object.php:403
+#: includes/fields/class-acf-field-relationship.php:629
 msgid "Filter by Taxonomy"
 msgstr "Filtrera efter taxonomi"
 
-#: includes/fields/class-acf-field-page_link.php:455
-#: includes/fields/class-acf-field-post_object.php:364
-#: includes/fields/class-acf-field-relationship.php:593
+#: includes/fields/class-acf-field-page_link.php:461
+#: includes/fields/class-acf-field-post_object.php:373
+#: includes/fields/class-acf-field-relationship.php:599
 msgid "Filter by Post Type"
 msgstr "Filtrera efter inläggstyp"
 
-#: includes/fields/class-acf-field-relationship.php:423
+#: includes/fields/class-acf-field-relationship.php:429
 msgid "Select taxonomy"
 msgstr "Välj taxonomi"
 
@@ -6334,7 +6334,7 @@ msgid "Clear location"
 msgstr "Rensa plats"
 
 #: includes/fields/class-acf-field-google-map.php:159
-#: includes/fields/class-acf-field-relationship.php:643
+#: includes/fields/class-acf-field-relationship.php:649
 msgid "Search"
 msgstr "Sök"
 
@@ -6347,8 +6347,8 @@ msgstr "Google Map"
 #: includes/fields/class-acf-field-date_time_picker.php:199
 #: includes/fields/class-acf-field-icon_picker.php:296
 #: includes/fields/class-acf-field-image.php:201
-#: includes/fields/class-acf-field-post_object.php:409
-#: includes/fields/class-acf-field-relationship.php:653
+#: includes/fields/class-acf-field-post_object.php:418
+#: includes/fields/class-acf-field-relationship.php:659
 #: includes/fields/class-acf-field-select.php:371
 #: includes/fields/class-acf-field-time_picker.php:130
 #: includes/fields/class-acf-field-user.php:104
@@ -6530,7 +6530,7 @@ msgstr "Skapa termer"
 msgid "Save Terms"
 msgstr "Spara termer"
 
-#: includes/fields/class-acf-field-relationship.php:712
+#: includes/fields/class-acf-field-relationship.php:718
 msgid "Selected elements will be displayed in each result"
 msgstr "Valda element kommer att visas i varje resultat"
 
@@ -6701,7 +6701,7 @@ msgstr "Multi-expandera"
 msgid "Load Terms"
 msgstr "Ladda termer"
 
-#: includes/fields/class-acf-field-page_link.php:500
+#: includes/fields/class-acf-field-page_link.php:506
 msgid "Allow Archives URLs"
 msgstr "Tillåt arkiv-URL:er"
 
@@ -6787,11 +6787,11 @@ msgstr "Validera e-post"
 msgid "True / False"
 msgstr "Sant/falskt"
 
-#: includes/fields/class-acf-field-relationship.php:493
+#: includes/fields/class-acf-field-relationship.php:499
 msgid "Search..."
 msgstr "Sök …"
 
-#: includes/fields/class-acf-field-relationship.php:415
+#: includes/fields/class-acf-field-relationship.php:421
 msgid "Select post type"
 msgstr "Välj inläggstyp"
 
@@ -6803,9 +6803,9 @@ msgstr "Inga matchningar hittades"
 msgid "Loading"
 msgstr "Laddar in"
 
-#: includes/fields/class-acf-field-page_link.php:463
-#: includes/fields/class-acf-field-post_object.php:372
-#: includes/fields/class-acf-field-relationship.php:601
+#: includes/fields/class-acf-field-page_link.php:469
+#: includes/fields/class-acf-field-post_object.php:381
+#: includes/fields/class-acf-field-relationship.php:607
 msgid "All post types"
 msgstr "Alla inläggstyper"
 
@@ -6855,7 +6855,7 @@ msgstr "Webbplatsen kräver databasuppgradering från %1$s till %2$s"
 msgid "The %1$s field can now be found in the %2$s field group"
 msgstr "Fältet %1$s kan nu hittas i fältgruppen %2$s"
 
-#: includes/fields/class-acf-field-relationship.php:796
+#: includes/fields/class-acf-field-relationship.php:803
 msgid "%1$s requires at least %2$s selection"
 msgid_plural "%1$s requires at least %2$s selections"
 msgstr[0] "%1$s kräver minst %2$s val"
@@ -6962,11 +6962,11 @@ msgstr "Text som visas när aktivt"
 msgid "Select the taxonomy to be displayed"
 msgstr "Välj taxonomin som ska visas"
 
-#: includes/fields/class-acf-field-relationship.php:691
+#: includes/fields/class-acf-field-relationship.php:697
 msgid "Maximum Posts"
 msgstr "Maximalt antal inlägg"
 
-#: includes/fields/class-acf-field-relationship.php:681
+#: includes/fields/class-acf-field-relationship.php:687
 msgid "Minimum Posts"
 msgstr "Minsta antal inlägg"
 
@@ -6994,7 +6994,7 @@ msgstr ""
 "Uppgradering av databas slutförd. <a href=\"%s\">Tillbaka till nätverkets "
 "adminpanel</a>"
 
-#: includes/api/api-helpers.php:3426
+#: includes/api/api-helpers.php:4175
 msgid "File size must be at least %s."
 msgstr "Filstorlek måste vara lägst %s."
 
@@ -7107,23 +7107,23 @@ msgstr "%d fält kräver din uppmärksamhet"
 msgid "Order"
 msgstr "Sortering"
 
-#: includes/api/api-helpers.php:3393
+#: includes/api/api-helpers.php:4142
 msgid "Image width must be at least %dpx."
 msgstr "Bildens bredd måste vara åtminstone %d px."
 
-#: includes/api/api-helpers.php:3397
+#: includes/api/api-helpers.php:4146
 msgid "Image width must not exceed %dpx."
 msgstr "Bildens bredd får inte överskrida %d px."
 
-#: includes/api/api-helpers.php:3409
+#: includes/api/api-helpers.php:4158
 msgid "Image height must be at least %dpx."
 msgstr "Bildens höjd måste vara åtminstone %d px."
 
-#: includes/api/api-helpers.php:3413
+#: includes/api/api-helpers.php:4162
 msgid "Image height must not exceed %dpx."
 msgstr "Bildens höjd får inte överskrida %d px."
 
-#: includes/api/api-helpers.php:3430
+#: includes/api/api-helpers.php:4179
 msgid "File size must not exceed %s."
 msgstr "Filstorleken får inte överskrida %s."
 
@@ -7294,8 +7294,8 @@ msgid "Show Media Upload Buttons"
 msgstr "Visa knappar för mediauppladdning"
 
 #: includes/fields/class-acf-field-button-group.php:210
-#: includes/fields/class-acf-field-page_link.php:532
-#: includes/fields/class-acf-field-post_object.php:445
+#: includes/fields/class-acf-field-page_link.php:538
+#: includes/fields/class-acf-field-post_object.php:454
 #: includes/fields/class-acf-field-radio.php:243
 #: includes/fields/class-acf-field-select.php:408
 #: includes/fields/class-acf-field-taxonomy.php:726

@@ -338,6 +338,8 @@ if ( ! class_exists( 'ACF_Admin_Taxonomy' ) ) :
 				}
 			}
 
+			$_POST['acf_taxonomy'] = acf_preserve_unsubmitted_abilities_settings( $_POST['acf_taxonomy'], $post ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Unslashed when saved.
+
 			// Save the taxonomy.
 			acf_update_internal_post_type( $_POST['acf_taxonomy'], $this->post_type ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Validated in verify_save_post
 			// phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized

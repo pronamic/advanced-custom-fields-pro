@@ -387,8 +387,12 @@ if ( ! class_exists( 'Updater' ) ) {
 			if ( is_array( $response ) ) {
 				$response['checked'] = $checked;
 
-				if ( isset( $response['license_status'] ) && function_exists( 'acf_pro_update_license_status' ) ) {
-					acf_pro_update_license_status( $response['license_status'] );
+				if ( isset( $response['license_status'] ) ) {
+					// Only store the license status if we have a license, otherwise a status could be saved for a site without one.
+					if ( function_exists( 'acf_pro_update_license_status' ) && acf_pro_get_license_key( true ) ) {
+						acf_pro_update_license_status( $response['license_status'] );
+					}
+
 					unset( $response['license_status'] );
 				}
 			}

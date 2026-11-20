@@ -9,74 +9,66 @@
  * https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
-}
+/**
+ * Backwards compatibility for the standalone ACF > Updates page, which was replaced by
+ * the License and Updates tabs on the Settings page in 6.8.12.
+ *
+ * Add-ons such as ACF Extended Pro render their own license settings on the old page,
+ * so it is kept, with a notice pointing to the new tabs, whenever another plugin renders on it.
+ *
+ * @package acf
+ */
+
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 
+	/**
+	 * Deprecated since 6.8.12. ACF PRO's license and updates UI is now on the Settings page's License and Updates tabs.
+	 *
+	 * Kept so add-ons that call its methods, such as get_changelog_changes(), keep working.
+	 */
 	class ACF_Admin_Updates {
 
-		/** @var array Data used in the view. */
-		var $view = array();
-
 		/**
-		 * __construct
+		 * Data used in the view.
 		 *
-		 * Sets up the class functionality.
-		 *
-		 * @date    23/06/12
-		 * @since   5.0.0
-		 *
-		 * @param   void
-		 * @return  void
+		 * @deprecated 6.8.12
+		 * @var array
 		 */
-		function __construct() {
-
-			// Add actions.
-			add_action( 'admin_menu', array( $this, 'admin_menu' ), 20 );
-		}
+		public $view = array();
 
 		/**
-		 * display_wp_error
+		 * Sets up the class. No longer registers any hooks.
 		 *
-		 * Adds an admin notice using the provided WP_Error.
-		 *
-		 * @date    14/1/19
-		 * @since   5.7.10
-		 *
-		 * @param   WP_Error $wp_error The error to display.
-		 * @return  void
+		 * @since 5.0.0
+		 * @deprecated 6.8.12
 		 */
-		function display_wp_error( $wp_error ) {
-
-			// Only show one error on page.
-			if ( acf_has_done( 'display_wp_error' ) ) {
-				return;
-			}
-
-			// Create new notice.
-			acf_new_admin_notice(
-				array(
-					'text' => __( '<strong>Error</strong>. Could not connect to the update server', 'acf' ) . ' <span class="description">(' . esc_html( $wp_error->get_error_message() ) . ').</span>',
-					'type' => 'error',
-				)
-			);
-		}
+		public function __construct() {}
 
 		/**
-		 * get_changelog_changes
+		 * No longer does anything.
 		 *
+		 * @since 5.7.10
+		 * @deprecated 6.8.12
+		 *
+		 * @param WP_Error $wp_error The error to display.
+		 * @return void
+		 */
+		public function display_wp_error( $wp_error ) {}
+
+		/**
 		 * Finds the specific changes for a given version from the provided changelog snippet.
 		 *
-		 * @date    14/1/19
-		 * @since   5.7.10
+		 * @since 5.7.10
+		 * @deprecated 6.8.12
 		 *
-		 * @param   string $changelog The changelog text.
-		 * @param   string $version   The version to find.
-		 * @return  string
+		 * @param string $changelog The changelog text.
+		 * @param string $version   The version to find.
+		 * @return string
 		 */
-		function get_changelog_changes( $changelog = '', $version = '' ) {
+		public function get_changelog_changes( $changelog = '', $version = '' ) {
 
 			// Explode changelog into sections.
 			$bits = array_filter( explode( '<h4>', $changelog ) );
@@ -100,180 +92,172 @@ if ( ! class_exists( 'ACF_Admin_Updates' ) ) :
 		}
 
 		/**
-		 * admin_menu
+		 * No longer does anything. See acf_legacy_updates_page_register().
 		 *
-		 * Adds the admin menu subpage.
+		 * @since 5.0.0
+		 * @deprecated 6.8.12
 		 *
-		 * @date    28/09/13
-		 * @since   5.0.0
-		 *
-		 * @param   void
-		 * @return  void
+		 * @return void
 		 */
-		function admin_menu() {
-
-			// Bail early if no show_admin.
-			if ( ! acf_get_setting( 'show_admin' ) ) {
-				return;
-			}
-
-			// Bail early if the updates page is not visible.
-			if ( ! acf_pro_is_updates_page_visible() ) {
-				return;
-			}
-
-			// Add submenu.
-			$page = add_submenu_page( 'edit.php?post_type=acf-field-group', __( 'Updates', 'acf' ), __( 'Updates', 'acf' ), acf_get_setting( 'capability' ), 'acf-settings-updates', array( $this, 'html' ) );
-
-			// Add actions to page.
-			add_action( "load-$page", array( $this, 'load' ) );
-		}
+		public function admin_menu() {}
 
 		/**
-		 * load
+		 * No longer does anything.
 		 *
-		 * Runs when loading the submenu page.
+		 * @since 5.0.0
+		 * @deprecated 6.8.12
 		 *
-		 * @date    7/01/2014
-		 * @since   5.0.0
-		 *
-		 * @param   void
-		 * @return  void
+		 * @return void
 		 */
-		function load() {
-
-			add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
-
-			// Check activate.
-			if ( acf_verify_nonce( 'activate_pro_license' ) && ! empty( $_POST['acf_pro_license'] ) ) {
-				acf_pro_activate_license( sanitize_text_field( $_POST['acf_pro_license'] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- unslash not needed.
-
-				// Check deactivate.
-			} elseif ( acf_verify_nonce( 'deactivate_pro_license' ) ) {
-				acf_pro_deactivate_license();
-			}
-
-			// Check if we should force check the license status.
-			$force_get_license_status = false;
-			$retry_license_nonce      = acf_request_arg( 'acf_retry_nonce' );
-			if ( wp_verify_nonce( $retry_license_nonce, 'acf_recheck_status' ) || ! empty( $_GET['force-license-check'] ) ) {
-				$force_get_license_status = true;
-			}
-
-			// vars
-			$license    = acf_pro_get_license_key();
-			$this->view = array(
-				'license'            => $license,
-				'license_status'     => acf_pro_get_license_status( $force_get_license_status ),
-				'active'             => $license ? 1 : 0,
-				'current_version'    => acf_get_setting( 'version' ),
-				'remote_version'     => '',
-				'update_available'   => false,
-				'changelog'          => '',
-				'upgrade_notice'     => '',
-				'is_defined_license' => defined( 'ACF_PRO_LICENSE' ) && ! empty( ACF_PRO_LICENSE ) && is_string( ACF_PRO_LICENSE ),
-				'license_error'      => false,
-				'wp_not_compatible'  => false,
-			);
-
-			// get plugin updates
-			$force_check = ! empty( $_GET['force-check'] );
-			$info        = acf_updates()->get_plugin_info( 'pro', $force_check );
-
-			// Display error.
-			if ( is_wp_error( $info ) ) {
-				return $this->display_wp_error( $info );
-			}
-
-			// add info to view
-			$this->view['remote_version'] = $info['version'];
-
-			// add changelog if the remote version is '>' than the current version
-			$version = acf_get_setting( 'version' );
-
-			// check if remote version is higher than current version
-			if ( version_compare( $info['version'], $version, '>' ) ) {
-
-				// update view.
-				$this->view['update_available'] = true;
-				$this->view['changelog']        = $this->get_changelog_changes( $info['changelog'], $info['version'] );
-				$this->view['upgrade_notice']   = $this->get_changelog_changes( $info['upgrade_notice'], $info['version'] );
-
-				// perform update checks if license is active.
-				$basename  = acf_get_setting( 'basename' );
-				$update    = acf_updates()->get_plugin_update( $basename );
-				$no_update = acf_updates()->get_no_update( $basename );
-
-				if ( $no_update && ! empty( $no_update['reason'] ) && $no_update['reason'] === 'wp_not_compatible' ) {
-					$this->view['wp_not_compatible'] = true;
-					acf_new_admin_notice(
-						array(
-							/* translators: %s the version of WordPress required for this ACF update */
-							'text' => sprintf( __( 'An update to ACF is available, but it is not compatible with your version of WordPress. Please upgrade to WordPress %s or newer to update ACF.', 'acf' ), $no_update['requires'] ),
-							'type' => 'error',
-						)
-					);
-				}
-
-				if ( $license ) {
-					if ( isset( $update['license_valid'] ) && ! $update['license_valid'] ) {
-						$this->view['license_error'] = true;
-						acf_new_admin_notice(
-							array(
-								'text' => __( '<strong>Error</strong>. Your license for this site has expired or been deactivated. Please reactivate your ACF PRO license.', 'acf' ),
-								'type' => 'error',
-							)
-						);
-					} else {
-						// display error if no package url - possible if license key or site URL has been modified.
-						if ( $update && ! $update['package'] ) {
-							$this->view['license_error'] = true;
-							acf_new_admin_notice(
-								array(
-									'text' => __( '<strong>Error</strong>. Could not authenticate update package. Please check again or deactivate and reactivate your ACF PRO license.', 'acf' ),
-									'type' => 'error',
-								)
-							);
-						}
-					}
-
-					// refresh transient - if no update exists in the transient or if the transient 'new_version' is stale.
-					if ( ! $update || $update['new_version'] !== $info['version'] ) {
-						acf_updates()->refresh_plugins_transient();
-					}
-				}
-			}
-		}
+		public function load() {}
 
 		/**
-		 * Modifies the admin body class.
+		 * No longer modifies the admin body class.
 		 *
 		 * @since 6.0.0
+		 * @deprecated 6.8.12
 		 *
 		 * @param string $classes Space-separated list of CSS classes.
 		 * @return string
 		 */
 		public function admin_body_class( $classes ) {
-			$classes .= ' acf-admin-page';
 			return $classes;
 		}
 
 		/**
-		 * html
+		 * No longer does anything.
 		 *
-		 * Displays the submenu page's HTML.
+		 * @since 5.0.0
+		 * @deprecated 6.8.12
 		 *
-		 * @date    7/01/2014
-		 * @since   5.0.0
-		 *
-		 * @param   void
-		 * @return  void
+		 * @return void
 		 */
-		function html() {
-			acf_get_view( __DIR__ . '/views/html-settings-updates.php', $this->view );
-		}
+		public function html() {}
 	}
 
-	// Initialize.
 	acf_new_instance( 'ACF_Admin_Updates' );
 endif; // class_exists check
+
+/**
+ * Returns the hook name of the legacy "acf-settings-updates" admin page.
+ *
+ * @since 6.8.12
+ *
+ * @return string
+ */
+function acf_legacy_updates_page_hookname() {
+	return get_plugin_page_hookname( 'acf-settings-updates', 'edit.php?post_type=acf-field-group' );
+}
+
+/**
+ * Registers the legacy Updates page when another plugin renders on it, as ACF Extended Pro does.
+ *
+ * Runs late on admin_menu so plugins hooking the page at the default priority are already hooked.
+ * Without a render callback the page isn't registered and the Settings page redirects its URL to the License tab.
+ *
+ * @since 6.8.12
+ *
+ * @return void
+ */
+function acf_legacy_updates_page_register() {
+	if ( ! acf_get_setting( 'show_admin' ) || ! acf_pro_is_updates_page_visible() ) {
+		return;
+	}
+
+	$hook = acf_legacy_updates_page_hookname();
+
+	// Only the render hook counts: some plugins hook "load-{$hook}" just to style the old page.
+	if ( ! has_action( $hook ) ) {
+		return;
+	}
+
+	// No callback here: add_submenu_page() would hook it at priority 10, after other plugins' callbacks at that priority.
+	$page = add_submenu_page(
+		'edit.php?post_type=acf-field-group',
+		__( 'Updates', 'acf' ),
+		__( 'Updates', 'acf' ),
+		acf_get_setting( 'capability' ),
+		'acf-settings-updates'
+	);
+
+	// False when the current user lacks the capability.
+	if ( $page !== $hook ) {
+		return;
+	}
+
+	add_action( "load-{$hook}", 'acf_legacy_updates_page_load' );
+
+	// Wrap every other plugin's output, whatever its priority.
+	add_action( $hook, 'acf_legacy_updates_page_open', PHP_INT_MIN );
+	add_action( $hook, 'acf_legacy_updates_page_close', PHP_INT_MAX );
+}
+add_action( 'admin_menu', 'acf_legacy_updates_page_register', 99 );
+
+/**
+ * Runs when the legacy Updates page loads, before other plugins' load callbacks at later priorities, such as ACF Extended Pro's at 20.
+ *
+ * @since 6.8.12
+ *
+ * @return void
+ */
+function acf_legacy_updates_page_load() {
+	// ACF PRO's own update and license checks now run on the tabs.
+	if ( ! empty( $_GET['force-check'] ) || ! empty( $_GET['force-license-check'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Redirect only.
+		acf_get_instance( 'ACF\Settings_Page\Settings_Page' )->redirect_legacy_pages();
+	}
+
+	add_filter( 'admin_body_class', 'acf_legacy_updates_page_body_class' );
+}
+
+/**
+ * Adds ACF's admin page body class to the legacy Updates page.
+ *
+ * @since 6.8.12
+ *
+ * @param string $classes Space-separated list of CSS classes.
+ * @return string
+ */
+function acf_legacy_updates_page_body_class( $classes ) {
+	return $classes . ' acf-admin-page';
+}
+
+/**
+ * Opens the legacy Updates page wrapper and explains where ACF PRO's license and updates moved.
+ * Other plugins' output follows.
+ *
+ * @since 6.8.12
+ *
+ * @return void
+ */
+function acf_legacy_updates_page_open() {
+	$license_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license' );
+	$updates_url = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-updates' );
+	?>
+	<div class="wrap acf-settings-wrap acf-updates">
+		<div class="notice notice-info inline acf-legacy-updates-notice">
+			<p>
+				<?php
+				echo acf_esc_html( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by acf_esc_html().
+					sprintf(
+						/* translators: 1: URL of the License tab, 2: URL of the Updates tab */
+						__( 'ACF PRO\'s license and update details are now on the Settings page, under the <a href="%1$s">License</a> and <a href="%2$s">Updates</a> tabs. This page remains for other plugins that add their own license settings here.', 'acf' ),
+						esc_url( $license_url ),
+						esc_url( $updates_url )
+					)
+				);
+				?>
+			</p>
+		</div>
+	<?php
+}
+
+/**
+ * Closes the legacy Updates page wrapper after other plugins' output.
+ *
+ * @since 6.8.12
+ *
+ * @return void
+ */
+function acf_legacy_updates_page_close() {
+	echo '</div>';
+}

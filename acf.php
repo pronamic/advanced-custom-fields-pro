@@ -9,7 +9,7 @@
  * Plugin Name:       Advanced Custom Fields PRO
  * Plugin URI:        https://www.advancedcustomfields.com
  * Description:       Customize WordPress with powerful, professional and intuitive fields.
- * Version:           6.8.11
+ * Version:           6.8.12
  * Author:            WP Engine
  * Author URI:        https://wpengine.com/?utm_source=wordpress.org&utm_medium=referral&utm_campaign=plugin_directory&utm_content=advanced_custom_fields
  * Update URI:        https://www.advancedcustomfields.com/pro
@@ -45,7 +45,7 @@ if ( ! class_exists( 'ACF' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '6.8.11';
+		public $version = '6.8.12';
 
 		/**
 		 * The plugin settings array.
@@ -151,6 +151,7 @@ if ( ! class_exists( 'ACF' ) ) {
 				'url'                     => plugin_dir_url( __FILE__ ),
 				'show_admin'              => true,
 				'show_updates'            => true,
+				'show_settings'           => true,
 				'enable_post_types'       => true,
 				'enable_options_pages_ui' => true,
 				'stripslashes'            => false,
@@ -182,7 +183,7 @@ if ( ! class_exists( 'ACF' ) ) {
 				'enable_bidirection'      => true,
 				'enable_block_bindings'   => true,
 				'enable_meta_box_cb_edit' => true,
-				'enable_acf_ai'           => false,
+				'enable_abilities'        => true,
 				'enable_schema'           => false,
 			);
 
@@ -303,6 +304,10 @@ if ( ! class_exists( 'ACF' ) ) {
 			// Include PRO if included with this build.
 			if ( ! defined( 'ACF_PREVENT_PRO_LOAD' ) || ( defined( 'ACF_PREVENT_PRO_LOAD' ) && ! ACF_PREVENT_PRO_LOAD ) ) {
 				acf_include( 'pro/acf-pro.php' );
+			}
+
+			if ( is_admin() ) {
+				acf_new_instance( 'ACF\Settings_Page\Settings_Page' );
 			}
 
 			if ( is_admin() && function_exists( 'acf_is_pro' ) && ! acf_is_pro() ) {

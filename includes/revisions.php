@@ -379,8 +379,13 @@ if ( ! class_exists( 'acf_revisions' ) ) :
 		 * @return mixed
 		 */
 		public function acf_validate_post_id( $post_id, $_post_id ) {
-			// Bail early if not a well-formed WordPress preview context.
-			if ( ! is_preview() ) {
+			global $wp_query;
+
+			// Bail early if not a preview request. is_preview() alone is also true when an editor views a draft
+			// directly (?p=123), so require core's preview flag too. The $wp_query check avoids is_preview()'s
+			// notice before the main query is set. Access control is the edit_post check below.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( ! isset( $_GET['preview'] ) || ! isset( $wp_query ) || ! is_preview() ) {
 				return $post_id;
 			}
 

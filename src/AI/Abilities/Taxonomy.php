@@ -71,6 +71,12 @@ class Taxonomy extends AbstractAbilityGroup {
 			)
 		);
 
+		// ACF's taxonomy class only loads when ACF post types are enabled. Without it the registration
+		// ability can't create taxonomies, and there are no ACF taxonomies to add abilities for.
+		if ( ! acf_get_setting( 'enable_post_types' ) ) {
+			return;
+		}
+
 		// Register custom taxonomy ability.
 		$this->register_ability(
 			'acf/register-custom-taxonomy',
@@ -79,79 +85,68 @@ class Taxonomy extends AbstractAbilityGroup {
 				'description'         => __( 'Register a new taxonomy definition in WordPress (e.g., "Genre", "Color"). This creates the taxonomy schema itself, not individual terms within it. Use the create term abilities to add terms to an existing taxonomy.', 'acf' ),
 				'category'            => 'acf-field-management',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'taxonomy'          => array(
+					'type'                 => 'object',
+					'properties'           => array(
+						'taxonomy'             => array(
 							'type'        => 'string',
-							'pattern'     => '^[a-z0-9_-]*$',
+							'pattern'     => '^[a-z0-9_-]+$',
 							'maxLength'   => 32,
 							'description' => 'The taxonomy key (slug)',
-							'required'    => true,
 						),
-						'label'             => array(
+						'label'                => array(
 							'type'        => 'string',
 							'description' => 'The singular label for the taxonomy',
-							'required'    => true,
 						),
-						'plural_label'      => array(
+						'plural_label'         => array(
 							'type'        => 'string',
 							'description' => 'The plural label for the taxonomy',
-							'required'    => true,
 						),
-						'description'       => array(
+						'description'          => array(
 							'type'        => 'string',
 							'description' => 'Description of the taxonomy',
-							'required'    => false,
 						),
-						'public'            => array(
+						'public'               => array(
 							'type'        => 'boolean',
 							'description' => 'Whether the taxonomy is public',
-							'required'    => false,
 						),
-						'hierarchical'      => array(
+						'hierarchical'         => array(
 							'type'        => 'boolean',
 							'description' => 'Whether the taxonomy is hierarchical (like categories) or flat (like tags)',
-							'required'    => false,
 						),
-						'post_types'        => array(
+						'post_types'           => array(
 							'type'        => 'array',
 							'description' => 'Array of post types this taxonomy applies to',
-							'required'    => false,
 							'items'       => array(
 								'type' => 'string',
 							),
 						),
-						'show_in_rest'      => array(
+						'show_in_rest'         => array(
 							'type'        => 'boolean',
 							'description' => 'Whether to show this taxonomy in the REST API (required for AI abilities)',
-							'required'    => false,
 						),
-						'rest_base'         => array(
+						'rest_base'            => array(
 							'type'        => 'string',
 							'description' => 'Custom REST API base path (defaults to taxonomy key)',
-							'required'    => false,
 						),
-						'allow_ai_access'   => array(
+						'enable_acf_abilities' => array(
 							'type'        => 'boolean',
-							'description' => 'Whether to allow AI access to this taxonomy',
-							'required'    => false,
+							'description' => 'Whether abilities are enabled for this taxonomy',
 						),
-						'ai_description'    => array(
+						'ai_description'       => array(
 							'type'        => 'string',
 							'description' => 'Description to help AI understand the purpose of this taxonomy',
-							'required'    => false,
 						),
-						'show_ui'           => array(
+						'show_ui'              => array(
 							'type'        => 'boolean',
 							'description' => 'Whether to generate a default UI for managing this taxonomy in the admin',
-							'required'    => false,
 						),
-						'show_admin_column' => array(
+						'show_admin_column'    => array(
 							'type'        => 'boolean',
 							'description' => 'Whether to display a column for the taxonomy on its post type listing screens',
-							'required'    => false,
 						),
 					),
+					'required'             => array( 'taxonomy', 'label', 'plural_label' ),
+					'additionalProperties' => false,
 				),
 				'output_schema'       => array(
 					'type'       => 'object',
@@ -189,6 +184,7 @@ class Taxonomy extends AbstractAbilityGroup {
 	 */
 	private function register_acf_taxonomy_term_abilities() {
 		$acf_taxonomies = acf_get_acf_taxonomies();
+		$ability_names  = array();
 
 		foreach ( $acf_taxonomies as $acf_taxonomy ) {
 			$taxonomy_name = $acf_taxonomy['taxonomy'] ?? '';
@@ -196,8 +192,8 @@ class Taxonomy extends AbstractAbilityGroup {
 				continue;
 			}
 
-			// Check if AI access is enabled for this taxonomy.
-			if ( empty( $acf_taxonomy['allow_ai_access'] ) || empty( $acf_taxonomy['active'] ) ) {
+			// Check if abilities are enabled for this taxonomy.
+			if ( empty( $acf_taxonomy['enable_acf_abilities'] ) || empty( $acf_taxonomy['active'] ) ) {
 				continue;
 			}
 
@@ -210,7 +206,43 @@ class Taxonomy extends AbstractAbilityGroup {
 				continue;
 			}
 
-			$rest_base             = acf_get_object_type_rest_base( $taxonomy_object );
+			$rest_base = acf_get_object_type_rest_base( $taxonomy_object );
+
+			// A post type with the same REST base owns the route, so these abilities would act on its posts instead.
+			$conflicting_post_type = $this->get_post_type_using_rest_base( $rest_base );
+			if ( $conflicting_post_type ) {
+				_doing_it_wrong(
+					__METHOD__,
+					sprintf(
+						/* translators: 1: The taxonomy key, 2: The REST base, 3: The post type key. */
+						esc_html__( 'Abilities for the "%1$s" taxonomy were not registered because its REST base "%2$s" is also used by the "%3$s" post type. Give the taxonomy a different REST base to enable them.', 'acf' ),
+						esc_html( $taxonomy_name ),
+						esc_html( $rest_base ),
+						esc_html( $conflicting_post_type )
+					),
+					'6.8.12'
+				);
+				continue;
+			}
+
+			// Keys like "my_book" and "my-book" both become "my-book", so only the first one gets abilities.
+			if ( isset( $ability_names[ $sanitized_taxonomy_name ] ) ) {
+				_doing_it_wrong(
+					__METHOD__,
+					sprintf(
+						/* translators: 1: The taxonomy key, 2: The other taxonomy key, 3: The name both keys become in ability IDs. */
+						esc_html__( 'Abilities for the "%1$s" taxonomy were not registered because it and the "%2$s" taxonomy both become "%3$s" in ability IDs. Change one of the keys to enable them.', 'acf' ),
+						esc_html( $taxonomy_name ),
+						esc_html( $ability_names[ $sanitized_taxonomy_name ] ),
+						esc_html( $sanitized_taxonomy_name )
+					),
+					'6.8.12'
+				);
+				continue;
+			}
+
+			$ability_names[ $sanitized_taxonomy_name ] = $taxonomy_name;
+
 			$taxonomy_label        = $taxonomy_object->labels->singular_name ?? $taxonomy_name;
 			$taxonomy_label_plural = $taxonomy_object->labels->name ?? $taxonomy_name . 's';
 
@@ -227,7 +259,7 @@ class Taxonomy extends AbstractAbilityGroup {
 
 			// Register query/list feature for this taxonomy
 			$this->register_ability(
-				'acf/' . $sanitized_taxonomy_name . 's',
+				'acf/list-' . $sanitized_taxonomy_name . '-terms',
 				array(
 					/* translators: %s The plural label for the custom taxonomy. */
 					'label'               => sprintf( __( 'Query %s', 'acf' ), $taxonomy_label_plural ),
@@ -255,7 +287,6 @@ class Taxonomy extends AbstractAbilityGroup {
 							),
 							'post'       => array(
 								'type'        => 'integer',
-								'default'     => null,
 								'description' => 'Search terms assigned to a specific post.',
 							),
 							'slug'       => array(
@@ -268,7 +299,6 @@ class Taxonomy extends AbstractAbilityGroup {
 							'parent'     => array(
 								'type'        => 'integer',
 								'description' => 'Filter by parent term ID for hierarchical taxonomies. Use 0 for top-level terms only.',
-								'required'    => false,
 							),
 							'orderby'    => array(
 								'type'        => 'string',
@@ -311,7 +341,7 @@ class Taxonomy extends AbstractAbilityGroup {
 
 			// Register create ability for this taxonomy
 			$this->register_ability(
-				'acf/create-' . $sanitized_taxonomy_name,
+				'acf/create-' . $sanitized_taxonomy_name . '-term',
 				array(
 					/* translators: %s The singular label for the custom taxonomy. */
 					'label'               => sprintf( __( 'Create %s Term', 'acf' ), $taxonomy_label ),
@@ -340,7 +370,7 @@ class Taxonomy extends AbstractAbilityGroup {
 
 			// Register view single ability for this taxonomy
 			$this->register_ability(
-				'acf/view-' . $sanitized_taxonomy_name,
+				'acf/view-' . $sanitized_taxonomy_name . '-term',
 				array(
 					/* translators: %s The singular label for the custom taxonomy. */
 					'label'               => sprintf( __( 'View a %s Term', 'acf' ), $taxonomy_label ),
@@ -353,9 +383,9 @@ class Taxonomy extends AbstractAbilityGroup {
 							'id' => array(
 								'type'        => 'integer',
 								'description' => sprintf( 'The ID of the %s term to view.', strtolower( $taxonomy_label ) ),
-								'required'    => true,
 							),
 						),
+						'required'   => array( 'id' ),
 					),
 					'output_schema'       => $item_schema,
 					'execute_callback'    => function ( $input = array() ) use ( $rest_base ) {
@@ -379,7 +409,7 @@ class Taxonomy extends AbstractAbilityGroup {
 
 			// Register update ability for this taxonomy
 			$this->register_ability(
-				'acf/update-' . $sanitized_taxonomy_name,
+				'acf/update-' . $sanitized_taxonomy_name . '-term',
 				array(
 					/* translators: %s The singular label for the custom taxonomy. */
 					'label'               => sprintf( __( 'Update a %s Term', 'acf' ), $taxonomy_label ),
@@ -409,7 +439,7 @@ class Taxonomy extends AbstractAbilityGroup {
 
 			// Register delete ability for this taxonomy.
 			$this->register_ability(
-				'acf/delete-' . $sanitized_taxonomy_name,
+				'acf/delete-' . $sanitized_taxonomy_name . '-term',
 				array(
 					/* translators: %s The singular label for the custom taxonomy. */
 					'label'               => sprintf( __( 'Delete a %s Term', 'acf' ), $taxonomy_label ),
@@ -422,15 +452,14 @@ class Taxonomy extends AbstractAbilityGroup {
 							'id'    => array(
 								'type'        => 'integer',
 								'description' => sprintf( 'The ID of the %s term to delete.', strtolower( $taxonomy_label ) ),
-								'required'    => true,
 							),
 							'force' => array(
 								'type'        => 'boolean',
 								'description' => 'Whether to permanently delete the term. Defaults to true, as terms cannot be trashed.',
-								'required'    => false,
 								'default'     => true,
 							),
 						),
+						'required'   => array( 'id' ),
 					),
 					'output_schema'       => $item_schema,
 					'execute_callback'    => function ( $input = array() ) use ( $rest_base ) {
@@ -455,6 +484,29 @@ class Taxonomy extends AbstractAbilityGroup {
 	}
 
 	/**
+	 * Finds a REST-enabled post type whose route is the same as the given term route.
+	 *
+	 * Term abilities send their requests to /wp/v2/{rest_base}. WordPress registers post type routes
+	 * before taxonomy routes, so a post type with the same base handles those requests.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param string $rest_base The taxonomy's REST base.
+	 * @return string The conflicting post type key, or an empty string if there isn't one.
+	 */
+	private function get_post_type_using_rest_base( string $rest_base ): string {
+		foreach ( get_post_types( array( 'show_in_rest' => true ), 'objects' ) as $post_type_object ) {
+			$rest_namespace = ! empty( $post_type_object->rest_namespace ) ? $post_type_object->rest_namespace : 'wp/v2';
+
+			if ( 'wp/v2' === $rest_namespace && acf_get_object_type_rest_base( $post_type_object ) === $rest_base ) {
+				return $post_type_object->name;
+			}
+		}
+
+		return '';
+	}
+
+	/**
 	 * Get REST input schema for taxonomy terms.
 	 *
 	 * @since 6.8.0
@@ -475,33 +527,31 @@ class Taxonomy extends AbstractAbilityGroup {
 			$schema['properties']['id'] = array(
 				'type'        => 'integer',
 				'description' => sprintf( 'The ID of the %s term to update.', strtolower( $taxonomy_label ) ),
-				'required'    => true,
 			);
+			$schema['required']         = array( 'id' );
+		} else {
+			$schema['required'] = array( 'name' );
 		}
 
 		$schema['properties']['name'] = array(
 			'type'        => 'string',
 			'description' => sprintf( 'The name of the %s term.', strtolower( $taxonomy_label ) ),
-			'required'    => 'update' !== $action,
 		);
 
 		$schema['properties']['description'] = array(
 			'type'        => 'string',
 			'description' => sprintf( 'The description of the %s term.', strtolower( $taxonomy_label ) ),
-			'required'    => false,
 		);
 
 		$schema['properties']['slug'] = array(
 			'type'        => 'string',
 			'description' => sprintf( 'The slug of the %s term (auto-generated from name if not provided).', strtolower( $taxonomy_label ) ),
-			'required'    => false,
 		);
 
 		if ( $hierarchical ) {
 			$schema['properties']['parent'] = array(
 				'type'        => 'integer',
 				'description' => 'Parent term ID for hierarchical taxonomies. Use 0 or omit for top-level terms. For child terms, provide the ID of the parent term.',
-				'required'    => false,
 				'default'     => 0,
 			);
 		}
@@ -566,7 +616,7 @@ class Taxonomy extends AbstractAbilityGroup {
 				continue;
 			}
 
-			if ( empty( $acf_taxonomy['active'] ) || empty( $acf_taxonomy['allow_ai_access'] ) ) {
+			if ( empty( $acf_taxonomy['active'] ) || empty( $acf_taxonomy['enable_acf_abilities'] ) ) {
 				continue;
 			}
 
@@ -631,8 +681,8 @@ class Taxonomy extends AbstractAbilityGroup {
 		$rest_base    = $input['rest_base'] ?? '';
 
 		// AI settings
-		$allow_ai_access = $input['allow_ai_access'] ?? true;
-		$ai_description  = $input['ai_description'] ?? '';
+		$enable_acf_abilities = $input['enable_acf_abilities'] ?? true;
+		$ai_description       = $input['ai_description'] ?? '';
 
 		// UI settings
 		$show_ui           = $input['show_ui'] ?? true;
@@ -649,28 +699,28 @@ class Taxonomy extends AbstractAbilityGroup {
 
 		// Use ACF's method to create the taxonomy.
 		$taxonomy_data = array(
-			'key'               => uniqid( 'taxonomy_' ),
-			'taxonomy'          => $taxonomy,
-			'title'             => $plural_label,
-			'labels'            => wp_parse_args(
+			'key'                  => uniqid( 'taxonomy_' ),
+			'taxonomy'             => $taxonomy,
+			'title'                => $plural_label,
+			'labels'               => wp_parse_args(
 				array(
 					'name'          => $plural_label,
 					'singular_name' => $label,
 				),
 				acf_get_internal_post_type_instance( 'acf-taxonomy' )->get_settings_array()['labels']
 			),
-			'description'       => $description,
-			'public'            => $public ? 1 : 0,
-			'hierarchical'      => $hierarchical ? 1 : 0,
-			'object_type'       => $post_types,
-			'active'            => 1,
+			'description'          => $description,
+			'public'               => $public ? 1 : 0,
+			'hierarchical'         => $hierarchical ? 1 : 0,
+			'object_type'          => $post_types,
+			'active'               => 1,
 			// REST API settings
-			'show_in_rest'      => $show_in_rest ? 1 : 0,
+			'show_in_rest'         => $show_in_rest ? 1 : 0,
 			// AI settings
-			'allow_ai_access'   => $allow_ai_access ? 1 : 0,
+			'enable_acf_abilities' => $enable_acf_abilities ? 1 : 0,
 			// UI settings
-			'show_ui'           => $show_ui ? 1 : 0,
-			'show_admin_column' => $show_admin_column ? 1 : 0,
+			'show_ui'              => $show_ui ? 1 : 0,
+			'show_admin_column'    => $show_admin_column ? 1 : 0,
 		);
 
 		// Add optional settings only if provided

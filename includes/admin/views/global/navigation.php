@@ -32,7 +32,10 @@ $wpengine_more_items = array();
 
 // Hardcoded since future ACF post types will likely live in the "More" menu.
 $core_tabs_classes      = array( 'acf-field-group', 'acf-post-type', 'acf-taxonomy' );
-$acf_more_items_classes = array( 'acf-ui-options-page', 'acf-tools', 'acf-settings-updates' );
+$acf_more_items_classes = array_merge(
+	array( 'acf-ui-options-page', 'acf-tools', 'acf-settings-updates' ),
+	acf_get_instance( 'ACF\Settings_Page\Settings_Page' )->get_page_slugs()
+);
 
 if ( isset( $submenu[ $parent_slug ] ) ) {
 	foreach ( $submenu[ $parent_slug ] as $i => $sub_item ) {
@@ -77,7 +80,7 @@ if ( isset( $submenu[ $parent_slug ] ) ) {
 				$acf_more_items[] = $menu_item;
 			}
 		} elseif ( in_array( $menu_item['class'], $acf_more_items_classes, true ) ) {
-			// ACF tabs moved to the "More" menu.
+			// ACF tabs moved to the "More" menu, including the settings page's "settings-{tab}" items.
 			$acf_more_items[] = $menu_item;
 		} else {
 			// Third party tabs placed into the "More" menu.
@@ -182,6 +185,7 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 	echo $section_html; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- safely built and escaped HTML above.
 }
 ?>
+<div class="acf-admin-toolbar-spacer"></div>
 <div class="acf-admin-toolbar">
 	<div class="acf-admin-toolbar-inner">
 		<div class="acf-nav-wrap">
@@ -229,7 +233,7 @@ function acf_print_menu_section( $menu_items, $section = '' ) {
 
 				if ( acf_is_pro() ) {
 					if ( acf_pro_is_updates_page_visible() ) {
-						$unlock_url    = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-updates#acf_pro_license' );
+						$unlock_url    = admin_url( 'edit.php?post_type=acf-field-group&page=acf-settings-tab-license#acf_pro_license' );
 						$unlock_target = '';
 					}
 

@@ -42,21 +42,21 @@ class AI {
 			new GEO();
 		}
 
-		if ( $this->is_ai_enabled() ) {
+		if ( $this->is_abilities_enabled() ) {
 			new Abilities();
 			$this->add_admin_ui_hooks();
 		}
 	}
 
 	/**
-	 * Checks if AI functionality is enabled.
+	 * Checks if Abilities functionality is enabled.
 	 *
-	 * @since 6.8.0
+	 * @since 6.9.0
 	 *
 	 * @return boolean
 	 */
-	public function is_ai_enabled(): bool {
-		return (bool) acf_get_setting( 'enable_acf_ai' );
+	public function is_abilities_enabled(): bool {
+		return (bool) acf_get_setting( 'enable_abilities' );
 	}
 
 	/**
@@ -122,37 +122,37 @@ class AI {
 			return;
 		}
 
-		$item_type           = str_replace( '-', '_', $item_type );
-		$post_id             = (int) acf_request_arg( 'post', 0 );
-		$allow_ai_access_val = ! empty( $item['allow_ai_access'] ) ? 1 : 0;
+		$item_type                = str_replace( '-', '_', $item_type );
+		$post_id                  = (int) acf_request_arg( 'post', 0 );
+		$enable_acf_abilities_val = ! empty( $item['enable_acf_abilities'] ) ? 1 : 0;
 
-		// If this is a new item, default to allowing AI access.
+		// If this is a new item, default to enabling abilities.
 		if ( ! $post_id ) {
-			$allow_ai_access_val = 1;
+			$enable_acf_abilities_val = 1;
 		}
 
-		$allow_access_label   = __( 'Allow AI Access', 'acf' );
-		$allow_access_desc    = __( 'Allow AI systems to access and modify this content through the WordPress Abilities API.', 'acf' );
+		$abilities_label      = __( 'Enable Abilities', 'acf' );
+		$abilities_desc       = __( 'Let AI tools and other integrations access and manage this content through the WordPress Abilities API.', 'acf' );
 		$ai_description_label = __( 'AI Description', 'acf' );
 		$ai_description_desc  = __( 'Provide a description that will help AI systems understand the purpose and how to use this effectively.', 'acf' );
 
 		if ( 'acf_post_type' === $item_type ) {
-			$allow_access_label   = __( 'Allow AI Access to Post Content', 'acf' );
-			$allow_access_desc    = __( 'When enabled, AI models can access and interact with the content of posts in this post type using supported integrations. This feature uses the WordPress Abilities API.', 'acf' );
+			$abilities_label      = __( 'Enable Abilities for Posts', 'acf' );
+			$abilities_desc       = __( 'Let AI tools and other integrations access and manage posts of this type through the WordPress Abilities API.', 'acf' );
 			$ai_description_label = __( 'AI Guidance for Post Type', 'acf' );
 			$ai_description_desc  = __( "Add a short explanation of what this post type is for. The clearer your description, the better the AI's output will be.", 'acf' );
 		}
 
 		if ( 'acf_taxonomy' === $item_type ) {
-			$allow_access_label   = __( 'Allow AI Access to Taxonomy Terms', 'acf' );
-			$allow_access_desc    = __( 'When enabled, AI models can access and interact with the terms in this taxonomy using supported integrations. This feature uses the WordPress Abilities API.', 'acf' );
+			$abilities_label      = __( 'Enable Abilities for Terms', 'acf' );
+			$abilities_desc       = __( 'Let AI tools and other integrations access and manage terms in this taxonomy through the WordPress Abilities API.', 'acf' );
 			$ai_description_label = __( 'AI Guidance for Taxonomy', 'acf' );
 			$ai_description_desc  = __( "Add a short explanation of what this taxonomy is for. The clearer your description, the better the AI's output will be.", 'acf' );
 		}
 
 		if ( 'acf_field_group' === $item_type ) {
-			$allow_access_label   = __( 'Allow AI Access to Field Data', 'acf' );
-			$allow_access_desc    = __( 'When enabled, AI models can access and interact with the fields in this group using supported integrations. This feature uses the WordPress Abilities API.', 'acf' );
+			$abilities_label      = __( 'Enable Abilities for Field Data', 'acf' );
+			$abilities_desc       = __( 'Let AI tools and other integrations access and manage the fields in this group through the WordPress Abilities API.', 'acf' );
 			$ai_description_label = __( 'AI Context Description', 'acf' );
 			$ai_description_desc  = __( "Add a short explanation of what this field group is for. The clearer your description, the better the AI's output will be.", 'acf' );
 		}
@@ -160,12 +160,12 @@ class AI {
 		acf_render_field_wrap(
 			array(
 				'type'         => 'true_false',
-				'name'         => 'allow_ai_access',
-				'key'          => 'allow_ai_access',
+				'name'         => 'enable_acf_abilities',
+				'key'          => 'enable_acf_abilities',
 				'prefix'       => $item_type,
-				'value'        => $allow_ai_access_val,
-				'label'        => $allow_access_label,
-				'instructions' => $allow_access_desc,
+				'value'        => $enable_acf_abilities_val,
+				'label'        => $abilities_label,
+				'instructions' => $abilities_desc,
 				'ui'           => true,
 				'default'      => 1,
 			)
@@ -183,7 +183,7 @@ class AI {
 				'rows'         => 4,
 				'conditions'   => array(
 					array(
-						'field'    => 'allow_ai_access',
+						'field'    => 'enable_acf_abilities',
 						'operator' => '==',
 						'value'    => '1',
 					),

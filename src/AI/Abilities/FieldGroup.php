@@ -40,7 +40,7 @@ class FieldGroup extends AbstractAbilityGroup {
 			'acf/field-groups',
 			array(
 				'label'               => __( 'List ACF Field Groups', 'acf' ),
-				'description'         => __( 'Get all ACF field groups that allow AI access.', 'acf' ),
+				'description'         => __( 'Get all ACF field groups with abilities enabled, including their field definitions. Field values can only be read or written through post and term abilities when the field group also has "Show in REST API" enabled.', 'acf' ),
 				'category'            => 'acf-field-management',
 				'input_schema'        => array(
 					'type'                 => array( 'object', 'null' ),
@@ -157,9 +157,9 @@ class FieldGroup extends AbstractAbilityGroup {
 							'description' => 'Whether the field group is shown in the REST API',
 							'default'     => true,
 						),
-						'allow_ai_access'       => array(
+						'enable_acf_abilities'  => array(
 							'type'        => 'boolean',
-							'description' => 'Whether the field group allows access to AI',
+							'description' => 'Whether abilities are enabled for this field group',
 							'default'     => true,
 						),
 						'ai_description'        => array(
@@ -182,8 +182,17 @@ class FieldGroup extends AbstractAbilityGroup {
 								'ID'                    => array( 'type' => 'integer' ),
 								'key'                   => array( 'type' => 'string' ),
 								'title'                 => array( 'type' => 'string' ),
-								'fields'                => array( 'type' => 'array' ),
-								'location'              => array( 'type' => 'array' ),
+								'fields'                => array(
+									'type'  => 'array',
+									'items' => array( 'type' => 'object' ),
+								),
+								'location'              => array(
+									'type'  => 'array',
+									'items' => array(
+										'type'  => 'array',
+										'items' => array( 'type' => 'object' ),
+									),
+								),
 								'position'              => array( 'type' => 'string' ),
 								'style'                 => array( 'type' => 'string' ),
 								'label_placement'       => array( 'type' => 'string' ),
@@ -191,7 +200,7 @@ class FieldGroup extends AbstractAbilityGroup {
 								'active'                => array( 'type' => 'boolean' ),
 								'description'           => array( 'type' => 'string' ),
 								'show_in_rest'          => array( 'type' => 'boolean' ),
-								'allow_ai_access'       => array( 'type' => 'boolean' ),
+								'enable_acf_abilities'  => array( 'type' => 'boolean' ),
 								'ai_description'        => array( 'type' => 'string' ),
 							),
 						),
@@ -210,8 +219,9 @@ class FieldGroup extends AbstractAbilityGroup {
 				},
 				'meta'                => array(
 					'annotations'  => array(
+						'readonly'    => false,
 						'destructive' => false,
-						'idempotent'  => true,
+						'idempotent'  => false,
 					),
 					'show_in_rest' => true,
 				),
@@ -347,7 +357,7 @@ class FieldGroup extends AbstractAbilityGroup {
 	}
 
 	/**
-	 * A helper function to get the field groups that allow AI access.
+	 * Returns field groups with abilities enabled, including their field definitions.
 	 *
 	 * @since 6.8.0
 	 *
@@ -358,16 +368,20 @@ class FieldGroup extends AbstractAbilityGroup {
 		$ai_accessible = array();
 
 		foreach ( $field_groups as $field_group ) {
-			if ( $this->is_field_group_ai_accessible( $field_group ) ) {
-				$ai_accessible[] = $field_group;
+			if ( ! $this->is_field_group_ai_accessible( $field_group ) ) {
+				continue;
 			}
+
+			// acf_get_field_groups() does not load fields; they are stored as separate posts.
+			$field_group['fields'] = acf_prepare_fields_for_export( acf_get_fields( $field_group ) );
+			$ai_accessible[]       = $field_group;
 		}
 
 		return $ai_accessible;
 	}
 
 	/**
-	 * Check if a field group allows AI access.
+	 * Check if a field group has abilities enabled.
 	 *
 	 * @since 6.8.0
 	 *
@@ -375,7 +389,7 @@ class FieldGroup extends AbstractAbilityGroup {
 	 * @return boolean
 	 */
 	private function is_field_group_ai_accessible( $field_group ): bool {
-		return ! empty( $field_group['allow_ai_access'] );
+		return ! empty( $field_group['enable_acf_abilities'] );
 	}
 
 	/**
@@ -401,7 +415,7 @@ class FieldGroup extends AbstractAbilityGroup {
 			'hide_on_screen'        => ! empty( $input['hide_on_screen'] ) ? $input['hide_on_screen'] : array(),
 			'active'                => ! isset( $input['active'] ) || $input['active'],
 			'show_in_rest'          => ! isset( $input['show_in_rest'] ) || $input['show_in_rest'],
-			'allow_ai_access'       => ! isset( $input['allow_ai_access'] ) || $input['allow_ai_access'],
+			'enable_acf_abilities'  => ! isset( $input['enable_acf_abilities'] ) || $input['enable_acf_abilities'],
 			'ai_description'        => isset( $input['ai_description'] ) ? sanitize_text_field( $input['ai_description'] ) : '',
 		);
 
@@ -478,23 +492,24 @@ class FieldGroup extends AbstractAbilityGroup {
 		}
 
 		if ( ! empty( $field['choices'] ) && is_array( $field['choices'] ) ) {
-			$field['choices'] = array_map( 'sanitize_text_field', $field['choices'] );
+			$field['choices'] = map_deep( $field['choices'], 'sanitize_text_field' );
 		}
 
-		if ( isset( $field['min'] ) ) {
-			$field['min'] = absint( $field['min'] );
-		}
+		// Number and range limits are values, so they can be negative or decimal. Other types use min/max as item counts.
+		$is_value_limit = isset( $field['type'] ) && in_array( $field['type'], array( 'number', 'range' ), true );
 
-		if ( isset( $field['max'] ) ) {
-			$field['max'] = absint( $field['max'] );
-		}
-
-		if ( isset( $field['default_value'] ) ) {
-			if ( is_string( $field['default_value'] ) ) {
-				$field['default_value'] = sanitize_text_field( $field['default_value'] );
-			} elseif ( is_array( $field['default_value'] ) ) {
-				$field['default_value'] = array_map( 'sanitize_text_field', $field['default_value'] );
+		foreach ( array( 'min', 'max' ) as $limit ) {
+			if ( isset( $field[ $limit ] ) ) {
+				$field[ $limit ] = $is_value_limit ? $this->sanitize_numeric_limit( $field[ $limit ] ) : $this->sanitize_count_limit( $field[ $limit ] );
 			}
+		}
+
+		if ( isset( $field['default_value'] ) && ( is_string( $field['default_value'] ) || is_array( $field['default_value'] ) ) ) {
+			$field['default_value'] = map_deep( $field['default_value'], 'sanitize_text_field' );
+		}
+
+		if ( ! empty( $field['layouts'] ) && is_array( $field['layouts'] ) ) {
+			$field['layouts'] = array_map( array( $this, 'prepare_layout_for_ability_import' ), $field['layouts'] );
 		}
 
 		if ( ! empty( $field['message'] ) ) {
@@ -506,6 +521,74 @@ class FieldGroup extends AbstractAbilityGroup {
 		}
 
 		return $field;
+	}
+
+	/**
+	 * Ensures a flexible content layout has a name and sanitizes its settings.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param mixed $layout The layout being prepared for import.
+	 * @return mixed The layout with a name and sanitized values.
+	 */
+	private function prepare_layout_for_ability_import( $layout ) {
+		if ( ! is_array( $layout ) ) {
+			return $layout;
+		}
+
+		if ( ! empty( $layout['label'] ) ) {
+			$layout['label'] = sanitize_text_field( $layout['label'] );
+		}
+
+		if ( empty( $layout['name'] ) && ! empty( $layout['label'] ) ) {
+			$layout['name'] = acf_slugify( $layout['label'], '_' );
+		}
+
+		foreach ( array( 'min', 'max' ) as $limit ) {
+			if ( isset( $layout[ $limit ] ) ) {
+				$layout[ $limit ] = $this->sanitize_count_limit( $layout[ $limit ] );
+			}
+		}
+
+		return $layout;
+	}
+
+	/**
+	 * Sanitizes a min or max setting, keeping negative and decimal values.
+	 *
+	 * An empty value means no limit, so it is kept as an empty string.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param mixed $value The submitted limit.
+	 * @return integer|float|string
+	 */
+	private function sanitize_numeric_limit( $value ) {
+		if ( is_numeric( $value ) ) {
+			return $value + 0;
+		}
+
+		return '';
+	}
+
+	/**
+	 * Sanitizes a min or max item count, such as a repeater's row limits.
+	 *
+	 * Counts become non-negative integers so the field's REST schema never emits
+	 * a negative minItems or maxItems. An empty value means no limit, so it is
+	 * kept as an empty string.
+	 *
+	 * @since 6.8.12
+	 *
+	 * @param mixed $value The submitted limit.
+	 * @return integer|string
+	 */
+	private function sanitize_count_limit( $value ) {
+		if ( is_numeric( $value ) ) {
+			return max( 0, (int) $value );
+		}
+
+		return '';
 	}
 
 	/**

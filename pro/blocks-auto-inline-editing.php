@@ -35,7 +35,50 @@ function get_allowed_contenteditable_fields(): array {
  * @return array
  */
 function get_non_auto_inline_editing_fields(): array {
-	return array( 'repeater', 'flexible-content' );
+	return array( 'repeater', 'flexible_content' );
+}
+
+/**
+ * Returns true if the field's return type supports auto inline editing.
+ *
+ * Fields with multiple selection enabled, an array/object return_format, or a field type that
+ * always returns an array regardless of return_format, are skipped.
+ *
+ * @param array $field The field array.
+ * @return boolean
+ */
+function field_return_type_supports_auto_inline_editing( array $field ): bool {
+	// Some field types always return non-scalar values regardless of their return_format setting.
+	$always_non_scalar_types = array(
+		'checkbox',
+		'flexible_content',
+		'gallery',
+		'google_map',
+		'relationship',
+		'repeater',
+	);
+	if ( in_array( $field['type'] ?? '', $always_non_scalar_types, true ) ) {
+		$supports_auto_inline_editing = false;
+	} elseif ( ! empty( $field['multiple'] ) ) {
+		$supports_auto_inline_editing = false;
+	} elseif ( $field['type'] === 'taxonomy' && in_array( $field['field_type'] ?? '', array( 'checkbox', 'multi_select' ), true ) ) {
+		$supports_auto_inline_editing = false;
+	} else {
+		$return_format                = $field['return_format'] ?? '';
+		$supports_auto_inline_editing = ! in_array( $return_format, array( 'array', 'object' ), true );
+	}
+
+	/**
+	 * Filters whether a field supports auto inline editing.
+	 *
+	 * Return true to allow a field to be tracked for inline editing, false to skip it.
+	 *
+	 * @since 6.9.0
+	 *
+	 * @param bool  $supports_auto_inline_editing Whether the field supports auto inline editing.
+	 * @param array $field                        The field array.
+	 */
+	return (bool) apply_filters( 'acf/blocks/auto_inline_editing/field_return_type_supports_auto_inline_editing', $supports_auto_inline_editing, $field );
 }
 
 /**
@@ -61,6 +104,11 @@ function populate_auto_inline_editing_values( $field_value, $post_id, $field ) {
 	// so block templates can rely on real values (e.g. for conditional logic) instead of placeholder strings.
 	if ( ! empty( $acf_blocks_doing_auto_inline_editing_block_id )
 		&& (string) $post_id !== (string) $acf_blocks_doing_auto_inline_editing_block_id ) {
+		return $field_value;
+	}
+
+	// Fields that return non-scalar values (arrays, objects) cannot be inline-edited.
+	if ( ! field_return_type_supports_auto_inline_editing( $field ) ) {
 		return $field_value;
 	}
 
@@ -251,8 +299,10 @@ function apply_inline_editing_attributes_to_html_string( $html_string, $block ):
 
 							// phpcs:ignore WordPress.NamingConventions.ValidVariableName
 							if ( $field_value !== 'acf_auto_inline_editing_field_name_' . $field_slug ) {
+								// nodeValue would parse "&" as an entity reference and empty the element.
 								// phpcs:ignore WordPress.NamingConventions.ValidVariableName
-								$element->nodeValue = $field_value;
+								$element->textContent = '';
+								$element->appendChild( $dom->createTextNode( $field_value ) );
 							} else {
 								// phpcs:ignore WordPress.NamingConventions.ValidVariableName
 								$element->nodeValue = '';
@@ -273,7 +323,8 @@ function apply_inline_editing_attributes_to_html_string( $html_string, $block ):
 					// Remove the acf_auto_inline_editing_field_name_ placeholder from the text node.
 					if ( strpos( $top_level_text, 'acf_auto_inline_editing_field_name_' . $field_data['name'] ) !== false ) {
 						// phpcs:ignore WordPress.NamingConventions.ValidVariableName
-						$element->nodeValue = str_replace( 'acf_auto_inline_editing_field_name_' . $field_data['name'], '', $top_level_text );
+						$element->textContent = '';
+						$element->appendChild( $dom->createTextNode( str_replace( 'acf_auto_inline_editing_field_name_' . $field_data['name'], '', $top_level_text ) ) );
 					}
 				}
 			}

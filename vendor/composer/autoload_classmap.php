@@ -37,6 +37,7 @@ return array(
     'ACF\\Pro\\Fields\\FlexibleContent\\Render' => $baseDir . '/src/Pro/Fields/FlexibleContent/Render.php',
     'ACF\\Pro\\Forms\\WC_Order' => $baseDir . '/src/Pro/Forms/WC_Order.php',
     'ACF\\Pro\\Meta\\WooOrder' => $baseDir . '/src/Pro/Meta/WooOrder.php',
+    'ACF\\Settings_Page\\Settings_Page' => $baseDir . '/src/Settings_Page/Settings_Page.php',
     'ACF\\Site_Health\\AI_Usage' => $baseDir . '/src/Site_Health/AI_Usage.php',
     'ACF\\Site_Health\\Site_Health' => $baseDir . '/src/Site_Health/Site_Health.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',

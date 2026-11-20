@@ -187,7 +187,7 @@ if ( ! class_exists( 'ACF_Post_Type' ) ) {
 				'advanced_configuration'   => false,
 				'import_source'            => '',
 				'import_date'              => '',
-				'allow_ai_access'          => false,
+				'enable_acf_abilities'     => true,
 				'ai_description'           => '',
 				// Settings passed to register_post_type().
 				'labels'                   => array(

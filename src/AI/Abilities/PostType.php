@@ -71,6 +71,12 @@ class PostType extends AbstractAbilityGroup {
 			)
 		);
 
+		// ACF's post type class only loads when ACF post types are enabled. Without it the registration
+		// ability can't create post types, and there are no ACF post types to add abilities for.
+		if ( ! acf_get_setting( 'enable_post_types' ) ) {
+			return;
+		}
+
 		// Register custom post type ability.
 		$this->register_ability(
 			'acf/register-custom-post-type',
@@ -79,92 +85,96 @@ class PostType extends AbstractAbilityGroup {
 				'description'         => __( 'Register a new post type definition in WordPress (e.g., "Book", "Event"). This creates the post type schema itself, not individual posts. Use the create post abilities to add posts to an existing post type.', 'acf' ),
 				'category'            => 'acf-field-management',
 				'input_schema'        => array(
-					'type'       => 'object',
-					'properties' => array(
-						'post_type'        => array(
+					'type'                 => 'object',
+					'properties'           => array(
+						'post_type'            => array(
 							'type'        => 'string',
-							'pattern'     => '^[a-z0-9_-]*$',
+							'pattern'     => '^[a-z0-9_-]+$',
 							'maxLength'   => 20,
 							'description' => 'The post type key (slug)',
-							'required'    => true,
 						),
-						'label'            => array(
+						'label'                => array(
 							'type'        => 'string',
 							'description' => 'The singular label for the post type',
-							'required'    => true,
 						),
-						'plural_label'     => array(
+						'plural_label'         => array(
 							'type'        => 'string',
 							'description' => 'The plural label for the post type',
-							'required'    => true,
 						),
-						'description'      => array(
+						'description'          => array(
 							'type'        => 'string',
 							'description' => 'Description of the post type',
-							'required'    => false,
 						),
-						'public'           => array(
+						'public'               => array(
 							'type'        => 'boolean',
 							'description' => 'Whether the post type is public',
-							'required'    => false,
 						),
-						'hierarchical'     => array(
+						'hierarchical'         => array(
 							'type'        => 'boolean',
 							'description' => 'Whether the post type is hierarchical',
-							'required'    => false,
 						),
-						'supports'         => array(
+						'supports'             => array(
 							'type'        => 'array',
-							'description' => 'Features the post type supports. Can be array of strings ["title", "editor"] or object {"title": true, "editor": false}. Available: title, editor, author, thumbnail, excerpt, comments, trackbacks, revisions, page-attributes, custom-fields, post-formats',
-							'required'    => false,
+							'description' => 'Features the post type supports, e.g. ["title", "editor"]. Defaults to title and editor. Available: title, editor, author, thumbnail, excerpt, comments, trackbacks, revisions, page-attributes, custom-fields, post-formats',
+							'items'       => array( 'type' => 'string' ),
 						),
-						'show_in_rest'     => array(
+						'show_in_rest'         => array(
 							'type'        => 'boolean',
 							'description' => 'Whether to show this post type in the REST API (required for AI abilities)',
-							'required'    => false,
 						),
-						'rest_base'        => array(
+						'rest_base'            => array(
 							'type'        => 'string',
 							'description' => 'Custom REST API base path (defaults to post type key)',
-							'required'    => false,
 						),
-						'allow_ai_access'  => array(
+						'enable_acf_abilities' => array(
 							'type'        => 'boolean',
-							'description' => 'Whether to allow AI access to this post type',
-							'required'    => false,
+							'description' => 'Whether abilities are enabled for this post type',
 						),
-						'ai_description'   => array(
+						'ai_description'       => array(
 							'type'        => 'string',
 							'description' => 'Description to help AI understand the purpose of this post type',
-							'required'    => false,
 						),
-						'menu_icon'        => array(
-							'type'        => array( 'string', 'object' ),
-							'description' => 'Menu icon (dashicon class, URL, or object with type and value)',
-							'required'    => false,
+						'menu_icon'            => array(
+							'description' => 'Menu icon: a dashicon class or image URL, or an object with type and value',
+							'anyOf'       => array(
+								array( 'type' => 'string' ),
+								array(
+									'type'                 => 'object',
+									'properties'           => array(
+										'type'  => array(
+											'type' => 'string',
+											'enum' => array( 'dashicons', 'url', 'media_library' ),
+										),
+										'value' => array(
+											'type'        => array( 'string', 'integer' ),
+											'description' => 'The dashicon class, image URL, or media library attachment ID',
+										),
+									),
+									'required'             => array( 'type', 'value' ),
+									'additionalProperties' => false,
+								),
+							),
 						),
-						'menu_position'    => array(
+						'menu_position'        => array(
 							'type'        => 'integer',
 							'description' => 'Position in the admin menu (5-100)',
-							'required'    => false,
 						),
-						'has_archive'      => array(
+						'has_archive'          => array(
 							'type'        => 'boolean',
 							'description' => 'Whether the post type has an archive page',
-							'required'    => false,
 						),
-						'has_archive_slug' => array(
+						'has_archive_slug'     => array(
 							'type'        => 'string',
 							'description' => 'Custom slug for the archive page',
-							'required'    => false,
 						),
-						'taxonomies'       => array(
+						'taxonomies'           => array(
 							'type'        => 'array',
 							'description' => 'Array of taxonomy names to associate with this post type',
 							'items'       => array( 'type' => 'string' ),
-							'required'    => false,
 						),
 					),
+					'required'             => array( 'post_type', 'label', 'plural_label' ),
+					'additionalProperties' => false,
 				),
 				'output_schema'       => array(
 					'type'       => 'object',
@@ -202,6 +212,7 @@ class PostType extends AbstractAbilityGroup {
 	 */
 	private function register_acf_post_type_abilities() {
 		$acf_post_types = acf_get_acf_post_types();
+		$ability_names  = array();
 
 		foreach ( $acf_post_types as $acf_post_type ) {
 			$post_type_name = $acf_post_type['post_type'] ?? '';
@@ -209,8 +220,8 @@ class PostType extends AbstractAbilityGroup {
 				continue;
 			}
 
-			// Check if the post type is active and AI access is enabled.
-			if ( empty( $acf_post_type['active'] ) || empty( $acf_post_type['allow_ai_access'] ) ) {
+			// Check if the post type is active and abilities are enabled.
+			if ( empty( $acf_post_type['active'] ) || empty( $acf_post_type['enable_acf_abilities'] ) ) {
 				continue;
 			}
 
@@ -222,6 +233,24 @@ class PostType extends AbstractAbilityGroup {
 			if ( ! $post_type_object || empty( $post_type_object->show_in_rest ) ) {
 				continue;
 			}
+
+			// Keys like "my_book" and "my-book" both become "my-book", so only the first one gets abilities.
+			if ( isset( $ability_names[ $sanitized_post_type_name ] ) ) {
+				_doing_it_wrong(
+					__METHOD__,
+					sprintf(
+						/* translators: 1: The post type key, 2: The other post type key, 3: The name both keys become in ability IDs. */
+						esc_html__( 'Abilities for the "%1$s" post type were not registered because it and the "%2$s" post type both become "%3$s" in ability IDs. Change one of the keys to enable them.', 'acf' ),
+						esc_html( $post_type_name ),
+						esc_html( $ability_names[ $sanitized_post_type_name ] ),
+						esc_html( $sanitized_post_type_name )
+					),
+					'6.8.12'
+				);
+				continue;
+			}
+
+			$ability_names[ $sanitized_post_type_name ] = $post_type_name;
 
 			$rest_base              = acf_get_object_type_rest_base( $post_type_object );
 			$post_type_label        = $post_type_object->labels->singular_name ?? $post_type_name;
@@ -240,7 +269,7 @@ class PostType extends AbstractAbilityGroup {
 
 			// Register query/list feature for this post type
 			$this->register_ability(
-				'acf/' . $sanitized_post_type_name . 's',
+				'acf/list-' . $sanitized_post_type_name . '-posts',
 				array(
 					/* translators: %s The plural label for the custom post type. */
 					'label'               => sprintf( __( 'Query %s', 'acf' ), $post_type_label_plural ),
@@ -291,9 +320,9 @@ class PostType extends AbstractAbilityGroup {
 					'execute_callback'    => function ( $input = array() ) use ( $rest_base ) {
 						return $this->execute_rest_request( 'GET', $rest_base, $input );
 					},
-					'permission_callback' => function () use ( $post_type_object ) {
-						// For querying, allow if user can read or if they can read private posts of this type.
-						return current_user_can( 'read' ) || current_user_can( $post_type_object->cap->read_private_posts );
+					'permission_callback' => function () {
+						// The proxied REST request decides which posts the user can see.
+						return current_user_can( 'read' );
 					},
 					'meta'                => array(
 						'annotations'  => array(
@@ -309,7 +338,7 @@ class PostType extends AbstractAbilityGroup {
 
 			// Register create ability for this post type
 			$this->register_ability(
-				'acf/create-' . $sanitized_post_type_name,
+				'acf/create-' . $sanitized_post_type_name . '-post',
 				array(
 					/* translators: %s The singular label for the custom post type. */
 					'label'               => sprintf( __( 'Create %s', 'acf' ), $post_type_label ),
@@ -338,7 +367,7 @@ class PostType extends AbstractAbilityGroup {
 
 			// Register view single ability for this post type
 			$this->register_ability(
-				'acf/view-' . $sanitized_post_type_name,
+				'acf/view-' . $sanitized_post_type_name . '-post',
 				array(
 					/* translators: %s The singular label for the custom post type. */
 					'label'               => sprintf( __( 'View a %s', 'acf' ), $post_type_label ),
@@ -351,9 +380,9 @@ class PostType extends AbstractAbilityGroup {
 							'id' => array(
 								'type'        => 'integer',
 								'description' => sprintf( 'The ID of the %s to view.', strtolower( $post_type_label ) ),
-								'required'    => true,
 							),
 						),
+						'required'   => array( 'id' ),
 					),
 					'output_schema'       => $item_schema,
 					'execute_callback'    => function ( $input = array() ) use ( $rest_base ) {
@@ -377,7 +406,7 @@ class PostType extends AbstractAbilityGroup {
 
 			// Register update ability for this post type
 			$this->register_ability(
-				'acf/update-' . $sanitized_post_type_name,
+				'acf/update-' . $sanitized_post_type_name . '-post',
 				array(
 					/* translators: %s The singular label for the custom post type. */
 					'label'               => sprintf( __( 'Update a %s', 'acf' ), $post_type_label ),
@@ -407,12 +436,12 @@ class PostType extends AbstractAbilityGroup {
 
 			// Register delete ability for this post type.
 			$this->register_ability(
-				'acf/delete-' . $sanitized_post_type_name,
+				'acf/delete-' . $sanitized_post_type_name . '-post',
 				array(
 					/* translators: %s The singular label for the custom post type. */
 					'label'               => sprintf( __( 'Delete a %s', 'acf' ), $post_type_label ),
 					/* translators: %s The singular label for the custom post type. */
-					'description'         => sprintf( __( 'Delete a %s by its ID.', 'acf' ), strtolower( $post_type_label ) ) . $description_suffix,
+					'description'         => sprintf( __( 'Move a %s to the trash by its ID.', 'acf' ), strtolower( $post_type_label ) ) . $description_suffix,
 					'category'            => 'wordpress-content-discovery',
 					'input_schema'        => array(
 						'type'       => 'object',
@@ -420,9 +449,9 @@ class PostType extends AbstractAbilityGroup {
 							'id' => array(
 								'type'        => 'integer',
 								'description' => sprintf( 'The ID of the %s to delete.', strtolower( $post_type_label ) ),
-								'required'    => true,
 							),
 						),
+						'required'   => array( 'id' ),
 					),
 					'output_schema'       => $item_schema,
 					'execute_callback'    => function ( $input = array() ) use ( $rest_base ) {
@@ -470,27 +499,26 @@ class PostType extends AbstractAbilityGroup {
 			$schema['properties']['id'] = array(
 				'type'        => 'integer',
 				'description' => sprintf( 'The ID of the %s to update.', strtolower( $post_type_label ) ),
-				'required'    => true,
 			);
+			$schema['required']         = array( 'id' );
+		} else {
+			$schema['required'] = array( 'title' );
 		}
 
 		$schema['properties']['title'] = array(
 			'type'        => 'string',
 			'description' => sprintf( 'The title of the %s.', strtolower( $post_type_label ) ),
-			'required'    => 'update' !== $action,
 		);
 
 		$schema['properties']['content'] = array(
 			'type'        => 'string',
 			'description' => sprintf( 'The content of the %s.', strtolower( $post_type_label ) ),
-			'required'    => false,
 		);
 
 		// TODO: Provide enum?
 		$schema['properties']['status'] = array(
 			'type'        => 'string',
 			'description' => 'The status of the post (publish, draft, etc.)',
-			'required'    => false,
 		);
 
 		// Only add featured_media if the post type supports thumbnails.
@@ -498,7 +526,6 @@ class PostType extends AbstractAbilityGroup {
 			$schema['properties']['featured_media'] = array(
 				'type'        => 'integer',
 				'description' => 'The ID of the featured image (attachment) for this post. The attachment must exist and be an image. Set to 0 to remove; invalid or non-image IDs will not set a featured image.',
-				'required'    => false,
 			);
 		}
 
@@ -507,7 +534,6 @@ class PostType extends AbstractAbilityGroup {
 			$schema['properties']['author'] = array(
 				'type'        => 'integer',
 				'description' => 'The ID of the user to assign as the author of this post. The user must exist and have permission to be assigned as an author.',
-				'required'    => false,
 			);
 		}
 
@@ -570,7 +596,7 @@ class PostType extends AbstractAbilityGroup {
 				continue;
 			}
 
-			if ( empty( $acf_post_type['active'] ) || empty( $acf_post_type['allow_ai_access'] ) ) {
+			if ( empty( $acf_post_type['active'] ) || empty( $acf_post_type['enable_acf_abilities'] ) ) {
 				continue;
 			}
 
@@ -644,8 +670,8 @@ class PostType extends AbstractAbilityGroup {
 		$rest_base    = $input['rest_base'] ?? '';
 
 		// AI settings
-		$allow_ai_access = $input['allow_ai_access'] ?? true;
-		$ai_description  = $input['ai_description'] ?? '';
+		$enable_acf_abilities = $input['enable_acf_abilities'] ?? true;
+		$ai_description       = $input['ai_description'] ?? '';
 
 		// Menu settings
 		$menu_icon     = $input['menu_icon'] ?? '';
@@ -677,25 +703,25 @@ class PostType extends AbstractAbilityGroup {
 
 		// Use ACF's method to create the post type.
 		$post_type_data = array(
-			'key'             => uniqid( 'post_type_' ),
-			'post_type'       => $post_type,
-			'title'           => $plural_label,
-			'labels'          => wp_parse_args(
+			'key'                  => uniqid( 'post_type_' ),
+			'post_type'            => $post_type,
+			'title'                => $plural_label,
+			'labels'               => wp_parse_args(
 				array(
 					'name'          => $plural_label,
 					'singular_name' => $label,
 				),
 				acf_get_internal_post_type_instance( 'acf-post-type' )->get_settings_array()['labels']
 			),
-			'description'     => $description,
-			'public'          => $public ? 1 : 0,
-			'hierarchical'    => $hierarchical ? 1 : 0,
-			'supports'        => $supports,
-			'active'          => 1,
+			'description'          => $description,
+			'public'               => $public ? 1 : 0,
+			'hierarchical'         => $hierarchical ? 1 : 0,
+			'supports'             => $supports,
+			'active'               => 1,
 			// REST API settings
-			'show_in_rest'    => $show_in_rest ? 1 : 0,
+			'show_in_rest'         => $show_in_rest ? 1 : 0,
 			// AI settings
-			'allow_ai_access' => $allow_ai_access ? 1 : 0,
+			'enable_acf_abilities' => $enable_acf_abilities ? 1 : 0,
 		);
 
 		// Add optional settings only if provided

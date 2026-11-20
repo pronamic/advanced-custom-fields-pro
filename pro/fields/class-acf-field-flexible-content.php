@@ -68,6 +68,7 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 			$this->add_filter( 'acf/clone_field', array( $this, 'clone_any_field' ), 10, 2 );
 			$this->add_filter( 'acf/validate_field', array( $this, 'validate_any_field' ) );
 			$this->add_filter( 'acf/pre_render_fields', array( $this, 'pre_render_fields' ), 10, 2 );
+			$this->add_filter( 'acf/load_meta', array( $this, 'load_meta' ), 10, 2 );
 
 			// field filters
 			$this->add_field_filter( 'acf/get_sub_field', array( $this, 'get_sub_field' ), 10, 3 );
@@ -949,6 +950,36 @@ if ( ! class_exists( 'acf_field_flexible_content' ) ) :
 			$this->layout_meta[ $cache_key ] = $layout_meta;
 
 			return $this->layout_meta[ $cache_key ];
+		}
+
+		/**
+		 * Adds layout meta to the loaded ACF meta so it is copied to revisions (used by previews).
+		 *
+		 * @param array          $meta    The array of loaded ACF meta.
+		 * @param integer|string $post_id The post ID the meta was loaded from.
+		 * @return array
+		 */
+		public function load_meta( $meta, $post_id ) {
+			// Only post meta is copied to revisions.
+			if ( ! is_array( $meta ) || 'post' !== acf_decode_post_id( $post_id )['type'] ) {
+				return $meta;
+			}
+
+			foreach ( $meta as $name => $value ) {
+				// Flexible Content values are arrays of layout names with a reference key.
+				if ( ! isset( $meta[ '_' . $name ] ) || ! is_array( acf_maybe_unserialize( $value ) ) ) {
+					continue;
+				}
+
+				$layout_meta_name = '_' . $name . '_layout_meta';
+				$layout_meta      = acf_get_metadata_by_field( $post_id, array( 'name' => $layout_meta_name ) );
+
+				if ( is_array( $layout_meta ) ) {
+					$meta[ $layout_meta_name ] = $layout_meta;
+				}
+			}
+
+			return $meta;
 		}
 
 		/**

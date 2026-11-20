@@ -515,12 +515,19 @@ function acf_rest_reduce_reference( $formatted_value, $raw_value, $field ) {
  * attachment array in standard-format mode. The other variants (`dashicons`,
  * `url`, `svg`) carry user-provided data with no permission gate needed.
  *
+ * With the "Icon String" return format (the default), the formatted value is
+ * a string rather than an array; for `media_library` icons it is the
+ * attachment URL from `wp_get_attachment_url()`. In that case the type and
+ * attachment ID are read from the stored raw value instead.
+ *
  * When the type is `media_library` and the caller cannot read the target
  * attachment, the field is reduced to the same shape
- * `?acf_format=light` would return: `{ type: 'media_library', value: <int> }`.
- * Everything else passes through unchanged.
+ * `?acf_format=light` would return: `{ type: 'media_library', value: <int> }`,
+ * whatever the field's return format. Everything else passes through
+ * unchanged.
  *
  * @since ACF 6.8.10
+ * @since ACF 6.8.12 Media Library icons using the string return format are also reduced.
  *
  * @param mixed $formatted_value The formatted field value.
  * @param mixed $raw_value       The raw field value.
@@ -529,7 +536,25 @@ function acf_rest_reduce_reference( $formatted_value, $raw_value, $field ) {
  */
 function acf_rest_reduce_icon_picker_reference( $formatted_value, $raw_value, $field ) {
 	if ( ! is_array( $formatted_value ) ) {
-		return $formatted_value;
+		// String return format: a media_library icon is formatted to the bare attachment URL, so gate it on the stored ID.
+		if (
+			! is_array( $raw_value ) ||
+			'media_library' !== ( $raw_value['type'] ?? null ) ||
+			! isset( $raw_value['value'] ) ||
+			! is_numeric( $raw_value['value'] )
+		) {
+			return $formatted_value;
+		}
+
+		$target_id = (int) $raw_value['value'];
+		if ( $target_id <= 0 || acf_rest_reference_is_exposable( $target_id, $field ) ) {
+			return $formatted_value;
+		}
+
+		return array(
+			'type'  => 'media_library',
+			'value' => $target_id,
+		);
 	}
 
 	$type = $formatted_value['type'] ?? ( is_array( $raw_value ) ? $raw_value['type'] ?? null : null );
